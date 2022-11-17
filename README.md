@@ -13,7 +13,7 @@ After compilation the exported dll/dylib file is automatically copied into the e
 
 ## Requirements
 
-In order to compile for Windows/macOS/Linux you are required to [download the EpicOnlineSerives SDK v1.14.2](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
+In order to compile for Windows/macOS you are required to [download the EpicOnlineSerives SDK v1.14.2](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
 
 ## Documentation
 
