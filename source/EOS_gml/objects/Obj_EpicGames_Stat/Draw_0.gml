@@ -1,0 +1,8 @@
+
+event_inherited()
+
+draw_set_valign(fa_left)
+draw_set_halign(fa_left)
+draw_text(bbox_left+50,y,Name)
+draw_set_halign(fa_right)
+draw_text(bbox_right-50,y,Value)
