@@ -105,7 +105,21 @@
 		2BE86CFD281A0EA90072D68B /* Extension_Interface.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE86CF6281A0EA90072D68B /* Extension_Interface.h */; };
 		2BE86CFE281A0EA90072D68B /* dllmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BE86CF7281A0EA90072D68B /* dllmain.cpp */; };
 		2BE86D8C281A20620072D68B /* libEOSSDK-Mac-Shipping.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE86D8B281A20620072D68B /* libEOSSDK-Mac-Shipping.dylib */; };
+		6AFC45552927CE7900EF86C1 /* libEpicOnlineServices.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BE86CE3281A0C400072D68B /* libEpicOnlineServices.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6AFC45542927CE0A00EF86C1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${PROJECT_DIR}/../EOS_gml/extensions/EpicOnlineServices";
+			dstSubfolderSpec = 0;
+			files = (
+				6AFC45552927CE7900EF86C1 /* libEpicOnlineServices.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2BC9789F287F3F2C0079F3E2 /* Windows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Windows; path = ../../EOS_sdk/Include/Windows; sourceTree = "<group>"; };
@@ -454,6 +468,7 @@
 				2BE86CDF281A0C400072D68B /* Headers */,
 				2BE86CE0281A0C400072D68B /* Sources */,
 				2BE86CE1281A0C400072D68B /* Frameworks */,
+				6AFC45542927CE0A00EF86C1 /* CopyFiles */,
 			);
 			buildRules = (
 			);
