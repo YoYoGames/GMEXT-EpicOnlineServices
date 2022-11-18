@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMMacOptions",
+  "resourceVersion": "1.0",
+  "name": "macOS",
   "option_mac_display_name": "Epic Online Services",
   "option_mac_app_id": "com.yoyogames.projectName",
   "option_mac_version": "1.0.0.0",
@@ -26,10 +29,7 @@
   "option_mac_enable_steam": false,
   "option_mac_disable_sandbox": false,
   "option_mac_x86_64": true,
-  "option_mac_arm64": false,
+  "option_mac_arm64": true,
   "option_mac_apple_sign_in": false,
-  "resourceVersion": "1.0",
-  "name": "macOS",
-  "tags": [],
-  "resourceType": "GMMacOptions",
+  "option_mac_min_version": "10.13",
 }
