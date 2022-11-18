@@ -64,11 +64,7 @@ goto :eof
    echo "Copying macOS (64 bit) dependencies"
    if "%YYTARGET_runtime%" == "VM" (
 
-      :: This is used for VM
-      powershell Expand-Archive '%YYprojectName%.zip' _temp\
-      copy /y "%SDK_PATH%Bin\libEOSSDK-Mac-Shipping.dylib" "_temp\assets\libEOSSDK-Mac-Shipping.dylib"
-      powershell Compress-Archive -Force _temp\* '%YYprojectName%.zip'
-      rmdir /s /q _temp
+      call :error_macOS_VM_EOS_run
 
    ) else (
 
@@ -98,6 +94,14 @@ goto :eof
    echo "The setup script was unable to copy dependencies"
    echo "########################################################################################################################"
    echo ""
+exit 1
+
+:error_macOS_VM_EOS_run
+    echo ""
+    echo "######################################################## ERROR ########################################################"
+    echo "This version of EOS extension is not compatible with the macOS VM export, please use the YYC export instead"
+    echo "#######################################################################################################################"
+    echo ""
 exit 1
 
 :: ----------------------------------------------------------------------------------------------------
