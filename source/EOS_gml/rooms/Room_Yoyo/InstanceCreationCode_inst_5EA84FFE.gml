@@ -1,0 +1,3 @@
+
+text = "Locked"
+locked = true
