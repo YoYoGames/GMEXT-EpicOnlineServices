@@ -11,9 +11,20 @@ XCODE SOURCE: `source/EOS_xcode/`
 
 After compilation the exported dll/dylib file is automatically copied into the extension folder inside the included GameMaker project folder.
 
+
+---
+
+## Important
+
+Do not download from the **main branch** this branch is a work in place branch and probably has features that might be broken or not working properly, please download from the releases panel (right side instead).
+
+---
+
 ## Requirements
 
 In order to compile for Windows/macOS you are required to [download the EpicOnlineSerives SDK v1.15.4](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
+
+---
 
 ## Documentation
 
