@@ -17,20 +17,11 @@ function error_incorrect_EOS_path () {
     exit 1
 }
 
-function error_macOS_VM_EOS_run () {
-    echo ""
-    echo "######################################################## ERROR ########################################################"
-    echo "This version of EOS extension is not compatible with the macOS VM export, please use the YYC export instead"
-    echo "#######################################################################################################################"
-    echo ""
-    exit 1
-}
-
 function macOS_copy_dependencies () {
 
     echo "Copying macOS (64 bit) dependencies"
     if [[ "$YYTARGET_runtime" == "VM" ]]; then
-        error_macOS_VM_EOS_run
+        cp "${EOS_SDK_PATH}Bin/libEOSSDK-Mac-Shipping.dylib" "libEOSSDK-Mac-Shipping.dylib"
     else
         cp "${EOS_SDK_PATH}Bin/libEOSSDK-Mac-Shipping.dylib" "${YYprojectName}/${YYprojectName}/Supporting Files/libEOSSDK-Mac-Shipping.dylib"
     fi
