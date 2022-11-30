@@ -848,6 +848,7 @@
       ],"ProxyFiles":[
         {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"libEpicOnlineServices.dylib","TargetMask":1,},
         {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"EpicOnlineServices_x64.dll","TargetMask":6,},
+        {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"EpicOnlineServices.so","TargetMask":7,},
       ],"copyToTargets":194,"usesRunnerInterface":true,"order":[
         {"name":"EpicGames_Achievements_AddNotifyAchievementsUnlockedV2","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
         {"name":"EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
@@ -1037,7 +1038,7 @@
   "tvosThirdPartyFrameworkEntries": [],
   "IncludedResources": [],
   "androidPermissions": [],
-  "copyToTargets": 66,
+  "copyToTargets": 194,
   "iosCocoaPods": "",
   "tvosCocoaPods": "",
   "iosCocoaPodDependencies": "",
