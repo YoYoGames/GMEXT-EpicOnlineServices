@@ -36,6 +36,8 @@
 	//#ifdef OS_Windows
 	//extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1)
 	//#endif
+
+	bool EOS_isInitialised = false;
 	void OldPreGraphicsInitialisation()
 	{
 		printf("YYG -> PreGraphicsInitialisation\n");
@@ -169,20 +171,16 @@
 			EpicGames_Sanctions_Init();
 
 			printf("EOS INITIlIZATION SUCCESS\n");
+			
+			EOS_isInitialised = true;
 			//Result.val = true;
 		}
 	}
 
-	char works[1024];
-	YYEXPORT void EpicGames_Platform_Init(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-	{
-		DebugConsoleOutput("EOS_Platform_Init\n");
-		DebugConsoleOutput("%s\n", works);
-	}
-
-
 	YYEXPORT void EpicGames_Platform_CheckForLauncherAndRestart(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		EOS_Platform_CheckForLauncherAndRestart(PlatformHandle);
 
 		Result.kind = VALUE_BOOL;
@@ -191,6 +189,8 @@
 
 	YYEXPORT void EpicGames_Platform_GetActiveCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_STRING
+
 		const char* user = YYGetString(arg, 0);
 
 		char Buffer[EOS_COUNTRYCODE_MAX_LENGTH];
@@ -203,10 +203,13 @@
 
 	YYEXPORT void EpicGames_Platform_GetActiveLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_STRING
+
 		const char* user = YYGetString(arg, 0);
 
 		char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
 		int32_t BufferLen = sizeof(Buffer);
+		Result.kind = VALUE_STRING;
 		if (EOS_Platform_GetActiveLocaleCode(PlatformHandle, EOS_EpicAccountId_FromString(user), Buffer, &BufferLen) == EOS_EResult::EOS_Success)
 			YYCreateString(&Result, Buffer);
 		else
@@ -215,8 +218,11 @@
 
 	YYEXPORT void EpicGames_Platform_GetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_STRING
+
 		char Buffer[EOS_COUNTRYCODE_MAX_BUFFER_LEN];
 		int32_t BufferLen = sizeof(Buffer);
+		Result.kind = VALUE_STRING;
 		if (EOS_Platform_GetOverrideCountryCode(PlatformHandle, Buffer, &BufferLen) == EOS_EResult::EOS_Success)
 			YYCreateString(&Result, Buffer);
 		else
@@ -225,8 +231,11 @@
 
 	YYEXPORT void EpicGames_Platform_GetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_STRING
+
 		char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
 		int32_t BufferLen = sizeof(Buffer);
+		Result.kind = VALUE_STRING;
 		if (EOS_Platform_GetOverrideLocaleCode(PlatformHandle, Buffer, &BufferLen) == EOS_EResult::EOS_Success)
 			YYCreateString(&Result, Buffer);
 		else
@@ -235,6 +244,8 @@
 
 	YYEXPORT void EpicGames_Platform_Release(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		EOS_Platform_Release(PlatformHandle);
 
 		Result.kind = VALUE_BOOL;
@@ -243,6 +254,8 @@
 
 	YYEXPORT void EpicGames_Platform_SetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		const char* countryCode = YYGetString(arg, 0);
 
 		EOS_Platform_SetOverrideCountryCode(PlatformHandle, countryCode);
@@ -254,6 +267,8 @@
 
 	YYEXPORT void EpicGames_Platform_SetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		const char* localCode = YYGetString(arg, 0);
 
 		EOS_Platform_SetOverrideLocaleCode(PlatformHandle, localCode);
@@ -264,6 +279,8 @@
 
 	YYEXPORT void EpicGames_Platform_Tick(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		Result.kind = VALUE_BOOL;
 
 		if (PlatformHandle != NULL)
@@ -276,17 +293,3 @@
 			Result.val = 0.0;
 		}
 	}
-
-	YYEXPORT void EpicGames_Platform_Tick_(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-	{
-		Result.kind = VALUE_BOOL;
-
-		if (PlatformHandle != nullptr)
-		{
-			EOS_Platform_Tick(PlatformHandle);
-			Result.val = 1.0;
-		}
-		else
-			Result.val = 0.0;
-	}
-

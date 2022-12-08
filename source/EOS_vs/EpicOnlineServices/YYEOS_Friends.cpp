@@ -62,6 +62,8 @@ void EOS_CALL FriendUpdateCallback(const EOS_Friends_OnFriendsUpdateInfo* Data)
 
 YYEXPORT void EpicGames_Friends_AddNotifyFriendsUpdate(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT64
+
 	EOS_Friends_AddNotifyFriendsUpdateOptions Options;
 	Options.ApiVersion = EOS_FRIENDS_ADDNOTIFYFRIENDSUPDATE_API_LATEST;
 
@@ -73,6 +75,8 @@ YYEXPORT void EpicGames_Friends_AddNotifyFriendsUpdate(RValue& Result, CInstance
 
 YYEXPORT void EpicGames_Friends_GetFriendAtIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRING
+
 	const char* user = YYGetString(arg, 0);
 	int index = (int) YYGetReal(arg, 1);
 
@@ -88,6 +92,8 @@ YYEXPORT void EpicGames_Friends_GetFriendAtIndex(RValue& Result, CInstance* self
 
 YYEXPORT void EpicGames_Friends_GetFriendsCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_Friends_GetFriendsCountOptions FriendsCountOptions;
@@ -101,6 +107,8 @@ YYEXPORT void EpicGames_Friends_GetFriendsCount(RValue& Result, CInstance* selfi
 
 YYEXPORT void EpicGames_Friends_GetStatus(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -130,6 +138,8 @@ void EOS_CALL QueryFriendsCompleteCallbackFn(const EOS_Friends_QueryFriendsCallb
 
 YYEXPORT void EpicGames_Friends_QueryFriends(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_Friends_QueryFriendsOptions QueryFriendsOptions;
@@ -156,6 +166,8 @@ void EOS_CALL RejectFriendInviteCompleteCallbackFn(const EOS_Friends_RejectInvit
 
 YYEXPORT void EpicGames_Friends_RejectInvite(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -190,6 +202,8 @@ void EOS_CALL SendFriendInviteCompleteCallbackFn(const EOS_Friends_SendInviteCal
 
 YYEXPORT void EpicGames_Friends_SendInvite(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 

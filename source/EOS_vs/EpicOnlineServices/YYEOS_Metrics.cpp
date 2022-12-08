@@ -18,6 +18,8 @@ void EpicGames_Metrics_Init()
 
 YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	const char* account = YYGetString(arg, 0);
 	const char* DisplayName = YYGetString(arg, 1);
 	double AccountIdType = YYGetReal(arg, 2);
@@ -42,6 +44,8 @@ YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* se
 
 YYEXPORT void EpicGames_Metrics_EndPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	const char* account = YYGetString(arg, 0);
 	double AccountIdType = YYGetReal(arg, 1);
 

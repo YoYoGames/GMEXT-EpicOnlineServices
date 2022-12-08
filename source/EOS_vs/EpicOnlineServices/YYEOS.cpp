@@ -86,6 +86,8 @@
 
 	YYEXPORT void EpicGames_EpicAccountId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		const char* accountId = YYGetString(arg, 0);
 
 		Result.kind = VALUE_BOOL;
@@ -94,11 +96,16 @@
 
 	YYEXPORT void EpicGames_GetVersion(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_STRING
+
+		Result.kind = VALUE_STRING;
 		YYCreateString(&Result, EOS_GetVersion());
 	}
 
 	YYEXPORT void EpicGames_Logging_SetLogLevel(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		int32 category = YYGetInt32(arg, 0);
 		int32 logLevel = YYGetInt32(arg, 1);
 
@@ -110,6 +117,8 @@
 
 	YYEXPORT void EpicGames_ProductUserId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		const char* mProductUserId = YYGetString(arg, 0);
 
 		Result.kind = VALUE_BOOL;
@@ -118,5 +127,7 @@
 
 	YYEXPORT void EpicGames_Shutdown(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
+		EOS_NotInitialisedReturn_BOOL
+
 		return_EOS_EResult(&Result, EOS_Shutdown());
 	}

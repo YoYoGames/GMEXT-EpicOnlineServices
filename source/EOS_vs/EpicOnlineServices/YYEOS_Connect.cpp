@@ -48,6 +48,8 @@ void EOS_CALL ConnectAuthExpirationCb(const EOS_Connect_AuthExpirationCallbackIn
 
 YYEXPORT void EpicGames_Connect_AddNotifyAuthExpiration(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	EOS_Connect_AddNotifyAuthExpirationOptions Options{};
 	Options.ApiVersion = EOS_CONNECT_ADDNOTIFYAUTHEXPIRATION_API_LATEST;
 
@@ -72,6 +74,8 @@ void EOS_CALL AddNotifyLoginStatusChangedCallback(const EOS_Connect_LoginStatusC
 
 YYEXPORT void EpicGames_Connect_AddNotifyLoginStatusChanged(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT64
+
 	EOS_Connect_AddNotifyLoginStatusChangedOptions Options = { 0 };
 	Options.ApiVersion = EOS_CONNECT_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST;
 
@@ -83,6 +87,8 @@ YYEXPORT void EpicGames_Connect_AddNotifyLoginStatusChanged(RValue& Result, CIns
 
 YYEXPORT void EpicGames_Connect_CopyIdToken(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_Connect_CopyIdTokenOptions Options = { 0 };
@@ -154,6 +160,8 @@ RValue ExternalAccountInfoToStuct(EOS_Connect_ExternalAccountInfo* ExternalAccou
 
 YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -173,6 +181,8 @@ YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountId(RValue
 
 YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountType(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* target = YYGetString(arg, 0);
 	double accounttype = YYGetReal(arg, 1);
 
@@ -192,6 +202,8 @@ YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountType(RVal
 
 YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* target = YYGetString(arg, 0);
 	double index = YYGetReal(arg, 1);
 
@@ -211,6 +223,8 @@ YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByIndex(RValue& Re
 
 YYEXPORT void EpicGames_Connect_CopyProductUserInfo(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* target = YYGetString(arg, 0);
 
 	EOS_Connect_CopyProductUserInfoOptions Options = {0};
@@ -238,6 +252,8 @@ void EOS_CALL CreateDeviceIdCallback(const EOS_Connect_CreateDeviceIdCallbackInf
 
 YYEXPORT void EpicGames_Connect_CreateDeviceId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* DeviceModel = YYGetString(arg, 0);
 	
 	EOS_Connect_CreateDeviceIdOptions Options = { 0 };
@@ -265,6 +281,8 @@ void EOS_CALL ConnectCreateUserCompleteCb(const EOS_Connect_CreateUserCallbackIn
 
 YYEXPORT void EpicGames_Connect_CreateUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	if (ContinuanceToken == nullptr)
 	{
 		DebugConsoleOutput("mContinuanceToken Error\n");
@@ -296,6 +314,8 @@ void EOS_CALL DeleteCreateUserCompleteCb(const EOS_Connect_DeleteDeviceIdCallbac
 
 YYEXPORT void EpicGames_Connect_DeleteDeviceId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	EOS_Connect_DeleteDeviceIdOptions Options;
 	Options.ApiVersion = EOS_CONNECT_DELETEDEVICEID_API_LATEST;
 
@@ -310,6 +330,8 @@ YYEXPORT void EpicGames_Connect_DeleteDeviceId(RValue& Result, CInstance* selfin
 
 YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	const char* LocalUserId = YYGetString(arg, 0);
 	const char* TargetExternalUserId = YYGetString(arg, 1);
 	double AccountIdType = YYGetReal(arg, 2);
@@ -325,23 +347,32 @@ YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue& Result, CInsta
 
 YYEXPORT void EpicGames_Connect_GetLoggedInUserByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	double index = YYGetReal(arg, 0);
 	EOS_ProductUserId ProductUserId = EOS_Connect_GetLoggedInUserByIndex(HConnect, (int)index);
 }
 
 YYEXPORT void EpicGames_Connect_GetLoggedInUsersCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	uint32_t NumAccounts = EOS_Connect_GetLoggedInUsersCount(HConnect);
+
 }
 
 YYEXPORT void EpicGames_Connect_GetLoginStatus(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	const char* user = YYGetString(arg, 0);
 	EOS_ELoginStatus LoginStatus = EOS_Connect_GetLoginStatus(HConnect, EOS_ProductUserId_FromString(user));
 }
 
 YYEXPORT void EpicGames_Connect_GetProductUserExternalAccountCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	const char* target = YYGetString(arg, 0);
 
 	EOS_Connect_GetProductUserExternalAccountCountOptions Options = { 0 };
@@ -354,6 +385,8 @@ YYEXPORT void EpicGames_Connect_GetProductUserExternalAccountCount(RValue& Resul
 
 YYEXPORT void EpicGames_Connect_GetProductUserIdMapping(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -380,6 +413,8 @@ void EOS_CALL LinkAccount(const EOS_Connect_LinkAccountCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Connect_LinkAccount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_Connect_LinkAccountOptions Options = { 0 };
@@ -420,6 +455,8 @@ void EOS_CALL ConnectLoginCompleteCb(const EOS_Connect_LoginCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Connect_Login(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	double type = YYGetReal(arg, 0);
 	const char* AccessToken = YYGetString(arg, 1);
 	const char* DisplayName = YYGetString(arg, 2);
@@ -462,6 +499,8 @@ void EOS_CALL OnQueryExternalAccountMappingsCallback(const EOS_Connect_QueryExte
 
 YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	//const char* user = YYGetString(arg, 0);
 
 	//EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
@@ -496,6 +535,8 @@ void EOS_CALL OnQueryAccountMappingsCallback(const EOS_Connect_QueryProductUserI
 
 YYEXPORT void EpicGames_Connect_QueryProductUserIdMappings(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	//const char* user = YYGetString(arg, 0);
 
 	//EOS_Connect_QueryProductUserIdMappingsOptions QueryOptions = {};
@@ -517,12 +558,16 @@ YYEXPORT void EpicGames_Connect_QueryProductUserIdMappings(RValue& Result, CInst
 
 YYEXPORT void EpicGames_Connect_RemoveNotifyAuthExpiration(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	int64 ConnectAuthExpirationId = YYGetInt64(arg, 0);
 	EOS_Connect_RemoveNotifyAuthExpiration(HConnect, ConnectAuthExpirationId);
 }
 
 YYEXPORT void EpicGames_Connect_RemoveNotifyLoginStatusChanged(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	int64 RemoveNotifyLoginStatusChangedId = YYGetInt64(arg, 0);
 	EOS_Connect_RemoveNotifyLoginStatusChanged(HConnect, RemoveNotifyLoginStatusChangedId);
 }
@@ -539,6 +584,8 @@ void EOS_CALL TransferDeviceIdAccount(const EOS_Connect_TransferDeviceIdAccountC
 
 YYEXPORT void EpicGames_Connect_TransferDeviceIdAccount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* LocalDeviceUserId = YYGetString(arg, 0);
 	const char* PrimaryLocalUserId = YYGetString(arg, 1);
 	const char* ProductUserIdToPreserve = YYGetString(arg, 2);
@@ -569,6 +616,8 @@ void EOS_CALL UnlinkAccount(const EOS_Connect_UnlinkAccountCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Connect_UnlinkAccount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_Connect_UnlinkAccountOptions Options = { 0 };
@@ -599,6 +648,8 @@ void EOS_CALL VerifyIdToken(const EOS_Connect_VerifyIdTokenCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Connect_VerifyIdToken(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* JsonWebToken = YYGetString(arg, 1);
 

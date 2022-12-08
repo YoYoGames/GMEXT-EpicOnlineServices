@@ -44,6 +44,8 @@ void EOS_CALL AchievementsUnlockedReceivedCallbackFn(const EOS_Achievements_OnAc
 
 YYEXPORT void EpicGames_Achievements_AddNotifyAchievementsUnlockedV2(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	EOS_Achievements_AddNotifyAchievementsUnlockedV2Options AchievementsUnlockedNotifyOptions = {};
 	AchievementsUnlockedNotifyOptions.ApiVersion = EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST;
 	EOS_NotificationId AchievementsUnlockedNotificationId = EOS_Achievements_AddNotifyAchievementsUnlockedV2(HAchievements, &AchievementsUnlockedNotifyOptions, nullptr, AchievementsUnlockedReceivedCallbackFn);
@@ -106,6 +108,8 @@ RValue EOS_Achievements_DefinitionV2ToMap(EOS_Achievements_DefinitionV2* Achieve
 
 YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* AchievementId = YYGetString(arg, 0);
 
 	EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions CopyOptions = {};
@@ -123,6 +127,8 @@ YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(
 
 YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	double AchievementId = YYGetReal(arg, 0);
 
 	EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions CopyOptions = {};
@@ -192,6 +198,8 @@ RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef
 
 YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByAchievementId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* local = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 	const char* AchievementId = YYGetString(arg, 2);
@@ -213,6 +221,8 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByAchievementId(RValue
 
 YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* local = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 	double index = YYGetReal(arg, 2);
@@ -234,6 +244,8 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByIndex(RValue& Result
 
 YYEXPORT void EpicGames_Achievements_GetAchievementDefinitionCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	EOS_Achievements_GetAchievementDefinitionCountOptions AchievementDefinitionsCountOptions = {};
 	AchievementDefinitionsCountOptions.ApiVersion = EOS_ACHIEVEMENTS_GETACHIEVEMENTDEFINITIONCOUNT_API_LATEST;
 
@@ -243,6 +255,8 @@ YYEXPORT void EpicGames_Achievements_GetAchievementDefinitionCount(RValue& Resul
 
 YYEXPORT void EpicGames_Achievements_GetPlayerAchievementCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	const char* mProductUserId = YYGetString(arg, 0);
 
 	EOS_Achievements_GetPlayerAchievementCountOptions AchievementsCountOptions = {};
@@ -264,6 +278,8 @@ void EOS_CALL AchievementDefinitionsReceivedCallbackFn(const EOS_Achievements_On
 }
 YYEXPORT void EpicGames_Achievements_QueryDefinitions(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRING
+
 	const char* mProductUserId = YYGetString(arg, 0);
 
 	EOS_Achievements_QueryDefinitionsOptions QueryDefinitionsOptions = {};
@@ -291,6 +307,8 @@ void EOS_CALL PlayerAchievementsReceivedCallbackFn(const EOS_Achievements_OnQuer
 
 YYEXPORT void EpicGames_Achievements_QueryPlayerAchievements(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* mProductUserId = YYGetString(arg, 0);
 	const char* targetUserID = YYGetString(arg, 1);
 
@@ -320,6 +338,8 @@ void EOS_CALL UnlockAchievementsReceivedCallbackFn(const EOS_Achievements_OnUnlo
 //EOS_Achievements_UnlockAchievements
 YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* mProductUserId = YYGetString(arg, 0);
 	const char* AchievementId = YYGetString(arg, 1);
 
@@ -343,6 +363,8 @@ YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance
 
 YYEXPORT void EpicGames_Achievements_RemoveNotifyAchievementsUnlocked(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	int64 AchievementsUnlockedNotificationId = YYGetInt64(arg, 0);
 
 	EOS_Achievements_RemoveNotifyAchievementsUnlocked(HAchievements, AchievementsUnlockedNotificationId);

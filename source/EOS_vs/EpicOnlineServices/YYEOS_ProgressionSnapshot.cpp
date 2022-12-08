@@ -17,6 +17,8 @@ void EpicGames_ProgressionSnapshot_Init()
 
 YYEXPORT void EpicGames_ProgressionSnapshot_AddProgression(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	int32 SnapshotId = YYGetInt32(arg, 0);
 	const char* Key = YYGetString(arg, 1);
 	const char* Value = YYGetString(arg, 2);
@@ -31,6 +33,8 @@ YYEXPORT void EpicGames_ProgressionSnapshot_AddProgression(RValue& Result, CInst
 
 YYEXPORT void EpicGames_ProgressionSnapshot_BeginSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_ProgressionSnapshot_BeginSnapshotOptions Options = { 0 };
@@ -60,6 +64,8 @@ void EOS_CALL DeleteSnapshot(const EOS_ProgressionSnapshot_DeleteSnapshotCallbac
 
 YYEXPORT void EpicGames_ProgressionSnapshot_DeleteSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_ProgressionSnapshot_DeleteSnapshotOptions Options = { 0 };
@@ -76,6 +82,8 @@ YYEXPORT void EpicGames_ProgressionSnapshot_DeleteSnapshot(RValue& Result, CInst
 
 YYEXPORT void EpicGames_ProgressionSnapshot_EndSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	int32 SnapshotId = YYGetInt32(arg, 0);
 
 	EOS_ProgressionSnapshot_EndSnapshotOptions Options = { 0 };
@@ -109,6 +117,8 @@ void EOS_CALL SubmitSnapshot(const EOS_ProgressionSnapshot_SubmitSnapshotCallbac
 
 YYEXPORT void EpicGames_ProgressionSnapshot_SubmitSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	int32 SnapshotId = YYGetInt32(arg, 0);
 
 	EOS_ProgressionSnapshot_SubmitSnapshotOptions Options = { 0 };

@@ -22,7 +22,7 @@
   "packageId": "",
   "productId": "",
   "author": "",
-  "date": "2021-12-01T01:35:22.4978671+00:00",
+  "date": "2021-11-30T17:35:22.4978671-08:00",
   "license": "",
   "description": "",
   "helpfile": "",
@@ -32,7 +32,6 @@
   "installdir": "",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","filename":"EpicOnlineServices.dll","origname":"","init":"","final":"","kind":1,"uncompress":false,"functions":[
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EpicGames_Platform_Init","externalName":"EpicGames_Platform_Init","kind":1,"help":"EpicGames_Platform_Init()","hidden":true,"returnType":2,"argCount":0,"args":[],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EpicGames_Auth_Login","externalName":"EpicGames_Auth_Login","kind":1,"help":"EpicGames_Auth_Login(type,scope_flags,id,token,external_type)","hidden":false,"returnType":2,"argCount":0,"args":[
             2,
             2,

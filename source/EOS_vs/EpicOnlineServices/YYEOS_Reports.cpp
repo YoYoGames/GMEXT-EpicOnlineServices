@@ -26,6 +26,8 @@ void EOS_CALL SendPlayerBehaviorReportCallbackFn(const EOS_Reports_SendPlayerBeh
 
 YYEXPORT void EpicGames_Reports_SendPlayerBehaviorReport(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* ReporterUserId = YYGetString(arg, 0);
 	const char* ReportedUserId = YYGetString(arg, 1);
 	int category = (int)YYGetReal(arg, 2);

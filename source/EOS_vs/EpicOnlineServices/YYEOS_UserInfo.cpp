@@ -47,6 +47,8 @@ RValue ExternalUserInfoToString(EOS_UserInfo_ExternalUserInfo* UserInfo, EOS_ERe
 
 YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByAccountId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 	const char* accountId = YYGetString(arg, 2);
@@ -68,6 +70,8 @@ YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByAccountId(RValue& Result,
 
 YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByAccountType(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 	double accountType = YYGetReal(arg, 2);
@@ -89,6 +93,8 @@ YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByAccountType(RValue& Resul
 
 YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 	double index = YYGetReal(arg, 2);
@@ -141,6 +147,8 @@ RValue _UserInfoToString(EOS_UserInfo* UserInfo, EOS_EResult Result)
 
 YYEXPORT void EpicGames_UserInfo_CopyUserInfo(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -161,6 +169,8 @@ YYEXPORT void EpicGames_UserInfo_CopyUserInfo(RValue& Result, CInstance* selfins
 
 YYEXPORT void EpicGames_UserInfo_GetExternalUserInfoCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -188,6 +198,8 @@ void EOS_CALL userInfo_QueryUserInfoCallback(const EOS_UserInfo_QueryUserInfoCal
 
 YYEXPORT void EpicGames_UserInfo_QueryUserInfo(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* mProductUserId = YYGetString(arg, 0);
 	const char* targetUserID = YYGetString(arg, 1);
 	
@@ -217,6 +229,8 @@ void EOS_CALL EOS_UserInfo_QueryUserInfoByDisplayNameCallback(const EOS_UserInfo
 YYEXPORT void EpicGames_UserInfo_QueryUserInfoByDisplayName(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 //(EOS_EpicAccountId LocalUserId, const std::wstring& DisplayName, const EOS_UserInfo_OnQueryUserInfoByDisplayNameCallback CompletionDelegate, std::function<void(const FUserData&)> UserInfoRetrievedCallback)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* mProductUserId = YYGetString(arg, 0);
 	const char* DisplayName = YYGetString(arg, 1);
 
@@ -246,6 +260,8 @@ void EOS_CALL EOS_UserInfo_QueryUserInfoByExternalAccountCallback(const EOS_User
 
 YYEXPORT void EpicGames_UserInfo_QueryUserInfoByExternalAccount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* ExternalAccountId = YYGetString(arg, 1);
 	double accountType = YYGetReal(arg, 2);

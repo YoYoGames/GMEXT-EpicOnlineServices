@@ -36,6 +36,8 @@ void EOS_CALL LoginStatusChangedCb(const EOS_Auth_LoginStatusChangedCallbackInfo
 
 YYEXPORT void EpicGames_Auth_AddNotifyLoginStatusChanged(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	EOS_Auth_AddNotifyLoginStatusChangedOptions LoginStatusChangedOptions{};
 	LoginStatusChangedOptions.ApiVersion = EOS_AUTH_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST;
 
@@ -44,6 +46,8 @@ YYEXPORT void EpicGames_Auth_AddNotifyLoginStatusChanged(RValue& Result, CInstan
 
 YYEXPORT void EpicGames_Auth_CopyIdToken(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_Auth_CopyIdTokenOptions Options = { 0 };
@@ -85,6 +89,8 @@ YYEXPORT void EpicGames_Auth_CopyIdToken(RValue& Result, CInstance* selfinst, CI
 
 YYEXPORT void EpicGames_Auth_CopyUserAuthToken(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	arg->kind = VALUE_STRING;
 	const char* str_AccountId = YYGetString(arg, 0);
 
@@ -134,6 +140,8 @@ void EOS_CALL DeletePersistentAuthCompleteCallbackFn(const EOS_Auth_DeletePersis
 
 YYEXPORT void EpicGames_Auth_DeletePersistentAuth(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* refreshtoken = YYGetString(arg, 0);
 
 	EOS_Auth_DeletePersistentAuthOptions Options = {};
@@ -154,6 +162,8 @@ YYEXPORT void EpicGames_Auth_DeletePersistentAuth(RValue& Result, CInstance* sel
 
 YYEXPORT void EpicGames_Auth_GetLoggedInAccountByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRING
+
 	int AccountIdx = (int)YYGetReal(arg, 0);
 
 	EOS_EpicAccountId accountID = EOS_Auth_GetLoggedInAccountByIndex(HAuth, AccountIdx);
@@ -163,6 +173,8 @@ YYEXPORT void EpicGames_Auth_GetLoggedInAccountByIndex(RValue& Result, CInstance
 
 YYEXPORT void EpicGames_Auth_GetLoggedInAccountsCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	Result.kind = VALUE_INT32;
 	Result.v32 = EOS_Auth_GetLoggedInAccountsCount(HAuth);
 }
@@ -170,6 +182,8 @@ YYEXPORT void EpicGames_Auth_GetLoggedInAccountsCount(RValue& Result, CInstance*
 
 YYEXPORT void EpicGames_Auth_GetLoginStatus(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* accountID = YYGetString(arg, 0);
 
 	Result.kind = VALUE_REAL;
@@ -178,6 +192,8 @@ YYEXPORT void EpicGames_Auth_GetLoginStatus(RValue& Result, CInstance* selfinst,
 
 YYEXPORT void EpicGames_Auth_GetMergedAccountByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRING
+
 	const char* accountID = YYGetString(arg, 0);
 	int32 index = YYGetInt32(arg, 1);
 
@@ -187,6 +203,8 @@ YYEXPORT void EpicGames_Auth_GetMergedAccountByIndex(RValue& Result, CInstance* 
 
 YYEXPORT void EpicGames_Auth_GetMergedAccountsCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* accountID = YYGetString(arg, 0);
 
 	Result.kind = VALUE_REAL;
@@ -195,6 +213,8 @@ YYEXPORT void EpicGames_Auth_GetMergedAccountsCount(RValue& Result, CInstance* s
 
 YYEXPORT void EpicGames_Auth_GetSelectedAccountId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRING
+
 	const char* accountID = YYGetString(arg, 0);
 
 	EOS_EpicAccountId account = NULL;
@@ -216,6 +236,8 @@ void EOS_CALL LinkAccountCompleteCallbackFn(const EOS_Auth_LinkAccountCallbackIn
 
 YYEXPORT void EpicGames_Auth_LinkAccount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	if (ContinuanceToken == nullptr)
 	{
 		DebugConsoleOutput("mContinuanceToken Error\n");
@@ -269,7 +291,7 @@ void EOS_CALL LoginCompleteCallbackFn(const EOS_Auth_LoginCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Auth_Login(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	printf("EpicGames_Auth_Login CALLED\n"); fflush(stdout);
+	EOS_NotInitialisedReturn_REAL
 
 	double type = YYGetReal(arg, 0);
 	double scope_flags = YYGetReal(arg, 1);
@@ -325,6 +347,8 @@ void EOS_CALL LogoutCompleteCallbackFn(const EOS_Auth_LogoutCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Auth_Logout(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 
 	EOS_Auth_LogoutOptions LogoutOptions;
@@ -351,6 +375,8 @@ void EOS_CALL QueryIdToken(const EOS_Auth_QueryIdTokenCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Auth_QueryIdToken(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -369,6 +395,8 @@ YYEXPORT void EpicGames_Auth_QueryIdToken(RValue& Result, CInstance* selfinst, C
 
 YYEXPORT void EpicGames_Auth_RemoveNotifyLoginStatusChanged(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	double accountID = YYGetReal(arg, 0);
 	EOS_Auth_RemoveNotifyLoginStatusChanged(HAuth, accountID);
 
@@ -388,6 +416,8 @@ void EOS_CALL VerifyIdToken(const EOS_Auth_VerifyIdTokenCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Auth_VerifyIdToken(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* target = YYGetString(arg, 0);
 	const char* JsonWebToken = YYGetString(arg, 1);
 
@@ -420,6 +450,8 @@ void EOS_CALL VerifyUserAuth(const EOS_Auth_VerifyUserAuthCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Auth_VerifyUserAuth(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* AccessToken = YYGetString(arg, 0);
 	const char* AccountId = YYGetString(arg, 1);
 	//const char* ApiVersion = 

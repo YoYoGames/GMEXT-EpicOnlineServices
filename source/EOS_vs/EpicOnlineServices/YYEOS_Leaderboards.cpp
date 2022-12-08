@@ -55,6 +55,8 @@ RValue LeaderboardsDefinitionToStruct(EOS_Leaderboards_Definition* leaderboard, 
 
 YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	double index = YYGetReal(arg, 0);
 
 	EOS_Leaderboards_Definition* LeaderboardDef = NULL;
@@ -73,6 +75,8 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex(RValue& Re
 
 YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* leaderboardId = YYGetString(arg, 0);
 
 	EOS_Leaderboards_Definition* LeaderboardDef = NULL;
@@ -116,6 +120,8 @@ RValue LeaderboardRecordToStruct(EOS_Leaderboards_LeaderboardRecord* leaderboard
 
 YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	double index = YYGetReal(arg, 0);
 
 	EOS_Leaderboards_GetLeaderboardRecordCountOptions LeaderboardsRecordsCountOptions = { 0 };
@@ -138,6 +144,8 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByIndex(RValue& Result
 
 YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByUserId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* userId = YYGetString(arg, 0);
 
 	EOS_Leaderboards_GetLeaderboardRecordCountOptions LeaderboardsRecordsCountOptions = { 0 };
@@ -179,6 +187,8 @@ RValue LeaderboardUserScoreToStruct(EOS_Leaderboards_LeaderboardUserScore* leade
 
 YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	double index = YYGetReal(arg, 0);
 	const char* statName = YYGetString(arg, 1);
 
@@ -199,6 +209,8 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(RValue& Res
 
 YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByUserId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* userId = YYGetString(arg, 0);
 	const char* statName = YYGetString(arg, 1);
 
@@ -218,6 +230,8 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByUserId(RValue& Re
 
 YYEXPORT void EpicGames_Leaderboards_GetLeaderboardDefinitionCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	EOS_Leaderboards_GetLeaderboardDefinitionCountOptions LeaderboardDefinitionsCountOptions = { 0 };
 	LeaderboardDefinitionsCountOptions.ApiVersion = EOS_LEADERBOARDS_GETLEADERBOARDDEFINITIONCOUNT_API_LATEST;
 
@@ -229,6 +243,8 @@ YYEXPORT void EpicGames_Leaderboards_GetLeaderboardDefinitionCount(RValue& Resul
 
 YYEXPORT void EpicGames_Leaderboards_GetLeaderboardRecordCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	EOS_Leaderboards_GetLeaderboardRecordCountOptions LeaderboardsRecordsCountOptions = { 0 };
 	LeaderboardsRecordsCountOptions.ApiVersion = EOS_LEADERBOARDS_GETLEADERBOARDRECORDCOUNT_API_LATEST;
 
@@ -240,6 +256,8 @@ YYEXPORT void EpicGames_Leaderboards_GetLeaderboardRecordCount(RValue& Result, C
 
 YYEXPORT void EpicGames_Leaderboards_GetLeaderboardUserScoreCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_INT32
+
 	const char* statName = YYGetString(arg, 0);
 
 	EOS_Leaderboards_GetLeaderboardUserScoreCountOptions LeaderboardUserScoresCountOptions = { 0 };
@@ -262,6 +280,8 @@ void EOS_CALL LeaderboardDefinitionsReceivedCallbackFn(const EOS_Leaderboards_On
 
 YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardDefinitions(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* mProductUserId = YYGetString(arg, 0);
 	int64 startTime = YYGetInt64(arg, 1);
 	int64 endTime = YYGetInt64(arg, 2);
@@ -302,6 +322,8 @@ void EOS_CALL LeaderboardRanksReceivedCallbackFn(const EOS_Leaderboards_OnQueryL
 
 YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardRanks(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* LocalUserId = YYGetString(arg, 0);
 	const char* LeaderboardId = YYGetString(arg, 1);
 
@@ -331,6 +353,8 @@ void EOS_CALL LeaderboardUserScoresReceivedCallbackFn(const EOS_Leaderboards_OnQ
 
 YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScore(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* userID = YYGetString(arg, 0);
 	const char* userID_target = YYGetString(arg, 1);
 	const char* LeaderboardId = YYGetString(arg, 2);

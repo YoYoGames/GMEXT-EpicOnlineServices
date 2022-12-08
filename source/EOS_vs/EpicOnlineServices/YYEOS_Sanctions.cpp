@@ -18,6 +18,8 @@ void EpicGames_Sanctions_Init()
 
 YYEXPORT void EpicGames_Sanctions_CopyPlayerSanctionByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* target = YYGetString(arg, 0);
 	int index = (int) YYGetReal(arg, 1);
 
@@ -45,6 +47,8 @@ YYEXPORT void EpicGames_Sanctions_CopyPlayerSanctionByIndex(RValue& Result, CIns
 
 YYEXPORT void EpicGames_Sanctions_GetPlayerSanctionCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	const char* target = YYGetString(arg, 0);
 
 	EOS_Sanctions_GetPlayerSanctionCountOptions Options = { 0 };
@@ -68,6 +72,8 @@ void EOS_CALL QueryActivePlayerSanctions(const EOS_Sanctions_QueryActivePlayerSa
 
 YYEXPORT void EpicGames_Sanctions_QueryActivePlayerSanctions(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 

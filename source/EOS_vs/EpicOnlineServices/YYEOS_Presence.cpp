@@ -39,6 +39,8 @@ void EOS_CALL AddNotifyJoinGameAccepted(const EOS_Presence_JoinGameAcceptedCallb
 
 YYEXPORT void EpicGames_Presence_AddNotifyJoinGameAccepted(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	EOS_Presence_AddNotifyJoinGameAcceptedOptions Options = { 0 };
 	Options.ApiVersion = EOS_PRESENCE_ADDNOTIFYJOINGAMEACCEPTED_API_LATEST;
 
@@ -59,6 +61,8 @@ void EOS_CALL AddNotifyOnPresenceChanged(const EOS_Presence_PresenceChangedCallb
 
 YYEXPORT void EpicGames_Presence_AddNotifyOnPresenceChanged(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	EOS_Presence_AddNotifyOnPresenceChangedOptions Options = { 0 };
 	Options.ApiVersion = EOS_PRESENCE_ADDNOTIFYONPRESENCECHANGED_API_LATEST;
 
@@ -72,6 +76,8 @@ YYEXPORT void EpicGames_Presence_AddNotifyOnPresenceChanged(RValue& Result, CIns
 
 YYEXPORT void EpicGames_Presence_CopyPresence(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRUCT
+
 	const char* local = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -147,6 +153,8 @@ EOS_HPresenceModification EOS_Presence_CreatePresenceModification(const char* us
 
 YYEXPORT void EpicGames_Presence_GetJoinInfo(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_STRING
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -165,6 +173,8 @@ YYEXPORT void EpicGames_Presence_GetJoinInfo(RValue& Result, CInstance* selfinst
 
 YYEXPORT void EpicGames_Presence_HasPresence(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -192,6 +202,8 @@ void EOS_CALL QueryPresence(const EOS_Presence_QueryPresenceCallbackInfo* Data)
 
 YYEXPORT void EpicGames_Presence_QueryPresence(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
 
@@ -210,12 +222,16 @@ YYEXPORT void EpicGames_Presence_QueryPresence(RValue& Result, CInstance* selfin
 
 YYEXPORT void EpicGames_Presence_RemoveNotifyJoinGameAccepted(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	int64 id = YYGetInt64(arg, 0);
 	EOS_Presence_RemoveNotifyJoinGameAccepted(HPresence, (EOS_NotificationId)id);
 }
 
 YYEXPORT void EpicGames_Presence_RemoveNotifyOnPresenceChanged(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_BOOL
+
 	int64 id = YYGetInt64(arg, 0);
 	EOS_Presence_RemoveNotifyOnPresenceChanged(HPresence, id);
 }
@@ -255,6 +271,8 @@ void EOS_CALL DeleteData(const EOS_Presence_SetPresenceCallbackInfo* Data)
 
 YYEXPORT void EpicGames_PresenceModification_DeleteData(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* key = YYGetString(arg, 1);
 
@@ -298,6 +316,8 @@ void EOS_CALL SetData(const EOS_Presence_SetPresenceCallbackInfo* Data)
 
 YYEXPORT void EpicGames_PresenceModification_SetData(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* key = YYGetString(arg, 1);
 	const char* value = YYGetString(arg, 2);
@@ -344,6 +364,8 @@ void EOS_CALL SetJoinInfo(const EOS_Presence_SetPresenceCallbackInfo* Data)
 
 YYEXPORT void EpicGames_PresenceModification_SetJoinInfo(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* info = YYGetString(arg, 1);
 
@@ -382,6 +404,8 @@ void EOS_CALL SetRawRichText(const EOS_Presence_SetPresenceCallbackInfo* Data)
 
 YYEXPORT void EpicGames_PresenceModification_SetRawRichText(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	const char* text = YYGetString(arg, 1);
 
@@ -420,6 +444,8 @@ void EOS_CALL SetStatus(const EOS_Presence_SetPresenceCallbackInfo* Data)
 
 YYEXPORT void EpicGames_PresenceModification_SetStatus(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	EOS_NotInitialisedReturn_REAL
+
 	const char* user = YYGetString(arg, 0);
 	double status = YYGetReal(arg, 1);
 
