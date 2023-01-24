@@ -1,111 +1,98 @@
 @echo off
 
-:: Useful for printing all variables
-:: set
+set Utils="%~dp0\scriptUtils.bat"
+
+:: ######################################################################################
+:: Macros
+
+call %Utils% pathExtractDirectory "%~0" SCRIPT_PATH
+call %Utils% pathExtractBase "%~0" EXTENSION_NAME
+call %Utils% toUpper "%EXTENSION_NAME%" EXTENSION_NAME
+
+:: ######################################################################################
+:: Script Logic
+
+:: Version locks
+set RUNTIME_VERSION_STABLE="2022.11.0.0"
+set RUNTIME_VERSION_BETA="2022.1100.0.0"
+set RUNTIME_VERSION_DEV="9.9.1.293"
+
+:: SDK version v1.55
+set SDK_HASH_WIN="1DB3FD414039D3E5815A5721925DD2E0A3A9F2549603C6CAB7C49B84966A1AF3"
+set SDK_HASH_OSX="88DC79403F68E81B6674C927ED362EF3CF69046F587ED009FDC6AD85D85E97F2"
+set SDK_HASH_LINUX="C0CC3D2802E5F2463BFA0046C41D2F65A6335BAAEEFBBA6C7DBD5681D5CA7C46"
+
+:: Checks IDE and Runtime versions
+call %Utils% checkMinVersion "%YYruntimeVersion%" %RUNTIME_VERSION_STABLE% %RUNTIME_VERSION_BETA% %RUNTIME_VERSION_DEV% runtime
 
 :: ############################################## WARNING ##############################################
 ::       THIS FILE IS SHOULD NOT BE CHANGED AND THE OPTIONS SHOULD BE CONTROLLED THROUGH THE IDE.
 :: #####################################################################################################
 
-
-:: Read extension options or use default (development) value
-if "%YYEXTOPT_EpicOnlineServices_sdkPath%" == "" (
-   set EOS_SDK_PATH=%~dp0\..\..\..\EOS_sdk\
-) else (
-   set EOS_SDK_PATH=%YYEXTOPT_EpicOnlineServices_sdkPath%
-)
-
-:: Ensure the path ends with a backslash
-if not %STEAM_SDK_PATH:~-1% == \ (
-   set SDK_PATH=%EOS_SDK_PATH%\
-) else (
-   set SDK_PATH=%EOS_SDK_PATH%
-)
-
-:: Ensure the directory exists
-if not exist "%SDK_PATH%" goto error_incorrect_STEAMWORKS_path
+:: Resolve the SDK path (must exist)
+set SDK_PATH=%YYEXTOPT_EpicOnlineServices_sdkPath%
+call %Utils% pathResolveExisting "%YYprojectDir%" "%SDK_PATH%" SDK_PATH
 
 :: Ensure we are on the output path
 pushd "%YYoutputFolder%"
 
 :: Call setup method depending on the platform
-:: NOTE: the setup method can be (:Windows_copy_dependencies, :MacOS_copy_dependencies or :Linux_copy_dependencies)
-call :%YYPLATFORM_name%_copy_dependencies
+:: NOTE: the setup method can be (:setupWindows, setupMacOS or setupLinux)
+call :setup%YYPLATFORM_name%
 if ERRORLEVEL 1 (
-    echo ""
-    echo "#################################### INFORMATION #####################################"
-    echo "EOS Extension is not available in this target: %YYPLATFORM_name% (no setup required)"
-    echo "######################################################################################"
-    echo ""
+    call %Utils% logInformation "EOS Extension is not available in this target: %YYPLATFORM_name% (no setup required)"
 )
 popd
 
-:exit
-exit /b 0
+exit %ERRORLEVEL%
 
 :: ----------------------------------------------------------------------------------------------------
-:Windows_copy_dependencies
-   if "%YYPLATFORM_option_windows_use_x64%" == "" (
-      echo "Copying Windows (64 bit) dependencies"
-      if not exist "EOSSDK-Win64-Shipping.dll" copy "%SDK_PATH%Bin\EOSSDK-Win64-Shipping.dll" "EOSSDK-Win64-Shipping.dll"
-   ) 
-   if "%YYPLATFORM_option_windows_use_x64%" == "True" (
-      echo "Copying Windows (64 bit) dependencies"
-      if not exist "EOSSDK-Win64-Shipping.dll" copy "%SDK_PATH%Bin\EOSSDK-Win64-Shipping.dll" "EOSSDK-Win64-Shipping.dll"
-   ) else (
-      echo "Copying Windows (32 bit) dependencies"
-      if not exist "EOSSDK-Win32-Shipping.dll" copy "%SDK_PATH%Bin\EOSSDK-Win32-Shipping.dll" "EOSSDK-Win32-Shipping.dll"
-   )
-   if ERRORLEVEL 1 call :exitError
+:setupWindows
+   set SDK_SOURCE="%SDK_PATH%\Bin\EOSSDK-Win64-Shipping.dll"
+   call %Utils% assertFileHash %SDK_SOURCE% %SDK_HASH_WIN% "Epic Online Services SDK"
+
+   echo "Copying Windows (64 bit) dependencies"
+   if not exist "EOSSDK-Win64-Shipping.dll" call %Utils% fileCopyTo %SDK_SOURCE% "EOSSDK-Win64-Shipping.dll"
 goto :eof
 
 :: ----------------------------------------------------------------------------------------------------
-:macOS_copy_dependencies
+:setupmacOS
+
+   set SDK_SOURCE="%SDK_PATH%\Bin\libEOSSDK-Mac-Shipping.dylib"
+   call %Utils% assertFileHash %SDK_SOURCE% %SDK_HASH_OSX% "Epic Online Services SDK"
+
    echo "Copying macOS (64 bit) dependencies"
    if "%YYTARGET_runtime%" == "VM" (
-      powershell Expand-Archive '%YYprojectName%.zip' _temp\
-      
-      copy /y "%SDK_PATH%Bin\libEOSSDK-Mac-Shipping.dylib" "_temp\assets\libEOSSDK-Mac-Shipping.dylib"
-      powershell Compress-Archive -Force _temp\* '%YYprojectName%.zip'
-      
+      :: This is used from VM compilation
+      call %Utils% fileExtract "%YYprojectName%.zip" "_temp\"
+      call %Utils% fileCopyTo %SDK_SOURCE% "_temp\assets\libEOSSDK-Mac-Shipping.dylib"
+      call %Utils% folderCompress "_temp\*" "%YYprojectName%.zip"
+
       rmdir /s /q _temp
 
    ) else (
 
       :: This is used from YYC compilation
-      copy "%SDK_PATH%Bin\libEOSSDK-Mac-Shipping.dylib" "%YYprojectName%\%YYprojectName%\Supporting Files\libEOSSDK-Mac-Shipping.dylib"
+      call %Utils% fileCopyTo %SDK_SOURCE% "%YYprojectName%\%YYprojectName%\Supporting Files\libEOSSDK-Mac-Shipping.dylib"
    )
-   if ERRORLEVEL 1 call :exitError
+
 goto :eof
 
 :: ----------------------------------------------------------------------------------------------------
 :Linux_copy_dependencies
-   echo "Copying Linux (64 bit) dependencies"
-   powershell Expand-Archive '%YYprojectName%.zip' _temp\
 
-   if not exist "assets/libEOSSDK-Linux-Shipping.so" (
-      copy "%SDK_PATH%Bin\libEOSSDK-Linux-Shipping.so" "_temp\assets\libEOSSDK-Linux-Shipping.so"
-      powershell Compress-Archive -Force _temp\* '%YYprojectName%.zip'
+   set SDK_SOURCE="%SDK_PATH%\Bin\libEOSSDK-Linux-Shipping.so"
+   call %Utils% assertFileHash %SDK_SOURCE% %SDK_HASH_LINUX% "Epic Online Services SDK"
+
+   echo "Copying Linux (64 bit) dependencies"
+
+   call %Utils% fileExtract "%YYprojectName%.zip" "_temp\"
+   if not exist "assets\libEOSSDK-Linux-Shipping.so" (
+      call %Utils% fileCopyTo %SDK_SOURCE% "_temp\assets\libEOSSDK-Linux-Shipping.so"
+      call %Utils% folderCompress "_temp\*" "%YYprojectName%.zip"
    )
+
    rmdir /s /q _temp
-   if ERRORLEVEL 1 call :exitError
+
 goto :eof
 
-:: ----------------------------------------------------------------------------------------------------
-:exitError
-   echo ""
-   echo "######################################################## ERROR #########################################################"
-   echo "The setup script was unable to copy dependencies"
-   echo "########################################################################################################################"
-   echo ""
-exit 1
-
-:: ----------------------------------------------------------------------------------------------------
-:: If the steamworks SDK path doesn't exit ask the user to edit this file
-:error_incorrect_STEAMWORKS_path
-   echo ""
-   echo "######################################################## ERROR #####################################################"
-   echo "The specified EOS SDK path doesn't exist please edit the curresponding extension options within the extension window"
-   echo "####################################################################################################################"
-   echo ""
-exit 1

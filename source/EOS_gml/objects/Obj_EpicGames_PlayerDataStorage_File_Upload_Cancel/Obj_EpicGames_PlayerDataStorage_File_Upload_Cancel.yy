@@ -1,10 +1,14 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "Obj_EpicGames_PlayerDataStorage_File_Upload_Cancel",
   "spriteId": {
     "name": "Spr_EpicGames_TitleStorage_Cancel",
     "path": "sprites/Spr_EpicGames_TitleStorage_Cancel/Spr_EpicGames_TitleStorage_Cancel.yy",
   },
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -21,8 +25,8 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":4,"eventType":6,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":4,"eventType":6,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -30,8 +34,4 @@
     "name": "PlayerDataStorage",
     "path": "folders/Epic Online Services Demos/PlayerDataStorage.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "Obj_EpicGames_PlayerDataStorage_File_Upload_Cancel",
-  "tags": [],
-  "resourceType": "GMObject",
 }

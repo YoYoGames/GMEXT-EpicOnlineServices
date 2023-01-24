@@ -1,10 +1,14 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "Obj_EpicGames_Platform_Ticking",
   "spriteId": {
     "name": "Spr_Yoyo_button",
     "path": "sprites/Spr_Yoyo_button/Spr_Yoyo_button.yy",
   },
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -21,7 +25,7 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":7,"eventType":6,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":7,"eventType":6,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -29,8 +33,4 @@
     "name": "Menu",
     "path": "folders/Epic Online Services Demos/Menu.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "Obj_EpicGames_Platform_Ticking",
-  "tags": [],
-  "resourceType": "GMObject",
 }
