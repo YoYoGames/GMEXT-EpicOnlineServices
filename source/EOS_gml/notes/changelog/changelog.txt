@@ -1,0 +1,3 @@
+
+v0.0.2
+- Added new script system (batch/bash) for better debug information.

@@ -10,6 +10,7 @@
     {"name":"Obj_Yoyo_textbox","path":"objects/Obj_Yoyo_textbox/Obj_Yoyo_textbox.yy","order":2,},
     {"name":"Obj_EpicGames_Leaderboards_Controller","path":"objects/Obj_EpicGames_Leaderboards_Controller/Obj_EpicGames_Leaderboards_Controller.yy","order":1,},
     {"name":"Room_Yoyo","path":"rooms/Room_Yoyo/Room_Yoyo.yy","order":4,},
+    {"name":"changelog","path":"notes/changelog/changelog.yy","order":3,},
     {"name":"Obj_EpicGames_PlayerDataStorage_File_Upload_Cancel","path":"objects/Obj_EpicGames_PlayerDataStorage_File_Upload_Cancel/Obj_EpicGames_PlayerDataStorage_File_Upload_Cancel.yy","order":6,},
     {"name":"Obj_EpicGames_Metrics","path":"objects/Obj_EpicGames_Metrics/Obj_EpicGames_Metrics.yy","order":14,},
     {"name":"Obj_EpicGames_PlayerDataStorage_Write","path":"objects/Obj_EpicGames_PlayerDataStorage_Write/Obj_EpicGames_PlayerDataStorage_Write.yy","order":4,},
