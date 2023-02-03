@@ -2,6 +2,37 @@
   "resourceType": "GMProject",
   "resourceVersion": "1.6",
   "name": "EpicOnlineServices",
+  "AudioGroups": [
+    {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
+  ],
+  "configs": {
+    "children": [],
+    "name": "Default",
+  },
+  "defaultScriptType": 1,
+  "Folders": [
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Epic Online Services Demos","folderPath":"folders/Epic Online Services Demos.yy","order":0,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Achievements","folderPath":"folders/Epic Online Services Demos/Achievements.yy","order":2,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Friends","folderPath":"folders/Epic Online Services Demos/Friends.yy","order":13,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Init","folderPath":"folders/Epic Online Services Demos/Init.yy","order":0,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Leaderboards","folderPath":"folders/Epic Online Services Demos/Leaderboards.yy","order":6,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menu","folderPath":"folders/Epic Online Services Demos/Menu.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PlayerDataStorage","folderPath":"folders/Epic Online Services Demos/PlayerDataStorage.yy","order":7,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stats","folderPath":"folders/Epic Online Services Demos/Stats.yy","order":8,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"TitleStorage","folderPath":"folders/Epic Online Services Demos/TitleStorage.yy","order":9,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Epic Online Services","folderPath":"folders/Epic Online Services.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Yoyo Extensions Assets","folderPath":"folders/Yoyo Extensions Assets.yy","order":2,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Font","folderPath":"folders/Yoyo Extensions Assets/Font.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Yoyo Extensions Assets/Objects.yy","order":2,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/Yoyo Extensions Assets/Sprites.yy","order":3,},
+  ],
+  "IncludedFiles": [
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"EOS_Extension_Documentation.pdf","CopyToMask":0,"filePath":"datafiles",},
+  ],
+  "isEcma": false,
+  "MetaData": {
+    "IDEVersion": "2023.1.0.58",
+  },
   "resources": [
     {"id":{"name":"Obj_EpicGames_Controller","path":"objects/Obj_EpicGames_Controller/Obj_EpicGames_Controller.yy",},"order":0,},
     {"id":{"name":"Room_EpicGames_TitleStorage","path":"rooms/Room_EpicGames_TitleStorage/Room_EpicGames_TitleStorage.yy",},"order":0,},
@@ -55,12 +86,6 @@
     {"id":{"name":"Obj_EpicGames_Leaderboard_AddScore_2","path":"objects/Obj_EpicGames_Leaderboard_AddScore_2/Obj_EpicGames_Leaderboard_AddScore_2.yy",},"order":6,},
     {"id":{"name":"Room_EpicGames_Menu","path":"rooms/Room_EpicGames_Menu/Room_EpicGames_Menu.yy",},"order":1,},
   ],
-  "defaultScriptType": 1,
-  "isEcma": false,
-  "configs": {
-    "name": "Default",
-    "children": [],
-  },
   "RoomOrderNodes": [
     {"roomId":{"name":"Room_EpicGames_Init","path":"rooms/Room_EpicGames_Init/Room_EpicGames_Init.yy",},},
     {"roomId":{"name":"Room_EpicGames_Menu","path":"rooms/Room_EpicGames_Menu/Room_EpicGames_Menu.yy",},},
@@ -72,32 +97,7 @@
     {"roomId":{"name":"Room_EpicGames_TitleStorage","path":"rooms/Room_EpicGames_TitleStorage/Room_EpicGames_TitleStorage.yy",},},
     {"roomId":{"name":"Room_EpicGames_Friends","path":"rooms/Room_EpicGames_Friends/Room_EpicGames_Friends.yy",},},
   ],
-  "Folders": [
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Epic Online Services Demos","folderPath":"folders/Epic Online Services Demos.yy","order":0,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Achievements","folderPath":"folders/Epic Online Services Demos/Achievements.yy","order":2,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Friends","folderPath":"folders/Epic Online Services Demos/Friends.yy","order":13,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Init","folderPath":"folders/Epic Online Services Demos/Init.yy","order":0,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Leaderboards","folderPath":"folders/Epic Online Services Demos/Leaderboards.yy","order":6,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menu","folderPath":"folders/Epic Online Services Demos/Menu.yy","order":1,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PlayerDataStorage","folderPath":"folders/Epic Online Services Demos/PlayerDataStorage.yy","order":7,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stats","folderPath":"folders/Epic Online Services Demos/Stats.yy","order":8,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"TitleStorage","folderPath":"folders/Epic Online Services Demos/TitleStorage.yy","order":9,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Epic Online Services","folderPath":"folders/Epic Online Services.yy","order":1,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Yoyo Extensions Assets","folderPath":"folders/Yoyo Extensions Assets.yy","order":2,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Font","folderPath":"folders/Yoyo Extensions Assets/Font.yy","order":1,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Yoyo Extensions Assets/Objects.yy","order":2,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/Yoyo Extensions Assets/Sprites.yy","order":3,},
-  ],
-  "AudioGroups": [
-    {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
-  ],
   "TextureGroups": [
-    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","isScaled":true,"compressFormat":"bz2","loadType":"default","directory":"","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,},
+    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
   ],
-  "IncludedFiles": [
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"EOS_Extension_Documentation.pdf","CopyToMask":0,"filePath":"datafiles",},
-  ],
-  "MetaData": {
-    "IDEVersion": "2023.100.0.269",
-  },
 }

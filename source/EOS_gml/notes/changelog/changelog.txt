@@ -1,3 +1,7 @@
 
+v1.0.0
+- Initial public stable release.
+- Added changelog file to demo project (please log new features here).
+
 v0.0.2
 - Added new script system (batch/bash) for better debug information.
