@@ -1,4 +1,7 @@
 
+v1.0.1 (Hotfix)
+- Updated binary file hashes (Windows, macOS, Linux)
+
 v1.0.0
 - Initial public stable release.
 - Added changelog file to demo project (please log new features here).
