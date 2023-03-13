@@ -1,5 +1,9 @@
 
-if(async_load[?"type"] == "EpicGames_Friends_QueryFriends")
+if(async_load[?"type"] != "EpicGames_Friends_QueryFriends")
+	return;
+	
+show_debug_message(json_encode(async_load))
+
 if(async_load[?"status"] == EpicGames_Success)
 {
 	var count = EpicGames_Friends_GetFriendsCount(AccountID)

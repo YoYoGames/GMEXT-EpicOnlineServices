@@ -1,4 +1,7 @@
 
+v1.1.0 (Marketplace)
+- This release syncs to the marketplace version
+
 v1.0.1 (Hotfix)
 - Updated binary file hashes (Windows, macOS, Linux)
 

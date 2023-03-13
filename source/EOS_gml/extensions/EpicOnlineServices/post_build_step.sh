@@ -1,26 +1,7 @@
 #!/bin/bash
 
+chmod +x "$(dirname "$0")/scriptUtils.sh"
 source "$(dirname "$0")/scriptUtils.sh"
-
-# ######################################################################################
-# Macros
-
-pathExtractDirectory "$0" SCRIPT_PATH
-pathExtractBase "$0" EXTENSION_NAME
-toUpper "$EXTENSION_NAME" EXTENSION_NAME
-
-export SCRIPT_PATH
-export EXTENSION_NAME
-
-# Version locks
-RUNTIME_VERSION_STABLE="2022.11.0.0"
-RUNTIME_VERSION_BETA="2022.1100.0.0"
-RUNTIME_VERSION_RED="9.9.1.293"
-
-# SDK version v1.55
-SDK_HASH_WIN="AB5FA25FD06BDEE37D08CF5E2F40FDAA297C509DD4CA6DCC3F9874DC7B3D3128"
-SDK_HASH_OSX="F49906EC86F4BDCE3B77BC5F93A7B3D8C7EDD221566D3B600D8B61B4E9CB0177"
-SDK_HASH_LINUX="F20295DCA422050297E138ED823046E7D00135164F95FBD2DF7A0737BAE8E4DC"
 
 # ######################################################################################
 # Script Functions
@@ -28,28 +9,26 @@ SDK_HASH_LINUX="F20295DCA422050297E138ED823046E7D00135164F95FBD2DF7A0737BAE8E4DC
 setupmacOS() {
 
     SDK_SOURCE="$SDK_PATH/Bin/libEOSSDK-Mac-Shipping.dylib"
-    assertFileHash $SDK_SOURCE $SDK_HASH_OSX "Epic Online Services SDK"
+    assertFileHashEquals $SDK_SOURCE $SDK_HASH_OSX $ERROR_SDK_HASH
 
     echo "Copying macOS (64 bit) dependencies"
+    
     if [[ "$YYTARGET_runtime" == "VM" ]]; then
-        fileCopyTo $SDK_SOURCE "libEOSSDK-Mac-Shipping.dylib"
+        logError "Extension is not compatible with the macOS VM export, please use YYC."
     else
-        fileCopyTo $SDK_SOURCE "${YYprojectName}/${YYprojectName}/Supporting Files/libEOSSDK-Mac-Shipping.dylib"
+        itemCopyTo $SDK_SOURCE "${YYprojectName}/${YYprojectName}/Supporting Files/libEOSSDK-Mac-Shipping.dylib"
     fi
 }
 
 setupLinux() {
 
     SDK_SOURCE="$SDK_PATH/Bin/libEOSSDK-Linux-Shipping.so"
-    assertFileHash $SDK_SOURCE $SDK_HASH_LINUX "Epic Online Services SDK"
+    assertFileHashEquals $SDK_SOURCE $SDK_HASH_LINUX $ERROR_SDK_HASH
 
     echo "Copying Linux (64 bit) dependencies"
     
     fileExtract "${YYprojectName}.zip" "_temp"
-    [[ ! -f "_temp/assets/libEOSSDK-Linux-Shipping.so" ]] && fileCopyTo $SDK_SOURCE "_temp/assets/libEOSSDK-Linux-Shipping.so"
-
-    [[ ! -z ${DEBUG_MODE+x} ]] && echo "Running $YYTARGET_runtime Linux Steamworks project via IDE, enabling Debug..."
-	
+    [[ ! -f "_temp/assets/libEOSSDK-Linux-Shipping.so" ]] && fileCopyTo $SDK_SOURCE "_temp/assets/libEOSSDK-Linux-Shipping.so"	
     folderCompress "_temp" "${YYprojectName}.zip"
     rm -r _temp
 }
@@ -57,11 +36,33 @@ setupLinux() {
 # ######################################################################################
 # Script Logic
 
+# Always init the script
+scriptInit
+
+# Version locks
+optionGetValue "versionStable" RUNTIME_VERSION_STABLE
+optionGetValue "versionBeta" RUNTIME_VERSION_BETA
+optionGetValue "versionDev" RUNTIME_VERSION_DEV
+
+# SDK Hash
+optionGetValue "sdkHashWin" SDK_HASH_WIN
+optionGetValue "sdkHashMac" SDK_HASH_OSX
+optionGetValue "sdkHashLinux" SDK_HASH_LINUX
+
+# SDK Path
+optionGetValue "sdkPath" SDK_PATH
+optionGetValue "sdkVersion" SDK_VERSION
+
+# Debug Mode
+optionGetValue "debug" DEBUG_MODE
+
+# Error String
+ERROR_SDK_HASH="Invalid EpicOnlineServices SDK version, sha256 hash mismatch (expected v$SDK_VERSION)."
+
 # Checks IDE and Runtime versions
-checkMinVersion "$YYruntimeVersion" $RUNTIME_VERSION_STABLE $RUNTIME_VERSION_BETA $RUNTIME_VERSION_RED runtime
+versionLockCheck "$YYruntimeVersion" $RUNTIME_VERSION_STABLE $RUNTIME_VERSION_BETA $RUNTIME_VERSION_RED
 
 # Resolve the SDK path (must exist)
-SDK_PATH=$YYEXTOPT_EpicOnlineServices_sdkPath
 pathResolveExisting "$YYprojectDir" "$SDK_PATH" SDK_PATH
 
 # Ensure we are on the output path
