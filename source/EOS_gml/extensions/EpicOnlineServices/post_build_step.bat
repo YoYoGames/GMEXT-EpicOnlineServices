@@ -69,7 +69,7 @@ exit /b %errorlevel%
 exit /b %errorlevel%
 
 :: ----------------------------------------------------------------------------------------------------
-:Linux_copy_dependencies
+:setupLinux
 
    set SDK_SOURCE="%SDK_PATH%\Bin\libEOSSDK-Linux-Shipping.so"
    call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_LINUX% "Epic Online Services SDK"
