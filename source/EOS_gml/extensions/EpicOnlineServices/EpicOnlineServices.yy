@@ -747,9 +747,6 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EpicGames_Presence_RemoveNotifyOnPresenceChanged","argCount":0,"args":[
             2,
           ],"documentation":"","externalName":"EpicGames_Presence_RemoveNotifyOnPresenceChanged","help":"EpicGames_Presence_RemoveNotifyOnPresenceChanged(id)","hidden":true,"kind":1,"returnType":1,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EpicGames_Presence_SetPresence","argCount":0,"args":[
-            1,
-          ],"documentation":"","externalName":"EpicGames_Presence_SetPresence","help":"EpicGames_Presence_SetPresence(user)","hidden":true,"kind":1,"returnType":1,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EpicGames_PresenceModification_DeleteData","argCount":0,"args":[
             1,
             1,

@@ -103,6 +103,7 @@ class IBuffer;
 typedef void* HYYMUTEX;
 typedef void* HSPRITEASYNC;
 
+
 struct YYRunnerInterface
 {
 	// basic interaction with the user
@@ -274,10 +275,18 @@ struct YYRunnerInterface
 
 	RValue* (*YYGetStruct)(RValue* _pBase, int _index);
 
+
+
 	void (*extOptGetRValue)(RValue& result, const char* _ext, const  char* _opt);
 	const char* (*extOptGetString)(const char* _ext, const  char* _opt);
 	double (*extOptGetReal)(const char* _ext, const char* _opt);
+
+	bool (*isRunningFromIDE)();
+
+	// New function - putting it at the end to avoid disrupting the existing layout
+	int (*YYArrayGetLength)(RValue* pRValue);
 };
+
 
 #define __YYDEFINE_EXTENSION_FUNCTIONS__
 #if defined(__YYDEFINE_EXTENSION_FUNCTIONS__)
@@ -431,6 +440,8 @@ inline int YYStructGetKeys(RValue* _pStruct, const char** _keys, int* _count) { 
 inline void extOptGetRValue(RValue& result, const char* _ext, const char* _opt) { return g_pYYRunnerInterface->extOptGetRValue(result, _ext, _opt); };
 inline const char* extOptGetString(const char* _ext, const char* _opt) { return g_pYYRunnerInterface->extOptGetString(_ext, _opt); }
 inline double extOptGetReal(const char* _ext, const char* _opt) { return g_pYYRunnerInterface->extOptGetReal(_ext, _opt); };
+
+inline bool isRunningFromIDE() { return g_pYYRunnerInterface->isRunningFromIDE(); }
 
 #define g_LiveConnection	(*g_pYYRunnerInterface->pLiveConnection)
 #define g_HTTP_ID			(*g_pYYRunnerInterface->pHTTP_ID)

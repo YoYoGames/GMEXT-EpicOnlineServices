@@ -14,7 +14,7 @@
 #include <unistd.h>
 #endif
 
-
+#include "DesktopExtensionTools.h"
 
 ///////////////////Callback initilization
 
@@ -30,10 +30,8 @@ YYEXPORT void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions,
     g_pYYRunnerInterface = &gs_runnerInterface;
 
     if (_functions_size < sizeof(YYRunnerInterface)) {
-        DebugConsoleOutput("ERROR : runner interface mismatch in extension DLL\n ");
+        tracef("ERROR : runner interface mismatch in extension DLL");
     } // end if
-
-    DebugConsoleOutput("YYExtensionInitialise CONFIGURED \n ");
 
     OldPreGraphicsInitialisation();
 }

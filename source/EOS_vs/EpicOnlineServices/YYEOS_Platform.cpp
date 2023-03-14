@@ -30,17 +30,17 @@
 
 #include "DesktopExtensionTools.h"
 
-	//#if defined(OS_Linux) || defined(OS_MacOs)
-	//extern "C" void PreGraphicsInitialisation(char* arg1)
-	//#endif
-	//#ifdef OS_Windows
-	//extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1)
-	//#endif
+#if defined(OS_Linux) || defined(OS_MacOs)
+extern "C" void PreGraphicsInitialisation(char* arg1) {};
+#endif
+#ifdef OS_Windows
+extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
+#endif
 
 	bool EOS_isInitialised = false;
 	void OldPreGraphicsInitialisation()
 	{
-		printf("YYG -> PreGraphicsInitialisation\n");
+		tracef("Starting initialization...");
 
 		std::string ProductId = extOptGetString("EpicOnlineServices", "ProductId");
 		std::string SandboxId = extOptGetString("EpicOnlineServices", "SandboxId");
@@ -67,7 +67,7 @@
 
 		if (InitResult != EOS_EResult::EOS_Success)
 		{
-			printf("EOS Initialization Error\n");
+			tracef("EOS_Initialize :: Initialization Error (%x)", InitResult);
 			return;
 		}
 		else
@@ -108,7 +108,7 @@
 	#endif
                 
 
-            printf("Current working dir: %s\n", PlatformOptions.CacheDirectory);
+			tracef("Current working dir: %s", PlatformOptions.CacheDirectory);
 			
 			PlatformOptions.EncryptionKey = EncryptionKey.c_str(); //SampleConstants::EncryptionKey;
 
@@ -129,48 +129,45 @@
 			//Result.kind = VALUE_BOOL;
 			if (PlatformHandle == nullptr)
 			{
-				printf("EOS PlatformHandle Error");
-				//Result.val = false;
+				tracef("EOS_Platform_Create :: Platform creation error (check extension configuration)");
 				return;
 			}
 
 			if (!debug)
 				EOS_Platform_CheckForLauncherAndRestart(PlatformHandle);
 
-			printf("\n\nEOS Initializations:\n\n");
-
-			printf("EOS_Achievements_Init\n");
+			tracef("EOS_Achievements_Init :: Starting module...");
 			EpicGames_Achievements_Init();
-			printf("EOS_Connect_Init\n");
+			tracef("EOS_Connect_Init :: Starting module...");
 			EpicGames_Connect_Init();
-			printf("EOS_Friends_Init\n");
+			tracef("EOS_Friends_Init :: Starting module...");
 			EpicGames_Friends_Init();
-			printf("EOS_Leaderboards_Init\n");
+			tracef("EOS_Leaderboards_Init :: Starting module...");
 			EpicGames_Leaderboards_Init();
-			printf("EOS_Metrics_Init\n");
+			tracef("EOS_Metrics_Init :: Starting module...");
 			EpicGames_Metrics_Init();
 
-			printf("EOS_PlayerDataStorage_Init\n");
+			tracef("EOS_PlayerDataStorage_Init :: Starting module...");
 			EpicGames_PlayerDataStorage_Init();
-			printf("EOS_TitleStorage_Init\n");
+			tracef("EOS_TitleStorage_Init :: Starting module...");
 			EpicGames_TitleStorage_Init();
-			printf("EOS_UI_Init\n");
+			tracef("EOS_UI_Init :: Starting module...");
 			EpicGames_UI_Init();
-			printf("EOS_Stats_Init\n");
+			tracef("EOS_Stats_Init :: Starting module...");
 			EpicGames_Stats_Init();
-			printf("EOS_UserInfo_Init\n");
+			tracef("EOS_UserInfo_Init :: Starting module...");
 			EpicGames_UserInfo_Init();
 
-			printf("EOS_Presence_Init\n");
+			tracef("EOS_Presence_Init :: Starting module...");
 			EpicGames_Presence_Init();
-			printf("EOS_ProgressionSnapshot_Init\n");
+			tracef("EOS_ProgressionSnapshot_Init :: Starting module...");
 			EpicGames_ProgressionSnapshot_Init();
-			printf("EOS_Reports_Init\n");
+			tracef("EOS_Reports_Init :: Starting module...");
 			EpicGames_Reports_Init();
-			printf("EOS_Sanctions_Init\n");
+			tracef("EOS_Sanctions_Init :: Starting module...");
 			EpicGames_Sanctions_Init();
 
-			printf("EOS INITIlIZATION SUCCESS\n");
+			tracef("Initialization finished!");
 			
 			EOS_isInitialised = true;
 			//Result.val = true;
