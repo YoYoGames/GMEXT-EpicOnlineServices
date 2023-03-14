@@ -975,7 +975,6 @@
         {"name":"EpicGames_Presence_QueryPresence","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
         {"name":"EpicGames_Presence_RemoveNotifyJoinGameAccepted","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
         {"name":"EpicGames_Presence_RemoveNotifyOnPresenceChanged","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
-        {"name":"EpicGames_Presence_SetPresence","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
         {"name":"EpicGames_PresenceModification_DeleteData","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
         {"name":"EpicGames_PresenceModification_SetData","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
         {"name":"EpicGames_PresenceModification_SetJoinInfo","path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
