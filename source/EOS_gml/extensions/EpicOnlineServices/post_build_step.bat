@@ -44,7 +44,7 @@ exit %errorlevel%
 :: ----------------------------------------------------------------------------------------------------
 :setupWindows
    set SDK_SOURCE="%SDK_PATH%\Bin\EOSSDK-Win64-Shipping.dll"
-   call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_WIN% "Epic Online Services SDK"
+   call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_WIN% %ERROR_SDK_HASH%
 
    echo "Copying Windows (64 bit) dependencies"
    if not exist "EOSSDK-Win64-Shipping.dll" call %Utils% itemCopyTo %SDK_SOURCE% "EOSSDK-Win64-Shipping.dll"
@@ -55,7 +55,7 @@ exit /b %errorlevel%
 :setupmacOS
 
    set SDK_SOURCE="%SDK_PATH%\Bin\libEOSSDK-Mac-Shipping.dylib"
-   call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_OSX% "Epic Online Services SDK"
+   call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_OSX% %ERROR_SDK_HASH%
 
    echo "Copying macOS (64 bit) dependencies"
    if "%YYTARGET_runtime%" == "VM" (
@@ -72,7 +72,7 @@ exit /b %errorlevel%
 :setupLinux
 
    set SDK_SOURCE="%SDK_PATH%\Bin\libEOSSDK-Linux-Shipping.so"
-   call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_LINUX% "Epic Online Services SDK"
+   call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_LINUX% %ERROR_SDK_HASH%
 
    echo "Copying Linux (64 bit) dependencies"
 
