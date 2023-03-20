@@ -1,4 +1,16 @@
 
+v1.2.0
+- Updated new script system 2.0
+- Updated new Debug Mode selection (Auto|Enabled)
+- Some extension options are now optional (leave them empty)
+	* Client Credentials ID
+	* Client Credentials Secret
+	* Encryption Key
+- Added new extension option:
+	* Product Version
+- Renamed extension option:
+	* Game Name is now called Product Name (matches official documentation)
+
 v1.1.0 (Marketplace)
 - This release syncs to the marketplace version
 

@@ -21,6 +21,9 @@ call %Utils% optionGetValue "sdkHashLinux" SDK_HASH_LINUX
 call %Utils% optionGetValue "sdkPath" SDK_PATH
 call %Utils% optionGetValue "sdkVersion" SDK_VERSION
 
+:: Debug Mode
+call %Utils% optionGetValue "debug" DEBUG_MODE
+
 :: Error String
 set ERROR_SDK_HASH="Invalid EpicOnlineSerices SDK version, sha256 hash mismatch (expected v%SDK_VERSION%)."
 
@@ -36,6 +39,10 @@ pushd "%YYoutputFolder%"
 :: Call setup method depending on the platform
 :: NOTE: the setup method can be (:setupWindows, :setupMacOS or :setupLinux)
 call :setup%YYPLATFORM_name%
+
+:: If debug is set to 'Enabled' provide a warning to the user.
+if "%DEBUG_MODE%" equ "Enabled" call %Utils% logWarning "Debug mode is set to 'Enabled', make sure to set it to 'Auto' before publishing."
+
 
 popd
 

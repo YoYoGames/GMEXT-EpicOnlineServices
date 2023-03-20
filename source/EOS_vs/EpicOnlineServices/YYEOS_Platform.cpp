@@ -48,8 +48,11 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 		std::string ClientId = extOptGetString("EpicOnlineServices", "ClientCredentialsId");
 		std::string ClientSecret = extOptGetString("EpicOnlineServices", "ClientCredentialsSecret");
 		std::string EncryptionKey = extOptGetString("EpicOnlineServices", "EncryptionKey");
-		std::string GameName = extOptGetString("EpicOnlineServices", "GameName");
-		bool debug = ((std::string)extOptGetString("EpicOnlineServices", "Debug")).find("True") != std::string::npos;
+		std::string ProductName = extOptGetString("EpicOnlineServices", "ProductName");
+		std::string ProductVersion = extOptGetString("EpicOnlineServices", "ProductVersion");
+
+		// Checking for debug (if 'Enabled' always set to debug else only set if running from IDE)
+		bool debug = (strncmp(extOptGetString("EpicOnlineServices", "debug"), "Enabled", 4) == 0) || isRunningFromIDE();
 
 		// Init EOS SDK
 		EOS_InitializeOptions SDKOptions = {};
@@ -57,8 +60,8 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 		SDKOptions.AllocateMemoryFunction = nullptr;
 		SDKOptions.ReallocateMemoryFunction = nullptr;
 		SDKOptions.ReleaseMemoryFunction = nullptr;
-		SDKOptions.ProductName = GameName.c_str();//SampleConstants::GameName;
-		SDKOptions.ProductVersion = "1.0";
+		SDKOptions.ProductName = ProductName.c_str();
+		SDKOptions.ProductVersion = ProductVersion.c_str();
 		SDKOptions.Reserved = nullptr;
 		SDKOptions.SystemInitializeOptions = nullptr;
 		SDKOptions.OverrideThreadAffinity = nullptr;
@@ -74,11 +77,11 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 		{
 			EOS_Platform_Options PlatformOptions = {};
 			PlatformOptions.ApiVersion = EOS_PLATFORM_OPTIONS_API_LATEST;
-			PlatformOptions.bIsServer = false;// FCommandLine::Get().HasFlagParam(CommandLineConstants::Server);
+			PlatformOptions.bIsServer = false;
 			PlatformOptions.OverrideCountryCode = nullptr;
 			PlatformOptions.OverrideLocaleCode = nullptr;
-			PlatformOptions.Flags = EOS_PF_WINDOWS_ENABLE_OVERLAY_D3D9 | EOS_PF_WINDOWS_ENABLE_OVERLAY_D3D10 | EOS_PF_WINDOWS_ENABLE_OVERLAY_OPENGL; // Enable overlay support for D3D9/10 and OpenGL. This sample uses D3D11 or SDL.
-			//PlatformOptions.CacheDirectory = "C:/Users/chuyz/Desktop/Here/Here_";//"C:/Users/chuyz/AppData/Local/EpicOnlineServices";//"C:\\Users\\chuyz\\AppData\\Local\\Temp";// FUtils::GetTempDirectory();
+			// Enable overlay support for D3D9/10 and OpenGL. This sample uses D3D11 or SDL.
+			PlatformOptions.Flags = EOS_PF_WINDOWS_ENABLE_OVERLAY_D3D9 | EOS_PF_WINDOWS_ENABLE_OVERLAY_D3D10 | EOS_PF_WINDOWS_ENABLE_OVERLAY_OPENGL;
 			
 	#ifdef OS_Windows
             char cwd[1000];
@@ -110,14 +113,15 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 			tracef("Current working dir: %s", PlatformOptions.CacheDirectory);
 			
-			PlatformOptions.EncryptionKey = EncryptionKey.c_str(); //SampleConstants::EncryptionKey;
+			// This should be set to nullptr if unused
+			PlatformOptions.EncryptionKey = EncryptionKey.length() == 0 ? nullptr : EncryptionKey.c_str();
 
 			PlatformOptions.ProductId = ProductId.c_str();
 			PlatformOptions.SandboxId = SandboxId.c_str();
 			PlatformOptions.DeploymentId = DeploymentId.c_str();
-			PlatformOptions.ClientCredentials.ClientId = ClientId.c_str();
-			PlatformOptions.ClientCredentials.ClientSecret = ClientSecret.c_str();
-
+			PlatformOptions.ClientCredentials.ClientId = ClientId.length() == 0 ? nullptr : ClientId.c_str();
+			PlatformOptions.ClientCredentials.ClientSecret = ClientSecret.length() == 0 ? nullptr : ClientSecret.c_str();
+			
 			EOS_Platform_RTCOptions RtcOptions = { 0 };
 			RtcOptions.ApiVersion = EOS_PLATFORM_RTCOPTIONS_API_LATEST;
 
@@ -133,7 +137,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 				return;
 			}
 
-			if (!debug)
+			if (!debug) 
 				EOS_Platform_CheckForLauncherAndRestart(PlatformHandle);
 
 			tracef("EOS_Achievements_Init :: Starting module...");
