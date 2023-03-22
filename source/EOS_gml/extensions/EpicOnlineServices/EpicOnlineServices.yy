@@ -16,7 +16,7 @@
   "date": "2021-12-01T01:35:22.4978671+00:00",
   "description": "",
   "exportToGame": true,
-  "extensionVersion": "1.1.0",
+  "extensionVersion": "1.2.0",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"EpicGames_LS_NotLoggedIn","hidden":false,"value":"0",},
