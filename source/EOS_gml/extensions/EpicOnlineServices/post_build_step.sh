@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sed -i -e 's/\r$//' "$(dirname "$0")/scriptUtils.sh"
 chmod +x "$(dirname "$0")/scriptUtils.sh"
 source "$(dirname "$0")/scriptUtils.sh"
 
@@ -43,6 +44,7 @@ scriptInit
 optionGetValue "versionStable" RUNTIME_VERSION_STABLE
 optionGetValue "versionBeta" RUNTIME_VERSION_BETA
 optionGetValue "versionDev" RUNTIME_VERSION_DEV
+optionGetValue "versionLTS" RUNTIME_VERSION_LTS
 
 # SDK Hash
 optionGetValue "sdkHashWin" SDK_HASH_WIN
@@ -60,7 +62,7 @@ optionGetValue "debug" DEBUG_MODE
 ERROR_SDK_HASH="Invalid EpicOnlineServices SDK version, sha256 hash mismatch (expected v$SDK_VERSION)."
 
 # Checks IDE and Runtime versions
-versionLockCheck "$YYruntimeVersion" $RUNTIME_VERSION_STABLE $RUNTIME_VERSION_BETA $RUNTIME_VERSION_RED
+versionLockCheck "$YYruntimeVersion" $RUNTIME_VERSION_STABLE $RUNTIME_VERSION_BETA $RUNTIME_VERSION_DEV $RUNTIME_VERSION_LTS
 
 # Resolve the SDK path (must exist)
 pathResolveExisting "$YYprojectDir" "$SDK_PATH" SDK_PATH
@@ -71,6 +73,11 @@ pushd "$YYoutputFolder" >/dev/null
 # Call setup method depending on the platform
 # NOTE: the setup method can be (:setupmacOS or :setupLinux)
 setup$YYPLATFORM_name
+
+# If debug is set to 'Enabled' provide a warning to the user.
+if [ "$DEBUG_MODE" = "Enabled" ]; then
+    logWarning "Debug mode is set to 'Enabled', make sure to set it to 'Auto' before publishing."
+fi
 
 popd >/dev/null
 

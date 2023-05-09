@@ -14,8 +14,8 @@
     "path": "folders/Epic Online Services Demos/PlayerDataStorage.yy",
   },
   "parentObjectId": {
-    "name": "Obj_Yoyo_button",
-    "path": "objects/Obj_Yoyo_button/Obj_Yoyo_button.yy",
+    "name": "Obj_YoYo_button",
+    "path": "objects/Obj_YoYo_button/Obj_YoYo_button.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -33,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_Yoyo_button",
-    "path": "sprites/Spr_Yoyo_button/Spr_Yoyo_button.yy",
+    "name": "Spr_YoYo_button",
+    "path": "sprites/Spr_YoYo_button/Spr_YoYo_button.yy",
   },
   "spriteMaskId": null,
   "visible": true,

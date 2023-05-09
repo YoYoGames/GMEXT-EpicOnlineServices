@@ -16,7 +16,7 @@
   "date": "2021-12-01T01:35:22.4978671+00:00",
   "description": "",
   "exportToGame": true,
-  "extensionVersion": "1.2.0",
+  "extensionVersion": "1.3.0",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"EpicGames_LS_NotLoggedIn","hidden":false,"value":"0",},
@@ -1022,7 +1022,7 @@
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"EncryptionKey","defaultValue":"","description":"Used by Player Data Storage and Title Storage. Leave EMPTY if unused. 256-bit Encryption Key for file encryption in hexadecimal format (64 hex chars).","displayName":"Encryption Key","exportToINI":false,"extensionId":null,"guid":"e9d50699-cbd3-4bc9-a9bc-f3eb7d9df9f7","hidden":false,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"ProductName","defaultValue":"","description":"The name of the product using the Epic Online Services SDK.\r\nThe name string is required to be non-empty and at maximum of 64 characters long.\r\nThe string buffer can consist of the following characters: A-Z, a-z, 0-9, dot, underscore, space, exclamation mark, question mark, and sign, hyphen, parenthesis, plus, minus, colon.","displayName":"Product Name","exportToINI":false,"extensionId":null,"guid":"a74e0c19-9416-47a5-80bc-468f191a67ae","hidden":false,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"ProductVersion","defaultValue":"1.0","description":"\tProduct version of the running application. The version string has same requirements as the Product Name string.","displayName":"Product Version","exportToINI":false,"extensionId":null,"guid":"3192f05e-bb70-48c4-9ba7-c3e030a9856d","hidden":false,"listItems":[],"optType":2,},
-    {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"Debug","defaultValue":"Auto","description":"If 'Auto' is selected the Debug mode will turn on when running from IDE else debug will be turned off.\r\nIf 'Enabled' is selected the Debug mode will be forced on always (not recommended)","displayName":"Debug Mode","exportToINI":false,"extensionId":null,"guid":"4a447380-db2f-4b66-936a-0239ce083cc6","hidden":false,"listItems":[
+    {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"debug","defaultValue":"Auto","description":"If 'Auto' is selected the Debug mode will turn on when running from IDE else debug will be turned off.\r\nIf 'Enabled' is selected the Debug mode will be forced on always (not recommended)","displayName":"Debug Mode","exportToINI":false,"extensionId":null,"guid":"4a447380-db2f-4b66-936a-0239ce083cc6","hidden":false,"listItems":[
         "Auto",
         "Enabled",
       ],"optType":6,},
@@ -1039,6 +1039,7 @@
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"versionStable","defaultValue":"2023.1.0.0","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"b16a8183-fa3e-4ab7-b3d6-4bfd1be807da","hidden":true,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"versionBeta","defaultValue":"2023.100.0.0","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"c5c9c59a-a56f-4028-868d-e42b59244cfa","hidden":true,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"versionDev","defaultValue":"9.9.1.293","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"993ff5a4-9c20-431f-953b-09b7ca622988","hidden":true,"listItems":[],"optType":2,},
+    {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"versionLTS","defaultValue":"2022.0.1.24","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"350c864b-22bd-44ce-8c28-0301f4d0f4a0","hidden":true,"listItems":[],"optType":2,},
   ],
   "optionsFile": "options.json",
   "packageId": "",

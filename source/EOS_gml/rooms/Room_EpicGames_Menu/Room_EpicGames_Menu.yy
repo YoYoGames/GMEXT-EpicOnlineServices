@@ -17,6 +17,7 @@
     {"name":"inst_737D7279","path":"rooms/Room_EpicGames_Menu/Room_EpicGames_Menu.yy",},
     {"name":"inst_59954124","path":"rooms/Room_EpicGames_Menu/Room_EpicGames_Menu.yy",},
     {"name":"inst_2F4D64E3","path":"rooms/Room_EpicGames_Menu/Room_EpicGames_Menu.yy",},
+    {"name":"inst_DBDAD91","path":"rooms/Room_EpicGames_Menu/Room_EpicGames_Menu.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -31,8 +32,9 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_737D7279","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"Obj_EpicGames_Platform_Tick","path":"objects/Obj_EpicGames_Platform_Tick/Obj_EpicGames_Platform_Tick.yy",},"properties":[],"rotation":0.0,"scaleX":4.0,"scaleY":1.0,"x":1120.0,"y":544.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_59954124","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"Obj_EpicGames_UI_Show","path":"objects/Obj_EpicGames_UI_Show/Obj_EpicGames_UI_Show.yy",},"properties":[],"rotation":0.0,"scaleX":4.0,"scaleY":1.0,"x":1120.0,"y":640.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2F4D64E3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":true,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"Obj_EpicGames_Platform_Ticking","path":"objects/Obj_EpicGames_Platform_Ticking/Obj_EpicGames_Platform_Ticking.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":608.0,"y":352.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_DBDAD91","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"Obj_YoYo_text","path":"objects/Obj_YoYo_text/Obj_YoYo_text.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":352.0,"y":42.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
-    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Background","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":{"name":"Spr_Yoyo_Background","path":"sprites/Spr_Yoyo_Background/Spr_Yoyo_Background.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
+    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Background","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":{"name":"Spr_YoYo_Background","path":"sprites/Spr_YoYo_Background/Spr_YoYo_Background.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
   "parent": {
     "name": "Menu",

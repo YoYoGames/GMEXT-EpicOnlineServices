@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "Obj_Yoyo_textbox",
+  "name": "Obj_YoYo_textbox",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
@@ -12,8 +12,8 @@
     "path": "folders/Yoyo Extensions Assets/Objects.yy",
   },
   "parentObjectId": {
-    "name": "Obj_Yoyo_text",
-    "path": "objects/Obj_Yoyo_text/Obj_Yoyo_text.yy",
+    "name": "Obj_YoYo_text",
+    "path": "objects/Obj_YoYo_text/Obj_YoYo_text.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_Yoyo_textbox",
-    "path": "sprites/Spr_Yoyo_textbox/Spr_Yoyo_textbox.yy",
+    "name": "Spr_YoYo_textbox",
+    "path": "sprites/Spr_YoYo_textbox/Spr_YoYo_textbox.yy",
   },
   "spriteMaskId": null,
   "visible": true,

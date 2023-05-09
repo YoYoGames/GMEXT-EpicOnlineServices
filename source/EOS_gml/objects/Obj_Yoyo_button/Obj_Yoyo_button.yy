@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "Obj_Yoyo_button",
+  "name": "Obj_YoYo_button",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
@@ -13,8 +13,8 @@
     "path": "folders/Yoyo Extensions Assets/Objects.yy",
   },
   "parentObjectId": {
-    "name": "Obj_Yoyo_text",
-    "path": "objects/Obj_Yoyo_text/Obj_Yoyo_text.yy",
+    "name": "Obj_YoYo_text",
+    "path": "objects/Obj_YoYo_text/Obj_YoYo_text.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -32,8 +32,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_Yoyo_button",
-    "path": "sprites/Spr_Yoyo_button/Spr_Yoyo_button.yy",
+    "name": "Spr_YoYo_button",
+    "path": "sprites/Spr_YoYo_button/Spr_YoYo_button.yy",
   },
   "spriteMaskId": null,
   "visible": true,

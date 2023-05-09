@@ -1,3 +1,3 @@
 
-text = "Yoyo Extensions Assets"
-font = Font_Yoyo_50
+text = "YoYo Extensions Assets"
+font = Font_YoYo_30
