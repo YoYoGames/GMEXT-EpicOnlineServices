@@ -1,0 +1,14 @@
+[
+    {
+        "projectFile": "source/EOS_gml/EpicOnlineServices.yyp",
+        "extensionFile": "source/EOS_gml/extensions/EpicOnlineServices/EpicOnlineServices.yy",
+        "packageId": "com.yoyogames.epiconlineservicesext",
+        "packageName": "EpicOnlineServices Ext",
+        "packageVersion": "1.4.1",
+        "includeFolders": null,
+        "includeResources": null,
+        "excludeFolders": null,
+        "excludeResources": null,
+        "format": "LTS22"
+    }
+]
