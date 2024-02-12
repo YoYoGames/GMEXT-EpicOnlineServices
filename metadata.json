@@ -1,14 +1,18 @@
-[
-    {
-        "projectFile": "source/EOS_gml/EpicOnlineServices.yyp",
-        "extensionFile": "source/EOS_gml/extensions/EpicOnlineServices/EpicOnlineServices.yy",
-        "packageId": "com.yoyogames.epiconlineservicesext",
-        "packageName": "EpicOnlineServices Ext",
-        "packageVersion": "1.4.1",
-        "includeFolders": null,
-        "includeResources": null,
-        "excludeFolders": null,
-        "excludeResources": null,
-        "format": "LTS22"
-    }
-]
+{
+    "gitHubUrl": "https://github.com/YoYoGames/GMEXT-EpicOnlineServices",
+    "projectFile": "source/EOS_gml/EpicOnlineServices.yyp",
+    "projectVersion": "LTS22",
+    "releaseTemplate": "templates/release_body.md",
+    "extensionMetaData": [
+        {
+            "extensionFile": "source/EOS_gml/extensions/EpicOnlineServices/EpicOnlineServices.yy",
+            "packageId": "com.yoyogames.epiconlineservicesext",
+            "packageName": "EpicOnlineServices Ext",
+            "packageVersion": "1.4.1",
+            "packageFormat": "LTS22",
+            "includeFolders": null,
+            "includeResources": null,
+            "excludeResources": null
+        }
+    ]
+}
