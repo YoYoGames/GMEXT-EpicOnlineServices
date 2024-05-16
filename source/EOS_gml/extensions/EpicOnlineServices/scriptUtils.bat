@@ -7,6 +7,8 @@ shift & goto :%~1
     set "LOG_LABEL=UNSET"
     set "LOG_LEVEL=-1"
 
+    call :assertPowerShellExecutionPolicy
+
     :: Get extension data
     call :pathExtractBase %SCRIPT_PATH% EXTENSION_NAME
     call :extensionGetVersion EXTENSION_VERSION
@@ -22,6 +24,19 @@ shift & goto :%~1
         call :log "INIT" "Script initialization failed (v%EXTENSION_VERSION% :: %LOG_LEVEL%)."
     ) else (
         call :log "INIT" "Script initialization succeeded (v%EXTENSION_VERSION% :: %LOG_LEVEL%)."
+    )
+exit /b 0
+
+:assertPowerShellExecutionPolicy
+    :: Check the execution policy of the powershell
+    for /f "delims=" %%i in ('powershell -Command "Get-ExecutionPolicy"') do set ExecutionPolicy=%%i
+
+    :: If the execution policy is set to 'Restricted' echo the appropriate message.
+    IF "!ExecutionPolicy!"=="Restricted" (
+        echo The execution of our extensions requires changing the PowerShell Execution Policy.
+        echo To do so, please run the following command in your PowerShell terminal:
+        echo     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+        exit 1
     )
 exit /b 0
 
@@ -43,7 +58,7 @@ exit /b 0
 
     set "result=!YYEXTOPT_%EXTENSION_NAME%_%~1!"
     call :logInformation "Accessed extension option '%~1' with value '%result%'."
-    
+
     :: Need to end local (to push into main scope)
     endlocal & set "%~2=%result%"
 exit /b 0
@@ -69,10 +84,19 @@ exit /b 0
 :: Resolves a relative path if required
 :pathResolve basePath relativePath result
 
-    :: Need to enabled delayed expansion
+    :: Need to enable delayed expansion
     setlocal enabledelayedexpansion
 
-    for /f "delims=" %%i in ('powershell -Command "Push-Location '%~1'; $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('%~2'); Pop-Location;"') do set "result=%%i"
+    :: Set environment variables for basePath and relativePath
+    set "PS_BASEPATH=%~1"
+    set "PS_RELATIVEPATH=%~2"
+
+    for /f "delims=" %%i in ('powershell -Command "$basePath = $env:PS_BASEPATH; $relativePath = $env:PS_RELATIVEPATH; Push-Location $basePath; $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($relativePath); Pop-Location;"') do set "result=%%i"
+
+    :: Clean up environment variables
+    set "PS_BASEPATH="
+    set "PS_RELATIVEPATH="
+
     call :logInformation "Resolved relative path into '%result%'."
 
     :: Need to end local (to push into main scope)
@@ -106,19 +130,12 @@ exit /b 0
         exit /b 1
     )
 
-    for /f "delims=" %%a in ('dir /b /a:d "%~1" 2^>nul') do (
-        if "%%~a" == "%~nx1" (
-            powershell -NoLogo -NoProfile -Command "New-Item -ItemType Directory -Force -Path '%destination%'; Copy-Item -Path '%~1' -Destination '%destination%' -Recurse"
-        )
+    if exist "%~1\" (
+        powershell -NoLogo -NoProfile -Command "Copy-Item -Path '%~1' -Destination '%destination%' -Recurse -Force"
+    ) else (
+        powershell -NoLogo -NoProfile -Command "Copy-Item -Path '%~1' -Destination '%destination%' -Force"
     )
 
-    for /f "delims=" %%a in ('dir /b /a:-d "%~1" 2^>nul') do (
-        if "%%~a" == "%~nx1" (
-            powershell -NoLogo -NoProfile -Command "New-Item -ItemType Directory -Force -Path (Split-Path -Parent '%destination%'); Copy-Item -Path '%~1' -Destination '%destination%' -Force"
-        )
-    )
-    
-    :: Check if the copy operation succeeded
     if %errorlevel% neq 0 (
         call :logError "Failed to copy '%~1' to '%destination%'."
         exit /b 1
@@ -127,22 +144,35 @@ exit /b 0
     call :logInformation "Copied '%~1' to '%destination%'."
 exit /b 0
 
+
 :: Deletes a file or folder at the specified path (displays log messages)
 :itemDelete targetPath
 
     call :pathResolve "%cd%" "%~1" target
 
-    if exist "%~1\." (
-        :: Is a folder
-        powershell -NoLogo -NoProfile -Command "Remove-Item -Path '%~1' -Recurse -Force"
-    ) else if exist "%~1" (
-        :: Is a file
-        powershell -NoLogo -NoProfile -Command "Remove-Item -Path '%~1' -Force"
-    ) else (
+    if not exist "%~1" (
         call :logWarning "Path '%target%' does not exist. Skipping deletion."
         exit /b 0
     )
 
+    :: Set environment variables for target
+    set "PS_TARGET=%target%"
+
+    for /f "delims=" %%a in ('dir /b /a:d "%~1" 2^>nul') do (
+        if "%%~a" == "%~nx1" (
+            powershell -NoLogo -NoProfile -Command "Remove-Item -Path $env:PS_TARGET -Recurse -Force"
+        )
+    )
+
+    for /f "delims=" %%a in ('dir /b /a:-d "%~1" 2^>nul') do (
+        if "%%~a" == "%~nx1" (
+            powershell -NoLogo -NoProfile -Command "Remove-Item -Path $env:PS_TARGET -Force"
+        )
+    )
+
+    :: Clean up environment variables
+    set "PS_TARGET="
+    
     :: Check if the deletion operation succeeded
     if %errorlevel% neq 0 (
         call :logError "Failed to delete '%target%'."
@@ -154,14 +184,31 @@ exit /b 0
 
 :: Generates the SHA256 hash of a file and stores it into a variable (displays log messages)
 :fileGetHash filepath result
-    for /f "usebackq delims=" %%i in (`powershell -Command "(Get-FileHash -Path '%~1' -Algorithm SHA256).Hash"`) do set "%~2=%%i"
+
+    :: Set environment variables for target
+    set "PS_FILEPATH=%~1"
+
+    for /f "usebackq delims=" %%i in (`powershell -Command "(Get-FileHash -Path $env:PS_FILEPATH -Algorithm SHA256).Hash"`) do set "%~2=%%i"
+
+    :: Clean up environment variables
+    set "PS_FILEPATH="
+
     call :logInformation "Generated SHA256 hash of '%~1'."
 exit /b 0
 
 :: Extracts the contents of a zip file to the specified destination folder (displays log messages)
 :fileExtract srcFile destFolder
-    powershell -Command "if (!(Test-Path '%~2')) { New-Item -ItemType Directory -Path '%~2' }"
-    powershell -Command "$ErrorActionPreference = 'Stop'; Expand-Archive -Path '%~1' -DestinationPath '%~2'"
+
+    :: Set environment variables for target
+    set "PS_SRCFILE=%~1"
+    set "PS_DESTFOLDER=%~2"
+
+    powershell -Command "if (!(Test-Path $env:PS_DESTFOLDER)) { New-Item -ItemType Directory -Path $env:PS_DESTFOLDER }"
+    powershell -Command "$ErrorActionPreference = 'Stop'; Expand-Archive -Path $env:PS_SRCFILE -DestinationPath $env:PS_DESTFOLDER"
+
+    :: Clean up environment variables
+    set "PS_SRCFILE="
+    set "PS_DESTFOLDER="
 
     :: Check if the extraction operation succeeded
     if %errorlevel% neq 0 (
@@ -174,13 +221,44 @@ exit /b 0
 
 :: Compresses the contents of a folder into a zip file (displays log messages)
 :folderCompress srcFolder destFile
-    powershell -Command "Compress-Archive -Path '%~1\*' -DestinationPath '%~2'" -Force
+
+    :: Set environment variables for target
+    set "PS_SRCFOLDER=%~1"
+    set "PS_DESTFILE=%~2"
+
+    powershell -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Force"
 
     :: Check if the compression operation succeeded
     if %errorlevel% neq 0 (
         call :logError "Failed to compress contents of '%~1' into '%~2'."
         exit /b 1
     )
+
+    :: Clean up environment variables
+    set "PS_SRCFOLDER="
+    set "PS_DESTFILE="
+
+    call :logInformation "Compressed contents of '%~1' into '%~2'."
+exit /b 0
+
+:: Adds the contents of a folder into a zip file (displays log messages)
+:zipUpdate srcFolder destFile
+
+    :: Set environment variables for target
+    set "PS_SRCFOLDER=%~1"
+    set "PS_DESTFILE=%~2"
+
+    powershell -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Update"
+
+    :: Check if the compression operation succeeded
+    if %errorlevel% neq 0 (
+        call :logError "Failed to compress contents of '%~1' into '%~2'."
+        exit /b 1
+    )
+
+    :: Clean up environment variables
+    set "PS_SRCFOLDER="
+    set "PS_DESTFILE="
 
     call :logInformation "Compressed contents of '%~1' into '%~2'."
 exit /b 0

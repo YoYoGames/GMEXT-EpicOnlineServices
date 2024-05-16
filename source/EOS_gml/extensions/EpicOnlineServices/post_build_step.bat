@@ -66,14 +66,24 @@ exit /b %errorlevel%
    call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_OSX% %ERROR_SDK_HASH%
 
    echo "Copying macOS (64 bit) dependencies"
+
    if "%YYTARGET_runtime%" == "VM" (
-      :: This is used from VM compilation
+      :: This is used for VM compilation
       call %Utils% logError "Extension is not compatible with the macOS VM export, please use YYC."
    ) else (
-      :: This is used from YYC compilation
-      call %Utils% itemCopyTo %SDK_SOURCE% "%YYprojectName%\%YYprojectName%\Supporting Files\libEOSSDK-Mac-Shipping.dylib"
-   )
+      setlocal enabledelayedexpansion
 
+      :: When running from CI the 'YYprojectName' will not be set use 'YYprojectPath' instead.
+      if "%YYprojectName%"=="" (
+         for %%A in ("%YYprojectPath%") do set "YYprojectName=%%~nA"
+      )
+      :: Replace spaces with underscores (this matches the assetcompiler output)
+      set YYfixedProjectName=!YYprojectName: =_!
+
+      :: This is used for YYC compilation
+      call %Utils% itemCopyTo %SDK_SOURCE% "!YYfixedProjectName!\!YYfixedProjectName!\Supporting Files\libEOSSDK-Mac-Shipping.dylib"
+      endlocal
+   )
 exit /b %errorlevel%
 
 :: ----------------------------------------------------------------------------------------------------
@@ -84,12 +94,20 @@ exit /b %errorlevel%
 
    echo "Copying Linux (64 bit) dependencies"
 
-   call %Utils% fileExtract "%YYprojectName%.zip" "_temp\"
-   if not exist "assets\libEOSSDK-Linux-Shipping.so" (
-      call %Utils% itemCopyTo %SDK_SOURCE% "_temp\assets\libEOSSDK-Linux-Shipping.so"
-      call %Utils% folderCompress "_temp" "%YYprojectName%.zip"
+   setlocal enabledelayedexpansion
+
+   :: When running from CI the 'YYprojectName' will not be set use 'YYprojectPath' instead.
+   if "%YYprojectName%"=="" (
+      for %%A in ("%YYprojectPath%") do set "YYprojectName=%%~nA"
    )
+
+   :: Update the zip file with the required SDKs
+   mkdir _temp\assets
+   call %Utils% itemCopyTo %SDK_SOURCE% "_temp\assets\libEOSSDK-Linux-Shipping.so"
+   call %Utils% zipUpdate "_temp" "!YYprojectName!.zip"
    rmdir /s /q _temp
+
+   endlocal
 
 exit /b %errorlevel%
 
