@@ -14,7 +14,7 @@
   "copyToTargets":194,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.4.1",
+  "extensionVersion":"1.4.2",
   "files":[
     {"$GMExtensionFile":"","%Name":"","constants":[
         {"$GMExtensionConstant":"","%Name":"EpicGames_LS_NotLoggedIn","hidden":false,"name":"EpicGames_LS_NotLoggedIn","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"0",},
