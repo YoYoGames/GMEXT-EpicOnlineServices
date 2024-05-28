@@ -9,8 +9,8 @@
  * 
  * @param {string} accountID An Epic Account ID. Set this field when `AccountIdType` is set to `EpicGames_MAIT_Epic`.
  * @param {string} DisplayName The in-game display name for the user.
- * @param {constant.EpicGames_AccountId_Type} AccountIdType Account ID type that is set in the union.
- * @param {constant.EpicGames_User_Controller_Type} ControllerType The user's game controller type.
+ * @param {constant.EpicGames_Metrics_Account_Id_Type} AccountIdType Account ID type that is set in the union.
+ * @param {constant.EpicGames_Metrics_Account_Id_Type} ControllerType The user's game controller type.
  * @param {string} ServerIp IP address of the game server hosting the game session. For a localhost session, set to `undefined`. If both IPv4 and IPv6 addresses are available, use the **IPv6** address.
  * @param {string} GameSessionId Optional, application-defined custom match session identifier. If the identifier is not used, set to `undefined` which will be shown in the Played Sessions listing at the user profile dashboard.
  * 
@@ -42,7 +42,7 @@
  * This function logs the end of a game session for a local player. Call once when the game client leaves the active game session. Each call to ${function.EpicGames_Metrics_BeginPlayerSession} must be matched with a corresponding call to ${function.EpicGames_Metrics_EndPlayerSession}.
  * 
  * @param {string} accountID Set this field when `AccountIdType` is set to `EpicGames_MAIT_Epic`
- * @param {constant.EpicGames_AccountId_Type} AccountIdType The Account ID type that is set in the union
+ * @param {constant.EpicGames_Metrics_Account_Id_Type} AccountIdType The Account ID type that is set in the union
  * 
  * @returns {struct.EpicResult}
  * 
@@ -82,7 +82,8 @@
  */
 
 /**
- * @module Metrics
+ * @module metrics
+ * @title Metrics
  * @desc **Epic Online Services Interface:** [Metrics Interface](https://dev.epicgames.com/docs/game-services/eos-metrics-interface)
  * 
  * The [Metrics Interface](https://dev.epicgames.com/docs/game-services/eos-metrics-interface) tracks your game's usage and populates the **Game Analytics dashboard** in the **Developer Portal**. This data includes active, online instances of the game's client and server, and past sessions played by local players.

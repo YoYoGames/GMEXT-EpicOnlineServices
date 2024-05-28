@@ -154,7 +154,7 @@
  * @function EpicGames_Leaderboards_GetLeaderboardDefinitionCount
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardDefinitionCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_GetLeaderboardDefinitionCount/index.html)
  * 
- * This function fetch the number of leaderboards definitions that are cached locally.
+ * This function fetch thees number of leaderboards definitions that are cached locally.
  * 
  * [[Note: Requires a previous call to ${function.EpicGames_Leaderboards_QueryLeaderboardDefinitions} to store values in cache.]]
  * 
@@ -169,7 +169,7 @@
  *     var _leaderboardId = _struct.LeaderboardId;
  * }
  * ```
- * The above code shows an example of how the function should be used. After a successful call to ${function.EpicGames_Leaderboards_QueryLeaderboardDefinitions}, the function ${function.EpicGames_Leaderboards_GetLeaderboardDefinitionCount} will return the number of entries in the query array which can then be accessed using the${function.EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex}  function.
+ * The above code shows an example of how the function should be used. After a successful call to ${function.EpicGames_Leaderboards_QueryLeaderboardDefinitions}, the function ${function.EpicGames_Leaderboards_GetLeaderboardDefinitionCount} will return the number of entries in the query array which can then be accessed using the ${function.EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex} function.
  * @function_end
  */
 
@@ -177,7 +177,7 @@
  * @function EpicGames_Leaderboards_GetLeaderboardRecordCount
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardRecordCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_GetLeaderboardRecordCount/index.html)
  * 
- * This function fetch the number of leaderboard records that are cached locally.
+ * This function fetches the number of leaderboard records that are cached locally.
  * 
  * [[Note: Requires a previous call to ${function.EpicGames_Leaderboards_QueryLeaderboardRanks} to store values in cache.]]
  * 
@@ -200,7 +200,7 @@
  * @function EpicGames_Leaderboards_GetLeaderboardUserScoreCount
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardUserScoreCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_GetLeaderboardUserScoreCount/index.html)
  * 
- * This function fetch the number of leaderboard user scores that are cached locally.
+ * This function fetches the number of leaderboard user scores that are cached locally.
  * 
  * [[Note: Requires a previous call to ${function.EpicGames_Leaderboards_QueryLeaderboardUserScores} to store values in cache.]]
  * 
@@ -223,7 +223,7 @@
  * @function EpicGames_Leaderboards_QueryLeaderboardDefinitions
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardDefinitions/index.html)
  * 
- * This function query for a list of existing leaderboards definitions including their attributes.
+ * This function queries for a list of existing leaderboards definitions including their attributes.
  * Once the callback has been fired with a successful ${constant.EpicGames_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex}
@@ -247,7 +247,7 @@
  * ```gml
  * identifier = EpicGames_Leaderboards_QueryLeaderboardDefinitions();
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Leaderboards_QueryLeaderboardDefinitions")
@@ -294,7 +294,7 @@
  * ```gml
  * identifier = EpicGames_Leaderboards_QueryLeaderboardRanks(userID, LeaderboardId);
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Leaderboards_QueryLeaderboardRanks")
@@ -318,7 +318,7 @@
  * @function EpicGames_Leaderboards_QueryLeaderboardUserScores
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardUserScores](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardUserScores/index.html)
  * 
- * This function query for a list of scores for a given list of users.
+ * This function queries for a list of scores for a given list of users.
  * Once the callback has been fired with a successful ${constant.EpicGames_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex}
@@ -328,7 +328,7 @@
  * @param {string} userID The argument to be passed in
  * @param {string} LeaderboardId Product User ID indicating the users whose scores you want to retrieve
  * @param {string} name The name of the stat to query.
- * @param {[LeaderboardAggregation](Leaderboards_Constants#LeaderboardAggregation)} aggregation Aggregation used to sort the cached user scores.
+ * @param {constant.EpicGames_LeaderboardAggregation} aggregation Aggregation used to sort the cached user scores.
  * @param {real} startTime An optional POSIX timestamp, or `undefined`; results will only include scores made after this time
  * @param {real} endTime An optional POSIX timestamp, or `undefined`; results will only include scores made before this time
  * 
@@ -345,7 +345,7 @@
  * ```gml
  * identifier = EpicGames_Leaderboards_QueryLeaderboardUserScores(userID, LeaderboardId, name, aggregation, startTime, endTime);
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Leaderboards_QueryLeaderboardUserScores")
@@ -373,10 +373,10 @@
  * 
  * These constants represent the different leaderboard aggregation types.
  * 
- * EpicGames_LA_Min Scores are aggregated by minimum.
- * EpicGames_LA_Max Scores are aggregated by maximum.
- * EpicGames_LA_Sum Scores are aggregated by the sum of the values.
- * EpicGames_LA_Latest Scores are aggregated by the last value.
+ * @member EpicGames_LA_Min Scores are aggregated by minimum.
+ * @member EpicGames_LA_Max Scores are aggregated by maximum.
+ * @member EpicGames_LA_Sum Scores are aggregated by the sum of the values.
+ * @member EpicGames_LA_Latest Scores are aggregated by the last value.
  * @constant_end
  */
 
@@ -423,8 +423,9 @@
 
 
 /**
- * @module Leaderboards
- * @desc 
+ * @module leaderboards
+ * @title Leaderboards
+ * @desc **Epic Online Services Interface:** [Leaderboards Interface](https://dev.epicgames.com/docs/game-services/leaderboards)
  * 
  * The [Leaderboards Interface](https://dev.epicgames.com/docs/game-services/leaderboards) gives developers using **Epic Online Services** (EOS) the ability to rank scores from their entire player base, so that players can compete with their friends or other players worldwide for the top score. Each game can support multiple leaderboards, collecting scores from different sources, and ranking them with different scoring modes.
  * 

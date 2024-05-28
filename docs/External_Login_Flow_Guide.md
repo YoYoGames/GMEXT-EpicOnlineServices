@@ -1,8 +1,8 @@
-@title External_Login_Flow_Guide
+@title External Login Flow Guide
 
 # Login Flow Guide
 
-This is a detailed login flow for external accounts (the required credentials depend on the ${constant.External_Credential_Type} used with the ${function.EpicGames_Auth_Login} API).
+This is a detailed login flow for external accounts (the required credentials depend on the ${constant.EpicGames_External_Credential_Type} used with the ${function.EpicGames_Auth_Login} API).
 
 1. Game calls ${function.EpicGames_Auth_Login} with the `EOS_LCT_ExternalAuth` credential type.
 2. ${function.EpicGames_Auth_Login} callback returns a status `EpicGames_InvalidUser` with a non-undefined EOS_ContinuanceToken in the EOS_Auth_LoginCallbackInfo data.

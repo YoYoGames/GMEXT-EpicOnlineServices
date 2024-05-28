@@ -22,7 +22,8 @@
  *     var _struct = EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(userID, i);
  *     Filename = _struct.Filename;
  * }
- * ```The above code shows an example of how the function should be used. The player file metadata is returned providing an index.
+ * ```
+ * The above code shows an example of how the function should be used. The player file metadata is returned providing an index.
  * @function_end
  */
 
@@ -74,7 +75,7 @@
  * ```gml
  * identifier = EpicGames_PlayerDataStorage_DeleteCache(userID);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorage_DeleteCache")
@@ -116,7 +117,7 @@
  * ```gml
  * identifier = EpicGames_PlayerDataStorage_DeleteFile(userID, "MyFilename.txt");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorage_DeleteFile")
@@ -159,7 +160,7 @@
  * ```gml
  * identifier = EpicGames_PlayerDataStorage_DuplicateFile(userID,"myNiceFile.dat", "myNiceFile2.dat");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorage_DuplicateFile")
@@ -231,7 +232,7 @@
  * ```gml
  * identifier = EpicGames_PlayerDataStorage_QueryFile(userID, "myFile.txt");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorage_QueryFile")
@@ -277,7 +278,7 @@
  * ```gml
  * identifier = EpicGames_PlayerDataStorage_QueryFileList(userID);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorage_QueryFileList")
@@ -305,7 +306,7 @@
  * 
  * @param {string} userID The Product User ID of the local user who is reading the requested file
  * @param {string} filename The file name to read; this file must already exist
- * @param {string} path local path where save the file
+ * @param {string} path local path where to save the file
  * 
  * @returns {real}
  * 
@@ -320,7 +321,7 @@
  * ```gml
  * identifier = EpicGames_PlayerDataStorage_ReadFile(userID, "MyFavPic.png", "path/to/save/MyFavPic.png");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorage_ReadFile")
@@ -361,9 +362,9 @@
  * 
  * @example
  * ```gml
- * identifier = EpicGames_PlayerDataStorage_WriteFile(userID, "myData.dat", /path/to/file/myData.dat);
+ * identifier = EpicGames_PlayerDataStorage_WriteFile(userID, "myData.dat", "/path/to/file/myData.dat");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorage_WriteFile")
@@ -404,7 +405,7 @@
  * ```gml
  * identifier = EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest("myFile.txt");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest")
@@ -416,7 +417,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -440,7 +441,8 @@
 
 
 /**
- * @module Player_Data_Storage
+ * @module player_data_storage
+ * @title Player Data Storage
  * @desc **Epic Online Services Interface:** [Player Data Storage Interface](https://dev.epicgames.com/docs/game-services/player-data-storage)
  * 
  * The [Player Data Storage Interface](https://dev.epicgames.com/docs/game-services/player-data-storage) enables developers using **Epic Online Services** (EOS) to save encrypted, user-specific, game-specific data to cloud servers. Data that you store through this interface is accessible to the user on any device where they can log in.
@@ -461,11 +463,14 @@
  * @ref EpicGames_PlayerDataStorage_ReadFile
  * @ref EpicGames_PlayerDataStorage_WriteFile
  * @ref EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest
+ * 
  * @section_end
  * 
  * @section_struct
  * @desc These are the structures used by this API:
+ * 
  * @ref PlayerFileMetadata
+ * 
  * @section_end
  * 
  * @module_end

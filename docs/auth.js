@@ -18,7 +18,7 @@
  * ```gml
  * identifier = EpicGames_Auth_AddNotifyLoginStatusChanged();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Auth_AddNotifyLoginStatusChanged")
@@ -45,16 +45,9 @@
  * 
  * @param {string} accountID The Epic Account ID of the user being queried.
  * 
- * @returns {Struct}
- * @member {type} key Description
-
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string.
- * @member {string} AccountId The Epic Account ID described by the ID token. Use EpicGames_EpicAccountId_FromString to populate this field when validating a received ID token.
+ * @returns {struct.IdWebTokenInfo}
  * 
  * @example
- * 
  * ```gml
  * var _struct = EpicGames_Auth_CopyIdToken(accountID);
  * if(_struct.status == EpicGames_Success)
@@ -73,23 +66,7 @@
  * This function fetches a user auth token for an Epic Account ID. A user authentication token allows any code with possession (backend/client) to perform certain actions on behalf of the user. Because of this, for the purposes of user identity verification, the ${function.EpicGames_Auth_CopyIdToken} should be used instead.
  * @param {string} accountID The Epic Account ID of the user being queried
  * 
- * @returns {struct}
- * 
- * @member {type} key Description
-
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string
- * @member {string} AccountId The Epic Account ID associated with this auth token
- * @member {string} AccessToken Access token for the current user login session
- * @member {string} App Name of the app related to the client ID involved with this token
- * @member {real} AuthType Type of auth token (`EpicGames_ATT_Client` or `EpicGames_ATT_User`)
- * @member {string} ClientId Client ID that requested this token
- * @member {string} ExpiresAt Absolute time in UTC before the access token expires, in ISO 8601 format
- * @member {real} ExpiresIn Time before the access token expires, in seconds, relative to the call to ${function.EpicGames_Auth_CopyUserAuthToken}
- * @member {string} RefreshToken Refresh token.
- * @member {string} RefreshExpiresAt Absolute time in UTC before the refresh token expires, in ISO 8601 format
- * @member {real} RefreshExpiresIn Time before the access token expires, in seconds, relative to the call to ${function.EpicGames_Auth_CopyUserAuthToken}
+ * @returns {struct.AuthTokenInfo}
  * 
  * @example
  * ```gml
@@ -175,7 +152,7 @@
  * This function links an external account by continuing the previous login attempt with a continuance token. On Desktop and Mobile platforms, the user will be presented the Epic Account Portal to resolve their identity. On Console, the user will login to their Epic Account using an external device, e.g. a mobile device or a desktop PC, by browsing to the presented authentication URL and entering the device code presented by the game on the console. On success, the user will be logged in at the completion of this action. This will commit this external account to the Epic Account and cannot be undone in the SDK.
  * 
  * @param {string} accountID The Epic Account ID of the logged in local user whose Epic Account will be linked with the local Nintendo NSA ID Account. By default set to `undefined`.
- * @param {EpicGames_Scope_Flags} scope_flags Combination of the enumeration flags to specify how the account linking operation will be performed.
+ * @param {constant.EpicGames_Scope_Flags} scope_flags Combination of the enumeration flags to specify how the account linking operation will be performed.
  * 
  * @returns {real}
  * 
@@ -189,11 +166,10 @@
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Auth_Login(
- *                 accountID,
- *                 EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence);
+ * var _scope_flags = EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence;
+ * identifier = EpicGames_Auth_Login(accountID, _scope_flags);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Auth_LinkAccount")
@@ -245,7 +221,7 @@
  *                 code,
  *                 noone);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Auth_Login")
@@ -286,7 +262,7 @@
  * ```gml
  * identifier = EpicGames_Auth_Logout(accountID);
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Auth_Logout")
@@ -329,7 +305,7 @@
  * ```gml
  * identifier = EpicGames_Auth_QueryIdToken(accountID, accountID);
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Auth_QueryIdToken")
@@ -391,7 +367,7 @@
  * ```gml
  * identifier = EpicGames_Auth_VerifyIdToken(accountID, JsonWebToken);
  * ```
- * The code sample above keeps a handle that can be used inside an ${event.social} event.
+ * The code sample above keeps a handle that can be used inside a ${event.social}.
  * 
  * ```gml
  * if(async_load[? "type"] == "EpicGames_Auth_VerifyIdToken")
@@ -468,7 +444,7 @@
  * @member EpicGames_LCT_Developer Login with named credentials hosted by the EOS SDK Developer Authentication Tool.
  * @member EpicGames_LCT_RefreshToken Refresh token that was retrieved from a previous call to ${function.EpicGames_Auth_Login} API in another local process context. Mainly used in conjunction with custom launcher applications. in-between that requires authenticating the user before eventually starting the actual game client application. In such scenario, an intermediate launcher will log in the user by consuming the exchange code it received from the Epic Games Launcher. To allow the game client to also authenticate the user, it can copy the refresh token using the ${function.EpicGames_Auth_CopyUserAuthToken} API and pass it via launch parameters to the started game client. The game client can then use the refresh token to log in the user.
  * @member EpicGames_LCT_AccountPortal Desktop and Mobile only. Initiate a login through the Epic account portal. for example when starting the application through a proprietary ecosystem launcher or otherwise.
- * @member EpicGames_LCT_ExternalAuth Login using external account provider credentials, such as Steam, PlayStation(TM)Network, Xbox Live, or Nintendo. This is the intended login method on Console. On Desktop and Mobile, used when launched through any of the commonly supported platform clients (see the ${function.External Login Flow Guide} for more details)
+ * @member EpicGames_LCT_ExternalAuth Login using external account provider credentials, such as Steam, PlayStation(TM)Network, Xbox Live, or Nintendo. This is the intended login method on Console. On Desktop and Mobile, used when launched through any of the commonly supported platform clients (see the ${page.External_Login_Flow_Guide} for more details)
  * @constant_end
  */
 
@@ -484,9 +460,41 @@
  * @constant_end
  */
 
+// Structs
+
 /**
- * @module Auth
- * @desc **Epic Online Services Interface:** [Auth](https://dev.epicgames.com/docs/epic-account-services/auth-interface)
+ * @struct AuthTokenInfo
+ * @desc This struct contains detailed info on an access token used for authentication.
+ * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} status_message Text representation of the status code
+ * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string
+ * @member {string} AccountId The Epic Account ID associated with this auth token
+ * @member {string} AccessToken Access token for the current user login session
+ * @member {string} App Name of the app related to the client ID involved with this token
+ * @member {real} AuthType Type of auth token (`EpicGames_ATT_Client` or `EpicGames_ATT_User`)
+ * @member {string} ClientId Client ID that requested this token
+ * @member {string} ExpiresAt Absolute time in UTC before the access token expires, in ISO 8601 format
+ * @member {real} ExpiresIn Time before the access token expires, in seconds, relative to the call to ${function.EpicGames_Auth_CopyUserAuthToken}
+ * @member {string} RefreshToken Refresh token.
+ * @member {string} RefreshExpiresAt Absolute time in UTC before the refresh token expires, in ISO 8601 format
+ * @member {real} RefreshExpiresIn Time before the access token expires, in seconds, relative to the call to ${function.EpicGames_Auth_CopyUserAuthToken}
+ * @struct_end
+ */
+
+/**
+ * @struct IdWebTokenInfo
+ * @desc This struct contains details on an ID Token in the form of a JSON Web Token string.
+ * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} status_message Text representation of the status code
+ * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string.
+ * @member {string} AccountId The Epic Account ID described by the ID token. Use EpicGames_EpicAccountId_FromString to populate this field when validating a received ID token.
+ * @struct_end
+ */
+
+/**
+ * @module auth
+ * @title Auth
+ * @desc **Epic Online Services Interface:** [Auth Interface](https://dev.epicgames.com/docs/epic-account-services/auth-interface)
  * 
  * The Auth Interface lets players (users) log into their Epic Account from your game (product) so they can access the features provided by  **Epic Account Services** (EAS), such as Friends, Presence, UserInfo and Ecom interfaces. The  **[Auth Interface](https://dev.epicgames.com/docs/epic-account-services/auth-interface)**  handles Epic account-related interactions with EOS, providing the ability to authenticate users and obtain access tokens.
  * 
@@ -517,6 +525,12 @@
  * @ref EpicGames_Login_Credential_Type
  * @ref EpicGames_External_Credential_Type
  * @ref EpicGames_Login_Status
+ * @section_end
+ * 
+ * @section_struct
+ * @desc These are the structs used by this module:
+ * @ref AuthTokenInfo
+ * @ref IdWebTokenInfo
  * @section_end
  * 
  * @module_end

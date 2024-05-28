@@ -26,7 +26,7 @@
  * @function EpicGames_Platform_GetActiveCountryCode
  * @desc **Epic Online Services Function:** [EOS_Platform_GetActiveCountryCode](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_GetActiveCountryCode/index.html)
  * 
- * This function returns the active country code. This will only return the value set as the override otherwise empty string is returned.
+ * This function returns the active country code. This will only return the value set as the override, otherwise an empty string is returned.
  * 
  * [[Note: This is NOT currently used for anything internally.]]
  * 
@@ -163,7 +163,8 @@
 
 
 /**
- * @module Platform
+ * @module platform
+ * @title Platform
  * @desc **Epic Online Services Interface:** [Platform Interface](https://dev.epicgames.com/docs/game-services/eos-platform-interface)
  * 
  * The [Platform Interface](https://dev.epicgames.com/docs/game-services/eos-platform-interface) sits at the heart of the **Epic Online Services** (EOS) SDK and holds the handles you need to access every other interface and keep them all running. When your application starts up, you can initialise the SDK and get a handle to the Platform Interface. This handle is usable for the lifetime of the SDK.
@@ -182,4 +183,6 @@
  * @ref EpicGames_Platform_Tick
  * 
  * @section_end
+ * 
+ * @module_end
  */

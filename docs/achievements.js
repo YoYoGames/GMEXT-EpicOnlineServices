@@ -22,7 +22,7 @@
  * ```gml
  * identifier = EpicGames_Achievements_AddNotifyAchievementsUnlockedV2();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Achievements_AddNotifyAchievementsUnlockedV2")
@@ -153,7 +153,7 @@
  * @function EpicGames_Achievements_GetAchievementDefinitionCount
  * @desc **Epic Online Services Function:** [EOS_Achievements_GetAchievementDefinitionCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_GetAchievementDefinitionCount/index.html)
  * 
- * This function fetch the number of achievement definitions that are cached locally.
+ * This function fetches the number of achievement definitions that are cached locally.
  * 
  * [[Note: Requires a previous call to ${function.EpicGames_Achievements_QueryDefinitions} to store values in cache.]]
  * 
@@ -205,7 +205,7 @@
  * @function EpicGames_Achievements_QueryDefinitions
  * @desc **Epic Online Services Function:** [EOS_Achievements_QueryDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryDefinitions/index.html)
  * 
- * This function query for a list of definitions for all existing achievements, including localized text, icon IDs and whether an achievement is hidden.
+ * This function queries for a list of definitions for all existing achievements, including localized text, icon IDs and whether an achievement is hidden.
  * Once the callback has been fired with a successful ${constant.EpicGames_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId}
@@ -228,7 +228,7 @@
  * ```gml
  * identifier = EpicGames_Achievements_QueryDefinitions(userId);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Achievements_QueryDefinitions")
@@ -252,7 +252,7 @@
  * @function EpicGames_Achievements_QueryPlayerAchievements
  * @desc **Epic Online Services Function:** [EOS_Achievements_QueryPlayerAchievements](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryPlayerAchievements/index.html)
  * 
- * This function query for a list of achievements for a specific player, including progress towards completion for each achievement.
+ * This function queries for a list of achievements for a specific player, including progress towards completion for each achievement.
  * 
  * Once the callback has been fired with a successful ${constant.EpicGames_Result}, it is possible to call one of the following functions:
  * 
@@ -277,7 +277,7 @@
  * ```gml
  * identifier = EpicGames_Achievements_QueryPlayerAchievements(userID, userID);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Achievements_QueryPlayerAchievements")
@@ -343,7 +343,7 @@
  * ```gml
  * identifier = EpicGames_Achievements_UnlockAchievement();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Achievements_UnlockAchievement")
@@ -383,7 +383,7 @@
  * @member {real} Progress Progress towards completing this achievement (as a percentage)
  * @member {string} UnlockTime The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be `EpicGames_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED`.
  * @member {string} StatInfoCount The number of player stat info entries associated with this achievement.
- * @member {array[StatInfo]} :eight_pointed_black_star: TODO Array of EpicGames_Achievements_PlayerStatInfo structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats
+ * @member {array} StatInfo Array of EpicGames_Achievements_PlayerStatInfo structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats
  * @member {string} DisplayName Localized display name for the achievement based on this specific player's current progress on the achievement
  * @member {string} Description Localized description for the achievement based on this specific player's current progress on the achievement
  * @member {string} IconURL URL of an icon to display for the achievement based on this specific player's current progress on the achievement. This may be null if there is no data configured in the developer portal
@@ -402,17 +402,17 @@
  * * `EpicGames_NotFound` if the achievement definition is not found;
  * * `EpicGames_Invalid_ProductUserID` if any of the userid options are incorrect;
  * 
- * @param {constant.EpicGames_Result} status The result value of the task
- * @param {string} status_message Text representation of the status code
- * @param {string} AchievementId Achievement ID that can be used to uniquely identify the achievement
- * @param {string} UnlockedDisplayName Localized display name for the achievement when it has been unlocked
- * @param {string} UnlockedDescription Localized description for the achievement when it has been unlocked
- * @param {string} LockedDisplayName Localized display name for the achievement when it is locked or hidden
- * @param {string} LockedDescription Localized description for the achievement when it is locked or hidden
- * @param {string} FlavorText Localized flavor text that can be used by the game in an arbitrary manner. This may be null if there is no data configured in the development portal
- * @param {string} UnlockedIconURL URL of an icon to display for the achievement when it is unlocked. This may be null if there is no data configured in the development portal
- * @param {string} LockedIconURL URL of an icon to display for the achievement when it is locked or hidden. This may be null if there is no data configured in the development portal
- * @param {bool} bIsHidden `true` if the achievement is hidden; `false` otherwise
+ * @member {constant.EpicGames_Result} status The result value of the task
+ * @member {string} status_message Text representation of the status code
+ * @member {string} AchievementId Achievement ID that can be used to uniquely identify the achievement
+ * @member {string} UnlockedDisplayName Localized display name for the achievement when it has been unlocked
+ * @member {string} UnlockedDescription Localized description for the achievement when it has been unlocked
+ * @member {string} LockedDisplayName Localized display name for the achievement when it is locked or hidden
+ * @member {string} LockedDescription Localized description for the achievement when it is locked or hidden
+ * @member {string} FlavorText Localized flavor text that can be used by the game in an arbitrary manner. This may be null if there is no data configured in the development portal
+ * @member {string} UnlockedIconURL URL of an icon to display for the achievement when it is unlocked. This may be null if there is no data configured in the development portal
+ * @member {string} LockedIconURL URL of an icon to display for the achievement when it is locked or hidden. This may be null if there is no data configured in the development portal
+ * @member {bool} bIsHidden `true` if the achievement is hidden; `false` otherwise
  * @struct_end
  */
 
@@ -420,7 +420,9 @@
 /**
  * @module achievements
  * @title Achievements
- * @desc The **[Achievements Interface](https://dev.epicgames.com/docs/game-services/achievements)** provides a way for developers to retrieve data about a player's Epic Online Services achievements, unlock achievements for that player, and retrieve data about all of the Epic Online Services achievements belonging to an application.
+ * @desc **Epic Online Services Interface:** [Achievements Interface](https://dev.epicgames.com/docs/game-services/achievements)
+ * 
+ * The **[Achievements Interface](https://dev.epicgames.com/docs/game-services/achievements)** provides a way for developers to retrieve data about a player's Epic Online Services achievements, unlock achievements for that player, and retrieve data about all of the Epic Online Services achievements belonging to an application.
  * 
  * @section_func
  * @desc These functions are provided for handling achievements:

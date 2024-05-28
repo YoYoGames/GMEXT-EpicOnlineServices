@@ -69,7 +69,7 @@
  * ```gml
  * identifier = EpicGames_ProgressionSnapshot_DeleteSnapshot(userId);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_ProgressionSnapshot_DeleteSnapshot")
@@ -99,11 +99,7 @@
  * 
  * @param {string} snapshotId The Snapshot ID received via a call to the ${function.EpicGames_ProgressionSnapshot_BeginSnapshot} function.
  * 
- * @returns {struct}
- * @param {Type} Key Description
- * 
- * @param {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
- * @param {string} status_message Text representation of the status code
+ * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
@@ -140,7 +136,7 @@
  * ```gml
  * identifier = EpicGames_ProgressionSnapshot_SubmitSnapshot(snapshotId);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_ProgressionSnapshot_SubmitSnapshot")
@@ -162,7 +158,8 @@
 
 
 /**
- * @module Progression_Snapshot
+ * @module progression_snapshot
+ * @title Progression Snapshot
  * @desc  **Epic Online Services:** [Progression Snapshot Interface](https://dev.epicgames.com/docs/epic-account-services/progression-snapshot)
  * 
  * The [Progression Snapshot Interface](https://dev.epicgames.com/docs/epic-account-services/progression-snapshot) allows storing player-specific game data for the purposes of supporting an end-user experience for Epic account merging. As of today, the concept of merging two separate Epic accounts, owned by the same user, into a single Epic account does not exist. However, this type of account merging is a feature that will be made available to users of Epic Accounts in the future.

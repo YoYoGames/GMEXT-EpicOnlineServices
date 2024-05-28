@@ -74,7 +74,7 @@
  * ```gml
  * identifier = EpicGames_TitleStorage_DeleteCache(userID);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_TitleStorage_DeleteCache")
@@ -143,7 +143,7 @@
  * ```gml
  * identifier = EpicGames_TitleStorage_QueryFile(userID, "myFile.dat");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_TitleStorage_QueryFile")
@@ -191,7 +191,7 @@
  * ```gml
  * identifier = EpicGames_TitleStorage_QueryFileList(userID, "Tag1");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_TitleStorage_QueryFileList")
@@ -234,7 +234,7 @@
  * ```gml
  * identifier = EpicGames_TitleStorage_ReadFile(userID, "Preferences.json", "/path/to/save/Preferences.json");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_TitleStorage_ReadFile")
@@ -275,7 +275,7 @@
  * ```gml
  * identifier = EpicGames_TitleStorageFileTransferRequest_CancelRequest("myFile.txt");
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_TitleStorageFileTransferRequest_CancelRequest")
@@ -309,10 +309,11 @@
  */
 
 /**
- * @module Title_Storage
+ * @module title_storage
+ * @title Title Storage
  * @desc **Epic Online Services Interface:** [Title Storage Interface](https://dev.epicgames.com/docs/game-services/title-storage)
  * 
- * The [Title Storage Interface](https://dev.epicgames.com/docs/game-services/title-storage) enables developers using **Epic Online Services** (EOS) to retrieve encrypted data from cloud servers. Data that you store through this interface is accessible to any user on any device where they can log in. While similar to the ${module.Player_Data_Storage}, this interface is specialised to handle game-specific data rather than user-specific data, and can provide different versions of files based on the user's platform, region, or other conditions.
+ * The [Title Storage Interface](https://dev.epicgames.com/docs/game-services/title-storage) enables developers using **Epic Online Services** (EOS) to retrieve encrypted data from cloud servers. Data that you store through this interface is accessible to any user on any device where they can log in. While similar to the ${module.player_data_storage}, this interface is specialised to handle game-specific data rather than user-specific data, and can provide different versions of files based on the user's platform, region, or other conditions.
  *
  * @section_func
  * @desc These functions are provided for handling title storage:

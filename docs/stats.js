@@ -100,7 +100,7 @@
  * ```gml
  * identifier = EpicGames_Stats_IngestStat(userID, userID, "Leaderboard_Stat", 183);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Stats_IngestStat")
@@ -149,7 +149,7 @@
  * ```gml
  * identifier = EpicGames_Stats_QueryStats();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Stats_QueryStats")
@@ -183,7 +183,8 @@
  */
 
 /**
- * @module Stats
+ * @module stats
+ * @title Stats
  * @desc **Epic Online Services Interface:** [Stats Interface](https://dev.epicgames.com/docs/game-services/eos-stats-interface)
  * 
  * The [Stats Interface](https://dev.epicgames.com/docs/game-services/eos-stats-interface) provides the ability for developers to manage users' **stats** for an application, which can include any statistical data that a developer wishes to track, such as the number of items collected, the player's fastest completion time for a level, the total number of victories or losses, or the number of times that a user has performed a certain action. You can use stats to determine when to unlock ${module.achievements} and how to use rank users in ${module.leaderboards}.

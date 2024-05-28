@@ -20,7 +20,8 @@
 /**
  * @function EpicGames_Logging_SetLogLevel
  * @desc **Epic Online Services Function:** [EOS_Logging_SetLogLevel](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Logging_SetLogLevel/index.html)
- * This function set the logging level for the specified logging category.
+ * 
+ * This function sets the logging level for the specified logging category.
  * 
  * [[Note: By default all log categories will callback for Warnings, Errors, and Fatals.]]
  * 
@@ -39,16 +40,17 @@
  * @function EpicGames_Shutdown
  * @desc **Epic Online Services Function:** [EOS_Shutdown](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Shutdown/index.html)
  * 
- * This function tears down the Epic Online Services SDK. Once this function has been called, no more SDK calls are permitted.
+ * This function shuts down the Epic Online Services SDK. Once this function has been called, no more SDK calls are permitted.
  * Calling anything after ${function.EpicGames_Shutdown} will result in undefined behaviour. 
  * 
  * 1. `EpicGames_Success` is the returned status if the SDK is successfully torn down.
  * 2. `EpicGames_NotConfigured` is returned status if the extension didn't initialise correctly.
  * 3. `EpicGames_UnexpectedError` is returned status if ${function.EpicGames_Shutdown} has already been called.
  * 
+ * 
  * [[Warning: This should be called at the end of your game.]]
  * 
- * @returns {struct.Epic_Result}
+ * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
@@ -341,7 +343,7 @@
 
 /**
  * @struct EpicResult
- * @desc A struct containing a result and its representation in text.
+ * @desc A struct containing a result's status code and its representation in text.
  * 
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code.
@@ -351,7 +353,8 @@
 
 
 /**
- * @module Other
+ * @module general
+ * @title General
  * @desc This module provides miscellaneous/debug functions.
  * 
  * @section_func
@@ -360,6 +363,7 @@
  * @ref EpicGames_GetVersion
  * @ref EpicGames_Logging_SetLogLevel
  * @ref EpicGames_Shutdown
+ * 
  * @section_end
  * 
  * @section_const
@@ -368,6 +372,7 @@
  * @ref EpicGames_Result
  * @ref EpicGames_Logging_Category
  * @ref EpicGames_Logging_Level
+ * 
  * @section_end
  * 
  * @section_struct

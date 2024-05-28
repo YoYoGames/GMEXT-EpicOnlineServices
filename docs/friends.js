@@ -23,7 +23,7 @@
  * ```gml
  * identifier = EpicGames_Friends_AcceptInvite(accountID, accountID_target);
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Friends_AcceptInvite")
@@ -63,7 +63,7 @@
  * ```gml
  * identifier = EpicGames_Friends_AddNotifyFriendsUpdate();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Friends_AddNotifyFriendsUpdate")
@@ -182,7 +182,7 @@
  * ```gml
  * identifier = EpicGames_Friends_QueryFriends(accountID);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Friends_QueryFriends")
@@ -224,7 +224,7 @@
  * ```gml
  * identifier = EpicGames_Friends_RejectInvite(accountID, accountID_target);
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Friends_RejectInvite")
@@ -286,7 +286,7 @@
  * ```gml
  * identifier = EpicGames_Friends_SendInvite(accountID, accountID_target);
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Friends_SendInvite")

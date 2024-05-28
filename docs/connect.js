@@ -15,7 +15,7 @@
  * ```gml
  * identifier = EpicGames_Connect_AddNotifyAuthExpiration();
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Connect_AddNotifyAuthExpiration")
@@ -52,7 +52,7 @@
  * ```gml
  * identifier = EpicGames_Connect_AddNotifyLoginStatusChanged();
  * ```
- * The code sample above save the identifier that can be used inside an ${event.social} event.
+ * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Connect_AddNotifyLoginStatusChanged")
@@ -120,7 +120,7 @@
  * @function EpicGames_Connect_CreateUser
  * @desc **Epic Online Services Function:** [EOS_Connect_CreateUser](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_CreateUser/index.html)
  * 
- * This function create an account association with the Epic Online Services as a product user given their external auth credentials.
+ * This function creates an account association with the Epic Online Services as a product user given their external auth credentials.
  * 
  * @event social
  * @member {string} type The string `"EpicGames_Connect_CreateUser"`
@@ -136,7 +136,7 @@
  * ```gml
  * identifier = EpicGames_Connect_CreateUser();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Connect_CreateUser")
@@ -201,7 +201,7 @@
  * ```gml
  * identifier = EpicGames_Connect_Login();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Connect_Login")
@@ -225,7 +225,7 @@
  * @function EpicGames_Connect_RemoveNotifyAuthExpiration
  * @desc **Epic Online Services Function:** [EOS_Connect_RemoveNotifyAuthExpiration](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_RemoveNotifyAuthExpiration/index.html)
  * 
- * This function unregister from receiving expiration notifications.
+ * This function unregisters from receiving expiration notifications.
  * 
  * @param {real} id The handle representing the registered callback (returned by ${function.EpicGames_Connect_AddNotifyAuthExpiration})
  * 
@@ -295,7 +295,8 @@
  */
 
 /**
- * @module Connect
+ * @module connect
+ * @title Connect
  * @desc **Epic Online Services Interface:** [Connect Interface](https://dev.epicgames.com/docs/game-services/eos-connect-interface)
  * 
  * The [Connect Interface](https://dev.epicgames.com/docs/game-services/eos-connect-interface) enables an external identity provider to integrate with and use the **Epic Online Services** (EOS) ecosystem.

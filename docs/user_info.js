@@ -19,7 +19,7 @@
  * ```gml
  * var _struct = EpicGames_UserInfo_CopyExternalUserInfoByAccountId(accountID, accountID_target, accountID_external);
  * 
- * if (struct.status == ESO_Success)
+ * if (_struct.status == EpicGames_Success)
  * {
  *      DisplayName = _struct.DisplayName;
  * }
@@ -38,7 +38,7 @@
  * 
  * @param {string} accountID The Epic Account ID of the local player requesting the information
  * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
- * @param {struct.ExternalAccountType} accountType Account type of the external user info to retrieve from the cache
+ * @param {constant.EpicGames_ExternalAccountType} accountType Account type of the external user info to retrieve from the cache
  * 
  * @returns {struct.ExternalUserInfo}
  * 
@@ -46,7 +46,7 @@
  * ```gml
  * var _struct = EpicGames_UserInfo_CopyExternalUserInfoByAccountType(accountID, accountID_target, accountType);
  * 
- * if (struct.status == ESO_Success)
+ * if (_struct.status == EpicGames_Success)
  * {
  *      DisplayName = _struct.DisplayName;
  * }
@@ -158,7 +158,7 @@
  * ```gml
  * identifier = EpicGames_UserInfo_QueryUserInfo();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_UserInfo_QueryUserInfo")
@@ -205,7 +205,7 @@
  * ```gml
  * identifier = EpicGames_UserInfo_QueryUserInfoByDisplayName();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_UserInfo_QueryUserInfoByDisplayName")
@@ -255,7 +255,7 @@
  * ```gml
  * identifier = EpicGames_UserInfo_QueryUserInfoByExternalAccount();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_UserInfo_QueryUserInfoByExternalAccount")
@@ -282,7 +282,7 @@
  * 
  * These constants are used to describe the type of an external account or connection.
  * 
- * These constants are also part of the ${function.ExternalAccountInfo} struct.
+ * These constants are also part of the ${struct.ExternalAccountInfo} struct.
  *
  * @member EpicGames_EAT_EPIC External account is associated with Epic Games
  * @member EpicGames_EAT_STEAM External account is associated with Steam
@@ -330,7 +330,8 @@
  */
 
 /**
- * @module User_Info
+ * @module user_info
+ * @title User Info
  * @desc **Epic Online Services Interface:** [User Info Interface](https://dev.epicgames.com/docs/epic-account-services/eos-user-info-interface)
  * 
  * Each **Epic Online Services** (EOS) user account has a unique identifier that the service uses internally to refer to the account. The [User Info Interface](https://dev.epicgames.com/docs/epic-account-services/eos-user-info-interface) bridges the gap between the user's account IDentifier and information about the user, such as display name, country and preferred language, and so on. You can retrieve this information for both remote users and logged-in, local users.

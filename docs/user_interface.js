@@ -19,7 +19,7 @@
  * ```gml
  * identifier = EpicGames_UI_AddNotifyDisplaySettingsUpdated();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_UI_AddNotifyDisplaySettingsUpdated")
@@ -90,7 +90,7 @@
  * ```gml
  * identifier = EpicGames_UI_HideFriends();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_UI_HideFriends")
@@ -136,11 +136,9 @@
  * 
  * This function defines any preferences for any display settings.
  * 
- * @param {constant.EpicGames_UINotificationLocation} Location preference for notification pop-up locations.
+ * @param {constant.EpicGames_UINotificationLocation} location preference for notification pop-up locations.
  * 
- * @returns {struct}
- * @param {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
- * @param {string} status_message Text representation of the status code
+ * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
@@ -171,7 +169,7 @@
  * ```gml
  * identifier = EpicGames_UI_ShowFriends();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_UI_ShowFriends")
@@ -208,13 +206,14 @@
 
 
 /**
- * @module User_Interface
+ * @module user_interface
+ * @title User Interface
  * @desc **Epic Online Services Interface:** [UI Interface](https://dev.epicgames.com/docs/epic-account-services/eosui-interface)
  * 
  * **Epic Online Services** (EOS) supports product-independent overlay windows through its overlay system; these overlays give users product-independent access to various features. The [UI Interface](https://dev.epicgames.com/docs/epic-account-services/eosui-interface) manages interactions with the overlays by providing status updates, showing or hiding the overlays, and adjusting display and hotkey preferences.
  * 
  * @section_func
- * @desc These functions are provided for handling title storage:
+ * @desc These functions are provided for handling user interface:
 
  * @ref EpicGames_UI_AddNotifyDisplaySettingsUpdated
  * @ref EpicGames_UI_GetFriendsVisible

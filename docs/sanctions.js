@@ -78,7 +78,7 @@
  * ```gml
  * identifier = EpicGames_Sanctions_QueryActivePlayerSanctions();
  * ```
- * The code sample above saves the identifier that can be used inside an ${event.social} event.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "EpicGames_Sanctions_QueryActivePlayerSanctions")
@@ -111,16 +111,27 @@
  */
 
 /**
- * @module Sanctions
+ * @module sanctions
+ * @title Sanctions
  * @desc **Epic Online Services Interface:** [Sanctions Interface](https://dev.epicgames.com/docs/game-services/sanctions-interface)
  * 
- * This function the [Sanctions Interface](https://dev.epicgames.com/docs/game-services/sanctions-interface) manages punitive actions taken against your users. Actions may include temporary or permanent bans from gameplay or communication bans that limit the social aspects of your product for a particular user. You define the disciplinary actions for your product to handle negative behaviour based on your use cases.
+ * The [Sanctions Interface](https://dev.epicgames.com/docs/game-services/sanctions-interface) manages punitive actions taken against your users. Actions may include temporary or permanent bans from gameplay or communication bans that limit the social aspects of your product for a particular user. You define the disciplinary actions for your product to handle negative behaviour based on your use cases.
  * 
- * These functions are provided for handling sanctions:
+ * @section_func
+ * @desc These functions are provided for handling sanctions:
  * 
- * * ${function.EpicGames_Sanctions_CopyPlayerSanctionByIndex}
- * * ${function.EpicGames_Sanctions_GetPlayerSanctionCount}
- * * ${function.EpicGames_Sanctions_QueryActivePlayerSanctions}
+ * @ref EpicGames_Sanctions_CopyPlayerSanctionByIndex
+ * @ref EpicGames_Sanctions_GetPlayerSanctionCount
+ * @ref EpicGames_Sanctions_QueryActivePlayerSanctions
+ * 
+ * @section_end
+ * 
+ * @section_struct
+ * @desc These are the structs used by the Sanctions module:
+ * 
+ * @ref PlayerSanctionData
+ * 
+ * @section_end
  * 
  * @module_end
  */
