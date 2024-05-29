@@ -179,23 +179,28 @@ void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo* Da
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
+YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
 	EOS_NotInitialisedReturn_REAL
 
 	const char* user = YYGetString(arg, 0);
-	const char* tags = YYGetString(arg, 1);
 
+	std::vector<const char*> Tags;
+	if (KIND_RValue(&arg[1]) == VALUE_STRING) {
+		Tags.push_back(YYGetString(arg, 1));
+	}
+	else if (KIND_RValue(&arg[1]) == VALUE_ARRAY) {
+		
+		auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_TitleStorage_QueryFileList");
+		for (const auto& e : vec) {
+			Tags.push_back(e);
+		}
+	}
+		
 	EOS_TitleStorage_QueryFileListOptions Options = { 0 };
 	Options.ApiVersion = EOS_TITLESTORAGE_QUERYFILELISTOPTIONS_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-
-	Options.ListOfTagsCount = 1;
-	std::vector<const char*> Tags;
-	//for (const std::string& NextTag : CurrentTags)
-	//{
-		Tags.push_back(tags);
-	//}
+	Options.ListOfTagsCount = Tags.size();
 	Options.ListOfTags = Tags.data();
 
 	callback* mcallback = getCallbackData();

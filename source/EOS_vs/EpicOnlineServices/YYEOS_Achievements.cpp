@@ -180,15 +180,29 @@ RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef
 	if (AchievementDef->Progress)
 		YYStructAddDouble(&Struct, "Progress", AchievementDef->Progress);
 
-	//TODO
-	//if (AchievementDef->StatInfo)
-	//	DsMapAddString(map_achievement, "StatInfo", AchievementDef->StatInfo->);//is an struct check it ...
+	RValue stats = { 0 };
+	YYCreateArray(&stats);
 
-	//if (AchievementDef->StatInfoCount)
-	//	DsMapAddInt64(map_achievement, "StatInfoCount",(int64) AchievementDef->StatInfoCount);
+	for (int i = 0; i < AchievementDef->StatInfoCount; i++) {
+		auto value = AchievementDef->StatInfo[i];
+
+		RValue statInfo = { 0 };
+		YYStructCreate(&statInfo);
+
+		YYStructAddString(&statInfo, "Name", value.Name);
+		YYStructAddInt32(&statInfo, "ApiVersion", value.ApiVersion);
+		YYStructAddInt32(&statInfo, "CurrentValue", value.CurrentValue);
+		YYStructAddInt32(&statInfo, "ThresholdValue", value.ThresholdValue);
+
+		SET_RValue(&stats, &statInfo, NULL, i);
+	}
+	YYStructAddRValue(&Struct, "StatInfo", &stats);
+
+	if (AchievementDef->StatInfoCount)
+		YYStructAddInt32(&Struct, "StatInfoCount", AchievementDef->StatInfoCount);
 
 	if (AchievementDef->UnlockTime)
-		YYStructAddDouble(&Struct, "UnlockTime", (double)AchievementDef->UnlockTime);
+		YYStructAddInt64(&Struct, "UnlockTime", AchievementDef->UnlockTime);
 
 	// Release
 	EOS_Achievements_PlayerAchievement_Release(AchievementDef);

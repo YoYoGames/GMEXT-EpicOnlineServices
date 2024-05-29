@@ -36,6 +36,155 @@ YYEXPORT void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions,
     OldPreGraphicsInitialisation();
 }
 
+std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func)
+{
+	RValue* pV = &(arg[arg_idx]);
+
+	std::vector<const char*> strings;
+
+	if (KIND_RValue(pV) == VALUE_ARRAY)
+	{
+		RValue elem;
+		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+		{
+			if (KIND_RValue(&elem) != VALUE_STRING)
+			{
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+			}
+
+			strings.push_back(elem.GetString());
+		}
+	}
+	else {
+		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+	}
+
+	return strings;
+}
+
+std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* func)
+{
+	RValue* pV = &(arg[arg_idx]);
+
+	std::vector<int32> vec;
+
+	if (KIND_RValue(pV) == VALUE_ARRAY)
+	{
+		RValue elem;
+		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+		{
+			if (KIND_RValue(&elem) != VALUE_INT32)
+			{
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+			}
+
+			vec.push_back(YYGetInt32(&elem, i));
+		}
+	}
+	else {
+		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+	}
+
+	return vec;
+}
+
+std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* func)
+{
+	RValue* pV = &(arg[arg_idx]);
+
+	std::vector<uint64> vec;
+
+	if (KIND_RValue(pV) == VALUE_ARRAY)
+	{
+		RValue elem;
+		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+		{
+			if (KIND_RValue(&elem) != VALUE_INT64)
+			{
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+			}
+
+			vec.push_back(YYGetInt64(&elem, i));
+		}
+	}
+	else {
+		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+	}
+
+	return vec;
+}
+
+void _SW_SetArrayOfString(RValue* _array, char* str, const char* delim)
+{
+	int idx = 0;
+	char* token;
+
+	/* get the first token */
+	token = strtok(str, delim);
+
+	/* walk through other tokens */
+	while (token != NULL)
+	{
+		RValue tag = { 0 };
+		YYCreateString(&tag, token);
+		SET_RValue(_array, &tag, NULL, idx++);
+		FREE_RValue(&tag);
+
+		token = strtok(NULL, delim);
+	}
+}
+
+void _SW_SetArrayOfReal(RValue* _array, std::vector<double>& values)
+{
+	for (int i = 0; i < values.size(); i++)
+	{
+		RValue tag = { 0 };
+		tag.kind = VALUE_REAL;
+		tag.val = values[i];
+
+		SET_RValue(_array, &tag, NULL, i);
+		FREE_RValue(&tag);
+	}
+}
+
+void _SW_SetArrayOfRValue(RValue* _array, std::vector<RValue>& values)
+{
+	for (int i = 0; i < values.size(); i++)
+	{
+		RValue tag = values[i];
+
+		SET_RValue(_array, &tag, NULL, i);
+		FREE_RValue(&tag);
+	}
+}
+
+void _SW_SetArrayOfInt32(RValue* _array, std::vector<int32>& values)
+{
+	for (int i = 0; i < values.size(); i++)
+	{
+		RValue tag = { 0 };
+		tag.kind = VALUE_INT32;
+		tag.v32 = values[i];
+
+		SET_RValue(_array, &tag, NULL, i);
+		FREE_RValue(&tag);
+	}
+}
+
+void _SW_SetArrayOfInt64(RValue* _array, std::vector<int64>& values)
+{
+	for (int i = 0; i < values.size(); i++)
+	{
+		RValue tag = { 0 };
+		tag.kind = VALUE_INT64;
+		tag.v64 = values[i];
+
+		SET_RValue(_array, &tag, NULL, i);
+		FREE_RValue(&tag);
+	}
+}
+
+
 
     YYEXPORT void StructTest(RValue & Result, CInstance * selfinst, CInstance * otherinst, int argc, RValue * arg)
     {
