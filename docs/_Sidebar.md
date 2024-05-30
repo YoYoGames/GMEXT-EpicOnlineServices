@@ -1,18 +1,20 @@
 * ### [Epic Online Services](Home)
-* ### [Setup](Setup)
+* ### Guides
+  * ### ${page.Setup}
+  * ### ${page.Logging_In}
 * ### [Modules](#)
-  * ### [Achievements](Achievements)
-  * ### [Auth](Auth)
-  * ### [Connect](Connect)
-  * ### [Friends](Friends)
-  * ### [Leaderboards](Leaderboards)
-  * ### [Metrics](Metrics)
-  * ### [Platform](Platform)
-  * ### [PlayerDataStorage](PlayerDataStorage)
-  * ### [ProgressionSnapshot](ProgressionSnapshot)
-  * ### [Sanctions](Sanctions)
-  * ### [Stats](Stats)
-  * ### [TitleStorage](TitleStorage)
-  * ### [User Interface](UI)
-  * ### [UserInfo](UserInfo)
-  * ### [Other](Other)
+  * ### ${module.achievements}
+  * ### ${module.auth}
+  * ### ${module.connect}
+  * ### ${module.friends}
+  * ### ${module.leaderboards}
+  * ### ${module.metrics}
+  * ### ${module.platform}
+  * ### ${module.player_data_storage}
+  * ### ${module.progression_snapshot}
+  * ### ${module.sanctions}
+  * ### ${module.stats}
+  * ### ${module.title_storage}
+  * ### ${module.user_interface}
+  * ### ${module.user_info}
+  * ### ${module.general}
