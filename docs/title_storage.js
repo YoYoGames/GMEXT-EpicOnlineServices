@@ -127,7 +127,7 @@
  * 
  * Once a file has been queried, its metadata will be available by the ${function.EpicGames_TitleStorage_CopyFileMetadataAtIndex} and ${function.EpicGames_TitleStorage_CopyFileMetadataByFilename} functions.
  * 
- * @param {string} userID Product User ID of the local user requesting file metadata (optional)
+ * @param {string} userID Product User ID of the local user requesting file metadata
  * @param {string} filename The requested file's name
  * 
  * @returns {real}
@@ -176,7 +176,7 @@
  * * ${function.EpicGames_TitleStorage_GetFileMetadataCount}
  * 
  * @param {string} userID Product User ID of the local user who requested file metadata
- * @param {string} tag List of tags to use for lookup.
+ * @param {string} tag List of tags to use for lookup, either a ${type.string} (single tag) or an ${type.array} of strings (multiple tags)
  * 
  * @returns {real}
  * 

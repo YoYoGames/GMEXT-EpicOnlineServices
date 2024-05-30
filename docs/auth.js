@@ -104,7 +104,7 @@
  * 
  * @param {string} accountId The Epic Account ID of the user being queried
  * 
- * @returns {real}
+ * @returns {constant.EpicGames_Login_Status}
  * 
  * @example
  * ```gml
@@ -195,11 +195,13 @@
  * 
  * This function logs in / authenticates with user credentials.
  * 
+ * [[Note: The permissions that you pass must correspond exactly to the ones you set in the [Developer Portal](https://dev.epicgames.com/docs/dev-portal). See [Permissions](https://dev.epicgames.com/docs/epic-account-services/getting-started#permissions).]]
+ * 
  * @param {constant.EpicGames_Login_Credential_Type} type Type of login. Needed to identify the auth method to use.
- * @param {constant.EpicGames_Scope_Flags} scope_flags Auth scope flags are permissions to request from the user while they are logging in. This is a bitwise-or union (, pipe symbol) of ${constant.EpicGames_Scope_Flags}).
+ * @param {constant.EpicGames_Scope_Flags} scope_flags Auth scope flags are permissions to request from the user while they are logging in. This is a bitwise-or union (pipe symbol `|`) of ${constant.EpicGames_Scope_Flags}). These must correspond exactly to the ones you set in the [Developer Portal](https://dev.epicgames.com/docs/dev-portal)
  * @param {string} id ID of the user logging in, based on ${constant.EpicGames_Login_Credential_Type}
  * @param {string} token Credentials or token related to the user logging in
- * @param {constant.EpicGames_External_Credential_Type} external_type Type of external login. Needed to identify the external auth method to use. Used when login type is set to `EpicGames_LCT_ExternalAuth`, ignored otherwise (see ${page.External_Login_Flow_Guide} for more details)
+ * @param {constant.EpicGames_External_Credential_Type} external_type Type of external login. Needed to identify the external auth method to use. Used when login type is set to `EpicGames_LCT_ExternalAuth`, ignored otherwise (see the External Login Flow Guide on the ${page.Logging_In} page for more details). Note that you must still pass a value for this parameter when not using an external auth method.
  * 
  * @returns {real}
  * 
@@ -219,7 +221,7 @@
  *                 EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence,
  *                 "",
  *                 code,
- *                 noone);
+ *                 -1);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -401,6 +403,7 @@
  * @member EpicGames_AS_Presence Permissions to set your online presence and see presence of your friend
  * @member EpicGames_AS_FriendsManagement Permissions to manage the Epic friends list. This scope is restricted to Epic first party products, and attempting to use it will result in authentication failure.
  * @member EpicGames_AS_Email Permissions to see email in the response when fetching information for a user. This scope is restricted to Epic first party products, and attempting to use it will result in authentication failure.
+ * @member EpicGames_AS_Country Permissions to see your country
  * @constant_end
  */
 
@@ -412,6 +415,7 @@
  * 
  * @member EpicGames_ECT_EPIC Epic Account Services Token Using ID Token is preferred, retrieved with ${function.EpicGames_Auth_CopyIdToken} that returns **JsonWebToken**. Using Auth Token is supported for backwards compatibility, retrieved with ${function.EpicGames_Auth_CopyUserAuthToken} that returns **AccessToken**. Supported with ${function.EpicGames_Connect_Login}.
  * @member EpicGames_ECT_STEAM_APP_TICKET Steam Encrypted App Ticket Generated using the **RequestEncryptedAppTicket** API of Steamworks SDK. The retrieved App is then passed into the ${function.EpicGames_Auth_Login} or ${function.EpicGames_Connect_Login} APIs.
+ * @member EpicGames_ECT_STEAM_SESSION_TICKET Steam Auth Session Ticket generated using the ISteamUser::GetAuthTicketForWebApi API of Steamworks SDK.
  * @member EpicGames_ECT_PSN_ID_TOKEN PlayStation(TM)Network ID Token Retrieved from the PlayStation(R) SDK. Please see first-party documentation for additional information. Supported with ${function.EpicGames_Auth_Login}, ${function.EpicGames_Connect_Login}.
  * @member EpicGames_ECT_XBL_XSTS_TOKEN Xbox Live XSTS Token Retrieved from the GDK and XDK. Please see first-party documentation for additional information. Supported with ${function.EpicGames_Auth_Login}, ${function.EpicGames_Connect_Login}.
  * @member EpicGames_ECT_DISCORD_ACCESS_TOKEN Discord Access Token Retrieved using the **GetOAuth2Token** API of Discord SDK. Supported with ${function.EpicGames_Auth_Login}.
@@ -444,7 +448,7 @@
  * @member EpicGames_LCT_Developer Login with named credentials hosted by the EOS SDK Developer Authentication Tool.
  * @member EpicGames_LCT_RefreshToken Refresh token that was retrieved from a previous call to ${function.EpicGames_Auth_Login} API in another local process context. Mainly used in conjunction with custom launcher applications. in-between that requires authenticating the user before eventually starting the actual game client application. In such scenario, an intermediate launcher will log in the user by consuming the exchange code it received from the Epic Games Launcher. To allow the game client to also authenticate the user, it can copy the refresh token using the ${function.EpicGames_Auth_CopyUserAuthToken} API and pass it via launch parameters to the started game client. The game client can then use the refresh token to log in the user.
  * @member EpicGames_LCT_AccountPortal Desktop and Mobile only. Initiate a login through the Epic account portal. for example when starting the application through a proprietary ecosystem launcher or otherwise.
- * @member EpicGames_LCT_ExternalAuth Login using external account provider credentials, such as Steam, PlayStation(TM)Network, Xbox Live, or Nintendo. This is the intended login method on Console. On Desktop and Mobile, used when launched through any of the commonly supported platform clients (see the ${page.External_Login_Flow_Guide} for more details)
+ * @member EpicGames_LCT_ExternalAuth Login using external account provider credentials, such as Steam, PlayStation(TM)Network, Xbox Live, or Nintendo. This is the intended login method on Console. On Desktop and Mobile, used when launched through any of the commonly supported platform clients (see the External Login Flow Guide on the  ${page.Logging_In} page for more details)
  * @constant_end
  */
 
@@ -455,7 +459,7 @@
  * These constants are used to describe the Login status of a given account or connection and are returned by the following functions:
  * 
  * @member EpicGames_LS_NotLoggedIn Player has not logged in or chosen a local profile
- * @member EpicGames_LS_UsingLocal Player is using a local profile but is not logged in
+ * @member EpicGames_LS_UsingLocalProfile Player is using a local profile but is not logged in
  * @member EpicGames_LS_LoggedIn Player has been validated by the platform-specific authentication service
  * @constant_end
  */
@@ -500,7 +504,7 @@
  * 
  * @section Guides
  * @desc The following guides are available: 
- * @ref page.External_Login_Flow_Guide
+ * @ref page.Logging_In
  * @section_end
  * 
  * @section_func

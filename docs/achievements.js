@@ -113,7 +113,7 @@
  * var _struct = EpicGames_Achievements_CopyPlayerAchievementByAchievementId(userID, userID_target, achievementID);
  * if(struct.status == EpicGames_Success)
  * {
- *     var _achievementd = _struct.AchievementId;_i
+ *     var _achievementd = _struct.AchievementId;
  * }
  * ```
  * The above code will show an example of how the function should be used. The player achievement data is returned providing an achievement ID.
@@ -383,11 +383,24 @@
  * @member {real} Progress Progress towards completing this achievement (as a percentage)
  * @member {string} UnlockTime The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be `EpicGames_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED`.
  * @member {string} StatInfoCount The number of player stat info entries associated with this achievement.
- * @member {array} StatInfo Array of EpicGames_Achievements_PlayerStatInfo structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats
+ * @member {array[struct.PlayerStatInfo]} StatInfo Array of ${struct.PlayerStatInfo} structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats
  * @member {string} DisplayName Localized display name for the achievement based on this specific player's current progress on the achievement
  * @member {string} Description Localized description for the achievement based on this specific player's current progress on the achievement
  * @member {string} IconURL URL of an icon to display for the achievement based on this specific player's current progress on the achievement. This may be null if there is no data configured in the developer portal
  * @member {string} FlavorText Localized flavor text that can be used by the game in an arbitrary manner. This may be null if there is no data configured in the developer portal
+ * @struct_end
+ */
+
+/**
+ * @struct PlayerStatInfo
+ * @desc **Epic Online Services Struct:** (EOS_Achievements_StatThresholds)[https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-achievements-stat-thresholds]
+ * 
+ * This struct contains information about a collection of stat threshold data.
+ * 
+ * @member {string} Name The name of the stat.
+ * @member {real} ApiVersion The API version.
+ * @member {real} CurrentValue The current value of the stat.
+ * @member {real} ThresholdValue The value that the stat must surpass to satisfy the requirement for unlocking an achievement.
  * @struct_end
  */
 
@@ -443,6 +456,7 @@
  * @desc These are the structures used by this API:
  * @ref AchievementDefinition
  * @ref PlayerAchievement
+ * @ref PlayerStatInfo
  * @section_end
  * 
  * @module_end

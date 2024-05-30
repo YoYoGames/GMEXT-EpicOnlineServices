@@ -100,7 +100,7 @@
  * 
  * This function fetches information about a Product User, using the external account that they most recently logged in with as the reference.
  * 
- * @param {real} userID_target Product user ID to look for when copying external account info from the cache.
+ * @param {string} userID_target Product user ID to look for when copying external account info from the cache.
  * 
  * @returns {struct.ExternalAccountInfo}
  * 

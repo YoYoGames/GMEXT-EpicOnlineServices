@@ -313,7 +313,7 @@
  * 
  * @member EpicGames_FS_NotFriends The two accounts have no friendship status
  * @member EpicGames_FS_InviteSent The local account has sent a friend invite to the other account
- * @member EpicGames_FS_InviteRecieved The other account has sent a friend invite to the local account
+ * @member EpicGames_FS_InviteReceived The other account has sent a friend invite to the local account
  * @member EpicGames_FS_Friends The accounts have accepted friendship
  * @constant_end
  */
