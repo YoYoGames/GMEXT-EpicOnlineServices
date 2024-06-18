@@ -7,71 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BC978E5287F3F2C0079F3E2 /* eos_friends_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A0287F3F2C0079F3E2 /* eos_friends_types.h */; };
-		2BC978E6287F3F2C0079F3E2 /* eos_sanctions_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A1287F3F2C0079F3E2 /* eos_sanctions_types.h */; };
-		2BC978E7287F3F2C0079F3E2 /* eos_custominvites.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A2287F3F2C0079F3E2 /* eos_custominvites.h */; };
-		2BC978E8287F3F2C0079F3E2 /* eos_kws_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A3287F3F2C0079F3E2 /* eos_kws_types.h */; };
-		2BC978E9287F3F2C0079F3E2 /* eos_anticheatserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A4287F3F2C0079F3E2 /* eos_anticheatserver.h */; };
-		2BC978EA287F3F2C0079F3E2 /* eos_anticheatclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A5287F3F2C0079F3E2 /* eos_anticheatclient.h */; };
-		2BC978EB287F3F2C0079F3E2 /* eos_ui_keys.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A6287F3F2C0079F3E2 /* eos_ui_keys.h */; };
-		2BC978EC287F3F2C0079F3E2 /* eos_rtc_admin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A8287F3F2C0079F3E2 /* eos_rtc_admin.h */; };
-		2BC978ED287F3F2C0079F3E2 /* eos_sessions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978A9287F3F2C0079F3E2 /* eos_sessions.h */; };
-		2BC978EE287F3F2C0079F3E2 /* eos_p2p.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978AA287F3F2C0079F3E2 /* eos_p2p.h */; };
-		2BC978EF287F3F2C0079F3E2 /* eos_kws.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978AC287F3F2C0079F3E2 /* eos_kws.h */; };
-		2BC978F0287F3F2C0079F3E2 /* eos_lobby.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978AD287F3F2C0079F3E2 /* eos_lobby.h */; };
-		2BC978F1287F3F2C0079F3E2 /* eos_logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978AE287F3F2C0079F3E2 /* eos_logging.h */; };
-		2BC978F2287F3F2C0079F3E2 /* eos_reports_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978AF287F3F2C0079F3E2 /* eos_reports_types.h */; };
-		2BC978F3287F3F2C0079F3E2 /* eos_playerdatastorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B0287F3F2C0079F3E2 /* eos_playerdatastorage.h */; };
-		2BC978F4287F3F2C0079F3E2 /* eos_result.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B1287F3F2C0079F3E2 /* eos_result.h */; };
-		2BC978F5287F3F2C0079F3E2 /* eos_auth.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B2287F3F2C0079F3E2 /* eos_auth.h */; };
-		2BC978F6287F3F2C0079F3E2 /* eos_rtc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B3287F3F2C0079F3E2 /* eos_rtc.h */; };
-		2BC978F7287F3F2C0079F3E2 /* eos_playerdatastorage_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B4287F3F2C0079F3E2 /* eos_playerdatastorage_types.h */; };
-		2BC978F8287F3F2C0079F3E2 /* eos_titlestorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B5287F3F2C0079F3E2 /* eos_titlestorage.h */; };
-		2BC978F9287F3F2C0079F3E2 /* eos_leaderboards_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B6287F3F2C0079F3E2 /* eos_leaderboards_types.h */; };
-		2BC978FA287F3F2C0079F3E2 /* eos_connect_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B7287F3F2C0079F3E2 /* eos_connect_types.h */; };
-		2BC978FB287F3F2C0079F3E2 /* eos_leaderboards.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B8287F3F2C0079F3E2 /* eos_leaderboards.h */; };
-		2BC978FC287F3F2C0079F3E2 /* eos_custominvites_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978B9287F3F2C0079F3E2 /* eos_custominvites_types.h */; };
-		2BC978FD287F3F2C0079F3E2 /* eos_p2p_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978BA287F3F2C0079F3E2 /* eos_p2p_types.h */; };
-		2BC978FE287F3F2C0079F3E2 /* eos_mods.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978BB287F3F2C0079F3E2 /* eos_mods.h */; };
-		2BC978FF287F3F2C0079F3E2 /* eos_progressionsnapshot_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978BC287F3F2C0079F3E2 /* eos_progressionsnapshot_types.h */; };
-		2BC97900287F3F2C0079F3E2 /* eos_presence.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978BD287F3F2C0079F3E2 /* eos_presence.h */; };
-		2BC97901287F3F2C0079F3E2 /* eos_titlestorage_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978BE287F3F2C0079F3E2 /* eos_titlestorage_types.h */; };
-		2BC97902287F3F2C0079F3E2 /* eos_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978BF287F3F2C0079F3E2 /* eos_base.h */; };
-		2BC97903287F3F2C0079F3E2 /* eos_reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C0287F3F2C0079F3E2 /* eos_reports.h */; };
-		2BC97904287F3F2C0079F3E2 /* eos_friends.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C1287F3F2C0079F3E2 /* eos_friends.h */; };
-		2BC97905287F3F2C0079F3E2 /* eos_ui.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C2287F3F2C0079F3E2 /* eos_ui.h */; };
-		2BC97906287F3F2C0079F3E2 /* eos_presence_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C3287F3F2C0079F3E2 /* eos_presence_types.h */; };
-		2BC97907287F3F2C0079F3E2 /* eos_stats_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C4287F3F2C0079F3E2 /* eos_stats_types.h */; };
-		2BC97908287F3F2C0079F3E2 /* eos_sdk.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C5287F3F2C0079F3E2 /* eos_sdk.h */; };
-		2BC97909287F3F2C0079F3E2 /* eos_userinfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C6287F3F2C0079F3E2 /* eos_userinfo.h */; };
-		2BC9790A287F3F2C0079F3E2 /* eos_metrics.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C7287F3F2C0079F3E2 /* eos_metrics.h */; };
-		2BC9790B287F3F2C0079F3E2 /* eos_userinfo_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C8287F3F2C0079F3E2 /* eos_userinfo_types.h */; };
-		2BC9790C287F3F2C0079F3E2 /* eos_connect.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978C9287F3F2C0079F3E2 /* eos_connect.h */; };
-		2BC9790D287F3F2C0079F3E2 /* eos_platform_prereqs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978CA287F3F2C0079F3E2 /* eos_platform_prereqs.h */; };
-		2BC9790E287F3F2C0079F3E2 /* eos_ecom_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978CB287F3F2C0079F3E2 /* eos_ecom_types.h */; };
-		2BC9790F287F3F2C0079F3E2 /* eos_rtc_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978CC287F3F2C0079F3E2 /* eos_rtc_types.h */; };
-		2BC97910287F3F2C0079F3E2 /* eos_mods_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978CD287F3F2C0079F3E2 /* eos_mods_types.h */; };
-		2BC97911287F3F2C0079F3E2 /* eos_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978CE287F3F2C0079F3E2 /* eos_version.h */; };
-		2BC97912287F3F2C0079F3E2 /* eos_anticheatclient_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978CF287F3F2C0079F3E2 /* eos_anticheatclient_types.h */; };
-		2BC97913287F3F2C0079F3E2 /* eos_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D0287F3F2C0079F3E2 /* eos_common.h */; };
-		2BC97914287F3F2C0079F3E2 /* eos_rtc_audio.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D1287F3F2C0079F3E2 /* eos_rtc_audio.h */; };
-		2BC97915287F3F2C0079F3E2 /* eos_ui_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D2287F3F2C0079F3E2 /* eos_ui_types.h */; };
-		2BC97916287F3F2C0079F3E2 /* eos_anticheatcommon_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D4287F3F2C0079F3E2 /* eos_anticheatcommon_types.h */; };
-		2BC97917287F3F2C0079F3E2 /* eos_init.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D5287F3F2C0079F3E2 /* eos_init.h */; };
-		2BC97918287F3F2C0079F3E2 /* eos_metrics_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D6287F3F2C0079F3E2 /* eos_metrics_types.h */; };
-		2BC97919287F3F2C0079F3E2 /* eos_achievements_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D7287F3F2C0079F3E2 /* eos_achievements_types.h */; };
-		2BC9791A287F3F2C0079F3E2 /* eos_achievements.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D8287F3F2C0079F3E2 /* eos_achievements.h */; };
-		2BC9791B287F3F2C0079F3E2 /* eos_ecom.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978D9287F3F2C0079F3E2 /* eos_ecom.h */; };
-		2BC9791C287F3F2C0079F3E2 /* eos_auth_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978DA287F3F2C0079F3E2 /* eos_auth_types.h */; };
-		2BC9791D287F3F2C0079F3E2 /* eos_rtc_audio_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978DB287F3F2C0079F3E2 /* eos_rtc_audio_types.h */; };
-		2BC9791E287F3F2C0079F3E2 /* eos_sessions_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978DC287F3F2C0079F3E2 /* eos_sessions_types.h */; };
-		2BC9791F287F3F2C0079F3E2 /* eos_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978DD287F3F2C0079F3E2 /* eos_types.h */; };
-		2BC97920287F3F2C0079F3E2 /* eos_progressionsnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978DE287F3F2C0079F3E2 /* eos_progressionsnapshot.h */; };
-		2BC97921287F3F2C0079F3E2 /* eos_sanctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978DF287F3F2C0079F3E2 /* eos_sanctions.h */; };
-		2BC97922287F3F2C0079F3E2 /* eos_stats.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978E0287F3F2C0079F3E2 /* eos_stats.h */; };
-		2BC97923287F3F2C0079F3E2 /* eos_lobby_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978E2287F3F2C0079F3E2 /* eos_lobby_types.h */; };
-		2BC97924287F3F2C0079F3E2 /* eos_anticheatserver_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978E3287F3F2C0079F3E2 /* eos_anticheatserver_types.h */; };
-		2BC97925287F3F2C0079F3E2 /* eos_rtc_admin_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC978E4287F3F2C0079F3E2 /* eos_rtc_admin_types.h */; };
+		2B75FEA62C21F51500B207CF /* eos_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE592C21F51400B207CF /* eos_version.h */; };
+		2B75FEA72C21F51500B207CF /* eos_leaderboards_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5A2C21F51500B207CF /* eos_leaderboards_types.h */; };
+		2B75FEA82C21F51500B207CF /* eos_ecom.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5B2C21F51500B207CF /* eos_ecom.h */; };
+		2B75FEA92C21F51500B207CF /* eos_mods_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5C2C21F51500B207CF /* eos_mods_types.h */; };
+		2B75FEAA2C21F51500B207CF /* eos_anticheatclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5E2C21F51500B207CF /* eos_anticheatclient.h */; };
+		2B75FEAB2C21F51500B207CF /* eos_custominvites.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5F2C21F51500B207CF /* eos_custominvites.h */; };
+		2B75FEAC2C21F51500B207CF /* eos_reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE602C21F51500B207CF /* eos_reports.h */; };
+		2B75FEAD2C21F51500B207CF /* eos_anticheatclient_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE612C21F51500B207CF /* eos_anticheatclient_types.h */; };
+		2B75FEAE2C21F51500B207CF /* eos_rtc_data_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE622C21F51500B207CF /* eos_rtc_data_types.h */; };
+		2B75FEAF2C21F51500B207CF /* eos_rtc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE632C21F51500B207CF /* eos_rtc.h */; };
+		2B75FEB02C21F51500B207CF /* eos_stats_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE642C21F51500B207CF /* eos_stats_types.h */; };
+		2B75FEB12C21F51500B207CF /* eos_progressionsnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE652C21F51500B207CF /* eos_progressionsnapshot.h */; };
+		2B75FEB22C21F51500B207CF /* eos_platform_prereqs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE662C21F51500B207CF /* eos_platform_prereqs.h */; };
+		2B75FEB32C21F51500B207CF /* eos_mods.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE672C21F51500B207CF /* eos_mods.h */; };
+		2B75FEB42C21F51500B207CF /* eos_lobby_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE682C21F51500B207CF /* eos_lobby_types.h */; };
+		2B75FEB52C21F51500B207CF /* eos_integratedplatform_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE692C21F51500B207CF /* eos_integratedplatform_types.h */; };
+		2B75FEB62C21F51500B207CF /* eos_connect_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE6A2C21F51500B207CF /* eos_connect_types.h */; };
+		2B75FEB72C21F51500B207CF /* eos_anticheatcommon_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE6B2C21F51500B207CF /* eos_anticheatcommon_types.h */; };
+		2B75FEB82C21F51500B207CF /* eos_metrics_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE6C2C21F51500B207CF /* eos_metrics_types.h */; };
+		2B75FEB92C21F51500B207CF /* eos_p2p.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE6D2C21F51500B207CF /* eos_p2p.h */; };
+		2B75FEBA2C21F51500B207CF /* eos_playerdatastorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE6E2C21F51500B207CF /* eos_playerdatastorage.h */; };
+		2B75FEBB2C21F51500B207CF /* eos_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE702C21F51500B207CF /* eos_common.h */; };
+		2B75FEBC2C21F51500B207CF /* eos_anticheatserver_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE722C21F51500B207CF /* eos_anticheatserver_types.h */; };
+		2B75FEBD2C21F51500B207CF /* eos_achievements.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE732C21F51500B207CF /* eos_achievements.h */; };
+		2B75FEBE2C21F51500B207CF /* eos_integratedplatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE742C21F51500B207CF /* eos_integratedplatform.h */; };
+		2B75FEBF2C21F51500B207CF /* eos_sanctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE752C21F51500B207CF /* eos_sanctions.h */; };
+		2B75FEC02C21F51500B207CF /* eos_logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE762C21F51500B207CF /* eos_logging.h */; };
+		2B75FEC12C21F51500B207CF /* eos_ui_keys.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE772C21F51500B207CF /* eos_ui_keys.h */; };
+		2B75FEC22C21F51500B207CF /* eos_stats.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE782C21F51500B207CF /* eos_stats.h */; };
+		2B75FEC32C21F51500B207CF /* eos_kws.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE792C21F51500B207CF /* eos_kws.h */; };
+		2B75FEC42C21F51500B207CF /* eos_presence_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE7B2C21F51500B207CF /* eos_presence_types.h */; };
+		2B75FEC52C21F51500B207CF /* eos_auth_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE7C2C21F51500B207CF /* eos_auth_types.h */; };
+		2B75FEC62C21F51500B207CF /* eos_rtc_admin_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE7E2C21F51500B207CF /* eos_rtc_admin_types.h */; };
+		2B75FEC72C21F51500B207CF /* eos_sdk.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE7F2C21F51500B207CF /* eos_sdk.h */; };
+		2B75FEC82C21F51500B207CF /* eos_leaderboards.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE802C21F51500B207CF /* eos_leaderboards.h */; };
+		2B75FEC92C21F51500B207CF /* eos_kws_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE812C21F51500B207CF /* eos_kws_types.h */; };
+		2B75FECA2C21F51500B207CF /* eos_titlestorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE822C21F51500B207CF /* eos_titlestorage.h */; };
+		2B75FECB2C21F51500B207CF /* eos_p2p_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE832C21F51500B207CF /* eos_p2p_types.h */; };
+		2B75FECC2C21F51500B207CF /* eos_friends_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE842C21F51500B207CF /* eos_friends_types.h */; };
+		2B75FECD2C21F51500B207CF /* eos_anticheatserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE852C21F51500B207CF /* eos_anticheatserver.h */; };
+		2B75FECE2C21F51500B207CF /* eos_rtc_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE862C21F51500B207CF /* eos_rtc_types.h */; };
+		2B75FECF2C21F51500B207CF /* eos_reports_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE872C21F51500B207CF /* eos_reports_types.h */; };
+		2B75FED02C21F51500B207CF /* eos_connect.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE882C21F51500B207CF /* eos_connect.h */; };
+		2B75FED12C21F51500B207CF /* eos_custominvites_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE892C21F51500B207CF /* eos_custominvites_types.h */; };
+		2B75FED22C21F51500B207CF /* eos_rtc_admin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE8A2C21F51500B207CF /* eos_rtc_admin.h */; };
+		2B75FED32C21F51500B207CF /* eos_init.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE8B2C21F51500B207CF /* eos_init.h */; };
+		2B75FED42C21F51500B207CF /* eos_userinfo_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE8C2C21F51500B207CF /* eos_userinfo_types.h */; };
+		2B75FED52C21F51500B207CF /* eos_friends.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE8D2C21F51500B207CF /* eos_friends.h */; };
+		2B75FED62C21F51500B207CF /* eos_lobby.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE8E2C21F51500B207CF /* eos_lobby.h */; };
+		2B75FED72C21F51500B207CF /* eos_rtc_audio_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE8F2C21F51500B207CF /* eos_rtc_audio_types.h */; };
+		2B75FED82C21F51500B207CF /* eos_titlestorage_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE902C21F51500B207CF /* eos_titlestorage_types.h */; };
+		2B75FED92C21F51500B207CF /* eos_ui.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE912C21F51500B207CF /* eos_ui.h */; };
+		2B75FEDA2C21F51500B207CF /* eos_metrics.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE922C21F51500B207CF /* eos_metrics.h */; };
+		2B75FEDB2C21F51500B207CF /* eos_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE932C21F51500B207CF /* eos_types.h */; };
+		2B75FEDC2C21F51500B207CF /* eos_progressionsnapshot_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE942C21F51500B207CF /* eos_progressionsnapshot_types.h */; };
+		2B75FEDD2C21F51500B207CF /* eos_ui_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE952C21F51500B207CF /* eos_ui_types.h */; };
+		2B75FEDE2C21F51500B207CF /* eos_Mac_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE962C21F51500B207CF /* eos_Mac_base.h */; };
+		2B75FEDF2C21F51500B207CF /* eos_rtc_audio.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE972C21F51500B207CF /* eos_rtc_audio.h */; };
+		2B75FEE02C21F51500B207CF /* eos_sessions_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE982C21F51500B207CF /* eos_sessions_types.h */; };
+		2B75FEE12C21F51500B207CF /* eos_presence.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE992C21F51500B207CF /* eos_presence.h */; };
+		2B75FEE22C21F51500B207CF /* eos_achievements_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE9A2C21F51500B207CF /* eos_achievements_types.h */; };
+		2B75FEE32C21F51500B207CF /* eos_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE9B2C21F51500B207CF /* eos_base.h */; };
+		2B75FEE42C21F51500B207CF /* eos_ecom_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE9C2C21F51500B207CF /* eos_ecom_types.h */; };
+		2B75FEE52C21F51500B207CF /* eos_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE9D2C21F51500B207CF /* eos_Mac.h */; };
+		2B75FEE62C21F51500B207CF /* eos_auth.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE9E2C21F51500B207CF /* eos_auth.h */; };
+		2B75FEE72C21F51500B207CF /* eos_playerdatastorage_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE9F2C21F51500B207CF /* eos_playerdatastorage_types.h */; };
+		2B75FEE82C21F51500B207CF /* eos_result.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FEA02C21F51500B207CF /* eos_result.h */; };
+		2B75FEE92C21F51500B207CF /* eos_sessions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FEA12C21F51500B207CF /* eos_sessions.h */; };
+		2B75FEEA2C21F51500B207CF /* eos_ui_buttons.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FEA22C21F51500B207CF /* eos_ui_buttons.h */; };
+		2B75FEEB2C21F51500B207CF /* eos_rtc_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FEA32C21F51500B207CF /* eos_rtc_data.h */; };
+		2B75FEEC2C21F51500B207CF /* eos_sanctions_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FEA42C21F51500B207CF /* eos_sanctions_types.h */; };
+		2B75FEED2C21F51500B207CF /* eos_userinfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FEA52C21F51500B207CF /* eos_userinfo.h */; };
 		2BC97928287F41760079F3E2 /* DesktopExtensionTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC97926287F41760079F3E2 /* DesktopExtensionTools.h */; };
 		2BC97929287F41760079F3E2 /* DesktopExtensionTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BC97927287F41760079F3E2 /* DesktopExtensionTools.mm */; };
 		2BD17D8C28349CC200C86127 /* YYEOS_Friends.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BD17D7528349CC200C86127 /* YYEOS_Friends.cpp */; };
@@ -122,76 +129,83 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2BC9789F287F3F2C0079F3E2 /* Windows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Windows; path = ../../EOS_sdk/Include/Windows; sourceTree = "<group>"; };
-		2BC978A0287F3F2C0079F3E2 /* eos_friends_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_friends_types.h; path = ../../EOS_sdk/Include/eos_friends_types.h; sourceTree = "<group>"; };
-		2BC978A1287F3F2C0079F3E2 /* eos_sanctions_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sanctions_types.h; path = ../../EOS_sdk/Include/eos_sanctions_types.h; sourceTree = "<group>"; };
-		2BC978A2287F3F2C0079F3E2 /* eos_custominvites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_custominvites.h; path = ../../EOS_sdk/Include/eos_custominvites.h; sourceTree = "<group>"; };
-		2BC978A3287F3F2C0079F3E2 /* eos_kws_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_kws_types.h; path = ../../EOS_sdk/Include/eos_kws_types.h; sourceTree = "<group>"; };
-		2BC978A4287F3F2C0079F3E2 /* eos_anticheatserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatserver.h; path = ../../EOS_sdk/Include/eos_anticheatserver.h; sourceTree = "<group>"; };
-		2BC978A5287F3F2C0079F3E2 /* eos_anticheatclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatclient.h; path = ../../EOS_sdk/Include/eos_anticheatclient.h; sourceTree = "<group>"; };
-		2BC978A6287F3F2C0079F3E2 /* eos_ui_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ui_keys.h; path = ../../EOS_sdk/Include/eos_ui_keys.h; sourceTree = "<group>"; };
-		2BC978A7287F3F2C0079F3E2 /* eos_leaderboards_types_deprecated.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eos_leaderboards_types_deprecated.inl; path = ../../EOS_sdk/Include/eos_leaderboards_types_deprecated.inl; sourceTree = "<group>"; };
-		2BC978A8287F3F2C0079F3E2 /* eos_rtc_admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_admin.h; path = ../../EOS_sdk/Include/eos_rtc_admin.h; sourceTree = "<group>"; };
-		2BC978A9287F3F2C0079F3E2 /* eos_sessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sessions.h; path = ../../EOS_sdk/Include/eos_sessions.h; sourceTree = "<group>"; };
-		2BC978AA287F3F2C0079F3E2 /* eos_p2p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_p2p.h; path = ../../EOS_sdk/Include/eos_p2p.h; sourceTree = "<group>"; };
-		2BC978AB287F3F2C0079F3E2 /* Linux */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Linux; path = ../../EOS_sdk/Include/Linux; sourceTree = "<group>"; };
-		2BC978AC287F3F2C0079F3E2 /* eos_kws.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_kws.h; path = ../../EOS_sdk/Include/eos_kws.h; sourceTree = "<group>"; };
-		2BC978AD287F3F2C0079F3E2 /* eos_lobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_lobby.h; path = ../../EOS_sdk/Include/eos_lobby.h; sourceTree = "<group>"; };
-		2BC978AE287F3F2C0079F3E2 /* eos_logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_logging.h; path = ../../EOS_sdk/Include/eos_logging.h; sourceTree = "<group>"; };
-		2BC978AF287F3F2C0079F3E2 /* eos_reports_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_reports_types.h; path = ../../EOS_sdk/Include/eos_reports_types.h; sourceTree = "<group>"; };
-		2BC978B0287F3F2C0079F3E2 /* eos_playerdatastorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_playerdatastorage.h; path = ../../EOS_sdk/Include/eos_playerdatastorage.h; sourceTree = "<group>"; };
-		2BC978B1287F3F2C0079F3E2 /* eos_result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_result.h; path = ../../EOS_sdk/Include/eos_result.h; sourceTree = "<group>"; };
-		2BC978B2287F3F2C0079F3E2 /* eos_auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_auth.h; path = ../../EOS_sdk/Include/eos_auth.h; sourceTree = "<group>"; };
-		2BC978B3287F3F2C0079F3E2 /* eos_rtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc.h; path = ../../EOS_sdk/Include/eos_rtc.h; sourceTree = "<group>"; };
-		2BC978B4287F3F2C0079F3E2 /* eos_playerdatastorage_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_playerdatastorage_types.h; path = ../../EOS_sdk/Include/eos_playerdatastorage_types.h; sourceTree = "<group>"; };
-		2BC978B5287F3F2C0079F3E2 /* eos_titlestorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_titlestorage.h; path = ../../EOS_sdk/Include/eos_titlestorage.h; sourceTree = "<group>"; };
-		2BC978B6287F3F2C0079F3E2 /* eos_leaderboards_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_leaderboards_types.h; path = ../../EOS_sdk/Include/eos_leaderboards_types.h; sourceTree = "<group>"; };
-		2BC978B7287F3F2C0079F3E2 /* eos_connect_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_connect_types.h; path = ../../EOS_sdk/Include/eos_connect_types.h; sourceTree = "<group>"; };
-		2BC978B8287F3F2C0079F3E2 /* eos_leaderboards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_leaderboards.h; path = ../../EOS_sdk/Include/eos_leaderboards.h; sourceTree = "<group>"; };
-		2BC978B9287F3F2C0079F3E2 /* eos_custominvites_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_custominvites_types.h; path = ../../EOS_sdk/Include/eos_custominvites_types.h; sourceTree = "<group>"; };
-		2BC978BA287F3F2C0079F3E2 /* eos_p2p_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_p2p_types.h; path = ../../EOS_sdk/Include/eos_p2p_types.h; sourceTree = "<group>"; };
-		2BC978BB287F3F2C0079F3E2 /* eos_mods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_mods.h; path = ../../EOS_sdk/Include/eos_mods.h; sourceTree = "<group>"; };
-		2BC978BC287F3F2C0079F3E2 /* eos_progressionsnapshot_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_progressionsnapshot_types.h; path = ../../EOS_sdk/Include/eos_progressionsnapshot_types.h; sourceTree = "<group>"; };
-		2BC978BD287F3F2C0079F3E2 /* eos_presence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_presence.h; path = ../../EOS_sdk/Include/eos_presence.h; sourceTree = "<group>"; };
-		2BC978BE287F3F2C0079F3E2 /* eos_titlestorage_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_titlestorage_types.h; path = ../../EOS_sdk/Include/eos_titlestorage_types.h; sourceTree = "<group>"; };
-		2BC978BF287F3F2C0079F3E2 /* eos_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_base.h; path = ../../EOS_sdk/Include/eos_base.h; sourceTree = "<group>"; };
-		2BC978C0287F3F2C0079F3E2 /* eos_reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_reports.h; path = ../../EOS_sdk/Include/eos_reports.h; sourceTree = "<group>"; };
-		2BC978C1287F3F2C0079F3E2 /* eos_friends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_friends.h; path = ../../EOS_sdk/Include/eos_friends.h; sourceTree = "<group>"; };
-		2BC978C2287F3F2C0079F3E2 /* eos_ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ui.h; path = ../../EOS_sdk/Include/eos_ui.h; sourceTree = "<group>"; };
-		2BC978C3287F3F2C0079F3E2 /* eos_presence_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_presence_types.h; path = ../../EOS_sdk/Include/eos_presence_types.h; sourceTree = "<group>"; };
-		2BC978C4287F3F2C0079F3E2 /* eos_stats_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_stats_types.h; path = ../../EOS_sdk/Include/eos_stats_types.h; sourceTree = "<group>"; };
-		2BC978C5287F3F2C0079F3E2 /* eos_sdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sdk.h; path = ../../EOS_sdk/Include/eos_sdk.h; sourceTree = "<group>"; };
-		2BC978C6287F3F2C0079F3E2 /* eos_userinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_userinfo.h; path = ../../EOS_sdk/Include/eos_userinfo.h; sourceTree = "<group>"; };
-		2BC978C7287F3F2C0079F3E2 /* eos_metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_metrics.h; path = ../../EOS_sdk/Include/eos_metrics.h; sourceTree = "<group>"; };
-		2BC978C8287F3F2C0079F3E2 /* eos_userinfo_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_userinfo_types.h; path = ../../EOS_sdk/Include/eos_userinfo_types.h; sourceTree = "<group>"; };
-		2BC978C9287F3F2C0079F3E2 /* eos_connect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_connect.h; path = ../../EOS_sdk/Include/eos_connect.h; sourceTree = "<group>"; };
-		2BC978CA287F3F2C0079F3E2 /* eos_platform_prereqs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_platform_prereqs.h; path = ../../EOS_sdk/Include/eos_platform_prereqs.h; sourceTree = "<group>"; };
-		2BC978CB287F3F2C0079F3E2 /* eos_ecom_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ecom_types.h; path = ../../EOS_sdk/Include/eos_ecom_types.h; sourceTree = "<group>"; };
-		2BC978CC287F3F2C0079F3E2 /* eos_rtc_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_types.h; path = ../../EOS_sdk/Include/eos_rtc_types.h; sourceTree = "<group>"; };
-		2BC978CD287F3F2C0079F3E2 /* eos_mods_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_mods_types.h; path = ../../EOS_sdk/Include/eos_mods_types.h; sourceTree = "<group>"; };
-		2BC978CE287F3F2C0079F3E2 /* eos_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_version.h; path = ../../EOS_sdk/Include/eos_version.h; sourceTree = "<group>"; };
-		2BC978CF287F3F2C0079F3E2 /* eos_anticheatclient_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatclient_types.h; path = ../../EOS_sdk/Include/eos_anticheatclient_types.h; sourceTree = "<group>"; };
-		2BC978D0287F3F2C0079F3E2 /* eos_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_common.h; path = ../../EOS_sdk/Include/eos_common.h; sourceTree = "<group>"; };
-		2BC978D1287F3F2C0079F3E2 /* eos_rtc_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_audio.h; path = ../../EOS_sdk/Include/eos_rtc_audio.h; sourceTree = "<group>"; };
-		2BC978D2287F3F2C0079F3E2 /* eos_ui_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ui_types.h; path = ../../EOS_sdk/Include/eos_ui_types.h; sourceTree = "<group>"; };
-		2BC978D3287F3F2C0079F3E2 /* Mac */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Mac; path = ../../EOS_sdk/Include/Mac; sourceTree = "<group>"; };
-		2BC978D4287F3F2C0079F3E2 /* eos_anticheatcommon_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatcommon_types.h; path = ../../EOS_sdk/Include/eos_anticheatcommon_types.h; sourceTree = "<group>"; };
-		2BC978D5287F3F2C0079F3E2 /* eos_init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_init.h; path = ../../EOS_sdk/Include/eos_init.h; sourceTree = "<group>"; };
-		2BC978D6287F3F2C0079F3E2 /* eos_metrics_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_metrics_types.h; path = ../../EOS_sdk/Include/eos_metrics_types.h; sourceTree = "<group>"; };
-		2BC978D7287F3F2C0079F3E2 /* eos_achievements_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_achievements_types.h; path = ../../EOS_sdk/Include/eos_achievements_types.h; sourceTree = "<group>"; };
-		2BC978D8287F3F2C0079F3E2 /* eos_achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_achievements.h; path = ../../EOS_sdk/Include/eos_achievements.h; sourceTree = "<group>"; };
-		2BC978D9287F3F2C0079F3E2 /* eos_ecom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ecom.h; path = ../../EOS_sdk/Include/eos_ecom.h; sourceTree = "<group>"; };
-		2BC978DA287F3F2C0079F3E2 /* eos_auth_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_auth_types.h; path = ../../EOS_sdk/Include/eos_auth_types.h; sourceTree = "<group>"; };
-		2BC978DB287F3F2C0079F3E2 /* eos_rtc_audio_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_audio_types.h; path = ../../EOS_sdk/Include/eos_rtc_audio_types.h; sourceTree = "<group>"; };
-		2BC978DC287F3F2C0079F3E2 /* eos_sessions_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sessions_types.h; path = ../../EOS_sdk/Include/eos_sessions_types.h; sourceTree = "<group>"; };
-		2BC978DD287F3F2C0079F3E2 /* eos_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_types.h; path = ../../EOS_sdk/Include/eos_types.h; sourceTree = "<group>"; };
-		2BC978DE287F3F2C0079F3E2 /* eos_progressionsnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_progressionsnapshot.h; path = ../../EOS_sdk/Include/eos_progressionsnapshot.h; sourceTree = "<group>"; };
-		2BC978DF287F3F2C0079F3E2 /* eos_sanctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sanctions.h; path = ../../EOS_sdk/Include/eos_sanctions.h; sourceTree = "<group>"; };
-		2BC978E0287F3F2C0079F3E2 /* eos_stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_stats.h; path = ../../EOS_sdk/Include/eos_stats.h; sourceTree = "<group>"; };
-		2BC978E1287F3F2C0079F3E2 /* eos_achievements_types_deprecated.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eos_achievements_types_deprecated.inl; path = ../../EOS_sdk/Include/eos_achievements_types_deprecated.inl; sourceTree = "<group>"; };
-		2BC978E2287F3F2C0079F3E2 /* eos_lobby_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_lobby_types.h; path = ../../EOS_sdk/Include/eos_lobby_types.h; sourceTree = "<group>"; };
-		2BC978E3287F3F2C0079F3E2 /* eos_anticheatserver_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatserver_types.h; path = ../../EOS_sdk/Include/eos_anticheatserver_types.h; sourceTree = "<group>"; };
-		2BC978E4287F3F2C0079F3E2 /* eos_rtc_admin_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_admin_types.h; path = ../../EOS_sdk/Include/eos_rtc_admin_types.h; sourceTree = "<group>"; };
+		2B75FE592C21F51400B207CF /* eos_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_version.h; path = ../../EOS_sdk/Include/eos_version.h; sourceTree = "<group>"; };
+		2B75FE5A2C21F51500B207CF /* eos_leaderboards_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_leaderboards_types.h; path = ../../EOS_sdk/Include/eos_leaderboards_types.h; sourceTree = "<group>"; };
+		2B75FE5B2C21F51500B207CF /* eos_ecom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ecom.h; path = ../../EOS_sdk/Include/eos_ecom.h; sourceTree = "<group>"; };
+		2B75FE5C2C21F51500B207CF /* eos_mods_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_mods_types.h; path = ../../EOS_sdk/Include/eos_mods_types.h; sourceTree = "<group>"; };
+		2B75FE5D2C21F51500B207CF /* eos_leaderboards_types_deprecated.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eos_leaderboards_types_deprecated.inl; path = ../../EOS_sdk/Include/eos_leaderboards_types_deprecated.inl; sourceTree = "<group>"; };
+		2B75FE5E2C21F51500B207CF /* eos_anticheatclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatclient.h; path = ../../EOS_sdk/Include/eos_anticheatclient.h; sourceTree = "<group>"; };
+		2B75FE5F2C21F51500B207CF /* eos_custominvites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_custominvites.h; path = ../../EOS_sdk/Include/eos_custominvites.h; sourceTree = "<group>"; };
+		2B75FE602C21F51500B207CF /* eos_reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_reports.h; path = ../../EOS_sdk/Include/eos_reports.h; sourceTree = "<group>"; };
+		2B75FE612C21F51500B207CF /* eos_anticheatclient_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatclient_types.h; path = ../../EOS_sdk/Include/eos_anticheatclient_types.h; sourceTree = "<group>"; };
+		2B75FE622C21F51500B207CF /* eos_rtc_data_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_data_types.h; path = ../../EOS_sdk/Include/eos_rtc_data_types.h; sourceTree = "<group>"; };
+		2B75FE632C21F51500B207CF /* eos_rtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc.h; path = ../../EOS_sdk/Include/eos_rtc.h; sourceTree = "<group>"; };
+		2B75FE642C21F51500B207CF /* eos_stats_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_stats_types.h; path = ../../EOS_sdk/Include/eos_stats_types.h; sourceTree = "<group>"; };
+		2B75FE652C21F51500B207CF /* eos_progressionsnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_progressionsnapshot.h; path = ../../EOS_sdk/Include/eos_progressionsnapshot.h; sourceTree = "<group>"; };
+		2B75FE662C21F51500B207CF /* eos_platform_prereqs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_platform_prereqs.h; path = ../../EOS_sdk/Include/eos_platform_prereqs.h; sourceTree = "<group>"; };
+		2B75FE672C21F51500B207CF /* eos_mods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_mods.h; path = ../../EOS_sdk/Include/eos_mods.h; sourceTree = "<group>"; };
+		2B75FE682C21F51500B207CF /* eos_lobby_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_lobby_types.h; path = ../../EOS_sdk/Include/eos_lobby_types.h; sourceTree = "<group>"; };
+		2B75FE692C21F51500B207CF /* eos_integratedplatform_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_integratedplatform_types.h; path = ../../EOS_sdk/Include/eos_integratedplatform_types.h; sourceTree = "<group>"; };
+		2B75FE6A2C21F51500B207CF /* eos_connect_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_connect_types.h; path = ../../EOS_sdk/Include/eos_connect_types.h; sourceTree = "<group>"; };
+		2B75FE6B2C21F51500B207CF /* eos_anticheatcommon_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatcommon_types.h; path = ../../EOS_sdk/Include/eos_anticheatcommon_types.h; sourceTree = "<group>"; };
+		2B75FE6C2C21F51500B207CF /* eos_metrics_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_metrics_types.h; path = ../../EOS_sdk/Include/eos_metrics_types.h; sourceTree = "<group>"; };
+		2B75FE6D2C21F51500B207CF /* eos_p2p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_p2p.h; path = ../../EOS_sdk/Include/eos_p2p.h; sourceTree = "<group>"; };
+		2B75FE6E2C21F51500B207CF /* eos_playerdatastorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_playerdatastorage.h; path = ../../EOS_sdk/Include/eos_playerdatastorage.h; sourceTree = "<group>"; };
+		2B75FE6F2C21F51500B207CF /* eos_anticheatclient_types_deprecated.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eos_anticheatclient_types_deprecated.inl; path = ../../EOS_sdk/Include/eos_anticheatclient_types_deprecated.inl; sourceTree = "<group>"; };
+		2B75FE702C21F51500B207CF /* eos_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_common.h; path = ../../EOS_sdk/Include/eos_common.h; sourceTree = "<group>"; };
+		2B75FE712C21F51500B207CF /* eos_achievements_types_deprecated.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eos_achievements_types_deprecated.inl; path = ../../EOS_sdk/Include/eos_achievements_types_deprecated.inl; sourceTree = "<group>"; };
+		2B75FE722C21F51500B207CF /* eos_anticheatserver_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatserver_types.h; path = ../../EOS_sdk/Include/eos_anticheatserver_types.h; sourceTree = "<group>"; };
+		2B75FE732C21F51500B207CF /* eos_achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_achievements.h; path = ../../EOS_sdk/Include/eos_achievements.h; sourceTree = "<group>"; };
+		2B75FE742C21F51500B207CF /* eos_integratedplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_integratedplatform.h; path = ../../EOS_sdk/Include/eos_integratedplatform.h; sourceTree = "<group>"; };
+		2B75FE752C21F51500B207CF /* eos_sanctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sanctions.h; path = ../../EOS_sdk/Include/eos_sanctions.h; sourceTree = "<group>"; };
+		2B75FE762C21F51500B207CF /* eos_logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_logging.h; path = ../../EOS_sdk/Include/eos_logging.h; sourceTree = "<group>"; };
+		2B75FE772C21F51500B207CF /* eos_ui_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ui_keys.h; path = ../../EOS_sdk/Include/eos_ui_keys.h; sourceTree = "<group>"; };
+		2B75FE782C21F51500B207CF /* eos_stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_stats.h; path = ../../EOS_sdk/Include/eos_stats.h; sourceTree = "<group>"; };
+		2B75FE792C21F51500B207CF /* eos_kws.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_kws.h; path = ../../EOS_sdk/Include/eos_kws.h; sourceTree = "<group>"; };
+		2B75FE7A2C21F51500B207CF /* eos_auth_types_deprecated.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eos_auth_types_deprecated.inl; path = ../../EOS_sdk/Include/eos_auth_types_deprecated.inl; sourceTree = "<group>"; };
+		2B75FE7B2C21F51500B207CF /* eos_presence_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_presence_types.h; path = ../../EOS_sdk/Include/eos_presence_types.h; sourceTree = "<group>"; };
+		2B75FE7C2C21F51500B207CF /* eos_auth_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_auth_types.h; path = ../../EOS_sdk/Include/eos_auth_types.h; sourceTree = "<group>"; };
+		2B75FE7D2C21F51500B207CF /* eos_rtc_audio_types_deprecated.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eos_rtc_audio_types_deprecated.inl; path = ../../EOS_sdk/Include/eos_rtc_audio_types_deprecated.inl; sourceTree = "<group>"; };
+		2B75FE7E2C21F51500B207CF /* eos_rtc_admin_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_admin_types.h; path = ../../EOS_sdk/Include/eos_rtc_admin_types.h; sourceTree = "<group>"; };
+		2B75FE7F2C21F51500B207CF /* eos_sdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sdk.h; path = ../../EOS_sdk/Include/eos_sdk.h; sourceTree = "<group>"; };
+		2B75FE802C21F51500B207CF /* eos_leaderboards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_leaderboards.h; path = ../../EOS_sdk/Include/eos_leaderboards.h; sourceTree = "<group>"; };
+		2B75FE812C21F51500B207CF /* eos_kws_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_kws_types.h; path = ../../EOS_sdk/Include/eos_kws_types.h; sourceTree = "<group>"; };
+		2B75FE822C21F51500B207CF /* eos_titlestorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_titlestorage.h; path = ../../EOS_sdk/Include/eos_titlestorage.h; sourceTree = "<group>"; };
+		2B75FE832C21F51500B207CF /* eos_p2p_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_p2p_types.h; path = ../../EOS_sdk/Include/eos_p2p_types.h; sourceTree = "<group>"; };
+		2B75FE842C21F51500B207CF /* eos_friends_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_friends_types.h; path = ../../EOS_sdk/Include/eos_friends_types.h; sourceTree = "<group>"; };
+		2B75FE852C21F51500B207CF /* eos_anticheatserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_anticheatserver.h; path = ../../EOS_sdk/Include/eos_anticheatserver.h; sourceTree = "<group>"; };
+		2B75FE862C21F51500B207CF /* eos_rtc_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_types.h; path = ../../EOS_sdk/Include/eos_rtc_types.h; sourceTree = "<group>"; };
+		2B75FE872C21F51500B207CF /* eos_reports_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_reports_types.h; path = ../../EOS_sdk/Include/eos_reports_types.h; sourceTree = "<group>"; };
+		2B75FE882C21F51500B207CF /* eos_connect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_connect.h; path = ../../EOS_sdk/Include/eos_connect.h; sourceTree = "<group>"; };
+		2B75FE892C21F51500B207CF /* eos_custominvites_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_custominvites_types.h; path = ../../EOS_sdk/Include/eos_custominvites_types.h; sourceTree = "<group>"; };
+		2B75FE8A2C21F51500B207CF /* eos_rtc_admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_admin.h; path = ../../EOS_sdk/Include/eos_rtc_admin.h; sourceTree = "<group>"; };
+		2B75FE8B2C21F51500B207CF /* eos_init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_init.h; path = ../../EOS_sdk/Include/eos_init.h; sourceTree = "<group>"; };
+		2B75FE8C2C21F51500B207CF /* eos_userinfo_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_userinfo_types.h; path = ../../EOS_sdk/Include/eos_userinfo_types.h; sourceTree = "<group>"; };
+		2B75FE8D2C21F51500B207CF /* eos_friends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_friends.h; path = ../../EOS_sdk/Include/eos_friends.h; sourceTree = "<group>"; };
+		2B75FE8E2C21F51500B207CF /* eos_lobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_lobby.h; path = ../../EOS_sdk/Include/eos_lobby.h; sourceTree = "<group>"; };
+		2B75FE8F2C21F51500B207CF /* eos_rtc_audio_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_audio_types.h; path = ../../EOS_sdk/Include/eos_rtc_audio_types.h; sourceTree = "<group>"; };
+		2B75FE902C21F51500B207CF /* eos_titlestorage_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_titlestorage_types.h; path = ../../EOS_sdk/Include/eos_titlestorage_types.h; sourceTree = "<group>"; };
+		2B75FE912C21F51500B207CF /* eos_ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ui.h; path = ../../EOS_sdk/Include/eos_ui.h; sourceTree = "<group>"; };
+		2B75FE922C21F51500B207CF /* eos_metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_metrics.h; path = ../../EOS_sdk/Include/eos_metrics.h; sourceTree = "<group>"; };
+		2B75FE932C21F51500B207CF /* eos_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_types.h; path = ../../EOS_sdk/Include/eos_types.h; sourceTree = "<group>"; };
+		2B75FE942C21F51500B207CF /* eos_progressionsnapshot_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_progressionsnapshot_types.h; path = ../../EOS_sdk/Include/eos_progressionsnapshot_types.h; sourceTree = "<group>"; };
+		2B75FE952C21F51500B207CF /* eos_ui_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ui_types.h; path = ../../EOS_sdk/Include/eos_ui_types.h; sourceTree = "<group>"; };
+		2B75FE962C21F51500B207CF /* eos_Mac_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_Mac_base.h; path = ../../EOS_sdk/Include/Mac/eos_Mac_base.h; sourceTree = "<group>"; };
+		2B75FE972C21F51500B207CF /* eos_rtc_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_audio.h; path = ../../EOS_sdk/Include/eos_rtc_audio.h; sourceTree = "<group>"; };
+		2B75FE982C21F51500B207CF /* eos_sessions_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sessions_types.h; path = ../../EOS_sdk/Include/eos_sessions_types.h; sourceTree = "<group>"; };
+		2B75FE992C21F51500B207CF /* eos_presence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_presence.h; path = ../../EOS_sdk/Include/eos_presence.h; sourceTree = "<group>"; };
+		2B75FE9A2C21F51500B207CF /* eos_achievements_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_achievements_types.h; path = ../../EOS_sdk/Include/eos_achievements_types.h; sourceTree = "<group>"; };
+		2B75FE9B2C21F51500B207CF /* eos_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_base.h; path = ../../EOS_sdk/Include/eos_base.h; sourceTree = "<group>"; };
+		2B75FE9C2C21F51500B207CF /* eos_ecom_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ecom_types.h; path = ../../EOS_sdk/Include/eos_ecom_types.h; sourceTree = "<group>"; };
+		2B75FE9D2C21F51500B207CF /* eos_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_Mac.h; path = ../../EOS_sdk/Include/Mac/eos_Mac.h; sourceTree = "<group>"; };
+		2B75FE9E2C21F51500B207CF /* eos_auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_auth.h; path = ../../EOS_sdk/Include/eos_auth.h; sourceTree = "<group>"; };
+		2B75FE9F2C21F51500B207CF /* eos_playerdatastorage_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_playerdatastorage_types.h; path = ../../EOS_sdk/Include/eos_playerdatastorage_types.h; sourceTree = "<group>"; };
+		2B75FEA02C21F51500B207CF /* eos_result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_result.h; path = ../../EOS_sdk/Include/eos_result.h; sourceTree = "<group>"; };
+		2B75FEA12C21F51500B207CF /* eos_sessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sessions.h; path = ../../EOS_sdk/Include/eos_sessions.h; sourceTree = "<group>"; };
+		2B75FEA22C21F51500B207CF /* eos_ui_buttons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ui_buttons.h; path = ../../EOS_sdk/Include/eos_ui_buttons.h; sourceTree = "<group>"; };
+		2B75FEA32C21F51500B207CF /* eos_rtc_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_data.h; path = ../../EOS_sdk/Include/eos_rtc_data.h; sourceTree = "<group>"; };
+		2B75FEA42C21F51500B207CF /* eos_sanctions_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sanctions_types.h; path = ../../EOS_sdk/Include/eos_sanctions_types.h; sourceTree = "<group>"; };
+		2B75FEA52C21F51500B207CF /* eos_userinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_userinfo.h; path = ../../EOS_sdk/Include/eos_userinfo.h; sourceTree = "<group>"; };
 		2BC97926287F41760079F3E2 /* DesktopExtensionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DesktopExtensionTools.h; path = ../EOS_vs/EpicOnlineServices/DesktopExtensionTools.h; sourceTree = "<group>"; };
 		2BC97927287F41760079F3E2 /* DesktopExtensionTools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DesktopExtensionTools.mm; path = ../EOS_vs/EpicOnlineServices/DesktopExtensionTools.mm; sourceTree = "<group>"; };
 		2BD17D7528349CC200C86127 /* YYEOS_Friends.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Friends.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Friends.cpp; sourceTree = "<group>"; };
@@ -240,83 +254,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2BC9789E287F3F170079F3E2 /* SDK */ = {
+		2B75FE582C21F4F600B207CF /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				2BC978E1287F3F2C0079F3E2 /* eos_achievements_types_deprecated.inl */,
-				2BC978D7287F3F2C0079F3E2 /* eos_achievements_types.h */,
-				2BC978D8287F3F2C0079F3E2 /* eos_achievements.h */,
-				2BC978CF287F3F2C0079F3E2 /* eos_anticheatclient_types.h */,
-				2BC978A5287F3F2C0079F3E2 /* eos_anticheatclient.h */,
-				2BC978D4287F3F2C0079F3E2 /* eos_anticheatcommon_types.h */,
-				2BC978E3287F3F2C0079F3E2 /* eos_anticheatserver_types.h */,
-				2BC978A4287F3F2C0079F3E2 /* eos_anticheatserver.h */,
-				2BC978DA287F3F2C0079F3E2 /* eos_auth_types.h */,
-				2BC978B2287F3F2C0079F3E2 /* eos_auth.h */,
-				2BC978BF287F3F2C0079F3E2 /* eos_base.h */,
-				2BC978D0287F3F2C0079F3E2 /* eos_common.h */,
-				2BC978B7287F3F2C0079F3E2 /* eos_connect_types.h */,
-				2BC978C9287F3F2C0079F3E2 /* eos_connect.h */,
-				2BC978B9287F3F2C0079F3E2 /* eos_custominvites_types.h */,
-				2BC978A2287F3F2C0079F3E2 /* eos_custominvites.h */,
-				2BC978CB287F3F2C0079F3E2 /* eos_ecom_types.h */,
-				2BC978D9287F3F2C0079F3E2 /* eos_ecom.h */,
-				2BC978A0287F3F2C0079F3E2 /* eos_friends_types.h */,
-				2BC978C1287F3F2C0079F3E2 /* eos_friends.h */,
-				2BC978D5287F3F2C0079F3E2 /* eos_init.h */,
-				2BC978A3287F3F2C0079F3E2 /* eos_kws_types.h */,
-				2BC978AC287F3F2C0079F3E2 /* eos_kws.h */,
-				2BC978A7287F3F2C0079F3E2 /* eos_leaderboards_types_deprecated.inl */,
-				2BC978B6287F3F2C0079F3E2 /* eos_leaderboards_types.h */,
-				2BC978B8287F3F2C0079F3E2 /* eos_leaderboards.h */,
-				2BC978E2287F3F2C0079F3E2 /* eos_lobby_types.h */,
-				2BC978AD287F3F2C0079F3E2 /* eos_lobby.h */,
-				2BC978AE287F3F2C0079F3E2 /* eos_logging.h */,
-				2BC978D6287F3F2C0079F3E2 /* eos_metrics_types.h */,
-				2BC978C7287F3F2C0079F3E2 /* eos_metrics.h */,
-				2BC978CD287F3F2C0079F3E2 /* eos_mods_types.h */,
-				2BC978BB287F3F2C0079F3E2 /* eos_mods.h */,
-				2BC978BA287F3F2C0079F3E2 /* eos_p2p_types.h */,
-				2BC978AA287F3F2C0079F3E2 /* eos_p2p.h */,
-				2BC978CA287F3F2C0079F3E2 /* eos_platform_prereqs.h */,
-				2BC978B4287F3F2C0079F3E2 /* eos_playerdatastorage_types.h */,
-				2BC978B0287F3F2C0079F3E2 /* eos_playerdatastorage.h */,
-				2BC978C3287F3F2C0079F3E2 /* eos_presence_types.h */,
-				2BC978BD287F3F2C0079F3E2 /* eos_presence.h */,
-				2BC978BC287F3F2C0079F3E2 /* eos_progressionsnapshot_types.h */,
-				2BC978DE287F3F2C0079F3E2 /* eos_progressionsnapshot.h */,
-				2BC978AF287F3F2C0079F3E2 /* eos_reports_types.h */,
-				2BC978C0287F3F2C0079F3E2 /* eos_reports.h */,
-				2BC978B1287F3F2C0079F3E2 /* eos_result.h */,
-				2BC978E4287F3F2C0079F3E2 /* eos_rtc_admin_types.h */,
-				2BC978A8287F3F2C0079F3E2 /* eos_rtc_admin.h */,
-				2BC978DB287F3F2C0079F3E2 /* eos_rtc_audio_types.h */,
-				2BC978D1287F3F2C0079F3E2 /* eos_rtc_audio.h */,
-				2BC978CC287F3F2C0079F3E2 /* eos_rtc_types.h */,
-				2BC978B3287F3F2C0079F3E2 /* eos_rtc.h */,
-				2BC978A1287F3F2C0079F3E2 /* eos_sanctions_types.h */,
-				2BC978DF287F3F2C0079F3E2 /* eos_sanctions.h */,
-				2BC978C5287F3F2C0079F3E2 /* eos_sdk.h */,
-				2BC978DC287F3F2C0079F3E2 /* eos_sessions_types.h */,
-				2BC978A9287F3F2C0079F3E2 /* eos_sessions.h */,
-				2BC978C4287F3F2C0079F3E2 /* eos_stats_types.h */,
-				2BC978E0287F3F2C0079F3E2 /* eos_stats.h */,
-				2BC978BE287F3F2C0079F3E2 /* eos_titlestorage_types.h */,
-				2BC978B5287F3F2C0079F3E2 /* eos_titlestorage.h */,
-				2BC978DD287F3F2C0079F3E2 /* eos_types.h */,
-				2BC978A6287F3F2C0079F3E2 /* eos_ui_keys.h */,
-				2BC978D2287F3F2C0079F3E2 /* eos_ui_types.h */,
-				2BC978C2287F3F2C0079F3E2 /* eos_ui.h */,
-				2BC978C8287F3F2C0079F3E2 /* eos_userinfo_types.h */,
-				2BC978C6287F3F2C0079F3E2 /* eos_userinfo.h */,
-				2BC978CE287F3F2C0079F3E2 /* eos_version.h */,
-				2BC978AB287F3F2C0079F3E2 /* Linux */,
-				2BC978D3287F3F2C0079F3E2 /* Mac */,
-				2BC9789F287F3F2C0079F3E2 /* Windows */,
+				2B75FE712C21F51500B207CF /* eos_achievements_types_deprecated.inl */,
+				2B75FE9A2C21F51500B207CF /* eos_achievements_types.h */,
+				2B75FE732C21F51500B207CF /* eos_achievements.h */,
+				2B75FE6F2C21F51500B207CF /* eos_anticheatclient_types_deprecated.inl */,
+				2B75FE612C21F51500B207CF /* eos_anticheatclient_types.h */,
+				2B75FE5E2C21F51500B207CF /* eos_anticheatclient.h */,
+				2B75FE6B2C21F51500B207CF /* eos_anticheatcommon_types.h */,
+				2B75FE722C21F51500B207CF /* eos_anticheatserver_types.h */,
+				2B75FE852C21F51500B207CF /* eos_anticheatserver.h */,
+				2B75FE7A2C21F51500B207CF /* eos_auth_types_deprecated.inl */,
+				2B75FE7C2C21F51500B207CF /* eos_auth_types.h */,
+				2B75FE9E2C21F51500B207CF /* eos_auth.h */,
+				2B75FE9B2C21F51500B207CF /* eos_base.h */,
+				2B75FE702C21F51500B207CF /* eos_common.h */,
+				2B75FE6A2C21F51500B207CF /* eos_connect_types.h */,
+				2B75FE882C21F51500B207CF /* eos_connect.h */,
+				2B75FE892C21F51500B207CF /* eos_custominvites_types.h */,
+				2B75FE5F2C21F51500B207CF /* eos_custominvites.h */,
+				2B75FE9C2C21F51500B207CF /* eos_ecom_types.h */,
+				2B75FE5B2C21F51500B207CF /* eos_ecom.h */,
+				2B75FE842C21F51500B207CF /* eos_friends_types.h */,
+				2B75FE8D2C21F51500B207CF /* eos_friends.h */,
+				2B75FE8B2C21F51500B207CF /* eos_init.h */,
+				2B75FE692C21F51500B207CF /* eos_integratedplatform_types.h */,
+				2B75FE742C21F51500B207CF /* eos_integratedplatform.h */,
+				2B75FE812C21F51500B207CF /* eos_kws_types.h */,
+				2B75FE792C21F51500B207CF /* eos_kws.h */,
+				2B75FE5D2C21F51500B207CF /* eos_leaderboards_types_deprecated.inl */,
+				2B75FE5A2C21F51500B207CF /* eos_leaderboards_types.h */,
+				2B75FE802C21F51500B207CF /* eos_leaderboards.h */,
+				2B75FE682C21F51500B207CF /* eos_lobby_types.h */,
+				2B75FE8E2C21F51500B207CF /* eos_lobby.h */,
+				2B75FE762C21F51500B207CF /* eos_logging.h */,
+				2B75FE962C21F51500B207CF /* eos_Mac_base.h */,
+				2B75FE9D2C21F51500B207CF /* eos_Mac.h */,
+				2B75FE6C2C21F51500B207CF /* eos_metrics_types.h */,
+				2B75FE922C21F51500B207CF /* eos_metrics.h */,
+				2B75FE5C2C21F51500B207CF /* eos_mods_types.h */,
+				2B75FE672C21F51500B207CF /* eos_mods.h */,
+				2B75FE832C21F51500B207CF /* eos_p2p_types.h */,
+				2B75FE6D2C21F51500B207CF /* eos_p2p.h */,
+				2B75FE662C21F51500B207CF /* eos_platform_prereqs.h */,
+				2B75FE9F2C21F51500B207CF /* eos_playerdatastorage_types.h */,
+				2B75FE6E2C21F51500B207CF /* eos_playerdatastorage.h */,
+				2B75FE7B2C21F51500B207CF /* eos_presence_types.h */,
+				2B75FE992C21F51500B207CF /* eos_presence.h */,
+				2B75FE942C21F51500B207CF /* eos_progressionsnapshot_types.h */,
+				2B75FE652C21F51500B207CF /* eos_progressionsnapshot.h */,
+				2B75FE872C21F51500B207CF /* eos_reports_types.h */,
+				2B75FE602C21F51500B207CF /* eos_reports.h */,
+				2B75FEA02C21F51500B207CF /* eos_result.h */,
+				2B75FE7E2C21F51500B207CF /* eos_rtc_admin_types.h */,
+				2B75FE8A2C21F51500B207CF /* eos_rtc_admin.h */,
+				2B75FE7D2C21F51500B207CF /* eos_rtc_audio_types_deprecated.inl */,
+				2B75FE8F2C21F51500B207CF /* eos_rtc_audio_types.h */,
+				2B75FE972C21F51500B207CF /* eos_rtc_audio.h */,
+				2B75FE622C21F51500B207CF /* eos_rtc_data_types.h */,
+				2B75FEA32C21F51500B207CF /* eos_rtc_data.h */,
+				2B75FE862C21F51500B207CF /* eos_rtc_types.h */,
+				2B75FE632C21F51500B207CF /* eos_rtc.h */,
+				2B75FEA42C21F51500B207CF /* eos_sanctions_types.h */,
+				2B75FE752C21F51500B207CF /* eos_sanctions.h */,
+				2B75FE7F2C21F51500B207CF /* eos_sdk.h */,
+				2B75FE982C21F51500B207CF /* eos_sessions_types.h */,
+				2B75FEA12C21F51500B207CF /* eos_sessions.h */,
+				2B75FE642C21F51500B207CF /* eos_stats_types.h */,
+				2B75FE782C21F51500B207CF /* eos_stats.h */,
+				2B75FE902C21F51500B207CF /* eos_titlestorage_types.h */,
+				2B75FE822C21F51500B207CF /* eos_titlestorage.h */,
+				2B75FE932C21F51500B207CF /* eos_types.h */,
+				2B75FEA22C21F51500B207CF /* eos_ui_buttons.h */,
+				2B75FE772C21F51500B207CF /* eos_ui_keys.h */,
+				2B75FE952C21F51500B207CF /* eos_ui_types.h */,
+				2B75FE912C21F51500B207CF /* eos_ui.h */,
+				2B75FE8C2C21F51500B207CF /* eos_userinfo_types.h */,
+				2B75FEA52C21F51500B207CF /* eos_userinfo.h */,
+				2B75FE592C21F51400B207CF /* eos_version.h */,
 			);
-			name = SDK;
-			path = ../EOS_sdk/Include;
-			sourceTree = SOURCE_ROOT;
+			path = SDK;
+			sourceTree = "<group>";
 		};
 		2BD17D7428349CA100C86127 /* GML */ = {
 			isa = PBXGroup;
@@ -352,9 +372,9 @@
 		2BE86CDA281A0C400072D68B = {
 			isa = PBXGroup;
 			children = (
+				2B75FE582C21F4F600B207CF /* SDK */,
 				2BC97926287F41760079F3E2 /* DesktopExtensionTools.h */,
 				2BC97927287F41760079F3E2 /* DesktopExtensionTools.mm */,
-				2BC9789E287F3F170079F3E2 /* SDK */,
 				2BD17D7428349CA100C86127 /* GML */,
 				2BE86D8B281A20620072D68B /* libEOSSDK-Mac-Shipping.dylib */,
 				2BE86CF7281A0EA90072D68B /* dllmain.cpp */,
@@ -383,78 +403,85 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BC97907287F3F2C0079F3E2 /* eos_stats_types.h in Headers */,
-				2BC978ED287F3F2C0079F3E2 /* eos_sessions.h in Headers */,
-				2BC9791C287F3F2C0079F3E2 /* eos_auth_types.h in Headers */,
-				2BC978F2287F3F2C0079F3E2 /* eos_reports_types.h in Headers */,
+				2B75FEBE2C21F51500B207CF /* eos_integratedplatform.h in Headers */,
+				2B75FEAD2C21F51500B207CF /* eos_anticheatclient_types.h in Headers */,
+				2B75FEC22C21F51500B207CF /* eos_stats.h in Headers */,
+				2B75FED82C21F51500B207CF /* eos_titlestorage_types.h in Headers */,
+				2B75FEE72C21F51500B207CF /* eos_playerdatastorage_types.h in Headers */,
+				2B75FEC42C21F51500B207CF /* eos_presence_types.h in Headers */,
+				2B75FECC2C21F51500B207CF /* eos_friends_types.h in Headers */,
 				2BE86CFC281A0EA90072D68B /* Ref.h in Headers */,
-				2BC978F6287F3F2C0079F3E2 /* eos_rtc.h in Headers */,
-				2BC9790A287F3F2C0079F3E2 /* eos_metrics.h in Headers */,
-				2BC97910287F3F2C0079F3E2 /* eos_mods_types.h in Headers */,
-				2BC978F1287F3F2C0079F3E2 /* eos_logging.h in Headers */,
-				2BC978E8287F3F2C0079F3E2 /* eos_kws_types.h in Headers */,
-				2BC97918287F3F2C0079F3E2 /* eos_metrics_types.h in Headers */,
+				2B75FEDD2C21F51500B207CF /* eos_ui_types.h in Headers */,
+				2B75FECA2C21F51500B207CF /* eos_titlestorage.h in Headers */,
+				2B75FED62C21F51500B207CF /* eos_lobby.h in Headers */,
+				2B75FEB12C21F51500B207CF /* eos_progressionsnapshot.h in Headers */,
 				2BE86CFD281A0EA90072D68B /* Extension_Interface.h in Headers */,
-				2BC97903287F3F2C0079F3E2 /* eos_reports.h in Headers */,
-				2BC97909287F3F2C0079F3E2 /* eos_userinfo.h in Headers */,
-				2BC978EB287F3F2C0079F3E2 /* eos_ui_keys.h in Headers */,
-				2BC978F4287F3F2C0079F3E2 /* eos_result.h in Headers */,
-				2BC97921287F3F2C0079F3E2 /* eos_sanctions.h in Headers */,
-				2BC978F0287F3F2C0079F3E2 /* eos_lobby.h in Headers */,
-				2BC9790E287F3F2C0079F3E2 /* eos_ecom_types.h in Headers */,
-				2BC978EE287F3F2C0079F3E2 /* eos_p2p.h in Headers */,
-				2BC978F3287F3F2C0079F3E2 /* eos_playerdatastorage.h in Headers */,
-				2BC97913287F3F2C0079F3E2 /* eos_common.h in Headers */,
+				2B75FED02C21F51500B207CF /* eos_connect.h in Headers */,
 				2BE86CFB281A0EA90072D68B /* pch.h in Headers */,
-				2BC97925287F3F2C0079F3E2 /* eos_rtc_admin_types.h in Headers */,
-				2BC97901287F3F2C0079F3E2 /* eos_titlestorage_types.h in Headers */,
-				2BC9791E287F3F2C0079F3E2 /* eos_sessions_types.h in Headers */,
-				2BC97914287F3F2C0079F3E2 /* eos_rtc_audio.h in Headers */,
-				2BC978EC287F3F2C0079F3E2 /* eos_rtc_admin.h in Headers */,
-				2BC9790F287F3F2C0079F3E2 /* eos_rtc_types.h in Headers */,
-				2BC978FD287F3F2C0079F3E2 /* eos_p2p_types.h in Headers */,
-				2BC97908287F3F2C0079F3E2 /* eos_sdk.h in Headers */,
-				2BC978E5287F3F2C0079F3E2 /* eos_friends_types.h in Headers */,
-				2BC97923287F3F2C0079F3E2 /* eos_lobby_types.h in Headers */,
-				2BC978EA287F3F2C0079F3E2 /* eos_anticheatclient.h in Headers */,
-				2BC9791D287F3F2C0079F3E2 /* eos_rtc_audio_types.h in Headers */,
-				2BC978E9287F3F2C0079F3E2 /* eos_anticheatserver.h in Headers */,
-				2BC97911287F3F2C0079F3E2 /* eos_version.h in Headers */,
-				2BC97902287F3F2C0079F3E2 /* eos_base.h in Headers */,
-				2BC978F8287F3F2C0079F3E2 /* eos_titlestorage.h in Headers */,
-				2BC97919287F3F2C0079F3E2 /* eos_achievements_types.h in Headers */,
-				2BC97906287F3F2C0079F3E2 /* eos_presence_types.h in Headers */,
-				2BC978E6287F3F2C0079F3E2 /* eos_sanctions_types.h in Headers */,
-				2BC978E7287F3F2C0079F3E2 /* eos_custominvites.h in Headers */,
-				2BC97924287F3F2C0079F3E2 /* eos_anticheatserver_types.h in Headers */,
+				2B75FECD2C21F51500B207CF /* eos_anticheatserver.h in Headers */,
+				2B75FEEA2C21F51500B207CF /* eos_ui_buttons.h in Headers */,
+				2B75FEE92C21F51500B207CF /* eos_sessions.h in Headers */,
+				2B75FECB2C21F51500B207CF /* eos_p2p_types.h in Headers */,
+				2B75FEEC2C21F51500B207CF /* eos_sanctions_types.h in Headers */,
+				2B75FEE62C21F51500B207CF /* eos_auth.h in Headers */,
+				2B75FEB92C21F51500B207CF /* eos_p2p.h in Headers */,
+				2B75FEA72C21F51500B207CF /* eos_leaderboards_types.h in Headers */,
+				2B75FEA82C21F51500B207CF /* eos_ecom.h in Headers */,
+				2B75FEDC2C21F51500B207CF /* eos_progressionsnapshot_types.h in Headers */,
+				2B75FED22C21F51500B207CF /* eos_rtc_admin.h in Headers */,
+				2B75FEDE2C21F51500B207CF /* eos_Mac_base.h in Headers */,
+				2B75FED12C21F51500B207CF /* eos_custominvites_types.h in Headers */,
+				2B75FEC12C21F51500B207CF /* eos_ui_keys.h in Headers */,
+				2B75FEB32C21F51500B207CF /* eos_mods.h in Headers */,
+				2B75FEC72C21F51500B207CF /* eos_sdk.h in Headers */,
+				2B75FEAE2C21F51500B207CF /* eos_rtc_data_types.h in Headers */,
+				2B75FEE02C21F51500B207CF /* eos_sessions_types.h in Headers */,
+				2B75FEC62C21F51500B207CF /* eos_rtc_admin_types.h in Headers */,
+				2B75FEBD2C21F51500B207CF /* eos_achievements.h in Headers */,
+				2B75FEB52C21F51500B207CF /* eos_integratedplatform_types.h in Headers */,
+				2B75FEAA2C21F51500B207CF /* eos_anticheatclient.h in Headers */,
+				2B75FEA92C21F51500B207CF /* eos_mods_types.h in Headers */,
+				2B75FECF2C21F51500B207CF /* eos_reports_types.h in Headers */,
+				2B75FEBC2C21F51500B207CF /* eos_anticheatserver_types.h in Headers */,
 				2BE86CF8281A0EA90072D68B /* framework.h in Headers */,
-				2BC97900287F3F2C0079F3E2 /* eos_presence.h in Headers */,
+				2B75FEE12C21F51500B207CF /* eos_presence.h in Headers */,
+				2B75FEB62C21F51500B207CF /* eos_connect_types.h in Headers */,
+				2B75FEED2C21F51500B207CF /* eos_userinfo.h in Headers */,
+				2B75FED42C21F51500B207CF /* eos_userinfo_types.h in Headers */,
+				2B75FEDF2C21F51500B207CF /* eos_rtc_audio.h in Headers */,
+				2B75FEE42C21F51500B207CF /* eos_ecom_types.h in Headers */,
+				2B75FEC32C21F51500B207CF /* eos_kws.h in Headers */,
+				2B75FEAF2C21F51500B207CF /* eos_rtc.h in Headers */,
+				2B75FEB72C21F51500B207CF /* eos_anticheatcommon_types.h in Headers */,
+				2B75FEEB2C21F51500B207CF /* eos_rtc_data.h in Headers */,
+				2B75FEBB2C21F51500B207CF /* eos_common.h in Headers */,
+				2B75FEBF2C21F51500B207CF /* eos_sanctions.h in Headers */,
+				2B75FEAB2C21F51500B207CF /* eos_custominvites.h in Headers */,
+				2B75FED72C21F51500B207CF /* eos_rtc_audio_types.h in Headers */,
+				2B75FEE52C21F51500B207CF /* eos_Mac.h in Headers */,
+				2B75FEB02C21F51500B207CF /* eos_stats_types.h in Headers */,
+				2B75FEE22C21F51500B207CF /* eos_achievements_types.h in Headers */,
+				2B75FED92C21F51500B207CF /* eos_ui.h in Headers */,
+				2B75FEC02C21F51500B207CF /* eos_logging.h in Headers */,
+				2B75FEC52C21F51500B207CF /* eos_auth_types.h in Headers */,
+				2B75FEC92C21F51500B207CF /* eos_kws_types.h in Headers */,
 				2BE86CFA281A0EA90072D68B /* YYRValue.h in Headers */,
-				2BC978FA287F3F2C0079F3E2 /* eos_connect_types.h in Headers */,
-				2BC97915287F3F2C0079F3E2 /* eos_ui_types.h in Headers */,
-				2BC97904287F3F2C0079F3E2 /* eos_friends.h in Headers */,
-				2BC9791F287F3F2C0079F3E2 /* eos_types.h in Headers */,
-				2BC978EF287F3F2C0079F3E2 /* eos_kws.h in Headers */,
-				2BC978F5287F3F2C0079F3E2 /* eos_auth.h in Headers */,
-				2BC978FC287F3F2C0079F3E2 /* eos_custominvites_types.h in Headers */,
-				2BC9791B287F3F2C0079F3E2 /* eos_ecom.h in Headers */,
-				2BC9791A287F3F2C0079F3E2 /* eos_achievements.h in Headers */,
-				2BC978F7287F3F2C0079F3E2 /* eos_playerdatastorage_types.h in Headers */,
-				2BC978FE287F3F2C0079F3E2 /* eos_mods.h in Headers */,
-				2BC9790C287F3F2C0079F3E2 /* eos_connect.h in Headers */,
+				2B75FEE32C21F51500B207CF /* eos_base.h in Headers */,
+				2B75FEE82C21F51500B207CF /* eos_result.h in Headers */,
+				2B75FEAC2C21F51500B207CF /* eos_reports.h in Headers */,
+				2B75FED52C21F51500B207CF /* eos_friends.h in Headers */,
+				2B75FEB22C21F51500B207CF /* eos_platform_prereqs.h in Headers */,
+				2B75FED32C21F51500B207CF /* eos_init.h in Headers */,
+				2B75FECE2C21F51500B207CF /* eos_rtc_types.h in Headers */,
 				2BC97928287F41760079F3E2 /* DesktopExtensionTools.h in Headers */,
-				2BC978FB287F3F2C0079F3E2 /* eos_leaderboards.h in Headers */,
-				2BC978F9287F3F2C0079F3E2 /* eos_leaderboards_types.h in Headers */,
-				2BC97920287F3F2C0079F3E2 /* eos_progressionsnapshot.h in Headers */,
-				2BC97922287F3F2C0079F3E2 /* eos_stats.h in Headers */,
-				2BC978FF287F3F2C0079F3E2 /* eos_progressionsnapshot_types.h in Headers */,
-				2BC97916287F3F2C0079F3E2 /* eos_anticheatcommon_types.h in Headers */,
-				2BC9790B287F3F2C0079F3E2 /* eos_userinfo_types.h in Headers */,
-				2BC97912287F3F2C0079F3E2 /* eos_anticheatclient_types.h in Headers */,
-				2BC9790D287F3F2C0079F3E2 /* eos_platform_prereqs.h in Headers */,
+				2B75FEBA2C21F51500B207CF /* eos_playerdatastorage.h in Headers */,
+				2B75FEB82C21F51500B207CF /* eos_metrics_types.h in Headers */,
+				2B75FEC82C21F51500B207CF /* eos_leaderboards.h in Headers */,
+				2B75FEDA2C21F51500B207CF /* eos_metrics.h in Headers */,
 				2BD17DA228349CC200C86127 /* YYEpicOnlineServices.h in Headers */,
-				2BC97905287F3F2C0079F3E2 /* eos_ui.h in Headers */,
-				2BC97917287F3F2C0079F3E2 /* eos_init.h in Headers */,
+				2B75FEA62C21F51500B207CF /* eos_version.h in Headers */,
+				2B75FEB42C21F51500B207CF /* eos_lobby_types.h in Headers */,
+				2B75FEDB2C21F51500B207CF /* eos_types.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
