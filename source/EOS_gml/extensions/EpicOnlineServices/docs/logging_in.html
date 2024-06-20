@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Logging In - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Logging In";
+        var mkdocs_page_input_path = "logging_in.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="logging_in.html">Logging In</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#using-the-epic-games-launcher">Using the Epic Games Launcher</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#external-login-flow-guide">External Login Flow Guide</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Logging In</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/logging_in.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="logging-in">Logging In</h1>
+<p>Epic Online Services offers several ways to log in and authenticate. When you use the Epic Online Services extension in your GameMaker game you should aim to use the <a href="https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface#preferred-login-types-for-epic-account">Preferred Login Types for Epic Account</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Login Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Epic Games Launcher</td>
+<td><code>EOS_LCT_ExchangeCode</code></td>
+<td>Exchange code received from the launcher and used to automatically login the user.</td>
+</tr>
+<tr>
+<td>Steam Client</td>
+<td><code>EOS_LCT_ExternalAuth</code></td>
+<td>Steam Session Ticket used to automatically login the Steam user to their associated Epic account.</td>
+</tr>
+<tr>
+<td>Other store platforms and standalone distributions on PC and Mobile Devices</td>
+<td><code>EOS_LCT_AccountPortal</code> with <code>EOS_LCT_PersistentAuth</code></td>
+<td>Users are prompted to login using their Epic account credentials, after which a long-lived refresh token is stored locally to enable automatic login across consecutive application runs.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See (<a href="auth.html#epicgames_login_credential_type">EpicGames_Login_Credential_Type</a>) for the corresponding Login Type constants of the extension.</p>
+</div>
+<h2 id="using-the-epic-games-launcher">Using the Epic Games Launcher</h2>
+<p>When you log into Epic Online Services using the extension, a straightforward way is to <a href="https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface#epic-games-launcher">use the Epic Games Launcher</a>. The launcher opens the game by running the executable, along with a few command-line parameters:</p>
+<pre class="highlight"><code>-AUTH_LOGIN=unused -AUTH_PASSWORD=&lt;password&gt; -AUTH_TYPE=exchangecode -epicapp=&lt;appid&gt; -epicenv=Prod -EpicPortal  -epicusername=&lt;username&gt; -epicuserid=&lt;userid&gt; -epiclocale=en-US -epicsandboxid=&lt;sandboxid&gt; -epicdeploymentid=&lt;deploymentid&gt;</code></pre>
+<p>The <code>AUTH_PASSWORD</code> parameter value contains the token that you should pass into <a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a>. This function should then be called with a credential type of <code>EpicGames_LCT_ExchangeCode</code>. The <code>id</code> parameter can be blank (an empty string <code>""</code>), as this login method does not require an ID. The <code>token</code> parameter needs to be set to the Exchange Code from the <code>AUTH_PASSWORD</code> command line parameter.</p>
+<pre class="highlight"><code class="language-gml">// Retrieve the AUTH_PASSWORD command-line parameter
+// (available when launching from the Epic Games Launcher)
+var _p_num = parameter_count();
+var _p_auth_password = "";
+
+if (_p_num &gt; 0)
+{
+    for (var i = 0; i &lt; _p_num; i++)
+    {
+        var _param = parameter_string(i + 1);
+
+        if(string_pos("AUTH_PASSWORD", _param))
+        {
+            _p_auth_password = string_copy(_param, 16, string_length(_param));
+        }
+    }
+}
+
+// Login using the AUTH_PASSWORD as the token parameter
+EpicGames_Auth_Login(
+    EpicGames_LCT_ExchangeCode,
+    EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence,
+    "",
+    _p_auth_password,
+    -1
+);</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The permissions that you pass must correspond exactly to the ones you set in the <a href="https://dev.epicgames.com/docs/dev-portal">Developer Portal</a>. See <a href="https://dev.epicgames.com/docs/epic-account-services/getting-started#permissions">Permissions</a>.</p>
+</div>
+<h2 id="external-login-flow-guide">External Login Flow Guide</h2>
+<p>This is a detailed login flow for external accounts (the required credentials depend on the <a href="auth.html#epicgames_external_credential_type">EpicGames_External_Credential_Type</a> used with the <a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a> API).</p>
+<ol>
+<li>Game calls <a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a> with the <code>EOS_LCT_ExternalAuth</code> credential type.</li>
+<li><a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a> callback returns a status <code>EpicGames_InvalidUser</code> with a non-undefined EOS_ContinuanceToken in the EOS_Auth_LoginCallbackInfo data.</li>
+<li>Game calls <a href="auth.html#epicgames_auth_linkaccount">EpicGames_Auth_LinkAccount</a> with the <code>EOS_ContinuanceToken</code> to initiate the login flow for linking the platform account with the user's Epic account.</li>
+<li>EOS SDK automatically opens the local default web browser and takes the user to the Epic account portal web page.</li>
+<li>The user is able to login to their existing Epic account or create a new account if needed.</li>
+<li>In the meantime, EOS SDK will internally keep polling the backend for a completion status of the login flow.</li>
+<li>The user is able to login to their existing Epic account or create a new account if needed.</li>
+<li>In the meantime, EOS SDK will internally keep polling the backend for a completion status of the login flow.</li>
+<li>Once user completes the login, cancels it or if the login flow times out, <a href="auth.html#epicgames_auth_linkaccount">EpicGames_Auth_LinkAccount</a> invokes the completion callback to the caller.</li>
+<li>If the user was logged in successfully, <code>EpicGames_Success</code> is returned in the callback event. Otherwise, an error result code is returned accordingly.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="setup.html" class="btn btn-neutral float-left" title="Setup Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="achievements.html" class="btn btn-neutral float-right" title="Achievements">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2024</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="setup.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="achievements.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

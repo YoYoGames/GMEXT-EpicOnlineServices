@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>General - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "General";
+        var mkdocs_page_input_path = "general.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="general.html">General</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">General</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/general.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="general"><strong>General</strong></h1>
+<p>This module provides miscellaneous/debug functions.</p>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="general.html#epicgames_getversion">EpicGames_GetVersion</a></li>
+<li><a href="general.html#epicgames_logging_setloglevel">EpicGames_Logging_SetLogLevel</a></li>
+<li><a href="general.html#epicgames_shutdown">EpicGames_Shutdown</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used by this API:</p>
+<ul>
+<li><a href="general.html#epicgames_result">EpicGames_Result</a></li>
+<li><a href="general.html#epicgames_logging_category">EpicGames_Logging_Category</a></li>
+<li><a href="general.html#epicgames_logging_level">EpicGames_Logging_Level</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used this API:</p>
+<ul>
+<li><a href="general.html#epicresult">EpicResult</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_getversion">EpicGames_GetVersion</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_AcceptInvite/index.html">EOS_Friends_AcceptInvite</a></p>
+<p>This function gets the version of the EOSSDK binary.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_GetVersion()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">show_debug_message($"EpicOnlineServices Version: {EpicGames_GetVersion()}");</code></pre>
+The above code shows an example of how the function should be used. The function <a href="general.html#epicgames_getversion">EpicGames_GetVersion</a> will return the current version of the SDK.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_logging_setloglevel">EpicGames_Logging_SetLogLevel</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Logging_SetLogLevel/index.html">EOS_Logging_SetLogLevel</a></p>
+<p>This function sets the logging level for the specified logging category.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default all log categories will callback for Warnings, Errors, and Fatals.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Logging_SetLogLevel(category, logLevel)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td><a href="general.html#epicgames_logging_category">EpicGames_Logging_Category</a></td>
+<td>The specific log category to configure. Use <code>EpicGames_LC_ALL_CATEGORIES</code> to configure all categories simultaneously to the same log level. Check the constants under <a href="general.html#epicgames_logging_category">EpicGames_Logging_Category</a>.</td>
+</tr>
+<tr>
+<td>logLevel</td>
+<td><a href="general.html#epicgames_logging_level">EpicGames_Logging_Level</a></td>
+<td>the log level to use for the log category. Check the constants under <a href="general.html#epicgames_logging_level">EpicGames_Logging_Level</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">EpicGames_Logging_SetLogLevel(EpicGames_LC_ALL_CATEGORIES, EpicGames_LOG_Off);</code></pre>
+The above code shows an example of how the function should be used. This will turn off logging for all categories.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_shutdown">EpicGames_Shutdown</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Shutdown/index.html">EOS_Shutdown</a></p>
+<p>This function shuts down the Epic Online Services SDK. Once this function has been called, no more SDK calls are permitted.
+Calling anything after <a href="general.html#epicgames_shutdown">EpicGames_Shutdown</a> will result in undefined behaviour.</p>
+<ol>
+<li><code>EpicGames_Success</code> is the returned status if the SDK is successfully torn down.</li>
+<li><code>EpicGames_NotConfigured</code> is returned status if the extension didn't initialise correctly.</li>
+<li><code>EpicGames_UnexpectedError</code> is returned status if <a href="general.html#epicgames_shutdown">EpicGames_Shutdown</a> has already been called.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This should be called at the end of your game.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Shutdown()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_Shutdown();
+if(_struct.status == EpicGames_Success)
+{
+     show_debug_message("Shutdown Success");
+}
+else
+{
+     show_debug_message("Shutdown Failed");
+}</code></pre>
+The above code shows an example of how the function should be used. This should be called at the end of your game.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_result">EpicGames_Result</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-result">EOS_EResult</a></p>
+<p>These are all the available constants used as task results, for the entire API.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#epicgames_achievements_querydefinitions">EpicGames_Achievements_QueryDefinitions</a></li>
+<li><a href="achievements.html#epicgames_achievements_queryplayerachievements">EpicGames_Achievements_QueryPlayerAchievements</a></li>
+<li><a href="achievements.html#epicgames_achievements_unlockachievement">EpicGames_Achievements_UnlockAchievement</a></li>
+<li><a href="auth.html#epicgames_auth_linkaccount">EpicGames_Auth_LinkAccount</a></li>
+<li><a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a></li>
+<li><a href="auth.html#epicgames_auth_logout">EpicGames_Auth_Logout</a></li>
+<li><a href="auth.html#epicgames_auth_queryidtoken">EpicGames_Auth_QueryIdToken</a></li>
+<li><a href="auth.html#epicgames_auth_verifyidtoken">EpicGames_Auth_VerifyIdToken</a></li>
+<li><a href="connect.html#epicgames_connect_createuser">EpicGames_Connect_CreateUser</a></li>
+<li><a href="connect.html#epicgames_connect_login">EpicGames_Connect_Login</a></li>
+<li><a href="friends.html#epicgames_friends_acceptinvite">EpicGames_Friends_AcceptInvite</a></li>
+<li><a href="friends.html#epicgames_friends_queryfriends">EpicGames_Friends_QueryFriends</a></li>
+<li><a href="friends.html#epicgames_friends_rejectinvite">EpicGames_Friends_RejectInvite</a></li>
+<li><a href="friends.html#epicgames_friends_sendinvite">EpicGames_Friends_SendInvite</a></li>
+<li><a href="leaderboards.html#epicgames_leaderboards_queryleaderboarddefinitions">EpicGames_Leaderboards_QueryLeaderboardDefinitions</a></li>
+<li><a href="leaderboards.html#epicgames_leaderboards_queryleaderboardranks">EpicGames_Leaderboards_QueryLeaderboardRanks</a></li>
+<li><a href="leaderboards.html#epicgames_leaderboards_queryleaderboarduserscores">EpicGames_Leaderboards_QueryLeaderboardUserScores</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastorage_deletecache">EpicGames_PlayerDataStorage_DeleteCache</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastorage_deletefile">EpicGames_PlayerDataStorage_DeleteFile</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastorage_duplicatefile">EpicGames_PlayerDataStorage_DuplicateFile</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastorage_queryfile">EpicGames_PlayerDataStorage_QueryFile</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastorage_queryfilelist">EpicGames_PlayerDataStorage_QueryFileList</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastorage_readfile">EpicGames_PlayerDataStorage_ReadFile</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastorage_writefile">EpicGames_PlayerDataStorage_WriteFile</a></li>
+<li><a href="player_data_storage.html#epicgames_playerdatastoragefiletransferrequest_cancelrequest">EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_deletesnapshot">EpicGames_ProgressionSnapshot_DeleteSnapshot</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_submitsnapshot">EpicGames_ProgressionSnapshot_SubmitSnapshot</a></li>
+<li><a href="sanctions.html#epicgames_sanctions_queryactiveplayersanctions">EpicGames_Sanctions_QueryActivePlayerSanctions</a></li>
+<li><a href="stats.html#epicgames_stats_ingeststat">EpicGames_Stats_IngestStat</a></li>
+<li><a href="stats.html#epicgames_stats_querystats">EpicGames_Stats_QueryStats</a></li>
+<li><a href="title_storage.html#epicgames_titlestorage_deletecache">EpicGames_TitleStorage_DeleteCache</a></li>
+<li><a href="title_storage.html#epicgames_titlestorage_queryfile">EpicGames_TitleStorage_QueryFile</a></li>
+<li><a href="title_storage.html#epicgames_titlestorage_queryfilelist">EpicGames_TitleStorage_QueryFileList</a></li>
+<li><a href="title_storage.html#epicgames_titlestorage_readfile">EpicGames_TitleStorage_ReadFile</a></li>
+<li><a href="title_storage.html#epicgames_titlestoragefiletransferrequest_cancelrequest">EpicGames_TitleStorageFileTransferRequest_CancelRequest</a></li>
+<li><a href="user_info.html#epicgames_userinfo_queryuserinfo">EpicGames_UserInfo_QueryUserInfo</a></li>
+<li><a href="user_info.html#epicgames_userinfo_queryuserinfobydisplayname">EpicGames_UserInfo_QueryUserInfoByDisplayName</a></li>
+<li><a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a></li>
+<li><a href="user_interface.html#epicgames_ui_hidefriends">EpicGames_UI_HideFriends</a></li>
+<li><a href="user_interface.html#epicgames_ui_showfriends">EpicGames_UI_ShowFriends</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="achievements.html#playerachievement">PlayerAchievement</a></li>
+<li><a href="achievements.html#achievementdefinition">AchievementDefinition</a></li>
+<li><a href="auth.html#authtokeninfo">AuthTokenInfo</a></li>
+<li><a href="auth.html#idwebtokeninfo">IdWebTokenInfo</a></li>
+<li><a href="connect.html#externalaccountinfo">ExternalAccountInfo</a></li>
+<li><a href="connect.html#idtoken">IdToken</a></li>
+<li><a href="general.html#epicresult">EpicResult</a></li>
+<li><a href="leaderboards.html#leaderboarduserscore">LeaderboardUserScore</a></li>
+<li><a href="leaderboards.html#leaderboardrecord">LeaderboardRecord</a></li>
+<li><a href="leaderboards.html#leaderboarddefinition">LeaderboardDefinition</a></li>
+<li><a href="user_info.html#externaluserinfo">ExternalUserInfo</a></li>
+<li><a href="user_info.html#userinfo">UserInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EpicGames_Success</code></td>
+<td>Successful result. no further error processing needed</td>
+</tr>
+<tr>
+<td><code>EpicGames_NoConnection</code></td>
+<td>Failed due to no connection</td>
+</tr>
+<tr>
+<td><code>EpicGames_InvalidCredentials</code></td>
+<td>Failed login due to invalid credentials</td>
+</tr>
+<tr>
+<td><code>EpicGames_InvalidUser</code></td>
+<td>Failed due to invalid or missing user</td>
+</tr>
+<tr>
+<td><code>EpicGames_InvalidAuth</code></td>
+<td>Failed due to invalid or missing authentication token for user (e.g. not logged in)</td>
+</tr>
+<tr>
+<td><code>EpicGames_AccessDenied</code></td>
+<td>Failed due to invalid access</td>
+</tr>
+<tr>
+<td><code>EpicGames_MissingPermissions</code></td>
+<td>If the client does not possess the permission required</td>
+</tr>
+<tr>
+<td><code>EpicGames_Token_Not_Account</code></td>
+<td>If the token provided does not represent an account</td>
+</tr>
+<tr>
+<td><code>EpicGames_TooManyRequests</code></td>
+<td>Throttled due to too many requests</td>
+</tr>
+<tr>
+<td><code>EpicGames_AlreadyPending</code></td>
+<td>Async request was already pending</td>
+</tr>
+<tr>
+<td><code>EpicGames_InvalidParameters</code></td>
+<td>Invalid parameters specified for request</td>
+</tr>
+<tr>
+<td><code>EpicGames_InvalidRequest</code></td>
+<td>Invalid request</td>
+</tr>
+<tr>
+<td><code>EpicGames_UnrecognizedResponse</code></td>
+<td>Failed due to unable to parse or recognize a backend response</td>
+</tr>
+<tr>
+<td><code>EpicGames_IncompatibleVersion</code></td>
+<td>Incompatible client for backend version</td>
+</tr>
+<tr>
+<td><code>EpicGames_NotConfigured</code></td>
+<td>Not configured correctly for use</td>
+</tr>
+<tr>
+<td><code>EpicGames_AlreadyConfigured</code></td>
+<td>Already configured for use.</td>
+</tr>
+<tr>
+<td><code>EpicGames_NotImplemented</code></td>
+<td>Feature not available on this implementation</td>
+</tr>
+<tr>
+<td><code>EpicGames_Canceled</code></td>
+<td>Operation was canceled (likely by user)</td>
+</tr>
+<tr>
+<td><code>EpicGames_NotFound</code></td>
+<td>The requested information was not found</td>
+</tr>
+<tr>
+<td><code>EpicGames_OperationWillRetry</code></td>
+<td>An error occurred during an asynchronous operation, and it will be retried. Callbacks receiving this result will be called again in the future.</td>
+</tr>
+<tr>
+<td><code>EpicGames_NoChange</code></td>
+<td>The request had no effect</td>
+</tr>
+<tr>
+<td><code>EpicGames_VersionMismatch</code></td>
+<td>The request attempted to use multiple or inconsistent API versions</td>
+</tr>
+<tr>
+<td><code>EpicGames_LimitExceeded</code></td>
+<td>A maximum limit was exceeded on the client, different from <code>EpicGames_TooManyRequests</code></td>
+</tr>
+<tr>
+<td><code>EpicGames_Disabled</code></td>
+<td>Feature or client ID performing the operation has been disabled.</td>
+</tr>
+<tr>
+<td><code>EpicGames_DuplicateNotAllowed</code></td>
+<td>Duplicate entry not allowed</td>
+</tr>
+<tr>
+<td><code>EpicGames_InvalidSandboxId</code></td>
+<td>Sandbox ID is invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_TimedOut</code></td>
+<td>Request timed out</td>
+</tr>
+<tr>
+<td><code>EpicGames_PartialResult</code></td>
+<td>A query returned some but not all of the requested results.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Missing_Role</code></td>
+<td>Client is missing the white-listed role</td>
+</tr>
+<tr>
+<td><code>EpicGames_Missing_Feature</code></td>
+<td>Client is missing the white-listed feature</td>
+</tr>
+<tr>
+<td><code>EpicGames_Invalid_Sandbox</code></td>
+<td>The sandbox given to the backend is invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_Invalid_Deployment</code></td>
+<td>The deployment given to the backend is invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_Invalid_Product</code></td>
+<td>The product ID specified to the backend is invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_Invalid_ProductUserID</code></td>
+<td>The product user ID specified to the backend is invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_ServiceFailure</code></td>
+<td>There was a failure with the backend service</td>
+</tr>
+<tr>
+<td><code>EpicGames_CacheDirectoryMissing</code></td>
+<td>Cache directory is not set in platform options.</td>
+</tr>
+<tr>
+<td><code>EpicGames_CacheDirectoryInvalid</code></td>
+<td>Cache directory is not accessible.</td>
+</tr>
+<tr>
+<td><code>EpicGames_InvalidState</code></td>
+<td>The request failed because resource was in an invalid state</td>
+</tr>
+<tr>
+<td><code>EpicGames_RequestInProgress</code></td>
+<td>Request is in progress</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_AccountLocked</code></td>
+<td>Account locked due to login failures</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_AccountLockedForUpdate</code></td>
+<td>Account locked by update operation.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_InvalidRefreshToken</code></td>
+<td>Refresh token used was invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_InvalidToken</code></td>
+<td>Invalid access token, typically when switching between backend environments</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_AuthenticationFailure</code></td>
+<td>Invalid bearer token</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_InvalidPlatformToken</code></td>
+<td>Invalid platform token</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_WrongAccount</code></td>
+<td>Auth parameters are not associated with this account</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_WrongClient</code></td>
+<td>Auth parameters are not associated with this client</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_FullAccountRequired</code></td>
+<td>Full account is required</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_HeadlessAccountRequired</code></td>
+<td>Headless account is required</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_PasswordResetRequired</code></td>
+<td>Password reset is required</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_PasswordCannotBeReused</code></td>
+<td>Password was previously used and cannot be reused</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_Expired</code></td>
+<td>Authorization code/exchange code has expired</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ScopeConsentRequired</code></td>
+<td>Consent has not been given by the user</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ApplicationNotFound</code></td>
+<td>The application has no profile on the backend</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ScopeNotFound</code></td>
+<td>The requested consent wasn't found on the backend</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_AccountFeatureRestricted</code></td>
+<td>This account has been denied access to login</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_PinGrantCode</code></td>
+<td>Pin grant code initiated</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_PinGrantExpired</code></td>
+<td>Pin grant code attempt expired</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_PinGrantPending</code></td>
+<td>Pin grant code attempt pending</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExternalAuthNotLinked</code></td>
+<td>External auth source did not yield an account</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExternalAuthRevoked</code></td>
+<td>External auth access revoked</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExternalAuthInvalid</code></td>
+<td>External auth token cannot be interpreted</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExternalAuthRestricted</code></td>
+<td>External auth cannot be linked to his account due to restrictions</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExternalAuthCannotLogin</code></td>
+<td>External auth cannot be used for login</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExternalAuthExpired</code></td>
+<td>External auth is expired</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExternalAuthIsLastLoginType</code></td>
+<td>External auth cannot be removed since it's the last possible way to login</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ExchangeCodeNotFound</code></td>
+<td>Exchange code not found</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_OriginatingExchangeCodeSessionExpired</code></td>
+<td>Originating exchange code session has expired</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_PersistentAuth_AccountNotActive</code></td>
+<td>The account has been disabled and cannot be used for authentication</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_MFARequired</code></td>
+<td>MFA challenge required</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_ParentalControls</code></td>
+<td>Parental locks are in place</td>
+</tr>
+<tr>
+<td><code>EpicGames_Auth_NoRealId</code></td>
+<td>Korea real ID association required but missing</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_InviteAwaitingAcceptance</code></td>
+<td>An outgoing friend invitation is waiting acceptance; sending another invite to the same user is erroneous</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_NoInvitation</code></td>
+<td>There is no friend invitation to accept/reject</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_AlreadyFriends</code></td>
+<td>Users are already friends, so sending another invite is erroneous</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_NotFriends</code></td>
+<td>Users are not friends, so deleting the friend is erroneous</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_TargetUserTooManyInvites</code></td>
+<td>Remote user has too many invites to receive new invites</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_LocalUserTooManyInvites</code></td>
+<td>Local user has too many invites to send new invites</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_TargetUserFriendLimitExceeded</code></td>
+<td>Remote user has too many friends to make a new friendship</td>
+</tr>
+<tr>
+<td><code>EpicGames_Friends_LocalUserFriendLimitExceeded</code></td>
+<td>Local user has too many friends to make a new friendship</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_DataInvalid</code></td>
+<td>Request data was null or invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_DataLengthInvalid</code></td>
+<td>Request contained too many or too few unique data items, or the request would overflow the maximum amount of data allowed</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_DataKeyInvalid</code></td>
+<td>Request contained data with an invalid key</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_DataKeyLengthInvalid</code></td>
+<td>Request contained data with a key too long or too short</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_DataValueInvalid</code></td>
+<td>Request contained data with an invalid value</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_DataValueLengthInvalid</code></td>
+<td>Request contained data with a value too long</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_RichTextInvalid</code></td>
+<td>Request contained an invalid rich text string</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_RichTextLengthInvalid</code></td>
+<td>Request contained a rich text string that was too long</td>
+</tr>
+<tr>
+<td><code>EpicGames_Presence_StatusInvalid</code></td>
+<td>Request contained an invalid status state</td>
+</tr>
+<tr>
+<td><code>EpicGames_Ecom_EntitlementStale</code></td>
+<td>The entitlement retrieved is stale, re-query for updated information</td>
+</tr>
+<tr>
+<td><code>EpicGames_Ecom_CatalogOfferStale</code></td>
+<td>The offer retrieved is stale, re-query for updated information</td>
+</tr>
+<tr>
+<td><code>EpicGames_Ecom_CatalogItemStale</code></td>
+<td>The item or associated structure retrieved is stale, re-query for updated information</td>
+</tr>
+<tr>
+<td><code>EpicGames_Ecom_CatalogOfferPriceInvalid</code></td>
+<td>The one or more offers has an invalid price. This may be caused by the price setup.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Ecom_CheckoutLoadError</code></td>
+<td>The checkout page failed to load</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_SessionInProgress</code></td>
+<td>Session is already in progress</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_TooManyPlayers</code></td>
+<td>Too many players to register with this session</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_NoPermission</code></td>
+<td>Client has no permissions to access this session</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_SessionAlreadyExists</code></td>
+<td>Session already exists in the system</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_InvalidLock</code></td>
+<td>Session lock required for operation</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_InvalidSession</code></td>
+<td>Invalid session reference</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_SandboxNotAllowed</code></td>
+<td>Sandbox ID associated with auth didn't match</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_InviteFailed</code></td>
+<td>Invite failed to send</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_InviteNotFound</code></td>
+<td>Invite was not found with the service</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_UpsertNotAllowed</code></td>
+<td>This client may not modify the session</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_AggregationFailed</code></td>
+<td>Backend nodes unavailable to process request</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_HostAtCapacity</code></td>
+<td>Individual backend node is as capacity</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_SandboxAtCapacity</code></td>
+<td>Sandbox on node is at capacity</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_SessionNotAnonymous</code></td>
+<td>An anonymous operation was attempted on a non anonymous session</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_OutOfSync</code></td>
+<td>Session is currently out of sync with the backend, data is saved locally but needs to sync with backend</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_TooManyInvites</code></td>
+<td>User has received too many invites</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_PresenceSessionExists</code></td>
+<td>Presence session already exists for the client</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_DeploymentAtCapacity</code></td>
+<td>Deployment on node is at capacity</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_NotAllowed</code></td>
+<td>Session operation not allowed</td>
+</tr>
+<tr>
+<td><code>EpicGames_Sessions_PlayerSanctioned</code></td>
+<td>Session operation not allowed</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FilenameInvalid</code></td>
+<td>Request filename was invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FilenameLengthInvalid</code></td>
+<td>Request filename was too long</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FilenameInvalidChars</code></td>
+<td>Request filename contained invalid characters</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FileSizeTooLarge</code></td>
+<td>Request operation would grow file too large</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FileSizeInvalid</code></td>
+<td>Request file length is not valid</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FileHandleInvalid</code></td>
+<td>Request file handle is not valid</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_DataInvalid</code></td>
+<td>Request data is invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_DataLengthInvalid</code></td>
+<td>Request data length was invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_StartIndexInvalid</code></td>
+<td>Request start index was invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_RequestInProgress</code></td>
+<td>Request is in progress</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_UserThrottled</code></td>
+<td>User is marked as throttled which means he can't perform some operations because limits are exceeded.</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_EncryptionKeyNotSet</code></td>
+<td>Encryption key is not set during SDK init.</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_UserErrorFromDataCallback</code></td>
+<td>User data callback returned error (EpicGames_PlayerDataStorage_EWriteResult::EpicGames_WR_FailRequest or EpicGames_PlayerDataStorage_EReadResult::EpicGames_RR_FailRequest)</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FileHeaderHasNewerVersion</code></td>
+<td>User is trying to read file that has header from newer version of SDK. Game/SDK needs to be updated.</td>
+</tr>
+<tr>
+<td><code>EpicGames_PlayerDataStorage_FileCorrupted</code></td>
+<td>The file is corrupted. In some cases retry can fix the issue.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_ExternalTokenValidationFailed</code></td>
+<td>EOS Auth service deemed the external token invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_UserAlreadyExists</code></td>
+<td>EOS Auth user already exists</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_AuthExpired</code></td>
+<td>EOS Auth expired</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_InvalidToken</code></td>
+<td>EOS Auth invalid token</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_UnsupportedTokenType</code></td>
+<td>EOS Auth doesn't support this token type</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_LinkAccountFailed</code></td>
+<td>EOS Auth Account link failure</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_ExternalServiceUnavailable</code></td>
+<td>EOS Auth External service for validation was unavailable</td>
+</tr>
+<tr>
+<td><code>EpicGames_Connect_ExternalServiceConfigurationFailure</code></td>
+<td>EOS Auth External Service configuration failure with Dev Portal</td>
+</tr>
+<tr>
+<td><code>EpicGames_UI_SocialOverlayLoadError</code></td>
+<td>The social overlay page failed to load</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_NotOwner</code></td>
+<td>Client has no permissions to modify this lobby</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_InvalidLock</code></td>
+<td>Lobby lock required for operation</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_LobbyAlreadyExists</code></td>
+<td>Lobby already exists in the system</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_SessionInProgress</code></td>
+<td>Lobby is already in progress</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_TooManyPlayers</code></td>
+<td>Too many players to register with this lobby</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_NoPermission</code></td>
+<td>Client has no permissions to access this lobby</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_InvalidSession</code></td>
+<td>Invalid lobby session reference</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_SandboxNotAllowed</code></td>
+<td>Sandbox ID associated with auth didn't match</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_InviteFailed</code></td>
+<td>Invite failed to send</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_InviteNotFound</code></td>
+<td>Invite was not found with the service</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_UpsertNotAllowed</code></td>
+<td>This client may not modify the lobby</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_AggregationFailed</code></td>
+<td>Backend nodes unavailable to process request</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_HostAtCapacity</code></td>
+<td>Individual backend node is as capacity</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_SandboxAtCapacity</code></td>
+<td>Sandbox on node is at capacity</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_TooManyInvites</code></td>
+<td>User has received too many invites</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_DeploymentAtCapacity</code></td>
+<td>Deployment on node is at capacity</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_NotAllowed</code></td>
+<td>Lobby operation not allowed</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_MemberUpdateOnly</code></td>
+<td>While restoring a lost connection lobby ownership changed and only local member data was updated</td>
+</tr>
+<tr>
+<td><code>EpicGames_Lobby_PresenceLobbyExists</code></td>
+<td>Presence lobby already exists for the client</td>
+</tr>
+<tr>
+<td><code>EpicGames_TitleStorage_UserErrorFromDataCallback</code></td>
+<td>User callback that receives data from storage returned error.</td>
+</tr>
+<tr>
+<td><code>EpicGames_TitleStorage_EncryptionKeyNotSet</code></td>
+<td>User forgot to set Encryption key during platform init. Title Storage can't work without it.</td>
+</tr>
+<tr>
+<td><code>EpicGames_TitleStorage_FileCorrupted</code></td>
+<td>Downloaded file is corrupted.</td>
+</tr>
+<tr>
+<td><code>EpicGames_TitleStorage_FileHeaderHasNewerVersion</code></td>
+<td>Downloaded file's format is newer than client SDK version.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_ModSdkProcessIsAlreadyRunning</code></td>
+<td>ModSdk process is already running. This error comes from the EOSSDK.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_ModSdkCommandIsEmpty</code></td>
+<td>ModSdk command is empty. Either the ModSdk configuration file is missing or the manifest location is empty.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_ModSdkProcessCreationFailed</code></td>
+<td>Creation of the ModSdk process failed. This error comes from the SDK.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_CriticalError</code></td>
+<td>A critical error occurred in the external ModSdk process that we were unable to resolve.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_ToolInternalError</code></td>
+<td>A internal error occurred in the external ModSdk process that we were unable to resolve.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_IPCFailure</code></td>
+<td>A IPC failure occurred in the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_InvalidIPCResponse</code></td>
+<td>A invalid IPC response received in the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_URILaunchFailure</code></td>
+<td>A URI Launch failure occurred in the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_ModIsNotInstalled</code></td>
+<td>Attempting to perform an action with a mod that is not installed. This error comes from the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_UserDoesNotOwnTheGame</code></td>
+<td>Attempting to perform an action on a game that the user doesn't own. This error comes from the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_OfferRequestByIdInvalidResult</code></td>
+<td>Invalid result of the request to get the offer for the mod. This error comes from the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_CouldNotFindOffer</code></td>
+<td>Could not find the offer for the mod. This error comes from the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_OfferRequestByIdFailure</code></td>
+<td>Request to get the offer for the mod failed. This error comes from the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_PurchaseFailure</code></td>
+<td>Request to purchase the mod failed. This error comes from the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_InvalidGameInstallInfo</code></td>
+<td>Attempting to perform an action on a game that is not installed or is partially installed. This error comes from the external ModSdk process.</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_CannotGetManifestLocation</code></td>
+<td>Failed to get manifest location. Either the ModSdk configuration file is missing or the manifest location is empty</td>
+</tr>
+<tr>
+<td><code>EpicGames_Mods_UnsupportedOS</code></td>
+<td>Attempting to perform an action with a mod that does not support the current operating system.</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_ClientProtectionNotAvailable</code></td>
+<td>The anti-cheat client protection is not available. Check that the game was started using the anti-cheat bootstrapper.</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_InvalidMode</code></td>
+<td>The current anti-cheat mode is incorrect for using this API</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_ClientProductIdMismatch</code></td>
+<td>The ProductId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_ClientSandboxIdMismatch</code></td>
+<td>The SandboxId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_ProtectMessageSessionKeyRequired</code></td>
+<td>(ProtectMessage/UnprotectMessage) No session key is available, but it is required to complete this operation</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_ProtectMessageValidationFailed</code></td>
+<td>(ProtectMessage/UnprotectMessage) Message integrity is invalid</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_ProtectMessageInitializationFailed</code></td>
+<td>(ProtectMessage/UnprotectMessage) Initialization failed</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_PeerAlreadyRegistered</code></td>
+<td>(RegisterPeer) Peer is already registered</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_PeerNotFound</code></td>
+<td>(UnregisterPeer) Peer does not exist</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_PeerNotProtected</code></td>
+<td>(ReceiveMessageFromPeer) Invalid call: Peer is not protected</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_ClientDeploymentIdMismatch</code></td>
+<td>The DeploymentId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK</td>
+</tr>
+<tr>
+<td><code>EpicGames_AntiCheat_DeviceIdAuthIsNotSupported</code></td>
+<td>EOS Connect DeviceID auth method is not supported for anti-cheat</td>
+</tr>
+<tr>
+<td><code>EpicGames_RTC_TooManyParticipants</code></td>
+<td>EOS RTC room cannot accept more participants</td>
+</tr>
+<tr>
+<td><code>EpicGames_RTC_RoomAlreadyExists</code></td>
+<td>EOS RTC room already exists</td>
+</tr>
+<tr>
+<td><code>EpicGames_RTC_UserKicked</code></td>
+<td>The user kicked out from the room</td>
+</tr>
+<tr>
+<td><code>EpicGames_RTC_UserBanned</code></td>
+<td>The user is banned</td>
+</tr>
+<tr>
+<td><code>EpicGames_RTC_RoomWasLeft</code></td>
+<td>EOS RTC room was left successfully</td>
+</tr>
+<tr>
+<td><code>EpicGames_RTC_ReconnectionTimegateExpired</code></td>
+<td>Connection dropped due to long timeout</td>
+</tr>
+<tr>
+<td><code>EpicGames_ProgressionSnapshot_SnapshotIdUnavailable</code></td>
+<td>The number of available Snapshot IDs have all been exhausted.</td>
+</tr>
+<tr>
+<td><code>EpicGames_KWS_ParentEmailMissing</code></td>
+<td>The KWS user does not have a parental email associated with the account. The parent account was unlinked or deleted</td>
+</tr>
+<tr>
+<td><code>EpicGames_KWS_UserGraduated</code></td>
+<td>The KWS user is no longer a minor and trying to update the parent email</td>
+</tr>
+<tr>
+<td><code>EpicGames_Android_JavaVMNotStored</code></td>
+<td>EOS Android VM not stored</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_logging_category">EpicGames_Logging_Category</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-log-category">EOS_ELogCategory</a></p>
+<p>These constants represent the available logging categories.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="general.html#epicgames_logging_setloglevel">EpicGames_Logging_SetLogLevel</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EpicGames_LC_Core</code></td>
+<td>Low level logs unrelated to specific services</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Auth</code></td>
+<td>Logs related to the Auth service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Friends</code></td>
+<td>Logs related to the Friends service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Presence</code></td>
+<td>Logs related to the Presence service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_UserInfo</code></td>
+<td>Logs related to the UserInfo service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_HttpSerialization</code></td>
+<td>Logs related to HTTP serialization</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Ecom</code></td>
+<td>Logs related to the Ecommerce service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_P2P</code></td>
+<td>Logs related to the P2P service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Sessions</code></td>
+<td>Logs related to the Sessions service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_RateLimiter</code></td>
+<td>Logs related to rate limiting</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_PlayerDataStorage</code></td>
+<td>Logs related to the PlayerDataStorage service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Analytics</code></td>
+<td>Logs related to sdk analytics</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Messaging</code></td>
+<td>Logs related to the messaging service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Connect</code></td>
+<td>Logs related to the Connect service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Overlay</code></td>
+<td>Logs related to the Overlay</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Achievements</code></td>
+<td>Logs related to the Achievements service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Stats</code></td>
+<td>Logs related to the Stats service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_UI</code></td>
+<td>Logs related to the UI service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Lobby</code></td>
+<td>Logs related to the lobby service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Leaderboards</code></td>
+<td>Logs related to the Leaderboards service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Keychain</code></td>
+<td>Logs related to an internal Keychain feature that the authentication interfaces use</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_IdentityProvider</code></td>
+<td>Logs related to external identity providers</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_TitleStorage</code></td>
+<td>Logs related to Title Storage</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Mods</code></td>
+<td>Logs related to the Mods service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_AntiCheat</code></td>
+<td>Logs related to the Anti-Cheat service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Reports</code></td>
+<td>Logs related to reports client</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Sanctions</code></td>
+<td>Logs related to the Sanctions service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_ProgressionSnapshots</code></td>
+<td>Logs related to the Progression Snapshot service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_KWS</code></td>
+<td>Logs related to the Kids Web Services integration</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_RTC</code></td>
+<td>Logs related to the RTC API</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_RTCAdmin</code></td>
+<td>Logs related to the RTC Admin API</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_Inventory</code></td>
+<td>Logs related to the Inventory service</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_ReceiptValidator</code></td>
+<td>Logs related to the Receipt Validator API</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_CustomInvites</code></td>
+<td>Logs related to the Custom Invites API</td>
+</tr>
+<tr>
+<td><code>EpicGames_LC_ALL_CATEGORIES</code></td>
+<td>Not a real log category. Used by <a href="general.html#epicgames_logging_setloglevel">EpicGames_Logging_SetLogLevel</a> to set the log level for all categories at the same time</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_logging_level">EpicGames_Logging_Level</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-log-level">EOS_ELogLevel</a></p>
+<p>These constants represent the available logging levels. When a log message is output, it has an associated log level. Messages will only be sent to the callback function if the message is associated log level is less than or equal to the configured log level for that category.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="general.html#epicgames_logging_setloglevel">EpicGames_Logging_SetLogLevel</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EpicGames_LOG_Off</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EpicGames_LOG_Fatal</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EpicGames_LOG_Error</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EpicGames_LOG_Warning</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EpicGames_LOG_Info</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EpicGames_LOG_Verbose</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EpicGames_LOG_VeryVerbose</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicresult">EpicResult</h1>
+<p>A struct containing a result's status code and its representation in text.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="general.html#epicgames_shutdown">EpicGames_Shutdown</a></li>
+<li><a href="metrics.html#epicgames_metrics_beginplayersession">EpicGames_Metrics_BeginPlayerSession</a></li>
+<li><a href="metrics.html#epicgames_metrics_endplayersession">EpicGames_Metrics_EndPlayerSession</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_endsnapshot">EpicGames_ProgressionSnapshot_EndSnapshot</a></li>
+<li><a href="user_interface.html#epicgames_ui_setdisplaypreference">EpicGames_UI_SetDisplayPreference</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="user_info.html" class="btn btn-neutral float-left" title="User Info"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2024</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="user_info.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Progression Snapshot - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Progression Snapshot";
+        var mkdocs_page_input_path = "progression_snapshot.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="progression_snapshot.html">Progression Snapshot</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Progression Snapshot</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/progression_snapshot.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="progression-snapshot"><strong>Progression Snapshot</strong></h1>
+<p><strong>Epic Online Services:</strong> <a href="https://dev.epicgames.com/docs/epic-account-services/progression-snapshot">Progression Snapshot Interface</a></p>
+<p>The <a href="https://dev.epicgames.com/docs/epic-account-services/progression-snapshot">Progression Snapshot Interface</a> allows storing player-specific game data for the purposes of supporting an end-user experience for Epic account merging. As of today, the concept of merging two separate Epic accounts, owned by the same user, into a single Epic account does not exist. However, this type of account merging is a feature that will be made available to users of Epic Accounts in the future.
+The progression snapshot feature becomes relevant for users in cases where they have two separate Epic accounts, and have played the same game on both of the accounts. In such a case, if the user chooses to merge their Epic accounts into a single account, the Epic overlay will be able to present a snapshot view of their game progress for both accounts. This allows users to choose their preferred game progression to preserve as a result of the account merge operation.</p>
+<h2 id="functions">Functions</h2>
+<p>These functions are provided for handling progression snapshot:</p>
+<ul>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_addprogression">EpicGames_ProgressionSnapshot_AddProgression</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_beginsnapshot">EpicGames_ProgressionSnapshot_BeginSnapshot</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_deletesnapshot">EpicGames_ProgressionSnapshot_DeleteSnapshot</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_endsnapshot">EpicGames_ProgressionSnapshot_EndSnapshot</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_submitsnapshot">EpicGames_ProgressionSnapshot_SubmitSnapshot</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_progressionsnapshot_addprogression">EpicGames_ProgressionSnapshot_AddProgression</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_AddProgression/index.html">EOS_ProgressionSnapshot_AddProgression</a></p>
+<p>This function stores a Key/Value pair in memory for a given snapshot.</p>
+<p>If multiple calls happen with the same key, the last invocation wins, overwriting the previous value for that given key. The order in which the Key/Value pairs are added is stored as is for later retrieval/display. Ideally, you would make multiple calls to <a href="progression_snapshot.html#epicgames_progressionsnapshot_addprogression">EpicGames_ProgressionSnapshot_AddProgression</a> followed by a single call to <a href="progression_snapshot.html#epicgames_progressionsnapshot_submitsnapshot">EpicGames_ProgressionSnapshot_SubmitSnapshot</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_ProgressionSnapshot_AddProgression(snapshotId, key, value)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshotId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The Snapshot ID received via a <a href="progression_snapshot.html#epicgames_progressionsnapshot_beginsnapshot">EpicGames_ProgressionSnapshot_BeginSnapshot</a> function.</td>
+</tr>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The key in a key/value pair of progression entry</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The value in a key/value pair of progression entry</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_ProgressionSnapshot_BeginSnapshot(local_UserId);
+EpicGames_ProgressionSnapshot_AddProgression(identifier, "PlayerName", "Hero");</code></pre>
+The code sample above shows an example of how to create a snapshot (<a href="progression_snapshot.html#epicgames_progressionsnapshot_beginsnapshot">EpicGames_ProgressionSnapshot_BeginSnapshot</a>) and add a progression value to it.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_progressionsnapshot_beginsnapshot">EpicGames_ProgressionSnapshot_BeginSnapshot</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_BeginSnapshot/index.html">EOS_ProgressionSnapshot_BeginSnapshot</a></p>
+<p>This function creates a new progression-snapshot resource for a given user.</p>
+<p>The function will return a progression-snapshot identifier output parameter. Use that identifier to reference the snapshot in the other functions:</p>
+<ul>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_addprogression">EpicGames_ProgressionSnapshot_AddProgression</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_deletesnapshot">EpicGames_ProgressionSnapshot_DeleteSnapshot</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_endsnapshot">EpicGames_ProgressionSnapshot_EndSnapshot</a></li>
+<li><a href="progression_snapshot.html#epicgames_progressionsnapshot_submitsnapshot">EpicGames_ProgressionSnapshot_SubmitSnapshot</a></li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_ProgressionSnapshot_BeginSnapshot(local_UserId)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_UserId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user to whom the key/value pair belongs</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_ProgressionSnapshot_BeginSnapshot(local_UserId);
+EpicGames_ProgressionSnapshot_AddProgression(identifier, "PlayerName", "Hero");</code></pre>
+The code sample above shows how to create a snapshot and add a progression value to it (<a href="progression_snapshot.html#epicgames_progressionsnapshot_addprogression">EpicGames_ProgressionSnapshot_AddProgression</a>).</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_progressionsnapshot_deletesnapshot">EpicGames_ProgressionSnapshot_DeleteSnapshot</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_DeleteSnapshot/index.html">EOS_ProgressionSnapshot_DeleteSnapshot</a></p>
+<p>This function wipes out all progression data for the given user from the service. However, any previous progression data that haven't been submitted yet are retained.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_ProgressionSnapshot_DeleteSnapshot(userId)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user to whom the key/value pair belong</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td><code>"EpicGames_ProgressionSnapshot_DeleteSnapshot"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous listener ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_ProgressionSnapshot_DeleteSnapshot(userId);</code></pre>
+The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_ProgressionSnapshot_DeleteSnapshot")
+if (async_load[? "identifier"] == identifier)
+{
+    if (async_load[? "status"] == EpicGames_Success)
+    {
+        show_debug_message(async_load[? "type"] + " succeeded!");
+    }
+    else
+    {
+         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_progressionsnapshot_endsnapshot">EpicGames_ProgressionSnapshot_EndSnapshot</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_EndSnapshot/index.html">EOS_ProgressionSnapshot_EndSnapshot</a></p>
+<p>This function cleans up and releases resources associated with the given progression snapshot identifier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function should be called after submission (<a href="progression_snapshot.html#epicgames_progressionsnapshot_submitsnapshot">EpicGames_ProgressionSnapshot_SubmitSnapshot</a>).</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_ProgressionSnapshot_EndSnapshot(snapshotId)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshotId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Snapshot ID received via a call to the <a href="progression_snapshot.html#epicgames_progressionsnapshot_beginsnapshot">EpicGames_ProgressionSnapshot_BeginSnapshot</a> function.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">result = EpicGames_ProgressionSnapshot_EndSnapshot(snapshotId);
+if (result.status == EpicGames_Success)
+{
+    show_debug_message("EpicGames_ProgressionSnapshot_EndSnapshot: success");
+}</code></pre>
+The code above matches the response status and logs the success of the task.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_progressionsnapshot_submitsnapshot">EpicGames_ProgressionSnapshot_SubmitSnapshot</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_SubmitSnapshot/index.html">EOS_ProgressionSnapshot_SubmitSnapshot</a></p>
+<p>This function saves the previously added Key/Value pairs of a given Snapshot to the service.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will overwrite any prior progression data stored with the service that's associated with the user.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_ProgressionSnapshot_SubmitSnapshot(snapshotId)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshotId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The Snapshot ID received via a call to the <a href="progression_snapshot.html#epicgames_progressionsnapshot_beginsnapshot">EpicGames_ProgressionSnapshot_BeginSnapshot</a> function.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td><code>"EpicGames_ProgressionSnapshot_SubmitSnapshot"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous listener ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_ProgressionSnapshot_SubmitSnapshot(snapshotId);</code></pre>
+The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_ProgressionSnapshot_SubmitSnapshot")
+if (async_load[? "identifier"] == identifier)
+{
+    if (async_load[? "status"] == EpicGames_Success)
+    {
+        show_debug_message(async_load[? "type"] + " succeeded!");
+    }
+    else
+    {
+         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
+<p><br></p>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="player_data_storage.html" class="btn btn-neutral float-left" title="Player Data Storage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="sanctions.html" class="btn btn-neutral float-right" title="Sanctions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2024</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="player_data_storage.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="sanctions.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

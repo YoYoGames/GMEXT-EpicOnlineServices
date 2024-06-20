@@ -201,7 +201,7 @@
  * @param {constant.EpicGames_Scope_Flags} scope_flags Auth scope flags are permissions to request from the user while they are logging in. This is a bitwise-or union (pipe symbol `|`) of ${constant.EpicGames_Scope_Flags}). These must correspond exactly to the ones you set in the [Developer Portal](https://dev.epicgames.com/docs/dev-portal)
  * @param {string} id ID of the user logging in, based on ${constant.EpicGames_Login_Credential_Type}
  * @param {string} token Credentials or token related to the user logging in
- * @param {constant.EpicGames_External_Credential_Type} external_type Type of external login. Needed to identify the external auth method to use. Used when login type is set to `EpicGames_LCT_ExternalAuth`, ignored otherwise (see the External Login Flow Guide on the ${page.Logging_In} page for more details). Note that you must still pass a value for this parameter when not using an external auth method.
+ * @param {constant.EpicGames_External_Credential_Type} external_type Type of external login. Needed to identify the external auth method to use. Used when login type is set to `EpicGames_LCT_ExternalAuth`, ignored otherwise (see the External Login Flow Guide on the ${page.logging_in} page for more details). Note that you must still pass a value for this parameter when not using an external auth method.
  * 
  * @returns {real}
  * 
@@ -448,7 +448,7 @@
  * @member EpicGames_LCT_Developer Login with named credentials hosted by the EOS SDK Developer Authentication Tool.
  * @member EpicGames_LCT_RefreshToken Refresh token that was retrieved from a previous call to ${function.EpicGames_Auth_Login} API in another local process context. Mainly used in conjunction with custom launcher applications. in-between that requires authenticating the user before eventually starting the actual game client application. In such scenario, an intermediate launcher will log in the user by consuming the exchange code it received from the Epic Games Launcher. To allow the game client to also authenticate the user, it can copy the refresh token using the ${function.EpicGames_Auth_CopyUserAuthToken} API and pass it via launch parameters to the started game client. The game client can then use the refresh token to log in the user.
  * @member EpicGames_LCT_AccountPortal Desktop and Mobile only. Initiate a login through the Epic account portal. for example when starting the application through a proprietary ecosystem launcher or otherwise.
- * @member EpicGames_LCT_ExternalAuth Login using external account provider credentials, such as Steam, PlayStation(TM)Network, Xbox Live, or Nintendo. This is the intended login method on Console. On Desktop and Mobile, used when launched through any of the commonly supported platform clients (see the External Login Flow Guide on the  ${page.Logging_In} page for more details)
+ * @member EpicGames_LCT_ExternalAuth Login using external account provider credentials, such as Steam, PlayStation(TM)Network, Xbox Live, or Nintendo. This is the intended login method on Console. On Desktop and Mobile, used when launched through any of the commonly supported platform clients (see the External Login Flow Guide on the  ${page.logging_in} page for more details)
  * @constant_end
  */
 
@@ -504,7 +504,7 @@
  * 
  * @section Guides
  * @desc The following guides are available: 
- * @ref page.Logging_In
+ * @ref page.logging_in
  * @section_end
  * 
  * @section_func

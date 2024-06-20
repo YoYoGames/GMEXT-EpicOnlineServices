@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Achievements - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Achievements";
+        var mkdocs_page_input_path = "achievements.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="achievements.html">Achievements</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Achievements</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/achievements.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="achievements"><strong>Achievements</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/achievements">Achievements Interface</a></p>
+<p>The <strong><a href="https://dev.epicgames.com/docs/game-services/achievements">Achievements Interface</a></strong> provides a way for developers to retrieve data about a player's Epic Online Services achievements, unlock achievements for that player, and retrieve data about all of the Epic Online Services achievements belonging to an application.</p>
+<h2 id="functions">Functions</h2>
+<p>These functions are provided for handling achievements:</p>
+<ul>
+<li><a href="achievements.html#epicgames_achievements_addnotifyachievementsunlockedv2">EpicGames_Achievements_AddNotifyAchievementsUnlockedV2</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyachievementdefinitionv2byachievementid">EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyachievementdefinitionv2byindex">EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyplayerachievementbyachievementid">EpicGames_Achievements_CopyPlayerAchievementByAchievementId</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyplayerachievementbyindex">EpicGames_Achievements_CopyPlayerAchievementByIndex</a></li>
+<li><a href="achievements.html#epicgames_achievements_getachievementdefinitioncount">EpicGames_Achievements_GetAchievementDefinitionCount</a></li>
+<li><a href="achievements.html#epicgames_achievements_getplayerachievementcount">EpicGames_Achievements_GetPlayerAchievementCount</a></li>
+<li><a href="achievements.html#epicgames_achievements_querydefinitions">EpicGames_Achievements_QueryDefinitions</a></li>
+<li><a href="achievements.html#epicgames_achievements_queryplayerachievements">EpicGames_Achievements_QueryPlayerAchievements</a></li>
+<li><a href="achievements.html#epicgames_achievements_removenotifyachievementsunlocked">EpicGames_Achievements_RemoveNotifyAchievementsUnlocked</a></li>
+<li><a href="achievements.html#epicgames_achievements_unlockachievement">EpicGames_Achievements_UnlockAchievement</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structures used by this API:</p>
+<ul>
+<li><a href="achievements.html#achievementdefinition">AchievementDefinition</a></li>
+<li><a href="achievements.html#playerachievement">PlayerAchievement</a></li>
+<li><a href="achievements.html#playerstatinfo">PlayerStatInfo</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_addnotifyachievementsunlockedv2">EpicGames_Achievements_AddNotifyAchievementsUnlockedV2</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_AddNotifyAchievementsUnlockedV2/index.html">EOS_Achievements_AddNotifyAchievementsUnlockedV2</a></p>
+<p>This function registers to receive achievement unlocked notifications.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_AddNotifyAchievementsUnlockedV2()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td><code>"EpicGames_Achievements_AddNotifyAchievementsUnlockedV2"</code></td>
+</tr>
+<tr>
+<td>UnlockTime</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>POSIX timestamp when the achievement was unlocked</td>
+</tr>
+<tr>
+<td>AchievementId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Achievement ID for the achievement that was unlocked. Pass this to <a href="achievements.html#epicgames_achievements_copyplayerachievementbyachievementid">EpicGames_Achievements_CopyPlayerAchievementByAchievementId</a> to get the full achievement information.</td>
+</tr>
+<tr>
+<td>UserId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user who received the unlocked achievements notification</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Achievements_AddNotifyAchievementsUnlockedV2();</code></pre>
+The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Achievements_AddNotifyAchievementsUnlockedV2")
+if(async_load[? "identifier"] == identifier)
+{
+    if (async_load[? "status"] == EpicGames_Success)
+    {
+        show_debug_message(async_load[? "type"] + " succeeded!");
+    }
+    else
+    {
+         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_copyachievementdefinitionv2byachievementid">EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyAchievementDefinitionV2ByAchi/index.html">EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId</a></p>
+<p>This function fetches an <a href="achievements.html#achievementdefinition">AchievementDefinition</a> from a given achievement ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a previous call to <a href="achievements.html#epicgames_achievements_querydefinitions">EpicGames_Achievements_QueryDefinitions</a> to store values in cache.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(AchievementId)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AchievementId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Achievement ID to look for when copying the definition from the cache</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#achievementdefinition">AchievementDefinition</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId("MyAchievement1");
+if(_struct.status == EpicGames_Success)
+{
+    var _achievement_id = _struct.AchievementId;
+}</code></pre>
+The above code will show an example of how the function should be used. The achievement definition data is returned providing an achievement ID.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_copyachievementdefinitionv2byindex">EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyAchievementDefinitionV2ByIndex/index.html">EOS_Achievements_CopyAchievementDefinitionV2ByIndex</a></p>
+<p>This function fetches an <a href="achievements.html#achievementdefinition">AchievementDefinition</a> from a given index.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a previous call to <a href="achievements.html#epicgames_achievements_querydefinitions">EpicGames_Achievements_QueryDefinitions</a> to store values in cache.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex(index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the achievement definition to retrieve from the cache</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#achievementdefinition">AchievementDefinition</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for(var i = 0 ; i &lt; EpicGames_Achievements_GetAchievementDefinitionCount() ; i ++)
+{
+    var _struct = EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex(i);
+    if(_struct.status == EpicGames_Success)
+    {
+         var _achievement_id = _struct.AchievementId;
+    }
+}</code></pre>
+The above code shows an example of how the function should be used. The achievement definition data is returned providing an achievement index.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_copyplayerachievementbyachievementid">EpicGames_Achievements_CopyPlayerAchievementByAchievementId</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyPlayerAchievementByAchievemen/index.html">EOS_Achievements_CopyPlayerAchievementByAchievementId</a></p>
+<p>This function fetches a player achievement from a given achievement ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a previous call to <a href="achievements.html#epicgames_achievements_queryplayerachievements">EpicGames_Achievements_QueryPlayerAchievements</a> to store values in cache.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_CopyPlayerAchievementByAchievementId(userID, userID_target, achievementID)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this should be null.</td>
+</tr>
+<tr>
+<td>userID_target</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user whose achievement is to be retrieved.</td>
+</tr>
+<tr>
+<td>achievementID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Achievement ID to search for when retrieving player achievement data from the cache.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#playerachievement">PlayerAchievement</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_Achievements_CopyPlayerAchievementByAchievementId(userID, userID_target, achievementID);
+if(struct.status == EpicGames_Success)
+{
+    var _achievementd = _struct.AchievementId;
+}</code></pre>
+The above code will show an example of how the function should be used. The player achievement data is returned providing an achievement ID.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_copyplayerachievementbyindex">EpicGames_Achievements_CopyPlayerAchievementByIndex</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyPlayerAchievementByAchievemen/index.html">EOS_Achievements_CopyPlayerAchievementByIndex</a></p>
+<p>This function fetches a player achievement from a given index.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a previous call to <a href="achievements.html#epicgames_achievements_queryplayerachievements">EpicGames_Achievements_QueryPlayerAchievements</a> to store values in cache.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_CopyPlayerAchievementByIndex(userID, userID_target, index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this should be null.</td>
+</tr>
+<tr>
+<td>userID_target</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user whose achievement is to be retrieved.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the player achievement data to retrieve from the cache.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#playerachievement">PlayerAchievement</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for(var i = 0 ; i &lt; EpicGames_Achievements_GetPlayerAchievementCount(userID) ; i ++)
+{
+    var _struct = EpicGames_Achievements_CopyPlayerAchievementByIndex(i);
+    if(_struct.status == EpicGames_Success)
+    {
+         var _achievement_id = _struct.AchievementId;
+    }
+}</code></pre>
+The above code will show an example of how the function should be used. The player achievement data is returned providing an achievement index.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_getachievementdefinitioncount">EpicGames_Achievements_GetAchievementDefinitionCount</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_GetAchievementDefinitionCount/index.html">EOS_Achievements_GetAchievementDefinitionCount</a></p>
+<p>This function fetches the number of achievement definitions that are cached locally.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a previous call to <a href="achievements.html#epicgames_achievements_querydefinitions">EpicGames_Achievements_QueryDefinitions</a> to store values in cache.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_GetAchievementDefinitionCount()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for(var i = 0 ; i &lt; EpicGames_Achievements_GetAchievementDefinitionCount() ; i ++)
+{
+    var _struct = EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex(i);
+    if(_struct.status == EpicGames_Success)
+    {
+         var _achievement_id = _struct.AchievementId;
+    }
+}</code></pre>
+The above code will show an example of how the function should be used. After a successful call to <a href="achievements.html#epicgames_achievements_querydefinitions">EpicGames_Achievements_QueryDefinitions</a>, the function <a href="achievements.html#epicgames_achievements_getachievementdefinitioncount">EpicGames_Achievements_GetAchievementDefinitionCount</a> will return the number of entries in the query array which can then be accessed using the <a href="achievements.html#epicgames_achievements_copyachievementdefinitionv2byindex">EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex</a> function.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_getplayerachievementcount">EpicGames_Achievements_GetPlayerAchievementCount</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_GetPlayerAchievementCount/index.html">EOS_Achievements_GetPlayerAchievementCount</a></p>
+<p>This function fetches the number of player achievements that are cached locally.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a previous call to <a href="achievements.html#epicgames_achievements_queryplayerachievements">EpicGames_Achievements_QueryPlayerAchievements</a> to store values in cache.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_GetPlayerAchievementCount(userID)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user whose achievement count is being retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for(var i = 0 ; i &lt; EpicGames_Achievements_GetPlayerAchievementCount(userID) ; i ++)
+{
+    var _struct = EpicGames_Achievements_CopyPlayerAchievementByIndex(i);
+    if(_struct.status == EpicGames_Success)
+    {
+         var _achievement_id = _struct.AchievementId;
+    }
+}</code></pre>
+The above code will show an example of how the function should be used. After a successful call to <a href="achievements.html#epicgames_achievements_queryplayerachievements">EpicGames_Achievements_QueryPlayerAchievements</a>, the function <a href="achievements.html#epicgames_achievements_getplayerachievementcount">EpicGames_Achievements_GetPlayerAchievementCount</a> will return the number of entries in the query array which can then be accessed using the <a href="achievements.html#epicgames_achievements_copyplayerachievementbyindex">EpicGames_Achievements_CopyPlayerAchievementByIndex</a> function.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_querydefinitions">EpicGames_Achievements_QueryDefinitions</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryDefinitions/index.html">EOS_Achievements_QueryDefinitions</a></p>
+<p>This function queries for a list of definitions for all existing achievements, including localized text, icon IDs and whether an achievement is hidden.
+Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call one of the following functions:</p>
+<ul>
+<li><a href="achievements.html#epicgames_achievements_copyachievementdefinitionv2byachievementid">EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyachievementdefinitionv2byindex">EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex</a></li>
+<li><a href="achievements.html#epicgames_achievements_getachievementdefinitioncount">EpicGames_Achievements_GetAchievementDefinitionCount</a></li>
+</ul>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_QueryDefinitions(userId)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Product User ID for user who is querying definitions.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td><code>"EpicGames_Achievements_QueryDefinitions"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous listener ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Achievements_QueryDefinitions(userId);</code></pre>
+The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Achievements_QueryDefinitions")
+if (async_load[? "identifier"] == identifier)
+{
+    if (async_load[? "status"] == EpicGames_Success)
+    {
+        show_debug_message(async_load[? "type"] + " succeeded!");
+    }
+    else
+    {
+         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_queryplayerachievements">EpicGames_Achievements_QueryPlayerAchievements</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryPlayerAchievements/index.html">EOS_Achievements_QueryPlayerAchievements</a></p>
+<p>This function queries for a list of achievements for a specific player, including progress towards completion for each achievement.</p>
+<p>Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call one of the following functions:</p>
+<ul>
+<li><a href="achievements.html#epicgames_achievements_copyplayerachievementbyachievementid">EpicGames_Achievements_CopyPlayerAchievementByAchievementId</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyplayerachievementbyindex">EpicGames_Achievements_CopyPlayerAchievementByIndex</a></li>
+<li><a href="achievements.html#epicgames_achievements_getplayerachievementcount">EpicGames_Achievements_GetPlayerAchievementCount</a></li>
+</ul>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_QueryPlayerAchievements(userID, userID_target)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user who is querying for player achievements. For a Dedicated Server this should be null.</td>
+</tr>
+<tr>
+<td>userID_target</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user whose achievements are to be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td><code>"EpicGames_Achievements_QueryPlayerAchievements"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous listener ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Achievements_QueryPlayerAchievements(userID, userID);</code></pre>
+The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Achievements_QueryPlayerAchievements")
+if (async_load[? "identifier"] == identifier)
+{
+    if (async_load[? "status"] == EpicGames_Success)
+    {
+        show_debug_message(async_load[? "type"] + " succeeded!");
+    }
+    else
+    {
+         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_removenotifyachievementsunlocked">EpicGames_Achievements_RemoveNotifyAchievementsUnlocked</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_RemoveNotifyAchievementsUnlocked/index.html">EOS_Achievements_RemoveNotifyAchievementsUnlocked</a></p>
+<p>This function unregisters from receiving achievement unlocked notifications, should be passed the identifier returned from the function:</p>
+<ul>
+<li><a href="achievements.html#epicgames_achievements_addnotifyachievementsunlockedv2">EpicGames_Achievements_AddNotifyAchievementsUnlockedV2</a></li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_RemoveNotifyAchievementsUnlocked(id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification registration handle (returned by <a href="achievements.html#epicgames_achievements_addnotifyachievementsunlockedv2">EpicGames_Achievements_AddNotifyAchievementsUnlockedV2</a>)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">handle = EpicGames_Achievements_AddNotifyAchievementsUnlockedV2();
+//...
+//later...
+//...
+EpicGames_Achievements_RemoveNotifyAchievementsUnlocked(handle);</code></pre>
+The code sample above enables the achievement unlock notifications (<a href="achievements.html#epicgames_achievements_addnotifyachievementsunlockedv2">EpicGames_Achievements_AddNotifyAchievementsUnlockedV2</a>) and later disables them by referring to the previous generated handle.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicgames_achievements_unlockachievement">EpicGames_Achievements_UnlockAchievement</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_UnlockAchievements/index.html">EOS_Achievements_UnlockAchievements</a></p>
+<p>This function unlocks an achievement for a specific player.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">EpicGames_Achievements_UnlockAchievement(userID, AchievementID)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user whose achievements we want to unlock.</td>
+</tr>
+<tr>
+<td>AchievementID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Achievement ID to unlock.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"EpicGames_Achievements_UnlockAchievement"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous listener ID.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Achievements_UnlockAchievement();</code></pre>
+The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Achievements_UnlockAchievement")
+if (async_load[? "identifier"] == identifier)
+{
+    if (async_load[? "status"] == EpicGames_Success)
+    {
+        show_debug_message(async_load[? "type"] + " succeeded!");
+    }
+    else
+    {
+         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="playerachievement">PlayerAchievement</h1>
+<p>A player achievement is represented by a struct and contains information about a single player achievement.</p>
+<p>The status member present in the struct can be represented by one of the following values:</p>
+<ul>
+<li><code>EpicGames_Success</code> if the information is available and was correctly returned;</li>
+<li><code>EpicGames_InvalidParameters</code> (extension internal error, should never be returned);</li>
+<li><code>EpicGames_NotFound</code> if the achievement definition is not found;</li>
+<li><code>EpicGames_Invalid_ProductUserID</code> if you pass an invalid user ID;</li>
+</ul>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#epicgames_achievements_copyplayerachievementbyachievementid">EpicGames_Achievements_CopyPlayerAchievementByAchievementId</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyplayerachievementbyindex">EpicGames_Achievements_CopyPlayerAchievementByIndex</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The result value of the task</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>AchievementId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>This achievement's unique identifier</td>
+</tr>
+<tr>
+<td>Progress</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Progress towards completing this achievement (as a percentage)</td>
+</tr>
+<tr>
+<td>UnlockTime</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be <code>EpicGames_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED</code>.</td>
+</tr>
+<tr>
+<td>StatInfoCount</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The number of player stat info entries associated with this achievement.</td>
+</tr>
+<tr>
+<td>StatInfo</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="achievements.html#playerstatinfo">PlayerStatInfo</a></td>
+<td>Array of <a href="achievements.html#playerstatinfo">PlayerStatInfo</a> structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats</td>
+</tr>
+<tr>
+<td>DisplayName</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized display name for the achievement based on this specific player's current progress on the achievement</td>
+</tr>
+<tr>
+<td>Description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized description for the achievement based on this specific player's current progress on the achievement</td>
+</tr>
+<tr>
+<td>IconURL</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>URL of an icon to display for the achievement based on this specific player's current progress on the achievement. This may be null if there is no data configured in the developer portal</td>
+</tr>
+<tr>
+<td>FlavorText</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized flavor text that can be used by the game in an arbitrary manner. This may be null if there is no data configured in the developer portal</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="playerstatinfo">PlayerStatInfo</h1>
+<p><strong>Epic Online Services Struct:</strong> (EOS_Achievements_StatThresholds)[https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-achievements-stat-thresholds]</p>
+<p>This struct contains information about a collection of stat threshold data.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="achievements.html#playerachievement">PlayerAchievement</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the stat.</td>
+</tr>
+<tr>
+<td>ApiVersion</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The API version.</td>
+</tr>
+<tr>
+<td>CurrentValue</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current value of the stat.</td>
+</tr>
+<tr>
+<td>ThresholdValue</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The value that the stat must surpass to satisfy the requirement for unlocking an achievement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="achievementdefinition">AchievementDefinition</h1>
+<p>An achievement definition is represented by a struct and contains information about a single achievement definition with localised text.</p>
+<p>The status member present in the struct can be represented by one of the following values:</p>
+<ul>
+<li><code>EpicGames_Success</code> if the information is available and was correctly returned;</li>
+<li><code>EpicGames_InvalidParameters</code> (extension internal error, should never be returned);</li>
+<li><code>EpicGames_NotFound</code> if the achievement definition is not found;</li>
+<li><code>EpicGames_Invalid_ProductUserID</code> if any of the userid options are incorrect;</li>
+</ul>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#epicgames_achievements_copyachievementdefinitionv2byachievementid">EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId</a></li>
+<li><a href="achievements.html#epicgames_achievements_copyachievementdefinitionv2byindex">EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
+<td>The result value of the task</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>AchievementId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Achievement ID that can be used to uniquely identify the achievement</td>
+</tr>
+<tr>
+<td>UnlockedDisplayName</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized display name for the achievement when it has been unlocked</td>
+</tr>
+<tr>
+<td>UnlockedDescription</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized description for the achievement when it has been unlocked</td>
+</tr>
+<tr>
+<td>LockedDisplayName</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized display name for the achievement when it is locked or hidden</td>
+</tr>
+<tr>
+<td>LockedDescription</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized description for the achievement when it is locked or hidden</td>
+</tr>
+<tr>
+<td>FlavorText</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized flavor text that can be used by the game in an arbitrary manner. This may be null if there is no data configured in the development portal</td>
+</tr>
+<tr>
+<td>UnlockedIconURL</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>URL of an icon to display for the achievement when it is unlocked. This may be null if there is no data configured in the development portal</td>
+</tr>
+<tr>
+<td>LockedIconURL</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>URL of an icon to display for the achievement when it is locked or hidden. This may be null if there is no data configured in the development portal</td>
+</tr>
+<tr>
+<td>bIsHidden</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> if the achievement is hidden; <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="logging_in.html" class="btn btn-neutral float-left" title="Logging In"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="auth.html" class="btn btn-neutral float-right" title="Auth">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2024</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="logging_in.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="auth.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

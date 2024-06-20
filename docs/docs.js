@@ -9,7 +9,7 @@
  * @section Setup
  * @desc Follow these guides to get yourself going on everything you need for your new game: 
  * @ref page.Setup
- * @ref page.Logging_In
+ * @ref page.logging_in
  * @section_end
  * 
  * @section Modules

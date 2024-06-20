@@ -1,8 +1,8 @@
-* ### [Epic Online Services](Home)
+* ### [Epic Online Services](home)
 * ### Guides
-  * ### ${page.Setup}
-  * ### ${page.Logging_In}
-* ### [Modules](#)
+  * ### ${page.setup}
+  * ### ${page.logging_in}
+* ### Modules
   * ### ${module.achievements}
   * ### ${module.auth}
   * ### ${module.connect}
