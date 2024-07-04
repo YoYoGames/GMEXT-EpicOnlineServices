@@ -107,5 +107,8 @@
     <ClCompile Include="DesktopExtensionTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="YYEOS_Ecom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

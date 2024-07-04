@@ -131,7 +131,6 @@ void EOS_CALL QueryFriendsCompleteCallbackFn(const EOS_Friends_QueryFriendsCallb
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	
 
 	CreateAsyncEventWithDSMap(map, 70);
 }

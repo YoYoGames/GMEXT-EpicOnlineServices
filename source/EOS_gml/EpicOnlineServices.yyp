@@ -12,6 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Epic Online Services Demos","folderPath":"folders/Epic Online Services Demos.yy","name":"Epic Online Services Demos","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Achievements","folderPath":"folders/Epic Online Services Demos/Achievements.yy","name":"Achievements","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Ecom","folderPath":"folders/Epic Online Services Demos/Ecom.yy","name":"Ecom","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Friends","folderPath":"folders/Epic Online Services Demos/Friends.yy","name":"Friends","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Init","folderPath":"folders/Epic Online Services Demos/Init.yy","name":"Init","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Leaderboards","folderPath":"folders/Epic Online Services Demos/Leaderboards.yy","name":"Leaderboards","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -26,12 +27,12 @@
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Yoyo Extensions Assets/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"EOS_Extension_Documentation.pdf","CopyToMask":0,"filePath":"datafiles","name":"EOS_Extension_Documentation.pdf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"GMEXT-EpicOnlineServices.html","CopyToMask":-1,"filePath":"datafiles","name":"GMEXT-EpicOnlineServices.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.1.152",
+    "IDEVersion":"2024.6.0.157",
   },
   "name":"EpicOnlineServices",
   "resources":[
@@ -44,6 +45,9 @@
     {"id":{"name":"Obj_EpicGames_Achievements_Controller","path":"objects/Obj_EpicGames_Achievements_Controller/Obj_EpicGames_Achievements_Controller.yy",},},
     {"id":{"name":"Obj_EpicGames_Auth_Logout","path":"objects/Obj_EpicGames_Auth_Logout/Obj_EpicGames_Auth_Logout.yy",},},
     {"id":{"name":"Obj_EpicGames_Controller","path":"objects/Obj_EpicGames_Controller/Obj_EpicGames_Controller.yy",},},
+    {"id":{"name":"Obj_EpicGames_Ecom_Checkout","path":"objects/Obj_EpicGames_Ecom_Checkout/Obj_EpicGames_Ecom_Checkout.yy",},},
+    {"id":{"name":"Obj_EpicGames_Ecom_Offer","path":"objects/Obj_EpicGames_Ecom_Offer/Obj_EpicGames_Ecom_Offer.yy",},},
+    {"id":{"name":"Obj_EpicGames_Ecom","path":"objects/Obj_EpicGames_Ecom/Obj_EpicGames_Ecom.yy",},},
     {"id":{"name":"Obj_EpicGames_Friend","path":"objects/Obj_EpicGames_Friend/Obj_EpicGames_Friend.yy",},},
     {"id":{"name":"Obj_EpicGames_Friends","path":"objects/Obj_EpicGames_Friends/Obj_EpicGames_Friends.yy",},},
     {"id":{"name":"Obj_EpicGames_Leaderbaord_Definition","path":"objects/Obj_EpicGames_Leaderbaord_Definition/Obj_EpicGames_Leaderbaord_Definition.yy",},},
@@ -71,6 +75,7 @@
     {"id":{"name":"Obj_YoYo_text","path":"objects/Obj_YoYo_text/Obj_YoYo_text.yy",},},
     {"id":{"name":"Obj_YoYo_textbox","path":"objects/Obj_YoYo_textbox/Obj_YoYo_textbox.yy",},},
     {"id":{"name":"Room_EpicGames_Achievements","path":"rooms/Room_EpicGames_Achievements/Room_EpicGames_Achievements.yy",},},
+    {"id":{"name":"Room_EpicGames_Ecom","path":"rooms/Room_EpicGames_Ecom/Room_EpicGames_Ecom.yy",},},
     {"id":{"name":"Room_EpicGames_Friends","path":"rooms/Room_EpicGames_Friends/Room_EpicGames_Friends.yy",},},
     {"id":{"name":"Room_EpicGames_Init","path":"rooms/Room_EpicGames_Init/Room_EpicGames_Init.yy",},},
     {"id":{"name":"Room_EpicGames_Leaderboards","path":"rooms/Room_EpicGames_Leaderboards/Room_EpicGames_Leaderboards.yy",},},
@@ -98,6 +103,7 @@
     {"roomId":{"name":"Room_EpicGames_Stats","path":"rooms/Room_EpicGames_Stats/Room_EpicGames_Stats.yy",},},
     {"roomId":{"name":"Room_EpicGames_TitleStorage","path":"rooms/Room_EpicGames_TitleStorage/Room_EpicGames_TitleStorage.yy",},},
     {"roomId":{"name":"Room_EpicGames_Friends","path":"rooms/Room_EpicGames_Friends/Room_EpicGames_Friends.yy",},},
+    {"roomId":{"name":"Room_EpicGames_Ecom","path":"rooms/Room_EpicGames_Ecom/Room_EpicGames_Ecom.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[

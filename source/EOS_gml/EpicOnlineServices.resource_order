@@ -1,6 +1,7 @@
 {
   "FolderOrderSettings":[
     {"name":"Achievements","order":2,"path":"folders/Epic Online Services Demos/Achievements.yy",},
+    {"name":"Ecom","order":15,"path":"folders/Epic Online Services Demos/Ecom.yy",},
     {"name":"Friends","order":13,"path":"folders/Epic Online Services Demos/Friends.yy",},
     {"name":"Leaderboards","order":6,"path":"folders/Epic Online Services Demos/Leaderboards.yy",},
     {"name":"Menu","order":1,"path":"folders/Epic Online Services Demos/Menu.yy",},
@@ -19,6 +20,9 @@
     {"name":"Obj_Button_GoTo","order":2,"path":"objects/Obj_Button_GoTo/Obj_Button_GoTo.yy",},
     {"name":"Obj_EpicGames_Achievement","order":1,"path":"objects/Obj_EpicGames_Achievement/Obj_EpicGames_Achievement.yy",},
     {"name":"Obj_EpicGames_Auth_Logout","order":4,"path":"objects/Obj_EpicGames_Auth_Logout/Obj_EpicGames_Auth_Logout.yy",},
+    {"name":"Obj_EpicGames_Ecom_Checkout","order":3,"path":"objects/Obj_EpicGames_Ecom_Checkout/Obj_EpicGames_Ecom_Checkout.yy",},
+    {"name":"Obj_EpicGames_Ecom_Offer","order":2,"path":"objects/Obj_EpicGames_Ecom_Offer/Obj_EpicGames_Ecom_Offer.yy",},
+    {"name":"Obj_EpicGames_Ecom","order":1,"path":"objects/Obj_EpicGames_Ecom/Obj_EpicGames_Ecom.yy",},
     {"name":"Obj_EpicGames_Friend","order":2,"path":"objects/Obj_EpicGames_Friend/Obj_EpicGames_Friend.yy",},
     {"name":"Obj_EpicGames_Friends","order":1,"path":"objects/Obj_EpicGames_Friends/Obj_EpicGames_Friends.yy",},
     {"name":"Obj_EpicGames_Leaderbaord_Definition","order":2,"path":"objects/Obj_EpicGames_Leaderbaord_Definition/Obj_EpicGames_Leaderbaord_Definition.yy",},

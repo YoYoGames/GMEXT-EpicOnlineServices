@@ -144,6 +144,8 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			EpicGames_Achievements_Init();
 			tracef("EOS_Connect_Init :: Starting module...");
 			EpicGames_Connect_Init();
+			tracef("EOS_Ecom_Init :: Starting module...");
+			EpicGames_Ecom_Init();
 			tracef("EOS_Friends_Init :: Starting module...");
 			EpicGames_Friends_Init();
 			tracef("EOS_Leaderboards_Init :: Starting module...");

@@ -195,6 +195,7 @@
   <ItemGroup>
     <ClCompile Include="DesktopExtensionTools.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="YYEOS_Ecom.cpp" />
     <ClCompile Include="YYEOS_ExeTest.cpp" />
     <ClCompile Include="YYEOS_Friends.cpp" />
     <ClCompile Include="YYEOS_ProgressionSnapshot.cpp" />

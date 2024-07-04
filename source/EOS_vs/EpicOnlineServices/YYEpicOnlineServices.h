@@ -32,6 +32,7 @@ extern void return_EOS_EResult(RValue* Result, EOS_EResult EpicResult);
 //extern void EpicGames_Platform_Init();
 extern void EpicGames_Achievements_Init();
 extern void EpicGames_Connect_Init();
+extern void EpicGames_Ecom_Init();
 extern void EpicGames_Friends_Init();
 extern void EpicGames_Leaderboards_Init();
 extern void EpicGames_Metrics_Init();

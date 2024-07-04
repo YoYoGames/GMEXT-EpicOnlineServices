@@ -229,7 +229,7 @@ void EOS_CALL LinkAccountCompleteCallbackFn(const EOS_Auth_LinkAccountCallbackIn
 	DsMapAddString(map, "type", "EpicGames_Auth_LinkAccount");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "AccountID", AccountID_toString( Data->LocalUserId));
+	DsMapAddString(map, "account_id", AccountID_toString( Data->LocalUserId));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 }
