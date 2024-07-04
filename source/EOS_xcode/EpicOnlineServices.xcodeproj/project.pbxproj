@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B15C7312C375A41008ED693 /* YYEOS_Ecom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B15C7302C375A41008ED693 /* YYEOS_Ecom.cpp */; };
 		2B75FEA62C21F51500B207CF /* eos_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE592C21F51400B207CF /* eos_version.h */; };
 		2B75FEA72C21F51500B207CF /* eos_leaderboards_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5A2C21F51500B207CF /* eos_leaderboards_types.h */; };
 		2B75FEA82C21F51500B207CF /* eos_ecom.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5B2C21F51500B207CF /* eos_ecom.h */; };
@@ -129,6 +130,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B15C7302C375A41008ED693 /* YYEOS_Ecom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Ecom.cpp; sourceTree = "<group>"; };
 		2B75FE592C21F51400B207CF /* eos_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_version.h; path = ../../EOS_sdk/Include/eos_version.h; sourceTree = "<group>"; };
 		2B75FE5A2C21F51500B207CF /* eos_leaderboards_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_leaderboards_types.h; path = ../../EOS_sdk/Include/eos_leaderboards_types.h; sourceTree = "<group>"; };
 		2B75FE5B2C21F51500B207CF /* eos_ecom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_ecom.h; path = ../../EOS_sdk/Include/eos_ecom.h; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 		2BD17D7428349CA100C86127 /* GML */ = {
 			isa = PBXGroup;
 			children = (
+				2B15C7302C375A41008ED693 /* YYEOS_Ecom.cpp */,
 				2BD17D8228349CC200C86127 /* YYEOS_Platform.cpp */,
 				2BD17D7C28349CC200C86127 /* YYEOS_Achievements.cpp */,
 				2BD17D7628349CC200C86127 /* YYEOS_Auth.cpp */,
@@ -566,6 +569,7 @@
 				2BD17D9B28349CC200C86127 /* YYEOS_Presence.cpp in Sources */,
 				2BD17D9E28349CC200C86127 /* YYEOS_UI.cpp in Sources */,
 				2BD17D9A28349CC200C86127 /* YYEOS_Connect.cpp in Sources */,
+				2B15C7312C375A41008ED693 /* YYEOS_Ecom.cpp in Sources */,
 				2BD17D9028349CC200C86127 /* YYEOS_Leaderboards.cpp in Sources */,
 				2BD17D9228349CC200C86127 /* YYEOS_PlayerDataStorage.cpp in Sources */,
 			);
