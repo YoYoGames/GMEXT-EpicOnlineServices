@@ -19,6 +19,7 @@
  * @ref module.achievements
  * @ref module.auth
  * @ref module.connect
+ * @ref module.ecom
  * @ref module.friends
  * @ref module.leaderboards
  * @ref module.metrics
