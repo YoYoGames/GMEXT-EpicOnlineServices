@@ -391,7 +391,7 @@ function EpicGames_Ecom_CopyOfferByIndex(user, OfferIndex) {}
 
 /**
  * @function EpicGames_Ecom_CopyOfferById
- * @desc **Epic Online Services Function:** [EOS_Ecom_CopyOfferById]https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-ecom-copy-offer-by-id)
+ * @desc **Epic Online Services Function:** [EOS_Ecom_CopyOfferById](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-ecom-copy-offer-by-id)
  * 
  * This function fetches an offer with a given ID. The pricing and text are localised to the provided account.
  * 
