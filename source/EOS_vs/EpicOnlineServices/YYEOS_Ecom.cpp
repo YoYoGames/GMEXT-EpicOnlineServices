@@ -574,7 +574,7 @@ RValue EOS_Ecom_CatalogOfferToMap(EOS_Ecom_CatalogOffer* data, EOS_EResult resul
 	YYStructAddDouble(&Struct, "DecimalPoint", data->DecimalPoint);
 	YYStructAddString(&Struct, "DescriptionText", data->DescriptionText);
 	YYStructAddDouble(&Struct, "DiscountPercentage", data->DiscountPercentage);
-	YYStructAddDouble(&Struct, "EffectiveDateTimestamp", data->EffectiveDateTimestamp);
+	YYStructAddInt64(&Struct, "EffectiveDateTimestamp", data->EffectiveDateTimestamp);
 	YYStructAddString(&Struct, "Id", data->Id);
 	YYStructAddString(&Struct, "LongDescriptionText", data->LongDescriptionText);
 	YYStructAddInt64(&Struct, "OriginalPrice64", data->OriginalPrice64);

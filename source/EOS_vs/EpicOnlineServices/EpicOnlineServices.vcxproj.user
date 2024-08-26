@@ -6,4 +6,9 @@
     <NXTargetSerialNumber>$(NintendoTargetSerialNumber)</NXTargetSerialNumber>
     <NXTargetName>$(NintendoTargetName)</NXTargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NintendoTargetName>Default</NintendoTargetName>
+    <NXTargetSerialNumber>$(NintendoTargetSerialNumber)</NXTargetSerialNumber>
+    <NXTargetName>$(NintendoTargetName)</NXTargetName>
+  </PropertyGroup>
 </Project>
