@@ -162,11 +162,11 @@ function EpicGames_Ecom_QueryOffers(user, OverrideCatalogNamespace) {}
  * This function initiates the purchase flow for a set of offers. The ${event.social} is triggered after the purchase flow.
  * 
  * On success, the set of entitlements that were unlocked will be cached.
- * On success, a Transaction ID will be returned. The Transaction ID can be used to obtain an EpicGames_Ecom_HTransaction handle. The handle can then be used to retrieve the entitlements rewarded by the purchase.
+ * On success, a Transaction ID will be returned. The Transaction ID can be used with the `EpicGames_Ecom_Transaction_*` functions to retrieve the entitlements rewarded by the purchase.
  * 
  * @param {string} user The Epic Account ID of the local user who is making the purchase
- * @param {array} Entries An array of EOS_Ecom_CheckoutEntry elements, each containing the details of a single offer
- * @param {string} OverrideCatalogNamespace The catalog namespace will be the current Sandbox ID (in EOS_Platform_Options), unless overridden by this field
+ * @param {array[string]} Entries An array of strings, each containing the details of a single offer
+ * @param {string} OverrideCatalogNamespace The catalog namespace will be the current Sandbox ID, unless overridden by this field
  *
  * @event social
  * @member {string} type `"EpicGames_Ecom_Checkout"`
@@ -174,8 +174,8 @@ function EpicGames_Ecom_QueryOffers(user, OverrideCatalogNamespace) {}
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
  * @member {real} account_id The Epic Account ID of the user who initiated the purchase
- * @member {string} transaction_id The transaction ID which can be used to obtain an EOS_Ecom_HTransaction using EOS_Ecom_CopyTransactionById.
- * @member {array} offer_ids Array of offer IDs
+ * @member {string} transaction_id The transaction ID
+ * @member {array[string]} offer_ids An array of offer IDs
  * @event_end
  * 
  * @function_end
@@ -365,7 +365,7 @@ function EpicGames_Ecom_GetOfferCount(user) {}
  * @member {real} Id The ID of this offer
  * @member {string} LongDescriptionText Localised UTF-8 long description of this offer
  * @member {int64} OriginalPrice64 The original price of this offer as a 64-bit number
- * @member {constant.EpicGames_Result} PriceResult If this value is `EOS_Success` then `OriginalPrice64`, `CurrentPrice64`, and `DiscountPercentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
+ * @member {constant.EpicGames_Result} PriceResult If this value is `EpicGames_Success` then `OriginalPrice64`, `CurrentPrice64`, and `DiscountPercentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
  * @member {real} PurchaseLimit The maximum number of times that the offer can be purchased. A negative value implies there is no limit.
  * @member {int64} ReleaseDateTimestamp Timestamp indicating when the time when the offer was released. Can be ignored if set to -1.
  * @member {real} ServerIndex The index of this offer as it exists on the server. This is useful for understanding pagination data.
@@ -618,25 +618,12 @@ function EpicGames_Ecom_GetTransactionCount(user) {}
 
 /**
  * @function EpicGames_Ecom_Transaction_GetTransactionIdByIndexTransaction()
- * @desc  **Epic Online Services Function:** []()
+ * @desc  **Epic Online Services Function:** [EOS_Ecom_Transaction_GetTransactionId](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-transaction-get-transaction-id)
  * 
- * 
+ * This function gets the ID of the transaction with the given index.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
  * @param {real} user The index of the transaction to get
- * @returns {string}
- * 
- * @function_end
- */
-
-/**
- * @function EpicGames_Ecom_Transaction_GetTransactionIdByIdTransaction()
- * @desc  **Epic Online Services Function:** []()
- * 
- * 
- * 
- * @param {string} user The Epic Account ID of the local user who is associated with the transaction
- * @param {string} TransactionId The ID of the transaction to get
  * @returns {string}
  * 
  * @function_end
@@ -644,12 +631,13 @@ function EpicGames_Ecom_GetTransactionCount(user) {}
 
 /**
  * @function EpicGames_Ecom_Transaction_GetEntitlementsCountByIndexTransaction()
- * @desc **Epic Online Services Function:** []()
+ * @desc **Epic Online Services Function:** [EOS_Ecom_Transaction_GetEntitlementsCount](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-entitlements-count)
  * 
  * This function returns the number of entitlements that are part of this transaction.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
  * @param {real} user The index of the transaction to get
+ * 
  * @returns {real}
  * 
  * @function_end
@@ -657,12 +645,13 @@ function EpicGames_Ecom_GetTransactionCount(user) {}
 
 /**
  * @function EpicGames_Ecom_Transaction_GetEntitlementsCountByIdTransaction
- * @desc **Epic Online Services Function:** []()
+ * @desc **Epic Online Services Function:** [EOS_Ecom_Transaction_GetEntitlementsCount](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-entitlements-count)
  * 
- * This function fetches the number of entitlements that are part of this transaction.
+ * This function returns the number of entitlements that are part of this transaction.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
  * @param {string} TransactionId The ID of the transaction to get
+ * 
  * @returns {real}
  * 
  * @function_end
@@ -705,9 +694,6 @@ function EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIdTransaction(user, 
  * @title Ecom
  * @desc **Epic Online Services Interface:** [Ecom](https://dev.epicgames.com/docs/api-ref/interfaces/ecom)
  * 
- * The Ecom Transaction Interface exposes getters for accessing information about a completed transaction.
- * All Ecom Transaction Interface calls take a handle of type EOS_Ecom_HTransaction as the first parameter.
- * 
  * @section_func Functions
  * @member EpicGames_Ecom_QueryOwnership
  * @member EpicGames_Ecom_QueryOwnershipBySandboxIds
@@ -738,7 +724,6 @@ function EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIdTransaction(user, 
  * @member EpicGames_Ecom_CopyItemReleaseByIndex
  * @member EpicGames_Ecom_GetTransactionCount
  * @member EpicGames_Ecom_Transaction_GetTransactionIdByIndexTransaction
- * @member EpicGames_Ecom_Transaction_GetTransactionIdByIdTransaction
  * @member EpicGames_Ecom_Transaction_GetEntitlementsCountByIndexTransaction
  * @member EpicGames_Ecom_Transaction_GetEntitlementsCountByIdTransaction
  * @member EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIndexTransaction
