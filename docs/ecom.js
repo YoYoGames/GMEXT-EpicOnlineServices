@@ -18,8 +18,8 @@
  * @member {string} type `"EpicGames_Ecom_QueryOwnership"`
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors 
- * @member status_message A text representation of the status code
- * @member account_id The Epic Account ID of the local user whose ownership was queried
+ * @member {string} status_message A text representation of the status code
+ * @member {string} account_id The Epic Account ID of the local user whose ownership was queried
  * @event_end
  * 
  * @function_end
@@ -42,7 +42,7 @@ function EpicGames_Ecom_QueryOwnership(user, CatalogItemIds, catalogNamespace) {
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
- * @member {real} account_id The Epic Account ID of the local user whose ownership was queried
+ * @member {string} account_id The Epic Account ID of the local user whose ownership was queried
  * @event_end
  * 
  * @function_end
@@ -65,7 +65,7 @@ function EpicGames_Ecom_QueryOwnershipBySandboxIds(user, SandboxIds) {}
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} account_id The Epic Account ID of the local user whose ownership token was queried
+ * @member {string} account_id The Epic Account ID of the local user whose ownership token was queried
  * @member {string} ownership_token Ownership token containing details about the catalog items queried
  * @event_end
  *
@@ -98,7 +98,7 @@ function EpicGames_Ecom_QueryOwnershipToken(user, CatalogItemIds) {}
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} account_id The Epic Account ID of the local user whose entitlement was queried
+ * @member {string} account_id The Epic Account ID of the local user whose entitlement was queried
  * @event_end
  * 
  * @function_end
@@ -123,7 +123,7 @@ function EpicGames_Ecom_QueryEntitlements(user, EntitlementNames, bIncludeRedeem
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
- * @member {real} account_id The Epic Account ID of the local user whose entitlement was queried
+ * @member {string} account_id The Epic Account ID of the local user whose entitlement was queried
  * @member {string} entitlement_token Entitlements token containing details about the catalog items queried
  * @event_end
 
@@ -147,7 +147,7 @@ function EpicGames_Ecom_QueryEntitlementToken(user, EntitlementNames) {}
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} account_id The Epic Account ID of the local user whose offer was queried; needed for localisation of Catalog Item (Item) description text and pricing information
+ * @member {string} account_id The Epic Account ID of the local user whose offer was queried; needed for localisation of Catalog Item (Item) description text and pricing information
  * @event_end
 
  * @function_end
@@ -173,7 +173,7 @@ function EpicGames_Ecom_QueryOffers(user, OverrideCatalogNamespace) {}
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
- * @member {real} account_id The Epic Account ID of the user who initiated the purchase
+ * @member {string} account_id The Epic Account ID of the user who initiated the purchase
  * @member {string} transaction_id The transaction ID
  * @member {array[string]} offer_ids An array of offer IDs
  * @event_end
@@ -197,7 +197,7 @@ function EpicGames_Ecom_Checkout(user, Entries, OverrideCatalogNamespace) {}
  * @member {real} identifier The asynchronous listener ID
  * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} account_id The Epic Account ID of the user who has redeemed entitlements
+ * @member {string} account_id The Epic Account ID of the user who has redeemed entitlements
  * @member {real} redeemed_entitlement_ids_count The number of redeemed entitlements
  * @event_end
 
@@ -623,7 +623,7 @@ function EpicGames_Ecom_GetTransactionCount(user) {}
  * This function gets the ID of the transaction with the given index.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
- * @param {real} user The index of the transaction to get
+ * @param {real} index The index of the transaction to get
  * @returns {string}
  * 
  * @function_end
@@ -636,7 +636,7 @@ function EpicGames_Ecom_GetTransactionCount(user) {}
  * This function returns the number of entitlements that are part of this transaction.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
- * @param {real} user The index of the transaction to get
+ * @param {real} index The index of the transaction to get
  * 
  * @returns {real}
  * 
@@ -694,48 +694,52 @@ function EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIdTransaction(user, 
  * @title Ecom
  * @desc **Epic Online Services Interface:** [Ecom](https://dev.epicgames.com/docs/api-ref/interfaces/ecom)
  * 
+ * The Ecom module gives developers using Epic Online Services the ability to interact with the Epic Games Store. With this interface, you can manage products ranging from full games and downloadable content (DLC) to virtual goods and in-game currency. This includes making offers, completing purchase transactions, verifying ownership, and redeeming purchased items.
+ * 
  * @section_func Functions
- * @member EpicGames_Ecom_QueryOwnership
- * @member EpicGames_Ecom_QueryOwnershipBySandboxIds
- * @member EpicGames_Ecom_QueryOwnershipToken
- * @member EpicGames_Ecom_QueryEntitlements
- * @member EpicGames_Ecom_QueryEntitlementToken
- * @member EpicGames_Ecom_QueryOffers
- * @member EpicGames_Ecom_Checkout
- * @member EpicGames_Ecom_RedeemEntitlements
- * @member EpicGames_Ecom_GetLastRedeemedEntitlementsCount
- * @member EpicGames_Ecom_CopyLastRedeemedEntitlementByIndex
- * @member EpicGames_Ecom_GetEntitlementsCount
- * @member EpicGames_Ecom_GetEntitlementsByNameCount
- * @member EpicGames_Ecom_CopyEntitlementByIndex
- * @member EpicGames_Ecom_CopyEntitlementByNameAndIndex
- * @member EpicGames_Ecom_CopyEntitlementById
- * @member EpicGames_Ecom_GetOfferCount
- * @member EpicGames_Ecom_CopyOfferByIndex
- * @member EpicGames_Ecom_CopyOfferById
- * @member EpicGames_Ecom_GetOfferItemCount
- * @member EpicGames_Ecom_CopyOfferItemByIndex
- * @member EpicGames_Ecom_CopyItemById
- * @member EpicGames_Ecom_GetOfferImageInfoCount
- * @member EpicGames_Ecom_CopyOfferImageInfoByIndex
- * @member EpicGames_Ecom_GetItemImageInfoCount
- * @member EpicGames_Ecom_CopyItemImageInfoByIndex
- * @member EpicGames_Ecom_GetItemReleaseCount
- * @member EpicGames_Ecom_CopyItemReleaseByIndex
- * @member EpicGames_Ecom_GetTransactionCount
- * @member EpicGames_Ecom_Transaction_GetTransactionIdByIndexTransaction
- * @member EpicGames_Ecom_Transaction_GetEntitlementsCountByIndexTransaction
- * @member EpicGames_Ecom_Transaction_GetEntitlementsCountByIdTransaction
- * @member EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIndexTransaction
- * @member EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIdTransaction
+ * @desc These are the functions of the Ecom module: 
+ * @ref EpicGames_Ecom_QueryOwnership
+ * @ref EpicGames_Ecom_QueryOwnershipBySandboxIds
+ * @ref EpicGames_Ecom_QueryOwnershipToken
+ * @ref EpicGames_Ecom_QueryEntitlements
+ * @ref EpicGames_Ecom_QueryEntitlementToken
+ * @ref EpicGames_Ecom_QueryOffers
+ * @ref EpicGames_Ecom_Checkout
+ * @ref EpicGames_Ecom_RedeemEntitlements
+ * @ref EpicGames_Ecom_GetLastRedeemedEntitlementsCount
+ * @ref EpicGames_Ecom_CopyLastRedeemedEntitlementByIndex
+ * @ref EpicGames_Ecom_GetEntitlementsCount
+ * @ref EpicGames_Ecom_GetEntitlementsByNameCount
+ * @ref EpicGames_Ecom_CopyEntitlementByIndex
+ * @ref EpicGames_Ecom_CopyEntitlementByNameAndIndex
+ * @ref EpicGames_Ecom_CopyEntitlementById
+ * @ref EpicGames_Ecom_GetOfferCount
+ * @ref EpicGames_Ecom_CopyOfferByIndex
+ * @ref EpicGames_Ecom_CopyOfferById
+ * @ref EpicGames_Ecom_GetOfferItemCount
+ * @ref EpicGames_Ecom_CopyOfferItemByIndex
+ * @ref EpicGames_Ecom_CopyItemById
+ * @ref EpicGames_Ecom_GetOfferImageInfoCount
+ * @ref EpicGames_Ecom_CopyOfferImageInfoByIndex
+ * @ref EpicGames_Ecom_GetItemImageInfoCount
+ * @ref EpicGames_Ecom_CopyItemImageInfoByIndex
+ * @ref EpicGames_Ecom_GetItemReleaseCount
+ * @ref EpicGames_Ecom_CopyItemReleaseByIndex
+ * @ref EpicGames_Ecom_GetTransactionCount
+ * @ref EpicGames_Ecom_Transaction_GetTransactionIdByIndexTransaction
+ * @ref EpicGames_Ecom_Transaction_GetEntitlementsCountByIndexTransaction
+ * @ref EpicGames_Ecom_Transaction_GetEntitlementsCountByIdTransaction
+ * @ref EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIndexTransaction
+ * @ref EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIdTransaction
  * @section_end
  * 
  * @section_struct Structs
- * @member Entitlement
- * @member CatalogOffer
- * @member CatalogItem
- * @member KeyImageInfo
- * @member CatalogRelease
+ * @desc These are the structs in the Ecom module:
+ * @ref Entitlement
+ * @ref CatalogOffer
+ * @ref CatalogItem
+ * @ref KeyImageInfo
+ * @ref CatalogRelease
  * @section_end
  * 
  * @module_end
