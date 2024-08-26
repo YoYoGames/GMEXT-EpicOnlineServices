@@ -6,6 +6,7 @@
   * ### ${module.achievements}
   * ### ${module.auth}
   * ### ${module.connect}
+  * ### ${module.ecom}
   * ### ${module.friends}
   * ### ${module.leaderboards}
   * ### ${module.metrics}
