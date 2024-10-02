@@ -5,27 +5,32 @@ This repository was created with the intent of presenting users with the latest 
 
 This extension will work on Windows and macOS.
 
-VISUAL STUDIO SOURCE: `source/EOS_vs/`
-
-XCODE SOURCE: `source/EOS_xcode/`
+* SOURCE CODE: `source/EOS_gml/extensions/EpicOnlineServices/epiconlineservices_cpp/`
+* VS PROJECT: `source/EOS_gml/extensions/EpicOnlineServices/epiconlineservices_windows/`
+* XCODE PROJECT: `source/EOS_gml/extensions/EpicOnlineServices/epiconlineservices_macos/`
 
 After compilation the exported dll/dylib file is automatically copied into the extension folder inside the included GameMaker project folder.
-
-
----
-
-## Important
-
-Do not download from the **main branch** this branch is a work in place branch and probably has features that might be broken or not working properly, please download from the releases panel (right side instead).
 
 ---
 
 ## Requirements
 
-In order to compile for Windows/macOS you are required to [download the EpicOnlineSerives SDK v1.15.4](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
+In order to compile for Windows/macOS you are required to download the [EpicOnlineSerives SDK 1.16.3-CL35276460](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
+
+> [!IMPORTANT]
+> Latest version 2.0.0 is a major release:
+>
+> * You will need to make sure the SDK is updated to version 1.16.3-CL35276460
 
 ---
 
 ## Documentation
 
-We provide both a PDF version of the documentation included with the extension and inside the demo project (datafiles) and a fully converted version to the [Github Wiki](https://github.com/YoYoGames/GMEXT-EpicOnlineServices/wiki) format (the latter will be the most up-to-date version, the other will follow shortly after). *If there are any PR requests with new feature implementation please make sure you also provide the documentation for the implemented features.*
+* Check [the documentation](../../wiki)
+
+The online documentation is regularly updated to ensure it contains the most current information. For those who prefer a different format, we also offer a HTML version. This HTML is directly converted from the GitHub Wiki content, ensuring consistency, although it may follow slightly behind in updates.
+
+We encourage users to refer primarily to the GitHub Wiki for the latest information and updates. The HTML version, included with the extension and within the demo project's data files, serves as a secondary, static reference.
+
+Additionally, if you're contributing new features through PR (Pull Requests), we kindly ask that you also provide accompanying documentation for these features, to maintain the comprehensiveness and usefulness of our resources.
+
