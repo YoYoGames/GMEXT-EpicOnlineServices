@@ -120,7 +120,7 @@
 		6AFC45542927CE0A00EF86C1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "${PROJECT_DIR}/../EOS_gml/extensions/EpicOnlineServices";
+			dstPath = "${PROJECT_DIR}/..";
 			dstSubfolderSpec = 0;
 			files = (
 				6AFC45552927CE7900EF86C1 /* libEpicOnlineServices.dylib in CopyFiles */,
@@ -208,40 +208,40 @@
 		2B75FEA32C21F51500B207CF /* eos_rtc_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_rtc_data.h; path = ../../EOS_sdk/Include/eos_rtc_data.h; sourceTree = "<group>"; };
 		2B75FEA42C21F51500B207CF /* eos_sanctions_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_sanctions_types.h; path = ../../EOS_sdk/Include/eos_sanctions_types.h; sourceTree = "<group>"; };
 		2B75FEA52C21F51500B207CF /* eos_userinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_userinfo.h; path = ../../EOS_sdk/Include/eos_userinfo.h; sourceTree = "<group>"; };
-		2BC97926287F41760079F3E2 /* DesktopExtensionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DesktopExtensionTools.h; path = ../EOS_vs/EpicOnlineServices/DesktopExtensionTools.h; sourceTree = "<group>"; };
-		2BC97927287F41760079F3E2 /* DesktopExtensionTools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DesktopExtensionTools.mm; path = ../EOS_vs/EpicOnlineServices/DesktopExtensionTools.mm; sourceTree = "<group>"; };
-		2BD17D7528349CC200C86127 /* YYEOS_Friends.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Friends.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Friends.cpp; sourceTree = "<group>"; };
-		2BD17D7628349CC200C86127 /* YYEOS_Auth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Auth.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Auth.cpp; sourceTree = "<group>"; };
-		2BD17D7728349CC200C86127 /* YYEOS_ProgressionSnapshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_ProgressionSnapshot.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_ProgressionSnapshot.cpp; sourceTree = "<group>"; };
-		2BD17D7828349CC200C86127 /* YYEOS_Sessions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Sessions.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Sessions.cpp; sourceTree = "<group>"; };
-		2BD17D7928349CC200C86127 /* YYEOS_Leaderboards.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Leaderboards.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Leaderboards.cpp; sourceTree = "<group>"; };
-		2BD17D7A28349CC200C86127 /* YYEOS_UserInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_UserInfo.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_UserInfo.cpp; sourceTree = "<group>"; };
-		2BD17D7B28349CC200C86127 /* YYEOS_PlayerDataStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_PlayerDataStorage.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_PlayerDataStorage.cpp; sourceTree = "<group>"; };
-		2BD17D7C28349CC200C86127 /* YYEOS_Achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Achievements.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Achievements.cpp; sourceTree = "<group>"; };
-		2BD17D7D28349CC200C86127 /* YYEOS_CustomInvites.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_CustomInvites.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_CustomInvites.cpp; sourceTree = "<group>"; };
-		2BD17D7E28349CC200C86127 /* YYEOS_P2P.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_P2P.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_P2P.cpp; sourceTree = "<group>"; };
-		2BD17D7F28349CC200C86127 /* YYEOS_Reports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Reports.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Reports.cpp; sourceTree = "<group>"; };
-		2BD17D8028349CC200C86127 /* YYEOS_Stats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Stats.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Stats.cpp; sourceTree = "<group>"; };
-		2BD17D8128349CC200C86127 /* YYEOS_Metrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Metrics.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Metrics.cpp; sourceTree = "<group>"; };
-		2BD17D8228349CC200C86127 /* YYEOS_Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Platform.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Platform.cpp; sourceTree = "<group>"; };
-		2BD17D8328349CC200C86127 /* YYEOS_Connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Connect.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Connect.cpp; sourceTree = "<group>"; };
-		2BD17D8428349CC200C86127 /* YYEOS_Presence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Presence.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Presence.cpp; sourceTree = "<group>"; };
-		2BD17D8528349CC200C86127 /* YYEOS_ExeTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_ExeTest.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_ExeTest.cpp; sourceTree = "<group>"; };
-		2BD17D8628349CC200C86127 /* YYEOS_Sanctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Sanctions.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Sanctions.cpp; sourceTree = "<group>"; };
-		2BD17D8728349CC200C86127 /* YYEOS_UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_UI.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_UI.cpp; sourceTree = "<group>"; };
-		2BD17D8828349CC200C86127 /* YYEOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS.cpp; sourceTree = "<group>"; };
-		2BD17D8928349CC200C86127 /* YYEOS_Lobbies.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_Lobbies.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_Lobbies.cpp; sourceTree = "<group>"; };
-		2BD17D8A28349CC200C86127 /* YYEOS_TitleStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = YYEOS_TitleStorage.cpp; path = ../../EOS_vs/EpicOnlineServices/YYEOS_TitleStorage.cpp; sourceTree = "<group>"; };
-		2BD17D8B28349CC200C86127 /* YYEpicOnlineServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YYEpicOnlineServices.h; path = ../../EOS_vs/EpicOnlineServices/YYEpicOnlineServices.h; sourceTree = "<group>"; };
+		2BC97926287F41760079F3E2 /* DesktopExtensionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DesktopExtensionTools.h; path = ../epiconlineservices_cpp/DesktopExtensionTools.h; sourceTree = "<group>"; };
+		2BC97927287F41760079F3E2 /* DesktopExtensionTools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DesktopExtensionTools.mm; sourceTree = "<group>"; };
+		2BD17D7528349CC200C86127 /* YYEOS_Friends.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Friends.cpp; sourceTree = "<group>"; };
+		2BD17D7628349CC200C86127 /* YYEOS_Auth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Auth.cpp; sourceTree = "<group>"; };
+		2BD17D7728349CC200C86127 /* YYEOS_ProgressionSnapshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_ProgressionSnapshot.cpp; sourceTree = "<group>"; };
+		2BD17D7828349CC200C86127 /* YYEOS_Sessions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Sessions.cpp; sourceTree = "<group>"; };
+		2BD17D7928349CC200C86127 /* YYEOS_Leaderboards.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Leaderboards.cpp; sourceTree = "<group>"; };
+		2BD17D7A28349CC200C86127 /* YYEOS_UserInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_UserInfo.cpp; sourceTree = "<group>"; };
+		2BD17D7B28349CC200C86127 /* YYEOS_PlayerDataStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_PlayerDataStorage.cpp; sourceTree = "<group>"; };
+		2BD17D7C28349CC200C86127 /* YYEOS_Achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Achievements.cpp; sourceTree = "<group>"; };
+		2BD17D7D28349CC200C86127 /* YYEOS_CustomInvites.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_CustomInvites.cpp; sourceTree = "<group>"; };
+		2BD17D7E28349CC200C86127 /* YYEOS_P2P.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_P2P.cpp; sourceTree = "<group>"; };
+		2BD17D7F28349CC200C86127 /* YYEOS_Reports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Reports.cpp; sourceTree = "<group>"; };
+		2BD17D8028349CC200C86127 /* YYEOS_Stats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Stats.cpp; sourceTree = "<group>"; };
+		2BD17D8128349CC200C86127 /* YYEOS_Metrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Metrics.cpp; sourceTree = "<group>"; };
+		2BD17D8228349CC200C86127 /* YYEOS_Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Platform.cpp; sourceTree = "<group>"; };
+		2BD17D8328349CC200C86127 /* YYEOS_Connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Connect.cpp; sourceTree = "<group>"; };
+		2BD17D8428349CC200C86127 /* YYEOS_Presence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Presence.cpp; sourceTree = "<group>"; };
+		2BD17D8528349CC200C86127 /* YYEOS_ExeTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_ExeTest.cpp; sourceTree = "<group>"; };
+		2BD17D8628349CC200C86127 /* YYEOS_Sanctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Sanctions.cpp; sourceTree = "<group>"; };
+		2BD17D8728349CC200C86127 /* YYEOS_UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_UI.cpp; sourceTree = "<group>"; };
+		2BD17D8828349CC200C86127 /* YYEOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS.cpp; sourceTree = "<group>"; };
+		2BD17D8928349CC200C86127 /* YYEOS_Lobbies.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Lobbies.cpp; sourceTree = "<group>"; };
+		2BD17D8A28349CC200C86127 /* YYEOS_TitleStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_TitleStorage.cpp; sourceTree = "<group>"; };
+		2BD17D8B28349CC200C86127 /* YYEpicOnlineServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYEpicOnlineServices.h; sourceTree = "<group>"; };
 		2BE86CE3281A0C400072D68B /* libEpicOnlineServices.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libEpicOnlineServices.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BE86CF1281A0EA90072D68B /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = framework.h; path = ../EOS_vs/EpicOnlineServices/framework.h; sourceTree = "<group>"; };
-		2BE86CF2281A0EA90072D68B /* pch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pch.cpp; path = ../EOS_vs/EpicOnlineServices/pch.cpp; sourceTree = "<group>"; };
-		2BE86CF3281A0EA90072D68B /* YYRValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YYRValue.h; path = ../EOS_vs/EpicOnlineServices/YYRValue.h; sourceTree = "<group>"; };
-		2BE86CF4281A0EA90072D68B /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pch.h; path = ../EOS_vs/EpicOnlineServices/pch.h; sourceTree = "<group>"; };
-		2BE86CF5281A0EA90072D68B /* Ref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ref.h; path = ../EOS_vs/EpicOnlineServices/Ref.h; sourceTree = "<group>"; };
-		2BE86CF6281A0EA90072D68B /* Extension_Interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Extension_Interface.h; path = ../EOS_vs/EpicOnlineServices/Extension_Interface.h; sourceTree = "<group>"; };
-		2BE86CF7281A0EA90072D68B /* dllmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dllmain.cpp; path = ../EOS_vs/EpicOnlineServices/dllmain.cpp; sourceTree = "<group>"; };
-		2BE86D8B281A20620072D68B /* libEOSSDK-Mac-Shipping.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libEOSSDK-Mac-Shipping.dylib"; path = "../EOS_sdk/Bin/libEOSSDK-Mac-Shipping.dylib"; sourceTree = SOURCE_ROOT; };
+		2BE86CF1281A0EA90072D68B /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = framework.h; path = ../epiconlineservices_cpp/framework.h; sourceTree = "<group>"; };
+		2BE86CF2281A0EA90072D68B /* pch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pch.cpp; path = ../epiconlineservices_cpp/pch.cpp; sourceTree = "<group>"; };
+		2BE86CF3281A0EA90072D68B /* YYRValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YYRValue.h; path = ../epiconlineservices_cpp/YYRValue.h; sourceTree = "<group>"; };
+		2BE86CF4281A0EA90072D68B /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pch.h; path = ../epiconlineservices_cpp/pch.h; sourceTree = "<group>"; };
+		2BE86CF5281A0EA90072D68B /* Ref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ref.h; path = ../epiconlineservices_cpp/Ref.h; sourceTree = "<group>"; };
+		2BE86CF6281A0EA90072D68B /* Extension_Interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Extension_Interface.h; path = ../epiconlineservices_cpp/Extension_Interface.h; sourceTree = "<group>"; };
+		2BE86CF7281A0EA90072D68B /* dllmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dllmain.cpp; path = ../epiconlineservices_cpp/dllmain.cpp; sourceTree = "<group>"; };
+		2BE86D8B281A20620072D68B /* libEOSSDK-Mac-Shipping.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libEOSSDK-Mac-Shipping.dylib"; path = "../../../../EOS_sdk/Bin/libEOSSDK-Mac-Shipping.dylib"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,7 +337,8 @@
 				2B75FEA52C21F51500B207CF /* eos_userinfo.h */,
 				2B75FE592C21F51400B207CF /* eos_version.h */,
 			);
-			path = SDK;
+			name = SDK;
+			path = ../../../../EOS_sdk/Include;
 			sourceTree = "<group>";
 		};
 		2BD17D7428349CA100C86127 /* GML */ = {
@@ -369,7 +370,7 @@
 				2BD17D8B28349CC200C86127 /* YYEpicOnlineServices.h */,
 			);
 			name = GML;
-			path = ../EOS_vs/EpicOnlineServices;
+			path = ../epiconlineservices_cpp;
 			sourceTree = SOURCE_ROOT;
 		};
 		2BE86CDA281A0C400072D68B = {
@@ -700,7 +701,7 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				LIBRARY_SEARCH_PATHS = ../EOS_sdk/Bin/;
+				LIBRARY_SEARCH_PATHS = ../../../../EOS_sdk/Bin/;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -718,7 +719,7 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				LIBRARY_SEARCH_PATHS = ../EOS_sdk/Bin/;
+				LIBRARY_SEARCH_PATHS = ../../../../EOS_sdk/Bin/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
