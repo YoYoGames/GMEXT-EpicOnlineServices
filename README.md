@@ -5,9 +5,9 @@ This repository was created with the intent of presenting users with the latest 
 
 This extension will work on Windows and macOS.
 
-VISUAL STUDIO SOURCE: `source/EOS_vs/`
-
-XCODE SOURCE: `source/EOS_xcode/`
+* SOURCE CODE: `source/EOS_gml/extensions/EpicOnlineServices/epiconlineservices_cpp/`
+* VS PROJECT: `source/EOS_gml/extensions/EpicOnlineServices/epiconlineservices_windows/`
+* XCODE PROJECT: `source/EOS_gml/extensions/EpicOnlineServices/epiconlineservices_macos/`
 
 After compilation the exported dll/dylib file is automatically copied into the extension folder inside the included GameMaker project folder.
 
@@ -22,7 +22,7 @@ Do not download from the **main branch** this branch is a work in place branch a
 
 ## Requirements
 
-In order to compile for Windows/macOS you are required to [download the EpicOnlineSerives SDK v1.15.4](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
+In order to compile for Windows/macOS you are required to download the [EpicOnlineSerives SDK 1.16.3-CL35276460](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
 
 ---
 
