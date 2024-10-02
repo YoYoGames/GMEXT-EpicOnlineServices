@@ -2,7 +2,7 @@
 
 - This extension version will be compatible with the GM 2022.0.1 LTSr1 (upon release)
 - This extension is to be used with GM 2023.1 and future releases.
-- Requires EOS SDK version 1.15.4 (or recent)
+- Requires EOS SDK version 1.16.3 (or recent)
 - Works with **Windows** and **macOS** (YYC only).
 - Linux (VM and YYC) is still experimental (there is no official launcher)
 
