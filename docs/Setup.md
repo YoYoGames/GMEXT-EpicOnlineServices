@@ -17,4 +17,4 @@ To use the Epic Online Services API extension you should follow these steps:
 
 6. The options are split into two sections: **Building Properties** and **Game Properties** . The first one is a folder path that should point to the extracted folder of step 3, the second section will allow you to configure all possible settings for running and publishing a game to Epic Store. The **Product Name**, **Product ID**, **Sandbox ID** and **Deployment ID** must be set.
 
-[[Note: If you set **Debug Mode** to `Enabled` this will force your app to be launched by the EOS launcher. This should only be used when you are ready to send your app to production (DO NOT try to run the game from the IDE while debug mode is disabled).]]
+[[Note: If you set **Debug Mode** to `Enabled` this will NEVER force your app to be launched by the EOS launcher. This should only be used when in some rare cases you want to send a copy to someone for test purposes (when in production DO NOT set this to `Enabled`).]]
