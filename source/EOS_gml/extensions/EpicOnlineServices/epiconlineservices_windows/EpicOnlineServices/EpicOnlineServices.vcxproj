@@ -18,6 +18,43 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\epiconlineservices_cpp\DesktopExtensionTools.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\dllmain.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\pch.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Achievements.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Auth.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Connect.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_CustomInvites.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Ecom.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_ExeTest.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Friends.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Leaderboards.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Lobbies.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Metrics.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_P2P.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Platform.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_PlayerDataStorage.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Presence.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_ProgressionSnapshot.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Reports.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Sanctions.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Sessions.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Stats.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_TitleStorage.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_UI.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_UserInfo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\epiconlineservices_cpp\DesktopExtensionTools.h" />
+    <ClInclude Include="..\..\epiconlineservices_cpp\Extension_Interface.h" />
+    <ClInclude Include="..\..\epiconlineservices_cpp\framework.h" />
+    <ClInclude Include="..\..\epiconlineservices_cpp\pch.h" />
+    <ClInclude Include="..\..\epiconlineservices_cpp\Ref.h" />
+    <ClInclude Include="..\..\epiconlineservices_cpp\YYEpicOnlineServices.h" />
+    <ClInclude Include="..\..\epiconlineservices_cpp\YYRValue.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -140,14 +177,14 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\EOS_sdk\Include\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\..\..\EOS_sdk\Include\;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>..\..\EOS_sdk\Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\EOS_sdk\Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>EOSSDK-Win64-Shipping.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
@@ -155,7 +192,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetPath)" "..\..\EOS_gml\extensions\EpicOnlineServices\"</Command>
+      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -168,7 +205,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\EOS_sdk\Include\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\..\..\EOS_sdk\Include\;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -178,53 +215,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>..\..\EOS_sdk\Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\EOS_sdk\Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>EOSSDK-Win64-Shipping.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetPath)" "..\..\EOS_gml\extensions\EpicOnlineServices\"</Command>
+      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\json-c-0.9\debug.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="Extension_Interface.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="YYEpicOnlineServices.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="DesktopExtensionTools.cpp" />
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="YYEOS_Ecom.cpp" />
-    <ClCompile Include="YYEOS_ExeTest.cpp" />
-    <ClCompile Include="YYEOS_Friends.cpp" />
-    <ClCompile Include="YYEOS_ProgressionSnapshot.cpp" />
-    <ClCompile Include="YYEOS_Presence.cpp" />
-    <ClCompile Include="YYEOS_Auth.cpp" />
-    <ClCompile Include="YYEOS_Achievements.cpp" />
-    <ClCompile Include="YYEOS_CustomInvites.cpp" />
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="YYEOS_Connect.cpp" />
-    <ClCompile Include="YYEOS_Leaderboards.cpp" />
-    <ClCompile Include="YYEOS_Lobbies.cpp" />
-    <ClCompile Include="YYEOS_UI.cpp" />
-    <ClCompile Include="YYEOS_UserInfo.cpp" />
-    <ClCompile Include="YYEOS_Metrics.cpp" />
-    <ClCompile Include="YYEOS_P2P.cpp" />
-    <ClCompile Include="YYEOS_Platform.cpp" />
-    <ClCompile Include="YYEOS_PlayerDataStorage.cpp" />
-    <ClCompile Include="YYEOS_Reports.cpp" />
-    <ClCompile Include="YYEOS_Sanctions.cpp" />
-    <ClCompile Include="YYEOS_Sessions.cpp" />
-    <ClCompile Include="YYEOS_Stats.cpp" />
-    <ClCompile Include="YYEOS_TitleStorage.cpp" />
-    <ClCompile Include="YYEOS.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

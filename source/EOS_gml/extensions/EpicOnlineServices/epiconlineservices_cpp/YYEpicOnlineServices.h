@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <string>
 
-#include<eos_sdk.h>
+#include <eos_sdk.h>
 #include <vector>
 
 //#define YYEXPORT __declspec(dllexport)

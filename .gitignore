@@ -1,2 +1,32 @@
 
+# VS and VSC folders
+**/.vs/
+**/.vsc/
+
+# Common extensions
+**/*.exp
+**/*.ilk
+**/*.lib
+**/*.pdb
+**/*.exp
+**/*.exe
+
+# SDKs
+source/EOS_sdk/
+
+# DEMO options
+source/EOS_gml/options/
+
+# Build solutions (temp & output)
+**/Debug/
+**/Release/
+
+# MacOS
+.DS_Store
+
+# XCode and VS userdata
+*.user
+xcuserdata/
+
+# Release packages
 output/
