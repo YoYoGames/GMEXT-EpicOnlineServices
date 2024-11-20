@@ -5,12 +5,17 @@ switch(async_load[?"type"])
 	case "EpicGames_Leaderboards_QueryLeaderboardUserScores":
 		
 		var struct = EpicGames_Leaderboards_CopyLeaderboardUserScoreByUserId(userID,"Leaderboard_Stat")
-		show_debug_message("Leaderboard_Stat: " + string(struct.Score))
 		
+		if(struct_exists(struct,"Score"))
+			show_debug_message("Leaderboard_Stat ByUserId: " + string(struct.Score))
+		else
+			show_debug_message("Leaderboard_Stat ByUserId: No Score")
+		
+		show_debug_message("Leaderboard_Stat count: " + string(EpicGames_Leaderboards_GetLeaderboardUserScoreCount("Leaderboard_Stat")))
 		for(var a = 0 ; a < EpicGames_Leaderboards_GetLeaderboardUserScoreCount("Leaderboard_Stat") ; a++)
 		{
 			var struct = EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(a,"Leaderboard_Stat")
-			show_debug_message("Leaderboard_Stat: " + string(struct.Score))
+			show_debug_message($"Leaderboard_Stat ByIndex({a}): " + string(struct.Score))
 		}
 		
 	break
@@ -70,4 +75,25 @@ switch(async_load[?"type"])
 		//show_debug_message(EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(0))
 		
 	break
+	
+	
+
+	case "EpicGames_Friends_QueryFriends":
+		
+		if(async_load[?"status"] == EpicGames_Success)
+		{
+			var count = EpicGames_Friends_GetFriendsCount(AccountID)
+			for(var a = 0 ; a < count ; a ++)
+			{
+				var Friend_AccountID = EpicGames_Friends_GetFriendAtIndex(AccountID,a)
+				array_push(friends,Friend_AccountID)
+			}
+			
+			array_push(friends,userID)
+			show_debug_message(friends)
+			
+			EpicGames_Leaderboards_QueryLeaderboardUserScores(userID,"YYEpicTest_Leaderboard",friends,[{StatName: "Leaderboard_Stat",Aggregation: EpicGames_LA_Max}],0,0)
+		}
+	break
+
 }

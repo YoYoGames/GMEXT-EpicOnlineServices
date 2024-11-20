@@ -11,6 +11,7 @@ if(async_load[?"identifier"] == request)
 		DisplayName = struct.DisplayName
 		//struct.PreferredLanguage
 		//struct.UserId
+		show_debug_message(struct)
 	}
 	else show_debug_message("ERROR!!!")
 }
