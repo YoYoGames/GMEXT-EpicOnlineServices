@@ -1,34 +1,15 @@
 
 switch(async_load[?"type"])
-{	
-	
-	case "EpicGames_Leaderboards_QueryLeaderboardUserScores":
-		
-		var struct = EpicGames_Leaderboards_CopyLeaderboardUserScoreByUserId(userID,"Leaderboard_Stat")
-		
-		if(struct_exists(struct,"Score"))
-			show_debug_message("Leaderboard_Stat ByUserId: " + string(struct.Score))
-		else
-			show_debug_message("Leaderboard_Stat ByUserId: No Score")
-		
-		show_debug_message("Leaderboard_Stat count: " + string(EpicGames_Leaderboards_GetLeaderboardUserScoreCount("Leaderboard_Stat")))
-		for(var a = 0 ; a < EpicGames_Leaderboards_GetLeaderboardUserScoreCount("Leaderboard_Stat") ; a++)
-		{
-			var struct = EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(a,"Leaderboard_Stat")
-			show_debug_message($"Leaderboard_Stat ByIndex({a}): " + string(struct.Score))
-		}
-		
-	break
-	
+{
 	case "EpicGames_Leaderboards_QueryLeaderboardDefinitions":
 		
 		var count = EpicGames_Leaderboards_GetLeaderboardDefinitionCount()
-		show_debug_message("Leaderboard Count: " + string(count))
+		
 		for(var a = 0 ; a < count ; a++)
 		{
 			var struct = EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex(a)
-			show_debug_message(struct)
-			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderbaord_Definition)
+			
+			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Definition)
 			
 			if(variable_struct_exists(struct,"LeaderboardId"))
 				ins.LeaderboardId = struct.LeaderboardId
@@ -47,16 +28,16 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_Leaderboards_QueryLeaderboardRanks":
 		
-		with(Obj_EpicGames_Leaderbaord_Definition)
+		with(Obj_EpicGames_Leaderboard_Definition)
 			instance_destroy()
 		
 		var count = EpicGames_Leaderboards_GetLeaderboardRecordCount()
-		show_debug_message("RecordCount: " + string(count))
+		
 		for(var a = 0 ; a < count ; a++)
 		{
 			var struct = EpicGames_Leaderboards_CopyLeaderboardRecordByIndex(a)
-			show_debug_message(struct)
-			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderbaord_Rank)
+			
+			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Rank)
 			
 			if(variable_struct_exists(struct,"UserId"))
 				ins.UserId = struct.UserId
@@ -71,29 +52,5 @@ switch(async_load[?"type"])
 				ins.UserDisplayName = struct.UserDisplayName
 		}
 		
-		//show_debug_message("ScoreCount: " + string(EOS_Leaderboards_GetLeaderboardUserScoreCount()))
-		//show_debug_message(EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(0))
-		
 	break
-	
-	
-
-	case "EpicGames_Friends_QueryFriends":
-		
-		if(async_load[?"status"] == EpicGames_Success)
-		{
-			var count = EpicGames_Friends_GetFriendsCount(AccountID)
-			for(var a = 0 ; a < count ; a ++)
-			{
-				var Friend_AccountID = EpicGames_Friends_GetFriendAtIndex(AccountID,a)
-				array_push(friends,Friend_AccountID)
-			}
-			
-			array_push(friends,userID)
-			show_debug_message(friends)
-			
-			EpicGames_Leaderboards_QueryLeaderboardUserScores(userID,"YYEpicTest_Leaderboard",friends,[{StatName: "Leaderboard_Stat",Aggregation: EpicGames_LA_Max}],0,0)
-		}
-	break
-
 }

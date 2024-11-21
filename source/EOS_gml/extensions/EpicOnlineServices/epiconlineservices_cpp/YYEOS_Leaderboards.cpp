@@ -401,29 +401,21 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScore(RValue& Result, C
 
 YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	DebugConsoleOutput("EpicGames_Leaderboards_QueryLeaderboardUserScores CALLED\n");
-
 	EOS_NotInitialisedReturn_REAL
 
 	const char* userID = YYGetString(arg, 0);
 	const char* LeaderboardId = YYGetString(arg, 1);//not in use...
-
-	DebugConsoleOutput("1) \n");
 
 	//const char* userID_target = YYGetString(arg, 1);
 	EOS_ProductUserId* ProductUserIds = new EOS_ProductUserId[1024];
 	int vec_Users_count = 0;
 	if (KIND_RValue(&arg[2]) == VALUE_ARRAY) {
 		std::vector<const char*> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
-		DebugConsoleOutput("HELLO?\n");
 		for (const char* e : vec_Users) {
-			DebugConsoleOutput(e); DebugConsoleOutput("\n");
 			ProductUserIds[vec_Users_count] = EOS_ProductUserId_FromString(e);
 			vec_Users_count++;
 		}
 	}
-
-	DebugConsoleOutput("2) Users: %i\n", vec_Users_count);
 
 	//const char* name = YYGetString(arg, 3);
 	//double agregation = YYGetReal(arg, 4);
@@ -442,8 +434,6 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue& Result, 
 		}
 	}
 
-	DebugConsoleOutput("3) StatInfoData_count: %i\n", vec_StatInfoData_count);
-
 	int64 startTime = YYGetInt64(arg, 4);
 	int64 endTime = YYGetInt64(arg, 5);
 
@@ -456,8 +446,6 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue& Result, 
 	//EOS_ProductUserId* UserData = new EOS_ProductUserId[1];
 	//UserData[0] = EOS_ProductUserId_FromString(userID_target);
 	
-	DebugConsoleOutput("4) \n");
-
 	QueryUserScoresOptions.StatInfoCount = vec_StatInfoData_count;
 	QueryUserScoresOptions.StatInfo = StatInfoData;
 
@@ -472,8 +460,6 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue& Result, 
 		QueryUserScoresOptions.EndTime = EOS_LEADERBOARDS_TIME_UNDEFINED;
 
 	callback* mcallback = getCallbackData();
-
-	DebugConsoleOutput("5) \n");
 
 	EOS_Leaderboards_QueryLeaderboardUserScores(HLeaderboards, &QueryUserScoresOptions, mcallback, LeaderboardUserScoresReceivedCallbackFn);
 

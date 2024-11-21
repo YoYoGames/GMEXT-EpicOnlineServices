@@ -330,7 +330,7 @@ YYEXPORT void EpicGames_Connect_DeleteDeviceId(RValue& Result, CInstance* selfin
 
 YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_STRING
 
 	const char* LocalUserId = YYGetString(arg, 0);
 	const char* TargetExternalUserId = YYGetString(arg, 1);
@@ -340,9 +340,10 @@ YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue& Result, CInsta
 	Options.ApiVersion = EOS_CONNECT_GETEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	Options.AccountIdType = (EOS_EExternalAccountType)AccountIdType;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.TargetExternalUserId = TargetExternalUserId;
+	Options.TargetExternalUserId = TargetExternalUserId; //EOS_EExternalAccountType::EOS_EAT_EPIC
 
 	EOS_ProductUserId NewMapping = EOS_Connect_GetExternalAccountMapping(HConnect, &Options);
+	YYCreateString(&Result, productID_toString(NewMapping));
 }
 
 YYEXPORT void EpicGames_Connect_GetLoggedInUserByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
@@ -501,23 +502,28 @@ YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue& Result, CIn
 {
 	EOS_NotInitialisedReturn_REAL
 
-	//const char* user = YYGetString(arg, 0);
+	const char* userID = YYGetString(arg, 0);
+	int accountIdType = (int)YYGetReal(arg, 1);
 
-	//EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
-	//QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
-	//QueryOptions.AccountIdType = EOS_EExternalAccountType::EOS_EAT_EPIC;
-	//QueryOptions.LocalUserId = EOS_ProductUserId_FromString(user);
+	//if (KIND_RValue(&arg[2]) == VALUE_ARRAY) {
+	std::vector<const char*> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Connect_QueryExternalAccountMappings");
+	//}
+	
+	EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
+	QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
+	QueryOptions.AccountIdType = (EOS_EExternalAccountType)accountIdType; //EOS_EExternalAccountType // ::EOS_EAT_EPIC;
+	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 
-	//const char* ExternalAccountId;
+	const char* ExternalAccountId;
 
-	//QueryOptions.ExternalAccountIdCount = ;
-	//QueryOptions.ExternalAccountIds = ;
+	QueryOptions.ExternalAccountIdCount = vec_Users.size();
+	QueryOptions.ExternalAccountIds = vec_Users.data();
 
-	//EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
+	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
 	
 	callback* mcallback = getCallbackData();
 
-	//EOS_Connect_QueryExternalAccountMappings(ConnectHandle, &QueryOptions, mcallback, OnQueryExternalAccountMappingsCallback);
+	EOS_Connect_QueryExternalAccountMappings(ConnectHandle, &QueryOptions, mcallback, OnQueryExternalAccountMappingsCallback);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
