@@ -182,12 +182,12 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_CheckForLauncherAndRestart(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL
+		EOS_NotInitialisedReturn_REAL
 
-		EOS_Platform_CheckForLauncherAndRestart(PlatformHandle);
+		EOS_EResult Result = EOS_Platform_CheckForLauncherAndRestart(PlatformHandle);
 
-		Result.kind = VALUE_BOOL;
-		Result.val = true;
+		Result.kind = VALUE_REAL;
+		Result.val = double(Result);
 	}
 
 	YYEXPORT void EpicGames_Platform_GetActiveCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
