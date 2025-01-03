@@ -47,7 +47,7 @@ void EOS_CALL OnDisplaySettingsUpdated(const EOS_UI_OnDisplaySettingsUpdatedCall
 
 YYEXPORT void EpicGames_UI_AddNotifyDisplaySettingsUpdated(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_INT64
+	EOS_NotInitialisedReturn_INT64;
 
 	EOS_UI_AddNotifyDisplaySettingsUpdatedOptions Options = {};
 	Options.ApiVersion = EOS_UI_ADDNOTIFYDISPLAYSETTINGSUPDATED_API_LATEST;
@@ -55,12 +55,14 @@ YYEXPORT void EpicGames_UI_AddNotifyDisplaySettingsUpdated(RValue& Result, CInst
 	EOS_NotificationId DisplayUpdateNotificationId = EOS_UI_AddNotifyDisplaySettingsUpdated(HUI, &Options, nullptr, OnDisplaySettingsUpdated);
 
 	Result.kind = VALUE_INT64;
-	Result.v64 = DisplayUpdateNotificationId;
+	Result.v64 = static_cast<int64_t>(DisplayUpdateNotificationId);
 }
 
 YYEXPORT void EpicGames_UI_GetFriendsVisible(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -74,7 +76,7 @@ YYEXPORT void EpicGames_UI_GetFriendsVisible(RValue& Result, CInstance* selfinst
 
 YYEXPORT void EpicGames_UI_GetNotificationLocationPreference(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)EOS_UI_GetNotificationLocationPreference(HUI);
@@ -82,7 +84,7 @@ YYEXPORT void EpicGames_UI_GetNotificationLocationPreference(RValue& Result, CIn
 
 YYEXPORT void EpicGames_UI_GetToggleFriendsKey(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_INT32
+	EOS_NotInitialisedReturn_INT32;
 
 	EOS_UI_GetToggleFriendsKeyOptions Options = { 0 };
 	Options.ApiVersion = EOS_UI_GETTOGGLEFRIENDSKEY_API_LATEST;
@@ -103,7 +105,9 @@ void EOS_CALL HideFriends(const EOS_UI_HideFriendsCallbackInfo* Data)
 
 YYEXPORT void EpicGames_UI_HideFriends(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -121,7 +125,9 @@ YYEXPORT void EpicGames_UI_HideFriends(RValue& Result, CInstance* selfinst, CIns
 
 YYEXPORT void EpicGames_UI_IsValidKeyCombination(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(1);
 
 	int32 keycombination = YYGetInt32(arg, 0);
 
@@ -131,7 +137,9 @@ YYEXPORT void EpicGames_UI_IsValidKeyCombination(RValue& Result, CInstance* self
 
 YYEXPORT void EpicGames_UI_RemoveNotifyDisplaySettingsUpdated(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(1);
 
 	int64 DisplayUpdateNotificationId = YYGetInt64(arg, 0);
 
@@ -140,14 +148,11 @@ YYEXPORT void EpicGames_UI_RemoveNotifyDisplaySettingsUpdated(RValue& Result, CI
 
 YYEXPORT void EpicGames_UI_SetDisplayPreference(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
 
-	double Location = YYGetReal(arg, 0);
+	eos_ensure_argc(1);
 
-	//EOS_UI_ENotificationLocation::EOS_UNL_TopLeft
-	//EOS_UI_ENotificationLocation::EOS_UNL_TopRight,
-	//EOS_UI_ENotificationLocation::EOS_UNL_BottomLeft,
-	//EOS_UI_ENotificationLocation::EOS_UNL_BottomRight
+	int32_t Location = YYGetInt32(arg, 0);
 
 	EOS_UI_SetDisplayPreferenceOptions Options = {};
 	Options.ApiVersion = EOS_UI_SETDISPLAYPREFERENCE_API_LATEST;
@@ -160,9 +165,11 @@ YYEXPORT void EpicGames_UI_SetDisplayPreference(RValue& Result, CInstance* selfi
 
 YYEXPORT void EpicGames_UI_SetToggleFriendsKey(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
 
-	int64 KeyCombination = YYGetReal(arg, 0);
+	eos_ensure_argc(1);
+
+	int32_t KeyCombination = YYGetInt32(arg, 0);
 
 	EOS_UI_SetToggleFriendsKeyOptions Options = {};
 	Options.ApiVersion = EOS_UI_SETTOGGLEFRIENDSKEY_API_LATEST;
@@ -185,7 +192,9 @@ void EOS_CALL ShowFriendsCallbackFn(const EOS_UI_ShowFriendsCallbackInfo* Data)
 
 YYEXPORT void EpicGames_UI_ShowFriends(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 

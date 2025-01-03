@@ -26,16 +26,18 @@ void EOS_CALL SendPlayerBehaviorReportCallbackFn(const EOS_Reports_SendPlayerBeh
 
 YYEXPORT void EpicGames_Reports_SendPlayerBehaviorReport(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(4);
 
 	const char* ReporterUserId = YYGetString(arg, 0);
 	const char* ReportedUserId = YYGetString(arg, 1);
-	int category = (int)YYGetReal(arg, 2);
+	int32_t category = YYGetInt32(arg, 2);
 	const char* Message = YYGetString(arg, 3);
 
 	EOS_Reports_SendPlayerBehaviorReportOptions SendPlayerBehaviorReportOptions = {};
 	SendPlayerBehaviorReportOptions.ApiVersion = EOS_REPORTS_SENDPLAYERBEHAVIORREPORT_API_LATEST;
-	SendPlayerBehaviorReportOptions.Category = (EOS_EPlayerReportsCategory)category; EOS_EPlayerReportsCategory::EOS_PRC_Cheating;
+	SendPlayerBehaviorReportOptions.Category = (EOS_EPlayerReportsCategory)category; //EOS_EPlayerReportsCategory::EOS_PRC_Cheating;
 	SendPlayerBehaviorReportOptions.Message = Message;
 	SendPlayerBehaviorReportOptions.ReportedUserId = EOS_ProductUserId_FromString(ReportedUserId);
 	SendPlayerBehaviorReportOptions.ReporterUserId = EOS_ProductUserId_FromString(ReporterUserId);

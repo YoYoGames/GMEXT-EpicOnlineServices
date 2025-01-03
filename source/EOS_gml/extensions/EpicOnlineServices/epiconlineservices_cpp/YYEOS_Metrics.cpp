@@ -18,12 +18,14 @@ void EpicGames_Metrics_Init()
 
 YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(6);
 
 	const char* account = YYGetString(arg, 0);
 	const char* DisplayName = YYGetString(arg, 1);
-	double AccountIdType = YYGetReal(arg, 2);
-	double ControllerType = YYGetReal(arg, 3);
+	int32_t AccountIdType = YYGetInt32(arg, 2);
+	int32_t ControllerType = YYGetInt32(arg, 3);
 	const char* ServerIp = YYGetString(arg, 4);
 	const char* GameSessionId = YYGetString(arg, 5);
 
@@ -44,10 +46,12 @@ YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* se
 
 YYEXPORT void EpicGames_Metrics_EndPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(2);
 
 	const char* account = YYGetString(arg, 0);
-	double AccountIdType = YYGetReal(arg, 1);
+	int32_t AccountIdType = YYGetInt32(arg, 1);
 
 	EOS_Metrics_EndPlayerSessionOptions MetricsOptions = {};
 	MetricsOptions.ApiVersion = EOS_METRICS_ENDPLAYERSESSION_API_LATEST;

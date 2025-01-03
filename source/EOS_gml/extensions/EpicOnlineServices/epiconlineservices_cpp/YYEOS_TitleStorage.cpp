@@ -57,10 +57,12 @@ RValue FileMetadataToStruct(EOS_TitleStorage_FileMetadata* file,EOS_EResult resu
 
 YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataAtIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
-	int index = YYGetReal(arg, 1);
+	uint32_t index = YYGetUint32(arg, 1);
 
 	EOS_TitleStorage_CopyFileMetadataAtIndexOptions Options = {0};
 	Options.ApiVersion = EOS_TITLESTORAGE_COPYFILEMETADATAATINDEXOPTIONS_API_LATEST;
@@ -78,7 +80,9 @@ YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataAtIndex(RValue& Result, CIn
 
 YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataByFilename(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
 	const char* name = YYGetString(arg, 1);
@@ -109,7 +113,9 @@ void EOS_CALL DeleteCache(const EOS_TitleStorage_DeleteCacheCallbackInfo* Data)
 
 YYEXPORT void EpicGames_TitleStorage_DeleteCache(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -127,7 +133,9 @@ YYEXPORT void EpicGames_TitleStorage_DeleteCache(RValue& Result, CInstance* self
 
 YYEXPORT void EpicGames_TitleStorage_GetFileMetadataCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -151,7 +159,9 @@ void EOS_CALL QueryFile(const EOS_TitleStorage_QueryFileCallbackInfo* Data)
 
 YYEXPORT void EpicGames_TitleStorage_QueryFile(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
 	const char* file = YYGetString(arg, 1);
@@ -181,7 +191,9 @@ void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo* Da
 
 YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -200,7 +212,7 @@ YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue& Result, CInstance* se
 	EOS_TitleStorage_QueryFileListOptions Options = { 0 };
 	Options.ApiVersion = EOS_TITLESTORAGE_QUERYFILELISTOPTIONS_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-	Options.ListOfTagsCount = Tags.size();
+	Options.ListOfTagsCount = static_cast<uint32_t>(Tags.size());
 	Options.ListOfTags = Tags.data();
 
 	callback* mcallback = getCallbackData();
@@ -328,12 +340,13 @@ void EOS_CALL OnFileTransferProgressUpdated(const EOS_TitleStorage_FileTransferP
 
 YYEXPORT void EpicGames_TitleStorage_ReadFile(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(3);
 
 	const char* user = YYGetString(arg, 0);
 	const char* file = YYGetString(arg, 1);
 	const char* path = YYGetString(arg, 2);
-	//int32 MaxSize = YYGetInt32(arg, 2);
 
 	EOS_TitleStorage_ReadFileOptions Options = {};
 	Options.ApiVersion = EOS_TITLESTORAGE_READFILEOPTIONS_API_LATEST;
@@ -358,7 +371,9 @@ YYEXPORT void EpicGames_TitleStorage_ReadFile(RValue& Result, CInstance* selfins
 
 YYEXPORT void EpicGames_TitleStorageFileTransferRequest_CancelRequest(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(1);
 
 	const char* file = YYGetString(arg, 0);
 	auto Iter = TransfersInProgress.find(/*stringToWstring*/(file));

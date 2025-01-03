@@ -34,10 +34,10 @@ RValue StatToStruct(EOS_Stats_Stat* Stat, EOS_EResult result)
 
 	// Note: Undefined = EOS_STATS_QUERYSTATS_API_LATEST
 	if (Stat->StartTime)
-		YYStructAddDouble(&Struct, "StartTime", Stat->StartTime);
+		YYStructAddInt64(&Struct, "StartTime", Stat->StartTime);
 
 	if (Stat->EndTime)
-		YYStructAddDouble(&Struct, "EndTime", Stat->EndTime);
+		YYStructAddInt64(&Struct, "EndTime", Stat->EndTime);
 
 	if (Stat->Value)
 		YYStructAddDouble(&Struct, "Value", Stat->Value);
@@ -49,7 +49,9 @@ RValue StatToStruct(EOS_Stats_Stat* Stat, EOS_EResult result)
 
 YYEXPORT void EpicGames_Stats_CopyStatByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
+
+	eos_ensure_argc(2);
 
 	const char* target = YYGetString(arg, 0);
 	int index = (int)YYGetReal(arg, 1);
@@ -70,7 +72,9 @@ YYEXPORT void EpicGames_Stats_CopyStatByIndex(RValue& Result, CInstance* selfins
 
 YYEXPORT void EpicGames_Stats_CopyStatByName(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
+
+	eos_ensure_argc(2);
 
 	const char* target = YYGetString(arg, 0);
 	const char* name = YYGetString(arg, 1);
@@ -91,7 +95,9 @@ YYEXPORT void EpicGames_Stats_CopyStatByName(RValue& Result, CInstance* selfinst
 
 YYEXPORT void EpicGames_Stats_GetStatsCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_INT32
+	EOS_NotInitialisedReturn_INT32;
+
+	eos_ensure_argc(2);
 
 	const char* target = YYGetString(arg, 0);
 
@@ -118,7 +124,9 @@ void EOS_CALL StatsIngestCallbackFn(const EOS_Stats_IngestStatCompleteCallbackIn
 
 YYEXPORT void EpicGames_Stats_IngestStat(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(4);
 
 	const char* locaUserId = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
@@ -159,12 +167,14 @@ void EOS_CALL StatsQueryCallbackFn(const EOS_Stats_OnQueryStatsCompleteCallbackI
 
 YYEXPORT void EpicGames_Stats_QueryStats(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
 	const char* target = YYGetString(arg, 1);
-	int64 startTime = YYGetReal(arg, 2);
-	int64 endTime = YYGetReal(arg, 3);
+	int64_t startTime = argc < 3 ? -1 : YYGetInt64(arg, 2);
+	int64_t endTime = argc < 4 ? -1 : YYGetInt64(arg, 3);
 
 	EOS_Stats_QueryStatsOptions StatsQueryOptions = {};
 	StatsQueryOptions.ApiVersion = EOS_STATS_QUERYSTATS_API_LATEST;

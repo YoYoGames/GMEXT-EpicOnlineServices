@@ -17,7 +17,9 @@ void EpicGames_ProgressionSnapshot_Init()
 
 YYEXPORT void EpicGames_ProgressionSnapshot_AddProgression(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(3);
 
 	int32 SnapshotId = YYGetInt32(arg, 0);
 	const char* Key = YYGetString(arg, 1);
@@ -33,7 +35,9 @@ YYEXPORT void EpicGames_ProgressionSnapshot_AddProgression(RValue& Result, CInst
 
 YYEXPORT void EpicGames_ProgressionSnapshot_BeginSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_INT32
+	EOS_NotInitialisedReturn_INT32;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -64,7 +68,9 @@ void EOS_CALL DeleteSnapshot(const EOS_ProgressionSnapshot_DeleteSnapshotCallbac
 
 YYEXPORT void EpicGames_ProgressionSnapshot_DeleteSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -82,7 +88,9 @@ YYEXPORT void EpicGames_ProgressionSnapshot_DeleteSnapshot(RValue& Result, CInst
 
 YYEXPORT void EpicGames_ProgressionSnapshot_EndSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
+
+	eos_ensure_argc(1);
 
 	int32 SnapshotId = YYGetInt32(arg, 0);
 
@@ -90,7 +98,6 @@ YYEXPORT void EpicGames_ProgressionSnapshot_EndSnapshot(RValue& Result, CInstanc
 	Options.ApiVersion = EOS_PROGRESSIONSNAPSHOT_ENDSNAPSHOT_API_LATEST;
 	Options.SnapshotId = SnapshotId;
 
-	uint32_t OutSnapshotId;
 	EOS_EResult result = EOS_ProgressionSnapshot_EndSnapshot(HProgressionSnapshot, &Options);
 
 	Result.kind = VALUE_INT32;
@@ -117,7 +124,9 @@ void EOS_CALL SubmitSnapshot(const EOS_ProgressionSnapshot_SubmitSnapshotCallbac
 
 YYEXPORT void EpicGames_ProgressionSnapshot_SubmitSnapshot(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	int32 SnapshotId = YYGetInt32(arg, 0);
 

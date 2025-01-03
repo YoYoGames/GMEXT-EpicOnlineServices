@@ -52,7 +52,7 @@ RValue _FileMetadataToStruct(EOS_PlayerDataStorage_FileMetadata* file, EOS_EResu
 		YYStructAddDouble(&Struct, "Size", file->FileSizeBytes);
 		YYStructAddString(&Struct, "MD5Hash", file->MD5Hash);
 		YYStructAddDouble(&Struct, "SizeUnencrypted", file->UnencryptedDataSizeBytes);
-		YYStructAddDouble(&Struct, "LastModifiedTime", file->LastModifiedTime);
+		YYStructAddInt64(&Struct, "LastModifiedTime", file->LastModifiedTime);
 	}
 
 	EOS_PlayerDataStorage_FileMetadata_Release(file);
@@ -62,10 +62,12 @@ RValue _FileMetadataToStruct(EOS_PlayerDataStorage_FileMetadata* file, EOS_EResu
 
 YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
-	int index = YYGetReal(arg, 1);
+	uint32_t index = YYGetUint32(arg, 1);
 
 	EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions Options = { 0 };
 	Options.ApiVersion = EOS_PLAYERDATASTORAGE_COPYFILEMETADATAATINDEXOPTIONS_API_LATEST;
@@ -82,7 +84,9 @@ YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(RValue& Result
 
 YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataByFilename(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_STRUCT
+	EOS_NotInitialisedReturn_STRUCT;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
 	const char* name = YYGetString(arg, 1);
@@ -112,7 +116,9 @@ void EOS_CALL DeleteCache(const EOS_PlayerDataStorage_DeleteCacheCallbackInfo* D
 
 YYEXPORT void EpicGames_PlayerDataStorage_DeleteCache(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -140,7 +146,9 @@ void EOS_CALL DeleteFile(const EOS_PlayerDataStorage_DeleteFileCallbackInfo* Dat
 
 YYEXPORT void EpicGames_PlayerDataStorage_DeleteFile(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
 	const char* filename = YYGetString(arg, 1);
@@ -170,7 +178,9 @@ void EOS_CALL OnFileCopied(const EOS_PlayerDataStorage_DuplicateFileCallbackInfo
 
 YYEXPORT void EpicGames_PlayerDataStorage_DuplicateFile(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(3);
 
 	const char* user = YYGetString(arg, 0);
 	const char* source = YYGetString(arg, 1);
@@ -192,7 +202,9 @@ YYEXPORT void EpicGames_PlayerDataStorage_DuplicateFile(RValue& Result, CInstanc
 
 YYEXPORT void EpicGames_PlayerDataStorage_GetFileMetadataCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 	EOS_PlayerDataStorage_GetFileMetadataCountOptions Options = {0};
@@ -218,7 +230,9 @@ void EOS_CALL QueryFile(const EOS_PlayerDataStorage_QueryFileCallbackInfo* Data)
 
 YYEXPORT void EpicGames_PlayerDataStorage_QueryFile(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(2);
 
 	const char* user = YYGetString(arg, 0);
 	const char* filename = YYGetString(arg, 1);
@@ -249,7 +263,9 @@ void EOS_CALL QueryFileList(const EOS_PlayerDataStorage_QueryFileListCallbackInf
 
 YYEXPORT void EpicGames_PlayerDataStorage_QueryFileList(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(1);
 
 	const char* user = YYGetString(arg, 0);
 
@@ -379,12 +395,13 @@ void EOS_CALL OnFileTransferProgressUpdated_read(const EOS_PlayerDataStorage_Fil
 
 YYEXPORT void EpicGames_PlayerDataStorage_ReadFile(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_REAL
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(3);
 
 	const char* user = YYGetString(arg, 0);
 	const char* file = YYGetString(arg, 1);
 	const char* path = YYGetString(arg, 2);
-	//int32 MaxSize = YYGetInt32(arg, 2);
 
 	EOS_PlayerDataStorage_ReadFileOptions Options;
 	Options.ApiVersion = EOS_PLAYERDATASTORAGE_READFILEOPTIONS_API_LATEST;
@@ -515,10 +532,13 @@ std::vector<unsigned char> readBinaryFile_(const char* filename)
 
 YYEXPORT void EpicGames_PlayerDataStorage_WriteFile(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
+	EOS_NotInitialisedReturn_REAL;
+
+	eos_ensure_argc(3);
+
 	const char* user = YYGetString(arg, 0);
 	const char* file = YYGetString(arg, 1);
 	const char* path = YYGetString(arg, 2);
-	//int32 MaxSize = YYGetInt32(arg, 2);
 
 	EOS_PlayerDataStorage_WriteFileOptions Options;
 	Options.ApiVersion = EOS_PLAYERDATASTORAGE_WRITEFILEOPTIONS_API_LATEST;
@@ -562,7 +582,9 @@ YYEXPORT void EpicGames_PlayerDataStorage_WriteFile(RValue& Result, CInstance* s
 
 YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg) 
 {
-	EOS_NotInitialisedReturn_BOOL
+	EOS_NotInitialisedReturn_BOOL;
+
+	eos_ensure_argc(1);
 
 	const char* file = YYGetString(arg, 0);
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/(file));

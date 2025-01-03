@@ -59,8 +59,17 @@ extern std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const 
 #define EOS_NotInitialisedReturn_STRING if (!EOS_isInitialised) {Result.kind = VALUE_STRING; YYCreateString(&Result, ""); return; }
 #define EOS_NotInitialisedReturn_STRUCT if (!EOS_isInitialised){ RValue Struct = { 0 }; YYStructCreate(&Struct); COPY_RValue(&Result, &Struct); FREE_RValue(&Struct); return; }
 #define EOS_NotInitialisedReturn_INT32 if (!EOS_isInitialised) { Result.kind = VALUE_INT32; Result.val = 0.0; return; }
-#define EOS_NotInitialisedReturn_INT64 if (!EOS_isInitialised) { Result.kind = VALUE_INT64; Result.val = 0.0; return; }
+#define EOS_NotInitialisedReturn_INT64 if (!EOS_isInitialised) { Result.kind = VALUE_INT64; Result.v64 = 0; return; }
 #define EOS_NotInitialisedReturn_REAL if (!EOS_isInitialised) { Result.kind = VALUE_REAL; Result.val = 0.0; return; }
+
+#define eos_ensure_argc(_ExpectedArgumentCount) \
+	do \
+	{ \
+		if (argc < (_ExpectedArgumentCount) || nullptr == arg) \
+		{ \
+			YYError("%s expected at least %d arguments but got %d instead", __func__, (_ExpectedArgumentCount), argc); \
+		} \
+	} while (0) /* so we are required to put a semicolon here... */
 
 #pragma once
 struct callback
