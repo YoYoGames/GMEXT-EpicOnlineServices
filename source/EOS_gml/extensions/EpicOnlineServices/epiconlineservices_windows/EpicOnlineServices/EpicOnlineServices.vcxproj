@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\epiconlineservices_cpp\DesktopExtensionTools.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\dllmain.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\ExtBufferIO.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\pch.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Achievements.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Presence.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_ProgressionSnapshot.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Reports.cpp" />
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_RTC.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Sanctions.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Sessions.cpp" />
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_Stats.cpp" />
