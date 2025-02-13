@@ -175,7 +175,7 @@ double EpicGames_SessionDetails_Release() //???????????
 
 double EpicGames_SessionModification_AddAttribute() 
 { 
-	EOS_HSessionModification Handle;
+	EOS_HSessionModification Handle = 0;
 	EOS_SessionModification_AddAttributeOptions Options = {0};
 	Options.AdvertisementType;
 	Options.ApiVersion;
@@ -212,7 +212,7 @@ double EpicGames_SessionModification_SetAllowedPlatformIds()
 
 double EpicGames_SessionModification_SetBucketId() 
 { 
-	EOS_HSessionModification Handle;
+	EOS_HSessionModification Handle = 0;
 	EOS_SessionModification_SetBucketIdOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETBUCKETID_API_LATEST;
 	Options.BucketId;
@@ -234,7 +234,7 @@ double EpicGames_SessionModification_SetHostAddress()
 
 double EpicGames_SessionModification_SetInvitesAllowed() 
 { 
-	EOS_HSessionModification Handle;
+	EOS_HSessionModification Handle = 0;
 	EOS_SessionModification_SetInvitesAllowedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST;
 	Options.bInvitesAllowed;
@@ -309,63 +309,530 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 
 double EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested() 
 { 
-	const EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions* Options;
-	Options->ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
+	EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions Options;
+	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
 	
 	callback* mcallback = getCallbackData();
 
-	EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions,Options, mcallback,Sessions_OnSendSessionNativeInviteRequestedCallback);
+	EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions,&Options, mcallback,Sessions_OnSendSessionNativeInviteRequestedCallback);
 
 	return mcallback->identifier;
 }
 
+void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_SessionInviteAcceptedCallbackInfo* Data)
+{
+}
+
 double EpicGames_Sessions_AddNotifySessionInviteAccepted() 
 { 
-	EOS_HSessions Handle;
-	const EOS_Sessions_AddNotifySessionInviteAcceptedOptions* Options;
-	void* ClientData;
-	const EOS_Sessions_OnSessionInviteAcceptedCallback NotificationFn;
-	EOS_Sessions_AddNotifySessionInviteAccepted();
+	EOS_Sessions_AddNotifySessionInviteAcceptedOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEACCEPTED_API_LATEST;
+
+	callback* mcallback = getCallbackData();
+	EOS_Sessions_AddNotifySessionInviteAccepted(HSessions,&Options, mcallback, Sessions_SessionInviteAcceptedCallbackInfo);
+
+	return mcallback->identifier;
+} 
+
+void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_AddNotifySessionInviteReceived() 
+{ 
+	EOS_Sessions_AddNotifySessionInviteReceivedOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
+	callback* mcallback = getCallbackData();
+	
+	EOS_Sessions_AddNotifySessionInviteReceived(HSessions,&Options, mcallback, Sessions_OnSessionInviteReceivedCallback);
+
+	return mcallback->identifier;
+}
+
+void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_SessionInviteRejectedCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_AddNotifySessionInviteRejected() 
+{ 
+	EOS_Sessions_AddNotifySessionInviteRejectedOptions Options = {};
+
+	callback* mcallback = getCallbackData();
+	EOS_Sessions_AddNotifySessionInviteRejected(HSessions,&Options,mcallback, Sessions_OnSessionInviteRejectedCallback);
+
+	return mcallback->identifier;
+} 
+
+double EpicGames_Sessions_CopyActiveSessionHandle() //TODO: important!
+{ 
+	EOS_Sessions_CopyActiveSessionHandleOptions Options = {};
+	Options.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
+	Options.SessionName = "";
+	EOS_HActiveSession OutSessionHandle = 0;
+	EOS_Sessions_CopyActiveSessionHandle(HSessions,&Options, &OutSessionHandle);
+	return 0.0; 
+} 
+
+double EpicGames_Sessions_CopySessionHandleByInviteId() 
+{
+	EOS_Sessions_CopySessionHandleByInviteIdOptions Options = { 0 }; 
+	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEBYINVITEID_API_LATEST;
+	Options.InviteId = "";
+
+	EOS_HSessionDetails OutSessionHandle = 0;
+	EOS_Sessions_CopySessionHandleByInviteId(HSessions,&Options,&OutSessionHandle);
+	return 0.0; 
+}
+
+double EpicGames_Sessions_CopySessionHandleByUiEventId() 
+{ 
+	EOS_Sessions_CopySessionHandleByUiEventIdOptions Options = {};
+	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEBYUIEVENTID_API_LATEST;
+	Options.UiEventId;
+	EOS_HSessionDetails OutSessionHandle = 0;
+
+	EOS_Sessions_CopySessionHandleByUiEventId(HSessions,&Options,&OutSessionHandle);
+
+	return 0.0; 
+}
+
+double EpicGames_Sessions_CopySessionHandleForPresence() 
+{ 
+	EOS_Sessions_CopySessionHandleForPresenceOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEFORPRESENCE_API_LATEST;
+	Options.LocalUserId;
+
+	EOS_HSessionDetails OutSessionHandle;
+
+	EOS_Sessions_CopySessionHandleForPresence(HSessions,&Options, &OutSessionHandle);
 
 	return 0.0; 
 } 
 
-double EpicGames_Sessions_AddNotifySessionInviteReceived() { return 0.0; } 
-double EpicGames_Sessions_AddNotifySessionInviteRejected() { return 0.0; } 
-double EpicGames_Sessions_CopyActiveSessionHandle() { return 0.0; } 
-double EpicGames_Sessions_CopySessionHandleByInviteId() { return 0.0; } 
-double EpicGames_Sessions_CopySessionHandleByUiEventId() { return 0.0; } 
-double EpicGames_Sessions_CopySessionHandleForPresence() { return 0.0; } 
-double EpicGames_Sessions_CreateSessionModification() { return 0.0; } 
-double EpicGames_Sessions_CreateSessionSearch() { return 0.0; } 
-double EpicGames_Sessions_DestroySession() { return 0.0; } 
-double EpicGames_Sessions_DumpSessionState() { return 0.0; } 
-double EpicGames_Sessions_EndSession() { return 0.0; } 
-double EpicGames_Sessions_GetInviteCount() { return 0.0; } 
-double EpicGames_Sessions_GetInviteIdByIndex() { return 0.0; } 
-double EpicGames_Sessions_IsUserInSession() { return 0.0; } 
-double EpicGames_Sessions_JoinSession() { return 0.0; } 
-double EpicGames_Sessions_QueryInvites() { return 0.0; } 
-double EpicGames_Sessions_RegisterPlayers() { return 0.0; } 
-double EpicGames_Sessions_RejectInvite() { return 0.0; } 
-double EpicGames_Sessions_RemoveNotifyJoinSessionAccepted() { return 0.0; } 
-double EpicGames_Sessions_RemoveNotifyLeaveSessionRequested() { return 0.0; } 
-double EpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested() { return 0.0; } 
-double EpicGames_Sessions_RemoveNotifySessionInviteAccepted() { return 0.0; } 
-double EpicGames_Sessions_RemoveNotifySessionInviteReceived() { return 0.0; } 
-double EpicGames_Sessions_RemoveNotifySessionInviteRejected() { return 0.0; } 
-double EpicGames_Sessions_SendInvite() { return 0.0; } 
-double EpicGames_Sessions_StartSession() { return 0.0; } 
-double EpicGames_Sessions_UnregisterPlayers() { return 0.0; } 
-double EpicGames_Sessions_UpdateSession() { return 0.0; } 
-double EpicGames_Sessions_UpdateSessionModification() { return 0.0; } 
-double EpicGames_SessionSearch_CopySearchResultByIndex() { return 0.0; } 
-double EpicGames_SessionSearch_Find() { return 0.0; } 
-double EpicGames_SessionSearch_GetSearchResultCount() { return 0.0; } 
-double EpicGames_SessionSearch_Release() { return 0.0; } 
-double EpicGames_SessionSearch_RemoveParameter() { return 0.0; } 
-double EpicGames_SessionSearch_SetMaxResults() { return 0.0; } 
-double EpicGames_SessionSearch_SetParameter() { return 0.0; } 
-double EpicGames_SessionSearch_SetSessionId() { return 0.0; } 
-double EpicGames_SessionSearch_SetTargetUserId() { return 0.0; } 
-double EpicGames_SessionSearch_SetTargetUserIdOptions() { return 0.0; } 
+double EpicGames_Sessions_CreateSessionModification() 
+{ 
+	EOS_Sessions_CreateSessionModificationOptions Options;
+	Options.ApiVersion;
+	Options.AllowedPlatformIds;
+	Options.AllowedPlatformIdsCount;
+	Options.bPresenceEnabled;
+	Options.bSanctionsEnabled;
+	Options.BucketId;
+	Options.LocalUserId;
+	Options.MaxPlayers;
+	Options.SessionId;
+	Options.SessionName;
+	EOS_HSessionModification OutSessionModificationHandle;
+	EOS_Sessions_CreateSessionModification(HSessions,&Options, &OutSessionModificationHandle);
+
+	return 0.0; 
+}
+
+double EpicGames_Sessions_CreateSessionSearch() 
+{ 
+	EOS_Sessions_CreateSessionSearchOptions Options = { 0 };
+	EOS_HSessionSearch OutSessionSearchHandle;
+	Options.ApiVersion = EOS_SESSIONS_CREATESESSIONSEARCH_API_LATEST;
+	Options.MaxSearchResults;
+	EOS_Sessions_CreateSessionSearch(HSessions,&Options, &OutSessionSearchHandle);
+	return 0.0; 
+}
+
+void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessionCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_DestroySession() 
+{ 
+	EOS_Sessions_DestroySessionOptions Options = {};
+	Options.ApiVersion = EOS_SESSIONS_DESTROYSESSION_API_LATEST;
+	Options.SessionName;
+	
+	callback* mcallback = getCallbackData();
+
+	EOS_Sessions_OnDestroySessionCallback CompletionDelegate;
+	EOS_Sessions_DestroySession(HSessions,&Options, mcallback, Sessions_OnDestroySessionCallback);
+
+	return mcallback->identifier;
+} 
+
+double EpicGames_Sessions_DumpSessionState() 
+{ 
+	EOS_Sessions_DumpSessionStateOptions Options;
+	Options.ApiVersion = EOS_SESSIONS_DUMPSESSIONSTATE_API_LATEST;
+	Options.SessionName;
+	EOS_Sessions_DumpSessionState(HSessions, &Options);
+	return 0.0; 
+} 
+
+void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_EndSession() 
+{ 
+	EOS_Sessions_EndSessionOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONS_ENDSESSION_API_LATEST;
+	Options.SessionName;
+
+	void* ClientData;
+	callback* mcallback = getCallbackData();
+
+	EOS_Sessions_EndSession(HSessions,&Options,mcallback, Sessions_OnEndSessionCallback);
+
+	return mcallback->identifier;
+} 
+
+double EpicGames_Sessions_GetInviteCount() 
+{ 
+	EOS_Sessions_GetInviteCountOptions Options = {};
+	Options.ApiVersion = EOS_SESSIONS_GETINVITECOUNT_API_LATEST;
+	Options.LocalUserId;
+
+	EOS_Sessions_GetInviteCount(HSessions,&Options);
+	return 0.0; 
+} 
+
+double EpicGames_Sessions_GetInviteIdByIndex() 
+{ 
+	EOS_Sessions_GetInviteIdByIndexOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONS_GETINVITEIDBYINDEX_API_LATEST;
+	Options.Index;
+	Options.LocalUserId;
+
+	//char* OutBuffer = "";
+	//int32_t* InOutBufferLength = 0;
+
+	//EOS_Sessions_GetInviteIdByIndex(HSessions,&Options,OutBuffer,InOutBufferLength);
+
+	return 0.0; 
+} 
+
+double EpicGames_Sessions_IsUserInSession() 
+{ 
+	EOS_Sessions_IsUserInSessionOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONS_ISUSERINSESSION_API_LATEST;
+	Options.SessionName;
+	Options.TargetUserId;
+
+	EOS_Sessions_IsUserInSession(HSessions, &Options);
+
+	return 0.0; 
+} 
+
+void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_JoinSession() 
+{ 
+	EOS_Sessions_JoinSessionOptions Options = {0};
+	Options.ApiVersion;
+	Options.bPresenceEnabled;
+	Options.LocalUserId;
+	Options.SessionHandle;
+	Options.SessionName;
+
+	callback* mcallback = getCallbackData();
+
+	EOS_Sessions_JoinSession(HSessions, &Options, mcallback, Sessions_OnJoinSessionCallback);
+
+	return mcallback->identifier;
+} 
+
+void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_QueryInvites() 
+{ 
+	EOS_Sessions_QueryInvitesOptions Options; 
+	callback* mcallback = getCallbackData();
+	
+	EOS_Sessions_QueryInvites(HSessions,&Options, mcallback, Sessions_OnQueryInvitesCallback);
+
+	return mcallback->identifier;
+} 
+
+void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlayersCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_RegisterPlayers() 
+{ 
+	
+	EOS_Sessions_RegisterPlayersOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONS_REGISTERPLAYERS_API_LATEST;
+	Options.PlayersToRegister;
+	Options.PlayersToRegisterCount;
+	Options.SessionName;
+
+	callback* mcallback = getCallbackData();
+
+	EOS_Sessions_RegisterPlayers(HSessions,&Options, mcallback,Sessions_OnRegisterPlayersCallback);
+
+	return mcallback->identifier;
+} 
+
+
+void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_RejectInvite() 
+{ 
+	EOS_Sessions_RejectInviteOptions Options;
+	Options.ApiVersion = EOS_SESSIONS_REJECTINVITE_API_LATEST;
+	Options.InviteId;
+	Options.LocalUserId;
+
+	callback* mcallback = getCallbackData();
+	EOS_Sessions_RejectInvite(HSessions,&Options, mcallback,Sessions_OnRejectInvite);
+
+	return mcallback->identifier;
+} 
+
+double EpicGames_Sessions_RemoveNotifyJoinSessionAccepted() 
+{ 
+	EOS_NotificationId InId = 0;
+
+	EOS_Sessions_RemoveNotifyJoinSessionAccepted(HSessions, InId);
+
+	return 0.0; 
+} 
+
+double EpicGames_Sessions_RemoveNotifyLeaveSessionRequested() 
+{ 
+	EOS_NotificationId InId = 0;
+	EOS_Sessions_RemoveNotifyLeaveSessionRequested(HSessions,InId);
+	return 0.0; 
+}
+
+
+double EpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested() 
+{ 
+	EOS_NotificationId InId = 0;
+	EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested(HSessions, InId);
+	return 0.0; 
+} 
+
+double EpicGames_Sessions_RemoveNotifySessionInviteAccepted() 
+{ 
+	EOS_NotificationId InId = 0;
+	EOS_Sessions_RemoveNotifySessionInviteAccepted(HSessions, InId);
+
+	return 0.0; 
+} 
+
+double EpicGames_Sessions_RemoveNotifySessionInviteReceived() 
+{
+	EOS_NotificationId InId = 0;
+	EOS_Sessions_RemoveNotifySessionInviteReceived(HSessions, InId);
+
+	return 0.0; 
+} 
+
+double EpicGames_Sessions_RemoveNotifySessionInviteRejected() 
+{ 
+	EOS_NotificationId InId = 0;
+	EOS_Sessions_RemoveNotifySessionInviteRejected(HSessions, InId);
+	
+	return 0.0; 
+} 
+
+void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_SendInvite() 
+{ 
+	EOS_HSessions Handle;
+	EOS_Sessions_SendInviteOptions Options;
+	Options.ApiVersion;
+	Options.LocalUserId;
+	Options.SessionName;
+	Options.TargetUserId;
+
+	callback* mcallback = getCallbackData();
+	EOS_Sessions_SendInvite(HSessions,&Options, mcallback, Sessions_OnSendInviteCallback);
+
+	return 0.0; 
+} 
+
+
+void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCallbackInfo* Data)
+{
+}
+
+double EpicGames_Sessions_StartSession() 
+{ 
+	EOS_Sessions_StartSessionOptions Options;
+	Options.ApiVersion;
+	Options.SessionName;
+
+	callback* mcallback = getCallbackData();
+	EOS_Sessions_StartSession(HSessions,&Options, mcallback, Sessions_OnStartSessionCallback);
+
+	return mcallback->identifier;
+} 
+
+
+void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_UnregisterPlayersCallbackInfo* Data)
+{
+
+}
+
+double EpicGames_Sessions_UnregisterPlayers() 
+{ 
+	EOS_Sessions_UnregisterPlayersOptions Options = {0};
+	Options.ApiVersion;
+	Options.PlayersToUnregister;
+	Options.PlayersToUnregisterCount;
+	Options.SessionName;
+
+	callback* mcallback = getCallbackData();
+
+	EOS_Sessions_UnregisterPlayers(HSessions,&Options,mcallback, Sessions_OnUnregisterPlayersCallback);
+
+	return mcallback->identifier;
+}
+
+
+void EOS_CALL Sessions_OnUpdateSessionCallback(const EOS_Sessions_UpdateSessionCallbackInfo* Data)
+{
+
+}
+
+double EpicGames_Sessions_UpdateSession() 
+{ 
+	const EOS_Sessions_UpdateSessionOptions Options = {};
+	Options.ApiVersion;
+	Options.SessionModificationHandle;
+
+	callback* mcallback = getCallbackData();
+	EOS_Sessions_UpdateSession(HSessions,&Options, mcallback, Sessions_OnUpdateSessionCallback);
+
+	return mcallback->identifier;
+} 
+
+double EpicGames_Sessions_UpdateSessionModification() 
+{ 
+	EOS_Sessions_UpdateSessionModificationOptions Options = {0};
+	Options.ApiVersion;
+	Options.SessionName;
+
+	EOS_HSessionModification OutSessionModificationHandle;
+
+	EOS_Sessions_UpdateSessionModification(HSessions,&Options,&OutSessionModificationHandle);
+	
+	return 0.0; 
+}
+
+double EpicGames_SessionSearch_CopySearchResultByIndex() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+
+	EOS_SessionSearch_CopySearchResultByIndexOptions Options = { 0 };
+	Options.ApiVersion;
+	Options.SessionIndex;
+	EOS_HSessionDetails OutSessionHandle;
+
+	EOS_SessionSearch_CopySearchResultByIndex(Handle,&Options, &OutSessionHandle);
+
+	return 0.0; 
+} 
+
+void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackInfo* Data)
+{
+
+}
+
+double EpicGames_SessionSearch_Find() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+	const EOS_SessionSearch_FindOptions Options = {0};
+	
+	callback* mcallback = getCallbackData();
+
+	EOS_SessionSearch_Find(Handle, &Options, mcallback, SessionSearch_OnFindCallback);
+
+	return mcallback->identifier; 
+} 
+
+double EpicGames_SessionSearch_GetSearchResultCount() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+	EOS_SessionSearch_GetSearchResultCountOptions Options = {0};
+	Options.ApiVersion = EOS_SESSIONSEARCH_GETSEARCHRESULTCOUNT_API_LATEST;
+
+	return EOS_SessionSearch_GetSearchResultCount(Handle, &Options);
+}
+
+double EpicGames_SessionSearch_Release() //TODO
+{ 
+	EOS_HSessionSearch SessionSearchHandle = 0;
+	EOS_SessionSearch_Release(SessionSearchHandle);
+	return 0.0; 
+} 
+
+double EpicGames_SessionSearch_RemoveParameter() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+	EOS_SessionSearch_RemoveParameterOptions Options = {0};
+	Options.ApiVersion;
+	Options.ComparisonOp;
+	Options.Key;
+
+	EOS_SessionSearch_RemoveParameter(Handle,&Options);
+	return 0.0; 
+} 
+
+double EpicGames_SessionSearch_SetMaxResults() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+	const EOS_SessionSearch_SetMaxResultsOptions Options = {0};
+	Options.ApiVersion;
+	Options.MaxSearchResults;
+
+	EOS_SessionSearch_SetMaxResults(Handle,&Options);
+
+	return 0.0; 
+} 
+
+double EpicGames_SessionSearch_SetParameter() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+	const EOS_SessionSearch_SetParameterOptions Options = {0};
+	Options.ApiVersion;
+	Options.ComparisonOp;
+	Options.Parameter;
+
+	EOS_SessionSearch_SetParameter(Handle, &Options);
+
+	return 0.0; 
+} 
+
+double EpicGames_SessionSearch_SetSessionId() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+	EOS_SessionSearch_SetSessionIdOptions Options = {0};
+	Options.ApiVersion; 
+	Options.SessionId;
+
+	EOS_SessionSearch_SetSessionId(Handle,&Options);
+	return 0.0; 
+} 
+
+double EpicGames_SessionSearch_SetTargetUserId() 
+{ 
+	EOS_HSessionSearch Handle = 0;
+	EOS_SessionSearch_SetTargetUserIdOptions Options = {0};
+	Options.ApiVersion;
+	Options.TargetUserId;
+
+	EOS_SessionSearch_SetTargetUserId(Handle, &Options);
+	
+	return 0.0; 
+}
+
+
