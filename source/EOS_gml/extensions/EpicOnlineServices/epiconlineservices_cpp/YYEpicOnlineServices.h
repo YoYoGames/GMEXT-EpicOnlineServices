@@ -11,8 +11,6 @@
 #include <eos_sdk.h>
 #include <vector>
 
-#include "ExtBufferIO.h"
-
 //#define YYEXPORT __declspec(dllexport)
 
 extern bool EOS_isInitialised;
@@ -79,3 +77,7 @@ struct callback
 	int identifier;
 	/*std::wstring*//*const char**/ std::string string; //optional argument
 };
+
+
+const char* productIds2ArrayStr(EOS_ProductUserId* user_ids, int count);
+const char* VectorOfStr2ArrayStr(std::vector<const char*> vec);

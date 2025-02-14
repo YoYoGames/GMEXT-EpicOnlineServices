@@ -83,7 +83,11 @@ double EpicGames_Sessions_Init()
 
 double EpicGames_ActiveSession_CopyInfo() 
 {
+	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
+	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
+	HOptions.SessionName = "";
 	EOS_HActiveSession HActiveSession = 0;
+	EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
 
 	EOS_ActiveSession_CopyInfoOptions Options = {0};
 	Options.ApiVersion = EOS_ACTIVESESSION_COPYINFO_API_LATEST;
@@ -103,18 +107,29 @@ double EpicGames_ActiveSession_CopyInfo()
 
 double EpicGames_ActiveSession_GetRegisteredPlayerByIndex() 
 { 
-	EOS_HActiveSession Handle = 0;
-	EOS_ActiveSession_GetRegisteredPlayerByIndexOptions Options = {};
-	EOS_ProductUserId ProductUserId = EOS_ActiveSession_GetRegisteredPlayerByIndex(Handle, &Options);
+	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
+	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
+	HOptions.SessionName = "";
+	EOS_HActiveSession HActiveSession = 0;
+	EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
+
+	EOS_ActiveSession_GetRegisteredPlayerByIndexOptions Options = {0};
+	EOS_ProductUserId ProductUserId = EOS_ActiveSession_GetRegisteredPlayerByIndex(HActiveSession, &Options);
 	
 	return 0.0; 
 } 
 
 double EpicGames_ActiveSession_GetRegisteredPlayerCount() 
 { 
-	EOS_HActiveSession Handle = 0;
+	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
+	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
+	HOptions.SessionName = "";
+	EOS_HActiveSession HActiveSession = 0;
+
+	EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
+
 	EOS_ActiveSession_GetRegisteredPlayerCountOptions* Options = {0};
-	uint32_t count = EOS_ActiveSession_GetRegisteredPlayerCount(Handle,Options);
+	uint32_t count = EOS_ActiveSession_GetRegisteredPlayerCount(HActiveSession,Options);
 
 	return count;
 }
@@ -136,40 +151,64 @@ double EpicGames_SessionDetails_CopyInfo()
 	Options.ApiVersion = EOS_SESSIONDETAILS_COPYINFO_API_LATEST;
 	EOS_SessionDetails_Info* OutSessionInfo;
 
-	EOS_SessionDetails_CopyInfo(Handle, &Options, &OutSessionInfo);
-	OutSessionInfo->ApiVersion;
-	OutSessionInfo->HostAddress;
-	OutSessionInfo->NumOpenPublicConnections;
-	OutSessionInfo->OwnerServerClientId;
-	OutSessionInfo->OwnerUserId;
-	OutSessionInfo->SessionId;
-	OutSessionInfo->Settings;
+	EOS_EResult result = EOS_SessionDetails_CopyInfo(Handle, &Options, &OutSessionInfo);
+	
+	if (EOS_EResult::EOS_Success == result)
+	{
 
-	EOS_SessionDetails_Info_Release(OutSessionInfo);
+		OutSessionInfo->ApiVersion;
+		OutSessionInfo->HostAddress;
+		OutSessionInfo->NumOpenPublicConnections;
+		OutSessionInfo->OwnerServerClientId;
+		OutSessionInfo->OwnerUserId;
+		OutSessionInfo->SessionId;
+		OutSessionInfo->Settings;
+
+		EOS_SessionDetails_Info_Release(OutSessionInfo);
+	}
+	else
+	{
+	}
 
 	return 0.0; 
 } 
 
 double EpicGames_SessionDetails_CopySessionAttributeByIndex() 
 { 
-	//EOS_SessionDetails_Attribute_Release()
-	return 0.0; 
+	EOS_HSessionDetails Handle = 0;
+	EOS_SessionDetails_CopySessionAttributeByIndexOptions Options = {0};
+	EOS_SessionDetails_Attribute* OutSessionAttribute;
+
+	EOS_SessionDetails_CopySessionAttributeByIndex(Handle,&Options, &OutSessionAttribute);
+
+	return 0.0;
 } 
 double EpicGames_SessionDetails_CopySessionAttributeByKey() 
 { 
-	//EOS_SessionDetails_Attribute_Release()
+	EOS_HSessionDetails Handle = 0; 
+	EOS_SessionDetails_CopySessionAttributeByKeyOptions Options = {0};
+	EOS_SessionDetails_Attribute* OutSessionAttribute;
+
+	EOS_SessionDetails_CopySessionAttributeByKey(Handle,&Options,&OutSessionAttribute);
+
 	return 0.0; 
 }
 
 double EpicGames_SessionDetails_GetSessionAttributeCount() 
 { 
-	//EOS_SessionDetails_Attribute_Release()
+	EOS_HSessionDetails Handle = 0;
+	EOS_SessionDetails_GetSessionAttributeCountOptions Options = {0};
+
+	EOS_SessionDetails_GetSessionAttributeCount(Handle,&Options);
 	return 0.0; 
 }
 
 
-double EpicGames_SessionDetails_Release() //???????????
+double EpicGames_SessionDetails_Release()
 { 
+	EOS_HSessionDetails SessionHandle = 0;
+
+	EOS_SessionDetails_Release(SessionHandle);
 	return 0.0; 
 } 
 
@@ -186,6 +225,10 @@ double EpicGames_SessionModification_AddAttribute()
 
 double EpicGames_SessionModification_Release() 
 { 
+	EOS_HSessionModification SessionModificationHandle = 0;
+
+	EOS_SessionModification_Release(SessionModificationHandle);
+
 	return 0.0; 
 }
 
@@ -275,6 +318,14 @@ double EpicGames_SessionModification_SetPermissionLevel()
 
 void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSessionAcceptedCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyJoinSessionAccepted");
+	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddDouble(map, "ui_event_id", (double) Data->UiEventId);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_AddNotifyJoinSessionAccepted() 
@@ -289,11 +340,19 @@ double EpicGames_Sessions_AddNotifyJoinSessionAccepted()
 
 void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_LeaveSessionRequestedCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyLeaveSessionRequested");
+	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddString(map, "session_name", Data->SessionName);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_AddNotifyLeaveSessionRequested() 
 { 
-	EOS_Sessions_AddNotifyLeaveSessionRequestedOptions Options = {};
+	EOS_Sessions_AddNotifyLeaveSessionRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
 	
 	callback* mcallback = getCallbackData();
@@ -305,11 +364,22 @@ double EpicGames_Sessions_AddNotifyLeaveSessionRequested()
 
 void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested");
+	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddString(map, "target_native_account_type", Data->TargetNativeAccountType);
+	DsMapAddString(map, "target_user_native_account_id", Data->TargetUserNativeAccountId);
+	DsMapAddString(map, "session_id", Data->SessionId);
+	DsMapAddDouble(map, "ui_event_id", (double)Data->UiEventId);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested() 
 { 
-	EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions Options;
+	EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
 	
 	callback* mcallback = getCallbackData();
@@ -321,6 +391,16 @@ double EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested()
 
 void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_SessionInviteAcceptedCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteAccepted");
+	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddString(map, "invite_id", Data->InviteId);
+	DsMapAddString(map, "session_id", Data->SessionId);
+	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_AddNotifySessionInviteAccepted() 
@@ -336,6 +416,15 @@ double EpicGames_Sessions_AddNotifySessionInviteAccepted()
 
 void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteReceived");
+	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "invite_id", Data->InviteId);
+	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_AddNotifySessionInviteReceived() 
@@ -351,11 +440,21 @@ double EpicGames_Sessions_AddNotifySessionInviteReceived()
 
 void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_SessionInviteRejectedCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteRejected");
+	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "invite_id", Data->InviteId);
+	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
+	DsMapAddString(map, "session_id", Data->SessionId);
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_AddNotifySessionInviteRejected() 
 { 
-	EOS_Sessions_AddNotifySessionInviteRejectedOptions Options = {};
+	EOS_Sessions_AddNotifySessionInviteRejectedOptions Options = {0};
 
 	callback* mcallback = getCallbackData();
 	EOS_Sessions_AddNotifySessionInviteRejected(HSessions,&Options,mcallback, Sessions_OnSessionInviteRejectedCallback);
@@ -363,17 +462,7 @@ double EpicGames_Sessions_AddNotifySessionInviteRejected()
 	return mcallback->identifier;
 } 
 
-double EpicGames_Sessions_CopyActiveSessionHandle() //TODO: important!
-{ 
-	EOS_Sessions_CopyActiveSessionHandleOptions Options = {};
-	Options.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
-	Options.SessionName = "";
-	EOS_HActiveSession OutSessionHandle = 0;
-	EOS_Sessions_CopyActiveSessionHandle(HSessions,&Options, &OutSessionHandle);
-	return 0.0; 
-} 
-
-double EpicGames_Sessions_CopySessionHandleByInviteId() 
+double EpicGames_Sessions_CopySessionHandleByInviteId() //TODO: important!
 {
 	EOS_Sessions_CopySessionHandleByInviteIdOptions Options = { 0 }; 
 	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEBYINVITEID_API_LATEST;
@@ -386,7 +475,7 @@ double EpicGames_Sessions_CopySessionHandleByInviteId()
 
 double EpicGames_Sessions_CopySessionHandleByUiEventId() 
 { 
-	EOS_Sessions_CopySessionHandleByUiEventIdOptions Options = {};
+	EOS_Sessions_CopySessionHandleByUiEventIdOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEBYUIEVENTID_API_LATEST;
 	Options.UiEventId;
 	EOS_HSessionDetails OutSessionHandle = 0;
@@ -440,11 +529,17 @@ double EpicGames_Sessions_CreateSessionSearch()
 
 void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessionCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_DestroySession");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_DestroySession() 
 { 
-	EOS_Sessions_DestroySessionOptions Options = {};
+	EOS_Sessions_DestroySessionOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_DESTROYSESSION_API_LATEST;
 	Options.SessionName;
 	
@@ -458,7 +553,7 @@ double EpicGames_Sessions_DestroySession()
 
 double EpicGames_Sessions_DumpSessionState() 
 { 
-	EOS_Sessions_DumpSessionStateOptions Options;
+	EOS_Sessions_DumpSessionStateOptions Options{0};
 	Options.ApiVersion = EOS_SESSIONS_DUMPSESSIONSTATE_API_LATEST;
 	Options.SessionName;
 	EOS_Sessions_DumpSessionState(HSessions, &Options);
@@ -467,6 +562,12 @@ double EpicGames_Sessions_DumpSessionState()
 
 void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_EndSession");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_EndSession() 
@@ -485,7 +586,7 @@ double EpicGames_Sessions_EndSession()
 
 double EpicGames_Sessions_GetInviteCount() 
 { 
-	EOS_Sessions_GetInviteCountOptions Options = {};
+	EOS_Sessions_GetInviteCountOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_GETINVITECOUNT_API_LATEST;
 	Options.LocalUserId;
 
@@ -522,6 +623,12 @@ double EpicGames_Sessions_IsUserInSession()
 
 void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_JoinSession");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_JoinSession() 
@@ -542,11 +649,18 @@ double EpicGames_Sessions_JoinSession()
 
 void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_QueryInvites");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_QueryInvites() 
 { 
-	EOS_Sessions_QueryInvitesOptions Options; 
+	EOS_Sessions_QueryInvitesOptions Options = {0};
 	callback* mcallback = getCallbackData();
 	
 	EOS_Sessions_QueryInvites(HSessions,&Options, mcallback, Sessions_OnQueryInvitesCallback);
@@ -556,6 +670,14 @@ double EpicGames_Sessions_QueryInvites()
 
 void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlayersCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_RegisterPlayers");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "registered_players", (char*)productIds2ArrayStr(Data->RegisteredPlayers, Data->RegisteredPlayersCount));
+	DsMapAddString(map, "sanctioned_players", (char*)productIds2ArrayStr(Data->SanctionedPlayers, Data->SanctionedPlayersCount));
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_RegisterPlayers() 
@@ -577,11 +699,17 @@ double EpicGames_Sessions_RegisterPlayers()
 
 void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_RejectInvite");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_RejectInvite() 
 { 
-	EOS_Sessions_RejectInviteOptions Options;
+	EOS_Sessions_RejectInviteOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_REJECTINVITE_API_LATEST;
 	Options.InviteId;
 	Options.LocalUserId;
@@ -642,12 +770,18 @@ double EpicGames_Sessions_RemoveNotifySessionInviteRejected()
 
 void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_SendInvite");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_SendInvite() 
 { 
 	EOS_HSessions Handle;
-	EOS_Sessions_SendInviteOptions Options;
+	EOS_Sessions_SendInviteOptions Options = {0};
 	Options.ApiVersion;
 	Options.LocalUserId;
 	Options.SessionName;
@@ -662,11 +796,17 @@ double EpicGames_Sessions_SendInvite()
 
 void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCallbackInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_StartSession");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_StartSession() 
 { 
-	EOS_Sessions_StartSessionOptions Options;
+	EOS_Sessions_StartSessionOptions Options = {0};
 	Options.ApiVersion;
 	Options.SessionName;
 
@@ -679,7 +819,13 @@ double EpicGames_Sessions_StartSession()
 
 void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_UnregisterPlayersCallbackInfo* Data)
 {
-
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_UnregisterPlayers");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "unregistered_players", (char*)productIds2ArrayStr(Data->UnregisteredPlayers,Data->UnregisteredPlayersCount));
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_UnregisterPlayers() 
@@ -700,12 +846,19 @@ double EpicGames_Sessions_UnregisterPlayers()
 
 void EOS_CALL Sessions_OnUpdateSessionCallback(const EOS_Sessions_UpdateSessionCallbackInfo* Data)
 {
-
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_Sessions_UpdateSession");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "session_id", Data->SessionId);
+	DsMapAddString(map, "session_name", Data->SessionName);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_Sessions_UpdateSession() 
 { 
-	const EOS_Sessions_UpdateSessionOptions Options = {};
+	const EOS_Sessions_UpdateSessionOptions Options = {0};
 	Options.ApiVersion;
 	Options.SessionModificationHandle;
 
@@ -744,7 +897,12 @@ double EpicGames_SessionSearch_CopySearchResultByIndex()
 
 void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackInfo* Data)
 {
-
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_SessionSearch_Find");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_SessionSearch_Find() 
