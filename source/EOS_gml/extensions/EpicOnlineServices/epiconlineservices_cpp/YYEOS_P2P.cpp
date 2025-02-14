@@ -55,6 +55,15 @@ double EpicGames_P2P_AcceptConnection()
 
 void EOS_CALL P2P_OnIncomingPacketQueueFullCallback(const EOS_P2P_OnIncomingPacketQueueFullInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyIncomingPacketQueueFull");
+	DsMapAddDouble(map, "OverflowPacketChannel", (double)Data->OverflowPacketChannel);
+	DsMapAddString(map, "OverflowPacketLocalUserId", productID_toString(Data->OverflowPacketLocalUserId));
+	DsMapAddDouble(map, "OverflowPacketSizeBytes", (double)Data->OverflowPacketSizeBytes);
+	DsMapAddDouble(map, "PacketQueueCurrentSizeBytes", (double)Data->PacketQueueCurrentSizeBytes);
+	DsMapAddDouble(map, "PacketQueueMaxSizeBytes", (double)Data->PacketQueueMaxSizeBytes);
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_P2P_AddNotifyIncomingPacketQueueFull() 
@@ -70,6 +79,14 @@ double EpicGames_P2P_AddNotifyIncomingPacketQueueFull()
 
 void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnectionClosedInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionClosed");
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddDouble(map, "Reason", (double)Data->Reason);
+	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
+	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_P2P_AddNotifyPeerConnectionClosed() 
@@ -88,6 +105,12 @@ double EpicGames_P2P_AddNotifyPeerConnectionClosed()
 
 void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnectionEstablishedInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionEstablished");
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddDouble(map, "status", (double)Data->ConnectionType);
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_P2P_AddNotifyPeerConnectionEstablished() 
@@ -105,6 +128,13 @@ double EpicGames_P2P_AddNotifyPeerConnectionEstablished()
 
 void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnectionInterruptedInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionInterrupted");
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
+	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_P2P_AddNotifyPeerConnectionInterrupted() 
@@ -123,6 +153,13 @@ double EpicGames_P2P_AddNotifyPeerConnectionInterrupted()
 
 void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingConnectionRequestInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionRequest");
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
+	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_P2P_AddNotifyPeerConnectionRequest() 
@@ -237,6 +274,13 @@ double EpicGames_P2P_GetRelayControl()
 
 void EOS_CALL P2P_OnQueryNATTypeCompleteCallback(const EOS_P2P_OnQueryNATTypeCompleteInfo* Data)
 {
+	int map = CreateDsMap(0, 0);
+	DsMapAddString(map, "type", "");
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "NATType", (double)Data->NATType);
+	CreateAsyncEventWithDSMap(map, 70);
 }
 
 double EpicGames_P2P_QueryNATType()
