@@ -36,7 +36,7 @@ YYEXPORT void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions,
     OldPreGraphicsInitialisation();
 }
 
-std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func)
+std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);
 
@@ -49,20 +49,20 @@ std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const c
 		{
 			if (KIND_RValue(&elem) != VALUE_STRING)
 			{
-				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
 			}
 
 			strings.push_back(elem.GetString());
 		}
 	}
 	else {
-		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
 	}
 
 	return strings;
 }
 
-std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* func)
+std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);
 
@@ -75,20 +75,20 @@ std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* fun
 		{
 			if (KIND_RValue(&elem) != VALUE_INT32)
 			{
-				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
 			}
 
 			vec.push_back(YYGetInt32(&elem, i));
 		}
 	}
 	else {
-		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
 	}
 
 	return vec;
 }
 
-std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* func)
+std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);
 
@@ -101,14 +101,14 @@ std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* f
 		{
 			if (KIND_RValue(&elem) != VALUE_INT64)
 			{
-				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
 			}
 
 			vec.push_back(YYGetInt64(&elem, i));
 		}
 	}
 	else {
-		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
 	}
 
 	return vec;

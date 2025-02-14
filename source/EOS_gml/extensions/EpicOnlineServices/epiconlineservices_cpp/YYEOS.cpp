@@ -137,3 +137,34 @@
 
 		return_EOS_EResult(&Result, EOS_Shutdown());
 	}
+
+
+	const char* VectorOfStr2ArrayStr(std::vector<const char*> vec)
+	{
+		std::string str = "[";
+		for (int a = 0; a < vec.size(); a++)
+		{
+			if (a != 0)
+			{
+				str += ",";
+			}
+			
+			std::string element = vec.at(a);
+			str += "\"" + element + "\"";
+		}
+
+		str + "]";
+
+		return (const char*)str.c_str();
+	}
+
+	const char* productIds2ArrayStr(EOS_ProductUserId* user_ids, int count)
+	{
+		std::vector<const char*> vec = {};
+		for (int a = 0; a < count; a++)
+		{
+			vec.push_back(productID_toString(user_ids[a]));
+		}
+		
+		return VectorOfStr2ArrayStr(vec);
+	}
