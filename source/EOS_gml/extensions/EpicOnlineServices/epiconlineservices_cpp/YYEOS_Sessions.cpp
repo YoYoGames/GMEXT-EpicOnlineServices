@@ -105,7 +105,7 @@ double EpicGames_ActiveSession_CopyInfo(char* SessionName)
 	return 0.0;
 }
 
-double EpicGames_ActiveSession_GetRegisteredPlayerByIndex(char* SessionName)
+char* EpicGames_ActiveSession_GetRegisteredPlayerByIndex(char* SessionName)
 { 
 	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
 	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
@@ -116,7 +116,7 @@ double EpicGames_ActiveSession_GetRegisteredPlayerByIndex(char* SessionName)
 	EOS_ActiveSession_GetRegisteredPlayerByIndexOptions Options = {0};
 	EOS_ProductUserId ProductUserId = EOS_ActiveSession_GetRegisteredPlayerByIndex(HActiveSession, &Options);
 	
-	return 0.0; 
+	return productID_toString(ProductUserId);
 } 
 
 double EpicGames_ActiveSession_GetRegisteredPlayerCount(char* SessionName)
@@ -155,7 +155,7 @@ double EpicGames_SessionDetails_CopyInfo()
 	
 	if (EOS_EResult::EOS_Success == result)
 	{
-
+		//TODO
 		OutSessionInfo->ApiVersion;
 		OutSessionInfo->HostAddress;
 		OutSessionInfo->NumOpenPublicConnections;
@@ -183,6 +183,12 @@ double EpicGames_SessionDetails_CopySessionAttributeByIndex(double AttrIndex)
 
 	EOS_SessionDetails_CopySessionAttributeByIndex(Handle,&Options, &OutSessionAttribute);
 
+	//TODO
+	OutSessionAttribute->AdvertisementType;
+	OutSessionAttribute->Data->Key;
+	OutSessionAttribute->Data->Value;
+	OutSessionAttribute->Data->ValueType;
+
 	return 0.0;
 } 
 double EpicGames_SessionDetails_CopySessionAttributeByKey(char* AttrKey)
@@ -194,6 +200,12 @@ double EpicGames_SessionDetails_CopySessionAttributeByKey(char* AttrKey)
 	EOS_SessionDetails_Attribute* OutSessionAttribute;
 
 	EOS_SessionDetails_CopySessionAttributeByKey(Handle,&Options,&OutSessionAttribute);
+	
+	//TODO
+	OutSessionAttribute->AdvertisementType;
+	OutSessionAttribute->Data->Key;
+	OutSessionAttribute->Data->Value;
+	OutSessionAttribute->Data->ValueType;
 
 	return 0.0; 
 }
@@ -204,8 +216,7 @@ double EpicGames_SessionDetails_GetSessionAttributeCount()
 	EOS_SessionDetails_GetSessionAttributeCountOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONDETAILS_GETSESSIONATTRIBUTECOUNT_API_LATEST;
 
-	EOS_SessionDetails_GetSessionAttributeCount(Handle,&Options);
-	return 0.0; 
+	return EOS_SessionDetails_GetSessionAttributeCount(Handle,&Options);
 }
 
 
@@ -214,6 +225,7 @@ double EpicGames_SessionDetails_Release()
 	EOS_HSessionDetails SessionHandle = 0;
 
 	EOS_SessionDetails_Release(SessionHandle);
+
 	return 0.0; 
 } 
 
@@ -224,10 +236,10 @@ double EpicGames_SessionModification_AddAttribute(double AdvertisementType, doub
 	Options.AdvertisementType = (EOS_ESessionAttributeAdvertisementType) AdvertisementType;
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST;
 	//Options.SessionAttribute = SessionAttribute;//TODO
-	EOS_SessionModification_AddAttribute(Handle, &Options);
+	EOS_EResult result = EOS_SessionModification_AddAttribute(Handle, &Options);
 
-	return 0.0; 
-} 
+	return (double)result;
+}
 
 double EpicGames_SessionModification_Release() 
 { 
@@ -244,8 +256,8 @@ double EpicGames_SessionModification_RemoveAttribute(char* Key)
 	EOS_SessionModification_RemoveAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_REMOVEATTRIBUTE_API_LATEST;
 	Options.Key = Key;
-	EOS_SessionModification_RemoveAttribute(Handle,&Options);
-	return 0.0; 
+	return (double) EOS_SessionModification_RemoveAttribute(Handle,&Options);
+	
 } 
 
 double EpicGames_SessionModification_SetAllowedPlatformIds()
@@ -256,8 +268,7 @@ double EpicGames_SessionModification_SetAllowedPlatformIds()
 	Options.AllowedPlatformIds;
 	Options.AllowedPlatformIdsCount;
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST;
-	EOS_SessionModification_SetAllowedPlatformIds(Handle, &Options);
-	return 0.0; 
+	return (double)EOS_SessionModification_SetAllowedPlatformIds(Handle, &Options);
 }
 
 double EpicGames_SessionModification_SetBucketId(char* BucketId)
@@ -266,9 +277,7 @@ double EpicGames_SessionModification_SetBucketId(char* BucketId)
 	EOS_SessionModification_SetBucketIdOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETBUCKETID_API_LATEST;
 	Options.BucketId = BucketId;
-	EOS_SessionModification_SetBucketId(Handle, &Options);
-
-	return 0.0; 
+	return (double)EOS_SessionModification_SetBucketId(Handle, &Options);
 } 
 
 double EpicGames_SessionModification_SetHostAddress(char* HostAddress)
@@ -277,9 +286,7 @@ double EpicGames_SessionModification_SetHostAddress(char* HostAddress)
 	EOS_SessionModification_SetHostAddressOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETHOSTADDRESS_API_LATEST;
 	Options.HostAddress = HostAddress;
-	EOS_SessionModification_SetHostAddress(Handle, &Options);
-
-	return 0.0; 
+	return (double)EOS_SessionModification_SetHostAddress(Handle, &Options);
 }
 
 double EpicGames_SessionModification_SetInvitesAllowed(double bInvitesAllowed)
@@ -288,8 +295,7 @@ double EpicGames_SessionModification_SetInvitesAllowed(double bInvitesAllowed)
 	EOS_SessionModification_SetInvitesAllowedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST;
 	Options.bInvitesAllowed = bInvitesAllowed > 0.5;
-	EOS_SessionModification_SetInvitesAllowed(Handle,&Options);
-	return 0.0; 
+	return (double)EOS_SessionModification_SetInvitesAllowed(Handle,&Options);
 } 
 
 double EpicGames_SessionModification_SetJoinInProgressAllowed(double bAllowJoinInProgress)
@@ -298,8 +304,7 @@ double EpicGames_SessionModification_SetJoinInProgressAllowed(double bAllowJoinI
 	EOS_SessionModification_SetJoinInProgressAllowedOptions Options = { 0 };
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETJOININPROGRESSALLOWED_API_LATEST;
 	Options.bAllowJoinInProgress = bAllowJoinInProgress>0.5;
-	EOS_SessionModification_SetJoinInProgressAllowed(Handle,&Options);
-	return 0.0; 
+	return (double)EOS_SessionModification_SetJoinInProgressAllowed(Handle,&Options);
 }
 
 double EpicGames_SessionModification_SetMaxPlayers(double MaxPlayers)
@@ -308,9 +313,7 @@ double EpicGames_SessionModification_SetMaxPlayers(double MaxPlayers)
 	EOS_SessionModification_SetMaxPlayersOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETMAXPLAYERS_API_LATEST;
 	Options.MaxPlayers = (int) MaxPlayers;
-	EOS_SessionModification_SetMaxPlayers(Handle,&Options);
-
-	return 0.0; 
+	return (double)EOS_SessionModification_SetMaxPlayers(Handle,&Options);
 }
 
 double EpicGames_SessionModification_SetPermissionLevel(double PermissionLevel)
@@ -319,8 +322,7 @@ double EpicGames_SessionModification_SetPermissionLevel(double PermissionLevel)
 	EOS_SessionModification_SetPermissionLevelOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETPERMISSIONLEVEL_API_LATEST;
 	Options.PermissionLevel = (EOS_EOnlineSessionPermissionLevel) PermissionLevel;
-	EOS_SessionModification_SetPermissionLevel(Handle,&Options);
-	return 0.0; 
+	return (double)EOS_SessionModification_SetPermissionLevel(Handle,&Options);
 }
 
 void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSessionAcceptedCallbackInfo* Data)
@@ -352,7 +354,7 @@ void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_Leav
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyLeaveSessionRequested");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
 	DsMapAddString(map, "session_name", Data->SessionName);
 	CreateAsyncEventWithDSMap(map, 70);
@@ -362,12 +364,12 @@ double EpicGames_Sessions_AddNotifyLeaveSessionRequested()
 { 
 	EOS_Sessions_AddNotifyLeaveSessionRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
-	
-	callback* mcallback = getCallbackData();
 
-	EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions,&Options,mcallback, Sessions_LeaveSessionRequestedCallbackInfo);
+	//callback* mcallback = getCallbackData();
 
-	return mcallback->identifier;
+	return EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions,&Options,NULL/*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
+
+	/*return mcallback->identifier;*/
 } 
 
 void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo* Data)
@@ -376,7 +378,7 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
 	DsMapAddString(map, "target_native_account_type", Data->TargetNativeAccountType);
 	DsMapAddString(map, "target_user_native_account_id", Data->TargetUserNativeAccountId);
@@ -390,11 +392,11 @@ double EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested()
 	EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
 	
-	callback* mcallback = getCallbackData();
+	//callback* mcallback = getCallbackData();
 
-	EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions,&Options, mcallback,Sessions_OnSendSessionNativeInviteRequestedCallback);
+	return EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions,&Options, NULL/*mcallback*/,Sessions_OnSendSessionNativeInviteRequestedCallback);
 
-	return mcallback->identifier;
+	//return mcallback->identifier;
 }
 
 void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_SessionInviteAcceptedCallbackInfo* Data)
@@ -403,7 +405,7 @@ void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_Sess
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteAccepted");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
 	DsMapAddString(map, "invite_id", Data->InviteId);
 	DsMapAddString(map, "session_id", Data->SessionId);
@@ -416,10 +418,10 @@ double EpicGames_Sessions_AddNotifySessionInviteAccepted()
 	EOS_Sessions_AddNotifySessionInviteAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEACCEPTED_API_LATEST;
 
-	callback* mcallback = getCallbackData();
-	EOS_Sessions_AddNotifySessionInviteAccepted(HSessions,&Options, mcallback, Sessions_SessionInviteAcceptedCallbackInfo);
+	//callback* mcallback = getCallbackData();
+	return EOS_Sessions_AddNotifySessionInviteAccepted(HSessions,&Options, NULL/*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
 
-	return mcallback->identifier;
+	//return mcallback->identifier;
 } 
 
 void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo* Data)
@@ -428,7 +430,7 @@ void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_Sessio
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteReceived");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "invite_id", Data->InviteId);
 	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
 	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
@@ -439,11 +441,11 @@ double EpicGames_Sessions_AddNotifySessionInviteReceived()
 { 
 	EOS_Sessions_AddNotifySessionInviteReceivedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
-	callback* mcallback = getCallbackData();
+	//callback* mcallback = getCallbackData();
 	
-	EOS_Sessions_AddNotifySessionInviteReceived(HSessions,&Options, mcallback, Sessions_OnSessionInviteReceivedCallback);
+	return EOS_Sessions_AddNotifySessionInviteReceived(HSessions,&Options, NULL/*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
 
-	return mcallback->identifier;
+	//return mcallback->identifier;
 }
 
 void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_SessionInviteRejectedCallbackInfo* Data)
@@ -452,7 +454,7 @@ void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_Sessio
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteRejected");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "invite_id", Data->InviteId);
 	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
 	DsMapAddString(map, "session_id", Data->SessionId);
@@ -464,21 +466,23 @@ double EpicGames_Sessions_AddNotifySessionInviteRejected()
 { 
 	EOS_Sessions_AddNotifySessionInviteRejectedOptions Options = {0};
 
-	callback* mcallback = getCallbackData();
-	EOS_Sessions_AddNotifySessionInviteRejected(HSessions,&Options,mcallback, Sessions_OnSessionInviteRejectedCallback);
+	//callback* mcallback = getCallbackData();
+	return EOS_Sessions_AddNotifySessionInviteRejected(HSessions,&Options,NULL/*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
 
-	return mcallback->identifier;
+	//return mcallback->identifier;
 } 
 
-double EpicGames_Sessions_CopySessionHandleByInviteId() //TODO: important!
+double EpicGames_Sessions_CopySessionHandleByInviteId(char* InviteId)
 {
 	EOS_Sessions_CopySessionHandleByInviteIdOptions Options = { 0 }; 
 	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEBYINVITEID_API_LATEST;
-	Options.InviteId = "";
+	Options.InviteId = InviteId;
 
-	EOS_HSessionDetails OutSessionHandle = 0;
-	EOS_Sessions_CopySessionHandleByInviteId(HSessions,&Options,&OutSessionHandle);
-	return 0.0; 
+	EOS_HSessionDetails OutSessionHandle;
+	double result = (double)EOS_Sessions_CopySessionHandleByInviteId(HSessions,&Options,&OutSessionHandle);
+
+	return (double) result;
+	
 }
 
 double EpicGames_Sessions_CopySessionHandleByUiEventId(double UiEventId)
@@ -489,9 +493,9 @@ double EpicGames_Sessions_CopySessionHandleByUiEventId(double UiEventId)
 	
 	EOS_HSessionDetails OutSessionHandle;
 
-	EOS_Sessions_CopySessionHandleByUiEventId(HSessions,&Options,&OutSessionHandle);
+	double result = (double) EOS_Sessions_CopySessionHandleByUiEventId(HSessions,&Options,&OutSessionHandle);
 
-	return 0.0; 
+	return (double)result;
 }
 
 double EpicGames_Sessions_CopySessionHandleForPresence(char* local)
@@ -502,9 +506,9 @@ double EpicGames_Sessions_CopySessionHandleForPresence(char* local)
 
 	EOS_HSessionDetails OutSessionHandle;
 
-	EOS_Sessions_CopySessionHandleForPresence(HSessions,&Options, &OutSessionHandle);
+	double result = (double)EOS_Sessions_CopySessionHandleForPresence(HSessions,&Options, &OutSessionHandle);
 
-	return 0.0; 
+	return (double)result;
 } 
 
 double EpicGames_Sessions_CreateSessionModification(char* SessionName,char* BucketId,double MaxPlayers,char* LocalUserId, double bPresenceEnabled,char* SessionId, double bSanctionsEnabled,const uint32_t* AllowedPlatformIds,double AllowedPlatformIdsCount)
@@ -521,11 +525,10 @@ double EpicGames_Sessions_CreateSessionModification(char* SessionName,char* Buck
 	Options.SessionId;
 	Options.SessionName;
 	EOS_HSessionModification OutSessionModificationHandle;
+ 
+	double result = (double) EOS_Sessions_CreateSessionModification(HSessions,&Options, &OutSessionModificationHandle);
 
-
-	EOS_Sessions_CreateSessionModification(HSessions,&Options, &OutSessionModificationHandle);
-
-	return 0.0; 
+	return (double)result;
 }
 
 double EpicGames_Sessions_CreateSessionSearch(double MaxSearchResults)
@@ -534,8 +537,9 @@ double EpicGames_Sessions_CreateSessionSearch(double MaxSearchResults)
 	EOS_HSessionSearch OutSessionSearchHandle;
 	Options.ApiVersion = EOS_SESSIONS_CREATESESSIONSEARCH_API_LATEST;
 	Options.MaxSearchResults = (double) MaxSearchResults;
-	EOS_Sessions_CreateSessionSearch(HSessions,&Options, &OutSessionSearchHandle);
-	return 0.0; 
+	double result = (double)EOS_Sessions_CreateSessionSearch(HSessions,&Options, &OutSessionSearchHandle);
+
+	return result;
 }
 
 void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessionCallbackInfo* Data)
@@ -567,8 +571,7 @@ double EpicGames_Sessions_DumpSessionState(char* SessionName)
 	EOS_Sessions_DumpSessionStateOptions Options{0};
 	Options.ApiVersion = EOS_SESSIONS_DUMPSESSIONSTATE_API_LATEST;
 	Options.SessionName = SessionName;
-	EOS_Sessions_DumpSessionState(HSessions, &Options);
-	return 0.0; 
+	return (double) EOS_Sessions_DumpSessionState(HSessions, &Options);
 } 
 
 void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbackInfo* Data)
@@ -601,12 +604,13 @@ double EpicGames_Sessions_GetInviteCount(char* local)
 	Options.ApiVersion = EOS_SESSIONS_GETINVITECOUNT_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local);
 
-	EOS_Sessions_GetInviteCount(HSessions,&Options);
-	return 0.0; 
+	return EOS_Sessions_GetInviteCount(HSessions,&Options);
 } 
 
 double EpicGames_Sessions_GetInviteIdByIndex(char* local, double index)
 { 
+	//TODO
+
 	EOS_Sessions_GetInviteIdByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_GETINVITEIDBYINDEX_API_LATEST;
 	Options.Index = (int)index;
@@ -621,15 +625,13 @@ double EpicGames_Sessions_GetInviteIdByIndex(char* local, double index)
 } 
 
 double EpicGames_Sessions_IsUserInSession(char* SessionName, char* TargetUserId)
-{ 
+{
 	EOS_Sessions_IsUserInSessionOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ISUSERINSESSION_API_LATEST;
 	Options.SessionName = SessionName;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
 
-	EOS_Sessions_IsUserInSession(HSessions, &Options);
-
-	return 0.0; 
+	return (double) EOS_Sessions_IsUserInSession(HSessions, &Options);
 } 
 
 void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallbackInfo* Data)
@@ -892,9 +894,7 @@ double EpicGames_Sessions_UpdateSessionModification(char* SessionName)
 
 	EOS_HSessionModification OutSessionModificationHandle;
 
-	EOS_Sessions_UpdateSessionModification(HSessions,&Options,&OutSessionModificationHandle);
-	
-	return 0.0; 
+	return (double) EOS_Sessions_UpdateSessionModification(HSessions,&Options,&OutSessionModificationHandle);
 }
 
 double EpicGames_SessionSearch_CopySearchResultByIndex(double SessionIndex)
@@ -906,9 +906,11 @@ double EpicGames_SessionSearch_CopySearchResultByIndex(double SessionIndex)
 	Options.SessionIndex = SessionIndex;
 	EOS_HSessionDetails OutSessionHandle;
 
-	EOS_SessionSearch_CopySearchResultByIndex(Handle,&Options, &OutSessionHandle);
+	double result = (double)EOS_SessionSearch_CopySearchResultByIndex(Handle,&Options, &OutSessionHandle);
 
-	return 0.0; 
+	//OutSessionHandle.
+
+	return result; 
 } 
 
 void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackInfo* Data)
@@ -932,7 +934,7 @@ double EpicGames_SessionSearch_Find(char* LocalUserId)
 
 	EOS_SessionSearch_Find(Handle, &Options, mcallback, SessionSearch_OnFindCallback);
 
-	return mcallback->identifier; 
+	return mcallback->identifier;
 } 
 
 double EpicGames_SessionSearch_GetSearchResultCount() 
@@ -959,8 +961,7 @@ double EpicGames_SessionSearch_RemoveParameter(char* Key, double ComparisonOp)
 	Options.ComparisonOp = (EOS_EOnlineComparisonOp) ComparisonOp;
 	Options.Key = Key;
 
-	EOS_SessionSearch_RemoveParameter(Handle,&Options);
-	return 0.0; 
+	return (double) EOS_SessionSearch_RemoveParameter(Handle,&Options);
 } 
 
 double EpicGames_SessionSearch_SetMaxResults(double MaxSearchResults)
@@ -970,9 +971,7 @@ double EpicGames_SessionSearch_SetMaxResults(double MaxSearchResults)
 	Options.ApiVersion = EOS_SESSIONSEARCH_SETMAXSEARCHRESULTS_API_LATEST;
 	Options.MaxSearchResults = MaxSearchResults;
 
-	EOS_SessionSearch_SetMaxResults(Handle,&Options);
-
-	return 0.0; 
+	return (double) EOS_SessionSearch_SetMaxResults(Handle,&Options);
 } 
 
 double EpicGames_SessionSearch_SetParameter() 
@@ -984,9 +983,7 @@ double EpicGames_SessionSearch_SetParameter()
 	//Options.ComparisonOp = ;
 	//Options.Parameter = ;
 
-	EOS_SessionSearch_SetParameter(Handle, &Options);
-
-	return 0.0; 
+	return (double) EOS_SessionSearch_SetParameter(Handle, &Options);
 } 
 
 double EpicGames_SessionSearch_SetSessionId(char* SessionId)
@@ -996,8 +993,7 @@ double EpicGames_SessionSearch_SetSessionId(char* SessionId)
 	Options.ApiVersion = EOS_SESSIONSEARCH_SETSESSIONID_API_LATEST;
 	Options.SessionId = SessionId;
 
-	EOS_SessionSearch_SetSessionId(Handle,&Options);
-	return 0.0; 
+	return (double)EOS_SessionSearch_SetSessionId(Handle,&Options);
 } 
 
 double EpicGames_SessionSearch_SetTargetUserId(char* TargetUserId)
@@ -1007,9 +1003,7 @@ double EpicGames_SessionSearch_SetTargetUserId(char* TargetUserId)
 	Options.ApiVersion = EOS_SESSIONSEARCH_SETTARGETUSERID_API_LATEST;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
 
-	EOS_SessionSearch_SetTargetUserId(Handle, &Options);
-	
-	return 0.0; 
+	return (double)EOS_SessionSearch_SetTargetUserId(Handle, &Options);
 }
 
 
