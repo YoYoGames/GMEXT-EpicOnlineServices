@@ -10,5 +10,7 @@
 
 
 std::string DesktopExtensionTools_getPathToExe();
+std::vector<std::string> GetCommandLineArgs();
+
 
 #define tracef(...) do { DebugConsoleOutput("[EPIC ONLINE SERVICES]: "); DebugConsoleOutput(__VA_ARGS__); DebugConsoleOutput("\n"); } while (0)
