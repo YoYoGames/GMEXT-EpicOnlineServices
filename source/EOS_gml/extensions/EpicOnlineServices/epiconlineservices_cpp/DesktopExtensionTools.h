@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
+#include <vector>
 
 
 std::string DesktopExtensionTools_getPathToExe();
