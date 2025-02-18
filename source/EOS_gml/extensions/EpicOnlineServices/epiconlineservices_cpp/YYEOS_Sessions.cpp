@@ -74,6 +74,9 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_sessions.h"
 
+
+//TODO: Don't forget review all lines like this later...... DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+
 EOS_HSessions HSessions = 0;
 double EpicGames_Sessions_Init()
 {
@@ -120,7 +123,7 @@ std::vector<EOS_ProductUserId> VectorProductIdsFromVector(std::vector<const uint
 	return ids;
 }
 
-double SDK_EpicGames_ActiveSession_CopyInfo(char* SessionName, char* buff_ret)
+double SDKEpicGames_ActiveSession_CopyInfo(char* SessionName, char* buff_ret)
 {
 	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
 	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
@@ -813,7 +816,7 @@ void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlay
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-double EpicGames_Sessions_RegisterPlayers(char* SessionName, char* buff_args)
+double SDKEpicGames_Sessions_RegisterPlayers(char* SessionName, char* buff_args)
 {
 	auto args = buffer_unpack((uint8_t*)buff_args);
 	auto array_ids = YYGetArray(args[0]);
@@ -965,7 +968,7 @@ void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_Unregister
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-double EpicGames_Sessions_UnregisterPlayers(char* SessionName, char* buff_args)
+double SDKEpicGames_Sessions_UnregisterPlayers(char* SessionName, char* buff_args)
 {
 	auto args = buffer_unpack((uint8_t*)buff_args);
 	auto array_ids = YYGetArray(args[0]);
@@ -1088,7 +1091,7 @@ double EpicGames_SessionSearch_SetMaxResults(double MaxSearchResults)
 	return (double) EOS_SessionSearch_SetMaxResults(mOutSessionSearchHandle,&Options);
 } 
 
-double EpicGames_SessionSearch_SetParameter(double comparisonOp,char* buff_args)
+double SDKEpicGames_SessionSearch_SetParameter(double comparisonOp,char* buff_args)
 {
 	auto args = buffer_unpack((uint8_t*)buff_args);
 	auto Attribute = YYGetStruct(args[0]);
