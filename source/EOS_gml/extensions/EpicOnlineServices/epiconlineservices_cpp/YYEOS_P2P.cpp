@@ -419,22 +419,24 @@ func double EpicGames_P2P_RemoveNotifyPeerConnectionRequest(double NotificationI
 	return 0.0; 
 } 
 
-func double SDKEpicGames_P2P_SendPacket(char* buff_data, double len)
+func double SDKEpicGames_P2P_SendPacket(char* buff_args, char* buff_data, double len)
 { 
+	auto args = buffer_unpack((uint8_t*)buff_args);
+
 	EOS_P2P_SendPacketOptions Options = { 0 };
 	Options.ApiVersion = EOS_P2P_SENDPACKET_API_LATEST;
-	Options.bAllowDelayedDelivery;
-	Options.bDisableAutoAcceptConnection;
-	Options.Channel;
+	Options.bAllowDelayedDelivery = YYGetBool(args[0]);
+	Options.bDisableAutoAcceptConnection = YYGetBool(args[1]);
+	Options.Channel = YYGetReal(args[2]);
 	Options.Data = buff_data;
 	Options.DataLengthBytes = len;
-	Options.LocalUserId;
-	Options.Reliability;
-	Options.RemoteUserId;
+	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[3]));
+	Options.Reliability =  (EOS_EPacketReliability)YYGetUint8(args[4]);
+	Options.RemoteUserId = EOS_ProductUserId_FromString(YYGetUint8(args[5]));
 
 	EOS_P2P_SocketId socket = {0};
 	socket.ApiVersion = EOS_P2P_SOCKETID_API_LATEST;
-	socket.SocketName;
+	strcpy(socket.SocketName, YYGetString(args[6]));
 	Options.SocketId = &socket;
 
 	EOS_P2P_SendPacket(HP2P,&Options);
