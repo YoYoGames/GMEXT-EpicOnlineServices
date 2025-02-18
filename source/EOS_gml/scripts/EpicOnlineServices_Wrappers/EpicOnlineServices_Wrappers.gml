@@ -173,7 +173,7 @@ function EpicGames_P2P_SendPacket(buff,buff_len,AllowDelayedDelivery,DisableAuto
 		[Channel,buffer_f32],
 		[LocalUserId,buffer_string],
 		[Reliability,buffer_u8],
-		[RemoteUserId,buffer_u8],
+		[RemoteUserId,buffer_string],
 		[SocketName,buffer_string],
 	]
 		

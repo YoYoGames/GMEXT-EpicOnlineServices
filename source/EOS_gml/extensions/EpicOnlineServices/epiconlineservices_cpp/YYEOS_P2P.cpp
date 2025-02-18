@@ -432,7 +432,7 @@ func double SDKEpicGames_P2P_SendPacket(char* buff_args, char* buff_data, double
 	Options.DataLengthBytes = len;
 	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[3]));
 	Options.Reliability =  (EOS_EPacketReliability)YYGetUint8(args[4]);
-	Options.RemoteUserId = EOS_ProductUserId_FromString(YYGetUint8(args[5]));
+	Options.RemoteUserId = EOS_ProductUserId_FromString(YYGetString(args[5]));
 
 	EOS_P2P_SocketId socket = {0};
 	socket.ApiVersion = EOS_P2P_SOCKETID_API_LATEST;
