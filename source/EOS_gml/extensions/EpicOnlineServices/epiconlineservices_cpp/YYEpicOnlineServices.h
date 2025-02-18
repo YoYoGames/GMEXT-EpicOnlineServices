@@ -11,6 +11,8 @@
 #include <eos_sdk.h>
 #include <vector>
 
+#include "ExtBufferIO.h"
+
 //#define YYEXPORT __declspec(dllexport)
 
 extern bool EOS_isInitialised;
