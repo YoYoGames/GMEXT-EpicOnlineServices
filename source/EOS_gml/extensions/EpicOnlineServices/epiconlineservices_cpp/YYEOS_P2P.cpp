@@ -84,7 +84,7 @@ void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnect
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionClosed");
-	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
 	DsMapAddDouble(map, "Reason", (double)Data->Reason);
 	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
 	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
@@ -113,7 +113,7 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionEstablished");
-	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
 	DsMapAddDouble(map, "status", (double)Data->ConnectionType);
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
@@ -142,7 +142,7 @@ void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnec
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionInterrupted");
-	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));//TODO: ????account_id????
+	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
 	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
@@ -259,7 +259,7 @@ double EpicGames_P2P_GetNextReceivedPacketSize(char* LocalUserId)
 	return OutPacketSizeBytes;
 } 
 
-double EpicGames_P2P_GetPacketQueueInfo() 
+double SDKEpicGames_P2P_GetPacketQueueInfo(char* buff_ret)
 { 
 	EOS_P2P_GetPacketQueueInfoOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_GETPACKETQUEUEINFO_API_LATEST;
@@ -268,34 +268,47 @@ double EpicGames_P2P_GetPacketQueueInfo()
 
 	EOS_EResult result = EOS_P2P_GetPacketQueueInfo(HP2P,&Options,&OutPacketQueueInfo);
 
-	//TODO
 	if (EOS_EResult::EOS_Success == result)
 	{
-		OutPacketQueueInfo.IncomingPacketQueueCurrentPacketCount;
-		OutPacketQueueInfo.IncomingPacketQueueCurrentSizeBytes;
-		OutPacketQueueInfo.IncomingPacketQueueMaxSizeBytes;
-		OutPacketQueueInfo.OutgoingPacketQueueCurrentPacketCount;
-		OutPacketQueueInfo.OutgoingPacketQueueCurrentSizeBytes;
-		OutPacketQueueInfo.OutgoingPacketQueueMaxSizeBytes;
+		StructStream _struct = {};
+		_struct.addKeyValue("IncomingPacketQueueCurrentPacketCount", (double)OutPacketQueueInfo.IncomingPacketQueueCurrentPacketCount);
+		_struct.addKeyValue("IncomingPacketQueueCurrentSizeBytes", (double)OutPacketQueueInfo.IncomingPacketQueueCurrentSizeBytes);
+		_struct.addKeyValue("IncomingPacketQueueMaxSizeBytes", (double)OutPacketQueueInfo.IncomingPacketQueueMaxSizeBytes);
+		_struct.addKeyValue("OutgoingPacketQueueCurrentPacketCount", (double)OutPacketQueueInfo.OutgoingPacketQueueCurrentPacketCount);
+		_struct.addKeyValue("OutgoingPacketQueueCurrentSizeBytes", (double)OutPacketQueueInfo.OutgoingPacketQueueCurrentSizeBytes);
+		_struct.addKeyValue("OutgoingPacketQueueMaxSizeBytes", (double)OutPacketQueueInfo.OutgoingPacketQueueMaxSizeBytes);
+		_struct.writeTo(buff_ret);
 	}
 	else
 	{
-
+		StructStream _struct = {};
+		_struct.writeTo(buff_ret);
 	}
 
 	return 0.0; 
 } 
 
-double EpicGames_P2P_GetPortRange() 
+double SDKEpicGames_P2P_GetPortRange(char* buff_ret)
 { 
 	EOS_P2P_GetPortRangeOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_GETPORTRANGE_API_LATEST;
 	uint16_t OutPort;
 	uint16_t OutNumAdditionalPortsToTry;
 
-	EOS_P2P_GetPortRange(HP2P, &Options,&OutPort, &OutNumAdditionalPortsToTry);
+	EOS_EResult result = EOS_P2P_GetPortRange(HP2P, &Options,&OutPort, &OutNumAdditionalPortsToTry);
 
-	//TODO
+	if (EOS_EResult::EOS_Success == result)
+	{
+		StructStream _struct = {};
+		_struct.addKeyValue("OutPort", (int)OutPort);
+		_struct.addKeyValue("OutNumAdditionalPortsToTry", (int)OutNumAdditionalPortsToTry);
+		_struct.writeTo(buff_ret);
+	}
+	else
+	{
+		StructStream _struct = {};
+		_struct.writeTo(buff_ret);
+	}
 
 	return 0.0; 
 } 
@@ -342,21 +355,33 @@ double EpicGames_P2P_QueryNATType()
 	return mcallback->identifier;
 } 
 
-double EpicGames_P2P_ReceivePacket() 
+double SDKEpicGames_P2P_ReceivePacket(char* buff_ret,char* LocalUserId,double MaxDataSizeBytes,double RequestedChannel)
 { 
-	//TODO
+	EOS_P2P_ReceivePacketOptions Options = {0};
+	Options.ApiVersion = EOS_P2P_RECEIVEPACKET_API_LATEST;
+	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.MaxDataSizeBytes = MaxDataSizeBytes;
+	if (RequestedChannel >= 0)
+		Options.RequestedChannel = (const uint8_t*)&RequestedChannel;
+	else
+		Options.RequestedChannel = NULL;
 
-	EOS_HP2P Handle;
-	const EOS_P2P_ReceivePacketOptions* Options;
-	EOS_ProductUserId* OutPeerId;
-	EOS_P2P_SocketId* OutSocketId;
-	uint8_t* OutChannel;
-	void* OutData;
-	uint32_t* OutBytesWritten;
+	EOS_ProductUserId OutPeerId;
+	EOS_P2P_SocketId OutSocketId;
+	uint8_t OutChannel;
+	//void* OutData;
+	uint32_t OutBytesWritten;
+	
+	EOS_EResult result = EOS_P2P_ReceivePacket(HP2P,&Options,&OutPeerId,&OutSocketId,&OutChannel,buff_ret, &OutBytesWritten);
 
-	//EOS_P2P_ReceivePacket()
-
-	return 0.0; 
+	if (result == EOS_EResult::EOS_Success)
+	{
+		return OutBytesWritten;
+	}
+	else
+	{
+		return -4;
+	}
 } 
 
 double EpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(double NotificationId)
@@ -393,16 +418,32 @@ double EpicGames_P2P_RemoveNotifyPeerConnectionRequest(double NotificationId)
 	return 0.0; 
 } 
 
-double EpicGames_P2P_SendPacket() 
+double SDKEpicGames_P2P_SendPacket(char* buff_data, double len)
 { 
-	//TODO
-	//EOS_P2P_SendPacket
+	EOS_P2P_SendPacketOptions Options = { 0 };
+	Options.ApiVersion = EOS_P2P_SENDPACKET_API_LATEST;
+	Options.bAllowDelayedDelivery;
+	Options.bDisableAutoAcceptConnection;
+	Options.Channel;
+	Options.Data = buff_data;
+	Options.DataLengthBytes = len;
+	Options.LocalUserId;
+	Options.Reliability;
+	Options.RemoteUserId;
+
+	EOS_P2P_SocketId socket = {0};
+	socket.ApiVersion = EOS_P2P_SOCKETID_API_LATEST;
+	socket.SocketName;
+	Options.SocketId = &socket;
+
+	EOS_P2P_SendPacket(HP2P,&Options);
+
 	return 0.0; 
 } 
 
 double EpicGames_P2P_SetPacketQueueSize(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
 { 
-	EOS_P2P_SetPacketQueueSizeOptions Options = {};
+	EOS_P2P_SetPacketQueueSizeOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_SETPACKETQUEUESIZE_API_LATEST;
 	Options.IncomingPacketQueueMaxSizeBytes = IncomingPacketQueueMaxSizeBytes;
 	Options.OutgoingPacketQueueMaxSizeBytes = OutgoingPacketQueueMaxSizeBytes;
