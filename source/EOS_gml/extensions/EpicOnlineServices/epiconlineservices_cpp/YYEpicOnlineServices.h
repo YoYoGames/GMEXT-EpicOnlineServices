@@ -47,6 +47,8 @@ extern void EpicGames_Stats_Init();
 extern void EpicGames_TitleStorage_Init();
 extern void EpicGames_UserInfo_Init();
 extern void EpicGames_UI_Init();
+extern void EpicGames_P2P_Init();
+extern void EpicGames_Sessions_Init();
 
 extern void _SW_SetArrayOfString(RValue* _array, char* str, const char* delim);
 extern void _SW_SetArrayOfInt32(RValue* _array, std::vector<int>& values);
@@ -83,3 +85,11 @@ struct callback
 
 const char* productIds2ArrayStr(EOS_ProductUserId* user_ids, int count);
 const char* VectorOfStr2ArrayStr(std::vector<const char*> vec);
+
+
+
+#ifdef OS_Windows
+#define func extern "C" __declspec(dllexport)
+#else
+#define func extern "C"
+#endif // DEBUG

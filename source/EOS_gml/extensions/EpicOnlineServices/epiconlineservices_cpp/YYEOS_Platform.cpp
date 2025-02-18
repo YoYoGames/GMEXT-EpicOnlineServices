@@ -177,6 +177,10 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			EpicGames_Reports_Init();
 			tracef("EOS_Sanctions_Init :: Starting module...");
 			EpicGames_Sanctions_Init();
+			tracef("EOS_Sessions_Init :: Starting module...");
+			EpicGames_Sessions_Init();
+			tracef("EOS_P2P_Init :: Starting module...");
+			EpicGames_P2P_Init();
 
 			tracef("Initialization finished!");
 			
