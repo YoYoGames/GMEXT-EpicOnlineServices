@@ -97,7 +97,7 @@ YYEXPORT void EpicGames_Stats_GetStatsCount(RValue& Result, CInstance* selfinst,
 {
 	EOS_NotInitialisedReturn_INT32;
 
-	eos_ensure_argc(2);
+	eos_ensure_argc(1);
 
 	const char* target = YYGetString(arg, 0);
 
