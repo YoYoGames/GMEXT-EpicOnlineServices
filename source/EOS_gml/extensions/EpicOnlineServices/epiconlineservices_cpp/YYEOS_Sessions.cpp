@@ -640,14 +640,23 @@ func double SDKEpicGames_Sessions_CreateSessionModification(char* buff_args)
 	Options.AllowedPlatformIdsCount = ids.size();
 
 	Options.bPresenceEnabled = YYGetBool(args[1]);
+	std::cout << "bPresenceEnabled: " << Options.bPresenceEnabled  << std::endl;
 	Options.bSanctionsEnabled = YYGetBool(args[2]);
+	std::cout << "bSanctionsEnabled: " << Options.bSanctionsEnabled << std::endl;
 	Options.BucketId = YYGetString(args[3]);
+	std::cout << "BucketId: " << Options.BucketId  << std::endl;
 	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[4]));
+	std::cout << "LocalUserId: " << YYGetString(args[4]) << std::endl;
 	Options.MaxPlayers = YYGetReal(args[5]);
+	std::cout << "MaxPlayers: " << Options.MaxPlayers << std::endl;
 	Options.SessionId = YYGetString(args[6]);
+	std::cout << "SessionId: " << Options.SessionId << std::endl;
 	Options.SessionName = YYGetString(args[7]);
+	std::cout << "SessionName: " << Options.SessionName << std::endl;
  
 	double result = (double) EOS_Sessions_CreateSessionModification(HSessions,&Options, &mHSessionModification);
+	
+	std::cout << EOS_EResult_ToString((EOS_EResult)result) << std::endl;
 
 	return (double)result;
 }
