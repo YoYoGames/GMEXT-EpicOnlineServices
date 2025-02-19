@@ -71,9 +71,10 @@ function EpicGames_SessionModification_SetAllowedPlatformIds(array_ids)
 }
 
 //double SDKEpicGames_Sessions_CreateSessionModification(char* buff_args)
-function EpicGames_Sessions_CreateSessionModification(PresenceEnabled,bSanctionsEnabled,BucketId,LocalUserId,MaxPlayers,SessionId,SessionName)
+function EpicGames_Sessions_CreateSessionModification(AllowedPlatformIds,PresenceEnabled,bSanctionsEnabled,BucketId,LocalUserId,MaxPlayers,SessionId,SessionName)
 {
 	var _args = [
+		[AllowedPlatformIds, buffer_u32],//Array
 		[PresenceEnabled, buffer_bool],
 		[bSanctionsEnabled, buffer_bool],
 		[BucketId, buffer_string],
