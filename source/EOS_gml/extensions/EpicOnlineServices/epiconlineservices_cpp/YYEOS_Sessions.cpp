@@ -630,26 +630,36 @@ func double SDKEpicGames_Sessions_CreateSessionModification(char* buff_args)
 { 
 	auto args = buffer_unpack((uint8_t*)buff_args);
 
-	EOS_Sessions_CreateSessionModificationOptions Options;
-	Options.ApiVersion = EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST;
+	std::cout << "TEST" << std::endl;
 
-	auto array_ids = YYGetArray(args[0]);
+	bool b1 = YYGetBool(args[0]);
+	bool b2 = YYGetBool(args[1]);
 
-	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
-	Options.AllowedPlatformIds = ids.data();
-	Options.AllowedPlatformIdsCount = ids.size();
+	std::cout << b1 << std::endl;
+	std::cout << b2 << std::endl;
 
-	Options.bPresenceEnabled = YYGetBool(args[1]);
-	Options.bSanctionsEnabled = YYGetBool(args[2]);
-	Options.BucketId = YYGetString(args[3]);
-	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[4]));
-	Options.MaxPlayers = YYGetReal(args[5]);
-	Options.SessionId = YYGetString(args[6]);
-	Options.SessionName = YYGetString(args[7]);
- 
-	double result = (double) EOS_Sessions_CreateSessionModification(HSessions,&Options, &mHSessionModification);
+	return 0;
 
-	return (double)result;
+	//EOS_Sessions_CreateSessionModificationOptions Options;
+	//Options.ApiVersion = EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST;
+
+	//auto array_ids = YYGetArray(args[0]);
+
+	//std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
+	//Options.AllowedPlatformIds = ids.data();
+	//Options.AllowedPlatformIdsCount = ids.size();
+
+	//Options.bPresenceEnabled = YYGetBool(args[1]);
+	//Options.bSanctionsEnabled = YYGetBool(args[2]);
+	//Options.BucketId = YYGetString(args[3]);
+	//Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[4]));
+	//Options.MaxPlayers = YYGetReal(args[5]);
+	//Options.SessionId = YYGetString(args[6]);
+	//Options.SessionName = YYGetString(args[7]);
+ //
+	//double result = (double) EOS_Sessions_CreateSessionModification(HSessions,&Options, &mHSessionModification);
+
+	//return (double)result;
 }
 
 EOS_HSessionSearch mOutSessionSearchHandle = 0;
