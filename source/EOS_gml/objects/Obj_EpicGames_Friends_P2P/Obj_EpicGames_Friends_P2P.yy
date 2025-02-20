@@ -2,6 +2,7 @@
   "$GMObject":"",
   "%Name":"Obj_EpicGames_Friends_P2P",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":70,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
@@ -11,10 +12,7 @@
     "name":"P2P",
     "path":"folders/Epic Online Services Demos/P2P.yy",
   },
-  "parentObjectId":{
-    "name":"Obj_EpicGames_Friends",
-    "path":"objects/Obj_EpicGames_Friends/Obj_EpicGames_Friends.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
