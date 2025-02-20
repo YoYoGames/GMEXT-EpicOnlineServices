@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_EpicGames_Point",
+  "%Name":"Obj_EpicGames_P2P_Point",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_EpicGames_Point",
+  "name":"Obj_EpicGames_P2P_Point",
   "overriddenProperties":[],
   "parent":{
-    "name":"Epic Online Services Demos",
-    "path":"folders/Epic Online Services Demos.yy",
+    "name":"P2P",
+    "path":"folders/Epic Online Services Demos/P2P.yy",
   },
   "parentObjectId":null,
   "persistent":false,

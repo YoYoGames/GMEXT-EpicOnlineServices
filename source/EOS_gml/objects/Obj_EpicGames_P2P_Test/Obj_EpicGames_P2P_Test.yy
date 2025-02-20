@@ -11,8 +11,8 @@
   "name":"Obj_EpicGames_P2P_Test",
   "overriddenProperties":[],
   "parent":{
-    "name":"Epic Online Services Demos",
-    "path":"folders/Epic Online Services Demos.yy",
+    "name":"P2P",
+    "path":"folders/Epic Online Services Demos/P2P.yy",
   },
   "parentObjectId":{
     "name":"Obj_EpicGames_Platform_Tick",

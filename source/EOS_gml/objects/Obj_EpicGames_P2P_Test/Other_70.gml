@@ -14,9 +14,9 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_P2P_AddNotifyPeerConnectionEstablished":
 		
-		async_load[?"ConnectionType"]
-		async_load[?"NetworkType"]
-		async_load[?"SocketId"]
+		//async_load[?"ConnectionType"]
+		//async_load[?"NetworkType"]
+		//async_load[?"SocketId"]
 		
 		array_push(EstablishedProductIDs,async_load[?"RemoteUserId"])
 		
