@@ -57,6 +57,7 @@
     {"id":{"name":"Obj_EpicGames_Leaderboards_Controller","path":"objects/Obj_EpicGames_Leaderboards_Controller/Obj_EpicGames_Leaderboards_Controller.yy",},},
     {"id":{"name":"Obj_EpicGames_Menu","path":"objects/Obj_EpicGames_Menu/Obj_EpicGames_Menu.yy",},},
     {"id":{"name":"Obj_EpicGames_Metrics","path":"objects/Obj_EpicGames_Metrics/Obj_EpicGames_Metrics.yy",},},
+    {"id":{"name":"Obj_EpicGames_P2P_Test","path":"objects/Obj_EpicGames_P2P_Test/Obj_EpicGames_P2P_Test.yy",},},
     {"id":{"name":"Obj_EpicGames_Platform_Tick","path":"objects/Obj_EpicGames_Platform_Tick/Obj_EpicGames_Platform_Tick.yy",},},
     {"id":{"name":"Obj_EpicGames_Platform_Ticking","path":"objects/Obj_EpicGames_Platform_Ticking/Obj_EpicGames_Platform_Ticking.yy",},},
     {"id":{"name":"Obj_EpicGames_PlayerDataStorage_File_Download_Cancel","path":"objects/Obj_EpicGames_PlayerDataStorage_File_Download_Cancel/Obj_EpicGames_PlayerDataStorage_File_Download_Cancel.yy",},},

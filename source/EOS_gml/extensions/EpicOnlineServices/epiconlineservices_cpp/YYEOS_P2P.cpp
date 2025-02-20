@@ -439,9 +439,9 @@ func double SDKEpicGames_P2P_SendPacket(char* buff_args, char* buff_data, double
 	strcpy(socket.SocketName, YYGetString(args[6]));
 	Options.SocketId = &socket;
 
-	EOS_P2P_SendPacket(HP2P,&Options);
+	double result = (double)EOS_P2P_SendPacket(HP2P,&Options);
 
-	return 0.0; 
+	return result
 } 
 
 func double EpicGames_P2P_SetPacketQueueSize(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
