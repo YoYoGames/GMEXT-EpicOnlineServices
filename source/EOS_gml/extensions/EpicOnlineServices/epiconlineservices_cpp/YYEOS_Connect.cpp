@@ -342,7 +342,7 @@ YYEXPORT void EpicGames_Connect_DeleteDeviceId(RValue& Result, CInstance* selfin
 
 YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	EOS_NotInitialisedReturn_STRING
 
 	eos_ensure_argc(3);
 
@@ -354,9 +354,10 @@ YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue& Result, CInsta
 	Options.ApiVersion = EOS_CONNECT_GETEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	Options.AccountIdType = (EOS_EExternalAccountType)AccountIdType;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.TargetExternalUserId = TargetExternalUserId;
+	Options.TargetExternalUserId = TargetExternalUserId; //EOS_EExternalAccountType::EOS_EAT_EPIC
 
 	EOS_ProductUserId NewMapping = EOS_Connect_GetExternalAccountMapping(HConnect, &Options);
+	YYCreateString(&Result, productID_toString(NewMapping));
 }
 
 YYEXPORT void EpicGames_Connect_GetLoggedInUserByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
