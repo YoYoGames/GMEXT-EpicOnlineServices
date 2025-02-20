@@ -138,6 +138,19 @@
 		return_EOS_EResult(&Result, EOS_Shutdown());
 	}
 
+	YYEXPORT void EpicGames_Result_ToString(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		EOS_NotInitialisedReturn_STRING;
+
+		eos_ensure_argc(1);
+
+		double v = YYGetReal(arg, 0);
+		
+		Result.kind = VALUE_STRING;
+		YYCreateString(&Result, EOS_EResult_ToString((EOS_EResult)v));
+	}
+	
+
 
 	const char* VectorOfStr2ArrayStr(std::vector<const char*> vec)
 	{

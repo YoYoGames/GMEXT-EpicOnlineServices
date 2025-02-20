@@ -332,14 +332,14 @@ EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const u
 	EOS_Sessions_AttributeData mSessionAttribute = { 0 };
 
 	mSessionAttribute.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
-	mSessionAttribute.Key = (char*)Attribute["Key"];
+	mSessionAttribute.Key = YYGetString(Attribute["Key"]);
 
-	switch ((int)Attribute["ValueType"])
+	switch ((int)YYGetReal(Attribute["ValueType"]))
 	{
-	case 0: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_BOOLEAN; mSessionAttribute.Value.AsBool = (bool)Attribute["Value"]; break;
-	case 1: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_INT64; mSessionAttribute.Value.AsInt64 = (int64)Attribute["Value"]; break;
-		//case 2: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_DOUBLE; mSessionAttribute.Value.AsDouble = Attribute["Value"]; break;//TODO: ????
-	case 3: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_STRING; mSessionAttribute.Value.AsUtf8 = (char*)Attribute["Value"]; break;
+	case 0: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_BOOLEAN; mSessionAttribute.Value.AsBool = YYGetBool(Attribute["Value"]); break;
+	case 1: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_INT64; mSessionAttribute.Value.AsInt64 = YYGetUint64(Attribute["Value"]); break;
+	case 2: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_DOUBLE; mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["Value"]); break;//TODO: ????
+	case 3: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_STRING; mSessionAttribute.Value.AsUtf8 = YYGetString(Attribute["Value"]); break;
 	}
 
 	return mSessionAttribute;
@@ -358,6 +358,12 @@ func double SDKEpicGames_SessionModification_AddAttribute(double AdvertisementTy
 	auto Attribute = YYGetStruct(args[0]);
 
 	EOS_Sessions_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	//std::cout << "-----------" << std::endl;
+	//std::cout << mAttributeData.Key << std::endl;
+	//std::cout << (mAttributeData.ValueType == EOS_ESessionAttributeType::EOS_AT_STRING) << std::endl;
+	//std::cout << mAttributeData.Value.AsUtf8 << std::endl;
+	//std::cout << "-----------" << std::endl;
+	
 	Options.SessionAttribute = &mAttributeData;
 
 	EOS_EResult result = EOS_SessionModification_AddAttribute(mHSessionModification, &Options);
@@ -640,20 +646,24 @@ func double SDKEpicGames_Sessions_CreateSessionModification(char* buff_args)
 	Options.AllowedPlatformIdsCount = ids.size();
 
 	Options.bPresenceEnabled = YYGetBool(args[1]);
-	std::cout << "bPresenceEnabled: " << Options.bPresenceEnabled  << std::endl;
 	Options.bSanctionsEnabled = YYGetBool(args[2]);
-	std::cout << "bSanctionsEnabled: " << Options.bSanctionsEnabled << std::endl;
 	Options.BucketId = YYGetString(args[3]);
-	std::cout << "BucketId: " << Options.BucketId  << std::endl;
 	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[4]));
-	std::cout << "LocalUserId: " << YYGetString(args[4]) << std::endl;
 	Options.MaxPlayers = YYGetReal(args[5]);
-	std::cout << "MaxPlayers: " << Options.MaxPlayers << std::endl;
-	Options.SessionId = YYGetString(args[6]);
-	std::cout << "SessionId: " << Options.SessionId << std::endl;
+
+	std::string session_id = YYGetString(args[6]);
+	if (session_id != "")
+	{
+		Options.SessionId = YYGetString(args[6]);
+		std::cout << "SessionId: " << session_id  << std::endl;
+	}
+	else
+	{
+		Options.SessionId = NULL;
+		std::cout << "SessionId: NULL" << std::endl;
+	}
+
 	Options.SessionName = YYGetString(args[7]);
-	std::cout << "SessionName: " << Options.SessionName << std::endl;
- 
 	double result = (double) EOS_Sessions_CreateSessionModification(HSessions,&Options, &mHSessionModification);
 	
 	std::cout << EOS_EResult_ToString((EOS_EResult)result) << std::endl;

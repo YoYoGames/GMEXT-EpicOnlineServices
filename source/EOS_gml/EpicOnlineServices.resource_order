@@ -31,6 +31,7 @@
     {"name":"Obj_EpicGames_Leaderboard_AddScore_2","order":6,"path":"objects/Obj_EpicGames_Leaderboard_AddScore_2/Obj_EpicGames_Leaderboard_AddScore_2.yy",},
     {"name":"Obj_EpicGames_Leaderboards_Controller","order":1,"path":"objects/Obj_EpicGames_Leaderboards_Controller/Obj_EpicGames_Leaderboards_Controller.yy",},
     {"name":"Obj_EpicGames_Metrics","order":8,"path":"objects/Obj_EpicGames_Metrics/Obj_EpicGames_Metrics.yy",},
+    {"name":"Obj_EpicGames_P2P_Test","order":11,"path":"objects/Obj_EpicGames_P2P_Test/Obj_EpicGames_P2P_Test.yy",},
     {"name":"Obj_EpicGames_Platform_Tick","order":3,"path":"objects/Obj_EpicGames_Platform_Tick/Obj_EpicGames_Platform_Tick.yy",},
     {"name":"Obj_EpicGames_Platform_Ticking","order":6,"path":"objects/Obj_EpicGames_Platform_Ticking/Obj_EpicGames_Platform_Ticking.yy",},
     {"name":"Obj_EpicGames_PlayerDataStorage_File_Download_Cancel","order":3,"path":"objects/Obj_EpicGames_PlayerDataStorage_File_Download_Cancel/Obj_EpicGames_PlayerDataStorage_File_Download_Cancel.yy",},

@@ -11,6 +11,6 @@ if(userID == "")
 		)
 }
 else
-	EpicGames_Auth_Logout()
+	EpicGames_Auth_Logout(AccountID)
 
 

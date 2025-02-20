@@ -74,15 +74,17 @@ function EpicGames_SessionModification_SetAllowedPlatformIds(array_ids)
 function EpicGames_Sessions_CreateSessionModification(AllowedPlatformIds,PresenceEnabled,bSanctionsEnabled,BucketId,LocalUserId,MaxPlayers,SessionId,SessionName)
 {
 	var _args = [
-		[AllowedPlatformIds, buffer_u32],//Array
-		[PresenceEnabled, buffer_bool],
-		[bSanctionsEnabled, buffer_bool],
-		[BucketId, buffer_string],
-		[LocalUserId, buffer_string],
-		[MaxPlayers, buffer_f32],
-		[SessionId, buffer_string],
-		[SessionName, buffer_string],
+		[AllowedPlatformIds, buffer_u32],//0,Array
+		[PresenceEnabled, buffer_bool],//1
+		[bSanctionsEnabled, buffer_bool],//2
+		[BucketId, buffer_string],//3
+		[LocalUserId, buffer_string],//4
+		[MaxPlayers, buffer_f32],//5
+		[SessionId, buffer_string],//6
+		[SessionName, buffer_string],//7
 	]
+	
+	show_debug_message(_args)
 	
 	var _args_buffer_address = ext_pack_args(_args);
 	
@@ -166,11 +168,11 @@ function EpicGames_P2P_ReceivePacket(LocalUserId,MaxDataSizeBytes,RequestedChann
 }
 
 //double SDKEpicGames_P2P_SendPacket(char* buff_data, double len)
-function EpicGames_P2P_SendPacket(buff,buff_len,AllowDelayedDelivery,DisableAutoAcceptConnection,Channel,Data,DataLengthBytes,LocalUserId,Reliability,RemoteUserId,SocketName)
+function EpicGames_P2P_SendPacket(buff,buff_len,AllowDelayedDelivery,DisableAutoAcceptConnection,Channel,LocalUserId,Reliability,RemoteUserId,SocketName)
 {
 	var _args = [
-		[bAllowDelayedDelivery,buffer_bool],
-		[bDisableAutoAcceptConnection,buffer_bool],
+		[AllowDelayedDelivery,buffer_bool],
+		[DisableAutoAcceptConnection,buffer_bool],
 		[Channel,buffer_f32],
 		[LocalUserId,buffer_string],
 		[Reliability,buffer_u8],
@@ -180,7 +182,7 @@ function EpicGames_P2P_SendPacket(buff,buff_len,AllowDelayedDelivery,DisableAuto
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	SDKEpicGames_P2P_SendPacket(_args_buffer_address,buff,buff_len)
+	return SDKEpicGames_P2P_SendPacket(_args_buffer_address,buffer_get_address(buff),buff_len)
 }
 
 

@@ -1,4 +1,4 @@
 
 event_inherited();
 
-text = "Show UI"
+text = "Sessions"
