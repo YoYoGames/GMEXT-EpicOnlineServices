@@ -525,18 +525,30 @@ void EOS_CALL OnQueryExternalAccountMappingsCallback(const EOS_Connect_QueryExte
 
 YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL;
-	
+	EOS_NotInitialisedReturn_REAL
+
+		const char* userID = YYGetString(arg, 0);
+	int accountIdType = (int)YYGetReal(arg, 1);
+
+	//if (KIND_RValue(&arg[2]) == VALUE_ARRAY) {
+	std::vector<const char*> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Connect_QueryExternalAccountMappings");
+	//}
+
+	EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
+	QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
+	QueryOptions.AccountIdType = (EOS_EExternalAccountType)accountIdType; //EOS_EExternalAccountType // ::EOS_EAT_EPIC;
+	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
+
+	const char* ExternalAccountId;
+
+	QueryOptions.ExternalAccountIdCount = vec_Users.size();
+	QueryOptions.ExternalAccountIds = vec_Users.data();
+
+	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
+
 	callback* mcallback = getCallbackData();
 
-	EOS_Connect_QueryExternalAccountMappingsOptions Options = {0};
-	Options.AccountIdType = ;
-	Options.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
-	Options.ExternalAccountIdCount;
-	Options.ExternalAccountIds;
-	Options.LocalUserId;
-
-	EOS_Connect_QueryExternalAccountMappings(HConnect ,&Options, mcallback, OnQueryExternalAccountMappingsCallback);
+	EOS_Connect_QueryExternalAccountMappings(ConnectHandle, &QueryOptions, mcallback, OnQueryExternalAccountMappingsCallback);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
