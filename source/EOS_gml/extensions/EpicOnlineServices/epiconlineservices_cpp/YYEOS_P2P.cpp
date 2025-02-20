@@ -114,6 +114,10 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionEstablished");
 	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
 	DsMapAddDouble(map, "status", (double)Data->ConnectionType);
+	DsMapAddDouble(map,"ConnectionType",(double)Data->ConnectionType);
+	DsMapAddDouble(map,"NetworkType", (double)Data->NetworkType);
+	DsMapAddString(map, "SocketId",Data->SocketId->SocketName);
+	DsMapAddString(map, "RemoteUserId",productID_toString(Data->RemoteUserId));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 }
