@@ -256,7 +256,7 @@ func double EpicGames_P2P_GetNextReceivedPacketSize(char* LocalUserId)
 
 	EOS_P2P_GetNextReceivedPacketSize(HP2P,&Options,&OutPacketSizeBytes);
 
-	return OutPacketSizeBytes;
+	return (double)(int32_t)OutPacketSizeBytes;
 } 
 
 func double SDKEpicGames_P2P_GetPacketQueueInfo(char* buff_ret)
