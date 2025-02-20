@@ -13,8 +13,8 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_P2P_AddNotifyPeerConnectionRequest":
 		
-		EpicGames_P2P_AcceptConnection(userID,async_load[?"RemoteUserId"],"Socket_" + async_load[?"RemoteUserId"])
-		
+		var result = EpicGames_P2P_AcceptConnection(userID,async_load[?"RemoteUserId"],"OtherSocket")
+		show_debug_message("EpicGames_P2P_AcceptConnection: " + EpicGames_Result_ToString(result))
 		
 	break
 }

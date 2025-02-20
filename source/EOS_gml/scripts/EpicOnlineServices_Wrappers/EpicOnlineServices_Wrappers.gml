@@ -156,15 +156,9 @@ function EpicGames_P2P_GetPortRange()
 }
 
 //double SDKEpicGames_P2P_ReceivePacket(char* buff_ret,char* LocalUserId,double MaxDataSizeBytes,double RequestedChannel)
-function EpicGames_P2P_ReceivePacket(LocalUserId,MaxDataSizeBytes,RequestedChannel)
-{
-	var _return_buffer_address = ext_return_buffer_address();
-	
-	SDKEpicGames_P2P_ReceivePacket(_return_buffer_address,LocalUserId,MaxDataSizeBytes,RequestedChannel)
-	
-	var _return_value = ext_buffer_unpack(ext_return_buffer());
-	
-	return _return_value;
+function EpicGames_P2P_ReceivePacket(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+{	
+	return SDKEpicGames_P2P_ReceivePacket(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
 }
 
 //double SDKEpicGames_P2P_SendPacket(char* buff_data, double len)
