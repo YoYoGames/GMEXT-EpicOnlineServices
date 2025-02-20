@@ -529,6 +529,15 @@ YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue& Result, CIn
 	
 	callback* mcallback = getCallbackData();
 
+	EOS_Connect_QueryExternalAccountMappingsOptions Options = {0};
+	Options.AccountIdType = ;
+	Options.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
+	Options.ExternalAccountIdCount;
+	Options.ExternalAccountIds;
+	Options.LocalUserId;
+
+	EOS_Connect_QueryExternalAccountMappings(HConnect ,&Options, mcallback, OnQueryExternalAccountMappingsCallback);
+
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }

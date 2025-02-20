@@ -142,7 +142,7 @@ RValue _UserInfoToString(EOS_UserInfo* UserInfo, EOS_EResult Result)
 
 	if (UserInfo->PreferredLanguage)
 		YYStructAddString(&Struct, "PreferredLanguage", UserInfo->PreferredLanguage);
-
+	
 	if (UserInfo->UserId)
 		YYStructAddString(&Struct, "AccountID", AccountID_toString(UserInfo->UserId));
 

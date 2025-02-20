@@ -2,8 +2,6 @@
 switch(async_load[?"type"])
 {
 	case "EpicGames_Friends_QueryFriends":
-	
-		show_debug_message(json_encode(async_load))
 
 		if(async_load[?"status"] == EpicGames_Success)
 		{
@@ -20,7 +18,7 @@ switch(async_load[?"type"])
 	case "EpicGames_UserInfo_QueryUserInfo":
 		
 		var struct = EpicGames_UserInfo_CopyUserInfo(AccountID,async_load[?"target"])
-		var ins = instance_create_depth(100,200,0,Obj_EpicGames_Friend,struct)
+		var ins = instance_create_depth(100,200,0,friend_object,struct)
 		
 	break
 }
