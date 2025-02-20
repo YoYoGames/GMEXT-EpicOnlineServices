@@ -40,6 +40,7 @@
     {"name":"Obj_EpicGames_PlayerDataStorage_File_Upload","order":5,"path":"objects/Obj_EpicGames_PlayerDataStorage_File_Upload/Obj_EpicGames_PlayerDataStorage_File_Upload.yy",},
     {"name":"Obj_EpicGames_PlayerDataStorage_Read","order":1,"path":"objects/Obj_EpicGames_PlayerDataStorage_Read/Obj_EpicGames_PlayerDataStorage_Read.yy",},
     {"name":"Obj_EpicGames_PlayerDataStorage_Write","order":4,"path":"objects/Obj_EpicGames_PlayerDataStorage_Write/Obj_EpicGames_PlayerDataStorage_Write.yy",},
+    {"name":"Obj_EpicGames_Point","order":12,"path":"objects/Obj_EpicGames_Point/Obj_EpicGames_Point.yy",},
     {"name":"Obj_EpicGames_Session_Test","order":10,"path":"objects/Obj_EpicGames_Session_Test/Obj_EpicGames_Session_Test.yy",},
     {"name":"Obj_EpicGames_Stat","order":2,"path":"objects/Obj_EpicGames_Stat/Obj_EpicGames_Stat.yy",},
     {"name":"Obj_EpicGames_TitleStorage_controller","order":1,"path":"objects/Obj_EpicGames_TitleStorage_controller/Obj_EpicGames_TitleStorage_controller.yy",},

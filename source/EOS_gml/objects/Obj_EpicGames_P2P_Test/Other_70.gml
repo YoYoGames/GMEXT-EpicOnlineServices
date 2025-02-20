@@ -1,14 +1,28 @@
 
 switch(async_load[?"type"])
 {
-	case "EpicGames_Connect_Login":
-
-		EpicGames_P2P_AddNotifyIncomingPacketQueueFull()
-		EpicGames_P2P_AddNotifyPeerConnectionClosed(userID,socketName)
-		EpicGames_P2P_AddNotifyPeerConnectionEstablished(userID,socketName)
-		EpicGames_P2P_AddNotifyPeerConnectionInterrupted(userID,socketName)
-		EpicGames_P2P_AddNotifyPeerConnectionRequest(userID,socketName)
-
+	
+	case "EpicGames_P2P_AddNotifyIncomingPacketQueueFull":
+	break
+	
+	case "EpicGames_P2P_AddNotifyPeerConnectionClosed":
+		
+		var index = array_get_index(EstablishedProductIDs,async_load[?"RemoteUserId"])
+		array_delete(EstablishedProductIDs,index,1)
+	
+	break
+	
+	case "EpicGames_P2P_AddNotifyPeerConnectionEstablished":
+		
+		async_load[?"ConnectionType"]
+		async_load[?"NetworkType"]
+		async_load[?"SocketId"]
+		
+		array_push(EstablishedProductIDs,async_load[?"RemoteUserId"])
+		
+	break
+	
+	case "EpicGames_P2P_AddNotifyPeerConnectionInterrupted":
 	break
 	
 	case "EpicGames_P2P_AddNotifyPeerConnectionRequest":
@@ -18,8 +32,7 @@ switch(async_load[?"type"])
 		
 		var buff = buffer_create(256,buffer_fixed,1)
 		buffer_write(buff,buffer_string,"HelloWorld")
-		var result = EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,async_load[?"RemoteUserId"],socketName)
-		show_debug_message(EpicGames_Result_ToString(result))
+		EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,async_load[?"RemoteUserId"],socketName)
 		buffer_delete(buff)
 		
 	break
