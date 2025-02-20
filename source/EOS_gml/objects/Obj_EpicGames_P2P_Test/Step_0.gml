@@ -1,4 +1,6 @@
 
+text = string(array_length(EstablishedProductIDs))
+
 event_inherited();
 
 var max_loops = 5
