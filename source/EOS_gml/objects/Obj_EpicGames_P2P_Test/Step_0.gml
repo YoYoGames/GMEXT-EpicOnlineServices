@@ -28,7 +28,7 @@ if(EpicGames_P2P_GetNextReceivedPacketSize(userID))
 			var _x = buffer_read(buff,buffer_f16)
 			var _y = buffer_read(buff,buffer_f16)
 			
-			instance_create_depth(_x,_y,depth,Obj_EpicGames_Point)
+			instance_create_depth(_x,_y,depth,Obj_EpicGames_P2P_Point)
 			
 			buffer_delete(buff)
 		break
