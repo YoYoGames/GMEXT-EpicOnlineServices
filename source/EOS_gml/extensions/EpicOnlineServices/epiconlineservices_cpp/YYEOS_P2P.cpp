@@ -390,6 +390,7 @@ func double SDKEpicGames_P2P_ReceivePacket(char* buff_ret,char* LocalUserId,doub
 
 func double EpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(double NotificationId)
 { 
+	//TODO... Int64
 	EOS_NotificationId _NotificationId = NotificationId;
 	EOS_P2P_RemoveNotifyIncomingPacketQueueFull(HP2P, _NotificationId);
 	return 0.0; 
