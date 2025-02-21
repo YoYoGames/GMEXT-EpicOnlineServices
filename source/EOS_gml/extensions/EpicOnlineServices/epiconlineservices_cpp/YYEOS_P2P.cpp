@@ -83,7 +83,7 @@ void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnect
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionClosed");
-	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddDouble(map, "Reason", (double)Data->Reason);
 	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
 	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
@@ -112,7 +112,7 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionEstablished");
-	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddDouble(map, "status", (double)Data->ConnectionType);
 	DsMapAddDouble(map,"ConnectionType",(double)Data->ConnectionType);
 	DsMapAddDouble(map,"NetworkType", (double)Data->NetworkType);
@@ -145,7 +145,7 @@ void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnec
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionInterrupted");
-	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
 	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
@@ -173,7 +173,7 @@ void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingCo
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionRequest");
-	DsMapAddString(map, "account_id", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RemoteUserId", productID_toString(Data->RemoteUserId));
 	DsMapAddString(map, "SocketName", Data->SocketId->SocketName);
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);

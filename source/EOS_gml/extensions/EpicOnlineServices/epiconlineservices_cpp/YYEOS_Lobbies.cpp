@@ -95,10 +95,12 @@ void EpicGames_Lobby_Init()
 void EOS_CALL Lobby_OnJoinLobbyAcceptedCallback(const EOS_Lobby_JoinLobbyAcceptedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyJoinLobbyAccepted");
+	
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -118,7 +120,7 @@ func double EpicGames_Lobby_AddNotifyJoinLobbyAccepted()
 void EOS_CALL Lobby_AddNotifyLeaveLobbyRequested(const EOS_Lobby_LeaveLobbyRequestedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLeaveLobbyRequested");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -141,7 +143,7 @@ func double EpicGames_Lobby_AddNotifyLeaveLobbyRequested()
 void EOS_CALL Lobby_OnLobbyInviteAcceptedCallback(const EOS_Lobby_LobbyInviteAcceptedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyInviteAccepted");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -164,7 +166,7 @@ func double EpicGames_Lobby_AddNotifyLobbyInviteAccepted()
 void EOS_CALL Lobby_AddNotifyLobbyInviteReceivedCallback(const EOS_Lobby_LobbyInviteReceivedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyInviteReceived");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -187,7 +189,7 @@ func double EpicGames_Lobby_AddNotifyLobbyInviteReceived()
 void EOS_CALL Lobby_AddNotifyLobbyInviteRejectedCallback(const EOS_Lobby_LobbyInviteRejectedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyInviteRejected");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -210,7 +212,7 @@ func double EpicGames_Lobby_AddNotifyLobbyInviteRejected()
 void EOS_CALL Lobby_AddNotifyLobbyMemberStatusReceivedCallback(const EOS_Lobby_LobbyMemberStatusReceivedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -233,7 +235,7 @@ func double EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived()
 void EOS_CALL Lobby_AddNotifyLobbyMemberUpdateReceivedCallback(const EOS_Lobby_LobbyMemberUpdateReceivedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -256,7 +258,7 @@ func double EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived()
 void EOS_CALL Lobby_AddNotifyLobbyUpdateReceivedCallback(const EOS_Lobby_LobbyUpdateReceivedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyUpdateReceived");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -279,7 +281,7 @@ func double EpicGames_Lobby_AddNotifyLobbyUpdateReceived()
 void EOS_CALL Lobby_AddNotifyRTCRoomConnectionChangedCallback(const EOS_Lobby_RTCRoomConnectionChangedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyRTCRoomConnectionChanged");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -302,7 +304,7 @@ func double EpicGames_Lobby_AddNotifyRTCRoomConnectionChanged()
 void EOS_CALL Lobby_AddNotifySendLobbyNativeInviteRequestedCallback(const EOS_Lobby_SendLobbyNativeInviteRequestedCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -362,7 +364,7 @@ func double EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId()
 void EOS_CALL Lobby_CreateLobbyCallback(const EOS_Lobby_CreateLobbyCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_CreateLobby");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -392,7 +394,7 @@ func double EpicGames_Lobby_CreateLobbySearch()
 void EOS_CALL Lobby_DestroyLobbyCallback(const EOS_Lobby_DestroyLobbyCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_DestroyLobby");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -447,7 +449,7 @@ func double EpicGames_Lobby_GetRTCRoomName()
 void EOS_CALL Lobby_HardMuteMemberCallback(const EOS_Lobby_HardMuteMemberCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_HardMuteMember");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -483,7 +485,7 @@ func double EpicGames_Lobby_IsRTCRoomConnected()
 void EOS_CALL Lobby_JoinLobbyCallback(const EOS_Lobby_JoinLobbyCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_JoinLobby");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -502,7 +504,7 @@ func double EpicGames_Lobby_JoinLobby()
 void EOS_CALL Lobby_JoinLobbyByIdCallback(const EOS_Lobby_JoinLobbyByIdCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_JoinLobbyById");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -524,7 +526,7 @@ func double EpicGames_Lobby_JoinLobbyById()
 void EOS_CALL Lobby_KickMemberCallback(const EOS_Lobby_KickMemberCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_KickMember");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -545,7 +547,7 @@ func double EpicGames_Lobby_KickMember()
 void EOS_CALL Lobby_LeaveLobbyCallback(const EOS_Lobby_LeaveLobbyCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_LeaveLobby");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -574,7 +576,7 @@ func double EpicGames_Lobby_ParseConnectString()
 void EOS_CALL Lobby_PromoteMemberCallback(const EOS_Lobby_PromoteMemberCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_PromoteMember");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -595,7 +597,7 @@ func double EpicGames_Lobby_PromoteMember()
 void EOS_CALL Lobby_QueryInvitesCallback(const EOS_Lobby_QueryInvitesCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_QueryInvites");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -616,7 +618,7 @@ func double EpicGames_Lobby_QueryInvites()
 void EOS_CALL Lobby_RejectInviteCallback(const EOS_Lobby_RejectInviteCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_RejectInvite");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -707,7 +709,7 @@ func double EpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested()
 void EOS_CALL Lobby_SendInviteCallback(const EOS_Lobby_SendInviteCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_SendInvite");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -728,7 +730,7 @@ func double EpicGames_Lobby_SendInvite()
 void EOS_CALL Lobby_UpdateLobbyCallback(const EOS_Lobby_UpdateLobbyCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_Lobby_UpdateLobby");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
@@ -995,7 +997,7 @@ func double EpicGames_LobbySearch_CopySearchResultByIndex()
 void EOS_CALL LobbySearch_FindCallback(const EOS_LobbySearch_FindCallbackInfo* Data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "EpicGames_LobbySearch_Find");
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
