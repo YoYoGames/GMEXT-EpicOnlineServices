@@ -52,7 +52,7 @@ func double EpicGames_P2P_AcceptConnection(char* LocalUserId,char* RemoteUserId,
 	Options.SocketId = &SocketId;
 
 	return (double) EOS_P2P_AcceptConnection(HP2P,&Options);
-} 
+}
 
 void EOS_CALL P2P_OnIncomingPacketQueueFullCallback(const EOS_P2P_OnIncomingPacketQueueFullInfo* Data)
 {
@@ -74,10 +74,11 @@ func double EpicGames_P2P_AddNotifyIncomingPacketQueueFull()
 
 	//callback* mcallback = getCallbackData();
 
+	//TODO: int64
 	return (double) EOS_P2P_AddNotifyIncomingPacketQueueFull(HP2P, &Options, NULL/*mcallback*/, P2P_OnIncomingPacketQueueFullCallback);
 
 	//return mcallback->identifier;
-} 
+}
 
 void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnectionClosedInfo* Data)
 {
@@ -106,7 +107,7 @@ func double EpicGames_P2P_AddNotifyPeerConnectionClosed(char* LocalUserId, char*
 	return (double) EOS_P2P_AddNotifyPeerConnectionClosed(HP2P,&Options, NULL/*mcallback*/, P2P_OnRemoteConnectionClosedCallback);
 
 	//return mcallback->identifier;
-} 
+}
 
 void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnectionEstablishedInfo* Data)
 {
@@ -139,7 +140,7 @@ func double EpicGames_P2P_AddNotifyPeerConnectionEstablished(char* LocalUserId, 
 	return (double)EOS_P2P_AddNotifyPeerConnectionEstablished(HP2P,&Options,NULL/*mcallback*/, P2P_OnPeerConnectionEstablishedCallback);
 
 	//return mcallback->identifier;
-} 
+}
 
 void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnectionInterruptedInfo* Data)
 {
@@ -167,7 +168,7 @@ func double EpicGames_P2P_AddNotifyPeerConnectionInterrupted(char* LocalUserId,c
 	return (double) EOS_P2P_AddNotifyPeerConnectionInterrupted(HP2P,&Options,NULL/*mcallback*/, P2P_OnPeerConnectionInterruptedCallback);
 
 	//return mcallback->identifier;
-} 
+}
 
 void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingConnectionRequestInfo* Data)
 {
@@ -195,7 +196,7 @@ func double EpicGames_P2P_AddNotifyPeerConnectionRequest(char* LocalUserId, char
 	return (double) EOS_P2P_AddNotifyPeerConnectionRequest(HP2P,&Options,NULL/*mcallback*/, P2P_OnIncomingConnectionRequestCallback);
 
 	//return mcallback->identifier;
-} 
+}
 
 func double EpicGames_P2P_ClearPacketQueue(char* LocalUserId,char* RemoteUserId,char* SocketName)
 { 
@@ -209,7 +210,7 @@ func double EpicGames_P2P_ClearPacketQueue(char* LocalUserId,char* RemoteUserId,
 	Options.RemoteUserId = EOS_ProductUserId_FromString(RemoteUserId);
 
 	return (double) EOS_P2P_ClearPacketQueue(HP2P,&Options);
-} 
+}
 
 func double EpicGames_P2P_CloseConnection(char* LocalUserId, char* RemoteUserId, char* SocketName)
 { 
@@ -223,7 +224,7 @@ func double EpicGames_P2P_CloseConnection(char* LocalUserId, char* RemoteUserId,
 	Options.RemoteUserId = EOS_ProductUserId_FromString(RemoteUserId);
 
 	return (double)EOS_P2P_CloseConnection(HP2P,&Options);
-} 
+}
 
 func double EpicGames_P2P_CloseConnections(char* LocalUserId, char* SocketName)
 { 
@@ -235,7 +236,7 @@ func double EpicGames_P2P_CloseConnections(char* LocalUserId, char* SocketName)
 	strcpy(SocketId.SocketName, SocketName);
 	Options.SocketId = &SocketId;
 	return (double)EOS_P2P_CloseConnections(HP2P,&Options);
-} 
+}
 
 func double EpicGames_P2P_GetNATType()
 { 
@@ -247,7 +248,7 @@ func double EpicGames_P2P_GetNATType()
 	EOS_P2P_GetNATType(HP2P, &Options, &OutNATType);
 
 	return (double)OutNATType;
-} 
+}
 
 func double EpicGames_P2P_GetNextReceivedPacketSize(char* LocalUserId)
 { 
@@ -261,7 +262,7 @@ func double EpicGames_P2P_GetNextReceivedPacketSize(char* LocalUserId)
 	EOS_P2P_GetNextReceivedPacketSize(HP2P,&Options,&OutPacketSizeBytes);
 
 	return (double)(int32_t)OutPacketSizeBytes;
-} 
+}
 
 func double SDKEpicGames_P2P_GetPacketQueueInfo(char* buff_ret)
 { 
@@ -290,7 +291,7 @@ func double SDKEpicGames_P2P_GetPacketQueueInfo(char* buff_ret)
 	}
 
 	return 0.0; 
-} 
+}
 
 func double SDKEpicGames_P2P_GetPortRange(char* buff_ret)
 { 
@@ -315,7 +316,7 @@ func double SDKEpicGames_P2P_GetPortRange(char* buff_ret)
 	}
 
 	return 0.0; 
-} 
+}
 
 func double EpicGames_P2P_GetRelayControl()
 { 
@@ -334,7 +335,7 @@ func double EpicGames_P2P_GetRelayControl()
 	{
 		return -4;
 	}
-} 
+}
 
 void EOS_CALL P2P_OnQueryNATTypeCompleteCallback(const EOS_P2P_OnQueryNATTypeCompleteInfo* Data)
 {
@@ -357,7 +358,7 @@ func double EpicGames_P2P_QueryNATType()
 	EOS_P2P_QueryNATType(HP2P, &Options, mcallback, P2P_OnQueryNATTypeCompleteCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 func double SDKEpicGames_P2P_ReceivePacket(char* buff_ret,char* LocalUserId,double MaxDataSizeBytes,double RequestedChannel)
 { 
@@ -386,7 +387,7 @@ func double SDKEpicGames_P2P_ReceivePacket(char* buff_ret,char* LocalUserId,doub
 	{
 		return -4;
 	}
-} 
+}
 
 func double EpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(double NotificationId)
 { 
@@ -401,7 +402,7 @@ func double EpicGames_P2P_RemoveNotifyPeerConnectionClosed(double NotificationId
 	EOS_NotificationId _NotificationId = NotificationId;
 	EOS_P2P_RemoveNotifyPeerConnectionClosed(HP2P, _NotificationId);
 	return 0.0; 
-} 
+}
 
 func double EpicGames_P2P_RemoveNotifyPeerConnectionEstablished(double NotificationId)
 { 
@@ -415,14 +416,14 @@ func double EpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(double Notificat
 	EOS_NotificationId _NotificationId = NotificationId;
 	EOS_P2P_RemoveNotifyPeerConnectionInterrupted(HP2P, _NotificationId);
 	return 0.0; 
-} 
+}
 
 func double EpicGames_P2P_RemoveNotifyPeerConnectionRequest(double NotificationId)
 { 
 	EOS_NotificationId _NotificationId = NotificationId;
 	EOS_P2P_RemoveNotifyPeerConnectionRequest(HP2P, _NotificationId);
 	return 0.0; 
-} 
+}
 
 func double SDKEpicGames_P2P_SendPacket(char* buff_args, char* buff_data, double len)
 { 
@@ -447,7 +448,7 @@ func double SDKEpicGames_P2P_SendPacket(char* buff_args, char* buff_data, double
 	double result = (double)EOS_P2P_SendPacket(HP2P,&Options);
 
 	return result;
-} 
+}
 
 func double EpicGames_P2P_SetPacketQueueSize(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
 { 
@@ -457,7 +458,7 @@ func double EpicGames_P2P_SetPacketQueueSize(double IncomingPacketQueueMaxSizeBy
 	Options.OutgoingPacketQueueMaxSizeBytes = OutgoingPacketQueueMaxSizeBytes;
 
 	return (double) EOS_P2P_SetPacketQueueSize(HP2P, &Options);
-} 
+}
 
 func double EpicGames_P2P_SetPortRange(double Port,double MaxAdditionalPortsToTry)
 { 
@@ -467,7 +468,7 @@ func double EpicGames_P2P_SetPortRange(double Port,double MaxAdditionalPortsToTr
 	Options.Port = Port;
 
 	return (double) EOS_P2P_SetPortRange(HP2P, &Options);
-} 
+}
 
 func double EpicGames_P2P_SetRelayControl(double RelayControl)
 { 
@@ -476,6 +477,6 @@ func double EpicGames_P2P_SetRelayControl(double RelayControl)
 	Options.RelayControl = (EOS_ERelayControl) RelayControl;
 
 	return (double) EOS_P2P_SetRelayControl(HP2P, &Options);
-} 
+}
 
 

@@ -189,7 +189,7 @@ func char* EpicGames_ActiveSession_GetRegisteredPlayerByIndex(char* SessionName)
 	EOS_ActiveSession_Release(HActiveSession);
 
 	return productID_toString(ProductUserId);
-} 
+}
 
 func double EpicGames_ActiveSession_GetRegisteredPlayerCount(char* SessionName)
 { 
@@ -262,7 +262,7 @@ func double SDKEpicGames_SessionDetails_CopyInfo(char* buff_ret)
 	}
 
 	return 0.0; 
-} 
+}
 
 
 StructStream SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute* OutSessionAttribute)
@@ -294,7 +294,7 @@ func double SDKEpicGames_SessionDetails_CopySessionAttributeByIndex(double AttrI
 	_struct.writeTo(buff_ret);
 
 	return 0.0;
-} 
+}
 
 func double SDKEpicGames_SessionDetails_CopySessionAttributeByKey(char* AttrKey,char* buff_ret)
 { 
@@ -325,7 +325,7 @@ func double EpicGames_SessionDetails_Release()
 	EOS_SessionDetails_Release(mHSessionDetails);
 
 	return 0.0; 
-} 
+}
 
 EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const uint8_t*> Attribute)
 {
@@ -385,7 +385,7 @@ func double EpicGames_SessionModification_RemoveAttribute(char* Key)
 	Options.Key = Key;
 	return (double) EOS_SessionModification_RemoveAttribute(mHSessionModification,&Options);
 	
-} 
+}
 
 func double SDKEpicGames_SessionModification_SetAllowedPlatformIds(char* buff_args)
 { 
@@ -409,7 +409,7 @@ func double EpicGames_SessionModification_SetBucketId(char* BucketId)
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETBUCKETID_API_LATEST;
 	Options.BucketId = BucketId;
 	return (double)EOS_SessionModification_SetBucketId(mHSessionModification, &Options);
-} 
+}
 
 func double EpicGames_SessionModification_SetHostAddress(char* HostAddress)
 {
@@ -425,7 +425,7 @@ func double EpicGames_SessionModification_SetInvitesAllowed(double bInvitesAllow
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST;
 	Options.bInvitesAllowed = bInvitesAllowed > 0.5;
 	return (double)EOS_SessionModification_SetInvitesAllowed(mHSessionModification,&Options);
-} 
+}
 
 func double EpicGames_SessionModification_SetJoinInProgressAllowed(double bAllowJoinInProgress)
 {
@@ -467,11 +467,12 @@ func double EpicGames_Sessions_AddNotifyJoinSessionAccepted()
 	EOS_Sessions_AddNotifyJoinSessionAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYJOINSESSIONACCEPTED_API_LATEST;
 	
-	callback* mcallback = getCallbackData();
+	//callback* mcallback = getCallbackData();
 
-	EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions,&Options, mcallback,Sessions_OnJoinSessionAcceptedCallback);
-	return mcallback->identifier;
-} 
+	//TODO: int64
+	return EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions,&Options, NULL/*mcallback*/,Sessions_OnJoinSessionAcceptedCallback);
+	//return mcallback->identifier;
+}
 
 void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_LeaveSessionRequestedCallbackInfo* Data)
 {
@@ -496,7 +497,7 @@ func double EpicGames_Sessions_AddNotifyLeaveSessionRequested()
 	return EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions,&Options,NULL/*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
 
 	/*return mcallback->identifier;*/
-} 
+}
 
 void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo* Data)
 {
@@ -550,7 +551,7 @@ func double EpicGames_Sessions_AddNotifySessionInviteAccepted()
 	return EOS_Sessions_AddNotifySessionInviteAccepted(HSessions,&Options, NULL/*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
 
 	//return mcallback->identifier;
-} 
+}
 
 void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo* Data)
 {
@@ -600,7 +601,7 @@ func double EpicGames_Sessions_AddNotifySessionInviteRejected()
 	return EOS_Sessions_AddNotifySessionInviteRejected(HSessions,&Options,NULL/*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
 
 	//return mcallback->identifier;
-} 
+}
 
 func double EpicGames_Sessions_CopySessionHandleByInviteId(char* InviteId)
 {
@@ -634,7 +635,7 @@ func double EpicGames_Sessions_CopySessionHandleForPresence(char* local)
 	double result = (double)EOS_Sessions_CopySessionHandleForPresence(HSessions,&Options, &mHSessionDetails);
 
 	return (double)result;
-} 
+}
 
 func double SDKEpicGames_Sessions_CreateSessionModification(char* buff_args)
 { 
@@ -708,7 +709,7 @@ func double EpicGames_Sessions_DestroySession(char* SessionName)
 	EOS_Sessions_DestroySession(HSessions,&Options, mcallback, Sessions_OnDestroySessionCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 func double EpicGames_Sessions_DumpSessionState(char* SessionName)
 { 
@@ -716,7 +717,7 @@ func double EpicGames_Sessions_DumpSessionState(char* SessionName)
 	Options.ApiVersion = EOS_SESSIONS_DUMPSESSIONSTATE_API_LATEST;
 	Options.SessionName = SessionName;
 	return (double) EOS_Sessions_DumpSessionState(HSessions, &Options);
-} 
+}
 
 void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbackInfo* Data)
 {
@@ -740,7 +741,7 @@ func double EpicGames_Sessions_EndSession(char* SessionName)
 	EOS_Sessions_EndSession(HSessions,&Options,mcallback, Sessions_OnEndSessionCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 func double EpicGames_Sessions_GetInviteCount(char* local)
 { 
@@ -749,7 +750,7 @@ func double EpicGames_Sessions_GetInviteCount(char* local)
 	Options.LocalUserId = EOS_ProductUserId_FromString(local);
 
 	return EOS_Sessions_GetInviteCount(HSessions,&Options);
-} 
+}
 
 func char* EpicGames_Sessions_GetInviteIdByIndex(char* local, double index)
 { 
@@ -763,7 +764,7 @@ func char* EpicGames_Sessions_GetInviteIdByIndex(char* local, double index)
 	EOS_Sessions_GetInviteIdByIndex(HSessions,&Options,OutBuffer,&InOutBufferLength);
 
 	return OutBuffer; 
-} 
+}
 
 func double EpicGames_Sessions_IsUserInSession(char* SessionName, char* TargetUserId)
 {
@@ -773,7 +774,7 @@ func double EpicGames_Sessions_IsUserInSession(char* SessionName, char* TargetUs
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
 
 	return (double) EOS_Sessions_IsUserInSession(HSessions, &Options);
-} 
+}
 
 void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallbackInfo* Data)
 {
@@ -799,7 +800,7 @@ func double EpicGames_Sessions_JoinSession(double PresenceEnabled, char* LocalUs
 	EOS_Sessions_JoinSession(HSessions, &Options, mcallback, Sessions_OnJoinSessionCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCallbackInfo* Data)
 {
@@ -823,7 +824,7 @@ func double EpicGames_Sessions_QueryInvites(char* TargetUserId)
 	EOS_Sessions_QueryInvites(HSessions,&Options, mcallback, Sessions_OnQueryInvitesCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlayersCallbackInfo* Data)
 {
@@ -855,7 +856,7 @@ func double SDKEpicGames_Sessions_RegisterPlayers(char* SessionName, char* buff_
 	EOS_Sessions_RegisterPlayers(HSessions,&Options, mcallback,Sessions_OnRegisterPlayersCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 
 void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInfo* Data)
@@ -879,7 +880,7 @@ func double EpicGames_Sessions_RejectInvite(char* LocalUserId, char* InviteId)
 	EOS_Sessions_RejectInvite(HSessions,&Options, mcallback,Sessions_OnRejectInvite);
 
 	return mcallback->identifier;
-} 
+}
 
 func double EpicGames_Sessions_RemoveNotifyJoinSessionAccepted(double InId)
 { 
@@ -889,7 +890,7 @@ func double EpicGames_Sessions_RemoveNotifyJoinSessionAccepted(double InId)
 	EOS_Sessions_RemoveNotifyJoinSessionAccepted(HSessions, _InId);
 
 	return 0.0; 
-} 
+}
 
 func double EpicGames_Sessions_RemoveNotifyLeaveSessionRequested(double InId)
 { 
@@ -904,7 +905,7 @@ func double EpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(doub
 	EOS_NotificationId _InId = InId;
 	EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested(HSessions, _InId);
 	return 0.0; 
-} 
+}
 
 func double EpicGames_Sessions_RemoveNotifySessionInviteAccepted(double InId)
 { 
@@ -912,7 +913,7 @@ func double EpicGames_Sessions_RemoveNotifySessionInviteAccepted(double InId)
 	EOS_Sessions_RemoveNotifySessionInviteAccepted(HSessions, _InId);
 
 	return 0.0; 
-} 
+}
 
 func double EpicGames_Sessions_RemoveNotifySessionInviteReceived(double InId)
 {
@@ -920,7 +921,7 @@ func double EpicGames_Sessions_RemoveNotifySessionInviteReceived(double InId)
 	EOS_Sessions_RemoveNotifySessionInviteReceived(HSessions, _InId);
 
 	return 0.0; 
-} 
+}
 
 func double EpicGames_Sessions_RemoveNotifySessionInviteRejected(double InId)
 { 
@@ -928,7 +929,7 @@ func double EpicGames_Sessions_RemoveNotifySessionInviteRejected(double InId)
 	EOS_Sessions_RemoveNotifySessionInviteRejected(HSessions, _InId);
 	
 	return 0.0; 
-} 
+}
 
 void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbackInfo* Data)
 {
@@ -953,7 +954,7 @@ func double EpicGames_Sessions_SendInvite(char* LocalUserId, char* SessionName, 
 	EOS_Sessions_SendInvite(HSessions,&Options, mcallback, Sessions_OnSendInviteCallback);
 
 	return 0.0; 
-} 
+}
 
 
 void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCallbackInfo* Data)
@@ -976,7 +977,7 @@ func double EpicGames_Sessions_StartSession(char* SessionName)
 	EOS_Sessions_StartSession(HSessions,&Options, mcallback, Sessions_OnStartSessionCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 
 void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_UnregisterPlayersCallbackInfo* Data)
@@ -1033,7 +1034,7 @@ func double EpicGames_Sessions_UpdateSession()
 	EOS_Sessions_UpdateSession(HSessions,&Options, mcallback, Sessions_OnUpdateSessionCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 func double EpicGames_Sessions_UpdateSessionModification(char* SessionName)
 { 
@@ -1055,7 +1056,7 @@ func double EpicGames_SessionSearch_CopySearchResultByIndex(double SessionIndex)
 	//OutSessionHandle.
 
 	return result; 
-} 
+}
 
 void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackInfo* Data)
 {
@@ -1078,7 +1079,7 @@ func double EpicGames_SessionSearch_Find(char* LocalUserId)
 	EOS_SessionSearch_Find(mOutSessionSearchHandle, &Options, mcallback, SessionSearch_OnFindCallback);
 
 	return mcallback->identifier;
-} 
+}
 
 func double EpicGames_SessionSearch_GetSearchResultCount()
 { 
@@ -1092,7 +1093,7 @@ func double EpicGames_SessionSearch_Release()
 { 
 	EOS_SessionSearch_Release(mOutSessionSearchHandle);
 	return 0.0; 
-} 
+}
 
 func double EpicGames_SessionSearch_RemoveParameter(char* Key, double ComparisonOp)
 { 
@@ -1102,7 +1103,7 @@ func double EpicGames_SessionSearch_RemoveParameter(char* Key, double Comparison
 	Options.Key = Key;
 
 	return (double) EOS_SessionSearch_RemoveParameter(mOutSessionSearchHandle,&Options);
-} 
+}
 
 func double EpicGames_SessionSearch_SetMaxResults(double MaxSearchResults)
 { 
@@ -1111,7 +1112,7 @@ func double EpicGames_SessionSearch_SetMaxResults(double MaxSearchResults)
 	Options.MaxSearchResults = MaxSearchResults;
 
 	return (double) EOS_SessionSearch_SetMaxResults(mOutSessionSearchHandle,&Options);
-} 
+}
 
 func double SDKEpicGames_SessionSearch_SetParameter(double comparisonOp,char* buff_args)
 {
@@ -1126,7 +1127,7 @@ func double SDKEpicGames_SessionSearch_SetParameter(double comparisonOp,char* bu
 	Options.Parameter = &mAttributeData;
 	
 	return (double) EOS_SessionSearch_SetParameter(mOutSessionSearchHandle, &Options);
-} 
+}
 
 func double EpicGames_SessionSearch_SetSessionId(char* SessionId)
 {
@@ -1135,7 +1136,7 @@ func double EpicGames_SessionSearch_SetSessionId(char* SessionId)
 	Options.SessionId = SessionId;
 
 	return (double)EOS_SessionSearch_SetSessionId(mOutSessionSearchHandle,&Options);
-} 
+}
 
 func double EpicGames_SessionSearch_SetTargetUserId(char* TargetUserId)
 { 
