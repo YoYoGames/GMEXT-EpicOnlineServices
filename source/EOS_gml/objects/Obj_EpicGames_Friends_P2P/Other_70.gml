@@ -49,12 +49,10 @@ switch(async_load[?"type"])
 			struct_set(struct_get(friends,friends_account_ids[a]),"UserID",user_id)
 		}
 		
-		struct_foreach(friends,function(_name, _value)
-			{
-				show_debug_message(_value)
-				var ins = instance_create_depth(100,200,0,friend_object,_value)
-					exit
-			})
+		for(var a = 0 ; a < array_length(friends) ; a++)
+		{
+			var ins = instance_create_depth(100,200,0,friend_object,friends[a])
+		}
 			
 	break
 }
