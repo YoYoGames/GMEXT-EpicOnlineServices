@@ -883,6 +883,7 @@ func double EpicGames_Sessions_RejectInvite(char* LocalUserId, char* InviteId)
 
 func double EpicGames_Sessions_RemoveNotifyJoinSessionAccepted(double InId)
 { 
+	//TODO int64...
 	EOS_NotificationId _InId = InId;
 
 	EOS_Sessions_RemoveNotifyJoinSessionAccepted(HSessions, _InId);
