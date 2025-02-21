@@ -455,11 +455,10 @@ void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSess
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyJoinSessionAccepted");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddDouble(map, "ui_event_id", (double) Data->UiEventId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -483,6 +482,7 @@ void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_Leav
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "session_name", Data->SessionName);
+	
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -510,6 +510,7 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 	DsMapAddString(map, "target_user_native_account_id", Data->TargetUserNativeAccountId);
 	DsMapAddString(map, "session_id", Data->SessionId);
 	DsMapAddDouble(map, "ui_event_id", (double)Data->UiEventId);
+	
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -536,6 +537,7 @@ void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_Sess
 	DsMapAddString(map, "invite_id", Data->InviteId);
 	DsMapAddString(map, "session_id", Data->SessionId);
 	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -560,6 +562,7 @@ void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_Sessio
 	DsMapAddString(map, "invite_id", Data->InviteId);
 	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -585,6 +588,7 @@ void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_Sessio
 	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
 	DsMapAddString(map, "session_id", Data->SessionId);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 

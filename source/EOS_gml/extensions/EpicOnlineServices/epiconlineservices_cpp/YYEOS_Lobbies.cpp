@@ -96,11 +96,9 @@ void EOS_CALL Lobby_OnJoinLobbyAcceptedCallback(const EOS_Lobby_JoinLobbyAccepte
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyJoinLobbyAccepted");
-	
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddDouble(map, "ui_event_id", (double)Data->UiEventId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -121,9 +119,9 @@ void EOS_CALL Lobby_AddNotifyLeaveLobbyRequested(const EOS_Lobby_LeaveLobbyReque
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLeaveLobbyRequested");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -147,6 +145,11 @@ void EOS_CALL Lobby_OnLobbyInviteAcceptedCallback(const EOS_Lobby_LobbyInviteAcc
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+	DsMapAddString(map, "InviteId", Data->InviteId);
+	DsMapAddString(map, "TargetUserId", productID_toString(Data->TargetUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -170,6 +173,11 @@ void EOS_CALL Lobby_AddNotifyLobbyInviteReceivedCallback(const EOS_Lobby_LobbyIn
 	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "InviteId", Data->InviteId);
+	DsMapAddString(map, "TargetUserId", productID_toString(Data->TargetUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -190,9 +198,12 @@ void EOS_CALL Lobby_AddNotifyLobbyInviteRejectedCallback(const EOS_Lobby_LobbyIn
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyInviteRejected");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+	DsMapAddString(map, "InviteId", Data->InviteId);
+	DsMapAddString(map, "TargetUserId", productID_toString(Data->TargetUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -213,9 +224,11 @@ void EOS_CALL Lobby_AddNotifyLobbyMemberStatusReceivedCallback(const EOS_Lobby_L
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "TargetUserId", productID_toString(Data->TargetUserId));
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+	DsMapAddDouble(map, "CurrentStatus", (double) Data->CurrentStatus);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -236,9 +249,10 @@ void EOS_CALL Lobby_AddNotifyLobbyMemberUpdateReceivedCallback(const EOS_Lobby_L
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	
+	DsMapAddString(map, "TargetUserId", productID_toString(Data->TargetUserId));
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -259,9 +273,8 @@ void EOS_CALL Lobby_AddNotifyLobbyUpdateReceivedCallback(const EOS_Lobby_LobbyUp
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyUpdateReceived");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -282,9 +295,12 @@ void EOS_CALL Lobby_AddNotifyRTCRoomConnectionChangedCallback(const EOS_Lobby_RT
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyRTCRoomConnectionChanged");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+	DsMapAddDouble(map, "DisconnectReason", (double)Data->DisconnectReason);
+	DsMapAddDouble(map, "isConnected", Data->bIsConnected?1.0:0.0);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -305,9 +321,14 @@ void EOS_CALL Lobby_AddNotifySendLobbyNativeInviteRequestedCallback(const EOS_Lo
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
+	DsMapAddString(map, "LocalUserId", Data->TargetNativeAccountType);
+	DsMapAddString(map, "LobbyId", Data->TargetUserNativeAccountId);
+	DsMapAddDouble(map, "UiEventId", Data->UiEventId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -365,9 +386,11 @@ void EOS_CALL Lobby_CreateLobbyCallback(const EOS_Lobby_CreateLobbyCallbackInfo*
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_CreateLobby");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -395,9 +418,10 @@ void EOS_CALL Lobby_DestroyLobbyCallback(const EOS_Lobby_DestroyLobbyCallbackInf
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_DestroyLobby");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -450,9 +474,12 @@ void EOS_CALL Lobby_HardMuteMemberCallback(const EOS_Lobby_HardMuteMemberCallbac
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_HardMuteMember");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+	DsMapAddString(map, "TargetUserId", productID_toString(Data->TargetUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -486,9 +513,10 @@ void EOS_CALL Lobby_JoinLobbyCallback(const EOS_Lobby_JoinLobbyCallbackInfo* Dat
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_JoinLobby");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -505,9 +533,12 @@ void EOS_CALL Lobby_JoinLobbyByIdCallback(const EOS_Lobby_JoinLobbyByIdCallbackI
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_JoinLobbyById");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -527,9 +558,12 @@ void EOS_CALL Lobby_KickMemberCallback(const EOS_Lobby_KickMemberCallbackInfo* D
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_KickMember");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -548,9 +582,12 @@ void EOS_CALL Lobby_LeaveLobbyCallback(const EOS_Lobby_LeaveLobbyCallbackInfo* D
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_LeaveLobby");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -577,9 +614,12 @@ void EOS_CALL Lobby_PromoteMemberCallback(const EOS_Lobby_PromoteMemberCallbackI
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_PromoteMember");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -598,9 +638,12 @@ void EOS_CALL Lobby_QueryInvitesCallback(const EOS_Lobby_QueryInvitesCallbackInf
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_QueryInvites");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -619,9 +662,12 @@ void EOS_CALL Lobby_RejectInviteCallback(const EOS_Lobby_RejectInviteCallbackInf
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_RejectInvite");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "status_message", Data->InviteId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -710,9 +756,12 @@ void EOS_CALL Lobby_SendInviteCallback(const EOS_Lobby_SendInviteCallbackInfo* D
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_SendInvite");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -731,9 +780,12 @@ void EOS_CALL Lobby_UpdateLobbyCallback(const EOS_Lobby_UpdateLobbyCallbackInfo*
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_UpdateLobby");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
+	DsMapAddString(map, "LobbyId", Data->LobbyId);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -998,9 +1050,10 @@ void EOS_CALL LobbySearch_FindCallback(const EOS_LobbySearch_FindCallbackInfo* D
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_LobbySearch_Find");
-	//DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	//DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)Data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
