@@ -52,7 +52,7 @@ switch(async_load[?"type"])
 		var frienda_accountID_array = struct_get_names(friends)
 		for(var a = 0 ; a < array_length(frienda_accountID_array) ; a++)
 		{
-			var ins = instance_create_depth(100,200,0,friend_object,struct_get(friends,frienda_accountID_array[a]))
+			var ins = instance_create_depth(100,200+a*100,0,friend_object,struct_get(friends,frienda_accountID_array[a]))
 		}
 			
 	break
