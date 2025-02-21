@@ -49,6 +49,7 @@ extern void EpicGames_UserInfo_Init();
 extern void EpicGames_UI_Init();
 extern void EpicGames_P2P_Init();
 extern void EpicGames_Sessions_Init();
+extern void EpicGames_Lobby_Init();
 
 extern void _SW_SetArrayOfString(RValue* _array, char* str, const char* delim);
 extern void _SW_SetArrayOfInt32(RValue* _array, std::vector<int>& values);
