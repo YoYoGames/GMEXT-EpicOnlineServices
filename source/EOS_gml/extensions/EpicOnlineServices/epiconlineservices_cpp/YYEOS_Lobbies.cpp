@@ -97,7 +97,7 @@ void EOS_CALL Lobby_OnJoinLobbyAcceptedCallback(const EOS_Lobby_JoinLobbyAccepte
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyJoinLobbyAccepted");
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddDouble(map, "ui_event_id", (double)Data->UiEventId);
+	DsMapAddInt64(map, "ui_event_id", (double)Data->UiEventId);
 	
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -113,8 +113,6 @@ func double EpicGames_Lobby_AddNotifyJoinLobbyAccepted()
 	return EOS_Lobby_AddNotifyJoinLobbyAccepted(HLobby, &Options, NULL/*mcallback*/, Lobby_OnJoinLobbyAcceptedCallback);
 
 	//return mcallback->identifier;
-
-	return 0.0;
 }
 
 void EOS_CALL Lobby_AddNotifyLeaveLobbyRequested(const EOS_Lobby_LeaveLobbyRequestedCallbackInfo* Data)
@@ -339,7 +337,7 @@ void EOS_CALL Lobby_AddNotifySendLobbyNativeInviteRequestedCallback(const EOS_Lo
 
 	DsMapAddString(map, "LocalUserId", Data->TargetNativeAccountType);
 	DsMapAddString(map, "LobbyId", Data->TargetUserNativeAccountId);
-	DsMapAddDouble(map, "UiEventId", Data->UiEventId);
+	DsMapAddInt64(map, "UiEventId", Data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
