@@ -457,7 +457,7 @@ void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSess
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyJoinSessionAccepted");
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddDouble(map, "ui_event_id", (double) Data->UiEventId);
+	DsMapAddInt64(map, "ui_event_id", (double) Data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -510,7 +510,7 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 	DsMapAddString(map, "target_native_account_type", Data->TargetNativeAccountType);
 	DsMapAddString(map, "target_user_native_account_id", Data->TargetUserNativeAccountId);
 	DsMapAddString(map, "session_id", Data->SessionId);
-	DsMapAddDouble(map, "ui_event_id", (double)Data->UiEventId);
+	DsMapAddInt64(map, "ui_event_id", (double)Data->UiEventId);
 	
 	CreateAsyncEventWithDSMap(map, 70);
 }
