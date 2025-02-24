@@ -70,6 +70,18 @@ function EpicGames_SessionModification_SetAllowedPlatformIds(array_ids)
 	return SDKEpicGames_SessionModification_SetAllowedPlatformIds(_args_buffer_address)
 }
 
+//SDKEpicGames_Sessions_CopySessionHandleByUiEventId
+function EpicGames_Sessions_CopySessionHandleByUiEventId(UiEventId)
+{
+	var _args = [
+		[UiEventId ,buffer_u64],
+	]
+		
+	var _args_buffer_address = ext_pack_args(_args);
+	
+	return SDKEpicGames_Sessions_CopySessionHandleByUiEventId(_args_buffer_address)
+}
+
 //double SDKEpicGames_Sessions_CreateSessionModification(char* buff_args)
 function EpicGames_Sessions_CreateSessionModification(AllowedPlatformIds,PresenceEnabled,bSanctionsEnabled,BucketId,LocalUserId,MaxPlayers,SessionId,SessionName)
 {

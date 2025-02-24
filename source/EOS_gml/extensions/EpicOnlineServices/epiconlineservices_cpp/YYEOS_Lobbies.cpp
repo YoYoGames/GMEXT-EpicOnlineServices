@@ -97,7 +97,7 @@ void EOS_CALL Lobby_OnJoinLobbyAcceptedCallback(const EOS_Lobby_JoinLobbyAccepte
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyJoinLobbyAccepted");
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddInt64(map, "ui_event_id", (double)Data->UiEventId);
+	DsMapAddInt64(map, "ui_event_id", (int64)Data->UiEventId);
 	
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -338,7 +338,7 @@ void EOS_CALL Lobby_AddNotifySendLobbyNativeInviteRequestedCallback(const EOS_Lo
 
 	DsMapAddString(map, "LocalUserId", Data->TargetNativeAccountType);
 	DsMapAddString(map, "LobbyId", Data->TargetUserNativeAccountId);
-	DsMapAddInt64(map, "UiEventId", Data->UiEventId);
+	DsMapAddInt64(map, "UiEventId", (int64) Data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -389,11 +389,14 @@ func double EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(char* InviteId)
 	return (double)result;
 }
 
-func double EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(double UiEventId)
+func double SDKEpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(char* buff_args)
 {
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_UI_EventId InId = YYGetUint64(args[0]);
+
 	EOS_Lobby_CopyLobbyDetailsHandleByUiEventIdOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYUIEVENTID_API_LATEST;
-	Options.UiEventId = UiEventId;//TODO: Uint64
+	Options.UiEventId = InId;
 
 	EOS_HLobbyDetails OutLobbyDetailsHandle;
 

@@ -457,7 +457,7 @@ void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSess
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyJoinSessionAccepted");
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddInt64(map, "ui_event_id", (double) Data->UiEventId);
+	DsMapAddInt64(map, "ui_event_id", (int64) Data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -514,7 +514,7 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 	DsMapAddString(map, "target_native_account_type", Data->TargetNativeAccountType);
 	DsMapAddString(map, "target_user_native_account_id", Data->TargetUserNativeAccountId);
 	DsMapAddString(map, "session_id", Data->SessionId);
-	DsMapAddInt64(map, "ui_event_id", (double)Data->UiEventId);
+	DsMapAddInt64(map, "ui_event_id", (int64)Data->UiEventId);
 	
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -631,11 +631,14 @@ func double EpicGames_Sessions_CopySessionHandleByInviteId(char* InviteId)
 	
 }
 
-func double EpicGames_Sessions_CopySessionHandleByUiEventId(double UiEventId)
-{ 
+func double SDKEpicGames_Sessions_CopySessionHandleByUiEventId(char* buff_args)
+{
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_UI_EventId InId = YYGetUint64(args[0]);
+
 	EOS_Sessions_CopySessionHandleByUiEventIdOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEBYUIEVENTID_API_LATEST;
-	Options.UiEventId = UiEventId;
+	Options.UiEventId = InId;
 	
 	double result = (double) EOS_Sessions_CopySessionHandleByUiEventId(HSessions,&Options,&mHSessionDetails);
 
