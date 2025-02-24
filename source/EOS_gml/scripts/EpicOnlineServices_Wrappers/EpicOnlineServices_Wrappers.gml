@@ -337,11 +337,11 @@ function EpicGames_P2P_AddNotifyIncomingPacketQueueFull()
 }
 
 //SDKEpicGames_P2P_AddNotifyPeerConnectionClosed
-function EpicGames_P2P_AddNotifyPeerConnectionClosed()
+function EpicGames_P2P_AddNotifyPeerConnectionClosed(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionClosed(_return_buffer_address)
+	SDKEpicGames_P2P_AddNotifyPeerConnectionClosed(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -349,11 +349,11 @@ function EpicGames_P2P_AddNotifyPeerConnectionClosed()
 }
 
 //SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished
-function EpicGames_P2P_AddNotifyPeerConnectionEstablished()
+function EpicGames_P2P_AddNotifyPeerConnectionEstablished(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished(_return_buffer_address)
+	SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -361,11 +361,11 @@ function EpicGames_P2P_AddNotifyPeerConnectionEstablished()
 }
 
 //SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted
-function EpicGames_P2P_AddNotifyPeerConnectionInterrupted()
+function EpicGames_P2P_AddNotifyPeerConnectionInterrupted(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted(_return_buffer_address)
+	SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -373,11 +373,11 @@ function EpicGames_P2P_AddNotifyPeerConnectionInterrupted()
 }
 
 //SDKEpicGames_P2P_AddNotifyPeerConnectionRequest
-function EpicGames_P2P_AddNotifyPeerConnectionRequest()
+function EpicGames_P2P_AddNotifyPeerConnectionRequest(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionRequest(_return_buffer_address)
+	SDKEpicGames_P2P_AddNotifyPeerConnectionRequest(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
