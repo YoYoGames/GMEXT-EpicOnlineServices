@@ -67,17 +67,18 @@ void EOS_CALL P2P_OnIncomingPacketQueueFullCallback(const EOS_P2P_OnIncomingPack
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_P2P_AddNotifyIncomingPacketQueueFull()
+func double SDKEpicGames_P2P_AddNotifyIncomingPacketQueueFull(char* buff_ret)
 { 
 	EOS_P2P_AddNotifyIncomingPacketQueueFullOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYINCOMINGPACKETQUEUEFULL_API_LATEST;
 
-	//callback* mcallback = getCallbackData();
+	uint64 ret = EOS_P2P_AddNotifyIncomingPacketQueueFull(HP2P, &Options, NULL/*mcallback*/, P2P_OnIncomingPacketQueueFullCallback);
 
-	//TODO: int64
-	return (double) EOS_P2P_AddNotifyIncomingPacketQueueFull(HP2P, &Options, NULL/*mcallback*/, P2P_OnIncomingPacketQueueFullCallback);
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
 
-	//return mcallback->identifier;
+	return 0;
 }
 
 void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnectionClosedInfo* Data)
@@ -92,7 +93,7 @@ void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnect
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_P2P_AddNotifyPeerConnectionClosed(char* LocalUserId, char* SocketName)
+func double SDKEpicGames_P2P_AddNotifyPeerConnectionClosed(char* LocalUserId, char* SocketName, char* buff_ret)
 { 
 	EOS_P2P_AddNotifyPeerConnectionClosedOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST;
@@ -102,11 +103,13 @@ func double EpicGames_P2P_AddNotifyPeerConnectionClosed(char* LocalUserId, char*
 	strcpy(SocketId.SocketName, SocketName);
 	Options.SocketId = &SocketId;
 
-	//callback* mcallback = getCallbackData();
+	uint64 ret = EOS_P2P_AddNotifyPeerConnectionClosed(HP2P, &Options, NULL/*mcallback*/, P2P_OnRemoteConnectionClosedCallback);
 
-	return (double) EOS_P2P_AddNotifyPeerConnectionClosed(HP2P,&Options, NULL/*mcallback*/, P2P_OnRemoteConnectionClosedCallback);
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
 
-	//return mcallback->identifier;
+	return 0;
 }
 
 void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnectionEstablishedInfo* Data)
@@ -123,7 +126,7 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_P2P_AddNotifyPeerConnectionEstablished(char* LocalUserId, char* SocketName)
+func double SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished(char* LocalUserId, char* SocketName, char* buff_ret)
 { 
 	EOS_P2P_AddNotifyPeerConnectionEstablishedOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONESTABLISHED_API_LATEST;
@@ -135,11 +138,13 @@ func double EpicGames_P2P_AddNotifyPeerConnectionEstablished(char* LocalUserId, 
 	
 	EOS_P2P_OnPeerConnectionEstablishedCallback ConnectionEstablishedHandler;
 
-	//callback* mcallback = getCallbackData();
+	uint64 ret = EOS_P2P_AddNotifyPeerConnectionEstablished(HP2P, &Options, NULL/*mcallback*/, P2P_OnPeerConnectionEstablishedCallback);
 
-	return (double)EOS_P2P_AddNotifyPeerConnectionEstablished(HP2P,&Options,NULL/*mcallback*/, P2P_OnPeerConnectionEstablishedCallback);
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
 
-	//return mcallback->identifier;
+	return 0;
 }
 
 void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnectionInterruptedInfo* Data)
@@ -153,7 +158,7 @@ void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnec
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_P2P_AddNotifyPeerConnectionInterrupted(char* LocalUserId,char* SocketName)
+func double SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted(char* LocalUserId,char* SocketName, char* buff_ret)
 { 
 	EOS_P2P_AddNotifyPeerConnectionInterruptedOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONINTERRUPTED_API_LATEST;
@@ -163,11 +168,13 @@ func double EpicGames_P2P_AddNotifyPeerConnectionInterrupted(char* LocalUserId,c
 	strcpy(SocketId.SocketName, SocketName);
 	Options.SocketId = &SocketId;
 
-	//callback* mcallback = getCallbackData();
+	uint64 ret = EOS_P2P_AddNotifyPeerConnectionInterrupted(HP2P, &Options, NULL/*mcallback*/, P2P_OnPeerConnectionInterruptedCallback);
 
-	return (double) EOS_P2P_AddNotifyPeerConnectionInterrupted(HP2P,&Options,NULL/*mcallback*/, P2P_OnPeerConnectionInterruptedCallback);
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
 
-	//return mcallback->identifier;
+	return 0;
 }
 
 void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingConnectionRequestInfo* Data)
@@ -181,7 +188,7 @@ void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingCo
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_P2P_AddNotifyPeerConnectionRequest(char* LocalUserId, char* SocketName)
+func double SDKEpicGames_P2P_AddNotifyPeerConnectionRequest(char* LocalUserId, char* SocketName, char* buff_ret)
 { 
 	EOS_P2P_AddNotifyPeerConnectionRequestOptions Options = { 0 }; 
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONREQUEST_API_LATEST;
@@ -191,11 +198,13 @@ func double EpicGames_P2P_AddNotifyPeerConnectionRequest(char* LocalUserId, char
 	strcpy(SocketId.SocketName, SocketName);
 	Options.SocketId = &SocketId;
 
+	uint64 ret = EOS_P2P_AddNotifyPeerConnectionRequest(HP2P, &Options, NULL/*mcallback*/, P2P_OnIncomingConnectionRequestCallback);
 
-	//callback* mcallback = getCallbackData();
-	return (double) EOS_P2P_AddNotifyPeerConnectionRequest(HP2P,&Options,NULL/*mcallback*/, P2P_OnIncomingConnectionRequestCallback);
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
 
-	//return mcallback->identifier;
+	return 0;
 }
 
 func double EpicGames_P2P_ClearPacketQueue(char* LocalUserId,char* RemoteUserId,char* SocketName)
@@ -389,39 +398,48 @@ func double SDKEpicGames_P2P_ReceivePacket(char* buff_ret,char* LocalUserId,doub
 	}
 }
 
-func double EpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(double NotificationId)
+func double SDKEpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(char* buff_args)
 { 
-	//TODO... Int64
-	EOS_NotificationId _NotificationId = NotificationId;
-	EOS_P2P_RemoveNotifyIncomingPacketQueueFull(HP2P, _NotificationId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+
+	EOS_P2P_RemoveNotifyIncomingPacketQueueFull(HP2P, InId);
 	return 0.0; 
 }
 
-func double EpicGames_P2P_RemoveNotifyPeerConnectionClosed(double NotificationId)
+func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionClosed(char* buff_args)
 { 
-	EOS_NotificationId _NotificationId = NotificationId;
-	EOS_P2P_RemoveNotifyPeerConnectionClosed(HP2P, _NotificationId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+
+	EOS_P2P_RemoveNotifyPeerConnectionClosed(HP2P, InId);
 	return 0.0; 
 }
 
-func double EpicGames_P2P_RemoveNotifyPeerConnectionEstablished(double NotificationId)
+func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionEstablished(char* buff_args)
 { 
-	EOS_NotificationId _NotificationId = NotificationId;
-	EOS_P2P_RemoveNotifyPeerConnectionEstablished(HP2P, _NotificationId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+
+	EOS_P2P_RemoveNotifyPeerConnectionEstablished(HP2P, InId);
 	return 0.0;
 }
 
-func double EpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(double NotificationId)
+func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(char* buff_args)
 { 
-	EOS_NotificationId _NotificationId = NotificationId;
-	EOS_P2P_RemoveNotifyPeerConnectionInterrupted(HP2P, _NotificationId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+
+	EOS_P2P_RemoveNotifyPeerConnectionInterrupted(HP2P, InId);
 	return 0.0; 
 }
 
-func double EpicGames_P2P_RemoveNotifyPeerConnectionRequest(double NotificationId)
+func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionRequest(char* buff_args)
 { 
-	EOS_NotificationId _NotificationId = NotificationId;
-	EOS_P2P_RemoveNotifyPeerConnectionRequest(HP2P, _NotificationId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+
+	EOS_P2P_RemoveNotifyPeerConnectionRequest(HP2P, InId);
 	return 0.0; 
 }
 

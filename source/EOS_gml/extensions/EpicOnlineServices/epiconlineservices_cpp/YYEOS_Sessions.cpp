@@ -462,16 +462,18 @@ void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Sessions_AddNotifyJoinSessionAccepted()
+func double SDKEpicGames_Sessions_AddNotifyJoinSessionAccepted(char* buff_ret)
 {
 	EOS_Sessions_AddNotifyJoinSessionAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYJOINSESSIONACCEPTED_API_LATEST;
 	
-	//callback* mcallback = getCallbackData();
+	uint64 ret = EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions,&Options, NULL/*mcallback*/,Sessions_OnJoinSessionAcceptedCallback);
 
-	//TODO: int64
-	return EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions,&Options, NULL/*mcallback*/,Sessions_OnJoinSessionAcceptedCallback);
-	//return mcallback->identifier;
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
+
+	return 0;
 }
 
 void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_LeaveSessionRequestedCallbackInfo* Data)
@@ -487,16 +489,18 @@ void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_Leav
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Sessions_AddNotifyLeaveSessionRequested()
+func double SDKEpicGames_Sessions_AddNotifyLeaveSessionRequested(char* buff_ret)
 { 
 	EOS_Sessions_AddNotifyLeaveSessionRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
 
-	//callback* mcallback = getCallbackData();
+	uint64 ret = EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions, &Options, NULL/*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
 
-	return EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions,&Options,NULL/*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
 
-	/*return mcallback->identifier;*/
+	return 0;
 }
 
 void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo* Data)
@@ -515,16 +519,18 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested()
+func double SDKEpicGames_Sessions_AddNotifySendSessionNativeInviteRequested(char* buff_ret)
 { 
 	EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
-	
-	//callback* mcallback = getCallbackData();
 
-	return EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions,&Options, NULL/*mcallback*/,Sessions_OnSendSessionNativeInviteRequestedCallback);
+	uint64 ret = EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions, &Options, NULL/*mcallback*/, Sessions_OnSendSessionNativeInviteRequestedCallback);
 
-	//return mcallback->identifier;
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
+
+	return 0;
 }
 
 void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_SessionInviteAcceptedCallbackInfo* Data)
@@ -542,15 +548,18 @@ void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_Sess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Sessions_AddNotifySessionInviteAccepted()
+func double SDKEpicGames_Sessions_AddNotifySessionInviteAccepted(char* buff_ret)
 { 
 	EOS_Sessions_AddNotifySessionInviteAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEACCEPTED_API_LATEST;
 
-	//callback* mcallback = getCallbackData();
-	return EOS_Sessions_AddNotifySessionInviteAccepted(HSessions,&Options, NULL/*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
+	uint64 ret = EOS_Sessions_AddNotifySessionInviteAccepted(HSessions, &Options, NULL/*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
 
-	//return mcallback->identifier;
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
+
+	return 0;
 }
 
 void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo* Data)
@@ -567,15 +576,18 @@ void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_Sessio
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Sessions_AddNotifySessionInviteReceived()
+func double SDKEpicGames_Sessions_AddNotifySessionInviteReceived(char* buff_ret)
 { 
 	EOS_Sessions_AddNotifySessionInviteReceivedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
-	//callback* mcallback = getCallbackData();
-	
-	return EOS_Sessions_AddNotifySessionInviteReceived(HSessions,&Options, NULL/*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
 
-	//return mcallback->identifier;
+	uint64 ret = EOS_Sessions_AddNotifySessionInviteReceived(HSessions, &Options, NULL/*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
+
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
+
+	return 0;
 }
 
 void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_SessionInviteRejectedCallbackInfo* Data)
@@ -593,15 +605,19 @@ void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_Sessio
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Sessions_AddNotifySessionInviteRejected()
+func double SDKEpicGames_Sessions_AddNotifySessionInviteRejected(char* buff_ret)
 { 
 	EOS_Sessions_AddNotifySessionInviteRejectedOptions Options = {0};
 
-	//callback* mcallback = getCallbackData();
-	return EOS_Sessions_AddNotifySessionInviteRejected(HSessions,&Options,NULL/*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
+	uint64 ret = EOS_Sessions_AddNotifySessionInviteRejected(HSessions,&Options,NULL/*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
 
-	//return mcallback->identifier;
+	DataStream data;
+	data << ret;
+	data.writeTo(buff_ret);
+
+	return 0;
 }
+
 
 func double EpicGames_Sessions_CopySessionHandleByInviteId(char* InviteId)
 {
@@ -882,51 +898,58 @@ func double EpicGames_Sessions_RejectInvite(char* LocalUserId, char* InviteId)
 	return mcallback->identifier;
 }
 
-func double EpicGames_Sessions_RemoveNotifyJoinSessionAccepted(double InId)
+func double SDKEpicGames_Sessions_RemoveNotifyJoinSessionAccepted(char* buff_args)
 { 
-	//TODO int64...
-	EOS_NotificationId _InId = InId;
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
 
-	EOS_Sessions_RemoveNotifyJoinSessionAccepted(HSessions, _InId);
+	EOS_Sessions_RemoveNotifyJoinSessionAccepted(HSessions, InId);
 
 	return 0.0; 
 }
 
-func double EpicGames_Sessions_RemoveNotifyLeaveSessionRequested(double InId)
+func double SDKEpicGames_Sessions_RemoveNotifyLeaveSessionRequested(char* buff_args)
 { 
-	EOS_NotificationId _InId = InId;
-	EOS_Sessions_RemoveNotifyLeaveSessionRequested(HSessions,_InId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+
+	EOS_Sessions_RemoveNotifyLeaveSessionRequested(HSessions,InId);
 	return 0.0; 
 }
 
 
-func double EpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(double InId)
+func double SDKEpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(char* buff_args)
 { 
-	EOS_NotificationId _InId = InId;
-	EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested(HSessions, _InId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+
+	EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested(HSessions, InId);
 	return 0.0; 
 }
 
-func double EpicGames_Sessions_RemoveNotifySessionInviteAccepted(double InId)
+func double SDKEpicGames_Sessions_RemoveNotifySessionInviteAccepted(char* buff_args)
 { 
-	EOS_NotificationId _InId = InId;
-	EOS_Sessions_RemoveNotifySessionInviteAccepted(HSessions, _InId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+	EOS_Sessions_RemoveNotifySessionInviteAccepted(HSessions, InId);
 
 	return 0.0; 
 }
 
-func double EpicGames_Sessions_RemoveNotifySessionInviteReceived(double InId)
+func double SDKEpicGames_Sessions_RemoveNotifySessionInviteReceived(char* buff_args)
 {
-	EOS_NotificationId _InId = InId;
-	EOS_Sessions_RemoveNotifySessionInviteReceived(HSessions, _InId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+	EOS_Sessions_RemoveNotifySessionInviteReceived(HSessions, InId);
 
 	return 0.0; 
 }
 
-func double EpicGames_Sessions_RemoveNotifySessionInviteRejected(double InId)
+func double SDKEpicGames_Sessions_RemoveNotifySessionInviteRejected(char* buff_args)
 { 
-	EOS_NotificationId _InId = InId;
-	EOS_Sessions_RemoveNotifySessionInviteRejected(HSessions, _InId);
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	EOS_NotificationId InId = YYGetUint64(args[0]);
+	EOS_Sessions_RemoveNotifySessionInviteRejected(HSessions, InId);
 	
 	return 0.0; 
 }
