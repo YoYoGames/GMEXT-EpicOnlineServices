@@ -81,6 +81,45 @@
 
 
 
+	std::vector<uint32_t> VectorUInt32FromVector(std::vector<const uint8_t*> array_ids)
+	{
+		EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
+
+		std::vector<uint32_t> ids = {};
+		for (int a = 0; a < array_ids.size(); a++)
+		{
+			ids.push_back((uint32_t)YYGetInt32(array_ids[a]));
+		}
+
+		return ids;
+	}
+
+	std::vector<std::string> VectorStringFromVector(std::vector<const uint8_t*> array_ids)
+	{
+		EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
+
+		std::vector<std::string> ids = {};
+		for (int a = 0; a < array_ids.size(); a++)
+		{
+			ids.push_back(YYGetString(array_ids[a]));
+		}
+
+		return ids;
+	}
+
+	std::vector<EOS_ProductUserId> VectorProductIdsFromVector(std::vector<const uint8_t*> array_ids)
+	{
+		EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
+
+		std::vector<EOS_ProductUserId> ids = {};
+		for (int a = 0; a < array_ids.size(); a++)
+		{
+			ids.push_back(EOS_ProductUserId_FromString(YYGetString(array_ids[a])));
+		}
+
+		return ids;
+	}
+
 
 	//////////////////////// NO INTERFACE FUNCTIONS:
 
