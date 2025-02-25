@@ -417,10 +417,25 @@ void EOS_CALL Lobby_CreateLobbyCallback(const EOS_Lobby_CreateLobbyCallbackInfo*
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Lobby_CreateLobby()
+func double SDKEpicGames_Lobby_CreateLobby(char* buff_args)
 {
 	EOS_Lobby_CreateLobbyOptions Options = { 0 };
-	//Options.//TODO: lot of arguments....
+
+	auto args = buffer_unpack((uint8_t*)buff_args);
+
+	auto array_ids = YYGetArray(args[0]);
+	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
+
+	Options.AllowedPlatformIds = ids.data();
+	Options.AllowedPlatformIdsCount = ids.size();
+
+	Options.ApiVersion = EOS_LOBBY_CREATELOBBY_API_LATEST;
+	Options.bAllowInvites = YYGetBool(args[1]);
+	Options.bCrossplayOptOut = YYGetBool(args[2]);
+	Options.bDisableHostMigration = YYGetBool(args[3]);
+	Options.bEnableJoinById = YYGetBool(args[4]);
+	Options.bEnableRTCRoom = YYGetBool(args[5]);
+	Options.bPresenceEnabled = YYGetBool(args[6]);
 
 	callback* mcallback = getCallbackData();
 	EOS_Lobby_CreateLobby(HLobby,&Options, mcallback,Lobby_CreateLobbyCallback);
@@ -468,14 +483,18 @@ func double EpicGames_Lobby_DestroyLobby(char* LobbyId, char* LocalUserID)
 	return mcallback->identifier;
 }
 
-func double EpicGames_Lobby_GetConnectString()
+func char* EpicGames_Lobby_GetConnectString(char* LobbyId, char* LocalUserId)
 {
-	//TODO
-	//EOS_HLobby Handle, const EOS_Lobby_GetConnectStringOptions* Options, char* OutBuffer, uint32_t* InOutBufferLength
+	EOS_Lobby_GetConnectStringOptions Options = { 0 };
+	Options.ApiVersion = EOS_LOBBY_GETCONNECTSTRING_API_LATEST;
+	Options.LobbyId = LobbyId;
+	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	char OutBuffer[1024];
+	uint32_t InOutBufferLength = 1024;
 
-	//EOS_Lobby_GetConnectString()
+	EOS_Lobby_GetConnectString(HLobby, &Options,OutBuffer, &InOutBufferLength);
 
-	return 0.0;
+	return OutBuffer;
 }
 
 func double EpicGames_Lobby_GetInviteCount(char* LocalUserID)
@@ -486,23 +505,32 @@ func double EpicGames_Lobby_GetInviteCount(char* LocalUserID)
 	return EOS_Lobby_GetInviteCount(HLobby,&Options);
 }
 
-func double EpicGames_Lobby_GetInviteIdByIndex()
+func char* EpicGames_Lobby_GetInviteIdByIndex(char* LocalUserID,double index)
 {
-	///TODO
-	//EOS_Lobby_GetInviteIdByIndexOptions* Options;, 
-	//char* OutBuffer,
-	//int32_t* InOutBufferLength;
-	//EOS_Lobby_GetInviteIdByIndex(HLobby, &Options);
-	return 0.0;
+	EOS_Lobby_GetInviteIdByIndexOptions Options = {0};
+	Options.ApiVersion = EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST;
+	Options.Index = (double) index;
+	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserID);
+
+	char OutBuffer[1024];
+	int32_t InOutBufferLength = 1024;
+	EOS_Lobby_GetInviteIdByIndex(HLobby, &Options,OutBuffer,&InOutBufferLength);
+
+	return OutBuffer;
 }
 
-func double EpicGames_Lobby_GetRTCRoomName()
+func char* EpicGames_Lobby_GetRTCRoomName(char* LocalUserID,char* LobbyId)
 {
-	//TODO
-	//EOS_Lobby_GetRTCRoomNameOptions* Options, char* OutBuffer, uint32_t* InOutBufferLength
-	//EOS_Lobby_GetRTCRoomName()
+	EOS_Lobby_GetRTCRoomNameOptions Options = {0};
+	Options.ApiVersion = EOS_LOBBY_GETRTCROOMNAME_API_LATEST;
+	Options.LobbyId = LobbyId;
+	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserID);
 
-	return 0.0;
+	char OutBuffer[1024];
+	uint32_t InOutBufferLength = 1024;
+	EOS_Lobby_GetRTCRoomName(HLobby, &Options, OutBuffer, &InOutBufferLength);
+
+	return OutBuffer;
 }
 
 void EOS_CALL Lobby_HardMuteMemberCallback(const EOS_Lobby_HardMuteMemberCallbackInfo* Data)
@@ -566,26 +594,26 @@ void EOS_CALL Lobby_JoinLobbyCallback(const EOS_Lobby_JoinLobbyCallbackInfo* Dat
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Lobby_JoinLobby()
+func double SDKEpicGames_Lobby_JoinLobby(char* buff_args)
 {
-	//TODO
+	auto args = buffer_unpack((uint8_t*)buff_args);
+
 	EOS_Lobby_JoinLobbyOptions Options;
 	Options.ApiVersion = EOS_LOBBY_JOINLOBBY_API_LATEST;
-	Options.bCrossplayOptOut;
-	Options.bPresenceEnabled;
-	Options.LobbyDetailsHandle;
+	Options.bCrossplayOptOut = YYGetBool(args[0]);
+	Options.bPresenceEnabled = YYGetBool(args[1]);
+	//Options.LobbyDetailsHandle = ;//TODO: EOS_HLobbyDetails
 
 	EOS_Lobby_LocalRTCOptions LocalRTCOptions = {0};
 	LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
-	LocalRTCOptions.bLocalAudioDeviceInputStartsMuted;
-	LocalRTCOptions.bUseManualAudioInput;
-	LocalRTCOptions.bUseManualAudioOutput;
-	LocalRTCOptions.Flags;
+	LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[2]);
+	LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[3]);
+	LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[4]);
+	LocalRTCOptions.Flags = YYGetUint32(args[5]);
 	
-
-	Options.LocalRTCOptions;
-	//Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-
+	Options.LocalRTCOptions = &LocalRTCOptions;
+	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[6]));
+	
 	callback* mcallback = getCallbackData();
 	EOS_Lobby_JoinLobby(HLobby,&Options,mcallback, Lobby_JoinLobbyCallback);
 	return mcallback->identifier;
@@ -604,16 +632,27 @@ void EOS_CALL Lobby_JoinLobbyByIdCallback(const EOS_Lobby_JoinLobbyByIdCallbackI
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_Lobby_JoinLobbyById()
+func double SDKEpicGames_Lobby_JoinLobbyById(char* buff_args)
 {
-	//TODO: so long
+
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	
 	EOS_Lobby_JoinLobbyByIdOptions Options = {0};
-	Options.ApiVersion;
-	Options.bCrossplayOptOut;
-	Options.bPresenceEnabled;
-	Options.LobbyId;
-	Options.LocalRTCOptions;
-	Options.LocalUserId;
+	Options.ApiVersion = EOS_LOBBY_JOINLOBBYBYID_API_LATEST;
+	Options.bCrossplayOptOut = YYGetBool(args[0]);
+	Options.bPresenceEnabled = YYGetBool(args[1]);
+	Options.LobbyId = YYGetString(args[2]);
+	
+	EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
+	LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
+	LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[3]);
+	LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[4]);
+	LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[5]);
+	LocalRTCOptions.Flags = YYGetUint32(args[6]);
+
+	Options.LocalRTCOptions = &LocalRTCOptions;
+
+	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[7]));
 
 	callback* mcallback = getCallbackData();
 
@@ -677,13 +716,15 @@ func double EpicGames_Lobby_LeaveLobby(char* LobbyId, char* LocalUserId)
 	return mcallback->identifier;
 }
 
-func double EpicGames_Lobby_ParseConnectString()
+func char* EpicGames_Lobby_ParseConnectString()
 {
-	//TODO
-	//const EOS_Lobby_ParseConnectStringOptions* Options, char* OutBuffer, uint32_t* InOutBufferLength
-	//EOS_Lobby_ParseConnectString()
+	EOS_Lobby_ParseConnectStringOptions Options = { 0 }; 
+	char OutBuffer[1024];
+	uint32_t InOutBufferLength = 1024;
 
-	return 0.0;
+	EOS_Lobby_ParseConnectString(HLobby,&Options, OutBuffer, &InOutBufferLength);
+
+	return OutBuffer;
 }
 
 void EOS_CALL Lobby_PromoteMemberCallback(const EOS_Lobby_PromoteMemberCallbackInfo* Data)
@@ -902,7 +943,7 @@ func double EpicGames_Lobby_UpdateLobby()
 {
 	EOS_Lobby_UpdateLobbyOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBY_UPDATELOBBY_API_LATEST;
-	//Options.LobbyModificationHandle = //TODO
+	//Options.LobbyModificationHandle = //TODO: EOS_HLobbyModification
 
 	callback* mcallback = getCallbackData();
 	
@@ -1083,28 +1124,55 @@ func double EpicGames_LobbyDetails_Release()
 	return 0.0;
 }
 
-func double EpicGames_LobbyModification_AddAttribute()
+EOS_Lobby_AttributeData AttributeDataFromStruct(std::map<std::string, const uint8_t*> Attribute)
 {
-	//TODO
+	EOS_Lobby_AttributeData mSessionAttribute = { 0 };
+
+	mSessionAttribute.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
+	mSessionAttribute.Key = YYGetString(Attribute["Key"]);
+
+	switch ((int)YYGetReal(Attribute["ValueType"]))
+	{
+	case 0: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_BOOLEAN; mSessionAttribute.Value.AsBool = YYGetBool(Attribute["Value"]); break;
+	case 1: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_INT64; mSessionAttribute.Value.AsInt64 = YYGetUint64(Attribute["Value"]); break;
+	case 2: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_DOUBLE; mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["Value"]); break;
+	case 3: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_STRING; mSessionAttribute.Value.AsUtf8 = YYGetString(Attribute["Value"]); break;
+	}
+
+	return mSessionAttribute;
+}
+
+
+func double SDKEpicGames_LobbyModification_AddAttribute(double Visibility,char* buff_args)
+{
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto Attribute = YYGetStruct(args[0]);
+
+	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	
 	EOS_HLobbyModification Handle = 0; 
 	EOS_LobbyModification_AddAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
-	Options.Attribute;
-	Options.Visibility;
+	Options.Attribute = &mAttributeData;
+	Options.Visibility = (EOS_ELobbyAttributeVisibility)Visibility;
 
 	EOS_EResult result = EOS_LobbyModification_AddAttribute(Handle,&Options);
 
 	return (double)result;
 }
 
-func double EpicGames_LobbyModification_AddMemberAttribute()
+func double SDKEpicGames_LobbyModification_AddMemberAttribute(double Visibility, char* buff_args)
 {
-	//TODO
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto Attribute = YYGetStruct(args[0]);
+
+	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+
 	EOS_HLobbyModification Handle = 0;
 	EOS_LobbyModification_AddMemberAttributeOptions Options = {0};
-	Options.ApiVersion;
-	Options.Attribute;
-	Options.Visibility;
+	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
+	Options.Attribute = &mAttributeData;
+	Options.Visibility = (EOS_ELobbyAttributeVisibility)Visibility;
 	EOS_EResult result = EOS_LobbyModification_AddMemberAttribute(Handle,&Options);
 
 	return (double)result;
@@ -1143,16 +1211,21 @@ func double EpicGames_LobbyModification_RemoveMemberAttribute(char* Key)
 	return (double) result;
 }
 
-func double EpicGames_LobbyModification_SetAllowedPlatformIds()
+func double SDKEpicGames_LobbyModification_SetAllowedPlatformIds(char* buff_args)
 {
-	//TODO
+	auto args = buffer_unpack((uint8_t*)buff_args);
+
 	EOS_HLobbyModification Handle = 0;
-	EOS_LobbyModification_SetAllowedPlatformIdsOptions* Options = {0};
-	Options->ApiVersion = EOS_LOBBYMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST;
-	Options->AllowedPlatformIds;
-	Options->AllowedPlatformIdsCount;
+	EOS_LobbyModification_SetAllowedPlatformIdsOptions Options = {0};
+	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST;
+
+	auto array_ids = YYGetArray(args[0]);
+	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
+
+	Options.AllowedPlatformIds = ids.data();
+	Options.AllowedPlatformIdsCount = ids.size();
 	
-	EOS_EResult result = EOS_LobbyModification_SetAllowedPlatformIds(Handle, Options);
+	EOS_EResult result = EOS_LobbyModification_SetAllowedPlatformIds(Handle, &Options);
 
 	return (double) result;
 }
@@ -1295,14 +1368,18 @@ func double EpicGames_LobbySearch_SetMaxResults(double MaxResults)
 	return (double) result;
 }
 
-func double EpicGames_LobbySearch_SetParameter()
+func double SDKEpicGames_LobbySearch_SetParameter(double ComparisonOp,char* buff_args)
 {
-	//TODO
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto Attribute = YYGetStruct(args[0]);
+
+	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+
 	EOS_HLobbySearch Handle = 0;
 	EOS_LobbySearch_SetParameterOptions Options = { 0 };
-	//Options.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
-	//Options.ComparisonOp;
-	//Options.Parameter;
+	Options.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
+	Options.ComparisonOp = (EOS_EComparisonOp)ComparisonOp;
+	Options.Parameter = &mAttributeData;
 
 	EOS_EResult result = EOS_LobbySearch_SetParameter(Handle, &Options);
 

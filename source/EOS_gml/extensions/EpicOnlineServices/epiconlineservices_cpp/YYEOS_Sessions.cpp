@@ -74,51 +74,10 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_sessions.h"
 
-//TODO: Don't forget review all lines like this later...... DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));//TODO: ????account_id????
-
 EOS_HSessions HSessions = 0;
 void EpicGames_Sessions_Init()
 {
 	HSessions = EOS_Platform_GetSessionsInterface(PlatformHandle);
-}
-
-std::vector<uint32_t> VectorUInt32FromVector(std::vector<const uint8_t*> array_ids)
-{
-	EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
-
-	std::vector<uint32_t> ids = {};
-	for (int a = 0; a < array_ids.size(); a++)
-	{
-		ids.push_back((uint32_t)YYGetInt32(array_ids[a]));
-	}
-
-	return ids;
-}
-
-std::vector<std::string> VectorStringFromVector(std::vector<const uint8_t*> array_ids)
-{
-	EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
-
-	std::vector<std::string> ids = {};
-	for (int a = 0; a < array_ids.size(); a++)
-	{
-		ids.push_back(YYGetString(array_ids[a]));
-	}
-
-	return ids;
-}
-
-std::vector<EOS_ProductUserId> VectorProductIdsFromVector(std::vector<const uint8_t*> array_ids)
-{
-	EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
-
-	std::vector<EOS_ProductUserId> ids = {};
-	for (int a = 0; a < array_ids.size(); a++)
-	{
-		ids.push_back(EOS_ProductUserId_FromString(YYGetString(array_ids[a])));
-	}
-
-	return ids;
 }
 
 func double SDKEpicGames_ActiveSession_CopyInfo(char* SessionName, char* buff_ret)
@@ -338,7 +297,7 @@ EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const u
 	{
 	case 0: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_BOOLEAN; mSessionAttribute.Value.AsBool = YYGetBool(Attribute["Value"]); break;
 	case 1: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_INT64; mSessionAttribute.Value.AsInt64 = YYGetUint64(Attribute["Value"]); break;
-	case 2: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_DOUBLE; mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["Value"]); break;//TODO: ????
+	case 2: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_DOUBLE; mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["Value"]); break;
 	case 3: mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_STRING; mSessionAttribute.Value.AsUtf8 = YYGetString(Attribute["Value"]); break;
 	}
 
