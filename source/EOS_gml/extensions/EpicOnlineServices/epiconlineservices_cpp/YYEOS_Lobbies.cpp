@@ -364,15 +364,15 @@ func double EpicGames_Lobby_Attribute_Release()
 	return 0.0;
 }
 
+EOS_HLobbyDetails mHLobbyDetails = NULL;
 func double EpicGames_Lobby_CopyLobbyDetailsHandle(char* LobbyId, char* LocalUserId)
 {
 	EOS_Lobby_CopyLobbyDetailsHandleOptions Options; 
 	Options.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLE_API_LATEST;
 	Options.LobbyId = LobbyId;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	EOS_HLobbyDetails OutLobbyDetailsHandle;
 
-	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandle(HLobby,&Options,&OutLobbyDetailsHandle);
+	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandle(HLobby,&Options,&mHLobbyDetails);
 	
 	return (double)result;
 }
@@ -382,9 +382,8 @@ func double EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(char* InviteId)
 	EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYINVITEID_API_LATEST;
 	Options.InviteId = InviteId;
-	EOS_HLobbyDetails OutLobbyDetailsHandle;
 
-	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandleByInviteId(HLobby,&Options, &OutLobbyDetailsHandle);
+	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandleByInviteId(HLobby,&Options, &mHLobbyDetails);
 
 	return (double)result;
 }
@@ -398,9 +397,7 @@ func double SDKEpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(char* buff_args
 	Options.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYUIEVENTID_API_LATEST;
 	Options.UiEventId = InId;
 
-	EOS_HLobbyDetails OutLobbyDetailsHandle;
-
-	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandleByUiEventId(HLobby,&Options, &OutLobbyDetailsHandle);
+	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandleByUiEventId(HLobby,&Options, &mHLobbyDetails);
 
 	return (double)result;
 }
@@ -443,15 +440,14 @@ func double SDKEpicGames_Lobby_CreateLobby(char* buff_args)
 	return mcallback->identifier;
 }
 
+EOS_HLobbySearch mHLobbySearch = NULL;
 func double EpicGames_Lobby_CreateLobbySearch(double MaxResults)
 {
 	EOS_Lobby_CreateLobbySearchOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBY_CREATELOBBYSEARCH_API_LATEST;
 	Options.MaxResults = MaxResults;
 
-	EOS_HLobbySearch OutLobbySearchHandle;
-
-	EOS_EResult result = EOS_Lobby_CreateLobbySearch(HLobby,&Options, &OutLobbySearchHandle);
+	EOS_EResult result = EOS_Lobby_CreateLobbySearch(HLobby,&Options, &mHLobbySearch);
 
 	return (double) result;
 }
@@ -602,7 +598,7 @@ func double SDKEpicGames_Lobby_JoinLobby(char* buff_args)
 	Options.ApiVersion = EOS_LOBBY_JOINLOBBY_API_LATEST;
 	Options.bCrossplayOptOut = YYGetBool(args[0]);
 	Options.bPresenceEnabled = YYGetBool(args[1]);
-	//Options.LobbyDetailsHandle = ;//TODO: EOS_HLobbyDetails
+	Options.LobbyDetailsHandle = mHLobbyDetails;
 
 	EOS_Lobby_LocalRTCOptions LocalRTCOptions = {0};
 	LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
@@ -939,11 +935,12 @@ void EOS_CALL Lobby_UpdateLobbyCallback(const EOS_Lobby_UpdateLobbyCallbackInfo*
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
+EOS_HLobbyModification mLobbyModification = NULL;
 func double EpicGames_Lobby_UpdateLobby()
 {
 	EOS_Lobby_UpdateLobbyOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBY_UPDATELOBBY_API_LATEST;
-	//Options.LobbyModificationHandle = //TODO: EOS_HLobbyModification
+	Options.LobbyModificationHandle = mLobbyModification;
 
 	callback* mcallback = getCallbackData();
 	
@@ -959,9 +956,7 @@ func double EpicGames_Lobby_UpdateLobbyModification(char* LobbyId, char* LocalUs
 	Options.LobbyId = LobbyId;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 
-	EOS_HLobbyModification OutLobbyModificationHandle;
-
-	EOS_EResult result = EOS_Lobby_UpdateLobbyModification(HLobby,&Options,&OutLobbyModificationHandle);
+	EOS_EResult result = EOS_Lobby_UpdateLobbyModification(HLobby,&Options,&mLobbyModification);
 
 	return (double) result;
 }
@@ -973,7 +968,7 @@ func double EpicGames_LobbyDetails_CopyAttributeByIndex(double index)
 	Options.AttrIndex = index;
 	EOS_Lobby_Attribute* OutAttribute = 0;
 
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 
 	EOS_EResult result = EOS_LobbyDetails_CopyAttributeByIndex(Handle,&Options, &OutAttribute);
 
@@ -982,7 +977,7 @@ func double EpicGames_LobbyDetails_CopyAttributeByIndex(double index)
 
 func double EpicGames_LobbyDetails_CopyAttributeByKey(char* AttrKey)
 {
-	EOS_HLobbyDetails Handle = 0; 
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_CopyAttributeByKeyOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYATTRIBUTEBYKEY_API_LATEST;
 	Options.AttrKey = AttrKey;
@@ -996,7 +991,7 @@ func double EpicGames_LobbyDetails_CopyAttributeByKey(char* AttrKey)
 
 func double EpicGames_LobbyDetails_CopyInfo()
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_CopyInfoOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYINFO_API_LATEST;
 
@@ -1008,7 +1003,7 @@ func double EpicGames_LobbyDetails_CopyInfo()
 
 func double EpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char* TargetUserId)
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_CopyMemberAttributeByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYINDEX_API_LATEST;
 	Options.AttrIndex = index;
@@ -1022,7 +1017,7 @@ func double EpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char
 
 func double EpicGames_LobbyDetails_CopyMemberAttributeByKey(char* AttrKey,char* TargetUserId)
 {
-	EOS_HLobbyDetails Handle = 0; 
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_CopyMemberAttributeByKeyOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYKEY_API_LATEST;
 	Options.AttrKey = AttrKey;
@@ -1036,7 +1031,7 @@ func double EpicGames_LobbyDetails_CopyMemberAttributeByKey(char* AttrKey,char* 
 
 func double EpicGames_LobbyDetails_CopyMemberInfo(char* TargetUserId)
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_CopyMemberInfoOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERINFO_API_LATEST;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
@@ -1049,7 +1044,7 @@ func double EpicGames_LobbyDetails_CopyMemberInfo(char* TargetUserId)
 
 func double EpicGames_LobbyDetails_GetAttributeCount()
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_GetAttributeCountOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_GETATTRIBUTECOUNT_API_LATEST;
 
@@ -1058,7 +1053,7 @@ func double EpicGames_LobbyDetails_GetAttributeCount()
 
 func char* EpicGames_LobbyDetails_GetLobbyOwner()
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_GetLobbyOwnerOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYDETAILS_GETLOBBYOWNER_API_LATEST;
 	EOS_ProductUserId p = EOS_LobbyDetails_GetLobbyOwner(Handle,&Options);
@@ -1068,7 +1063,7 @@ func char* EpicGames_LobbyDetails_GetLobbyOwner()
 
 func double EpicGames_LobbyDetails_GetMemberAttributeCount(char* TargetUserId)
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_GetMemberAttributeCountOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYDETAILS_GETMEMBERATTRIBUTECOUNT_API_LATEST;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
@@ -1078,7 +1073,7 @@ func double EpicGames_LobbyDetails_GetMemberAttributeCount(char* TargetUserId)
 
 func char* EpicGames_LobbyDetails_GetMemberByIndex()
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_GetMemberByIndexOptions Options = {0};
 
 	EOS_ProductUserId p = EOS_LobbyDetails_GetMemberByIndex(Handle,&Options);
@@ -1087,7 +1082,7 @@ func char* EpicGames_LobbyDetails_GetMemberByIndex()
 
 func double EpicGames_LobbyDetails_GetMemberCount()
 {
-	EOS_HLobbyDetails Handle = 0;
+	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_GetMemberCountOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_GETMEMBERCOUNT_API_LATEST;
 
@@ -1117,9 +1112,9 @@ func double EpicGames_LobbyDetails_MemberInfo_Release(double AllowsCrossplay, do
 
 func double EpicGames_LobbyDetails_Release()
 {
-	EOS_HLobbyDetails LobbyHandle = 0;
-
+	EOS_HLobbyDetails LobbyHandle = mHLobbyDetails;
 	EOS_LobbyDetails_Release(LobbyHandle);
+	mHLobbyDetails = NULL;
 
 	return 0.0;
 }
@@ -1150,7 +1145,7 @@ func double SDKEpicGames_LobbyModification_AddAttribute(double Visibility,char* 
 
 	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
 	
-	EOS_HLobbyModification Handle = 0; 
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_AddAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
 	Options.Attribute = &mAttributeData;
@@ -1168,7 +1163,7 @@ func double SDKEpicGames_LobbyModification_AddMemberAttribute(double Visibility,
 
 	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
 
-	EOS_HLobbyModification Handle = 0;
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_AddMemberAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
 	Options.Attribute = &mAttributeData;
@@ -1180,7 +1175,7 @@ func double SDKEpicGames_LobbyModification_AddMemberAttribute(double Visibility,
 
 func double EpicGames_LobbyModification_Release()
 {
-	EOS_HLobbyModification LobbyModificationHandle = 0;
+	EOS_HLobbyModification LobbyModificationHandle = mLobbyModification;
 
 	EOS_LobbyModification_Release(LobbyModificationHandle);
 
@@ -1189,7 +1184,7 @@ func double EpicGames_LobbyModification_Release()
 
 func double EpicGames_LobbyModification_RemoveAttribute(char* Key)
 {
-	EOS_HLobbyModification Handle = 0;
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_RemoveAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_REMOVEATTRIBUTE_API_LATEST;
 	Options.Key = Key;
@@ -1201,7 +1196,7 @@ func double EpicGames_LobbyModification_RemoveAttribute(char* Key)
 
 func double EpicGames_LobbyModification_RemoveMemberAttribute(char* Key)
 {
-	EOS_HLobbyModification Handle = 0;
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_RemoveMemberAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_REMOVEMEMBERATTRIBUTE_API_LATEST;
 	Options.Key = Key;
@@ -1215,7 +1210,7 @@ func double SDKEpicGames_LobbyModification_SetAllowedPlatformIds(char* buff_args
 {
 	auto args = buffer_unpack((uint8_t*)buff_args);
 
-	EOS_HLobbyModification Handle = 0;
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_SetAllowedPlatformIdsOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST;
 
@@ -1232,7 +1227,7 @@ func double SDKEpicGames_LobbyModification_SetAllowedPlatformIds(char* buff_args
 
 func double EpicGames_LobbyModification_SetBucketId(char* BucketId)
 {
-	EOS_HLobbyModification Handle = 0; 
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_SetBucketIdOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETBUCKETID_API_LATEST;
 	Options.BucketId = BucketId;
@@ -1244,7 +1239,7 @@ func double EpicGames_LobbyModification_SetBucketId(char* BucketId)
 
 func double EpicGames_LobbyModification_SetInvitesAllowed(double InvitesAllowed)
 {
-	EOS_HLobbyModification Handle = 0; 
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_SetInvitesAllowedOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETINVITESALLOWED_API_LATEST;
 	Options.bInvitesAllowed = InvitesAllowed>0.5;
@@ -1256,7 +1251,7 @@ func double EpicGames_LobbyModification_SetInvitesAllowed(double InvitesAllowed)
 
 func double EpicGames_LobbyModification_SetMaxMembers(double MaxMembers)
 {
-	EOS_HLobbyModification Handle = 0; 
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_SetMaxMembersOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETMAXMEMBERS_API_LATEST;
 	Options.MaxMembers = MaxMembers;
@@ -1267,7 +1262,7 @@ func double EpicGames_LobbyModification_SetMaxMembers(double MaxMembers)
 
 func double EpicGames_LobbyModification_SetPermissionLevel(double PermissionLevel)
 {
-	EOS_HLobbyModification Handle = 0; 
+	EOS_HLobbyModification Handle = mLobbyModification;
 	EOS_LobbyModification_SetPermissionLevelOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETPERMISSIONLEVEL_API_LATEST;
 	Options.PermissionLevel = (EOS_ELobbyPermissionLevel)PermissionLevel;
@@ -1279,11 +1274,11 @@ func double EpicGames_LobbyModification_SetPermissionLevel(double PermissionLeve
 
 func double EpicGames_LobbySearch_CopySearchResultByIndex(double Index)
 {
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_CopySearchResultByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYSEARCH_COPYSEARCHRESULTBYINDEX_API_LATEST;
 	Options.LobbyIndex = Index;
-	EOS_HLobbyDetails OutLobbyDetailsHandle = 0;
+	EOS_HLobbyDetails OutLobbyDetailsHandle = mHLobbyDetails;
 
 	EOS_EResult result = EOS_LobbySearch_CopySearchResultByIndex(Handle,&Options, &OutLobbyDetailsHandle);
 
@@ -1303,7 +1298,7 @@ void EOS_CALL LobbySearch_FindCallback(const EOS_LobbySearch_FindCallbackInfo* D
 
 func double EpicGames_LobbySearch_Find(char* LocalUserId)
 {
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_FindOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYSEARCH_FIND_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
@@ -1317,7 +1312,7 @@ func double EpicGames_LobbySearch_Find(char* LocalUserId)
 
 func double EpicGames_LobbySearch_GetSearchResultCount()
 {
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_GetSearchResultCountOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYSEARCH_GETSEARCHRESULTCOUNT_API_LATEST;
 
@@ -1326,15 +1321,16 @@ func double EpicGames_LobbySearch_GetSearchResultCount()
 
 func double EpicGames_LobbySearch_Release()
 {
-	EOS_HLobbySearch LobbySearchHandle = 0;
+	EOS_HLobbySearch LobbySearchHandle = mHLobbySearch;
 	EOS_LobbySearch_Release(LobbySearchHandle);
+	mHLobbySearch = NULL;
 
 	return 0.0;
 }
 
 func double EpicGames_LobbySearch_RemoveParameter(char* Key, double ComparisonOp)
 {
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_RemoveParameterOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYSEARCH_REMOVEPARAMETER_API_LATEST;
 	Options.ComparisonOp = (EOS_EComparisonOp) ComparisonOp;
@@ -1346,7 +1342,7 @@ func double EpicGames_LobbySearch_RemoveParameter(char* Key, double ComparisonOp
 
 func double EpicGames_LobbySearch_SetLobbyId(char* LobbyId)
 {
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_SetLobbyIdOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETLOBBYID_API_LATEST;
 	Options.LobbyId = LobbyId;
@@ -1358,7 +1354,7 @@ func double EpicGames_LobbySearch_SetLobbyId(char* LobbyId)
 
 func double EpicGames_LobbySearch_SetMaxResults(double MaxResults)
 {
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_SetMaxResultsOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETMAXRESULTS_API_LATEST;
 	Options.MaxResults = MaxResults;
@@ -1375,7 +1371,7 @@ func double SDKEpicGames_LobbySearch_SetParameter(double ComparisonOp,char* buff
 
 	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
 
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_SetParameterOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
 	Options.ComparisonOp = (EOS_EComparisonOp)ComparisonOp;
@@ -1388,7 +1384,7 @@ func double SDKEpicGames_LobbySearch_SetParameter(double ComparisonOp,char* buff
 
 func double EpicGames_LobbySearch_SetTargetUserId(char* TargetUserId)
 {
-	EOS_HLobbySearch Handle = 0;
+	EOS_HLobbySearch Handle = mHLobbySearch;
 	EOS_LobbySearch_SetTargetUserIdOptions Options = { 0 };
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETTARGETUSERID_API_LATEST;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
