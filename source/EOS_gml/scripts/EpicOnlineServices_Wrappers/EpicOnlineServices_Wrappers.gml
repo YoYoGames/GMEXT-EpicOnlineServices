@@ -597,16 +597,19 @@ function EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(UiEventId)
 }
 
 //SDKEpicGames_Lobby_CreateLobby
-function EpicGames_Lobby_CreateLobby(AllowedPlatformIds,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bEnableRTCRoom,bPresenceEnabled)
-{
+function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled)
+{		
 	var _args = [
-		[AllowedPlatformIds,buffer_u32],//array
+		[LocalUserId,buffer_string],
+		[AllowedPlatformIds, buffer_u32],//0,Array
+		[LobbyId,buffer_string],
+		[BucketId,buffer_string],
+		[MaxLobbyMembers,buffer_f64],
 		[bAllowInvites,buffer_bool],
 		[bCrossplayOptOut,buffer_bool],
 		[bDisableHostMigration,buffer_bool],
 		[bEnableJoinById,buffer_bool],
-		[bEnableRTCRoom,buffer_bool],
-		[bPresenceEnabled,buffer_bool]
+		[bPresenceEnabled,buffer_bool],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);

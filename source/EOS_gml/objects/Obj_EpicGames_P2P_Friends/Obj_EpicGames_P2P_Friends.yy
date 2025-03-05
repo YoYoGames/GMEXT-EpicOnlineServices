@@ -1,22 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_EpicGames_P2P_Test",
+  "%Name":"Obj_EpicGames_P2P_Friends",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":70,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_EpicGames_P2P_Test",
+  "name":"Obj_EpicGames_P2P_Friends",
   "overriddenProperties":[],
   "parent":{
     "name":"P2P",
     "path":"folders/Epic Online Services Demos/P2P.yy",
   },
   "parentObjectId":{
-    "name":"Obj_EpicGames_Platform_Tick",
-    "path":"objects/Obj_EpicGames_Platform_Tick/Obj_EpicGames_Platform_Tick.yy",
+    "name":"Obj_EpicGames_Friends",
+    "path":"objects/Obj_EpicGames_Friends/Obj_EpicGames_Friends.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -35,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"Spr_YoYo_button",
-    "path":"sprites/Spr_YoYo_button/Spr_YoYo_button.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

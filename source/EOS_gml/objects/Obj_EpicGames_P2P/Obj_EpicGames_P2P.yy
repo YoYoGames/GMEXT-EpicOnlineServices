@@ -1,22 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_EpicGames_Session_Test",
+  "%Name":"Obj_EpicGames_P2P",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":70,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_EpicGames_Session_Test",
+  "name":"Obj_EpicGames_P2P",
   "overriddenProperties":[],
   "parent":{
-    "name":"Epic Online Services Demos",
-    "path":"folders/Epic Online Services Demos.yy",
+    "name":"P2P",
+    "path":"folders/Epic Online Services Demos/P2P.yy",
   },
-  "parentObjectId":{
-    "name":"Obj_EpicGames_Platform_Tick",
-    "path":"objects/Obj_EpicGames_Platform_Tick/Obj_EpicGames_Platform_Tick.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,10 +33,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"Spr_YoYo_button",
-    "path":"sprites/Spr_YoYo_button/Spr_YoYo_button.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

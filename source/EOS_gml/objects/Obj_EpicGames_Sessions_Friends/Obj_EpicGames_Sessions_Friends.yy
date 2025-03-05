@@ -1,18 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_EpicGames_Friends_P2P",
+  "%Name":"Obj_EpicGames_Sessions_Friends",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":70,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_EpicGames_Friends_P2P",
+  "name":"Obj_EpicGames_Sessions_Friends",
   "overriddenProperties":[],
   "parent":{
-    "name":"P2P",
-    "path":"folders/Epic Online Services Demos/P2P.yy",
+    "name":"Sessions",
+    "path":"folders/Epic Online Services Demos/Sessions.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"Obj_EpicGames_Friends",
+    "path":"objects/Obj_EpicGames_Friends/Obj_EpicGames_Friends.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
