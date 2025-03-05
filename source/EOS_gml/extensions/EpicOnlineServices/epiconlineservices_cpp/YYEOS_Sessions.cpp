@@ -539,7 +539,7 @@ func double SDKEpicGames_Sessions_AddNotifySessionInviteReceived(char* buff_ret)
 { 
 	EOS_Sessions_AddNotifySessionInviteReceivedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
-
+	std::cout << "CALLED: SDKEpicGames_Sessions_AddNotifySessionInviteReceived" << std::endl;
 	uint64 ret = EOS_Sessions_AddNotifySessionInviteReceived(HSessions, &Options, NULL/*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
 
 	DataStream data;

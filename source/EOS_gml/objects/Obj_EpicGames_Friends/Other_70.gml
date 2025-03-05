@@ -48,6 +48,7 @@ switch(async_load[?"type"])
 		
 		struct_foreach(friends,function(_name, _value)
 			{
+				show_debug_message($"Friend: {_value}")
 				var ins = instance_create_depth(100,200+friend_counter_index*80,0,friend_object,_value)
 				friend_counter_index++
 				exit
