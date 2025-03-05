@@ -25,12 +25,8 @@ switch(async_load[?"type"])
 		
 		var _arrayName = struct_get_names(friends)
 		for(var a = 0 ; a < array_length(_arrayName) ; a++)
-		{
 			if(struct_names_count(struct_get(friends,_arrayName[a])) == 0)
-			{
 				exit
-			}
-		}
 			
 		show_debug_message("REQUEST: EpicGames_Connect_QueryExternalAccountMappings")
 		
@@ -46,19 +42,14 @@ switch(async_load[?"type"])
 		
 		for(var a = 0 ; a < array_length(friends_account_ids) ; a++)
 		{
-			show_debug_message("EpicGames_Connect_GetExternalAccountMapping: " + friends_account_ids[a])
 			var user_id = EpicGames_Connect_GetExternalAccountMapping(userID,friends_account_ids[a],0)
-			show_debug_message(user_id)
 			struct_set(struct_get(friends,friends_account_ids[a]),"UserID",user_id)
 		}
 		
 		struct_foreach(friends,function(_name, _value)
 			{
-				show_debug_message(_value)
 				var ins = instance_create_depth(100,200+friend_counter_index*80,0,friend_object,_value)
-				
 				friend_counter_index++
-				
 				exit
 			})
 			
