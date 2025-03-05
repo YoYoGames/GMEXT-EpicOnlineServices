@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_EpicGames_Friend_P2P",
+  "%Name":"Obj_EpicGames_Lobbies_Friend",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_EpicGames_Friend_P2P",
+  "name":"Obj_EpicGames_Lobbies_Friend",
   "overriddenProperties":[],
   "parent":{
-    "name":"P2P",
-    "path":"folders/Epic Online Services Demos/P2P.yy",
+    "name":"Lobbies",
+    "path":"folders/Epic Online Services Demos/Lobbies.yy",
   },
   "parentObjectId":{
-    "name":"Obj_YoYo_button",
-    "path":"objects/Obj_YoYo_button/Obj_YoYo_button.yy",
+    "name":"Obj_EpicGames_Friend",
+    "path":"objects/Obj_EpicGames_Friend/Obj_EpicGames_Friend.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

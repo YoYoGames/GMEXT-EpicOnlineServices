@@ -18,7 +18,9 @@ switch(async_load[?"type"])
 	case "EpicGames_UserInfo_QueryUserInfo":
 		
 		var struct = EpicGames_UserInfo_CopyUserInfo(AccountID,async_load[?"target"])
-		var ins = instance_create_depth(100,200,0,friend_object,struct)
+		var ins = instance_create_depth(x,y+80*friend_counter_index,0,friend_object,struct)
+		
+		friend_counter_index ++
 		
 	break
 }

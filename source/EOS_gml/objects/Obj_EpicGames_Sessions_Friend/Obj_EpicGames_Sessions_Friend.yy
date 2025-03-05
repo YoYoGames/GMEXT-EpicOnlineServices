@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_EpicGames_Friend",
+  "%Name":"Obj_EpicGames_Sessions_Friend",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_EpicGames_Friend",
+  "name":"Obj_EpicGames_Sessions_Friend",
   "overriddenProperties":[],
   "parent":{
-    "name":"Friends",
-    "path":"folders/Epic Online Services Demos/Friends.yy",
+    "name":"Sessions",
+    "path":"folders/Epic Online Services Demos/Sessions.yy",
   },
   "parentObjectId":{
-    "name":"Obj_YoYo_button",
-    "path":"objects/Obj_YoYo_button/Obj_YoYo_button.yy",
+    "name":"Obj_EpicGames_Friend",
+    "path":"objects/Obj_EpicGames_Friend/Obj_EpicGames_Friend.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

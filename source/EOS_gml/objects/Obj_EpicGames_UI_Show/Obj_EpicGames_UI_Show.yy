@@ -13,8 +13,8 @@
     "path":"folders/Epic Online Services Demos/Menu.yy",
   },
   "parentObjectId":{
-    "name":"Obj_EpicGames_Platform_Tick",
-    "path":"objects/Obj_EpicGames_Platform_Tick/Obj_EpicGames_Platform_Tick.yy",
+    "name":"Obj_YoYo_button",
+    "path":"objects/Obj_YoYo_button/Obj_YoYo_button.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

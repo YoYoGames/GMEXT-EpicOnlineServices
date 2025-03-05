@@ -4,7 +4,7 @@
 //#define EOS_OPT_Steam 4000
 
 
-var AllowedPlatformIds = [100,0,4000]
+var AllowedPlatformIds = [/*100,0,4000*/]
 var PresenceEnabled = true
 var bSanctionsEnabled = true
 var BucketId = "GameMode:Region:MapName"//"YYBucketId"
