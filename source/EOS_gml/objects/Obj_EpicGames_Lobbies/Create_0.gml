@@ -3,6 +3,8 @@ event_inherited();
 
 text = "Lobby"
 
+LobbyId = ""
+
 notifyJoinLobbyAccepted = EpicGames_Lobby_AddNotifyJoinLobbyAccepted()
 notifyLeaveLobbyRequested = EpicGames_Lobby_AddNotifyLeaveLobbyRequested()
 notifyLobbyInviteAccepted = EpicGames_Lobby_AddNotifyLobbyInviteAccepted()

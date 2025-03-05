@@ -33,6 +33,7 @@
     {"name":"Obj_EpicGames_Leaderboard_AddScore_1","order":5,"path":"objects/Obj_EpicGames_Leaderboard_AddScore_1/Obj_EpicGames_Leaderboard_AddScore_1.yy",},
     {"name":"Obj_EpicGames_Leaderboard_AddScore_2","order":6,"path":"objects/Obj_EpicGames_Leaderboard_AddScore_2/Obj_EpicGames_Leaderboard_AddScore_2.yy",},
     {"name":"Obj_EpicGames_Leaderboards_Controller","order":1,"path":"objects/Obj_EpicGames_Leaderboards_Controller/Obj_EpicGames_Leaderboards_Controller.yy",},
+    {"name":"Obj_EpicGames_Lobbies_Create","order":4,"path":"objects/Obj_EpicGames_Lobbies_Create/Obj_EpicGames_Lobbies_Create.yy",},
     {"name":"Obj_EpicGames_Lobbies_Friend","order":1,"path":"objects/Obj_EpicGames_Lobbies_Friend/Obj_EpicGames_Lobbies_Friend.yy",},
     {"name":"Obj_EpicGames_Lobbies_Friends","order":2,"path":"objects/Obj_EpicGames_Lobbies_Friends/Obj_EpicGames_Lobbies_Friends.yy",},
     {"name":"Obj_EpicGames_Metrics","order":8,"path":"objects/Obj_EpicGames_Metrics/Obj_EpicGames_Metrics.yy",},
