@@ -76,6 +76,7 @@
     {"id":{"name":"Obj_EpicGames_PlayerDataStorage_Read","path":"objects/Obj_EpicGames_PlayerDataStorage_Read/Obj_EpicGames_PlayerDataStorage_Read.yy",},},
     {"id":{"name":"Obj_EpicGames_PlayerDataStorage_Write","path":"objects/Obj_EpicGames_PlayerDataStorage_Write/Obj_EpicGames_PlayerDataStorage_Write.yy",},},
     {"id":{"name":"Obj_EpicGames_Session","path":"objects/Obj_EpicGames_Session/Obj_EpicGames_Session.yy",},},
+    {"id":{"name":"Obj_EpicGames_Sessions_Create","path":"objects/Obj_EpicGames_Sessions_Create/Obj_EpicGames_Sessions_Create.yy",},},
     {"id":{"name":"Obj_EpicGames_Sessions_Friend","path":"objects/Obj_EpicGames_Sessions_Friend/Obj_EpicGames_Sessions_Friend.yy",},},
     {"id":{"name":"Obj_EpicGames_Sessions_Friends","path":"objects/Obj_EpicGames_Sessions_Friends/Obj_EpicGames_Sessions_Friends.yy",},},
     {"id":{"name":"Obj_EpicGames_Stat","path":"objects/Obj_EpicGames_Stat/Obj_EpicGames_Stat.yy",},},
