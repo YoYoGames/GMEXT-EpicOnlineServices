@@ -1,0 +1,10 @@
+
+EpicGames_Sessions_StartSession(Obj_EpicGames_Session.SessionName)
+
+//EpicGames_Sessions_RegisterPlayers(Obj_EpicGames_Session.SessionName,[])
+
+//EpicGames_Sessions_UnregisterPlayers(Obj_EpicGames_Session.SessionName,[])
+
+//EpicGames_ActiveSession_GetRegisteredPlayerByIndex(Obj_EpicGames_Session.SessionName)
+
+//EpicGames_ActiveSession_GetRegisteredPlayerCount(Obj_EpicGames_Session.SessionName)

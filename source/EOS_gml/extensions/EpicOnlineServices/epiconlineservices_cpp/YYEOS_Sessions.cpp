@@ -86,12 +86,26 @@ func double SDKEpicGames_ActiveSession_CopyInfo(char* SessionName, char* buff_re
 	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
 	HOptions.SessionName = SessionName;
 	EOS_HActiveSession HActiveSession;
-	EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
+	EOS_EResult result = EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
+
+	if (result != EOS_EResult::EOS_Success)
+	{
+		StructStream _struct = {};
+		_struct.writeTo(buff_ret);
+		return 0;
+	}
 
 	EOS_ActiveSession_CopyInfoOptions Options = {0};
 	Options.ApiVersion = EOS_ACTIVESESSION_COPYINFO_API_LATEST;
 	EOS_ActiveSession_Info* OutActiveSessionInfo;
-	EOS_ActiveSession_CopyInfo(HActiveSession,&Options, &OutActiveSessionInfo);
+	result = EOS_ActiveSession_CopyInfo(HActiveSession,&Options, &OutActiveSessionInfo);
+
+	if (result != EOS_EResult::EOS_Success)
+	{
+		StructStream _struct = {};
+		_struct.writeTo(buff_ret);
+		return 0;
+	}
 
 	OutActiveSessionInfo->ApiVersion = EOS_ACTIVESESSION_INFO_API_LATEST;
 
@@ -99,10 +113,15 @@ func double SDKEpicGames_ActiveSession_CopyInfo(char* SessionName, char* buff_re
 	_struct.addKeyValue("LocalUserId", (const char*)productID_toString(OutActiveSessionInfo->LocalUserId));
 	
 	StructStream _struct_session_details = {};
+	if (OutActiveSessionInfo->SessionDetails->HostAddress != NULL)
 	_struct_session_details.addKeyValue("HostAddress", (const char*)OutActiveSessionInfo->SessionDetails->HostAddress);
+	if (OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections != NULL)
 	_struct_session_details.addKeyValue("NumOpenPublicConnections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
+	if(OutActiveSessionInfo->SessionDetails->OwnerServerClientId != NULL)
 	_struct_session_details.addKeyValue("OwnerServerClientId", (const char*)OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
-	_struct_session_details.addKeyValue("OwnerUserId", (const char*)OutActiveSessionInfo->SessionDetails->OwnerUserId);
+	if (OutActiveSessionInfo->SessionDetails->OwnerUserId != NULL)
+	_struct_session_details.addKeyValue("OwnerUserId", (const char*)productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
+	if (OutActiveSessionInfo->SessionDetails->SessionId != NULL)
 	_struct_session_details.addKeyValue("SessionId", (const char*)OutActiveSessionInfo->SessionDetails->SessionId);
 
 	StructStream _struct_settings = {};
@@ -188,10 +207,15 @@ func double SDKEpicGames_SessionDetails_CopyInfo(char* buff_ret)
 	if (EOS_EResult::EOS_Success == result)
 	{
 		StructStream _struct = {};
+		if (OutSessionInfo->HostAddress != NULL)
 		_struct.addKeyValue("HostAddress", (const char*)OutSessionInfo->HostAddress);
+		if (OutSessionInfo->NumOpenPublicConnections != NULL)
 		_struct.addKeyValue("NumOpenPublicConnections", OutSessionInfo->NumOpenPublicConnections);
-		_struct.addKeyValue("OwnerUserId", (const char*)OutSessionInfo->OwnerUserId);
+		if (OutSessionInfo->OwnerUserId != NULL)
+		_struct.addKeyValue("OwnerUserId", (const char*)productID_toString(OutSessionInfo->OwnerUserId));
+		if (OutSessionInfo->OwnerServerClientId != NULL)
 		_struct.addKeyValue("OwnerServerClientId", (const char*)OutSessionInfo->OwnerServerClientId);
+		if(OutSessionInfo->SessionId != NULL)
 		_struct.addKeyValue("SessionId", (const char*)OutSessionInfo->SessionId);
 
 		StructStream _struct_settings = {};
