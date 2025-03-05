@@ -1,0 +1,2 @@
+
+EpicGames_Sessions_DestroySession(Obj_EpicGames_Session.SessionName)
