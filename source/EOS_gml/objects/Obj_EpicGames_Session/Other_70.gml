@@ -20,6 +20,7 @@ switch(async_load[?"type"])
 	case "EpicGames_Sessions_AddNotifySessionInviteAccepted":
 		
 		EpicGames_Sessions_CopySessionHandleByInviteId(async_load[?"invite_id"])
+		SessionName = eos_create_code(17)
 		EpicGames_Sessions_JoinSession(true,userID,SessionName)
 		EpicGames_SessionDetails_Release()
 		
