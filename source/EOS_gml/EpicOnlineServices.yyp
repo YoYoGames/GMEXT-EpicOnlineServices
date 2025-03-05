@@ -101,6 +101,7 @@
     {"id":{"name":"Room_EpicGames_Stats","path":"rooms/Room_EpicGames_Stats/Room_EpicGames_Stats.yy",},},
     {"id":{"name":"Room_EpicGames_TitleStorage","path":"rooms/Room_EpicGames_TitleStorage/Room_EpicGames_TitleStorage.yy",},},
     {"id":{"name":"Room_Yoyo","path":"rooms/Room_Yoyo/Room_Yoyo.yy",},},
+    {"id":{"name":"EpicOnlineServices_Tools","path":"scripts/EpicOnlineServices_Tools/EpicOnlineServices_Tools.yy",},},
     {"id":{"name":"EpicOnlineServices_Wrappers","path":"scripts/EpicOnlineServices_Wrappers/EpicOnlineServices_Wrappers.yy",},},
     {"id":{"name":"ExtBufferIO","path":"scripts/ExtBufferIO/ExtBufferIO.yy",},},
     {"id":{"name":"Spr_EpicGames_PlayerDataStorage_Cancel","path":"sprites/Spr_EpicGames_PlayerDataStorage_Cancel/Spr_EpicGames_PlayerDataStorage_Cancel.yy",},},
