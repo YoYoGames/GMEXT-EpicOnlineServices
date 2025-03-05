@@ -18,8 +18,10 @@ switch(async_load[?"type"])
 	break
 	
 	case "EpicGames_Sessions_AddNotifySessionInviteAccepted":
-	
+		
+		EpicGames_Sessions_CopySessionHandleByInviteId(async_load[?"invite_id"])
 		EpicGames_Sessions_JoinSession(true,userID,SessionName)
+		EpicGames_SessionDetails_Release()
 		
 	break
 	
