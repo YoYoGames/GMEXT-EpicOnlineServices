@@ -94,4 +94,4 @@ EpicGames_Sessions_UpdateSession()
 show_debug_message(result)
 
 
-
+Obj_EpicGames_Session.SessionName = SessionName
