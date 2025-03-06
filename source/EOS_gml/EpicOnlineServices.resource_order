@@ -53,6 +53,7 @@
     {"name":"Obj_EpicGames_Sessions_End","order":6,"path":"objects/Obj_EpicGames_Sessions_End/Obj_EpicGames_Sessions_End.yy",},
     {"name":"Obj_EpicGames_Sessions_Friend","order":1,"path":"objects/Obj_EpicGames_Sessions_Friend/Obj_EpicGames_Sessions_Friend.yy",},
     {"name":"Obj_EpicGames_Sessions_Friends","order":2,"path":"objects/Obj_EpicGames_Sessions_Friends/Obj_EpicGames_Sessions_Friends.yy",},
+    {"name":"Obj_EpicGames_Sessions_P2P","order":8,"path":"objects/Obj_EpicGames_Sessions_P2P/Obj_EpicGames_Sessions_P2P.yy",},
     {"name":"Obj_EpicGames_Sessions_Start","order":5,"path":"objects/Obj_EpicGames_Sessions_Start/Obj_EpicGames_Sessions_Start.yy",},
     {"name":"Obj_EpicGames_Stat","order":2,"path":"objects/Obj_EpicGames_Stat/Obj_EpicGames_Stat.yy",},
     {"name":"Obj_EpicGames_TitleStorage_controller","order":1,"path":"objects/Obj_EpicGames_TitleStorage_controller/Obj_EpicGames_TitleStorage_controller.yy",},

@@ -47,7 +47,7 @@ buffer_write(buff,buffer_u8,2)//it's game data
 buffer_write(buff,buffer_f16,mouse_x)
 buffer_write(buff,buffer_f16,mouse_y)
 for(var a = 0 ; a < array_length(EstablishedProductIDs) ; a++)
-	var result = EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,EstablishedProductIDs[a],socketName)	
+	var result = EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,EstablishedProductIDs[a],socketName)
 buffer_delete(buff)
 
 instance_create_depth(mouse_x,mouse_y,depth,Obj_EpicGames_P2P_Point)
