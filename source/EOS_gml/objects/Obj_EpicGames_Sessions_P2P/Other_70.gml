@@ -1,10 +1,8 @@
 
 event_inherited();
 
-
 switch(async_load[?"type"])
 {
-
 	case "EpicGames_P2P_AddNotifyPeerConnectionClosed":
 		
 		if(owner)
@@ -12,7 +10,7 @@ switch(async_load[?"type"])
 			show_debug_message("EpicGames_Sessions_UnregisterPlayers: " + async_load[?"RemoteUserId"])
 			EpicGames_Sessions_UnregisterPlayers(Obj_EpicGames_Session.SessionName,[async_load[?"RemoteUserId"]])
 		}
-	
+		
 	break
 	
 	case "EpicGames_P2P_AddNotifyPeerConnectionEstablished":

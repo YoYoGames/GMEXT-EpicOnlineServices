@@ -1,2 +1,2 @@
 
-show_debug_message(EpicGames_ActiveSession_CopyInfo(Obj_EpicGames_Session.SessionName))
+show_debug_message(EpicGames_ActiveSession_CopyInfo(SessionName))

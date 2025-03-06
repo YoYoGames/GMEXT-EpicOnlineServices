@@ -191,7 +191,7 @@
 	
 
 
-	const char* VectorOfStr2ArrayStr(std::vector<const char*> vec)
+	std::string VectorOfStr2ArrayStr(std::vector<const char*> vec)
 	{
 		std::string str = "[";
 		for (int a = 0; a < vec.size(); a++)
@@ -205,12 +205,12 @@
 			str += "\"" + element + "\"";
 		}
 
-		str + "]";
+		str += "]";
 
-		return (const char*)str.c_str();
+		return str;
 	}
 
-	const char* productIds2ArrayStr(EOS_ProductUserId* user_ids, int count)
+	std::string productIds2ArrayStr(EOS_ProductUserId* user_ids, int count)
 	{
 		std::vector<const char*> vec = {};
 		for (int a = 0; a < count; a++)
@@ -218,5 +218,7 @@
 			vec.push_back(productID_toString(user_ids[a]));
 		}
 		
+		std::cout << vec.size() << " ->" << VectorOfStr2ArrayStr(vec) << std::endl;
+
 		return VectorOfStr2ArrayStr(vec);
 	}

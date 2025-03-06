@@ -10,4 +10,4 @@ notifySessionInviteAccepted = EpicGames_Sessions_AddNotifySessionInviteAccepted(
 notifySessionInviteReceived = EpicGames_Sessions_AddNotifySessionInviteReceived()
 notifySessionInviteRejected = EpicGames_Sessions_AddNotifySessionInviteRejected()
 
-SessionName = ""
+SessionName = "mySession"

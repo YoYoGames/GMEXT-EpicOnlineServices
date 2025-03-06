@@ -837,8 +837,8 @@ void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlay
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "registered_players", (char*)productIds2ArrayStr(Data->RegisteredPlayers, Data->RegisteredPlayersCount));
-	DsMapAddString(map, "sanctioned_players", (char*)productIds2ArrayStr(Data->SanctionedPlayers, Data->SanctionedPlayersCount));
+	DsMapAddString(map, "registered_players", productIds2ArrayStr(Data->RegisteredPlayers, Data->RegisteredPlayersCount).c_str());
+	DsMapAddString(map, "sanctioned_players", productIds2ArrayStr(Data->SanctionedPlayers, Data->SanctionedPlayersCount).c_str());
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -857,6 +857,11 @@ func double SDKEpicGames_Sessions_RegisterPlayers(char* SessionName, char* buff_
 
 	callback* mcallback = getCallbackData();
 
+	std::cout << "SDKEpicGames_Sessions_RegisterPlayers: " << SessionName << " - " << Options.PlayersToRegisterCount << std::endl;
+	for (int a = 0; a < Options.PlayersToRegisterCount; a++)
+	{
+		std::cout << productID_toString(Options.PlayersToRegister[a]) << std::endl;
+	}
 	EOS_Sessions_RegisterPlayers(HSessions,&Options, mcallback,Sessions_OnRegisterPlayersCallback);
 
 	return mcallback->identifier;
@@ -998,7 +1003,7 @@ void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_Unregister
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "unregistered_players", (char*)productIds2ArrayStr(Data->UnregisteredPlayers,Data->UnregisteredPlayersCount));
+	DsMapAddString(map, "unregistered_players", productIds2ArrayStr(Data->UnregisteredPlayers,Data->UnregisteredPlayersCount).c_str());
 	CreateAsyncEventWithDSMap(map, 70);
 }
 

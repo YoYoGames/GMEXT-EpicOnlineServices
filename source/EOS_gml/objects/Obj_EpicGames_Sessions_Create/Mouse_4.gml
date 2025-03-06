@@ -16,9 +16,6 @@ var MaxPlayers = 3
 ///** Maximum number of characters allowed in the session id override */
 //#define EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH 64
 SessionId = eos_create_code(17)
-Obj_EpicGames_Session.SessionName = SessionId
-
-/*var*/SessionName = SessionId
 
 //var count = EpicGames_ActiveSession_GetRegisteredPlayerCount("SessionName")
 //show_debug_message("----------------" + string(count))
@@ -38,7 +35,7 @@ var result = EpicGames_Sessions_CreateSessionModification(
 		LocalUserId,
 		MaxPlayers,
 		SessionId,
-		SessionName
+		Obj_EpicGames_Session.SessionName
 	)
 
 show_debug_message(result)
