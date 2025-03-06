@@ -26,7 +26,7 @@ while(EpicGames_P2P_GetNextReceivedPacketSize(userID))
 		break
 		
 		case 2:
-			show_debug_message("Game Message")
+			//show_debug_message("Game Message")
 			
 			var _x = buffer_read(buff_recv,buffer_f16)
 			var _y = buffer_read(buff_recv,buffer_f16)

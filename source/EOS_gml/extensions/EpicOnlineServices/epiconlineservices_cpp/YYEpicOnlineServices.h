@@ -88,8 +88,8 @@ struct callback
 };
 
 
-const char* productIds2ArrayStr(EOS_ProductUserId* user_ids, int count);
-const char* VectorOfStr2ArrayStr(std::vector<const char*> vec);
+std::string productIds2ArrayStr(EOS_ProductUserId* user_ids, int count);
+std::string VectorOfStr2ArrayStr(std::vector<const char*> vec);
 
 
 
