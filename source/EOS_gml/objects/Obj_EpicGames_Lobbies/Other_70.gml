@@ -5,6 +5,9 @@ switch(async_load[?"type"])
 		LobbyId = async_load[?"LobbyId"]
 	break
 	
+	case "EpicGames_Lobby_JoinLobby":
+		LobbyId = async_load[?"LobbyId"]
+	break
 	
 	case "EpicGames_Lobby_AddNotifyJoinLobbyAccepted":
 	break
@@ -31,6 +34,9 @@ switch(async_load[?"type"])
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived":
+	
+		//continue here
+	
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived":
