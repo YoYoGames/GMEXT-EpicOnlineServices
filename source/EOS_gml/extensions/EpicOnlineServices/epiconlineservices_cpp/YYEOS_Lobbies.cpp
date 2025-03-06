@@ -1021,14 +1021,44 @@ func double EpicGames_LobbyDetails_CopyAttributeByKey(char* AttrKey)
 	return (double) result;
 }
 
-func double EpicGames_LobbyDetails_CopyInfo()
+func double SDKEpicGames_LobbyDetails_CopyInfo(char* buff_ret)
 {
-	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_CopyInfoOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYINFO_API_LATEST;
 
 	EOS_LobbyDetails_Info* OutLobbyDetailsInfo;
-	EOS_EResult result = EOS_LobbyDetails_CopyInfo(Handle,&Options,&OutLobbyDetailsInfo);
+	EOS_EResult result = EOS_LobbyDetails_CopyInfo(mHLobbyDetails,&Options,&OutLobbyDetailsInfo);
+
+	if (EOS_EResult::EOS_Success == result)
+	{
+		StructStream _struct = {};
+
+		_struct.addKeyValue("AvailableSlots", OutLobbyDetailsInfo->AvailableSlots);
+		_struct.addKeyValue("bAllowHostMigration", OutLobbyDetailsInfo->bAllowHostMigration);
+		_struct.addKeyValue("bAllowInvites", OutLobbyDetailsInfo->bAllowInvites);
+		_struct.addKeyValue("bAllowJoinById", OutLobbyDetailsInfo->bAllowJoinById);
+		_struct.addKeyValue("bPresenceEnabled", OutLobbyDetailsInfo->bPresenceEnabled);
+		_struct.addKeyValue("bRejoinAfterKickRequiresInvite", OutLobbyDetailsInfo->bRejoinAfterKickRequiresInvite);
+		_struct.addKeyValue("bRTCRoomEnabled", OutLobbyDetailsInfo->bRTCRoomEnabled);
+
+		if (OutLobbyDetailsInfo->BucketId != NULL)
+			_struct.addKeyValue("BucketId", (const char*)OutLobbyDetailsInfo->BucketId);
+		if (OutLobbyDetailsInfo->LobbyId != NULL)
+			_struct.addKeyValue("LobbyId", (const char*)OutLobbyDetailsInfo->LobbyId);
+		if (OutLobbyDetailsInfo->LobbyOwnerUserId != NULL)
+			_struct.addKeyValue("LobbyOwnerUserId", (const char*) productID_toString(OutLobbyDetailsInfo->LobbyOwnerUserId));
+		_struct.addKeyValue("MaxMembers", OutLobbyDetailsInfo->MaxMembers);
+		_struct.addKeyValue("PermissionLevel", (double) OutLobbyDetailsInfo->PermissionLevel);
+
+		_struct.writeTo(buff_ret);
+
+		EOS_LobbyDetails_Info_Release(OutLobbyDetailsInfo);
+	}
+	else
+	{
+		StructStream _struct = {};
+		_struct.writeTo(buff_ret);
+	}
 
 	return (double) result;
 }
@@ -1312,9 +1342,8 @@ func double EpicGames_LobbySearch_CopySearchResultByIndex(double Index)
 	EOS_LobbySearch_CopySearchResultByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYSEARCH_COPYSEARCHRESULTBYINDEX_API_LATEST;
 	Options.LobbyIndex = Index;
-	EOS_HLobbyDetails OutLobbyDetailsHandle = mHLobbyDetails;
 
-	EOS_EResult result = EOS_LobbySearch_CopySearchResultByIndex(Handle,&Options, &OutLobbyDetailsHandle);
+	EOS_EResult result = EOS_LobbySearch_CopySearchResultByIndex(Handle,&Options, &mHLobbyDetails);
 
 	return (double) result;
 }

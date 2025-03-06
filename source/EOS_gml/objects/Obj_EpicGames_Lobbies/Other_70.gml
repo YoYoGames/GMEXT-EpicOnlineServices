@@ -69,4 +69,18 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested":
 	break
+	
+	case "EpicGames_LobbySearch_Find":
+		
+		var count = EpicGames_LobbySearch_GetSearchResultCount()
+		show_debug_message(count)
+		for(var a = 0 ; a < count ; a++)
+		{
+			EpicGames_LobbySearch_CopySearchResultByIndex(a)
+			show_debug_message(EpicGames_LobbyDetails_CopyInfo())
+			EpicGames_LobbyDetails_Release()
+		}
+		EpicGames_LobbySearch_Release()
+		
+	break
 }
