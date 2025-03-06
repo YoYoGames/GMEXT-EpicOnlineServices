@@ -6,11 +6,6 @@ switch(async_load[?"type"])
 		if(async_load[?"status"] == EpicGames_Success)
 		{
 			instance_create_depth(0,0,0,Obj_EpicGames_Sessions_P2P,{owner: true})
-			
-			var buff = buffer_create(256,buffer_fixed,1)
-			buffer_write(buff,buffer_u8,1)
-			EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,id.UserID,Obj_EpicGames_Sessions_P2P.socketName)
-			buffer_delete(buff)
 		}
 		
 	break
@@ -53,6 +48,13 @@ switch(async_load[?"type"])
 		if(async_load[?"status"] == EpicGames_Success)
 		{
 			instance_create_depth(0,0,0,Obj_EpicGames_Sessions_P2P,{owner: false})
+			
+			show_debug_message("Here: " + EpicGames_ActiveSession_CopyInfo(Obj_EpicGames_Session.SessionName))
+			
+			//var buff = buffer_create(256,buffer_fixed,1)
+			//buffer_write(buff,buffer_u8,1)
+			//EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,id.UserID,Obj_EpicGames_Sessions_P2P.socketName)
+			//buffer_delete(buff)
 		}
 		
 	break

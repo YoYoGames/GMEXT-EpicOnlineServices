@@ -176,7 +176,10 @@ func double EpicGames_ActiveSession_GetRegisteredPlayerCount(char* SessionName)
 	HOptions.SessionName = SessionName;
 	EOS_HActiveSession HActiveSession;
 
-	EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
+	EOS_EResult result = EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
+
+	if (result != EOS_EResult::EOS_Success)
+		return 0;
 
 	EOS_ActiveSession_GetRegisteredPlayerCountOptions* Options = {0};
 	uint32_t count = EOS_ActiveSession_GetRegisteredPlayerCount(HActiveSession,Options);
@@ -563,7 +566,6 @@ func double SDKEpicGames_Sessions_AddNotifySessionInviteReceived(char* buff_ret)
 { 
 	EOS_Sessions_AddNotifySessionInviteReceivedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
-	std::cout << "CALLED: SDKEpicGames_Sessions_AddNotifySessionInviteReceived" << std::endl;
 	uint64 ret = EOS_Sessions_AddNotifySessionInviteReceived(HSessions, &Options, NULL/*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
 
 	DataStream data;

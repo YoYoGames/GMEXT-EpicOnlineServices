@@ -3,7 +3,6 @@ show_debug_message("Async: " + json_encode(async_load))
 
 switch(async_load[?"type"])
 {
-	
 	case "EpicGames_Auth_Logout":
 		
 		AccountID = ""

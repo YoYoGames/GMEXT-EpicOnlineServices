@@ -6,7 +6,7 @@ globalvar AuthToken;
 AccountID = ""
 userID = ""
 
-RefreshPeriod_AccountID = room_speed*60*10//Around of 10mins
+RefreshPeriod_AccountID = room_speed*60*10//Around 10mins
 
 Auth_NotifyLoginStatusChanged = noone 
 Connect_NotifyAuthExpiration = noone
