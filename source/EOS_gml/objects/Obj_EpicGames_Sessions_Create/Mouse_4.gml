@@ -91,3 +91,4 @@ EpicGames_Sessions_UpdateSession()
 //EpicGames_SessionModification_Release()
 
 show_debug_message(result)
+

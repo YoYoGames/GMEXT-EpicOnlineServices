@@ -84,6 +84,7 @@
     {"id":{"name":"Obj_EpicGames_Sessions_Friend","path":"objects/Obj_EpicGames_Sessions_Friend/Obj_EpicGames_Sessions_Friend.yy",},},
     {"id":{"name":"Obj_EpicGames_Sessions_Friends","path":"objects/Obj_EpicGames_Sessions_Friends/Obj_EpicGames_Sessions_Friends.yy",},},
     {"id":{"name":"Obj_EpicGames_Sessions_P2P","path":"objects/Obj_EpicGames_Sessions_P2P/Obj_EpicGames_Sessions_P2P.yy",},},
+    {"id":{"name":"Obj_EpicGames_Sessions_Search","path":"objects/Obj_EpicGames_Sessions_Search/Obj_EpicGames_Sessions_Search.yy",},},
     {"id":{"name":"Obj_EpicGames_Sessions_Start","path":"objects/Obj_EpicGames_Sessions_Start/Obj_EpicGames_Sessions_Start.yy",},},
     {"id":{"name":"Obj_EpicGames_Stat","path":"objects/Obj_EpicGames_Stat/Obj_EpicGames_Stat.yy",},},
     {"id":{"name":"Obj_EpicGames_Stats_Controller","path":"objects/Obj_EpicGames_Stats_Controller/Obj_EpicGames_Stats_Controller.yy",},},
