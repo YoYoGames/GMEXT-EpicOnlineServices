@@ -1103,10 +1103,12 @@ func double EpicGames_LobbyDetails_GetMemberAttributeCount(char* TargetUserId)
 	return EOS_LobbyDetails_GetMemberAttributeCount(Handle,&Options);
 }
 
-func char* EpicGames_LobbyDetails_GetMemberByIndex()
+func char* EpicGames_LobbyDetails_GetMemberByIndex(double index)
 {
 	EOS_HLobbyDetails Handle = mHLobbyDetails;
 	EOS_LobbyDetails_GetMemberByIndexOptions Options = {0};
+	Options.ApiVersion = EOS_LOBBYDETAILS_GETMEMBERBYINDEX_API_LATEST;
+	Options.MemberIndex = index;
 
 	EOS_ProductUserId p = EOS_LobbyDetails_GetMemberByIndex(Handle,&Options);
 	return productID_toString(p);
