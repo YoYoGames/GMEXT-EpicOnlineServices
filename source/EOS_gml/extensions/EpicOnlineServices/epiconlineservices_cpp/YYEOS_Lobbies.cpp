@@ -630,14 +630,16 @@ func double SDKEpicGames_Lobby_JoinLobby(char* buff_args)
 	Options.bPresenceEnabled = YYGetBool(args[1]);
 	Options.LobbyDetailsHandle = mHLobbyDetails;
 	
-	EOS_Lobby_LocalRTCOptions LocalRTCOptions = {0};
-	LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
-	LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[2]);
-	LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[3]);
-	LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[4]);
-	LocalRTCOptions.Flags = YYGetUint32(args[5]);
-	
-	Options.LocalRTCOptions = &LocalRTCOptions;
+	//EOS_Lobby_LocalRTCOptions LocalRTCOptions = {0};
+	//LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
+	//LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[2]);
+	//LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[3]);
+	//LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[4]);
+	//LocalRTCOptions.Flags = YYGetUint32(args[5]);
+	//
+	//Options.LocalRTCOptions = &LocalRTCOptions;
+	Options.LocalRTCOptions = NULL;
+
 	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[6]));
 	
 	callback* mcallback = getCallbackData();
