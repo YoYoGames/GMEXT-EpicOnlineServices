@@ -7,14 +7,13 @@ switch(async_load[?"type"])
 	
 	
 	case "EpicGames_Lobby_AddNotifyJoinLobbyAccepted":
-	
-		EpicGames_Lobby_JoinLobby(true,true,true,false,false,0,userID)
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLeaveLobbyRequested":
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyInviteAccepted":
+		EpicGames_Lobby_JoinLobby(true,true,true,false,false,0,userID)
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyInviteReceived":
