@@ -71,4 +71,19 @@ case "EpicGames_Sessions_JoinSession":
 		}
 		
 	break
+	
+	
+	case "EpicGames_SessionSearch_Find":
+		
+		var count = EpicGames_SessionSearch_GetSearchResultCount()
+		show_debug_message(count)
+		for(var a = 0 ; a < count ; a++)
+		{
+			EpicGames_SessionSearch_CopySearchResultByIndex(a)
+			show_debug_message(EpicGames_SessionDetails_CopyInfo())
+			EpicGames_SessionDetails_Release()
+		}
+		EpicGames_SessionSearch_Release()
+		
+	break
 }

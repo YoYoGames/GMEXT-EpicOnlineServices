@@ -1162,11 +1162,3 @@ func double EpicGames_SessionSearch_SetTargetUserId(char* TargetUserId)
 
 	return (double)EOS_SessionSearch_SetTargetUserId(mOutSessionSearchHandle, &Options);
 }
-
-
-func double EpicGames_Double_String_Test(double _double, char* _string)
-{
-	std::cout << _double << _string << std::endl;
-
-	return _double;
-}
