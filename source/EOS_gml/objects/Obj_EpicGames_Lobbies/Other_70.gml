@@ -13,7 +13,14 @@ switch(async_load[?"type"])
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyInviteAccepted":
-		EpicGames_Lobby_JoinLobby(true,true,true,false,false,0,userID)
+	
+		if(EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(async_load[?"InviteId"]) == EpicGames_Success)
+		{
+			EpicGames_Lobby_JoinLobby(true,true,true,false,false,0,userID)
+			
+			EpicGames_LobbyDetails_Release()
+		}
+		
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyInviteReceived":
