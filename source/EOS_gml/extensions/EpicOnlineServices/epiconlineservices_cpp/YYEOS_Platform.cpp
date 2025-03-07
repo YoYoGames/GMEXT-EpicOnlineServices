@@ -183,6 +183,8 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			EpicGames_P2P_Init();
 			tracef("EpicGames_Lobby_Init:: Starting module...");
 			EpicGames_Lobby_Init();
+			tracef("EpicGames_RTC_Init:: Starting module...");
+			EpicGames_RTC_Init();
 			tracef("Initialization finished!");
 			
 			EOS_isInitialised = true;
