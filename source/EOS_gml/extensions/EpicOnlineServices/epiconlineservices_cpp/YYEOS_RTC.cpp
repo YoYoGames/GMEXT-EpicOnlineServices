@@ -240,7 +240,7 @@ func double SDKEpicGames_RTC_JoinRoom(char* buff_args)
 { 
 	auto args = buffer_unpack((uint8_t*)buff_args);
 	bool bManualAudioInputEnabled = YYGetBool(args[0]);
-	bool bManualAudioOutputEnabled = YYGetUint32(args[1]);
+	bool bManualAudioOutputEnabled = YYGetBool(args[1]);
 	char* ClientBaseUrl = (char*)YYGetString(args[2]);
 	uint32_t Flags = YYGetUint32(args[3]);
 	char* LocalUserId = (char*)YYGetString(args[4]);
