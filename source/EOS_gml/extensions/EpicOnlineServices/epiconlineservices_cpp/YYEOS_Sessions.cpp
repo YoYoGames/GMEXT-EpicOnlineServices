@@ -969,7 +969,7 @@ func double EpicGames_Sessions_SendInvite(char* LocalUserId, char* SessionName, 
 	callback* mcallback = getCallbackData();
 	EOS_Sessions_SendInvite(HSessions,&Options, mcallback, Sessions_OnSendInviteCallback);
 
-	return 0.0; 
+	return (double)mcallback->identifier;
 }
 
 
