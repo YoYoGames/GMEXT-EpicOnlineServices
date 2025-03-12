@@ -95,7 +95,7 @@ std::string VectorOfStr2ArrayStr(std::vector<const char*> vec);
 
 
 #ifdef OS_Windows
-#define yyfunc extern "C" __declspec(dllexport)
+#define func extern "C" __declspec(dllexport)
 #else
-#define yyfunc extern "C"
+#define func extern "C"
 #endif // DEBUG
