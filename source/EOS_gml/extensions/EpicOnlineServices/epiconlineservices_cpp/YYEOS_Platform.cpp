@@ -21,6 +21,7 @@
 
 #ifdef OS_Windows
 #include <direct.h>
+#include "Windows/eos_Windows.h"
 #endif
 
 #if defined(OS_Linux) || defined(OS_MacOs)
@@ -139,6 +140,7 @@ void OldPreGraphicsInitialisation()
 		std::string str = exePath.string();
 		PlatformOptions.CacheDirectory = str.c_str();
 #endif
+		
 
 		tracef("Current working dir: %s", PlatformOptions.CacheDirectory);
 
@@ -153,9 +155,19 @@ void OldPreGraphicsInitialisation()
 
 		EOS_Platform_RTCOptions RtcOptions = {0};
 		RtcOptions.ApiVersion = EOS_PLATFORM_RTCOPTIONS_API_LATEST;
+        RtcOptions.BackgroundMode = EOS_ERTCBackgroundMode::EOS_RTCBM_LeaveRooms;
 
-		// PlatformOptions.RTCOptions = &RtcOptions;
-		PlatformOptions.Reserved = NULL;
+		std::string XAudio29DllPath = cwd;
+		std::cout << XAudio29DllPath << std::endl;
+		XAudio29DllPath.append("/xaudio2_9redist.dll");
+
+		EOS_Windows_RTCOptions WindowsRtcOptions = { 0 };
+		WindowsRtcOptions.ApiVersion = EOS_WINDOWS_RTCOPTIONS_API_LATEST;
+		WindowsRtcOptions.XAudio29DllPath = XAudio29DllPath.c_str();
+		RtcOptions.PlatformSpecificOptions = &WindowsRtcOptions;
+
+		PlatformOptions.RTCOptions = &RtcOptions;
+        PlatformOptions.Reserved = NULL;
 
 		PlatformHandle = EOS_Platform_Create(&PlatformOptions);
 
