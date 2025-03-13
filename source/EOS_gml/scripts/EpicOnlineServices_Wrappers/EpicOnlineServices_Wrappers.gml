@@ -1,4 +1,4 @@
-//SDKEpicGames_ActiveSession_CopyInfo(SessionName, buff_ret)
+//SDKEpicGames_ActiveSession_CopyInfo(SessionName)
 function EpicGames_ActiveSession_CopyInfo(SessionName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
@@ -22,7 +22,7 @@ function EpicGames_SessionDetails_CopyInfo()
 	return _return_value;
 }
 
-//SDKEpicGames_SessionDetails_CopySessionAttributeByIndex(AttrIndex, buff_ret)
+//SDKEpicGames_SessionDetails_CopySessionAttributeByIndex(AttrIndex)
 function EpicGames_SessionDetails_CopySessionAttributeByIndex(AttrIndex)
 {
 	var _return_buffer_address = ext_return_buffer_address();
@@ -610,8 +610,8 @@ function EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(UiEventId)
 }
 
 //SDKEpicGames_Lobby_CreateLobby
-function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled)
-{		
+function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled,bEnableRTCRoom,Flags,bUseManualAudioInput,bUseManualAudioOutput,bLocalAudioDeviceInputStartsMuted)
+{
 	var _args = [
 		[LocalUserId,buffer_string],
 		[AllowedPlatformIds, buffer_u32],//0,Array
@@ -623,6 +623,11 @@ function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,Buck
 		[bDisableHostMigration,buffer_bool],
 		[bEnableJoinById,buffer_bool],
 		[bPresenceEnabled,buffer_bool],
+		[bEnableRTCRoom,buffer_bool],
+		[Flags,buffer_u32],
+		[bUseManualAudioInput,buffer_bool],
+		[bUseManualAudioOutput,buffer_bool],
+		[bLocalAudioDeviceInputStartsMuted,buffer_bool],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -631,34 +636,38 @@ function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,Buck
 }
 
 //SDKEpicGames_Lobby_JoinLobby
-function EpicGames_Lobby_JoinLobby(bCrossplayOptOut,bPresenceEnabled,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags,LocalUserId)
+function EpicGames_Lobby_JoinLobby(LocalUserId,bCrossplayOptOut,bPresenceEnabled,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
 {
 	var _args = [
+			[LocalUserId,buffer_string],
 			[bCrossplayOptOut,buffer_bool],
 			[bPresenceEnabled,buffer_bool],
+			[bEnableRTCRoom,buffer_bool],
 			[bLocalAudioDeviceInputStartsMuted,buffer_bool],
 			[bUseManualAudioInput,buffer_bool],
 			[bUseManualAudioOutput,buffer_bool],
 			[Flags,buffer_u32],
-			[LocalUserId,buffer_string]
 		]
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
 	return SDKEpicGames_Lobby_JoinLobby(_args_buffer_address)
 }
+
 //SDKEpicGames_Lobby_JoinLobbyById
-function EpicGames_Lobby_JoinLobbyById(bCrossplayOptOut,bPresenceEnabled,LobbyId,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags,LocalUserId)
+function EpicGames_Lobby_JoinLobbyById(LocalUserId,bCrossplayOptOut,bPresenceEnabled,LobbyId,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
 {
 	var _args = [
+			[LocalUserId,buffer_string],
 			[bCrossplayOptOut,buffer_bool],
 			[bPresenceEnabled,buffer_bool],
-			[LobbyId,buffer_string]
+			[LobbyId,buffer_string],
+			[bEnableRTCRoom,buffer_bool],
 			[bLocalAudioDeviceInputStartsMuted,buffer_bool],
 			[bUseManualAudioInput,buffer_bool],
 			[bUseManualAudioOutput,buffer_bool],
 			[Flags,buffer_u32],
-			[LocalUserId,buffer_string]
+			
 		]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -840,7 +849,7 @@ function EpicGames_LobbySearch_SetParameter(ComparisonOp,Attribute)
 
 
 //SDKEpicGames_RTC_AddNotifyDisconnected
-function EpicGames_RTC_AddNotifyDisconnected(RoomName, LocalUserId, buff_ret)
+function EpicGames_RTC_AddNotifyDisconnected(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -852,7 +861,7 @@ function EpicGames_RTC_AddNotifyDisconnected(RoomName, LocalUserId, buff_ret)
 }
 
 //SDKEpicGames_RTC_AddNotifyParticipantStatusChanged
-function EpicGames_RTC_AddNotifyParticipantStatusChanged(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTC_AddNotifyParticipantStatusChanged(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -864,7 +873,7 @@ function EpicGames_RTC_AddNotifyParticipantStatusChanged(LocalUserId, RoomName, 
 }
 
 //SDKEpicGames_RTC_AddNotifyRoomStatisticsUpdated
-function EpicGames_RTC_AddNotifyRoomStatisticsUpdated(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTC_AddNotifyRoomStatisticsUpdated(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -931,19 +940,22 @@ function EpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(notificationId)
 }
 
 //SDKEpicGames_RTCAdmin_QueryJoinRoomToken
-function EpicGames_RTCAdmin_QueryJoinRoomToken(notificationId) 
+function EpicGames_RTCAdmin_QueryJoinRoomToken(LocalUserId,RoomName,array_ids,array_ips)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[LocalUserId,buffer_string],
+		[RoomName,buffer_string],
+		[array_ids,buffer_string],//array
+		[array_ips,buffer_string]//array
 	]
-		
+	
 	var _args_buffer_address = ext_pack_args(_args);
 	
 	return SDKEpicGames_RTCAdmin_QueryJoinRoomToken(_args_buffer_address)
 }
 
 //SDKEpicGames_RTCAudio_AddNotifyAudioBeforeRender
-function EpicGames_RTCAudio_AddNotifyAudioBeforeRender(LocalUserId,RoomName, bUnmixedAudio, buff_ret)
+function EpicGames_RTCAudio_AddNotifyAudioBeforeRender(LocalUserId,RoomName, bUnmixedAudio)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -955,7 +967,7 @@ function EpicGames_RTCAudio_AddNotifyAudioBeforeRender(LocalUserId,RoomName, bUn
 }
 
 //SDKEpicGames_RTCAudio_AddNotifyAudioBeforeSend
-function EpicGames_RTCAudio_AddNotifyAudioBeforeSend(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTCAudio_AddNotifyAudioBeforeSend(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -967,7 +979,7 @@ function EpicGames_RTCAudio_AddNotifyAudioBeforeSend(LocalUserId, RoomName, buff
 }
 
 //SDKEpicGames_RTCAudio_AddNotifyAudioDevicesChanged
-function EpicGames_RTCAudio_AddNotifyAudioDevicesChanged(buff_ret)
+function EpicGames_RTCAudio_AddNotifyAudioDevicesChanged()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -979,7 +991,7 @@ function EpicGames_RTCAudio_AddNotifyAudioDevicesChanged(buff_ret)
 }
 
 //SDKEpicGames_RTCAudio_AddNotifyAudioInputState
-function EpicGames_RTCAudio_AddNotifyAudioInputState(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTCAudio_AddNotifyAudioInputState(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -991,7 +1003,7 @@ function EpicGames_RTCAudio_AddNotifyAudioInputState(LocalUserId, RoomName, buff
 }
 
 //SDKEpicGames_RTCAudio_AddNotifyAudioOutputState
-function EpicGames_RTCAudio_AddNotifyAudioOutputState(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTCAudio_AddNotifyAudioOutputState(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -1003,7 +1015,7 @@ function EpicGames_RTCAudio_AddNotifyAudioOutputState(LocalUserId, RoomName, buf
 }
 
 //SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated
-function SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTCAudio_AddNotifyParticipantUpdated(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -1087,7 +1099,7 @@ function EpicGames_RTCAudio_RemoveNotifyParticipantUpdated(notificationId)
 }
 
 //SDKEpicGames_RTCData_AddNotifyDataReceived
-function EpicGames_RTCData_AddNotifyDataReceived(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTCData_AddNotifyDataReceived(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -1099,7 +1111,7 @@ function EpicGames_RTCData_AddNotifyDataReceived(LocalUserId, RoomName, buff_ret
 }
 
 //SDKEpicGames_RTCData_AddNotifyParticipantUpdated
-function EpicGames_RTCData_AddNotifyParticipantUpdated(LocalUserId, RoomName, buff_ret)
+function EpicGames_RTCData_AddNotifyParticipantUpdated(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	

@@ -436,20 +436,21 @@ func double SDKEpicGames_Lobby_CreateLobby(char* buff_args)
 	Options.bEnableJoinById = YYGetBool(args[8]);
 	Options.bPresenceEnabled = YYGetBool(args[9]);
 
-	//TODO:
-	//Options.bEnableRTCRoom = false;
-	//Options.LocalRTCOptions = nullptr;
+	Options.bEnableRTCRoom = YYGetBool(args[10]);
 
-	Options.bEnableRTCRoom = true;
+	if (Options.bEnableRTCRoom)
+	{
+		EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
+		LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
+		LocalRTCOptions.Flags = YYGetUint32(args[11]);// EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
+		LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[12]);// false;
+		LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[13]);// false;
+		LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[14]);// false;
 
-	EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
-	LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
-	LocalRTCOptions.Flags = EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
-	LocalRTCOptions.bUseManualAudioInput = false;
-	LocalRTCOptions.bUseManualAudioOutput = false;
-	LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = false;
-
-	Options.LocalRTCOptions = &LocalRTCOptions;
+		Options.LocalRTCOptions = &LocalRTCOptions;
+	}
+	else
+		Options.LocalRTCOptions = NULL;
 
 	callback* mcallback = getCallbackData();
 	EOS_Lobby_CreateLobby(HLobby,&Options, mcallback,Lobby_CreateLobbyCallback);
@@ -613,23 +614,26 @@ func double SDKEpicGames_Lobby_JoinLobby(char* buff_args)
 
 	EOS_Lobby_JoinLobbyOptions Options;
 	Options.ApiVersion = EOS_LOBBY_JOINLOBBY_API_LATEST;
-	Options.bCrossplayOptOut = YYGetBool(args[0]);
-	Options.bPresenceEnabled = YYGetBool(args[1]);
+	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[0]));
+	Options.bCrossplayOptOut = YYGetBool(args[1]);
+	Options.bPresenceEnabled = YYGetBool(args[2]);
 	Options.LobbyDetailsHandle = mHLobbyDetails;
 	
-	EOS_Lobby_LocalRTCOptions LocalRTCOptions = {0};
-	LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
-	LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = false;
-	LocalRTCOptions.bUseManualAudioInput = false;
-	LocalRTCOptions.bUseManualAudioOutput = false;
-	LocalRTCOptions.Flags = EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
-	
-	Options.LocalRTCOptions = &LocalRTCOptions;
+	bool bEnableRTCRoom = YYGetBool(args[3]);
 
-	//TODO
-	//Options.LocalRTCOptions = NULL;
+	if (bEnableRTCRoom)
+	{
+		EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
+		LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
+		LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[4]);
+		LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[5]);
+		LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[6]);
+		LocalRTCOptions.Flags = YYGetUint32(args[7]);//EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL
 
-	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[6]));
+		Options.LocalRTCOptions = &LocalRTCOptions;
+	}
+	else
+		Options.LocalRTCOptions = NULL;
 	
 	callback* mcallback = getCallbackData();
 	EOS_Lobby_JoinLobby(HLobby,&Options,mcallback, Lobby_JoinLobbyCallback);
@@ -656,20 +660,26 @@ func double SDKEpicGames_Lobby_JoinLobbyById(char* buff_args)
 	
 	EOS_Lobby_JoinLobbyByIdOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBY_JOINLOBBYBYID_API_LATEST;
-	Options.bCrossplayOptOut = YYGetBool(args[0]);
-	Options.bPresenceEnabled = YYGetBool(args[1]);
-	Options.LobbyId = YYGetString(args[2]);
+	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[0]));
+	Options.bCrossplayOptOut = YYGetBool(args[1]);
+	Options.bPresenceEnabled = YYGetBool(args[2]);
+	Options.LobbyId = YYGetString(args[3]);
 	
-	EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
-	LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
-	LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[3]);
-	LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[4]);
-	LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[5]);
-	LocalRTCOptions.Flags = YYGetUint32(args[6]);
+	bool bEnableRTCRoom = YYGetBool(args[4]);
 
-	Options.LocalRTCOptions = &LocalRTCOptions;
+	if (bEnableRTCRoom)
+	{
+		EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
+		LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
+		LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[5]);
+		LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[6]);
+		LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[7]);
+		LocalRTCOptions.Flags = YYGetUint32(args[8]);//EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL
 
-	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[7]));
+		Options.LocalRTCOptions = &LocalRTCOptions;
+	}
+	else
+		Options.LocalRTCOptions = NULL;
 
 	callback* mcallback = getCallbackData();
 

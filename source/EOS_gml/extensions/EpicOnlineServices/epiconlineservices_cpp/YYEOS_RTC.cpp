@@ -404,16 +404,27 @@ void EOS_CALL RTCAdmin_QueryJoinRoomToken(const EOS_RTCAdmin_QueryJoinRoomTokenC
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_RTCAdmin_QueryJoinRoomToken() 
+func double SDKEpicGames_RTCAdmin_QueryJoinRoomToken(char* buff_args)
 { 
-	//TODO
+	auto args = buffer_unpack((uint8_t*)buff_args);
+	const char* LocalUserId = YYGetString(args[0]);
+	const char* RoomName = YYGetString(args[1]);
+	auto array_ids = YYGetArray(args[2]);
+	std::vector<EOS_ProductUserId> p_ids = VectorProductIdsFromVector(array_ids);
+	auto array_ips = YYGetArray(args[3]);
+	std::vector<const char*> p_ips = VectorStringFromVector(array_ips);
+	
+
 	EOS_RTCAdmin_QueryJoinRoomTokenOptions Options = { 0 };
-	Options.ApiVersion;
-	Options.LocalUserId;
-	Options.RoomName;
-	Options.TargetUserIds;
-	Options.TargetUserIdsCount;
-	Options.TargetUserIpAddresses;
+	Options.ApiVersion = EOS_RTCADMIN_QUERYJOINROOMTOKEN_API_LATEST;
+	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.RoomName = RoomName;
+	Options.TargetUserIds = p_ids.data();
+	Options.TargetUserIdsCount = p_ids.size();
+	if (p_ips.size() == 0)
+		Options.TargetUserIpAddresses = NULL;
+	else
+		Options.TargetUserIpAddresses = p_ips.data();
 
 	callback* mcallback = getCallbackData();
 	EOS_RTCAdmin_QueryJoinRoomToken(HRTCAdmin,&Options,mcallback, RTCAdmin_QueryJoinRoomToken);
