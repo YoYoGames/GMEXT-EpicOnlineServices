@@ -877,7 +877,7 @@ function EpicGames_RTC_AddNotifyRoomStatisticsUpdated(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	EpicGames_RTC_AddNotifyRoomStatisticsUpdated(RoomName, LocalUserId,_return_buffer_address)
+	SDKEpicGames_RTC_AddNotifyRoomStatisticsUpdated(RoomName, LocalUserId,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
