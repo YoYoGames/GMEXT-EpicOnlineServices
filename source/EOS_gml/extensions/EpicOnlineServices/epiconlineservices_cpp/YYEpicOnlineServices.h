@@ -32,7 +32,7 @@ std::wstring stringToWstring(const std::string& t_str);
 extern void return_EOS_EResult(RValue* Result, EOS_EResult EpicResult);
 
 std::vector<uint32_t> VectorUInt32FromVector(std::vector<const uint8_t*> array_ids);
-std::vector<std::string> VectorStringFromVector(std::vector<const uint8_t*> array_ids);
+std::vector<const char*> VectorStringFromVector(std::vector<const uint8_t*> array_ids);
 std::vector<EOS_ProductUserId> VectorProductIdsFromVector(std::vector<const uint8_t*> array_ids);
 
 //extern void EpicGames_Platform_Init();

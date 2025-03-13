@@ -40,8 +40,7 @@ switch(async_load[?"type"])
 	
 		if(EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(async_load[?"InviteId"]) == EpicGames_Success)
 		{
-			EpicGames_Lobby_JoinLobby(true,true,true,false,false,0,userID)
-			
+			EpicGames_Lobby_JoinLobby(userID,true,true,true,false,false,false,0)
 			EpicGames_LobbyDetails_Release()
 		}
 		

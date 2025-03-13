@@ -94,11 +94,11 @@
 		return ids;
 	}
 
-	std::vector<std::string> VectorStringFromVector(std::vector<const uint8_t*> array_ids)
+	std::vector<const char*> VectorStringFromVector(std::vector<const uint8_t*> array_ids)
 	{
 		EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
 
-		std::vector<std::string> ids = {};
+		std::vector<const char*> ids = {};
 		for (int a = 0; a < array_ids.size(); a++)
 		{
 			ids.push_back(YYGetString(array_ids[a]));
@@ -119,7 +119,6 @@
 
 		return ids;
 	}
-
 
 	//////////////////////// NO INTERFACE FUNCTIONS:
 
