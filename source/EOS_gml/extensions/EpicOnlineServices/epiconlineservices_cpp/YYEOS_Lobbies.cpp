@@ -427,25 +427,25 @@ func double SDKEpicGames_Lobby_CreateLobby(char* buff_args)
 	//Options.AllowedPlatformIds = ids.data();
 	//Options.AllowedPlatformIdsCount = ids.size();
 	Options.LobbyId = strcmp(YYGetString(args[2]), "") == 0 ? nullptr : YYGetString(args[2]);
-	Options.PermissionLevel = EOS_ELobbyPermissionLevel::EOS_LPL_INVITEONLY;
 	Options.BucketId = YYGetString(args[3]);
 	Options.MaxLobbyMembers = YYGetReal(args[4]);
-	Options.bAllowInvites = YYGetBool(args[5]);
-	Options.bCrossplayOptOut = YYGetBool(args[6]);
-	Options.bDisableHostMigration = YYGetBool(args[7]);
-	Options.bEnableJoinById = YYGetBool(args[8]);
-	Options.bPresenceEnabled = YYGetBool(args[9]);
+	Options.PermissionLevel = (EOS_ELobbyPermissionLevel)YYGetUint8(args[5]);//EOS_ELobbyPermissionLevel::EOS_LPL_INVITEONLY;
+	Options.bAllowInvites = YYGetBool(args[6]);
+	Options.bCrossplayOptOut = YYGetBool(args[7]);
+	Options.bDisableHostMigration = YYGetBool(args[8]);
+	Options.bEnableJoinById = YYGetBool(args[9]);
+	Options.bPresenceEnabled = YYGetBool(args[10]);
 
-	Options.bEnableRTCRoom = YYGetBool(args[10]);
+	Options.bEnableRTCRoom = YYGetBool(args[11]);
 
 	if (Options.bEnableRTCRoom)
 	{
 		EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
 		LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
-		LocalRTCOptions.Flags = YYGetUint32(args[11]);// EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
-		LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[12]);// false;
-		LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[13]);// false;
-		LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[14]);// false;
+		LocalRTCOptions.Flags = YYGetUint32(args[12]);// EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
+		LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[13]);// false;
+		LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[14]);// false;
+		LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[15]);// false;
 
 		Options.LocalRTCOptions = &LocalRTCOptions;
 	}
