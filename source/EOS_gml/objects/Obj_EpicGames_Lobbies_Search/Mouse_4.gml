@@ -2,7 +2,7 @@
 var result = EpicGames_Lobby_CreateLobbySearch(10)
 show_debug_message($"CreateLobbySearch {EpicGames_Result_ToString(result)}")
 
-var BucketId = "ABC"
+var BucketId = "ABCD"
 	///** Value must equal the one stored on the lobby/session */
 	//EOS_CO_EQUAL = 0,
 	///** Value must not equal the one stored on the lobby/session */

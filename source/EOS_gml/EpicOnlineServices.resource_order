@@ -64,6 +64,7 @@
     {"name":"Obj_EpicGames_TitleStorage_File_Cancel","order":3,"path":"objects/Obj_EpicGames_TitleStorage_File_Cancel/Obj_EpicGames_TitleStorage_File_Cancel.yy",},
     {"name":"Obj_EpicGames_TitleStorage_File","order":2,"path":"objects/Obj_EpicGames_TitleStorage_File/Obj_EpicGames_TitleStorage_File.yy",},
     {"name":"Obj_EpicGames_UI_Show","order":5,"path":"objects/Obj_EpicGames_UI_Show/Obj_EpicGames_UI_Show.yy",},
+    {"name":"Obj_RTC_Join","order":1,"path":"objects/Obj_RTC_Join/Obj_RTC_Join.yy",},
     {"name":"Obj_YoYo_text","order":1,"path":"objects/Obj_YoYo_text/Obj_YoYo_text.yy",},
     {"name":"Obj_YoYo_textbox","order":2,"path":"objects/Obj_YoYo_textbox/Obj_YoYo_textbox.yy",},
     {"name":"Room_EpicGames_Achievements","order":6,"path":"rooms/Room_EpicGames_Achievements/Room_EpicGames_Achievements.yy",},

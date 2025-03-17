@@ -142,11 +142,7 @@ void OldPreGraphicsInitialisation()
 #endif
 		
 
-		tracef("Current working dir: %s", PlatformOptions.CacheDirectory);
 
-		PlatformOptions.ProductId = ProductId.c_str();
-		PlatformOptions.SandboxId = SandboxId.c_str();
-		PlatformOptions.DeploymentId = DeploymentId.c_str();
 
 		// This should be set to nullptr if unused
 		PlatformOptions.EncryptionKey = EncryptionKey.length() == 0 ? nullptr : EncryptionKey.c_str();
@@ -157,6 +153,7 @@ void OldPreGraphicsInitialisation()
 		RtcOptions.ApiVersion = EOS_PLATFORM_RTCOPTIONS_API_LATEST;
         RtcOptions.BackgroundMode = EOS_ERTCBackgroundMode::EOS_RTCBM_LeaveRooms;
 
+#ifdef OS_Windows
 		std::string XAudio29DllPath = cwd;
 		std::cout << XAudio29DllPath << std::endl;
 		XAudio29DllPath.append("/xaudio2_9redist.dll");
@@ -165,6 +162,7 @@ void OldPreGraphicsInitialisation()
 		WindowsRtcOptions.ApiVersion = EOS_WINDOWS_RTCOPTIONS_API_LATEST;
 		WindowsRtcOptions.XAudio29DllPath = XAudio29DllPath.c_str();
 		RtcOptions.PlatformSpecificOptions = &WindowsRtcOptions;
+#endif
 
 		PlatformOptions.RTCOptions = &RtcOptions;
         PlatformOptions.Reserved = NULL;

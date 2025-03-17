@@ -888,14 +888,14 @@ function EpicGames_RTC_AddNotifyRoomStatisticsUpdated(LocalUserId, RoomName)
 function EpicGames_RTC_JoinRoom(bManualAudioInputEnabled,bManualAudioOutputEnabled,ClientBaseUrl,Flags,LocalUserId,ParticipantId,ParticipantToken,RoomName)
 {
 	var _args = [
+		[LocalUserId,buffer_string],
+		[RoomName,buffer_string],
+		[ParticipantId,buffer_string],
+		[ParticipantToken,buffer_string],
 		[bManualAudioInputEnabled,buffer_bool],
 		[bManualAudioOutputEnabled,buffer_bool],
 		[ClientBaseUrl,buffer_string],
 		[Flags,buffer_u32],
-		[LocalUserId,buffer_string],
-		[ParticipantId,buffer_string],
-		[ParticipantToken,buffer_string],
-		[RoomName,buffer_string],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
