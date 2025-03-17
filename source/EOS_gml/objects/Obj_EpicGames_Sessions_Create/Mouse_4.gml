@@ -1,7 +1,7 @@
 
-//#define EOS_OPT_Unknown 0
-//#define EOS_OPT_Epic 100
-//#define EOS_OPT_Steam 4000
+//#macro EOS_OPT_Unknown 0
+//#macro EOS_OPT_Epic 100
+//#macro EOS_OPT_Steam 4000
 
 
 var AllowedPlatformIds = [/*100,0,4000*/]
@@ -12,9 +12,9 @@ var LocalUserId = userID
 var MaxPlayers = 3
 
 ///** Minimum number of characters allowed in the session id override */
-//#define EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH 16
+//#macro EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH 16
 ///** Maximum number of characters allowed in the session id override */
-//#define EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH 64
+//#macro EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH 64
 SessionId = eos_create_code(17)
 
 //var count = EpicGames_ActiveSession_GetRegisteredPlayerCount("SessionName")
@@ -67,22 +67,22 @@ show_debug_message("EpicGames_SessionModification_SetInvitesAllowed" + EpicGames
 //	EOS_SAAT_Advertise = 1
 //);
 
-//#define EOS_SESSIONS_SEARCH_BUCKET_ID "bucket"
+//#macro EOS_SESSIONS_SEARCH_BUCKET_ID "bucket"
 var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"bucket",ValueType:3,Value: BucketId})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
 ///** Search for empty servers only (value is true/false) */
-//#define EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY "emptyonly"
+//#macro EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY "emptyonly"
 var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"emptyonly",ValueType:0,Value: false})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
 ///** Search for non empty servers only (value is true/false) */
-//#define EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY "nonemptyonly"
+//#macro EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY "nonemptyonly"
 var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"nonemptyonly",ValueType:0,Value: false})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
 ///** Search for a match with min free space (value is int) */
-//#define EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE "minslotsavailable"
+//#macro EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE "minslotsavailable"
 var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"minslotsavailable",ValueType:1,Value: 2})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
