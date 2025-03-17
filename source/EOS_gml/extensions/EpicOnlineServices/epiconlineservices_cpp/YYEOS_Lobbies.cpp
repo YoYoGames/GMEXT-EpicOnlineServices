@@ -442,7 +442,7 @@ func double SDKEpicGames_Lobby_CreateLobby(char* buff_args)
 	{
 		EOS_Lobby_LocalRTCOptions LocalRTCOptions = { 0 };
 		LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
-		LocalRTCOptions.Flags = YYGetUint32(args[12]);// EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
+		LocalRTCOptions.Flags = YYGetUint32(args[12]);//EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
 		LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[13]);// false;
 		LocalRTCOptions.bUseManualAudioOutput = YYGetBool(args[14]);// false;
 		LocalRTCOptions.bLocalAudioDeviceInputStartsMuted = YYGetBool(args[15]);// false;
