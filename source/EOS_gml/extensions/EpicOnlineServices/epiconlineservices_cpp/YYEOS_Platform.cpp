@@ -129,14 +129,16 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			RtcOptions.ApiVersion = EOS_PLATFORM_RTCOPTIONS_API_LATEST;
 			RtcOptions.BackgroundMode = EOS_ERTCBackgroundMode::EOS_RTCBM_LeaveRooms;
 
+
+#ifdef OS_Windows
 			std::string XAudio29DllPath = cwd;
 			std::cout << XAudio29DllPath << std::endl;
 			XAudio29DllPath.append("/xaudio2_9redist.dll");
-
 			EOS_Windows_RTCOptions WindowsRtcOptions = { 0 };
 			WindowsRtcOptions.ApiVersion = EOS_WINDOWS_RTCOPTIONS_API_LATEST;
 			WindowsRtcOptions.XAudio29DllPath = XAudio29DllPath.c_str();
 			RtcOptions.PlatformSpecificOptions = &WindowsRtcOptions;
+#endif
 
 			PlatformOptions.RTCOptions = &RtcOptions;
 			PlatformOptions.Reserved = NULL;

@@ -94,6 +94,7 @@
     {"id":{"name":"Obj_EpicGames_TitleStorage_File_Cancel","path":"objects/Obj_EpicGames_TitleStorage_File_Cancel/Obj_EpicGames_TitleStorage_File_Cancel.yy",},},
     {"id":{"name":"Obj_EpicGames_TitleStorage_File","path":"objects/Obj_EpicGames_TitleStorage_File/Obj_EpicGames_TitleStorage_File.yy",},},
     {"id":{"name":"Obj_EpicGames_UI_Show","path":"objects/Obj_EpicGames_UI_Show/Obj_EpicGames_UI_Show.yy",},},
+    {"id":{"name":"Obj_RTC_Join","path":"objects/Obj_RTC_Join/Obj_RTC_Join.yy",},},
     {"id":{"name":"Obj_RTC","path":"objects/Obj_RTC/Obj_RTC.yy",},},
     {"id":{"name":"Obj_YoYo_button","path":"objects/Obj_YoYo_button/Obj_YoYo_button.yy",},},
     {"id":{"name":"Obj_YoYo_text","path":"objects/Obj_YoYo_text/Obj_YoYo_text.yy",},},

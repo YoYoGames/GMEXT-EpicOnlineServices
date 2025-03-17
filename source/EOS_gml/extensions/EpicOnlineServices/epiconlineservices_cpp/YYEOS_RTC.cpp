@@ -239,25 +239,25 @@ void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo* Data)
 func double SDKEpicGames_RTC_JoinRoom(char* buff_args)
 { 
 	auto args = buffer_unpack((uint8_t*)buff_args);
-	bool bManualAudioInputEnabled = YYGetBool(args[0]);
-	bool bManualAudioOutputEnabled = YYGetBool(args[1]);
-	char* ClientBaseUrl = (char*)YYGetString(args[2]);
-	uint32_t Flags = YYGetUint32(args[3]);
-	char* LocalUserId = (char*)YYGetString(args[4]);
-	char* ParticipantId = (char*)YYGetString(args[5]);
-	char* ParticipantToken = (char*)YYGetString(args[6]);
-	char* RoomName = (char*)YYGetString(args[7]);
+	char* LocalUserId = (char*)YYGetString(args[0]);
+	char* RoomName = (char*)YYGetString(args[1]);
+	char* ParticipantId = (char*)YYGetString(args[2]);
+	char* ParticipantToken = (char*)YYGetString(args[3]);
+	bool bManualAudioInputEnabled = YYGetBool(args[4]);
+	bool bManualAudioOutputEnabled = YYGetBool(args[5]);
+	char* ClientBaseUrl = (char*)YYGetString(args[6]);
+	uint32_t Flags = YYGetUint32(args[7]);
 
 	EOS_RTC_JoinRoomOptions Options = {};
 	Options.ApiVersion = EOS_RTC_BLOCKPARTICIPANT_API_LATEST;
+	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.RoomName = RoomName;
+	Options.ParticipantId = EOS_ProductUserId_FromString(ParticipantId);
+	Options.ParticipantToken = ParticipantToken;
 	Options.bManualAudioInputEnabled = bManualAudioInputEnabled;
 	Options.bManualAudioOutputEnabled = bManualAudioOutputEnabled;
 	Options.ClientBaseUrl = ClientBaseUrl;
 	Options.Flags = Flags;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.ParticipantId = EOS_ProductUserId_FromString(ParticipantId);
-	Options.ParticipantToken = ParticipantToken;
-	Options.RoomName = RoomName;
 
 	callback* mcallback = getCallbackData();
 	EOS_RTC_JoinRoom(HRTC, &Options, mcallback, RTC_JoinRoom);

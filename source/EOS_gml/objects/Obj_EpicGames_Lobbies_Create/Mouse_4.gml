@@ -1,2 +1,18 @@
 
-EpicGames_Lobby_CreateLobby(userID,[/*100,0,4000*/],"","ABCD",10,true,true,false,true,true,true,0,false,false,false)
+EpicGames_Lobby_CreateLobby(
+		userID,//LocalUserId
+		[/*100,0,4000*/],//AllowedPlatformIds
+		"",//LobbyId
+		"ABCD",//BucketId
+		10,//MaxLobbyMembers
+		true,//bAllowInvites
+		true,//bCrossplayOptOut
+		false,//bDisableHostMigration
+		true,//bEnableJoinById
+		true,//bPresenceEnabled
+		true,//bEnableRTCRoom
+		0,//Flags
+		false,//bUseManualAudioInput
+		false,//bUseManualAudioOutput
+		false//bLocalAudioDeviceInputStartsMuted
+	)
