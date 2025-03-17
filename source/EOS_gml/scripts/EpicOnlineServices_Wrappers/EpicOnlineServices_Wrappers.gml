@@ -610,7 +610,7 @@ function EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(UiEventId)
 }
 
 //SDKEpicGames_Lobby_CreateLobby
-function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled,bEnableRTCRoom,Flags,bUseManualAudioInput,bUseManualAudioOutput,bLocalAudioDeviceInputStartsMuted)
+function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,PermissionLevel,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled,bEnableRTCRoom,Flags,bUseManualAudioInput,bUseManualAudioOutput,bLocalAudioDeviceInputStartsMuted)
 {
 	var _args = [
 		[LocalUserId,buffer_string],
@@ -618,6 +618,7 @@ function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,Buck
 		[LobbyId,buffer_string],
 		[BucketId,buffer_string],
 		[MaxLobbyMembers,buffer_f64],
+		[PermissionLevel, buffer_u8],
 		[bAllowInvites,buffer_bool],
 		[bCrossplayOptOut,buffer_bool],
 		[bDisableHostMigration,buffer_bool],
