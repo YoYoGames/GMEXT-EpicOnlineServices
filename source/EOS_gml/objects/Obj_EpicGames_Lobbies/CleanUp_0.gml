@@ -10,3 +10,5 @@ EpicGames_Lobby_RemoveNotifyLobbyUpdateReceived(notifyLobbyUpdateReceived)
 EpicGames_Lobby_RemoveNotifyRTCRoomConnectionChanged(notifyRTCRoomConnectionChanged)
 EpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(notifySendLobbyNativeInviteRequested)
 
+if(LobbyId != "")
+	EpicGames_Lobby_LeaveLobby(LobbyId,userID)
