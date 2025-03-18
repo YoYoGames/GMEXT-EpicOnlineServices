@@ -959,7 +959,6 @@ void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbac
 
 func double EpicGames_Sessions_SendInvite(char* LocalUserId, char* SessionName, char* TargetUserId)
 { 
-	EOS_HSessions Handle;
 	EOS_Sessions_SendInviteOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_SENDINVITE_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
