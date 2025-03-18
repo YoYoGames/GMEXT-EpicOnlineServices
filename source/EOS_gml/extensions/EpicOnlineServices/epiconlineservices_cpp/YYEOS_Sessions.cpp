@@ -260,7 +260,7 @@ StructStream SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute* 
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN: _struct.addKeyValue("Value", (bool)OutSessionAttribute->Data->Value.AsBool); break;
 	case EOS_EAttributeType::EOS_AT_DOUBLE: _struct.addKeyValue("Value", (double)OutSessionAttribute->Data->Value.AsDouble); break;
-	case EOS_EAttributeType::EOS_AT_INT64: _struct.addKeyValue("Value", /*(int64)*/(int)OutSessionAttribute->Data->Value.AsInt64); break;
+	case EOS_EAttributeType::EOS_AT_INT64: _struct.addKeyValue("Value", /*(int64)*/(int)OutSessionAttribute->Data->Value.AsInt64); break; //TODO: int64
 	case EOS_EAttributeType::EOS_AT_STRING: _struct.addKeyValue("Value", (const char*)OutSessionAttribute->Data->Value.AsUtf8); break;
 	}
 
