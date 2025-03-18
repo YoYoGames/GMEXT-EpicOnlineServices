@@ -26,7 +26,7 @@
 
 
 /** Permission level gets more restrictive further down */
-enum EOS_ELobbyPermissionLevel
+enum EOS_LobbyPermissionLevel
 {
 	/** Anyone can find this lobby as long as it isn't full */
 	PUBLICADVERTISED = 0,
@@ -37,7 +37,7 @@ enum EOS_ELobbyPermissionLevel
 };
 
 /** Advertisement properties for a single attribute associated with a lobby */
-enum EOS_ELobbyAttributeVisibility
+enum EOS_LobbyAttributeVisibility
 {
 	/** Data is visible to lobby members, searchable and visible in search results. */
 	PUBLIC = 0,
@@ -46,7 +46,7 @@ enum EOS_ELobbyAttributeVisibility
 };
 
 /** Various types of lobby member updates */
-enum EOS_ELobbyMemberStatus
+enum EOS_LobbyMemberStatus
 {
 	/** The user has joined the lobby */
 	JOINED = 0,

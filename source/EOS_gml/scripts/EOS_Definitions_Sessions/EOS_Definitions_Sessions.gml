@@ -1,17 +1,6 @@
 
-/** Permission level gets more restrictive further down */
-enum EOS_EOnlineSessionPermissionLevel
-{
-	/** Anyone can find this session as long as it isn't full */
-	PublicAdvertised = 0,
-	/** Players who have access to presence can see this session */
-	JoinViaPresence = 1,
-	/** Only players with invites registered can see this session */
-	InviteOnly = 2
-};
-
 /** All possible states of an existing named session */
-enum EOS_EOnlineSessionState
+enum EOS_OnlineSessionState
 {
 	/** An online session has not been created yet */
 	NoSession = 0,
@@ -29,16 +18,30 @@ enum EOS_EOnlineSessionState
 	Ended = 6,
 	/** The session is being destroyed */
 	Destroying = 7
-};
+}
 
 /** Advertisement properties for a single attribute associated with a session */
-enum EOS_ESessionAttributeAdvertisementType
+enum EOS_SessionAttributeAdvertisementType
 {
 	/** Don't advertise via the online service */
 	DontAdvertise = 0,
 	/** Advertise via the online service only */
 	Advertise = 1
+}
+
+
+/** Permission level gets more restrictive further down */
+enum EOS_OnlineSessionPermissionLevel
+{
+	/** Anyone can find this session as long as it isn't full */
+	PublicAdvertised = 0,
+	/** Players who have access to presence can see this session */
+	JoinViaPresence = 1,
+	/** Only players with invites registered can see this session */
+	InviteOnly = 2
 };
+
+
 
 
 /** Maximum number of attributes allowed on the session */

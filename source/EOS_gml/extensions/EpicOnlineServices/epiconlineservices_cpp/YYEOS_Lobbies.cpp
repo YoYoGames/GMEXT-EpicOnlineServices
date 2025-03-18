@@ -424,8 +424,8 @@ func double SDKEpicGames_Lobby_CreateLobby(char* buff_args)
 	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[0]));
 	auto array_ids = YYGetArray(args[1]);
 	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
-	//Options.AllowedPlatformIds = ids.data();
-	//Options.AllowedPlatformIdsCount = ids.size();
+	Options.AllowedPlatformIds = ids.data();
+	Options.AllowedPlatformIdsCount = ids.size();
 	Options.LobbyId = strcmp(YYGetString(args[2]), "") == 0 ? nullptr : YYGetString(args[2]);
 	Options.BucketId = YYGetString(args[3]);
 	Options.MaxLobbyMembers = YYGetReal(args[4]);
