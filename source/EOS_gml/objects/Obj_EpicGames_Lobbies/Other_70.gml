@@ -10,10 +10,15 @@ switch(async_load[?"type"])
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 			instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
-			EpicGames_Lobby_UpdateLobbyModification(LobbyId,userID)
-			EpicGames_LobbyModification_AddAttribute({Key:"lobbyname",ValueType:3,Value: "Test Name"})
+			show_debug_message("Lobby_UpdateLobbyModification: " + string(EpicGames_Lobby_UpdateLobbyModification(LobbyId,userID)))
+			show_debug_message("LobbyModification_AddAttribute: " + string(EpicGames_LobbyModification_AddAttribute(EOS_ELobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType:3,Value: "Test Name"})))
 			EpicGames_Lobby_UpdateLobby()
+			EpicGames_LobbyModification_Release()
 		}
+	break
+	
+	case "EpicGames_Lobby_UpdateLobby":
+		
 	break
 	
 	case "EpicGames_Lobby_JoinLobby":
