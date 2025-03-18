@@ -1004,7 +1004,7 @@ func double EpicGames_LobbyDetails_CopyAttributeByIndex(double index)
 	return (double) result;
 }
 
-func double EpicGames_LobbyDetails_CopyAttributeByKey(char* AttrKey)
+func double SDKEpicGames_LobbyDetails_CopyAttributeByKey(char* AttrKey,char* buff_ret)
 {
 	EOS_LobbyDetails_CopyAttributeByKeyOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYATTRIBUTEBYKEY_API_LATEST;
@@ -1013,6 +1013,27 @@ func double EpicGames_LobbyDetails_CopyAttributeByKey(char* AttrKey)
 	EOS_Lobby_Attribute* OutAttribute = 0;
 
 	EOS_EResult result = EOS_LobbyDetails_CopyAttributeByKey(mHLobbyDetails,&Options,&OutAttribute);
+
+	if (result != EOS_EResult::EOS_Success)
+	{
+		StructStream _struct = {};
+		_struct.writeTo(buff_ret);
+
+		return (double) result;
+	}
+
+	StructStream _struct = {};
+	_struct.addKeyValue("Visibility", (int)OutAttribute->Visibility);
+	_struct.addKeyValue("Key", (const char*)OutAttribute->Data->Key);
+	switch (OutAttribute->Data->ValueType)
+	{
+	case EOS_EAttributeType::EOS_AT_BOOLEAN: _struct.addKeyValue("Value", (bool)OutAttribute->Data->Value.AsBool); break;
+	case EOS_EAttributeType::EOS_AT_DOUBLE: _struct.addKeyValue("Value", (double)OutAttribute->Data->Value.AsDouble); break;
+	case EOS_EAttributeType::EOS_AT_INT64: _struct.addKeyValue("Value", /*(int64)*/(int)OutAttribute->Data->Value.AsInt64); break;//TODO: int64
+	case EOS_EAttributeType::EOS_AT_STRING: _struct.addKeyValue("Value", (const char*)OutAttribute->Data->Value.AsUtf8); break;
+	}
+	
+	_struct.writeTo(buff_ret);
 
 	return (double) result;
 }

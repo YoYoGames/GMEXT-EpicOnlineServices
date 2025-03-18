@@ -9,6 +9,10 @@ switch(async_load[?"type"])
 			show_debug_message("RTCRoomName: " + RTCRoomName)
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 			instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
+			
+			EpicGames_Lobby_UpdateLobbyModification(LobbyId,userID)
+			EpicGames_LobbyModification_AddAttribute({Key:"lobbyname",ValueType:3,Value: "Test Name"})
+			EpicGames_Lobby_UpdateLobby()
 		}
 	break
 	
@@ -25,6 +29,8 @@ switch(async_load[?"type"])
 
 	        if(EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID) == EpicGames_Success)
 	        {
+				show_debug_message(EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname"))
+				
 	            var count = EpicGames_LobbyDetails_GetMemberCount()
 
 	            show_debug_message($"Joined, now setup P2P: {count}")

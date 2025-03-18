@@ -584,13 +584,24 @@ function EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested()
 	return _return_value;
 }
 
+//SDKEpicGames_LobbyDetails_CopyAttributeByKey
+function EpicGames_LobbyDetails_CopyAttributeByKey(AttrKey)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	var result = SDKEpicGames_LobbyDetails_CopyAttributeByKey(AttrKey,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
 //SDKEpicGames_LobbyDetails_CopyInfo
 function EpicGames_LobbyDetails_CopyInfo()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
 	var result = SDKEpicGames_LobbyDetails_CopyInfo(_return_buffer_address)
-	show_debug_message($"EpicGames_LobbyDetails_CopyInfo: {EpicGames_Result_ToString(result)}")
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
