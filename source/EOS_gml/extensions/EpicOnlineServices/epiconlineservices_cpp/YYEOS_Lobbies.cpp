@@ -1217,6 +1217,7 @@ func double SDKEpicGames_LobbyModification_AddAttribute(double Visibility,char* 
 	auto Attribute = YYGetStruct(args[0]);
 
 	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	std::cout << "AsUtf8" << " -> " << mAttributeData.Value.AsUtf8 << std::endl;
 	
 	EOS_LobbyModification_AddAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;

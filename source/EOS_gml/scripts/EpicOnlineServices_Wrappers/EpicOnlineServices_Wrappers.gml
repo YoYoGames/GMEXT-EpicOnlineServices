@@ -808,7 +808,7 @@ function EpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(notification
 }
 
 //SDKEpicGames_LobbyModification_AddAttribute
-function EpicGames_LobbyModification_AddAttribute(Attribute)
+function EpicGames_LobbyModification_AddAttribute(Visibility,Attribute)
 {
 	var _args = [
 		[Attribute,undefined],//struct
@@ -816,7 +816,7 @@ function EpicGames_LobbyModification_AddAttribute(Attribute)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_LobbyModification_AddAttribute(_args_buffer_address)
+	return SDKEpicGames_LobbyModification_AddAttribute(Visibility,_args_buffer_address)
 }
 
 //SDKEpicGames_LobbyModification_AddMemberAttribute
