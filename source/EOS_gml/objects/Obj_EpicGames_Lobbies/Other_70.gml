@@ -11,7 +11,7 @@ switch(async_load[?"type"])
 			instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
 			show_debug_message("Lobby_UpdateLobbyModification: " + string(EpicGames_Lobby_UpdateLobbyModification(LobbyId,userID)))
-			show_debug_message("LobbyModification_AddAttribute: " + string(EpicGames_LobbyModification_AddAttribute(EOS_ELobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType:3,Value: "Test Name"})))
+			show_debug_message("LobbyModification_AddAttribute: " + string(EpicGames_LobbyModification_AddAttribute(EOS_LobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType: EOS_AttributeType.STRING,Value: "Test Name"})))
 			EpicGames_Lobby_UpdateLobby()
 			EpicGames_LobbyModification_Release()
 		}
@@ -64,7 +64,7 @@ switch(async_load[?"type"])
 	
 		if(EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(async_load[?"InviteId"]) == EpicGames_Success)
 		{
-			EpicGames_Lobby_JoinLobby(userID,true,true,true,false,false,false,0)
+			EpicGames_Lobby_JoinLobby(userID,true,true,true,false,false,false,0/*EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL or EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO*/)
 			EpicGames_LobbyDetails_Release()
 		}
 		
@@ -99,8 +99,10 @@ switch(async_load[?"type"])
 		show_debug_message(count)
 		for(var a = 0 ; a < count ; a++)
 		{
+			show_debug_message(a)
 			EpicGames_LobbySearch_CopySearchResultByIndex(a)
 			show_debug_message(EpicGames_LobbyDetails_CopyInfo())
+			show_debug_message(EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname"))
 			EpicGames_LobbyDetails_Release()
 		}
 		EpicGames_LobbySearch_Release()

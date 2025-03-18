@@ -43,15 +43,8 @@ show_debug_message(result)
 //var result = EpicGames_Sessions_UpdateSessionModification(SessionName)
 //show_debug_message("EpicGames_Sessions_UpdateSessionModification: " + EpicGames_Result_ToString(result))
 
-//EOS_ENUM(EOS_EOnlineSessionPermissionLevel,
-//	/** Anyone can find this session as long as it isn't full */
-//	EOS_OSPF_PublicAdvertised = 0,
-//	/** Players who have access to presence can see this session */
-//	EOS_OSPF_JoinViaPresence = 1,
-//	/** Only players with invites registered can see this session */
-//	EOS_OSPF_InviteOnly = 2
-//);
-var result = EpicGames_SessionModification_SetPermissionLevel(0)
+
+var result = EpicGames_SessionModification_SetPermissionLevel(EOS_OnlineSessionPermissionLevel.PublicAdvertised)
 show_debug_message("EpicGames_SessionModification_SetPermissionLevel: " + EpicGames_Result_ToString(result))
 
 var result = EpicGames_SessionModification_SetJoinInProgressAllowed(true)
@@ -60,30 +53,16 @@ show_debug_message("EpicGames_SessionModification_SetJoinInProgressAllowed: " + 
 var result = EpicGames_SessionModification_SetInvitesAllowed(true)
 show_debug_message("EpicGames_SessionModification_SetInvitesAllowed" + EpicGames_Result_ToString(result))
 
-//EOS_ENUM(EOS_ESessionAttributeAdvertisementType,
-//	/** Don't advertise via the online service */
-//	EOS_SAAT_DontAdvertise = 0,
-//	/** Advertise via the online service only */
-//	EOS_SAAT_Advertise = 1
-//);
-
-//#macro EOS_SESSIONS_SEARCH_BUCKET_ID "bucket"
-var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"bucket",ValueType:3,Value: BucketId})
+var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_BUCKET_ID,ValueType: EOS_AttributeType.STRING,Value: BucketId})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
-///** Search for empty servers only (value is true/false) */
-//#macro EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY "emptyonly"
-var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"emptyonly",ValueType:0,Value: false})
+var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
-///** Search for non empty servers only (value is true/false) */
-//#macro EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY "nonemptyonly"
-var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"nonemptyonly",ValueType:0,Value: false})
+var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
-///** Search for a match with min free space (value is int) */
-//#macro EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE "minslotsavailable"
-var result = EpicGames_SessionModification_AddAttribute(1,noone,{Key:"minslotsavailable",ValueType:1,Value: 2})
+var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,ValueType: EOS_AttributeType.DOUBLE,Value: 2})
 show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
 
 EpicGames_Sessions_UpdateSession()

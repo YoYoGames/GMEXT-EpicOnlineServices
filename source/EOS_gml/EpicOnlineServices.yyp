@@ -113,6 +113,7 @@
     {"id":{"name":"Room_EpicGames_Stats","path":"rooms/Room_EpicGames_Stats/Room_EpicGames_Stats.yy",},},
     {"id":{"name":"Room_EpicGames_TitleStorage","path":"rooms/Room_EpicGames_TitleStorage/Room_EpicGames_TitleStorage.yy",},},
     {"id":{"name":"Room_Yoyo","path":"rooms/Room_Yoyo/Room_Yoyo.yy",},},
+    {"id":{"name":"EOS_Definitions_Common","path":"scripts/EOS_Definitions_Common/EOS_Definitions_Common.yy",},},
     {"id":{"name":"EOS_Definitions_Lobbies","path":"scripts/EOS_Definitions_Lobbies/EOS_Definitions_Lobbies.yy",},},
     {"id":{"name":"EOS_Definitions_RTC","path":"scripts/EOS_Definitions_RTC/EOS_Definitions_RTC.yy",},},
     {"id":{"name":"EOS_Definitions_Sessions","path":"scripts/EOS_Definitions_Sessions/EOS_Definitions_Sessions.yy",},},

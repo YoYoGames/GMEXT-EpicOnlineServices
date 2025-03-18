@@ -76,6 +76,7 @@
     {"name":"Room_EpicGames_Sessions","order":3,"path":"rooms/Room_EpicGames_Sessions/Room_EpicGames_Sessions.yy",},
     {"name":"Room_EpicGames_Stats","order":1,"path":"rooms/Room_EpicGames_Stats/Room_EpicGames_Stats.yy",},
     {"name":"Room_Yoyo","order":4,"path":"rooms/Room_Yoyo/Room_Yoyo.yy",},
+    {"name":"EOS_Definitions_Common","order":3,"path":"scripts/EOS_Definitions_Common/EOS_Definitions_Common.yy",},
     {"name":"EOS_Definitions_Lobbies","order":2,"path":"scripts/EOS_Definitions_Lobbies/EOS_Definitions_Lobbies.yy",},
     {"name":"EOS_Definitions_Sessions","order":1,"path":"scripts/EOS_Definitions_Sessions/EOS_Definitions_Sessions.yy",},
     {"name":"EpicOnlineServices_Tools","order":3,"path":"scripts/EpicOnlineServices_Tools/EpicOnlineServices_Tools.yy",},
