@@ -1036,7 +1036,7 @@ function EpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return EpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(_args_buffer_address)
+	return SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(_args_buffer_address)
 }
 
 //SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeSend
