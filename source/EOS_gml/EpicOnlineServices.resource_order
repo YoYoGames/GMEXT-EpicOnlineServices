@@ -38,6 +38,7 @@
     {"name":"Obj_EpicGames_Lobbies_Create","order":4,"path":"objects/Obj_EpicGames_Lobbies_Create/Obj_EpicGames_Lobbies_Create.yy",},
     {"name":"Obj_EpicGames_Lobbies_Friend","order":1,"path":"objects/Obj_EpicGames_Lobbies_Friend/Obj_EpicGames_Lobbies_Friend.yy",},
     {"name":"Obj_EpicGames_Lobbies_Friends","order":2,"path":"objects/Obj_EpicGames_Lobbies_Friends/Obj_EpicGames_Lobbies_Friends.yy",},
+    {"name":"Obj_EpicGames_Lobbies_Leave","order":8,"path":"objects/Obj_EpicGames_Lobbies_Leave/Obj_EpicGames_Lobbies_Leave.yy",},
     {"name":"Obj_EpicGames_Lobbies_P2P","order":5,"path":"objects/Obj_EpicGames_Lobbies_P2P/Obj_EpicGames_Lobbies_P2P.yy",},
     {"name":"Obj_EpicGames_Lobbies_Search","order":6,"path":"objects/Obj_EpicGames_Lobbies_Search/Obj_EpicGames_Lobbies_Search.yy",},
     {"name":"Obj_EpicGames_Lobby","order":7,"path":"objects/Obj_EpicGames_Lobby/Obj_EpicGames_Lobby.yy",},

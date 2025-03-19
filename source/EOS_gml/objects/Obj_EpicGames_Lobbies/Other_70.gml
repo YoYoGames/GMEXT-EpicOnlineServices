@@ -21,6 +21,14 @@ switch(async_load[?"type"])
 		
 	break
 	
+	case "EpicGames_Lobby_LeaveLobby":
+		if(async_load[?"status"] == EpicGames_Success)
+		{
+			with(Obj_RTC) instance_destroy()
+			with(Obj_EpicGames_Lobbies_P2P) instance_destroy()
+		}
+	break
+	
 	case "EpicGames_Lobby_JoinLobby":
 	case "EpicGames_Lobby_JoinLobbyById":
 		if(async_load[?"status"] == EpicGames_Success)
@@ -98,7 +106,10 @@ switch(async_load[?"type"])
 	case "EpicGames_LobbySearch_Find":
 		
 		var count = EpicGames_LobbySearch_GetSearchResultCount()
-		show_debug_message(count)
+		
+		if(count == 0)
+			show_message_async("No Lobbies Found")
+		
 		for(var a = 0 ; a < count ; a++)
 		{
 			EpicGames_LobbySearch_CopySearchResultByIndex(a)
