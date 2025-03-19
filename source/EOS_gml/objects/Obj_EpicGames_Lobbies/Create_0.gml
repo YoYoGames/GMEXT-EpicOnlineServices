@@ -1,4 +1,6 @@
 
+
+
 event_inherited();
 
 text = "Lobby"
