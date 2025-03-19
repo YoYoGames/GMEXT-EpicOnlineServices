@@ -2,8 +2,8 @@
 NotifyDisconnected = EpicGames_RTC_AddNotifyDisconnected(userID,RoomName)
 ParticipantStatusChanged = EpicGames_RTC_AddNotifyParticipantStatusChanged(userID,RoomName)
 RoomStatisticsUpdated = EpicGames_RTC_AddNotifyRoomStatisticsUpdated(userID,RoomName)
-AudioBeforeRender = EpicGames_RTCAudio_AddNotifyAudioBeforeRender(userID,RoomName,true)
-AudioBeforeSend = EpicGames_RTCAudio_AddNotifyAudioBeforeSend(userID,RoomName)
+//AudioBeforeRender = EpicGames_RTCAudio_AddNotifyAudioBeforeRender(userID,RoomName,true)//Unnecesary of this example
+//AudioBeforeSend = EpicGames_RTCAudio_AddNotifyAudioBeforeSend(userID,RoomName)//Unnecesary of this example
 AudioDevicesChanged = EpicGames_RTCAudio_AddNotifyAudioDevicesChanged()
 AudioInputState = EpicGames_RTCAudio_AddNotifyAudioInputState(userID,RoomName)
 AudioOutputState = EpicGames_RTCAudio_AddNotifyAudioOutputState(userID,RoomName)
