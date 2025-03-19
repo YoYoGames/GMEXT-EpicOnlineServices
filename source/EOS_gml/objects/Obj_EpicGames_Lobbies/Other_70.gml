@@ -22,22 +22,24 @@ switch(async_load[?"type"])
 	break
 	
 	case "EpicGames_Lobby_JoinLobby":
+	case "EpicGames_Lobby_JoinLobbyById":
 		if(async_load[?"status"] == EpicGames_Success)
 		{
 	        LobbyId = async_load[?"LobbyId"]
-			var RTCRoomName = EpicGames_Lobby_GetRTCRoomName(userID,LobbyId)
-			show_debug_message("RTCRoomName: " + RTCRoomName)
-			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 			
+			var RTCRoomName = EpicGames_Lobby_GetRTCRoomName(userID,LobbyId)
+			
+			show_debug_message("RTCRoomName: " + RTCRoomName)
+			
+			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 	        instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
-
-
+			
 	        if(EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID) == EpicGames_Success)
 	        {
 				show_debug_message(EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname"))
 				
 	            var count = EpicGames_LobbyDetails_GetMemberCount()
-
+				
 	            show_debug_message($"Joined, now setup P2P: {count}")
 	            for(var a = 0 ; a < count ; a++)
 	            {
@@ -47,7 +49,7 @@ switch(async_load[?"type"])
 	                EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,user_id,Obj_EpicGames_Lobbies_P2P.socketName)
 	                buffer_delete(buff)
 	            }
-
+				
 	            EpicGames_LobbyDetails_Release()
 	        }
 		}
@@ -99,11 +101,13 @@ switch(async_load[?"type"])
 		show_debug_message(count)
 		for(var a = 0 ; a < count ; a++)
 		{
-			show_debug_message(a)
 			EpicGames_LobbySearch_CopySearchResultByIndex(a)
-			show_debug_message(EpicGames_LobbyDetails_CopyInfo())
-			show_debug_message(EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname"))
+			var struct = EpicGames_LobbyDetails_CopyInfo()
+			var attribute = EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname")
 			EpicGames_LobbyDetails_Release()
+			
+			var ins = instance_create_depth(100,500+a*100,0,Obj_EpicGames_Lobby,struct)
+			ins.text = attribute.Value
 		}
 		EpicGames_LobbySearch_Release()
 		
