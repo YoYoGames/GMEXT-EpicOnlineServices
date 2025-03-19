@@ -4,3 +4,9 @@ EpicGames_P2P_RemoveNotifyPeerConnectionClosed(notifyPeerConnectionClosed)
 EpicGames_P2P_RemoveNotifyPeerConnectionEstablished(notifyPeerConnectionEstablished)
 EpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(notifyPeerConnectionInterrupted)
 EpicGames_P2P_RemoveNotifyPeerConnectionRequest(notifyPeerConnectionRequest)
+
+for(var a = 0 ; a < array_length(EstablishedProductIDs) ; a++)
+{
+	EpicGames_P2P_ClearPacketQueue(userID,EstablishedProductIDs[a],socketName)
+	EpicGames_P2P_CloseConnection(userID,EstablishedProductIDs[a],socketName)
+}

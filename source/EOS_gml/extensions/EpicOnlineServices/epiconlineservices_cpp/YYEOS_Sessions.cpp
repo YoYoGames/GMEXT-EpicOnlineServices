@@ -344,11 +344,6 @@ func double SDKEpicGames_SessionModification_AddAttribute(double AdvertisementTy
 	auto Attribute = YYGetStruct(args[0]);
 
 	EOS_Sessions_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
-	//std::cout << "-----------" << std::endl;
-	//std::cout << mAttributeData.Key << std::endl;
-	//std::cout << (mAttributeData.ValueType == EOS_ESessionAttributeType::EOS_AT_STRING) << std::endl;
-	//std::cout << mAttributeData.Value.AsUtf8 << std::endl;
-	//std::cout << "-----------" << std::endl;
 	
 	Options.SessionAttribute = &mAttributeData;
 
@@ -664,18 +659,14 @@ func double SDKEpicGames_Sessions_CreateSessionModification(char* buff_args)
 	if (session_id != "")
 	{
 		Options.SessionId = YYGetString(args[6]);
-		std::cout << "SessionId: " << session_id  << std::endl;
 	}
 	else
 	{
 		Options.SessionId = NULL;
-		std::cout << "SessionId: NULL" << std::endl;
 	}
 
 	Options.SessionName = YYGetString(args[7]);
 	double result = (double) EOS_Sessions_CreateSessionModification(HSessions,&Options, &mHSessionModification);
-	
-	std::cout << EOS_EResult_ToString((EOS_EResult)result) << std::endl;
 
 	return (double)result;
 }
@@ -856,12 +847,6 @@ func double SDKEpicGames_Sessions_RegisterPlayers(char* SessionName, char* buff_
 	Options.SessionName = SessionName;
 
 	callback* mcallback = getCallbackData();
-
-	std::cout << "SDKEpicGames_Sessions_RegisterPlayers: " << SessionName << " - " << Options.PlayersToRegisterCount << std::endl;
-	for (int a = 0; a < Options.PlayersToRegisterCount; a++)
-	{
-		std::cout << productID_toString(Options.PlayersToRegister[a]) << std::endl;
-	}
 	EOS_Sessions_RegisterPlayers(HSessions,&Options, mcallback,Sessions_OnRegisterPlayersCallback);
 
 	return mcallback->identifier;
