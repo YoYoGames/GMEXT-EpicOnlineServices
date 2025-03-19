@@ -7,12 +7,19 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_P2P_AddNotifyPeerConnectionClosed":
 		
+		show_debug_message("EpicGames_P2P_AddNotifyPeerConnectionClosed")
+		show_debug_message(EstablishedProductIDs)
+		show_debug_message(async_load[?"RemoteUserId"])
+		
 		var index = array_get_index(EstablishedProductIDs,async_load[?"RemoteUserId"])
 		
-		EpicGames_P2P_ClearPacketQueue(userID,EstablishedProductIDs[index],socketName)
-		EpicGames_P2P_CloseConnection(userID,EstablishedProductIDs[index],socketName)
+		if(index >= 0)
+		{
+			EpicGames_P2P_ClearPacketQueue(userID,EstablishedProductIDs[index],socketName)
+			EpicGames_P2P_CloseConnection(userID,EstablishedProductIDs[index],socketName)
 		
-		array_delete(EstablishedProductIDs,index,1)
+			array_delete(EstablishedProductIDs,index,1)
+		}
 		
 	break
 	
