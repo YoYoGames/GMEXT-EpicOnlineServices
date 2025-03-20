@@ -36,6 +36,33 @@ YYEXPORT void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions,
     OldPreGraphicsInitialisation();
 }
 
+std::vector<RValue> _SW_GetArrayOfRValues(RValue* arg, int arg_idx, const char* _func)
+{
+	RValue* pV = &(arg[arg_idx]);
+
+	std::vector<RValue> strings;
+
+	if (KIND_RValue(pV) == VALUE_ARRAY)
+	{
+		RValue elem;
+		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+		{
+			if (KIND_RValue(&elem) != VALUE_OBJECT)
+			{
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a Struct", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+			}
+
+			strings.push_back(elem);
+		}
+	}
+	else {
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
+	}
+
+	return strings;
+}
+
+
 std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);
