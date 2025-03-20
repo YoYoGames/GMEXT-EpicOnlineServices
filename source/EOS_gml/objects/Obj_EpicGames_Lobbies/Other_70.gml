@@ -5,6 +5,9 @@ switch(async_load[?"type"])
 		if(async_load[?"status"] == EpicGames_Success)
 		{
 			LobbyId = async_load[?"LobbyId"]
+			
+			request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
+			
 			var RTCRoomName = EpicGames_Lobby_GetRTCRoomName(userID,LobbyId)
 			show_debug_message("RTCRoomName: " + RTCRoomName)
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
@@ -34,6 +37,8 @@ switch(async_load[?"type"])
 		if(async_load[?"status"] == EpicGames_Success)
 		{
 	        LobbyId = async_load[?"LobbyId"]
+			
+			request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
 			
 			var RTCRoomName = EpicGames_Lobby_GetRTCRoomName(userID,LobbyId)
 			
@@ -89,34 +94,28 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived":
 	
-		if(EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID) == EpicGames_Success)
-		{
-			/*var*/ _array = []
-			var member_count = EpicGames_LobbyDetails_GetMemberCount()
-			for(var a = 0 ; a < member_count ; a++)
-			{
-				var user = EpicGames_LobbyDetails_GetMemberByIndex(a)
-				array_push(_array,user)
-			}
-	
-			EpicGames_LobbyDetails_Release()
-			
-			EpicGames_Connect_QueryProductUserIdMappings(userID,_array)
-		}
+		request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
 	
 	break
 	
 	case "EpicGames_Connect_QueryProductUserIdMappings":
-		
-		for(var b = 0 ; b < array_length(_array) ; b++)
+
+		with(Obj_EpicGames_Lobby_Member)
+			instance_destroy()
+				
+		for(var b = 0 ; b < array_length(members_array) ; b++)
 		{
-			var count = EpicGames_Connect_GetProductUserExternalAccountCount(_array[b])
-		
+			var count = EpicGames_Connect_GetProductUserExternalAccountCount(members_array[b])
+			
 			for(var a = 0 ; a < count ; a++)
 			{
-				show_debug_message(EpicGames_Connect_CopyProductUserExternalAccountByIndex(_array[b],a))
+				_struct = EpicGames_Connect_CopyProductUserExternalAccountByIndex(members_array[b],a)
+				show_debug_message("_struct")
+				show_debug_message(_struct)
+				//{ status_message : "EOS_Success", status : 0, LastLoginTime : 1742492836, DisplayName : "jzavala93", AccountIdType : 0, AccountId : "36b64afd62f145688696ea77e7bc9280", userID : "0002aa1d3fc94d919daa174d8e3c4a27" }
+				instance_create_depth(500,300+b*100,0,Obj_EpicGames_Lobby_Member,_struct)
 				
-				break//I on;y need one account per user :), but leave it as for() it's a good demostration....
+				break//I only need one account per user :), but leave it as for() it's a good demostration....
 			}
 		}
 		

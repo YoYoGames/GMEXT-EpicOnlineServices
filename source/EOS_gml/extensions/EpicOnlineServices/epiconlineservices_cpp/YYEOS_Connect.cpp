@@ -567,7 +567,6 @@ void EOS_CALL OnQueryAccountMappingsCallback(const EOS_Connect_QueryProductUserI
 
 YYEXPORT void EpicGames_Connect_QueryProductUserIdMappings(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	std::cout << "EXT EpicGames_Connect_QueryProductUserIdMappings" << std::endl;
 	EOS_NotInitialisedReturn_REAL
 
 	const char* user = YYGetString(arg, 0);
