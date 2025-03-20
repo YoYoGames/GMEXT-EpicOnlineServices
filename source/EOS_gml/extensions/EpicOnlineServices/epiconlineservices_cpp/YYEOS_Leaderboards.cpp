@@ -420,19 +420,10 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue& Result, 
 {
 	EOS_NotInitialisedReturn_REAL
 
-		const char* userID = YYGetString(arg, 0);
+	const char* userID = YYGetString(arg, 0);
 	const char* LeaderboardId = YYGetString(arg, 1);//not in use...
 
-	//const char* userID_target = YYGetString(arg, 1);
-	EOS_ProductUserId* ProductUserIds = new EOS_ProductUserId[1024];
-	int vec_Users_count = 0;
-	if (KIND_RValue(&arg[2]) == VALUE_ARRAY) {
-		std::vector<const char*> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
-		for (const char* e : vec_Users) {
-			ProductUserIds[vec_Users_count] = EOS_ProductUserId_FromString(e);
-			vec_Users_count++;
-		}
-	}
+	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 2,"EpicGames_Leaderboards_QueryLeaderboardUserScores");
 
 	//const char* name = YYGetString(arg, 3);
 	//double agregation = YYGetReal(arg, 4);
@@ -457,8 +448,8 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue& Result, 
 	EOS_Leaderboards_QueryLeaderboardUserScoresOptions QueryUserScoresOptions = { 0 };
 	QueryUserScoresOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 	QueryUserScoresOptions.ApiVersion = EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST;
-	QueryUserScoresOptions.UserIds = ProductUserIds;
-	QueryUserScoresOptions.UserIdsCount = vec_Users_count;
+	QueryUserScoresOptions.UserIds = productUserIds.data();
+	QueryUserScoresOptions.UserIdsCount = productUserIds.size();
 
 	//EOS_ProductUserId* UserData = new EOS_ProductUserId[1];
 	//UserData[0] = EOS_ProductUserId_FromString(userID_target);

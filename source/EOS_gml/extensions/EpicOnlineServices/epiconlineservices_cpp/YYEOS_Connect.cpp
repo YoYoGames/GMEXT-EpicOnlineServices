@@ -567,13 +567,29 @@ void EOS_CALL OnQueryAccountMappingsCallback(const EOS_Connect_QueryProductUserI
 
 YYEXPORT void EpicGames_Connect_QueryProductUserIdMappings(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL;
-	
+	std::cout << "EXT EpicGames_Connect_QueryProductUserIdMappings" << std::endl;
+	EOS_NotInitialisedReturn_REAL
+
+	const char* user = YYGetString(arg, 0);
+	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 1, "EpicGames_Connect_QueryProductUserIdMappings");
+
+	EOS_Connect_QueryProductUserIdMappingsOptions QueryOptions = {};
+	QueryOptions.ApiVersion = EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST;
+	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(user);
+
+	QueryOptions.ProductUserIdCount = productUserIds.size();
+	QueryOptions.ProductUserIds = productUserIds.data();
+
+	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
+
 	callback* mcallback = getCallbackData();
+
+	EOS_Connect_QueryProductUserIdMappings(ConnectHandle, &QueryOptions, mcallback, OnQueryAccountMappingsCallback);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
+
 
 YYEXPORT void EpicGames_Connect_RemoveNotifyAuthExpiration(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
