@@ -88,6 +88,7 @@ switch(async_load[?"type"])
 		
 		show_debug_message($"friends: {friends}" )
 		
+		show_debug_message([userID,"",friends_user_ids,[{StatName: StatSelected, Aggregation: AgregationSeleted}],0,0])
 		EpicGames_Leaderboards_QueryLeaderboardUserScores(userID,"",friends_user_ids,[{StatName: StatSelected, Aggregation: AgregationSeleted}],0,0)
 		
 	break
