@@ -377,7 +377,7 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScore(RValue& Result, C
 
 	const char* userID = YYGetString(arg, 0);
 	const char* userID_target = YYGetString(arg, 1);
-	const char* LeaderboardId = YYGetString(arg, 2);
+	const char* LeaderboardId = YYGetString(arg, 2);//not in use....
 	const char* name = YYGetString(arg, 3);
 	double agregation = YYGetReal(arg, 4);
 	int64 startTime = argc < 6 ? -1 : YYGetInt64(arg, 5);
@@ -407,7 +407,75 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScore(RValue& Result, C
 		QueryUserScoresOptions.EndTime = endTime;
 	else
 		QueryUserScoresOptions.EndTime = EOS_LEADERBOARDS_TIME_UNDEFINED;
-	
+
+	callback* mcallback = getCallbackData();
+
+	EOS_Leaderboards_QueryLeaderboardUserScores(HLeaderboards, &QueryUserScoresOptions, mcallback, LeaderboardUserScoresReceivedCallbackFn);
+
+	Result.kind = VALUE_REAL;
+	Result.val = (double)mcallback->identifier;
+}
+
+YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+{
+	EOS_NotInitialisedReturn_REAL
+
+		const char* userID = YYGetString(arg, 0);
+	const char* LeaderboardId = YYGetString(arg, 1);//not in use...
+
+	//const char* userID_target = YYGetString(arg, 1);
+	EOS_ProductUserId* ProductUserIds = new EOS_ProductUserId[1024];
+	int vec_Users_count = 0;
+	if (KIND_RValue(&arg[2]) == VALUE_ARRAY) {
+		std::vector<const char*> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
+		for (const char* e : vec_Users) {
+			ProductUserIds[vec_Users_count] = EOS_ProductUserId_FromString(e);
+			vec_Users_count++;
+		}
+	}
+
+	//const char* name = YYGetString(arg, 3);
+	//double agregation = YYGetReal(arg, 4);
+	EOS_Leaderboards_UserScoresQueryStatInfo* StatInfoData = new EOS_Leaderboards_UserScoresQueryStatInfo[1024];
+	int vec_StatInfoData_count = 0;
+	if (KIND_RValue(&arg[3]) == VALUE_ARRAY) {
+		std::vector<RValue> vec_StatInfoData = _SW_GetArrayOfRValues(arg, 3, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
+		for (const auto& e : vec_StatInfoData) {
+
+			RValue* RValue_StatName = YYStructGetMember((RValue*)&e, "StatName");
+			RValue* RValue_Aggregation = YYStructGetMember((RValue*)&e, "Aggregation");
+			DebugConsoleOutput(RValue_StatName->GetString()); DebugConsoleOutput("\n");
+			StatInfoData[vec_StatInfoData_count].StatName = RValue_StatName->GetString();
+			StatInfoData[vec_StatInfoData_count].Aggregation = (EOS_ELeaderboardAggregation)RValue_Aggregation->val;
+			vec_StatInfoData_count++;
+		}
+	}
+
+	int64 startTime = YYGetInt64(arg, 4);
+	int64 endTime = YYGetInt64(arg, 5);
+
+	EOS_Leaderboards_QueryLeaderboardUserScoresOptions QueryUserScoresOptions = { 0 };
+	QueryUserScoresOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
+	QueryUserScoresOptions.ApiVersion = EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST;
+	QueryUserScoresOptions.UserIds = ProductUserIds;
+	QueryUserScoresOptions.UserIdsCount = vec_Users_count;
+
+	//EOS_ProductUserId* UserData = new EOS_ProductUserId[1];
+	//UserData[0] = EOS_ProductUserId_FromString(userID_target);
+
+	QueryUserScoresOptions.StatInfoCount = vec_StatInfoData_count;
+	QueryUserScoresOptions.StatInfo = StatInfoData;
+
+	if (startTime > 0)
+		QueryUserScoresOptions.StartTime = startTime;
+	else
+		QueryUserScoresOptions.StartTime = EOS_LEADERBOARDS_TIME_UNDEFINED;
+
+	if (endTime > 0)
+		QueryUserScoresOptions.EndTime = endTime;
+	else
+		QueryUserScoresOptions.EndTime = EOS_LEADERBOARDS_TIME_UNDEFINED;
+
 	callback* mcallback = getCallbackData();
 
 	EOS_Leaderboards_QueryLeaderboardUserScores(HLeaderboards, &QueryUserScoresOptions, mcallback, LeaderboardUserScoresReceivedCallbackFn);
