@@ -36,6 +36,22 @@ YYEXPORT void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions,
     OldPreGraphicsInitialisation();
 }
 
+std::vector<EOS_ProductUserId> _SW_GetArrayOfProductUserId(RValue* arg, int arg_idx, const char* _func)
+{
+	RValue* pV = &(arg[arg_idx]);
+
+	std::vector<EOS_ProductUserId> EOS_ProductUserIds = {};
+
+	if (KIND_RValue(pV) == VALUE_ARRAY){
+		std::vector<const char*> vec_Users = _SW_GetArrayOfStrings(arg, arg_idx, _func);
+		for (const char* e : vec_Users) {
+			EOS_ProductUserIds.push_back(EOS_ProductUserId_FromString(e));
+		}
+	}
+
+	return EOS_ProductUserIds;
+}
+
 std::vector<RValue> _SW_GetArrayOfRValues(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);

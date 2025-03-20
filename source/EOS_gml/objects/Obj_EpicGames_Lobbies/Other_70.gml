@@ -89,6 +89,37 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived":
 	
+		if(EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID) == EpicGames_Success)
+		{
+			/*var*/ _array = []
+			var member_count = EpicGames_LobbyDetails_GetMemberCount()
+			for(var a = 0 ; a < member_count ; a++)
+			{
+				var user = EpicGames_LobbyDetails_GetMemberByIndex(a)
+				array_push(_array,user)
+			}
+	
+			EpicGames_LobbyDetails_Release()
+			
+			EpicGames_Connect_QueryProductUserIdMappings(userID,_array)
+		}
+	
+	break
+	
+	case "EpicGames_Connect_QueryProductUserIdMappings":
+		
+		for(var b = 0 ; b < array_length(_array) ; b++)
+		{
+			var count = EpicGames_Connect_GetProductUserExternalAccountCount(_array[b])
+		
+			for(var a = 0 ; a < count ; a++)
+			{
+				show_debug_message(EpicGames_Connect_CopyProductUserExternalAccountByIndex(_array[b],a))
+				
+				break//I on;y need one account per user :), but leave it as for() it's a good demostration....
+			}
+		}
+		
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived":
