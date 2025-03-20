@@ -223,6 +223,7 @@ void OldPreGraphicsInitialisation()
 	}
 }
 
+
 YYEXPORT void EpicGames_Platform_CheckForLauncherAndRestart(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
 	Result.kind = VALUE_INT32;
@@ -231,10 +232,9 @@ YYEXPORT void EpicGames_Platform_CheckForLauncherAndRestart(RValue& Result, CIns
 
 YYEXPORT void EpicGames_Platform_GetActiveCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRING;
+	eos_not_init_return_rvalue_string;
 
-	eos_ensure_argc(1);
-
+    eos_ensure_argc(1);
 	const char* user = YYGetString(arg, 0);
 
 	char Buffer[EOS_COUNTRYCODE_MAX_LENGTH];
@@ -247,7 +247,7 @@ YYEXPORT void EpicGames_Platform_GetActiveCountryCode(RValue& Result, CInstance*
 
 YYEXPORT void EpicGames_Platform_GetActiveLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRING;
+	eos_not_init_return_rvalue_string;
 
 	eos_ensure_argc(1);
 
@@ -264,7 +264,7 @@ YYEXPORT void EpicGames_Platform_GetActiveLocaleCode(RValue& Result, CInstance* 
 
 YYEXPORT void EpicGames_Platform_GetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRING;
+	eos_not_init_return_rvalue_string;
 
 	char Buffer[EOS_COUNTRYCODE_MAX_BUFFER_LEN];
 	int32_t BufferLen = sizeof(Buffer);
@@ -277,7 +277,7 @@ YYEXPORT void EpicGames_Platform_GetOverrideCountryCode(RValue& Result, CInstanc
 
 YYEXPORT void EpicGames_Platform_GetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRING;
+	eos_not_init_return_rvalue_string;
 
 	char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
 	int32_t BufferLen = sizeof(Buffer);
@@ -290,17 +290,16 @@ YYEXPORT void EpicGames_Platform_GetOverrideLocaleCode(RValue& Result, CInstance
 
 YYEXPORT void EpicGames_Platform_Release(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	EOS_Platform_Release(PlatformHandle);
-
 	Result.kind = VALUE_BOOL;
 	Result.val = true;
 }
 
 YYEXPORT void EpicGames_Platform_SetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	eos_ensure_argc(1);
 
@@ -312,9 +311,10 @@ YYEXPORT void EpicGames_Platform_SetOverrideCountryCode(RValue& Result, CInstanc
 	Result.val = true;
 }
 
+
 YYEXPORT void EpicGames_Platform_SetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	eos_ensure_argc(1);
 
@@ -328,7 +328,7 @@ YYEXPORT void EpicGames_Platform_SetOverrideLocaleCode(RValue& Result, CInstance
 
 YYEXPORT void EpicGames_Platform_Tick(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	Result.kind = VALUE_BOOL;
 
