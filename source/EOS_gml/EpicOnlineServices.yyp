@@ -69,6 +69,7 @@
     {"id":{"name":"Obj_EpicGames_Lobbies_P2P","path":"objects/Obj_EpicGames_Lobbies_P2P/Obj_EpicGames_Lobbies_P2P.yy",},},
     {"id":{"name":"Obj_EpicGames_Lobbies_Search","path":"objects/Obj_EpicGames_Lobbies_Search/Obj_EpicGames_Lobbies_Search.yy",},},
     {"id":{"name":"Obj_EpicGames_Lobbies","path":"objects/Obj_EpicGames_Lobbies/Obj_EpicGames_Lobbies.yy",},},
+    {"id":{"name":"Obj_EpicGames_Lobby_Member","path":"objects/Obj_EpicGames_Lobby_Member/Obj_EpicGames_Lobby_Member.yy",},},
     {"id":{"name":"Obj_EpicGames_Lobby","path":"objects/Obj_EpicGames_Lobby/Obj_EpicGames_Lobby.yy",},},
     {"id":{"name":"Obj_EpicGames_Menu","path":"objects/Obj_EpicGames_Menu/Obj_EpicGames_Menu.yy",},},
     {"id":{"name":"Obj_EpicGames_Metrics","path":"objects/Obj_EpicGames_Metrics/Obj_EpicGames_Metrics.yy",},},

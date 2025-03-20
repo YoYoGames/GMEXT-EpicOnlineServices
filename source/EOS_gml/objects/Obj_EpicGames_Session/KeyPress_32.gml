@@ -1,2 +1,3 @@
 
+show_debug_message(SessionName)
 show_debug_message(EpicGames_ActiveSession_CopyInfo(SessionName))
