@@ -18,7 +18,7 @@ void EpicGames_Metrics_Init()
 
 YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	eos_ensure_argc(6);
 
@@ -46,7 +46,7 @@ YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* se
 
 YYEXPORT void EpicGames_Metrics_EndPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	eos_ensure_argc(2);
 

@@ -6,72 +6,72 @@
 #include "eos_rtc_data.h"
 #include "eos_rtc_admin.h"
 
-//Functions
-//EOS_RTC_AddNotifyDisconnected
-//EOS_RTC_AddNotifyParticipantStatusChanged
-//EOS_RTC_AddNotifyRoomStatisticsUpdated
-//EOS_RTC_BlockParticipant
-//EOS_RTC_GetAudioInterface
-//EOS_RTC_GetDataInterface
-//EOS_RTC_JoinRoom
-//EOS_RTC_LeaveRoom
-//EOS_RTC_RemoveNotifyDisconnected
-//EOS_RTC_RemoveNotifyParticipantStatusChanged
-//EOS_RTC_RemoveNotifyRoomStatisticsUpdated
-//EOS_RTC_SetRoomSetting
-//EOS_RTC_SetSetting
-//EOS_RTCAdmin_CopyUserTokenByIndex
-//EOS_RTCAdmin_CopyUserTokenByUserId
-//EOS_RTCAdmin_Kick
-//EOS_RTCAdmin_QueryJoinRoomToken
-//EOS_RTCAdmin_SetParticipantHardMute
-//EOS_RTCAdmin_UserToken_Release
-//EOS_RTCAudio_AddNotifyAudioBeforeRender
-//EOS_RTCAudio_AddNotifyAudioBeforeSend
-//EOS_RTCAudio_AddNotifyAudioDevicesChanged
-//EOS_RTCAudio_AddNotifyAudioInputState
-//EOS_RTCAudio_AddNotifyAudioOutputState
-//EOS_RTCAudio_AddNotifyParticipantUpdated
-//EOS_RTCAudio_CopyInputDeviceInformationByIndex
-//EOS_RTCAudio_CopyOutputDeviceInformationByIndex
-//EOS_RTCAudio_GetAudioInputDeviceByIndex
-//EOS_RTCAudio_GetAudioInputDevicesCount
-//EOS_RTCAudio_GetAudioOutputDeviceByIndex
-//EOS_RTCAudio_GetAudioOutputDevicesCount
-//EOS_RTCAudio_GetInputDevicesCount
-//EOS_RTCAudio_GetOutputDevicesCount
-//EOS_RTCAudio_InputDeviceInformation_Release
-//EOS_RTCAudio_OutputDeviceInformation_Release
-//EOS_RTCAudio_QueryInputDevicesInformation
-//EOS_RTCAudio_QueryOutputDevicesInformation
-//EOS_RTCAudio_RegisterPlatformAudioUser
-//EOS_RTCAudio_RegisterPlatformUser
-//EOS_RTCAudio_RemoveNotifyAudioBeforeRender
-//EOS_RTCAudio_RemoveNotifyAudioBeforeSend
-//EOS_RTCAudio_RemoveNotifyAudioDevicesChanged
-//EOS_RTCAudio_RemoveNotifyAudioInputState
-//EOS_RTCAudio_RemoveNotifyAudioOutputState
-//EOS_RTCAudio_RemoveNotifyParticipantUpdated
-//EOS_RTCAudio_SendAudio
-//EOS_RTCAudio_SetAudioInputSettings
-//EOS_RTCAudio_SetAudioOutputSettings
-//EOS_RTCAudio_SetInputDeviceSettings
-//EOS_RTCAudio_SetOutputDeviceSettings
-//EOS_RTCAudio_UnregisterPlatformAudioUser
-//EOS_RTCAudio_UnregisterPlatformUser
-//EOS_RTCAudio_UpdateParticipantVolume
-//EOS_RTCAudio_UpdateReceiving
-//EOS_RTCAudio_UpdateReceivingVolume
-//EOS_RTCAudio_UpdateSending
-//EOS_RTCAudio_UpdateSendingVolume
-//EOS_RTCData_AddNotifyDataReceived
-//EOS_RTCData_AddNotifyParticipantUpdated
-//EOS_RTCData_RemoveNotifyDataReceived
-//EOS_RTCData_RemoveNotifyParticipantUpdated
-//EOS_RTCData_SendData
-//EOS_RTCData_UpdateReceiving
-//EOS_RTCData_UpdateSending
-//EOS_RTCData_OnUpdateSendingCallback
+// Functions
+// EOS_RTC_AddNotifyDisconnected
+// EOS_RTC_AddNotifyParticipantStatusChanged
+// EOS_RTC_AddNotifyRoomStatisticsUpdated
+// EOS_RTC_BlockParticipant
+// EOS_RTC_GetAudioInterface
+// EOS_RTC_GetDataInterface
+// EOS_RTC_JoinRoom
+// EOS_RTC_LeaveRoom
+// EOS_RTC_RemoveNotifyDisconnected
+// EOS_RTC_RemoveNotifyParticipantStatusChanged
+// EOS_RTC_RemoveNotifyRoomStatisticsUpdated
+// EOS_RTC_SetRoomSetting
+// EOS_RTC_SetSetting
+// EOS_RTCAdmin_CopyUserTokenByIndex
+// EOS_RTCAdmin_CopyUserTokenByUserId
+// EOS_RTCAdmin_Kick
+// EOS_RTCAdmin_QueryJoinRoomToken
+// EOS_RTCAdmin_SetParticipantHardMute
+// EOS_RTCAdmin_UserToken_Release
+// EOS_RTCAudio_AddNotifyAudioBeforeRender
+// EOS_RTCAudio_AddNotifyAudioBeforeSend
+// EOS_RTCAudio_AddNotifyAudioDevicesChanged
+// EOS_RTCAudio_AddNotifyAudioInputState
+// EOS_RTCAudio_AddNotifyAudioOutputState
+// EOS_RTCAudio_AddNotifyParticipantUpdated
+// EOS_RTCAudio_CopyInputDeviceInformationByIndex
+// EOS_RTCAudio_CopyOutputDeviceInformationByIndex
+// EOS_RTCAudio_GetAudioInputDeviceByIndex
+// EOS_RTCAudio_GetAudioInputDevicesCount
+// EOS_RTCAudio_GetAudioOutputDeviceByIndex
+// EOS_RTCAudio_GetAudioOutputDevicesCount
+// EOS_RTCAudio_GetInputDevicesCount
+// EOS_RTCAudio_GetOutputDevicesCount
+// EOS_RTCAudio_InputDeviceInformation_Release
+// EOS_RTCAudio_OutputDeviceInformation_Release
+// EOS_RTCAudio_QueryInputDevicesInformation
+// EOS_RTCAudio_QueryOutputDevicesInformation
+// EOS_RTCAudio_RegisterPlatformAudioUser
+// EOS_RTCAudio_RegisterPlatformUser
+// EOS_RTCAudio_RemoveNotifyAudioBeforeRender
+// EOS_RTCAudio_RemoveNotifyAudioBeforeSend
+// EOS_RTCAudio_RemoveNotifyAudioDevicesChanged
+// EOS_RTCAudio_RemoveNotifyAudioInputState
+// EOS_RTCAudio_RemoveNotifyAudioOutputState
+// EOS_RTCAudio_RemoveNotifyParticipantUpdated
+// EOS_RTCAudio_SendAudio
+// EOS_RTCAudio_SetAudioInputSettings
+// EOS_RTCAudio_SetAudioOutputSettings
+// EOS_RTCAudio_SetInputDeviceSettings
+// EOS_RTCAudio_SetOutputDeviceSettings
+// EOS_RTCAudio_UnregisterPlatformAudioUser
+// EOS_RTCAudio_UnregisterPlatformUser
+// EOS_RTCAudio_UpdateParticipantVolume
+// EOS_RTCAudio_UpdateReceiving
+// EOS_RTCAudio_UpdateReceivingVolume
+// EOS_RTCAudio_UpdateSending
+// EOS_RTCAudio_UpdateSendingVolume
+// EOS_RTCData_AddNotifyDataReceived
+// EOS_RTCData_AddNotifyParticipantUpdated
+// EOS_RTCData_RemoveNotifyDataReceived
+// EOS_RTCData_RemoveNotifyParticipantUpdated
+// EOS_RTCData_SendData
+// EOS_RTCData_UpdateReceiving
+// EOS_RTCData_UpdateSending
+// EOS_RTCData_OnUpdateSendingCallback
 
 EOS_HRTC HRTC;
 EOS_HRTCAudio HRTCAudio;
@@ -87,11 +87,10 @@ void EpicGames_RTC_Init()
 	EOS_HRTCData HRTCData = EOS_RTC_GetDataInterface(HRTC);
 }
 
-void EOS_CALL RTC_AddNotifyDisconnected(const EOS_RTC_DisconnectedCallbackInfo* Data)
+void EOS_CALL RTC_AddNotifyDisconnected(const EOS_RTC_DisconnectedCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTC_AddNotifyDisconnected");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
@@ -100,66 +99,58 @@ void EOS_CALL RTC_AddNotifyDisconnected(const EOS_RTC_DisconnectedCallbackInfo* 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_RTC_AddNotifyDisconnected(char* RoomName, char* LocalUserId, char* buff_ret)
-{ 
-
-	callback* mcallback = getCallbackData();
-
+func double SDKEpicGames_RTC_AddNotifyDisconnected(char *RoomName, char *LocalUserId, char *buff_ret)
+{
 	EOS_RTC_AddNotifyDisconnectedOptions Options = {};
 	Options.ApiVersion = EOS_RTC_ADDNOTIFYDISCONNECTED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTC_AddNotifyDisconnected(HRTC,&Options,mcallback, RTC_AddNotifyDisconnected);
+	uint64 notificationId = EOS_RTC_AddNotifyDisconnected(HRTC, &Options, nullptr, RTC_AddNotifyDisconnected);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
+	return 0.0;
 }
 
-void EOS_CALL RTC_AddNotifyParticipantStatusChanged(const EOS_RTC_ParticipantStatusChangedCallbackInfo* Data)
+void EOS_CALL RTC_AddNotifyParticipantStatusChanged(const EOS_RTC_ParticipantStatusChangedCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTC_AddNotifyParticipantStatusChanged");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddDouble(map, "bParticipantInBlocklist", (double)Data->bParticipantInBlocklist);
 	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
 	DsMapAddDouble(map, "ParticipantStatus", (double)Data->ParticipantStatus);
-	//TODO
+	// TODO
 	Data->ParticipantMetadata;
 	Data->ParticipantMetadataCount;
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-
-func double SDKEpicGames_RTC_AddNotifyParticipantStatusChanged(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
-	EOS_RTC_AddNotifyParticipantStatusChangedOptions Options = { 0 };
+func double SDKEpicGames_RTC_AddNotifyParticipantStatusChanged(char *LocalUserId, char *RoomName, char *buff_ret)
+{
+	EOS_RTC_AddNotifyParticipantStatusChangedOptions Options = {0};
 	Options.ApiVersion = EOS_RTC_ADDNOTIFYPARTICIPANTSTATUSCHANGED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTC_AddNotifyParticipantStatusChanged(HRTC,&Options,mcallback, RTC_AddNotifyParticipantStatusChanged);
+	uint64 notificationId = EOS_RTC_AddNotifyParticipantStatusChanged(HRTC, &Options, nullptr, RTC_AddNotifyParticipantStatusChanged);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTC_AddNotifyRoomStatisticsUpdated(const EOS_RTC_RoomStatisticsUpdatedInfo* Data)
+void EOS_CALL RTC_AddNotifyRoomStatisticsUpdated(const EOS_RTC_RoomStatisticsUpdatedInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTC_AddNotifyRoomStatisticsUpdated");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddString(map, "Statistic", Data->Statistic);
@@ -167,85 +158,87 @@ void EOS_CALL RTC_AddNotifyRoomStatisticsUpdated(const EOS_RTC_RoomStatisticsUpd
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_RTC_AddNotifyRoomStatisticsUpdated(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
+func double SDKEpicGames_RTC_AddNotifyRoomStatisticsUpdated(char *LocalUserId, char *RoomName, char *buff_ret)
+{
 	EOS_RTC_AddNotifyRoomStatisticsUpdatedOptions Options = {0};
 	Options.ApiVersion = EOS_RTC_ADDNOTIFYROOMSTATISTICSUPDATED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTC_AddNotifyRoomStatisticsUpdated(HRTC,&Options,mcallback, RTC_AddNotifyRoomStatisticsUpdated);
+	uint64 notificationId = EOS_RTC_AddNotifyRoomStatisticsUpdated(HRTC, &Options, nullptr, RTC_AddNotifyRoomStatisticsUpdated);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
+	return 0.0;
 }
 
-void EOS_CALL RTC_BlockParticipant(const EOS_RTC_BlockParticipantCallbackInfo* Data)
+void EOS_CALL RTC_BlockParticipant(const EOS_RTC_BlockParticipantCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTC_BlockParticipant");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
 	DsMapAddDouble(map, "bBlocked", Data->bBlocked ? 1.0 : 0.0);
 
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTC_BlockParticipant(double bBlocked,char* LocalUserId, char* ParticipantId, char* RoomName)
+func double EpicGames_RTC_BlockParticipant(double bBlocked, char *LocalUserId, char *ParticipantId, char *RoomName)
 {
-	callback* mcallback = getCallbackData();
-	EOS_RTC_BlockParticipantOptions Options = { 0 };
+	callback *mcallback = getCallbackData();
+	EOS_RTC_BlockParticipantOptions Options = {0};
 	Options.ApiVersion = EOS_RTC_BLOCKPARTICIPANT_API_LATEST;
-	Options.bBlocked = bBlocked>0.5;
+	Options.bBlocked = bBlocked > 0.5;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.ParticipantId = EOS_ProductUserId_FromString(ParticipantId);
 	Options.RoomName = RoomName;
-	EOS_RTC_BlockParticipant(HRTC,&Options, mcallback, RTC_BlockParticipant);
+	EOS_RTC_BlockParticipant(HRTC, &Options, mcallback, RTC_BlockParticipant);
 	return mcallback->identifier;
 }
 
-//func double EpicGames_RTC_GetAudioInterface() 
+// func double EpicGames_RTC_GetAudioInterface()
 //{
 //	HRTCAudio = EOS_RTC_GetAudioInterface(HRTC);
-//	return 0.0; 
-//}
+//	return 0.0;
+// }
 
-//func double EpicGames_RTC_GetDataInterface() 
-//{ 
+// func double EpicGames_RTC_GetDataInterface()
+//{
 //	EOS_HRTCData HRTCData = EOS_RTC_GetDataInterface(HRTC);
-//	return 0.0; 
-//} 
+//	return 0.0;
+// }
 
-void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo* Data)
+void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTC_JoinRoom");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
-	//TODO: ARRAY of STRUCT
-	//DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptionsCount);
-	//DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptions.);
+	// TODO: ARRAY of STRUCT
+	// DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptionsCount);
+	// DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptions.);
 
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double SDKEpicGames_RTC_JoinRoom(char* buff_args)
-{ 
-	auto args = buffer_unpack((uint8_t*)buff_args);
-	char* LocalUserId = (char*)YYGetString(args[0]);
-	char* RoomName = (char*)YYGetString(args[1]);
-	char* ParticipantId = (char*)YYGetString(args[2]);
-	char* ParticipantToken = (char*)YYGetString(args[3]);
+func double SDKEpicGames_RTC_JoinRoom(char *buff_args)
+{
+	auto args = buffer_unpack((uint8_t *)buff_args);
+	char *LocalUserId = (char *)YYGetString(args[0]);
+	char *RoomName = (char *)YYGetString(args[1]);
+	char *ParticipantId = (char *)YYGetString(args[2]);
+	char *ParticipantToken = (char *)YYGetString(args[3]);
 	bool bManualAudioInputEnabled = YYGetBool(args[4]);
 	bool bManualAudioOutputEnabled = YYGetBool(args[5]);
-	char* ClientBaseUrl = (char*)YYGetString(args[6]);
+	char *ClientBaseUrl = (char *)YYGetString(args[6]);
 	uint32_t Flags = YYGetUint32(args[7]);
 
 	EOS_RTC_JoinRoomOptions Options = {};
@@ -259,83 +252,83 @@ func double SDKEpicGames_RTC_JoinRoom(char* buff_args)
 	Options.ClientBaseUrl = ClientBaseUrl;
 	Options.Flags = Flags;
 
-	callback* mcallback = getCallbackData();
+	callback *mcallback = getCallbackData();
 	EOS_RTC_JoinRoom(HRTC, &Options, mcallback, RTC_JoinRoom);
 	return mcallback->identifier;
-} 
+}
 
-void EOS_CALL RTC_LeaveRoom(const EOS_RTC_LeaveRoomCallbackInfo* Data)
+void EOS_CALL RTC_LeaveRoom(const EOS_RTC_LeaveRoomCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTC_LeaveRoom");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 
-	//TODO: ARRAY of STRUCT
-	//DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptionsCount);
-	//DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptions.);
+	// TODO: ARRAY of STRUCT
+	// DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptionsCount);
+	// DsMapAddDouble(map, "RoomOptionsCount", Data->RoomOptions.);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double EpicGames_RTC_LeaveRoom(char* LocalUserId, char* RoomName)
+func double EpicGames_RTC_LeaveRoom(char *LocalUserId, char *RoomName)
 {
-	EOS_RTC_LeaveRoomOptions Options = { 0 }; 
+	EOS_RTC_LeaveRoomOptions Options = {0};
 	Options.ApiVersion = EOS_RTC_LEAVEROOM_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	callback* mcallback = getCallbackData();
+	callback *mcallback = getCallbackData();
 	EOS_RTC_LeaveRoom(HRTC, &Options, mcallback, RTC_LeaveRoom);
 	return mcallback->identifier;
-} 
+}
 
-func double SDKEpicGames_RTC_RemoveNotifyDisconnected(char* buff_args)
+func double SDKEpicGames_RTC_RemoveNotifyDisconnected(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTC_RemoveNotifyDisconnected(HRTC, InId);
 
 	return 0.0;
-} 
+}
 
-func double SDKEpicGames_RTC_RemoveNotifyParticipantStatusChanged(char* buff_args)
+func double SDKEpicGames_RTC_RemoveNotifyParticipantStatusChanged(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTC_RemoveNotifyParticipantStatusChanged(HRTC, InId);
 
 	return 0.0;
-} 
+}
 
-func double SDKEpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(char* buff_args)
+func double SDKEpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTC_RemoveNotifyRoomStatisticsUpdated(HRTC, InId);
 
 	return 0.0;
-} 
+}
 
-func double EpicGames_RTC_SetRoomSetting(char* LocalUserId, char* RoomName, char* SettingName,char* SettingValue)
-{ 
+func double EpicGames_RTC_SetRoomSetting(char *LocalUserId, char *RoomName, char *SettingName, char *SettingValue)
+{
 	EOS_RTC_SetRoomSettingOptions Options = {0};
 	Options.ApiVersion = EOS_RTC_SETROOMSETTING_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 	Options.SettingName = SettingName;
 	Options.SettingValue = SettingValue;
-	EOS_EResult result = EOS_RTC_SetRoomSetting(HRTC,&Options);
-	
-	return (double) result;
-} 
+	EOS_EResult result = EOS_RTC_SetRoomSetting(HRTC, &Options);
 
-func double EpicGames_RTC_SetSetting(char* SettingName,char* SettingValue)
-{ 
+	return (double)result;
+}
+
+func double EpicGames_RTC_SetSetting(char *SettingName, char *SettingValue)
+{
 	EOS_RTC_SetSettingOptions Options = {0};
 	Options.ApiVersion = EOS_RTC_SETSETTING_API_LATEST;
 	Options.SettingName = SettingName;
@@ -345,56 +338,58 @@ func double EpicGames_RTC_SetSetting(char* SettingName,char* SettingValue)
 	return (double)result;
 }
 
-EOS_RTCAdmin_UserToken* OutUserToken = NULL;
+EOS_RTCAdmin_UserToken *OutUserToken = NULL;
 func double EpicGames_RTCAdmin_CopyUserTokenByIndex(double QueryId, double UserTokenIndex)
-{ 
-	EOS_RTCAdmin_CopyUserTokenByIndexOptions Options = { 0 };
+{
+	EOS_RTCAdmin_CopyUserTokenByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_RTCADMIN_COPYUSERTOKENBYINDEX_API_LATEST;
-	Options.QueryId = QueryId;
-	Options.UserTokenIndex = UserTokenIndex;
+	Options.QueryId = (uint32_t)QueryId;
+	Options.UserTokenIndex = (uint32_t)UserTokenIndex;
 	EOS_EResult result = EOS_RTCAdmin_CopyUserTokenByIndex(HRTCAdmin, &Options, &OutUserToken);
 
 	return (double)result;
 }
 
-func double EpicGames_RTCAdmin_CopyUserTokenByUserId(double QueryId,char* TargetUserId)
-{ 
+func double EpicGames_RTCAdmin_CopyUserTokenByUserId(double QueryId, char *TargetUserId)
+{
 	EOS_RTCAdmin_CopyUserTokenByUserIdOptions Options = {0};
 	Options.ApiVersion = EOS_RTCADMIN_COPYUSERTOKENBYUSERID_API_LATEST;
-	Options.QueryId = QueryId;
+	Options.QueryId = (uint32_t)QueryId;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
-	EOS_RTCAdmin_CopyUserTokenByUserId(HRTCAdmin,&Options,&OutUserToken);
+	EOS_RTCAdmin_CopyUserTokenByUserId(HRTCAdmin, &Options, &OutUserToken);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAdmin_Kick(const EOS_RTCAdmin_KickCompleteCallbackInfo* Data)
+void EOS_CALL RTCAdmin_Kick(const EOS_RTCAdmin_KickCompleteCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAdmin_Kick");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAdmin_Kick(char* RoomName,char* TargetUserId)
-{ 
-	
-	EOS_RTCAdmin_KickOptions Options = { 0 }; 
+func double EpicGames_RTCAdmin_Kick(char *RoomName, char *TargetUserId)
+{
+
+	EOS_RTCAdmin_KickOptions Options = {0};
 	Options.ApiVersion = EOS_RTCADMIN_KICK_API_LATEST;
 	Options.RoomName = RoomName;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
-	
-	callback* mcallback = getCallbackData();
-	EOS_RTCAdmin_Kick(HRTCAdmin,&Options,mcallback, RTCAdmin_Kick);
-	return (double)mcallback->identifier;
-} 
 
-void EOS_CALL RTCAdmin_QueryJoinRoomToken(const EOS_RTCAdmin_QueryJoinRoomTokenCompleteCallbackInfo* Data)
+	callback *mcallback = getCallbackData();
+	EOS_RTCAdmin_Kick(HRTCAdmin, &Options, mcallback, RTCAdmin_Kick);
+	return (double)mcallback->identifier;
+}
+
+void EOS_CALL RTCAdmin_QueryJoinRoomToken(const EOS_RTCAdmin_QueryJoinRoomTokenCompleteCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAdmin_QueryJoinRoomToken");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddString(map, "ClientBaseUrl", Data->ClientBaseUrl);
@@ -402,158 +397,147 @@ void EOS_CALL RTCAdmin_QueryJoinRoomToken(const EOS_RTCAdmin_QueryJoinRoomTokenC
 	DsMapAddDouble(map, "TokenCount", Data->TokenCount);
 
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double SDKEpicGames_RTCAdmin_QueryJoinRoomToken(char* buff_args)
-{ 
-	auto args = buffer_unpack((uint8_t*)buff_args);
-	const char* LocalUserId = YYGetString(args[0]);
-	const char* RoomName = YYGetString(args[1]);
+func double SDKEpicGames_RTCAdmin_QueryJoinRoomToken(char *buff_args)
+{
+	auto args = buffer_unpack((uint8_t *)buff_args);
+	const char *LocalUserId = YYGetString(args[0]);
+	const char *RoomName = YYGetString(args[1]);
 	auto array_ids = YYGetArray(args[2]);
 	std::vector<EOS_ProductUserId> p_ids = VectorProductIdsFromVector(array_ids);
 	auto array_ips = YYGetArray(args[3]);
-	std::vector<const char*> p_ips = VectorStringFromVector(array_ips);
-	
+	std::vector<const char *> p_ips = VectorStringFromVector(array_ips);
 
-	EOS_RTCAdmin_QueryJoinRoomTokenOptions Options = { 0 };
+	EOS_RTCAdmin_QueryJoinRoomTokenOptions Options = {0};
 	Options.ApiVersion = EOS_RTCADMIN_QUERYJOINROOMTOKEN_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 	Options.TargetUserIds = p_ids.data();
-	Options.TargetUserIdsCount = p_ids.size();
+	Options.TargetUserIdsCount = (uint32_t)p_ids.size();
 	if (p_ips.size() == 0)
 		Options.TargetUserIpAddresses = NULL;
 	else
 		Options.TargetUserIpAddresses = p_ips.data();
 
-	callback* mcallback = getCallbackData();
-	EOS_RTCAdmin_QueryJoinRoomToken(HRTCAdmin,&Options,mcallback, RTCAdmin_QueryJoinRoomToken);
+	callback *mcallback = getCallbackData();
+	EOS_RTCAdmin_QueryJoinRoomToken(HRTCAdmin, &Options, mcallback, RTCAdmin_QueryJoinRoomToken);
 	return (double)mcallback->identifier;
 }
 
-void EOS_CALL RTCAdmin_SetParticipantHardMute(const EOS_RTCAdmin_SetParticipantHardMuteCompleteCallbackInfo* Data)
+void EOS_CALL RTCAdmin_SetParticipantHardMute(const EOS_RTCAdmin_SetParticipantHardMuteCompleteCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAdmin_SetParticipantHardMute");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAdmin_SetParticipantHardMute() 
-{ 
-	EOS_RTCAdmin_SetParticipantHardMuteOptions Options = { 0 };
-	
-	callback* mcallback = getCallbackData();
-	EOS_RTCAdmin_SetParticipantHardMute(HRTCAdmin,&Options, mcallback, RTCAdmin_SetParticipantHardMute);
+func double EpicGames_RTCAdmin_SetParticipantHardMute()
+{
+	EOS_RTCAdmin_SetParticipantHardMuteOptions Options = {0};
+
+	callback *mcallback = getCallbackData();
+	EOS_RTCAdmin_SetParticipantHardMute(HRTCAdmin, &Options, mcallback, RTCAdmin_SetParticipantHardMute);
 	return (double)mcallback->identifier;
 }
 
-func double EpicGames_RTCAdmin_UserToken_Release() 
-{ 
+func double EpicGames_RTCAdmin_UserToken_Release()
+{
 	EOS_RTCAdmin_UserToken_Release(OutUserToken);
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAudio_AddNotifyAudioBeforeRender(const EOS_RTCAudio_AudioBeforeRenderCallbackInfo* Data)
+void EOS_CALL RTCAudio_AddNotifyAudioBeforeRender(const EOS_RTCAudio_AudioBeforeRenderCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_AddNotifyAudioBeforeRender");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
-	//TODO
+	// TODO
 	Data->Buffer;
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-
-func double SDKEpicGames_RTCAudio_AddNotifyAudioBeforeRender(char* LocalUserId,char* RoomName, double bUnmixedAudio, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
-	EOS_RTCAudio_AddNotifyAudioBeforeRenderOptions Options = { 0 };
+func double SDKEpicGames_RTCAudio_AddNotifyAudioBeforeRender(char *LocalUserId, char *RoomName, double bUnmixedAudio, char *buff_ret)
+{
+	EOS_RTCAudio_AddNotifyAudioBeforeRenderOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORERENDER_API_LATEST;
-	Options.bUnmixedAudio = bUnmixedAudio>0.5;
+	Options.bUnmixedAudio = bUnmixedAudio > 0.5;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTCAudio_AddNotifyAudioBeforeRender(HRTCAudio,&Options,mcallback, RTCAudio_AddNotifyAudioBeforeRender);
+	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioBeforeRender(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioBeforeRender);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
 	return 0.0;
+}
 
-} 
-
-void EOS_CALL RTCAudio_AddNotifyAudioBeforeSend(const EOS_RTCAudio_AudioBeforeSendCallbackInfo* Data)
+void EOS_CALL RTCAudio_AddNotifyAudioBeforeSend(const EOS_RTCAudio_AudioBeforeSendCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_AddNotifyAudioBeforeSend");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
-	//TODO
+	// TODO
 	Data->Buffer;
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-
-func double SDKEpicGames_RTCAudio_AddNotifyAudioBeforeSend(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
-	EOS_RTCAudio_AddNotifyAudioBeforeSendOptions Options = { 0 }; 
+func double SDKEpicGames_RTCAudio_AddNotifyAudioBeforeSend(char *LocalUserId, char *RoomName, char *buff_ret)
+{
+	EOS_RTCAudio_AddNotifyAudioBeforeSendOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORESEND_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTCAudio_AddNotifyAudioBeforeSend(HRTCAudio, &Options,mcallback, RTCAudio_AddNotifyAudioBeforeSend);
+	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioBeforeSend(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioBeforeSend);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAudio_AddNotifyAudioDevicesChanged(const EOS_RTCAudio_AudioDevicesChangedCallbackInfo* Data)
+void EOS_CALL RTCAudio_AddNotifyAudioDevicesChanged(const EOS_RTCAudio_AudioDevicesChangedCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_AddNotifyAudioDevicesChanged");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-
-func double SDKEpicGames_RTCAudio_AddNotifyAudioDevicesChanged(char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
-	EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions Options = { 0 };
+func double SDKEpicGames_RTCAudio_AddNotifyAudioDevicesChanged(char *buff_ret)
+{
+	EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYAUDIODEVICESCHANGED_API_LATEST;
 
-	uint64 ret = EOS_RTCAudio_AddNotifyAudioDevicesChanged(HRTCAudio,&Options, mcallback,RTCAudio_AddNotifyAudioDevicesChanged);
+	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioDevicesChanged(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioDevicesChanged);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAudio_AddNotifyAudioInputState(const EOS_RTCAudio_AudioInputStateCallbackInfo* Data)
+void EOS_CALL RTCAudio_AddNotifyAudioInputState(const EOS_RTCAudio_AudioInputStateCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_AddNotifyAudioInputState");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddDouble(map, "Status", (double)Data->Status);
@@ -561,29 +545,26 @@ void EOS_CALL RTCAudio_AddNotifyAudioInputState(const EOS_RTCAudio_AudioInputSta
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_RTCAudio_AddNotifyAudioInputState(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
+func double SDKEpicGames_RTCAudio_AddNotifyAudioInputState(char *LocalUserId, char *RoomName, char *buff_ret)
+{
 	EOS_RTCAudio_AddNotifyAudioInputStateOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYAUDIOINPUTSTATE_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTCAudio_AddNotifyAudioInputState(HRTCAudio,&Options,mcallback, RTCAudio_AddNotifyAudioInputState);
+	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioInputState(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioInputState);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_AudioOutputStateCallbackInfo* Data)
+void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_AudioOutputStateCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_AddNotifyAudioOutputState");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddDouble(map, "Status", (double)Data->Status);
@@ -591,29 +572,26 @@ void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_AudioOutputS
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_RTCAudio_AddNotifyAudioOutputState(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
+func double SDKEpicGames_RTCAudio_AddNotifyAudioOutputState(char *LocalUserId, char *RoomName, char *buff_ret)
+{
 	EOS_RTCAudio_AddNotifyAudioOutputStateOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYAUDIOOUTPUTSTATE_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
-	
-	uint64 ret = EOS_RTCAudio_AddNotifyAudioOutputState(HRTCAudio,&Options,mcallback, RTCAudio_AddNotifyAudioOutputState);
+
+	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioOutputState(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioOutputState);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_ParticipantUpdatedCallbackInfo* Data)
+void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_ParticipantUpdatedCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_AddNotifyParticipantUpdated");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddDouble(map, "Speaking", Data->bSpeaking);
@@ -623,332 +601,336 @@ void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_ParticipantU
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
+func double SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated(char *LocalUserId, char *RoomName, char *buff_ret)
+{
 	EOS_RTCAudio_AddNotifyParticipantUpdatedOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYPARTICIPANTUPDATED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
-	
-	uint64 ret = EOS_RTCAudio_AddNotifyParticipantUpdated(HRTCAudio,&Options,mcallback, RTCAudio_AddNotifyAudioOutputState);
+
+	uint64 notificationId = EOS_RTCAudio_AddNotifyParticipantUpdated(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioOutputState);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
-} 
+	return 0.0;
+}
 
-EOS_RTCAudio_InputDeviceInformation* OutInputDeviceInformation;
+EOS_RTCAudio_InputDeviceInformation *OutInputDeviceInformation;
 func double EpicGames_RTCAudio_CopyInputDeviceInformationByIndex(double DeviceIndex)
-{ 
-	EOS_RTCAudio_CopyInputDeviceInformationByIndexOptions Options = { 0 };
+{
+	EOS_RTCAudio_CopyInputDeviceInformationByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_COPYINPUTDEVICEINFORMATIONBYINDEX_API_LATEST;
-	Options.DeviceIndex = DeviceIndex;
-	
-	EOS_EResult result = EOS_RTCAudio_CopyInputDeviceInformationByIndex(HRTCAudio,&Options,&OutInputDeviceInformation);
+	Options.DeviceIndex = (uint32_t)DeviceIndex;
+
+	EOS_EResult result = EOS_RTCAudio_CopyInputDeviceInformationByIndex(HRTCAudio, &Options, &OutInputDeviceInformation);
 
 	return (double)result;
-} 
+}
 
-EOS_RTCAudio_OutputDeviceInformation* OutOutputDeviceInformation;
+EOS_RTCAudio_OutputDeviceInformation *OutOutputDeviceInformation;
 func double EpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(double DeviceIndex)
-{ 
-	EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions Options = { 0 };
+{
+	EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_COPYOUTPUTDEVICEINFORMATIONBYINDEX_API_LATEST;
-	Options.DeviceIndex = DeviceIndex;
-	
-	EOS_RTCAudio_CopyOutputDeviceInformationByIndex(HRTCAudio,&Options, &OutOutputDeviceInformation);
-	return 0.0; 
-} 
+	Options.DeviceIndex = (uint32_t)DeviceIndex;
 
-EOS_RTCAudio_AudioInputDeviceInfo* AudioInputDeviceInfo;
+	EOS_RTCAudio_CopyOutputDeviceInformationByIndex(HRTCAudio, &Options, &OutOutputDeviceInformation);
+	return 0.0;
+}
+
+EOS_RTCAudio_AudioInputDeviceInfo *AudioInputDeviceInfo;
 func double EpicGames_RTCAudio_GetAudioInputDeviceByIndex(double DeviceInfoIndex)
-{ 
+{
 	EOS_RTCAudio_GetAudioInputDeviceByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_GETAUDIOINPUTDEVICEBYINDEX_API_LATEST;
-	Options.DeviceInfoIndex = DeviceInfoIndex;
+	Options.DeviceInfoIndex = (uint32_t)DeviceInfoIndex;
 
-	AudioInputDeviceInfo = (EOS_RTCAudio_AudioInputDeviceInfo*) EOS_RTCAudio_GetAudioInputDeviceByIndex(HRTCAudio,&Options);
+	AudioInputDeviceInfo = (EOS_RTCAudio_AudioInputDeviceInfo *)EOS_RTCAudio_GetAudioInputDeviceByIndex(HRTCAudio, &Options);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double EpicGames_RTCAudio_GetAudioInputDevicesCount() 
-{ 
+func double EpicGames_RTCAudio_GetAudioInputDevicesCount()
+{
 	EOS_RTCAudio_GetAudioInputDevicesCountOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_GETAUDIOINPUTDEVICESCOUNT_API_LATEST;
-	
+
 	return EOS_RTCAudio_GetAudioInputDevicesCount(HRTCAudio, &Options);
-} 
+}
 
 func double EpicGames_RTCAudio_GetAudioOutputDeviceByIndex(double DeviceInfoIndex)
-{ 
+{
 	EOS_RTCAudio_GetAudioOutputDeviceByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_GETAUDIOOUTPUTDEVICEBYINDEX_API_LATEST;
-	Options.DeviceInfoIndex = DeviceInfoIndex;
+	Options.DeviceInfoIndex = (uint32_t)DeviceInfoIndex;
 	EOS_RTCAudio_GetAudioOutputDeviceByIndex(HRTCAudio, &Options);
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double EpicGames_RTCAudio_GetAudioOutputDevicesCount() 
+func double EpicGames_RTCAudio_GetAudioOutputDevicesCount()
 {
-	EOS_RTCAudio_GetAudioOutputDevicesCountOptions Options = { 0 };
+	EOS_RTCAudio_GetAudioOutputDevicesCountOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_GETAUDIOOUTPUTDEVICESCOUNT_API_LATEST;
 
 	return EOS_RTCAudio_GetAudioOutputDevicesCount(HRTCAudio, &Options);
 }
 
-func double EpicGames_RTCAudio_GetInputDevicesCount() 
-{ 
+func double EpicGames_RTCAudio_GetInputDevicesCount()
+{
 	EOS_RTCAudio_GetInputDevicesCountOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_GETINPUTDEVICESCOUNT_API_LATEST;
 
-	return EOS_RTCAudio_GetInputDevicesCount(HRTCAudio,&Options);
-} 
+	return EOS_RTCAudio_GetInputDevicesCount(HRTCAudio, &Options);
+}
 
-func double EpicGames_RTCAudio_GetOutputDevicesCount() 
-{ 
-	EOS_RTCAudio_GetOutputDevicesCountOptions Options = { 0 };
+func double EpicGames_RTCAudio_GetOutputDevicesCount()
+{
+	EOS_RTCAudio_GetOutputDevicesCountOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_GETOUTPUTDEVICESCOUNT_API_LATEST;
-	return EOS_RTCAudio_GetOutputDevicesCount(HRTCAudio,&Options);
-} 
+	return EOS_RTCAudio_GetOutputDevicesCount(HRTCAudio, &Options);
+}
 
-func double EpicGames_RTCAudio_InputDeviceInformation_Release() 
-{ 
+func double EpicGames_RTCAudio_InputDeviceInformation_Release()
+{
 	EOS_RTCAudio_InputDeviceInformation_Release(OutInputDeviceInformation);
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double EpicGames_RTCAudio_OutputDeviceInformation_Release() 
-{ 
+func double EpicGames_RTCAudio_OutputDeviceInformation_Release()
+{
 	EOS_RTCAudio_OutputDeviceInformation_Release(OutOutputDeviceInformation);
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAudio_QueryInputDevicesInformation(const EOS_RTCAudio_OnQueryInputDevicesInformationCallbackInfo* Data)
+void EOS_CALL RTCAudio_QueryInputDevicesInformation(const EOS_RTCAudio_OnQueryInputDevicesInformationCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_QueryInputDevicesInformation");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-
-func double EpicGames_RTCAudio_QueryInputDevicesInformation() 
-{ 
-	EOS_RTCAudio_QueryInputDevicesInformationOptions Options = {0}; 
+func double EpicGames_RTCAudio_QueryInputDevicesInformation()
+{
+	EOS_RTCAudio_QueryInputDevicesInformationOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_QUERYINPUTDEVICESINFORMATION_API_LATEST;
 
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_QueryInputDevicesInformation(HRTCAudio,&Options,mcallback, RTCAudio_QueryInputDevicesInformation);
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_QueryInputDevicesInformation(HRTCAudio, &Options, mcallback, RTCAudio_QueryInputDevicesInformation);
 
 	return mcallback->identifier;
-} 
+}
 
-void EOS_CALL RTCAudio_QueryOutputDevicesInformation(const EOS_RTCAudio_OnQueryOutputDevicesInformationCallbackInfo* Data)
+void EOS_CALL RTCAudio_QueryOutputDevicesInformation(const EOS_RTCAudio_OnQueryOutputDevicesInformationCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_QueryOutputDevicesInformation");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-
-func double EpicGames_RTCAudio_QueryOutputDevicesInformation() 
-{ 
+func double EpicGames_RTCAudio_QueryOutputDevicesInformation()
+{
 	EOS_RTCAudio_QueryOutputDevicesInformationOptions Options = {};
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_QueryOutputDevicesInformation(HRTCAudio,&Options,mcallback, RTCAudio_QueryOutputDevicesInformation);
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_QueryOutputDevicesInformation(HRTCAudio, &Options, mcallback, RTCAudio_QueryOutputDevicesInformation);
 
 	return mcallback->identifier;
 }
 
-func double EpicGames_RTCAudio_RegisterPlatformAudioUser(char* UserId)
-{ 
-	EOS_RTCAudio_RegisterPlatformAudioUserOptions Options = { 0 };
+func double EpicGames_RTCAudio_RegisterPlatformAudioUser(char *UserId)
+{
+	EOS_RTCAudio_RegisterPlatformAudioUserOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_REGISTERPLATFORMAUDIOUSER_API_LATEST;
 	Options.UserId = UserId;
 
-	EOS_EResult result = EOS_RTCAudio_RegisterPlatformAudioUser(HRTCAudio,&Options);
+	EOS_EResult result = EOS_RTCAudio_RegisterPlatformAudioUser(HRTCAudio, &Options);
 
 	return (double)result;
-} 
+}
 
-func double EpicGames_RTCAudio_RegisterPlatformUser(char* UserId)
-{ 
-	EOS_RTCAudio_RegisterPlatformAudioUserOptions Options = { 0 };
+func double EpicGames_RTCAudio_RegisterPlatformUser(char *UserId)
+{
+	EOS_RTCAudio_RegisterPlatformAudioUserOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_REGISTERPLATFORMAUDIOUSER_API_LATEST;
 	Options.UserId = UserId;
 	EOS_EResult result = EOS_RTCAudio_RegisterPlatformAudioUser(HRTCAudio, &Options);
 
 	return (double)result;
-} 
+}
 
-func double SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(char* buff_args)
+func double SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTCAudio_RemoveNotifyAudioBeforeRender(HRTCAudio, InId);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeSend(char* buff_args)
+func double SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeSend(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTCAudio_RemoveNotifyAudioBeforeSend(HRTCAudio, InId);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double SDKEpicGames_RTCAudio_RemoveNotifyAudioDevicesChanged(char* buff_args)
+func double SDKEpicGames_RTCAudio_RemoveNotifyAudioDevicesChanged(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTCAudio_RemoveNotifyAudioDevicesChanged(HRTCAudio, InId);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double SDKEpicGames_RTCAudio_RemoveNotifyAudioInputState(char* buff_args)
+func double SDKEpicGames_RTCAudio_RemoveNotifyAudioInputState(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTCAudio_RemoveNotifyAudioInputState(HRTCAudio, InId);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double SDKEpicGames_RTCAudio_RemoveNotifyAudioOutputState(char* buff_args)
+func double SDKEpicGames_RTCAudio_RemoveNotifyAudioOutputState(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTCAudio_RemoveNotifyAudioOutputState(HRTCAudio, InId);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double SDKEpicGames_RTCAudio_RemoveNotifyParticipantUpdated(char* buff_args)
+func double SDKEpicGames_RTCAudio_RemoveNotifyParticipantUpdated(char *buff_args)
 {
-	auto args = buffer_unpack((uint8_t*)buff_args);
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	EOS_NotificationId InId = YYGetUint64(args[0]);
 
 	EOS_RTCAudio_RemoveNotifyParticipantUpdated(HRTCAudio, InId);
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-func double EpicGames_RTCAudio_SendAudio(char* buff_args,char* buff_data) 
-{ 
-	auto args = buffer_unpack((uint8_t*)buff_args);
+func double EpicGames_RTCAudio_SendAudio(char *buff_args, char *buff_data)
+{
+	auto args = buffer_unpack((uint8_t *)buff_args);
 	uint32_t Channels = YYGetUint32(args[0]);
 	uint32_t FramesCount = YYGetUint32(args[1]);
 	uint32_t SampleRate = YYGetUint32(args[2]);
-	char* LocalUserId = (char*)YYGetString(args[3]);
-	char* RoomName = (char*)YYGetString(args[4]);
+	char *LocalUserId = (char *)YYGetString(args[3]);
+	char *RoomName = (char *)YYGetString(args[4]);
 
 	EOS_RTCAudio_SendAudioOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_SENDAUDIO_API_LATEST;
 	Options.Buffer->ApiVersion = EOS_RTCAUDIO_AUDIOBUFFER_API_LATEST;
 	Options.Buffer->Channels = Channels;
-	Options.Buffer->Frames = (int16_t*) buff_data;
+	Options.Buffer->Frames = (int16_t *)buff_data;
 	Options.Buffer->FramesCount = FramesCount;
 	Options.Buffer->SampleRate = SampleRate;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
-	EOS_EResult result = EOS_RTCAudio_SendAudio(HRTCAudio,&Options);
+	EOS_EResult result = EOS_RTCAudio_SendAudio(HRTCAudio, &Options);
 
 	return (double)result;
-} 
+}
 
-func double EpicGames_RTCAudio_SetAudioInputSettings(double bPlatformAEC, char* DeviceId,char* LocalUserId,double Volume)
-{ 
+func double EpicGames_RTCAudio_SetAudioInputSettings(double bPlatformAEC, char *DeviceId, char *LocalUserId, double Volume)
+{
 	EOS_RTCAudio_SetAudioInputSettingsOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_SETAUDIOINPUTSETTINGS_API_LATEST;
-	Options.bPlatformAEC = bPlatformAEC>0.5;
+	Options.bPlatformAEC = bPlatformAEC > 0.5;
 	Options.DeviceId = DeviceId;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.Volume = Volume;
-	EOS_EResult result = EOS_RTCAudio_SetAudioInputSettings(HRTCAudio,&Options);
+	Options.Volume = (float)Volume;
+	EOS_EResult result = EOS_RTCAudio_SetAudioInputSettings(HRTCAudio, &Options);
 
 	return (double)result;
-} 
+}
 
-func double EpicGames_RTCAudio_SetAudioOutputSettings(char* DeviceId, char* LocalUserId,double Volume)
-{ 
+func double EpicGames_RTCAudio_SetAudioOutputSettings(char *DeviceId, char *LocalUserId, double Volume)
+{
 	EOS_RTCAudio_SetAudioOutputSettingsOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_SETAUDIOOUTPUTSETTINGS_API_LATEST;
 	Options.DeviceId = DeviceId;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.Volume = Volume;
+	Options.Volume = (float)Volume;
 	EOS_EResult result = EOS_RTCAudio_SetAudioOutputSettings(HRTCAudio, &Options);
 	return (double)result;
-} 
+}
 
-void EOS_CALL Sessions_OnSendInviteCallback(const EOS_RTCAudio_OnSetInputDeviceSettingsCallbackInfo* Data)
+void EOS_CALL Sessions_OnSendInviteCallback(const EOS_RTCAudio_OnSetInputDeviceSettingsCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_SetInputDeviceSettings");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "RealDeviceId", Data->RealDeviceId);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAudio_SetInputDeviceSettings(double bPlatformAEC, char* LocalUserId, char* RealDeviceId)
-{ 
-	EOS_RTCAudio_SetInputDeviceSettingsOptions Options = { 0 };
+func double EpicGames_RTCAudio_SetInputDeviceSettings(double bPlatformAEC, char *LocalUserId, char *RealDeviceId)
+{
+	EOS_RTCAudio_SetInputDeviceSettingsOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_SETINPUTDEVICESETTINGS_API_LATEST;
-	Options.bPlatformAEC = bPlatformAEC>0.5;
+	Options.bPlatformAEC = bPlatformAEC > 0.5;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RealDeviceId = RealDeviceId;
-	
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_SetInputDeviceSettings(HRTCAudio,&Options,mcallback, Sessions_OnSendInviteCallback);
+
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_SetInputDeviceSettings(HRTCAudio, &Options, mcallback, Sessions_OnSendInviteCallback);
 
 	return (double)mcallback->identifier;
-} 
+}
 
-void EOS_CALL RTCAudio_SetOutputDeviceSettings(const EOS_RTCAudio_OnSetOutputDeviceSettingsCallbackInfo* Data)
+void EOS_CALL RTCAudio_SetOutputDeviceSettings(const EOS_RTCAudio_OnSetOutputDeviceSettingsCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_SetOutputDeviceSettings");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "RealDeviceId", Data->RealDeviceId);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAudio_SetOutputDeviceSettings(char* LocalUserId,char* RealDeviceId)
+func double EpicGames_RTCAudio_SetOutputDeviceSettings(char *LocalUserId, char *RealDeviceId)
 {
-	EOS_RTCAudio_SetOutputDeviceSettingsOptions Options = {}; 
+	EOS_RTCAudio_SetOutputDeviceSettingsOptions Options = {};
 	Options.ApiVersion = EOS_RTCAUDIO_SETOUTPUTDEVICESETTINGS_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RealDeviceId = RealDeviceId;
 
-	callback* mcallback = getCallbackData();
+	callback *mcallback = getCallbackData();
 	EOS_RTCAudio_SetOutputDeviceSettings(HRTCAudio, &Options, mcallback, RTCAudio_SetOutputDeviceSettings);
 	return (double)mcallback->identifier;
 }
 
-func double EpicGames_RTCAudio_UnregisterPlatformAudioUser(char* UserId)
+func double EpicGames_RTCAudio_UnregisterPlatformAudioUser(char *UserId)
 {
-	EOS_RTCAudio_UnregisterPlatformAudioUserOptions Options = { 0 };
+	EOS_RTCAudio_UnregisterPlatformAudioUserOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UNREGISTERPLATFORMAUDIOUSER_API_LATEST;
 	Options.UserId = UserId;
 	EOS_EResult result = EOS_RTCAudio_UnregisterPlatformAudioUser(HRTCAudio, &Options);
@@ -956,201 +938,207 @@ func double EpicGames_RTCAudio_UnregisterPlatformAudioUser(char* UserId)
 	return (double)result;
 }
 
-void EOS_CALL RTCAudio_UnregisterPlatformUser(const EOS_RTCAudio_OnUnregisterPlatformUserCallbackInfo* Data)
+void EOS_CALL RTCAudio_UnregisterPlatformUser(const EOS_RTCAudio_OnUnregisterPlatformUserCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_UnregisterPlatformUser");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "PlatformUserId", Data->PlatformUserId);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAudio_UnregisterPlatformUser(char* PlatformUserId)
+func double EpicGames_RTCAudio_UnregisterPlatformUser(char *PlatformUserId)
 {
 	EOS_RTCAudio_UnregisterPlatformUserOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UNREGISTERPLATFORMUSER_API_LATEST;
 	Options.PlatformUserId = PlatformUserId;
 
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_UnregisterPlatformUser(HRTCAudio, &Options,mcallback,RTCAudio_UnregisterPlatformUser);
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_UnregisterPlatformUser(HRTCAudio, &Options, mcallback, RTCAudio_UnregisterPlatformUser);
 	return mcallback->identifier;
 }
 
-void EOS_CALL RTCAudio_UpdateParticipantVolume(const EOS_RTCAudio_UpdateParticipantVolumeCallbackInfo* Data)
+void EOS_CALL RTCAudio_UpdateParticipantVolume(const EOS_RTCAudio_UpdateParticipantVolumeCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_UnregisterPlatformUser");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddDouble(map, "Volume", Data->Volume);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAudio_UpdateParticipantVolume(char* LocalUserId,char* ParticipantId,char* RoomName,double Volume)
+func double EpicGames_RTCAudio_UpdateParticipantVolume(char *LocalUserId, char *ParticipantId, char *RoomName, double Volume)
 {
-	EOS_RTCAudio_UpdateParticipantVolumeOptions Options = { 0 };
+	EOS_RTCAudio_UpdateParticipantVolumeOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATEPARTICIPANTVOLUME_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.ParticipantId = EOS_ProductUserId_FromString(ParticipantId);
 	Options.RoomName = RoomName;
-	Options.Volume = Volume;
-	
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_UpdateParticipantVolume(HRTCAudio,&Options,mcallback, RTCAudio_UpdateParticipantVolume);
-	return mcallback->identifier;
-} 
+	Options.Volume = (float)Volume;
 
-void EOS_CALL RTCAudio_UpdateReceiving(const EOS_RTCAudio_UpdateReceivingCallbackInfo* Data)
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_UpdateParticipantVolume(HRTCAudio, &Options, mcallback, RTCAudio_UpdateParticipantVolume);
+	return mcallback->identifier;
+}
+
+void EOS_CALL RTCAudio_UpdateReceiving(const EOS_RTCAudio_UpdateReceivingCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_UpdateReceiving");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
 	DsMapAddString(map, "status_message", Data->RoomName);
-	DsMapAddDouble(map, "bAudioEnabled", Data->bAudioEnabled?1.0:0.0);
-	
+	DsMapAddDouble(map, "bAudioEnabled", Data->bAudioEnabled ? 1.0 : 0.0);
+
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAudio_UpdateReceiving(char* LocalUserId, char* ParticipantId, char* RoomName, double bAudioEnabled)
-{ 
-	EOS_RTCAudio_UpdateReceivingOptions Options = { 0 };
+func double EpicGames_RTCAudio_UpdateReceiving(char *LocalUserId, char *ParticipantId, char *RoomName, double bAudioEnabled)
+{
+	EOS_RTCAudio_UpdateReceivingOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATERECEIVING_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.ParticipantId = EOS_ProductUserId_FromString(ParticipantId);
 	Options.RoomName = RoomName;
 	Options.bAudioEnabled = bAudioEnabled > 0.5;
 
-	callback* mcallback = getCallbackData();
-	
-	EOS_RTCAudio_UpdateReceiving(HRTCAudio,&Options, mcallback, RTCAudio_UpdateReceiving);
+	callback *mcallback = getCallbackData();
+
+	EOS_RTCAudio_UpdateReceiving(HRTCAudio, &Options, mcallback, RTCAudio_UpdateReceiving);
 
 	return mcallback->identifier;
 }
 
-void EOS_CALL RTCAudio_UpdateReceivingVolume(const EOS_RTCAudio_UpdateReceivingVolumeCallbackInfo* Data)
+void EOS_CALL RTCAudio_UpdateReceivingVolume(const EOS_RTCAudio_UpdateReceivingVolumeCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_UpdateReceivingVolume");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-
-func double EpicGames_RTCAudio_UpdateReceivingVolume(char* LocalUserId,char* RoomName,double Volume)
-{ 
-	EOS_RTCAudio_UpdateReceivingVolumeOptions Options = { 0 };
+func double EpicGames_RTCAudio_UpdateReceivingVolume(char *LocalUserId, char *RoomName, double Volume)
+{
+	EOS_RTCAudio_UpdateReceivingVolumeOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATERECEIVINGVOLUME_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
-	Options.Volume = Volume;
+	Options.Volume = (float)Volume;
 
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_UpdateReceivingVolume(HRTCAudio, &Options,mcallback, RTCAudio_UpdateReceivingVolume);
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_UpdateReceivingVolume(HRTCAudio, &Options, mcallback, RTCAudio_UpdateReceivingVolume);
 
 	return mcallback->identifier;
-} 
+}
 
-void EOS_CALL RTCAudio_UpdateSending(const EOS_RTCAudio_UpdateSendingCallbackInfo* Data)
+void EOS_CALL RTCAudio_UpdateSending(const EOS_RTCAudio_UpdateSendingCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_UpdateSending");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddDouble(map, "AudioStatus", (double)Data->AudioStatus);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAudio_UpdateSending(char* LocalUserId,char* RoomName, double AudioStatus)
-{ 
-	EOS_RTCAudio_UpdateSendingOptions Options = { 0 };
+func double EpicGames_RTCAudio_UpdateSending(char *LocalUserId, char *RoomName, double AudioStatus)
+{
+	EOS_RTCAudio_UpdateSendingOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATESENDING_API_LATEST;
-	Options.AudioStatus = (EOS_ERTCAudioStatus) AudioStatus;
+	Options.AudioStatus = (EOS_ERTCAudioStatus)AudioStatus;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_UpdateSending(HRTCAudio,&Options,mcallback, RTCAudio_UpdateSending);
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_UpdateSending(HRTCAudio, &Options, mcallback, RTCAudio_UpdateSending);
 	return (double)mcallback->identifier;
 
-	return 0.0; 
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCAudio_UpdateSendingVolume(const EOS_RTCAudio_UpdateSendingVolumeCallbackInfo* Data)
+void EOS_CALL RTCAudio_UpdateSendingVolume(const EOS_RTCAudio_UpdateSendingVolumeCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCAudio_UpdateSendingVolume");
 	DsMapAddDouble(map, "status", (double)Data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback *>(Data->ClientData);
 }
 
-func double EpicGames_RTCAudio_UpdateSendingVolume(char* LocalUserId, char* RoomName, double Volume)
-{ 
-	EOS_RTCAudio_UpdateSendingVolumeOptions Options = { 0 };
+func double EpicGames_RTCAudio_UpdateSendingVolume(char *LocalUserId, char *RoomName, double Volume)
+{
+	EOS_RTCAudio_UpdateSendingVolumeOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATESENDINGVOLUME_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
-	Options.Volume = Volume;
-	callback* mcallback = getCallbackData();
-	EOS_RTCAudio_UpdateSendingVolume(HRTCAudio,&Options,mcallback,RTCAudio_UpdateSendingVolume);
+	Options.Volume = (float)Volume;
+	callback *mcallback = getCallbackData();
+	EOS_RTCAudio_UpdateSendingVolume(HRTCAudio, &Options, mcallback, RTCAudio_UpdateSendingVolume);
 
 	return (double)mcallback->identifier;
 }
 
-void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_DataReceivedCallbackInfo* Data)
+void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_DataReceivedCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCData_AddNotifyDataReceived");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
-	//TODO
+	// TODO
 	Data->Data;
 	Data->DataLengthBytes;
-	
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_RTCData_AddNotifyDataReceived(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
-	EOS_RTCData_AddNotifyDataReceivedOptions Options = { 0 };
+func double SDKEpicGames_RTCData_AddNotifyDataReceived(char *LocalUserId, char *RoomName, char *buff_ret)
+{
+	EOS_RTCData_AddNotifyDataReceivedOptions Options = {0};
 	Options.ApiVersion = EOS_RTCDATA_ADDNOTIFYDATARECEIVED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTCData_AddNotifyDataReceived(HRTCData, &Options, mcallback, RTCData_AddNotifyDataReceived);
+	uint64 notificationId = EOS_RTCData_AddNotifyDataReceived(HRTCData, &Options, nullptr, RTCData_AddNotifyDataReceived);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
-} 
+	return 0.0;
+}
 
-void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_ParticipantUpdatedCallbackInfo* Data)
+void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_ParticipantUpdatedCallbackInfo *Data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_RTCData_AddNotifyParticipantUpdated");
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
 	DsMapAddString(map, "RoomName", Data->RoomName);
 	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
@@ -1160,109 +1148,108 @@ void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_ParticipantUpdated
 }
 
 func double SDKEpicGames_RTCData_AddNotifyParticipantUpdated(char* LocalUserId, char* RoomName, char* buff_ret)
-{ 
-	callback* mcallback = getCallbackData();
-
+{
 	EOS_RTCData_AddNotifyParticipantUpdatedOptions Options = { 0 };
 	Options.ApiVersion = EOS_RTCDATA_ADDNOTIFYPARTICIPANTUPDATED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 	Options.RoomName = RoomName;
 
-	uint64 ret = EOS_RTCData_AddNotifyParticipantUpdated(HRTCData,&Options,mcallback, RTCData_AddNotifyDataReceived);
+	uint64 notificationId = EOS_RTCData_AddNotifyParticipantUpdated(HRTCData, &Options, nullptr, RTCData_AddNotifyDataReceived);
 
 	DataStream data;
-	data << ret;
+	data << notificationId;
 	data.writeTo(buff_ret);
 
-	return mcallback->identifier;
+	return 0.0;
 }
 
-func double SDKEpicGames_RTCData_RemoveNotifyDataReceived(char* buff_args)
-{
-	auto args = buffer_unpack((uint8_t*)buff_args);
-	EOS_NotificationId InId = YYGetUint64(args[0]);
+	func double SDKEpicGames_RTCData_RemoveNotifyDataReceived(char *buff_args)
+	{
+		auto args = buffer_unpack((uint8_t *)buff_args);
+		EOS_NotificationId InId = YYGetUint64(args[0]);
 
-	EOS_RTCData_RemoveNotifyDataReceived(HRTCData, InId);
+		EOS_RTCData_RemoveNotifyDataReceived(HRTCData, InId);
 
-	return 0.0; 
-} 
+		return 0.0;
+	}
 
-func double SDKEpicGames_RTCData_RemoveNotifyParticipantUpdated(char* buff_args)
-{
-	auto args = buffer_unpack((uint8_t*)buff_args);
-	EOS_NotificationId InId = YYGetUint64(args[0]);
+	func double SDKEpicGames_RTCData_RemoveNotifyParticipantUpdated(char *buff_args)
+	{
+		auto args = buffer_unpack((uint8_t *)buff_args);
+		EOS_NotificationId InId = YYGetUint64(args[0]);
 
-	EOS_RTCData_RemoveNotifyParticipantUpdated(HRTCData, InId);
+		EOS_RTCData_RemoveNotifyParticipantUpdated(HRTCData, InId);
 
-	return 0.0; 
-} 
+		return 0.0;
+	}
 
-func double SDKEpicGames_RTCData_SendData(char* buff_data,double Length, char* LocalUserId, char* RoomName)
-{ 
-	EOS_RTCData_SendDataOptions Options = { 0 };
-	Options.ApiVersion;
-	Options.Data = buff_data;
-	Options.DataLengthBytes = Length;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.RoomName = RoomName;
-	EOS_EResult result = EOS_RTCData_SendData(HRTCData,&Options);
+	func double SDKEpicGames_RTCData_SendData(char *buff_data, double Length, char *LocalUserId, char *RoomName)
+	{
+		EOS_RTCData_SendDataOptions Options = {0};
+		Options.ApiVersion;
+		Options.Data = buff_data;
+		Options.DataLengthBytes = (uint32_t)Length;
+		Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+		Options.RoomName = RoomName;
+		EOS_EResult result = EOS_RTCData_SendData(HRTCData, &Options);
 
-	return (double) result;
-} 
+		return (double)result;
+	}
 
-void EOS_CALL RTCData_UpdateReceiving(const EOS_RTCData_UpdateReceivingCallbackInfo* Data)
-{
-	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_RTCData_UpdateReceiving");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
-	DsMapAddString(map, "RoomName", Data->RoomName);
-	DsMapAddDouble(map, "bDataEnabled", (double)Data->bDataEnabled?1.0:0.0);
-	CreateAsyncEventWithDSMap(map, 70);
-}
+	void EOS_CALL RTCData_UpdateReceiving(const EOS_RTCData_UpdateReceivingCallbackInfo *Data)
+	{
+		int map = CreateDsMap(0, 0);
+		DsMapAddString(map, "type", "EpicGames_RTCData_UpdateReceiving");
+		DsMapAddDouble(map, "status", (double)Data->ResultCode);
+		DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+		DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+		DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+		DsMapAddString(map, "ParticipantId", productID_toString(Data->ParticipantId));
+		DsMapAddString(map, "RoomName", Data->RoomName);
+		DsMapAddDouble(map, "bDataEnabled", (double)Data->bDataEnabled ? 1.0 : 0.0);
+		CreateAsyncEventWithDSMap(map, 70);
 
-func double EpicGames_RTCData_UpdateReceiving(char* LocalUserId, char* ParticipantId, char* RoomName, double bDataEnabled)
-{ 
-	EOS_RTCData_UpdateReceivingOptions Options = { 0 };
-	Options.ApiVersion = EOS_RTCDATA_UPDATERECEIVING_API_LATEST;
-	Options.bDataEnabled = bDataEnabled>0.5;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.ParticipantId = EOS_ProductUserId_FromString(ParticipantId);
-	Options.RoomName = RoomName;
-	
-	callback* mcallback = getCallbackData();
-	EOS_RTCData_UpdateReceiving(HRTCData, &Options,mcallback,RTCData_UpdateReceiving);
-	return (double)mcallback->identifier;
-} 
+		delete reinterpret_cast<callback *>(Data->ClientData);
+	}
 
-void EOS_CALL RTCData_UpdateSending(const EOS_RTCData_UpdateSendingCallbackInfo* Data)
-{
-	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_RTCData_UpdateSending");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddString(map, "RoomName", Data->RoomName);
-	DsMapAddDouble(map, "bDataEnabled", (double)Data->bDataEnabled ? 1.0 : 0.0);
-	CreateAsyncEventWithDSMap(map, 70);
-}
+	func double EpicGames_RTCData_UpdateReceiving(char *LocalUserId, char *ParticipantId, char *RoomName, double bDataEnabled)
+	{
+		EOS_RTCData_UpdateReceivingOptions Options = {0};
+		Options.ApiVersion = EOS_RTCDATA_UPDATERECEIVING_API_LATEST;
+		Options.bDataEnabled = bDataEnabled > 0.5;
+		Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+		Options.ParticipantId = EOS_ProductUserId_FromString(ParticipantId);
+		Options.RoomName = RoomName;
 
+		callback *mcallback = getCallbackData();
+		EOS_RTCData_UpdateReceiving(HRTCData, &Options, mcallback, RTCData_UpdateReceiving);
+		return (double)mcallback->identifier;
+	}
 
-func double EpicGames_RTCData_UpdateSending(char* LocalUserId, char* RoomName,double bDataEnabled)
-{ 
-	EOS_RTCData_UpdateSendingOptions Options = { 0 }; 
-	Options.ApiVersion = EOS_RTCDATA_UPDATESENDING_API_LATEST;
-	Options.bDataEnabled = bDataEnabled>0.5;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.RoomName = RoomName;
-	
-	callback* mcallback = getCallbackData();
-	EOS_RTCData_UpdateSending(HRTCData,&Options,mcallback, RTCData_UpdateSending);
-	return (double)mcallback->identifier;
-} 
+	void EOS_CALL RTCData_UpdateSending(const EOS_RTCData_UpdateSendingCallbackInfo *Data)
+	{
+		int map = CreateDsMap(0, 0);
+		DsMapAddString(map, "type", "EpicGames_RTCData_UpdateSending");
+		DsMapAddDouble(map, "status", (double)Data->ResultCode);
+		DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+		DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+		DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+		DsMapAddString(map, "RoomName", Data->RoomName);
+		DsMapAddDouble(map, "bDataEnabled", (double)Data->bDataEnabled ? 1.0 : 0.0);
+		CreateAsyncEventWithDSMap(map, 70);
 
+		delete reinterpret_cast<callback *>(Data->ClientData);
+	}
 
+	func double EpicGames_RTCData_UpdateSending(char *LocalUserId, char *RoomName, double bDataEnabled)
+	{
+		EOS_RTCData_UpdateSendingOptions Options = {0};
+		Options.ApiVersion = EOS_RTCDATA_UPDATESENDING_API_LATEST;
+		Options.bDataEnabled = bDataEnabled > 0.5;
+		Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+		Options.RoomName = RoomName;
+
+		callback *mcallback = getCallbackData();
+		EOS_RTCData_UpdateSending(HRTCData, &Options, mcallback, RTCData_UpdateSending);
+		return (double)mcallback->identifier;
+	}
