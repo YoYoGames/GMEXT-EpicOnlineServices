@@ -15,6 +15,17 @@
 #include <unistd.h>
 #endif
 
+
+static char OutBuffer[1024];
+
+char* GetOutputBuffer()
+{
+	// Clear it each time:
+	memset(OutBuffer, 0, sizeof(OutBuffer));
+	return OutBuffer;
+}
+
+
 	///////////////////////////////// EOS ///////////////////////////////////
 
 	EOS_HPlatform PlatformHandle = nullptr;
@@ -124,7 +135,7 @@
 
 	YYEXPORT void EpicGames_EpicAccountId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(1);
 
@@ -136,7 +147,7 @@
 
 	YYEXPORT void EpicGames_GetVersion(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_STRING;
+		eos_not_init_return_rvalue_string;
 
 		Result.kind = VALUE_STRING;
 		YYCreateString(&Result, EOS_GetVersion());
@@ -144,7 +155,7 @@
 
 	YYEXPORT void EpicGames_Logging_SetLogLevel(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(2);
 
@@ -159,7 +170,7 @@
 
 	YYEXPORT void EpicGames_ProductUserId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(1);
 
@@ -171,14 +182,14 @@
 
 	YYEXPORT void EpicGames_Shutdown(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		return_EOS_EResult(&Result, EOS_Shutdown());
 	}
 
 	YYEXPORT void EpicGames_Result_ToString(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_STRING;
+		eos_not_init_return_rvalue_string;
 
 		eos_ensure_argc(1);
 

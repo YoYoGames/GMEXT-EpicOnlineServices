@@ -213,7 +213,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_GetActiveCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_STRING;
+		eos_not_init_return_rvalue_string;
 
 		eos_ensure_argc(1);
 
@@ -229,7 +229,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_GetActiveLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_STRING;
+		eos_not_init_return_rvalue_string;
 
 		eos_ensure_argc(1);
 
@@ -246,7 +246,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_GetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_STRING;
+		eos_not_init_return_rvalue_string;
 
 		char Buffer[EOS_COUNTRYCODE_MAX_BUFFER_LEN];
 		int32_t BufferLen = sizeof(Buffer);
@@ -259,7 +259,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_GetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_STRING;
+		eos_not_init_return_rvalue_string;
 
 		char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
 		int32_t BufferLen = sizeof(Buffer);
@@ -272,7 +272,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_Release(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		EOS_Platform_Release(PlatformHandle);
 
@@ -282,7 +282,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_SetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(1);
 
@@ -297,7 +297,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_SetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(1);
 
@@ -311,7 +311,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 
 	YYEXPORT void EpicGames_Platform_Tick(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		Result.kind = VALUE_BOOL;
 

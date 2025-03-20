@@ -44,7 +44,7 @@ void EOS_CALL AchievementsUnlockedReceivedCallbackFn(const EOS_Achievements_OnAc
 
 YYEXPORT void EpicGames_Achievements_AddNotifyAchievementsUnlockedV2(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_int64;
 
 	EOS_Achievements_AddNotifyAchievementsUnlockedV2Options AchievementsUnlockedNotifyOptions = {};
 	AchievementsUnlockedNotifyOptions.ApiVersion = EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST;
@@ -108,7 +108,7 @@ RValue EOS_Achievements_DefinitionV2ToMap(EOS_Achievements_DefinitionV2* Achieve
 
 YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(1);
 
@@ -129,7 +129,7 @@ YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(
 
 YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(1);
 
@@ -216,7 +216,7 @@ RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef
 
 YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByAchievementId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(3);
 
@@ -241,7 +241,7 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByAchievementId(RValue
 
 YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(3);
 
@@ -266,7 +266,7 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByIndex(RValue& Result
 
 YYEXPORT void EpicGames_Achievements_GetAchievementDefinitionCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_INT32;
+	eos_not_init_return_rvalue_int32;
 
 	EOS_Achievements_GetAchievementDefinitionCountOptions AchievementDefinitionsCountOptions = {};
 	AchievementDefinitionsCountOptions.ApiVersion = EOS_ACHIEVEMENTS_GETACHIEVEMENTDEFINITIONCOUNT_API_LATEST;
@@ -277,7 +277,7 @@ YYEXPORT void EpicGames_Achievements_GetAchievementDefinitionCount(RValue& Resul
 
 YYEXPORT void EpicGames_Achievements_GetPlayerAchievementCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_INT32;
+	eos_not_init_return_rvalue_int32;
 
 	eos_ensure_argc(1);
 
@@ -299,10 +299,12 @@ void EOS_CALL AchievementDefinitionsReceivedCallbackFn(const EOS_Achievements_On
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback*>(Data->ClientData);
 }
 YYEXPORT void EpicGames_Achievements_QueryDefinitions(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRING;
+	eos_not_init_return_rvalue_string;
 
 	eos_ensure_argc(1);
 
@@ -329,11 +331,13 @@ void EOS_CALL PlayerAchievementsReceivedCallbackFn(const EOS_Achievements_OnQuer
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback*>(Data->ClientData);
 }
 
 YYEXPORT void EpicGames_Achievements_QueryPlayerAchievements(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL;
+	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
@@ -361,12 +365,14 @@ void EOS_CALL UnlockAchievementsReceivedCallbackFn(const EOS_Achievements_OnUnlo
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback*>(Data->ClientData);
 }
 
 //EOS_Achievements_UnlockAchievements
 YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL;
+	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
@@ -393,7 +399,7 @@ YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance
 
 YYEXPORT void EpicGames_Achievements_RemoveNotifyAchievementsUnlocked(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	eos_ensure_argc(1);
 
