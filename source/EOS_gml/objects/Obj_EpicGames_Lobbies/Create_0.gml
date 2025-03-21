@@ -21,9 +21,6 @@ notifySendLobbyNativeInviteRequested = EpicGames_Lobby_AddNotifySendLobbyNativeI
 
 function request_update_members()
 {
-	var result = EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID)
-	show_debug_message("request_update_members: " + string(result))
-	
 	if(EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID) == EpicGames_Success)
 	{
 		/*var*/ members_array = []
