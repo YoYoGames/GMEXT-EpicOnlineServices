@@ -26,13 +26,13 @@ void EpicGames_Presence_Init()
 	HPresence = EOS_Platform_GetPresenceInterface(PlatformHandle);
 }
 
-void EOS_CALL AddNotifyJoinGameAccepted(const EOS_Presence_JoinGameAcceptedCallbackInfo *Data)
+void EOS_CALL AddNotifyJoinGameAccepted(const EOS_Presence_JoinGameAcceptedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Presence_AddNotifyJoinGameAccepted");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddString(map, "JoinInfo", Data->JoinInfo);
-	DsMapAddDouble(map, "UiEventId", (double)Data->UiEventId);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "JoinInfo", data->JoinInfo);
+	DsMapAddDouble(map, "UiEventId", (double)data->UiEventId);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -49,11 +49,11 @@ YYEXPORT void EpicGames_Presence_AddNotifyJoinGameAccepted(RValue &Result, CInst
 	Result.v64 = static_cast<int64_t>(notificationId);
 }
 
-void EOS_CALL AddNotifyOnPresenceChanged(const EOS_Presence_PresenceChangedCallbackInfo *Data)
+void EOS_CALL AddNotifyOnPresenceChanged(const EOS_Presence_PresenceChangedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Presence_AddNotifyOnPresenceChanged");
-	DsMapAddString(map, "PresenceUserId", AccountID_toString(Data->PresenceUserId));
+	DsMapAddString(map, "PresenceUserId", AccountID_toString(data->PresenceUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -191,16 +191,16 @@ YYEXPORT void EpicGames_Presence_HasPresence(RValue &Result, CInstance *selfinst
 		Result.val = false;
 }
 
-void EOS_CALL QueryPresence(const EOS_Presence_QueryPresenceCallbackInfo *Data)
+void EOS_CALL QueryPresence(const EOS_Presence_QueryPresenceCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Presence_QueryPresence");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Presence_QueryPresence(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -245,13 +245,13 @@ YYEXPORT void EpicGames_Presence_RemoveNotifyOnPresenceChanged(RValue &Result, C
 	EOS_Presence_RemoveNotifyOnPresenceChanged(HPresence, id);
 }
 //
-// void EOS_CALL SetPresence(const EOS_Presence_SetPresenceCallbackInfo* Data)
+// void EOS_CALL SetPresence(const EOS_Presence_SetPresenceCallbackInfo* data)
 //{
 //	int map = CreateDsMap(0);
 //	DsMapAddString(map, "type", "EpicGames_Auth_QueryIdToken");
-//	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-//	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-//	//DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+//	DsMapAddDouble(map, "status", (double)data->ResultCode);
+//	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+//	//DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 //	CreateAsyncEventWithDSMap(map, 70);
 //}
 //
@@ -267,16 +267,16 @@ YYEXPORT void EpicGames_Presence_RemoveNotifyOnPresenceChanged(RValue &Result, C
 //	EOS_Presence_SetPresence(HPresence, &Options, NULL, SetPresence);
 //}
 
-void EOS_CALL DeleteData(const EOS_Presence_SetPresenceCallbackInfo *Data)
+void EOS_CALL DeleteData(const EOS_Presence_SetPresenceCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PresenceModification_DeleteData");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_PresenceModification_DeleteData(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -315,16 +315,16 @@ YYEXPORT void EpicGames_PresenceModification_DeleteData(RValue &Result, CInstanc
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL SetData(const EOS_Presence_SetPresenceCallbackInfo *Data)
+void EOS_CALL SetData(const EOS_Presence_SetPresenceCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PresenceModification_SetData");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_PresenceModification_SetData(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -366,16 +366,16 @@ YYEXPORT void EpicGames_PresenceModification_SetData(RValue &Result, CInstance *
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL SetJoinInfo(const EOS_Presence_SetPresenceCallbackInfo *Data)
+void EOS_CALL SetJoinInfo(const EOS_Presence_SetPresenceCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PresenceModification_SetJoinInfo");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_PresenceModification_SetJoinInfo(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -409,16 +409,16 @@ YYEXPORT void EpicGames_PresenceModification_SetJoinInfo(RValue &Result, CInstan
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL SetRawRichText(const EOS_Presence_SetPresenceCallbackInfo *Data)
+void EOS_CALL SetRawRichText(const EOS_Presence_SetPresenceCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PresenceModification_SetRawRichText");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_PresenceModification_SetRawRichText(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -452,16 +452,16 @@ YYEXPORT void EpicGames_PresenceModification_SetRawRichText(RValue &Result, CIns
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL SetStatus(const EOS_Presence_SetPresenceCallbackInfo *Data)
+void EOS_CALL SetStatus(const EOS_Presence_SetPresenceCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PresenceModification_SetStatus");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_PresenceModification_SetStatus(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)

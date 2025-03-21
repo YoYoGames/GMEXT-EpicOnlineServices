@@ -195,17 +195,17 @@ YYEXPORT void EpicGames_UserInfo_GetExternalUserInfoCount(RValue &Result, CInsta
 	Result.v32 = (int32)count;
 }
 
-void EOS_CALL userInfo_QueryUserInfoCallback(const EOS_UserInfo_QueryUserInfoCallbackInfo *Data)
+void EOS_CALL userInfo_QueryUserInfoCallback(const EOS_UserInfo_QueryUserInfoCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_UserInfo_QueryUserInfo");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddString(map, "target", AccountID_toString(Data->TargetUserId));
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "target", AccountID_toString(data->TargetUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_UserInfo_QueryUserInfo(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -230,16 +230,16 @@ YYEXPORT void EpicGames_UserInfo_QueryUserInfo(RValue &Result, CInstance *selfin
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL EOS_UserInfo_QueryUserInfoByDisplayNameCallback(const EOS_UserInfo_QueryUserInfoByDisplayNameCallbackInfo *Data)
+void EOS_CALL EOS_UserInfo_QueryUserInfoByDisplayNameCallback(const EOS_UserInfo_QueryUserInfoByDisplayNameCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_UserInfo_QueryUserInfoByDisplayName");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_UserInfo_QueryUserInfoByDisplayName(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -265,16 +265,16 @@ YYEXPORT void EpicGames_UserInfo_QueryUserInfoByDisplayName(RValue &Result, CIns
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL EOS_UserInfo_QueryUserInfoByExternalAccountCallback(const EOS_UserInfo_QueryUserInfoByExternalAccountCallbackInfo *Data)
+void EOS_CALL EOS_UserInfo_QueryUserInfoByExternalAccountCallback(const EOS_UserInfo_QueryUserInfoByExternalAccountCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_UserInfo_QueryUserInfoByExternalAccount");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_UserInfo_QueryUserInfoByExternalAccount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)

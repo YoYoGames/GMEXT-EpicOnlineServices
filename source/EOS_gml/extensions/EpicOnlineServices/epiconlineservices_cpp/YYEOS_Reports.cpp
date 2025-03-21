@@ -14,16 +14,16 @@ void EpicGames_Reports_Init()
 	HReports = EOS_Platform_GetReportsInterface(PlatformHandle);
 }
 
-void EOS_CALL SendPlayerBehaviorReportCallbackFn(const EOS_Reports_SendPlayerBehaviorReportCompleteCallbackInfo *Data)
+void EOS_CALL SendPlayerBehaviorReportCallbackFn(const EOS_Reports_SendPlayerBehaviorReportCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Reports_SendPlayerBehaviorReport");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Reports_SendPlayerBehaviorReport(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
