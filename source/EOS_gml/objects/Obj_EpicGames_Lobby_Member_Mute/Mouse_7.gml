@@ -1,2 +1,4 @@
 
-EpicGames_Lobby_HardMuteMember(true,Obj_EpicGames_Lobbies.LobbyId,userID,id.userID)
+EpicGames_Lobby_HardMuteMember(_bool,Obj_EpicGames_Lobbies.LobbyId,userID,id.userID)
+
+_bool = !_bool
