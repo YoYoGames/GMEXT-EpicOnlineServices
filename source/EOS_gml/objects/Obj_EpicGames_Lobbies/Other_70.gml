@@ -96,7 +96,33 @@ switch(async_load[?"type"])
 	break
 	
 	case "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived":
-	
+		
+		if(async_load[?"TargetUserId"] == userID)
+		{
+			switch(async_load[?"CurrentStatus"])
+			{
+				case EOS_LobbyMemberStatus.DISCONNECTED:
+				case EOS_LobbyMemberStatus.CLOSED:
+				case EOS_LobbyMemberStatus.LEFT:
+					show_message_async("DISCONNECTED...")
+					LobbyId = ""
+					with(Obj_EpicGames_Lobby_Member) instance_destroy()
+					with(Obj_RTC) instance_destroy()
+					with(Obj_EpicGames_Lobbies_P2P) instance_destroy()
+				break
+				
+				case EOS_LobbyMemberStatus.PROMOTED:
+					show_message_async("I was PROMOTED :)")
+				break
+				case EOS_LobbyMemberStatus.KICKED:
+					show_message_async("I was KICKED D:")
+					LobbyId = ""
+					with(Obj_EpicGames_Lobby_Member) instance_destroy()
+					with(Obj_RTC) instance_destroy()
+					with(Obj_EpicGames_Lobbies_P2P) instance_destroy()
+				break
+			}
+		}
 		request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
 	
 	break
