@@ -15,3 +15,17 @@ notifyPeerConnectionRequest = EpicGames_P2P_AddNotifyPeerConnectionRequest(userI
 
 EstablishedProductIDs = []
 
+
+
+function disconnect(target)
+{
+	for(var a = 0 ; a < array_length(EstablishedProductIDs) ; a++)
+	if(EstablishedProductIDs[a] == target)
+	{
+		show_debug_message("disconnect p2p: " + target)
+		EpicGames_P2P_ClearPacketQueue(userID,EstablishedProductIDs[a],socketName)
+		EpicGames_P2P_CloseConnection(userID,EstablishedProductIDs[a],socketName)
+		array_delete(EstablishedProductIDs,a,1)
+		break
+	}
+}

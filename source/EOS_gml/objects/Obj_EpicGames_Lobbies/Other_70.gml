@@ -123,7 +123,25 @@ switch(async_load[?"type"])
 				break
 			}
 		}
-		request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
+		else
+		{
+			switch(async_load[?"CurrentStatus"])
+			{
+				case EOS_LobbyMemberStatus.JOINED:
+					request_update_members()
+				break
+				
+				case EOS_LobbyMemberStatus.DISCONNECTED:
+				case EOS_LobbyMemberStatus.KICKED:
+				case EOS_LobbyMemberStatus.LEFT:
+					request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
+					Obj_EpicGames_P2P.disconnect(async_load[?"TargetUserId"])
+				break
+				
+				
+			}
+		}
+		
 	
 	break
 	
