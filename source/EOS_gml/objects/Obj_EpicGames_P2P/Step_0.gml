@@ -39,7 +39,7 @@ buffer_write(buff,buffer_f16,mouse_y)
 for(var a = 0 ; a < array_length(EstablishedProductIDs) ; a++)
 {
 	var result = EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,EstablishedProductIDs[a],socketName)
-	show_debug_message("Send: " + string(result))
+	//show_debug_message("Send: " + string(result))
 }
 buffer_delete(buff)
 
