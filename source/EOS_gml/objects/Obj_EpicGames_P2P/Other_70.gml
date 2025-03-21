@@ -1,7 +1,6 @@
 
 switch(async_load[?"type"])
 {
-	
 	case "EpicGames_P2P_AddNotifyIncomingPacketQueueFull":
 	break
 	
@@ -11,10 +10,7 @@ switch(async_load[?"type"])
 		
 		if(index >= 0)
 		{
-			EpicGames_P2P_ClearPacketQueue(userID,EstablishedProductIDs[index],socketName)
-			EpicGames_P2P_CloseConnection(userID,EstablishedProductIDs[index],socketName)
-		
-			array_delete(EstablishedProductIDs,index,1)
+			disconnect(EstablishedProductIDs[index])
 		}
 		
 	break
