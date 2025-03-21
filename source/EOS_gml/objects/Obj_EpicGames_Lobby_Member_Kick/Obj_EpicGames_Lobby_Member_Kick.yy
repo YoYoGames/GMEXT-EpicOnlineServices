@@ -1,19 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_EpicGames_Friends",
+  "%Name":"Obj_EpicGames_Lobby_Member_Kick",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":70,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_EpicGames_Friends",
+  "name":"Obj_EpicGames_Lobby_Member_Kick",
   "overriddenProperties":[],
   "parent":{
-    "name":"Friends",
-    "path":"folders/Epic Online Services Demos/Friends.yy",
+    "name":"Lobbies",
+    "path":"folders/Epic Online Services Demos/Lobbies.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"Obj_YoYo_button",
+    "path":"objects/Obj_YoYo_button/Obj_YoYo_button.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,7 +33,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"Spr_YoYo_button",
+    "path":"sprites/Spr_YoYo_button/Spr_YoYo_button.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

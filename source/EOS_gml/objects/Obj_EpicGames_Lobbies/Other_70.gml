@@ -13,8 +13,8 @@ switch(async_load[?"type"])
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 			instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
-			show_debug_message("Lobby_UpdateLobbyModification: " + string(EpicGames_Lobby_UpdateLobbyModification(LobbyId,userID)))
-			show_debug_message("LobbyModification_AddAttribute: " + string(EpicGames_LobbyModification_AddAttribute(EOS_LobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType: EOS_AttributeType.STRING,Value: "Test Name"})))
+			EpicGames_Lobby_UpdateLobbyModification(LobbyId,userID)
+			EpicGames_LobbyModification_AddAttribute(EOS_LobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType: EOS_AttributeType.STRING,Value: requestMyName + "'s Lobby"})
 			EpicGames_Lobby_UpdateLobby()
 			EpicGames_LobbyModification_Release()
 		}
@@ -27,8 +27,11 @@ switch(async_load[?"type"])
 	case "EpicGames_Lobby_LeaveLobby":
 		if(async_load[?"status"] == EpicGames_Success)
 		{
+			LobbyId = ""
+			
 			with(Obj_RTC) instance_destroy()
 			with(Obj_EpicGames_Lobbies_P2P) instance_destroy()
+			with(Obj_EpicGames_Lobby_Member) instance_destroy()
 		}
 	break
 	
@@ -99,7 +102,15 @@ switch(async_load[?"type"])
 	break
 	
 	case "EpicGames_Connect_QueryProductUserIdMappings":
-
+		
+		if(requestMyName == async_load[?"identifier"])
+		{
+			var _struct = EpicGames_Connect_CopyProductUserExternalAccountByIndex(userID,0)
+			requestMyName = _struct.DisplayName
+			
+			return
+		}
+		
 		with(Obj_EpicGames_Lobby_Member)
 			instance_destroy()
 				
@@ -113,7 +124,7 @@ switch(async_load[?"type"])
 				show_debug_message("_struct")
 				show_debug_message(_struct)
 				//{ status_message : "EOS_Success", status : 0, LastLoginTime : 1742492836, DisplayName : "jzavala93", AccountIdType : 0, AccountId : "36b64afd62f145688696ea77e7bc9280", userID : "0002aa1d3fc94d919daa174d8e3c4a27" }
-				instance_create_depth(500,300+b*100,0,Obj_EpicGames_Lobby_Member,_struct)
+				instance_create_depth(300,220+b*100,0,Obj_EpicGames_Lobby_Member,_struct)
 				
 				break//I only need one account per user :), but leave it as for() it's a good demostration....
 			}
@@ -147,10 +158,44 @@ switch(async_load[?"type"])
 			var attribute = EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname")
 			EpicGames_LobbyDetails_Release()
 			
-			var ins = instance_create_depth(100,500+a*100,0,Obj_EpicGames_Lobby,struct)
+			var ins = instance_create_depth(Obj_EpicGames_Lobbies_Search.x,Obj_EpicGames_Lobbies_Search.y+100+a*100,0,Obj_EpicGames_Lobby,struct)
 			ins.text = attribute.Value
 		}
 		EpicGames_LobbySearch_Release()
+		
+	break
+	
+	case "EpicGames_RTCAudio_AddNotifyParticipantUpdated":
+		
+		with(Obj_EpicGames_Lobby_Member)
+		if(async_load[?"ParticipantId"] == id.userID)
+		{
+			Speaking = async_load[?"Speaking"]
+			AudioStatus = async_load[?"AudioStatus"]
+		}
+		//LocalUserId
+		//RoomName
+		//Speaking
+		
+	break
+	
+	case "EpicGames_Lobby_QueryInvites":
+		
+		if(EpicGames_Lobby_GetInviteCount() == 0)
+			show_message_async("No Invitations... :(")
+			
+		for(var a = 0 ; a < EpicGames_Lobby_GetInviteCount(userID) ; a++)
+		{
+			var inviteId = EpicGames_Lobby_GetInviteIdByIndex(userID,a)
+			EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(inviteId)
+			
+			var struct = EpicGames_LobbyDetails_CopyInfo()
+			var attribute = EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname")
+			EpicGames_LobbyDetails_Release()
+			
+			var ins = instance_create_depth(Obj_EpicGames_Lobby_Invitations.x,Obj_EpicGames_Lobby_Invitations.y+100+a*100,0,Obj_EpicGames_Lobby,struct)
+			ins.text = attribute.Value
+		}
 		
 	break
 }
