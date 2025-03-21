@@ -27,16 +27,16 @@ void EpicGames_Achievements_Init()
 	HAchievements = EOS_Platform_GetAchievementsInterface(PlatformHandle);
 }
 
-void EOS_CALL AchievementsUnlockedReceivedCallbackFn(const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* Data)
+void EOS_CALL AchievementsUnlockedReceivedCallbackFn(const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* data)
 {
 	static char TempBuffer[EOS_PRODUCTUSERID_MAX_LENGTH + 1];
 	int32_t TempBufferSize = sizeof(TempBuffer);
-	EOS_EResult Result = EOS_ProductUserId_ToString(Data->UserId, TempBuffer, &TempBufferSize);
+	EOS_EResult Result = EOS_ProductUserId_ToString(data->UserId, TempBuffer, &TempBufferSize);
 
 	int map = CreateDsMap(0,0);
 	DsMapAddString(map, "type", "EpicGames_Achievements_AddNotifyAchievementsUnlockedV2");
-	DsMapAddInt64(map, "UnlockTime", Data->UnlockTime);
-	DsMapAddString(map, "AchievementId", Data->AchievementId);
+	DsMapAddInt64(map, "UnlockTime", data->UnlockTime);
+	DsMapAddString(map, "AchievementId", data->AchievementId);
 	DsMapAddString(map, "UserId", TempBuffer);
 
 	CreateAsyncEventWithDSMap(map, 70);
@@ -291,16 +291,16 @@ YYEXPORT void EpicGames_Achievements_GetPlayerAchievementCount(RValue& Result, C
 	Result.v32 = EOS_Achievements_GetPlayerAchievementCount(HAchievements, &AchievementsCountOptions);
 }
 
-void EOS_CALL AchievementDefinitionsReceivedCallbackFn(const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* Data)
+void EOS_CALL AchievementDefinitionsReceivedCallbackFn(const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
 	DsMapAddString(map, "type", "EpicGames_Achievements_QueryDefinitions");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback*>(Data->ClientData);
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
 YYEXPORT void EpicGames_Achievements_QueryDefinitions(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
@@ -323,16 +323,16 @@ YYEXPORT void EpicGames_Achievements_QueryDefinitions(RValue& Result, CInstance*
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL PlayerAchievementsReceivedCallbackFn(const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* Data)
+void EOS_CALL PlayerAchievementsReceivedCallbackFn(const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
 	DsMapAddString(map, "type", "EpicGames_Achievements_QueryPlayerAchievements");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback*>(Data->ClientData);
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Achievements_QueryPlayerAchievements(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
@@ -357,16 +357,16 @@ YYEXPORT void EpicGames_Achievements_QueryPlayerAchievements(RValue& Result, CIn
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL UnlockAchievementsReceivedCallbackFn(const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* Data)
+void EOS_CALL UnlockAchievementsReceivedCallbackFn(const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
 	DsMapAddString(map, "type", "EpicGames_Achievements_UnlockAchievement");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback*>(Data->ClientData);
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
 
 //EOS_Achievements_UnlockAchievements

@@ -16,16 +16,6 @@
 #endif
 
 
-static char OutBuffer[1024];
-
-char* GetOutputBuffer()
-{
-	// Clear it each time:
-	memset(OutBuffer, 0, sizeof(OutBuffer));
-	return OutBuffer;
-}
-
-
 	///////////////////////////////// EOS ///////////////////////////////////
 
 	EOS_HPlatform PlatformHandle = nullptr;

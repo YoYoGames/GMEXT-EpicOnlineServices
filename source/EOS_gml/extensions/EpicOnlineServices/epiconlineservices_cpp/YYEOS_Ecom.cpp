@@ -49,26 +49,26 @@ void EpicGames_Ecom_Init()
 	HEcom = EOS_Platform_GetEcomInterface(PlatformHandle);
 }
 
-void EOS_CALL QueryOwnershipCallback(const EOS_Ecom_QueryOwnershipCallbackInfo *Data)
+void EOS_CALL QueryOwnershipCallback(const EOS_Ecom_QueryOwnershipCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOwnership");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
 
 	RValue _array = {0};
 	YYCreateArray(&_array);
 
-	for (uint32_t i = 0; i < Data->ItemOwnershipCount; i++)
+	for (uint32_t i = 0; i < data->ItemOwnershipCount; i++)
 	{
 		RValue _struct = {0};
 		YYStructCreate(&_struct);
 
-		YYStructAddString(&_struct, "id", Data->ItemOwnership[i].Id);
-		YYStructAddDouble(&_struct, "ownership_status", (double)Data->ItemOwnership[i].OwnershipStatus); // (Data->ItemOwnership[i].OwnershipStatus == EOS_EOwnershipStatus::EOS_OS_Owned) ? 1.0 : 0.0);
-		// Data->ItemOwnership[i].ApiVersion
+		YYStructAddString(&_struct, "id", data->ItemOwnership[i].Id);
+		YYStructAddDouble(&_struct, "ownership_status", (double)data->ItemOwnership[i].OwnershipStatus); // (data->ItemOwnership[i].OwnershipStatus == EOS_EOwnershipStatus::EOS_OS_Owned) ? 1.0 : 0.0);
+		// data->ItemOwnership[i].ApiVersion
 
 		SET_RValue(&_array, &_struct, NULL, i);
 	}
@@ -77,7 +77,7 @@ void EOS_CALL QueryOwnershipCallback(const EOS_Ecom_QueryOwnershipCallbackInfo *
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_QueryOwnership(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -111,32 +111,32 @@ YYEXPORT void EpicGames_Ecom_QueryOwnership(RValue &Result, CInstance *selfinst,
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryOwnershipBySandboxIdsCallback(const EOS_Ecom_QueryOwnershipBySandboxIdsCallbackInfo *Data)
+void EOS_CALL QueryOwnershipBySandboxIdsCallback(const EOS_Ecom_QueryOwnershipBySandboxIdsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOwnershipBySandboxIds");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
 
 	RValue _array = {0};
 	YYCreateArray(&_array);
 
-	for (uint32_t i = 0; i < Data->SandboxIdItemOwnershipsCount; i++)
+	for (uint32_t i = 0; i < data->SandboxIdItemOwnershipsCount; i++)
 	{
 		RValue _struct = {0};
 		YYStructCreate(&_struct);
 
-		YYStructAddString(&_struct, "id", Data->SandboxIdItemOwnerships[i].SandboxId);
+		YYStructAddString(&_struct, "id", data->SandboxIdItemOwnerships[i].SandboxId);
 
 		RValue __array = {0};
 		YYCreateArray(&__array);
 
-		for (uint32_t j = 0; j < Data->SandboxIdItemOwnerships[i].OwnedCatalogItemIdsCount; j++)
+		for (uint32_t j = 0; j < data->SandboxIdItemOwnerships[i].OwnedCatalogItemIdsCount; j++)
 		{
 			RValue _value = {0};
-			YYCreateString(&_value, Data->SandboxIdItemOwnerships[i].OwnedCatalogItemIds[j]);
+			YYCreateString(&_value, data->SandboxIdItemOwnerships[i].OwnedCatalogItemIds[j]);
 
 			SET_RValue(&__array, &_value, NULL, i);
 		}
@@ -150,7 +150,7 @@ void EOS_CALL QueryOwnershipBySandboxIdsCallback(const EOS_Ecom_QueryOwnershipBy
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_QueryOwnershipBySandboxIds(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -176,19 +176,19 @@ YYEXPORT void EpicGames_Ecom_QueryOwnershipBySandboxIds(RValue &Result, CInstanc
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryOwnershipTokenCallback(const EOS_Ecom_QueryOwnershipTokenCallbackInfo *Data)
+void EOS_CALL QueryOwnershipTokenCallback(const EOS_Ecom_QueryOwnershipTokenCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOwnershipToken");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
-	DsMapAddString(map, "ownership_token", Data->OwnershipToken);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
+	DsMapAddString(map, "ownership_token", data->OwnershipToken);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_QueryOwnershipToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -222,18 +222,18 @@ YYEXPORT void EpicGames_Ecom_QueryOwnershipToken(RValue &Result, CInstance *self
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL OnQueryEntitlementsCallback(const EOS_Ecom_QueryEntitlementsCallbackInfo *Data)
+void EOS_CALL OnQueryEntitlementsCallback(const EOS_Ecom_QueryEntitlementsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_QueryEntitlements");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_QueryEntitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -262,19 +262,19 @@ YYEXPORT void EpicGames_Ecom_QueryEntitlements(RValue &Result, CInstance *selfin
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryEntitlementTokenCallback(const EOS_Ecom_QueryEntitlementTokenCallbackInfo *Data)
+void EOS_CALL QueryEntitlementTokenCallback(const EOS_Ecom_QueryEntitlementTokenCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_QueryEntitlementToken");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
-	DsMapAddString(map, "entitlement_token", Data->EntitlementToken);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
+	DsMapAddString(map, "entitlement_token", data->EntitlementToken);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_QueryEntitlementToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -299,18 +299,18 @@ YYEXPORT void EpicGames_Ecom_QueryEntitlementToken(RValue &Result, CInstance *se
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryOffersCallback(const EOS_Ecom_QueryOffersCallbackInfo *Data)
+void EOS_CALL QueryOffersCallback(const EOS_Ecom_QueryOffersCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOffers");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_QueryOffers(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -340,15 +340,15 @@ YYEXPORT void EpicGames_Ecom_QueryOffers(RValue &Result, CInstance *selfinst, CI
 
 std::vector<EOS_Ecom_CheckoutEntry> entries = {};
 
-void EOS_CALL CheckoutCallback(const EOS_Ecom_CheckoutCallbackInfo *Data)
+void EOS_CALL CheckoutCallback(const EOS_Ecom_CheckoutCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_Checkout");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
-	DsMapAddString(map, "transaction_id", Data->TransactionId);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
+	DsMapAddString(map, "transaction_id", data->TransactionId);
 
 	RValue _array = {0};
 	YYCreateArray(&_array);
@@ -365,7 +365,7 @@ void EOS_CALL CheckoutCallback(const EOS_Ecom_CheckoutCallbackInfo *Data)
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_Checkout(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -408,19 +408,19 @@ YYEXPORT void EpicGames_Ecom_Checkout(RValue &Result, CInstance *selfinst, CInst
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL RedeemEntitlementsCallback(const EOS_Ecom_RedeemEntitlementsCallbackInfo *Data)
+void EOS_CALL RedeemEntitlementsCallback(const EOS_Ecom_RedeemEntitlementsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Ecom_RedeemEntitlements");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
-	DsMapAddDouble(map, "redeemed_entitlement_ids_count", (double)Data->RedeemedEntitlementIdsCount);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
+	DsMapAddDouble(map, "redeemed_entitlement_ids_count", (double)data->RedeemedEntitlementIdsCount);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Ecom_RedeemEntitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)

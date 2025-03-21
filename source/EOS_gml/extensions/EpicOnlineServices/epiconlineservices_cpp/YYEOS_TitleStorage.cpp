@@ -101,16 +101,16 @@ YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataByFilename(RValue &Result, 
 	FREE_RValue(&Struct);
 }
 
-void EOS_CALL DeleteCache(const EOS_TitleStorage_DeleteCacheCallbackInfo *Data)
+void EOS_CALL DeleteCache(const EOS_TitleStorage_DeleteCacheCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_DeleteCache");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_TitleStorage_DeleteCache(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -149,16 +149,16 @@ YYEXPORT void EpicGames_TitleStorage_GetFileMetadataCount(RValue &Result, CInsta
 	Result.val = EOS_TitleStorage_GetFileMetadataCount(HTitleStorage, &Options);
 }
 
-void EOS_CALL QueryFile(const EOS_TitleStorage_QueryFileCallbackInfo *Data)
+void EOS_CALL QueryFile(const EOS_TitleStorage_QueryFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_QueryFile");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_TitleStorage_QueryFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -183,16 +183,16 @@ YYEXPORT void EpicGames_TitleStorage_QueryFile(RValue &Result, CInstance *selfin
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo *Data)
+void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_QueryFileList");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -248,11 +248,11 @@ EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_Rea
 {
 	const char *FileName = Data_->Filename;
 	/*std::wstring*/ std::string path = ((callback *)(Data_->ClientData))->string;
-	const void *Data = Data_->DataChunk;
+	const void *data = Data_->DataChunk;
 	size_t NumBytes = Data_->DataChunkLengthBytes;
 	size_t TotalSize = Data_->TotalFileSizeBytes;
 
-	if (!Data)
+	if (!data)
 	{
 		// FDebugLog::LogError(L"[EOS SDK] Title storage: could not receive data: Data pointer is null.");
 		return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
@@ -285,7 +285,7 @@ EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_Rea
 		// Make sure we have enough space
 		if (Transfer.TotalSize - Transfer.CurrentIndex >= NumBytes)
 		{
-			memcpy(static_cast<void *>(&Transfer.Data[Transfer.CurrentIndex]), Data, NumBytes);
+			memcpy(static_cast<void *>(&Transfer.Data[Transfer.CurrentIndex]), data, NumBytes);
 			Transfer.CurrentIndex += NumBytes;
 
 			// std::string path = "C:/Users/chuyz/Desktop/Here/";
@@ -307,20 +307,20 @@ EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_Rea
 	return EOS_TitleStorage_EReadResult::EOS_TS_RR_CancelRequest;
 }
 
-void EOS_CALL OnFileReceived(const EOS_TitleStorage_ReadFileCallbackInfo *Data)
+void EOS_CALL OnFileReceived(const EOS_TitleStorage_ReadFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_ReadFile_OnFileReceived");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddString(map, "Filename", Data->Filename);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "Filename", data->Filename);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_TitleStorage_ReadFileDataCallbackInfo *Data)
+EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_TitleStorage_ReadFileDataCallbackInfo *data)
 {
-	const char *file = Data->Filename;
+	const char *file = data->Filename;
 
 	auto Iter = TransfersInProgress.find(/*stringToWstring*/ (file));
 
@@ -328,21 +328,21 @@ EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_TitleStorage_
 	EOS_HTitleStorageFileTransferRequest Handle = Transfer.handler;
 	// EOS_TitleStorageFileTransferRequest_CancelRequest(Handle);
 
-	// return FGame::Get().GetTitleStorage()->ReceiveData(FStringUtils::Widen(Data->Filename), Data->DataChunk, Data->DataChunkLengthBytes, Data->TotalFileSizeBytes);
-	if (Data)
-		return ReceiveData_TitleStorage(Data);
+	// return FGame::Get().GetTitleStorage()->ReceiveData(FStringUtils::Widen(data->Filename), data->DataChunk, data->DataChunkLengthBytes, data->TotalFileSizeBytes);
+	if (data)
+		return ReceiveData_TitleStorage(data);
 
 	return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
 }
 
-void EOS_CALL OnFileTransferProgressUpdated(const EOS_TitleStorage_FileTransferProgressCallbackInfo *Data)
+void EOS_CALL OnFileTransferProgressUpdated(const EOS_TitleStorage_FileTransferProgressCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_ReadFile_OnFileTransferProgressUpdated");
-	DsMapAddString(map, "Filename", Data->Filename);
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddInt64(map, "BytesTransferred", Data->BytesTransferred);
-	DsMapAddInt64(map, "TotalFileSizeBytes", Data->TotalFileSizeBytes);
+	DsMapAddString(map, "Filename", data->Filename);
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddInt64(map, "BytesTransferred", data->BytesTransferred);
+	DsMapAddInt64(map, "TotalFileSizeBytes", data->TotalFileSizeBytes);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 

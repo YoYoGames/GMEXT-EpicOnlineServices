@@ -150,7 +150,6 @@ struct callback
 
 std::string productIds2ArrayStr(EOS_ProductUserId *user_ids, int count);
 std::string VectorOfStr2ArrayStr(std::vector<const char *> vec);
-char* GetOutputBuffer();
 
 #ifdef OS_Windows
 #define func extern "C" __declspec(dllexport)

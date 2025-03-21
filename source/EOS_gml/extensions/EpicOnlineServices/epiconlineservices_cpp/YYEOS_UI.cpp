@@ -93,16 +93,16 @@ YYEXPORT void EpicGames_UI_GetToggleFriendsKey(RValue &Result, CInstance *selfin
 	Result.v32 = (int32)EOS_UI_GetToggleFriendsKey(HUI, &Options);
 }
 
-void EOS_CALL HideFriends(const EOS_UI_HideFriendsCallbackInfo *Data)
+void EOS_CALL HideFriends(const EOS_UI_HideFriendsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "HideFriends");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_UI_HideFriends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -182,16 +182,16 @@ YYEXPORT void EpicGames_UI_SetToggleFriendsKey(RValue &Result, CInstance *selfin
 	return_EOS_EResult(&Result, EResult);
 }
 
-void EOS_CALL ShowFriendsCallbackFn(const EOS_UI_ShowFriendsCallbackInfo *Data)
+void EOS_CALL ShowFriendsCallbackFn(const EOS_UI_ShowFriendsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_UI_ShowFriends");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_UI_ShowFriends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)

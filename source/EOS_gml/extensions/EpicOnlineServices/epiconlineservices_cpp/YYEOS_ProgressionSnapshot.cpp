@@ -56,16 +56,16 @@ YYEXPORT void EpicGames_ProgressionSnapshot_BeginSnapshot(RValue &Result, CInsta
 		Result.v32 = -4;
 }
 
-void EOS_CALL DeleteSnapshot(const EOS_ProgressionSnapshot_DeleteSnapshotCallbackInfo *Data)
+void EOS_CALL DeleteSnapshot(const EOS_ProgressionSnapshot_DeleteSnapshotCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_ProgressionSnapshot_DeleteSnapshot");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_ProgressionSnapshot_DeleteSnapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -114,16 +114,16 @@ YYEXPORT void EpicGames_ProgressionSnapshot_EndSnapshot(RValue &Result, CInstanc
 	FREE_RValue(&Struct);
 }
 
-void EOS_CALL SubmitSnapshot(const EOS_ProgressionSnapshot_SubmitSnapshotCallbackInfo *Data)
+void EOS_CALL SubmitSnapshot(const EOS_ProgressionSnapshot_SubmitSnapshotCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_ProgressionSnapshot_SubmitSnapshot");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_ProgressionSnapshot_SubmitSnapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)

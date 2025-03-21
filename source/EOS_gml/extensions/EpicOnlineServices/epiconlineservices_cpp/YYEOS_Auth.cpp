@@ -25,12 +25,12 @@
 
 EOS_HAuth HAuth;
 
-void EOS_CALL LoginStatusChangedCb(const EOS_Auth_LoginStatusChangedCallbackInfo *Data)
+void EOS_CALL LoginStatusChangedCb(const EOS_Auth_LoginStatusChangedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_AddNotifyLoginStatusChanged");
-	DsMapAddDouble(map, "CurrentStatus", (double)Data->CurrentStatus);
-	DsMapAddDouble(map, "PrevStatus", (double)Data->PrevStatus);
+	DsMapAddDouble(map, "CurrentStatus", (double)data->CurrentStatus);
+	DsMapAddDouble(map, "PrevStatus", (double)data->PrevStatus);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -134,16 +134,16 @@ YYEXPORT void EpicGames_Auth_CopyUserAuthToken(RValue &Result, CInstance *selfin
 	FREE_RValue(&authStruct);
 }
 
-void EOS_CALL DeletePersistentAuthCompleteCallbackFn(const EOS_Auth_DeletePersistentAuthCallbackInfo *Data)
+void EOS_CALL DeletePersistentAuthCompleteCallbackFn(const EOS_Auth_DeletePersistentAuthCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_DeletePersistentAuth");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Auth_DeletePersistentAuth(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -241,17 +241,17 @@ YYEXPORT void EpicGames_Auth_GetSelectedAccountId(RValue &Result, CInstance *sel
 	YYCreateString(&Result, AccountID_toString(account));
 }
 
-void EOS_CALL LinkAccountCompleteCallbackFn(const EOS_Auth_LinkAccountCallbackInfo *Data)
+void EOS_CALL LinkAccountCompleteCallbackFn(const EOS_Auth_LinkAccountCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_LinkAccount");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddString(map, "account_id", AccountID_toString(Data->LocalUserId));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Auth_LinkAccount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -283,34 +283,34 @@ YYEXPORT void EpicGames_Auth_LinkAccount(RValue &Result, CInstance *selfinst, CI
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL LoginCompleteCallbackFn(const EOS_Auth_LoginCallbackInfo *Data)
+void EOS_CALL LoginCompleteCallbackFn(const EOS_Auth_LoginCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_Login");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 
-	if (Data->ResultCode == EOS_EResult::EOS_Success)
+	if (data->ResultCode == EOS_EResult::EOS_Success)
 	{
 		DebugConsoleOutput("EOS Set ContinuanceToken\n");
-		ContinuanceToken = Data->ContinuanceToken;
-		// Data->PinGrantInfo;
+		ContinuanceToken = data->ContinuanceToken;
+		// data->PinGrantInfo;
 
 		static char accountID[EOS_EPICACCOUNTID_MAX_LENGTH + 1];
 		int32_t LocalUserId_size = sizeof(accountID);
-		if (EOS_EpicAccountId_ToString(Data->LocalUserId, accountID, &LocalUserId_size) == EOS_EResult::EOS_Success)
+		if (EOS_EpicAccountId_ToString(data->LocalUserId, accountID, &LocalUserId_size) == EOS_EResult::EOS_Success)
 			DsMapAddString(map, "AccountID", accountID);
 
 		static char SelectedAccountId[EOS_EPICACCOUNTID_MAX_LENGTH + 1];
 		int32_t SelectedAccountId_size = sizeof(SelectedAccountId);
-		if (EOS_EpicAccountId_ToString(Data->SelectedAccountId, SelectedAccountId, &SelectedAccountId_size) == EOS_EResult::EOS_Success)
+		if (EOS_EpicAccountId_ToString(data->SelectedAccountId, SelectedAccountId, &SelectedAccountId_size) == EOS_EResult::EOS_Success)
 			DsMapAddString(map, "SelectedAccountId", SelectedAccountId);
 	}
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Auth_Login(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -366,16 +366,16 @@ YYEXPORT void EpicGames_Auth_Login(RValue &Result, CInstance *selfinst, CInstanc
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL LogoutCompleteCallbackFn(const EOS_Auth_LogoutCallbackInfo *Data)
+void EOS_CALL LogoutCompleteCallbackFn(const EOS_Auth_LogoutCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_Logout");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Auth_Logout(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -398,16 +398,16 @@ YYEXPORT void EpicGames_Auth_Logout(RValue &Result, CInstance *selfinst, CInstan
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryIdToken(const EOS_Auth_QueryIdTokenCallbackInfo *Data)
+void EOS_CALL QueryIdToken(const EOS_Auth_QueryIdTokenCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_QueryIdToken");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Auth_QueryIdToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -445,16 +445,16 @@ YYEXPORT void EpicGames_Auth_RemoveNotifyLoginStatusChanged(RValue &Result, CIns
 	Result.val = 1.0;
 }
 
-void EOS_CALL VerifyIdToken(const EOS_Auth_VerifyIdTokenCallbackInfo *Data)
+void EOS_CALL VerifyIdToken(const EOS_Auth_VerifyIdTokenCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_VerifyIdToken");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Auth_VerifyIdToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -483,16 +483,16 @@ YYEXPORT void EpicGames_Auth_VerifyIdToken(RValue &Result, CInstance *selfinst, 
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL VerifyUserAuth(const EOS_Auth_VerifyUserAuthCallbackInfo *Data)
+void EOS_CALL VerifyUserAuth(const EOS_Auth_VerifyUserAuthCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Auth_VerifyUserAuth");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Auth_VerifyUserAuth(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
