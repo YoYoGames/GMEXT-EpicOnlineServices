@@ -3,7 +3,7 @@ event_inherited();
 
 text = "P2P"
 
-socketName = "mySocket"
+socketName = "mySocket" + eos_create_code()
 
 buff_recv = buffer_create(256,buffer_fixed,1)
 
