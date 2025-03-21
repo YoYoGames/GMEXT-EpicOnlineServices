@@ -477,12 +477,12 @@ func double EpicGames_SessionModification_SetPermissionLevel(double PermissionLe
 	return (double)EOS_SessionModification_SetPermissionLevel(mHSessionModification, &Options);
 }
 
-void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSessionAcceptedCallbackInfo *Data)
+void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSessionAcceptedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyJoinSessionAccepted");
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddInt64(map, "ui_event_id", (int64)Data->UiEventId);
+	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -503,15 +503,15 @@ func double SDKEpicGames_Sessions_AddNotifyJoinSessionAccepted(char *buff_ret)
 	return 0.0;
 }
 
-void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_LeaveSessionRequestedCallbackInfo *Data)
+void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_LeaveSessionRequestedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyLeaveSessionRequested");
-	// DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddString(map, "session_name", Data->SessionName);
+	// DsMapAddDouble(map, "status", (double)data->ResultCode);
+	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
+	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "session_name", data->SessionName);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -532,18 +532,18 @@ func double SDKEpicGames_Sessions_AddNotifyLeaveSessionRequested(char *buff_ret)
 	return 0.0;
 }
 
-void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo *Data)
+void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested");
-	// DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddString(map, "target_native_account_type", Data->TargetNativeAccountType);
-	DsMapAddString(map, "target_user_native_account_id", Data->TargetUserNativeAccountId);
-	DsMapAddString(map, "session_id", Data->SessionId);
-	DsMapAddInt64(map, "ui_event_id", (int64)Data->UiEventId);
+	// DsMapAddDouble(map, "status", (double)data->ResultCode);
+	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
+	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "target_native_account_type", data->TargetNativeAccountType);
+	DsMapAddString(map, "target_user_native_account_id", data->TargetUserNativeAccountId);
+	DsMapAddString(map, "session_id", data->SessionId);
+	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -563,17 +563,17 @@ func double SDKEpicGames_Sessions_AddNotifySendSessionNativeInviteRequested(char
 	return 0.0;
 }
 
-void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_SessionInviteAcceptedCallbackInfo *Data)
+void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_SessionInviteAcceptedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteAccepted");
-	// DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
-	DsMapAddString(map, "invite_id", Data->InviteId);
-	DsMapAddString(map, "session_id", Data->SessionId);
-	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
+	// DsMapAddDouble(map, "status", (double)data->ResultCode);
+	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
+	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "invite_id", data->InviteId);
+	DsMapAddString(map, "session_id", data->SessionId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -594,16 +594,16 @@ func double SDKEpicGames_Sessions_AddNotifySessionInviteAccepted(char *buff_ret)
 	return 0.0;
 }
 
-void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo *Data)
+void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteReceived");
-	// DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "invite_id", Data->InviteId);
-	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	// DsMapAddDouble(map, "status", (double)data->ResultCode);
+	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
+	DsMapAddString(map, "invite_id", data->InviteId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -623,17 +623,17 @@ func double SDKEpicGames_Sessions_AddNotifySessionInviteReceived(char *buff_ret)
 	return 0.0;
 }
 
-void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_SessionInviteRejectedCallbackInfo *Data)
+void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_SessionInviteRejectedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteRejected");
-	// DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
-	DsMapAddString(map, "invite_id", Data->InviteId);
-	DsMapAddString(map, "target_user_id", productID_toString(Data->TargetUserId));
-	DsMapAddString(map, "session_id", Data->SessionId);
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	// DsMapAddDouble(map, "status", (double)data->ResultCode);
+	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
+	DsMapAddString(map, "invite_id", data->InviteId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "session_id", data->SessionId);
+	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -745,16 +745,16 @@ func double EpicGames_Sessions_CreateSessionSearch(double MaxSearchResults)
 	return result;
 }
 
-void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessionCallbackInfo *Data)
+void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_DestroySession");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_DestroySession(char *SessionName)
@@ -782,16 +782,16 @@ func double EpicGames_Sessions_DumpSessionState(char *SessionName)
 	return (double)EOS_Sessions_DumpSessionState(HSessions, &Options);
 }
 
-void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbackInfo *Data)
+void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_EndSession");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_EndSession(char *SessionName)
@@ -823,17 +823,18 @@ func double EpicGames_Sessions_GetInviteCount(char *local)
 func char *EpicGames_Sessions_GetInviteIdByIndex(char *local, double index)
 {
 	eos_not_init_return((char*)"");
+	
+	static char TempBuffer[EOS_SESSIONS_INVITEID_MAX_LENGTH];
+	int32_t TempBufferSize = sizeof(TempBuffer);
 
 	EOS_Sessions_GetInviteIdByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_GETINVITEIDBYINDEX_API_LATEST;
 	Options.Index = (int)index;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local);
 
-	char* OutBuffer = GetOutputBuffer();
-	int32_t InOutBufferLength = 1024;
-	EOS_Sessions_GetInviteIdByIndex(HSessions, &Options, OutBuffer, &InOutBufferLength);
+	EOS_Sessions_GetInviteIdByIndex(HSessions, &Options, TempBuffer, &TempBufferSize);
 
-	return OutBuffer;
+	return TempBuffer;
 }
 
 func double EpicGames_Sessions_IsUserInSession(char *SessionName, char *TargetUserId)
@@ -848,16 +849,16 @@ func double EpicGames_Sessions_IsUserInSession(char *SessionName, char *TargetUs
 	return (double)EOS_Sessions_IsUserInSession(HSessions, &Options);
 }
 
-void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallbackInfo *Data)
+void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_JoinSession");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_JoinSession(double PresenceEnabled, char *LocalUserId, char *SessionName)
@@ -878,17 +879,17 @@ func double EpicGames_Sessions_JoinSession(double PresenceEnabled, char *LocalUs
 	return mcallback->identifier;
 }
 
-void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCallbackInfo *Data)
+void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_QueryInvites");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(Data->LocalUserId));
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_QueryInvites(char *TargetUserId)
@@ -906,18 +907,18 @@ func double EpicGames_Sessions_QueryInvites(char *TargetUserId)
 	return mcallback->identifier;
 }
 
-void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlayersCallbackInfo *Data)
+void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlayersCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_RegisterPlayers");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddString(map, "registered_players", productIds2ArrayStr(Data->RegisteredPlayers, Data->RegisteredPlayersCount).c_str());
-	DsMapAddString(map, "sanctioned_players", productIds2ArrayStr(Data->SanctionedPlayers, Data->SanctionedPlayersCount).c_str());
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "registered_players", productIds2ArrayStr(data->RegisteredPlayers, data->RegisteredPlayersCount).c_str());
+	DsMapAddString(map, "sanctioned_players", productIds2ArrayStr(data->SanctionedPlayers, data->SanctionedPlayersCount).c_str());
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double SDKEpicGames_Sessions_RegisterPlayers(char *SessionName, char *buff_args)
@@ -941,16 +942,16 @@ func double SDKEpicGames_Sessions_RegisterPlayers(char *SessionName, char *buff_
 	return mcallback->identifier;
 }
 
-void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInfo *Data)
+void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_RejectInvite");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_RejectInvite(char *LocalUserId, char *InviteId)
@@ -1035,16 +1036,16 @@ func double SDKEpicGames_Sessions_RemoveNotifySessionInviteRejected(char *buff_a
 	return 0.0;
 }
 
-void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbackInfo *Data)
+void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_SendInvite");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_SendInvite(char *LocalUserId, char *SessionName, char *TargetUserId)
@@ -1063,16 +1064,16 @@ func double EpicGames_Sessions_SendInvite(char *LocalUserId, char *SessionName, 
 	return (double)mcallback->identifier;
 }
 
-void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCallbackInfo *Data)
+void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_StartSession");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_StartSession(char *SessionName)
@@ -1089,17 +1090,17 @@ func double EpicGames_Sessions_StartSession(char *SessionName)
 	return mcallback->identifier;
 }
 
-void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_UnregisterPlayersCallbackInfo *Data)
+void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_UnregisterPlayersCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_UnregisterPlayers");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddString(map, "unregistered_players", productIds2ArrayStr(Data->UnregisteredPlayers, Data->UnregisteredPlayersCount).c_str());
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "unregistered_players", productIds2ArrayStr(data->UnregisteredPlayers, data->UnregisteredPlayersCount).c_str());
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double SDKEpicGames_Sessions_UnregisterPlayers(char *SessionName, char *buff_args)
@@ -1124,18 +1125,18 @@ func double SDKEpicGames_Sessions_UnregisterPlayers(char *SessionName, char *buf
 	return mcallback->identifier;
 }
 
-void EOS_CALL Sessions_OnUpdateSessionCallback(const EOS_Sessions_UpdateSessionCallbackInfo *Data)
+void EOS_CALL Sessions_OnUpdateSessionCallback(const EOS_Sessions_UpdateSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sessions_UpdateSession");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
-	DsMapAddString(map, "session_id", Data->SessionId);
-	DsMapAddString(map, "session_name", Data->SessionName);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "session_id", data->SessionId);
+	DsMapAddString(map, "session_name", data->SessionName);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_Sessions_UpdateSession()
@@ -1178,16 +1179,16 @@ func double EpicGames_SessionSearch_CopySearchResultByIndex(double SessionIndex)
 	return result;
 }
 
-void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackInfo *Data)
+void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_SessionSearch_Find");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 func double EpicGames_SessionSearch_Find(char *LocalUserId)

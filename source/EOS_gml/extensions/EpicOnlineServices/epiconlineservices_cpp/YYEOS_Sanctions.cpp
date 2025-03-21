@@ -64,16 +64,16 @@ YYEXPORT void EpicGames_Sanctions_GetPlayerSanctionCount(RValue &Result, CInstan
 	EOS_Sanctions_GetPlayerSanctionCount(HSanctions, &Options);
 }
 
-void EOS_CALL QueryActivePlayerSanctions(const EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo *Data)
+void EOS_CALL QueryActivePlayerSanctions(const EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sanctions_QueryActivePlayerSanctions");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(Data->ClientData))->identifier);
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(Data->ClientData);
+	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Sanctions_QueryActivePlayerSanctions(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
