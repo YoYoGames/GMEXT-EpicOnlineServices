@@ -1,4 +1,7 @@
 
+with(Obj_EpicGames_Lobby)
+	instance_destroy()
+
 var result = EpicGames_Lobby_CreateLobbySearch(10)
 show_debug_message($"CreateLobbySearch {EpicGames_Result_ToString(result)}")
 

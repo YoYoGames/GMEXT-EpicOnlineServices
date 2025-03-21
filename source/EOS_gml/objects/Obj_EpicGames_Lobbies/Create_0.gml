@@ -1,6 +1,9 @@
 
 event_inherited();
 
+mDisplayName = ""
+requestMyName = EpicGames_Connect_QueryProductUserIdMappings(userID,[userID])
+
 text = "Lobby"
 
 LobbyId = ""

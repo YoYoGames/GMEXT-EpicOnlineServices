@@ -1,0 +1,2 @@
+
+EpicGames_Lobby_PromoteMember(Obj_EpicGames_Lobbies.LobbyId,userID,id.userID)
