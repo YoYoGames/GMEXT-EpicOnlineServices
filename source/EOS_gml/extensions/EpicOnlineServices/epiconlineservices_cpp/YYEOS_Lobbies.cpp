@@ -411,12 +411,12 @@ func double SDKEpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested(char *buf
 	return 0;
 }
 
-func double EpicGames_Lobby_Attribute_Release()
-{
-	EOS_Lobby_Attribute LobbyAttribute{};
-	EOS_Lobby_Attribute_Release(&LobbyAttribute);
-	return 0.0;
-}
+//func double EpicGames_Lobby_Attribute_Release()
+//{
+//	EOS_Lobby_Attribute LobbyAttribute{};
+//	EOS_Lobby_Attribute_Release(&LobbyAttribute);
+//	return 0.0;
+//}
 
 func double EpicGames_Lobby_CopyLobbyDetailsHandle(char *LobbyId, char *LocalUserId)
 {
@@ -1129,7 +1129,7 @@ func double EpicGames_Lobby_UpdateLobbyModification(char *LobbyId, char *LocalUs
 {
 	eos_not_init_return(-1);
 
-	eos_assert_lobby_modification(-1);
+	eos_assert_not_lobby_modification(-1);
 
 	EOS_Lobby_UpdateLobbyModificationOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_UPDATELOBBYMODIFICATION_API_LATEST;
@@ -1137,13 +1137,35 @@ func double EpicGames_Lobby_UpdateLobbyModification(char *LobbyId, char *LocalUs
 	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
 
 	EOS_EResult result = EOS_Lobby_UpdateLobbyModification(HLobby, &Options, &mHLobbyModification);
-
+	
 	return (double)result;
 }
 
-func double EpicGames_LobbyDetails_CopyAttributeByIndex(double index)
+void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructStream* outputSteam)
 {
-	eos_not_init_return(-1);
+	outputSteam->addKeyValue("Visibility", (double)OutLobbyAttribute->Visibility);
+	outputSteam->addKeyValue("Key", (const char*)OutLobbyAttribute->Data->Key);
+	switch (OutLobbyAttribute->Data->ValueType)
+	{
+	case EOS_EAttributeType::EOS_AT_BOOLEAN:
+		outputSteam->addKeyValue("Value", (bool)OutLobbyAttribute->Data->Value.AsBool);
+		break;
+	case EOS_EAttributeType::EOS_AT_DOUBLE:
+		outputSteam->addKeyValue("Value", (double)OutLobbyAttribute->Data->Value.AsDouble);
+		break;
+	case EOS_EAttributeType::EOS_AT_INT64:
+		outputSteam->addKeyValue("Value", /*(int64)*/ (int)OutLobbyAttribute->Data->Value.AsInt64);
+		break; // TODO: int64
+	case EOS_EAttributeType::EOS_AT_STRING:
+		outputSteam->addKeyValue("Value", (const char*)OutLobbyAttribute->Data->Value.AsUtf8);
+		break;
+	}
+}
+
+func double SDKEpicGames_LobbyDetails_CopyAttributeByIndex(double index, char* buff_ret)
+{
+	StructStream _struct = {};
+	eos_not_init_return_buffer(buff_ret, _struct);
 
 	eos_assert_lobby_details(-1);
 
@@ -1153,6 +1175,13 @@ func double EpicGames_LobbyDetails_CopyAttributeByIndex(double index)
 	EOS_Lobby_Attribute *OutAttribute = 0;
 
 	EOS_EResult result = EOS_LobbyDetails_CopyAttributeByIndex(mHLobbyDetails, &Options, &OutAttribute);
+
+	if (result == EOS_EResult::EOS_Success)
+		LobbyAtrribute2StructStream(OutAttribute, &_struct);
+
+	_struct.writeTo(buff_ret);
+
+	EOS_Lobby_Attribute_Release(OutAttribute);
 
 	return (double)result;
 }
@@ -1172,32 +1201,12 @@ func double SDKEpicGames_LobbyDetails_CopyAttributeByKey(char *AttrKey, char *bu
 
 	EOS_EResult result = EOS_LobbyDetails_CopyAttributeByKey(mHLobbyDetails, &Options, &OutAttribute);
 
-	if (result != EOS_EResult::EOS_Success)
-	{
-		_struct.writeTo(buff_ret);
-
-		return (double)result;
-	}
-
-	_struct.addKeyValue("Visibility", (int)OutAttribute->Visibility);
-	_struct.addKeyValue("Key", (const char *)OutAttribute->Data->Key);
-	switch (OutAttribute->Data->ValueType)
-	{
-	case EOS_EAttributeType::EOS_AT_BOOLEAN:
-		_struct.addKeyValue("Value", (bool)OutAttribute->Data->Value.AsBool);
-		break;
-	case EOS_EAttributeType::EOS_AT_DOUBLE:
-		_struct.addKeyValue("Value", (double)OutAttribute->Data->Value.AsDouble);
-		break;
-	case EOS_EAttributeType::EOS_AT_INT64:
-		_struct.addKeyValue("Value", /*(int64)*/ (int)OutAttribute->Data->Value.AsInt64);
-		break; // TODO: int64
-	case EOS_EAttributeType::EOS_AT_STRING:
-		_struct.addKeyValue("Value", (const char *)OutAttribute->Data->Value.AsUtf8);
-		break;
-	}
+	if (result == EOS_EResult::EOS_Success)
+		LobbyAtrribute2StructStream(OutAttribute, &_struct);
 
 	_struct.writeTo(buff_ret);
+
+	EOS_Lobby_Attribute_Release(OutAttribute);
 
 	return (double)result;
 }
@@ -1246,9 +1255,10 @@ func double SDKEpicGames_LobbyDetails_CopyInfo(char *buff_ret)
 	return (double)result;
 }
 
-func double EpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char *TargetUserId)
+func double SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char *TargetUserId, char* buff_ret)
 {
-	eos_not_init_return(-1);
+	StructStream _struct = {};
+	eos_not_init_return_buffer(buff_ret, _struct);
 
 	eos_assert_lobby_details(-1);
 
@@ -1260,6 +1270,11 @@ func double EpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char
 	// This needs to be returned in a struct (needs return buffer)
 	EOS_Lobby_Attribute *OutAttribute;
 	EOS_EResult result = EOS_LobbyDetails_CopyMemberAttributeByIndex(mHLobbyDetails, &Options, &OutAttribute);
+
+	if (result == EOS_EResult::EOS_Success)
+		LobbyAtrribute2StructStream(OutAttribute, &_struct);
+
+	_struct.writeTo(buff_ret);
 
 	// This needs to be released afterwards
 	EOS_Lobby_Attribute_Release(OutAttribute);
@@ -1288,9 +1303,10 @@ func double EpicGames_LobbyDetails_CopyMemberAttributeByKey(char *AttrKey, char 
 	return (double)result;
 }
 
-func double EpicGames_LobbyDetails_CopyMemberInfo(char *TargetUserId)
+func double SDKEpicGames_LobbyDetails_CopyMemberInfo(char *TargetUserId,char* buff_ret)
 {
-	eos_not_init_return(-1);
+	StructStream _struct = {};
+	eos_not_init_return_buffer(buff_ret, _struct);
 
 	eos_assert_lobby_details(-1);
 
@@ -1302,8 +1318,19 @@ func double EpicGames_LobbyDetails_CopyMemberInfo(char *TargetUserId)
 	EOS_LobbyDetails_MemberInfo *OutLobbyDetailsMemberInfo;
 	EOS_EResult result = EOS_LobbyDetails_CopyMemberInfo(mHLobbyDetails, &Options, &OutLobbyDetailsMemberInfo);
 
+	if (result == EOS_EResult::EOS_Success)
+	{
+		_struct.addKeyValue("bAllowsCrossplay", (bool)OutLobbyDetailsMemberInfo->bAllowsCrossplay);
+		_struct.addKeyValue("Platform", (double)OutLobbyDetailsMemberInfo->Platform);
+		_struct.addKeyValue("UserId", (const char*)productID_toString(OutLobbyDetailsMemberInfo->UserId));
+
+		_struct.writeTo(buff_ret);
+	}
+
+	_struct.writeTo(buff_ret);
+
 	// This needs to be released afterwards
-	EOS_LobbyDetails_MemberInfo_Release(OutLobbyDetailsMemberInfo);
+	EOS_LobbyDetails_MemberInfo_Release(OutLobbyDetailsMemberInfo); 
 
 	return (double)result;
 }
@@ -1380,15 +1407,15 @@ func double EpicGames_LobbyDetails_Info_Release()
 	return 0.0;
 }
 
-func double EpicGames_LobbyDetails_MemberInfo_Release(double AllowsCrossplay, double Platform, char *UserId)
-{
-	eos_not_init_return(-1);
-
-	// TODO :: This function is not necessary
-	// EOS_LobbyDetails_MemberInfo_Release(&LobbyDetailsMemberInfo);
-
-	return 0.0;
-}
+//func double EpicGames_LobbyDetails_MemberInfo_Release(double AllowsCrossplay, double Platform, char *UserId)
+//{
+//	eos_not_init_return(-1);
+//
+//	// TODO :: This function is not necessary
+//	// EOS_LobbyDetails_MemberInfo_Release(&LobbyDetailsMemberInfo);
+//
+//	return 0.0;
+//}
 
 func double EpicGames_LobbyDetails_Release()
 {

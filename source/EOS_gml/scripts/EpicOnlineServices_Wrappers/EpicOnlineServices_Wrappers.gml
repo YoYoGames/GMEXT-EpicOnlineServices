@@ -608,6 +608,30 @@ function EpicGames_LobbyDetails_CopyInfo()
 	return _return_value;
 }
 
+//SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char *TargetUserId, char* buff_ret)
+function EpicGames_LobbyDetails_CopyMemberAttributeByIndex(index,TargetUserId)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(index,TargetUserId,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
+//SDKEpicGames_LobbyDetails_CopyMemberInfo(char *TargetUserId,char* buff_ret)
+function EpicGames_LobbyDetails_CopyMemberInfo(TargetUserId)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	SDKEpicGames_LobbyDetails_CopyMemberInfo(TargetUserId,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
 //SDKEpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId
 function EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(UiEventId)
 {
@@ -807,6 +831,18 @@ function EpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(notification
 	return SDKEpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(_args_buffer_address)
 }
 
+//func double SDKEpicGames_LobbyDetails_CopyAttributeByIndex(double index, char* buff_ret)
+function EpicGames_LobbyDetails_CopyAttributeByIndex(index,TargetUserId)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	SDKEpicGames_LobbyDetails_CopyAttributeByIndex(index,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
 //SDKEpicGames_LobbyModification_AddAttribute
 function EpicGames_LobbyModification_AddAttribute(Visibility,Attribute)
 {
@@ -951,6 +987,29 @@ function EpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(notificationId)
 	return SDKEpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(_args_buffer_address)
 }
 
+//SDKEpicGames_RTCAdmin_CopyUserTokenByIndex(double QueryId, double UserTokenIndex,char* buff_ret)
+function EpicGames_RTCAdmin_CopyUserTokenByIndex(QueryId,UserTokenIndex)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	SDKEpicGames_RTCAdmin_CopyUserTokenByIndex(QueryId,UserTokenIndex,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+//SDKEpicGames_RTCAdmin_CopyUserTokenByUserId(double QueryId, char *TargetUserId)
+function EpicGames_RTCAdmin_CopyUserTokenByUserId(QueryId,TargetUserId)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	SDKEpicGames_RTCAdmin_CopyUserTokenByUserId(QueryId,TargetUserId,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
 //SDKEpicGames_RTCAdmin_QueryJoinRoomToken
 function EpicGames_RTCAdmin_QueryJoinRoomToken(LocalUserId,RoomName,array_ids,array_ips)
 {
@@ -1032,6 +1091,30 @@ function EpicGames_RTCAudio_AddNotifyParticipantUpdated(LocalUserId, RoomName)
 	var _return_buffer_address = ext_return_buffer_address();
 	
 	SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated(LocalUserId, RoomName,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
+//SDKEpicGames_RTCAudio_CopyInputDeviceInformationByIndex(double DeviceIndex,char* buff_ret)
+function EpicGames_RTCAudio_CopyInputDeviceInformationByIndex(DeviceIndex)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	SDKEpicGames_RTCAudio_CopyInputDeviceInformationByIndex(DeviceIndex,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
+//func double SDKEpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(double DeviceIndex, char* buff_ret)
+function EpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(DeviceIndex)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	SDKEpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(DeviceIndex,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	

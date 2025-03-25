@@ -360,8 +360,7 @@ func double EpicGames_RTC_SetSetting(char *SettingName, char *SettingValue)
 	return (double)result;
 }
 
-EOS_RTCAdmin_UserToken *OutUserToken = NULL;
-func double EpicGames_RTCAdmin_CopyUserTokenByIndex(double QueryId, double UserTokenIndex)
+func double SDKEpicGames_RTCAdmin_CopyUserTokenByIndex(double QueryId, double UserTokenIndex,char* buff_ret)
 {
 	eos_not_init_return(-1);
 
@@ -369,12 +368,14 @@ func double EpicGames_RTCAdmin_CopyUserTokenByIndex(double QueryId, double UserT
 	Options.ApiVersion = EOS_RTCADMIN_COPYUSERTOKENBYINDEX_API_LATEST;
 	Options.QueryId = (uint32_t)QueryId;
 	Options.UserTokenIndex = (uint32_t)UserTokenIndex;
+
+	EOS_RTCAdmin_UserToken* OutUserToken = NULL;
 	EOS_EResult result = EOS_RTCAdmin_CopyUserTokenByIndex(HRTCAdmin, &Options, &OutUserToken);
 
 	return (double)result;
 }
 
-func double EpicGames_RTCAdmin_CopyUserTokenByUserId(double QueryId, char *TargetUserId)
+func double SDKEpicGames_RTCAdmin_CopyUserTokenByUserId(double QueryId, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -382,6 +383,8 @@ func double EpicGames_RTCAdmin_CopyUserTokenByUserId(double QueryId, char *Targe
 	Options.ApiVersion = EOS_RTCADMIN_COPYUSERTOKENBYUSERID_API_LATEST;
 	Options.QueryId = (uint32_t)QueryId;
 	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+
+	EOS_RTCAdmin_UserToken* OutUserToken = NULL;
 	EOS_RTCAdmin_CopyUserTokenByUserId(HRTCAdmin, &Options, &OutUserToken);
 
 	return 0.0;
@@ -480,11 +483,11 @@ func double EpicGames_RTCAdmin_SetParticipantHardMute()
 	return (double)mcallback->identifier;
 }
 
-func double EpicGames_RTCAdmin_UserToken_Release()
-{
-	EOS_RTCAdmin_UserToken_Release(OutUserToken);
-	return 0.0;
-}
+//func double EpicGames_RTCAdmin_UserToken_Release()
+//{
+//	EOS_RTCAdmin_UserToken_Release(OutUserToken);
+//	return 0.0;
+//}
 
 void EOS_CALL RTCAudio_AddNotifyAudioBeforeRender(const EOS_RTCAudio_AudioBeforeRenderCallbackInfo *data)
 {
@@ -660,30 +663,54 @@ func double SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated(char *LocalUserId,
 	return 0.0;
 }
 
-EOS_RTCAudio_InputDeviceInformation *OutInputDeviceInformation;
-func double EpicGames_RTCAudio_CopyInputDeviceInformationByIndex(double DeviceIndex)
+func double SDKEpicGames_RTCAudio_CopyInputDeviceInformationByIndex(double DeviceIndex,char* buff_ret)
 {
 	eos_not_init_return(-1);
+
+	StructStream _struct = {};
+	eos_not_init_return_buffer(buff_ret, _struct);
 
 	EOS_RTCAudio_CopyInputDeviceInformationByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_COPYINPUTDEVICEINFORMATIONBYINDEX_API_LATEST;
 	Options.DeviceIndex = (uint32_t)DeviceIndex;
 
+	EOS_RTCAudio_InputDeviceInformation* OutInputDeviceInformation;
 	EOS_EResult result = EOS_RTCAudio_CopyInputDeviceInformationByIndex(HRTCAudio, &Options, &OutInputDeviceInformation);
+
+	_struct.addKeyValue("bDefaultDevice", (double)OutInputDeviceInformation->bDefaultDevice?1.0:0.0);
+	_struct.addKeyValue("DeviceId", OutInputDeviceInformation->DeviceId);
+	_struct.addKeyValue("DeviceName", OutInputDeviceInformation->DeviceName);
+
+	_struct.writeTo(buff_ret);
+
+	EOS_RTCAudio_InputDeviceInformation_Release(OutInputDeviceInformation);
 
 	return (double)result;
 }
 
-EOS_RTCAudio_OutputDeviceInformation *OutOutputDeviceInformation;
-func double EpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(double DeviceIndex)
+func double SDKEpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(double DeviceIndex, char* buff_ret)
 {
 	eos_not_init_return(-1);
+
+	StructStream _struct = {};
+	eos_not_init_return_buffer(buff_ret, _struct);
 
 	EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_COPYOUTPUTDEVICEINFORMATIONBYINDEX_API_LATEST;
 	Options.DeviceIndex = (uint32_t)DeviceIndex;
 
+	EOS_RTCAudio_OutputDeviceInformation* OutOutputDeviceInformation;
+
 	EOS_RTCAudio_CopyOutputDeviceInformationByIndex(HRTCAudio, &Options, &OutOutputDeviceInformation);
+
+	_struct.addKeyValue("bDefaultDevice", (double)OutOutputDeviceInformation->bDefaultDevice ? 1.0 : 0.0);
+	_struct.addKeyValue("DeviceId", OutOutputDeviceInformation->DeviceId);
+	_struct.addKeyValue("DeviceName", OutOutputDeviceInformation->DeviceName);
+
+	_struct.writeTo(buff_ret);
+
+	EOS_RTCAudio_OutputDeviceInformation_Release(OutOutputDeviceInformation);
+
 	return 0.0;
 }
 
@@ -751,21 +778,21 @@ func double EpicGames_RTCAudio_GetOutputDevicesCount()
 	return EOS_RTCAudio_GetOutputDevicesCount(HRTCAudio, &Options);
 }
 
-func double EpicGames_RTCAudio_InputDeviceInformation_Release()
-{
-	eos_not_init_return(-1);
+//func double EpicGames_RTCAudio_InputDeviceInformation_Release()
+//{
+//	eos_not_init_return(-1);
+//
+//	EOS_RTCAudio_InputDeviceInformation_Release(OutInputDeviceInformation);
+//	return 0.0;
+//}
 
-	EOS_RTCAudio_InputDeviceInformation_Release(OutInputDeviceInformation);
-	return 0.0;
-}
-
-func double EpicGames_RTCAudio_OutputDeviceInformation_Release()
-{
-	eos_not_init_return(-1);
-
-	EOS_RTCAudio_OutputDeviceInformation_Release(OutOutputDeviceInformation);
-	return 0.0;
-}
+//func double EpicGames_RTCAudio_OutputDeviceInformation_Release()
+//{
+//	eos_not_init_return(-1);
+//
+//	EOS_RTCAudio_OutputDeviceInformation_Release(OutOutputDeviceInformation);
+//	return 0.0;
+//}
 
 void EOS_CALL RTCAudio_QueryInputDevicesInformation(const EOS_RTCAudio_OnQueryInputDevicesInformationCallbackInfo *data)
 {
