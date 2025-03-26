@@ -6,12 +6,7 @@ switch(async_load[?"type"])
 	
 	case "EpicGames_P2P_AddNotifyPeerConnectionClosed":
 		
-		var index = array_get_index(EstablishedProductIDs,async_load[?"RemoteUserId"])
-		
-		if(index >= 0)
-		{
-			disconnect(EstablishedProductIDs[index])
-		}
+		disconnect(async_load[?"RemoteUserId"])
 		
 	break
 	

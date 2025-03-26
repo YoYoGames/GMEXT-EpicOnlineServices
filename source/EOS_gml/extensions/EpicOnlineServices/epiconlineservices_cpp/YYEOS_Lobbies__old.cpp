@@ -1141,23 +1141,23 @@ func double EpicGames_Lobby_UpdateLobbyModification(char *LobbyId, char *LocalUs
 	return (double)result;
 }
 
-void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructStream* outputSteam)
+void LobbyAtrribute2StructStream(EOS_Lobby_Attribute *OutLobbyAttribute, StructStream &outputSteam)
 {
-	outputSteam->addKeyValue("Visibility", (double)OutLobbyAttribute->Visibility);
-	outputSteam->addKeyValue("Key", (const char*)OutLobbyAttribute->Data->Key);
+	outputSteam.addKeyValue("Visibility", (double)OutLobbyAttribute->Visibility);
+	outputSteam.addKeyValue("Key", (const char*)OutLobbyAttribute->Data->Key);
 	switch (OutLobbyAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
-		outputSteam->addKeyValue("Value", (bool)OutLobbyAttribute->Data->Value.AsBool);
+		outputSteam.addKeyValue("Value", (bool)OutLobbyAttribute->Data->Value.AsBool);
 		break;
 	case EOS_EAttributeType::EOS_AT_DOUBLE:
-		outputSteam->addKeyValue("Value", (double)OutLobbyAttribute->Data->Value.AsDouble);
+		outputSteam.addKeyValue("Value", (double)OutLobbyAttribute->Data->Value.AsDouble);
 		break;
 	case EOS_EAttributeType::EOS_AT_INT64:
-		outputSteam->addKeyValue("Value", /*(int64)*/ (int)OutLobbyAttribute->Data->Value.AsInt64);
+		outputSteam.addKeyValue("Value", /*(int64)*/ (int)OutLobbyAttribute->Data->Value.AsInt64);
 		break; // TODO: int64
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam->addKeyValue("Value", (const char*)OutLobbyAttribute->Data->Value.AsUtf8);
+		outputSteam.addKeyValue("Value", (const char*)OutLobbyAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
@@ -1177,7 +1177,7 @@ func double SDKEpicGames_LobbyDetails_CopyAttributeByIndex(double index, char* b
 	EOS_EResult result = EOS_LobbyDetails_CopyAttributeByIndex(mHLobbyDetails, &Options, &OutAttribute);
 
 	if (result == EOS_EResult::EOS_Success)
-		LobbyAtrribute2StructStream(OutAttribute, &_struct);
+		LobbyAtrribute2StructStream(OutAttribute, _struct);
 
 	_struct.writeTo(buff_ret);
 
@@ -1202,7 +1202,7 @@ func double SDKEpicGames_LobbyDetails_CopyAttributeByKey(char *AttrKey, char *bu
 	EOS_EResult result = EOS_LobbyDetails_CopyAttributeByKey(mHLobbyDetails, &Options, &OutAttribute);
 
 	if (result == EOS_EResult::EOS_Success)
-		LobbyAtrribute2StructStream(OutAttribute, &_struct);
+		LobbyAtrribute2StructStream(OutAttribute, _struct);
 
 	_struct.writeTo(buff_ret);
 
@@ -1272,7 +1272,7 @@ func double SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, c
 	EOS_EResult result = EOS_LobbyDetails_CopyMemberAttributeByIndex(mHLobbyDetails, &Options, &OutAttribute);
 
 	if (result == EOS_EResult::EOS_Success)
-		LobbyAtrribute2StructStream(OutAttribute, &_struct);
+		LobbyAtrribute2StructStream(OutAttribute, _struct);
 
 	_struct.writeTo(buff_ret);
 

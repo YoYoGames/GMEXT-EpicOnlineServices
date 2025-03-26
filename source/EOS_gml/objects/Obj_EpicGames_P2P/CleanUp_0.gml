@@ -8,7 +8,5 @@ EpicGames_P2P_RemoveNotifyPeerConnectionRequest(notifyPeerConnectionRequest)
 show_debug_message("CLEAN UP")
 for(var a = 0 ; a < array_length(EstablishedProductIDs) ; a++)
 {
-	show_debug_message(EstablishedProductIDs[a])
-	EpicGames_P2P_ClearPacketQueue(userID,EstablishedProductIDs[a],socketName)
-	EpicGames_P2P_CloseConnection(userID,EstablishedProductIDs[a],socketName)
+	disconnect(EstablishedProductIDs[a])
 }
