@@ -288,38 +288,38 @@ function eos_sessions_remove_notify_session_invite_rejected(notificationId)
 
 
 
-//__eos_p2_p_get_packet_queue_info
-function eos_p2_p_get_packet_queue_info()
+//__eos_p2p_get_packet_queue_info
+function eos_p2p_get_packet_queue_info()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2_p_get_packet_queue_info(_return_buffer_address)
+	__eos_p2p_get_packet_queue_info(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_p2_p_get_port_range
-function eos_p2_p_get_port_range()
+//__eos_p2p_get_port_range
+function eos_p2p_get_port_range()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2_p_get_port_range(_return_buffer_address)
+	__eos_p2p_get_port_range(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_p2_p_receive_packet(buff_ret,LocalUserId,MaxDataSizeBytes,RequestedChannel)
-function eos_p2_p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+//__eos_p2p_receive_packet(buff_ret,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+function eos_p2p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
 {	
-	return __eos_p2_p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+	return __eos_p2p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
 }
 
-//__eos_p2_p_send_packet(buff_data, len)
-function eos_p2_p_send_packet(buff,buff_len,AllowDelayedDelivery,DisableAutoAcceptConnection,Channel,LocalUserId,Reliability,RemoteUserId,SocketName)
+//__eos_p2p_send_packet(buff_data, len)
+function eos_p2p_send_packet(buff,buff_len,AllowDelayedDelivery,DisableAutoAcceptConnection,Channel,LocalUserId,Reliability,RemoteUserId,SocketName)
 {
 	var _args = [
 		[AllowDelayedDelivery,buffer_bool],
@@ -333,63 +333,63 @@ function eos_p2_p_send_packet(buff,buff_len,AllowDelayedDelivery,DisableAutoAcce
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_p2_p_send_packet(_args_buffer_address,buffer_get_address(buff),buff_len)
+	return __eos_p2p_send_packet(_args_buffer_address,buffer_get_address(buff),buff_len)
 }
 
-//__eos_p2_p_add_notify_incoming_packet_queue_full
-function eos_p2_p_add_notify_incoming_packet_queue_full()
+//__eos_p2p_add_notify_incoming_packet_queue_full
+function eos_p2p_add_notify_incoming_packet_queue_full()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2_p_add_notify_incoming_packet_queue_full(_return_buffer_address)
+	__eos_p2p_add_notify_incoming_packet_queue_full(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_p2_p_add_notify_peer_connection_closed
-function eos_p2_p_add_notify_peer_connection_closed(LocalUserId, SocketName)
+//__eos_p2p_add_notify_peer_connection_closed
+function eos_p2p_add_notify_peer_connection_closed(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2_p_add_notify_peer_connection_closed(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_closed(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_p2_p_add_notify_peer_connection_established
-function eos_p2_p_add_notify_peer_connection_established(LocalUserId, SocketName)
+//__eos_p2p_add_notify_peer_connection_established
+function eos_p2p_add_notify_peer_connection_established(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2_p_add_notify_peer_connection_established(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_established(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_p2_p_add_notify_peer_connection_interrupted
-function eos_p2_p_add_notify_peer_connection_interrupted(LocalUserId, SocketName)
+//__eos_p2p_add_notify_peer_connection_interrupted
+function eos_p2p_add_notify_peer_connection_interrupted(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2_p_add_notify_peer_connection_interrupted(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_interrupted(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_p2_p_add_notify_peer_connection_request
-function eos_p2_p_add_notify_peer_connection_request(LocalUserId, SocketName)
+//__eos_p2p_add_notify_peer_connection_request
+function eos_p2p_add_notify_peer_connection_request(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2_p_add_notify_peer_connection_request(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_request(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -398,8 +398,8 @@ function eos_p2_p_add_notify_peer_connection_request(LocalUserId, SocketName)
 
 
 
-//__eos_p2_p_remove_notify_incoming_packet_queue_full
-function eos_p2_p_remove_notify_incoming_packet_queue_full(notificationId)
+//__eos_p2p_remove_notify_incoming_packet_queue_full
+function eos_p2p_remove_notify_incoming_packet_queue_full(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -407,11 +407,11 @@ function eos_p2_p_remove_notify_incoming_packet_queue_full(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_p2_p_remove_notify_incoming_packet_queue_full(_args_buffer_address)
+	return __eos_p2p_remove_notify_incoming_packet_queue_full(_args_buffer_address)
 }
 
-//__eos_p2_p_remove_notify_peer_connection_closed
-function eos_p2_p_remove_notify_peer_connection_closed(notificationId)
+//__eos_p2p_remove_notify_peer_connection_closed
+function eos_p2p_remove_notify_peer_connection_closed(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -419,11 +419,11 @@ function eos_p2_p_remove_notify_peer_connection_closed(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_p2_p_remove_notify_peer_connection_closed(_args_buffer_address)
+	return __eos_p2p_remove_notify_peer_connection_closed(_args_buffer_address)
 }
 
-//__eos_p2_p_remove_notify_peer_connection_established
-function eos_p2_p_remove_notify_peer_connection_established(notificationId)
+//__eos_p2p_remove_notify_peer_connection_established
+function eos_p2p_remove_notify_peer_connection_established(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -431,11 +431,11 @@ function eos_p2_p_remove_notify_peer_connection_established(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_p2_p_remove_notify_peer_connection_established(_args_buffer_address)
+	return __eos_p2p_remove_notify_peer_connection_established(_args_buffer_address)
 }
 
-//__eos_p2_p_remove_notify_peer_connection_interrupted
-function eos_p2_p_remove_notify_peer_connection_interrupted(notificationId)
+//__eos_p2p_remove_notify_peer_connection_interrupted
+function eos_p2p_remove_notify_peer_connection_interrupted(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -443,11 +443,11 @@ function eos_p2_p_remove_notify_peer_connection_interrupted(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_p2_p_remove_notify_peer_connection_interrupted(_args_buffer_address)
+	return __eos_p2p_remove_notify_peer_connection_interrupted(_args_buffer_address)
 }
 
-//__eos_p2_p_remove_notify_peer_connection_request
-function eos_p2_p_remove_notify_peer_connection_request(notificationId)
+//__eos_p2p_remove_notify_peer_connection_request
+function eos_p2p_remove_notify_peer_connection_request(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -455,7 +455,7 @@ function eos_p2_p_remove_notify_peer_connection_request(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_p2_p_remove_notify_peer_connection_request(_args_buffer_address)
+	return __eos_p2p_remove_notify_peer_connection_request(_args_buffer_address)
 }
 
 

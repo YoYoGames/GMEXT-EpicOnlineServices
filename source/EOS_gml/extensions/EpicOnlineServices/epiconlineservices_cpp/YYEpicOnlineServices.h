@@ -51,7 +51,7 @@ extern void eos_stats_init();
 extern void eos_title_storage_init();
 extern void eos_user_info_init();
 extern void eos_ui_init();
-extern void eos_p2_p_init();
+extern void eos_p2p_init();
 extern void eos_sessions_init();
 extern void eos_lobby_init();
 extern void eos_rtc_init();

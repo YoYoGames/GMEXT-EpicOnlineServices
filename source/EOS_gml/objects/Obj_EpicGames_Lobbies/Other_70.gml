@@ -64,7 +64,7 @@ switch(async_load[? "type"])
 					{
 		                var buff = buffer_create(256,buffer_fixed,1)
 		                buffer_write(buff,buffer_u8,1)
-		                eos_p2_p_send_packet(buff,buffer_tell(buff),true,false,noone,userID,true,user_id,Obj_EpicGames_Lobbies_P2P.socketName)
+		                eos_p2p_send_packet(buff,buffer_tell(buff),true,false,noone,userID,true,user_id,Obj_EpicGames_Lobbies_P2P.socketName)
 		                buffer_delete(buff)
 					}
 	            }
