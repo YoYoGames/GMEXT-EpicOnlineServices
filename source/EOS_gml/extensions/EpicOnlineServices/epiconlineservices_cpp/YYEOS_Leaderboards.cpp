@@ -20,7 +20,7 @@
 #include <eos_leaderboards.h>
 
 EOS_HLeaderboards HLeaderboards;
-void EpicGames_Leaderboards_Init()
+void eos_leaderboards_init()
 {
 	HLeaderboards = EOS_Platform_GetLeaderboardsInterface(PlatformHandle);
 }
@@ -37,23 +37,23 @@ RValue LeaderboardsDefinitionToStruct(EOS_Leaderboards_Definition *leaderboard, 
 		return Struct;
 
 	if (leaderboard->LeaderboardId)
-		YYStructAddString(&Struct, "LeaderboardId", leaderboard->LeaderboardId);
+		YYStructAddString(&Struct, "leaderboard_id", leaderboard->LeaderboardId);
 
 	if (leaderboard->StatName)
-		YYStructAddString(&Struct, "StatName", leaderboard->StatName);
+		YYStructAddString(&Struct, "stat_name", leaderboard->StatName);
 
 	if (leaderboard->StartTime)
-		YYStructAddInt64(&Struct, "StartTime", leaderboard->StartTime);
+		YYStructAddInt64(&Struct, "start_time", leaderboard->StartTime);
 
 	if (leaderboard->EndTime)
-		YYStructAddInt64(&Struct, "EndTime", leaderboard->EndTime);
+		YYStructAddInt64(&Struct, "end_time", leaderboard->EndTime);
 
 	EOS_Leaderboards_Definition_Release(leaderboard);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_copy_leaderboard_definition_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -75,7 +75,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex(RValue &Re
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -112,17 +112,17 @@ RValue LeaderboardRecordToStruct(EOS_Leaderboards_LeaderboardRecord *leaderboard
 	int32_t TempBufferSize = sizeof(TempBuffer);
 	EOS_EResult Result = EOS_ProductUserId_ToString(leaderboard->UserId, TempBuffer, &TempBufferSize);
 
-	YYStructAddString(&Struct, "UserId", TempBuffer);
-	YYStructAddDouble(&Struct, "Rank", leaderboard->Rank = leaderboard->Rank);
-	YYStructAddDouble(&Struct, "Score", leaderboard->Score = leaderboard->Score);
-	YYStructAddString(&Struct, "UserDisplayName", leaderboard->UserDisplayName);
+	YYStructAddString(&Struct, "user_id", TempBuffer);
+	YYStructAddDouble(&Struct, "rank", leaderboard->Rank = leaderboard->Rank);
+	YYStructAddDouble(&Struct, "score", leaderboard->Score = leaderboard->Score);
+	YYStructAddString(&Struct, "user_display_name", leaderboard->UserDisplayName);
 
 	EOS_Leaderboards_LeaderboardRecord_Release(leaderboard);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_copy_leaderboard_record_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -148,7 +148,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByIndex(RValue &Result
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByUserId(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_copy_leaderboard_record_by_user_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -185,15 +185,15 @@ RValue LeaderboardUserScoreToStruct(EOS_Leaderboards_LeaderboardUserScore *leade
 	if (result != EOS_EResult::EOS_Success)
 		return Struct;
 
-	YYStructAddString(&Struct, "UserId", productID_toString(leaderboard->UserId));
-	YYStructAddDouble(&Struct, "Score", leaderboard->Score);
+	YYStructAddString(&Struct, "user_id", productID_toString(leaderboard->UserId));
+	YYStructAddDouble(&Struct, "score", leaderboard->Score);
 
 	EOS_Leaderboards_LeaderboardUserScore_Release(leaderboard);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_copy_leaderboard_user_score_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -217,7 +217,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(RValue &Res
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByUserId(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_copy_leaderboard_user_score_by_user_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -240,7 +240,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByUserId(RValue &Re
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Leaderboards_GetLeaderboardDefinitionCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_get_leaderboard_definition_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -253,7 +253,7 @@ YYEXPORT void EpicGames_Leaderboards_GetLeaderboardDefinitionCount(RValue &Resul
 	Result.v32 = (int32)LeaderboardDefinitionsCount;
 }
 
-YYEXPORT void EpicGames_Leaderboards_GetLeaderboardRecordCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_get_leaderboard_record_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -266,7 +266,7 @@ YYEXPORT void EpicGames_Leaderboards_GetLeaderboardRecordCount(RValue &Result, C
 	Result.v32 = (int32)LeaderboardRecordsCount;
 }
 
-YYEXPORT void EpicGames_Leaderboards_GetLeaderboardUserScoreCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_get_leaderboard_user_score_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -285,7 +285,7 @@ YYEXPORT void EpicGames_Leaderboards_GetLeaderboardUserScoreCount(RValue &Result
 void EOS_CALL LeaderboardDefinitionsReceivedCallbackFn(const EOS_Leaderboards_OnQueryLeaderboardDefinitionsCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Leaderboards_QueryLeaderboardDefinitions");
+	DsMapAddString(map, "type", "eos_leaderboards_query_leaderboard_definitions");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -294,7 +294,7 @@ void EOS_CALL LeaderboardDefinitionsReceivedCallbackFn(const EOS_Leaderboards_On
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardDefinitions(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_query_leaderboard_definitions(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -330,7 +330,7 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardDefinitions(RValue &Result,
 void EOS_CALL LeaderboardRanksReceivedCallbackFn(const EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Leaderboards_QueryLeaderboardRanks");
+	DsMapAddString(map, "type", "eos_leaderboards_query_leaderboard_ranks");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -340,7 +340,7 @@ void EOS_CALL LeaderboardRanksReceivedCallbackFn(const EOS_Leaderboards_OnQueryL
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardRanks(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_query_leaderboard_ranks(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -365,7 +365,7 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardRanks(RValue &Result, CInst
 void EOS_CALL LeaderboardUserScoresReceivedCallbackFn(const EOS_Leaderboards_OnQueryLeaderboardUserScoresCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Leaderboards_QueryLeaderboardUserScores");
+	DsMapAddString(map, "type", "eos_leaderboards_query_leaderboard_user_scores");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -375,7 +375,7 @@ void EOS_CALL LeaderboardUserScoresReceivedCallbackFn(const EOS_Leaderboards_OnQ
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScore(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_query_leaderboard_user_score(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -422,14 +422,14 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScore(RValue &Result, C
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_leaderboards_query_leaderboard_user_scores(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real
 
 		const char *userID = YYGetString(arg, 0);
 	const char *LeaderboardId = YYGetString(arg, 1); // not in use...
 
-	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 2, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
+	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 2, "eos_leaderboards_query_leaderboard_user_scores");
 
 	// const char* name = YYGetString(arg, 3);
 	// double agregation = YYGetReal(arg, 4);
@@ -437,7 +437,7 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue &Result, 
 	int vec_StatInfoData_count = 0;
 	if (KIND_RValue(&arg[3]) == VALUE_ARRAY)
 	{
-		std::vector<RValue> vec_StatInfoData = _SW_GetArrayOfRValues(arg, 3, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
+		std::vector<RValue> vec_StatInfoData = _SW_GetArrayOfRValues(arg, 3, "eos_leaderboards_query_leaderboard_user_scores");
 		for (const auto &e : vec_StatInfoData)
 		{
 

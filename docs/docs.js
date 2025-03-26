@@ -35,7 +35,7 @@
  * @section_end
  *
  * @section Result Constants
- * @desc This extension API can return a large set of result constants depending on the function being called. See ${constant.EpicGames_Result} for the full list.
+ * @desc This extension API can return a large set of result constants depending on the function being called. See ${constant.eos_result} for the full list.
  * 
  * @section_end
  * 

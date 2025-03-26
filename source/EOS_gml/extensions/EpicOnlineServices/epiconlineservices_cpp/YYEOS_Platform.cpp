@@ -1,5 +1,6 @@
 
 // Platform Interface
+// Platform Interface
 // Interface that grants access to all other interfaces.
 
 // EOS_Platform_CheckForLauncherAndRestart
@@ -184,161 +185,171 @@ void OldPreGraphicsInitialisation()
 			return;
 		}
 
-		tracef("EOS_Achievements_Init :: Starting module...");
-		EpicGames_Achievements_Init();
-		tracef("EOS_Connect_Init :: Starting module...");
-		EpicGames_Connect_Init();
-		tracef("EOS_Ecom_Init :: Starting module...");
-		EpicGames_Ecom_Init();
-		tracef("EOS_Friends_Init :: Starting module...");
-		EpicGames_Friends_Init();
-		tracef("EOS_Leaderboards_Init :: Starting module...");
-		EpicGames_Leaderboards_Init();
-		tracef("EOS_Metrics_Init :: Starting module...");
-		EpicGames_Metrics_Init();
+			tracef("EOS_Achievements_Init :: Starting module...");
+			eos_achievements_init();
+			tracef("EOS_Connect_Init :: Starting module...");
+			eos_connect_init();
+			tracef("EOS_Ecom_Init :: Starting module...");
+			eos_ecom_init();
+			tracef("EOS_Friends_Init :: Starting module...");
+			eos_friends_init();
+			tracef("EOS_Leaderboards_Init :: Starting module...");
+			eos_leaderboards_init();
+			tracef("EOS_Metrics_Init :: Starting module...");
+			eos_metrics_init();
 
-		tracef("EOS_PlayerDataStorage_Init :: Starting module...");
-		EpicGames_PlayerDataStorage_Init();
-		tracef("EOS_TitleStorage_Init :: Starting module...");
-		EpicGames_TitleStorage_Init();
-		tracef("EOS_UI_Init :: Starting module...");
-		EpicGames_UI_Init();
-		tracef("EOS_Stats_Init :: Starting module...");
-		EpicGames_Stats_Init();
-		tracef("EOS_UserInfo_Init :: Starting module...");
-		EpicGames_UserInfo_Init();
+			tracef("EOS_PlayerDataStorage_Init :: Starting module...");
+			eos_player_data_storage_init();
+			tracef("EOS_TitleStorage_Init :: Starting module...");
+			eos_title_storage_init();
+			tracef("EOS_UI_Init :: Starting module...");
+			eos_ui_init();
+			tracef("EOS_Stats_Init :: Starting module...");
+			eos_stats_init();
+			tracef("EOS_UserInfo_Init :: Starting module...");
+			eos_user_info_init();
 
-		tracef("EOS_Presence_Init :: Starting module...");
-		EpicGames_Presence_Init();
-		tracef("EOS_ProgressionSnapshot_Init :: Starting module...");
-		EpicGames_ProgressionSnapshot_Init();
-		tracef("EOS_Reports_Init :: Starting module...");
-		EpicGames_Reports_Init();
-		tracef("EOS_Sanctions_Init :: Starting module...");
-		EpicGames_Sanctions_Init();
-
-		tracef("Initialization finished!");
-
-		EOS_isInitialised = true;
+			tracef("EOS_Presence_Init :: Starting module...");
+			eos_presence_init();
+			tracef("EOS_ProgressionSnapshot_Init :: Starting module...");
+			eos_progression_snapshot_init();
+			tracef("EOS_Reports_Init :: Starting module...");
+			eos_reports_init();
+			tracef("EOS_Sanctions_Init :: Starting module...");
+			eos_sanctions_init();
+			tracef("EOS_Sessions_Init :: Starting module...");
+			eos_sessions_init();
+			tracef("EOS_P2P_Init :: Starting module...");
+			eos_p2_p_init();
+			tracef("eos_lobby_init:: Starting module...");
+			eos_lobby_init();
+			tracef("eos_rtc_init:: Starting module...");
+			eos_rtc_init();
+			tracef("Initialization finished!");
+			
+			EOS_isInitialised = true;
+		}
 	}
-}
 
 
-YYEXPORT void EpicGames_Platform_CheckForLauncherAndRestart(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	Result.kind = VALUE_INT32;
-	Result.val = static_cast<int32_t>(EOS_Platform_CheckForLauncherAndRestart(PlatformHandle));
-}
-
-YYEXPORT void EpicGames_Platform_GetActiveCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_string;
-
-    eos_ensure_argc(1);
-	const char* user = YYGetString(arg, 0);
-
-	char Buffer[EOS_COUNTRYCODE_MAX_LENGTH];
-	int32_t BufferLen = sizeof(Buffer);
-	if (EOS_Platform_GetActiveCountryCode(PlatformHandle, EOS_EpicAccountId_FromString(user), Buffer, &BufferLen) == EOS_EResult::EOS_Success)
-		YYCreateString(&Result, Buffer);
-	else
-		YYCreateString(&Result, "");
-}
-
-YYEXPORT void EpicGames_Platform_GetActiveLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_string;
-
-	eos_ensure_argc(1);
-
-	const char* user = YYGetString(arg, 0);
-
-	char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
-	int32_t BufferLen = sizeof(Buffer);
-	Result.kind = VALUE_STRING;
-	if (EOS_Platform_GetActiveLocaleCode(PlatformHandle, EOS_EpicAccountId_FromString(user), Buffer, &BufferLen) == EOS_EResult::EOS_Success)
-		YYCreateString(&Result, Buffer);
-	else
-		YYCreateString(&Result, "");
-}
-
-YYEXPORT void EpicGames_Platform_GetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_string;
-
-	char Buffer[EOS_COUNTRYCODE_MAX_BUFFER_LEN];
-	int32_t BufferLen = sizeof(Buffer);
-	Result.kind = VALUE_STRING;
-	if (EOS_Platform_GetOverrideCountryCode(PlatformHandle, Buffer, &BufferLen) == EOS_EResult::EOS_Success)
-		YYCreateString(&Result, Buffer);
-	else
-		YYCreateString(&Result, "");
-}
-
-YYEXPORT void EpicGames_Platform_GetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_string;
-
-	char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
-	int32_t BufferLen = sizeof(Buffer);
-	Result.kind = VALUE_STRING;
-	if (EOS_Platform_GetOverrideLocaleCode(PlatformHandle, Buffer, &BufferLen) == EOS_EResult::EOS_Success)
-		YYCreateString(&Result, Buffer);
-	else
-		YYCreateString(&Result, "");
-}
-
-YYEXPORT void EpicGames_Platform_Release(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_bool;
-
-	EOS_Platform_Release(PlatformHandle);
-	Result.kind = VALUE_BOOL;
-	Result.val = true;
-}
-
-YYEXPORT void EpicGames_Platform_SetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_bool;
-
-	eos_ensure_argc(1);
-
-	const char* countryCode = YYGetString(arg, 0);
-
-	EOS_Platform_SetOverrideCountryCode(PlatformHandle, countryCode);
-
-	Result.kind = VALUE_BOOL;
-	Result.val = true;
-}
-
-
-YYEXPORT void EpicGames_Platform_SetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_bool;
-
-	eos_ensure_argc(1);
-
-	const char* localCode = YYGetString(arg, 0);
-
-	EOS_Platform_SetOverrideLocaleCode(PlatformHandle, localCode);
-
-	Result.kind = VALUE_BOOL;
-	Result.val = true;
-}
-
-YYEXPORT void EpicGames_Platform_Tick(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
-{
-	eos_not_init_return_rvalue_bool;
-
-	Result.kind = VALUE_BOOL;
-
-	if (PlatformHandle != NULL)
+	YYEXPORT void eos_platform_check_for_launcher_and_restart(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_Platform_Tick(PlatformHandle);
-		Result.val = 1.0;
+		Result.kind = VALUE_INT32;
+		Result.val = static_cast<int32_t>(EOS_Platform_CheckForLauncherAndRestart(PlatformHandle));
 	}
-	else
+
+	YYEXPORT void eos_platform_get_active_country_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		Result.val = 0.0;
+		eos_not_init_return_rvalue_string;
+
+		eos_ensure_argc(1);
+
+		const char* user = YYGetString(arg, 0);
+
+		char Buffer[EOS_COUNTRYCODE_MAX_LENGTH];
+		int32_t BufferLen = sizeof(Buffer);
+		if (EOS_Platform_GetActiveCountryCode(PlatformHandle, EOS_EpicAccountId_FromString(user), Buffer, &BufferLen) == EOS_EResult::EOS_Success)
+			YYCreateString(&Result, Buffer);
+		else
+			YYCreateString(&Result, "");
 	}
-}
+
+	YYEXPORT void eos_platform_get_active_locale_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_string;
+
+		eos_ensure_argc(1);
+
+		const char* user = YYGetString(arg, 0);
+
+		char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
+		int32_t BufferLen = sizeof(Buffer);
+		Result.kind = VALUE_STRING;
+		if (EOS_Platform_GetActiveLocaleCode(PlatformHandle, EOS_EpicAccountId_FromString(user), Buffer, &BufferLen) == EOS_EResult::EOS_Success)
+			YYCreateString(&Result, Buffer);
+		else
+			YYCreateString(&Result, "");
+	}
+
+	YYEXPORT void eos_platform_get_override_country_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_string;
+
+		char Buffer[EOS_COUNTRYCODE_MAX_BUFFER_LEN];
+		int32_t BufferLen = sizeof(Buffer);
+		Result.kind = VALUE_STRING;
+		if (EOS_Platform_GetOverrideCountryCode(PlatformHandle, Buffer, &BufferLen) == EOS_EResult::EOS_Success)
+			YYCreateString(&Result, Buffer);
+		else
+			YYCreateString(&Result, "");
+	}
+
+	YYEXPORT void eos_platform_get_override_locale_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_string;
+
+		char Buffer[EOS_LOCALECODE_MAX_BUFFER_LEN];
+		int32_t BufferLen = sizeof(Buffer);
+		Result.kind = VALUE_STRING;
+		if (EOS_Platform_GetOverrideLocaleCode(PlatformHandle, Buffer, &BufferLen) == EOS_EResult::EOS_Success)
+			YYCreateString(&Result, Buffer);
+		else
+			YYCreateString(&Result, "");
+	}
+
+	YYEXPORT void eos_platform_release(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_bool;
+
+		EOS_Platform_Release(PlatformHandle);
+
+		Result.kind = VALUE_BOOL;
+		Result.val = true;
+	}
+
+	YYEXPORT void eos_platform_set_override_country_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_bool;
+
+		eos_ensure_argc(1);
+
+		const char* countryCode = YYGetString(arg, 0);
+
+		EOS_Platform_SetOverrideCountryCode(PlatformHandle, countryCode);
+
+		Result.kind = VALUE_BOOL;
+		Result.val = true;
+	}
+
+
+	YYEXPORT void eos_platform_set_override_locale_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_bool;
+
+		eos_ensure_argc(1);
+
+		const char* localCode = YYGetString(arg, 0);
+
+		EOS_Platform_SetOverrideLocaleCode(PlatformHandle, localCode);
+
+		Result.kind = VALUE_BOOL;
+		Result.val = true;
+	}
+
+	YYEXPORT void eos_platform_tick(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_bool;
+
+		Result.kind = VALUE_BOOL;
+
+		if (PlatformHandle != NULL)
+		{
+			EOS_Platform_Tick(PlatformHandle);
+			Result.val = 1.0;
+		}
+		else
+		{
+			Result.val = 0.0;
+		}
+	}
+

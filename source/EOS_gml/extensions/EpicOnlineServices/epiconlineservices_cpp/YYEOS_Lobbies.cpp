@@ -128,7 +128,7 @@ EOS_HLobbyModification mHLobbyModification = nullptr;
 	}
 
 EOS_HLobby HLobby;
-void EpicGames_Lobby_Init()
+void eos_lobby_init()
 {
 	HLobby = EOS_Platform_GetLobbyInterface(PlatformHandle);
 }
@@ -136,14 +136,14 @@ void EpicGames_Lobby_Init()
 void EOS_CALL Lobby_OnJoinLobbyAcceptedCallback(const EOS_Lobby_JoinLobbyAcceptedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyJoinLobbyAccepted");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "type", "eos_lobby_add_notify_join_lobby_accepted");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyJoinLobbyAccepted(char *buff_ret)
+func double __eos_lobby_add_notify_join_lobby_accepted(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -162,14 +162,14 @@ func double SDKEpicGames_Lobby_AddNotifyJoinLobbyAccepted(char *buff_ret)
 void EOS_CALL Lobby_AddNotifyLeaveLobbyRequested(const EOS_Lobby_LeaveLobbyRequestedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLeaveLobbyRequested");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "type", "eos_lobby_add_notify_leave_lobby_requested");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyLeaveLobbyRequested(char *buff_ret)
+func double __eos_lobby_add_notify_leave_lobby_requested(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -188,16 +188,16 @@ func double SDKEpicGames_Lobby_AddNotifyLeaveLobbyRequested(char *buff_ret)
 void EOS_CALL Lobby_OnLobbyInviteAcceptedCallback(const EOS_Lobby_LobbyInviteAcceptedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyInviteAccepted");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "LobbyId", data->LobbyId);
-	DsMapAddString(map, "InviteId", data->InviteId);
-	DsMapAddString(map, "TargetUserId", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "type", "eos_lobby_add_notify_lobby_invite_accepted");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
+	DsMapAddString(map, "invite_id", data->InviteId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyLobbyInviteAccepted(char *buff_ret)
+func double __eos_lobby_add_notify_lobby_invite_accepted(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -216,15 +216,15 @@ func double SDKEpicGames_Lobby_AddNotifyLobbyInviteAccepted(char *buff_ret)
 void EOS_CALL Lobby_AddNotifyLobbyInviteReceivedCallback(const EOS_Lobby_LobbyInviteReceivedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyInviteReceived");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "InviteId", data->InviteId);
-	DsMapAddString(map, "TargetUserId", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "type", "eos_lobby_add_notify_lobby_invite_received");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "invite_id", data->InviteId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyLobbyInviteReceived(char *buff_ret)
+func double __eos_lobby_add_notify_lobby_invite_received(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -243,17 +243,17 @@ func double SDKEpicGames_Lobby_AddNotifyLobbyInviteReceived(char *buff_ret)
 void EOS_CALL Lobby_AddNotifyLobbyInviteRejectedCallback(const EOS_Lobby_LobbyInviteRejectedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyInviteRejected");
+	DsMapAddString(map, "type", "eos_lobby_add_notify_lobby_invite_rejected");
 
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "LobbyId", data->LobbyId);
-	DsMapAddString(map, "InviteId", data->InviteId);
-	DsMapAddString(map, "TargetUserId", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
+	DsMapAddString(map, "invite_id", data->InviteId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyLobbyInviteRejected(char *buff_ret)
+func double __eos_lobby_add_notify_lobby_invite_rejected(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -272,16 +272,16 @@ func double SDKEpicGames_Lobby_AddNotifyLobbyInviteRejected(char *buff_ret)
 void EOS_CALL Lobby_AddNotifyLobbyMemberStatusReceivedCallback(const EOS_Lobby_LobbyMemberStatusReceivedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived");
+	DsMapAddString(map, "type", "eos_lobby_add_notify_lobby_member_status_received");
 
-	DsMapAddString(map, "TargetUserId", productID_toString(data->TargetUserId));
-	DsMapAddString(map, "LobbyId", data->LobbyId);
-	DsMapAddDouble(map, "CurrentStatus", (double)data->CurrentStatus);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
+	DsMapAddDouble(map, "current_status", (double)data->CurrentStatus);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyLobbyMemberStatusReceived(char *buff_ret)
+func double __eos_lobby_add_notify_lobby_member_status_received(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -300,15 +300,15 @@ func double SDKEpicGames_Lobby_AddNotifyLobbyMemberStatusReceived(char *buff_ret
 void EOS_CALL Lobby_AddNotifyLobbyMemberUpdateReceivedCallback(const EOS_Lobby_LobbyMemberUpdateReceivedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived");
+	DsMapAddString(map, "type", "eos_lobby_add_notify_lobby_member_update_received");
 
-	DsMapAddString(map, "TargetUserId", productID_toString(data->TargetUserId));
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived(char *buff_ret)
+func double __eos_lobby_add_notify_lobby_member_update_received(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -327,13 +327,13 @@ func double SDKEpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived(char *buff_ret
 void EOS_CALL Lobby_AddNotifyLobbyUpdateReceivedCallback(const EOS_Lobby_LobbyUpdateReceivedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyLobbyUpdateReceived");
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "type", "eos_lobby_add_notify_lobby_update_received");
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyLobbyUpdateReceived(char *buff_ret)
+func double __eos_lobby_add_notify_lobby_update_received(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -352,17 +352,17 @@ func double SDKEpicGames_Lobby_AddNotifyLobbyUpdateReceived(char *buff_ret)
 void EOS_CALL Lobby_AddNotifyRTCRoomConnectionChangedCallback(const EOS_Lobby_RTCRoomConnectionChangedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifyRTCRoomConnectionChanged");
+	DsMapAddString(map, "type", "eos_lobby_add_notify_rtc_room_connection_changed");
 
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "LobbyId", data->LobbyId);
-	DsMapAddDouble(map, "DisconnectReason", (double)data->DisconnectReason);
-	DsMapAddDouble(map, "isConnected", data->bIsConnected ? 1.0 : 0.0);
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
+	DsMapAddDouble(map, "disconnect_reason", (double)data->DisconnectReason);
+	DsMapAddDouble(map, "is_connected", data->bIsConnected ? 1.0 : 0.0);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifyRTCRoomConnectionChanged(char *buff_ret)
+func double __eos_lobby_add_notify_rtc_room_connection_changed(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -383,19 +383,19 @@ func double SDKEpicGames_Lobby_AddNotifyRTCRoomConnectionChanged(char *buff_ret)
 void EOS_CALL Lobby_AddNotifySendLobbyNativeInviteRequestedCallback(const EOS_Lobby_SendLobbyNativeInviteRequestedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested");
+	DsMapAddString(map, "type", "eos_lobby_add_notify_send_lobby_native_invite_requested");
 
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
-	DsMapAddString(map, "LocalUserId", data->TargetNativeAccountType);
-	DsMapAddString(map, "LobbyId", data->TargetUserNativeAccountId);
-	DsMapAddInt64(map, "UiEventId", (int64)data->UiEventId);
+	DsMapAddString(map, "local_user_id", data->TargetNativeAccountType);
+	DsMapAddString(map, "lobby_id", data->TargetUserNativeAccountId);
+	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested(char *buff_ret)
+func double __eos_lobby_add_notify_send_lobby_native_invite_requested(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -411,14 +411,14 @@ func double SDKEpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested(char *buf
 	return 0;
 }
 
-//func double EpicGames_Lobby_Attribute_Release()
+//func double eos_lobby_attribute_release()
 //{
 //	EOS_Lobby_Attribute LobbyAttribute{};
 //	EOS_Lobby_Attribute_Release(&LobbyAttribute);
 //	return 0.0;
 //}
 
-func double EpicGames_Lobby_CopyLobbyDetailsHandle(char *LobbyId, char *LocalUserId)
+func double eos_lobby_copy_lobby_details_handle(char *LobbyId, char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -434,7 +434,7 @@ func double EpicGames_Lobby_CopyLobbyDetailsHandle(char *LobbyId, char *LocalUse
 	return (double)result;
 }
 
-func double EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(char *InviteId)
+func double eos_lobby_copy_lobby_details_handle_by_invite_id(char *InviteId)
 {
 	eos_not_init_return(-1);
 
@@ -449,7 +449,7 @@ func double EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(char *InviteId)
 	return (double)result;
 }
 
-func double SDKEpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(char *buff_args)
+func double __eos_lobby_copy_lobby_details_handle_by_ui_event_id(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -470,18 +470,18 @@ func double SDKEpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(char *buff_args
 void EOS_CALL Lobby_CreateLobbyCallback(const EOS_Lobby_CreateLobbyCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_CreateLobby");
+	DsMapAddString(map, "type", "eos_lobby_create_lobby");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double SDKEpicGames_Lobby_CreateLobby(char *buff_args)
+func double __eos_lobby_create_lobby(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -527,7 +527,7 @@ func double SDKEpicGames_Lobby_CreateLobby(char *buff_args)
 	return mcallback->identifier;
 }
 
-func double EpicGames_Lobby_CreateLobbySearch(double MaxResults)
+func double eos_lobby_create_lobby_search(double MaxResults)
 {
 	eos_not_init_return(-1);
 
@@ -545,17 +545,17 @@ func double EpicGames_Lobby_CreateLobbySearch(double MaxResults)
 void EOS_CALL Lobby_DestroyLobbyCallback(const EOS_Lobby_DestroyLobbyCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_DestroyLobby");
+	DsMapAddString(map, "type", "eos_lobby_destroy_lobby");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_DestroyLobby(char *LobbyId, char *LocalUserID)
+func double eos_lobby_destroy_lobby(char *LobbyId, char *LocalUserID)
 {
 	eos_not_init_return(-1);
 
@@ -571,7 +571,7 @@ func double EpicGames_Lobby_DestroyLobby(char *LobbyId, char *LocalUserID)
 	return mcallback->identifier;
 }
 
-func char *EpicGames_Lobby_GetConnectString(char *LobbyId, char *LocalUserId)
+func char *eos_lobby_get_connect_string(char *LobbyId, char *LocalUserId)
 {
 	eos_not_init_return((char *)"");
 
@@ -588,7 +588,7 @@ func char *EpicGames_Lobby_GetConnectString(char *LobbyId, char *LocalUserId)
 	return TempBuffer;
 }
 
-func double EpicGames_Lobby_GetInviteCount(char *LocalUserID)
+func double eos_lobby_get_invite_count(char *LocalUserID)
 {
 	eos_not_init_return(-1);
 
@@ -598,7 +598,7 @@ func double EpicGames_Lobby_GetInviteCount(char *LocalUserID)
 	return EOS_Lobby_GetInviteCount(HLobby, &Options);
 }
 
-func char *EpicGames_Lobby_GetInviteIdByIndex(char *LocalUserID, double index)
+func char *eos_lobby_get_invite_id_by_index(char *LocalUserID, double index)
 {
 	eos_not_init_return((char *)"");
 
@@ -615,7 +615,7 @@ func char *EpicGames_Lobby_GetInviteIdByIndex(char *LocalUserID, double index)
 	return TempBuffer;
 }
 
-func char *EpicGames_Lobby_GetRTCRoomName(char *LocalUserID, char *LobbyId)
+func char *eos_lobby_get_rtc_room_name(char *LocalUserID, char *LobbyId)
 {
 	eos_not_init_return((char *)"");
 
@@ -635,19 +635,19 @@ func char *EpicGames_Lobby_GetRTCRoomName(char *LocalUserID, char *LobbyId)
 void EOS_CALL Lobby_HardMuteMemberCallback(const EOS_Lobby_HardMuteMemberCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_HardMuteMember");
+	DsMapAddString(map, "type", "eos_lobby_hard_mute_member");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LobbyId", data->LobbyId);
-	DsMapAddString(map, "TargetUserId", productID_toString(data->TargetUserId));
+	DsMapAddString(map, "lobby_id", data->LobbyId);
+	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_HardMuteMember(double HardMute, char *LobbyId, char *LocalUserId, char *TargetUserId)
+func double eos_lobby_hard_mute_member(double HardMute, char *LobbyId, char *LocalUserId, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -665,7 +665,7 @@ func double EpicGames_Lobby_HardMuteMember(double HardMute, char *LobbyId, char 
 	return mcallback->identifier;
 }
 
-func double EpicGames_Lobby_IsRTCRoomConnected(char *LobbyId, char *LocalUserId)
+func double eos_lobby_is_rtc_room_connected(char *LobbyId, char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -686,17 +686,17 @@ func double EpicGames_Lobby_IsRTCRoomConnected(char *LobbyId, char *LocalUserId)
 void EOS_CALL Lobby_JoinLobbyCallback(const EOS_Lobby_JoinLobbyCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_JoinLobby");
+	DsMapAddString(map, "type", "eos_lobby_join_lobby");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double SDKEpicGames_Lobby_JoinLobby(char *buff_args)
+func double __eos_lobby_join_lobby(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -735,19 +735,19 @@ func double SDKEpicGames_Lobby_JoinLobby(char *buff_args)
 void EOS_CALL Lobby_JoinLobbyByIdCallback(const EOS_Lobby_JoinLobbyByIdCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_JoinLobbyById");
+	DsMapAddString(map, "type", "eos_lobby_join_lobby_by_id");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double SDKEpicGames_Lobby_JoinLobbyById(char *buff_args)
+func double __eos_lobby_join_lobby_by_id(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -786,18 +786,18 @@ func double SDKEpicGames_Lobby_JoinLobbyById(char *buff_args)
 void EOS_CALL Lobby_KickMemberCallback(const EOS_Lobby_KickMemberCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_KickMember");
+	DsMapAddString(map, "type", "eos_lobby_kick_member");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_KickMember(char *LobbyId, char *LocalUserId, char *TargetUserId)
+func double eos_lobby_kick_member(char *LobbyId, char *LocalUserId, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -817,18 +817,18 @@ func double EpicGames_Lobby_KickMember(char *LobbyId, char *LocalUserId, char *T
 void EOS_CALL Lobby_LeaveLobbyCallback(const EOS_Lobby_LeaveLobbyCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_LeaveLobby");
+	DsMapAddString(map, "type", "eos_lobby_leave_lobby");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_LeaveLobby(char *LobbyId, char *LocalUserId)
+func double eos_lobby_leave_lobby(char *LobbyId, char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -844,7 +844,7 @@ func double EpicGames_Lobby_LeaveLobby(char *LobbyId, char *LocalUserId)
 	return mcallback->identifier;
 }
 
-func char *EpicGames_Lobby_ParseConnectString()
+func char *eos_lobby_parse_connect_string()
 {
 	eos_not_init_return((char *)"");
 
@@ -862,18 +862,18 @@ func char *EpicGames_Lobby_ParseConnectString()
 void EOS_CALL Lobby_PromoteMemberCallback(const EOS_Lobby_PromoteMemberCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_PromoteMember");
+	DsMapAddString(map, "type", "eos_lobby_promote_member");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_PromoteMember(char *LobbyId, char *LocalUserId, char *TargetUserId)
+func double eos_lobby_promote_member(char *LobbyId, char *LocalUserId, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -893,19 +893,19 @@ func double EpicGames_Lobby_PromoteMember(char *LobbyId, char *LocalUserId, char
 void EOS_CALL Lobby_QueryInvitesCallback(const EOS_Lobby_QueryInvitesCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_QueryInvites");
+	DsMapAddString(map, "type", "eos_lobby_query_invites");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_QueryInvites(char *LocalUserId)
+func double eos_lobby_query_invites(char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -923,7 +923,7 @@ func double EpicGames_Lobby_QueryInvites(char *LocalUserId)
 void EOS_CALL Lobby_RejectInviteCallback(const EOS_Lobby_RejectInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_RejectInvite");
+	DsMapAddString(map, "type", "eos_lobby_reject_invite");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -935,7 +935,7 @@ void EOS_CALL Lobby_RejectInviteCallback(const EOS_Lobby_RejectInviteCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_RejectInvite(char *InviteId, char *LocalUserId)
+func double eos_lobby_reject_invite(char *InviteId, char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -951,7 +951,7 @@ func double EpicGames_Lobby_RejectInvite(char *InviteId, char *LocalUserId)
 	return mcallback->identifier;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyJoinLobbyAccepted(char *buff_args)
+func double __eos_lobby_remove_notify_join_lobby_accepted(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -962,7 +962,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyJoinLobbyAccepted(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyLeaveLobbyRequested(char *buff_args)
+func double __eos_lobby_remove_notify_leave_lobby_requested(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -973,7 +973,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyLeaveLobbyRequested(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyLobbyInviteAccepted(char *buff_args)
+func double __eos_lobby_remove_notify_lobby_invite_accepted(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -984,7 +984,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyLobbyInviteAccepted(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyLobbyInviteReceived(char *buff_args)
+func double __eos_lobby_remove_notify_lobby_invite_received(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -995,7 +995,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyLobbyInviteReceived(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyLobbyInviteRejected(char *buff_args)
+func double __eos_lobby_remove_notify_lobby_invite_rejected(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1006,7 +1006,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyLobbyInviteRejected(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyLobbyMemberStatusReceived(char *buff_args)
+func double __eos_lobby_remove_notify_lobby_member_status_received(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1017,7 +1017,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyLobbyMemberStatusReceived(char *buff_
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyLobbyMemberUpdateReceived(char *buff_args)
+func double __eos_lobby_remove_notify_lobby_member_update_received(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1028,7 +1028,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyLobbyMemberUpdateReceived(char *buff_
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyLobbyUpdateReceived(char *buff_args)
+func double __eos_lobby_remove_notify_lobby_update_received(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1039,7 +1039,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyLobbyUpdateReceived(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifyRTCRoomConnectionChanged(char *buff_args)
+func double __eos_lobby_remove_notify_rtc_room_connection_changed(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1050,7 +1050,7 @@ func double SDKEpicGames_Lobby_RemoveNotifyRTCRoomConnectionChanged(char *buff_a
 	return 0.0;
 }
 
-func double SDKEpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(char *buff_args)
+func double __eos_lobby_remove_notify_send_lobby_native_invite_requested(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1064,19 +1064,19 @@ func double SDKEpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(char *
 void EOS_CALL Lobby_SendInviteCallback(const EOS_Lobby_SendInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_SendInvite");
+	DsMapAddString(map, "type", "eos_lobby_send_invite");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_SendInvite(char *LobbyId, char *LocalUserId, char *TargetUserId)
+func double eos_lobby_send_invite(char *LobbyId, char *LocalUserId, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1096,19 +1096,19 @@ func double EpicGames_Lobby_SendInvite(char *LobbyId, char *LocalUserId, char *T
 void EOS_CALL Lobby_UpdateLobbyCallback(const EOS_Lobby_UpdateLobbyCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Lobby_UpdateLobby");
+	DsMapAddString(map, "type", "eos_lobby_update_lobby");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 
-	DsMapAddString(map, "LobbyId", data->LobbyId);
+	DsMapAddString(map, "lobby_id", data->LobbyId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Lobby_UpdateLobby()
+func double eos_lobby_update_lobby()
 {
 	eos_not_init_return(-1);
 
@@ -1125,7 +1125,7 @@ func double EpicGames_Lobby_UpdateLobby()
 	return mcallback->identifier;
 }
 
-func double EpicGames_Lobby_UpdateLobbyModification(char *LobbyId, char *LocalUserId)
+func double eos_lobby_update_lobby_modification(char *LobbyId, char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1162,7 +1162,7 @@ void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructS
 	}
 }
 
-func double SDKEpicGames_LobbyDetails_CopyAttributeByIndex(double index, char* buff_ret)
+func double __eos_lobby_details_copy_attribute_by_index(double index, char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1186,7 +1186,7 @@ func double SDKEpicGames_LobbyDetails_CopyAttributeByIndex(double index, char* b
 	return (double)result;
 }
 
-func double SDKEpicGames_LobbyDetails_CopyAttributeByKey(char *AttrKey, char *buff_ret)
+func double __eos_lobby_details_copy_attribute_by_key(char *AttrKey, char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1211,7 +1211,7 @@ func double SDKEpicGames_LobbyDetails_CopyAttributeByKey(char *AttrKey, char *bu
 	return (double)result;
 }
 
-func double SDKEpicGames_LobbyDetails_CopyInfo(char *buff_ret)
+func double __eos_lobby_details_copy_info(char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1255,7 +1255,7 @@ func double SDKEpicGames_LobbyDetails_CopyInfo(char *buff_ret)
 	return (double)result;
 }
 
-func double SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char *TargetUserId, char* buff_ret)
+func double __eos_lobby_details_copy_member_attribute_by_index(double index, char *TargetUserId, char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1282,7 +1282,7 @@ func double SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, c
 	return (double)result;
 }
 
-func double EpicGames_LobbyDetails_CopyMemberAttributeByKey(char *AttrKey, char *TargetUserId)
+func double eos_lobby_details_copy_member_attribute_by_key(char *AttrKey, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1303,7 +1303,7 @@ func double EpicGames_LobbyDetails_CopyMemberAttributeByKey(char *AttrKey, char 
 	return (double)result;
 }
 
-func double SDKEpicGames_LobbyDetails_CopyMemberInfo(char *TargetUserId,char* buff_ret)
+func double __eos_lobby_details_copy_member_info(char *TargetUserId,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1335,7 +1335,7 @@ func double SDKEpicGames_LobbyDetails_CopyMemberInfo(char *TargetUserId,char* bu
 	return (double)result;
 }
 
-func double EpicGames_LobbyDetails_GetAttributeCount()
+func double eos_lobby_details_get_attribute_count()
 {
 	eos_not_init_return(-1);
 
@@ -1347,7 +1347,7 @@ func double EpicGames_LobbyDetails_GetAttributeCount()
 	return EOS_LobbyDetails_GetAttributeCount(mHLobbyDetails, &Options);
 }
 
-func char *EpicGames_LobbyDetails_GetLobbyOwner()
+func char *eos_lobby_details_get_lobby_owner()
 {
 	eos_not_init_return((char *)"");
 
@@ -1360,7 +1360,7 @@ func char *EpicGames_LobbyDetails_GetLobbyOwner()
 	return productID_toString(p);
 }
 
-func double EpicGames_LobbyDetails_GetMemberAttributeCount(char *TargetUserId)
+func double eos_lobby_details_get_member_attribute_count(char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1371,7 +1371,7 @@ func double EpicGames_LobbyDetails_GetMemberAttributeCount(char *TargetUserId)
 	return EOS_LobbyDetails_GetMemberAttributeCount(mHLobbyDetails, &Options);
 }
 
-func char *EpicGames_LobbyDetails_GetMemberByIndex(double index)
+func char *eos_lobby_details_get_member_by_index(double index)
 {
 	eos_not_init_return((char *)"");
 
@@ -1385,7 +1385,7 @@ func char *EpicGames_LobbyDetails_GetMemberByIndex(double index)
 	return productID_toString(p);
 }
 
-func double EpicGames_LobbyDetails_GetMemberCount()
+func double eos_lobby_details_get_member_count()
 {
 	eos_not_init_return(-1);
 
@@ -1397,7 +1397,7 @@ func double EpicGames_LobbyDetails_GetMemberCount()
 	return EOS_LobbyDetails_GetMemberCount(mHLobbyDetails, &Options);
 }
 
-func double EpicGames_LobbyDetails_Info_Release()
+func double eos_lobby_details_info_release()
 {
 	eos_not_init_return(-1);
 
@@ -1407,7 +1407,7 @@ func double EpicGames_LobbyDetails_Info_Release()
 	return 0.0;
 }
 
-//func double EpicGames_LobbyDetails_MemberInfo_Release(double AllowsCrossplay, double Platform, char *UserId)
+//func double eos_lobby_details_member_info_release(double AllowsCrossplay, double Platform, char *UserId)
 //{
 //	eos_not_init_return(-1);
 //
@@ -1417,7 +1417,7 @@ func double EpicGames_LobbyDetails_Info_Release()
 //	return 0.0;
 //}
 
-func double EpicGames_LobbyDetails_Release()
+func double eos_lobby_details_release()
 {
 	eos_not_init_return(-1);
 
@@ -1459,7 +1459,7 @@ EOS_Lobby_AttributeData AttributeDataFromStruct(std::map<std::string, const uint
 	return mSessionAttribute;
 }
 
-func double SDKEpicGames_LobbyModification_AddAttribute(double Visibility, char *buff_args)
+func double __eos_lobby_modification_add_attribute(double Visibility, char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1480,7 +1480,7 @@ func double SDKEpicGames_LobbyModification_AddAttribute(double Visibility, char 
 	return (double)result;
 }
 
-func double SDKEpicGames_LobbyModification_AddMemberAttribute(double Visibility, char *buff_args)
+func double __eos_lobby_modification_add_member_attribute(double Visibility, char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1500,7 +1500,7 @@ func double SDKEpicGames_LobbyModification_AddMemberAttribute(double Visibility,
 	return (double)result;
 }
 
-func double EpicGames_LobbyModification_Release()
+func double eos_lobby_modification_release()
 {
 	eos_not_init_return(-1);
 
@@ -1511,7 +1511,7 @@ func double EpicGames_LobbyModification_Release()
 	return 0.0;
 }
 
-func double EpicGames_LobbyModification_RemoveAttribute(char *Key)
+func double eos_lobby_modification_remove_attribute(char *Key)
 {
 	eos_not_init_return(-1);
 
@@ -1526,7 +1526,7 @@ func double EpicGames_LobbyModification_RemoveAttribute(char *Key)
 	return (double)result;
 }
 
-func double EpicGames_LobbyModification_RemoveMemberAttribute(char *Key)
+func double eos_lobby_modification_remove_member_attribute(char *Key)
 {
 	eos_not_init_return(-1);
 
@@ -1541,7 +1541,7 @@ func double EpicGames_LobbyModification_RemoveMemberAttribute(char *Key)
 	return (double)result;
 }
 
-func double SDKEpicGames_LobbyModification_SetAllowedPlatformIds(char *buff_args)
+func double __eos_lobby_modification_set_allowed_platform_ids(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1563,7 +1563,7 @@ func double SDKEpicGames_LobbyModification_SetAllowedPlatformIds(char *buff_args
 	return (double)result;
 }
 
-func double EpicGames_LobbyModification_SetBucketId(char *BucketId)
+func double eos_lobby_modification_set_bucket_id(char *BucketId)
 {
 	eos_not_init_return(-1);
 
@@ -1578,7 +1578,7 @@ func double EpicGames_LobbyModification_SetBucketId(char *BucketId)
 	return (double)result;
 }
 
-func double EpicGames_LobbyModification_SetInvitesAllowed(double InvitesAllowed)
+func double eos_lobby_modification_set_invites_allowed(double InvitesAllowed)
 {
 	eos_not_init_return(-1);
 
@@ -1593,7 +1593,7 @@ func double EpicGames_LobbyModification_SetInvitesAllowed(double InvitesAllowed)
 	return (double)result;
 }
 
-func double EpicGames_LobbyModification_SetMaxMembers(double MaxMembers)
+func double eos_lobby_modification_set_max_members(double MaxMembers)
 {
 	eos_not_init_return(-1);
 
@@ -1607,7 +1607,7 @@ func double EpicGames_LobbyModification_SetMaxMembers(double MaxMembers)
 	return (double)result;
 }
 
-func double EpicGames_LobbyModification_SetPermissionLevel(double PermissionLevel)
+func double eos_lobby_modification_set_permission_level(double PermissionLevel)
 {
 	eos_not_init_return(-1);
 
@@ -1622,7 +1622,7 @@ func double EpicGames_LobbyModification_SetPermissionLevel(double PermissionLeve
 	return (double)result;
 }
 
-func double EpicGames_LobbySearch_CopySearchResultByIndex(double Index)
+func double eos_lobby_search_copy_search_result_by_index(double Index)
 {
 	eos_not_init_return(-1);
 
@@ -1640,7 +1640,7 @@ func double EpicGames_LobbySearch_CopySearchResultByIndex(double Index)
 void EOS_CALL LobbySearch_FindCallback(const EOS_LobbySearch_FindCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_LobbySearch_Find");
+	DsMapAddString(map, "type", "eos_lobby_search_find");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -1650,7 +1650,7 @@ void EOS_CALL LobbySearch_FindCallback(const EOS_LobbySearch_FindCallbackInfo *d
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_LobbySearch_Find(char *LocalUserId)
+func double eos_lobby_search_find(char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1667,7 +1667,7 @@ func double EpicGames_LobbySearch_Find(char *LocalUserId)
 	return mcallback->identifier;
 }
 
-func double EpicGames_LobbySearch_GetSearchResultCount()
+func double eos_lobby_search_get_search_result_count()
 {
 	eos_not_init_return(-1);
 
@@ -1679,7 +1679,7 @@ func double EpicGames_LobbySearch_GetSearchResultCount()
 	return EOS_LobbySearch_GetSearchResultCount(mHLobbySearch, &Options);
 }
 
-func double EpicGames_LobbySearch_Release()
+func double eos_lobby_search_release()
 {
 	eos_not_init_return(-1);
 
@@ -1691,7 +1691,7 @@ func double EpicGames_LobbySearch_Release()
 	return 0.0;
 }
 
-func double EpicGames_LobbySearch_RemoveParameter(char *Key, double ComparisonOp)
+func double eos_lobby_search_remove_parameter(char *Key, double ComparisonOp)
 {
 	eos_not_init_return(-1);
 
@@ -1706,7 +1706,7 @@ func double EpicGames_LobbySearch_RemoveParameter(char *Key, double ComparisonOp
 	return 0.0;
 }
 
-func double EpicGames_LobbySearch_SetLobbyId(char *LobbyId)
+func double eos_lobby_search_set_lobby_id(char *LobbyId)
 {
 	eos_not_init_return(-1);
 
@@ -1721,7 +1721,7 @@ func double EpicGames_LobbySearch_SetLobbyId(char *LobbyId)
 	return (double)result;
 }
 
-func double EpicGames_LobbySearch_SetMaxResults(double MaxResults)
+func double eos_lobby_search_set_max_results(double MaxResults)
 {
 	eos_not_init_return(-1);
 
@@ -1736,7 +1736,7 @@ func double EpicGames_LobbySearch_SetMaxResults(double MaxResults)
 	return (double)result;
 }
 
-func double SDKEpicGames_LobbySearch_SetParameter(double ComparisonOp, char *buff_args)
+func double __eos_lobby_search_set_parameter(double ComparisonOp, char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1757,7 +1757,7 @@ func double SDKEpicGames_LobbySearch_SetParameter(double ComparisonOp, char *buf
 	return (double)result;
 }
 
-func double EpicGames_LobbySearch_SetTargetUserId(char *TargetUserId)
+func double eos_lobby_search_set_target_user_id(char *TargetUserId)
 {
 	eos_not_init_return(-1);
 

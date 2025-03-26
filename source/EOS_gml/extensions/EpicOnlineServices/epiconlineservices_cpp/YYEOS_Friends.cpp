@@ -14,7 +14,7 @@
 #include <eos_friends.h>
 
 EOS_HFriends HFriends;
-void EpicGames_Friends_Init()
+void eos_friends_init()
 {
 	HFriends = EOS_Platform_GetFriendsInterface(PlatformHandle);
 }
@@ -22,7 +22,7 @@ void EpicGames_Friends_Init()
 void EOS_CALL AcceptFriendInviteCompleteCallbackFn(const EOS_Friends_AcceptInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Friends_AcceptInvite");
+	DsMapAddString(map, "type", "eos_friends_accept_invite");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -31,7 +31,7 @@ void EOS_CALL AcceptFriendInviteCompleteCallbackFn(const EOS_Friends_AcceptInvit
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Friends_AcceptInvite(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_accept_invite(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -56,16 +56,16 @@ YYEXPORT void EpicGames_Friends_AcceptInvite(RValue &Result, CInstance *selfinst
 void EOS_CALL FriendUpdateCallback(const EOS_Friends_OnFriendsUpdateInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Friends_AddNotifyFriendsUpdate");
-	DsMapAddDouble(map, "CurrentStatus", (double)data->CurrentStatus);
-	DsMapAddDouble(map, "PreviousStatus", (double)data->PreviousStatus);
-	DsMapAddString(map, "TargetUserId", AccountID_toString(data->TargetUserId));
-	DsMapAddString(map, "LocalUserId", AccountID_toString(data->LocalUserId));
+	DsMapAddString(map, "type", "eos_friends_add_notify_friends_update");
+	DsMapAddDouble(map, "current_status", (double)data->CurrentStatus);
+	DsMapAddDouble(map, "previous_status", (double)data->PreviousStatus);
+	DsMapAddString(map, "target_user_id", AccountID_toString(data->TargetUserId));
+	DsMapAddString(map, "local_user_id", AccountID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void EpicGames_Friends_AddNotifyFriendsUpdate(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_add_notify_friends_update(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int64;
 
@@ -78,7 +78,7 @@ YYEXPORT void EpicGames_Friends_AddNotifyFriendsUpdate(RValue &Result, CInstance
 	Result.v64 = static_cast<int64_t>(NotificationId);
 }
 
-YYEXPORT void EpicGames_Friends_GetFriendAtIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_get_friend_at_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_string;
 
@@ -97,7 +97,7 @@ YYEXPORT void EpicGames_Friends_GetFriendAtIndex(RValue &Result, CInstance *self
 	YYCreateString(&Result, AccountID_toString(FriendUserId));
 }
 
-YYEXPORT void EpicGames_Friends_GetFriendsCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_get_friends_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -114,7 +114,7 @@ YYEXPORT void EpicGames_Friends_GetFriendsCount(RValue &Result, CInstance *selfi
 	Result.v32 = FriendCount;
 }
 
-YYEXPORT void EpicGames_Friends_GetStatus(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_get_status(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -136,7 +136,7 @@ YYEXPORT void EpicGames_Friends_GetStatus(RValue &Result, CInstance *selfinst, C
 void EOS_CALL QueryFriendsCompleteCallbackFn(const EOS_Friends_QueryFriendsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Friends_QueryFriends");
+	DsMapAddString(map, "type", "eos_friends_query_friends");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -146,7 +146,7 @@ void EOS_CALL QueryFriendsCompleteCallbackFn(const EOS_Friends_QueryFriendsCallb
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Friends_QueryFriends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_query_friends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -169,7 +169,7 @@ YYEXPORT void EpicGames_Friends_QueryFriends(RValue &Result, CInstance *selfinst
 void EOS_CALL RejectFriendInviteCompleteCallbackFn(const EOS_Friends_RejectInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Friends_RejectInvite");
+	DsMapAddString(map, "type", "eos_friends_reject_invite");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -178,7 +178,7 @@ void EOS_CALL RejectFriendInviteCompleteCallbackFn(const EOS_Friends_RejectInvit
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Friends_RejectInvite(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_reject_invite(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -200,7 +200,7 @@ YYEXPORT void EpicGames_Friends_RejectInvite(RValue &Result, CInstance *selfinst
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_Friends_RemoveNotifyFriendsUpdate(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_remove_notify_friends_update(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -213,7 +213,7 @@ YYEXPORT void EpicGames_Friends_RemoveNotifyFriendsUpdate(RValue &Result, CInsta
 void EOS_CALL SendFriendInviteCompleteCallbackFn(const EOS_Friends_SendInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Friends_SendInvite");
+	DsMapAddString(map, "type", "eos_friends_send_invite");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -222,7 +222,7 @@ void EOS_CALL SendFriendInviteCompleteCallbackFn(const EOS_Friends_SendInviteCal
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Friends_SendInvite(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_friends_send_invite(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 

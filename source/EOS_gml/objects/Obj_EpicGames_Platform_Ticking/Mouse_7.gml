@@ -1,3 +1,3 @@
 
-EpicGames_Platform_Tick()
+eos_platform_tick()
 

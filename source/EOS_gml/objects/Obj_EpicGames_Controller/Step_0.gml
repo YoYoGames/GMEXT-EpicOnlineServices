@@ -1,4 +1,4 @@
 
-//EpicGames_Platform_Tick_()
-EpicGames_Platform_Tick()
+//eos_platform_tick_()
+eos_platform_tick()
 

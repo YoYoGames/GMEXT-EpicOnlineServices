@@ -17,17 +17,17 @@ var MaxPlayers = 3
 //#macro EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH 64
 SessionId = eos_create_code(17)
 
-//var count = EpicGames_ActiveSession_GetRegisteredPlayerCount("SessionName")
+//var count = eos_active_session_get_registered_player_count("SessionName")
 //show_debug_message("----------------" + string(count))
 //for(var a = 0 ; a < count ; a++)
 //{
-//	var playerid = EpicGames_ActiveSession_GetRegisteredPlayerByIndex("SessionName")
+//	var playerid = eos_active_session_get_registered_player_by_index("SessionName")
 //	show_debug_message(playerid)
 //}
 
 
 show_debug_message("GML: " + userID)
-var result = EpicGames_Sessions_CreateSessionModification(
+var result = eos_sessions_create_session_modification(
 		AllowedPlatformIds,
 		PresenceEnabled,
 		bSanctionsEnabled,
@@ -40,34 +40,34 @@ var result = EpicGames_Sessions_CreateSessionModification(
 
 show_debug_message(result)
 
-//var result = EpicGames_Sessions_UpdateSessionModification(SessionName)
-//show_debug_message("EpicGames_Sessions_UpdateSessionModification: " + EpicGames_Result_ToString(result))
+//var result = eos_sessions_update_session_modification(SessionName)
+//show_debug_message("eos_sessions_update_session_modification: " + eos_result_to_string(result))
 
 
-var result = EpicGames_SessionModification_SetPermissionLevel(EOS_OnlineSessionPermissionLevel.PublicAdvertised)
-show_debug_message("EpicGames_SessionModification_SetPermissionLevel: " + EpicGames_Result_ToString(result))
+var result = eos_session_modification_set_permission_level(EOS_OnlineSessionPermissionLevel.PublicAdvertised)
+show_debug_message("eos_session_modification_set_permission_level: " + eos_result_to_string(result))
 
-var result = EpicGames_SessionModification_SetJoinInProgressAllowed(true)
-show_debug_message("EpicGames_SessionModification_SetJoinInProgressAllowed: " + EpicGames_Result_ToString(result))
+var result = eos_session_modification_set_join_in_progress_allowed(true)
+show_debug_message("eos_session_modification_set_join_in_progress_allowed: " + eos_result_to_string(result))
 
-var result = EpicGames_SessionModification_SetInvitesAllowed(true)
-show_debug_message("EpicGames_SessionModification_SetInvitesAllowed" + EpicGames_Result_ToString(result))
+var result = eos_session_modification_set_invites_allowed(true)
+show_debug_message("eos_session_modification_set_invites_allowed" + eos_result_to_string(result))
 
-var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_BUCKET_ID,ValueType: EOS_AttributeType.STRING,Value: BucketId})
-show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_BUCKET_ID,ValueType: EOS_AttributeType.STRING,Value: BucketId})
+show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
-var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
-show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
+show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
-var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
-show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
+show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
-var result = EpicGames_SessionModification_AddAttribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,ValueType: EOS_AttributeType.DOUBLE,Value: 2})
-show_debug_message("EpicGames_SessionModification_AddAttribute:" + EpicGames_Result_ToString(result))
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,ValueType: EOS_AttributeType.DOUBLE,Value: 2})
+show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
-EpicGames_Sessions_UpdateSession()
+eos_sessions_update_session()
 
-//EpicGames_SessionModification_Release()
+//eos_session_modification_release()
 
 show_debug_message(result)
 

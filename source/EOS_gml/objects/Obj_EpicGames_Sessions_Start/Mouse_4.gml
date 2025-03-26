@@ -1,3 +1,3 @@
 
-EpicGames_Sessions_StartSession(Obj_EpicGames_Session.SessionName)
+eos_sessions_start_session(Obj_EpicGames_Session.SessionName)
 

@@ -1,28 +1,28 @@
 
 event_inherited();
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {
-	case "EpicGames_P2P_AddNotifyPeerConnectionClosed":
+	case "eos_p2_p_add_notify_peer_connection_closed":
 		
 		if(owner)
 		{
-			show_debug_message("EpicGames_Sessions_UnregisterPlayers: " + async_load[?"RemoteUserId"])
-			EpicGames_Sessions_UnregisterPlayers(Obj_EpicGames_Session.SessionName,[async_load[?"RemoteUserId"]])
+			show_debug_message("eos_sessions_unregister_players: " + async_load[? "remote_user_id"])
+			eos_sessions_unregister_players(Obj_EpicGames_Session.SessionName,[async_load[? "remote_user_id"]])
 		}
 		
 	break
 	
-	case "EpicGames_P2P_AddNotifyPeerConnectionEstablished":
+	case "eos_p2_p_add_notify_peer_connection_established":
 		
-		//async_load[?"ConnectionType"]
-		//async_load[?"NetworkType"]
-		//async_load[?"SocketId"]
+		//async_load[? "connection_type"]
+		//async_load[? "network_type"]
+		//async_load[? "socket_id"]
 		
 		if(owner)
 		{
-			show_debug_message("EpicGames_Sessions_RegisterPlayers: " + async_load[?"RemoteUserId"])
-			EpicGames_Sessions_RegisterPlayers(Obj_EpicGames_Session.SessionName,[async_load[?"RemoteUserId"]])
+			show_debug_message("eos_sessions_register_players: " + async_load[? "remote_user_id"])
+			eos_sessions_register_players(Obj_EpicGames_Session.SessionName,[async_load[? "remote_user_id"]])
 		}
 		
 	break

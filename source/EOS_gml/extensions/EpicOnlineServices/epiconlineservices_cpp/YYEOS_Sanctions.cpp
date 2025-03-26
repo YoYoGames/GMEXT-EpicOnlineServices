@@ -11,12 +11,12 @@
 #include <eos_sanctions.h>
 
 EOS_HSanctions HSanctions;
-void EpicGames_Sanctions_Init()
+void eos_sanctions_init()
 {
 	HSanctions = EOS_Platform_GetSanctionsInterface(PlatformHandle);
 }
 
-YYEXPORT void EpicGames_Sanctions_CopyPlayerSanctionByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_sanctions_copy_player_sanction_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -36,10 +36,10 @@ YYEXPORT void EpicGames_Sanctions_CopyPlayerSanctionByIndex(RValue &Result, CIns
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
 
-	YYStructAddString(&Struct, "Action", OutSanction->Action);
-	YYStructAddString(&Struct, "ReferenceId", OutSanction->ReferenceId);
-	YYStructAddInt64(&Struct, "TimeExpires", OutSanction->TimeExpires);
-	YYStructAddInt64(&Struct, "TimePlaced", OutSanction->TimePlaced);
+	YYStructAddString(&Struct, "action", OutSanction->Action);
+	YYStructAddString(&Struct, "reference_id", OutSanction->ReferenceId);
+	YYStructAddInt64(&Struct, "time_expires", OutSanction->TimeExpires);
+	YYStructAddInt64(&Struct, "time_placed", OutSanction->TimePlaced);
 
 	EOS_Sanctions_PlayerSanction_Release(OutSanction);
 
@@ -47,7 +47,7 @@ YYEXPORT void EpicGames_Sanctions_CopyPlayerSanctionByIndex(RValue &Result, CIns
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Sanctions_GetPlayerSanctionCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_sanctions_get_player_sanction_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -67,7 +67,7 @@ YYEXPORT void EpicGames_Sanctions_GetPlayerSanctionCount(RValue &Result, CInstan
 void EOS_CALL QueryActivePlayerSanctions(const EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sanctions_QueryActivePlayerSanctions");
+	DsMapAddString(map, "type", "eos_sanctions_query_active_player_sanctions");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -76,7 +76,7 @@ void EOS_CALL QueryActivePlayerSanctions(const EOS_Sanctions_QueryActivePlayerSa
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Sanctions_QueryActivePlayerSanctions(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_sanctions_query_active_player_sanctions(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 

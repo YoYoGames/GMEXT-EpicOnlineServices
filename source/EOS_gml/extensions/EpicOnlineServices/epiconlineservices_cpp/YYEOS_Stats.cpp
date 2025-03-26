@@ -13,7 +13,7 @@
 #include "eos_stats.h"
 
 EOS_HStats HStats;
-void EpicGames_Stats_Init()
+void eos_stats_init()
 {
 	HStats = EOS_Platform_GetStatsInterface(PlatformHandle);
 }
@@ -30,24 +30,24 @@ RValue StatToStruct(EOS_Stats_Stat *Stat, EOS_EResult result)
 		return Struct;
 
 	if (Stat->Name)
-		YYStructAddString(&Struct, "Name", Stat->Name);
+		YYStructAddString(&Struct, "name", Stat->Name);
 
 	// Note: Undefined = EOS_STATS_QUERYSTATS_API_LATEST
 	if (Stat->StartTime)
-		YYStructAddInt64(&Struct, "StartTime", Stat->StartTime);
+		YYStructAddInt64(&Struct, "start_time", Stat->StartTime);
 
 	if (Stat->EndTime)
-		YYStructAddInt64(&Struct, "EndTime", Stat->EndTime);
+		YYStructAddInt64(&Struct, "end_time", Stat->EndTime);
 
 	if (Stat->Value)
-		YYStructAddDouble(&Struct, "Value", Stat->Value);
+		YYStructAddDouble(&Struct, "value", Stat->Value);
 
 	EOS_Stats_Stat_Release(Stat);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Stats_CopyStatByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_stats_copy_stat_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -70,7 +70,7 @@ YYEXPORT void EpicGames_Stats_CopyStatByIndex(RValue &Result, CInstance *selfins
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Stats_CopyStatByName(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_stats_copy_stat_by_name(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -93,7 +93,7 @@ YYEXPORT void EpicGames_Stats_CopyStatByName(RValue &Result, CInstance *selfinst
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Stats_GetStatsCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_stats_get_stats_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -115,7 +115,7 @@ void EOS_CALL StatsIngestCallbackFn(const EOS_Stats_IngestStatCompleteCallbackIn
 {
 	// assert(data != NULL);
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Stats_IngestStat");
+	DsMapAddString(map, "type", "eos_stats_ingest_stat");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -124,7 +124,7 @@ void EOS_CALL StatsIngestCallbackFn(const EOS_Stats_IngestStatCompleteCallbackIn
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Stats_IngestStat(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_stats_ingest_stat(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -160,7 +160,7 @@ YYEXPORT void EpicGames_Stats_IngestStat(RValue &Result, CInstance *selfinst, CI
 void EOS_CALL StatsQueryCallbackFn(const EOS_Stats_OnQueryStatsCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Stats_QueryStats");
+	DsMapAddString(map, "type", "eos_stats_query_stats");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -169,7 +169,7 @@ void EOS_CALL StatsQueryCallbackFn(const EOS_Stats_OnQueryStatsCompleteCallbackI
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Stats_QueryStats(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_stats_query_stats(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 

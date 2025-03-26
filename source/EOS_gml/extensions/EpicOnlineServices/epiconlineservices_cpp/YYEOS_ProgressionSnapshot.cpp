@@ -10,12 +10,12 @@
 #include <eos_progressionsnapshot.h>
 
 EOS_HProgressionSnapshot HProgressionSnapshot;
-void EpicGames_ProgressionSnapshot_Init()
+void eos_progression_snapshot_init()
 {
 	HProgressionSnapshot = EOS_Platform_GetProgressionSnapshotInterface(PlatformHandle);
 }
 
-YYEXPORT void EpicGames_ProgressionSnapshot_AddProgression(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_progression_snapshot_add_progression(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -33,7 +33,7 @@ YYEXPORT void EpicGames_ProgressionSnapshot_AddProgression(RValue &Result, CInst
 	EOS_ProgressionSnapshot_AddProgression(HProgressionSnapshot, &Options);
 }
 
-YYEXPORT void EpicGames_ProgressionSnapshot_BeginSnapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_progression_snapshot_begin_snapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -59,7 +59,7 @@ YYEXPORT void EpicGames_ProgressionSnapshot_BeginSnapshot(RValue &Result, CInsta
 void EOS_CALL DeleteSnapshot(const EOS_ProgressionSnapshot_DeleteSnapshotCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_ProgressionSnapshot_DeleteSnapshot");
+	DsMapAddString(map, "type", "eos_progression_snapshot_delete_snapshot");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -68,7 +68,7 @@ void EOS_CALL DeleteSnapshot(const EOS_ProgressionSnapshot_DeleteSnapshotCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_ProgressionSnapshot_DeleteSnapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_progression_snapshot_delete_snapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -88,7 +88,7 @@ YYEXPORT void EpicGames_ProgressionSnapshot_DeleteSnapshot(RValue &Result, CInst
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_ProgressionSnapshot_EndSnapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_progression_snapshot_end_snapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -117,7 +117,7 @@ YYEXPORT void EpicGames_ProgressionSnapshot_EndSnapshot(RValue &Result, CInstanc
 void EOS_CALL SubmitSnapshot(const EOS_ProgressionSnapshot_SubmitSnapshotCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_ProgressionSnapshot_SubmitSnapshot");
+	DsMapAddString(map, "type", "eos_progression_snapshot_submit_snapshot");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -126,7 +126,7 @@ void EOS_CALL SubmitSnapshot(const EOS_ProgressionSnapshot_SubmitSnapshotCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_ProgressionSnapshot_SubmitSnapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_progression_snapshot_submit_snapshot(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 

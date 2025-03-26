@@ -1,48 +1,48 @@
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {
-	case "EpicGames_Friends_QueryFriends":
+	case "eos_friends_query_friends":
 		
-		if(async_load[?"status"] == EpicGames_Success)
+		if(async_load[? "status"] == EOS_SUCCESS)
 		{
 			friends = {}
-			var count = EpicGames_Friends_GetFriendsCount(AccountID)
+			var count = eos_friends_get_friends_count(AccountID)
 			for(var a = 0 ; a < count ; a ++)
 			{
-				var Friend_AccountID = EpicGames_Friends_GetFriendAtIndex(AccountID,a)
-				request = EpicGames_UserInfo_QueryUserInfo(AccountID,Friend_AccountID)
+				var Friend_AccountID = eos_friends_get_friend_at_index(AccountID,a)
+				request = eos_user_info_query_user_info(AccountID,Friend_AccountID)
 				struct_set(friends,Friend_AccountID,{})
 			}
 		}
 		
 	break
 	
-	case "EpicGames_UserInfo_QueryUserInfo":
+	case "eos_user_info_query_user_info":
 		
-		var struct = EpicGames_UserInfo_CopyUserInfo(AccountID,async_load[?"target"])
+		var struct = eos_user_info_copy_user_info(AccountID,async_load[? "target"])
 		
-		struct_set(friends,async_load[?"target"],struct)
+		struct_set(friends,async_load[? "target"],struct)
 		
 		var _arrayName = struct_get_names(friends)
 		for(var a = 0 ; a < array_length(_arrayName) ; a++)
 			if(struct_names_count(struct_get(friends,_arrayName[a])) == 0)
 				exit
 			
-		show_debug_message("REQUEST: EpicGames_Connect_QueryExternalAccountMappings")
+		show_debug_message("REQUEST: eos_connect_query_external_account_mappings")
 		
 		//Ok, let's request!
 		var friends_account_ids = struct_get_names(friends)
-		EpicGames_Connect_QueryExternalAccountMappings(userID,0,friends_account_ids)
+		eos_connect_query_external_account_mappings(userID,0,friends_account_ids)
 		
 	break
 	
-	case "EpicGames_Connect_QueryExternalAccountMappings":
+	case "eos_connect_query_external_account_mappings":
 			
 		var friends_account_ids = struct_get_names(friends)
 		
 		for(var a = 0 ; a < array_length(friends_account_ids) ; a++)
 		{
-			var user_id = EpicGames_Connect_GetExternalAccountMapping(userID,friends_account_ids[a],0)
+			var user_id = eos_connect_get_external_account_mapping(userID,friends_account_ids[a],0)
 			struct_set(struct_get(friends,friends_account_ids[a]),"UserID",user_id)
 		}
 		

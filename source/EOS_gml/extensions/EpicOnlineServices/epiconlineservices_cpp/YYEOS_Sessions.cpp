@@ -74,12 +74,12 @@
 #include "eos_sessions.h"
 
 EOS_HSessions HSessions = 0;
-void EpicGames_Sessions_Init()
+void eos_sessions_init()
 {
 	HSessions = EOS_Platform_GetSessionsInterface(PlatformHandle);
 }
 
-func double SDKEpicGames_ActiveSession_CopyInfo(char *SessionName, char *buff_ret)
+func double __eos_active_session_copy_info(char *SessionName, char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -152,7 +152,7 @@ func double SDKEpicGames_ActiveSession_CopyInfo(char *SessionName, char *buff_re
 	return 0.0;
 }
 
-func char *EpicGames_ActiveSession_GetRegisteredPlayerByIndex(char *SessionName)
+func char *eos_active_session_get_registered_player_by_index(char *SessionName)
 {
 	eos_not_init_return((char*)"");
 
@@ -170,7 +170,7 @@ func char *EpicGames_ActiveSession_GetRegisteredPlayerByIndex(char *SessionName)
 	return productID_toString(ProductUserId);
 }
 
-func double EpicGames_ActiveSession_GetRegisteredPlayerCount(char *SessionName)
+func double eos_active_session_get_registered_player_count(char *SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -192,7 +192,7 @@ func double EpicGames_ActiveSession_GetRegisteredPlayerCount(char *SessionName)
 	return count;
 }
 
-// double EpicGames_ActiveSession_Release()
+// double eos_active_session_release()
 //{
 //	EOS_HActiveSession ActiveSessionHandle = 0;
 //	EOS_ActiveSession_Release(ActiveSessionHandle);
@@ -200,7 +200,7 @@ func double EpicGames_ActiveSession_GetRegisteredPlayerCount(char *SessionName)
 // }
 
 EOS_HSessionDetails mHSessionDetails = 0;
-func double SDKEpicGames_SessionDetails_CopyInfo(char *buff_ret)
+func double __eos_session_details_copy_info(char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -273,7 +273,7 @@ void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessi
 	}
 }
 
-func double SDKEpicGames_SessionDetails_CopySessionAttributeByIndex(double AttrIndex, char *buff_ret)
+func double __eos_session_details_copy_session_attribute_by_index(double AttrIndex, char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -291,7 +291,7 @@ func double SDKEpicGames_SessionDetails_CopySessionAttributeByIndex(double AttrI
 	return 0.0;
 }
 
-func double SDKEpicGames_SessionDetails_CopySessionAttributeByKey(char *AttrKey, char *buff_ret)
+func double __eos_session_details_copy_session_attribute_by_key(char *AttrKey, char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -309,7 +309,7 @@ func double SDKEpicGames_SessionDetails_CopySessionAttributeByKey(char *AttrKey,
 	return 0.0;
 }
 
-func double EpicGames_SessionDetails_GetSessionAttributeCount()
+func double eos_session_details_get_session_attribute_count()
 {
 	eos_not_init_return(-1);
 
@@ -319,7 +319,7 @@ func double EpicGames_SessionDetails_GetSessionAttributeCount()
 	return EOS_SessionDetails_GetSessionAttributeCount(mHSessionDetails, &Options);
 }
 
-func double EpicGames_SessionDetails_Release()
+func double eos_session_details_release()
 {
 	eos_not_init_return(-1);
 
@@ -360,7 +360,7 @@ EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const u
 
 EOS_HSessionModification mHSessionModification = 0;
 
-func double SDKEpicGames_SessionModification_AddAttribute(double AdvertisementType, double SessionAttribute, char *buff_args)
+func double __eos_session_modification_add_attribute(double AdvertisementType, double SessionAttribute, char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -380,7 +380,7 @@ func double SDKEpicGames_SessionModification_AddAttribute(double AdvertisementTy
 	return (double)result;
 }
 
-func double EpicGames_SessionModification_Release()
+func double eos_session_modification_release()
 {
 	eos_not_init_return(-1);
 
@@ -389,7 +389,7 @@ func double EpicGames_SessionModification_Release()
 	return 0.0;
 }
 
-func double EpicGames_SessionModification_RemoveAttribute(char *Key)
+func double eos_session_modification_remove_attribute(char *Key)
 {
 	eos_not_init_return(-1);
 
@@ -399,7 +399,7 @@ func double EpicGames_SessionModification_RemoveAttribute(char *Key)
 	return (double)EOS_SessionModification_RemoveAttribute(mHSessionModification, &Options);
 }
 
-func double SDKEpicGames_SessionModification_SetAllowedPlatformIds(char *buff_args)
+func double __eos_session_modification_set_allowed_platform_ids(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -417,7 +417,7 @@ func double SDKEpicGames_SessionModification_SetAllowedPlatformIds(char *buff_ar
 	return (double)EOS_SessionModification_SetAllowedPlatformIds(mHSessionModification, &Options);
 }
 
-func double EpicGames_SessionModification_SetBucketId(char *BucketId)
+func double eos_session_modification_set_bucket_id(char *BucketId)
 {
 	eos_not_init_return(-1);
 
@@ -427,7 +427,7 @@ func double EpicGames_SessionModification_SetBucketId(char *BucketId)
 	return (double)EOS_SessionModification_SetBucketId(mHSessionModification, &Options);
 }
 
-func double EpicGames_SessionModification_SetHostAddress(char *HostAddress)
+func double eos_session_modification_set_host_address(char *HostAddress)
 {
 	eos_not_init_return(-1);
 
@@ -437,7 +437,7 @@ func double EpicGames_SessionModification_SetHostAddress(char *HostAddress)
 	return (double)EOS_SessionModification_SetHostAddress(mHSessionModification, &Options);
 }
 
-func double EpicGames_SessionModification_SetInvitesAllowed(double bInvitesAllowed)
+func double eos_session_modification_set_invites_allowed(double bInvitesAllowed)
 {
 	eos_not_init_return(-1);
 
@@ -447,7 +447,7 @@ func double EpicGames_SessionModification_SetInvitesAllowed(double bInvitesAllow
 	return (double)EOS_SessionModification_SetInvitesAllowed(mHSessionModification, &Options);
 }
 
-func double EpicGames_SessionModification_SetJoinInProgressAllowed(double bAllowJoinInProgress)
+func double eos_session_modification_set_join_in_progress_allowed(double bAllowJoinInProgress)
 {
 	eos_not_init_return(-1);
 
@@ -457,7 +457,7 @@ func double EpicGames_SessionModification_SetJoinInProgressAllowed(double bAllow
 	return (double)EOS_SessionModification_SetJoinInProgressAllowed(mHSessionModification, &Options);
 }
 
-func double EpicGames_SessionModification_SetMaxPlayers(double MaxPlayers)
+func double eos_session_modification_set_max_players(double MaxPlayers)
 {
 	eos_not_init_return(-1);
 
@@ -467,7 +467,7 @@ func double EpicGames_SessionModification_SetMaxPlayers(double MaxPlayers)
 	return (double)EOS_SessionModification_SetMaxPlayers(mHSessionModification, &Options);
 }
 
-func double EpicGames_SessionModification_SetPermissionLevel(double PermissionLevel)
+func double eos_session_modification_set_permission_level(double PermissionLevel)
 {
 	eos_not_init_return(-1);
 
@@ -480,14 +480,14 @@ func double EpicGames_SessionModification_SetPermissionLevel(double PermissionLe
 void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSessionAcceptedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyJoinSessionAccepted");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "type", "eos_sessions_add_notify_join_session_accepted");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Sessions_AddNotifyJoinSessionAccepted(char *buff_ret)
+func double __eos_sessions_add_notify_join_session_accepted(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -506,17 +506,17 @@ func double SDKEpicGames_Sessions_AddNotifyJoinSessionAccepted(char *buff_ret)
 void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_LeaveSessionRequestedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifyLeaveSessionRequested");
+	DsMapAddString(map, "type", "eos_sessions_add_notify_leave_session_requested");
 	// DsMapAddDouble(map, "status", (double)data->ResultCode);
 	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "session_name", data->SessionName);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Sessions_AddNotifyLeaveSessionRequested(char *buff_ret)
+func double __eos_sessions_add_notify_leave_session_requested(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -535,11 +535,11 @@ func double SDKEpicGames_Sessions_AddNotifyLeaveSessionRequested(char *buff_ret)
 void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested");
+	DsMapAddString(map, "type", "eos_sessions_add_notify_send_session_native_invite_requested");
 	// DsMapAddDouble(map, "status", (double)data->ResultCode);
 	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "target_native_account_type", data->TargetNativeAccountType);
 	DsMapAddString(map, "target_user_native_account_id", data->TargetUserNativeAccountId);
 	DsMapAddString(map, "session_id", data->SessionId);
@@ -548,7 +548,7 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Sessions_AddNotifySendSessionNativeInviteRequested(char *buff_ret)
+func double __eos_sessions_add_notify_send_session_native_invite_requested(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -566,11 +566,11 @@ func double SDKEpicGames_Sessions_AddNotifySendSessionNativeInviteRequested(char
 void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_SessionInviteAcceptedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteAccepted");
+	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_accepted");
 	// DsMapAddDouble(map, "status", (double)data->ResultCode);
 	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "invite_id", data->InviteId);
 	DsMapAddString(map, "session_id", data->SessionId);
 	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
@@ -578,7 +578,7 @@ void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_Sess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Sessions_AddNotifySessionInviteAccepted(char *buff_ret)
+func double __eos_sessions_add_notify_session_invite_accepted(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -597,18 +597,18 @@ func double SDKEpicGames_Sessions_AddNotifySessionInviteAccepted(char *buff_ret)
 void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_SessionInviteReceivedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteReceived");
+	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_received");
 	// DsMapAddDouble(map, "status", (double)data->ResultCode);
 	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	DsMapAddString(map, "invite_id", data->InviteId);
 	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Sessions_AddNotifySessionInviteReceived(char *buff_ret)
+func double __eos_sessions_add_notify_session_invite_received(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -626,19 +626,19 @@ func double SDKEpicGames_Sessions_AddNotifySessionInviteReceived(char *buff_ret)
 void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_SessionInviteRejectedCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_AddNotifySessionInviteRejected");
+	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_rejected");
 	// DsMapAddDouble(map, "status", (double)data->ResultCode);
 	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	DsMapAddString(map, "invite_id", data->InviteId);
 	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 	DsMapAddString(map, "session_id", data->SessionId);
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_Sessions_AddNotifySessionInviteRejected(char *buff_ret)
+func double __eos_sessions_add_notify_session_invite_rejected(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -653,7 +653,7 @@ func double SDKEpicGames_Sessions_AddNotifySessionInviteRejected(char *buff_ret)
 	return 0.0;
 }
 
-func double EpicGames_Sessions_CopySessionHandleByInviteId(char *InviteId)
+func double eos_sessions_copy_session_handle_by_invite_id(char *InviteId)
 {
 	eos_not_init_return(-1);
 
@@ -666,7 +666,7 @@ func double EpicGames_Sessions_CopySessionHandleByInviteId(char *InviteId)
 	return (double)result;
 }
 
-func double SDKEpicGames_Sessions_CopySessionHandleByUiEventId(char *buff_args)
+func double __eos_sessions_copy_session_handle_by_ui_event_id(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -682,7 +682,7 @@ func double SDKEpicGames_Sessions_CopySessionHandleByUiEventId(char *buff_args)
 	return (double)result;
 }
 
-func double EpicGames_Sessions_CopySessionHandleForPresence(char *local)
+func double eos_sessions_copy_session_handle_for_presence(char *local)
 {
 	eos_not_init_return(-1);
 
@@ -695,7 +695,7 @@ func double EpicGames_Sessions_CopySessionHandleForPresence(char *local)
 	return (double)result;
 }
 
-func double SDKEpicGames_Sessions_CreateSessionModification(char *buff_args)
+func double __eos_sessions_create_session_modification(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -733,7 +733,7 @@ func double SDKEpicGames_Sessions_CreateSessionModification(char *buff_args)
 }
 
 EOS_HSessionSearch mOutSessionSearchHandle = 0;
-func double EpicGames_Sessions_CreateSessionSearch(double MaxSearchResults)
+func double eos_sessions_create_session_search(double MaxSearchResults)
 {
 	eos_not_init_return(-1);
 
@@ -748,7 +748,7 @@ func double EpicGames_Sessions_CreateSessionSearch(double MaxSearchResults)
 void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_DestroySession");
+	DsMapAddString(map, "type", "eos_sessions_destroy_session");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -757,7 +757,7 @@ void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessio
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_DestroySession(char *SessionName)
+func double eos_sessions_destroy_session(char *SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -772,7 +772,7 @@ func double EpicGames_Sessions_DestroySession(char *SessionName)
 	return mcallback->identifier;
 }
 
-func double EpicGames_Sessions_DumpSessionState(char *SessionName)
+func double eos_sessions_dump_session_state(char *SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -785,7 +785,7 @@ func double EpicGames_Sessions_DumpSessionState(char *SessionName)
 void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_EndSession");
+	DsMapAddString(map, "type", "eos_sessions_end_session");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -794,7 +794,7 @@ void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_EndSession(char *SessionName)
+func double eos_sessions_end_session(char *SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -809,7 +809,7 @@ func double EpicGames_Sessions_EndSession(char *SessionName)
 	return mcallback->identifier;
 }
 
-func double EpicGames_Sessions_GetInviteCount(char *local)
+func double eos_sessions_get_invite_count(char *local)
 {
 	eos_not_init_return(-1);
 
@@ -820,7 +820,7 @@ func double EpicGames_Sessions_GetInviteCount(char *local)
 	return EOS_Sessions_GetInviteCount(HSessions, &Options);
 }
 
-func char *EpicGames_Sessions_GetInviteIdByIndex(char *local, double index)
+func char *eos_sessions_get_invite_id_by_index(char *local, double index)
 {
 	eos_not_init_return((char*)"");
 	
@@ -837,7 +837,7 @@ func char *EpicGames_Sessions_GetInviteIdByIndex(char *local, double index)
 	return TempBuffer;
 }
 
-func double EpicGames_Sessions_IsUserInSession(char *SessionName, char *TargetUserId)
+func double eos_sessions_is_user_in_session(char *SessionName, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -852,7 +852,7 @@ func double EpicGames_Sessions_IsUserInSession(char *SessionName, char *TargetUs
 void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_JoinSession");
+	DsMapAddString(map, "type", "eos_sessions_join_session");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -861,7 +861,7 @@ void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallb
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_JoinSession(double PresenceEnabled, char *LocalUserId, char *SessionName)
+func double eos_sessions_join_session(double PresenceEnabled, char *LocalUserId, char *SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -882,17 +882,17 @@ func double EpicGames_Sessions_JoinSession(double PresenceEnabled, char *LocalUs
 void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_QueryInvites");
+	DsMapAddString(map, "type", "eos_sessions_query_invites");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_QueryInvites(char *TargetUserId)
+func double eos_sessions_query_invites(char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -910,7 +910,7 @@ func double EpicGames_Sessions_QueryInvites(char *TargetUserId)
 void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlayersCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_RegisterPlayers");
+	DsMapAddString(map, "type", "eos_sessions_register_players");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -921,7 +921,7 @@ void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlay
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double SDKEpicGames_Sessions_RegisterPlayers(char *SessionName, char *buff_args)
+func double __eos_sessions_register_players(char *SessionName, char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -945,7 +945,7 @@ func double SDKEpicGames_Sessions_RegisterPlayers(char *SessionName, char *buff_
 void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_RejectInvite");
+	DsMapAddString(map, "type", "eos_sessions_reject_invite");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -954,7 +954,7 @@ void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_RejectInvite(char *LocalUserId, char *InviteId)
+func double eos_sessions_reject_invite(char *LocalUserId, char *InviteId)
 {
 	eos_not_init_return(-1);
 
@@ -969,7 +969,7 @@ func double EpicGames_Sessions_RejectInvite(char *LocalUserId, char *InviteId)
 	return mcallback->identifier;
 }
 
-func double SDKEpicGames_Sessions_RemoveNotifyJoinSessionAccepted(char *buff_args)
+func double __eos_sessions_remove_notify_join_session_accepted(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -981,7 +981,7 @@ func double SDKEpicGames_Sessions_RemoveNotifyJoinSessionAccepted(char *buff_arg
 	return 0.0;
 }
 
-func double SDKEpicGames_Sessions_RemoveNotifyLeaveSessionRequested(char *buff_args)
+func double __eos_sessions_remove_notify_leave_session_requested(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -992,7 +992,7 @@ func double SDKEpicGames_Sessions_RemoveNotifyLeaveSessionRequested(char *buff_a
 	return 0.0;
 }
 
-func double SDKEpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(char *buff_args)
+func double __eos_sessions_remove_notify_send_session_native_invite_requested(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1003,7 +1003,7 @@ func double SDKEpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(c
 	return 0.0;
 }
 
-func double SDKEpicGames_Sessions_RemoveNotifySessionInviteAccepted(char *buff_args)
+func double __eos_sessions_remove_notify_session_invite_accepted(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1014,7 +1014,7 @@ func double SDKEpicGames_Sessions_RemoveNotifySessionInviteAccepted(char *buff_a
 	return 0.0;
 }
 
-func double SDKEpicGames_Sessions_RemoveNotifySessionInviteReceived(char *buff_args)
+func double __eos_sessions_remove_notify_session_invite_received(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1025,7 +1025,7 @@ func double SDKEpicGames_Sessions_RemoveNotifySessionInviteReceived(char *buff_a
 	return 0.0;
 }
 
-func double SDKEpicGames_Sessions_RemoveNotifySessionInviteRejected(char *buff_args)
+func double __eos_sessions_remove_notify_session_invite_rejected(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1039,7 +1039,7 @@ func double SDKEpicGames_Sessions_RemoveNotifySessionInviteRejected(char *buff_a
 void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_SendInvite");
+	DsMapAddString(map, "type", "eos_sessions_send_invite");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -1048,7 +1048,7 @@ void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_SendInvite(char *LocalUserId, char *SessionName, char *TargetUserId)
+func double eos_sessions_send_invite(char *LocalUserId, char *SessionName, char *TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1067,7 +1067,7 @@ func double EpicGames_Sessions_SendInvite(char *LocalUserId, char *SessionName, 
 void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_StartSession");
+	DsMapAddString(map, "type", "eos_sessions_start_session");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -1076,7 +1076,7 @@ void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCal
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_StartSession(char *SessionName)
+func double eos_sessions_start_session(char *SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -1093,7 +1093,7 @@ func double EpicGames_Sessions_StartSession(char *SessionName)
 void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_UnregisterPlayersCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_UnregisterPlayers");
+	DsMapAddString(map, "type", "eos_sessions_unregister_players");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -1103,7 +1103,7 @@ void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_Unregister
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double SDKEpicGames_Sessions_UnregisterPlayers(char *SessionName, char *buff_args)
+func double __eos_sessions_unregister_players(char *SessionName, char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1128,7 +1128,7 @@ func double SDKEpicGames_Sessions_UnregisterPlayers(char *SessionName, char *buf
 void EOS_CALL Sessions_OnUpdateSessionCallback(const EOS_Sessions_UpdateSessionCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Sessions_UpdateSession");
+	DsMapAddString(map, "type", "eos_sessions_update_session");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -1139,7 +1139,7 @@ void EOS_CALL Sessions_OnUpdateSessionCallback(const EOS_Sessions_UpdateSessionC
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_Sessions_UpdateSession()
+func double eos_sessions_update_session()
 {
 	eos_not_init_return(-1);
 
@@ -1153,7 +1153,7 @@ func double EpicGames_Sessions_UpdateSession()
 	return mcallback->identifier;
 }
 
-func double EpicGames_Sessions_UpdateSessionModification(char *SessionName)
+func double eos_sessions_update_session_modification(char *SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -1164,7 +1164,7 @@ func double EpicGames_Sessions_UpdateSessionModification(char *SessionName)
 	return (double)EOS_Sessions_UpdateSessionModification(HSessions, &Options, &mHSessionModification);
 }
 
-func double EpicGames_SessionSearch_CopySearchResultByIndex(double SessionIndex)
+func double eos_session_search_copy_search_result_by_index(double SessionIndex)
 {
 	eos_not_init_return(-1);
 	
@@ -1182,7 +1182,7 @@ func double EpicGames_SessionSearch_CopySearchResultByIndex(double SessionIndex)
 void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_SessionSearch_Find");
+	DsMapAddString(map, "type", "eos_session_search_find");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -1191,7 +1191,7 @@ void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackI
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_SessionSearch_Find(char *LocalUserId)
+func double eos_session_search_find(char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1206,7 +1206,7 @@ func double EpicGames_SessionSearch_Find(char *LocalUserId)
 	return mcallback->identifier;
 }
 
-func double EpicGames_SessionSearch_GetSearchResultCount()
+func double eos_session_search_get_search_result_count()
 {
 	eos_not_init_return(-1);
 
@@ -1216,13 +1216,13 @@ func double EpicGames_SessionSearch_GetSearchResultCount()
 	return EOS_SessionSearch_GetSearchResultCount(mOutSessionSearchHandle, &Options);
 }
 
-func double EpicGames_SessionSearch_Release()
+func double eos_session_search_release()
 {
 	EOS_SessionSearch_Release(mOutSessionSearchHandle);
 	return 0.0;
 }
 
-func double EpicGames_SessionSearch_RemoveParameter(char *Key, double ComparisonOp)
+func double eos_session_search_remove_parameter(char *Key, double ComparisonOp)
 {
 	eos_not_init_return(-1);
 
@@ -1234,7 +1234,7 @@ func double EpicGames_SessionSearch_RemoveParameter(char *Key, double Comparison
 	return (double)EOS_SessionSearch_RemoveParameter(mOutSessionSearchHandle, &Options);
 }
 
-func double EpicGames_SessionSearch_SetMaxResults(double MaxSearchResults)
+func double eos_session_search_set_max_results(double MaxSearchResults)
 {
 	eos_not_init_return(-1);
 
@@ -1245,7 +1245,7 @@ func double EpicGames_SessionSearch_SetMaxResults(double MaxSearchResults)
 	return (double)EOS_SessionSearch_SetMaxResults(mOutSessionSearchHandle, &Options);
 }
 
-func double SDKEpicGames_SessionSearch_SetParameter(double comparisonOp, char *buff_args)
+func double __eos_session_search_set_parameter(double comparisonOp, char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1262,7 +1262,7 @@ func double SDKEpicGames_SessionSearch_SetParameter(double comparisonOp, char *b
 	return (double)EOS_SessionSearch_SetParameter(mOutSessionSearchHandle, &Options);
 }
 
-func double EpicGames_SessionSearch_SetSessionId(char *SessionId)
+func double eos_session_search_set_session_id(char *SessionId)
 {
 	eos_not_init_return(-1);
 
@@ -1273,7 +1273,7 @@ func double EpicGames_SessionSearch_SetSessionId(char *SessionId)
 	return (double)EOS_SessionSearch_SetSessionId(mOutSessionSearchHandle, &Options);
 }
 
-func double EpicGames_SessionSearch_SetTargetUserId(char *TargetUserId)
+func double eos_session_search_set_target_user_id(char *TargetUserId)
 {
 	eos_not_init_return(-1);
 	

@@ -2,28 +2,28 @@
 
 
 /**
- * @function EpicGames_Platform_CheckForLauncherAndRestart
+ * @function eos_platform_check_for_launcher_and_restart
  * @desc **Epic Online Services Function:** [EOS_Platform_CheckForLauncherAndRestart](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_CheckForLauncherAndRestart/index.html)
  * 
  * This function checks if the app was launched through the Epic Launcher, and relaunches it through the Epic Launcher if it wasn't.
  * The function returns one of 3 possible results:
  * 
- * 1. `EpicGames_Success` is returned if the app is being restarted. You should quit your process as soon as possible. 
- * 2. `EpicGames_NoChange` is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.
- * 3. `EpicGames_UnexpectedError` is returned if the **LauncherCheck** module failed to initialise, or the module tried and failed to restart the app.
+ * 1. `EOS_SUCCESS` is returned if the app is being restarted. You should quit your process as soon as possible. 
+ * 2. `EOS_NO_CHANGE` is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.
+ * 3. `EOS_UNEXPECTED_ERROR` is returned if the **LauncherCheck** module failed to initialise, or the module tried and failed to restart the app.
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * if (EpicGames_Platform_CheckForLauncherAndRestart() != EpicGames_NoChange) { game_end(); }
+ * if (eos_platform_check_for_launcher_and_restart() != EOS_NO_CHANGE) { game_end(); }
  * ```
- * The above code shows an example of how the function should be used. If the output of the function is other than `EpicGames_NoChange` it will force close the project.
+ * The above code shows an example of how the function should be used. If the output of the function is other than `EOS_NO_CHANGE` it will force close the project.
  * @function_end
  */
 
 /**
- * @function EpicGames_Platform_GetActiveCountryCode
+ * @function eos_platform_get_active_country_code
  * @desc **Epic Online Services Function:** [EOS_Platform_GetActiveCountryCode](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_GetActiveCountryCode/index.html)
  * 
  * This function returns the active country code. This will only return the value set as the override, otherwise an empty string is returned.
@@ -36,14 +36,14 @@
  * 
  * @example
  * ```gml
- * show_debug_message("CountryCode: " + EpicGames_Platform_GetActiveCountryCode(accountID));
+ * show_debug_message("CountryCode: " + eos_platform_get_active_country_code(accountID));
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
  */
 
 /**
- * @function EpicGames_Platform_GetActiveLocaleCode
+ * @function eos_platform_get_active_locale_code
  * @desc **Epic Online Services Function:** [EOS_Platform_GetActiveLocaleCode](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_GetActiveLocaleCode/index.html)
  * 
  * This function gets the active locale code that the SDK will send to services which require it. This returns the override value otherwise it will use the locale code of the given user. This is used for localization. This follows ISO 639.
@@ -54,14 +54,14 @@
  * 
  * @example
  * ```gml
- * show_debug_message("LocaleCode: " + EpicGames_Platform_GetActiveLocaleCode(accountID));
+ * show_debug_message("LocaleCode: " + eos_platform_get_active_locale_code(accountID));
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
  */
 
 /**
- * @function EpicGames_Platform_GetOverrideCountryCode
+ * @function eos_platform_get_override_country_code
  * @desc **Epic Online Services Function:** [EOS_Platform_GetOverrideCountryCode](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_GetOverrideCountryCode/index.html)
  * 
  * This function gets the override country code that the SDK will send to services which require it. This is not currently used for anything internally.
@@ -72,14 +72,14 @@
  * 
  * @example
  * ```gml
- * show_debug_message("CountryCode: " + EpicGames_Platform_GetOverrideCountryCode());
+ * show_debug_message("CountryCode: " + eos_platform_get_override_country_code());
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
  */
 
 /**
- * @function EpicGames_Platform_GetOverrideLocaleCode
+ * @function eos_platform_get_override_locale_code
  * @desc **Epic Online Services Function:** [EOS_Platform_GetOverrideLocaleCode](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_GetOverrideLocaleCode/index.html)
  * 
  * This function gets the override locale code that the SDK will send to services which require it. This is used for localization. This follows ISO 639.
@@ -88,23 +88,23 @@
  * 
  * @example
  * ```gml
- * show_debug_message("LocaleCode: " + EpicGames_Platform_GetOverrideCountryCode());
+ * show_debug_message("LocaleCode: " + eos_platform_get_override_country_code());
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
  */
 
 /**
- * @function EpicGames_Platform_Release
+ * @function eos_platform_release
  * @desc **Epic Online Services Function:** [EOS_Platform_Release](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_Release/index.html)
  * 
- * This function releases an Epic Online Services platform. This function should only be called when terminating your application right before calling ${function.EpicGames_Shutdown}.
+ * This function releases an Epic Online Services platform. This function should only be called when terminating your application right before calling ${function.eos_shutdown}.
  * Undefined behaviour will result in calling it more than once.
  * 
  * @example
  * ```gml
- * EpicGames_Platform_Release();
- * EpicGames_Shutdown();
+ * eos_platform_release();
+ * eos_shutdown();
  * 
  * game_end();
  * ```
@@ -113,7 +113,7 @@
  */
 
 /**
- * @function EpicGames_Platform_SetOverrideCountryCode
+ * @function eos_platform_set_override_country_code
  * @desc **Epic Online Services Function:** [EOS_Platform_SetOverrideCountryCode](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_SetOverrideCountryCode/index.html)
  * 
  * This function sets the override country code that the SDK will send to services which require it. This is not currently used for anything internally.
@@ -122,14 +122,14 @@
  * 
  * @example
  * ```gml
- * EpicGames_Platform_SetOverrideCountryCode("UK");
+ * eos_platform_set_override_country_code("UK");
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
  */
 
 /**
- * @function EpicGames_Platform_SetOverrideLocaleCode
+ * @function eos_platform_set_override_locale_code
  * @desc **Epic Online Services Function:** [EOS_Platform_SetOverrideLocaleCode](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_SetOverrideLocaleCode/index.html)
  * 
  * This function sets the override locale code that the SDK will send to services which require it. This is used for localization. This follows ISO 639.
@@ -138,14 +138,14 @@
  * 
  * @example
  * ```gml
- * EpicGames_Platform_SetOverrideLocaleCode("en");
+ * eos_platform_set_override_locale_code("en");
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
  */
 
 /**
- * @function EpicGames_Platform_Tick
+ * @function eos_platform_tick
  * @desc **Epic Online Services Function:** [EOS_Platform_Tick](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Platform_Tick/index.html)
  * 
  * This function notifies the platform instance to do work. This function must be called frequently in order for the services provided by the SDK to work properly.
@@ -155,7 +155,7 @@
  * @example
  * ```gml
  * /// Step Event
- * EpicGames_Platform_Tick();
+ * eos_platform_tick();
  * ```
  * The above code shows a code example.
  * @function_end
@@ -172,15 +172,15 @@
  * @section_func
  * @desc These functions are provided for handling platform functionality:
  * 
- * @ref EpicGames_Platform_CheckForLauncherAndRestart
- * @ref EpicGames_Platform_GetActiveCountryCode
- * @ref EpicGames_Platform_GetActiveLocaleCode
- * @ref EpicGames_Platform_GetOverrideCountryCode
- * @ref EpicGames_Platform_GetOverrideLocaleCode
- * @ref EpicGames_Platform_Release
- * @ref EpicGames_Platform_SetOverrideCountryCode
- * @ref EpicGames_Platform_SetOverrideLocaleCode
- * @ref EpicGames_Platform_Tick
+ * @ref eos_platform_check_for_launcher_and_restart
+ * @ref eos_platform_get_active_country_code
+ * @ref eos_platform_get_active_locale_code
+ * @ref eos_platform_get_override_country_code
+ * @ref eos_platform_get_override_locale_code
+ * @ref eos_platform_release
+ * @ref eos_platform_set_override_country_code
+ * @ref eos_platform_set_override_locale_code
+ * @ref eos_platform_tick
  * 
  * @section_end
  * 

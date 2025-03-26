@@ -2,12 +2,12 @@
 
 
 /**
- * @function EpicGames_Stats_CopyStatByIndex
+ * @function eos_stats_copy_stat_by_index
  * @desc **Epic Online Services Function:** [EOS_Stats_CopyStatByIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_CopyStatByIndex/index.html)
  * 
  * This function fetches a stat from a given index.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_Stats_QueryStats} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_stats_query_stats} to store values in cache.]]
  * 
  * @param {string} userID_target The Product User ID of the user who owns the stat
  * @param {real} index Index of the stat to retrieve from the cache
@@ -16,10 +16,10 @@
  * 
  * @example
  * ```gml
- * var _count = EpicGames_Stats_GetStatsCount(userID_target);
+ * var _count = eos_stats_get_stats_count(userID_target);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = EpicGames_Stats_CopyStatByIndex(userID_target, i);
+ *     var _struct = eos_stats_copy_stat_by_index(userID_target, i);
  *     var Name = _struct.Name;
  * }
  * ```
@@ -28,12 +28,12 @@
  */
 
 /**
- * @function EpicGames_Stats_CopyStatByName
+ * @function eos_stats_copy_stat_by_name
  * @desc **Epic Online Services Function:** [EOS_Stats_CopyStatByName](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_CopyStatByName/index.html)
  * 
  * This function fetches a stat from cached stats by name.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_Stats_QueryStats} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_stats_query_stats} to store values in cache.]]
  * 
  * @param {string} user_target The Product User ID of the user who owns the stat
  * @param {string} name Name of the stat to retrieve from the cache
@@ -42,7 +42,7 @@
  * 
  * @example
  * ```gml
- * var _struct = EpicGames_Stats_CopyStatByName(userID_target, "MyStatName");
+ * var _struct = eos_stats_copy_stat_by_name(userID_target, "MyStatName");
  * var _name = _struct.Name;
  * ```
  * The above code shows an example of how the function should be used. The stats data is returned for the provided stat name.
@@ -50,12 +50,12 @@
  */
 
 /**
- * @function EpicGames_Stats_GetStatsCount
+ * @function eos_stats_get_stats_count
  * @desc **Epic Online Services Function:** [EOS_Stats_GetStatsCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_GetStatsCount/index.html)
  * 
  * This function fetches the number of stats that are cached locally.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_Stats_QueryStats} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_stats_query_stats} to store values in cache.]]
  * 
  * @param {string} userID_target The Product User ID for the user whose stats are being counted
  * 
@@ -63,19 +63,19 @@
  * 
  * @example
  * ```gml
- * var _count = EpicGames_Stats_GetStatsCount(userID_target);
+ * var _count = eos_stats_get_stats_count(userID_target);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = EpicGames_Stats_CopyStatByIndex(userID_target, i);
+ *     var _struct = eos_stats_copy_stat_by_index(userID_target, i);
  *     var _name = _struct.Name;
  * }
  * ```
- * The above code shows an example of how the function should be used. After a successful call to ${function.EpicGames_Stats_QueryStats}, the function ${function.EpicGames_Stats_GetStatsCount} will return the number of entries in the query array which can then be accessed using the ${function.EpicGames_Stats_CopyStatByIndex} function.
+ * The above code shows an example of how the function should be used. After a successful call to ${function.eos_stats_query_stats}, the function ${function.eos_stats_get_stats_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_stats_copy_stat_by_index} function.
  * @function_end
  */
 
 /**
- * @function EpicGames_Stats_IngestStat
+ * @function eos_stats_ingest_stat
  * @desc **Epic Online Services Function:** [EOS_Stats_IngestStat](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_IngestStat/index.html)
  * 
  * This function ingests a stat by the amount specified in Options.
@@ -90,23 +90,23 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Stats_IngestStat"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_stats_ingest_stat"`
+ * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Stats_IngestStat(userID, userID, "Leaderboard_Stat", 183);
+ * identifier = eos_stats_ingest_stat(userID, userID, "Leaderboard_Stat", 183);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Stats_IngestStat")
+ * if (async_load[? "type"] == "eos_stats_ingest_stat")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -121,15 +121,15 @@
  */
 
 /**
- * @function EpicGames_Stats_QueryStats
+ * @function eos_stats_query_stats
  * @desc **Epic Online Services Function:**  [EOS_Stats_QueryStats](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_QueryStats/index.html)
  * 
  * This function queries a list of stats for a specific player.
- * Once the callback has been fired with a successful ${constant.EpicGames_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
  * 
- * * ${function.EpicGames_Stats_CopyStatByIndex}
- * * ${function.EpicGames_Stats_CopyStatByName}
- * * ${function.EpicGames_Stats_GetStatsCount}
+ * * ${function.eos_stats_copy_stat_by_index}
+ * * ${function.eos_stats_copy_stat_by_name}
+ * * ${function.eos_stats_get_stats_count}
  * 
  * @param {string} userID The Product User ID of the local user requesting the stats. Set to `undefined` for dedicated server.
  * @param {string} userID_target The Product User ID for the user whose stats are being retrieved
@@ -139,23 +139,23 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Stats_QueryStats"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_stats_query_stats"`
+ * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Stats_QueryStats();
+ * identifier = eos_stats_query_stats();
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Stats_QueryStats")
+ * if (async_load[? "type"] == "eos_stats_query_stats")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -176,8 +176,8 @@
  * @desc The stat data is represented by a struct and contains information for a specific stat.
  * 
  * @member {string} Name The name of the stat.
- * @member {real} StartTime If not `EpicGames_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for start time.
- * @member {real} EndTime If not `EpicGames_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for end time.
+ * @member {real} StartTime If not `EOS_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for start time.
+ * @member {real} EndTime If not `EOS_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for end time.
  * @member {real} Value The current value for the stat.
  * @struct_end
  */
@@ -192,11 +192,11 @@
  * @section_func
  * @desc These functions are provided for handling stats:
  * 
- * @ref EpicGames_Stats_CopyStatByIndex
- * @ref EpicGames_Stats_CopyStatByName
- * @ref EpicGames_Stats_GetStatsCount
- * @ref EpicGames_Stats_IngestStat
- * @ref EpicGames_Stats_QueryStats
+ * @ref eos_stats_copy_stat_by_index
+ * @ref eos_stats_copy_stat_by_name
+ * @ref eos_stats_get_stats_count
+ * @ref eos_stats_ingest_stat
+ * @ref eos_stats_query_stats
  * 
  * @section_end
  * 

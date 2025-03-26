@@ -1,3 +1,3 @@
 
-var struct = EpicGames_Metrics_EndPlayerSession(AccountID,EpicGames_MAIT_Epic)
-show_debug_message("EpicGames_Metrics_EndPlayerSession: " + string(struct.status_message))
+var struct = eos_metrics_end_player_session(AccountID,EOS_MAIT_EPIC)
+show_debug_message("eos_metrics_end_player_session: " + string(struct.status_message))

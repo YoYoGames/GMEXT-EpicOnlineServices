@@ -1,5 +1,5 @@
 	
-EpicGames_Lobby_CreateLobby(
+eos_lobby_create_lobby(
 		userID,//LocalUserId
 		[/*EOS_OPT_Unknown,EOS_OPT_Epic,EOS_OPT_Steam*/],//AllowedPlatformIds
 		"",//LobbyId

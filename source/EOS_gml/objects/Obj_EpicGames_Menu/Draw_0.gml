@@ -9,36 +9,36 @@ draw_set_halign(fa_left)
 //draw_text(100,100,"Return String: " + string(SimpleDesktopExample_ReturnString()))
 //show_debug_message(SimpleDesktopExample_ReturnString())
 
-draw_text(100,100,"EOS Version: " + string(EpicGames_GetVersion()))
-//show_debug_message(EpicGames_GetVersion())
+draw_text(100,100,"EOS Version: " + string(eos_get_version()))
+//show_debug_message(eos_get_version())
 
-//draw_text(100,130,"CountryCode: " + EpicGames_Platform_GetOverrideCountryCode())
-//draw_text(100,160,"LocaleCode: " + EpicGames_Platform_GetOverrideLocaleCode())
+//draw_text(100,130,"CountryCode: " + eos_platform_get_override_country_code())
+//draw_text(100,160,"LocaleCode: " + eos_platform_get_override_locale_code())
 
-switch(EpicGames_Auth_GetLoginStatus(AccountID))
+switch(eos_auth_get_login_status(AccountID))
 {
-	case EpicGames_LS_NotLoggedIn:
+	case EOS_LS_NOT_LOGGED_IN:
 		draw_text(100,190,"LoginStatus: NotLoggedIn");
 	break;
 	
-	case EpicGames_LS_UsingLocalProfile:
+	case EOS_LS_USING_LOCAL_PROFILE:
 		draw_text(100,190,"LoginStatus: UsingLocalProfile");
 	break;
 	
-	case EpicGames_LS_LoggedIn:
+	case EOS_LS_LOGGED_IN:
 		draw_text(100,190,"LoginStatus: LoggedIn");
 	break;
 }
 
 
-draw_text(100,220,"AccountsCount: " + string(EpicGames_Auth_GetLoggedInAccountsCount()))
+draw_text(100,220,"AccountsCount: " + string(eos_auth_get_logged_in_accounts_count()))
 draw_text(100,250,"AccountID: " + AccountID)
 draw_text(100,280,"userID: " + userID)
 
 //if(AccountID != "")
 //{
-//	show_debug_message(EpicGames_Platform_GetActiveCountryCode(AccountID))
-//	show_debug_message(EpicGames_Platform_GetActiveCountryCode(AccountID))
+//	show_debug_message(eos_platform_get_active_country_code(AccountID))
+//	show_debug_message(eos_platform_get_active_country_code(AccountID))
 //}
 
 

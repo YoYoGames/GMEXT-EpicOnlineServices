@@ -1,11 +1,11 @@
 
-var struct = EpicGames_Metrics_BeginPlayerSession(
+var struct = eos_metrics_begin_player_session(
 		AccountID,
 		"YYEpicGames",
-		EpicGames_MAIT_Epic,
-		EpicGames_UCT_MouseKeyboard,
+		EOS_MAIT_EPIC,
+		EOS_UCT_MOUSE_KEYBOARD,
 		"No Server",
 		"AnyRandomIDString")
 
-show_debug_message("EpicGames_Metrics_BeginPlayerSession: " + string(struct.status_message))
+show_debug_message("eos_metrics_begin_player_session: " + string(struct.status_message))
 

@@ -1,5 +1,5 @@
 	
-EpicGames_Lobby_JoinLobbyById(
+eos_lobby_join_lobby_by_id(
 				userID,//LocalUserId
 				true,//bCrossplayOptOut
 				true,//,buffer_bool

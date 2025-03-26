@@ -1,13 +1,13 @@
 
-if(async_load[?"id"] == request_MFA)
-if(async_load[?"status"])
-if(async_load[?"result"] != "")
+if(async_load[? "id"] == request_MFA)
+if(async_load[? "status"])
+if(async_load[? "result"] != "")
 {
-	var code = async_load[?"result"]
+	var code = async_load[? "result"]
 	
-	EpicGames_Auth_Login(
-		EpicGames_LCT_ExchangeCode,
-		EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence,
+	eos_auth_login(
+		EOS_LCT_EXCHANGE_CODE,
+		EOS_AS_BASIC_PROFILE | EOS_AS_FRIENDS_LIST | EOS_AS_PRESENCE,
 		"",
 		code,
 		noone)

@@ -1,13 +1,13 @@
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {
-	case "EpicGames_Leaderboards_QueryLeaderboardDefinitions":
+	case "eos_leaderboards_query_leaderboard_definitions":
 		
-		var count = EpicGames_Leaderboards_GetLeaderboardDefinitionCount()
+		var count = eos_leaderboards_get_leaderboard_definition_count()
 		
 		for(var a = 0 ; a < count ; a++)
 		{
-			var struct = EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex(a)
+			var struct = eos_leaderboards_copy_leaderboard_definition_by_index(a)
 			
 			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Definition)
 			
@@ -26,16 +26,16 @@ switch(async_load[?"type"])
 		
 	break
 	
-	case "EpicGames_Leaderboards_QueryLeaderboardRanks":
+	case "eos_leaderboards_query_leaderboard_ranks":
 		
 		with(Obj_EpicGames_Leaderboard_Definition)
 			instance_destroy()
 		
-		var count = EpicGames_Leaderboards_GetLeaderboardRecordCount()
+		var count = eos_leaderboards_get_leaderboard_record_count()
 		
 		for(var a = 0 ; a < count ; a++)
 		{
-			var struct = EpicGames_Leaderboards_CopyLeaderboardRecordByIndex(a)
+			var struct = eos_leaderboards_copy_leaderboard_record_by_index(a)
 			
 			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Rank)
 			

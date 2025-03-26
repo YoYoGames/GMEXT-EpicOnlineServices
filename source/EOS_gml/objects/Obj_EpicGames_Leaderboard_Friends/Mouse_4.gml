@@ -6,11 +6,11 @@ with(Obj_EpicGames_Leaderboard_Rank)
 	instance_destroy()
 
 StatSelected = "Leaderboard_Stat"
-AgregationSeleted = EpicGames_LA_Latest
+AgregationSeleted = EOS_LA_LATEST
 
 //StatSelected = "Leaderboard_Stat_2"
-//AgregationSeleted = EpicGames_LA_Max
+//AgregationSeleted = EOS_LA_MAX
 
-EpicGames_Friends_QueryFriends(AccountID)
+eos_friends_query_friends(AccountID)
 
-//EpicGames_Leaderboards_QueryLeaderboardUserScore(userID,userID,"YYEpicTest_Leaderboard","Leaderboard_Stat",EpicGames_LA_Max,0,0);
+//eos_leaderboards_query_leaderboard_user_score(userID,userID,"YYEpicTest_Leaderboard","Leaderboard_Stat",EOS_LA_MAX,0,0);

@@ -1,3 +1,3 @@
 
-EpicGames_Leaderboards_QueryLeaderboardDefinitions(userID, noone, noone);
+eos_leaderboards_query_leaderboard_definitions(userID, noone, noone);
 

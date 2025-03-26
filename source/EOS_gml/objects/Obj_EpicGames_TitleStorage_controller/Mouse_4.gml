@@ -2,4 +2,4 @@
 with(Obj_EpicGames_TitleStorage_File)
 	instance_destroy()
 
-EpicGames_TitleStorage_QueryFileList(userID,"Tag1")
+eos_title_storage_query_file_list(userID,"Tag1")

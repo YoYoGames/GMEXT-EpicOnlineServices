@@ -1,9 +1,9 @@
 
-var result = EpicGames_Sessions_CreateSessionSearch(10)
-show_debug_message($"CreateSessionSearch {EpicGames_Result_ToString(result)}")
+var result = eos_sessions_create_session_search(10)
+show_debug_message($"CreateSessionSearch {eos_result_to_string(result)}")
 
 var BucketId = "GameMode:Region:MapName"
 
-EpicGames_SessionSearch_SetParameter(EOS_ComparisonOp.EQUAL,{Key:"bucket",ValueType: EOS_AttributeType.STRING,Value: BucketId})
-EpicGames_SessionSearch_Find(userID)
+eos_session_search_set_parameter(EOS_ComparisonOp.EQUAL,{Key:"bucket",ValueType: EOS_AttributeType.STRING,Value: BucketId})
+eos_session_search_find(userID)
 
