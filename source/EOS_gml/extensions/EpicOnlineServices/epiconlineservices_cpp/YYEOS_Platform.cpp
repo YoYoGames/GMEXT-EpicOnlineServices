@@ -194,7 +194,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			tracef("EOS_Sessions_Init :: Starting module...");
 			eos_sessions_init();
 			tracef("EOS_P2P_Init :: Starting module...");
-			eos_p2_p_init();
+			eos_p2p_init();
 			tracef("eos_lobby_init:: Starting module...");
 			eos_lobby_init();
 			tracef("eos_rtc_init:: Starting module...");

@@ -3,7 +3,7 @@ event_inherited();
 
 switch(async_load[? "type"])
 {
-	case "eos_p2_p_add_notify_peer_connection_closed":
+	case "eos_p2p_add_notify_peer_connection_closed":
 		
 		if(owner)
 		{
@@ -13,7 +13,7 @@ switch(async_load[? "type"])
 		
 	break
 	
-	case "eos_p2_p_add_notify_peer_connection_established":
+	case "eos_p2p_add_notify_peer_connection_established":
 		
 		//async_load[? "connection_type"]
 		//async_load[? "network_type"]

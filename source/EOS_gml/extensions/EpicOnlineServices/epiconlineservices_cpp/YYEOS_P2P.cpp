@@ -50,12 +50,12 @@ inline void FillSocketId(EOS_P2P_SocketId &SocketId, const char *socketName)
 }
 
 EOS_HP2P HP2P;
-void eos_p2_p_init()
+void eos_p2p_init()
 {
 	HP2P = EOS_Platform_GetP2PInterface(PlatformHandle);
 }
 
-func double eos_p2_p_accept_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2p_accept_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -73,7 +73,7 @@ func double eos_p2_p_accept_connection(char *LocalUserId, char *RemoteUserId, ch
 void EOS_CALL P2P_OnIncomingPacketQueueFullCallback(const EOS_P2P_OnIncomingPacketQueueFullInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_p2_p_add_notify_incoming_packet_queue_full");
+	DsMapAddString(map, "type", "eos_p2p_add_notify_incoming_packet_queue_full");
 	DsMapAddDouble(map, "overflow_packet_channel", (double)data->OverflowPacketChannel);
 	DsMapAddString(map, "overflow_packet_local_user_id", productID_toString(data->OverflowPacketLocalUserId));
 	DsMapAddDouble(map, "overflow_packet_size_bytes", (double)data->OverflowPacketSizeBytes);
@@ -82,7 +82,7 @@ void EOS_CALL P2P_OnIncomingPacketQueueFullCallback(const EOS_P2P_OnIncomingPack
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2_p_add_notify_incoming_packet_queue_full(char *buff_ret)
+func double __eos_p2p_add_notify_incoming_packet_queue_full(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -101,7 +101,7 @@ func double __eos_p2_p_add_notify_incoming_packet_queue_full(char *buff_ret)
 void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnectionClosedInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_closed");
+	DsMapAddString(map, "type", "eos_p2p_add_notify_peer_connection_closed");
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddDouble(map, "reason", (double)data->Reason);
 	DsMapAddString(map, "remote_user_id", productID_toString(data->RemoteUserId));
@@ -109,7 +109,7 @@ void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnect
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2_p_add_notify_peer_connection_closed(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_closed(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -132,7 +132,7 @@ func double __eos_p2_p_add_notify_peer_connection_closed(char *LocalUserId, char
 void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnectionEstablishedInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_established");
+	DsMapAddString(map, "type", "eos_p2p_add_notify_peer_connection_established");
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddDouble(map, "status", (double)data->ConnectionType);
 	DsMapAddDouble(map, "connection_type", (double)data->ConnectionType);
@@ -142,7 +142,7 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2_p_add_notify_peer_connection_established(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_established(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -165,14 +165,14 @@ func double __eos_p2_p_add_notify_peer_connection_established(char *LocalUserId,
 void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnectionInterruptedInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_interrupted");
+	DsMapAddString(map, "type", "eos_p2p_add_notify_peer_connection_interrupted");
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "remote_user_id", productID_toString(data->RemoteUserId));
 	DsMapAddString(map, "socket_name", data->SocketId->SocketName);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2_p_add_notify_peer_connection_interrupted(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_interrupted(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -195,14 +195,14 @@ func double __eos_p2_p_add_notify_peer_connection_interrupted(char *LocalUserId,
 void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingConnectionRequestInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_request");
+	DsMapAddString(map, "type", "eos_p2p_add_notify_peer_connection_request");
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "remote_user_id", productID_toString(data->RemoteUserId));
 	DsMapAddString(map, "socket_name", data->SocketId->SocketName);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2_p_add_notify_peer_connection_request(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_request(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -222,7 +222,7 @@ func double __eos_p2_p_add_notify_peer_connection_request(char *LocalUserId, cha
 	return 0.0;
 }
 
-func double eos_p2_p_clear_packet_queue(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2p_clear_packet_queue(char *LocalUserId, char *RemoteUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -237,7 +237,7 @@ func double eos_p2_p_clear_packet_queue(char *LocalUserId, char *RemoteUserId, c
 	return (double)EOS_P2P_ClearPacketQueue(HP2P, &Options);
 }
 
-func double eos_p2_p_close_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2p_close_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -252,7 +252,7 @@ func double eos_p2_p_close_connection(char *LocalUserId, char *RemoteUserId, cha
 	return (double)EOS_P2P_CloseConnection(HP2P, &Options);
 }
 
-func double eos_p2_p_close_connections(char *LocalUserId, char *SocketName)
+func double eos_p2p_close_connections(char *LocalUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -265,7 +265,7 @@ func double eos_p2_p_close_connections(char *LocalUserId, char *SocketName)
 	return (double)EOS_P2P_CloseConnections(HP2P, &Options);
 }
 
-func double eos_p2_p_get_n_a_t_type()
+func double eos_p2p_get_n_a_t_type()
 {
 	eos_not_init_return(-1);
 
@@ -279,7 +279,7 @@ func double eos_p2_p_get_n_a_t_type()
 	return (double)OutNATType;
 }
 
-func double eos_p2_p_get_next_received_packet_size(char *LocalUserId)
+func double eos_p2p_get_next_received_packet_size(char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -295,7 +295,7 @@ func double eos_p2_p_get_next_received_packet_size(char *LocalUserId)
 	return (double)(int32_t)OutPacketSizeBytes;
 }
 
-func double __eos_p2_p_get_packet_queue_info(char *buff_ret)
+func double __eos_p2p_get_packet_queue_info(char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -325,7 +325,7 @@ func double __eos_p2_p_get_packet_queue_info(char *buff_ret)
 	return 0.0;
 }
 
-func double __eos_p2_p_get_port_range(char *buff_ret)
+func double __eos_p2p_get_port_range(char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -351,7 +351,7 @@ func double __eos_p2_p_get_port_range(char *buff_ret)
 	return 0.0;
 }
 
-func double eos_p2_p_get_relay_control()
+func double eos_p2p_get_relay_control()
 {
 	eos_not_init_return(-1);
 
@@ -385,7 +385,7 @@ void EOS_CALL P2P_OnQueryNATTypeCompleteCallback(const EOS_P2P_OnQueryNATTypeCom
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_p2_p_query_n_a_t_type()
+func double eos_p2p_query_n_a_t_type()
 {
 	eos_not_init_return(-1);
 
@@ -399,7 +399,7 @@ func double eos_p2_p_query_n_a_t_type()
 	return mcallback->identifier;
 }
 
-func double __eos_p2_p_receive_packet(char *buff_ret, char *LocalUserId, double MaxDataSizeBytes, double RequestedChannel)
+func double __eos_p2p_receive_packet(char *buff_ret, char *LocalUserId, double MaxDataSizeBytes, double RequestedChannel)
 {
 	eos_not_init_return(-1);
 
@@ -430,7 +430,7 @@ func double __eos_p2_p_receive_packet(char *buff_ret, char *LocalUserId, double 
 	}
 }
 
-func double __eos_p2_p_remove_notify_incoming_packet_queue_full(char *buff_args)
+func double __eos_p2p_remove_notify_incoming_packet_queue_full(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -441,7 +441,7 @@ func double __eos_p2_p_remove_notify_incoming_packet_queue_full(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2_p_remove_notify_peer_connection_closed(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_closed(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -452,7 +452,7 @@ func double __eos_p2_p_remove_notify_peer_connection_closed(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2_p_remove_notify_peer_connection_established(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_established(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -463,7 +463,7 @@ func double __eos_p2_p_remove_notify_peer_connection_established(char *buff_args
 	return 0.0;
 }
 
-func double __eos_p2_p_remove_notify_peer_connection_interrupted(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_interrupted(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -474,7 +474,7 @@ func double __eos_p2_p_remove_notify_peer_connection_interrupted(char *buff_args
 	return 0.0;
 }
 
-func double __eos_p2_p_remove_notify_peer_connection_request(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_request(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -485,7 +485,7 @@ func double __eos_p2_p_remove_notify_peer_connection_request(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2_p_send_packet(char *buff_args, char *buff_data, double len)
+func double __eos_p2p_send_packet(char *buff_args, char *buff_data, double len)
 {
 	eos_not_init_return(-1);
 
@@ -511,7 +511,7 @@ func double __eos_p2_p_send_packet(char *buff_args, char *buff_data, double len)
 	return result;
 }
 
-func double eos_p2_p_set_packet_queue_size(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
+func double eos_p2p_set_packet_queue_size(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
 {
 	eos_not_init_return(-1);
 
@@ -523,7 +523,7 @@ func double eos_p2_p_set_packet_queue_size(double IncomingPacketQueueMaxSizeByte
 	return (double)EOS_P2P_SetPacketQueueSize(HP2P, &Options);
 }
 
-func double eos_p2_p_set_port_range(double Port, double MaxAdditionalPortsToTry)
+func double eos_p2p_set_port_range(double Port, double MaxAdditionalPortsToTry)
 {
 	eos_not_init_return(-1);
 
@@ -535,7 +535,7 @@ func double eos_p2_p_set_port_range(double Port, double MaxAdditionalPortsToTry)
 	return (double)EOS_P2P_SetPortRange(HP2P, &Options);
 }
 
-func double eos_p2_p_set_relay_control(double RelayControl)
+func double eos_p2p_set_relay_control(double RelayControl)
 {
 	eos_not_init_return(-1);
 
