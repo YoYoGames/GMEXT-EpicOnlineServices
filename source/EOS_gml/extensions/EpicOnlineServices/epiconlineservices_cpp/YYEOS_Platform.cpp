@@ -160,58 +160,58 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			}
 
 			tracef("EOS_Achievements_Init :: Starting module...");
-			EpicGames_Achievements_Init();
+			eos_achievements_init();
 			tracef("EOS_Connect_Init :: Starting module...");
-			EpicGames_Connect_Init();
+			eos_connect_init();
 			tracef("EOS_Ecom_Init :: Starting module...");
-			EpicGames_Ecom_Init();
+			eos_ecom_init();
 			tracef("EOS_Friends_Init :: Starting module...");
-			EpicGames_Friends_Init();
+			eos_friends_init();
 			tracef("EOS_Leaderboards_Init :: Starting module...");
-			EpicGames_Leaderboards_Init();
+			eos_leaderboards_init();
 			tracef("EOS_Metrics_Init :: Starting module...");
-			EpicGames_Metrics_Init();
+			eos_metrics_init();
 
 			tracef("EOS_PlayerDataStorage_Init :: Starting module...");
-			EpicGames_PlayerDataStorage_Init();
+			eos_player_data_storage_init();
 			tracef("EOS_TitleStorage_Init :: Starting module...");
-			EpicGames_TitleStorage_Init();
+			eos_title_storage_init();
 			tracef("EOS_UI_Init :: Starting module...");
-			EpicGames_UI_Init();
+			eos_ui_init();
 			tracef("EOS_Stats_Init :: Starting module...");
-			EpicGames_Stats_Init();
+			eos_stats_init();
 			tracef("EOS_UserInfo_Init :: Starting module...");
-			EpicGames_UserInfo_Init();
+			eos_user_info_init();
 
 			tracef("EOS_Presence_Init :: Starting module...");
-			EpicGames_Presence_Init();
+			eos_presence_init();
 			tracef("EOS_ProgressionSnapshot_Init :: Starting module...");
-			EpicGames_ProgressionSnapshot_Init();
+			eos_progression_snapshot_init();
 			tracef("EOS_Reports_Init :: Starting module...");
-			EpicGames_Reports_Init();
+			eos_reports_init();
 			tracef("EOS_Sanctions_Init :: Starting module...");
-			EpicGames_Sanctions_Init();
+			eos_sanctions_init();
 			tracef("EOS_Sessions_Init :: Starting module...");
-			EpicGames_Sessions_Init();
+			eos_sessions_init();
 			tracef("EOS_P2P_Init :: Starting module...");
-			EpicGames_P2P_Init();
-			tracef("EpicGames_Lobby_Init:: Starting module...");
-			EpicGames_Lobby_Init();
-			tracef("EpicGames_RTC_Init:: Starting module...");
-			EpicGames_RTC_Init();
+			eos_p2_p_init();
+			tracef("eos_lobby_init:: Starting module...");
+			eos_lobby_init();
+			tracef("eos_rtc_init:: Starting module...");
+			eos_rtc_init();
 			tracef("Initialization finished!");
 			
 			EOS_isInitialised = true;
 		}
 	}
 
-	YYEXPORT void EpicGames_Platform_CheckForLauncherAndRestart(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_check_for_launcher_and_restart(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		Result.kind = VALUE_INT32;
 		Result.val = static_cast<int32_t>(EOS_Platform_CheckForLauncherAndRestart(PlatformHandle));
 	}
 
-	YYEXPORT void EpicGames_Platform_GetActiveCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_get_active_country_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_string;
 
@@ -227,7 +227,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			YYCreateString(&Result, "");
 	}
 
-	YYEXPORT void EpicGames_Platform_GetActiveLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_get_active_locale_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_string;
 
@@ -244,7 +244,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			YYCreateString(&Result, "");
 	}
 
-	YYEXPORT void EpicGames_Platform_GetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_get_override_country_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_string;
 
@@ -257,7 +257,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			YYCreateString(&Result, "");
 	}
 
-	YYEXPORT void EpicGames_Platform_GetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_get_override_locale_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_string;
 
@@ -270,7 +270,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 			YYCreateString(&Result, "");
 	}
 
-	YYEXPORT void EpicGames_Platform_Release(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_release(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 
@@ -280,7 +280,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 		Result.val = true;
 	}
 
-	YYEXPORT void EpicGames_Platform_SetOverrideCountryCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_set_override_country_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 
@@ -295,7 +295,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 	}
 
 
-	YYEXPORT void EpicGames_Platform_SetOverrideLocaleCode(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_set_override_locale_code(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 
@@ -309,7 +309,7 @@ extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1) {};
 		Result.val = true;
 	}
 
-	YYEXPORT void EpicGames_Platform_Tick(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_platform_tick(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 

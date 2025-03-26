@@ -32,7 +32,7 @@
 const size_t MaxChunkSize = 4096;
 
 EOS_HPlayerDataStorage HPlayerDataStorage;
-void EpicGames_PlayerDataStorage_Init()
+void eos_player_data_storage_init()
 {
 	HPlayerDataStorage = EOS_Platform_GetPlayerDataStorageInterface(PlatformHandle);
 }
@@ -47,11 +47,11 @@ RValue _FileMetadataToStruct(EOS_PlayerDataStorage_FileMetadata *file, EOS_EResu
 
 	if (result == EOS_EResult::EOS_Success)
 	{
-		YYStructAddString(&Struct, "Filename", file->Filename);
-		YYStructAddDouble(&Struct, "Size", file->FileSizeBytes);
-		YYStructAddString(&Struct, "MD5Hash", file->MD5Hash);
-		YYStructAddDouble(&Struct, "SizeUnencrypted", file->UnencryptedDataSizeBytes);
-		YYStructAddInt64(&Struct, "LastModifiedTime", file->LastModifiedTime);
+		YYStructAddString(&Struct, "filename", file->Filename);
+		YYStructAddDouble(&Struct, "size", file->FileSizeBytes);
+		YYStructAddString(&Struct, "m_d5_hash", file->MD5Hash);
+		YYStructAddDouble(&Struct, "size_unencrypted", file->UnencryptedDataSizeBytes);
+		YYStructAddInt64(&Struct, "last_modified_time", file->LastModifiedTime);
 	}
 
 	EOS_PlayerDataStorage_FileMetadata_Release(file);
@@ -59,7 +59,7 @@ RValue _FileMetadataToStruct(EOS_PlayerDataStorage_FileMetadata *file, EOS_EResu
 	return Struct;
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_copy_file_metadata_at_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -81,7 +81,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(RValue &Result
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataByFilename(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_copy_file_metadata_by_filename(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -106,7 +106,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataByFilename(RValue &Res
 void EOS_CALL DeleteCache(const EOS_PlayerDataStorage_DeleteCacheCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_DeleteCache");
+	DsMapAddString(map, "type", "eos_player_data_storage_delete_cache");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -115,7 +115,7 @@ void EOS_CALL DeleteCache(const EOS_PlayerDataStorage_DeleteCacheCallbackInfo *d
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_DeleteCache(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_delete_cache(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -138,7 +138,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_DeleteCache(RValue &Result, CInstance 
 void EOS_CALL DeleteFile(const EOS_PlayerDataStorage_DeleteFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_DeleteFile");
+	DsMapAddString(map, "type", "eos_player_data_storage_delete_file");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -147,7 +147,7 @@ void EOS_CALL DeleteFile(const EOS_PlayerDataStorage_DeleteFileCallbackInfo *dat
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_DeleteFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_delete_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -172,7 +172,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_DeleteFile(RValue &Result, CInstance *
 void EOS_CALL OnFileCopied(const EOS_PlayerDataStorage_DuplicateFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_DuplicateFile");
+	DsMapAddString(map, "type", "eos_player_data_storage_duplicate_file");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -181,7 +181,7 @@ void EOS_CALL OnFileCopied(const EOS_PlayerDataStorage_DuplicateFileCallbackInfo
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_DuplicateFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_duplicate_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -205,7 +205,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_DuplicateFile(RValue &Result, CInstanc
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_GetFileMetadataCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_get_file_metadata_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -226,7 +226,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_GetFileMetadataCount(RValue &Result, C
 void EOS_CALL QueryFile(const EOS_PlayerDataStorage_QueryFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_QueryFile");
+	DsMapAddString(map, "type", "eos_player_data_storage_query_file");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -235,7 +235,7 @@ void EOS_CALL QueryFile(const EOS_PlayerDataStorage_QueryFileCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_QueryFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_query_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -260,17 +260,17 @@ YYEXPORT void EpicGames_PlayerDataStorage_QueryFile(RValue &Result, CInstance *s
 void EOS_CALL QueryFileList(const EOS_PlayerDataStorage_QueryFileListCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_QueryFileList");
+	DsMapAddString(map, "type", "eos_player_data_storage_query_file_list");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddDouble(map, "FileCount", data->FileCount);
+	DsMapAddDouble(map, "file_count", data->FileCount);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_QueryFileList(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_query_file_list(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -309,11 +309,11 @@ void EOS_CALL OnFileReceived(const EOS_PlayerDataStorage_ReadFileCallbackInfo *d
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_ReadFile_OnFileReceived");
+	DsMapAddString(map, "type", "eos_player_data_storage_read_file_on_file_received");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "FileCount", data->Filename);
+	DsMapAddString(map, "file_count", data->Filename);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -394,17 +394,17 @@ EOS_PlayerDataStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_PlayerDa
 void EOS_CALL OnFileTransferProgressUpdated_read(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_ReadFile_OnFileTransferProgressUpdated");
+	DsMapAddString(map, "type", "eos_player_data_storage_read_file_on_file_transfer_progress_updated");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "FileCount", data->Filename);
-	DsMapAddDouble(map, "BytesTransferred", data->BytesTransferred);
-	DsMapAddDouble(map, "TotalFileSizeBytes", data->TotalFileSizeBytes);
+	DsMapAddString(map, "file_count", data->Filename);
+	DsMapAddDouble(map, "bytes_transferred", data->BytesTransferred);
+	DsMapAddDouble(map, "total_file_size_bytes", data->TotalFileSizeBytes);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_ReadFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_read_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -501,11 +501,11 @@ EOS_PlayerDataStorage_EWriteResult EOS_CALL OnFileDataSend(const EOS_PlayerDataS
 void EOS_CALL OnFileTransferProgressUpdated_write(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_WriteFile_OnFileTransferProgressUpdated");
+	DsMapAddString(map, "type", "eos_player_data_storage_write_file_on_file_transfer_progress_updated");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "Filename", data->Filename);
-	DsMapAddDouble(map, "BytesTransferred", data->BytesTransferred);
-	DsMapAddDouble(map, "TotalFileSizeBytes", data->TotalFileSizeBytes);
+	DsMapAddString(map, "filename", data->Filename);
+	DsMapAddDouble(map, "bytes_transferred", data->BytesTransferred);
+	DsMapAddDouble(map, "total_file_size_bytes", data->TotalFileSizeBytes);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -516,9 +516,9 @@ void EOS_CALL OnFileSent(const EOS_PlayerDataStorage_WriteFileCallbackInfo *data
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_WriteFile_OnFileSent");
+	DsMapAddString(map, "type", "eos_player_data_storage_write_file_on_file_sent");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "Filename", data->Filename);
+	DsMapAddString(map, "filename", data->Filename);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	CreateAsyncEventWithDSMap(map, 70);
@@ -543,7 +543,7 @@ std::vector<unsigned char> readBinaryFile_(const char *filename)
 	return fileData;
 }
 
-YYEXPORT void EpicGames_PlayerDataStorage_WriteFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_write_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -593,7 +593,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_WriteFile(RValue &Result, CInstance *s
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_file_transfer_request_cancel_request(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -605,14 +605,14 @@ YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest(RValu
 	EOS_PlayerDataStorageFileTransferRequest_CancelRequest(Transfer.Handler);
 }
 
-YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_GetFilename(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_file_transfer_request_get_filename(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	// EOS_PlayerDataStorageFileTransferRequest_GetFilename
 }
 
-YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_GetFileRequestState(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_file_transfer_request_get_file_request_state(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
-	// DebugConsoleOutput("EpicGames_PlayerDataStorageFileTransferRequest_GetFileRequestState\n");
+	// DebugConsoleOutput("eos_player_data_storage_file_transfer_request_get_file_request_state\n");
 	// DebugConsoleOutput("1\n");
 	// const char* file = YYGetString(arg, 0);
 	// auto Iter = TransfersInProgress_.find(stringToWstring(file));

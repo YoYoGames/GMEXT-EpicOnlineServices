@@ -1,70 +1,70 @@
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {
-	case "EpicGames_Sessions_UpdateSession":
+	case "eos_sessions_update_session":
 		
-		if(async_load[?"status"] == EpicGames_Success)
+		if(async_load[? "status"] == EOS_SUCCESS)
 		{
 			instance_create_depth(0,0,0,Obj_EpicGames_Sessions_P2P,{owner: true})
 			
-			EpicGames_Sessions_RegisterPlayers(SessionName,[userID])
+			eos_sessions_register_players(SessionName,[userID])
 		}
 		
 	break
 	
-	case "EpicGames_Sessions_AddNotifyJoinSessionAccepted":
+	case "eos_sessions_add_notify_join_session_accepted":
 		
 	break
 	
-	case "EpicGames_Sessions_AddNotifyLeaveSessionRequested":
+	case "eos_sessions_add_notify_leave_session_requested":
 		
 	break
 	
-	case "EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested":
+	case "eos_sessions_add_notify_send_session_native_invite_requested":
 		
 	break
 	
-	case "EpicGames_Sessions_AddNotifySessionInviteAccepted":
+	case "eos_sessions_add_notify_session_invite_accepted":
 		
-		EpicGames_Sessions_CopySessionHandleByInviteId(async_load[?"invite_id"])
-		EpicGames_Sessions_JoinSession(true,userID,SessionName)
-		EpicGames_SessionDetails_Release()
+		eos_sessions_copy_session_handle_by_invite_id(async_load[? "invite_id"])
+		eos_sessions_join_session(true,userID,SessionName)
+		eos_session_details_release()
 		
 	break
 	
-	case "EpicGames_Sessions_AddNotifySessionInviteReceived":
+	case "eos_sessions_add_notify_session_invite_received":
 		
 		show_message_async("Session Invite Received")
 		
 	break
 	
-	case "EpicGames_Sessions_AddNotifySessionInviteRejected":
+	case "eos_sessions_add_notify_session_invite_rejected":
 		
-		EpicGames_Sessions_RejectInvite(userID,async_load[?"invite_id"])
+		eos_sessions_reject_invite(userID,async_load[? "invite_id"])
 		
 	break
 	
-case "EpicGames_Sessions_JoinSession":
+case "eos_sessions_join_session":
 
-        if(async_load[?"status"] == EpicGames_Success)
+        if(async_load[? "status"] == EOS_SUCCESS)
         {
             instance_create_depth(0,0,0,Obj_EpicGames_Sessions_P2P,{owner: false})
 			
-            var _struct = EpicGames_ActiveSession_CopyInfo(SessionName)
+            var _struct = eos_active_session_copy_info(SessionName)
             var buff = buffer_create(256,buffer_fixed,1)
             buffer_write(buff,buffer_u8,1)
-            EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,_struct.Details.OwnerUserId,Obj_EpicGames_Sessions_P2P.socketName)
+            eos_p2_p_send_packet(buff,buffer_tell(buff),true,false,noone,userID,true,_struct.Details.OwnerUserId,Obj_EpicGames_Sessions_P2P.socketName)
             buffer_delete(buff)
         }
 
     break
 	
-	case "EpicGames_Sessions_RejectInvite":
+	case "eos_sessions_reject_invite":
 	break
 	
-	case "EpicGames_Sessions_DestroySession":
+	case "eos_sessions_destroy_session":
 		
-		if(async_load[?"status"] == EpicGames_Success)
+		if(async_load[? "status"] == EOS_SUCCESS)
 		{
 			with(Obj_EpicGames_Sessions_P2P)
 				instance_destroy()
@@ -73,17 +73,17 @@ case "EpicGames_Sessions_JoinSession":
 	break
 	
 	
-	case "EpicGames_SessionSearch_Find":
+	case "eos_session_search_find":
 		
-		var count = EpicGames_SessionSearch_GetSearchResultCount()
+		var count = eos_session_search_get_search_result_count()
 		show_debug_message(count)
 		for(var a = 0 ; a < count ; a++)
 		{
-			EpicGames_SessionSearch_CopySearchResultByIndex(a)
-			show_debug_message(EpicGames_SessionDetails_CopyInfo())
-			EpicGames_SessionDetails_Release()
+			eos_session_search_copy_search_result_by_index(a)
+			show_debug_message(eos_session_details_copy_info())
+			eos_session_details_release()
 		}
-		EpicGames_SessionSearch_Release()
+		eos_session_search_release()
 		
 	break
 }

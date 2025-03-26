@@ -2,5 +2,5 @@
 with(Obj_EpicGames_Lobbies)
 {
 	if(LobbyId != "")
-		EpicGames_Lobby_LeaveLobby(LobbyId,userID)
+		eos_lobby_leave_lobby(LobbyId,userID)
 }

@@ -1,53 +1,53 @@
-//SDKEpicGames_ActiveSession_CopyInfo(SessionName)
-function EpicGames_ActiveSession_CopyInfo(SessionName)
+//__eos_active_session_copy_info(SessionName)
+function eos_active_session_copy_info(SessionName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_ActiveSession_CopyInfo(SessionName,_return_buffer_address)
+	__eos_active_session_copy_info(SessionName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_SessionDetails_CopyInfo
-function EpicGames_SessionDetails_CopyInfo()
+//__eos_session_details_copy_info
+function eos_session_details_copy_info()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_SessionDetails_CopyInfo(_return_buffer_address)
+	__eos_session_details_copy_info(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_SessionDetails_CopySessionAttributeByIndex(AttrIndex)
-function EpicGames_SessionDetails_CopySessionAttributeByIndex(AttrIndex)
+//__eos_session_details_copy_session_attribute_by_index(AttrIndex)
+function eos_session_details_copy_session_attribute_by_index(AttrIndex)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_SessionDetails_CopySessionAttributeByIndex(AttrIndex,_return_buffer_address)
+	__eos_session_details_copy_session_attribute_by_index(AttrIndex,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_SessionDetails_CopySessionAttributeByKey(AttrKey,buff_ret)
-function EpicGames_SessionDetails_CopySessionAttributeByKey(AttrKey)
+//__eos_session_details_copy_session_attribute_by_key(AttrKey,buff_ret)
+function eos_session_details_copy_session_attribute_by_key(AttrKey)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_SessionDetails_CopySessionAttributeByKey(AttrKey,_return_buffer_address)
+	__eos_session_details_copy_session_attribute_by_key(AttrKey,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_SessionModification_AddAttribute(AdvertisementType, SessionAttribute, buff_args)
-function EpicGames_SessionModification_AddAttribute(AdvertisementType,SessionAttribute,Attribute)
+//__eos_session_modification_add_attribute(AdvertisementType, SessionAttribute, buff_args)
+function eos_session_modification_add_attribute(AdvertisementType,SessionAttribute,Attribute)
 {
 	var _args = [
 		[Attribute, undefined], // struct
@@ -55,11 +55,11 @@ function EpicGames_SessionModification_AddAttribute(AdvertisementType,SessionAtt
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_SessionModification_AddAttribute(AdvertisementType,SessionAttribute,_args_buffer_address)
+	return __eos_session_modification_add_attribute(AdvertisementType,SessionAttribute,_args_buffer_address)
 }
 
-//SDKEpicGames_SessionModification_SetAllowedPlatformIds
-function EpicGames_SessionModification_SetAllowedPlatformIds(array_ids)
+//__eos_session_modification_set_allowed_platform_ids
+function eos_session_modification_set_allowed_platform_ids(array_ids)
 {
 	var _args = [
 		[array_ids, buffer_u8], // struct
@@ -67,11 +67,11 @@ function EpicGames_SessionModification_SetAllowedPlatformIds(array_ids)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_SessionModification_SetAllowedPlatformIds(_args_buffer_address)
+	return __eos_session_modification_set_allowed_platform_ids(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_CopySessionHandleByUiEventId
-function EpicGames_Sessions_CopySessionHandleByUiEventId(UiEventId)
+//__eos_sessions_copy_session_handle_by_ui_event_id
+function eos_sessions_copy_session_handle_by_ui_event_id(UiEventId)
 {
 	var _args = [
 		[UiEventId ,buffer_u64],
@@ -79,11 +79,11 @@ function EpicGames_Sessions_CopySessionHandleByUiEventId(UiEventId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_CopySessionHandleByUiEventId(_args_buffer_address)
+	return __eos_sessions_copy_session_handle_by_ui_event_id(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_CreateSessionModification
-function EpicGames_Sessions_CreateSessionModification(AllowedPlatformIds,PresenceEnabled,bSanctionsEnabled,BucketId,LocalUserId,MaxPlayers,SessionId,SessionName)
+//__eos_sessions_create_session_modification
+function eos_sessions_create_session_modification(AllowedPlatformIds,PresenceEnabled,bSanctionsEnabled,BucketId,LocalUserId,MaxPlayers,SessionId,SessionName)
 {
 	var _args = [
 		[AllowedPlatformIds, buffer_u32],//0,Array
@@ -100,11 +100,11 @@ function EpicGames_Sessions_CreateSessionModification(AllowedPlatformIds,Presenc
 	
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_CreateSessionModification(_args_buffer_address)
+	return __eos_sessions_create_session_modification(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_RegisterPlayers(SessionName, buff_args)
-function EpicGames_Sessions_RegisterPlayers(SessionName,array_product_ids)
+//__eos_sessions_register_players(SessionName, buff_args)
+function eos_sessions_register_players(SessionName,array_product_ids)
 {
 	var _args = [
 		[array_product_ids, undefined], // array
@@ -112,11 +112,11 @@ function EpicGames_Sessions_RegisterPlayers(SessionName,array_product_ids)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_RegisterPlayers(SessionName,_args_buffer_address)
+	return __eos_sessions_register_players(SessionName,_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_UnregisterPlayers(SessionName, buff_args)
-function EpicGames_Sessions_UnregisterPlayers(SessionName,array_product_ids)
+//__eos_sessions_unregister_players(SessionName, buff_args)
+function eos_sessions_unregister_players(SessionName,array_product_ids)
 {
 	var _args = [
 		[array_product_ids, undefined], // array
@@ -124,11 +124,11 @@ function EpicGames_Sessions_UnregisterPlayers(SessionName,array_product_ids)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return EpicGames_Sessions_UnregisterPlayers(SessionName,_args_buffer_address)
+	return eos_sessions_unregister_players(SessionName,_args_buffer_address)
 }
 
-//SDKEpicGames_SessionSearch_SetParameter(comparisonOp,buff_args)
-function EpicGames_SessionSearch_SetParameter(comparisonOp,Attribute)
+//__eos_session_search_set_parameter(comparisonOp,buff_args)
+function eos_session_search_set_parameter(comparisonOp,Attribute)
 {
 	var _args = [
 		[Attribute, undefined], // Struct
@@ -136,7 +136,7 @@ function EpicGames_SessionSearch_SetParameter(comparisonOp,Attribute)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_SessionSearch_SetParameter(comparisonOp,_args_buffer_address)
+	return __eos_session_search_set_parameter(comparisonOp,_args_buffer_address)
 }
 
 
@@ -144,78 +144,78 @@ function EpicGames_SessionSearch_SetParameter(comparisonOp,Attribute)
 
 
 
-//SDKEpicGames_Sessions_AddNotifyJoinSessionAccepted
-function EpicGames_Sessions_AddNotifyJoinSessionAccepted()
+//__eos_sessions_add_notify_join_session_accepted
+function eos_sessions_add_notify_join_session_accepted()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Sessions_AddNotifyJoinSessionAccepted(_return_buffer_address)
+	__eos_sessions_add_notify_join_session_accepted(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Sessions_AddNotifyLeaveSessionRequested
-function EpicGames_Sessions_AddNotifyLeaveSessionRequested()
+//__eos_sessions_add_notify_leave_session_requested
+function eos_sessions_add_notify_leave_session_requested()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Sessions_AddNotifyLeaveSessionRequested(_return_buffer_address)
+	__eos_sessions_add_notify_leave_session_requested(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
-//SDKEpicGames_Sessions_AddNotifySendSessionNativeInviteRequested
-function EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested()
+//__eos_sessions_add_notify_send_session_native_invite_requested
+function eos_sessions_add_notify_send_session_native_invite_requested()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Sessions_AddNotifySendSessionNativeInviteRequested(_return_buffer_address)
+	__eos_sessions_add_notify_send_session_native_invite_requested(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
-//SDKEpicGames_Sessions_AddNotifySessionInviteAccepted
-function EpicGames_Sessions_AddNotifySessionInviteAccepted()
+//__eos_sessions_add_notify_session_invite_accepted
+function eos_sessions_add_notify_session_invite_accepted()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Sessions_AddNotifySessionInviteAccepted(_return_buffer_address)
+	__eos_sessions_add_notify_session_invite_accepted(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
-//SDKEpicGames_Sessions_AddNotifySessionInviteReceived
-function EpicGames_Sessions_AddNotifySessionInviteReceived()
+//__eos_sessions_add_notify_session_invite_received
+function eos_sessions_add_notify_session_invite_received()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Sessions_AddNotifySessionInviteReceived(_return_buffer_address)
-	
-	var _return_value = ext_buffer_unpack(ext_return_buffer());
-	
-	return _return_value;
-}
-
-//SDKEpicGames_Sessions_AddNotifySessionInviteRejected
-function EpicGames_Sessions_AddNotifySessionInviteRejected()
-{
-	var _return_buffer_address = ext_return_buffer_address();
-	
-	SDKEpicGames_Sessions_AddNotifySessionInviteRejected(_return_buffer_address)
+	__eos_sessions_add_notify_session_invite_received(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
+//__eos_sessions_add_notify_session_invite_rejected
+function eos_sessions_add_notify_session_invite_rejected()
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	__eos_sessions_add_notify_session_invite_rejected(_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
 
-//SDKEpicGames_Sessions_RemoveNotifyJoinSessionAccepted
-function EpicGames_Sessions_RemoveNotifyJoinSessionAccepted(notificationId)
+
+//__eos_sessions_remove_notify_join_session_accepted
+function eos_sessions_remove_notify_join_session_accepted(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -223,11 +223,11 @@ function EpicGames_Sessions_RemoveNotifyJoinSessionAccepted(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_RemoveNotifyJoinSessionAccepted(_args_buffer_address)
+	return __eos_sessions_remove_notify_join_session_accepted(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_RemoveNotifyLeaveSessionRequested
-function EpicGames_Sessions_RemoveNotifyLeaveSessionRequested(notificationId)
+//__eos_sessions_remove_notify_leave_session_requested
+function eos_sessions_remove_notify_leave_session_requested(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -235,11 +235,11 @@ function EpicGames_Sessions_RemoveNotifyLeaveSessionRequested(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_RemoveNotifyLeaveSessionRequested(_args_buffer_address)
+	return __eos_sessions_remove_notify_leave_session_requested(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested
-function EpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(notificationId)
+//__eos_sessions_remove_notify_send_session_native_invite_requested
+function eos_sessions_remove_notify_send_session_native_invite_requested(notificationId)
 {
 		var _args = [
 		[notificationId,buffer_u64],
@@ -247,11 +247,11 @@ function EpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(notific
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_RemoveNotifySendSessionNativeInviteRequested(_args_buffer_address)
+	return __eos_sessions_remove_notify_send_session_native_invite_requested(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_RemoveNotifySessionInviteAccepted
-function EpicGames_Sessions_RemoveNotifySessionInviteAccepted(notificationId)
+//__eos_sessions_remove_notify_session_invite_accepted
+function eos_sessions_remove_notify_session_invite_accepted(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -259,11 +259,11 @@ function EpicGames_Sessions_RemoveNotifySessionInviteAccepted(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_RemoveNotifySessionInviteAccepted(_args_buffer_address)
+	return __eos_sessions_remove_notify_session_invite_accepted(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_RemoveNotifySessionInviteReceived
-function EpicGames_Sessions_RemoveNotifySessionInviteReceived(notificationId)
+//__eos_sessions_remove_notify_session_invite_received
+function eos_sessions_remove_notify_session_invite_received(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -271,11 +271,11 @@ function EpicGames_Sessions_RemoveNotifySessionInviteReceived(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_RemoveNotifySessionInviteReceived(_args_buffer_address)
+	return __eos_sessions_remove_notify_session_invite_received(_args_buffer_address)
 }
 
-//SDKEpicGames_Sessions_RemoveNotifySessionInviteRejected
-function EpicGames_Sessions_RemoveNotifySessionInviteRejected(notificationId)
+//__eos_sessions_remove_notify_session_invite_rejected
+function eos_sessions_remove_notify_session_invite_rejected(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -283,43 +283,43 @@ function EpicGames_Sessions_RemoveNotifySessionInviteRejected(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Sessions_RemoveNotifySessionInviteRejected(_args_buffer_address)
+	return __eos_sessions_remove_notify_session_invite_rejected(_args_buffer_address)
 }
 
 
 
-//SDKEpicGames_P2P_GetPacketQueueInfo
-function EpicGames_P2P_GetPacketQueueInfo()
+//__eos_p2_p_get_packet_queue_info
+function eos_p2_p_get_packet_queue_info()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_GetPacketQueueInfo(_return_buffer_address)
+	__eos_p2_p_get_packet_queue_info(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_P2P_GetPortRange
-function EpicGames_P2P_GetPortRange()
+//__eos_p2_p_get_port_range
+function eos_p2_p_get_port_range()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_GetPortRange(_return_buffer_address)
+	__eos_p2_p_get_port_range(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_P2P_ReceivePacket(buff_ret,LocalUserId,MaxDataSizeBytes,RequestedChannel)
-function EpicGames_P2P_ReceivePacket(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+//__eos_p2_p_receive_packet(buff_ret,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+function eos_p2_p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
 {	
-	return SDKEpicGames_P2P_ReceivePacket(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+	return __eos_p2_p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
 }
 
-//SDKEpicGames_P2P_SendPacket(buff_data, len)
-function EpicGames_P2P_SendPacket(buff,buff_len,AllowDelayedDelivery,DisableAutoAcceptConnection,Channel,LocalUserId,Reliability,RemoteUserId,SocketName)
+//__eos_p2_p_send_packet(buff_data, len)
+function eos_p2_p_send_packet(buff,buff_len,AllowDelayedDelivery,DisableAutoAcceptConnection,Channel,LocalUserId,Reliability,RemoteUserId,SocketName)
 {
 	var _args = [
 		[AllowDelayedDelivery,buffer_bool],
@@ -333,63 +333,63 @@ function EpicGames_P2P_SendPacket(buff,buff_len,AllowDelayedDelivery,DisableAuto
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_P2P_SendPacket(_args_buffer_address,buffer_get_address(buff),buff_len)
+	return __eos_p2_p_send_packet(_args_buffer_address,buffer_get_address(buff),buff_len)
 }
 
-//SDKEpicGames_P2P_AddNotifyIncomingPacketQueueFull
-function EpicGames_P2P_AddNotifyIncomingPacketQueueFull()
+//__eos_p2_p_add_notify_incoming_packet_queue_full
+function eos_p2_p_add_notify_incoming_packet_queue_full()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyIncomingPacketQueueFull(_return_buffer_address)
+	__eos_p2_p_add_notify_incoming_packet_queue_full(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_P2P_AddNotifyPeerConnectionClosed
-function EpicGames_P2P_AddNotifyPeerConnectionClosed(LocalUserId, SocketName)
+//__eos_p2_p_add_notify_peer_connection_closed
+function eos_p2_p_add_notify_peer_connection_closed(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionClosed(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2_p_add_notify_peer_connection_closed(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished
-function EpicGames_P2P_AddNotifyPeerConnectionEstablished(LocalUserId, SocketName)
+//__eos_p2_p_add_notify_peer_connection_established
+function eos_p2_p_add_notify_peer_connection_established(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2_p_add_notify_peer_connection_established(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted
-function EpicGames_P2P_AddNotifyPeerConnectionInterrupted(LocalUserId, SocketName)
+//__eos_p2_p_add_notify_peer_connection_interrupted
+function eos_p2_p_add_notify_peer_connection_interrupted(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2_p_add_notify_peer_connection_interrupted(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_P2P_AddNotifyPeerConnectionRequest
-function EpicGames_P2P_AddNotifyPeerConnectionRequest(LocalUserId, SocketName)
+//__eos_p2_p_add_notify_peer_connection_request
+function eos_p2_p_add_notify_peer_connection_request(LocalUserId, SocketName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_P2P_AddNotifyPeerConnectionRequest(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2_p_add_notify_peer_connection_request(LocalUserId, SocketName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -398,8 +398,8 @@ function EpicGames_P2P_AddNotifyPeerConnectionRequest(LocalUserId, SocketName)
 
 
 
-//SDKEpicGames_P2P_RemoveNotifyIncomingPacketQueueFull
-function EpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(notificationId)
+//__eos_p2_p_remove_notify_incoming_packet_queue_full
+function eos_p2_p_remove_notify_incoming_packet_queue_full(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -407,11 +407,11 @@ function EpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(_args_buffer_address)
+	return __eos_p2_p_remove_notify_incoming_packet_queue_full(_args_buffer_address)
 }
 
-//SDKEpicGames_P2P_RemoveNotifyPeerConnectionClosed
-function EpicGames_P2P_RemoveNotifyPeerConnectionClosed(notificationId)
+//__eos_p2_p_remove_notify_peer_connection_closed
+function eos_p2_p_remove_notify_peer_connection_closed(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -419,11 +419,11 @@ function EpicGames_P2P_RemoveNotifyPeerConnectionClosed(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_P2P_RemoveNotifyPeerConnectionClosed(_args_buffer_address)
+	return __eos_p2_p_remove_notify_peer_connection_closed(_args_buffer_address)
 }
 
-//SDKEpicGames_P2P_RemoveNotifyPeerConnectionEstablished
-function EpicGames_P2P_RemoveNotifyPeerConnectionEstablished(notificationId)
+//__eos_p2_p_remove_notify_peer_connection_established
+function eos_p2_p_remove_notify_peer_connection_established(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -431,11 +431,11 @@ function EpicGames_P2P_RemoveNotifyPeerConnectionEstablished(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_P2P_RemoveNotifyPeerConnectionEstablished(_args_buffer_address)
+	return __eos_p2_p_remove_notify_peer_connection_established(_args_buffer_address)
 }
 
-//SDKEpicGames_P2P_RemoveNotifyPeerConnectionInterrupted
-function EpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(notificationId)
+//__eos_p2_p_remove_notify_peer_connection_interrupted
+function eos_p2_p_remove_notify_peer_connection_interrupted(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -443,11 +443,11 @@ function EpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(_args_buffer_address)
+	return __eos_p2_p_remove_notify_peer_connection_interrupted(_args_buffer_address)
 }
 
-//SDKEpicGames_P2P_RemoveNotifyPeerConnectionRequest
-function EpicGames_P2P_RemoveNotifyPeerConnectionRequest(notificationId)
+//__eos_p2_p_remove_notify_peer_connection_request
+function eos_p2_p_remove_notify_peer_connection_request(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -455,7 +455,7 @@ function EpicGames_P2P_RemoveNotifyPeerConnectionRequest(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_P2P_RemoveNotifyPeerConnectionRequest(_args_buffer_address)
+	return __eos_p2_p_remove_notify_peer_connection_request(_args_buffer_address)
 }
 
 
@@ -464,176 +464,176 @@ function EpicGames_P2P_RemoveNotifyPeerConnectionRequest(notificationId)
 
 
 
-//SDKEpicGames_Lobby_AddNotifyJoinLobbyAccepted
-function EpicGames_Lobby_AddNotifyJoinLobbyAccepted()
+//__eos_lobby_add_notify_join_lobby_accepted
+function eos_lobby_add_notify_join_lobby_accepted()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyJoinLobbyAccepted(_return_buffer_address)
+	__eos_lobby_add_notify_join_lobby_accepted(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyLeaveLobbyRequested
-function EpicGames_Lobby_AddNotifyLeaveLobbyRequested()
+//__eos_lobby_add_notify_leave_lobby_requested
+function eos_lobby_add_notify_leave_lobby_requested()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyLeaveLobbyRequested(_return_buffer_address)
+	__eos_lobby_add_notify_leave_lobby_requested(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyLobbyInviteAccepted
-function EpicGames_Lobby_AddNotifyLobbyInviteAccepted()
+//__eos_lobby_add_notify_lobby_invite_accepted
+function eos_lobby_add_notify_lobby_invite_accepted()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyLobbyInviteAccepted(_return_buffer_address)
+	__eos_lobby_add_notify_lobby_invite_accepted(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyLobbyInviteReceived
-function EpicGames_Lobby_AddNotifyLobbyInviteReceived()
+//__eos_lobby_add_notify_lobby_invite_received
+function eos_lobby_add_notify_lobby_invite_received()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyLobbyInviteReceived(_return_buffer_address)
+	__eos_lobby_add_notify_lobby_invite_received(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyLobbyInviteRejected
-function EpicGames_Lobby_AddNotifyLobbyInviteRejected()
+//__eos_lobby_add_notify_lobby_invite_rejected
+function eos_lobby_add_notify_lobby_invite_rejected()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyLobbyInviteRejected(_return_buffer_address)
+	__eos_lobby_add_notify_lobby_invite_rejected(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyLobbyMemberStatusReceived
-function EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived()
+//__eos_lobby_add_notify_lobby_member_status_received
+function eos_lobby_add_notify_lobby_member_status_received()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyLobbyMemberStatusReceived(_return_buffer_address)
+	__eos_lobby_add_notify_lobby_member_status_received(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived
-function EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived()
+//__eos_lobby_add_notify_lobby_member_update_received
+function eos_lobby_add_notify_lobby_member_update_received()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived(_return_buffer_address)
+	__eos_lobby_add_notify_lobby_member_update_received(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyLobbyUpdateReceived
-function EpicGames_Lobby_AddNotifyLobbyUpdateReceived()
+//__eos_lobby_add_notify_lobby_update_received
+function eos_lobby_add_notify_lobby_update_received()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyLobbyUpdateReceived(_return_buffer_address)
+	__eos_lobby_add_notify_lobby_update_received(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifyRTCRoomConnectionChanged
-function EpicGames_Lobby_AddNotifyRTCRoomConnectionChanged()
+//__eos_lobby_add_notify_rtc_room_connection_changed
+function eos_lobby_add_notify_rtc_room_connection_changed()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifyRTCRoomConnectionChanged(_return_buffer_address)
+	__eos_lobby_add_notify_rtc_room_connection_changed(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested
-function EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested()
+//__eos_lobby_add_notify_send_lobby_native_invite_requested
+function eos_lobby_add_notify_send_lobby_native_invite_requested()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested(_return_buffer_address)
+	__eos_lobby_add_notify_send_lobby_native_invite_requested(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_LobbyDetails_CopyAttributeByKey
-function EpicGames_LobbyDetails_CopyAttributeByKey(AttrKey)
+//__eos_lobby_details_copy_attribute_by_key
+function eos_lobby_details_copy_attribute_by_key(AttrKey)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	var result = SDKEpicGames_LobbyDetails_CopyAttributeByKey(AttrKey,_return_buffer_address)
+	var result = __eos_lobby_details_copy_attribute_by_key(AttrKey,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_LobbyDetails_CopyInfo
-function EpicGames_LobbyDetails_CopyInfo()
+//__eos_lobby_details_copy_info
+function eos_lobby_details_copy_info()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	var result = SDKEpicGames_LobbyDetails_CopyInfo(_return_buffer_address)
+	var result = __eos_lobby_details_copy_info(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(double index, char *TargetUserId, char* buff_ret)
-function EpicGames_LobbyDetails_CopyMemberAttributeByIndex(index,TargetUserId)
+//__eos_lobby_details_copy_member_attribute_by_index(double index, char *TargetUserId, char* buff_ret)
+function eos_lobby_details_copy_member_attribute_by_index(index,TargetUserId)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_LobbyDetails_CopyMemberAttributeByIndex(index,TargetUserId,_return_buffer_address)
+	__eos_lobby_details_copy_member_attribute_by_index(index,TargetUserId,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_LobbyDetails_CopyMemberInfo(char *TargetUserId,char* buff_ret)
-function EpicGames_LobbyDetails_CopyMemberInfo(TargetUserId)
+//__eos_lobby_details_copy_member_info(char *TargetUserId,char* buff_ret)
+function eos_lobby_details_copy_member_info(TargetUserId)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_LobbyDetails_CopyMemberInfo(TargetUserId,_return_buffer_address)
+	__eos_lobby_details_copy_member_info(TargetUserId,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId
-function EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(UiEventId)
+//__eos_lobby_copy_lobby_details_handle_by_ui_event_id
+function eos_lobby_copy_lobby_details_handle_by_ui_event_id(UiEventId)
 {
 	var _args = [
 		[UiEventId,buffer_u64],
@@ -641,11 +641,11 @@ function EpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(UiEventId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_CopyLobbyDetailsHandleByUiEventId(_args_buffer_address)
+	return __eos_lobby_copy_lobby_details_handle_by_ui_event_id(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_CreateLobby
-function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,PermissionLevel,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled,bEnableRTCRoom,Flags,bUseManualAudioInput,bUseManualAudioOutput,bLocalAudioDeviceInputStartsMuted)
+//__eos_lobby_create_lobby
+function eos_lobby_create_lobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,PermissionLevel,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled,bEnableRTCRoom,Flags,bUseManualAudioInput,bUseManualAudioOutput,bLocalAudioDeviceInputStartsMuted)
 {
 	var _args = [
 		[LocalUserId,buffer_string],
@@ -668,11 +668,11 @@ function EpicGames_Lobby_CreateLobby(LocalUserId,AllowedPlatformIds,LobbyId,Buck
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_CreateLobby(_args_buffer_address)
+	return __eos_lobby_create_lobby(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_JoinLobby
-function EpicGames_Lobby_JoinLobby(LocalUserId,bCrossplayOptOut,bPresenceEnabled,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
+//__eos_lobby_join_lobby
+function eos_lobby_join_lobby(LocalUserId,bCrossplayOptOut,bPresenceEnabled,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
 {
 	var _args = [
 			[LocalUserId,buffer_string],
@@ -687,11 +687,11 @@ function EpicGames_Lobby_JoinLobby(LocalUserId,bCrossplayOptOut,bPresenceEnabled
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_JoinLobby(_args_buffer_address)
+	return __eos_lobby_join_lobby(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_JoinLobbyById
-function EpicGames_Lobby_JoinLobbyById(LocalUserId,bCrossplayOptOut,bPresenceEnabled,LobbyId,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
+//__eos_lobby_join_lobby_by_id
+function eos_lobby_join_lobby_by_id(LocalUserId,bCrossplayOptOut,bPresenceEnabled,LobbyId,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
 {
 	var _args = [
 			[LocalUserId,buffer_string],
@@ -708,11 +708,11 @@ function EpicGames_Lobby_JoinLobbyById(LocalUserId,bCrossplayOptOut,bPresenceEna
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_JoinLobbyById(_args_buffer_address)
+	return __eos_lobby_join_lobby_by_id(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyJoinLobbyAccepted
-function EpicGames_Lobby_RemoveNotifyJoinLobbyAccepted(notificationId)
+//__eos_lobby_remove_notify_join_lobby_accepted
+function eos_lobby_remove_notify_join_lobby_accepted(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -720,11 +720,11 @@ function EpicGames_Lobby_RemoveNotifyJoinLobbyAccepted(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyJoinLobbyAccepted(_args_buffer_address)
+	return __eos_lobby_remove_notify_join_lobby_accepted(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyLeaveLobbyRequested
-function EpicGames_Lobby_RemoveNotifyLeaveLobbyRequested(notificationId)
+//__eos_lobby_remove_notify_leave_lobby_requested
+function eos_lobby_remove_notify_leave_lobby_requested(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -732,11 +732,11 @@ function EpicGames_Lobby_RemoveNotifyLeaveLobbyRequested(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyLeaveLobbyRequested(_args_buffer_address)
+	return __eos_lobby_remove_notify_leave_lobby_requested(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyLobbyInviteAccepted
-function EpicGames_Lobby_RemoveNotifyLobbyInviteAccepted(notificationId)
+//__eos_lobby_remove_notify_lobby_invite_accepted
+function eos_lobby_remove_notify_lobby_invite_accepted(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -744,11 +744,11 @@ function EpicGames_Lobby_RemoveNotifyLobbyInviteAccepted(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyLobbyInviteAccepted(_args_buffer_address)
+	return __eos_lobby_remove_notify_lobby_invite_accepted(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyLobbyInviteReceived
-function EpicGames_Lobby_RemoveNotifyLobbyInviteReceived(notificationId)
+//__eos_lobby_remove_notify_lobby_invite_received
+function eos_lobby_remove_notify_lobby_invite_received(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -756,11 +756,11 @@ function EpicGames_Lobby_RemoveNotifyLobbyInviteReceived(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyLobbyInviteReceived(_args_buffer_address)
+	return __eos_lobby_remove_notify_lobby_invite_received(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyLobbyInviteRejected
-function EpicGames_Lobby_RemoveNotifyLobbyInviteRejected(notificationId)
+//__eos_lobby_remove_notify_lobby_invite_rejected
+function eos_lobby_remove_notify_lobby_invite_rejected(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -768,11 +768,11 @@ function EpicGames_Lobby_RemoveNotifyLobbyInviteRejected(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyLobbyInviteRejected(_args_buffer_address)
+	return __eos_lobby_remove_notify_lobby_invite_rejected(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyLobbyMemberStatusReceived
-function EpicGames_Lobby_RemoveNotifyLobbyMemberStatusReceived(notificationId)
+//__eos_lobby_remove_notify_lobby_member_status_received
+function eos_lobby_remove_notify_lobby_member_status_received(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -780,11 +780,11 @@ function EpicGames_Lobby_RemoveNotifyLobbyMemberStatusReceived(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyLobbyMemberStatusReceived(_args_buffer_address)
+	return __eos_lobby_remove_notify_lobby_member_status_received(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyLobbyMemberUpdateReceived
-function EpicGames_Lobby_RemoveNotifyLobbyMemberUpdateReceived(notificationId)
+//__eos_lobby_remove_notify_lobby_member_update_received
+function eos_lobby_remove_notify_lobby_member_update_received(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -792,11 +792,11 @@ function EpicGames_Lobby_RemoveNotifyLobbyMemberUpdateReceived(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyLobbyMemberUpdateReceived(_args_buffer_address)
+	return __eos_lobby_remove_notify_lobby_member_update_received(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyLobbyUpdateReceived
-function EpicGames_Lobby_RemoveNotifyLobbyUpdateReceived(notificationId)
+//__eos_lobby_remove_notify_lobby_update_received
+function eos_lobby_remove_notify_lobby_update_received(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -804,11 +804,11 @@ function EpicGames_Lobby_RemoveNotifyLobbyUpdateReceived(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyLobbyUpdateReceived(_args_buffer_address)
+	return __eos_lobby_remove_notify_lobby_update_received(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifyRTCRoomConnectionChanged
-function EpicGames_Lobby_RemoveNotifyRTCRoomConnectionChanged(notificationId)
+//__eos_lobby_remove_notify_rtc_room_connection_changed
+function eos_lobby_remove_notify_rtc_room_connection_changed(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -816,11 +816,11 @@ function EpicGames_Lobby_RemoveNotifyRTCRoomConnectionChanged(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifyRTCRoomConnectionChanged(_args_buffer_address)
+	return __eos_lobby_remove_notify_rtc_room_connection_changed(_args_buffer_address)
 }
 
-//SDKEpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested
-function EpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(notificationId)
+//__eos_lobby_remove_notify_send_lobby_native_invite_requested
+function eos_lobby_remove_notify_send_lobby_native_invite_requested(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -828,23 +828,23 @@ function EpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(notification
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_Lobby_RemoveNotifySendLobbyNativeInviteRequested(_args_buffer_address)
+	return __eos_lobby_remove_notify_send_lobby_native_invite_requested(_args_buffer_address)
 }
 
-//func double SDKEpicGames_LobbyDetails_CopyAttributeByIndex(double index, char* buff_ret)
-function EpicGames_LobbyDetails_CopyAttributeByIndex(index,TargetUserId)
+//func double __eos_lobby_details_copy_attribute_by_index(double index, char* buff_ret)
+function eos_lobby_details_copy_attribute_by_index(index,TargetUserId)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_LobbyDetails_CopyAttributeByIndex(index,_return_buffer_address)
+	__eos_lobby_details_copy_attribute_by_index(index,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_LobbyModification_AddAttribute
-function EpicGames_LobbyModification_AddAttribute(Visibility,Attribute)
+//__eos_lobby_modification_add_attribute
+function eos_lobby_modification_add_attribute(Visibility,Attribute)
 {
 	var _args = [
 		[Attribute,undefined],//struct
@@ -852,11 +852,11 @@ function EpicGames_LobbyModification_AddAttribute(Visibility,Attribute)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_LobbyModification_AddAttribute(Visibility,_args_buffer_address)
+	return __eos_lobby_modification_add_attribute(Visibility,_args_buffer_address)
 }
 
-//SDKEpicGames_LobbyModification_AddMemberAttribute
-function EpicGames_LobbyModification_AddMemberAttribute(Visibility,Attribute)
+//__eos_lobby_modification_add_member_attribute
+function eos_lobby_modification_add_member_attribute(Visibility,Attribute)
 {
 	var _args = [
 		[Attribute,undefined],//struct
@@ -864,11 +864,11 @@ function EpicGames_LobbyModification_AddMemberAttribute(Visibility,Attribute)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_LobbyModification_AddMemberAttribute(Visibility,_args_buffer_address)
+	return __eos_lobby_modification_add_member_attribute(Visibility,_args_buffer_address)
 }
 
-//SDKEpicGames_LobbyModification_SetAllowedPlatformIds
-function EpicGames_LobbyModification_SetAllowedPlatformIds(AllowedPlatformIds)
+//__eos_lobby_modification_set_allowed_platform_ids
+function eos_lobby_modification_set_allowed_platform_ids(AllowedPlatformIds)
 {
 	var _args = [
 		[AllowedPlatformIds,undefined],//Array
@@ -876,12 +876,12 @@ function EpicGames_LobbyModification_SetAllowedPlatformIds(AllowedPlatformIds)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_LobbyModification_SetAllowedPlatformIds(_args_buffer_address)
+	return __eos_lobby_modification_set_allowed_platform_ids(_args_buffer_address)
 
 }
 
-//SDKEpicGames_LobbySearch_SetParameter
-function EpicGames_LobbySearch_SetParameter(ComparisonOp,Attribute)
+//__eos_lobby_search_set_parameter
+function eos_lobby_search_set_parameter(ComparisonOp,Attribute)
 {
 	var _args = [
 		[Attribute,undefined],//struct
@@ -889,51 +889,51 @@ function EpicGames_LobbySearch_SetParameter(ComparisonOp,Attribute)
 	
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_LobbySearch_SetParameter(ComparisonOp,_args_buffer_address)
+	return __eos_lobby_search_set_parameter(ComparisonOp,_args_buffer_address)
 }
 
 
 //////////////////// RTC
 
 
-//SDKEpicGames_RTC_AddNotifyDisconnected
-function EpicGames_RTC_AddNotifyDisconnected(LocalUserId, RoomName)
+//__eos_rtc_add_notify_disconnected
+function eos_rtc_add_notify_disconnected(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTC_AddNotifyDisconnected(RoomName, LocalUserId,_return_buffer_address)
+	__eos_rtc_add_notify_disconnected(RoomName, LocalUserId,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTC_AddNotifyParticipantStatusChanged
-function EpicGames_RTC_AddNotifyParticipantStatusChanged(LocalUserId, RoomName)
+//__eos_rtc_add_notify_participant_status_changed
+function eos_rtc_add_notify_participant_status_changed(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTC_AddNotifyParticipantStatusChanged(RoomName, LocalUserId,_return_buffer_address)
+	__eos_rtc_add_notify_participant_status_changed(RoomName, LocalUserId,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTC_AddNotifyRoomStatisticsUpdated
-function EpicGames_RTC_AddNotifyRoomStatisticsUpdated(LocalUserId, RoomName)
+//__eos_rtc_add_notify_room_statistics_updated
+function eos_rtc_add_notify_room_statistics_updated(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTC_AddNotifyRoomStatisticsUpdated(RoomName, LocalUserId,_return_buffer_address)
+	__eos_rtc_add_notify_room_statistics_updated(RoomName, LocalUserId,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTC_JoinRoom
-function EpicGames_RTC_JoinRoom(bManualAudioInputEnabled,bManualAudioOutputEnabled,ClientBaseUrl,Flags,LocalUserId,ParticipantId,ParticipantToken,RoomName)
+//__eos_rtc_join_room
+function eos_rtc_join_room(bManualAudioInputEnabled,bManualAudioOutputEnabled,ClientBaseUrl,Flags,LocalUserId,ParticipantId,ParticipantToken,RoomName)
 {
 	var _args = [
 		[LocalUserId,buffer_string],
@@ -948,11 +948,11 @@ function EpicGames_RTC_JoinRoom(bManualAudioInputEnabled,bManualAudioOutputEnabl
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTC_JoinRoom(_args_buffer_address)
+	return __eos_rtc_join_room(_args_buffer_address)
 }
 
-//SDKEpicGames_RTC_RemoveNotifyDisconnected
-function EpicGames_RTC_RemoveNotifyDisconnected(notificationId)
+//__eos_rtc_remove_notify_disconnected
+function eos_rtc_remove_notify_disconnected(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -960,11 +960,11 @@ function EpicGames_RTC_RemoveNotifyDisconnected(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTC_RemoveNotifyDisconnected(_args_buffer_address)
+	return __eos_rtc_remove_notify_disconnected(_args_buffer_address)
 }
 
-//SDKEpicGames_RTC_RemoveNotifyParticipantStatusChanged
-function EpicGames_RTC_RemoveNotifyParticipantStatusChanged(notificationId)
+//__eos_rtc_remove_notify_participant_status_changed
+function eos_rtc_remove_notify_participant_status_changed(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -972,11 +972,11 @@ function EpicGames_RTC_RemoveNotifyParticipantStatusChanged(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTC_RemoveNotifyParticipantStatusChanged(_args_buffer_address)
+	return __eos_rtc_remove_notify_participant_status_changed(_args_buffer_address)
 }
 
-//SDKEpicGames_RTC_RemoveNotifyRoomStatisticsUpdated
-function EpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(notificationId)
+//__eos_rtc_remove_notify_room_statistics_updated
+function eos_rtc_remove_notify_room_statistics_updated(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -984,34 +984,34 @@ function EpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTC_RemoveNotifyRoomStatisticsUpdated(_args_buffer_address)
+	return __eos_rtc_remove_notify_room_statistics_updated(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCAdmin_CopyUserTokenByIndex(double QueryId, double UserTokenIndex,char* buff_ret)
-function EpicGames_RTCAdmin_CopyUserTokenByIndex(QueryId,UserTokenIndex)
+//__eos_rtc_admin_copy_user_token_by_index(double QueryId, double UserTokenIndex,char* buff_ret)
+function eos_rtc_admin_copy_user_token_by_index(QueryId,UserTokenIndex)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAdmin_CopyUserTokenByIndex(QueryId,UserTokenIndex,_return_buffer_address)
+	__eos_rtc_admin_copy_user_token_by_index(QueryId,UserTokenIndex,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
-//SDKEpicGames_RTCAdmin_CopyUserTokenByUserId(double QueryId, char *TargetUserId)
-function EpicGames_RTCAdmin_CopyUserTokenByUserId(QueryId,TargetUserId)
+//__eos_rtc_admin_copy_user_token_by_user_id(double QueryId, char *TargetUserId)
+function eos_rtc_admin_copy_user_token_by_user_id(QueryId,TargetUserId)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAdmin_CopyUserTokenByUserId(QueryId,TargetUserId,_return_buffer_address)
+	__eos_rtc_admin_copy_user_token_by_user_id(QueryId,TargetUserId,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAdmin_QueryJoinRoomToken
-function EpicGames_RTCAdmin_QueryJoinRoomToken(LocalUserId,RoomName,array_ids,array_ips)
+//__eos_rtc_admin_query_join_room_token
+function eos_rtc_admin_query_join_room_token(LocalUserId,RoomName,array_ids,array_ips)
 {
 	var _args = [
 		[LocalUserId,buffer_string],
@@ -1022,107 +1022,107 @@ function EpicGames_RTCAdmin_QueryJoinRoomToken(LocalUserId,RoomName,array_ids,ar
 	
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCAdmin_QueryJoinRoomToken(_args_buffer_address)
+	return __eos_rtc_admin_query_join_room_token(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCAudio_AddNotifyAudioBeforeRender
-function EpicGames_RTCAudio_AddNotifyAudioBeforeRender(LocalUserId,RoomName, bUnmixedAudio)
+//__eos_rtc_audio_add_notify_audio_before_render
+function eos_rtc_audio_add_notify_audio_before_render(LocalUserId,RoomName, bUnmixedAudio)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_AddNotifyAudioBeforeRender(LocalUserId,RoomName, bUnmixedAudio,_return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_before_render(LocalUserId,RoomName, bUnmixedAudio,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAudio_AddNotifyAudioBeforeSend
-function EpicGames_RTCAudio_AddNotifyAudioBeforeSend(LocalUserId, RoomName)
+//__eos_rtc_audio_add_notify_audio_before_send
+function eos_rtc_audio_add_notify_audio_before_send(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_AddNotifyAudioBeforeSend(LocalUserId, RoomName, _return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_before_send(LocalUserId, RoomName, _return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAudio_AddNotifyAudioDevicesChanged
-function EpicGames_RTCAudio_AddNotifyAudioDevicesChanged()
+//__eos_rtc_audio_add_notify_audio_devices_changed
+function eos_rtc_audio_add_notify_audio_devices_changed()
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_AddNotifyAudioDevicesChanged(_return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_devices_changed(_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAudio_AddNotifyAudioInputState
-function EpicGames_RTCAudio_AddNotifyAudioInputState(LocalUserId, RoomName)
+//__eos_rtc_audio_add_notify_audio_input_state
+function eos_rtc_audio_add_notify_audio_input_state(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_AddNotifyAudioInputState(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_input_state(LocalUserId, RoomName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAudio_AddNotifyAudioOutputState
-function EpicGames_RTCAudio_AddNotifyAudioOutputState(LocalUserId, RoomName)
+//__eos_rtc_audio_add_notify_audio_output_state
+function eos_rtc_audio_add_notify_audio_output_state(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_AddNotifyAudioOutputState(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_output_state(LocalUserId, RoomName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated
-function EpicGames_RTCAudio_AddNotifyParticipantUpdated(LocalUserId, RoomName)
+//__eos_rtc_audio_add_notify_participant_updated
+function eos_rtc_audio_add_notify_participant_updated(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_AddNotifyParticipantUpdated(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_audio_add_notify_participant_updated(LocalUserId, RoomName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAudio_CopyInputDeviceInformationByIndex(double DeviceIndex,char* buff_ret)
-function EpicGames_RTCAudio_CopyInputDeviceInformationByIndex(DeviceIndex)
+//__eos_rtc_audio_copy_input_device_information_by_index(double DeviceIndex,char* buff_ret)
+function eos_rtc_audio_copy_input_device_information_by_index(DeviceIndex)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_CopyInputDeviceInformationByIndex(DeviceIndex,_return_buffer_address)
+	__eos_rtc_audio_copy_input_device_information_by_index(DeviceIndex,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//func double SDKEpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(double DeviceIndex, char* buff_ret)
-function EpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(DeviceIndex)
+//func double __eos_rtc_audio_copy_output_device_information_by_index(double DeviceIndex, char* buff_ret)
+function eos_rtc_audio_copy_output_device_information_by_index(DeviceIndex)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCAudio_CopyOutputDeviceInformationByIndex(DeviceIndex,_return_buffer_address)
+	__eos_rtc_audio_copy_output_device_information_by_index(DeviceIndex,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeRender
-function EpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(notificationId)
+//__eos_rtc_audio_remove_notify_audio_before_render
+function eos_rtc_audio_remove_notify_audio_before_render(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1130,11 +1130,11 @@ function EpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeRender(_args_buffer_address)
+	return __eos_rtc_audio_remove_notify_audio_before_render(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeSend
-function EpicGames_RTCAudio_RemoveNotifyAudioBeforeSend(notificationId)
+//__eos_rtc_audio_remove_notify_audio_before_send
+function eos_rtc_audio_remove_notify_audio_before_send(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1142,11 +1142,11 @@ function EpicGames_RTCAudio_RemoveNotifyAudioBeforeSend(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCAudio_RemoveNotifyAudioBeforeSend(_args_buffer_address)
+	return __eos_rtc_audio_remove_notify_audio_before_send(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCAudio_RemoveNotifyAudioDevicesChanged
-function EpicGames_RTCAudio_RemoveNotifyAudioDevicesChanged(notificationId)
+//__eos_rtc_audio_remove_notify_audio_devices_changed
+function eos_rtc_audio_remove_notify_audio_devices_changed(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1154,11 +1154,11 @@ function EpicGames_RTCAudio_RemoveNotifyAudioDevicesChanged(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCAudio_RemoveNotifyAudioDevicesChanged(_args_buffer_address)
+	return __eos_rtc_audio_remove_notify_audio_devices_changed(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCAudio_RemoveNotifyAudioInputState
-function EpicGames_RTCAudio_RemoveNotifyAudioInputState(notificationId)
+//__eos_rtc_audio_remove_notify_audio_input_state
+function eos_rtc_audio_remove_notify_audio_input_state(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1166,11 +1166,11 @@ function EpicGames_RTCAudio_RemoveNotifyAudioInputState(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCAudio_RemoveNotifyAudioInputState(_args_buffer_address)
+	return __eos_rtc_audio_remove_notify_audio_input_state(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCAudio_RemoveNotifyAudioOutputState
-function EpicGames_RTCAudio_RemoveNotifyAudioOutputState(notificationId)
+//__eos_rtc_audio_remove_notify_audio_output_state
+function eos_rtc_audio_remove_notify_audio_output_state(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1178,11 +1178,11 @@ function EpicGames_RTCAudio_RemoveNotifyAudioOutputState(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCAudio_RemoveNotifyAudioOutputState(_args_buffer_address)
+	return __eos_rtc_audio_remove_notify_audio_output_state(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCAudio_RemoveNotifyParticipantUpdated
-function EpicGames_RTCAudio_RemoveNotifyParticipantUpdated(notificationId)
+//__eos_rtc_audio_remove_notify_participant_updated
+function eos_rtc_audio_remove_notify_participant_updated(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1190,35 +1190,35 @@ function EpicGames_RTCAudio_RemoveNotifyParticipantUpdated(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCAudio_RemoveNotifyParticipantUpdated(_args_buffer_address)
+	return __eos_rtc_audio_remove_notify_participant_updated(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCData_AddNotifyDataReceived
-function EpicGames_RTCData_AddNotifyDataReceived(LocalUserId, RoomName)
+//__eos_rtc_data_add_notify_data_received
+function eos_rtc_data_add_notify_data_received(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCData_AddNotifyDataReceived(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_data_add_notify_data_received(LocalUserId, RoomName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCData_AddNotifyParticipantUpdated
-function EpicGames_RTCData_AddNotifyParticipantUpdated(LocalUserId, RoomName)
+//__eos_rtc_data_add_notify_participant_updated
+function eos_rtc_data_add_notify_participant_updated(LocalUserId, RoomName)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	SDKEpicGames_RTCData_AddNotifyParticipantUpdated(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_data_add_notify_participant_updated(LocalUserId, RoomName,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//SDKEpicGames_RTCData_RemoveNotifyDataReceived
-function EpicGames_RTCData_RemoveNotifyDataReceived(notificationId)
+//__eos_rtc_data_remove_notify_data_received
+function eos_rtc_data_remove_notify_data_received(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1226,11 +1226,11 @@ function EpicGames_RTCData_RemoveNotifyDataReceived(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCData_RemoveNotifyDataReceived(_args_buffer_address)
+	return __eos_rtc_data_remove_notify_data_received(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCData_RemoveNotifyParticipantUpdated
-function EpicGames_RTCData_RemoveNotifyParticipantUpdated(notificationId)
+//__eos_rtc_data_remove_notify_participant_updated
+function eos_rtc_data_remove_notify_participant_updated(notificationId)
 {
 	var _args = [
 		[notificationId,buffer_u64],
@@ -1238,11 +1238,11 @@ function EpicGames_RTCData_RemoveNotifyParticipantUpdated(notificationId)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return SDKEpicGames_RTCData_RemoveNotifyParticipantUpdated(_args_buffer_address)
+	return __eos_rtc_data_remove_notify_participant_updated(_args_buffer_address)
 }
 
-//SDKEpicGames_RTCData_SendData
-function EpicGames_RTCData_SendData(buff,Length, LocalUserId, RoomName)
+//__eos_rtc_data_send_data
+function eos_rtc_data_send_data(buff,Length, LocalUserId, RoomName)
 {
-	return SDKEpicGames_RTCData_SendData(buffer_get_address(buff),Length,LocalUserId,RoomName)
+	return __eos_rtc_data_send_data(buffer_get_address(buff),Length,LocalUserId,RoomName)
 }

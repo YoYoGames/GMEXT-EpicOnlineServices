@@ -7,4 +7,4 @@ with(Obj_EpicGames_Ecom_Offer)
 	array_push(_array,Id)
 }
 
-EpicGames_Ecom_Checkout(AccountID,_array)
+eos_ecom_checkout(AccountID,_array)

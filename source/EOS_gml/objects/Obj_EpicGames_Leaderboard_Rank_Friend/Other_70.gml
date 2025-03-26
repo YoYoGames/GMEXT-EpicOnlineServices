@@ -1,12 +1,12 @@
 
-if(async_load[?"type"] != "EpicGames_UserInfo_QueryUserInfo") return;
+if(async_load[? "type"] != "eos_user_info_query_user_info") return;
 
 show_debug_message(json_encode(async_load))
 
-if(async_load[?"identifier"] == request)
+if(async_load[? "identifier"] == request)
 {
-	var struct = EpicGames_UserInfo_CopyUserInfo(AccountID,mAccountID)
-	if(struct.status = EpicGames_Success)
+	var struct = eos_user_info_copy_user_info(AccountID,mAccountID)
+	if(struct.status = EOS_SUCCESS)
 	{
 		UserDisplayName = struct.DisplayName
 		//struct.PreferredLanguage

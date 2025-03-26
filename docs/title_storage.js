@@ -2,12 +2,12 @@
 
 
 /**
- * @function EpicGames_TitleStorage_CopyFileMetadataAtIndex
+ * @function eos_title_storage_copy_file_metadata_at_index
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_CopyFileMetadataAtIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorage_CopyFileMetadataAtIndex/index.html)
  * 
  * This function gets the cached copy of a file's metadata by index. The metadata will be for the last retrieved version.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_TitleStorage_QueryFileList} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_title_storage_query_file_list} to store values in cache.]]
  * 
  * @param {string} userID Product User ID of the local user who is requesting file metadata (optional)
  * @param {real} index The index to get data for
@@ -16,10 +16,10 @@
  * 
  * @example
  * ```gml
- * var _count = EpicGames_TitleStorage_GetFileMetadataCount(userID);
+ * var _count = eos_title_storage_get_file_metadata_count(userID);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = EpicGames_TitleStorage_CopyFileMetadataAtIndex(userID, i);
+ *     var _struct = eos_title_storage_copy_file_metadata_at_index(userID, i);
  *     Filename = _struct.Filename;
  * }
  * ```
@@ -28,12 +28,12 @@
  */
 
 /**
- * @function EpicGames_TitleStorage_CopyFileMetadataByFilename
+ * @function eos_title_storage_copy_file_metadata_by_filename
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_CopyFileMetadataByFilename](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorage_CopyFileMetadataByFilename/index.html)
  * 
  * This function creates a cached copy of a file's metadata by filename. The metadata will be for the last retrieved or successfully saved version, and will not include any changes that have not completed writing.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_TitleStorage_QueryFileList} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_title_storage_query_file_list} to store values in cache.]]
  * 
  * @param {string} userID Product User ID of the local user who is requesting file metadata (optional)
  * @param {string} name The file's name to get data for
@@ -41,8 +41,8 @@
  * 
  * @example
  * ```gml
- * var _struct = EpicGames_TitleStorage_CopyFileMetadataByFilename(userID, i);
- * if(_struct.status == EpicGames_Success)
+ * var _struct = eos_title_storage_copy_file_metadata_by_filename(userID, i);
+ * if(_struct.status == EOS_SUCCESS)
  * {
  *     Filename = _struct.Filename;
  * }
@@ -52,7 +52,7 @@
  */
 
 /**
- * @function EpicGames_TitleStorage_DeleteCache
+ * @function eos_title_storage_delete_cache
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_DeleteCache](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorage_DeleteCache/index.html)
  * 
  * This function clears previously cached file data. This operation will be done asynchronously. All cached files except those corresponding to the transfers in progress will be removed.
@@ -64,23 +64,23 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_TitleStorage_DeleteCache"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_title_storage_delete_cache"`
+ * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_TitleStorage_DeleteCache(userID);
+ * identifier = eos_title_storage_delete_cache(userID);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_TitleStorage_DeleteCache")
+ * if (async_load[? "type"] == "eos_title_storage_delete_cache")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -95,12 +95,12 @@
  */
 
 /**
- * @function EpicGames_TitleStorage_GetFileMetadataCount
+ * @function eos_title_storage_get_file_metadata_count
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_GetFileMetadataCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorage_GetFileMetadataCount/index.html)
  * 
  * This function gets the count of files we have previously queried information for and files we have previously read from / written to.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_TitleStorage_QueryFileList} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_title_storage_query_file_list} to store values in cache.]]
  * 
  * @param {string} userID The Product User ID of the local user who is requesting file metadata.
  * 
@@ -108,24 +108,24 @@
  * 
  * @example
  * ```gml
- * var _count = EpicGames_TitleStorage_GetFileMetadataCount(userID);
+ * var _count = eos_title_storage_get_file_metadata_count(userID);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = EpicGames_TitleStorage_CopyFileMetadataAtIndex(userID, i);
+ *     var _struct = eos_title_storage_copy_file_metadata_at_index(userID, i);
  *     Filename = _struct.Filename;
  * }
  * ```
- * The above code shows an example of how the function should be used. After a successful call to ${function.EpicGames_TitleStorage_QueryFileList}, the function ${function.EpicGames_TitleStorage_GetFileMetadataCount} will return the number of entries in the query array which can then be accessed using the ${function.EpicGames_TitleStorage_CopyFileMetadataAtIndex} function.
+ * The above code shows an example of how the function should be used. After a successful call to ${function.eos_title_storage_query_file_list}, the function ${function.eos_title_storage_get_file_metadata_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_title_storage_copy_file_metadata_at_index} function.
  * @function_end
  */
 
 /**
- * @function EpicGames_TitleStorage_QueryFile
+ * @function eos_title_storage_query_file
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_QueryFile](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorage_QueryFile/index.html)
  * 
  * This function queries a specific file's metadata, such as file names, size, and a MD5 hash of the data. This is not required before a file may be opened.
  * 
- * Once a file has been queried, its metadata will be available by the ${function.EpicGames_TitleStorage_CopyFileMetadataAtIndex} and ${function.EpicGames_TitleStorage_CopyFileMetadataByFilename} functions.
+ * Once a file has been queried, its metadata will be available by the ${function.eos_title_storage_copy_file_metadata_at_index} and ${function.eos_title_storage_copy_file_metadata_by_filename} functions.
  * 
  * @param {string} userID Product User ID of the local user requesting file metadata
  * @param {string} filename The requested file's name
@@ -133,23 +133,23 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_TitleStorage_QueryFile"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_title_storage_query_file"`
+ * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_TitleStorage_QueryFile(userID, "myFile.dat");
+ * identifier = eos_title_storage_query_file(userID, "myFile.dat");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_TitleStorage_QueryFile")
+ * if (async_load[? "type"] == "eos_title_storage_query_file")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -164,16 +164,16 @@
  */
 
 /**
- * @function EpicGames_TitleStorage_QueryFileList
+ * @function eos_title_storage_query_file_list
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_QueryFileList](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorage_QueryFileList/index.html)
  * 
  * This function queries the file metadata, such as file names, size, and a MD5 hash of the data, for all files available for current user based on their settings (such as game role) and tags provided. This is not required before a file can be downloaded by name.
  * 
- * Once the callback has been fired with a successful ${constant.EpicGames_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
  * 
- * * ${function.EpicGames_TitleStorage_CopyFileMetadataAtIndex}
- * * ${function.EpicGames_TitleStorage_CopyFileMetadataByFilename}
- * * ${function.EpicGames_TitleStorage_GetFileMetadataCount}
+ * * ${function.eos_title_storage_copy_file_metadata_at_index}
+ * * ${function.eos_title_storage_copy_file_metadata_by_filename}
+ * * ${function.eos_title_storage_get_file_metadata_count}
  * 
  * @param {string} userID Product User ID of the local user who requested file metadata
  * @param {string} tag List of tags to use for lookup, either a ${type.string} (single tag) or an ${type.array} of strings (multiple tags)
@@ -181,23 +181,23 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_TitleStorage_QueryFileList"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_title_storage_query_file_list"`
+ * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_TitleStorage_QueryFileList(userID, "Tag1");
+ * identifier = eos_title_storage_query_file_list(userID, "Tag1");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_TitleStorage_QueryFileList")
+ * if (async_load[? "type"] == "eos_title_storage_query_file_list")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -212,7 +212,7 @@
  */
 
 /**
- * @function EpicGames_TitleStorage_ReadFile
+ * @function eos_title_storage_read_file
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_ReadFile](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorage_ReadFile/index.html)
  * 
  * This function retrieves the contents of a specific file, potentially downloading the contents if we do not have a local copy, from the cloud. This request will occur asynchronously, potentially over multiple frames.
@@ -224,23 +224,23 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_TitleStorage_ReadFile"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_title_storage_read_file"`
+ * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_TitleStorage_ReadFile(userID, "Preferences.json", "/path/to/save/Preferences.json");
+ * identifier = eos_title_storage_read_file(userID, "Preferences.json", "/path/to/save/Preferences.json");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_TitleStorage_ReadFile")
+ * if (async_load[? "type"] == "eos_title_storage_read_file")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -255,7 +255,7 @@
  */
 
 /**
- * @function EpicGames_TitleStorageFileTransferRequest_CancelRequest
+ * @function eos_title_storage_file_transfer_request_cancel_request
  * @desc **Epic Online Services Function:** [EOS_TitleStorageFileTransferRequest_CancelRequest](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/TitleStorage/EOS_TitleStorageFileTransferRequest_CancelRequest/index.html)
  * 
  * This function attempts to cancel this file request in progress. This is a best-effort command and is not guaranteed to be successful if the request has completed before this function is called.
@@ -265,23 +265,23 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_TitleStorageFileTransferRequest_CancelRequest"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_title_storage_file_transfer_request_cancel_request"`
+ * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_TitleStorageFileTransferRequest_CancelRequest("myFile.txt");
+ * identifier = eos_title_storage_file_transfer_request_cancel_request("myFile.txt");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_TitleStorageFileTransferRequest_CancelRequest")
+ * if (async_load[? "type"] == "eos_title_storage_file_transfer_request_cancel_request")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -318,14 +318,14 @@
  * @section_func
  * @desc These functions are provided for handling title storage:
  * 
- * @ref EpicGames_TitleStorage_CopyFileMetadataAtIndex
- * @ref EpicGames_TitleStorage_CopyFileMetadataByFilename
- * @ref EpicGames_TitleStorage_DeleteCache
- * @ref EpicGames_TitleStorage_GetFileMetadataCount
- * @ref EpicGames_TitleStorage_QueryFile
- * @ref EpicGames_TitleStorage_QueryFileList
- * @ref EpicGames_TitleStorage_ReadFile
- * @ref EpicGames_TitleStorageFileTransferRequest_CancelRequest
+ * @ref eos_title_storage_copy_file_metadata_at_index
+ * @ref eos_title_storage_copy_file_metadata_by_filename
+ * @ref eos_title_storage_delete_cache
+ * @ref eos_title_storage_get_file_metadata_count
+ * @ref eos_title_storage_query_file
+ * @ref eos_title_storage_query_file_list
+ * @ref eos_title_storage_read_file
+ * @ref eos_title_storage_file_transfer_request_cancel_request
  * 
  * @section_end
  * 

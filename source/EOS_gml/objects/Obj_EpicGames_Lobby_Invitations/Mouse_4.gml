@@ -1,2 +1,2 @@
 
-EpicGames_Lobby_QueryInvites(userID)
+eos_lobby_query_invites(userID)

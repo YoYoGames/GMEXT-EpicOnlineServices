@@ -1,31 +1,31 @@
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {
-	case "EpicGames_Lobby_CreateLobby":
-		if(async_load[?"status"] == EpicGames_Success)
+	case "eos_lobby_create_lobby":
+		if(async_load[? "status"] == EOS_SUCCESS)
 		{
-			LobbyId = async_load[?"LobbyId"]
+			LobbyId = async_load[? "lobby_id"]
 			
-			request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
+			request_update_members()//eos_connect_query_product_user_id_mappings
 			
-			var RTCRoomName = EpicGames_Lobby_GetRTCRoomName(userID,LobbyId)
+			var RTCRoomName = eos_lobby_get_rtc_room_name(userID,LobbyId)
 			show_debug_message("RTCRoomName: " + RTCRoomName)
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 			instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
-			EpicGames_Lobby_UpdateLobbyModification(LobbyId,userID)
-			EpicGames_LobbyModification_AddAttribute(EOS_LobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType: EOS_AttributeType.STRING,Value: requestMyName + "'s Lobby"})
-			EpicGames_Lobby_UpdateLobby()
-			EpicGames_LobbyModification_Release()
+			eos_lobby_update_lobby_modification(LobbyId,userID)
+			eos_lobby_modification_add_attribute(EOS_LobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType: EOS_AttributeType.STRING,Value: requestMyName + "'s Lobby"})
+			eos_lobby_update_lobby()
+			eos_lobby_modification_release()
 		}
 	break
 	
-	case "EpicGames_Lobby_UpdateLobby":
+	case "eos_lobby_update_lobby":
 		
 	break
 	
-	case "EpicGames_Lobby_LeaveLobby":
-		if(async_load[?"status"] == EpicGames_Success)
+	case "eos_lobby_leave_lobby":
+		if(async_load[? "status"] == EOS_SUCCESS)
 		{
 			LobbyId = ""
 			
@@ -35,74 +35,74 @@ switch(async_load[?"type"])
 		}
 	break
 	
-	case "EpicGames_Lobby_JoinLobby":
-	case "EpicGames_Lobby_JoinLobbyById":
-		if(async_load[?"status"] == EpicGames_Success)
+	case "eos_lobby_join_lobby":
+	case "eos_lobby_join_lobby_by_id":
+		if(async_load[? "status"] == EOS_SUCCESS)
 		{
-	        LobbyId = async_load[?"LobbyId"]
+	        LobbyId = async_load[? "lobby_id"]
 			
-			request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
+			request_update_members()//eos_connect_query_product_user_id_mappings
 			
-			var RTCRoomName = EpicGames_Lobby_GetRTCRoomName(userID,LobbyId)
+			var RTCRoomName = eos_lobby_get_rtc_room_name(userID,LobbyId)
 			
 			show_debug_message("RTCRoomName: " + RTCRoomName)
 			
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 	        instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
-	        if(EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID) == EpicGames_Success)
+	        if(eos_lobby_copy_lobby_details_handle(LobbyId,userID) == EOS_SUCCESS)
 	        {
-				show_debug_message(EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname"))
+				show_debug_message(eos_lobby_details_copy_attribute_by_key("lobbyname"))
 				
-	            var count = EpicGames_LobbyDetails_GetMemberCount()
+	            var count = eos_lobby_details_get_member_count()
 				
 	            show_debug_message($"Joined, now setup P2P: {count}")
 	            for(var a = 0 ; a < count ; a++)
 	            {
-	                var user_id = EpicGames_LobbyDetails_GetMemberByIndex(a)
+	                var user_id = eos_lobby_details_get_member_by_index(a)
 					if(user_id != userID)
 					{
 		                var buff = buffer_create(256,buffer_fixed,1)
 		                buffer_write(buff,buffer_u8,1)
-		                EpicGames_P2P_SendPacket(buff,buffer_tell(buff),true,false,noone,userID,true,user_id,Obj_EpicGames_Lobbies_P2P.socketName)
+		                eos_p2_p_send_packet(buff,buffer_tell(buff),true,false,noone,userID,true,user_id,Obj_EpicGames_Lobbies_P2P.socketName)
 		                buffer_delete(buff)
 					}
 	            }
 				
-	            EpicGames_LobbyDetails_Release()
+	            eos_lobby_details_release()
 	        }
 		}
 
     break 
 	
-	case "EpicGames_Lobby_AddNotifyJoinLobbyAccepted":
+	case "eos_lobby_add_notify_join_lobby_accepted":
 	break
 	
-	case "EpicGames_Lobby_AddNotifyLeaveLobbyRequested":
+	case "eos_lobby_add_notify_leave_lobby_requested":
 	break
 	
-	case "EpicGames_Lobby_AddNotifyLobbyInviteAccepted":
+	case "eos_lobby_add_notify_lobby_invite_accepted":
 	
-		if(EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(async_load[?"InviteId"]) == EpicGames_Success)
+		if(eos_lobby_copy_lobby_details_handle_by_invite_id(async_load[? "invite_id"]) == EOS_SUCCESS)
 		{
-			EpicGames_Lobby_JoinLobby(userID,true,true,true,false,false,false,0/*EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL or EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO*/)
-			EpicGames_LobbyDetails_Release()
+			eos_lobby_join_lobby(userID,true,true,true,false,false,false,0/*EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL or EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO*/)
+			eos_lobby_details_release()
 		}
 		
 	break
 	
-	case "EpicGames_Lobby_AddNotifyLobbyInviteReceived":
+	case "eos_lobby_add_notify_lobby_invite_received":
 	break
 	
-	case "EpicGames_Lobby_AddNotifyLobbyInviteRejected":
-		EpicGames_Lobby_RejectInvite(async_load[?"InviteId"],userID)
+	case "eos_lobby_add_notify_lobby_invite_rejected":
+		eos_lobby_reject_invite(async_load[? "invite_id"],userID)
 	break
 	
-	case "EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived":
+	case "eos_lobby_add_notify_lobby_member_status_received":
 		
-		if(async_load[?"TargetUserId"] == userID)
+		if(async_load[? "target_user_id"] == userID)
 		{
-			switch(async_load[?"CurrentStatus"])
+			switch(async_load[? "current_status"])
 			{
 				case EOS_LobbyMemberStatus.DISCONNECTED:
 				case EOS_LobbyMemberStatus.CLOSED:
@@ -128,7 +128,7 @@ switch(async_load[?"type"])
 		}
 		else
 		{
-			switch(async_load[?"CurrentStatus"])
+			switch(async_load[? "current_status"])
 			{
 				case EOS_LobbyMemberStatus.JOINED:
 					request_update_members()
@@ -137,8 +137,8 @@ switch(async_load[?"type"])
 				case EOS_LobbyMemberStatus.DISCONNECTED:
 				case EOS_LobbyMemberStatus.KICKED:
 				case EOS_LobbyMemberStatus.LEFT:
-					request_update_members()//EpicGames_Connect_QueryProductUserIdMappings
-					Obj_EpicGames_P2P.disconnect(async_load[?"TargetUserId"])
+					request_update_members()//eos_connect_query_product_user_id_mappings
+					Obj_EpicGames_P2P.disconnect(async_load[? "target_user_id"])
 				break
 				
 				
@@ -148,11 +148,11 @@ switch(async_load[?"type"])
 	
 	break
 	
-	case "EpicGames_Connect_QueryProductUserIdMappings":
+	case "eos_connect_query_product_user_id_mappings":
 		
-		if(requestMyName == async_load[?"identifier"])
+		if(requestMyName == async_load[? "identifier"])
 		{
-			var _struct = EpicGames_Connect_CopyProductUserExternalAccountByIndex(userID,0)
+			var _struct = eos_connect_copy_product_user_external_account_by_index(userID,0)
 			requestMyName = _struct.DisplayName
 			
 			return
@@ -163,11 +163,11 @@ switch(async_load[?"type"])
 				
 		for(var b = 0 ; b < array_length(members_array) ; b++)
 		{
-			var count = EpicGames_Connect_GetProductUserExternalAccountCount(members_array[b])
+			var count = eos_connect_get_product_user_external_account_count(members_array[b])
 			
 			for(var a = 0 ; a < count ; a++)
 			{
-				_struct = EpicGames_Connect_CopyProductUserExternalAccountByIndex(members_array[b],a)
+				_struct = eos_connect_copy_product_user_external_account_by_index(members_array[b],a)
 				show_debug_message("_struct")
 				show_debug_message(_struct)
 				//{ status_message : "EOS_Success", status : 0, LastLoginTime : 1742492836, DisplayName : "jzavala93", AccountIdType : 0, AccountId : "36b64afd62f145688696ea77e7bc9280", userID : "0002aa1d3fc94d919daa174d8e3c4a27" }
@@ -179,46 +179,46 @@ switch(async_load[?"type"])
 		
 	break
 	
-	case "EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived":
+	case "eos_lobby_add_notify_lobby_member_update_received":
 	break
 	
-	case "EpicGames_Lobby_AddNotifyLobbyUpdateReceived":
+	case "eos_lobby_add_notify_lobby_update_received":
 	break
 	
-	case "EpicGames_Lobby_AddNotifyRTCRoomConnectionChanged":
+	case "eos_lobby_add_notify_rtc_room_connection_changed":
 	break
 	
-	case "EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested":
+	case "eos_lobby_add_notify_send_lobby_native_invite_requested":
 	break
 	
-	case "EpicGames_LobbySearch_Find":
+	case "eos_lobby_search_find":
 		
-		var count = EpicGames_LobbySearch_GetSearchResultCount()
+		var count = eos_lobby_search_get_search_result_count()
 		
 		if(count == 0)
 			show_message_async("No Lobbies Found")
 		
 		for(var a = 0 ; a < count ; a++)
 		{
-			EpicGames_LobbySearch_CopySearchResultByIndex(a)
-			var struct = EpicGames_LobbyDetails_CopyInfo()
-			var attribute = EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname")
-			EpicGames_LobbyDetails_Release()
+			eos_lobby_search_copy_search_result_by_index(a)
+			var struct = eos_lobby_details_copy_info()
+			var attribute = eos_lobby_details_copy_attribute_by_key("lobbyname")
+			eos_lobby_details_release()
 			
 			var ins = instance_create_depth(Obj_EpicGames_Lobbies_Search.x,Obj_EpicGames_Lobbies_Search.y+100+a*100,0,Obj_EpicGames_Lobby,struct)
 			ins.text = attribute.Value
 		}
-		EpicGames_LobbySearch_Release()
+		eos_lobby_search_release()
 		
 	break
 	
-	case "EpicGames_RTCAudio_AddNotifyParticipantUpdated":
+	case "eos_rtc_audio_add_notify_participant_updated":
 		
 		with(Obj_EpicGames_Lobby_Member)
-		if(async_load[?"ParticipantId"] == id.userID)
+		if(async_load[? "participant_id"] == id.userID)
 		{
-			Speaking = async_load[?"Speaking"]
-			AudioStatus = async_load[?"AudioStatus"]
+			Speaking = async_load[? "speaking"]
+			AudioStatus = async_load[? "audio_status"]
 		}
 		//LocalUserId
 		//RoomName
@@ -226,19 +226,19 @@ switch(async_load[?"type"])
 		
 	break
 	
-	case "EpicGames_Lobby_QueryInvites":
+	case "eos_lobby_query_invites":
 		
-		if(EpicGames_Lobby_GetInviteCount() == 0)
+		if(eos_lobby_get_invite_count() == 0)
 			show_message_async("No Invitations... :(")
 			
-		for(var a = 0 ; a < EpicGames_Lobby_GetInviteCount(userID) ; a++)
+		for(var a = 0 ; a < eos_lobby_get_invite_count(userID) ; a++)
 		{
-			var inviteId = EpicGames_Lobby_GetInviteIdByIndex(userID,a)
-			EpicGames_Lobby_CopyLobbyDetailsHandleByInviteId(inviteId)
+			var inviteId = eos_lobby_get_invite_id_by_index(userID,a)
+			eos_lobby_copy_lobby_details_handle_by_invite_id(inviteId)
 			
-			var struct = EpicGames_LobbyDetails_CopyInfo()
-			var attribute = EpicGames_LobbyDetails_CopyAttributeByKey("lobbyname")
-			EpicGames_LobbyDetails_Release()
+			var struct = eos_lobby_details_copy_info()
+			var attribute = eos_lobby_details_copy_attribute_by_key("lobbyname")
+			eos_lobby_details_release()
 			
 			var ins = instance_create_depth(Obj_EpicGames_Lobby_Invitations.x,Obj_EpicGames_Lobby_Invitations.y+100+a*100,0,Obj_EpicGames_Lobby,struct)
 			ins.text = attribute.Value

@@ -9,7 +9,7 @@
 #include <eos_reports.h>
 
 EOS_HReports HReports;
-void EpicGames_Reports_Init()
+void eos_reports_init()
 {
 	HReports = EOS_Platform_GetReportsInterface(PlatformHandle);
 }
@@ -17,7 +17,7 @@ void EpicGames_Reports_Init()
 void EOS_CALL SendPlayerBehaviorReportCallbackFn(const EOS_Reports_SendPlayerBehaviorReportCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Reports_SendPlayerBehaviorReport");
+	DsMapAddString(map, "type", "eos_reports_send_player_behavior_report");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -26,7 +26,7 @@ void EOS_CALL SendPlayerBehaviorReportCallbackFn(const EOS_Reports_SendPlayerBeh
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Reports_SendPlayerBehaviorReport(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_reports_send_player_behavior_report(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 

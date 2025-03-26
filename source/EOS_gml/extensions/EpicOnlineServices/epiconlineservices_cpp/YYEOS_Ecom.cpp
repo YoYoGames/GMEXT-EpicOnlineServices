@@ -44,7 +44,7 @@
 // EOS_Ecom_Transaction_CopyEntitlementByIndex
 
 EOS_HEcom HEcom;
-void EpicGames_Ecom_Init()
+void eos_ecom_init()
 {
 	HEcom = EOS_Platform_GetEcomInterface(PlatformHandle);
 }
@@ -52,7 +52,7 @@ void EpicGames_Ecom_Init()
 void EOS_CALL QueryOwnershipCallback(const EOS_Ecom_QueryOwnershipCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOwnership");
+	DsMapAddString(map, "type", "eos_ecom_query_ownership");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -80,14 +80,14 @@ void EOS_CALL QueryOwnershipCallback(const EOS_Ecom_QueryOwnershipCallbackInfo *
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_QueryOwnership(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_query_ownership(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryOwnership");
+	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership");
 	// arg2 optional
 
 	EOS_Ecom_QueryOwnershipOptions Options = {0};
@@ -114,7 +114,7 @@ YYEXPORT void EpicGames_Ecom_QueryOwnership(RValue &Result, CInstance *selfinst,
 void EOS_CALL QueryOwnershipBySandboxIdsCallback(const EOS_Ecom_QueryOwnershipBySandboxIdsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOwnershipBySandboxIds");
+	DsMapAddString(map, "type", "eos_ecom_query_ownership_by_sandbox_ids");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -153,14 +153,14 @@ void EOS_CALL QueryOwnershipBySandboxIdsCallback(const EOS_Ecom_QueryOwnershipBy
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_QueryOwnershipBySandboxIds(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_query_ownership_by_sandbox_ids(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryOwnershipBySandboxIds");
+	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership_by_sandbox_ids");
 
 	EOS_Ecom_QueryOwnershipBySandboxIdsOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_QUERYOWNERSHIPBYSANDBOXIDSOPTIONS_API_LATEST;
@@ -179,7 +179,7 @@ YYEXPORT void EpicGames_Ecom_QueryOwnershipBySandboxIds(RValue &Result, CInstanc
 void EOS_CALL QueryOwnershipTokenCallback(const EOS_Ecom_QueryOwnershipTokenCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOwnershipToken");
+	DsMapAddString(map, "type", "eos_ecom_query_ownership_token");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -191,14 +191,14 @@ void EOS_CALL QueryOwnershipTokenCallback(const EOS_Ecom_QueryOwnershipTokenCall
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_QueryOwnershipToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_query_ownership_token(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryOwnershipToken");
+	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership_token");
 	// arg2 oprtional
 
 	EOS_Ecom_QueryOwnershipTokenOptions Options = {0};
@@ -225,7 +225,7 @@ YYEXPORT void EpicGames_Ecom_QueryOwnershipToken(RValue &Result, CInstance *self
 void EOS_CALL OnQueryEntitlementsCallback(const EOS_Ecom_QueryEntitlementsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_QueryEntitlements");
+	DsMapAddString(map, "type", "eos_ecom_query_entitlements");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -236,14 +236,14 @@ void EOS_CALL OnQueryEntitlementsCallback(const EOS_Ecom_QueryEntitlementsCallba
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_QueryEntitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_query_entitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(3);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryEntitlements");
+	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_entitlements");
 	bool bIncludeRedeemed = YYGetBool(arg, 2);
 
 	EOS_Ecom_QueryEntitlementsOptions Options = {0};
@@ -265,7 +265,7 @@ YYEXPORT void EpicGames_Ecom_QueryEntitlements(RValue &Result, CInstance *selfin
 void EOS_CALL QueryEntitlementTokenCallback(const EOS_Ecom_QueryEntitlementTokenCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_QueryEntitlementToken");
+	DsMapAddString(map, "type", "eos_ecom_query_entitlement_token");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -277,14 +277,14 @@ void EOS_CALL QueryEntitlementTokenCallback(const EOS_Ecom_QueryEntitlementToken
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_QueryEntitlementToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_query_entitlement_token(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryEntitlementToken");
+	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_entitlement_token");
 
 	EOS_Ecom_QueryEntitlementTokenOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_QUERYENTITLEMENTTOKEN_API_LATEST;
@@ -302,7 +302,7 @@ YYEXPORT void EpicGames_Ecom_QueryEntitlementToken(RValue &Result, CInstance *se
 void EOS_CALL QueryOffersCallback(const EOS_Ecom_QueryOffersCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_QueryOffers");
+	DsMapAddString(map, "type", "eos_ecom_query_offers");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -313,7 +313,7 @@ void EOS_CALL QueryOffersCallback(const EOS_Ecom_QueryOffersCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_QueryOffers(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_query_offers(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -343,7 +343,7 @@ std::vector<EOS_Ecom_CheckoutEntry> entries = {};
 void EOS_CALL CheckoutCallback(const EOS_Ecom_CheckoutCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_Checkout");
+	DsMapAddString(map, "type", "eos_ecom_checkout");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -368,7 +368,7 @@ void EOS_CALL CheckoutCallback(const EOS_Ecom_CheckoutCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_Checkout(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_checkout(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -379,7 +379,7 @@ YYEXPORT void EpicGames_Ecom_Checkout(RValue &Result, CInstance *selfinst, CInst
 	EOS_Ecom_CheckoutOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_CHECKOUT_API_LATEST;
 
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_Checkout");
+	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_checkout");
 
 	entries.clear();
 
@@ -411,7 +411,7 @@ YYEXPORT void EpicGames_Ecom_Checkout(RValue &Result, CInstance *selfinst, CInst
 void EOS_CALL RedeemEntitlementsCallback(const EOS_Ecom_RedeemEntitlementsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Ecom_RedeemEntitlements");
+	DsMapAddString(map, "type", "eos_ecom_redeem_entitlements");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
@@ -423,14 +423,14 @@ void EOS_CALL RedeemEntitlementsCallback(const EOS_Ecom_RedeemEntitlementsCallba
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Ecom_RedeemEntitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_redeem_entitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_RedeemEntitlements");
+	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_redeem_entitlements");
 
 	EOS_Ecom_RedeemEntitlementsOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_REDEEMENTITLEMENTS_API_LATEST;
@@ -445,7 +445,7 @@ YYEXPORT void EpicGames_Ecom_RedeemEntitlements(RValue &Result, CInstance *selfi
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_Ecom_GetLastRedeemedEntitlementsCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_last_redeemed_entitlements_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -463,7 +463,7 @@ YYEXPORT void EpicGames_Ecom_GetLastRedeemedEntitlementsCount(RValue &Result, CI
 	Result.val = (double)count;
 }
 
-YYEXPORT void EpicGames_Ecom_CopyLastRedeemedEntitlementByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_last_redeemed_entitlement_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -484,7 +484,7 @@ YYEXPORT void EpicGames_Ecom_CopyLastRedeemedEntitlementByIndex(RValue &Result, 
 	YYCreateString(&Result, OutRedeemedEntitlementId);
 }
 
-YYEXPORT void EpicGames_Ecom_GetEntitlementsCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_entitlements_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -502,7 +502,7 @@ YYEXPORT void EpicGames_Ecom_GetEntitlementsCount(RValue &Result, CInstance *sel
 	Result.val = (double)count;
 }
 
-YYEXPORT void EpicGames_Ecom_GetEntitlementsByNameCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_entitlements_by_name_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -533,19 +533,19 @@ RValue EOS_Ecom_EntitlementToMap(EOS_Ecom_Entitlement *data, EOS_EResult result)
 	if (result != EOS_EResult::EOS_Success)
 		return Struct;
 
-	YYStructAddBool(&Struct, "Redeemed", data->bRedeemed);
-	YYStructAddString(&Struct, "CatalogItemId", data->CatalogItemId);
-	YYStructAddInt64(&Struct, "EndTimestamp", data->EndTimestamp);
-	YYStructAddString(&Struct, "EntitlementId", data->EntitlementId);
-	YYStructAddString(&Struct, "EntitlementName", data->EntitlementName);
-	YYStructAddDouble(&Struct, "ServerIndex", data->ServerIndex);
+	YYStructAddBool(&Struct, "redeemed", data->bRedeemed);
+	YYStructAddString(&Struct, "catalog_item_id", data->CatalogItemId);
+	YYStructAddInt64(&Struct, "end_timestamp", data->EndTimestamp);
+	YYStructAddString(&Struct, "entitlement_id", data->EntitlementId);
+	YYStructAddString(&Struct, "entitlement_name", data->EntitlementName);
+	YYStructAddDouble(&Struct, "server_index", data->ServerIndex);
 
 	EOS_Ecom_Entitlement_Release(data);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Ecom_CopyEntitlementByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_entitlement_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -568,7 +568,7 @@ YYEXPORT void EpicGames_Ecom_CopyEntitlementByIndex(RValue &Result, CInstance *s
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_CopyEntitlementByNameAndIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_entitlement_by_name_and_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -593,7 +593,7 @@ YYEXPORT void EpicGames_Ecom_CopyEntitlementByNameAndIndex(RValue &Result, CInst
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_CopyEntitlementById(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_entitlement_by_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -616,7 +616,7 @@ YYEXPORT void EpicGames_Ecom_CopyEntitlementById(RValue &Result, CInstance *self
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_GetOfferCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_offer_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -644,29 +644,29 @@ RValue EOS_Ecom_CatalogOfferToMap(EOS_Ecom_CatalogOffer *data, EOS_EResult resul
 	if (result != EOS_EResult::EOS_Success)
 		return Struct;
 
-	YYStructAddBool(&Struct, "bAvailableForPurchase", data->bAvailableForPurchase);
-	YYStructAddString(&Struct, "CatalogNamespace", data->CatalogNamespace);
-	YYStructAddString(&Struct, "CurrencyCode", data->CurrencyCode);
-	YYStructAddInt64(&Struct, "CurrentPrice64", data->CurrentPrice64);
-	YYStructAddDouble(&Struct, "DecimalPoint", data->DecimalPoint);
-	YYStructAddString(&Struct, "DescriptionText", data->DescriptionText);
-	YYStructAddDouble(&Struct, "DiscountPercentage", data->DiscountPercentage);
-	YYStructAddInt64(&Struct, "EffectiveDateTimestamp", data->EffectiveDateTimestamp);
-	YYStructAddString(&Struct, "Id", data->Id);
-	YYStructAddString(&Struct, "LongDescriptionText", data->LongDescriptionText);
-	YYStructAddInt64(&Struct, "OriginalPrice64", data->OriginalPrice64);
-	YYStructAddDouble(&Struct, "PriceResult", (double)data->PriceResult);
-	YYStructAddDouble(&Struct, "PurchaseLimit", data->PurchaseLimit);
-	YYStructAddInt64(&Struct, "ReleaseDateTimestamp", data->ReleaseDateTimestamp);
-	YYStructAddDouble(&Struct, "ServerIndex", data->ServerIndex);
-	YYStructAddString(&Struct, "TitleText", data->TitleText);
+	YYStructAddBool(&Struct, "available_for_purchase", data->bAvailableForPurchase);
+	YYStructAddString(&Struct, "catalog_namespace", data->CatalogNamespace);
+	YYStructAddString(&Struct, "currency_code", data->CurrencyCode);
+	YYStructAddInt64(&Struct, "current_price64", data->CurrentPrice64);
+	YYStructAddDouble(&Struct, "decimal_point", data->DecimalPoint);
+	YYStructAddString(&Struct, "description_text", data->DescriptionText);
+	YYStructAddDouble(&Struct, "discount_percentage", data->DiscountPercentage);
+	YYStructAddInt64(&Struct, "effective_date_timestamp", data->EffectiveDateTimestamp);
+	YYStructAddString(&Struct, "id", data->Id);
+	YYStructAddString(&Struct, "long_description_text", data->LongDescriptionText);
+	YYStructAddInt64(&Struct, "original_price64", data->OriginalPrice64);
+	YYStructAddDouble(&Struct, "price_result", (double)data->PriceResult);
+	YYStructAddDouble(&Struct, "purchase_limit", data->PurchaseLimit);
+	YYStructAddInt64(&Struct, "release_date_timestamp", data->ReleaseDateTimestamp);
+	YYStructAddDouble(&Struct, "server_index", data->ServerIndex);
+	YYStructAddString(&Struct, "title_text", data->TitleText);
 
 	EOS_Ecom_CatalogOffer_Release(data);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Ecom_CopyOfferByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_offer_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -689,7 +689,7 @@ YYEXPORT void EpicGames_Ecom_CopyOfferByIndex(RValue &Result, CInstance *selfins
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_CopyOfferById(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_offer_by_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -712,7 +712,7 @@ YYEXPORT void EpicGames_Ecom_CopyOfferById(RValue &Result, CInstance *selfinst, 
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_GetOfferItemCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_offer_item_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -743,24 +743,24 @@ RValue EOS_Ecom_CatalogItemToMap(EOS_Ecom_CatalogItem *data, EOS_EResult result)
 	if (result != EOS_EResult::EOS_Success)
 		return Struct;
 
-	/*YYStructAddBool(&Struct, "bAvailableForPurchase", data->ApiVersion);*/
-	YYStructAddString(&Struct, "CatalogNamespace", data->CatalogNamespace);
-	YYStructAddString(&Struct, "DescriptionText", data->DescriptionText);
-	YYStructAddString(&Struct, "DeveloperText", data->DeveloperText);
-	YYStructAddInt64(&Struct, "EntitlementEndTimestamp", data->EntitlementEndTimestamp);
-	YYStructAddString(&Struct, "EntitlementName", data->EntitlementName);
-	YYStructAddString(&Struct, "Id", data->Id);
-	YYStructAddDouble(&Struct, "ItemType", (double)data->ItemType);
-	YYStructAddString(&Struct, "LongDescriptionText", data->LongDescriptionText);
-	YYStructAddString(&Struct, "TechnicalDetailsText", data->TechnicalDetailsText);
-	YYStructAddString(&Struct, "TitleText", data->TitleText);
+	/*YYStructAddBool(&Struct, "available_for_purchase", data->ApiVersion);*/
+	YYStructAddString(&Struct, "catalog_namespace", data->CatalogNamespace);
+	YYStructAddString(&Struct, "description_text", data->DescriptionText);
+	YYStructAddString(&Struct, "developer_text", data->DeveloperText);
+	YYStructAddInt64(&Struct, "entitlement_end_timestamp", data->EntitlementEndTimestamp);
+	YYStructAddString(&Struct, "entitlement_name", data->EntitlementName);
+	YYStructAddString(&Struct, "id", data->Id);
+	YYStructAddDouble(&Struct, "item_type", (double)data->ItemType);
+	YYStructAddString(&Struct, "long_description_text", data->LongDescriptionText);
+	YYStructAddString(&Struct, "technical_details_text", data->TechnicalDetailsText);
+	YYStructAddString(&Struct, "title_text", data->TitleText);
 
 	EOS_Ecom_CatalogItem_Release(data);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Ecom_CopyOfferItemByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_offer_item_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -785,7 +785,7 @@ YYEXPORT void EpicGames_Ecom_CopyOfferItemByIndex(RValue &Result, CInstance *sel
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_CopyItemById(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_item_by_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -808,7 +808,7 @@ YYEXPORT void EpicGames_Ecom_CopyItemById(RValue &Result, CInstance *selfinst, C
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_GetOfferImageInfoCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_offer_image_info_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -839,17 +839,17 @@ RValue EOS_Ecom_KeyImageInfoToMap(EOS_Ecom_KeyImageInfo *data, EOS_EResult resul
 	if (result != EOS_EResult::EOS_Success)
 		return Struct;
 
-	YYStructAddDouble(&Struct, "Height", data->Height);
-	YYStructAddDouble(&Struct, "Width", data->Width);
-	YYStructAddString(&Struct, "Type", data->Type);
-	YYStructAddString(&Struct, "Url", data->Url);
+	YYStructAddDouble(&Struct, "height", data->Height);
+	YYStructAddDouble(&Struct, "width", data->Width);
+	YYStructAddString(&Struct, "type", data->Type);
+	YYStructAddString(&Struct, "url", data->Url);
 
 	EOS_Ecom_KeyImageInfo_Release(data);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Ecom_CopyOfferImageInfoByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_offer_image_info_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -874,7 +874,7 @@ YYEXPORT void EpicGames_Ecom_CopyOfferImageInfoByIndex(RValue &Result, CInstance
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_GetItemImageInfoCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_item_image_info_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -894,7 +894,7 @@ YYEXPORT void EpicGames_Ecom_GetItemImageInfoCount(RValue &Result, CInstance *se
 	Result.val = (double)count;
 }
 
-YYEXPORT void EpicGames_Ecom_CopyItemImageInfoByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_item_image_info_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -919,7 +919,7 @@ YYEXPORT void EpicGames_Ecom_CopyItemImageInfoByIndex(RValue &Result, CInstance 
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_GetItemReleaseCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_item_release_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -961,7 +961,7 @@ RValue EOS_Ecom_CatalogReleaseToMap(EOS_Ecom_CatalogRelease *data, EOS_EResult r
 		SET_RValue(&_array, &_value, NULL, i);
 	}
 
-	YYStructAddRValue(&Struct, "CompatibleAppIds", &_array);
+	YYStructAddRValue(&Struct, "compatible_app_ids", &_array);
 
 	RValue __array = {0};
 	YYCreateArray(&__array);
@@ -974,16 +974,16 @@ RValue EOS_Ecom_CatalogReleaseToMap(EOS_Ecom_CatalogRelease *data, EOS_EResult r
 		SET_RValue(&__array, &_value, NULL, i);
 	}
 
-	YYStructAddRValue(&Struct, "CompatiblePlatforms", &__array);
+	YYStructAddRValue(&Struct, "compatible_platforms", &__array);
 
-	YYStructAddString(&Struct, "ReleaseNote", data->ReleaseNote);
+	YYStructAddString(&Struct, "release_note", data->ReleaseNote);
 
 	EOS_Ecom_CatalogRelease_Release(data);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Ecom_CopyItemReleaseByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_copy_item_release_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -1008,7 +1008,7 @@ YYEXPORT void EpicGames_Ecom_CopyItemReleaseByIndex(RValue &Result, CInstance *s
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_GetTransactionCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_get_transaction_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -1026,7 +1026,7 @@ YYEXPORT void EpicGames_Ecom_GetTransactionCount(RValue &Result, CInstance *self
 	Result.val = (double)count;
 }
 
-// YYEXPORT void EpicGames_Ecom_CopyTransactionByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+// YYEXPORT void eos_ecom_copy_transaction_by_index(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 //{
 //	EOS_Ecom_CopyTransactionByIndexOptions Options = { 0 };
 //	Options.ApiVersion = EOS_ECOM_COPYTRANSACTIONBYINDEX_API_LATEST;
@@ -1037,7 +1037,7 @@ YYEXPORT void EpicGames_Ecom_GetTransactionCount(RValue &Result, CInstance *self
 //	EOS_Ecom_CopyTransactionByIndex(HEcom, &Options, &OutTransaction);
 // }
 //
-// YYEXPORT void EpicGames_Ecom_CopyTransactionById(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+// YYEXPORT void eos_ecom_copy_transaction_by_id(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 //{
 //	EOS_Ecom_CopyTransactionByIdOptions Options = { 0 };
 //	Options.ApiVersion = EOS_ECOM_COPYTRANSACTIONBYID_API_LATEST;
@@ -1048,7 +1048,7 @@ YYEXPORT void EpicGames_Ecom_GetTransactionCount(RValue &Result, CInstance *self
 //	EOS_Ecom_CopyTransactionById(HEcom, &Options, &OutTransaction);
 // }
 
-YYEXPORT void EpicGames_Ecom_Transaction_GetTransactionIdByIndexTransaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_transaction_get_transaction_id_by_index_transaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_string;
 
@@ -1075,7 +1075,7 @@ YYEXPORT void EpicGames_Ecom_Transaction_GetTransactionIdByIndexTransaction(RVal
 }
 
 // No Sense....
-// YYEXPORT void EpicGames_Ecom_Transaction_GetTransactionIdByIdTransaction(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+// YYEXPORT void eos_ecom_transaction_get_transaction_id_by_id_transaction(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 //{
 //	const char* user = YYGetString(arg, 0);
 //	const char* TransactionId = YYGetString(arg, 1);
@@ -1097,7 +1097,7 @@ YYEXPORT void EpicGames_Ecom_Transaction_GetTransactionIdByIndexTransaction(RVal
 //	EOS_Ecom_Transaction_Release(OutTransaction);
 // }
 
-YYEXPORT void EpicGames_Ecom_Transaction_GetEntitlementsCountByIndexTransaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_transaction_get_entitlements_count_by_index_transaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -1123,7 +1123,7 @@ YYEXPORT void EpicGames_Ecom_Transaction_GetEntitlementsCountByIndexTransaction(
 	Result.val = (double)count;
 }
 
-YYEXPORT void EpicGames_Ecom_Transaction_GetEntitlementsCountByIdTransaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_transaction_get_entitlements_count_by_id_transaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -1148,7 +1148,7 @@ YYEXPORT void EpicGames_Ecom_Transaction_GetEntitlementsCountByIdTransaction(RVa
 	Result.val = (double)count;
 }
 
-YYEXPORT void EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIndexTransaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_transaction_copy_entitlement_by_index_by_index_transaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -1179,7 +1179,7 @@ YYEXPORT void EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIndexTransactio
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Ecom_Transaction_CopyEntitlementByIndexByIdTransaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ecom_transaction_copy_entitlement_by_index_by_id_transaction(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 

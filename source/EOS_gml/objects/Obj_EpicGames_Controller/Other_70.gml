@@ -1,9 +1,9 @@
 
 show_debug_message("Async: " + json_encode(async_load))
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {
-	case "EpicGames_Auth_Logout":
+	case "eos_auth_logout":
 		
 		AccountID = ""
 		userID = ""
@@ -11,32 +11,32 @@ switch(async_load[?"type"])
 		
 	break
 	
-	case "EpicGames_Auth_LinkAccount":
-	case "EpicGames_Auth_Login":
+	case "eos_auth_link_account":
+	case "eos_auth_login":
 		
-		switch(async_load[?"status"])
+		switch(async_load[? "status"])
 		{
-			case EpicGames_Success:
+			case EOS_SUCCESS:
 			
 				alarm[0] = RefreshPeriod_AccountID
 		
-				AccountID = async_load[?"AccountID"]
+				AccountID = async_load[? "account_i_d"]
 				
-				var AuthToken = EpicGames_Auth_CopyUserAuthToken(AccountID)
-				EpicGames_Connect_Login(EpicGames_ECT_EPIC,AuthToken.AccessToken,"")
+				var AuthToken = eos_auth_copy_user_auth_token(AccountID)
+				eos_connect_login(EOS_ECT_EPIC,AuthToken.AccessToken,"")
 				
 				if(!instance_number(Obj_EpicGames_Metrics))
 					instance_create_depth(0,0,0,Obj_EpicGames_Metrics)
 				
 			break
 			
-			case EpicGames_InvalidUser:
+			case EOS_INVALID_USER:
 				
-				EpicGames_Auth_LinkAccount(AccountID,EpicGames_LA_NoFlags)
+				eos_auth_link_account(AccountID,EOS_LA_NO_FLAGS)
 				
 			break
 			
-			case EpicGames_Auth_MFARequired:
+			case EOS_AUTH_M_F_A_REQUIRED:
 			
 				request_MFA = get_string_async("token","")
 
@@ -45,40 +45,40 @@ switch(async_load[?"type"])
 		
 	break
 
-	case "EpicGames_Connect_Login":
-	case "EpicGames_Connect_CreateUser":
+	case "eos_connect_login":
+	case "eos_connect_create_user":
 	
-		switch(async_load[?"status"])
+		switch(async_load[? "status"])
 		{
-			case EpicGames_Success:
+			case EOS_SUCCESS:
 				
-				userID = async_load[?"LocalUserId"]
+				userID = async_load[? "local_user_id"]
 				
 			break
 			
-			case EpicGames_InvalidUser:
-				EpicGames_Connect_CreateUser()
+			case EOS_INVALID_USER:
+				eos_connect_create_user()
 			break
 		}
 		
 	break
 	
-	case "EpicGames_Auth_AddNotifyLoginStatusChanged":
+	case "eos_auth_add_notify_login_status_changed":
 	break
 	
-	case "EpicGames_Connect_AddNotifyAuthExpiration":
+	case "eos_connect_add_notify_auth_expiration":
 	break
 	
-	case "EpicGames_Connect_AddNotifyLoginStatusChanged":
+	case "eos_connect_add_notify_login_status_changed":
 	break
 	
-	case "EpicGames_Friends_AddNotifyFriendsUpdate":
+	case "eos_friends_add_notify_friends_update":
 	break
 	
-	case "EpicGames_Achievements_AddNotifyAchievementsUnlockedV2":
+	case "eos_achievements_add_notify_achievements_unlocked_v2":
 	break
 	
-	case "EpicGames_UI_AddNotifyDisplaySettingsUpdated":
+	case "eos_ui_add_notify_display_settings_updated":
 	break
 	
 }

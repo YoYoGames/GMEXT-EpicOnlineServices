@@ -1,4 +1,4 @@
 
-EpicGames_Achievements_QueryDefinitions(userID)
+eos_achievements_query_definitions(userID)
 
-//show_debug_message("Notify: " + string(EpicGames_Achievements_AddNotifyAchievementsUnlockedV2()))
+//show_debug_message("Notify: " + string(eos_achievements_add_notify_achievements_unlocked_v2()))

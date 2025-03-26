@@ -1,3 +1,3 @@
 
 show_debug_message("mAccountID: " + mAccountID)
-request = EpicGames_UserInfo_QueryUserInfo(mAccountID,"")
+request = eos_user_info_query_user_info(mAccountID,"")

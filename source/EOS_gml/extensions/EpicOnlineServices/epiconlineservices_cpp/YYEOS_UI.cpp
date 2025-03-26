@@ -16,7 +16,7 @@
 #include <eos_ui.h>
 
 EOS_HUI HUI;
-void EpicGames_UI_Init()
+void eos_ui_init()
 {
 	HUI = EOS_Platform_GetUIInterface(PlatformHandle);
 }
@@ -39,13 +39,13 @@ void AcknowledgeEventId(EOS_UI_EventId JoinUiEvent, EOS_EResult Result)
 void EOS_CALL OnDisplaySettingsUpdated(const EOS_UI_OnDisplaySettingsUpdatedCallbackInfo *UpdatedData)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_UI_AddNotifyDisplaySettingsUpdated");
-	DsMapAddDouble(map, "bIsExclusiveInput", UpdatedData->bIsExclusiveInput ? 1.0 : 0.0);
-	DsMapAddDouble(map, "bIsVisible", UpdatedData->bIsVisible);
+	DsMapAddString(map, "type", "eos_ui_add_notify_display_settings_updated");
+	DsMapAddDouble(map, "is_exclusive_input", UpdatedData->bIsExclusiveInput ? 1.0 : 0.0);
+	DsMapAddDouble(map, "is_visible", UpdatedData->bIsVisible);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void EpicGames_UI_AddNotifyDisplaySettingsUpdated(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_add_notify_display_settings_updated(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int64;
 
@@ -58,7 +58,7 @@ YYEXPORT void EpicGames_UI_AddNotifyDisplaySettingsUpdated(RValue &Result, CInst
 	Result.v64 = static_cast<int64_t>(DisplayUpdateNotificationId);
 }
 
-YYEXPORT void EpicGames_UI_GetFriendsVisible(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_get_friends_visible(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -74,7 +74,7 @@ YYEXPORT void EpicGames_UI_GetFriendsVisible(RValue &Result, CInstance *selfinst
 	Result.val = EOS_UI_GetFriendsVisible(HUI, &Options);
 }
 
-YYEXPORT void EpicGames_UI_GetNotificationLocationPreference(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_get_notification_location_preference(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -82,7 +82,7 @@ YYEXPORT void EpicGames_UI_GetNotificationLocationPreference(RValue &Result, CIn
 	Result.val = (double)EOS_UI_GetNotificationLocationPreference(HUI);
 }
 
-YYEXPORT void EpicGames_UI_GetToggleFriendsKey(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_get_toggle_friends_key(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -105,7 +105,7 @@ void EOS_CALL HideFriends(const EOS_UI_HideFriendsCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_UI_HideFriends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_hide_friends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -125,7 +125,7 @@ YYEXPORT void EpicGames_UI_HideFriends(RValue &Result, CInstance *selfinst, CIns
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_UI_IsValidKeyCombination(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_is_valid_key_combination(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -137,7 +137,7 @@ YYEXPORT void EpicGames_UI_IsValidKeyCombination(RValue &Result, CInstance *self
 	Result.val = EOS_UI_IsValidKeyCombination(HUI, (EOS_UI_EKeyCombination)keycombination);
 }
 
-YYEXPORT void EpicGames_UI_RemoveNotifyDisplaySettingsUpdated(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_remove_notify_display_settings_updated(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -148,7 +148,7 @@ YYEXPORT void EpicGames_UI_RemoveNotifyDisplaySettingsUpdated(RValue &Result, CI
 	EOS_UI_RemoveNotifyDisplaySettingsUpdated(HUI, DisplayUpdateNotificationId);
 }
 
-YYEXPORT void EpicGames_UI_SetDisplayPreference(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_set_display_preference(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -165,7 +165,7 @@ YYEXPORT void EpicGames_UI_SetDisplayPreference(RValue &Result, CInstance *selfi
 	return_EOS_EResult(&Result, result);
 }
 
-YYEXPORT void EpicGames_UI_SetToggleFriendsKey(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_set_toggle_friends_key(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -185,7 +185,7 @@ YYEXPORT void EpicGames_UI_SetToggleFriendsKey(RValue &Result, CInstance *selfin
 void EOS_CALL ShowFriendsCallbackFn(const EOS_UI_ShowFriendsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_UI_ShowFriends");
+	DsMapAddString(map, "type", "eos_ui_show_friends");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -194,7 +194,7 @@ void EOS_CALL ShowFriendsCallbackFn(const EOS_UI_ShowFriendsCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_UI_ShowFriends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_ui_show_friends(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 

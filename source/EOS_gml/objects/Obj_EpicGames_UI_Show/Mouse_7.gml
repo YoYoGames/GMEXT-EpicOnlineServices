@@ -1,3 +1,3 @@
 
 if(!locked)
-	EpicGames_UI_ShowFriends(AccountID)
+	eos_ui_show_friends(AccountID)

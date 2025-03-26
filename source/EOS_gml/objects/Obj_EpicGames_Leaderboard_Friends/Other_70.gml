@@ -1,13 +1,13 @@
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {	
-	case "EpicGames_Leaderboards_QueryLeaderboardUserScores":
+	case "eos_leaderboards_query_leaderboard_user_scores":
 		
-		var count = EpicGames_Leaderboards_GetLeaderboardUserScoreCount("Leaderboard_Stat")
+		var count = eos_leaderboards_get_leaderboard_user_score_count("Leaderboard_Stat")
 		show_debug_message($"count: {count}")
 		for(var a = 0 ; a < count ; a++)
 		{
-			var struct = EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(a,"Leaderboard_Stat")
+			var struct = eos_leaderboards_copy_leaderboard_user_score_by_index(a,"Leaderboard_Stat")
 			
 			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Rank_Friend)
 			
@@ -52,32 +52,32 @@ switch(async_load[?"type"])
 		
 	break
 	
-	case "EpicGames_Friends_QueryFriends":
+	case "eos_friends_query_friends":
 		
 		with(Obj_EpicGames_Leaderboard_Definition)
 			instance_destroy()
 		
-		if(async_load[?"status"] == EpicGames_Success)
+		if(async_load[? "status"] == EOS_SUCCESS)
 		{
-			var count = EpicGames_Friends_GetFriendsCount(AccountID)
+			var count = eos_friends_get_friends_count(AccountID)
 			for(var a = 0 ; a < count ; a ++)
 			{
-				var Friend_AccountID = EpicGames_Friends_GetFriendAtIndex(AccountID,a)
+				var Friend_AccountID = eos_friends_get_friend_at_index(AccountID,a)
 				struct_set(friends,Friend_AccountID,"")
 			}
 			
 			var friends_account_ids = struct_get_names(friends)
-			EpicGames_Connect_QueryExternalAccountMappings(userID,0,friends_account_ids)
+			eos_connect_query_external_account_mappings(userID,0,friends_account_ids)
 		}
 	break
 		
-	case "EpicGames_Connect_QueryExternalAccountMappings":
+	case "eos_connect_query_external_account_mappings":
 			
 		var friends_account_ids = struct_get_names(friends)
 		var friends_user_ids = []
 		for(var a = 0 ; a < array_length(friends_account_ids) ; a++)
 		{
-			var user_id = EpicGames_Connect_GetExternalAccountMapping(userID,friends_account_ids[a],0)
+			var user_id = eos_connect_get_external_account_mapping(userID,friends_account_ids[a],0)
 			struct_set(friends,friends_account_ids[a],user_id)
 			friends_user_ids[a] = user_id
 		}
@@ -89,7 +89,7 @@ switch(async_load[?"type"])
 		show_debug_message($"friends: {friends}" )
 		
 		show_debug_message([userID,"",friends_user_ids,[{StatName: StatSelected, Aggregation: AgregationSeleted}],0,0])
-		EpicGames_Leaderboards_QueryLeaderboardUserScores(userID,"",friends_user_ids,[{StatName: StatSelected, Aggregation: AgregationSeleted}],0,0)
+		eos_leaderboards_query_leaderboard_user_scores(userID,"",friends_user_ids,[{StatName: StatSelected, Aggregation: AgregationSeleted}],0,0)
 		
 	break
 }

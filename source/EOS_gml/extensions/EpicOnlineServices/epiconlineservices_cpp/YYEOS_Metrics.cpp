@@ -10,13 +10,13 @@
 #include <eos_metrics.h>
 
 EOS_HMetrics HMetrics;
-void EpicGames_Metrics_Init()
+void eos_metrics_init()
 {
 	HMetrics = EOS_Platform_GetMetricsInterface(PlatformHandle);
 }
 
 
-YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_metrics_begin_player_session(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -44,7 +44,7 @@ YYEXPORT void EpicGames_Metrics_BeginPlayerSession(RValue& Result, CInstance* se
 	return_EOS_EResult(&Result,EpicResult);
 }
 
-YYEXPORT void EpicGames_Metrics_EndPlayerSession(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_metrics_end_player_session(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
 	eos_not_init_return_rvalue_bool;
 

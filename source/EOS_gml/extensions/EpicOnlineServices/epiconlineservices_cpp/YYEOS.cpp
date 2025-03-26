@@ -123,7 +123,7 @@
 
 	//////////////////////// NO INTERFACE FUNCTIONS:
 
-	YYEXPORT void EpicGames_EpicAccountId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_epic_account_id_is_valid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 
@@ -135,7 +135,7 @@
 		Result.val = EOS_EpicAccountId_IsValid(EOS_EpicAccountId_FromString(accountId));;
 	}
 
-	YYEXPORT void EpicGames_GetVersion(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_get_version(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_string;
 
@@ -143,7 +143,7 @@
 		YYCreateString(&Result, EOS_GetVersion());
 	}
 
-	YYEXPORT void EpicGames_Logging_SetLogLevel(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_logging_set_log_level(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 
@@ -158,7 +158,7 @@
 		Result.val = true;
 	}
 
-	YYEXPORT void EpicGames_ProductUserId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_product_user_id_is_valid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 
@@ -170,14 +170,14 @@
 		Result.val = EOS_ProductUserId_IsValid(EOS_ProductUserId_FromString(mProductUserId));
 	}
 
-	YYEXPORT void EpicGames_Shutdown(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_shutdown(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_bool;
 
 		return_EOS_EResult(&Result, EOS_Shutdown());
 	}
 
-	YYEXPORT void EpicGames_Result_ToString(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_result_to_string(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
 		eos_not_init_return_rvalue_string;
 

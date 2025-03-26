@@ -2,39 +2,39 @@
 event_inherited();
 
 mDisplayName = ""
-requestMyName = EpicGames_Connect_QueryProductUserIdMappings(userID,[userID])
+requestMyName = eos_connect_query_product_user_id_mappings(userID,[userID])
 
 text = "Lobby"
 
 LobbyId = ""
 
-notifyJoinLobbyAccepted = EpicGames_Lobby_AddNotifyJoinLobbyAccepted()
-notifyLeaveLobbyRequested = EpicGames_Lobby_AddNotifyLeaveLobbyRequested()
-notifyLobbyInviteAccepted = EpicGames_Lobby_AddNotifyLobbyInviteAccepted()
-notifyLobbyInviteReceived = EpicGames_Lobby_AddNotifyLobbyInviteReceived()
-notifyLobbyInviteRejected = EpicGames_Lobby_AddNotifyLobbyInviteRejected()
-notifyLobbyMemberStatusReceived = EpicGames_Lobby_AddNotifyLobbyMemberStatusReceived()
-notifyLobbyMemberUpdateReceived = EpicGames_Lobby_AddNotifyLobbyMemberUpdateReceived()
-notifyLobbyUpdateReceived = EpicGames_Lobby_AddNotifyLobbyUpdateReceived()
-notifyRTCRoomConnectionChanged = EpicGames_Lobby_AddNotifyRTCRoomConnectionChanged()
-notifySendLobbyNativeInviteRequested = EpicGames_Lobby_AddNotifySendLobbyNativeInviteRequested()
+notifyJoinLobbyAccepted = eos_lobby_add_notify_join_lobby_accepted()
+notifyLeaveLobbyRequested = eos_lobby_add_notify_leave_lobby_requested()
+notifyLobbyInviteAccepted = eos_lobby_add_notify_lobby_invite_accepted()
+notifyLobbyInviteReceived = eos_lobby_add_notify_lobby_invite_received()
+notifyLobbyInviteRejected = eos_lobby_add_notify_lobby_invite_rejected()
+notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_received()
+notifyLobbyMemberUpdateReceived = eos_lobby_add_notify_lobby_member_update_received()
+notifyLobbyUpdateReceived = eos_lobby_add_notify_lobby_update_received()
+notifyRTCRoomConnectionChanged = eos_lobby_add_notify_rtc_room_connection_changed()
+notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_invite_requested()
 
 function request_update_members()
 {
-	if(EpicGames_Lobby_CopyLobbyDetailsHandle(LobbyId,userID) == EpicGames_Success)
+	if(eos_lobby_copy_lobby_details_handle(LobbyId,userID) == EOS_SUCCESS)
 	{
 		/*var*/ members_array = []
-		var member_count = EpicGames_LobbyDetails_GetMemberCount()
+		var member_count = eos_lobby_details_get_member_count()
 		for(var a = 0 ; a < member_count ; a++)
 		{
-			var user = EpicGames_LobbyDetails_GetMemberByIndex(a)
+			var user = eos_lobby_details_get_member_by_index(a)
 			array_push(members_array,user)
 		}
 		
-		EpicGames_LobbyDetails_Release()
+		eos_lobby_details_release()
 			
 		show_debug_message(members_array)
-		EpicGames_Connect_QueryProductUserIdMappings(userID,members_array)
+		eos_connect_query_product_user_id_mappings(userID,members_array)
 	}
 }
 

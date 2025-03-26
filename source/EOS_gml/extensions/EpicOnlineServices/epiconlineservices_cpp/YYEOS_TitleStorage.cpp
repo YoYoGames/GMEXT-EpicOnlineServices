@@ -29,7 +29,7 @@
 const size_t MaxChunkSize = 4096;
 
 EOS_HTitleStorage HTitleStorage;
-void EpicGames_TitleStorage_Init()
+void eos_title_storage_init()
 {
 	HTitleStorage = EOS_Platform_GetTitleStorageInterface(PlatformHandle);
 }
@@ -44,10 +44,10 @@ RValue FileMetadataToStruct(EOS_TitleStorage_FileMetadata *file, EOS_EResult res
 
 	if (result == EOS_EResult::EOS_Success)
 	{
-		YYStructAddString(&Struct, "Filename", file->Filename);
-		YYStructAddDouble(&Struct, "Size", file->FileSizeBytes);
-		YYStructAddString(&Struct, "MD5Hash", file->MD5Hash);
-		YYStructAddDouble(&Struct, "SizeUnencrypted", file->UnencryptedDataSizeBytes);
+		YYStructAddString(&Struct, "filename", file->Filename);
+		YYStructAddDouble(&Struct, "size", file->FileSizeBytes);
+		YYStructAddString(&Struct, "m_d5_hash", file->MD5Hash);
+		YYStructAddDouble(&Struct, "size_unencrypted", file->UnencryptedDataSizeBytes);
 	}
 
 	EOS_TitleStorage_FileMetadata_Release(file);
@@ -55,7 +55,7 @@ RValue FileMetadataToStruct(EOS_TitleStorage_FileMetadata *file, EOS_EResult res
 	return Struct;
 }
 
-YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataAtIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_copy_file_metadata_at_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -78,7 +78,7 @@ YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataAtIndex(RValue &Result, CIn
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataByFilename(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_copy_file_metadata_by_filename(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -104,7 +104,7 @@ YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataByFilename(RValue &Result, 
 void EOS_CALL DeleteCache(const EOS_TitleStorage_DeleteCacheCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_TitleStorage_DeleteCache");
+	DsMapAddString(map, "type", "eos_title_storage_delete_cache");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -113,7 +113,7 @@ void EOS_CALL DeleteCache(const EOS_TitleStorage_DeleteCacheCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_TitleStorage_DeleteCache(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_delete_cache(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -133,7 +133,7 @@ YYEXPORT void EpicGames_TitleStorage_DeleteCache(RValue &Result, CInstance *self
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_TitleStorage_GetFileMetadataCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_get_file_metadata_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -152,7 +152,7 @@ YYEXPORT void EpicGames_TitleStorage_GetFileMetadataCount(RValue &Result, CInsta
 void EOS_CALL QueryFile(const EOS_TitleStorage_QueryFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_TitleStorage_QueryFile");
+	DsMapAddString(map, "type", "eos_title_storage_query_file");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -161,7 +161,7 @@ void EOS_CALL QueryFile(const EOS_TitleStorage_QueryFileCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_TitleStorage_QueryFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_query_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -186,7 +186,7 @@ YYEXPORT void EpicGames_TitleStorage_QueryFile(RValue &Result, CInstance *selfin
 void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_TitleStorage_QueryFileList");
+	DsMapAddString(map, "type", "eos_title_storage_query_file_list");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -195,7 +195,7 @@ void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo *da
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_query_file_list(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -211,7 +211,7 @@ YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue &Result, CInstance *se
 	else if (KIND_RValue(&arg[1]) == VALUE_ARRAY)
 	{
 
-		auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_TitleStorage_QueryFileList");
+		auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_title_storage_query_file_list");
 		for (const auto &e : vec)
 		{
 			Tags.push_back(e);
@@ -310,11 +310,11 @@ EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_Rea
 void EOS_CALL OnFileReceived(const EOS_TitleStorage_ReadFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_TitleStorage_ReadFile_OnFileReceived");
+	DsMapAddString(map, "type", "eos_title_storage_read_file_on_file_received");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "Filename", data->Filename);
+	DsMapAddString(map, "filename", data->Filename);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -338,15 +338,15 @@ EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_TitleStorage_
 void EOS_CALL OnFileTransferProgressUpdated(const EOS_TitleStorage_FileTransferProgressCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_TitleStorage_ReadFile_OnFileTransferProgressUpdated");
-	DsMapAddString(map, "Filename", data->Filename);
+	DsMapAddString(map, "type", "eos_title_storage_read_file_on_file_transfer_progress_updated");
+	DsMapAddString(map, "filename", data->Filename);
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddInt64(map, "BytesTransferred", data->BytesTransferred);
-	DsMapAddInt64(map, "TotalFileSizeBytes", data->TotalFileSizeBytes);
+	DsMapAddInt64(map, "bytes_transferred", data->BytesTransferred);
+	DsMapAddInt64(map, "total_file_size_bytes", data->TotalFileSizeBytes);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void EpicGames_TitleStorage_ReadFile(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_read_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -377,7 +377,7 @@ YYEXPORT void EpicGames_TitleStorage_ReadFile(RValue &Result, CInstance *selfins
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_TitleStorageFileTransferRequest_CancelRequest(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_file_transfer_request_cancel_request(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -389,7 +389,7 @@ YYEXPORT void EpicGames_TitleStorageFileTransferRequest_CancelRequest(RValue &Re
 	EOS_TitleStorageFileTransferRequest_CancelRequest(Transfer.handler);
 }
 
-// YYEXPORT void EpicGames_TitleStorageFileTransferRequest_GetFilename(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+// YYEXPORT void eos_title_storage_file_transfer_request_get_filename(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 //{
 //	const char* file = YYGetString(arg, 0);
 //	auto Iter = TransfersInProgress.find(stringToWstring(file));
@@ -398,7 +398,7 @@ YYEXPORT void EpicGames_TitleStorageFileTransferRequest_CancelRequest(RValue &Re
 //	//EOS_TitleStorageFileTransferRequest_GetFilename(Handle, );
 // }
 
-YYEXPORT void EpicGames_TitleStorageFileTransferRequest_GetFileRequestState(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_file_transfer_request_get_file_request_state(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	// const char* file = YYGetString(arg, 0);
 	// auto Iter = TransfersInProgress.find(stringToWstring(file));

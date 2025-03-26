@@ -1,2 +1,2 @@
 
-EpicGames_RTC_JoinRoom()
+eos_rtc_join_room()

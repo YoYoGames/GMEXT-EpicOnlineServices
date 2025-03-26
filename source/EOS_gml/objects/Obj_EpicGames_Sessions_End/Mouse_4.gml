@@ -1,2 +1,2 @@
 
-EpicGames_Sessions_EndSession(Obj_EpicGames_Session.SessionName)
+eos_sessions_end_session(Obj_EpicGames_Session.SessionName)

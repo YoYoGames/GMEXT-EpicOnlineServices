@@ -33,7 +33,7 @@
 #include "YYEpicOnlineServices.h"
 
 EOS_HConnect HConnect;
-void EpicGames_Connect_Init()
+void eos_connect_init()
 {
 	HConnect = EOS_Platform_GetConnectInterface(PlatformHandle);
 }
@@ -41,12 +41,12 @@ void EpicGames_Connect_Init()
 void EOS_CALL ConnectAuthExpirationCb(const EOS_Connect_AuthExpirationCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_AddNotifyAuthExpiration");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "type", "eos_connect_add_notify_auth_expiration");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void EpicGames_Connect_AddNotifyAuthExpiration(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_add_notify_auth_expiration(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int64;
 
@@ -62,13 +62,13 @@ void EOS_CALL AddNotifyLoginStatusChangedCallback(const EOS_Connect_LoginStatusC
 {
 
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_AddNotifyLoginStatusChanged");
-	DsMapAddDouble(map, "CurrentStatus", (double)data->CurrentStatus);
-	DsMapAddDouble(map, "PreviousStatus", (double)data->PreviousStatus);
+	DsMapAddString(map, "type", "eos_connect_add_notify_login_status_changed");
+	DsMapAddDouble(map, "current_status", (double)data->CurrentStatus);
+	DsMapAddDouble(map, "previous_status", (double)data->PreviousStatus);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void EpicGames_Connect_AddNotifyLoginStatusChanged(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_add_notify_login_status_changed(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int64;
 
@@ -81,7 +81,7 @@ YYEXPORT void EpicGames_Connect_AddNotifyLoginStatusChanged(RValue &Result, CIns
 	Result.v64 = static_cast<int64_t>(id);
 }
 
-YYEXPORT void EpicGames_Connect_CopyIdToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_copy_id_token(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -110,10 +110,10 @@ YYEXPORT void EpicGames_Connect_CopyIdToken(RValue &Result, CInstance *selfinst,
 	}
 
 	if (IdToken->JsonWebToken)
-		YYStructAddString(&Struct, "JsonWebToken", IdToken->JsonWebToken);
+		YYStructAddString(&Struct, "json_web_token", IdToken->JsonWebToken);
 
 	if (IdToken->ProductUserId)
-		YYStructAddString(&Struct, "ProductUserId", productID_toString(IdToken->ProductUserId));
+		YYStructAddString(&Struct, "product_user_id", productID_toString(IdToken->ProductUserId));
 
 	EOS_Connect_IdToken_Release(IdToken);
 
@@ -134,29 +134,29 @@ RValue ExternalAccountInfoToStuct(EOS_Connect_ExternalAccountInfo *ExternalAccou
 		return Struct;
 
 	if (ExternalAccountInfo->DisplayName)
-		YYStructAddString(&Struct, "DisplayName", ExternalAccountInfo->DisplayName);
+		YYStructAddString(&Struct, "display_name", ExternalAccountInfo->DisplayName);
 
 	if (ExternalAccountInfo->LastLoginTime)
-		YYStructAddInt64(&Struct, "LastLoginTime", ExternalAccountInfo->LastLoginTime);
+		YYStructAddInt64(&Struct, "last_login_time", ExternalAccountInfo->LastLoginTime);
 
 	if (ExternalAccountInfo->ProductUserId)
-		YYStructAddString(&Struct, "userID", productID_toString(ExternalAccountInfo->ProductUserId));
+		YYStructAddString(&Struct, "user_i_d", productID_toString(ExternalAccountInfo->ProductUserId));
 
 	if (ExternalAccountInfo->AccountId)
-		YYStructAddString(&Struct, "AccountId", ExternalAccountInfo->AccountId);
+		YYStructAddString(&Struct, "account_id", ExternalAccountInfo->AccountId);
 
 	// if (ExternalAccountInfo->AccountIdType)
-	YYStructAddDouble(&Struct, "AccountIdType", (double)ExternalAccountInfo->AccountIdType);
+	YYStructAddDouble(&Struct, "account_id_type", (double)ExternalAccountInfo->AccountIdType);
 
 	if (ExternalAccountInfo->LastLoginTime)
-		YYStructAddInt64(&Struct, "LastLoginTime", ExternalAccountInfo->LastLoginTime);
+		YYStructAddInt64(&Struct, "last_login_time", ExternalAccountInfo->LastLoginTime);
 
 	EOS_Connect_ExternalAccountInfo_Release(ExternalAccountInfo);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountId(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_copy_product_user_external_account_by_account_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -179,7 +179,7 @@ YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountId(RValue
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountType(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_copy_product_user_external_account_by_account_type(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -202,7 +202,7 @@ YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByAccountType(RVal
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_copy_product_user_external_account_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -225,7 +225,7 @@ YYEXPORT void EpicGames_Connect_CopyProductUserExternalAccountByIndex(RValue &Re
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Connect_CopyProductUserInfo(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_copy_product_user_info(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_struct;
 
@@ -249,7 +249,7 @@ YYEXPORT void EpicGames_Connect_CopyProductUserInfo(RValue &Result, CInstance *s
 void EOS_CALL CreateDeviceIdCallback(const EOS_Connect_CreateDeviceIdCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_CreateDeviceId");
+	DsMapAddString(map, "type", "eos_connect_create_device_id");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -258,7 +258,7 @@ void EOS_CALL CreateDeviceIdCallback(const EOS_Connect_CreateDeviceIdCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_CreateDeviceId(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_create_device_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -281,17 +281,17 @@ YYEXPORT void EpicGames_Connect_CreateDeviceId(RValue &Result, CInstance *selfin
 void EOS_CALL ConnectCreateUserCompleteCb(const EOS_Connect_CreateUserCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_CreateUser");
+	DsMapAddString(map, "type", "eos_connect_create_user");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_CreateUser(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_create_user(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -317,7 +317,7 @@ YYEXPORT void EpicGames_Connect_CreateUser(RValue &Result, CInstance *selfinst, 
 void EOS_CALL DeleteCreateUserCompleteCb(const EOS_Connect_DeleteDeviceIdCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_CreateUser");
+	DsMapAddString(map, "type", "eos_connect_create_user");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -326,7 +326,7 @@ void EOS_CALL DeleteCreateUserCompleteCb(const EOS_Connect_DeleteDeviceIdCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_DeleteDeviceId(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_delete_device_id(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -342,7 +342,7 @@ YYEXPORT void EpicGames_Connect_DeleteDeviceId(RValue &Result, CInstance *selfin
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_get_external_account_mapping(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_string
 
@@ -362,7 +362,7 @@ YYEXPORT void EpicGames_Connect_GetExternalAccountMapping(RValue &Result, CInsta
 	YYCreateString(&Result, productID_toString(NewMapping));
 }
 
-YYEXPORT void EpicGames_Connect_GetLoggedInUserByIndex(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_get_logged_in_user_by_index(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -372,14 +372,14 @@ YYEXPORT void EpicGames_Connect_GetLoggedInUserByIndex(RValue &Result, CInstance
 	EOS_ProductUserId ProductUserId = EOS_Connect_GetLoggedInUserByIndex(HConnect, index);
 }
 
-YYEXPORT void EpicGames_Connect_GetLoggedInUsersCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_get_logged_in_users_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
 	uint32_t NumAccounts = EOS_Connect_GetLoggedInUsersCount(HConnect);
 }
 
-YYEXPORT void EpicGames_Connect_GetLoginStatus(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_get_login_status(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -389,7 +389,7 @@ YYEXPORT void EpicGames_Connect_GetLoginStatus(RValue &Result, CInstance *selfin
 	EOS_ELoginStatus LoginStatus = EOS_Connect_GetLoginStatus(HConnect, EOS_ProductUserId_FromString(user));
 }
 
-YYEXPORT void EpicGames_Connect_GetProductUserExternalAccountCount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_get_product_user_external_account_count(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_int32;
 
@@ -405,7 +405,7 @@ YYEXPORT void EpicGames_Connect_GetProductUserExternalAccountCount(RValue &Resul
 	Result.v32 = EOS_Connect_GetProductUserExternalAccountCount(HConnect, &Options);
 }
 
-YYEXPORT void EpicGames_Connect_GetProductUserIdMapping(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_get_product_user_id_mapping(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -428,7 +428,7 @@ YYEXPORT void EpicGames_Connect_GetProductUserIdMapping(RValue &Result, CInstanc
 void EOS_CALL LinkAccount(const EOS_Connect_LinkAccountCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_LinkAccount");
+	DsMapAddString(map, "type", "eos_connect_link_account");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -437,7 +437,7 @@ void EOS_CALL LinkAccount(const EOS_Connect_LinkAccountCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_LinkAccount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_link_account(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -461,7 +461,7 @@ YYEXPORT void EpicGames_Connect_LinkAccount(RValue &Result, CInstance *selfinst,
 void EOS_CALL ConnectLoginCompleteCb(const EOS_Connect_LoginCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_Login");
+	DsMapAddString(map, "type", "eos_connect_login");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -475,7 +475,7 @@ void EOS_CALL ConnectLoginCompleteCb(const EOS_Connect_LoginCallbackInfo *data)
 		int32_t TempBufferSize = sizeof(TempBuffer);
 		EOS_EResult Result = EOS_ProductUserId_ToString(data->LocalUserId, TempBuffer, &TempBufferSize);
 
-		DsMapAddString(map, "LocalUserId", TempBuffer);
+		DsMapAddString(map, "local_user_id", TempBuffer);
 	}
 
 	g_pYYRunnerInterface->CreateAsyncEventWithDSMap(map, 70);
@@ -483,7 +483,7 @@ void EOS_CALL ConnectLoginCompleteCb(const EOS_Connect_LoginCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_Login(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_login(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -521,7 +521,7 @@ YYEXPORT void EpicGames_Connect_Login(RValue &Result, CInstance *selfinst, CInst
 void EOS_CALL OnQueryExternalAccountMappingsCallback(const EOS_Connect_QueryExternalAccountMappingsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_QueryExternalAccountMappings");
+	DsMapAddString(map, "type", "eos_connect_query_external_account_mappings");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -530,7 +530,7 @@ void EOS_CALL OnQueryExternalAccountMappingsCallback(const EOS_Connect_QueryExte
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real
 
@@ -538,7 +538,7 @@ YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue &Result, CIn
 	int accountIdType = (int)YYGetReal(arg, 1);
 
 	// if (KIND_RValue(&arg[2]) == VALUE_ARRAY) {
-	std::vector<const char *> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Connect_QueryExternalAccountMappings");
+	std::vector<const char *> vec_Users = _SW_GetArrayOfStrings(arg, 2, "eos_connect_query_external_account_mappings");
 	//}
 
 	EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
@@ -562,7 +562,7 @@ YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue &Result, CIn
 void EOS_CALL OnQueryAccountMappingsCallback(const EOS_Connect_QueryProductUserIdMappingsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_QueryProductUserIdMappings");
+	DsMapAddString(map, "type", "eos_connect_query_product_user_id_mappings");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -571,13 +571,13 @@ void EOS_CALL OnQueryAccountMappingsCallback(const EOS_Connect_QueryProductUserI
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_QueryProductUserIdMappings(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_query_product_user_id_mappings(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
-	std::cout << "EXT EpicGames_Connect_QueryProductUserIdMappings" << std::endl;
+	std::cout << "EXT eos_connect_query_product_user_id_mappings" << std::endl;
 	eos_not_init_return_rvalue_real
 
 		const char *user = YYGetString(arg, 0);
-	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 1, "EpicGames_Connect_QueryProductUserIdMappings");
+	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 1, "eos_connect_query_product_user_id_mappings");
 
 	EOS_Connect_QueryProductUserIdMappingsOptions QueryOptions = {};
 	QueryOptions.ApiVersion = EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST;
@@ -596,7 +596,7 @@ YYEXPORT void EpicGames_Connect_QueryProductUserIdMappings(RValue &Result, CInst
 	Result.val = (double)mcallback->identifier;
 }
 
-YYEXPORT void EpicGames_Connect_RemoveNotifyAuthExpiration(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_remove_notify_auth_expiration(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -606,7 +606,7 @@ YYEXPORT void EpicGames_Connect_RemoveNotifyAuthExpiration(RValue &Result, CInst
 	EOS_Connect_RemoveNotifyAuthExpiration(HConnect, ConnectAuthExpirationId);
 }
 
-YYEXPORT void EpicGames_Connect_RemoveNotifyLoginStatusChanged(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_remove_notify_login_status_changed(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_bool;
 
@@ -619,7 +619,7 @@ YYEXPORT void EpicGames_Connect_RemoveNotifyLoginStatusChanged(RValue &Result, C
 void EOS_CALL TransferDeviceIdAccount(const EOS_Connect_TransferDeviceIdAccountCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_TransferDeviceIdAccount");
+	DsMapAddString(map, "type", "eos_connect_transfer_device_id_account");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -628,7 +628,7 @@ void EOS_CALL TransferDeviceIdAccount(const EOS_Connect_TransferDeviceIdAccountC
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_TransferDeviceIdAccount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_transfer_device_id_account(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -655,7 +655,7 @@ YYEXPORT void EpicGames_Connect_TransferDeviceIdAccount(RValue &Result, CInstanc
 void EOS_CALL UnlinkAccount(const EOS_Connect_UnlinkAccountCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_UnlinkAccount");
+	DsMapAddString(map, "type", "eos_connect_unlink_account");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
@@ -664,7 +664,7 @@ void EOS_CALL UnlinkAccount(const EOS_Connect_UnlinkAccountCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_UnlinkAccount(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_unlink_account(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 
@@ -687,20 +687,20 @@ YYEXPORT void EpicGames_Connect_UnlinkAccount(RValue &Result, CInstance *selfins
 void EOS_CALL VerifyIdToken(const EOS_Connect_VerifyIdTokenCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_Connect_VerifyIdToken");
+	DsMapAddString(map, "type", "eos_connect_verify_id_token");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "AccountId", data->AccountId);
-	DsMapAddDouble(map, "AccountIdType", (double)data->AccountIdType);
-	DsMapAddBool(map, "bIsAccountInfoPresent", data->bIsAccountInfoPresent);
-	// DsMapAddDouble(map, "DeviceType", (double)data->DeviceType);
+	DsMapAddString(map, "account_id", data->AccountId);
+	DsMapAddDouble(map, "account_id_type", (double)data->AccountIdType);
+	DsMapAddBool(map, "is_account_info_present", data->bIsAccountInfoPresent);
+	// DsMapAddDouble(map, "device_type", (double)data->DeviceType);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Connect_VerifyIdToken(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_connect_verify_id_token(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real;
 

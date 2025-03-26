@@ -3,11 +3,11 @@ event_inherited();
 
 text = "Sessions"
 
-notifyJoinSessionAccepted = EpicGames_Sessions_AddNotifyJoinSessionAccepted()
-notifyLeaveSessionRequested = EpicGames_Sessions_AddNotifyLeaveSessionRequested()
-notifySendSessionNativeInviteRequested = EpicGames_Sessions_AddNotifySendSessionNativeInviteRequested()
-notifySessionInviteAccepted = EpicGames_Sessions_AddNotifySessionInviteAccepted()
-notifySessionInviteReceived = EpicGames_Sessions_AddNotifySessionInviteReceived()
-notifySessionInviteRejected = EpicGames_Sessions_AddNotifySessionInviteRejected()
+notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted()
+notifyLeaveSessionRequested = eos_sessions_add_notify_leave_session_requested()
+notifySendSessionNativeInviteRequested = eos_sessions_add_notify_send_session_native_invite_requested()
+notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted()
+notifySessionInviteReceived = eos_sessions_add_notify_session_invite_received()
+notifySessionInviteRejected = eos_sessions_add_notify_session_invite_rejected()
 
 SessionName = "mySession"

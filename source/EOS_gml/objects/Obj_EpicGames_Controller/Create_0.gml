@@ -14,16 +14,16 @@ Connect_NotifyLoginStatusChanged = noone
 
 request_MFA = noone
 
-NotifyID_Auth_LoginStatusChanged = EpicGames_Auth_AddNotifyLoginStatusChanged()
-NotifyID_Connect_AuthExpiration= EpicGames_Connect_AddNotifyAuthExpiration()
-NotifyID_Connect_LoginStatusChanged = EpicGames_Connect_AddNotifyLoginStatusChanged()
-NotifyID_Friends = EpicGames_Friends_AddNotifyFriendsUpdate()
-NotifyID_Achievements_UnlockedV2 = EpicGames_Achievements_AddNotifyAchievementsUnlockedV2()
-NotifyID_UI_DisplaySettingsUpdated = EpicGames_UI_AddNotifyDisplaySettingsUpdated()
+NotifyID_Auth_LoginStatusChanged = eos_auth_add_notify_login_status_changed()
+NotifyID_Connect_AuthExpiration= eos_connect_add_notify_auth_expiration()
+NotifyID_Connect_LoginStatusChanged = eos_connect_add_notify_login_status_changed()
+NotifyID_Friends = eos_friends_add_notify_friends_update()
+NotifyID_Achievements_UnlockedV2 = eos_achievements_add_notify_achievements_unlocked_v2()
+NotifyID_UI_DisplaySettingsUpdated = eos_ui_add_notify_display_settings_updated()
 
-EpicGames_Auth_Login(
-		EpicGames_LCT_PersistentAuth,
-		EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence,
+eos_auth_login(
+		EOS_LCT_PERSISTENT_AUTH,
+		EOS_AS_BASIC_PROFILE | EOS_AS_FRIENDS_LIST | EOS_AS_PRESENCE,
 		"",
 		"",
 		noone

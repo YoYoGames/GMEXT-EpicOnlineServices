@@ -50,12 +50,12 @@ inline void FillSocketId(EOS_P2P_SocketId &SocketId, const char *socketName)
 }
 
 EOS_HP2P HP2P;
-void EpicGames_P2P_Init()
+void eos_p2_p_init()
 {
 	HP2P = EOS_Platform_GetP2PInterface(PlatformHandle);
 }
 
-func double EpicGames_P2P_AcceptConnection(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2_p_accept_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -73,16 +73,16 @@ func double EpicGames_P2P_AcceptConnection(char *LocalUserId, char *RemoteUserId
 void EOS_CALL P2P_OnIncomingPacketQueueFullCallback(const EOS_P2P_OnIncomingPacketQueueFullInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyIncomingPacketQueueFull");
-	DsMapAddDouble(map, "OverflowPacketChannel", (double)data->OverflowPacketChannel);
-	DsMapAddString(map, "OverflowPacketLocalUserId", productID_toString(data->OverflowPacketLocalUserId));
-	DsMapAddDouble(map, "OverflowPacketSizeBytes", (double)data->OverflowPacketSizeBytes);
-	DsMapAddDouble(map, "PacketQueueCurrentSizeBytes", (double)data->PacketQueueCurrentSizeBytes);
-	DsMapAddDouble(map, "PacketQueueMaxSizeBytes", (double)data->PacketQueueMaxSizeBytes);
+	DsMapAddString(map, "type", "eos_p2_p_add_notify_incoming_packet_queue_full");
+	DsMapAddDouble(map, "overflow_packet_channel", (double)data->OverflowPacketChannel);
+	DsMapAddString(map, "overflow_packet_local_user_id", productID_toString(data->OverflowPacketLocalUserId));
+	DsMapAddDouble(map, "overflow_packet_size_bytes", (double)data->OverflowPacketSizeBytes);
+	DsMapAddDouble(map, "packet_queue_current_size_bytes", (double)data->PacketQueueCurrentSizeBytes);
+	DsMapAddDouble(map, "packet_queue_max_size_bytes", (double)data->PacketQueueMaxSizeBytes);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_P2P_AddNotifyIncomingPacketQueueFull(char *buff_ret)
+func double __eos_p2_p_add_notify_incoming_packet_queue_full(char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -101,15 +101,15 @@ func double SDKEpicGames_P2P_AddNotifyIncomingPacketQueueFull(char *buff_ret)
 void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnectionClosedInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionClosed");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddDouble(map, "Reason", (double)data->Reason);
-	DsMapAddString(map, "RemoteUserId", productID_toString(data->RemoteUserId));
-	DsMapAddString(map, "SocketName", data->SocketId->SocketName);
+	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_closed");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddDouble(map, "reason", (double)data->Reason);
+	DsMapAddString(map, "remote_user_id", productID_toString(data->RemoteUserId));
+	DsMapAddString(map, "socket_name", data->SocketId->SocketName);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_P2P_AddNotifyPeerConnectionClosed(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2_p_add_notify_peer_connection_closed(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -132,17 +132,17 @@ func double SDKEpicGames_P2P_AddNotifyPeerConnectionClosed(char *LocalUserId, ch
 void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnectionEstablishedInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionEstablished");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_established");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddDouble(map, "status", (double)data->ConnectionType);
-	DsMapAddDouble(map, "ConnectionType", (double)data->ConnectionType);
-	DsMapAddDouble(map, "NetworkType", (double)data->NetworkType);
-	DsMapAddString(map, "SocketId", data->SocketId->SocketName);
-	DsMapAddString(map, "RemoteUserId", productID_toString(data->RemoteUserId));
+	DsMapAddDouble(map, "connection_type", (double)data->ConnectionType);
+	DsMapAddDouble(map, "network_type", (double)data->NetworkType);
+	DsMapAddString(map, "socket_id", data->SocketId->SocketName);
+	DsMapAddString(map, "remote_user_id", productID_toString(data->RemoteUserId));
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2_p_add_notify_peer_connection_established(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -165,14 +165,14 @@ func double SDKEpicGames_P2P_AddNotifyPeerConnectionEstablished(char *LocalUserI
 void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnectionInterruptedInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionInterrupted");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "RemoteUserId", productID_toString(data->RemoteUserId));
-	DsMapAddString(map, "SocketName", data->SocketId->SocketName);
+	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_interrupted");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "remote_user_id", productID_toString(data->RemoteUserId));
+	DsMapAddString(map, "socket_name", data->SocketId->SocketName);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2_p_add_notify_peer_connection_interrupted(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -195,14 +195,14 @@ func double SDKEpicGames_P2P_AddNotifyPeerConnectionInterrupted(char *LocalUserI
 void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingConnectionRequestInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "EpicGames_P2P_AddNotifyPeerConnectionRequest");
-	DsMapAddString(map, "LocalUserId", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "RemoteUserId", productID_toString(data->RemoteUserId));
-	DsMapAddString(map, "SocketName", data->SocketId->SocketName);
+	DsMapAddString(map, "type", "eos_p2_p_add_notify_peer_connection_request");
+	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+	DsMapAddString(map, "remote_user_id", productID_toString(data->RemoteUserId));
+	DsMapAddString(map, "socket_name", data->SocketId->SocketName);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double SDKEpicGames_P2P_AddNotifyPeerConnectionRequest(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2_p_add_notify_peer_connection_request(char *LocalUserId, char *SocketName, char *buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -222,7 +222,7 @@ func double SDKEpicGames_P2P_AddNotifyPeerConnectionRequest(char *LocalUserId, c
 	return 0.0;
 }
 
-func double EpicGames_P2P_ClearPacketQueue(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2_p_clear_packet_queue(char *LocalUserId, char *RemoteUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -237,7 +237,7 @@ func double EpicGames_P2P_ClearPacketQueue(char *LocalUserId, char *RemoteUserId
 	return (double)EOS_P2P_ClearPacketQueue(HP2P, &Options);
 }
 
-func double EpicGames_P2P_CloseConnection(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2_p_close_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -252,7 +252,7 @@ func double EpicGames_P2P_CloseConnection(char *LocalUserId, char *RemoteUserId,
 	return (double)EOS_P2P_CloseConnection(HP2P, &Options);
 }
 
-func double EpicGames_P2P_CloseConnections(char *LocalUserId, char *SocketName)
+func double eos_p2_p_close_connections(char *LocalUserId, char *SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -265,7 +265,7 @@ func double EpicGames_P2P_CloseConnections(char *LocalUserId, char *SocketName)
 	return (double)EOS_P2P_CloseConnections(HP2P, &Options);
 }
 
-func double EpicGames_P2P_GetNATType()
+func double eos_p2_p_get_n_a_t_type()
 {
 	eos_not_init_return(-1);
 
@@ -279,7 +279,7 @@ func double EpicGames_P2P_GetNATType()
 	return (double)OutNATType;
 }
 
-func double EpicGames_P2P_GetNextReceivedPacketSize(char *LocalUserId)
+func double eos_p2_p_get_next_received_packet_size(char *LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -295,7 +295,7 @@ func double EpicGames_P2P_GetNextReceivedPacketSize(char *LocalUserId)
 	return (double)(int32_t)OutPacketSizeBytes;
 }
 
-func double SDKEpicGames_P2P_GetPacketQueueInfo(char *buff_ret)
+func double __eos_p2_p_get_packet_queue_info(char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -325,7 +325,7 @@ func double SDKEpicGames_P2P_GetPacketQueueInfo(char *buff_ret)
 	return 0.0;
 }
 
-func double SDKEpicGames_P2P_GetPortRange(char *buff_ret)
+func double __eos_p2_p_get_port_range(char *buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -351,7 +351,7 @@ func double SDKEpicGames_P2P_GetPortRange(char *buff_ret)
 	return 0.0;
 }
 
-func double EpicGames_P2P_GetRelayControl()
+func double eos_p2_p_get_relay_control()
 {
 	eos_not_init_return(-1);
 
@@ -379,13 +379,13 @@ void EOS_CALL P2P_OnQueryNATTypeCompleteCallback(const EOS_P2P_OnQueryNATTypeCom
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddDouble(map, "NATType", (double)data->NATType);
+	DsMapAddDouble(map, "n_a_t_type", (double)data->NATType);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double EpicGames_P2P_QueryNATType()
+func double eos_p2_p_query_n_a_t_type()
 {
 	eos_not_init_return(-1);
 
@@ -399,7 +399,7 @@ func double EpicGames_P2P_QueryNATType()
 	return mcallback->identifier;
 }
 
-func double SDKEpicGames_P2P_ReceivePacket(char *buff_ret, char *LocalUserId, double MaxDataSizeBytes, double RequestedChannel)
+func double __eos_p2_p_receive_packet(char *buff_ret, char *LocalUserId, double MaxDataSizeBytes, double RequestedChannel)
 {
 	eos_not_init_return(-1);
 
@@ -430,7 +430,7 @@ func double SDKEpicGames_P2P_ReceivePacket(char *buff_ret, char *LocalUserId, do
 	}
 }
 
-func double SDKEpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(char *buff_args)
+func double __eos_p2_p_remove_notify_incoming_packet_queue_full(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -441,7 +441,7 @@ func double SDKEpicGames_P2P_RemoveNotifyIncomingPacketQueueFull(char *buff_args
 	return 0.0;
 }
 
-func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionClosed(char *buff_args)
+func double __eos_p2_p_remove_notify_peer_connection_closed(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -452,7 +452,7 @@ func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionClosed(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionEstablished(char *buff_args)
+func double __eos_p2_p_remove_notify_peer_connection_established(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -463,7 +463,7 @@ func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionEstablished(char *buff_ar
 	return 0.0;
 }
 
-func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(char *buff_args)
+func double __eos_p2_p_remove_notify_peer_connection_interrupted(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -474,7 +474,7 @@ func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionInterrupted(char *buff_ar
 	return 0.0;
 }
 
-func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionRequest(char *buff_args)
+func double __eos_p2_p_remove_notify_peer_connection_request(char *buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -485,7 +485,7 @@ func double SDKEpicGames_P2P_RemoveNotifyPeerConnectionRequest(char *buff_args)
 	return 0.0;
 }
 
-func double SDKEpicGames_P2P_SendPacket(char *buff_args, char *buff_data, double len)
+func double __eos_p2_p_send_packet(char *buff_args, char *buff_data, double len)
 {
 	eos_not_init_return(-1);
 
@@ -511,7 +511,7 @@ func double SDKEpicGames_P2P_SendPacket(char *buff_args, char *buff_data, double
 	return result;
 }
 
-func double EpicGames_P2P_SetPacketQueueSize(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
+func double eos_p2_p_set_packet_queue_size(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
 {
 	eos_not_init_return(-1);
 
@@ -523,7 +523,7 @@ func double EpicGames_P2P_SetPacketQueueSize(double IncomingPacketQueueMaxSizeBy
 	return (double)EOS_P2P_SetPacketQueueSize(HP2P, &Options);
 }
 
-func double EpicGames_P2P_SetPortRange(double Port, double MaxAdditionalPortsToTry)
+func double eos_p2_p_set_port_range(double Port, double MaxAdditionalPortsToTry)
 {
 	eos_not_init_return(-1);
 
@@ -535,7 +535,7 @@ func double EpicGames_P2P_SetPortRange(double Port, double MaxAdditionalPortsToT
 	return (double)EOS_P2P_SetPortRange(HP2P, &Options);
 }
 
-func double EpicGames_P2P_SetRelayControl(double RelayControl)
+func double eos_p2_p_set_relay_control(double RelayControl)
 {
 	eos_not_init_return(-1);
 

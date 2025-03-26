@@ -21,11 +21,11 @@ selected = false
 image_xscale = 0.2
 image_yscale = 0.2
 
-//show_debug_message("Count: " + string(EpicGames_Ecom_GetOfferImageInfoCount(AccountID,Id)))
+//show_debug_message("Count: " + string(eos_ecom_get_offer_image_info_count(AccountID,Id)))
 			
-for(var  j = 0 ; j < EpicGames_Ecom_GetOfferImageInfoCount(AccountID,Id) ; j++)
+for(var  j = 0 ; j < eos_ecom_get_offer_image_info_count(AccountID,Id) ; j++)
 {
-	var struct = EpicGames_Ecom_CopyOfferImageInfoByIndex(AccountID,Id,j)
+	var struct = eos_ecom_copy_offer_image_info_by_index(AccountID,Id,j)
 	//{ Url : "", status_message : "", status : , Height : , Width : , Type : "OfferImageWide" }
 
 	//OfferImageWide
@@ -39,4 +39,4 @@ for(var  j = 0 ; j < EpicGames_Ecom_GetOfferImageInfoCount(AccountID,Id) ; j++)
 
 }
 
-//show_debug_message("Count: " + string(EpicGames_Ecom_GetItemImageInfoCount(AccountID,offer.Id)))
+//show_debug_message("Count: " + string(eos_ecom_get_item_image_info_count(AccountID,offer.Id)))
