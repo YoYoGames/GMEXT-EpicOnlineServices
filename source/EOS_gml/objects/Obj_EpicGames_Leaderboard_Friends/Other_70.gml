@@ -8,9 +8,8 @@ switch(async_load[? "type"])
 		for(var a = 0 ; a < count ; a++)
 		{
 			var struct = eos_leaderboards_copy_leaderboard_user_score_by_index(a,"Leaderboard_Stat")
-			
-			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Rank_Friend)
-			
+			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Rank_Friend,struct)
+			show_debug_message("CREATED: " + struct.user_id)
 			//array_length(user_id,)
 			
 			if(variable_struct_exists(struct,"user_id"))
@@ -36,7 +35,7 @@ switch(async_load[? "type"])
 			var index = 0
 			with(Obj_EpicGames_Leaderboard_Rank_Friend)
 			{
-				scores[index] = score
+				scores[index] = id.score
 				index ++
 			}
 			
@@ -44,9 +43,9 @@ switch(async_load[? "type"])
 			
 			with(Obj_EpicGames_Leaderboard_Rank_Friend)
 			{
-				rank = array_get_index(scores,score)
+				rank = array_get_index(scores,id.score)+1
 				
-				y = 300+rank*80
+				y = 100+rank*80
 			}			
 		}
 		
