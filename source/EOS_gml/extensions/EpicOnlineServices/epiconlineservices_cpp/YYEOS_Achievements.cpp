@@ -88,10 +88,10 @@ RValue EOS_Achievements_DefinitionV2ToMap(EOS_Achievements_DefinitionV2* Achieve
 		YYStructAddString(&Struct, "flavor_text", AchievementDef->FlavorText);
 
 	if (AchievementDef->UnlockedIconURL)
-		YYStructAddString(&Struct, "unlocked_icon_u_r_l", AchievementDef->UnlockedIconURL);
+		YYStructAddString(&Struct, "unlocked_icon_url", AchievementDef->UnlockedIconURL);
 
 	if (AchievementDef->LockedIconURL)
-		YYStructAddString(&Struct, "locked_icon_u_r_l", AchievementDef->LockedIconURL);
+		YYStructAddString(&Struct, "locked_icon_url", AchievementDef->LockedIconURL);
 
 	for (uint32_t StatIndex = 0; StatIndex < AchievementDef->StatThresholdsCount; ++StatIndex)
 	{
@@ -112,7 +112,7 @@ YYEXPORT void eos_achievements_copy_achievement_definition_v2_by_achievement_id(
 
 	eos_ensure_argc(1);
 
-	const char* AchievementId = YYGetString(arg, 0);
+	constchar* AchievementId = YYGetString(arg, 0);
 
 	EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions CopyOptions = {};
 	CopyOptions.ApiVersion = EOS_ACHIEVEMENTS_COPYDEFINITIONV2BYACHIEVEMENTID_API_LATEST;
@@ -179,7 +179,7 @@ RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef
 		YYStructAddString(&Struct, "flavor_text", AchievementDef->FlavorText);
 
 	if (AchievementDef->IconURL)
-		YYStructAddString(&Struct, "icon_u_r_l", AchievementDef->IconURL);
+		YYStructAddString(&Struct, "icon_url", AchievementDef->IconURL);
 
 	if (AchievementDef->Progress)
 		YYStructAddDouble(&Struct, "progress", AchievementDef->Progress);
@@ -220,9 +220,9 @@ YYEXPORT void eos_achievements_copy_player_achievement_by_achievement_id(RValue&
 
 	eos_ensure_argc(3);
 
-	const char* local = YYGetString(arg, 0);
-	const char* target = YYGetString(arg, 1);
-	const char* AchievementId = YYGetString(arg, 2);
+	constchar* local = YYGetString(arg, 0);
+	constchar* target = YYGetString(arg, 1);
+	constchar* AchievementId = YYGetString(arg, 2);
 
 	EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions CopyOptions = {0};
 	CopyOptions.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST;
@@ -245,8 +245,8 @@ YYEXPORT void eos_achievements_copy_player_achievement_by_index(RValue& Result, 
 
 	eos_ensure_argc(3);
 
-	const char* local = YYGetString(arg, 0);
-	const char* target = YYGetString(arg, 1);
+	constchar* local = YYGetString(arg, 0);
+	constchar* target = YYGetString(arg, 1);
 	uint32_t index = YYGetUint32(arg, 2);
 
 	EOS_Achievements_CopyPlayerAchievementByIndexOptions CopyOptions = {};
@@ -281,7 +281,7 @@ YYEXPORT void eos_achievements_get_player_achievement_count(RValue& Result, CIns
 
 	eos_ensure_argc(1);
 
-	const char* mProductUserId = YYGetString(arg, 0);
+	constchar* mProductUserId = YYGetString(arg, 0);
 
 	EOS_Achievements_GetPlayerAchievementCountOptions AchievementsCountOptions = {};
 	AchievementsCountOptions.ApiVersion = EOS_ACHIEVEMENTS_GETPLAYERACHIEVEMENTCOUNT_API_LATEST;
@@ -308,7 +308,7 @@ YYEXPORT void eos_achievements_query_definitions(RValue& Result, CInstance* self
 
 	eos_ensure_argc(1);
 
-	const char* mProductUserId = YYGetString(arg, 0);
+	constchar* mProductUserId = YYGetString(arg, 0);
 
 	EOS_Achievements_QueryDefinitionsOptions QueryDefinitionsOptions = {};
 	QueryDefinitionsOptions.ApiVersion = EOS_ACHIEVEMENTS_QUERYDEFINITIONS_API_LATEST;
@@ -341,8 +341,8 @@ YYEXPORT void eos_achievements_query_player_achievements(RValue& Result, CInstan
 
 	eos_ensure_argc(2);
 
-	const char* mProductUserId = YYGetString(arg, 0);
-	const char* targetUserID = YYGetString(arg, 1);
+	constchar* mProductUserId = YYGetString(arg, 0);
+	constchar* targetUserID = YYGetString(arg, 1);
 
 	EOS_Achievements_QueryPlayerAchievementsOptions QueryPlayerAchievementsOptions = {};
 	QueryPlayerAchievementsOptions.ApiVersion = EOS_ACHIEVEMENTS_QUERYPLAYERACHIEVEMENTS_API_LATEST;
@@ -376,14 +376,14 @@ YYEXPORT void eos_achievements_unlock_achievement(RValue& Result, CInstance* sel
 
 	eos_ensure_argc(2);
 
-	const char* mProductUserId = YYGetString(arg, 0);
-	const char* AchievementId = YYGetString(arg, 1);
+	constchar* mProductUserId = YYGetString(arg, 0);
+	constchar* AchievementId = YYGetString(arg, 1);
 
 	EOS_Achievements_UnlockAchievementsOptions UnlockAchievementsOptions = {};
 	UnlockAchievementsOptions.ApiVersion = EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST;
 	UnlockAchievementsOptions.UserId = EOS_ProductUserId_FromString(mProductUserId);
 	UnlockAchievementsOptions.AchievementsCount = 1;
-	UnlockAchievementsOptions.AchievementIds = new const char* [1];
+	UnlockAchievementsOptions.AchievementIds = new constchar* [1];
 	UnlockAchievementsOptions.AchievementIds[0] = AchievementId;//NarrowIDs[0].c_str();
 
 	callback* mcallback = getCallbackData();

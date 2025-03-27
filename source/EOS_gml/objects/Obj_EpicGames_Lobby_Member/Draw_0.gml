@@ -13,6 +13,6 @@ switch(AudioStatus)
 	case EOS_RTCAudioStatus.Unsupported: AudioStatus_txt = "Unsupported" break 
 }
 
-draw_text(x,y,$"{DisplayName} - Audio {AudioStatus_txt} - {Speaking?"Speaking":"Silence"}")
+draw_text(x,y,$"{display_name} - Audio {AudioStatus_txt} - {Speaking?"Speaking":"Silence"}")
 
 

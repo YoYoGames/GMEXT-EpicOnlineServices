@@ -1,4 +1,4 @@
 
 event_inherited();
 
-text = "Score Leaderboard 1"
+text = "score Leaderboard 1"

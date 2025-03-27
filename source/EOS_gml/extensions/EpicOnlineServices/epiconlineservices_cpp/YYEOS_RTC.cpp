@@ -99,7 +99,7 @@ void EOS_CALL RTC_AddNotifyDisconnected(const EOS_RTC_DisconnectedCallbackInfo *
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_add_notify_disconnected(char *RoomName, char *LocalUserId, char *buff_ret)
+func double __eos_rtc_add_notify_disconnected(char* RoomName,char* LocalUserId,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -133,7 +133,7 @@ void EOS_CALL RTC_AddNotifyParticipantStatusChanged(const EOS_RTC_ParticipantSta
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_add_notify_participant_status_changed(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_add_notify_participant_status_changed(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -162,7 +162,7 @@ void EOS_CALL RTC_AddNotifyRoomStatisticsUpdated(const EOS_RTC_RoomStatisticsUpd
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_add_notify_room_statistics_updated(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_add_notify_room_statistics_updated(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -194,7 +194,7 @@ void EOS_CALL RTC_BlockParticipant(const EOS_RTC_BlockParticipantCallbackInfo *d
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_block_participant(double bBlocked, char *LocalUserId, char *ParticipantId, char *RoomName)
+func double eos_rtc_block_participant(double bBlocked,char* LocalUserId,char* ParticipantId,char* RoomName)
 {
 	eos_not_init_return(-1);
 
@@ -237,18 +237,18 @@ void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double __eos_rtc_join_room(char *buff_args)
+func double __eos_rtc_join_room(char* buff_args)
 {
 	eos_not_init_return(-1);
 
 	auto args = buffer_unpack((uint8_t *)buff_args);
-	char *LocalUserId = (char *)YYGetString(args[0]);
-	char *RoomName = (char *)YYGetString(args[1]);
-	char *ParticipantId = (char *)YYGetString(args[2]);
-	char *ParticipantToken = (char *)YYGetString(args[3]);
+	char* LocalUserId = (char* )YYGetString(args[0]);
+	char* RoomName = (char* )YYGetString(args[1]);
+	char* ParticipantId = (char* )YYGetString(args[2]);
+	char* ParticipantToken = (char* )YYGetString(args[3]);
 	bool bManualAudioInputEnabled = YYGetBool(args[4]);
 	bool bManualAudioOutputEnabled = YYGetBool(args[5]);
-	char *ClientBaseUrl = (char *)YYGetString(args[6]);
+	char* ClientBaseUrl = (char* )YYGetString(args[6]);
 	uint32_t Flags = YYGetUint32(args[7]);
 
 	EOS_RTC_JoinRoomOptions Options = {};
@@ -282,7 +282,7 @@ void EOS_CALL RTC_LeaveRoom(const EOS_RTC_LeaveRoomCallbackInfo *data)
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double eos_rtc_leave_room(char *LocalUserId, char *RoomName)
+func double eos_rtc_leave_room(char* LocalUserId,char* RoomName)
 {
 	eos_not_init_return(-1);
 
@@ -296,7 +296,7 @@ func double eos_rtc_leave_room(char *LocalUserId, char *RoomName)
 	return mcallback->identifier;
 }
 
-func double __eos_rtc_remove_notify_disconnected(char *buff_args)
+func double __eos_rtc_remove_notify_disconnected(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -308,7 +308,7 @@ func double __eos_rtc_remove_notify_disconnected(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_remove_notify_participant_status_changed(char *buff_args)
+func double __eos_rtc_remove_notify_participant_status_changed(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -320,7 +320,7 @@ func double __eos_rtc_remove_notify_participant_status_changed(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_remove_notify_room_statistics_updated(char *buff_args)
+func double __eos_rtc_remove_notify_room_statistics_updated(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -332,7 +332,7 @@ func double __eos_rtc_remove_notify_room_statistics_updated(char *buff_args)
 	return 0.0;
 }
 
-func double eos_rtc_set_room_setting(char *LocalUserId, char *RoomName, char *SettingName, char *SettingValue)
+func double eos_rtc_set_room_setting(char* LocalUserId,char* RoomName,char* SettingName,char* SettingValue)
 {
 	eos_not_init_return(-1);
 
@@ -347,7 +347,7 @@ func double eos_rtc_set_room_setting(char *LocalUserId, char *RoomName, char *Se
 	return (double)result;
 }
 
-func double eos_rtc_set_setting(char *SettingName, char *SettingValue)
+func double eos_rtc_set_setting(char* SettingName,char* SettingValue)
 {
 	eos_not_init_return(-1);
 
@@ -375,7 +375,7 @@ func double __eos_rtc_admin_copy_user_token_by_index(double QueryId, double User
 	return (double)result;
 }
 
-func double __eos_rtc_admin_copy_user_token_by_user_id(double QueryId, char *TargetUserId)
+func double __eos_rtc_admin_copy_user_token_by_user_id(double QueryId,char* TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -401,7 +401,7 @@ void EOS_CALL RTCAdmin_Kick(const EOS_RTCAdmin_KickCompleteCallbackInfo *data)
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_admin_kick(char *RoomName, char *TargetUserId)
+func double eos_rtc_admin_kick(char* RoomName,char* TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -431,17 +431,17 @@ void EOS_CALL RTCAdmin_QueryJoinRoomToken(const EOS_RTCAdmin_QueryJoinRoomTokenC
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double __eos_rtc_admin_query_join_room_token(char *buff_args)
+func double __eos_rtc_admin_query_join_room_token(char* buff_args)
 {
 	eos_not_init_return(-1);
 
 	auto args = buffer_unpack((uint8_t *)buff_args);
-	const char *LocalUserId = YYGetString(args[0]);
-	const char *RoomName = YYGetString(args[1]);
+	constchar* LocalUserId = YYGetString(args[0]);
+	constchar* RoomName = YYGetString(args[1]);
 	auto array_ids = YYGetArray(args[2]);
 	std::vector<EOS_ProductUserId> p_ids = VectorProductIdsFromVector(array_ids);
 	auto array_ips = YYGetArray(args[3]);
-	std::vector<const char *> p_ips = VectorStringFromVector(array_ips);
+	std::vector<constchar* > p_ips = VectorStringFromVector(array_ips);
 
 	EOS_RTCAdmin_QueryJoinRoomTokenOptions Options = {0};
 	Options.ApiVersion = EOS_RTCADMIN_QUERYJOINROOMTOKEN_API_LATEST;
@@ -502,7 +502,7 @@ void EOS_CALL RTCAudio_AddNotifyAudioBeforeRender(const EOS_RTCAudio_AudioBefore
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_audio_add_notify_audio_before_render(char *LocalUserId, char *RoomName, double bUnmixedAudio, char *buff_ret)
+func double __eos_rtc_audio_add_notify_audio_before_render(char* LocalUserId,char* RoomName, double bUnmixedAudio,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -533,7 +533,7 @@ void EOS_CALL RTCAudio_AddNotifyAudioBeforeSend(const EOS_RTCAudio_AudioBeforeSe
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_audio_add_notify_audio_before_send(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_audio_add_notify_audio_before_send(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -558,7 +558,7 @@ void EOS_CALL RTCAudio_AddNotifyAudioDevicesChanged(const EOS_RTCAudio_AudioDevi
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_audio_add_notify_audio_devices_changed(char *buff_ret)
+func double __eos_rtc_audio_add_notify_audio_devices_changed(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -585,7 +585,7 @@ void EOS_CALL RTCAudio_AddNotifyAudioInputState(const EOS_RTCAudio_AudioInputSta
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_audio_add_notify_audio_input_state(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_audio_add_notify_audio_input_state(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -614,7 +614,7 @@ void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_AudioOutputS
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_audio_add_notify_audio_output_state(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_audio_add_notify_audio_output_state(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -645,7 +645,7 @@ void EOS_CALL RTCAudio_AddNotifyAudioOutputState(const EOS_RTCAudio_ParticipantU
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_audio_add_notify_participant_updated(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_audio_add_notify_participant_updated(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -688,7 +688,7 @@ func double __eos_rtc_audio_copy_input_device_information_by_index(double Device
 	return (double)result;
 }
 
-func double __eos_rtc_audio_copy_output_device_information_by_index(double DeviceIndex, char* buff_ret)
+func double __eos_rtc_audio_copy_output_device_information_by_index(double DeviceIndex,char* buff_ret)
 {
 	eos_not_init_return(-1);
 
@@ -842,7 +842,7 @@ func double eos_rtc_audio_query_output_devices_information()
 	return mcallback->identifier;
 }
 
-func double eos_rtc_audio_register_platform_audio_user(char *UserId)
+func double eos_rtc_audio_register_platform_audio_user(char* UserId)
 {
 	eos_not_init_return(-1);
 
@@ -855,7 +855,7 @@ func double eos_rtc_audio_register_platform_audio_user(char *UserId)
 	return (double)result;
 }
 
-func double eos_rtc_audio_register_platform_user(char *UserId)
+func double eos_rtc_audio_register_platform_user(char* UserId)
 {
 	eos_not_init_return(-1);
 
@@ -867,7 +867,7 @@ func double eos_rtc_audio_register_platform_user(char *UserId)
 	return (double)result;
 }
 
-func double __eos_rtc_audio_remove_notify_audio_before_render(char *buff_args)
+func double __eos_rtc_audio_remove_notify_audio_before_render(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -879,7 +879,7 @@ func double __eos_rtc_audio_remove_notify_audio_before_render(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_audio_remove_notify_audio_before_send(char *buff_args)
+func double __eos_rtc_audio_remove_notify_audio_before_send(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -891,7 +891,7 @@ func double __eos_rtc_audio_remove_notify_audio_before_send(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_audio_remove_notify_audio_devices_changed(char *buff_args)
+func double __eos_rtc_audio_remove_notify_audio_devices_changed(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -903,7 +903,7 @@ func double __eos_rtc_audio_remove_notify_audio_devices_changed(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_audio_remove_notify_audio_input_state(char *buff_args)
+func double __eos_rtc_audio_remove_notify_audio_input_state(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -915,7 +915,7 @@ func double __eos_rtc_audio_remove_notify_audio_input_state(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_audio_remove_notify_audio_output_state(char *buff_args)
+func double __eos_rtc_audio_remove_notify_audio_output_state(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -927,7 +927,7 @@ func double __eos_rtc_audio_remove_notify_audio_output_state(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_audio_remove_notify_participant_updated(char *buff_args)
+func double __eos_rtc_audio_remove_notify_participant_updated(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -939,7 +939,7 @@ func double __eos_rtc_audio_remove_notify_participant_updated(char *buff_args)
 	return 0.0;
 }
 
-func double eos_rtc_audio_send_audio(char *buff_args, char *buff_data)
+func double eos_rtc_audio_send_audio(char* buff_args,char* buff_data)
 {
 	eos_not_init_return(-1);
 
@@ -947,8 +947,8 @@ func double eos_rtc_audio_send_audio(char *buff_args, char *buff_data)
 	uint32_t Channels = YYGetUint32(args[0]);
 	uint32_t FramesCount = YYGetUint32(args[1]);
 	uint32_t SampleRate = YYGetUint32(args[2]);
-	char *LocalUserId = (char *)YYGetString(args[3]);
-	char *RoomName = (char *)YYGetString(args[4]);
+	char* LocalUserId = (char* )YYGetString(args[3]);
+	char* RoomName = (char* )YYGetString(args[4]);
 
 	EOS_RTCAudio_SendAudioOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_SENDAUDIO_API_LATEST;
@@ -964,7 +964,7 @@ func double eos_rtc_audio_send_audio(char *buff_args, char *buff_data)
 	return (double)result;
 }
 
-func double eos_rtc_audio_set_audio_input_settings(double bPlatformAEC, char *DeviceId, char *LocalUserId, double Volume)
+func double eos_rtc_audio_set_audio_input_settings(double bPlatformAEC,char* DeviceId,char* LocalUserId, double Volume)
 {
 	eos_not_init_return(-1);
 
@@ -979,7 +979,7 @@ func double eos_rtc_audio_set_audio_input_settings(double bPlatformAEC, char *De
 	return (double)result;
 }
 
-func double eos_rtc_audio_set_audio_output_settings(char *DeviceId, char *LocalUserId, double Volume)
+func double eos_rtc_audio_set_audio_output_settings(char* DeviceId,char* LocalUserId, double Volume)
 {
 	eos_not_init_return(-1);
 
@@ -1005,7 +1005,7 @@ void EOS_CALL Sessions_OnSendInviteCallback(const EOS_RTCAudio_OnSetInputDeviceS
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_set_input_device_settings(double bPlatformAEC, char *LocalUserId, char *RealDeviceId)
+func double eos_rtc_audio_set_input_device_settings(double bPlatformAEC,char* LocalUserId,char* RealDeviceId)
 {
 	eos_not_init_return(-1);
 
@@ -1034,7 +1034,7 @@ void EOS_CALL RTCAudio_SetOutputDeviceSettings(const EOS_RTCAudio_OnSetOutputDev
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_set_output_device_settings(char *LocalUserId, char *RealDeviceId)
+func double eos_rtc_audio_set_output_device_settings(char* LocalUserId,char* RealDeviceId)
 {
 	eos_not_init_return(-1);
 
@@ -1048,7 +1048,7 @@ func double eos_rtc_audio_set_output_device_settings(char *LocalUserId, char *Re
 	return (double)mcallback->identifier;
 }
 
-func double eos_rtc_audio_unregister_platform_audio_user(char *UserId)
+func double eos_rtc_audio_unregister_platform_audio_user(char* UserId)
 {
 	eos_not_init_return(-1);
 
@@ -1073,7 +1073,7 @@ void EOS_CALL RTCAudio_UnregisterPlatformUser(const EOS_RTCAudio_OnUnregisterPla
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_unregister_platform_user(char *PlatformUserId)
+func double eos_rtc_audio_unregister_platform_user(char* PlatformUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1102,7 +1102,7 @@ void EOS_CALL RTCAudio_UpdateParticipantVolume(const EOS_RTCAudio_UpdateParticip
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_update_participant_volume(char *LocalUserId, char *ParticipantId, char *RoomName, double Volume)
+func double eos_rtc_audio_update_participant_volume(char* LocalUserId,char* ParticipantId,char* RoomName, double Volume)
 {
 	eos_not_init_return(-1);
 
@@ -1134,7 +1134,7 @@ void EOS_CALL RTCAudio_UpdateReceiving(const EOS_RTCAudio_UpdateReceivingCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_update_receiving(char *LocalUserId, char *ParticipantId, char *RoomName, double bAudioEnabled)
+func double eos_rtc_audio_update_receiving(char* LocalUserId,char* ParticipantId,char* RoomName, double bAudioEnabled)
 {
 	eos_not_init_return(-1);
 
@@ -1164,7 +1164,7 @@ void EOS_CALL RTCAudio_UpdateReceivingVolume(const EOS_RTCAudio_UpdateReceivingV
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_update_receiving_volume(char *LocalUserId, char *RoomName, double Volume)
+func double eos_rtc_audio_update_receiving_volume(char* LocalUserId,char* RoomName, double Volume)
 {
 	eos_not_init_return(-1);
 
@@ -1195,7 +1195,7 @@ void EOS_CALL RTCAudio_UpdateSending(const EOS_RTCAudio_UpdateSendingCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_update_sending(char *LocalUserId, char *RoomName, double AudioStatus)
+func double eos_rtc_audio_update_sending(char* LocalUserId,char* RoomName, double AudioStatus)
 {
 	eos_not_init_return(-1);
 
@@ -1224,7 +1224,7 @@ void EOS_CALL RTCAudio_UpdateSendingVolume(const EOS_RTCAudio_UpdateSendingVolum
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_audio_update_sending_volume(char *LocalUserId, char *RoomName, double Volume)
+func double eos_rtc_audio_update_sending_volume(char* LocalUserId,char* RoomName, double Volume)
 {
 	eos_not_init_return(-1);
 
@@ -1254,7 +1254,7 @@ void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_DataReceivedCallba
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_data_add_notify_data_received(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_data_add_notify_data_received(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -1284,7 +1284,7 @@ void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_ParticipantUpdated
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_rtc_data_add_notify_participant_updated(char *LocalUserId, char *RoomName, char *buff_ret)
+func double __eos_rtc_data_add_notify_participant_updated(char* LocalUserId,char* RoomName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, -1);
 
@@ -1302,7 +1302,7 @@ func double __eos_rtc_data_add_notify_participant_updated(char *LocalUserId, cha
 	return 0.0;
 }
 
-func double __eos_rtc_data_remove_notify_data_received(char *buff_args)
+func double __eos_rtc_data_remove_notify_data_received(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1314,7 +1314,7 @@ func double __eos_rtc_data_remove_notify_data_received(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_data_remove_notify_participant_updated(char *buff_args)
+func double __eos_rtc_data_remove_notify_participant_updated(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1326,7 +1326,7 @@ func double __eos_rtc_data_remove_notify_participant_updated(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_data_send_data(char *buff_data, double Length, char *LocalUserId, char *RoomName)
+func double __eos_rtc_data_send_data(char* buff_data, double Length,char* LocalUserId,char* RoomName)
 {
 	eos_not_init_return(-1);
 
@@ -1357,7 +1357,7 @@ void EOS_CALL RTCData_UpdateReceiving(const EOS_RTCData_UpdateReceivingCallbackI
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_data_update_receiving(char *LocalUserId, char *ParticipantId, char *RoomName, double bDataEnabled)
+func double eos_rtc_data_update_receiving(char* LocalUserId,char* ParticipantId,char* RoomName, double bDataEnabled)
 {
 	eos_not_init_return(-1);
 
@@ -1388,7 +1388,7 @@ void EOS_CALL RTCData_UpdateSending(const EOS_RTCData_UpdateSendingCallbackInfo 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_data_update_sending(char *LocalUserId, char *RoomName, double bDataEnabled)
+func double eos_rtc_data_update_sending(char* LocalUserId,char* RoomName, double bDataEnabled)
 {
 	eos_not_init_return(-1);
 

@@ -52,7 +52,7 @@ YYEXPORT void eos_auth_copy_id_token(RValue &Result, CInstance *selfinst, CInsta
 
 	eos_ensure_argc(1);
 
-	const char *user = YYGetString(arg, 0);
+	constchar* user = YYGetString(arg, 0);
 
 	EOS_Auth_CopyIdTokenOptions Options = {0};
 	Options.ApiVersion = EOS_AUTH_COPYIDTOKEN_API_LATEST;
@@ -98,7 +98,7 @@ YYEXPORT void eos_auth_copy_user_auth_token(RValue &Result, CInstance *selfinst,
 	eos_ensure_argc(1);
 
 	arg->kind = VALUE_STRING;
-	const char *str_AccountId = YYGetString(arg, 0);
+	constchar* str_AccountId = YYGetString(arg, 0);
 
 	RValue authStruct = {0};
 	YYStructCreate(&authStruct);
@@ -152,7 +152,7 @@ YYEXPORT void eos_auth_delete_persistent_auth(RValue &Result, CInstance *selfins
 
 	eos_ensure_argc(1);
 
-	const char *refreshtoken = YYGetString(arg, 0);
+	constchar* refreshtoken = YYGetString(arg, 0);
 
 	EOS_Auth_DeletePersistentAuthOptions Options = {};
 	Options.ApiVersion = EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST;
@@ -196,7 +196,7 @@ YYEXPORT void eos_auth_get_login_status(RValue &Result, CInstance *selfinst, CIn
 
 	eos_ensure_argc(1);
 
-	const char *accountID = YYGetString(arg, 0);
+	constchar* accountID = YYGetString(arg, 0);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)EOS_Auth_GetLoginStatus(HAuth, EOS_EpicAccountId_FromString(accountID));
@@ -208,7 +208,7 @@ YYEXPORT void eos_auth_get_merged_account_by_index(RValue &Result, CInstance *se
 
 	eos_ensure_argc(2);
 
-	const char *accountID = YYGetString(arg, 0);
+	constchar* accountID = YYGetString(arg, 0);
 	int32 index = YYGetInt32(arg, 1);
 
 	EOS_EpicAccountId account = EOS_Auth_GetMergedAccountByIndex(HAuth, EOS_EpicAccountId_FromString(accountID), index);
@@ -221,7 +221,7 @@ YYEXPORT void eos_auth_get_merged_accounts_count(RValue &Result, CInstance *self
 
 	eos_ensure_argc(1);
 
-	const char *accountID = YYGetString(arg, 0);
+	constchar* accountID = YYGetString(arg, 0);
 
 	Result.kind = VALUE_REAL;
 	Result.val = EOS_Auth_GetMergedAccountsCount(HAuth, EOS_EpicAccountId_FromString(accountID));
@@ -233,7 +233,7 @@ YYEXPORT void eos_auth_get_selected_account_id(RValue &Result, CInstance *selfin
 
 	eos_ensure_argc(1);
 
-	const char *accountID = YYGetString(arg, 0);
+	constchar* accountID = YYGetString(arg, 0);
 
 	EOS_EpicAccountId account = NULL;
 	EOS_EResult result = EOS_Auth_GetSelectedAccountId(HAuth, EOS_EpicAccountId_FromString(accountID), &account);
@@ -266,7 +266,7 @@ YYEXPORT void eos_auth_link_account(RValue &Result, CInstance *selfinst, CInstan
 		return;
 	}
 
-	const char *accountID = YYGetString(arg, 0);
+	constchar* accountID = YYGetString(arg, 0);
 	double scope_flags = YYGetReal(arg, 1);
 
 	EOS_Auth_LinkAccountOptions Options{};
@@ -321,8 +321,8 @@ YYEXPORT void eos_auth_login(RValue &Result, CInstance *selfinst, CInstance *oth
 
 	double type = YYGetReal(arg, 0);
 	double scope_flags = YYGetReal(arg, 1);
-	const char *Id = argc < 3 ? nullptr : YYGetString(arg, 2);
-	const char *Token = argc < 4 ? nullptr : YYGetString(arg, 3);
+	constchar* Id = argc < 3 ? nullptr : YYGetString(arg, 2);
+	constchar* Token = argc < 4 ? nullptr : YYGetString(arg, 3);
 	int32_t ExternalType = argc < 5 ? -1 : YYGetInt32(arg, 4);
 
 	HAuth = EOS_Platform_GetAuthInterface(PlatformHandle);
@@ -384,7 +384,7 @@ YYEXPORT void eos_auth_logout(RValue &Result, CInstance *selfinst, CInstance *ot
 
 	eos_ensure_argc(1);
 
-	const char *user = YYGetString(arg, 0);
+	constchar* user = YYGetString(arg, 0);
 
 	EOS_Auth_LogoutOptions LogoutOptions;
 	LogoutOptions.ApiVersion = EOS_AUTH_LOGOUT_API_LATEST;
@@ -416,8 +416,8 @@ YYEXPORT void eos_auth_query_id_token(RValue &Result, CInstance *selfinst, CInst
 
 	eos_ensure_argc(2);
 
-	const char *user = YYGetString(arg, 0);
-	const char *target = YYGetString(arg, 1);
+	constchar* user = YYGetString(arg, 0);
+	constchar* target = YYGetString(arg, 1);
 
 	EOS_Auth_QueryIdTokenOptions Options = {0};
 	Options.ApiVersion = EOS_AUTH_QUERYIDTOKEN_API_LATEST;
@@ -463,8 +463,8 @@ YYEXPORT void eos_auth_verify_id_token(RValue &Result, CInstance *selfinst, CIns
 
 	eos_ensure_argc(2);
 
-	const char *target = YYGetString(arg, 0);
-	const char *JsonWebToken = YYGetString(arg, 1);
+	constchar* target = YYGetString(arg, 0);
+	constchar* JsonWebToken = YYGetString(arg, 1);
 
 	EOS_Auth_IdToken *IdToken = {0};
 	IdToken->AccountId = EOS_EpicAccountId_FromString(target);
@@ -501,17 +501,17 @@ YYEXPORT void eos_auth_verify_user_auth(RValue &Result, CInstance *selfinst, CIn
 
 	eos_ensure_argc(10);
 
-	const char *AccessToken = YYGetString(arg, 0);
-	const char *AccountId = YYGetString(arg, 1);
-	// const char* ApiVersion =
-	const char *App = YYGetString(arg, 2);
+	constchar* AccessToken = YYGetString(arg, 0);
+	constchar* AccountId = YYGetString(arg, 1);
+	// constchar* ApiVersion =
+	constchar* App = YYGetString(arg, 2);
 	double AuthType = YYGetReal(arg, 3);
-	const char *ClientId = YYGetString(arg, 4);
-	const char *ExpiresAt = YYGetString(arg, 5);
+	constchar* ClientId = YYGetString(arg, 4);
+	constchar* ExpiresAt = YYGetString(arg, 5);
 	double ExpiresIn = YYGetReal(arg, 6);
-	const char *RefreshExpiresAt = YYGetString(arg, 7);
+	constchar* RefreshExpiresAt = YYGetString(arg, 7);
 	double RefreshExpiresIn = YYGetReal(arg, 8);
-	const char *RefreshToken = YYGetString(arg, 9);
+	constchar* RefreshToken = YYGetString(arg, 9);
 
 	EOS_Auth_Token Token = {0};
 	Token.AccessToken = AccessToken;

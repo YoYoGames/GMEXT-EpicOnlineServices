@@ -6,14 +6,7 @@ locked = true
 spr_unlocked = noone
 spr_locked = noone
 
-bIsHidden = false
-AchievementId = ""
-UnlockedDisplayName = ""
-UnlockedDescription = ""
-LockedDisplayName = ""
-LockedDescription = ""
-FlavorText = ""
-UnlockedIconURL = ""
-LockedIconURL = ""
-
 alarm[0] = 1
+
+if(!variable_instance_exists(id,"is_hidden"))
+    is_hidden = ""

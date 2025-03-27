@@ -8,9 +8,9 @@ if(async_load[? "identifier"] == request)
 	var struct = eos_user_info_copy_user_info(AccountID,mAccountID)
 	if(struct.status = EOS_SUCCESS)
 	{
-		UserDisplayName = struct.DisplayName
+		user_display_name = struct.display_name
 		//struct.PreferredLanguage
-		//struct.UserId
+		//struct.user_id
 		show_debug_message(struct)
 	}
 	else show_debug_message("ERROR!!!")
