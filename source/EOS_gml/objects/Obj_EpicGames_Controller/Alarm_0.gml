@@ -7,6 +7,6 @@ eos_auth_login(
 	EOS_LCT_REFRESH_TOKEN,
 	EOS_AS_BASIC_PROFILE | EOS_AS_FRIENDS_LIST | EOS_AS_PRESENCE,
 	"",
-	struct.RefreshToken,
+	struct.refresh_token,
 	noone
 	)

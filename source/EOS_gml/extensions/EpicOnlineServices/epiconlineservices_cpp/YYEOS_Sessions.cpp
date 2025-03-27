@@ -109,19 +109,19 @@ func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
 
 	OutActiveSessionInfo->ApiVersion = EOS_ACTIVESESSION_INFO_API_LATEST;
 
-	_struct.addKeyValue("LocalUserId", (constchar* )productID_toString(OutActiveSessionInfo->LocalUserId));
+	_struct.addKeyValue("LocalUserId", (const char* )productID_toString(OutActiveSessionInfo->LocalUserId));
 
 	StructStream _struct_session_details = {};
 	if (OutActiveSessionInfo->SessionDetails->HostAddress != NULL)
-		_struct_session_details.addKeyValue("HostAddress", (constchar* )OutActiveSessionInfo->SessionDetails->HostAddress);
+		_struct_session_details.addKeyValue("HostAddress", (const char* )OutActiveSessionInfo->SessionDetails->HostAddress);
 	if (OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections != NULL)
 		_struct_session_details.addKeyValue("NumOpenPublicConnections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
 	if (OutActiveSessionInfo->SessionDetails->OwnerServerClientId != NULL)
-		_struct_session_details.addKeyValue("OwnerServerClientId", (constchar* )OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
+		_struct_session_details.addKeyValue("OwnerServerClientId", (const char* )OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
 	if (OutActiveSessionInfo->SessionDetails->OwnerUserId != NULL)
-		_struct_session_details.addKeyValue("OwnerUserId", (constchar* )productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
+		_struct_session_details.addKeyValue("OwnerUserId", (const char* )productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
 	if (OutActiveSessionInfo->SessionDetails->SessionId != NULL)
-		_struct_session_details.addKeyValue("SessionId", (constchar* )OutActiveSessionInfo->SessionDetails->SessionId);
+		_struct_session_details.addKeyValue("SessionId", (const char* )OutActiveSessionInfo->SessionDetails->SessionId);
 
 	StructStream _struct_settings = {};
 
@@ -133,14 +133,14 @@ func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
 	_struct_settings.addKeyValue("AllowJoinInProgress", OutActiveSessionInfo->SessionDetails->Settings->bAllowJoinInProgress);
 	_struct_settings.addKeyValue("InvitesAllowed", OutActiveSessionInfo->SessionDetails->Settings->bInvitesAllowed);
 	_struct_settings.addKeyValue("SanctionsEnabled", OutActiveSessionInfo->SessionDetails->Settings->bSanctionsEnabled);
-	_struct_settings.addKeyValue("BucketId", (constchar* )OutActiveSessionInfo->SessionDetails->Settings->BucketId);
+	_struct_settings.addKeyValue("BucketId", (const char* )OutActiveSessionInfo->SessionDetails->Settings->BucketId);
 	_struct_settings.addKeyValue("NumPublicConnections", OutActiveSessionInfo->SessionDetails->Settings->NumPublicConnections);
 	_struct_settings.addKeyValue("PermissionLevel", (int)OutActiveSessionInfo->SessionDetails->Settings->PermissionLevel);
 
 	_struct_session_details.addKeyValue("settings", _struct_settings);
 	_struct.addKeyValue("Details", _struct_session_details);
 
-	_struct.addKeyValue("SessionName", (constchar* )OutActiveSessionInfo->SessionName);
+	_struct.addKeyValue("SessionName", (const char* )OutActiveSessionInfo->SessionName);
 	_struct.addKeyValue("State", (double)OutActiveSessionInfo->State);
 
 	_struct.writeTo(buff_ret);
@@ -152,7 +152,7 @@ func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
 	return 0.0;
 }
 
-funcchar* eos_active_session_get_registered_player_by_index(char* SessionName)
+func char* eos_active_session_get_registered_player_by_index(char* SessionName)
 {
 	eos_not_init_return((char*)"");
 
@@ -214,15 +214,15 @@ func double __eos_session_details_copy_info(char* buff_ret)
 	if (EOS_EResult::EOS_Success == result)
 	{
 		if (OutSessionInfo->HostAddress != NULL)
-			_struct.addKeyValue("HostAddress", (constchar* )OutSessionInfo->HostAddress);
+			_struct.addKeyValue("HostAddress", (const char* )OutSessionInfo->HostAddress);
 		if (OutSessionInfo->NumOpenPublicConnections != NULL)
 			_struct.addKeyValue("NumOpenPublicConnections", OutSessionInfo->NumOpenPublicConnections);
 		if (OutSessionInfo->OwnerUserId != NULL)
-			_struct.addKeyValue("OwnerUserId", (constchar* )productID_toString(OutSessionInfo->OwnerUserId));
+			_struct.addKeyValue("OwnerUserId", (const char* )productID_toString(OutSessionInfo->OwnerUserId));
 		if (OutSessionInfo->OwnerServerClientId != NULL)
-			_struct.addKeyValue("OwnerServerClientId", (constchar* )OutSessionInfo->OwnerServerClientId);
+			_struct.addKeyValue("OwnerServerClientId", (const char* )OutSessionInfo->OwnerServerClientId);
 		if (OutSessionInfo->SessionId != NULL)
-			_struct.addKeyValue("SessionId", (constchar* )OutSessionInfo->SessionId);
+			_struct.addKeyValue("SessionId", (const char* )OutSessionInfo->SessionId);
 
 		StructStream _struct_settings = {};
 
@@ -234,7 +234,7 @@ func double __eos_session_details_copy_info(char* buff_ret)
 		_struct_settings.addKeyValue("AllowJoinInProgress", OutSessionInfo->Settings->bAllowJoinInProgress);
 		_struct_settings.addKeyValue("InvitesAllowed", OutSessionInfo->Settings->bInvitesAllowed);
 		_struct_settings.addKeyValue("SanctionsEnabled", OutSessionInfo->Settings->bSanctionsEnabled);
-		_struct_settings.addKeyValue("BucketId", (constchar* )OutSessionInfo->Settings->BucketId);
+		_struct_settings.addKeyValue("BucketId", (const char* )OutSessionInfo->Settings->BucketId);
 		_struct_settings.addKeyValue("NumPublicConnections", OutSessionInfo->Settings->NumPublicConnections);
 		_struct_settings.addKeyValue("PermissionLevel", (int)OutSessionInfo->Settings->PermissionLevel);
 
@@ -255,7 +255,7 @@ func double __eos_session_details_copy_info(char* buff_ret)
 void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessionAttribute, StructStream &outputSteam)
 {
 	outputSteam.addKeyValue("AdvertisementType", (int)OutSessionAttribute->AdvertisementType);
-	outputSteam.addKeyValue("Key", (constchar* )OutSessionAttribute->Data->Key);
+	outputSteam.addKeyValue("Key", (const char* )OutSessionAttribute->Data->Key);
 	switch (OutSessionAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
@@ -268,7 +268,7 @@ void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessi
 		outputSteam.addKeyValue("Value", /*(int64)*/ (int)OutSessionAttribute->Data->Value.AsInt64);
 		break; // TODO: int64
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam.addKeyValue("Value", (constchar* )OutSessionAttribute->Data->Value.AsUtf8);
+		outputSteam.addKeyValue("Value", (const char* )OutSessionAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
@@ -820,7 +820,7 @@ func double eos_sessions_get_invite_count(char* local)
 	return EOS_Sessions_GetInviteCount(HSessions, &Options);
 }
 
-funcchar* eos_sessions_get_invite_id_by_index(char* local, double index)
+func char* eos_sessions_get_invite_id_by_index(char* local, double index)
 {
 	eos_not_init_return((char*)"");
 	

@@ -59,12 +59,12 @@ switch(async_load[? "type"])
 	            show_debug_message($"Joined, now setup P2P: {count}")
 	            for(var a = 0 ; a < count ; a++)
 	            {
-	                var user_id = eos_lobby_details_get_member_by_index(a)
-					if(user_id != userID)
+	                var _user_id = eos_lobby_details_get_member_by_index(a)
+					if(_user_id != userID)
 					{
 		                var buff = buffer_create(256,buffer_fixed,1)
 		                buffer_write(buff,buffer_u8,1)
-		                eos_p2p_send_packet(buff,buffer_tell(buff),true,false,noone,userID,true,user_id,Obj_EpicGames_Lobbies_P2P.socketName)
+		                eos_p2p_send_packet(buff,buffer_tell(buff),true,false,noone,userID,true,_user_id,Obj_EpicGames_Lobbies_P2P.socketName)
 		                buffer_delete(buff)
 					}
 	            }
@@ -213,7 +213,7 @@ switch(async_load[? "type"])
 	case "eos_rtc_audio_add_notify_participant_updated":
 		
 		with(Obj_EpicGames_Lobby_Member)
-		if(async_load[? "participant_id"] == id.userID)
+		if(async_load[? "participant_id"] == user_id)
 		{
 			Speaking = async_load[? "speaking"]
 			AudioStatus = async_load[? "audio_status"]

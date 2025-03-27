@@ -20,7 +20,7 @@ switch(async_load[? "type"])
 			
 				alarm[0] = RefreshPeriod_AccountID
 		
-				AccountID = async_load[? "account_i_d"]
+				AccountID = async_load[? "account_id"]
 				
 				var AuthToken = eos_auth_copy_user_auth_token(AccountID)
 				eos_connect_login(EOS_ECT_EPIC,AuthToken.access_token,"")

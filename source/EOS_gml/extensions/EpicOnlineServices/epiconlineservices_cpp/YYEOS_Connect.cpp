@@ -140,7 +140,7 @@ RValue ExternalAccountInfoToStuct(EOS_Connect_ExternalAccountInfo *ExternalAccou
 		YYStructAddInt64(&Struct, "last_login_time", ExternalAccountInfo->LastLoginTime);
 
 	if (ExternalAccountInfo->ProductUserId)
-		YYStructAddString(&Struct, "user_i_d", productID_toString(ExternalAccountInfo->ProductUserId));
+		YYStructAddString(&Struct, "user_id", productID_toString(ExternalAccountInfo->ProductUserId));
 
 	if (ExternalAccountInfo->AccountId)
 		YYStructAddString(&Struct, "account_id", ExternalAccountInfo->AccountId);
