@@ -5,8 +5,6 @@ if(async_load[? "type"] == "eos_player_data_storage_query_file_list")
 	for(var a = 0 ; a < count ; a++)
 	{
 		var struct = eos_player_data_storage_copy_file_metadata_at_index(userID,a)
-		
-		var ins = instance_create_depth(100,300+a*100,0,Obj_EpicGames_PlayerDataStorage_File_Download)
-		ins.Filename = struct.Filename
+		instance_create_depth(100,300+a*100,0,Obj_EpicGames_PlayerDataStorage_File_Download,struct)
 	}
 }

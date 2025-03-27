@@ -1,2 +1,2 @@
 
-eos_title_storage_file_transfer_request_cancel_request(Filename)
+eos_title_storage_file_transfer_request_cancel_request(filename)
