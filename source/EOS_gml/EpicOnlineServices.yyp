@@ -136,6 +136,7 @@
     {"id":{"name":"EOS_Definitions_Presence","path":"scripts/EOS_Definitions_Presence/EOS_Definitions_Presence.yy",},},
     {"id":{"name":"EOS_Definitions_ProgressionSnapshot","path":"scripts/EOS_Definitions_ProgressionSnapshot/EOS_Definitions_ProgressionSnapshot.yy",},},
     {"id":{"name":"EOS_Definitions_Reports","path":"scripts/EOS_Definitions_Reports/EOS_Definitions_Reports.yy",},},
+    {"id":{"name":"EOS_Definitions_Result","path":"scripts/EOS_Definitions_Result/EOS_Definitions_Result.yy",},},
     {"id":{"name":"EOS_Definitions_RTC","path":"scripts/EOS_Definitions_RTC/EOS_Definitions_RTC.yy",},},
     {"id":{"name":"EOS_Definitions_Sessions","path":"scripts/EOS_Definitions_Sessions/EOS_Definitions_Sessions.yy",},},
     {"id":{"name":"EOS_Definitions_Stats","path":"scripts/EOS_Definitions_Stats/EOS_Definitions_Stats.yy",},},

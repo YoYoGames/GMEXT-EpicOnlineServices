@@ -3,7 +3,7 @@ switch(async_load[? "type"])
 {
 	case "eos_sessions_update_session":
 		
-		if(async_load[? "status"] == EOS_SUCCESS)
+		if(async_load[? "status"] == EOS_Result.Success)
 		{
 			instance_create_depth(0,0,0,Obj_EpicGames_Sessions_P2P,{owner: true})
 			
@@ -46,7 +46,7 @@ switch(async_load[? "type"])
 	
 case "eos_sessions_join_session":
 
-        if(async_load[? "status"] == EOS_SUCCESS)
+        if(async_load[? "status"] == EOS_Result.Success)
         {
             instance_create_depth(0,0,0,Obj_EpicGames_Sessions_P2P,{owner: false})
 			
@@ -64,7 +64,7 @@ case "eos_sessions_join_session":
 	
 	case "eos_sessions_destroy_session":
 		
-		if(async_load[? "status"] == EOS_SUCCESS)
+		if(async_load[? "status"] == EOS_Result.Success)
 		{
 			with(Obj_EpicGames_Sessions_P2P)
 				instance_destroy()

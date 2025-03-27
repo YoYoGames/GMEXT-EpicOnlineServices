@@ -2,7 +2,7 @@
 switch(async_load[? "type"])
 {
 	case "eos_lobby_create_lobby":
-		if(async_load[? "status"] == EOS_SUCCESS)
+		if(async_load[? "status"] == EOS_Result.Success)
 		{
 			LobbyId = async_load[? "lobby_id"]
 			
@@ -25,7 +25,7 @@ switch(async_load[? "type"])
 	break
 	
 	case "eos_lobby_leave_lobby":
-		if(async_load[? "status"] == EOS_SUCCESS)
+		if(async_load[? "status"] == EOS_Result.Success)
 		{
 			LobbyId = ""
 			
@@ -37,7 +37,7 @@ switch(async_load[? "type"])
 	
 	case "eos_lobby_join_lobby":
 	case "eos_lobby_join_lobby_by_id":
-		if(async_load[? "status"] == EOS_SUCCESS)
+		if(async_load[? "status"] == EOS_Result.Success)
 		{
 	        LobbyId = async_load[? "lobby_id"]
 			
@@ -50,7 +50,7 @@ switch(async_load[? "type"])
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 	        instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
-	        if(eos_lobby_copy_lobby_details_handle(LobbyId,userID) == EOS_SUCCESS)
+	        if(eos_lobby_copy_lobby_details_handle(LobbyId,userID) == EOS_Result.Success)
 	        {
 				show_debug_message(eos_lobby_details_copy_attribute_by_key("lobbyname"))
 				
@@ -83,7 +83,7 @@ switch(async_load[? "type"])
 	
 	case "eos_lobby_add_notify_lobby_invite_accepted":
 	
-		if(eos_lobby_copy_lobby_details_handle_by_invite_id(async_load[? "invite_id"]) == EOS_SUCCESS)
+		if(eos_lobby_copy_lobby_details_handle_by_invite_id(async_load[? "invite_id"]) == EOS_Result.Success)
 		{
 			eos_lobby_join_lobby(userID,true,true,true,false,false,false,0/*EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL or EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO*/)
 			eos_lobby_details_release()

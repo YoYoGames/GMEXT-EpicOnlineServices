@@ -6,8 +6,8 @@ if(async_load[? "result"] != "")
 	var code = async_load[? "result"]
 	
 	eos_auth_login(
-		EOS_LCT_EXCHANGE_CODE,
-		EOS_AS_BASIC_PROFILE | EOS_AS_FRIENDS_LIST | EOS_AS_PRESENCE,
+		EOS_LoginCredentialType.ExchangeCode, 
+        EOS_AuthScopeFlags.BasicProfile | EOS_AuthScopeFlags.FriendsList | EOS_AuthScopeFlags.Presence,
 		"",
 		code,
 		noone)

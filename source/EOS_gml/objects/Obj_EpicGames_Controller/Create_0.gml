@@ -21,9 +21,10 @@ NotifyID_Friends = eos_friends_add_notify_friends_update()
 NotifyID_Achievements_UnlockedV2 = eos_achievements_add_notify_achievements_unlocked_v2()
 NotifyID_UI_DisplaySettingsUpdated = eos_ui_add_notify_display_settings_updated()
 
+
 eos_auth_login(
-		EOS_LCT_PERSISTENT_AUTH,
-		EOS_AS_BASIC_PROFILE | EOS_AS_FRIENDS_LIST | EOS_AS_PRESENCE,
+		EOS_LoginCredentialType.PersistentAuth, 
+        EOS_AuthScopeFlags.BasicProfile | EOS_AuthScopeFlags.FriendsList | EOS_AuthScopeFlags.Presence,
 		"",
 		"",
 		noone

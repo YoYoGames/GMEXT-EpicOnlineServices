@@ -13,30 +13,30 @@ switch(async_load[? "type"])
 	
 	case "eos_auth_link_account":
 	case "eos_auth_login":
-		
+        
 		switch(async_load[? "status"])
 		{
-			case EOS_SUCCESS:
+			case EOS_Result.Success:
 			
 				alarm[0] = RefreshPeriod_AccountID
 		
 				AccountID = async_load[? "account_id"]
 				
 				var AuthToken = eos_auth_copy_user_auth_token(AccountID)
-				eos_connect_login(EOS_ECT_EPIC,AuthToken.access_token,"")
+				eos_connect_login(EOS_ExternalCredentialType.EPIC,AuthToken.access_token,"")
 				
 				if(!instance_number(Obj_EpicGames_Metrics))
 					instance_create_depth(0,0,0,Obj_EpicGames_Metrics)
 				
 			break
 			
-			case EOS_INVALID_USER:
+			case EOS_Result.InvalidUser:
 				
-				eos_auth_link_account(AccountID,EOS_LA_NO_FLAGS)
+				eos_auth_link_account(AccountID,EOS_LinkAccountFlags.NoFlags)
 				
 			break
 			
-			case EOS_AUTH_M_F_A_REQUIRED:
+			case EOS_Result.Auth_MFARequired:
 			
 				request_MFA = get_string_async("token","")
 
@@ -50,7 +50,7 @@ switch(async_load[? "type"])
 	
 		switch(async_load[? "status"])
 		{
-			case EOS_SUCCESS:
+			case EOS_Result.Success:
 				
 				userID = async_load[? "local_user_id"]
 				
