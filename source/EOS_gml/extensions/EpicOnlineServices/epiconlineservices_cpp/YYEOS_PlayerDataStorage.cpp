@@ -264,7 +264,7 @@ void EOS_CALL QueryFileList(const EOS_PlayerDataStorage_QueryFileListCallbackInf
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddDouble(map, "file_count", data->FileCount);
+	DsMapAddDouble(map, "filename", data->FileCount);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
@@ -313,7 +313,7 @@ void EOS_CALL OnFileReceived(const EOS_PlayerDataStorage_ReadFileCallbackInfo *d
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "file_count", data->Filename);
+	DsMapAddString(map, "filename", data->Filename);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -362,11 +362,7 @@ EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage(const EOS_Player
 			Transfer.CurrentIndex += NumBytes;
 
 			// DebugConsoleOutput("PATHS:\n%ls\n", ((callback*)(Data_->ClientData))->string);
-
-			// std::string path = "C:/Users/chuyz/Desktop/Here/";
-			// std::string filename = FileName;
-
-			// DebugConsoleOutput("%s %s\n", path.c_str(),filename.c_str());
+			
 			std::ofstream file(path /*path + filename*/, std::ios::binary);
 			for (const char p : Transfer.Data)
 				file.write(&p, sizeof(p));
@@ -396,7 +392,7 @@ void EOS_CALL OnFileTransferProgressUpdated_read(const EOS_PlayerDataStorage_Fil
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_player_data_storage_read_file_on_file_transfer_progress_updated");
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "file_count", data->Filename);
+	DsMapAddString(map, "filename", data->Filename);
 	DsMapAddDouble(map, "bytes_transferred", data->BytesTransferred);
 	DsMapAddDouble(map, "total_file_size_bytes", data->TotalFileSizeBytes);
 	CreateAsyncEventWithDSMap(map, 70);
