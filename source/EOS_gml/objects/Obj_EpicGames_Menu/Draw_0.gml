@@ -17,15 +17,15 @@ draw_text(100,100,"EOS Version: " + string(eos_get_version()))
 
 switch(eos_auth_get_login_status(AccountID))
 {
-	case EOS_LS_NOT_LOGGED_IN:
+	case EOS_LoginStatus.NotLoggedIn:
 		draw_text(100,190,"LoginStatus: NotLoggedIn");
 	break;
 	
-	case EOS_LS_USING_LOCAL_PROFILE:
+	case EOS_LoginStatus.UsingLocalProfile:
 		draw_text(100,190,"LoginStatus: UsingLocalProfile");
 	break;
 	
-	case EOS_LS_LOGGED_IN:
+	case EOS_LoginStatus.LoggedIn:
 		draw_text(100,190,"LoginStatus: LoggedIn");
 	break;
 }

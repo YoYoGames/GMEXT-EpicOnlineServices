@@ -98,6 +98,7 @@
     {"name":"EOS_Definitions_Presence","order":11,"path":"scripts/EOS_Definitions_Presence/EOS_Definitions_Presence.yy",},
     {"name":"EOS_Definitions_ProgressionSnapshot","order":18,"path":"scripts/EOS_Definitions_ProgressionSnapshot/EOS_Definitions_ProgressionSnapshot.yy",},
     {"name":"EOS_Definitions_Reports","order":16,"path":"scripts/EOS_Definitions_Reports/EOS_Definitions_Reports.yy",},
+    {"name":"EOS_Definitions_Result","order":19,"path":"scripts/EOS_Definitions_Result/EOS_Definitions_Result.yy",},
     {"name":"EOS_Definitions_Sessions","order":1,"path":"scripts/EOS_Definitions_Sessions/EOS_Definitions_Sessions.yy",},
     {"name":"EOS_Definitions_Stats","order":17,"path":"scripts/EOS_Definitions_Stats/EOS_Definitions_Stats.yy",},
     {"name":"EOS_Definitions_TitleStorage","order":14,"path":"scripts/EOS_Definitions_TitleStorage/EOS_Definitions_TitleStorage.yy",},

@@ -3,7 +3,7 @@ switch(async_load[? "type"])
 {	
 	case "eos_achievements_query_definitions":
 		
-		if(async_load[? "status"] != EOS_SUCCESS)
+		if(async_load[? "status"] != EOS_Result.Success)
 			exit
 		
 		eos_achievements_query_player_achievements(userID,userID)
@@ -19,7 +19,7 @@ switch(async_load[? "type"])
 	
 	case "eos_achievements_query_player_achievements":
 		
-		if(async_load[? "status"] != EOS_SUCCESS)
+		if(async_load[? "status"] != EOS_Result.Success)
 			exit
 	
 		var count = eos_achievements_get_player_achievement_count(userID)

@@ -3,7 +3,7 @@ switch(async_load[? "type"])
 {
 	case "eos_friends_query_friends":
 		
-		if(async_load[? "status"] == EOS_SUCCESS)
+		if(async_load[? "status"] == EOS_Result.Success)
 		{
 			friends = {}
 			var count = eos_friends_get_friends_count(AccountID)

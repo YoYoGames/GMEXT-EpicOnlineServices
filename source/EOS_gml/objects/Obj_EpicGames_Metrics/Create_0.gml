@@ -2,8 +2,8 @@
 var struct = eos_metrics_begin_player_session(
 		AccountID,
 		"YYEpicGames",
-		EOS_MAIT_EPIC,
-		EOS_UCT_MOUSE_KEYBOARD,
+		EOS_MetricsAccountIdType.Epic,
+		EOS_UserControllerType.MouseKeyboard,
 		"No Server",
 		"AnyRandomIDString")
 
