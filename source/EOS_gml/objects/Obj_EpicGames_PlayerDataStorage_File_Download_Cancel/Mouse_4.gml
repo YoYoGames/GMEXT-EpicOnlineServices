@@ -1,2 +1,2 @@
 
-eos_player_data_storage_file_transfer_request_cancel_request(Filename)
+eos_player_data_storage_file_transfer_request_cancel_request(filename)
