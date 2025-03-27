@@ -23,7 +23,7 @@ switch(async_load[? "type"])
 				AccountID = async_load[? "account_i_d"]
 				
 				var AuthToken = eos_auth_copy_user_auth_token(AccountID)
-				eos_connect_login(EOS_ECT_EPIC,AuthToken.AccessToken,"")
+				eos_connect_login(EOS_ECT_EPIC,AuthToken.access_token,"")
 				
 				if(!instance_number(Obj_EpicGames_Metrics))
 					instance_create_depth(0,0,0,Obj_EpicGames_Metrics)

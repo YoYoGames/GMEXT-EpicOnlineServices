@@ -11,17 +11,17 @@ switch(async_load[? "type"])
 			
 			var ins = instance_create_depth(400,300+a*80,0,Obj_EpicGames_Leaderboard_Rank_Friend)
 			
-			//array_length(UserId,)
+			//array_length(user_id,)
 			
-			if(variable_struct_exists(struct,"UserId"))
+			if(variable_struct_exists(struct,"user_id"))
 			{
-				ins.UserId = struct.UserId
+				ins.user_id = struct.user_id
 				
 				var account_ids = struct_get_names(friends)
 				for(var b = 0 ; b < array_length(account_ids) ; b++)
 				{
 					var user_id = struct_get(friends,account_ids[b])
-					if(ins.UserId == user_id)
+					if(ins.user_id == user_id)
 					{
 					    ins.mAccountID = account_ids[a]
 						break
@@ -29,14 +29,14 @@ switch(async_load[? "type"])
 				}
 			}
 			
-			if(variable_struct_exists(struct,"Score"))
-				ins.Score = struct.Score
+			if(variable_struct_exists(struct,"score"))
+				ins.score = struct.score
 			
 			var scores = []
 			var index = 0
 			with(Obj_EpicGames_Leaderboard_Rank_Friend)
 			{
-				scores[index] = Score
+				scores[index] = score
 				index ++
 			}
 			
@@ -44,9 +44,9 @@ switch(async_load[? "type"])
 			
 			with(Obj_EpicGames_Leaderboard_Rank_Friend)
 			{
-				Rank = array_get_index(scores,Score)
+				rank = array_get_index(scores,score)
 				
-				y = 300+Rank*80
+				y = 300+rank*80
 			}			
 		}
 		
@@ -88,8 +88,8 @@ switch(async_load[? "type"])
 		
 		show_debug_message($"friends: {friends}" )
 		
-		show_debug_message([userID,"",friends_user_ids,[{StatName: StatSelected, Aggregation: AgregationSeleted}],0,0])
-		eos_leaderboards_query_leaderboard_user_scores(userID,"",friends_user_ids,[{StatName: StatSelected, Aggregation: AgregationSeleted}],0,0)
+		show_debug_message([userID,"",friends_user_ids,[{stat_name: stat_selected, aggregation: agregation_seleted}],0,0])
+		eos_leaderboards_query_leaderboard_user_scores(userID,"",friends_user_ids,[{stat_name: stat_selected, aggregation: agregation_seleted}],0,0)
 		
 	break
 }

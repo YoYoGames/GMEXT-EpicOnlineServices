@@ -5,5 +5,5 @@ text = "Friends"
 
 friends = {}
 
-StatSelected = ""
-AgregationSeleted = noone
+stat_selected = ""
+agregation_seleted = noone

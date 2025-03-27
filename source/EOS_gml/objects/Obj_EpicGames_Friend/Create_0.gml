@@ -1,13 +1,13 @@
 
 event_inherited()
 
-text = DisplayName
+text = display_name
 
 
 //PreferredLanguage
 //AccountID
 //status
 //status_message
-//DisplayName
+//display_name
 //UserID
 

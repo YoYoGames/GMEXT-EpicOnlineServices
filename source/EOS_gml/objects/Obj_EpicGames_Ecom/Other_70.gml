@@ -14,21 +14,21 @@ switch(async_load[? "type"])
 			var offer = eos_ecom_copy_offer_by_index(AccountID,i)
 			//show_debug_message(offer)
 			
-			if(offer.bAvailableForPurchase)
+			if(offer.available_for_purchase)
 			{
 				instance_create_depth(200+250*pos,200,0,Obj_EpicGames_Ecom_Offer,offer)
 				pos++
 			}
 			
-			array_push(_array_of_offer_ids,offer.Id)
+			array_push(_array_of_offer_ids,offer.offer_id)
 			
 			//show_debug_message("eos_ecom_get_offer_count: " + string(eos_ecom_get_offer_count(AccountID)))
-			//show_debug_message("OfferItems: " + string(eos_ecom_get_offer_item_count(AccountID,offer.Id)))
-			for(var j = 0 ; j < eos_ecom_get_offer_item_count(AccountID,offer.Id) ; j++)
+			//show_debug_message("OfferItems: " + string(eos_ecom_get_offer_item_count(AccountID,offer.offer_id)))
+			for(var j = 0 ; j < eos_ecom_get_offer_item_count(AccountID,offer.offer_id) ; j++)
 			{
-				var item = eos_ecom_copy_offer_item_by_index(AccountID,offer.Id,j)
+				var item = eos_ecom_copy_offer_item_by_index(AccountID,offer.offer_id,j)
 				show_debug_message(item)
-				array_push(_array_of_item_ids,item.Id)
+				array_push(_array_of_item_ids,item.offer_id)
 			}
 			show_debug_message("-----------")
 		}
@@ -75,10 +75,10 @@ switch(async_load[? "type"])
 		for(var i = 0 ; i < array_length(async_load[? "offer_ids"]); i++)
 		{
 			with(Obj_EpicGames_Ecom_Offer)
-			if(async_load[? "offer_ids"][i] == Id)
+			if(async_load[? "offer_ids"][i] == offer_id)
 			{
-				show_debug_message(Id)//(offer)
-				var title_offer = TitleText//offer.TitleText
+				show_debug_message(offer_id)//(offer)
+				var title_offer = title_text//offer.TitleText
 				show_message_async(title_offer + " Bought")
 			}
 		}
@@ -88,7 +88,7 @@ switch(async_load[? "type"])
 		for(var i = 0 ; i < _entitlements_count ; i++)
 		{
 			show_debug_message(eos_ecom_transaction_copy_entitlement_by_index_by_id_transaction(AccountID,_transaction_id,i))
-			var _EntitlementId = eos_ecom_transaction_copy_entitlement_by_index_by_id_transaction(AccountID,_transaction_id,i).EntitlementId
+			var _EntitlementId = eos_ecom_transaction_copy_entitlement_by_index_by_id_transaction(AccountID,_transaction_id,i).entitlement_id
 			eos_ecom_redeem_entitlements(AccountID,[_EntitlementId])
 		}
 		

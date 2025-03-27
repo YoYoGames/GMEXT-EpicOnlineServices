@@ -77,7 +77,7 @@ public:
 		buffer.push_back(byteValue);
 	}
 
-	static inline void serializeString(std::vector<std::byte>& buffer, const char* input) {
+	static inline void serializeString(std::vector<std::byte>& buffer, constchar* input) {
 		std::size_t len = std::strlen(input);
 		buffer.insert(buffer.end(), reinterpret_cast<const std::byte*>(input), reinterpret_cast<const std::byte*>(input + len));
 		buffer.push_back(std::byte('\0'));  // Null-terminate
@@ -154,8 +154,8 @@ public:
 		else if constexpr (std::is_same_v<T, bool>) {
 			serializeBool(buffer, input);
 		}
-		else if constexpr (std::is_same_v<T, const char*> || (std::is_array_v<T> && std::is_same_v<std::remove_extent_t<T>, char>)) {
-			// Handles both const char* and C-style strings
+		else if constexpr (std::is_same_v<T, constchar*> || (std::is_array_v<T> && std::is_same_v<std::remove_extent_t<T>, char>)) {
+			// Handles both constchar* and C-style strings
 			serializeString(buffer, input);
 		}
 		else if constexpr (std::is_same_v<T, std::string>) {
@@ -291,14 +291,14 @@ public:
 	StructStream() : StructStream(512) {}  // Delegating to the other constructor
 
 	template <typename T>
-	void addKeyValue(const char* key, const T& value) {
+	void addKeyValue(constchar* key, const T& value) {
 		updateLength();
 		DataStream::operator<<(key);
 		DataStream::operator<<(value);
 	}
 
 	template <typename T>
-	StructStream& operator<<(const std::pair<const char*, const T&>& pair) {
+	StructStream& operator<<(const std::pair<constchar*, const T&>& pair) {
 		addKeyValue(pair.first, pair.second);
 		return *this;
 	}
@@ -324,7 +324,7 @@ public:
 
 template <typename T>
 class TypedArrayStream : public CollectionStream {
-	static_assert(std::is_arithmetic_v<T> || std::is_same_v<T, bool> || std::is_same_v<T, const char*>, "CollectionStream only supports arithmetic types, enums and strings");
+	static_assert(std::is_arithmetic_v<T> || std::is_same_v<T, bool> || std::is_same_v<T, constchar*>, "CollectionStream only supports arithmetic types, enums and strings");
 protected:
 	void serializeTo(std::vector<std::byte>& buffer) const override {
 		SerializationUtils::serializeEnumerator(buffer, GMValueType::TypedArray);
@@ -350,7 +350,7 @@ public:
 		else if constexpr (std::is_same_v<T, bool>) {
 			SerializationUtils::serializeBool(getBuffer(), value);
 		}
-		else if constexpr (std::is_same_v<T, const char*> || std::is_same_v<T, char*>) {
+		else if constexpr (std::is_same_v<T, constchar*> || std::is_same_v<T,char*>) {
 			SerializationUtils::serializeString(getBuffer(), value);
 		}
 		return *this;
@@ -379,7 +379,7 @@ public:
 	}
 };
 
-void trace(const char* function, const char* format, ...);
+void trace(constchar* function, constchar* format, ...);
 
 // Define a macro to call Trace with __FUNCTION__
 #define TRACE(format, ...) trace(__FUNCTION__, format, ##__VA_ARGS__)
@@ -395,7 +395,7 @@ uint64_t YYGetUint64(const uint8_t* buff);
 float YYGetFloat(const uint8_t* buff);
 double YYGetReal(const uint8_t* buff);
 bool YYGetBool(const uint8_t* buff);
-const char* YYGetString(const uint8_t* buff);
+constchar* YYGetString(const uint8_t* buff);
 void* YYGetPointer(const uint8_t* buff);
 void* YYGetBuffer(const uint8_t* buff, uint32_t& length);
 std::vector<const uint8_t*> YYGetArray(const uint8_t* buff);

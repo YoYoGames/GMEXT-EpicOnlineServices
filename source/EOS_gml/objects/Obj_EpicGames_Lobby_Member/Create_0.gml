@@ -2,7 +2,7 @@
 //status_message
 //status
 //LastLoginTime
-//DisplayName
+//display_name
 //AccountIdType
 //AccountId
 //userID

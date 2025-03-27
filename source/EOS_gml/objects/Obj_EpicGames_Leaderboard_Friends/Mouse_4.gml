@@ -5,11 +5,11 @@ with(Obj_EpicGames_Leaderboard_Definition)
 with(Obj_EpicGames_Leaderboard_Rank)
 	instance_destroy()
 
-StatSelected = "Leaderboard_Stat"
-AgregationSeleted = EOS_LA_LATEST
+stat_selected = "Leaderboard_Stat"
+agregation_seleted = EOS_LA_LATEST
 
-//StatSelected = "Leaderboard_Stat_2"
-//AgregationSeleted = EOS_LA_MAX
+//stat_selected = "Leaderboard_Stat_2"
+//agregation_seleted = EOS_LA_MAX
 
 eos_friends_query_friends(AccountID)
 

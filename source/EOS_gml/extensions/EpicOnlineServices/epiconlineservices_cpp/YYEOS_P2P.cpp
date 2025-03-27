@@ -34,7 +34,7 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_p2p.h"
 
-inline void FillSocketId(EOS_P2P_SocketId &SocketId, const char *socketName)
+inline void FillSocketId(EOS_P2P_SocketId &SocketId, constchar* socketName)
 {
 	// Zero the entire struct and set the API version
 	memset(&SocketId, 0, sizeof(SocketId));
@@ -55,7 +55,7 @@ void eos_p2p_init()
 	HP2P = EOS_Platform_GetP2PInterface(PlatformHandle);
 }
 
-func double eos_p2p_accept_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2p_accept_connection(char* LocalUserId,char* RemoteUserId,char* SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -82,7 +82,7 @@ void EOS_CALL P2P_OnIncomingPacketQueueFullCallback(const EOS_P2P_OnIncomingPack
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_incoming_packet_queue_full(char *buff_ret)
+func double __eos_p2p_add_notify_incoming_packet_queue_full(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -109,7 +109,7 @@ void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnect
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_closed(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_closed(char* LocalUserId,char* SocketName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -142,7 +142,7 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_established(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_established(char* LocalUserId,char* SocketName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -172,7 +172,7 @@ void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnec
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_interrupted(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_interrupted(char* LocalUserId,char* SocketName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -202,7 +202,7 @@ void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingCo
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_request(char *LocalUserId, char *SocketName, char *buff_ret)
+func double __eos_p2p_add_notify_peer_connection_request(char* LocalUserId,char* SocketName,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -222,7 +222,7 @@ func double __eos_p2p_add_notify_peer_connection_request(char *LocalUserId, char
 	return 0.0;
 }
 
-func double eos_p2p_clear_packet_queue(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2p_clear_packet_queue(char* LocalUserId,char* RemoteUserId,char* SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -237,7 +237,7 @@ func double eos_p2p_clear_packet_queue(char *LocalUserId, char *RemoteUserId, ch
 	return (double)EOS_P2P_ClearPacketQueue(HP2P, &Options);
 }
 
-func double eos_p2p_close_connection(char *LocalUserId, char *RemoteUserId, char *SocketName)
+func double eos_p2p_close_connection(char* LocalUserId,char* RemoteUserId,char* SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -252,7 +252,7 @@ func double eos_p2p_close_connection(char *LocalUserId, char *RemoteUserId, char
 	return (double)EOS_P2P_CloseConnection(HP2P, &Options);
 }
 
-func double eos_p2p_close_connections(char *LocalUserId, char *SocketName)
+func double eos_p2p_close_connections(char* LocalUserId,char* SocketName)
 {
 	eos_not_init_return(-1);
 
@@ -279,7 +279,7 @@ func double eos_p2p_get_n_a_t_type()
 	return (double)OutNATType;
 }
 
-func double eos_p2p_get_next_received_packet_size(char *LocalUserId)
+func double eos_p2p_get_next_received_packet_size(char* LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -295,7 +295,7 @@ func double eos_p2p_get_next_received_packet_size(char *LocalUserId)
 	return (double)(int32_t)OutPacketSizeBytes;
 }
 
-func double __eos_p2p_get_packet_queue_info(char *buff_ret)
+func double __eos_p2p_get_packet_queue_info(char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -325,7 +325,7 @@ func double __eos_p2p_get_packet_queue_info(char *buff_ret)
 	return 0.0;
 }
 
-func double __eos_p2p_get_port_range(char *buff_ret)
+func double __eos_p2p_get_port_range(char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -399,7 +399,7 @@ func double eos_p2p_query_n_a_t_type()
 	return mcallback->identifier;
 }
 
-func double __eos_p2p_receive_packet(char *buff_ret, char *LocalUserId, double MaxDataSizeBytes, double RequestedChannel)
+func double __eos_p2p_receive_packet(char* buff_ret,char* LocalUserId, double MaxDataSizeBytes, double RequestedChannel)
 {
 	eos_not_init_return(-1);
 
@@ -430,7 +430,7 @@ func double __eos_p2p_receive_packet(char *buff_ret, char *LocalUserId, double M
 	}
 }
 
-func double __eos_p2p_remove_notify_incoming_packet_queue_full(char *buff_args)
+func double __eos_p2p_remove_notify_incoming_packet_queue_full(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -441,7 +441,7 @@ func double __eos_p2p_remove_notify_incoming_packet_queue_full(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2p_remove_notify_peer_connection_closed(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_closed(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -452,7 +452,7 @@ func double __eos_p2p_remove_notify_peer_connection_closed(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2p_remove_notify_peer_connection_established(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_established(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -463,7 +463,7 @@ func double __eos_p2p_remove_notify_peer_connection_established(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2p_remove_notify_peer_connection_interrupted(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_interrupted(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -474,7 +474,7 @@ func double __eos_p2p_remove_notify_peer_connection_interrupted(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2p_remove_notify_peer_connection_request(char *buff_args)
+func double __eos_p2p_remove_notify_peer_connection_request(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -485,7 +485,7 @@ func double __eos_p2p_remove_notify_peer_connection_request(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_p2p_send_packet(char *buff_args, char *buff_data, double len)
+func double __eos_p2p_send_packet(char* buff_args,char* buff_data, double len)
 {
 	eos_not_init_return(-1);
 

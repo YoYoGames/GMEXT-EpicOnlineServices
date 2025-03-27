@@ -153,7 +153,7 @@ switch(async_load[? "type"])
 		if(requestMyName == async_load[? "identifier"])
 		{
 			var _struct = eos_connect_copy_product_user_external_account_by_index(userID,0)
-			requestMyName = _struct.DisplayName
+			requestMyName = _struct.display_name
 			
 			return
 		}
@@ -168,9 +168,7 @@ switch(async_load[? "type"])
 			for(var a = 0 ; a < count ; a++)
 			{
 				_struct = eos_connect_copy_product_user_external_account_by_index(members_array[b],a)
-				show_debug_message("_struct")
 				show_debug_message(_struct)
-				//{ status_message : "EOS_Success", status : 0, LastLoginTime : 1742492836, DisplayName : "jzavala93", AccountIdType : 0, AccountId : "36b64afd62f145688696ea77e7bc9280", userID : "0002aa1d3fc94d919daa174d8e3c4a27" }
 				instance_create_depth(300,220+b*100,0,Obj_EpicGames_Lobby_Member,_struct)
 				
 				break//I only need one account per user :), but leave it as for() it's a good demostration....

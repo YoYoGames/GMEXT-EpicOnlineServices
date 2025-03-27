@@ -79,7 +79,7 @@ void eos_sessions_init()
 	HSessions = EOS_Platform_GetSessionsInterface(PlatformHandle);
 }
 
-func double __eos_active_session_copy_info(char *SessionName, char *buff_ret)
+func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -109,19 +109,19 @@ func double __eos_active_session_copy_info(char *SessionName, char *buff_ret)
 
 	OutActiveSessionInfo->ApiVersion = EOS_ACTIVESESSION_INFO_API_LATEST;
 
-	_struct.addKeyValue("LocalUserId", (const char *)productID_toString(OutActiveSessionInfo->LocalUserId));
+	_struct.addKeyValue("LocalUserId", (constchar* )productID_toString(OutActiveSessionInfo->LocalUserId));
 
 	StructStream _struct_session_details = {};
 	if (OutActiveSessionInfo->SessionDetails->HostAddress != NULL)
-		_struct_session_details.addKeyValue("HostAddress", (const char *)OutActiveSessionInfo->SessionDetails->HostAddress);
+		_struct_session_details.addKeyValue("HostAddress", (constchar* )OutActiveSessionInfo->SessionDetails->HostAddress);
 	if (OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections != NULL)
 		_struct_session_details.addKeyValue("NumOpenPublicConnections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
 	if (OutActiveSessionInfo->SessionDetails->OwnerServerClientId != NULL)
-		_struct_session_details.addKeyValue("OwnerServerClientId", (const char *)OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
+		_struct_session_details.addKeyValue("OwnerServerClientId", (constchar* )OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
 	if (OutActiveSessionInfo->SessionDetails->OwnerUserId != NULL)
-		_struct_session_details.addKeyValue("OwnerUserId", (const char *)productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
+		_struct_session_details.addKeyValue("OwnerUserId", (constchar* )productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
 	if (OutActiveSessionInfo->SessionDetails->SessionId != NULL)
-		_struct_session_details.addKeyValue("SessionId", (const char *)OutActiveSessionInfo->SessionDetails->SessionId);
+		_struct_session_details.addKeyValue("SessionId", (constchar* )OutActiveSessionInfo->SessionDetails->SessionId);
 
 	StructStream _struct_settings = {};
 
@@ -133,14 +133,14 @@ func double __eos_active_session_copy_info(char *SessionName, char *buff_ret)
 	_struct_settings.addKeyValue("AllowJoinInProgress", OutActiveSessionInfo->SessionDetails->Settings->bAllowJoinInProgress);
 	_struct_settings.addKeyValue("InvitesAllowed", OutActiveSessionInfo->SessionDetails->Settings->bInvitesAllowed);
 	_struct_settings.addKeyValue("SanctionsEnabled", OutActiveSessionInfo->SessionDetails->Settings->bSanctionsEnabled);
-	_struct_settings.addKeyValue("BucketId", (const char *)OutActiveSessionInfo->SessionDetails->Settings->BucketId);
+	_struct_settings.addKeyValue("BucketId", (constchar* )OutActiveSessionInfo->SessionDetails->Settings->BucketId);
 	_struct_settings.addKeyValue("NumPublicConnections", OutActiveSessionInfo->SessionDetails->Settings->NumPublicConnections);
 	_struct_settings.addKeyValue("PermissionLevel", (int)OutActiveSessionInfo->SessionDetails->Settings->PermissionLevel);
 
 	_struct_session_details.addKeyValue("settings", _struct_settings);
 	_struct.addKeyValue("Details", _struct_session_details);
 
-	_struct.addKeyValue("SessionName", (const char *)OutActiveSessionInfo->SessionName);
+	_struct.addKeyValue("SessionName", (constchar* )OutActiveSessionInfo->SessionName);
 	_struct.addKeyValue("State", (double)OutActiveSessionInfo->State);
 
 	_struct.writeTo(buff_ret);
@@ -152,7 +152,7 @@ func double __eos_active_session_copy_info(char *SessionName, char *buff_ret)
 	return 0.0;
 }
 
-func char *eos_active_session_get_registered_player_by_index(char *SessionName)
+funcchar* eos_active_session_get_registered_player_by_index(char* SessionName)
 {
 	eos_not_init_return((char*)"");
 
@@ -170,7 +170,7 @@ func char *eos_active_session_get_registered_player_by_index(char *SessionName)
 	return productID_toString(ProductUserId);
 }
 
-func double eos_active_session_get_registered_player_count(char *SessionName)
+func double eos_active_session_get_registered_player_count(char* SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -200,7 +200,7 @@ func double eos_active_session_get_registered_player_count(char *SessionName)
 // }
 
 EOS_HSessionDetails mHSessionDetails = 0;
-func double __eos_session_details_copy_info(char *buff_ret)
+func double __eos_session_details_copy_info(char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -214,15 +214,15 @@ func double __eos_session_details_copy_info(char *buff_ret)
 	if (EOS_EResult::EOS_Success == result)
 	{
 		if (OutSessionInfo->HostAddress != NULL)
-			_struct.addKeyValue("HostAddress", (const char *)OutSessionInfo->HostAddress);
+			_struct.addKeyValue("HostAddress", (constchar* )OutSessionInfo->HostAddress);
 		if (OutSessionInfo->NumOpenPublicConnections != NULL)
 			_struct.addKeyValue("NumOpenPublicConnections", OutSessionInfo->NumOpenPublicConnections);
 		if (OutSessionInfo->OwnerUserId != NULL)
-			_struct.addKeyValue("OwnerUserId", (const char *)productID_toString(OutSessionInfo->OwnerUserId));
+			_struct.addKeyValue("OwnerUserId", (constchar* )productID_toString(OutSessionInfo->OwnerUserId));
 		if (OutSessionInfo->OwnerServerClientId != NULL)
-			_struct.addKeyValue("OwnerServerClientId", (const char *)OutSessionInfo->OwnerServerClientId);
+			_struct.addKeyValue("OwnerServerClientId", (constchar* )OutSessionInfo->OwnerServerClientId);
 		if (OutSessionInfo->SessionId != NULL)
-			_struct.addKeyValue("SessionId", (const char *)OutSessionInfo->SessionId);
+			_struct.addKeyValue("SessionId", (constchar* )OutSessionInfo->SessionId);
 
 		StructStream _struct_settings = {};
 
@@ -234,7 +234,7 @@ func double __eos_session_details_copy_info(char *buff_ret)
 		_struct_settings.addKeyValue("AllowJoinInProgress", OutSessionInfo->Settings->bAllowJoinInProgress);
 		_struct_settings.addKeyValue("InvitesAllowed", OutSessionInfo->Settings->bInvitesAllowed);
 		_struct_settings.addKeyValue("SanctionsEnabled", OutSessionInfo->Settings->bSanctionsEnabled);
-		_struct_settings.addKeyValue("BucketId", (const char *)OutSessionInfo->Settings->BucketId);
+		_struct_settings.addKeyValue("BucketId", (constchar* )OutSessionInfo->Settings->BucketId);
 		_struct_settings.addKeyValue("NumPublicConnections", OutSessionInfo->Settings->NumPublicConnections);
 		_struct_settings.addKeyValue("PermissionLevel", (int)OutSessionInfo->Settings->PermissionLevel);
 
@@ -255,7 +255,7 @@ func double __eos_session_details_copy_info(char *buff_ret)
 void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessionAttribute, StructStream &outputSteam)
 {
 	outputSteam.addKeyValue("AdvertisementType", (int)OutSessionAttribute->AdvertisementType);
-	outputSteam.addKeyValue("Key", (const char *)OutSessionAttribute->Data->Key);
+	outputSteam.addKeyValue("Key", (constchar* )OutSessionAttribute->Data->Key);
 	switch (OutSessionAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
@@ -268,12 +268,12 @@ void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessi
 		outputSteam.addKeyValue("Value", /*(int64)*/ (int)OutSessionAttribute->Data->Value.AsInt64);
 		break; // TODO: int64
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam.addKeyValue("Value", (const char *)OutSessionAttribute->Data->Value.AsUtf8);
+		outputSteam.addKeyValue("Value", (constchar* )OutSessionAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
 
-func double __eos_session_details_copy_session_attribute_by_index(double AttrIndex, char *buff_ret)
+func double __eos_session_details_copy_session_attribute_by_index(double AttrIndex,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -291,7 +291,7 @@ func double __eos_session_details_copy_session_attribute_by_index(double AttrInd
 	return 0.0;
 }
 
-func double __eos_session_details_copy_session_attribute_by_key(char *AttrKey, char *buff_ret)
+func double __eos_session_details_copy_session_attribute_by_key(char* AttrKey,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -360,7 +360,7 @@ EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const u
 
 EOS_HSessionModification mHSessionModification = 0;
 
-func double __eos_session_modification_add_attribute(double AdvertisementType, double SessionAttribute, char *buff_args)
+func double __eos_session_modification_add_attribute(double AdvertisementType, double SessionAttribute,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -389,7 +389,7 @@ func double eos_session_modification_release()
 	return 0.0;
 }
 
-func double eos_session_modification_remove_attribute(char *Key)
+func double eos_session_modification_remove_attribute(char* Key)
 {
 	eos_not_init_return(-1);
 
@@ -399,7 +399,7 @@ func double eos_session_modification_remove_attribute(char *Key)
 	return (double)EOS_SessionModification_RemoveAttribute(mHSessionModification, &Options);
 }
 
-func double __eos_session_modification_set_allowed_platform_ids(char *buff_args)
+func double __eos_session_modification_set_allowed_platform_ids(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -417,7 +417,7 @@ func double __eos_session_modification_set_allowed_platform_ids(char *buff_args)
 	return (double)EOS_SessionModification_SetAllowedPlatformIds(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_bucket_id(char *BucketId)
+func double eos_session_modification_set_bucket_id(char* BucketId)
 {
 	eos_not_init_return(-1);
 
@@ -427,7 +427,7 @@ func double eos_session_modification_set_bucket_id(char *BucketId)
 	return (double)EOS_SessionModification_SetBucketId(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_host_address(char *HostAddress)
+func double eos_session_modification_set_host_address(char* HostAddress)
 {
 	eos_not_init_return(-1);
 
@@ -487,7 +487,7 @@ void EOS_CALL Sessions_OnJoinSessionAcceptedCallback(const EOS_Sessions_JoinSess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_sessions_add_notify_join_session_accepted(char *buff_ret)
+func double __eos_sessions_add_notify_join_session_accepted(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -516,7 +516,7 @@ void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_Leav
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_sessions_add_notify_leave_session_requested(char *buff_ret)
+func double __eos_sessions_add_notify_leave_session_requested(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -548,7 +548,7 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_sessions_add_notify_send_session_native_invite_requested(char *buff_ret)
+func double __eos_sessions_add_notify_send_session_native_invite_requested(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -578,7 +578,7 @@ void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_Sess
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_sessions_add_notify_session_invite_accepted(char *buff_ret)
+func double __eos_sessions_add_notify_session_invite_accepted(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -608,7 +608,7 @@ void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_Sessio
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_sessions_add_notify_session_invite_received(char *buff_ret)
+func double __eos_sessions_add_notify_session_invite_received(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -638,7 +638,7 @@ void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_Sessio
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_sessions_add_notify_session_invite_rejected(char *buff_ret)
+func double __eos_sessions_add_notify_session_invite_rejected(char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
@@ -653,7 +653,7 @@ func double __eos_sessions_add_notify_session_invite_rejected(char *buff_ret)
 	return 0.0;
 }
 
-func double eos_sessions_copy_session_handle_by_invite_id(char *InviteId)
+func double eos_sessions_copy_session_handle_by_invite_id(char* InviteId)
 {
 	eos_not_init_return(-1);
 
@@ -666,7 +666,7 @@ func double eos_sessions_copy_session_handle_by_invite_id(char *InviteId)
 	return (double)result;
 }
 
-func double __eos_sessions_copy_session_handle_by_ui_event_id(char *buff_args)
+func double __eos_sessions_copy_session_handle_by_ui_event_id(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -682,7 +682,7 @@ func double __eos_sessions_copy_session_handle_by_ui_event_id(char *buff_args)
 	return (double)result;
 }
 
-func double eos_sessions_copy_session_handle_for_presence(char *local)
+func double eos_sessions_copy_session_handle_for_presence(char* local)
 {
 	eos_not_init_return(-1);
 
@@ -695,7 +695,7 @@ func double eos_sessions_copy_session_handle_for_presence(char *local)
 	return (double)result;
 }
 
-func double __eos_sessions_create_session_modification(char *buff_args)
+func double __eos_sessions_create_session_modification(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -757,7 +757,7 @@ void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessio
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_destroy_session(char *SessionName)
+func double eos_sessions_destroy_session(char* SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -772,7 +772,7 @@ func double eos_sessions_destroy_session(char *SessionName)
 	return mcallback->identifier;
 }
 
-func double eos_sessions_dump_session_state(char *SessionName)
+func double eos_sessions_dump_session_state(char* SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -794,7 +794,7 @@ void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_end_session(char *SessionName)
+func double eos_sessions_end_session(char* SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -809,7 +809,7 @@ func double eos_sessions_end_session(char *SessionName)
 	return mcallback->identifier;
 }
 
-func double eos_sessions_get_invite_count(char *local)
+func double eos_sessions_get_invite_count(char* local)
 {
 	eos_not_init_return(-1);
 
@@ -820,7 +820,7 @@ func double eos_sessions_get_invite_count(char *local)
 	return EOS_Sessions_GetInviteCount(HSessions, &Options);
 }
 
-func char *eos_sessions_get_invite_id_by_index(char *local, double index)
+funcchar* eos_sessions_get_invite_id_by_index(char* local, double index)
 {
 	eos_not_init_return((char*)"");
 	
@@ -837,7 +837,7 @@ func char *eos_sessions_get_invite_id_by_index(char *local, double index)
 	return TempBuffer;
 }
 
-func double eos_sessions_is_user_in_session(char *SessionName, char *TargetUserId)
+func double eos_sessions_is_user_in_session(char* SessionName,char* TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -861,7 +861,7 @@ void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallb
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_join_session(double PresenceEnabled, char *LocalUserId, char *SessionName)
+func double eos_sessions_join_session(double PresenceEnabled,char* LocalUserId,char* SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -892,7 +892,7 @@ void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCal
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_query_invites(char *TargetUserId)
+func double eos_sessions_query_invites(char* TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -921,7 +921,7 @@ void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlay
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double __eos_sessions_register_players(char *SessionName, char *buff_args)
+func double __eos_sessions_register_players(char* SessionName,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -954,7 +954,7 @@ void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_reject_invite(char *LocalUserId, char *InviteId)
+func double eos_sessions_reject_invite(char* LocalUserId,char* InviteId)
 {
 	eos_not_init_return(-1);
 
@@ -969,7 +969,7 @@ func double eos_sessions_reject_invite(char *LocalUserId, char *InviteId)
 	return mcallback->identifier;
 }
 
-func double __eos_sessions_remove_notify_join_session_accepted(char *buff_args)
+func double __eos_sessions_remove_notify_join_session_accepted(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -981,7 +981,7 @@ func double __eos_sessions_remove_notify_join_session_accepted(char *buff_args)
 	return 0.0;
 }
 
-func double __eos_sessions_remove_notify_leave_session_requested(char *buff_args)
+func double __eos_sessions_remove_notify_leave_session_requested(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -992,7 +992,7 @@ func double __eos_sessions_remove_notify_leave_session_requested(char *buff_args
 	return 0.0;
 }
 
-func double __eos_sessions_remove_notify_send_session_native_invite_requested(char *buff_args)
+func double __eos_sessions_remove_notify_send_session_native_invite_requested(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1003,7 +1003,7 @@ func double __eos_sessions_remove_notify_send_session_native_invite_requested(ch
 	return 0.0;
 }
 
-func double __eos_sessions_remove_notify_session_invite_accepted(char *buff_args)
+func double __eos_sessions_remove_notify_session_invite_accepted(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1014,7 +1014,7 @@ func double __eos_sessions_remove_notify_session_invite_accepted(char *buff_args
 	return 0.0;
 }
 
-func double __eos_sessions_remove_notify_session_invite_received(char *buff_args)
+func double __eos_sessions_remove_notify_session_invite_received(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1025,7 +1025,7 @@ func double __eos_sessions_remove_notify_session_invite_received(char *buff_args
 	return 0.0;
 }
 
-func double __eos_sessions_remove_notify_session_invite_rejected(char *buff_args)
+func double __eos_sessions_remove_notify_session_invite_rejected(char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1048,7 +1048,7 @@ void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_send_invite(char *LocalUserId, char *SessionName, char *TargetUserId)
+func double eos_sessions_send_invite(char* LocalUserId,char* SessionName,char* TargetUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1076,7 +1076,7 @@ void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCal
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_start_session(char *SessionName)
+func double eos_sessions_start_session(char* SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -1103,7 +1103,7 @@ void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_Unregister
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double __eos_sessions_unregister_players(char *SessionName, char *buff_args)
+func double __eos_sessions_unregister_players(char* SessionName,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1153,7 +1153,7 @@ func double eos_sessions_update_session()
 	return mcallback->identifier;
 }
 
-func double eos_sessions_update_session_modification(char *SessionName)
+func double eos_sessions_update_session_modification(char* SessionName)
 {
 	eos_not_init_return(-1);
 
@@ -1191,7 +1191,7 @@ void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackI
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_session_search_find(char *LocalUserId)
+func double eos_session_search_find(char* LocalUserId)
 {
 	eos_not_init_return(-1);
 
@@ -1222,7 +1222,7 @@ func double eos_session_search_release()
 	return 0.0;
 }
 
-func double eos_session_search_remove_parameter(char *Key, double ComparisonOp)
+func double eos_session_search_remove_parameter(char* Key, double ComparisonOp)
 {
 	eos_not_init_return(-1);
 
@@ -1245,7 +1245,7 @@ func double eos_session_search_set_max_results(double MaxSearchResults)
 	return (double)EOS_SessionSearch_SetMaxResults(mOutSessionSearchHandle, &Options);
 }
 
-func double __eos_session_search_set_parameter(double comparisonOp, char *buff_args)
+func double __eos_session_search_set_parameter(double comparisonOp,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1262,7 +1262,7 @@ func double __eos_session_search_set_parameter(double comparisonOp, char *buff_a
 	return (double)EOS_SessionSearch_SetParameter(mOutSessionSearchHandle, &Options);
 }
 
-func double eos_session_search_set_session_id(char *SessionId)
+func double eos_session_search_set_session_id(char* SessionId)
 {
 	eos_not_init_return(-1);
 
@@ -1273,7 +1273,7 @@ func double eos_session_search_set_session_id(char *SessionId)
 	return (double)EOS_SessionSearch_SetSessionId(mOutSessionSearchHandle, &Options);
 }
 
-func double eos_session_search_set_target_user_id(char *TargetUserId)
+func double eos_session_search_set_target_user_id(char* TargetUserId)
 {
 	eos_not_init_return(-1);
 	
