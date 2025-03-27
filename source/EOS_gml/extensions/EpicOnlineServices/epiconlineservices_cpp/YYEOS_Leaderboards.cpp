@@ -81,7 +81,7 @@ YYEXPORT void eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id(RVa
 
 	eos_ensure_argc(1);
 
-	constchar* leaderboardId = YYGetString(arg, 0);
+	const char* leaderboardId = YYGetString(arg, 0);
 
 	EOS_Leaderboards_Definition *LeaderboardDef = NULL;
 
@@ -154,7 +154,7 @@ YYEXPORT void eos_leaderboards_copy_leaderboard_record_by_user_id(RValue &Result
 
 	eos_ensure_argc(1);
 
-	constchar* userId = YYGetString(arg, 0);
+	const char* userId = YYGetString(arg, 0);
 
 	EOS_Leaderboards_GetLeaderboardRecordCountOptions LeaderboardsRecordsCountOptions = {0};
 	LeaderboardsRecordsCountOptions.ApiVersion = EOS_LEADERBOARDS_GETLEADERBOARDRECORDCOUNT_API_LATEST;
@@ -200,7 +200,7 @@ YYEXPORT void eos_leaderboards_copy_leaderboard_user_score_by_index(RValue &Resu
 	eos_ensure_argc(2);
 
 	uint32_t index = YYGetUint32(arg, 0);
-	constchar* statName = YYGetString(arg, 1);
+	const char* statName = YYGetString(arg, 1);
 
 	EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions CopyOptions = {0};
 	CopyOptions.ApiVersion = EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYINDEX_API_LATEST;
@@ -223,8 +223,8 @@ YYEXPORT void eos_leaderboards_copy_leaderboard_user_score_by_user_id(RValue &Re
 
 	eos_ensure_argc(2);
 
-	constchar* userId = YYGetString(arg, 0);
-	constchar* statName = YYGetString(arg, 1);
+	const char* userId = YYGetString(arg, 0);
+	const char* statName = YYGetString(arg, 1);
 
 	EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions CopyOptions = {0};
 	CopyOptions.ApiVersion = EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYUSERID_API_LATEST;
@@ -272,7 +272,7 @@ YYEXPORT void eos_leaderboards_get_leaderboard_user_score_count(RValue &Result, 
 
 	eos_ensure_argc(1);
 
-	constchar* statName = YYGetString(arg, 0);
+	const char* statName = YYGetString(arg, 0);
 
 	EOS_Leaderboards_GetLeaderboardUserScoreCountOptions LeaderboardUserScoresCountOptions = {0};
 	LeaderboardUserScoresCountOptions.ApiVersion = EOS_LEADERBOARDS_GETLEADERBOARDUSERSCORECOUNT_API_LATEST;
@@ -300,7 +300,7 @@ YYEXPORT void eos_leaderboards_query_leaderboard_definitions(RValue &Result, CIn
 
 	eos_ensure_argc(1);
 
-	constchar* mProductUserId = YYGetString(arg, 0);
+	const char* mProductUserId = YYGetString(arg, 0);
 	int64 startTime = argc < 2 ? -1 : YYGetInt64(arg, 1);
 	int64 endTime = argc < 3 ? -1 : YYGetInt64(arg, 2);
 
@@ -346,8 +346,8 @@ YYEXPORT void eos_leaderboards_query_leaderboard_ranks(RValue &Result, CInstance
 
 	eos_ensure_argc(2);
 
-	constchar* LocalUserId = YYGetString(arg, 0);
-	constchar* LeaderboardId = YYGetString(arg, 1);
+	const char* LocalUserId = YYGetString(arg, 0);
+	const char* LeaderboardId = YYGetString(arg, 1);
 
 	EOS_Leaderboards_QueryLeaderboardRanksOptions QueryRanksOptions = {0};
 	QueryRanksOptions.ApiVersion = EOS_LEADERBOARDS_QUERYLEADERBOARDRANKS_API_LATEST;
@@ -381,10 +381,10 @@ YYEXPORT void eos_leaderboards_query_leaderboard_user_score(RValue &Result, CIns
 
 	eos_ensure_argc(5);
 
-	constchar* userID = YYGetString(arg, 0);
-	constchar* userID_target = YYGetString(arg, 1);
-	constchar* LeaderboardId = YYGetString(arg, 2); // not in use....
-	constchar* name = YYGetString(arg, 3);
+	const char* userID = YYGetString(arg, 0);
+	const char* userID_target = YYGetString(arg, 1);
+	const char* LeaderboardId = YYGetString(arg, 2); // not in use....
+	const char* name = YYGetString(arg, 3);
 	double agregation = YYGetReal(arg, 4);
 	int64 startTime = argc < 6 ? -1 : YYGetInt64(arg, 5);
 	int64 endTime = argc < 7 ? -1 : YYGetInt64(arg, 6);
@@ -426,12 +426,12 @@ YYEXPORT void eos_leaderboards_query_leaderboard_user_scores(RValue &Result, CIn
 {
 	eos_not_init_return_rvalue_real
 
-		constchar* userID = YYGetString(arg, 0);
-	constchar* LeaderboardId = YYGetString(arg, 1); // not in use...
+		const char* userID = YYGetString(arg, 0);
+	const char* LeaderboardId = YYGetString(arg, 1); // not in use...
 
 	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 2, "eos_leaderboards_query_leaderboard_user_scores");
 
-	// constchar* name = YYGetString(arg, 3);
+	// const char* name = YYGetString(arg, 3);
 	// double agregation = YYGetReal(arg, 4);
 	EOS_Leaderboards_UserScoresQueryStatInfo *StatInfoData = new EOS_Leaderboards_UserScoresQueryStatInfo[1024];
 	int vec_StatInfoData_count = 0;

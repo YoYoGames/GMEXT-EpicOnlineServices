@@ -34,7 +34,7 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_p2p.h"
 
-inline void FillSocketId(EOS_P2P_SocketId &SocketId, constchar* socketName)
+inline void FillSocketId(EOS_P2P_SocketId &SocketId, const char* socketName)
 {
 	// Zero the entire struct and set the API version
 	memset(&SocketId, 0, sizeof(SocketId));

@@ -86,7 +86,7 @@ YYEXPORT void eos_ecom_query_ownership(RValue &Result, CInstance *selfinst, CIns
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership");
 	// arg2 optional
 
@@ -98,7 +98,7 @@ YYEXPORT void eos_ecom_query_ownership(RValue &Result, CInstance *selfinst, CIns
 
 	if (argc > 2)
 	{
-		constchar* catalogNamespace = YYGetString(arg, 2);
+		const char* catalogNamespace = YYGetString(arg, 2);
 		Options.CatalogNamespace = catalogNamespace;
 	}
 
@@ -159,7 +159,7 @@ YYEXPORT void eos_ecom_query_ownership_by_sandbox_ids(RValue &Result, CInstance 
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership_by_sandbox_ids");
 
 	EOS_Ecom_QueryOwnershipBySandboxIdsOptions Options = {0};
@@ -197,7 +197,7 @@ YYEXPORT void eos_ecom_query_ownership_token(RValue &Result, CInstance *selfinst
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership_token");
 	// arg2 oprtional
 
@@ -209,7 +209,7 @@ YYEXPORT void eos_ecom_query_ownership_token(RValue &Result, CInstance *selfinst
 
 	if (argc > 2)
 	{
-		constchar* catalogNamespace = YYGetString(arg, 2);
+		const char* catalogNamespace = YYGetString(arg, 2);
 		Options.CatalogNamespace = catalogNamespace;
 	}
 
@@ -242,7 +242,7 @@ YYEXPORT void eos_ecom_query_entitlements(RValue &Result, CInstance *selfinst, C
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_entitlements");
 	bool bIncludeRedeemed = YYGetBool(arg, 2);
 
@@ -283,7 +283,7 @@ YYEXPORT void eos_ecom_query_entitlement_token(RValue &Result, CInstance *selfin
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_entitlement_token");
 
 	EOS_Ecom_QueryEntitlementTokenOptions Options = {0};
@@ -319,7 +319,7 @@ YYEXPORT void eos_ecom_query_offers(RValue &Result, CInstance *selfinst, CInstan
 
 	eos_ensure_argc(1);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 
 	EOS_Ecom_QueryOffersOptions Options = {};
 	Options.ApiVersion = EOS_ECOM_QUERYOFFERS_API_LATEST;
@@ -327,7 +327,7 @@ YYEXPORT void eos_ecom_query_offers(RValue &Result, CInstance *selfinst, CInstan
 
 	if (argc > 1)
 	{
-		constchar* OverrideCatalogNamespace = YYGetString(arg, 1);
+		const char* OverrideCatalogNamespace = YYGetString(arg, 1);
 		Options.OverrideCatalogNamespace = OverrideCatalogNamespace;
 	}
 
@@ -374,7 +374,7 @@ YYEXPORT void eos_ecom_checkout(RValue &Result, CInstance *selfinst, CInstance *
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 
 	EOS_Ecom_CheckoutOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_CHECKOUT_API_LATEST;
@@ -397,7 +397,7 @@ YYEXPORT void eos_ecom_checkout(RValue &Result, CInstance *selfinst, CInstance *
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 	if (argc > 2)
 	{
-		constchar* OverrideCatalogNamespace = YYGetString(arg, 2);
+		const char* OverrideCatalogNamespace = YYGetString(arg, 2);
 		Options.OverrideCatalogNamespace = OverrideCatalogNamespace;
 	}
 
@@ -429,7 +429,7 @@ YYEXPORT void eos_ecom_redeem_entitlements(RValue &Result, CInstance *selfinst, 
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_redeem_entitlements");
 
 	EOS_Ecom_RedeemEntitlementsOptions Options = {0};
@@ -451,7 +451,7 @@ YYEXPORT void eos_ecom_get_last_redeemed_entitlements_count(RValue &Result, CIns
 
 	eos_ensure_argc(1);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 
 	EOS_Ecom_GetLastRedeemedEntitlementsCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETLASTREDEEMEDENTITLEMENTSCOUNT_API_LATEST;
@@ -469,7 +469,7 @@ YYEXPORT void eos_ecom_copy_last_redeemed_entitlement_by_index(RValue &Result, C
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	uint32_t RedeemedEntitlementIndex = YYGetUint32(arg, 1);
 
 	EOS_Ecom_CopyLastRedeemedEntitlementByIndexOptions Options = {0};
@@ -490,7 +490,7 @@ YYEXPORT void eos_ecom_get_entitlements_count(RValue &Result, CInstance *selfins
 
 	eos_ensure_argc(1);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 
 	EOS_Ecom_GetEntitlementsCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETENTITLEMENTSCOUNT_API_LATEST;
@@ -508,8 +508,8 @@ YYEXPORT void eos_ecom_get_entitlements_by_name_count(RValue &Result, CInstance 
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* entitlementName = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* entitlementName = YYGetString(arg, 1);
 
 	EOS_Ecom_GetEntitlementsByNameCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETENTITLEMENTSBYNAMECOUNT_API_LATEST;
@@ -551,7 +551,7 @@ YYEXPORT void eos_ecom_copy_entitlement_by_index(RValue &Result, CInstance *self
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	uint32_t index = YYGetUint32(arg, 1);
 
 	EOS_Ecom_CopyEntitlementByIndexOptions Options = {0};
@@ -574,8 +574,8 @@ YYEXPORT void eos_ecom_copy_entitlement_by_name_and_index(RValue &Result, CInsta
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* EntitlementName = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* EntitlementName = YYGetString(arg, 1);
 	uint32_t Index = YYGetUint32(arg, 2);
 
 	EOS_Ecom_CopyEntitlementByNameAndIndexOptions Options = {0};
@@ -599,8 +599,8 @@ YYEXPORT void eos_ecom_copy_entitlement_by_id(RValue &Result, CInstance *selfins
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* EntitlementName = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* EntitlementName = YYGetString(arg, 1);
 
 	EOS_Ecom_CopyEntitlementByIdOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_COPYENTITLEMENTBYID_API_LATEST;
@@ -622,7 +622,7 @@ YYEXPORT void eos_ecom_get_offer_count(RValue &Result, CInstance *selfinst, CIns
 
 	eos_ensure_argc(1);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 
 	EOS_Ecom_GetOfferCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETOFFERCOUNT_API_LATEST;
@@ -672,7 +672,7 @@ YYEXPORT void eos_ecom_copy_offer_by_index(RValue &Result, CInstance *selfinst, 
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	uint32_t index = YYGetUint32(arg, 1);
 
 	EOS_Ecom_CopyOfferByIndexOptions Options = {0};
@@ -695,8 +695,8 @@ YYEXPORT void eos_ecom_copy_offer_by_id(RValue &Result, CInstance *selfinst, CIn
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* OfferId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* OfferId = YYGetString(arg, 1);
 
 	EOS_Ecom_CopyOfferByIdOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_COPYOFFERBYID_API_LATEST;
@@ -718,8 +718,8 @@ YYEXPORT void eos_ecom_get_offer_item_count(RValue &Result, CInstance *selfinst,
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* OfferId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* OfferId = YYGetString(arg, 1);
 
 	EOS_Ecom_GetOfferItemCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETOFFERITEMCOUNT_API_LATEST;
@@ -766,8 +766,8 @@ YYEXPORT void eos_ecom_copy_offer_item_by_index(RValue &Result, CInstance *selfi
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* OfferId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* OfferId = YYGetString(arg, 1);
 	uint32_t index = YYGetUint32(arg, 2);
 
 	EOS_Ecom_CopyOfferItemByIndexOptions Options = {0};
@@ -791,8 +791,8 @@ YYEXPORT void eos_ecom_copy_item_by_id(RValue &Result, CInstance *selfinst, CIns
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* ItemId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* ItemId = YYGetString(arg, 1);
 
 	EOS_Ecom_CopyItemByIdOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_COPYITEMBYID_API_LATEST;
@@ -814,8 +814,8 @@ YYEXPORT void eos_ecom_get_offer_image_info_count(RValue &Result, CInstance *sel
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* OfferId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* OfferId = YYGetString(arg, 1);
 
 	EOS_Ecom_GetOfferImageInfoCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETOFFERIMAGEINFOCOUNT_API_LATEST;
@@ -855,8 +855,8 @@ YYEXPORT void eos_ecom_copy_offer_image_info_by_index(RValue &Result, CInstance 
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* OfferId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* OfferId = YYGetString(arg, 1);
 	uint32_t ImageInfoIndex = YYGetUint32(arg, 2);
 
 	EOS_Ecom_CopyOfferImageInfoByIndexOptions Options = {0};
@@ -880,8 +880,8 @@ YYEXPORT void eos_ecom_get_item_image_info_count(RValue &Result, CInstance *self
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* ItemId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* ItemId = YYGetString(arg, 1);
 
 	EOS_Ecom_GetItemImageInfoCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETITEMIMAGEINFOCOUNT_API_LATEST;
@@ -900,8 +900,8 @@ YYEXPORT void eos_ecom_copy_item_image_info_by_index(RValue &Result, CInstance *
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* ItemId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* ItemId = YYGetString(arg, 1);
 	uint32_t ImageInfoIndex = YYGetUint32(arg, 2);
 
 	EOS_Ecom_CopyItemImageInfoByIndexOptions Options = {0};
@@ -925,8 +925,8 @@ YYEXPORT void eos_ecom_get_item_release_count(RValue &Result, CInstance *selfins
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* ItemId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* ItemId = YYGetString(arg, 1);
 
 	EOS_Ecom_GetItemReleaseCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETITEMRELEASECOUNT_API_LATEST;
@@ -989,8 +989,8 @@ YYEXPORT void eos_ecom_copy_item_release_by_index(RValue &Result, CInstance *sel
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* ItemId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* ItemId = YYGetString(arg, 1);
 	uint32_t ReleaseIndex = YYGetUint32(arg, 2);
 
 	EOS_Ecom_CopyItemReleaseByIndexOptions Options = {0};
@@ -1014,7 +1014,7 @@ YYEXPORT void eos_ecom_get_transaction_count(RValue &Result, CInstance *selfinst
 
 	eos_ensure_argc(1);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 
 	EOS_Ecom_GetTransactionCountOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_GETTRANSACTIONCOUNT_API_LATEST;
@@ -1054,7 +1054,7 @@ YYEXPORT void eos_ecom_transaction_get_transaction_id_by_index_transaction(RValu
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	uint32_t TransactionIndex = YYGetUint32(arg, 1);
 
 	EOS_Ecom_CopyTransactionByIndexOptions Options = {0};
@@ -1077,8 +1077,8 @@ YYEXPORT void eos_ecom_transaction_get_transaction_id_by_index_transaction(RValu
 // No Sense....
 // YYEXPORT void eos_ecom_transaction_get_transaction_id_by_id_transaction(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 //{
-//	constchar* user = YYGetString(arg, 0);
-//	constchar* TransactionId = YYGetString(arg, 1);
+//	const char* user = YYGetString(arg, 0);
+//	const char* TransactionId = YYGetString(arg, 1);
 //
 //	EOS_Ecom_CopyTransactionByIdOptions Options = { 0 };
 //	Options.ApiVersion = EOS_ECOM_COPYTRANSACTIONBYID_API_LATEST;
@@ -1103,7 +1103,7 @@ YYEXPORT void eos_ecom_transaction_get_entitlements_count_by_index_transaction(R
 
 	eos_ensure_argc(2);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	uint32_t TransactionIndex = YYGetUint32(arg, 1);
 
 	EOS_Ecom_CopyTransactionByIndexOptions Options = {0};
@@ -1129,8 +1129,8 @@ YYEXPORT void eos_ecom_transaction_get_entitlements_count_by_id_transaction(RVal
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* TransactionId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* TransactionId = YYGetString(arg, 1);
 
 	EOS_Ecom_CopyTransactionByIdOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_COPYTRANSACTIONBYID_API_LATEST;
@@ -1154,7 +1154,7 @@ YYEXPORT void eos_ecom_transaction_copy_entitlement_by_index_by_index_transactio
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
+	const char* user = YYGetString(arg, 0);
 	uint32_t TransactionIndex = YYGetUint32(arg, 1);
 	uint32_t EntitlementIndex = YYGetUint32(arg, 2);
 
@@ -1185,8 +1185,8 @@ YYEXPORT void eos_ecom_transaction_copy_entitlement_by_index_by_id_transaction(R
 
 	eos_ensure_argc(3);
 
-	constchar* user = YYGetString(arg, 0);
-	constchar* TransactionId = YYGetString(arg, 1);
+	const char* user = YYGetString(arg, 0);
+	const char* TransactionId = YYGetString(arg, 1);
 	uint32_t EntitlementIndex = YYGetUint32(arg, 2);
 
 	EOS_Ecom_CopyTransactionByIdOptions Options = {0};

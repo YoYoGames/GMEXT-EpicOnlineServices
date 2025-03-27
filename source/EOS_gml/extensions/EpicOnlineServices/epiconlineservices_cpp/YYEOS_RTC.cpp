@@ -436,12 +436,12 @@ func double __eos_rtc_admin_query_join_room_token(char* buff_args)
 	eos_not_init_return(-1);
 
 	auto args = buffer_unpack((uint8_t *)buff_args);
-	constchar* LocalUserId = YYGetString(args[0]);
-	constchar* RoomName = YYGetString(args[1]);
+	const char* LocalUserId = YYGetString(args[0]);
+	const char* RoomName = YYGetString(args[1]);
 	auto array_ids = YYGetArray(args[2]);
 	std::vector<EOS_ProductUserId> p_ids = VectorProductIdsFromVector(array_ids);
 	auto array_ips = YYGetArray(args[3]);
-	std::vector<constchar* > p_ips = VectorStringFromVector(array_ips);
+	std::vector<const char* > p_ips = VectorStringFromVector(array_ips);
 
 	EOS_RTCAdmin_QueryJoinRoomTokenOptions Options = {0};
 	Options.ApiVersion = EOS_RTCADMIN_QUERYJOINROOMTOKEN_API_LATEST;

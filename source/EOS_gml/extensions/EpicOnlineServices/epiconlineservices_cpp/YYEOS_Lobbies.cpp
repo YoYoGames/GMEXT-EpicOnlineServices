@@ -571,7 +571,7 @@ func double eos_lobby_destroy_lobby(char* LobbyId,char* LocalUserID)
 	return mcallback->identifier;
 }
 
-funcchar* eos_lobby_get_connect_string(char* LobbyId,char* LocalUserId)
+func char* eos_lobby_get_connect_string(char* LobbyId,char* LocalUserId)
 {
 	eos_not_init_return((char* )"");
 
@@ -598,7 +598,7 @@ func double eos_lobby_get_invite_count(char* LocalUserID)
 	return EOS_Lobby_GetInviteCount(HLobby, &Options);
 }
 
-funcchar* eos_lobby_get_invite_id_by_index(char* LocalUserID, double index)
+func char* eos_lobby_get_invite_id_by_index(char* LocalUserID, double index)
 {
 	eos_not_init_return((char* )"");
 
@@ -615,7 +615,7 @@ funcchar* eos_lobby_get_invite_id_by_index(char* LocalUserID, double index)
 	return TempBuffer;
 }
 
-funcchar* eos_lobby_get_rtc_room_name(char* LocalUserID,char* LobbyId)
+func char* eos_lobby_get_rtc_room_name(char* LocalUserID,char* LobbyId)
 {
 	eos_not_init_return((char* )"");
 
@@ -844,7 +844,7 @@ func double eos_lobby_leave_lobby(char* LobbyId,char* LocalUserId)
 	return mcallback->identifier;
 }
 
-funcchar* eos_lobby_parse_connect_string()
+func char* eos_lobby_parse_connect_string()
 {
 	eos_not_init_return((char* )"");
 
@@ -1144,7 +1144,7 @@ func double eos_lobby_update_lobby_modification(char* LobbyId,char* LocalUserId)
 void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructStream* outputSteam)
 {
 	outputSteam->addKeyValue("Visibility", (double)OutLobbyAttribute->Visibility);
-	outputSteam->addKeyValue("Key", (constchar*)OutLobbyAttribute->Data->Key);
+	outputSteam->addKeyValue("Key", (const char*)OutLobbyAttribute->Data->Key);
 	switch (OutLobbyAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
@@ -1157,7 +1157,7 @@ void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructS
 		outputSteam->addKeyValue("Value", /*(int64)*/ (int)OutLobbyAttribute->Data->Value.AsInt64);
 		break; // TODO: int64
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam->addKeyValue("Value", (constchar*)OutLobbyAttribute->Data->Value.AsUtf8);
+		outputSteam->addKeyValue("Value", (const char*)OutLobbyAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
@@ -1235,11 +1235,11 @@ func double __eos_lobby_details_copy_info(char* buff_ret)
 		_struct.addKeyValue("bRTCRoomEnabled", OutLobbyDetailsInfo->bRTCRoomEnabled);
 
 		if (OutLobbyDetailsInfo->BucketId != nullptr)
-			_struct.addKeyValue("BucketId", (constchar* )OutLobbyDetailsInfo->BucketId);
+			_struct.addKeyValue("BucketId", (const char* )OutLobbyDetailsInfo->BucketId);
 		if (OutLobbyDetailsInfo->LobbyId != nullptr)
-			_struct.addKeyValue("LobbyId", (constchar* )OutLobbyDetailsInfo->LobbyId);
+			_struct.addKeyValue("LobbyId", (const char* )OutLobbyDetailsInfo->LobbyId);
 		if (OutLobbyDetailsInfo->LobbyOwnerUserId != nullptr)
-			_struct.addKeyValue("LobbyOwnerUserId", (constchar* )productID_toString(OutLobbyDetailsInfo->LobbyOwnerUserId));
+			_struct.addKeyValue("LobbyOwnerUserId", (const char* )productID_toString(OutLobbyDetailsInfo->LobbyOwnerUserId));
 		_struct.addKeyValue("MaxMembers", OutLobbyDetailsInfo->MaxMembers);
 		_struct.addKeyValue("PermissionLevel", (double)OutLobbyDetailsInfo->PermissionLevel);
 
@@ -1320,9 +1320,9 @@ func double __eos_lobby_details_copy_member_info(char* TargetUserId,char* buff_r
 
 	if (result == EOS_EResult::EOS_Success)
 	{
-		_struct.addKeyValue("bAllowsCrossplay", (bool)OutLobbyDetailsMemberInfo->bAllowsCrossplay);
-		_struct.addKeyValue("Platform", (double)OutLobbyDetailsMemberInfo->Platform);
-		_struct.addKeyValue("UserId", (constchar*)productID_toString(OutLobbyDetailsMemberInfo->UserId));
+		_struct.addKeyValue("allows_crossplay", (bool)OutLobbyDetailsMemberInfo->bAllowsCrossplay);
+		_struct.addKeyValue("platform", (double)OutLobbyDetailsMemberInfo->Platform);
+		_struct.addKeyValue("user_id", (const char*)productID_toString(OutLobbyDetailsMemberInfo->UserId));
 
 		_struct.writeTo(buff_ret);
 	}
@@ -1347,7 +1347,7 @@ func double eos_lobby_details_get_attribute_count()
 	return EOS_LobbyDetails_GetAttributeCount(mHLobbyDetails, &Options);
 }
 
-funcchar* eos_lobby_details_get_lobby_owner()
+func char* eos_lobby_details_get_lobby_owner()
 {
 	eos_not_init_return((char* )"");
 
@@ -1371,7 +1371,7 @@ func double eos_lobby_details_get_member_attribute_count(char* TargetUserId)
 	return EOS_LobbyDetails_GetMemberAttributeCount(mHLobbyDetails, &Options);
 }
 
-funcchar* eos_lobby_details_get_member_by_index(double index)
+func char* eos_lobby_details_get_member_by_index(double index)
 {
 	eos_not_init_return((char* )"");
 
