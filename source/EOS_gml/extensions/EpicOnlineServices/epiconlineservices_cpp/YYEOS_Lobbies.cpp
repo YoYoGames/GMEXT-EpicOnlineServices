@@ -1143,21 +1143,21 @@ func double eos_lobby_update_lobby_modification(char* LobbyId,char* LocalUserId)
 
 void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructStream* outputSteam)
 {
-	outputSteam->addKeyValue("Visibility", (double)OutLobbyAttribute->Visibility);
-	outputSteam->addKeyValue("Key", (const char*)OutLobbyAttribute->Data->Key);
+	outputSteam->addKeyValue("visibility", (double)OutLobbyAttribute->Visibility);
+	outputSteam->addKeyValue("key", (const char*)OutLobbyAttribute->Data->Key);
 	switch (OutLobbyAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
-		outputSteam->addKeyValue("Value", (bool)OutLobbyAttribute->Data->Value.AsBool);
+		outputSteam->addKeyValue("value", (bool)OutLobbyAttribute->Data->Value.AsBool);
 		break;
 	case EOS_EAttributeType::EOS_AT_DOUBLE:
-		outputSteam->addKeyValue("Value", (double)OutLobbyAttribute->Data->Value.AsDouble);
+		outputSteam->addKeyValue("value", (double)OutLobbyAttribute->Data->Value.AsDouble);
 		break;
 	case EOS_EAttributeType::EOS_AT_INT64:
-		outputSteam->addKeyValue("Value", /*(int64)*/ (int)OutLobbyAttribute->Data->Value.AsInt64);
+		outputSteam->addKeyValue("value", /*(int64)*/ (int)OutLobbyAttribute->Data->Value.AsInt64);
 		break; // TODO: int64
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam->addKeyValue("Value", (const char*)OutLobbyAttribute->Data->Value.AsUtf8);
+		outputSteam->addKeyValue("value", (const char*)OutLobbyAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
@@ -1226,22 +1226,22 @@ func double __eos_lobby_details_copy_info(char* buff_ret)
 
 	if (EOS_EResult::EOS_Success == result)
 	{
-		_struct.addKeyValue("AvailableSlots", OutLobbyDetailsInfo->AvailableSlots);
-		_struct.addKeyValue("bAllowHostMigration", OutLobbyDetailsInfo->bAllowHostMigration);
-		_struct.addKeyValue("bAllowInvites", OutLobbyDetailsInfo->bAllowInvites);
-		_struct.addKeyValue("bAllowJoinById", OutLobbyDetailsInfo->bAllowJoinById);
-		_struct.addKeyValue("bPresenceEnabled", OutLobbyDetailsInfo->bPresenceEnabled);
-		_struct.addKeyValue("bRejoinAfterKickRequiresInvite", OutLobbyDetailsInfo->bRejoinAfterKickRequiresInvite);
-		_struct.addKeyValue("bRTCRoomEnabled", OutLobbyDetailsInfo->bRTCRoomEnabled);
+		_struct.addKeyValue("available_slots", OutLobbyDetailsInfo->AvailableSlots);
+		_struct.addKeyValue("allow_host_migration", OutLobbyDetailsInfo->bAllowHostMigration);
+		_struct.addKeyValue("allow_invites", OutLobbyDetailsInfo->bAllowInvites);
+		_struct.addKeyValue("allow_join_by_id", OutLobbyDetailsInfo->bAllowJoinById);
+		_struct.addKeyValue("presence_enabled", OutLobbyDetailsInfo->bPresenceEnabled);
+		_struct.addKeyValue("rejoin_after_kick_requires_invite", OutLobbyDetailsInfo->bRejoinAfterKickRequiresInvite);
+		_struct.addKeyValue("rtc_room_enabled", OutLobbyDetailsInfo->bRTCRoomEnabled);
 
 		if (OutLobbyDetailsInfo->BucketId != nullptr)
-			_struct.addKeyValue("BucketId", (const char* )OutLobbyDetailsInfo->BucketId);
+			_struct.addKeyValue("bucket_id", (const char* )OutLobbyDetailsInfo->BucketId);
 		if (OutLobbyDetailsInfo->LobbyId != nullptr)
-			_struct.addKeyValue("LobbyId", (const char* )OutLobbyDetailsInfo->LobbyId);
+			_struct.addKeyValue("lobby_id", (const char* )OutLobbyDetailsInfo->LobbyId);
 		if (OutLobbyDetailsInfo->LobbyOwnerUserId != nullptr)
-			_struct.addKeyValue("LobbyOwnerUserId", (const char* )productID_toString(OutLobbyDetailsInfo->LobbyOwnerUserId));
-		_struct.addKeyValue("MaxMembers", OutLobbyDetailsInfo->MaxMembers);
-		_struct.addKeyValue("PermissionLevel", (double)OutLobbyDetailsInfo->PermissionLevel);
+			_struct.addKeyValue("lobby_owner_user_id", (const char* )productID_toString(OutLobbyDetailsInfo->LobbyOwnerUserId));
+		_struct.addKeyValue("max_members", OutLobbyDetailsInfo->MaxMembers);
+		_struct.addKeyValue("permission_level", (double)OutLobbyDetailsInfo->PermissionLevel);
 
 		_struct.writeTo(buff_ret);
 
@@ -1397,15 +1397,13 @@ func double eos_lobby_details_get_member_count()
 	return EOS_LobbyDetails_GetMemberCount(mHLobbyDetails, &Options);
 }
 
-func double eos_lobby_details_info_release()
-{
-	eos_not_init_return(-1);
-
-	// TODO :: This function is not necessary
-	// EOS_LobbyDetails_Info_Release();
-
-	return 0.0;
-}
+//func double eos_lobby_details_info_release()
+//{
+//	eos_not_init_return(-1);
+//	// EOS_LobbyDetails_Info_Release();
+//
+//	return 0.0;
+//}
 
 //func double eos_lobby_details_member_info_release(double AllowsCrossplay, double Platform,char* UserId)
 //{
@@ -1434,25 +1432,25 @@ EOS_Lobby_AttributeData AttributeDataFromStruct(std::map<std::string, const uint
 	EOS_Lobby_AttributeData mSessionAttribute{};
 
 	mSessionAttribute.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
-	mSessionAttribute.Key = YYGetString(Attribute["Key"]);
+	mSessionAttribute.Key = YYGetString(Attribute["key"]);
 
-	switch ((int)YYGetReal(Attribute["ValueType"]))
+	switch ((int)YYGetReal(Attribute["value_type"]))
 	{
 	case 0:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_BOOLEAN;
-		mSessionAttribute.Value.AsBool = YYGetBool(Attribute["Value"]);
+		mSessionAttribute.Value.AsBool = YYGetBool(Attribute["value"]);
 		break;
 	case 1:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_INT64;
-		mSessionAttribute.Value.AsInt64 = YYGetUint64(Attribute["Value"]);
+		mSessionAttribute.Value.AsInt64 = YYGetUint64(Attribute["value"]);
 		break;
 	case 2:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_DOUBLE;
-		mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["Value"]);
+		mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["value"]);
 		break;
 	case 3:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_STRING;
-		mSessionAttribute.Value.AsUtf8 = YYGetString(Attribute["Value"]);
+		mSessionAttribute.Value.AsUtf8 = YYGetString(Attribute["value"]);
 		break;
 	}
 
@@ -1507,6 +1505,7 @@ func double eos_lobby_modification_release()
 	eos_assert_lobby_modification(-1);
 
 	EOS_LobbyModification_Release(mHLobbyModification);
+	mHLobbyModification = NULL;
 
 	return 0.0;
 }

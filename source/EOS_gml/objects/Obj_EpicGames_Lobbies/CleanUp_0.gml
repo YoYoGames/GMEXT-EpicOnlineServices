@@ -10,5 +10,6 @@ eos_lobby_remove_notify_lobby_update_received(notifyLobbyUpdateReceived)
 eos_lobby_remove_notify_rtc_room_connection_changed(notifyRTCRoomConnectionChanged)
 eos_lobby_remove_notify_send_lobby_native_invite_requested(notifySendLobbyNativeInviteRequested)
 
-if(LobbyId != "")
-	eos_lobby_leave_lobby(LobbyId,userID)
+if(lobby_id != "")
+	eos_lobby_leave_lobby(lobby_id,userID)
+

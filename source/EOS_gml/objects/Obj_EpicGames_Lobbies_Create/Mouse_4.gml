@@ -2,7 +2,7 @@
 eos_lobby_create_lobby(
 		userID,//LocalUserId
 		[/*EOS_OPT_Unknown,EOS_OPT_Epic,EOS_OPT_Steam*/],//AllowedPlatformIds
-		"",//LobbyId
+		"",//lobby_id
 		"GameMode:Region:MapName",//BucketId
 		10,//MaxLobbyMembers
 		EOS_LobbyPermissionLevel.PUBLICADVERTISED,//PermissionLevel

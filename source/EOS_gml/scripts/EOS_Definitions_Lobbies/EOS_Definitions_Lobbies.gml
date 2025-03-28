@@ -4,9 +4,9 @@
 #macro EOS_LOBBY_MAX_SEARCH_RESULTS 200
 
 /** Minimum number of characters allowed in the lobby id override */
-#macro EOS_LOBBY_MIN_LOBBYIDOVERRIDE_LENGTH 4
+#macro EOS_LOBBY_MIN_lobby_idOVERRIDE_LENGTH 4
 /** Maximum number of characters allowed in the lobby id override */
-#macro EOS_LOBBY_MAX_LOBBYIDOVERRIDE_LENGTH 60
+#macro EOS_LOBBY_MAX_lobby_idOVERRIDE_LENGTH 60
 
 /** Maximum number of attributes allowed on the lobby */
 #macro EOS_LOBBYMODIFICATION_MAX_ATTRIBUTES 64

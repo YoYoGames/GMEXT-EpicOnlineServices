@@ -109,19 +109,19 @@ func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
 
 	OutActiveSessionInfo->ApiVersion = EOS_ACTIVESESSION_INFO_API_LATEST;
 
-	_struct.addKeyValue("LocalUserId", (const char* )productID_toString(OutActiveSessionInfo->LocalUserId));
+	_struct.addKeyValue("local_user_id", (const char* )productID_toString(OutActiveSessionInfo->LocalUserId));
 
 	StructStream _struct_session_details = {};
 	if (OutActiveSessionInfo->SessionDetails->HostAddress != NULL)
-		_struct_session_details.addKeyValue("HostAddress", (const char* )OutActiveSessionInfo->SessionDetails->HostAddress);
+		_struct_session_details.addKeyValue("host_address", (const char* )OutActiveSessionInfo->SessionDetails->HostAddress);
 	if (OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections != NULL)
-		_struct_session_details.addKeyValue("NumOpenPublicConnections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
+		_struct_session_details.addKeyValue("num_open_public_connections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
 	if (OutActiveSessionInfo->SessionDetails->OwnerServerClientId != NULL)
-		_struct_session_details.addKeyValue("OwnerServerClientId", (const char* )OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
+		_struct_session_details.addKeyValue("owner_server_client_id", (const char* )OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
 	if (OutActiveSessionInfo->SessionDetails->OwnerUserId != NULL)
-		_struct_session_details.addKeyValue("OwnerUserId", (const char* )productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
+		_struct_session_details.addKeyValue("owner_user_id", (const char* )productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
 	if (OutActiveSessionInfo->SessionDetails->SessionId != NULL)
-		_struct_session_details.addKeyValue("SessionId", (const char* )OutActiveSessionInfo->SessionDetails->SessionId);
+		_struct_session_details.addKeyValue("session_id", (const char* )OutActiveSessionInfo->SessionDetails->SessionId);
 
 	StructStream _struct_settings = {};
 
@@ -129,19 +129,19 @@ func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
 	for (uint32_t a = 0; a < OutActiveSessionInfo->SessionDetails->Settings->AllowedPlatformIdsCount; a++)
 		_array << OutActiveSessionInfo->SessionDetails->Settings->AllowedPlatformIds[a];
 
-	_struct_settings.addKeyValue("AllowedPlatformIds", _array);
-	_struct_settings.addKeyValue("AllowJoinInProgress", OutActiveSessionInfo->SessionDetails->Settings->bAllowJoinInProgress);
-	_struct_settings.addKeyValue("InvitesAllowed", OutActiveSessionInfo->SessionDetails->Settings->bInvitesAllowed);
-	_struct_settings.addKeyValue("SanctionsEnabled", OutActiveSessionInfo->SessionDetails->Settings->bSanctionsEnabled);
-	_struct_settings.addKeyValue("BucketId", (const char* )OutActiveSessionInfo->SessionDetails->Settings->BucketId);
-	_struct_settings.addKeyValue("NumPublicConnections", OutActiveSessionInfo->SessionDetails->Settings->NumPublicConnections);
-	_struct_settings.addKeyValue("PermissionLevel", (int)OutActiveSessionInfo->SessionDetails->Settings->PermissionLevel);
+	_struct_settings.addKeyValue("allowed_platform_ids", _array);
+	_struct_settings.addKeyValue("allow_join_in_progress", OutActiveSessionInfo->SessionDetails->Settings->bAllowJoinInProgress);
+	_struct_settings.addKeyValue("invites_allowed", OutActiveSessionInfo->SessionDetails->Settings->bInvitesAllowed);
+	_struct_settings.addKeyValue("sanctions_enabled", OutActiveSessionInfo->SessionDetails->Settings->bSanctionsEnabled);
+	_struct_settings.addKeyValue("bucket_id", (const char* )OutActiveSessionInfo->SessionDetails->Settings->BucketId);
+	_struct_settings.addKeyValue("num_public_connections", OutActiveSessionInfo->SessionDetails->Settings->NumPublicConnections);
+	_struct_settings.addKeyValue("permission_level", (int)OutActiveSessionInfo->SessionDetails->Settings->PermissionLevel);
 
 	_struct_session_details.addKeyValue("settings", _struct_settings);
-	_struct.addKeyValue("Details", _struct_session_details);
+	_struct.addKeyValue("details", _struct_session_details);
 
-	_struct.addKeyValue("SessionName", (const char* )OutActiveSessionInfo->SessionName);
-	_struct.addKeyValue("State", (double)OutActiveSessionInfo->State);
+	_struct.addKeyValue("session_name", (const char* )OutActiveSessionInfo->SessionName);
+	_struct.addKeyValue("state", (double)OutActiveSessionInfo->State);
 
 	_struct.writeTo(buff_ret);
 
@@ -214,15 +214,15 @@ func double __eos_session_details_copy_info(char* buff_ret)
 	if (EOS_EResult::EOS_Success == result)
 	{
 		if (OutSessionInfo->HostAddress != NULL)
-			_struct.addKeyValue("HostAddress", (const char* )OutSessionInfo->HostAddress);
+			_struct.addKeyValue("host_address", (const char* )OutSessionInfo->HostAddress);
 		if (OutSessionInfo->NumOpenPublicConnections != NULL)
-			_struct.addKeyValue("NumOpenPublicConnections", OutSessionInfo->NumOpenPublicConnections);
+			_struct.addKeyValue("num_open_public_connections", OutSessionInfo->NumOpenPublicConnections);
 		if (OutSessionInfo->OwnerUserId != NULL)
-			_struct.addKeyValue("OwnerUserId", (const char* )productID_toString(OutSessionInfo->OwnerUserId));
+			_struct.addKeyValue("owner_user_id", (const char* )productID_toString(OutSessionInfo->OwnerUserId));
 		if (OutSessionInfo->OwnerServerClientId != NULL)
-			_struct.addKeyValue("OwnerServerClientId", (const char* )OutSessionInfo->OwnerServerClientId);
+			_struct.addKeyValue("owner_server_client_id", (const char* )OutSessionInfo->OwnerServerClientId);
 		if (OutSessionInfo->SessionId != NULL)
-			_struct.addKeyValue("SessionId", (const char* )OutSessionInfo->SessionId);
+			_struct.addKeyValue("session_id", (const char* )OutSessionInfo->SessionId);
 
 		StructStream _struct_settings = {};
 
@@ -230,15 +230,15 @@ func double __eos_session_details_copy_info(char* buff_ret)
 		for (uint32_t a = 0; a < OutSessionInfo->Settings->AllowedPlatformIdsCount; a++)
 			_array << OutSessionInfo->Settings->AllowedPlatformIds[a];
 
-		_struct_settings.addKeyValue("AllowedPlatformIds", _array);
-		_struct_settings.addKeyValue("AllowJoinInProgress", OutSessionInfo->Settings->bAllowJoinInProgress);
-		_struct_settings.addKeyValue("InvitesAllowed", OutSessionInfo->Settings->bInvitesAllowed);
-		_struct_settings.addKeyValue("SanctionsEnabled", OutSessionInfo->Settings->bSanctionsEnabled);
-		_struct_settings.addKeyValue("BucketId", (const char* )OutSessionInfo->Settings->BucketId);
-		_struct_settings.addKeyValue("NumPublicConnections", OutSessionInfo->Settings->NumPublicConnections);
-		_struct_settings.addKeyValue("PermissionLevel", (int)OutSessionInfo->Settings->PermissionLevel);
+		_struct_settings.addKeyValue("allowed_platform_ids", _array);
+		_struct_settings.addKeyValue("allow_join_in_progress", OutSessionInfo->Settings->bAllowJoinInProgress);
+		_struct_settings.addKeyValue("invites_allowed", OutSessionInfo->Settings->bInvitesAllowed);
+		_struct_settings.addKeyValue("sanctions_enabled", OutSessionInfo->Settings->bSanctionsEnabled);
+		_struct_settings.addKeyValue("bucket_id", (const char* )OutSessionInfo->Settings->BucketId);
+		_struct_settings.addKeyValue("num_public_connections", OutSessionInfo->Settings->NumPublicConnections);
+		_struct_settings.addKeyValue("permission_level", (int)OutSessionInfo->Settings->PermissionLevel);
 
-		_struct.addKeyValue("Settings", _struct_settings);
+		_struct.addKeyValue("settings", _struct_settings);
 
 		_struct.writeTo(buff_ret);
 
@@ -254,21 +254,21 @@ func double __eos_session_details_copy_info(char* buff_ret)
 
 void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessionAttribute, StructStream &outputSteam)
 {
-	outputSteam.addKeyValue("AdvertisementType", (int)OutSessionAttribute->AdvertisementType);
-	outputSteam.addKeyValue("Key", (const char* )OutSessionAttribute->Data->Key);
+	outputSteam.addKeyValue("advertisement_type", (int)OutSessionAttribute->AdvertisementType);
+	outputSteam.addKeyValue("key", (const char* )OutSessionAttribute->Data->Key);
 	switch (OutSessionAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
-		outputSteam.addKeyValue("Value", (bool)OutSessionAttribute->Data->Value.AsBool);
+		outputSteam.addKeyValue("value", (bool)OutSessionAttribute->Data->Value.AsBool);
 		break;
 	case EOS_EAttributeType::EOS_AT_DOUBLE:
-		outputSteam.addKeyValue("Value", (double)OutSessionAttribute->Data->Value.AsDouble);
+		outputSteam.addKeyValue("value", (double)OutSessionAttribute->Data->Value.AsDouble);
 		break;
 	case EOS_EAttributeType::EOS_AT_INT64:
-		outputSteam.addKeyValue("Value", /*(int64)*/ (int)OutSessionAttribute->Data->Value.AsInt64);
+		outputSteam.addKeyValue("value", /*(int64)*/ (int)OutSessionAttribute->Data->Value.AsInt64);
 		break; // TODO: int64
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam.addKeyValue("Value", (const char* )OutSessionAttribute->Data->Value.AsUtf8);
+		outputSteam.addKeyValue("value", (const char* )OutSessionAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
@@ -333,25 +333,25 @@ EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const u
 	EOS_Sessions_AttributeData mSessionAttribute = {0};
 
 	mSessionAttribute.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
-	mSessionAttribute.Key = YYGetString(Attribute["Key"]);
+	mSessionAttribute.Key = YYGetString(Attribute["key"]);
 
-	switch ((int)YYGetReal(Attribute["ValueType"]))
+	switch ((int)YYGetReal(Attribute["value_type"]))
 	{
 	case 0:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_BOOLEAN;
-		mSessionAttribute.Value.AsBool = YYGetBool(Attribute["Value"]);
+		mSessionAttribute.Value.AsBool = YYGetBool(Attribute["value"]);
 		break;
 	case 1:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_INT64;
-		mSessionAttribute.Value.AsInt64 = YYGetUint64(Attribute["Value"]);
+		mSessionAttribute.Value.AsInt64 = YYGetUint64(Attribute["value"]);
 		break;
 	case 2:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_DOUBLE;
-		mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["Value"]);
+		mSessionAttribute.Value.AsDouble = YYGetReal(Attribute["value"]);
 		break;
 	case 3:
 		mSessionAttribute.ValueType = EOS_EAttributeType::EOS_AT_STRING;
-		mSessionAttribute.Value.AsUtf8 = YYGetString(Attribute["Value"]);
+		mSessionAttribute.Value.AsUtf8 = YYGetString(Attribute["value"]);
 		break;
 	}
 
