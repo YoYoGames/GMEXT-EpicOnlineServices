@@ -4,17 +4,17 @@ switch(async_load[? "type"])
 	case "eos_lobby_create_lobby":
 		if(async_load[? "status"] == EOS_Result.Success)
 		{
-			LobbyId = async_load[? "lobby_id"]
+			lobby_id = async_load[? "lobby_id"]
 			
 			request_update_members()//eos_connect_query_product_user_id_mappings
 			
-			var RTCRoomName = eos_lobby_get_rtc_room_name(userID,LobbyId)
+			var RTCRoomName = eos_lobby_get_rtc_room_name(userID,lobby_id)
 			show_debug_message("RTCRoomName: " + RTCRoomName)
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 			instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
-			eos_lobby_update_lobby_modification(LobbyId,userID)
-			eos_lobby_modification_add_attribute(EOS_LobbyAttributeVisibility.PUBLIC,{Key:"lobbyname",ValueType: EOS_AttributeType.STRING,Value: requestMyName + "'s Lobby"})
+			eos_lobby_update_lobby_modification(lobby_id,userID)
+			eos_lobby_modification_add_attribute(EOS_LobbyAttributeVisibility.PUBLIC,{key:"lobbyname",value_type: EOS_AttributeType.STRING,value: requestMyName + "'s Lobby"})
 			eos_lobby_update_lobby()
 			eos_lobby_modification_release()
 		}
@@ -27,7 +27,7 @@ switch(async_load[? "type"])
 	case "eos_lobby_leave_lobby":
 		if(async_load[? "status"] == EOS_Result.Success)
 		{
-			LobbyId = ""
+			lobby_id = ""
 			
 			with(Obj_RTC) instance_destroy()
 			with(Obj_EpicGames_Lobbies_P2P) instance_destroy()
@@ -39,18 +39,18 @@ switch(async_load[? "type"])
 	case "eos_lobby_join_lobby_by_id":
 		if(async_load[? "status"] == EOS_Result.Success)
 		{
-	        LobbyId = async_load[? "lobby_id"]
+	        lobby_id = async_load[? "lobby_id"]
 			
 			request_update_members()//eos_connect_query_product_user_id_mappings
 			
-			var RTCRoomName = eos_lobby_get_rtc_room_name(userID,LobbyId)
+			var RTCRoomName = eos_lobby_get_rtc_room_name(userID,lobby_id)
 			
 			show_debug_message("RTCRoomName: " + RTCRoomName)
 			
 			instance_create_depth(0,0,0,Obj_RTC,{RoomName: RTCRoomName})
 	        instance_create_depth(0,0,0,Obj_EpicGames_Lobbies_P2P)
 			
-	        if(eos_lobby_copy_lobby_details_handle(LobbyId,userID) == EOS_Result.Success)
+	        if(eos_lobby_copy_lobby_details_handle(lobby_id,userID) == EOS_Result.Success)
 	        {
 				show_debug_message(eos_lobby_details_copy_attribute_by_key("lobbyname"))
 				
@@ -108,7 +108,7 @@ switch(async_load[? "type"])
 				case EOS_LobbyMemberStatus.CLOSED:
 				case EOS_LobbyMemberStatus.LEFT:
 					show_message_async("DISCONNECTED...")
-					LobbyId = ""
+					lobby_id = ""
 					with(Obj_EpicGames_Lobby_Member) instance_destroy()
 					with(Obj_RTC) instance_destroy()
 					with(Obj_EpicGames_Lobbies_P2P) instance_destroy()
@@ -119,7 +119,7 @@ switch(async_load[? "type"])
 				break
 				case EOS_LobbyMemberStatus.KICKED:
 					show_message_async("I was KICKED D:")
-					LobbyId = ""
+					lobby_id = ""
 					with(Obj_EpicGames_Lobby_Member) instance_destroy()
 					with(Obj_RTC) instance_destroy()
 					with(Obj_EpicGames_Lobbies_P2P) instance_destroy()
@@ -204,7 +204,7 @@ switch(async_load[? "type"])
 			eos_lobby_details_release()
 			
 			var ins = instance_create_depth(Obj_EpicGames_Lobbies_Search.x,Obj_EpicGames_Lobbies_Search.y+100+a*100,0,Obj_EpicGames_Lobby,struct)
-			ins.text = attribute.Value
+			ins.text = attribute.value
 		}
 		eos_lobby_search_release()
 		
@@ -239,7 +239,7 @@ switch(async_load[? "type"])
 			eos_lobby_details_release()
 			
 			var ins = instance_create_depth(Obj_EpicGames_Lobby_Invitations.x,Obj_EpicGames_Lobby_Invitations.y+100+a*100,0,Obj_EpicGames_Lobby,struct)
-			ins.text = attribute.Value
+			ins.text = attribute.value
 		}
 		
 	break

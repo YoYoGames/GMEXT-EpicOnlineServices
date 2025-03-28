@@ -53,16 +53,16 @@ show_debug_message("eos_session_modification_set_join_in_progress_allowed: " + e
 var result = eos_session_modification_set_invites_allowed(true)
 show_debug_message("eos_session_modification_set_invites_allowed" + eos_result_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_BUCKET_ID,ValueType: EOS_AttributeType.STRING,Value: BucketId})
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_BUCKET_ID,value_type: EOS_AttributeType.STRING,value: BucketId})
 show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY,value_type: EOS_AttributeType.BOOLEAN,value: false})
 show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY,ValueType: EOS_AttributeType.BOOLEAN,Value: false})
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY,value_type: EOS_AttributeType.BOOLEAN,value: false})
 show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{Key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,ValueType: EOS_AttributeType.DOUBLE,Value: 2})
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,value_type: EOS_AttributeType.DOUBLE,value: 2})
 show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
 eos_sessions_update_session()

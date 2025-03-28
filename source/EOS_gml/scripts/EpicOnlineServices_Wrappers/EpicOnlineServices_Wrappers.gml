@@ -1,9 +1,9 @@
-//__eos_active_session_copy_info(SessionName)
-function eos_active_session_copy_info(SessionName)
+//__eos_active_session_copy_info(session_name)
+function eos_active_session_copy_info(session_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_active_session_copy_info(SessionName,_return_buffer_address)
+	__eos_active_session_copy_info(session_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -22,40 +22,40 @@ function eos_session_details_copy_info()
 	return _return_value;
 }
 
-//__eos_session_details_copy_session_attribute_by_index(AttrIndex)
-function eos_session_details_copy_session_attribute_by_index(AttrIndex)
+//__eos_session_details_copy_session_attribute_by_index(attribute_index)
+function eos_session_details_copy_session_attribute_by_index(attribute_index)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_session_details_copy_session_attribute_by_index(AttrIndex,_return_buffer_address)
+	__eos_session_details_copy_session_attribute_by_index(attribute_index,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_session_details_copy_session_attribute_by_key(AttrKey,buff_ret)
-function eos_session_details_copy_session_attribute_by_key(AttrKey)
+//__eos_session_details_copy_session_attribute_by_key(attribute_key,buff_ret)
+function eos_session_details_copy_session_attribute_by_key(attribute_key)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_session_details_copy_session_attribute_by_key(AttrKey,_return_buffer_address)
+	__eos_session_details_copy_session_attribute_by_key(attribute_key,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_session_modification_add_attribute(AdvertisementType, SessionAttribute, buff_args)
-function eos_session_modification_add_attribute(AdvertisementType,SessionAttribute,Attribute)
+//__eos_session_modification_add_attribute(AdvertisementType, Sessionattribute, buff_args)
+function eos_session_modification_add_attribute(AdvertisementType,Sessionattribute,attribute)
 {
 	var _args = [
-		[Attribute, undefined], // struct
+		[attribute, undefined], // struct
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_session_modification_add_attribute(AdvertisementType,SessionAttribute,_args_buffer_address)
+	return __eos_session_modification_add_attribute(AdvertisementType,Sessionattribute,_args_buffer_address)
 }
 
 //__eos_session_modification_set_allowed_platform_ids
@@ -71,10 +71,10 @@ function eos_session_modification_set_allowed_platform_ids(array_ids)
 }
 
 //__eos_sessions_copy_session_handle_by_ui_event_id
-function eos_sessions_copy_session_handle_by_ui_event_id(UiEventId)
+function eos_sessions_copy_session_handle_by_ui_event_id(ui_event_id)
 {
 	var _args = [
-		[UiEventId ,buffer_u64],
+		[ui_event_id ,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -83,28 +83,26 @@ function eos_sessions_copy_session_handle_by_ui_event_id(UiEventId)
 }
 
 //__eos_sessions_create_session_modification
-function eos_sessions_create_session_modification(AllowedPlatformIds,PresenceEnabled,bSanctionsEnabled,BucketId,LocalUserId,MaxPlayers,SessionId,SessionName)
+function eos_sessions_create_session_modification(allowed_platform_ids,presence_enabled,sanctions_enabled,bucket_id,local_user_id,max_players,session_id,session_name)
 {
 	var _args = [
-		[AllowedPlatformIds, buffer_u32],//0,Array
-		[PresenceEnabled, buffer_bool],//1
-		[bSanctionsEnabled, buffer_bool],//2
-		[BucketId, buffer_string],//3
-		[LocalUserId, buffer_string],//4
-		[MaxPlayers, buffer_f32],//5
-		[SessionId, buffer_string],//6
-		[SessionName, buffer_string],//7
+		[allowed_platform_ids, buffer_u32],//0,Array
+		[presence_enabled, buffer_bool],//1
+		[sanctions_enabled, buffer_bool],//2
+		[bucket_id, buffer_string],//3
+		[local_user_id, buffer_string],//4
+		[max_players, buffer_f32],//5
+		[session_id, buffer_string],//6
+		[session_name, buffer_string],//7
 	]
-	
-	show_debug_message(_args)
 	
 	var _args_buffer_address = ext_pack_args(_args);
 	
 	return __eos_sessions_create_session_modification(_args_buffer_address)
 }
 
-//__eos_sessions_register_players(SessionName, buff_args)
-function eos_sessions_register_players(SessionName,array_product_ids)
+//__eos_sessions_register_players(session_name, buff_args)
+function eos_sessions_register_players(session_name,array_product_ids)
 {
 	var _args = [
 		[array_product_ids, undefined], // array
@@ -112,11 +110,11 @@ function eos_sessions_register_players(SessionName,array_product_ids)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_sessions_register_players(SessionName,_args_buffer_address)
+	return __eos_sessions_register_players(session_name,_args_buffer_address)
 }
 
-//__eos_sessions_unregister_players(SessionName, buff_args)
-function eos_sessions_unregister_players(SessionName,array_product_ids)
+//__eos_sessions_unregister_players(session_name, buff_args)
+function eos_sessions_unregister_players(session_name,array_product_ids)
 {
 	var _args = [
 		[array_product_ids, undefined], // array
@@ -124,19 +122,19 @@ function eos_sessions_unregister_players(SessionName,array_product_ids)
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return eos_sessions_unregister_players(SessionName,_args_buffer_address)
+	return eos_sessions_unregister_players(session_name,_args_buffer_address)
 }
 
-//__eos_session_search_set_parameter(comparisonOp,buff_args)
-function eos_session_search_set_parameter(comparisonOp,Attribute)
+//__eos_session_search_set_parameter(comparison_op,buff_args)
+function eos_session_search_set_parameter(comparison_op,attribute)
 {
 	var _args = [
-		[Attribute, undefined], // Struct
+		[attribute, undefined], // Struct
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_session_search_set_parameter(comparisonOp,_args_buffer_address)
+	return __eos_session_search_set_parameter(comparison_op,_args_buffer_address)
 }
 
 
@@ -215,10 +213,10 @@ function eos_sessions_add_notify_session_invite_rejected()
 
 
 //__eos_sessions_remove_notify_join_session_accepted
-function eos_sessions_remove_notify_join_session_accepted(notificationId)
+function eos_sessions_remove_notify_join_session_accepted(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -227,10 +225,10 @@ function eos_sessions_remove_notify_join_session_accepted(notificationId)
 }
 
 //__eos_sessions_remove_notify_leave_session_requested
-function eos_sessions_remove_notify_leave_session_requested(notificationId)
+function eos_sessions_remove_notify_leave_session_requested(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -239,10 +237,10 @@ function eos_sessions_remove_notify_leave_session_requested(notificationId)
 }
 
 //__eos_sessions_remove_notify_send_session_native_invite_requested
-function eos_sessions_remove_notify_send_session_native_invite_requested(notificationId)
+function eos_sessions_remove_notify_send_session_native_invite_requested(notification_id)
 {
 		var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -251,10 +249,10 @@ function eos_sessions_remove_notify_send_session_native_invite_requested(notific
 }
 
 //__eos_sessions_remove_notify_session_invite_accepted
-function eos_sessions_remove_notify_session_invite_accepted(notificationId)
+function eos_sessions_remove_notify_session_invite_accepted(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -263,10 +261,10 @@ function eos_sessions_remove_notify_session_invite_accepted(notificationId)
 }
 
 //__eos_sessions_remove_notify_session_invite_received
-function eos_sessions_remove_notify_session_invite_received(notificationId)
+function eos_sessions_remove_notify_session_invite_received(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -275,10 +273,10 @@ function eos_sessions_remove_notify_session_invite_received(notificationId)
 }
 
 //__eos_sessions_remove_notify_session_invite_rejected
-function eos_sessions_remove_notify_session_invite_rejected(notificationId)
+function eos_sessions_remove_notify_session_invite_rejected(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -312,23 +310,23 @@ function eos_p2p_get_port_range()
 	return _return_value;
 }
 
-//__eos_p2p_receive_packet(buff_ret,LocalUserId,MaxDataSizeBytes,RequestedChannel)
-function eos_p2p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+//__eos_p2p_receive_packet(buff_ret,local_user_id,max_data_size_bytes,requested_channel)
+function eos_p2p_receive_packet(buff_adress,local_user_id,max_data_size_bytes,requested_channel)
 {	
-	return __eos_p2p_receive_packet(buffAdress,LocalUserId,MaxDataSizeBytes,RequestedChannel)
+	return __eos_p2p_receive_packet(buff_adress,local_user_id,max_data_size_bytes,requested_channel)
 }
 
 //__eos_p2p_send_packet(buff_data, len)
-function eos_p2p_send_packet(buff,buff_len,AllowDelayedDelivery,DisableAutoAcceptConnection,Channel,LocalUserId,Reliability,RemoteUserId,SocketName)
+function eos_p2p_send_packet(buff,buff_len,allow_delayed_delivery,disable_auto_accept_connection,channel,local_user_id,reliability,remote_user_id,socket_name)
 {
 	var _args = [
-		[AllowDelayedDelivery,buffer_bool],
-		[DisableAutoAcceptConnection,buffer_bool],
-		[Channel,buffer_f32],
-		[LocalUserId,buffer_string],
-		[Reliability,buffer_u8],
-		[RemoteUserId,buffer_string],
-		[SocketName,buffer_string],
+		[allow_delayed_delivery,buffer_bool],
+		[disable_auto_accept_connection,buffer_bool],
+		[channel,buffer_f32],
+		[local_user_id,buffer_string],
+		[reliability,buffer_u8],
+		[remote_user_id,buffer_string],
+		[socket_name,buffer_string],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -349,11 +347,11 @@ function eos_p2p_add_notify_incoming_packet_queue_full()
 }
 
 //__eos_p2p_add_notify_peer_connection_closed
-function eos_p2p_add_notify_peer_connection_closed(LocalUserId, SocketName)
+function eos_p2p_add_notify_peer_connection_closed(local_user_id, socket_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2p_add_notify_peer_connection_closed(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_closed(local_user_id, socket_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -361,11 +359,11 @@ function eos_p2p_add_notify_peer_connection_closed(LocalUserId, SocketName)
 }
 
 //__eos_p2p_add_notify_peer_connection_established
-function eos_p2p_add_notify_peer_connection_established(LocalUserId, SocketName)
+function eos_p2p_add_notify_peer_connection_established(local_user_id, socket_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2p_add_notify_peer_connection_established(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_established(local_user_id, socket_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -373,11 +371,11 @@ function eos_p2p_add_notify_peer_connection_established(LocalUserId, SocketName)
 }
 
 //__eos_p2p_add_notify_peer_connection_interrupted
-function eos_p2p_add_notify_peer_connection_interrupted(LocalUserId, SocketName)
+function eos_p2p_add_notify_peer_connection_interrupted(local_user_id, socket_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2p_add_notify_peer_connection_interrupted(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_interrupted(local_user_id, socket_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -385,11 +383,11 @@ function eos_p2p_add_notify_peer_connection_interrupted(LocalUserId, SocketName)
 }
 
 //__eos_p2p_add_notify_peer_connection_request
-function eos_p2p_add_notify_peer_connection_request(LocalUserId, SocketName)
+function eos_p2p_add_notify_peer_connection_request(local_user_id, socket_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_p2p_add_notify_peer_connection_request(LocalUserId, SocketName,_return_buffer_address)
+	__eos_p2p_add_notify_peer_connection_request(local_user_id, socket_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -399,10 +397,10 @@ function eos_p2p_add_notify_peer_connection_request(LocalUserId, SocketName)
 
 
 //__eos_p2p_remove_notify_incoming_packet_queue_full
-function eos_p2p_remove_notify_incoming_packet_queue_full(notificationId)
+function eos_p2p_remove_notify_incoming_packet_queue_full(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -411,10 +409,10 @@ function eos_p2p_remove_notify_incoming_packet_queue_full(notificationId)
 }
 
 //__eos_p2p_remove_notify_peer_connection_closed
-function eos_p2p_remove_notify_peer_connection_closed(notificationId)
+function eos_p2p_remove_notify_peer_connection_closed(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -423,10 +421,10 @@ function eos_p2p_remove_notify_peer_connection_closed(notificationId)
 }
 
 //__eos_p2p_remove_notify_peer_connection_established
-function eos_p2p_remove_notify_peer_connection_established(notificationId)
+function eos_p2p_remove_notify_peer_connection_established(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -435,10 +433,10 @@ function eos_p2p_remove_notify_peer_connection_established(notificationId)
 }
 
 //__eos_p2p_remove_notify_peer_connection_interrupted
-function eos_p2p_remove_notify_peer_connection_interrupted(notificationId)
+function eos_p2p_remove_notify_peer_connection_interrupted(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -447,10 +445,10 @@ function eos_p2p_remove_notify_peer_connection_interrupted(notificationId)
 }
 
 //__eos_p2p_remove_notify_peer_connection_request
-function eos_p2p_remove_notify_peer_connection_request(notificationId)
+function eos_p2p_remove_notify_peer_connection_request(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -585,11 +583,11 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested()
 }
 
 //__eos_lobby_details_copy_attribute_by_key
-function eos_lobby_details_copy_attribute_by_key(AttrKey)
+function eos_lobby_details_copy_attribute_by_key(attribute_key)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	var result = __eos_lobby_details_copy_attribute_by_key(AttrKey,_return_buffer_address)
+	var result = __eos_lobby_details_copy_attribute_by_key(attribute_key,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -608,24 +606,24 @@ function eos_lobby_details_copy_info()
 	return _return_value;
 }
 
-//__eos_lobby_details_copy_member_attribute_by_index(double index, char *TargetUserId, char* buff_ret)
-function eos_lobby_details_copy_member_attribute_by_index(index,TargetUserId)
+//__eos_lobby_details_copy_member_attribute_by_index(double index, char *target_user_id, char* buff_ret)
+function eos_lobby_details_copy_member_attribute_by_index(index,target_user_id)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_lobby_details_copy_member_attribute_by_index(index,TargetUserId,_return_buffer_address)
+	__eos_lobby_details_copy_member_attribute_by_index(index,target_user_id,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_lobby_details_copy_member_info(char *TargetUserId,char* buff_ret)
-function eos_lobby_details_copy_member_info(TargetUserId)
+//__eos_lobby_details_copy_member_info(char *target_user_id,char* buff_ret)
+function eos_lobby_details_copy_member_info(target_user_id)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_lobby_details_copy_member_info(TargetUserId,_return_buffer_address)
+	__eos_lobby_details_copy_member_info(target_user_id,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -633,10 +631,10 @@ function eos_lobby_details_copy_member_info(TargetUserId)
 }
 
 //__eos_lobby_copy_lobby_details_handle_by_ui_event_id
-function eos_lobby_copy_lobby_details_handle_by_ui_event_id(UiEventId)
+function eos_lobby_copy_lobby_details_handle_by_ui_event_id(ui_event_id)
 {
 	var _args = [
-		[UiEventId,buffer_u64],
+		[ui_event_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -645,25 +643,25 @@ function eos_lobby_copy_lobby_details_handle_by_ui_event_id(UiEventId)
 }
 
 //__eos_lobby_create_lobby
-function eos_lobby_create_lobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,MaxLobbyMembers,PermissionLevel,bAllowInvites,bCrossplayOptOut,bDisableHostMigration,bEnableJoinById,bPresenceEnabled,bEnableRTCRoom,Flags,bUseManualAudioInput,bUseManualAudioOutput,bLocalAudioDeviceInputStartsMuted)
+function eos_lobby_create_lobby(local_user_id,allowed_platform_ids,lobby_id,bucket_id,max_lobby_members,permission_level,allow_invites,crossplay_opt_out,disable_host_migration,enable_join_by_id,presence_enabled,enable_rtc_room,flags,use_manual_audio_input,use_manual_audio_output,local_audio_device_input_starts_muted)
 {
 	var _args = [
-		[LocalUserId,buffer_string],
-		[AllowedPlatformIds, buffer_u32],//0,Array
-		[LobbyId,buffer_string],
-		[BucketId,buffer_string],
-		[MaxLobbyMembers,buffer_f64],
-		[PermissionLevel, buffer_u8],
-		[bAllowInvites,buffer_bool],
-		[bCrossplayOptOut,buffer_bool],
-		[bDisableHostMigration,buffer_bool],
-		[bEnableJoinById,buffer_bool],
-		[bPresenceEnabled,buffer_bool],
-		[bEnableRTCRoom,buffer_bool],
-		[Flags,buffer_u32],
-		[bUseManualAudioInput,buffer_bool],
-		[bUseManualAudioOutput,buffer_bool],
-		[bLocalAudioDeviceInputStartsMuted,buffer_bool],
+		[local_user_id,buffer_string],
+		[allowed_platform_ids, buffer_u32],//0,Array
+		[lobby_id,buffer_string],
+		[bucket_id,buffer_string],
+		[max_lobby_members,buffer_f64],
+		[permission_level, buffer_u8],
+		[allow_invites,buffer_bool],
+		[crossplay_opt_out,buffer_bool],
+		[disable_host_migration,buffer_bool],
+		[enable_join_by_id,buffer_bool],
+		[presence_enabled,buffer_bool],
+		[enable_rtc_room,buffer_bool],
+		[flags,buffer_u32],
+		[use_manual_audio_input,buffer_bool],
+		[use_manual_audio_output,buffer_bool],
+		[local_audio_device_input_starts_muted,buffer_bool],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -672,17 +670,17 @@ function eos_lobby_create_lobby(LocalUserId,AllowedPlatformIds,LobbyId,BucketId,
 }
 
 //__eos_lobby_join_lobby
-function eos_lobby_join_lobby(LocalUserId,bCrossplayOptOut,bPresenceEnabled,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
+function eos_lobby_join_lobby(local_user_id,crossplay_opt_out,presence_enabled,enable_rtc_room,local_audio_device_input_starts_muted,use_manual_audio_input,use_manual_audio_output,flags)
 {
 	var _args = [
-			[LocalUserId,buffer_string],
-			[bCrossplayOptOut,buffer_bool],
-			[bPresenceEnabled,buffer_bool],
-			[bEnableRTCRoom,buffer_bool],
-			[bLocalAudioDeviceInputStartsMuted,buffer_bool],
-			[bUseManualAudioInput,buffer_bool],
-			[bUseManualAudioOutput,buffer_bool],
-			[Flags,buffer_u32],
+			[local_user_id,buffer_string],
+			[crossplay_opt_out,buffer_bool],
+			[presence_enabled,buffer_bool],
+			[enable_rtc_room,buffer_bool],
+			[local_audio_device_input_starts_muted,buffer_bool],
+			[use_manual_audio_input,buffer_bool],
+			[use_manual_audio_output,buffer_bool],
+			[flags,buffer_u32],
 		]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -691,18 +689,18 @@ function eos_lobby_join_lobby(LocalUserId,bCrossplayOptOut,bPresenceEnabled,bEna
 }
 
 //__eos_lobby_join_lobby_by_id
-function eos_lobby_join_lobby_by_id(LocalUserId,bCrossplayOptOut,bPresenceEnabled,LobbyId,bEnableRTCRoom,bLocalAudioDeviceInputStartsMuted,bUseManualAudioInput,bUseManualAudioOutput,Flags)
+function eos_lobby_join_lobby_by_id(local_user_id,crossplay_opt_out,presence_enabled,lobby_id,enable_rtc_room,local_audio_device_input_starts_muted,use_manual_audio_input,use_manual_audio_output,flags)
 {
 	var _args = [
-			[LocalUserId,buffer_string],
-			[bCrossplayOptOut,buffer_bool],
-			[bPresenceEnabled,buffer_bool],
-			[LobbyId,buffer_string],
-			[bEnableRTCRoom,buffer_bool],
-			[bLocalAudioDeviceInputStartsMuted,buffer_bool],
-			[bUseManualAudioInput,buffer_bool],
-			[bUseManualAudioOutput,buffer_bool],
-			[Flags,buffer_u32],
+			[local_user_id,buffer_string],
+			[crossplay_opt_out,buffer_bool],
+			[presence_enabled,buffer_bool],
+			[lobby_id,buffer_string],
+			[enable_rtc_room,buffer_bool],
+			[local_audio_device_input_starts_muted,buffer_bool],
+			[use_manual_audio_input,buffer_bool],
+			[use_manual_audio_output,buffer_bool],
+			[flags,buffer_u32],
 			
 		]
 		
@@ -712,10 +710,10 @@ function eos_lobby_join_lobby_by_id(LocalUserId,bCrossplayOptOut,bPresenceEnable
 }
 
 //__eos_lobby_remove_notify_join_lobby_accepted
-function eos_lobby_remove_notify_join_lobby_accepted(notificationId)
+function eos_lobby_remove_notify_join_lobby_accepted(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -724,10 +722,10 @@ function eos_lobby_remove_notify_join_lobby_accepted(notificationId)
 }
 
 //__eos_lobby_remove_notify_leave_lobby_requested
-function eos_lobby_remove_notify_leave_lobby_requested(notificationId)
+function eos_lobby_remove_notify_leave_lobby_requested(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -736,10 +734,10 @@ function eos_lobby_remove_notify_leave_lobby_requested(notificationId)
 }
 
 //__eos_lobby_remove_notify_lobby_invite_accepted
-function eos_lobby_remove_notify_lobby_invite_accepted(notificationId)
+function eos_lobby_remove_notify_lobby_invite_accepted(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -748,10 +746,10 @@ function eos_lobby_remove_notify_lobby_invite_accepted(notificationId)
 }
 
 //__eos_lobby_remove_notify_lobby_invite_received
-function eos_lobby_remove_notify_lobby_invite_received(notificationId)
+function eos_lobby_remove_notify_lobby_invite_received(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -760,10 +758,10 @@ function eos_lobby_remove_notify_lobby_invite_received(notificationId)
 }
 
 //__eos_lobby_remove_notify_lobby_invite_rejected
-function eos_lobby_remove_notify_lobby_invite_rejected(notificationId)
+function eos_lobby_remove_notify_lobby_invite_rejected(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -772,10 +770,10 @@ function eos_lobby_remove_notify_lobby_invite_rejected(notificationId)
 }
 
 //__eos_lobby_remove_notify_lobby_member_status_received
-function eos_lobby_remove_notify_lobby_member_status_received(notificationId)
+function eos_lobby_remove_notify_lobby_member_status_received(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -784,10 +782,10 @@ function eos_lobby_remove_notify_lobby_member_status_received(notificationId)
 }
 
 //__eos_lobby_remove_notify_lobby_member_update_received
-function eos_lobby_remove_notify_lobby_member_update_received(notificationId)
+function eos_lobby_remove_notify_lobby_member_update_received(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -796,10 +794,10 @@ function eos_lobby_remove_notify_lobby_member_update_received(notificationId)
 }
 
 //__eos_lobby_remove_notify_lobby_update_received
-function eos_lobby_remove_notify_lobby_update_received(notificationId)
+function eos_lobby_remove_notify_lobby_update_received(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -808,10 +806,10 @@ function eos_lobby_remove_notify_lobby_update_received(notificationId)
 }
 
 //__eos_lobby_remove_notify_rtc_room_connection_changed
-function eos_lobby_remove_notify_rtc_room_connection_changed(notificationId)
+function eos_lobby_remove_notify_rtc_room_connection_changed(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -820,10 +818,10 @@ function eos_lobby_remove_notify_rtc_room_connection_changed(notificationId)
 }
 
 //__eos_lobby_remove_notify_send_lobby_native_invite_requested
-function eos_lobby_remove_notify_send_lobby_native_invite_requested(notificationId)
+function eos_lobby_remove_notify_send_lobby_native_invite_requested(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -832,7 +830,7 @@ function eos_lobby_remove_notify_send_lobby_native_invite_requested(notification
 }
 
 //func double __eos_lobby_details_copy_attribute_by_index(double index, char* buff_ret)
-function eos_lobby_details_copy_attribute_by_index(index,TargetUserId)
+function eos_lobby_details_copy_attribute_by_index(index,target_user_id)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
@@ -844,34 +842,34 @@ function eos_lobby_details_copy_attribute_by_index(index,TargetUserId)
 }
 
 //__eos_lobby_modification_add_attribute
-function eos_lobby_modification_add_attribute(Visibility,Attribute)
+function eos_lobby_modification_add_attribute(visibility,attribute)
 {
 	var _args = [
-		[Attribute,undefined],//struct
+		[attribute,undefined],//struct
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_lobby_modification_add_attribute(Visibility,_args_buffer_address)
+	return __eos_lobby_modification_add_attribute(visibility,_args_buffer_address)
 }
 
 //__eos_lobby_modification_add_member_attribute
-function eos_lobby_modification_add_member_attribute(Visibility,Attribute)
+function eos_lobby_modification_add_member_attribute(visibility,attribute)
 {
 	var _args = [
-		[Attribute,undefined],//struct
+		[attribute,undefined],//struct
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_lobby_modification_add_member_attribute(Visibility,_args_buffer_address)
+	return __eos_lobby_modification_add_member_attribute(visibility,_args_buffer_address)
 }
 
 //__eos_lobby_modification_set_allowed_platform_ids
-function eos_lobby_modification_set_allowed_platform_ids(AllowedPlatformIds)
+function eos_lobby_modification_set_allowed_platform_ids(allowed_platform_ids)
 {
 	var _args = [
-		[AllowedPlatformIds,undefined],//Array
+		[allowed_platform_ids,undefined],//Array
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -881,15 +879,15 @@ function eos_lobby_modification_set_allowed_platform_ids(AllowedPlatformIds)
 }
 
 //__eos_lobby_search_set_parameter
-function eos_lobby_search_set_parameter(ComparisonOp,Attribute)
+function eos_lobby_search_set_parameter(comparison_op,attribute)
 {
 	var _args = [
-		[Attribute,undefined],//struct
+		[attribute,undefined],//struct
 	]
 	
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return __eos_lobby_search_set_parameter(ComparisonOp,_args_buffer_address)
+	return __eos_lobby_search_set_parameter(comparison_op,_args_buffer_address)
 }
 
 
@@ -897,11 +895,11 @@ function eos_lobby_search_set_parameter(ComparisonOp,Attribute)
 
 
 //__eos_rtc_add_notify_disconnected
-function eos_rtc_add_notify_disconnected(LocalUserId, RoomName)
+function eos_rtc_add_notify_disconnected(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_add_notify_disconnected(RoomName, LocalUserId,_return_buffer_address)
+	__eos_rtc_add_notify_disconnected(room_name, local_user_id,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -909,11 +907,11 @@ function eos_rtc_add_notify_disconnected(LocalUserId, RoomName)
 }
 
 //__eos_rtc_add_notify_participant_status_changed
-function eos_rtc_add_notify_participant_status_changed(LocalUserId, RoomName)
+function eos_rtc_add_notify_participant_status_changed(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_add_notify_participant_status_changed(RoomName, LocalUserId,_return_buffer_address)
+	__eos_rtc_add_notify_participant_status_changed(room_name, local_user_id,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -921,11 +919,11 @@ function eos_rtc_add_notify_participant_status_changed(LocalUserId, RoomName)
 }
 
 //__eos_rtc_add_notify_room_statistics_updated
-function eos_rtc_add_notify_room_statistics_updated(LocalUserId, RoomName)
+function eos_rtc_add_notify_room_statistics_updated(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_add_notify_room_statistics_updated(RoomName, LocalUserId,_return_buffer_address)
+	__eos_rtc_add_notify_room_statistics_updated(room_name, local_user_id,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -933,17 +931,17 @@ function eos_rtc_add_notify_room_statistics_updated(LocalUserId, RoomName)
 }
 
 //__eos_rtc_join_room
-function eos_rtc_join_room(bManualAudioInputEnabled,bManualAudioOutputEnabled,ClientBaseUrl,Flags,LocalUserId,ParticipantId,ParticipantToken,RoomName)
+function eos_rtc_join_room(manual_audio_input_enabled,manual_audio_output_enabled,client_base_url,flags,local_user_id,participant_id,participant_token,room_name)
 {
 	var _args = [
-		[LocalUserId,buffer_string],
-		[RoomName,buffer_string],
-		[ParticipantId,buffer_string],
-		[ParticipantToken,buffer_string],
-		[bManualAudioInputEnabled,buffer_bool],
-		[bManualAudioOutputEnabled,buffer_bool],
-		[ClientBaseUrl,buffer_string],
-		[Flags,buffer_u32],
+		[local_user_id,buffer_string],
+		[room_name,buffer_string],
+		[participant_id,buffer_string],
+		[participant_token,buffer_string],
+		[manual_audio_input_enabled,buffer_bool],
+		[manual_audio_output_enabled,buffer_bool],
+		[client_base_url,buffer_string],
+		[flags,buffer_u32],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -952,10 +950,10 @@ function eos_rtc_join_room(bManualAudioInputEnabled,bManualAudioOutputEnabled,Cl
 }
 
 //__eos_rtc_remove_notify_disconnected
-function eos_rtc_remove_notify_disconnected(notificationId)
+function eos_rtc_remove_notify_disconnected(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -964,10 +962,10 @@ function eos_rtc_remove_notify_disconnected(notificationId)
 }
 
 //__eos_rtc_remove_notify_participant_status_changed
-function eos_rtc_remove_notify_participant_status_changed(notificationId)
+function eos_rtc_remove_notify_participant_status_changed(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -976,10 +974,10 @@ function eos_rtc_remove_notify_participant_status_changed(notificationId)
 }
 
 //__eos_rtc_remove_notify_room_statistics_updated
-function eos_rtc_remove_notify_room_statistics_updated(notificationId)
+function eos_rtc_remove_notify_room_statistics_updated(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -987,23 +985,23 @@ function eos_rtc_remove_notify_room_statistics_updated(notificationId)
 	return __eos_rtc_remove_notify_room_statistics_updated(_args_buffer_address)
 }
 
-//__eos_rtc_admin_copy_user_token_by_index(double QueryId, double UserTokenIndex,char* buff_ret)
-function eos_rtc_admin_copy_user_token_by_index(QueryId,UserTokenIndex)
+//__eos_rtc_admin_copy_user_token_by_index(double query_id, double user_token_index,char* buff_ret)
+function eos_rtc_admin_copy_user_token_by_index(query_id,user_token_index)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_admin_copy_user_token_by_index(QueryId,UserTokenIndex,_return_buffer_address)
+	__eos_rtc_admin_copy_user_token_by_index(query_id,user_token_index,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
-//__eos_rtc_admin_copy_user_token_by_user_id(double QueryId, char *TargetUserId)
-function eos_rtc_admin_copy_user_token_by_user_id(QueryId,TargetUserId)
+//__eos_rtc_admin_copy_user_token_by_user_id(double query_id, char *target_user_id)
+function eos_rtc_admin_copy_user_token_by_user_id(query_id,target_user_id)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_admin_copy_user_token_by_user_id(QueryId,TargetUserId,_return_buffer_address)
+	__eos_rtc_admin_copy_user_token_by_user_id(query_id,target_user_id,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1011,11 +1009,11 @@ function eos_rtc_admin_copy_user_token_by_user_id(QueryId,TargetUserId)
 }
 
 //__eos_rtc_admin_query_join_room_token
-function eos_rtc_admin_query_join_room_token(LocalUserId,RoomName,array_ids,array_ips)
+function eos_rtc_admin_query_join_room_token(local_user_id,room_name,array_ids,array_ips)
 {
 	var _args = [
-		[LocalUserId,buffer_string],
-		[RoomName,buffer_string],
+		[local_user_id,buffer_string],
+		[room_name,buffer_string],
 		[array_ids,buffer_string],//array
 		[array_ips,buffer_string]//array
 	]
@@ -1026,11 +1024,11 @@ function eos_rtc_admin_query_join_room_token(LocalUserId,RoomName,array_ids,arra
 }
 
 //__eos_rtc_audio_add_notify_audio_before_render
-function eos_rtc_audio_add_notify_audio_before_render(LocalUserId,RoomName, bUnmixedAudio)
+function eos_rtc_audio_add_notify_audio_before_render(local_user_id,room_name, unmixed_audio)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_audio_add_notify_audio_before_render(LocalUserId,RoomName, bUnmixedAudio,_return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_before_render(local_user_id,room_name, unmixed_audio,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1038,11 +1036,11 @@ function eos_rtc_audio_add_notify_audio_before_render(LocalUserId,RoomName, bUnm
 }
 
 //__eos_rtc_audio_add_notify_audio_before_send
-function eos_rtc_audio_add_notify_audio_before_send(LocalUserId, RoomName)
+function eos_rtc_audio_add_notify_audio_before_send(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_audio_add_notify_audio_before_send(LocalUserId, RoomName, _return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_before_send(local_user_id, room_name, _return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1062,11 +1060,11 @@ function eos_rtc_audio_add_notify_audio_devices_changed()
 }
 
 //__eos_rtc_audio_add_notify_audio_input_state
-function eos_rtc_audio_add_notify_audio_input_state(LocalUserId, RoomName)
+function eos_rtc_audio_add_notify_audio_input_state(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_audio_add_notify_audio_input_state(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_input_state(local_user_id, room_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1074,11 +1072,11 @@ function eos_rtc_audio_add_notify_audio_input_state(LocalUserId, RoomName)
 }
 
 //__eos_rtc_audio_add_notify_audio_output_state
-function eos_rtc_audio_add_notify_audio_output_state(LocalUserId, RoomName)
+function eos_rtc_audio_add_notify_audio_output_state(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_audio_add_notify_audio_output_state(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_audio_add_notify_audio_output_state(local_user_id, room_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1086,35 +1084,35 @@ function eos_rtc_audio_add_notify_audio_output_state(LocalUserId, RoomName)
 }
 
 //__eos_rtc_audio_add_notify_participant_updated
-function eos_rtc_audio_add_notify_participant_updated(LocalUserId, RoomName)
+function eos_rtc_audio_add_notify_participant_updated(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_audio_add_notify_participant_updated(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_audio_add_notify_participant_updated(local_user_id, room_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//__eos_rtc_audio_copy_input_device_information_by_index(double DeviceIndex,char* buff_ret)
-function eos_rtc_audio_copy_input_device_information_by_index(DeviceIndex)
+//__eos_rtc_audio_copy_input_device_information_by_index(double device_index,char* buff_ret)
+function eos_rtc_audio_copy_input_device_information_by_index(device_index)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_audio_copy_input_device_information_by_index(DeviceIndex,_return_buffer_address)
+	__eos_rtc_audio_copy_input_device_information_by_index(device_index,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
 	return _return_value;
 }
 
-//func double __eos_rtc_audio_copy_output_device_information_by_index(double DeviceIndex, char* buff_ret)
-function eos_rtc_audio_copy_output_device_information_by_index(DeviceIndex)
+//func double __eos_rtc_audio_copy_output_device_information_by_index(double device_index, char* buff_ret)
+function eos_rtc_audio_copy_output_device_information_by_index(device_index)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_audio_copy_output_device_information_by_index(DeviceIndex,_return_buffer_address)
+	__eos_rtc_audio_copy_output_device_information_by_index(device_index,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1122,10 +1120,10 @@ function eos_rtc_audio_copy_output_device_information_by_index(DeviceIndex)
 }
 
 //__eos_rtc_audio_remove_notify_audio_before_render
-function eos_rtc_audio_remove_notify_audio_before_render(notificationId)
+function eos_rtc_audio_remove_notify_audio_before_render(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1134,10 +1132,10 @@ function eos_rtc_audio_remove_notify_audio_before_render(notificationId)
 }
 
 //__eos_rtc_audio_remove_notify_audio_before_send
-function eos_rtc_audio_remove_notify_audio_before_send(notificationId)
+function eos_rtc_audio_remove_notify_audio_before_send(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1146,10 +1144,10 @@ function eos_rtc_audio_remove_notify_audio_before_send(notificationId)
 }
 
 //__eos_rtc_audio_remove_notify_audio_devices_changed
-function eos_rtc_audio_remove_notify_audio_devices_changed(notificationId)
+function eos_rtc_audio_remove_notify_audio_devices_changed(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1158,10 +1156,10 @@ function eos_rtc_audio_remove_notify_audio_devices_changed(notificationId)
 }
 
 //__eos_rtc_audio_remove_notify_audio_input_state
-function eos_rtc_audio_remove_notify_audio_input_state(notificationId)
+function eos_rtc_audio_remove_notify_audio_input_state(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1170,10 +1168,10 @@ function eos_rtc_audio_remove_notify_audio_input_state(notificationId)
 }
 
 //__eos_rtc_audio_remove_notify_audio_output_state
-function eos_rtc_audio_remove_notify_audio_output_state(notificationId)
+function eos_rtc_audio_remove_notify_audio_output_state(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1182,10 +1180,10 @@ function eos_rtc_audio_remove_notify_audio_output_state(notificationId)
 }
 
 //__eos_rtc_audio_remove_notify_participant_updated
-function eos_rtc_audio_remove_notify_participant_updated(notificationId)
+function eos_rtc_audio_remove_notify_participant_updated(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1194,11 +1192,11 @@ function eos_rtc_audio_remove_notify_participant_updated(notificationId)
 }
 
 //__eos_rtc_data_add_notify_data_received
-function eos_rtc_data_add_notify_data_received(LocalUserId, RoomName)
+function eos_rtc_data_add_notify_data_received(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_data_add_notify_data_received(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_data_add_notify_data_received(local_user_id, room_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1206,11 +1204,11 @@ function eos_rtc_data_add_notify_data_received(LocalUserId, RoomName)
 }
 
 //__eos_rtc_data_add_notify_participant_updated
-function eos_rtc_data_add_notify_participant_updated(LocalUserId, RoomName)
+function eos_rtc_data_add_notify_participant_updated(local_user_id, room_name)
 {
 	var _return_buffer_address = ext_return_buffer_address();
 	
-	__eos_rtc_data_add_notify_participant_updated(LocalUserId, RoomName,_return_buffer_address)
+	__eos_rtc_data_add_notify_participant_updated(local_user_id, room_name,_return_buffer_address)
 	
 	var _return_value = ext_buffer_unpack(ext_return_buffer());
 	
@@ -1218,10 +1216,10 @@ function eos_rtc_data_add_notify_participant_updated(LocalUserId, RoomName)
 }
 
 //__eos_rtc_data_remove_notify_data_received
-function eos_rtc_data_remove_notify_data_received(notificationId)
+function eos_rtc_data_remove_notify_data_received(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1230,10 +1228,10 @@ function eos_rtc_data_remove_notify_data_received(notificationId)
 }
 
 //__eos_rtc_data_remove_notify_participant_updated
-function eos_rtc_data_remove_notify_participant_updated(notificationId)
+function eos_rtc_data_remove_notify_participant_updated(notification_id)
 {
 	var _args = [
-		[notificationId,buffer_u64],
+		[notification_id,buffer_u64],
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1242,7 +1240,7 @@ function eos_rtc_data_remove_notify_participant_updated(notificationId)
 }
 
 //__eos_rtc_data_send_data
-function eos_rtc_data_send_data(buff,Length, LocalUserId, RoomName)
+function eos_rtc_data_send_data(buff,Length, local_user_id, room_name)
 {
-	return __eos_rtc_data_send_data(buffer_get_address(buff),Length,LocalUserId,RoomName)
+	return __eos_rtc_data_send_data(buffer_get_address(buff),Length,local_user_id,room_name)
 }
