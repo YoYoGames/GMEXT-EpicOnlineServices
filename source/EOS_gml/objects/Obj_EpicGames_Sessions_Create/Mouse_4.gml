@@ -15,7 +15,7 @@ var MaxPlayers = 3
 //#macro EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH 16
 ///** Maximum number of characters allowed in the session id override */
 //#macro EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH 64
-SessionId = eos_create_code(17)
+SessionId = ""//eos_create_code(17)
 
 //var count = eos_active_session_get_registered_player_count("SessionName")
 //show_debug_message("----------------" + string(count))
@@ -35,7 +35,7 @@ var result = eos_sessions_create_session_modification(
 		LocalUserId,
 		MaxPlayers,
 		SessionId,
-		Obj_EpicGames_Session.SessionName
+		Obj_EpicGames_Sessions.SessionName
 	)
 
 show_debug_message(result)
@@ -65,9 +65,12 @@ show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_str
 var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,value_type: EOS_AttributeType.DOUBLE,value: 2})
 show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
 
+var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: "session_name",value_type: EOS_AttributeType.STRING,value: "MySessionName :)"})
+show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
+
 eos_sessions_update_session()
 
-//eos_session_modification_release()
+eos_session_modification_release()
 
 show_debug_message(result)
 

@@ -1,2 +1,2 @@
 
-eos_sessions_destroy_session(Obj_EpicGames_Session.SessionName)
+eos_sessions_destroy_session(Obj_EpicGames_Sessions.SessionName)

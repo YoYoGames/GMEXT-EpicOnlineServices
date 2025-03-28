@@ -1,3 +1,5 @@
+//When you no longer need a session, you must destroy it using: eos_sessions_destroy_session()
+eos_sessions_destroy_session(SessionName)
 
 eos_sessions_remove_notify_join_session_accepted(notifyJoinSessionAccepted)
 eos_sessions_remove_notify_leave_session_requested(notifyLeaveSessionRequested)

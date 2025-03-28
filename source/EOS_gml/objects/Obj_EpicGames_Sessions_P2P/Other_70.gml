@@ -8,7 +8,7 @@ switch(async_load[? "type"])
 		if(owner)
 		{
 			show_debug_message("eos_sessions_unregister_players: " + async_load[? "remote_user_id"])
-			eos_sessions_unregister_players(Obj_EpicGames_Session.SessionName,[async_load[? "remote_user_id"]])
+			eos_sessions_unregister_players(Obj_EpicGames_Sessions.SessionName,[async_load[? "remote_user_id"]])
 		}
 		
 	break
@@ -22,7 +22,7 @@ switch(async_load[? "type"])
 		if(owner)
 		{
 			show_debug_message("eos_sessions_register_players: " + async_load[? "remote_user_id"])
-			eos_sessions_register_players(Obj_EpicGames_Session.SessionName,[async_load[? "remote_user_id"]])
+			eos_sessions_register_players(Obj_EpicGames_Sessions.SessionName,[async_load[? "remote_user_id"]])
 		}
 		
 	break

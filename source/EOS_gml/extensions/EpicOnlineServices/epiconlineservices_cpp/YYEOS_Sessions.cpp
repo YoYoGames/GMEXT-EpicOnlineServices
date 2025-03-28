@@ -192,12 +192,12 @@ func double eos_active_session_get_registered_player_count(char* SessionName)
 	return count;
 }
 
-// double eos_active_session_release()
+//func double eos_active_session_release()
 //{
 //	EOS_HActiveSession ActiveSessionHandle = 0;
 //	EOS_ActiveSession_Release(ActiveSessionHandle);
 //	return 0.0;
-// }
+//}
 
 EOS_HSessionDetails mHSessionDetails = 0;
 func double __eos_session_details_copy_info(char* buff_ret)
