@@ -1,13 +1,2 @@
 
 event_inherited();
-
-text = "Sessions"
-
-notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted()
-notifyLeaveSessionRequested = eos_sessions_add_notify_leave_session_requested()
-notifySendSessionNativeInviteRequested = eos_sessions_add_notify_send_session_native_invite_requested()
-notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted()
-notifySessionInviteReceived = eos_sessions_add_notify_session_invite_received()
-notifySessionInviteRejected = eos_sessions_add_notify_session_invite_rejected()
-
-SessionName = "mySession"
