@@ -77,7 +77,7 @@
  * @member EOS_UCT_UNKNOWN The game controller type is unknown
  * @member EOS_UCT_MOUSE_KEYBOARD Mouse and keyboard controller
  * @member EOS_UCT_GAMEPAD_CONTROL Gamepad controller
- * @member eos_u_c_t_u_c_t_touch_control Touch controller
+ * @member EOS_UCT_TOUCH_CONTROL Touch controller
  * @constant_end
  */
 
