@@ -142,7 +142,7 @@
  * 
  * @example
  * ```gml
- * eos_ui_set_display_preference(eos_u_n_l_top_left);
+ * eos_ui_set_display_preference(eos_unl_top_left);
  * ```
  * The above code shows an example of how the function should be used. The position of the notifications will now be the top-left corner of the game screen.
  * @function_end
@@ -197,7 +197,7 @@
  * 
  * The UI Notification Location allows to change the positioning of the EOS notifications.
  * 
- * @member eos_u_n_l_top_left Positions the overlay notification on the top-left corner
+ * @member EOS_UNL_TOP_left Positions the overlay notification on the top-left corner
  * @member EOS_UNL_TOP_RIGHT Positions the overlay notification on the top-right corner
  * @member EOS_UNL_BOTTOM_LEFT Positions the overlay notification on the bottom-left corner
  * @member EOS_UNL_BOTTOM_RIGHT Positions the overlay notification on the bottom-right corner
