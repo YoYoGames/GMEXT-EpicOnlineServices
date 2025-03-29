@@ -243,8 +243,8 @@
  * @member EOS_MODS_CRITICAL_ERROR A critical error occurred in the external ModSdk process that we were unable to resolve.
  * @member EOS_MODS_TOOL_INTERNAL_ERROR A internal error occurred in the external ModSdk process that we were unable to resolve.
  * @member EOS_MODS_I_P_C_FAILURE A IPC failure occurred in the external ModSdk process.
- * @member EOS_MODS_INVALID_I_P_C_RESPONSE A invalid IPC response received in the external ModSdk process.
- * @member EOS_MODS_U_R_I_LAUNCH_FAILURE A URI Launch failure occurred in the external ModSdk process.
+ * @member EOS_MODS_INVALID_IPC_RESPONSE A invalid IPC response received in the external ModSdk process.
+ * @member EOS_MODS_URI_LAUNCH_FAILURE A URI Launch failure occurred in the external ModSdk process.
  * @member EOS_MODS_MOD_IS_NOT_INSTALLED Attempting to perform an action with a mod that is not installed. This error comes from the external ModSdk process.
  * @member EOS_MODS_USER_DOES_NOT_OWN_THE_GAME Attempting to perform an action on a game that the user doesn't own. This error comes from the external ModSdk process.
  * @member EOS_MODS_OFFER_REQUEST_BY_ID_INVALID_RESULT Invalid result of the request to get the offer for the mod. This error comes from the external ModSdk process.
@@ -253,7 +253,7 @@
  * @member EOS_MODS_PURCHASE_FAILURE Request to purchase the mod failed. This error comes from the external ModSdk process.
  * @member EOS_MODS_INVALID_GAME_INSTALL_INFO Attempting to perform an action on a game that is not installed or is partially installed. This error comes from the external ModSdk process.
  * @member EOS_MODS_CANNOT_GET_MANIFEST_LOCATION Failed to get manifest location. Either the ModSdk configuration file is missing or the manifest location is empty
- * @member EOS_MODS_UNSUPPORTED_O_S Attempting to perform an action with a mod that does not support the current operating system.
+ * @member EOS_MODS_UNSUPPORTED_OS Attempting to perform an action with a mod that does not support the current operating system.
  * @member EOS_ANTI_CHEAT_CLIENT_PROTECTION_NOT_AVAILABLE The anti-cheat client protection is not available. Check that the game was started using the anti-cheat bootstrapper.
  * @member EOS_ANTI_CHEAT_INVALID_MODE The current anti-cheat mode is incorrect for using this API
  * @member EOS_ANTI_CHEAT_CLIENT_PRODUCT_ID_MISMATCH The ProductId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
@@ -275,7 +275,7 @@
  * @member EOS_PROGRESSION_SNAPSHOT_SNAPSHOT_ID_UNAVAILABLE The number of available Snapshot IDs have all been exhausted.
  * @member EOS_KWS_PARENT_EMAIL_MISSING The KWS user does not have a parental email associated with the account. The parent account was unlinked or deleted
  * @member EOS_KWS_USER_GRADUATED The KWS user is no longer a minor and trying to update the parent email
- * @member EOS_ANDROID_JAVA_V_M_NOT_STORED EOS Android VM not stored
+ * @member EOS_ANDROID_JAVA_VM_NOT_STORED EOS Android VM not stored
  * @constant_end
  */
 
@@ -306,7 +306,7 @@
  * @member EOS_LC_LOBBY Logs related to the lobby service
  * @member EOS_LC_LEADERBOARDS Logs related to the Leaderboards service
  * @member EOS_LC_KEYCHAIN Logs related to an internal Keychain feature that the authentication interfaces use
- * @member eos_l_c_identity_provider Logs related to external identity providers
+ * @member EOS_LC_IDENTITY_PROVIDER Logs related to external identity providers
  * @member EOS_LC_TITLE_STORAGE Logs related to Title Storage
  * @member EOS_LC_MODS Logs related to the Mods service
  * @member EOS_LC_ANTI_CHEAT Logs related to the Anti-Cheat service
@@ -316,8 +316,8 @@
  * @member EOS_LC_KWS Logs related to the Kids Web Services integration
  * @member EOS_LC_RTC Logs related to the RTC API
  * @member EOS_LC_RTCAdmin Logs related to the RTC Admin API
- * @member eos_l_c_inventory Logs related to the Inventory service
- * @member eos_l_c_receipt_validator Logs related to the Receipt Validator API
+ * @member EOS_LC_INVENTORY Logs related to the Inventory service
+ * @member EOS_LC_RECEIPT_VALIDATOR Logs related to the Receipt Validator API
  * @member EOS_LC_CUSTOM_INVITES Logs related to the Custom Invites API
  * @member EOS_LC_ALL_CATEGORIES Not a real log category. Used by ${function.eos_logging_set_log_level} to set the log level for all categories at the same time
  * @constant_end
