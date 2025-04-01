@@ -434,7 +434,7 @@ func double eos_lobby_copy_lobby_details_handle(char* lobby_id,char* local_user_
 	return (double)result;
 }
 
-func double eos_lobby_copy_lobby_details_handle_by_invite_id(char* InviteId)
+func double eos_lobby_copy_lobby_details_handle_by_invite_id(char* invite_id)
 {
 	eos_not_init_return(-1);
 
@@ -442,7 +442,7 @@ func double eos_lobby_copy_lobby_details_handle_by_invite_id(char* InviteId)
 
 	EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYINVITEID_API_LATEST;
-	Options.InviteId = InviteId;
+	Options.InviteId = invite_id;
 
 	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandleByInviteId(HLobby, &Options, &mHLobbyDetails);
 
@@ -1562,7 +1562,7 @@ func double __eos_lobby_modification_set_allowed_platform_ids(char* buff_args)
 	return (double)result;
 }
 
-func double eos_lobby_modification_set_bucket_id(char* BucketId)
+func double eos_lobby_modification_set_bucket_id(char* bucket_id)
 {
 	eos_not_init_return(-1);
 
@@ -1570,14 +1570,14 @@ func double eos_lobby_modification_set_bucket_id(char* BucketId)
 
 	EOS_LobbyModification_SetBucketIdOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETBUCKETID_API_LATEST;
-	Options.BucketId = BucketId;
+	Options.BucketId = bucket_id;
 
 	EOS_EResult result = EOS_LobbyModification_SetBucketId(mHLobbyModification, &Options);
 
 	return (double)result;
 }
 
-func double eos_lobby_modification_set_invites_allowed(double InvitesAllowed)
+func double eos_lobby_modification_set_invites_allowed(double invites_allowed)
 {
 	eos_not_init_return(-1);
 
@@ -1585,14 +1585,14 @@ func double eos_lobby_modification_set_invites_allowed(double InvitesAllowed)
 
 	EOS_LobbyModification_SetInvitesAllowedOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETINVITESALLOWED_API_LATEST;
-	Options.bInvitesAllowed = (EOS_Bool)InvitesAllowed;
+	Options.bInvitesAllowed = (EOS_Bool)invites_allowed;
 
 	EOS_EResult result = EOS_LobbyModification_SetInvitesAllowed(mHLobbyModification, &Options);
 
 	return (double)result;
 }
 
-func double eos_lobby_modification_set_max_members(double MaxMembers)
+func double eos_lobby_modification_set_max_members(double max_members)
 {
 	eos_not_init_return(-1);
 
@@ -1600,7 +1600,7 @@ func double eos_lobby_modification_set_max_members(double MaxMembers)
 
 	EOS_LobbyModification_SetMaxMembersOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETMAXMEMBERS_API_LATEST;
-	Options.MaxMembers = (uint32_t)MaxMembers;
+	Options.MaxMembers = (uint32_t)max_members;
 
 	EOS_EResult result = EOS_LobbyModification_SetMaxMembers(mHLobbyModification, &Options);
 	return (double)result;
@@ -1621,7 +1621,7 @@ func double eos_lobby_modification_set_permission_level(double PermissionLevel)
 	return (double)result;
 }
 
-func double eos_lobby_search_copy_search_result_by_index(double Index)
+func double eos_lobby_search_copy_search_result_by_index(double index)
 {
 	eos_not_init_return(-1);
 
@@ -1629,7 +1629,7 @@ func double eos_lobby_search_copy_search_result_by_index(double Index)
 
 	EOS_LobbySearch_CopySearchResultByIndexOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_COPYSEARCHRESULTBYINDEX_API_LATEST;
-	Options.LobbyIndex = (uint32_t)Index;
+	Options.LobbyIndex = (uint32_t)index;
 
 	EOS_EResult result = EOS_LobbySearch_CopySearchResultByIndex(mHLobbySearch, &Options, &mHLobbyDetails);
 
@@ -1690,7 +1690,7 @@ func double eos_lobby_search_release()
 	return 0.0;
 }
 
-func double eos_lobby_search_remove_parameter(char* Key, double ComparisonOp)
+func double eos_lobby_search_remove_parameter(char* key, double comparison_op)
 {
 	eos_not_init_return(-1);
 
@@ -1698,8 +1698,8 @@ func double eos_lobby_search_remove_parameter(char* Key, double ComparisonOp)
 
 	EOS_LobbySearch_RemoveParameterOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_REMOVEPARAMETER_API_LATEST;
-	Options.ComparisonOp = (EOS_EComparisonOp)ComparisonOp;
-	Options.Key = Key;
+	Options.ComparisonOp = (EOS_EComparisonOp)comparison_op;
+	Options.Key = key;
 
 	EOS_LobbySearch_RemoveParameter(mHLobbySearch, &Options);
 	return 0.0;
@@ -1720,7 +1720,7 @@ func double eos_lobby_search_set_lobby_id(char* lobby_id)
 	return (double)result;
 }
 
-func double eos_lobby_search_set_max_results(double MaxResults)
+func double eos_lobby_search_set_max_results(double max_results)
 {
 	eos_not_init_return(-1);
 
@@ -1728,7 +1728,7 @@ func double eos_lobby_search_set_max_results(double MaxResults)
 
 	EOS_LobbySearch_SetMaxResultsOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETMAXRESULTS_API_LATEST;
-	Options.MaxResults = (uint32_t)MaxResults;
+	Options.MaxResults = (uint32_t)max_results;
 
 	EOS_EResult result = EOS_LobbySearch_SetMaxResults(mHLobbySearch, &Options);
 
