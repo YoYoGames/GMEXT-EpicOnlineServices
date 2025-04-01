@@ -75,11 +75,11 @@
 // EOS_LobbySearch_GetSearchResultCount
 // EOS_LobbySearch_Release
 // EOS_LobbySearch_RemoveParameter
-// EOS_LobbySearch_SetLobbyId
+// EOS_LobbySearch_Setlobby_id
 // EOS_LobbySearch_SetMaxResults
 // EOS_LobbySearch_SetParameter
-// EOS_LobbySearch_SetTargetUserId
-// EOS_LobbySearch_SetTargetUserIdOptions
+// EOS_LobbySearch_Settarget_user_id
+// EOS_LobbySearch_Settarget_user_idOptions
 
 #include "pch.h"
 #include "YYEpicOnlineServices.h"
@@ -368,8 +368,8 @@ func double __eos_lobby_add_notify_rtc_room_connection_changed(char* buff_ret)
 
 	EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST;
-	// Options.LobbyId_DEPRECATED;
-	// Options.LocalUserId_DEPRECATED;
+	// Options.lobby_id_DEPRECATED;
+	// Options.local_user_id_DEPRECATED;
 
 	uint64 notificationId = EOS_Lobby_AddNotifyRTCRoomConnectionChanged(HLobby, &Options, nullptr, Lobby_AddNotifyRTCRoomConnectionChangedCallback);
 
@@ -418,7 +418,7 @@ func double __eos_lobby_add_notify_send_lobby_native_invite_requested(char* buff
 //	return 0.0;
 //}
 
-func double eos_lobby_copy_lobby_details_handle(char* LobbyId,char* LocalUserId)
+func double eos_lobby_copy_lobby_details_handle(char* lobby_id,char* local_user_id)
 {
 	eos_not_init_return(-1);
 
@@ -426,8 +426,8 @@ func double eos_lobby_copy_lobby_details_handle(char* LobbyId,char* LocalUserId)
 
 	EOS_Lobby_CopyLobbyDetailsHandleOptions Options;
 	Options.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLE_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandle(HLobby, &Options, &mHLobbyDetails);
 
@@ -527,7 +527,7 @@ func double __eos_lobby_create_lobby(char* buff_args)
 	return mcallback->identifier;
 }
 
-func double eos_lobby_create_lobby_search(double MaxResults)
+func double eos_lobby_create_lobby_search(double max_results)
 {
 	eos_not_init_return(-1);
 
@@ -535,7 +535,7 @@ func double eos_lobby_create_lobby_search(double MaxResults)
 
 	EOS_Lobby_CreateLobbySearchOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_CREATELOBBYSEARCH_API_LATEST;
-	Options.MaxResults = (uint32_t)MaxResults;
+	Options.MaxResults = (uint32_t)max_results;
 
 	EOS_EResult result = EOS_Lobby_CreateLobbySearch(HLobby, &Options, &mHLobbySearch);
 
@@ -555,14 +555,14 @@ void EOS_CALL Lobby_DestroyLobbyCallback(const EOS_Lobby_DestroyLobbyCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_destroy_lobby(char* LobbyId,char* LocalUserID)
+func double eos_lobby_destroy_lobby(char* lobby_id,char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_DestroyLobbyOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_DESTROYLOBBY_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserID);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -571,7 +571,7 @@ func double eos_lobby_destroy_lobby(char* LobbyId,char* LocalUserID)
 	return mcallback->identifier;
 }
 
-func char* eos_lobby_get_connect_string(char* LobbyId,char* LocalUserId)
+func char* eos_lobby_get_connect_string(char* lobby_id,char* local_user_id)
 {
 	eos_not_init_return((char* )"");
 
@@ -580,25 +580,25 @@ func char* eos_lobby_get_connect_string(char* LobbyId,char* LocalUserId)
 
 	EOS_Lobby_GetConnectStringOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_GETCONNECTSTRING_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	EOS_Lobby_GetConnectString(HLobby, &Options, TempBuffer, &TempBufferSize);
 
 	return TempBuffer;
 }
 
-func double eos_lobby_get_invite_count(char* LocalUserID)
+func double eos_lobby_get_invite_count(char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_GetInviteCountOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_GETINVITECOUNT_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserID);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	return EOS_Lobby_GetInviteCount(HLobby, &Options);
 }
 
-func char* eos_lobby_get_invite_id_by_index(char* LocalUserID, double index)
+func char* eos_lobby_get_invite_id_by_index(char* local_user_id, double index)
 {
 	eos_not_init_return((char* )"");
 
@@ -608,14 +608,14 @@ func char* eos_lobby_get_invite_id_by_index(char* LocalUserID, double index)
 	EOS_Lobby_GetInviteIdByIndexOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST;
 	Options.Index = (uint32_t)index;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserID);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	EOS_Lobby_GetInviteIdByIndex(HLobby, &Options, TempBuffer, &TempBufferSize);
 
 	return TempBuffer;
 }
 
-func char* eos_lobby_get_rtc_room_name(char* LocalUserID,char* LobbyId)
+func char* eos_lobby_get_rtc_room_name(char* local_user_id,char* lobby_id)
 {
 	eos_not_init_return((char* )"");
 
@@ -624,8 +624,8 @@ func char* eos_lobby_get_rtc_room_name(char* LocalUserID,char* LobbyId)
 
 	EOS_Lobby_GetRTCRoomNameOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_GETRTCROOMNAME_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserID);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	EOS_Lobby_GetRTCRoomName(HLobby, &Options, TempBuffer, &TempBufferSize);
 
@@ -647,16 +647,16 @@ void EOS_CALL Lobby_HardMuteMemberCallback(const EOS_Lobby_HardMuteMemberCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_hard_mute_member(double HardMute,char* LobbyId,char* LocalUserId,char* TargetUserId)
+func double eos_lobby_hard_mute_member(double hard_mute,char* lobby_id,char* local_user_id,char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_HardMuteMemberOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_HARDMUTEMEMBER_API_LATEST;
-	Options.bHardMute = HardMute > 0.5;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.bHardMute = hard_mute > 0.5;
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -665,14 +665,14 @@ func double eos_lobby_hard_mute_member(double HardMute,char* LobbyId,char* Local
 	return mcallback->identifier;
 }
 
-func double eos_lobby_is_rtc_room_connected(char* LobbyId,char* LocalUserId)
+func double eos_lobby_is_rtc_room_connected(char* lobby_id,char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_IsRTCRoomConnectedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ISRTCROOMCONNECTED_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_Bool bOutIsConnected;
 
 	EOS_EResult result = EOS_Lobby_IsRTCRoomConnected(HLobby, &Options, &bOutIsConnected);
@@ -797,15 +797,15 @@ void EOS_CALL Lobby_KickMemberCallback(const EOS_Lobby_KickMemberCallbackInfo *d
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_kick_member(char* LobbyId,char* LocalUserId,char* TargetUserId)
+func double eos_lobby_kick_member(char* lobby_id,char* local_user_id,char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_KickMemberOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_KICKMEMBER_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -828,14 +828,14 @@ void EOS_CALL Lobby_LeaveLobbyCallback(const EOS_Lobby_LeaveLobbyCallbackInfo *d
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_leave_lobby(char* LobbyId,char* LocalUserId)
+func double eos_lobby_leave_lobby(char* lobby_id,char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_LeaveLobbyOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_LEAVELOBBY_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -873,15 +873,15 @@ void EOS_CALL Lobby_PromoteMemberCallback(const EOS_Lobby_PromoteMemberCallbackI
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_promote_member(char* LobbyId,char* LocalUserId,char* TargetUserId)
+func double eos_lobby_promote_member(char* lobby_id,char* local_user_id,char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_PromoteMemberOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_PROMOTEMEMBER_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -905,13 +905,13 @@ void EOS_CALL Lobby_QueryInvitesCallback(const EOS_Lobby_QueryInvitesCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_query_invites(char* LocalUserId)
+func double eos_lobby_query_invites(char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_QueryInvitesOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_QUERYINVITES_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -935,14 +935,14 @@ void EOS_CALL Lobby_RejectInviteCallback(const EOS_Lobby_RejectInviteCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_reject_invite(char* InviteId,char* LocalUserId)
+func double eos_lobby_reject_invite(char* invite_id,char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_RejectInviteOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_REJECTINVITE_API_LATEST;
-	Options.InviteId = InviteId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.InviteId = invite_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -1076,15 +1076,15 @@ void EOS_CALL Lobby_SendInviteCallback(const EOS_Lobby_SendInviteCallbackInfo *d
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_send_invite(char* LobbyId,char* LocalUserId,char* TargetUserId)
+func double eos_lobby_send_invite(char* lobby_id,char* local_user_id,char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Lobby_SendInviteOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_SENDINVITE_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -1125,7 +1125,7 @@ func double eos_lobby_update_lobby()
 	return mcallback->identifier;
 }
 
-func double eos_lobby_update_lobby_modification(char* LobbyId,char* LocalUserId)
+func double eos_lobby_update_lobby_modification(char* lobby_id,char* local_user_id)
 {
 	eos_not_init_return(-1);
 
@@ -1133,8 +1133,8 @@ func double eos_lobby_update_lobby_modification(char* LobbyId,char* LocalUserId)
 
 	EOS_Lobby_UpdateLobbyModificationOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_UPDATELOBBYMODIFICATION_API_LATEST;
-	Options.LobbyId = LobbyId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LobbyId = lobby_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	EOS_EResult result = EOS_Lobby_UpdateLobbyModification(HLobby, &Options, &mHLobbyModification);
 	
@@ -1186,7 +1186,7 @@ func double __eos_lobby_details_copy_attribute_by_index(double index,char* buff_
 	return (double)result;
 }
 
-func double __eos_lobby_details_copy_attribute_by_key(char* AttrKey,char* buff_ret)
+func double __eos_lobby_details_copy_attribute_by_key(char* attr_key,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1195,7 +1195,7 @@ func double __eos_lobby_details_copy_attribute_by_key(char* AttrKey,char* buff_r
 
 	EOS_LobbyDetails_CopyAttributeByKeyOptions Options{};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYATTRIBUTEBYKEY_API_LATEST;
-	Options.AttrKey = AttrKey;
+	Options.AttrKey = attr_key;
 
 	EOS_Lobby_Attribute *OutAttribute = 0;
 
@@ -1255,7 +1255,7 @@ func double __eos_lobby_details_copy_info(char* buff_ret)
 	return (double)result;
 }
 
-func double __eos_lobby_details_copy_member_attribute_by_index(double index,char* TargetUserId,char* buff_ret)
+func double __eos_lobby_details_copy_member_attribute_by_index(double index,char* target_user_id,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1265,7 +1265,7 @@ func double __eos_lobby_details_copy_member_attribute_by_index(double index,char
 	EOS_LobbyDetails_CopyMemberAttributeByIndexOptions Options{};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYINDEX_API_LATEST;
 	Options.AttrIndex = (uint32_t)index;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	// This needs to be returned in a struct (needs return buffer)
 	EOS_Lobby_Attribute *OutAttribute;
@@ -1282,7 +1282,7 @@ func double __eos_lobby_details_copy_member_attribute_by_index(double index,char
 	return (double)result;
 }
 
-func double eos_lobby_details_copy_member_attribute_by_key(char* AttrKey,char* TargetUserId)
+func double eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* target_user_id)
 {
 	eos_not_init_return(-1);
 
@@ -1290,8 +1290,8 @@ func double eos_lobby_details_copy_member_attribute_by_key(char* AttrKey,char* T
 
 	EOS_LobbyDetails_CopyMemberAttributeByKeyOptions Options{};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYKEY_API_LATEST;
-	Options.AttrKey = AttrKey;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.AttrKey = attr_key;
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	// This needs to be returned in a struct (needs return buffer)
 	EOS_Lobby_Attribute *OutAttribute;
@@ -1303,7 +1303,7 @@ func double eos_lobby_details_copy_member_attribute_by_key(char* AttrKey,char* T
 	return (double)result;
 }
 
-func double __eos_lobby_details_copy_member_info(char* TargetUserId,char* buff_ret)
+func double __eos_lobby_details_copy_member_info(char* target_user_id,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -1312,7 +1312,7 @@ func double __eos_lobby_details_copy_member_info(char* TargetUserId,char* buff_r
 
 	EOS_LobbyDetails_CopyMemberInfoOptions Options{};
 	Options.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERINFO_API_LATEST;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	// This needs to be returned in a struct (needs return buffer)
 	EOS_LobbyDetails_MemberInfo *OutLobbyDetailsMemberInfo;
@@ -1360,13 +1360,13 @@ func char* eos_lobby_details_get_lobby_owner()
 	return productID_toString(p);
 }
 
-func double eos_lobby_details_get_member_attribute_count(char* TargetUserId)
+func double eos_lobby_details_get_member_attribute_count(char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_LobbyDetails_GetMemberAttributeCountOptions Options{};
 	Options.ApiVersion = EOS_LOBBYDETAILS_GETMEMBERATTRIBUTECOUNT_API_LATEST;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	return EOS_LobbyDetails_GetMemberAttributeCount(mHLobbyDetails, &Options);
 }
@@ -1457,7 +1457,7 @@ EOS_Lobby_AttributeData AttributeDataFromStruct(std::map<std::string, const uint
 	return mSessionAttribute;
 }
 
-func double __eos_lobby_modification_add_attribute(double Visibility,char* buff_args)
+func double __eos_lobby_modification_add_attribute(double visibility,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1471,14 +1471,14 @@ func double __eos_lobby_modification_add_attribute(double Visibility,char* buff_
 	EOS_LobbyModification_AddAttributeOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
 	Options.Attribute = &mAttributeData;
-	Options.Visibility = (EOS_ELobbyAttributeVisibility)Visibility;
+	Options.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
 
 	EOS_EResult result = EOS_LobbyModification_AddAttribute(mHLobbyModification, &Options);
 
 	return (double)result;
 }
 
-func double __eos_lobby_modification_add_member_attribute(double Visibility,char* buff_args)
+func double __eos_lobby_modification_add_member_attribute(double visibility,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1492,7 +1492,7 @@ func double __eos_lobby_modification_add_member_attribute(double Visibility,char
 	EOS_LobbyModification_AddMemberAttributeOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
 	Options.Attribute = &mAttributeData;
-	Options.Visibility = (EOS_ELobbyAttributeVisibility)Visibility;
+	Options.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
 	EOS_EResult result = EOS_LobbyModification_AddMemberAttribute(mHLobbyModification, &Options);
 
 	return (double)result;
@@ -1510,7 +1510,7 @@ func double eos_lobby_modification_release()
 	return 0.0;
 }
 
-func double eos_lobby_modification_remove_attribute(char* Key)
+func double eos_lobby_modification_remove_attribute(char* key)
 {
 	eos_not_init_return(-1);
 
@@ -1518,14 +1518,14 @@ func double eos_lobby_modification_remove_attribute(char* Key)
 
 	EOS_LobbyModification_RemoveAttributeOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_REMOVEATTRIBUTE_API_LATEST;
-	Options.Key = Key;
+	Options.Key = key;
 
 	EOS_EResult result = EOS_LobbyModification_RemoveAttribute(mHLobbyModification, &Options);
 
 	return (double)result;
 }
 
-func double eos_lobby_modification_remove_member_attribute(char* Key)
+func double eos_lobby_modification_remove_member_attribute(char* key)
 {
 	eos_not_init_return(-1);
 
@@ -1533,7 +1533,7 @@ func double eos_lobby_modification_remove_member_attribute(char* Key)
 
 	EOS_LobbyModification_RemoveMemberAttributeOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_REMOVEMEMBERATTRIBUTE_API_LATEST;
-	Options.Key = Key;
+	Options.Key = key;
 
 	EOS_EResult result = EOS_LobbyModification_RemoveMemberAttribute(mHLobbyModification, &Options);
 
@@ -1649,7 +1649,7 @@ void EOS_CALL LobbySearch_FindCallback(const EOS_LobbySearch_FindCallbackInfo *d
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_lobby_search_find(char* LocalUserId)
+func double eos_lobby_search_find(char* local_user_id)
 {
 	eos_not_init_return(-1);
 
@@ -1657,7 +1657,7 @@ func double eos_lobby_search_find(char* LocalUserId)
 
 	EOS_LobbySearch_FindOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_FIND_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -1705,7 +1705,7 @@ func double eos_lobby_search_remove_parameter(char* Key, double ComparisonOp)
 	return 0.0;
 }
 
-func double eos_lobby_search_set_lobby_id(char* LobbyId)
+func double eos_lobby_search_set_lobby_id(char* lobby_id)
 {
 	eos_not_init_return(-1);
 
@@ -1713,7 +1713,7 @@ func double eos_lobby_search_set_lobby_id(char* LobbyId)
 
 	EOS_LobbySearch_SetLobbyIdOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETLOBBYID_API_LATEST;
-	Options.LobbyId = LobbyId;
+	Options.LobbyId = lobby_id;
 
 	EOS_EResult result = EOS_LobbySearch_SetLobbyId(mHLobbySearch, &Options);
 
@@ -1756,7 +1756,7 @@ func double __eos_lobby_search_set_parameter(double ComparisonOp,char* buff_args
 	return (double)result;
 }
 
-func double eos_lobby_search_set_target_user_id(char* TargetUserId)
+func double eos_lobby_search_set_target_user_id(char* target_user_id)
 {
 	eos_not_init_return(-1);
 
@@ -1764,7 +1764,7 @@ func double eos_lobby_search_set_target_user_id(char* TargetUserId)
 
 	EOS_LobbySearch_SetTargetUserIdOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETTARGETUSERID_API_LATEST;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	EOS_EResult result = EOS_LobbySearch_SetTargetUserId(mHLobbySearch, &Options);
 

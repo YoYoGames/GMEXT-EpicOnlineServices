@@ -677,9 +677,9 @@ func double __eos_rtc_audio_copy_input_device_information_by_index(double Device
 	EOS_RTCAudio_InputDeviceInformation* OutInputDeviceInformation;
 	EOS_EResult result = EOS_RTCAudio_CopyInputDeviceInformationByIndex(HRTCAudio, &Options, &OutInputDeviceInformation);
 
-	_struct.addKeyValue("bDefaultDevice", (double)OutInputDeviceInformation->bDefaultDevice?1.0:0.0);
-	_struct.addKeyValue("DeviceId", OutInputDeviceInformation->DeviceId);
-	_struct.addKeyValue("DeviceName", OutInputDeviceInformation->DeviceName);
+	_struct.addKeyValue("default_device", (double)OutInputDeviceInformation->bDefaultDevice?1.0:0.0);
+	_struct.addKeyValue("device_id", OutInputDeviceInformation->DeviceId);
+	_struct.addKeyValue("device_name", OutInputDeviceInformation->DeviceName);
 
 	_struct.writeTo(buff_ret);
 
@@ -703,9 +703,9 @@ func double __eos_rtc_audio_copy_output_device_information_by_index(double Devic
 
 	EOS_RTCAudio_CopyOutputDeviceInformationByIndex(HRTCAudio, &Options, &OutOutputDeviceInformation);
 
-	_struct.addKeyValue("bDefaultDevice", (double)OutOutputDeviceInformation->bDefaultDevice ? 1.0 : 0.0);
-	_struct.addKeyValue("DeviceId", OutOutputDeviceInformation->DeviceId);
-	_struct.addKeyValue("DeviceName", OutOutputDeviceInformation->DeviceName);
+	_struct.addKeyValue("default_device", (double)OutOutputDeviceInformation->bDefaultDevice ? 1.0 : 0.0);
+	_struct.addKeyValue("device_id", OutOutputDeviceInformation->DeviceId);
+	_struct.addKeyValue("device_name", OutOutputDeviceInformation->DeviceName);
 
 	_struct.writeTo(buff_ret);
 
