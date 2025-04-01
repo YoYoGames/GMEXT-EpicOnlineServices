@@ -79,14 +79,14 @@ void eos_sessions_init()
 	HSessions = EOS_Platform_GetSessionsInterface(PlatformHandle);
 }
 
-func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
+func double __eos_active_session_copy_info(char* session_name,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
 
 	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
 	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
-	HOptions.SessionName = SessionName;
+	HOptions.SessionName = session_name;
 	EOS_HActiveSession HActiveSession;
 	EOS_EResult result = EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
 
@@ -152,13 +152,13 @@ func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
 	return 0.0;
 }
 
-func char* eos_active_session_get_registered_player_by_index(char* SessionName)
+func char* eos_active_session_get_registered_player_by_index(char* session_name)
 {
 	eos_not_init_return((char*)"");
 
 	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
 	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
-	HOptions.SessionName = SessionName;
+	HOptions.SessionName = session_name;
 	EOS_HActiveSession HActiveSession;
 	EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
 
@@ -170,13 +170,13 @@ func char* eos_active_session_get_registered_player_by_index(char* SessionName)
 	return productID_toString(ProductUserId);
 }
 
-func double eos_active_session_get_registered_player_count(char* SessionName)
+func double eos_active_session_get_registered_player_count(char* session_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_CopyActiveSessionHandleOptions HOptions = {0};
 	HOptions.ApiVersion = EOS_SESSIONS_COPYACTIVESESSIONHANDLE_API_LATEST;
-	HOptions.SessionName = SessionName;
+	HOptions.SessionName = session_name;
 	EOS_HActiveSession HActiveSession;
 
 	EOS_EResult result = EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
@@ -273,14 +273,14 @@ void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessi
 	}
 }
 
-func double __eos_session_details_copy_session_attribute_by_index(double AttrIndex,char* buff_ret)
+func double __eos_session_details_copy_session_attribute_by_index(double attr_index,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
 
 	EOS_SessionDetails_CopySessionAttributeByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYINDEX_API_LATEST;
-	Options.AttrIndex = (uint32_t)AttrIndex;
+	Options.AttrIndex = (uint32_t)attr_index;
 	EOS_SessionDetails_Attribute *OutSessionAttribute;
 
 	EOS_SessionDetails_CopySessionAttributeByIndex(mHSessionDetails, &Options, &OutSessionAttribute);
@@ -291,14 +291,14 @@ func double __eos_session_details_copy_session_attribute_by_index(double AttrInd
 	return 0.0;
 }
 
-func double __eos_session_details_copy_session_attribute_by_key(char* AttrKey,char* buff_ret)
+func double __eos_session_details_copy_session_attribute_by_key(char* attr_key,char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
 
 	EOS_SessionDetails_CopySessionAttributeByKeyOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYKEY_API_LATEST;
-	Options.AttrKey = AttrKey;
+	Options.AttrKey = attr_key;
 	EOS_SessionDetails_Attribute *OutSessionAttribute;
 
 	EOS_SessionDetails_CopySessionAttributeByKey(mHSessionDetails, &Options, &OutSessionAttribute);
@@ -360,12 +360,12 @@ EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const u
 
 EOS_HSessionModification mHSessionModification = 0;
 
-func double __eos_session_modification_add_attribute(double AdvertisementType, double SessionAttribute,char* buff_args)
+func double __eos_session_modification_add_attribute(double advertisement_type,char* buff_args)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_AddAttributeOptions Options = {0};
-	Options.AdvertisementType = (EOS_ESessionAttributeAdvertisementType)AdvertisementType;
+	Options.AdvertisementType = (EOS_ESessionAttributeAdvertisementType)advertisement_type;
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST;
 
 	auto args = buffer_unpack((uint8_t *)buff_args);
@@ -389,13 +389,13 @@ func double eos_session_modification_release()
 	return 0.0;
 }
 
-func double eos_session_modification_remove_attribute(char* Key)
+func double eos_session_modification_remove_attribute(char* key)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_RemoveAttributeOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_REMOVEATTRIBUTE_API_LATEST;
-	Options.Key = Key;
+	Options.Key = key;
 	return (double)EOS_SessionModification_RemoveAttribute(mHSessionModification, &Options);
 }
 
@@ -417,63 +417,63 @@ func double __eos_session_modification_set_allowed_platform_ids(char* buff_args)
 	return (double)EOS_SessionModification_SetAllowedPlatformIds(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_bucket_id(char* BucketId)
+func double eos_session_modification_set_bucket_id(char* bucket_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_SetBucketIdOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETBUCKETID_API_LATEST;
-	Options.BucketId = BucketId;
+	Options.BucketId = bucket_id;
 	return (double)EOS_SessionModification_SetBucketId(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_host_address(char* HostAddress)
+func double eos_session_modification_set_host_address(char* host_address)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_SetHostAddressOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETHOSTADDRESS_API_LATEST;
-	Options.HostAddress = HostAddress;
+	Options.HostAddress = host_address;
 	return (double)EOS_SessionModification_SetHostAddress(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_invites_allowed(double bInvitesAllowed)
+func double eos_session_modification_set_invites_allowed(double invites_allowed)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_SetInvitesAllowedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST;
-	Options.bInvitesAllowed = bInvitesAllowed > 0.5;
+	Options.bInvitesAllowed = invites_allowed > 0.5;
 	return (double)EOS_SessionModification_SetInvitesAllowed(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_join_in_progress_allowed(double bAllowJoinInProgress)
+func double eos_session_modification_set_join_in_progress_allowed(double allow_join_in_progress)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_SetJoinInProgressAllowedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETJOININPROGRESSALLOWED_API_LATEST;
-	Options.bAllowJoinInProgress = bAllowJoinInProgress > 0.5;
+	Options.bAllowJoinInProgress = allow_join_in_progress > 0.5;
 	return (double)EOS_SessionModification_SetJoinInProgressAllowed(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_max_players(double MaxPlayers)
+func double eos_session_modification_set_max_players(double max_players)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_SetMaxPlayersOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETMAXPLAYERS_API_LATEST;
-	Options.MaxPlayers = (int)MaxPlayers;
+	Options.MaxPlayers = (int)max_players;
 	return (double)EOS_SessionModification_SetMaxPlayers(mHSessionModification, &Options);
 }
 
-func double eos_session_modification_set_permission_level(double PermissionLevel)
+func double eos_session_modification_set_permission_level(double permission_level)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionModification_SetPermissionLevelOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETPERMISSIONLEVEL_API_LATEST;
-	Options.PermissionLevel = (EOS_EOnlineSessionPermissionLevel)PermissionLevel;
+	Options.PermissionLevel = (EOS_EOnlineSessionPermissionLevel)permission_level;
 	return (double)EOS_SessionModification_SetPermissionLevel(mHSessionModification, &Options);
 }
 
@@ -653,13 +653,13 @@ func double __eos_sessions_add_notify_session_invite_rejected(char* buff_ret)
 	return 0.0;
 }
 
-func double eos_sessions_copy_session_handle_by_invite_id(char* InviteId)
+func double eos_sessions_copy_session_handle_by_invite_id(char* invite_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_CopySessionHandleByInviteIdOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_COPYSESSIONHANDLEBYINVITEID_API_LATEST;
-	Options.InviteId = InviteId;
+	Options.InviteId = invite_id;
 
 	double result = (double)EOS_Sessions_CopySessionHandleByInviteId(HSessions, &Options, &mHSessionDetails);
 
@@ -733,13 +733,13 @@ func double __eos_sessions_create_session_modification(char* buff_args)
 }
 
 EOS_HSessionSearch mOutSessionSearchHandle = 0;
-func double eos_sessions_create_session_search(double MaxSearchResults)
+func double eos_sessions_create_session_search(double max_search_results)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_CreateSessionSearchOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_CREATESESSIONSEARCH_API_LATEST;
-	Options.MaxSearchResults = (uint32_t)MaxSearchResults;
+	Options.MaxSearchResults = (uint32_t)max_search_results;
 	double result = (double)EOS_Sessions_CreateSessionSearch(HSessions, &Options, &mOutSessionSearchHandle);
 
 	return result;
@@ -757,13 +757,13 @@ void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessio
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_destroy_session(char* SessionName)
+func double eos_sessions_destroy_session(char* session_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_DestroySessionOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_DESTROYSESSION_API_LATEST;
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 
 	callback *mcallback = getCallbackData();
 
@@ -772,13 +772,13 @@ func double eos_sessions_destroy_session(char* SessionName)
 	return mcallback->identifier;
 }
 
-func double eos_sessions_dump_session_state(char* SessionName)
+func double eos_sessions_dump_session_state(char* session_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_DumpSessionStateOptions Options{0};
 	Options.ApiVersion = EOS_SESSIONS_DUMPSESSIONSTATE_API_LATEST;
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 	return (double)EOS_Sessions_DumpSessionState(HSessions, &Options);
 }
 
@@ -794,13 +794,13 @@ void EOS_CALL Sessions_OnEndSessionCallback(const EOS_Sessions_EndSessionCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_end_session(char* SessionName)
+func double eos_sessions_end_session(char* session_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_EndSessionOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ENDSESSION_API_LATEST;
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 
 	callback *mcallback = getCallbackData();
 
@@ -837,14 +837,14 @@ func char* eos_sessions_get_invite_id_by_index(char* local, double index)
 	return TempBuffer;
 }
 
-func double eos_sessions_is_user_in_session(char* SessionName,char* TargetUserId)
+func double eos_sessions_is_user_in_session(char* session_name,char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_IsUserInSessionOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ISUSERINSESSION_API_LATEST;
-	Options.SessionName = SessionName;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.SessionName = session_name;
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	return (double)EOS_Sessions_IsUserInSession(HSessions, &Options);
 }
@@ -861,16 +861,16 @@ void EOS_CALL Sessions_OnJoinSessionCallback(const EOS_Sessions_JoinSessionCallb
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_join_session(double PresenceEnabled,char* LocalUserId,char* SessionName)
+func double eos_sessions_join_session(double presence_enabled,char* local_user_id,char* session_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_JoinSessionOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_JOINSESSION_API_LATEST;
-	Options.bPresenceEnabled = (EOS_Bool)PresenceEnabled;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.bPresenceEnabled = (EOS_Bool)presence_enabled;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.SessionHandle = mHSessionDetails;
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 
 	callback *mcallback = getCallbackData();
 
@@ -892,13 +892,13 @@ void EOS_CALL Sessions_OnQueryInvitesCallback(const EOS_Sessions_QueryInvitesCal
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_query_invites(char* TargetUserId)
+func double eos_sessions_query_invites(char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_QueryInvitesOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_QUERYINVITES_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -921,7 +921,7 @@ void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlay
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double __eos_sessions_register_players(char* SessionName,char* buff_args)
+func double __eos_sessions_register_players(char* session_name,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -934,7 +934,7 @@ func double __eos_sessions_register_players(char* SessionName,char* buff_args)
 	Options.ApiVersion = EOS_SESSIONS_REGISTERPLAYERS_API_LATEST;
 	Options.PlayersToRegister = p_ids.data();
 	Options.PlayersToRegisterCount = (uint32_t)p_ids.size();
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 
 	callback *mcallback = getCallbackData();
 	EOS_Sessions_RegisterPlayers(HSessions, &Options, mcallback, Sessions_OnRegisterPlayersCallback);
@@ -954,14 +954,14 @@ void EOS_CALL Sessions_OnRejectInvite(const EOS_Sessions_RejectInviteCallbackInf
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_reject_invite(char* LocalUserId,char* InviteId)
+func double eos_sessions_reject_invite(char* local_user_id,char* invite_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_RejectInviteOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_REJECTINVITE_API_LATEST;
-	Options.InviteId = InviteId;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.InviteId = invite_id;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	callback *mcallback = getCallbackData();
 	EOS_Sessions_RejectInvite(HSessions, &Options, mcallback, Sessions_OnRejectInvite);
@@ -1048,15 +1048,15 @@ void EOS_CALL Sessions_OnSendInviteCallback(const EOS_Sessions_SendInviteCallbac
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_send_invite(char* LocalUserId,char* SessionName,char* TargetUserId)
+func double eos_sessions_send_invite(char* local_user_id,char* session_name,char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_SendInviteOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_SENDINVITE_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.SessionName = SessionName;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
+	Options.SessionName = session_name;
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	callback *mcallback = getCallbackData();
 	EOS_Sessions_SendInvite(HSessions, &Options, mcallback, Sessions_OnSendInviteCallback);
@@ -1076,13 +1076,13 @@ void EOS_CALL Sessions_OnStartSessionCallback(const EOS_Sessions_StartSessionCal
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_sessions_start_session(char* SessionName)
+func double eos_sessions_start_session(char* session_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_StartSessionOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_STARTSESSION_API_LATEST;
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 
 	callback *mcallback = getCallbackData();
 	EOS_Sessions_StartSession(HSessions, &Options, mcallback, Sessions_OnStartSessionCallback);
@@ -1103,7 +1103,7 @@ void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_Unregister
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double __eos_sessions_unregister_players(char* SessionName,char* buff_args)
+func double __eos_sessions_unregister_players(char* session_name,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1116,7 +1116,7 @@ func double __eos_sessions_unregister_players(char* SessionName,char* buff_args)
 	Options.ApiVersion = EOS_SESSIONS_UNREGISTERPLAYERS_API_LATEST;
 	Options.PlayersToUnregister = p_ids.data();
 	Options.PlayersToUnregisterCount = (uint32_t)p_ids.size();
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 
 	callback *mcallback = getCallbackData();
 
@@ -1153,24 +1153,24 @@ func double eos_sessions_update_session()
 	return mcallback->identifier;
 }
 
-func double eos_sessions_update_session_modification(char* SessionName)
+func double eos_sessions_update_session_modification(char* session_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_Sessions_UpdateSessionModificationOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_UPDATESESSIONMODIFICATION_API_LATEST;
-	Options.SessionName = SessionName;
+	Options.SessionName = session_name;
 
 	return (double)EOS_Sessions_UpdateSessionModification(HSessions, &Options, &mHSessionModification);
 }
 
-func double eos_session_search_copy_search_result_by_index(double SessionIndex)
+func double eos_session_search_copy_search_result_by_index(double session_index)
 {
 	eos_not_init_return(-1);
 	
 	EOS_SessionSearch_CopySearchResultByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONSEARCH_COPYSEARCHRESULTBYINDEX_API_LATEST;
-	Options.SessionIndex = (uint32_t)SessionIndex;
+	Options.SessionIndex = (uint32_t)session_index;
 
 	double result = (double)EOS_SessionSearch_CopySearchResultByIndex(mOutSessionSearchHandle, &Options, &mHSessionDetails);
 
@@ -1191,13 +1191,13 @@ void EOS_CALL SessionSearch_OnFindCallback(const EOS_SessionSearch_FindCallbackI
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_session_search_find(char* LocalUserId)
+func double eos_session_search_find(char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionSearch_FindOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONSEARCH_FIND_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	callback *mcallback = getCallbackData();
 
@@ -1222,14 +1222,14 @@ func double eos_session_search_release()
 	return 0.0;
 }
 
-func double eos_session_search_remove_parameter(char* Key, double ComparisonOp)
+func double eos_session_search_remove_parameter(char* key, double comparison_op)
 {
 	eos_not_init_return(-1);
 
 	EOS_SessionSearch_RemoveParameterOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONSEARCH_REMOVEPARAMETER_API_LATEST;
-	Options.ComparisonOp = (EOS_EOnlineComparisonOp)ComparisonOp;
-	Options.Key = Key;
+	Options.ComparisonOp = (EOS_EOnlineComparisonOp)comparison_op;
+	Options.Key = key;
 
 	return (double)EOS_SessionSearch_RemoveParameter(mOutSessionSearchHandle, &Options);
 }
@@ -1273,13 +1273,13 @@ func double eos_session_search_set_session_id(char* SessionId)
 	return (double)EOS_SessionSearch_SetSessionId(mOutSessionSearchHandle, &Options);
 }
 
-func double eos_session_search_set_target_user_id(char* TargetUserId)
+func double eos_session_search_set_target_user_id(char* target_user_id)
 {
 	eos_not_init_return(-1);
 	
 	EOS_SessionSearch_SetTargetUserIdOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONSEARCH_SETTARGETUSERID_API_LATEST;
-	Options.TargetUserId = EOS_ProductUserId_FromString(TargetUserId);
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	return (double)EOS_SessionSearch_SetTargetUserId(mOutSessionSearchHandle, &Options);
 }
