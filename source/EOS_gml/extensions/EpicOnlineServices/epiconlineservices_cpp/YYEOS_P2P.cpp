@@ -34,16 +34,16 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_p2p.h"
 
-inline void FillSocketId(EOS_P2P_SocketId &SocketId, const char* socketName)
+inline void FillSocketId(EOS_P2P_SocketId &SocketId, const char* socket_name)
 {
 	// Zero the entire struct and set the API version
 	memset(&SocketId, 0, sizeof(SocketId));
 	SocketId.ApiVersion = EOS_P2P_SOCKETID_API_LATEST;
 
-	// Safely copy up to EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1
-	if (socketName)
+	// Safely copy up to EOS_P2P_SOCKETID_socket_name_SIZE - 1
+	if (socket_name)
 	{
-		strncpy(SocketId.SocketName, socketName, EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1);
+		strncpy(SocketId.SocketName, socket_name, EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1);
 		// Ensure it�s null-terminated
 		SocketId.SocketName[EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1] = '\0';
 	}
@@ -55,16 +55,16 @@ void eos_p2p_init()
 	HP2P = EOS_Platform_GetP2PInterface(PlatformHandle);
 }
 
-func double eos_p2p_accept_connection(char* LocalUserId,char* RemoteUserId,char* SocketName)
+func double eos_p2p_accept_connection(char* local_user_id,char* remote_user_id,char* socket_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_AcceptConnectionOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ACCEPTCONNECTION_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.RemoteUserId = EOS_ProductUserId_FromString(RemoteUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
+	Options.RemoteUserId = EOS_ProductUserId_FromString(remote_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	return (double)EOS_P2P_AcceptConnection(HP2P, &Options);
@@ -109,15 +109,15 @@ void EOS_CALL P2P_OnRemoteConnectionClosedCallback(const EOS_P2P_OnRemoteConnect
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_closed(char* LocalUserId,char* SocketName,char* buff_ret)
+func double __eos_p2p_add_notify_peer_connection_closed(char* local_user_id,char* socket_name,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
 	EOS_P2P_AddNotifyPeerConnectionClosedOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionClosed(HP2P, &Options, nullptr, P2P_OnRemoteConnectionClosedCallback);
@@ -142,15 +142,15 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_established(char* LocalUserId,char* SocketName,char* buff_ret)
+func double __eos_p2p_add_notify_peer_connection_established(char* local_user_id,char* socket_name,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
 	EOS_P2P_AddNotifyPeerConnectionEstablishedOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONESTABLISHED_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionEstablished(HP2P, &Options, nullptr, P2P_OnPeerConnectionEstablishedCallback);
@@ -172,15 +172,15 @@ void EOS_CALL P2P_OnPeerConnectionInterruptedCallback(const EOS_P2P_OnPeerConnec
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_interrupted(char* LocalUserId,char* SocketName,char* buff_ret)
+func double __eos_p2p_add_notify_peer_connection_interrupted(char* local_user_id,char* socket_name,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
 	EOS_P2P_AddNotifyPeerConnectionInterruptedOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONINTERRUPTED_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionInterrupted(HP2P, &Options, nullptr, P2P_OnPeerConnectionInterruptedCallback);
@@ -202,15 +202,15 @@ void EOS_CALL P2P_OnIncomingConnectionRequestCallback(const EOS_P2P_OnIncomingCo
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-func double __eos_p2p_add_notify_peer_connection_request(char* LocalUserId,char* SocketName,char* buff_ret)
+func double __eos_p2p_add_notify_peer_connection_request(char* local_user_id,char* socket_name,char* buff_ret)
 {
 	eos_not_init_return_buffer(buff_ret, 0);
 
 	EOS_P2P_AddNotifyPeerConnectionRequestOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONREQUEST_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionRequest(HP2P, &Options, nullptr, P2P_OnIncomingConnectionRequestCallback);
@@ -222,50 +222,50 @@ func double __eos_p2p_add_notify_peer_connection_request(char* LocalUserId,char*
 	return 0.0;
 }
 
-func double eos_p2p_clear_packet_queue(char* LocalUserId,char* RemoteUserId,char* SocketName)
+func double eos_p2p_clear_packet_queue(char* local_user_id,char* remote_user_id,char* socket_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_ClearPacketQueueOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_CLEARPACKETQUEUE_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
-	Options.RemoteUserId = EOS_ProductUserId_FromString(RemoteUserId);
+	Options.RemoteUserId = EOS_ProductUserId_FromString(remote_user_id);
 
 	return (double)EOS_P2P_ClearPacketQueue(HP2P, &Options);
 }
 
-func double eos_p2p_close_connection(char* LocalUserId,char* RemoteUserId,char* SocketName)
+func double eos_p2p_close_connection(char* local_user_id,char* remote_user_id,char* socket_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_CloseConnectionOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_CLOSECONNECTION_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
-	Options.RemoteUserId = EOS_ProductUserId_FromString(RemoteUserId);
+	Options.RemoteUserId = EOS_ProductUserId_FromString(remote_user_id);
 
 	return (double)EOS_P2P_CloseConnection(HP2P, &Options);
 }
 
-func double eos_p2p_close_connections(char* LocalUserId,char* SocketName)
+func double eos_p2p_close_connections(char* local_user_id,char* socket_name)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_CloseConnectionsOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_CLOSECONNECTIONS_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, SocketName);
+	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 	return (double)EOS_P2P_CloseConnections(HP2P, &Options);
 }
 
-func double eos_p2p_get_n_a_t_type()
+func double eos_p2p_get_nat_type()
 {
 	eos_not_init_return(-1);
 
@@ -279,13 +279,13 @@ func double eos_p2p_get_n_a_t_type()
 	return (double)OutNATType;
 }
 
-func double eos_p2p_get_next_received_packet_size(char* LocalUserId)
+func double eos_p2p_get_next_received_packet_size(char* local_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_GetNextReceivedPacketSizeOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_GETNEXTRECEIVEDPACKETSIZE_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RequestedChannel = nullptr;
 
 	uint32_t OutPacketSizeBytes;
@@ -309,12 +309,12 @@ func double __eos_p2p_get_packet_queue_info(char* buff_ret)
 
 	if (EOS_EResult::EOS_Success == result)
 	{
-		_struct.addKeyValue("IncomingPacketQueueCurrentPacketCount", (double)OutPacketQueueInfo.IncomingPacketQueueCurrentPacketCount);
-		_struct.addKeyValue("IncomingPacketQueueCurrentSizeBytes", (double)OutPacketQueueInfo.IncomingPacketQueueCurrentSizeBytes);
-		_struct.addKeyValue("IncomingPacketQueueMaxSizeBytes", (double)OutPacketQueueInfo.IncomingPacketQueueMaxSizeBytes);
-		_struct.addKeyValue("OutgoingPacketQueueCurrentPacketCount", (double)OutPacketQueueInfo.OutgoingPacketQueueCurrentPacketCount);
-		_struct.addKeyValue("OutgoingPacketQueueCurrentSizeBytes", (double)OutPacketQueueInfo.OutgoingPacketQueueCurrentSizeBytes);
-		_struct.addKeyValue("OutgoingPacketQueueMaxSizeBytes", (double)OutPacketQueueInfo.OutgoingPacketQueueMaxSizeBytes);
+		_struct.addKeyValue("incoming_packet_queue_current_packet_count", (double)OutPacketQueueInfo.IncomingPacketQueueCurrentPacketCount);
+		_struct.addKeyValue("incoming_packet_queue_current_size_bytes", (double)OutPacketQueueInfo.IncomingPacketQueueCurrentSizeBytes);
+		_struct.addKeyValue("incoming_packet_queue_max_size_bytes", (double)OutPacketQueueInfo.IncomingPacketQueueMaxSizeBytes);
+		_struct.addKeyValue("outgoing_packet_queue_current_packet_count", (double)OutPacketQueueInfo.OutgoingPacketQueueCurrentPacketCount);
+		_struct.addKeyValue("outgoing_packet_queue_current_size_bytes", (double)OutPacketQueueInfo.OutgoingPacketQueueCurrentSizeBytes);
+		_struct.addKeyValue("outgoing_packet_queue_max_size_bytes", (double)OutPacketQueueInfo.OutgoingPacketQueueMaxSizeBytes);
 		_struct.writeTo(buff_ret);
 	}
 	else
@@ -339,8 +339,8 @@ func double __eos_p2p_get_port_range(char* buff_ret)
 
 	if (EOS_EResult::EOS_Success == result)
 	{
-		_struct.addKeyValue("OutPort", (int)OutPort);
-		_struct.addKeyValue("OutNumAdditionalPortsToTry", (int)OutNumAdditionalPortsToTry);
+		_struct.addKeyValue("out_port", (int)OutPort);
+		_struct.addKeyValue("out_num_additional_ports_to_try", (int)OutNumAdditionalPortsToTry);
 		_struct.writeTo(buff_ret);
 	}
 	else
@@ -375,17 +375,17 @@ func double eos_p2p_get_relay_control()
 void EOS_CALL P2P_OnQueryNATTypeCompleteCallback(const EOS_P2P_OnQueryNATTypeCompleteInfo *data)
 {
 	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "");
+	DsMapAddString(map, "type", "eos_p2p_query_nat_type");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddDouble(map, "n_a_t_type", (double)data->NATType);
+	DsMapAddDouble(map, "nat_type", (double)data->NATType);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_p2p_query_n_a_t_type()
+func double eos_p2p_query_nat_type()
 {
 	eos_not_init_return(-1);
 
@@ -399,16 +399,16 @@ func double eos_p2p_query_n_a_t_type()
 	return mcallback->identifier;
 }
 
-func double __eos_p2p_receive_packet(char* buff_ret,char* LocalUserId, double MaxDataSizeBytes, double RequestedChannel)
+func double __eos_p2p_receive_packet(char* buff_ret,char* local_user_id, double max_data_size_bytes, double requested_channel)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_ReceivePacketOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_RECEIVEPACKET_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(LocalUserId);
-	Options.MaxDataSizeBytes = (uint32_t)MaxDataSizeBytes;
-	if (RequestedChannel >= 0)
-		Options.RequestedChannel = (const uint8_t *)&RequestedChannel;
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
+	Options.MaxDataSizeBytes = (uint32_t)max_data_size_bytes;
+	if (requested_channel >= 0)
+		Options.RequestedChannel = (const uint8_t *)&requested_channel;
 	else
 		Options.RequestedChannel = nullptr;
 
@@ -511,37 +511,37 @@ func double __eos_p2p_send_packet(char* buff_args,char* buff_data, double len)
 	return result;
 }
 
-func double eos_p2p_set_packet_queue_size(double IncomingPacketQueueMaxSizeBytes, double OutgoingPacketQueueMaxSizeBytes)
+func double eos_p2p_set_packet_queue_size(double incoming_packet_queue_max_size_bytes, double outgoing_packet_queue_max_size_bytes)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_SetPacketQueueSizeOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_SETPACKETQUEUESIZE_API_LATEST;
-	Options.IncomingPacketQueueMaxSizeBytes = (uint64_t)IncomingPacketQueueMaxSizeBytes;
-	Options.OutgoingPacketQueueMaxSizeBytes = (uint64_t)OutgoingPacketQueueMaxSizeBytes;
+	Options.IncomingPacketQueueMaxSizeBytes = (uint64_t)incoming_packet_queue_max_size_bytes;
+	Options.OutgoingPacketQueueMaxSizeBytes = (uint64_t)outgoing_packet_queue_max_size_bytes;
 
 	return (double)EOS_P2P_SetPacketQueueSize(HP2P, &Options);
 }
 
-func double eos_p2p_set_port_range(double Port, double MaxAdditionalPortsToTry)
+func double eos_p2p_set_port_range(double Port, double max_additional_ports_to_try)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_SetPortRangeOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_SETPORTRANGE_API_LATEST;
-	Options.MaxAdditionalPortsToTry = (uint16_t)MaxAdditionalPortsToTry;
+	Options.MaxAdditionalPortsToTry = (uint16_t)max_additional_ports_to_try;
 	Options.Port = (uint16_t)Port;
 
 	return (double)EOS_P2P_SetPortRange(HP2P, &Options);
 }
 
-func double eos_p2p_set_relay_control(double RelayControl)
+func double eos_p2p_set_relay_control(double relay_control)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_SetRelayControlOptions Options;
 	Options.ApiVersion = EOS_P2P_SETRELAYCONTROL_API_LATEST;
-	Options.RelayControl = (EOS_ERelayControl)RelayControl;
+	Options.RelayControl = (EOS_ERelayControl)relay_control;
 
 	return (double)EOS_P2P_SetRelayControl(HP2P, &Options);
 }

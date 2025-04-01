@@ -43,7 +43,7 @@ switch(async_load[? "type"])
 		for(var a = 0 ; a < array_length(friends_account_ids) ; a++)
 		{
 			var user_id = eos_connect_get_external_account_mapping(userID,friends_account_ids[a],0)
-			struct_set(struct_get(friends,friends_account_ids[a]),"UserID",user_id)
+			struct_set(struct_get(friends,friends_account_ids[a]),"user_id",user_id)
 		}
 		
 		struct_foreach(friends,function(_name, _value)

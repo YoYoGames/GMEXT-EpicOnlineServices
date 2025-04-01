@@ -1,232 +1,477 @@
 
 
-func double __eos_active_session_copy_info(char* SessionName,char* buff_ret)
+SEASSONS REFERENCE PAGE: https://dev.epicgames.com/docs/api-ref/interfaces/sessions
 
-func char* eos_active_session_get_registered_player_by_index(char* SessionName)
+------------------------------------------------------------------------------------
+Struct {
+	session_name: String
+	state: 
+	SessionName: String
+	details:{
+		host_address:string,
+		num_open_public_connections: int,
+		owner_server_client_id: string,
+		owner_user_id: string,
+		session_id: string,
+	},
+	settings:
+	{
+		allowed_platform_ids: array,
+		allow_join_in_progress: bool,
+		invites_allowed: bool.
+		sanctions_enabled: bool,
+		bucket_id: string,
+		num_public_connections: int,
+		permission_level: int,
+	}
+} eos_active_session_copy_info()
 
-func double eos_active_session_get_registered_player_count(char* SessionName)
+	
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-copy-info
 
-EOS_HSessionDetails mHSessionDetails = 0;
-func double __eos_session_details_copy_info(char* buff_ret)
+------------------------------------------------------------------------------------
 
-func double __eos_session_details_copy_session_attribute_by_index(double AttrIndex,char* buff_ret)
+String eos_active_session_get_registered_player_by_index(String SessionName)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-by-index
 
-func double __eos_session_details_copy_session_attribute_by_key(char* AttrKey,char* buff_ret)
+------------------------------------------------------------------------------------
 
-func double eos_session_details_get_session_attribute_count()
+double eos_active_session_get_registered_player_count(String SessionName)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-count
 
-func double eos_session_details_release()
+------------------------------------------------------------------------------------
 
+Struct 	{host_address: String,
+		num_open_public_connections: int,
+		owner_user_id: String,
+		owner_server_client_id: String,
+		session_id: String,
+		settings: {
+			allowed_platform_ids: _array
+			allow_join_in_progress: bool,
+			invites_allowed: bool,
+			sanctions_enabled: bool,
+			bucket_id: string,
+			num_public_connections: int,
+			permission_level: int,
+		}} eos_session_details_copy_info()
+		
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-info
 
-EOS_HSessionModification mHSessionModification = 0;
+------------------------------------------------------------------------------------
 
-func double __eos_session_modification_add_attribute(double AdvertisementType, double SessionAttribute,char* buff_args)
+struct {advertisement_type: int, key: string, value:any} eos_session_details_copy_session_attribute_by_index(double AttrIndex
 
-func double eos_session_modification_release()
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-index
 
-func double eos_session_modification_remove_attribute(char* Key)
+------------------------------------------------------------------------------------
 
-func double __eos_session_modification_set_allowed_platform_ids(char* buff_args)
+struct {advertisement_type: int, key: string, value:any} eos_session_details_copy_session_attribute_by_key(String AttrKey)
 
-func double eos_session_modification_set_bucket_id(char* BucketId)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-key
 
-func double eos_session_modification_set_host_address(char* HostAddress)
+------------------------------------------------------------------------------------
 
-func double eos_session_modification_set_invites_allowed(double bInvitesAllowed)
+double eos_session_details_get_session_attribute_count()
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-get-session-attribute-count
 
-func double eos_session_modification_set_join_in_progress_allowed(double bAllowJoinInProgress)
+------------------------------------------------------------------------------------
 
-func double eos_session_modification_set_max_players(double MaxPlayers)
+double eos_session_details_release()
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-release
 
-func double eos_session_modification_set_permission_level(double PermissionLevel)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_add_notify_join_session_accepted");
-	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
-	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
+double eos_session_modification_add_attribute(AdvertisementType,Sessionattribute,attribute)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-add-attribute
 
-func double __eos_sessions_add_notify_join_session_accepted(char* buff_ret)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_add_notify_leave_session_requested");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "session_name", data->SessionName);
+double eos_session_modification_release()
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-release
 
-func double __eos_sessions_add_notify_leave_session_requested(char* buff_ret)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_add_notify_send_session_native_invite_requested");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "target_native_account_type", data->TargetNativeAccountType);
-	DsMapAddString(map, "target_user_native_account_id", data->TargetUserNativeAccountId);
-	DsMapAddString(map, "session_id", data->SessionId);
-	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
+double eos_session_modification_remove_attribute(String Key)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-release
 
-func double __eos_sessions_add_notify_send_session_native_invite_requested(char* buff_ret)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_accepted");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
-	DsMapAddString(map, "invite_id", data->InviteId);
-	DsMapAddString(map, "session_id", data->SessionId);
-	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
+double eos_session_modification_set_allowed_platform_ids(Array array_ids)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-allowed-platform-ids
 
-func double __eos_sessions_add_notify_session_invite_accepted(char* buff_ret)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_received");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "invite_id", data->InviteId);
-	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
-	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+double eos_session_modification_set_bucket_id(String BucketId)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-bucket-id
 
-func double __eos_sessions_add_notify_session_invite_received(char* buff_ret)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_rejected");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
-	DsMapAddString(map, "invite_id", data->InviteId);
-	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
-	DsMapAddString(map, "session_id", data->SessionId);
-	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+double eos_session_modification_set_host_address(String HostAddress)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-host-address
 
-func double __eos_sessions_add_notify_session_invite_rejected(char* buff_ret)
+------------------------------------------------------------------------------------
 
-func double eos_sessions_copy_session_handle_by_invite_id(char* InviteId)
+double eos_session_modification_set_invites_allowed(double bInvitesAllowed)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-invites-allowed
 
-func double __eos_sessions_copy_session_handle_by_ui_event_id(char* buff_args)
+------------------------------------------------------------------------------------
 
-func double eos_sessions_copy_session_handle_for_presence(char* local)
+double eos_session_modification_set_join_in_progress_allowed(double bAllowJoinInProgress)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-join-in-progress-allowed
 
-func double __eos_sessions_create_session_modification(char* buff_args)
+------------------------------------------------------------------------------------
+
+double eos_session_modification_set_max_players(double MaxPlayers)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-max-players
+
+------------------------------------------------------------------------------------
+
+double eos_session_modification_set_permission_level(double PermissionLevel)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-permission-level
+
+------------------------------------------------------------------------------------
+
+int64 eos_sessions_add_notify_join_session_accepted()
+
+ASYNC
+
+	string -> type"eos_sessions_add_notify_join_session_accepted");
+	string -> "local_user_id"
+	int64 -> "ui_event_id"
+	
+
+------------------------------------------------------------------------------------
+
+int64 eos_sessions_add_notify_leave_session_requested()
+
+ASYNC
+
+	string -> type"eos_sessions_add_notify_leave_session_requested");
+	// real -> "status"
+	// string -> "status_message"
+	// real -> "identifier"
+	string -> "local_user_id"
+	string -> "session_name"
+
+------------------------------------------------------------------------------------
+
+int64 eos_sessions_add_notify_send_session_native_invite_requested()
+
+ASYNC
+	string -> type"eos_sessions_add_notify_send_session_native_invite_requested");
+	// real -> "status"
+	// string -> "status_message"
+	// real -> "identifier"
+	string -> "local_user_id"
+	string -> "target_native_account_type"
+	string -> "target_user_native_account_id"
+	string -> "session_id"
+	int64 -> "ui_event_id"
+
+------------------------------------------------------------------------------------
+
+int64 eos_sessions_add_notify_session_invite_accepted()
+
+ASYNC
+	string -> type"eos_sessions_add_notify_session_invite_accepted");
+	// real -> "status"
+	// string -> "status_message"
+	// real -> "identifier"
+	string -> "local_user_id"
+	string -> "invite_id"
+	string -> "session_id"
+	string -> "target_user_id"
+
+------------------------------------------------------------------------------------
+
+int64 eos_sessions_add_notify_session_invite_received()
+
+ASYNC
+	string -> type"eos_sessions_add_notify_session_invite_received");
+	// real -> "status"
+	// string -> "status_message"
+	// real -> "identifier"
+	string -> "invite_id"
+	string -> "target_user_id"
+	string -> "local_user_id"
+
+------------------------------------------------------------------------------------
+
+int64 eos_sessions_add_notify_session_invite_rejected()
+ASYNC
+	string -> type"eos_sessions_add_notify_session_invite_rejected");
+	// real -> "status"
+	// string -> "status_message"
+	// real -> "identifier"
+	string -> "invite_id"
+	string -> "target_user_id"
+	string -> "session_id"
+	string -> "local_user_id"
+------------------------------------------------------------------------------------
+
+double eos_sessions_copy_session_handle_by_invite_id(String InviteId)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_copy_session_handle_by_ui_event_id(int64 ui_event_id)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-ui-event-id
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_copy_session_handle_for_presence(String local)
+https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-sessions-copy-session-handle-for-presence-options
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_create_session_modification(		
+		Array allowed_platform_ids,
+		bool presence_enabled,
+		bool sanctions_enabled,
+		String bucket_id,
+		String local_user_id,
+		double max_players,
+		String session_id,
+		String session_name])
+		
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-modification
+
+------------------------------------------------------------------------------------
 
 EOS_HSessionSearch mOutSessionSearchHandle = 0;
-func double eos_sessions_create_session_search(double MaxSearchResults)
+double eos_sessions_create_session_search(double MaxSearchResults)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-search
 
-void EOS_CALL Sessions_OnDestroySessionCallback(const EOS_Sessions_DestroySessionCallbackInfo *data)
-	DsMapAddString(map, "type", "eos_sessions_destroy_session");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+------------------------------------------------------------------------------------
 
-func double eos_sessions_destroy_session(char* SessionName)
+double eos_sessions_destroy_session(String SessionName)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-destroy-session
+ASYNC
 
-func double eos_sessions_dump_session_state(char* SessionName)
+	string -> type"eos_sessions_destroy_session");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
 
-	DsMapAddString(map, "type", "eos_sessions_end_session");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+------------------------------------------------------------------------------------
 
-func double eos_sessions_end_session(char* SessionName)
+double eos_sessions_dump_session_state(String SessionName)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-dump-session-state
 
-func double eos_sessions_get_invite_count(char* local)
+------------------------------------------------------------------------------------
 
-func char* eos_sessions_get_invite_id_by_index(char* local, double index)
 
-func double eos_sessions_is_user_in_session(char* SessionName,char* TargetUserId)
+double eos_sessions_end_session(String SessionName)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-end-session
 
-	DsMapAddString(map, "type", "eos_sessions_join_session");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+ASYNC
+	string -> type"eos_sessions_end_session");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
 
-func double eos_sessions_join_session(double PresenceEnabled,char* LocalUserId,char* SessionName)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_query_invites");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
+double eos_sessions_get_invite_count(String local)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-count
 
-func double eos_sessions_query_invites(char* TargetUserId)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_register_players");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "registered_players", productIds2ArrayStr(data->RegisteredPlayers, data->RegisteredPlayersCount).c_str());
-	DsMapAddString(map, "sanctioned_players", productIds2ArrayStr(data->SanctionedPlayers, data->SanctionedPlayersCount).c_str());
+String eos_sessions_get_invite_id_by_index(String local
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-id-by-index
 
-func double __eos_sessions_register_players(char* SessionName,char* buff_args)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_reject_invite");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+double eos_sessions_is_user_in_session(String SessionName
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-is-user-in-session
 
-func double eos_sessions_reject_invite(char* LocalUserId,char* InviteId)
+------------------------------------------------------------------------------------
 
-func double __eos_sessions_remove_notify_join_session_accepted(char* buff_args)
+double eos_sessions_join_session(double PresenceEnabled
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-join-session
 
-func double __eos_sessions_remove_notify_leave_session_requested(char* buff_args)
+ASYNC
+	string -> type"eos_sessions_join_session");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
 
-func double __eos_sessions_remove_notify_send_session_native_invite_requested(char* buff_args)
 
-func double __eos_sessions_remove_notify_session_invite_accepted(char* buff_args)
+------------------------------------------------------------------------------------
 
-func double __eos_sessions_remove_notify_session_invite_received(char* buff_args)
+double eos_sessions_query_invites(String TargetUserId)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-query-invites
 
-func double __eos_sessions_remove_notify_session_invite_rejected(char* buff_args)
+ASYNC
+	string -> type"eos_sessions_query_invites");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
+	string -> "local_user_id"
 
-	DsMapAddString(map, "type", "eos_sessions_send_invite");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 
-func double eos_sessions_send_invite(char* LocalUserId,char* SessionName,char* TargetUserId)
+------------------------------------------------------------------------------------
 
-	DsMapAddString(map, "type", "eos_sessions_start_session");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+double eos_sessions_register_players(String SessionName, Array array_product_ids)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-register-players
 
-func double eos_sessions_start_session(char* SessionName)
+ASYNC
+	string -> type"eos_sessions_register_players");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
+	string -> "registered_players"
+	string -> "sanctioned_players"
 
-	DsMapAddString(map, "type", "eos_sessions_unregister_players");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "unregistered_players", productIds2ArrayStr(data->UnregisteredPlayers, data->UnregisteredPlayersCount).c_str());
-func double __eos_sessions_unregister_players(char* SessionName,char* buff_args)
 
-	DsMapAddString(map, "type", "eos_sessions_update_session");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "session_id", data->SessionId);
-	DsMapAddString(map, "session_name", data->SessionName);
+------------------------------------------------------------------------------------
 
-func double eos_sessions_update_session()
 
-func double eos_sessions_update_session_modification(char* SessionName)
+double eos_sessions_reject_invite(String LocalUserId
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-reject-invite
 
-func double eos_session_search_copy_search_result_by_index(double SessionIndex)
+ASYNC
+	string -> type"eos_sessions_reject_invite");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
 
-	DsMapAddString(map, "type", "eos_session_search_find");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 
-func double eos_session_search_find(char* LocalUserId)
+------------------------------------------------------------------------------------
 
-func double eos_session_search_get_search_result_count()
+double eos_sessions_remove_notify_join_session_accepted(notification_id)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-join-session-accepted
 
-func double eos_session_search_release()
+------------------------------------------------------------------------------------
 
-func double eos_session_search_remove_parameter(char* Key, double ComparisonOp)
+double eos_sessions_remove_notify_leave_session_requested(notification_id)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-leave-session-requested
 
-func double eos_session_search_set_max_results(double MaxSearchResults)
+------------------------------------------------------------------------------------
 
-func double __eos_session_search_set_parameter(double comparisonOp,char* buff_args)
+double eos_sessions_remove_notify_send_session_native_invite_requested(notification_id)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-send-session-native-invite-requested
 
-func double eos_session_search_set_session_id(char* SessionId)
+------------------------------------------------------------------------------------
 
-func double eos_session_search_set_target_user_id(char* TargetUserId)
+double eos_sessions_remove_notify_session_invite_accepted(notification_id)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-accepted
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_remove_notify_session_invite_received(notification_id)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-received
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_remove_notify_session_invite_rejected(notification_id)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-received
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_send_invite(String LocalUserId
+
+ASYNC
+	string -> type"eos_sessions_send_invite");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
+
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_start_session(String SessionName)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-send-invite
+
+ASYNC
+	string -> type"eos_sessions_start_session");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
+
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_unregister_players(String SessionName, Array array_product_ids)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-unregister-players
+
+ASYNC
+	string -> type"eos_sessions_unregister_players");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
+	string -> "unregistered_players"
+
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_update_session()
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-unregister-players
+ASYNC
+	string -> type"eos_sessions_update_session");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
+	string -> "session_id"
+	string -> "session_name"
+
+
+------------------------------------------------------------------------------------
+
+double eos_sessions_update_session_modification(String SessionName)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-update-session-modification
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_copy_search_result_by_index(double SessionIndex)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-copy-search-result-by-index
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_find(String LocalUserId)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-find
+
+ASYNC
+	string -> type"eos_session_search_find");
+	real -> "status"
+	string -> "status_message"
+	real -> "identifier"
+
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_get_search_result_count()
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-get-search-result-count
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_release()
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-release
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_remove_parameter(String Key
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-remove-parameter
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_set_max_results(double MaxSearchResults)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-max-results
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_set_parameter(double comparisonOp, Struct attribute)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-parameter
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_set_session_id(String SessionId)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-session-id
+
+------------------------------------------------------------------------------------
+
+double eos_session_search_set_target_user_id(String TargetUserId)
+https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-target-user-id
+
+------------------------------------------------------------------------------------
