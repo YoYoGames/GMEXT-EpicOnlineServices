@@ -830,7 +830,7 @@ func char* eos_sessions_get_invite_id_by_index(char* local_user_id, double index
 	EOS_Sessions_GetInviteIdByIndexOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_GETINVITEIDBYINDEX_API_LATEST;
 	Options.Index = (int)index;
-	Options.LocalUserId = EOS_ProductUserId_FromString(local);
+	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 
 	EOS_Sessions_GetInviteIdByIndex(HSessions, &Options, TempBuffer, &TempBufferSize);
 
