@@ -6,7 +6,7 @@ SEASSONS REFERENCE PAGE: https://dev.epicgames.com/docs/api-ref/interfaces/sessi
 Struct {
 	session_name: String
 	state: 
-	SessionName: String
+	session_name: String
 	details:{
 		host_address:string,
 		num_open_public_connections: int,
@@ -31,12 +31,12 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-copy-i
 
 ------------------------------------------------------------------------------------
 
-String eos_active_session_get_registered_player_by_index(String SessionName)
+String eos_active_session_get_registered_player_by_index(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-by-index
 
 ------------------------------------------------------------------------------------
 
-double eos_active_session_get_registered_player_count(String SessionName)
+double eos_active_session_get_registered_player_count(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-count
 
 ------------------------------------------------------------------------------------
@@ -60,13 +60,13 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-
 
 ------------------------------------------------------------------------------------
 
-struct {advertisement_type: int, key: string, value:any} eos_session_details_copy_session_attribute_by_index(double AttrIndex
+struct {advertisement_type: int, key: string, value:any} eos_session_details_copy_session_attribute_by_index(double attr_index)
 
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-index
 
 ------------------------------------------------------------------------------------
 
-struct {advertisement_type: int, key: string, value:any} eos_session_details_copy_session_attribute_by_key(String AttrKey)
+struct {advertisement_type: int, key: string, value:any} eos_session_details_copy_session_attribute_by_key(String attr_key)
 
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-key
 
@@ -92,7 +92,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-
 
 ------------------------------------------------------------------------------------
 
-double eos_session_modification_remove_attribute(String Key)
+double eos_session_modification_remove_attribute(String key)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-release
 
 ------------------------------------------------------------------------------------
@@ -102,32 +102,32 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-
 
 ------------------------------------------------------------------------------------
 
-double eos_session_modification_set_bucket_id(String BucketId)
+double eos_session_modification_set_bucket_id(String bucket_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-bucket-id
 
 ------------------------------------------------------------------------------------
 
-double eos_session_modification_set_host_address(String HostAddress)
+double eos_session_modification_set_host_address(String host_address)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-host-address
 
 ------------------------------------------------------------------------------------
 
-double eos_session_modification_set_invites_allowed(double bInvitesAllowed)
+double eos_session_modification_set_invites_allowed(bool invites_allowed)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-invites-allowed
 
 ------------------------------------------------------------------------------------
 
-double eos_session_modification_set_join_in_progress_allowed(double bAllowJoinInProgress)
+double eos_session_modification_set_join_in_progress_allowed(bool allow_join_in_progress)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-join-in-progress-allowed
 
 ------------------------------------------------------------------------------------
 
-double eos_session_modification_set_max_players(double MaxPlayers)
+double eos_session_modification_set_max_players(double max_players)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-max-players
 
 ------------------------------------------------------------------------------------
 
-double eos_session_modification_set_permission_level(double PermissionLevel)
+double eos_session_modification_set_permission_level(double permission_level)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-permission-level
 
 ------------------------------------------------------------------------------------
@@ -210,7 +210,7 @@ ASYNC
 	string -> "local_user_id"
 ------------------------------------------------------------------------------------
 
-double eos_sessions_copy_session_handle_by_invite_id(String InviteId)
+double eos_sessions_copy_session_handle_by_invite_id(String invite_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id
 
 ------------------------------------------------------------------------------------
@@ -233,19 +233,19 @@ double eos_sessions_create_session_modification(
 		String local_user_id,
 		double max_players,
 		String session_id,
-		String session_name])
+		String session_name)
 		
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-modification
 
 ------------------------------------------------------------------------------------
 
 EOS_HSessionSearch mOutSessionSearchHandle = 0;
-double eos_sessions_create_session_search(double MaxSearchResults)
+double eos_sessions_create_session_search(double max_search_results)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-search
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_destroy_session(String SessionName)
+double eos_sessions_destroy_session(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-destroy-session
 ASYNC
 
@@ -256,13 +256,13 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_dump_session_state(String SessionName)
+double eos_sessions_dump_session_state(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-dump-session-state
 
 ------------------------------------------------------------------------------------
 
 
-double eos_sessions_end_session(String SessionName)
+double eos_sessions_end_session(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-end-session
 
 ASYNC
@@ -278,17 +278,17 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-c
 
 ------------------------------------------------------------------------------------
 
-String eos_sessions_get_invite_id_by_index(String local
+String eos_sessions_get_invite_id_by_index(String local_user_id, int index)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-id-by-index
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_is_user_in_session(String SessionName
+double eos_sessions_is_user_in_session(String session_name, string target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-is-user-in-session
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_join_session(double PresenceEnabled
+double eos_sessions_join_session(double presence_enabled,char* local_user_id,char* session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-join-session
 
 ASYNC
@@ -300,7 +300,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_query_invites(String TargetUserId)
+double eos_sessions_query_invites(String target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-query-invites
 
 ASYNC
@@ -313,7 +313,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_register_players(String SessionName, Array array_product_ids)
+double eos_sessions_register_players(String session_name, Array array_product_ids)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-register-players
 
 ASYNC
@@ -328,7 +328,7 @@ ASYNC
 ------------------------------------------------------------------------------------
 
 
-double eos_sessions_reject_invite(String LocalUserId
+double eos_sessions_reject_invite(char* local_user_id,char* invite_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-reject-invite
 
 ASYNC
@@ -370,7 +370,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notif
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_send_invite(String LocalUserId
+double eos_sessions_send_invite(char* local_user_id,char* session_name,char* target_user_id)
 
 ASYNC
 	string -> type"eos_sessions_send_invite");
@@ -381,7 +381,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_start_session(String SessionName)
+double eos_sessions_start_session(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-send-invite
 
 ASYNC
@@ -393,7 +393,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_unregister_players(String SessionName, Array array_product_ids)
+double eos_sessions_unregister_players(String session_name, Array array_product_ids)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-unregister-players
 
 ASYNC
@@ -419,17 +419,17 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_sessions_update_session_modification(String SessionName)
+double eos_sessions_update_session_modification(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-update-session-modification
 
 ------------------------------------------------------------------------------------
 
-double eos_session_search_copy_search_result_by_index(double SessionIndex)
+double eos_session_search_copy_search_result_by_index(double session_index)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-copy-search-result-by-index
 
 ------------------------------------------------------------------------------------
 
-double eos_session_search_find(String LocalUserId)
+double eos_session_search_find(String local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-find
 
 ASYNC
@@ -451,27 +451,27 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-releas
 
 ------------------------------------------------------------------------------------
 
-double eos_session_search_remove_parameter(String Key
+double eos_session_search_remove_parameter(String key, EOS_ComparisonOp comparison_op)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-remove-parameter
 
 ------------------------------------------------------------------------------------
 
-double eos_session_search_set_max_results(double MaxSearchResults)
+double eos_session_search_set_max_results(double max_search_results)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-max-results
 
 ------------------------------------------------------------------------------------
 
-double eos_session_search_set_parameter(double comparisonOp, Struct attribute)
+double eos_session_search_set_parameter(EOS_ComparisonOp comparison_op, Struct attribute)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-parameter
 
 ------------------------------------------------------------------------------------
 
-double eos_session_search_set_session_id(String SessionId)
+double eos_session_search_set_session_id(String session_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-session-id
 
 ------------------------------------------------------------------------------------
 
-double eos_session_search_set_target_user_id(String TargetUserId)
+double eos_session_search_set_target_user_id(String target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-target-user-id
 
 ------------------------------------------------------------------------------------

@@ -122,7 +122,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_copy_lobby_details_handle(String LobbyId,String LocalUserId)
+double eos_lobby_copy_lobby_details_handle(char* lobby_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-details-handle
 
 ------------------------------------------------------------------------------------
@@ -166,12 +166,12 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_create_lobby_search(double MaxResults)
+double eos_lobby_create_lobby_search(double max_results)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-create-lobby-search
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_destroy_lobby(String LobbyId
+double eos_lobby_destroy_lobby(char* lobby_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-destroy-lobby
 
 ASYNC
@@ -184,27 +184,27 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-String eos_lobby_get_connect_string(String LobbyId
+String eos_lobby_get_connect_string(char* lobby_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-connect-string
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_get_invite_count(String LocalUserID)
+double eos_lobby_get_invite_count(char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-invite-count
 
 ------------------------------------------------------------------------------------
 
-String eos_lobby_get_invite_id_by_index(String LocalUserID
+String eos_lobby_get_invite_id_by_index(char* local_user_id, double index)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-invite-id-by-index
 
 ------------------------------------------------------------------------------------
 
-String eos_lobby_get_rtc_room_name(String LocalUserID
+String eos_lobby_get_rtc_room_name(char* local_user_id,char* lobby_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-rtc-room-name
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_hard_mute_member(double HardMute
+double eos_lobby_hard_mute_member(double hard_mute,char* lobby_id,char* local_user_id,char* target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-hard-mute-member
 
 ASYNC
@@ -219,19 +219,12 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_is_rtc_room_connected(String LobbyId
+double eos_lobby_is_rtc_room_connected(char* lobby_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-is-rtc-room-connected
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_join_lobby			[local_user_id,buffer_string],
-			[crossplay_opt_out,buffer_bool],
-			[presence_enabled,buffer_bool],
-			[enable_rtc_room,buffer_bool],
-			[local_audio_device_input_starts_muted,buffer_bool],
-			[use_manual_audio_input,buffer_bool],
-			[use_manual_audio_output,buffer_bool],
-			[flags,buffer_u32],
+double eos_lobby_join_lobby(string local_user_id,bool crossplay_opt_out, bool presence_enabled, bool enable_rtc_room, bool local_audio_device_input_starts_muted, bool use_manual_audio_input, bool use_manual_audio_output, flags)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-join-lobby
 
 ASYNC
@@ -244,15 +237,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_join_lobby_by_id			[local_user_id,buffer_string],
-			[crossplay_opt_out,buffer_bool],
-			[presence_enabled,buffer_bool],
-			[lobby_id,buffer_string],
-			[enable_rtc_room,buffer_bool],
-			[local_audio_device_input_starts_muted,buffer_bool],
-			[use_manual_audio_input,buffer_bool],
-			[use_manual_audio_output,buffer_bool],
-			[flags,buffer_u32],
+double eos_lobby_join_lobby_by_id(String local_user_id,bool crossplay_opt_out,bool presence_enabled, string lobby_id,, bool enable_rtc_room, bool local_audio_device_input_starts_muted, bool use_manual_audio_input, bool use_manual_audio_output, flags)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-join-lobby-by-id
 
 ASYNC
@@ -265,7 +250,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_kick_member(String LobbyId
+double eos_lobby_kick_member(char* lobby_id,char* local_user_id,char* target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-kick-member
 
 ASYNC
@@ -278,7 +263,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_leave_lobby(String LobbyId
+double eos_lobby_leave_lobby(char* lobby_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-leave-lobby
 ASYNC
 	string -> type"eos_lobby_leave_lobby");
@@ -294,7 +279,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-parse-connect-s
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_promote_member(String LobbyId
+double eos_lobby_promote_member(char* lobby_id,char* local_user_id,char* target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-promote-member
 
 ASYNC
@@ -308,7 +293,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_query_invites(String LocalUserId)
+double eos_lobby_query_invites(char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-query-invites
 
 ASYNC
@@ -322,7 +307,7 @@ ASYNC
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_reject_invite(String InviteId
+double eos_lobby_reject_invite(char* invite_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-reject-invite
 
 ASYNC 
@@ -386,7 +371,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-s
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_send_invite(String LobbyId
+double eos_lobby_send_invite(char* lobby_id,char* local_user_id,char* target_user_id)
 
 ASYNC
 
@@ -413,38 +398,35 @@ ASYNC
 	
 ------------------------------------------------------------------------------------
 
-double eos_lobby_update_lobby_modification(String LobbyId
+double eos_lobby_update_lobby_modification(char* lobby_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-update-lobby-modification
 
 ------------------------------------------------------------------------------------
 
-Struct(Attribute) eos_lobby_details_copy_attribute_by_index(double index
+Struct(Attribute) eos_lobby_details_copy_attribute_by_index(double index,char* buff_ret)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-attribute-by-index
 
 ------------------------------------------------------------------------------------
 
-Struct(Attribute) eos_lobby_details_copy_attribute_by_key(String AttrKey)
+Struct(Attribute) eos_lobby_details_copy_attribute_by_key(String attr_key)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-attribute-by-key
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_details_copy_info()
-		_struct.addKeyValue("available_slots", OutLobbyDetailsInfo->AvailableSlots);
-		_struct.addKeyValue("allow_host_migration", OutLobbyDetailsInfo->bAllowHostMigration);
-		_struct.addKeyValue("allow_invites", OutLobbyDetailsInfo->bAllowInvites);
-		_struct.addKeyValue("allow_join_by_id", OutLobbyDetailsInfo->bAllowJoinById);
-		_struct.addKeyValue("presence_enabled", OutLobbyDetailsInfo->bPresenceEnabled);
-		_struct.addKeyValue("rejoin_after_kick_requires_invite", OutLobbyDetailsInfo->bRejoinAfterKickRequiresInvite);
-		_struct.addKeyValue("rtc_room_enabled", OutLobbyDetailsInfo->bRTCRoomEnabled);
-
-		if (OutLobbyDetailsInfo->BucketId != nullptr)
-			_struct.addKeyValue("bucket_id", (const char* )OutLobbyDetailsInfo->BucketId);
-		if (OutLobbyDetailsInfo->LobbyId != nullptr)
-			_struct.addKeyValue("lobby_id", (const char* )OutLobbyDetailsInfo->LobbyId);
-		if (OutLobbyDetailsInfo->LobbyOwnerUserId != nullptr)
-			_struct.addKeyValue("lobby_owner_user_id", (const char* )productID_toString(OutLobbyDetailsInfo->LobbyOwnerUserId));
-		_struct.addKeyValue("max_members", OutLobbyDetailsInfo->MaxMembers);
-		_struct.addKeyValue("permission_level", (double)OutLobbyDetailsInfo->PermissionLevel);
+Struct{
+		available_slots: int,
+		allow_host_migration: bool,
+		allow_invites: bool,
+		allow_join_by_id: bool,
+		bool presence_enabled,
+		bool rejoin_after_kick_requires_invite,
+		bool rtc_room_enabled,
+		bucket_id: String,
+		lobby_id: String,
+		lobby_owner_user_id:String,
+		max_members: int,
+		permission_level: EOS_ELobbyPermissionLevel
+	}eos_lobby_details_copy_info()
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-info
 
 ------------------------------------------------------------------------------------
@@ -454,16 +436,14 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-me
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_details_copy_member_attribute_by_key(String AttrKey,char* TargetUserId)
+double eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-attribute-by-key
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_details_copy_member_info(String TargetUserId)
+Struct {allows_crossplay: bool, platform: EOS_OnlinePlatformType, user_id: String} eos_lobby_details_copy_member_info(char* target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-info
-		_struct.addKeyValue("allows_crossplay", (bool)OutLobbyDetailsMemberInfo->bAllowsCrossplay);
-		_struct.addKeyValue("platform", (double)OutLobbyDetailsMemberInfo->Platform);
-		_struct.addKeyValue("user_id", (const char*)productID_toString(OutLobbyDetailsMemberInfo->UserId));
+
 
 ------------------------------------------------------------------------------------
 
@@ -477,7 +457,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-get-lob
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_details_get_member_attribute_count(String TargetUserId)
+double eos_lobby_details_get_member_attribute_count(String target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-get-member-attribute-count
 
 ------------------------------------------------------------------------------------
@@ -512,12 +492,12 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-re
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_remove_attribute(String Key)
+double eos_lobby_modification_remove_attribute(String key)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-remove-member-attribute
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_remove_member_attribute(String Key)
+double eos_lobby_modification_remove_member_attribute(String key)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-remove-member-attribute
 
 ------------------------------------------------------------------------------------
@@ -527,17 +507,17 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-se
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_set_bucket_id(String BucketId)
+double eos_lobby_modification_set_bucket_id(String bucket_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-bucket-id
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_set_invites_allowed(double InvitesAllowed)
+double eos_lobby_modification_set_invites_allowed(double invites_allowed)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-invites-allowed
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_set_max_members(double MaxMembers)
+double eos_lobby_modification_set_max_members(double max_members)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-max-members
 
 ------------------------------------------------------------------------------------
@@ -547,12 +527,12 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-se
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_search_copy_search_result_by_index(double Index)
+double eos_lobby_search_copy_search_result_by_index(double index)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-copy-search-result-by-index
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_search_find(String LocalUserId)
+double eos_lobby_search_find(String local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-find
 
 ASYNC
@@ -574,27 +554,27 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-get-sear
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_search_remove_parameter(String Key
+double eos_lobby_search_remove_parameter(char* key, EOS_ComparisonOp comparison_op)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-remove-parameter
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_search_set_lobby_id(String LobbyId)
+double eos_lobby_search_set_lobby_id(String lobby_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-lobby-id
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_search_set_max_results(double MaxResults)
+double eos_lobby_search_set_max_results(double max_results)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-max-results
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_search_set_parameter(comparison_op,attribute)
+double eos_lobby_search_set_parameter(EOS_ComparisonOp comparison_op,attribute)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-parameter
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_search_set_target_user_id(String TargetUserId)
+double eos_lobby_search_set_target_user_id(String target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-target-user-id
 
 ------------------------------------------------------------------------------------

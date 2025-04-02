@@ -360,7 +360,7 @@ func double eos_rtc_set_setting(char* setting_name,char* setting_value)
 	return (double)result;
 }
 
-func double __eos_rtc_admin_copy_user_token_by_index(double query_id, double user_token_index,char* buff_ret)
+func double eos_rtc_admin_copy_user_token_by_index(double query_id, double user_token_index)
 {
 	eos_not_init_return(-1);
 
@@ -472,11 +472,15 @@ void EOS_CALL RTCAdmin_SetParticipantHardMute(const EOS_RTCAdmin_SetParticipantH
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-func double eos_rtc_admin_set_participant_hard_mute()
+func double eos_rtc_admin_set_participant_hard_mute(double mute, char* room_name, char* target_user_id)
 {
 	eos_not_init_return(-1);
 
 	EOS_RTCAdmin_SetParticipantHardMuteOptions Options = {0};
+	Options.ApiVersion = EOS_RTCADMIN_SETPARTICIPANTHARDMUTE_API_LATEST;
+	Options.bMute = mute > 0.5;
+	Options.RoomName = room_name;
+	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	callback *mcallback = getCallbackData();
 	EOS_RTCAdmin_SetParticipantHardMute(HRTCAdmin, &Options, mcallback, RTCAdmin_SetParticipantHardMute);
@@ -939,7 +943,7 @@ func double __eos_rtc_audio_remove_notify_participant_updated(char* buff_args)
 	return 0.0;
 }
 
-func double eos_rtc_audio_send_audio(char* buff_args,char* buff_data)
+func double __eos_rtc_audio_send_audio(char* buff_args,char* buff_data)
 {
 	eos_not_init_return(-1);
 

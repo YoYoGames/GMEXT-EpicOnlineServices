@@ -1735,7 +1735,7 @@ func double eos_lobby_search_set_max_results(double max_results)
 	return (double)result;
 }
 
-func double __eos_lobby_search_set_parameter(double ComparisonOp,char* buff_args)
+func double __eos_lobby_search_set_parameter(double comparison_op,char* buff_args)
 {
 	eos_not_init_return(-1);
 
@@ -1748,7 +1748,7 @@ func double __eos_lobby_search_set_parameter(double ComparisonOp,char* buff_args
 
 	EOS_LobbySearch_SetParameterOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
-	Options.ComparisonOp = (EOS_EComparisonOp)ComparisonOp;
+	Options.ComparisonOp = (EOS_EComparisonOp)comparison_op;
 	Options.Parameter = &mAttributeData;
 
 	EOS_EResult result = EOS_LobbySearch_SetParameter(mHLobbySearch, &Options);

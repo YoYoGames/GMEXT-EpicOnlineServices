@@ -820,7 +820,7 @@ func double eos_sessions_get_invite_count(char* local)
 	return EOS_Sessions_GetInviteCount(HSessions, &Options);
 }
 
-func char* eos_sessions_get_invite_id_by_index(char* local, double index)
+func char* eos_sessions_get_invite_id_by_index(char* local_user_id, double index)
 {
 	eos_not_init_return((char*)"");
 	
