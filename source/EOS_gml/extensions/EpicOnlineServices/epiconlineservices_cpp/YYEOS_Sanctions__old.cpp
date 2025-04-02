@@ -10,7 +10,7 @@
 #include "YYEpicOnlineServices.h"
 #include <eos_sanctions.h>
 
-EOS_HSanctions HSanctions;
+//EOS_HSanctions HSanctions;
 void EpicGames_Sanctions_Init()
 {
 	HSanctions = EOS_Platform_GetSanctionsInterface(PlatformHandle);
@@ -64,7 +64,7 @@ YYEXPORT void EpicGames_Sanctions_GetPlayerSanctionCount(RValue &Result, CInstan
 	EOS_Sanctions_GetPlayerSanctionCount(HSanctions, &Options);
 }
 
-void EOS_CALL QueryActivePlayerSanctions(const EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo *data)
+void EOS_CALL QueryActivePlayerSanctions_old(const EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Sanctions_QueryActivePlayerSanctions");
@@ -92,7 +92,7 @@ YYEXPORT void EpicGames_Sanctions_QueryActivePlayerSanctions(RValue &Result, CIn
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Sanctions_QueryActivePlayerSanctions(HSanctions, &Options, mcallback, QueryActivePlayerSanctions);
+	EOS_Sanctions_QueryActivePlayerSanctions(HSanctions, &Options, mcallback, QueryActivePlayerSanctions_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;

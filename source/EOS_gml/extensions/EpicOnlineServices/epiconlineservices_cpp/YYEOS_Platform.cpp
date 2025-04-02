@@ -31,6 +31,9 @@
 
 #include "DesktopExtensionTools.h"
 
+EOS_HPlatform PlatformHandle;
+EOS_ContinuanceToken ContinuanceToken;
+
 #if defined(OS_Linux) || defined(OS_MacOs)
 extern "C" void PreGraphicsInitialisation(char* arg1) {};
 #endif

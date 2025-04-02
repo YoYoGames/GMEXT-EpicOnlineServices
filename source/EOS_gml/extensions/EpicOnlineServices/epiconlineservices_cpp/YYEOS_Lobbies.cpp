@@ -85,7 +85,7 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_lobby.h"
 
-EOS_HLobbyDetails mHLobbyDetails = nullptr;
+EOS_HLobbyDetails mHLobbyDetails;
 #define eos_assert_lobby_details(value)               \
 	if (!mHLobbyDetails)                              \
 	{                                                 \

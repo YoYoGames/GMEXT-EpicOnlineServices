@@ -9,7 +9,7 @@
 #include "YYEpicOnlineServices.h"
 #include <eos_metrics.h>
 
-EOS_HMetrics HMetrics;
+//EOS_HMetrics HMetrics;
 void EpicGames_Metrics_Init()
 {
 	HMetrics = EOS_Platform_GetMetricsInterface(PlatformHandle);

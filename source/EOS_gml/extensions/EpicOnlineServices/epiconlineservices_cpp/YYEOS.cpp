@@ -18,9 +18,6 @@
 
 	///////////////////////////////// EOS ///////////////////////////////////
 
-	EOS_HPlatform PlatformHandle = nullptr;
-	EOS_ContinuanceToken ContinuanceToken = nullptr;
-
 	int identifier_count = 0;
 
 	callback* getCallbackData()

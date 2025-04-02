@@ -12,13 +12,13 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_stats.h"
 
-EOS_HStats HStats;
+//EOS_HStats HStats;
 void EpicGames_Stats_Init()
 {
 	HStats = EOS_Platform_GetStatsInterface(PlatformHandle);
 }
 
-RValue StatToStruct(EOS_Stats_Stat *Stat, EOS_EResult result)
+RValue StatToStruct_old(EOS_Stats_Stat *Stat, EOS_EResult result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -64,7 +64,7 @@ YYEXPORT void EpicGames_Stats_CopyStatByIndex(RValue &Result, CInstance *selfins
 
 	EOS_EResult CopyStatResult = EOS_Stats_CopyStatByIndex(HStats, &CopyByIndexOptions, &Stat);
 
-	RValue Struct = StatToStruct(Stat, CopyStatResult);
+	RValue Struct = StatToStruct_old(Stat, CopyStatResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -87,7 +87,7 @@ YYEXPORT void EpicGames_Stats_CopyStatByName(RValue &Result, CInstance *selfinst
 
 	EOS_EResult CopyStatResult = EOS_Stats_CopyStatByName(HStats, &CopyByNameOptions, &Stat);
 
-	RValue Struct = StatToStruct(Stat, CopyStatResult);
+	RValue Struct = StatToStruct_old(Stat, CopyStatResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -111,7 +111,7 @@ YYEXPORT void EpicGames_Stats_GetStatsCount(RValue &Result, CInstance *selfinst,
 	Result.v32 = (int32)StatsCount;
 }
 
-void EOS_CALL StatsIngestCallbackFn(const EOS_Stats_IngestStatCompleteCallbackInfo *data)
+void EOS_CALL StatsIngestCallbackFn_old(const EOS_Stats_IngestStatCompleteCallbackInfo *data)
 {
 	// assert(data != NULL);
 	int map = CreateDsMap(0, 0);
@@ -151,13 +151,13 @@ YYEXPORT void EpicGames_Stats_IngestStat(RValue &Result, CInstance *selfinst, CI
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Stats_IngestStat(HStats, &StatsIngestOptions, mcallback, StatsIngestCallbackFn);
+	EOS_Stats_IngestStat(HStats, &StatsIngestOptions, mcallback, StatsIngestCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL StatsQueryCallbackFn(const EOS_Stats_OnQueryStatsCompleteCallbackInfo *data)
+void EOS_CALL StatsQueryCallbackFn_old(const EOS_Stats_OnQueryStatsCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Stats_QueryStats");
@@ -202,7 +202,7 @@ YYEXPORT void EpicGames_Stats_QueryStats(RValue &Result, CInstance *selfinst, CI
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Stats_QueryStats(HStats, &StatsQueryOptions, mcallback, StatsQueryCallbackFn);
+	EOS_Stats_QueryStats(HStats, &StatsQueryOptions, mcallback, StatsQueryCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;

@@ -17,9 +17,6 @@
 
 extern bool EOS_isInitialised;
 
-extern EOS_HPlatform PlatformHandle;
-extern EOS_ContinuanceToken ContinuanceToken;
-
 extern int identifier_count;
 struct callback;
 extern callback *getCallbackData();
@@ -156,3 +153,24 @@ std::string VectorOfStr2ArrayStr(std::vector<const char *> vec);
 #else
 #define func extern "C" __attribute__((visibility("default")))
 #endif
+
+extern EOS_HPlatform PlatformHandle;
+extern EOS_ContinuanceToken ContinuanceToken;
+extern EOS_HAchievements HAchievements;
+extern EOS_HAuth HAuth;
+extern EOS_HConnect HConnect;
+extern EOS_HEcom HEcom;
+extern EOS_HFriends HFriends;
+extern EOS_HLeaderboards HLeaderboards;
+extern EOS_HMetrics HMetrics;
+extern EOS_HPlatform PlatformHandle;
+extern EOS_HPlayerDataStorage HPlayerDataStorage;
+extern EOS_HPresence HPresence;
+extern EOS_HProgressionSnapshot HProgressionSnapshot;
+extern EOS_HReports HReports;
+extern EOS_HSanctions HSanctions;
+extern EOS_HStats HStats;
+extern EOS_HTitleStorage HTitleStorage;
+extern EOS_HUI HUI;
+extern EOS_HUserInfo HUserInfo;
+
