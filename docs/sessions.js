@@ -475,3 +475,73 @@ double eos_session_search_set_target_user_id(String target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-target-user-id
 
 ------------------------------------------------------------------------------------
+
+
+
+
+Notes:
+
+------------------------------------------------------------------------------------
+
+mOutSessionSearchHandle
+
+Obtain:
+	eos_sessions_create_session_search
+	
+Uses:
+	eos_session_search_copy_search_result_by_index
+	eos_session_search_find
+	eos_session_search_get_search_result_count
+	eos_session_search_remove_parameter
+	eos_session_search_set_max_results
+	__eos_session_search_set_parameter
+	eos_session_search_set_session_id
+	eos_session_search_set_target_user_id
+	
+	
+Release:
+	eos_session_search_release()
+
+------------------------------------------------------------------------------------
+
+mHSessionDetails
+
+Obtain:
+	eos_sessions_copy_session_handle_by_invite_id
+	__eos_sessions_copy_session_handle_by_ui_event_id
+	eos_sessions_copy_session_handle_for_presence
+	eos_session_search_copy_search_result_by_index
+	
+Uses:
+	__eos_session_details_copy_info
+	__eos_session_details_copy_session_attribute_by_index
+	__eos_session_details_copy_session_attribute_by_key
+	eos_session_details_get_session_attribute_count
+	eos_sessions_join_session
+	
+Release:
+	eos_session_details_release()
+
+------------------------------------------------------------------------------------
+
+mHSessionModification
+
+Obtain:
+	__eos_sessions_create_session_modification
+	eos_sessions_update_session_modification
+	
+Uses:
+	__eos_session_modification_add_attribute
+	eos_session_modification_remove_attribute
+	__eos_session_modification_set_allowed_platform_ids
+	eos_session_modification_set_bucket_id
+	eos_session_modification_set_host_address
+	eos_session_modification_set_invites_allowed
+	eos_session_modification_set_join_in_progress_allowed
+	eos_session_modification_set_max_players
+	eos_session_modification_set_permission_level
+	eos_sessions_update_session
+	
+Release:
+	eos_session_modification_release()
+

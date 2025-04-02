@@ -578,3 +578,77 @@ double eos_lobby_search_set_target_user_id(String target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-target-user-id
 
 ------------------------------------------------------------------------------------
+
+NOTES:
+
+------------------------------------------------------------------------------------
+mHLobbyDetails
+
+Obtain:
+	eos_lobby_copy_lobby_details_handle
+	eos_lobby_copy_lobby_details_handle_by_invite_id
+	eos_lobby_search_copy_search_result_by_index
+	__eos_lobby_copy_lobby_details_handle_by_ui_event_id
+Uses:
+	eos_lobby_join_lobby
+	eos_lobby_details_copy_attribute_by_index
+	eos_lobby_details_copy_attribute_by_key
+	eos_lobby_details_copy_info
+	eos_lobby_details_copy_member_attribute_by_index
+	eos_lobby_details_copy_member_attribute_by_key
+	eos_lobby_details_copy_member_info
+	eos_lobby_details_get_attribute_count
+	eos_lobby_details_get_lobby_owner
+	eos_lobby_details_get_member_attribute_count
+	eos_lobby_details_get_member_by_index
+	eos_lobby_details_get_member_count
+Release:
+	eos_lobby_details_release()
+
+
+------------------------------------------------------------------------------------
+
+
+mHLobbyModification
+
+Obtain:
+	eos_lobby_update_lobby_modification
+	
+Uses:
+	eos_lobby_update_lobby
+	__eos_lobby_modification_add_attribute
+	__eos_lobby_modification_add_member_attribute
+	eos_lobby_modification_remove_attribute
+	eos_lobby_modification_remove_member_attribute
+	__eos_lobby_modification_set_allowed_platform_ids
+	eos_lobby_modification_set_bucket_id
+	eos_lobby_modification_set_invites_allowed
+	eos_lobby_modification_set_max_members
+	eos_lobby_modification_set_permission_level
+	
+Release:
+	eos_lobby_modification_release()
+
+
+------------------------------------------------------------------------------------
+
+mHLobbySearch
+
+
+Obtain:
+	eos_lobby_create_lobby_search
+	
+Uses:
+	eos_lobby_search_copy_search_result_by_index
+	eos_lobby_search_find
+	eos_lobby_search_get_search_result_count
+	eos_lobby_search_remove_parameter
+	eos_lobby_search_set_lobby_id
+	eos_lobby_search_set_max_results
+	__eos_lobby_search_set_parameter
+	eos_lobby_search_set_target_user_id
+	
+Release:
+	func double eos_lobby_search_release()
+
+
