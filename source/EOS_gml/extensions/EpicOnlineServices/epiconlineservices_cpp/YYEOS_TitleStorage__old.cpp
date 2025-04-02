@@ -28,13 +28,13 @@
 
 const size_t MaxChunkSize = 4096;
 
-EOS_HTitleStorage HTitleStorage;
+//EOS_HTitleStorage HTitleStorage;
 void EpicGames_TitleStorage_Init()
 {
 	HTitleStorage = EOS_Platform_GetTitleStorageInterface(PlatformHandle);
 }
 
-RValue FileMetadataToStruct(EOS_TitleStorage_FileMetadata *file, EOS_EResult result)
+RValue FileMetadataToStruct_old(EOS_TitleStorage_FileMetadata *file, EOS_EResult result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -72,7 +72,7 @@ YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataAtIndex(RValue &Result, CIn
 	EOS_TitleStorage_FileMetadata *file;
 	EOS_EResult result = EOS_TitleStorage_CopyFileMetadataAtIndex(HTitleStorage, &Options, &file);
 
-	RValue Struct = FileMetadataToStruct(file, result);
+	RValue Struct = FileMetadataToStruct_old(file, result);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -95,13 +95,13 @@ YYEXPORT void EpicGames_TitleStorage_CopyFileMetadataByFilename(RValue &Result, 
 	EOS_TitleStorage_FileMetadata *file;
 	EOS_EResult result = EOS_TitleStorage_CopyFileMetadataByFilename(HTitleStorage, &Options, &file);
 
-	RValue Struct = FileMetadataToStruct(file, result);
+	RValue Struct = FileMetadataToStruct_old(file, result);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
 }
 
-void EOS_CALL DeleteCache(const EOS_TitleStorage_DeleteCacheCallbackInfo *data)
+void EOS_CALL DeleteCache_old(const EOS_TitleStorage_DeleteCacheCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_DeleteCache");
@@ -127,7 +127,7 @@ YYEXPORT void EpicGames_TitleStorage_DeleteCache(RValue &Result, CInstance *self
 
 	callback *mcallback = getCallbackData();
 
-	EOS_TitleStorage_DeleteCache(HTitleStorage, &Options, mcallback, DeleteCache);
+	EOS_TitleStorage_DeleteCache(HTitleStorage, &Options, mcallback, DeleteCache_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
@@ -149,7 +149,7 @@ YYEXPORT void EpicGames_TitleStorage_GetFileMetadataCount(RValue &Result, CInsta
 	Result.val = EOS_TitleStorage_GetFileMetadataCount(HTitleStorage, &Options);
 }
 
-void EOS_CALL QueryFile(const EOS_TitleStorage_QueryFileCallbackInfo *data)
+void EOS_CALL QueryFile_old(const EOS_TitleStorage_QueryFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_QueryFile");
@@ -177,13 +177,13 @@ YYEXPORT void EpicGames_TitleStorage_QueryFile(RValue &Result, CInstance *selfin
 
 	callback *mcallback = getCallbackData();
 
-	EOS_TitleStorage_QueryFile(HTitleStorage, &Options, mcallback, QueryFile);
+	EOS_TitleStorage_QueryFile(HTitleStorage, &Options, mcallback, QueryFile_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo *data)
+void EOS_CALL QueryFileList_old(const EOS_TitleStorage_QueryFileListCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_QueryFileList");
@@ -226,13 +226,13 @@ YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue &Result, CInstance *se
 
 	callback *mcallback = getCallbackData();
 
-	EOS_TitleStorage_QueryFileList(HTitleStorage, &Options, mcallback, QueryFileList);
+	EOS_TitleStorage_QueryFileList(HTitleStorage, &Options, mcallback, QueryFileList_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-struct FTransferInProgress
+struct FTransferInProgress_old
 {
 	bool bDownload = true;
 	size_t TotalSize = 0;
@@ -243,8 +243,8 @@ struct FTransferInProgress
 	bool Done() const { return TotalSize == CurrentIndex; }
 };
 
-std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress> TransfersInProgress;
-EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_ReadFileDataCallbackInfo *Data_)
+std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress_old> TransfersInProgress_old;
+EOS_TitleStorage_EReadResult ReceiveData_TitleStorage_old(const EOS_TitleStorage_ReadFileDataCallbackInfo *Data_)
 {
 	const char *FileName = Data_->Filename;
 	/*std::wstring*/ std::string path = ((callback *)(Data_->ClientData))->string;
@@ -258,10 +258,10 @@ EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_Rea
 		return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
 	}
 
-	auto Iter = TransfersInProgress.find(/*stringToWstring*/ (FileName));
-	if (Iter != TransfersInProgress.end())
+	auto Iter = TransfersInProgress_old.find(/*stringToWstring*/ (FileName));
+	if (Iter != TransfersInProgress_old.end())
 	{
-		FTransferInProgress &Transfer = Iter->second;
+		FTransferInProgress_old &Transfer = Iter->second;
 
 		if (!Transfer.bDownload)
 		{
@@ -307,7 +307,7 @@ EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_Rea
 	return EOS_TitleStorage_EReadResult::EOS_TS_RR_CancelRequest;
 }
 
-void EOS_CALL OnFileReceived(const EOS_TitleStorage_ReadFileCallbackInfo *data)
+void EOS_CALL OnFileReceived_old(const EOS_TitleStorage_ReadFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_ReadFile_OnFileReceived");
@@ -318,24 +318,24 @@ void EOS_CALL OnFileReceived(const EOS_TitleStorage_ReadFileCallbackInfo *data)
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_TitleStorage_ReadFileDataCallbackInfo *data)
+EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived_old(const EOS_TitleStorage_ReadFileDataCallbackInfo *data)
 {
 	const char *file = data->Filename;
 
-	auto Iter = TransfersInProgress.find(/*stringToWstring*/ (file));
+	auto Iter = TransfersInProgress_old.find(/*stringToWstring*/ (file));
 
-	FTransferInProgress &Transfer = Iter->second;
+	FTransferInProgress_old &Transfer = Iter->second;
 	EOS_HTitleStorageFileTransferRequest Handle = Transfer.handler;
 	// EOS_TitleStorageFileTransferRequest_CancelRequest(Handle);
 
 	// return FGame::Get().GetTitleStorage()->ReceiveData(FStringUtils::Widen(data->Filename), data->DataChunk, data->DataChunkLengthBytes, data->TotalFileSizeBytes);
 	if (data)
-		return ReceiveData_TitleStorage(data);
+		return ReceiveData_TitleStorage_old(data);
 
 	return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
 }
 
-void EOS_CALL OnFileTransferProgressUpdated(const EOS_TitleStorage_FileTransferProgressCallbackInfo *data)
+void EOS_CALL OnFileTransferProgressUpdated_old(const EOS_TitleStorage_FileTransferProgressCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_ReadFile_OnFileTransferProgressUpdated");
@@ -361,17 +361,17 @@ YYEXPORT void EpicGames_TitleStorage_ReadFile(RValue &Result, CInstance *selfins
 	Options.LocalUserId = EOS_ProductUserId_FromString(user);
 	Options.Filename = file;
 	Options.ReadChunkLengthBytes = MaxChunkSize;
-	Options.ReadFileDataCallback = OnFileDataReceived;
-	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated;
+	Options.ReadFileDataCallback = OnFileDataReceived_old;
+	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_old;
 
 	callback *mcallback = getCallbackData(path);
-	EOS_HTitleStorageFileTransferRequest Handle = EOS_TitleStorage_ReadFile(HTitleStorage, &Options, mcallback, OnFileReceived);
+	EOS_HTitleStorageFileTransferRequest Handle = EOS_TitleStorage_ReadFile(HTitleStorage, &Options, mcallback, OnFileReceived_old);
 
-	FTransferInProgress NewTransfer;
+	FTransferInProgress_old NewTransfer;
 	NewTransfer.bDownload = true;
 	NewTransfer.handler = Handle;
 
-	TransfersInProgress[/*stringToWstring*/ (file)] = NewTransfer;
+	TransfersInProgress_old[/*stringToWstring*/ (file)] = NewTransfer;
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
@@ -384,16 +384,16 @@ YYEXPORT void EpicGames_TitleStorageFileTransferRequest_CancelRequest(RValue &Re
 	eos_ensure_argc(1);
 
 	const char *file = YYGetString(arg, 0);
-	auto Iter = TransfersInProgress.find(/*stringToWstring*/ (file));
-	FTransferInProgress &Transfer = Iter->second;
+	auto Iter = TransfersInProgress_old.find(/*stringToWstring*/ (file));
+	FTransferInProgress_old &Transfer = Iter->second;
 	EOS_TitleStorageFileTransferRequest_CancelRequest(Transfer.handler);
 }
 
 // YYEXPORT void EpicGames_TitleStorageFileTransferRequest_GetFilename(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 //{
 //	const char* file = YYGetString(arg, 0);
-//	auto Iter = TransfersInProgress.find(stringToWstring(file));
-//	FTransferInProgress& Transfer = Iter->second;
+//	auto Iter = TransfersInProgress_old.find(stringToWstring(file));
+//	FTransferInProgress_old& Transfer = Iter->second;
 //	EOS_HTitleStorageFileTransferRequest Handle = Transfer.handler;
 //	//EOS_TitleStorageFileTransferRequest_GetFilename(Handle, );
 // }
@@ -401,8 +401,8 @@ YYEXPORT void EpicGames_TitleStorageFileTransferRequest_CancelRequest(RValue &Re
 YYEXPORT void EpicGames_TitleStorageFileTransferRequest_GetFileRequestState(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	// const char* file = YYGetString(arg, 0);
-	// auto Iter = TransfersInProgress.find(stringToWstring(file));
-	// FTransferInProgress& Transfer = Iter->second;
+	// auto Iter = TransfersInProgress_old.find(stringToWstring(file));
+	// FTransferInProgress_old& Transfer = Iter->second;
 	// EOS_EResult result = EOS_TitleStorageFileTransferRequest_GetFileRequestState(Transfer.handler);
 
 	// RValue Struct = { 0 };

@@ -31,13 +31,13 @@
 
 const size_t MaxChunkSize = 4096;
 
-EOS_HPlayerDataStorage HPlayerDataStorage;
+//EOS_HPlayerDataStorage HPlayerDataStorage;
 void EpicGames_PlayerDataStorage_Init()
 {
 	HPlayerDataStorage = EOS_Platform_GetPlayerDataStorageInterface(PlatformHandle);
 }
 
-RValue _FileMetadataToStruct(EOS_PlayerDataStorage_FileMetadata *file, EOS_EResult result)
+RValue _FileMetadataToStruct_old_old(EOS_PlayerDataStorage_FileMetadata *file, EOS_EResult result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -75,7 +75,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(RValue &Result
 
 	EOS_PlayerDataStorage_FileMetadata *file;
 	EOS_EResult result = EOS_PlayerDataStorage_CopyFileMetadataAtIndex(HPlayerDataStorage, &Options, &file);
-	RValue Struct = _FileMetadataToStruct(file, result);
+	RValue Struct = _FileMetadataToStruct_old_old(file, result);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -97,13 +97,13 @@ YYEXPORT void EpicGames_PlayerDataStorage_CopyFileMetadataByFilename(RValue &Res
 
 	EOS_PlayerDataStorage_FileMetadata *file;
 	EOS_EResult result = EOS_PlayerDataStorage_CopyFileMetadataByFilename(HPlayerDataStorage, &Options, &file);
-	RValue Struct = _FileMetadataToStruct(file, result);
+	RValue Struct = _FileMetadataToStruct_old_old(file, result);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
 }
 
-void EOS_CALL DeleteCache(const EOS_PlayerDataStorage_DeleteCacheCallbackInfo *data)
+void EOS_CALL DeleteCache_old(const EOS_PlayerDataStorage_DeleteCacheCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_DeleteCache");
@@ -129,13 +129,13 @@ YYEXPORT void EpicGames_PlayerDataStorage_DeleteCache(RValue &Result, CInstance 
 
 	callback *mcallback = getCallbackData();
 
-	EOS_PlayerDataStorage_DeleteCache(HPlayerDataStorage, &Options, mcallback, DeleteCache);
+	EOS_PlayerDataStorage_DeleteCache(HPlayerDataStorage, &Options, mcallback, DeleteCache_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL DeleteFile(const EOS_PlayerDataStorage_DeleteFileCallbackInfo *data)
+void EOS_CALL DeleteFile_old(const EOS_PlayerDataStorage_DeleteFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_DeleteFile");
@@ -163,13 +163,13 @@ YYEXPORT void EpicGames_PlayerDataStorage_DeleteFile(RValue &Result, CInstance *
 
 	callback *mcallback = getCallbackData();
 
-	EOS_PlayerDataStorage_DeleteFile(HPlayerDataStorage, &Options, mcallback, DeleteFile);
+	EOS_PlayerDataStorage_DeleteFile(HPlayerDataStorage, &Options, mcallback, DeleteFile_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL OnFileCopied(const EOS_PlayerDataStorage_DuplicateFileCallbackInfo *data)
+void EOS_CALL OnFileCopied_old(const EOS_PlayerDataStorage_DuplicateFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_DuplicateFile");
@@ -199,7 +199,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_DuplicateFile(RValue &Result, CInstanc
 
 	callback *mcallback = getCallbackData();
 
-	EOS_PlayerDataStorage_DuplicateFile(HPlayerDataStorage, &Options, mcallback, OnFileCopied);
+	EOS_PlayerDataStorage_DuplicateFile(HPlayerDataStorage, &Options, mcallback, OnFileCopied_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
@@ -223,7 +223,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_GetFileMetadataCount(RValue &Result, C
 	Result.val = count;
 }
 
-void EOS_CALL QueryFile(const EOS_PlayerDataStorage_QueryFileCallbackInfo *data)
+void EOS_CALL QueryFile_old(const EOS_PlayerDataStorage_QueryFileCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_QueryFile");
@@ -251,13 +251,13 @@ YYEXPORT void EpicGames_PlayerDataStorage_QueryFile(RValue &Result, CInstance *s
 
 	callback *mcallback = getCallbackData();
 
-	EOS_PlayerDataStorage_QueryFile(HPlayerDataStorage, &Options, mcallback, QueryFile);
+	EOS_PlayerDataStorage_QueryFile(HPlayerDataStorage, &Options, mcallback, QueryFile_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL QueryFileList(const EOS_PlayerDataStorage_QueryFileListCallbackInfo *data)
+void EOS_CALL QueryFileList_old(const EOS_PlayerDataStorage_QueryFileListCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_QueryFileList");
@@ -284,13 +284,13 @@ YYEXPORT void EpicGames_PlayerDataStorage_QueryFileList(RValue &Result, CInstanc
 
 	callback *mcallback = getCallbackData();
 
-	EOS_PlayerDataStorage_QueryFileList(HPlayerDataStorage, &Options, mcallback, QueryFileList);
+	EOS_PlayerDataStorage_QueryFileList(HPlayerDataStorage, &Options, mcallback, QueryFileList_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-struct FTransferInProgress_
+struct FTransferInProgress_old__old
 {
 	bool bDownload = true;
 	size_t TotalSize = 0;
@@ -301,11 +301,11 @@ struct FTransferInProgress_
 	bool Done() const { return TotalSize == CurrentIndex; }
 };
 
-std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress_> TransfersInProgress_;
-void EOS_CALL OnFileReceived(const EOS_PlayerDataStorage_ReadFileCallbackInfo *data)
+std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress_old__old> TransfersInProgress_;
+void EOS_CALL OnFileReceived_old(const EOS_PlayerDataStorage_ReadFileCallbackInfo *data)
 {
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
-	FTransferInProgress_ &Transfer = Iter->second;
+	FTransferInProgress_old__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
 	int map = CreateDsMap(0, 0);
@@ -317,7 +317,7 @@ void EOS_CALL OnFileReceived(const EOS_PlayerDataStorage_ReadFileCallbackInfo *d
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo *Data_)
+EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage_old(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo *Data_)
 {
 	const char *FileName = Data_->Filename;
 	/*std::wstring path*/ /*const char**/ std::string path = ((callback *)(Data_->ClientData))->string;
@@ -334,7 +334,7 @@ EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage(const EOS_Player
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
 	if (Iter != TransfersInProgress_.end())
 	{
-		FTransferInProgress_ &Transfer = Iter->second;
+		FTransferInProgress_old__old &Transfer = Iter->second;
 
 		if (!Transfer.bDownload)
 		{
@@ -383,15 +383,15 @@ EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage(const EOS_Player
 	return EOS_PlayerDataStorage_EReadResult::EOS_RR_CancelRequest;
 }
 
-EOS_PlayerDataStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo *data)
+EOS_PlayerDataStorage_EReadResult EOS_CALL OnFileDataReceived_old(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo *data)
 {
 	if (data)
-		return ReceiveData_PlayerDataStorage(data);
+		return ReceiveData_PlayerDataStorage_old(data);
 
 	return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
 }
 
-void EOS_CALL OnFileTransferProgressUpdated_read(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
+void EOS_CALL OnFileTransferProgressUpdated_read_old(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_ReadFile_OnFileTransferProgressUpdated");
@@ -420,13 +420,13 @@ YYEXPORT void EpicGames_PlayerDataStorage_ReadFile(RValue &Result, CInstance *se
 	Options.Filename = file;
 	Options.ReadChunkLengthBytes = MaxChunkSize;
 
-	Options.ReadFileDataCallback = OnFileDataReceived;
-	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_read;
+	Options.ReadFileDataCallback = OnFileDataReceived_old;
+	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_read_old;
 	callback *mcallback = getCallbackData(path);
 
-	EOS_HPlayerDataStorageFileTransferRequest Handle = EOS_PlayerDataStorage_ReadFile(HPlayerDataStorage, &Options, mcallback, OnFileReceived);
+	EOS_HPlayerDataStorageFileTransferRequest Handle = EOS_PlayerDataStorage_ReadFile(HPlayerDataStorage, &Options, mcallback, OnFileReceived_old);
 
-	FTransferInProgress_ NewTransfer;
+	FTransferInProgress_old__old NewTransfer;
 	NewTransfer.bDownload = true;
 	NewTransfer.Handler = Handle;
 	TransfersInProgress_[/*stringToWstring*/ (file)] = NewTransfer;
@@ -435,7 +435,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_ReadFile(RValue &Result, CInstance *se
 	Result.val = (double)mcallback->identifier;
 }
 
-EOS_PlayerDataStorage_EWriteResult SendData(const char *FileName, void *data, uint32_t *BytesWritten)
+EOS_PlayerDataStorage_EWriteResult SendData_old(const char *FileName, void *data, uint32_t *BytesWritten)
 {
 	DebugConsoleOutput("[EOS SDK] EOS_PlayerDataStorage_EWriteResult\n");
 	if (!data || !BytesWritten)
@@ -446,7 +446,7 @@ EOS_PlayerDataStorage_EWriteResult SendData(const char *FileName, void *data, ui
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
 	if (Iter != TransfersInProgress_.end())
 	{
-		FTransferInProgress_ &Transfer = Iter->second;
+		FTransferInProgress_old__old &Transfer = Iter->second;
 
 		if (Transfer.bDownload)
 		{
@@ -490,15 +490,15 @@ EOS_PlayerDataStorage_EWriteResult SendData(const char *FileName, void *data, ui
 	}
 }
 
-EOS_PlayerDataStorage_EWriteResult EOS_CALL OnFileDataSend(const EOS_PlayerDataStorage_WriteFileDataCallbackInfo *data, void *OutDataBuffer, uint32_t *OutDataWritten)
+EOS_PlayerDataStorage_EWriteResult EOS_CALL OnFileDataSend_old(const EOS_PlayerDataStorage_WriteFileDataCallbackInfo *data, void *OutDataBuffer, uint32_t *OutDataWritten)
 {
 	if (data)
-		return SendData(data->Filename, OutDataBuffer, OutDataWritten);
+		return SendData_old(data->Filename, OutDataBuffer, OutDataWritten);
 
 	return EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
 }
 
-void EOS_CALL OnFileTransferProgressUpdated_write(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
+void EOS_CALL OnFileTransferProgressUpdated_write_old(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_PlayerDataStorage_WriteFile_OnFileTransferProgressUpdated");
@@ -509,10 +509,10 @@ void EOS_CALL OnFileTransferProgressUpdated_write(const EOS_PlayerDataStorage_Fi
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-void EOS_CALL OnFileSent(const EOS_PlayerDataStorage_WriteFileCallbackInfo *data)
+void EOS_CALL OnFileSent_old(const EOS_PlayerDataStorage_WriteFileCallbackInfo *data)
 {
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
-	FTransferInProgress_ &Transfer = Iter->second;
+	FTransferInProgress_old__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
 	int map = CreateDsMap(0, 0);
@@ -526,7 +526,7 @@ void EOS_CALL OnFileSent(const EOS_PlayerDataStorage_WriteFileCallbackInfo *data
 	delete reinterpret_cast<callback *>(data->ClientData);
 }
 
-std::vector<unsigned char> readBinaryFile_(const char *filename)
+std::vector<unsigned char> readBinaryFile__old(const char *filename)
 {
 	// open the file:
 	std::streampos fileSize;
@@ -558,23 +558,23 @@ YYEXPORT void EpicGames_PlayerDataStorage_WriteFile(RValue &Result, CInstance *s
 	Options.LocalUserId = EOS_ProductUserId_FromString(user);
 	Options.Filename = file;
 	Options.ChunkLengthBytes = MaxChunkSize;
-	Options.WriteFileDataCallback = OnFileDataSend;
-	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_write;
+	Options.WriteFileDataCallback = OnFileDataSend_old;
+	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_write_old;
 
 	callback *mcallback = getCallbackData();
 
-	EOS_HPlayerDataStorageFileTransferRequest Handle = EOS_PlayerDataStorage_WriteFile(HPlayerDataStorage, &Options, mcallback, OnFileSent);
+	EOS_HPlayerDataStorageFileTransferRequest Handle = EOS_PlayerDataStorage_WriteFile(HPlayerDataStorage, &Options, mcallback, OnFileSent_old);
 
 	if (!Handle)
 	{
 		return;
 	}
 
-	FTransferInProgress_ NewTransfer;
+	FTransferInProgress_old__old NewTransfer;
 	NewTransfer.bDownload = false;
 
 	// std::string NarrowFileData = "YoyoGames X Opera X EpicGames";
-	std::vector<unsigned char> v = readBinaryFile_(path);
+	std::vector<unsigned char> v = readBinaryFile__old(path);
 
 	NewTransfer.TotalSize = v.size();  // NarrowFileData.size();
 	NewTransfer.Data.resize(v.size()); //(NarrowFileData.size());
@@ -601,7 +601,7 @@ YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest(RValu
 
 	const char *file = YYGetString(arg, 0);
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (file));
-	FTransferInProgress_ &Transfer = Iter->second;
+	FTransferInProgress_old__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_CancelRequest(Transfer.Handler);
 }
 
@@ -626,7 +626,7 @@ YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_GetFileRequestState
 	//	return;
 	//}
 	// DebugConsoleOutput("2\n");
-	// FTransferInProgress_& Transfer = Iter->second;
+	// FTransferInProgress_old__old& Transfer = Iter->second;
 	// DebugConsoleOutput("2-3\n");
 	// EOS_EResult result = EOS_PlayerDataStorageFileTransferRequest_GetFileRequestState(Transfer.Handler);
 	// DebugConsoleOutput("3\n");

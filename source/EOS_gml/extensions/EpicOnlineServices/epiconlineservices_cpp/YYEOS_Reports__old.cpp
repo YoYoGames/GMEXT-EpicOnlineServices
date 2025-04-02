@@ -8,13 +8,13 @@
 #include "YYEpicOnlineServices.h"
 #include <eos_reports.h>
 
-EOS_HReports HReports;
+//EOS_HReports HReports;
 void EpicGames_Reports_Init()
 {
 	HReports = EOS_Platform_GetReportsInterface(PlatformHandle);
 }
 
-void EOS_CALL SendPlayerBehaviorReportCallbackFn(const EOS_Reports_SendPlayerBehaviorReportCompleteCallbackInfo *data)
+void EOS_CALL SendPlayerBehaviorReportCallbackFn_old(const EOS_Reports_SendPlayerBehaviorReportCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Reports_SendPlayerBehaviorReport");
@@ -46,7 +46,7 @@ YYEXPORT void EpicGames_Reports_SendPlayerBehaviorReport(RValue &Result, CInstan
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Reports_SendPlayerBehaviorReport(HReports, &SendPlayerBehaviorReportOptions, mcallback, SendPlayerBehaviorReportCallbackFn);
+	EOS_Reports_SendPlayerBehaviorReport(HReports, &SendPlayerBehaviorReportOptions, mcallback, SendPlayerBehaviorReportCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;

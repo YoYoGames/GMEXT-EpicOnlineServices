@@ -19,13 +19,13 @@
 #include "YYEpicOnlineServices.h"
 #include <eos_leaderboards.h>
 
-EOS_HLeaderboards HLeaderboards;
+//EOS_HLeaderboards HLeaderboards;
 void EpicGames_Leaderboards_Init()
 {
 	HLeaderboards = EOS_Platform_GetLeaderboardsInterface(PlatformHandle);
 }
 
-RValue LeaderboardsDefinitionToStruct(EOS_Leaderboards_Definition *leaderboard, EOS_EResult result)
+RValue LeaderboardsDefinitionToStruct_old(EOS_Leaderboards_Definition *leaderboard, EOS_EResult result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -69,7 +69,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByIndex(RValue &Re
 
 	EOS_EResult CopyLeaderboardDefinitionsResult = EOS_Leaderboards_CopyLeaderboardDefinitionByIndex(HLeaderboards, &CopyOptions, &LeaderboardDef);
 
-	RValue Struct = LeaderboardsDefinitionToStruct(LeaderboardDef, CopyLeaderboardDefinitionsResult);
+	RValue Struct = LeaderboardsDefinitionToStruct_old(LeaderboardDef, CopyLeaderboardDefinitionsResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -91,13 +91,13 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(RV
 
 	EOS_EResult CopyLeaderboardDefinitionsResult = EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(HLeaderboards, &CopyOptions, &LeaderboardDef);
 
-	RValue Struct = LeaderboardsDefinitionToStruct(LeaderboardDef, CopyLeaderboardDefinitionsResult);
+	RValue Struct = LeaderboardsDefinitionToStruct_old(LeaderboardDef, CopyLeaderboardDefinitionsResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
 }
 
-RValue LeaderboardRecordToStruct(EOS_Leaderboards_LeaderboardRecord *leaderboard, EOS_EResult result)
+RValue LeaderboardRecordToStruct_old(EOS_Leaderboards_LeaderboardRecord *leaderboard, EOS_EResult result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -142,7 +142,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByIndex(RValue &Result
 	EOS_Leaderboards_LeaderboardRecord *LeaderboardRecord = NULL;
 	EOS_EResult CopyLeaderboardRecordResult = EOS_Leaderboards_CopyLeaderboardRecordByIndex(HLeaderboards, &CopyOptions, &LeaderboardRecord);
 
-	RValue Struct = LeaderboardRecordToStruct(LeaderboardRecord, CopyLeaderboardRecordResult);
+	RValue Struct = LeaderboardRecordToStruct_old(LeaderboardRecord, CopyLeaderboardRecordResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -168,13 +168,13 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardRecordByUserId(RValue &Resul
 	EOS_Leaderboards_LeaderboardRecord *LeaderboardRecord = NULL;
 	EOS_EResult CopyLeaderboardRecordResult = EOS_Leaderboards_CopyLeaderboardRecordByUserId(HLeaderboards, &CopyOptions, &LeaderboardRecord);
 
-	RValue Struct = LeaderboardRecordToStruct(LeaderboardRecord, CopyLeaderboardRecordResult);
+	RValue Struct = LeaderboardRecordToStruct_old(LeaderboardRecord, CopyLeaderboardRecordResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
 }
 
-RValue LeaderboardUserScoreToStruct(EOS_Leaderboards_LeaderboardUserScore *leaderboard, EOS_EResult result)
+RValue LeaderboardUserScoreToStruct_old(EOS_Leaderboards_LeaderboardUserScore *leaderboard, EOS_EResult result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -211,7 +211,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByIndex(RValue &Res
 	EOS_Leaderboards_LeaderboardUserScore *LeaderboardUserScore = NULL;
 	EOS_EResult CopyLeaderboardUserScoreResult = EOS_Leaderboards_CopyLeaderboardUserScoreByIndex(HLeaderboards, &CopyOptions, &LeaderboardUserScore);
 
-	RValue Struct = LeaderboardUserScoreToStruct(LeaderboardUserScore, CopyLeaderboardUserScoreResult);
+	RValue Struct = LeaderboardUserScoreToStruct_old(LeaderboardUserScore, CopyLeaderboardUserScoreResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -234,7 +234,7 @@ YYEXPORT void EpicGames_Leaderboards_CopyLeaderboardUserScoreByUserId(RValue &Re
 	EOS_Leaderboards_LeaderboardUserScore *LeaderboardUserScore = NULL;
 	EOS_EResult CopyLeaderboardUserScoreResult = EOS_Leaderboards_CopyLeaderboardUserScoreByUserId(HLeaderboards, &CopyOptions, &LeaderboardUserScore);
 
-	RValue Struct = LeaderboardUserScoreToStruct(LeaderboardUserScore, CopyLeaderboardUserScoreResult);
+	RValue Struct = LeaderboardUserScoreToStruct_old(LeaderboardUserScore, CopyLeaderboardUserScoreResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -282,7 +282,7 @@ YYEXPORT void EpicGames_Leaderboards_GetLeaderboardUserScoreCount(RValue &Result
 	Result.v32 = EOS_Leaderboards_GetLeaderboardUserScoreCount(HLeaderboards, &LeaderboardUserScoresCountOptions);
 }
 
-void EOS_CALL LeaderboardDefinitionsReceivedCallbackFn(const EOS_Leaderboards_OnQueryLeaderboardDefinitionsCompleteCallbackInfo *data)
+void EOS_CALL LeaderboardDefinitionsReceivedCallbackFn_old(const EOS_Leaderboards_OnQueryLeaderboardDefinitionsCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Leaderboards_QueryLeaderboardDefinitions");
@@ -321,13 +321,13 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardDefinitions(RValue &Result,
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Leaderboards_QueryLeaderboardDefinitions(HLeaderboards, &QueryDefinitionsOptions, mcallback, LeaderboardDefinitionsReceivedCallbackFn);
+	EOS_Leaderboards_QueryLeaderboardDefinitions(HLeaderboards, &QueryDefinitionsOptions, mcallback, LeaderboardDefinitionsReceivedCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL LeaderboardRanksReceivedCallbackFn(const EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo *data)
+void EOS_CALL LeaderboardRanksReceivedCallbackFn_old(const EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Leaderboards_QueryLeaderboardRanks");
@@ -356,13 +356,13 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardRanks(RValue &Result, CInst
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Leaderboards_QueryLeaderboardRanks(HLeaderboards, &QueryRanksOptions, mcallback, LeaderboardRanksReceivedCallbackFn);
+	EOS_Leaderboards_QueryLeaderboardRanks(HLeaderboards, &QueryRanksOptions, mcallback, LeaderboardRanksReceivedCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL LeaderboardUserScoresReceivedCallbackFn(const EOS_Leaderboards_OnQueryLeaderboardUserScoresCompleteCallbackInfo *data)
+void EOS_CALL LeaderboardUserScoresReceivedCallbackFn_old(const EOS_Leaderboards_OnQueryLeaderboardUserScoresCompleteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Leaderboards_QueryLeaderboardUserScores");
@@ -416,7 +416,7 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScore(RValue &Result, C
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Leaderboards_QueryLeaderboardUserScores(HLeaderboards, &QueryUserScoresOptions, mcallback, LeaderboardUserScoresReceivedCallbackFn);
+	EOS_Leaderboards_QueryLeaderboardUserScores(HLeaderboards, &QueryUserScoresOptions, mcallback, LeaderboardUserScoresReceivedCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
@@ -478,7 +478,7 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue &Result, 
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Leaderboards_QueryLeaderboardUserScores(HLeaderboards, &QueryUserScoresOptions, mcallback, LeaderboardUserScoresReceivedCallbackFn);
+	EOS_Leaderboards_QueryLeaderboardUserScores(HLeaderboards, &QueryUserScoresOptions, mcallback, LeaderboardUserScoresReceivedCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;

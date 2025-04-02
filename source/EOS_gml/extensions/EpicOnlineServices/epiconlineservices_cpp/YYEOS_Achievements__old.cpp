@@ -21,13 +21,13 @@
 #include <eos_achievements.h>
 #include <vector>
 
-EOS_HAchievements HAchievements;
-void EpicGames_Achievements_Init()
-{
-	HAchievements = EOS_Platform_GetAchievementsInterface(PlatformHandle);
-}
+//EOS_HAchievements HAchievements;
+//void EpicGames_Achievements_Init()
+//{
+//	HAchievements = EOS_Platform_GetAchievementsInterface(PlatformHandle);
+//}
 
-void EOS_CALL AchievementsUnlockedReceivedCallbackFn(const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* data)
+void EOS_CALL AchievementsUnlockedReceivedCallbackFn_old(const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* data)
 {
 	static char TempBuffer[EOS_PRODUCTUSERID_MAX_LENGTH + 1];
 	int32_t TempBufferSize = sizeof(TempBuffer);
@@ -48,14 +48,14 @@ YYEXPORT void EpicGames_Achievements_AddNotifyAchievementsUnlockedV2(RValue& Res
 
 	EOS_Achievements_AddNotifyAchievementsUnlockedV2Options AchievementsUnlockedNotifyOptions = {};
 	AchievementsUnlockedNotifyOptions.ApiVersion = EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST;
-	EOS_NotificationId AchievementsUnlockedNotificationId = EOS_Achievements_AddNotifyAchievementsUnlockedV2(HAchievements, &AchievementsUnlockedNotifyOptions, nullptr, AchievementsUnlockedReceivedCallbackFn);
+	EOS_NotificationId AchievementsUnlockedNotificationId = EOS_Achievements_AddNotifyAchievementsUnlockedV2(HAchievements, &AchievementsUnlockedNotifyOptions, nullptr, AchievementsUnlockedReceivedCallbackFn_old);
 
 	Result.kind = VALUE_INT64;
 	Result.v64 = static_cast<int64_t>(AchievementsUnlockedNotificationId);
 }
 
 
-RValue EOS_Achievements_DefinitionV2ToMap(EOS_Achievements_DefinitionV2* AchievementDef, EOS_EResult result)
+RValue EOS_Achievements_DefinitionV2ToMap_old(EOS_Achievements_DefinitionV2* AchievementDef, EOS_EResult result)
 {
 	RValue Struct = { 0 };
 	YYStructCreate(&Struct);
@@ -121,7 +121,7 @@ YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(
 	EOS_Achievements_DefinitionV2* AchievementDef = NULL;
 	EOS_EResult CopyAchievementDefinitionsResult = EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(HAchievements, &CopyOptions, &AchievementDef);
 
-	RValue Struct = EOS_Achievements_DefinitionV2ToMap(AchievementDef, CopyAchievementDefinitionsResult);
+	RValue Struct = EOS_Achievements_DefinitionV2ToMap_old(AchievementDef, CopyAchievementDefinitionsResult);
 	
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -146,13 +146,13 @@ YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex(RValue& 
 	EOS_Achievements_DefinitionV2* AchievementDef = NULL;
 	EOS_EResult CopyAchievementDefinitionsResult = EOS_Achievements_CopyAchievementDefinitionV2ByIndex(HAchievements, &CopyOptions, &AchievementDef);
 
-	RValue Struct = EOS_Achievements_DefinitionV2ToMap(AchievementDef, CopyAchievementDefinitionsResult);
+	RValue Struct = EOS_Achievements_DefinitionV2ToMap_old(AchievementDef, CopyAchievementDefinitionsResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
 }
 
-RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef, EOS_EResult result)
+RValue PlayerAchievementToMap_old(EOS_Achievements_PlayerAchievement* AchievementDef, EOS_EResult result)
 {
 	RValue Struct = { 0 };
 	YYStructCreate(&Struct);
@@ -233,7 +233,7 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByAchievementId(RValue
 	EOS_Achievements_PlayerAchievement* Achievement = NULL;
 	EOS_EResult CopyAchievementResult = EOS_Achievements_CopyPlayerAchievementByAchievementId(HAchievements, &CopyOptions, &Achievement);
 
-	RValue Struct = PlayerAchievementToMap(Achievement, CopyAchievementResult);
+	RValue Struct = PlayerAchievementToMap_old(Achievement, CopyAchievementResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -258,7 +258,7 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByIndex(RValue& Result
 	EOS_Achievements_PlayerAchievement* Achievement = NULL;
 	EOS_EResult CopyAchievementResult = EOS_Achievements_CopyPlayerAchievementByIndex(HAchievements, &CopyOptions, &Achievement);
 
-	RValue Struct = PlayerAchievementToMap(Achievement, CopyAchievementResult);
+	RValue Struct = PlayerAchievementToMap_old(Achievement, CopyAchievementResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -291,7 +291,7 @@ YYEXPORT void EpicGames_Achievements_GetPlayerAchievementCount(RValue& Result, C
 	Result.v32 = EOS_Achievements_GetPlayerAchievementCount(HAchievements, &AchievementsCountOptions);
 }
 
-void EOS_CALL AchievementDefinitionsReceivedCallbackFn(const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* data)
+void EOS_CALL AchievementDefinitionsReceivedCallbackFn_old(const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
 	DsMapAddString(map, "type", "EpicGames_Achievements_QueryDefinitions");
@@ -317,13 +317,13 @@ YYEXPORT void EpicGames_Achievements_QueryDefinitions(RValue& Result, CInstance*
 
 	callback* mcallback = getCallbackData();
 
-	EOS_Achievements_QueryDefinitions(HAchievements, &QueryDefinitionsOptions, mcallback, AchievementDefinitionsReceivedCallbackFn);
+	EOS_Achievements_QueryDefinitions(HAchievements, &QueryDefinitionsOptions, mcallback, AchievementDefinitionsReceivedCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL PlayerAchievementsReceivedCallbackFn(const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* data)
+void EOS_CALL PlayerAchievementsReceivedCallbackFn_old(const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
 	DsMapAddString(map, "type", "EpicGames_Achievements_QueryPlayerAchievements");
@@ -351,13 +351,13 @@ YYEXPORT void EpicGames_Achievements_QueryPlayerAchievements(RValue& Result, CIn
 
 	callback* mcallback = getCallbackData();
 
-	EOS_Achievements_QueryPlayerAchievements(HAchievements, &QueryPlayerAchievementsOptions, mcallback, PlayerAchievementsReceivedCallbackFn);
+	EOS_Achievements_QueryPlayerAchievements(HAchievements, &QueryPlayerAchievementsOptions, mcallback, PlayerAchievementsReceivedCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL UnlockAchievementsReceivedCallbackFn(const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* data)
+void EOS_CALL UnlockAchievementsReceivedCallbackFn_old(const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
 	DsMapAddString(map, "type", "EpicGames_Achievements_UnlockAchievement");
@@ -388,7 +388,7 @@ YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance
 
 	callback* mcallback = getCallbackData();
 
-	EOS_Achievements_UnlockAchievements(HAchievements, &UnlockAchievementsOptions, mcallback, UnlockAchievementsReceivedCallbackFn);
+	EOS_Achievements_UnlockAchievements(HAchievements, &UnlockAchievementsOptions, mcallback, UnlockAchievementsReceivedCallbackFn_old);
 
 	//delete[] UnlockAchievementsOptions.AchievementIds;	
 

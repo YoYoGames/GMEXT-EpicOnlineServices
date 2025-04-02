@@ -13,13 +13,13 @@
 #include "YYEpicOnlineServices.h"
 #include <eos_friends.h>
 
-EOS_HFriends HFriends;
+//EOS_HFriends HFriends;
 void EpicGames_Friends_Init()
 {
 	HFriends = EOS_Platform_GetFriendsInterface(PlatformHandle);
 }
 
-void EOS_CALL AcceptFriendInviteCompleteCallbackFn(const EOS_Friends_AcceptInviteCallbackInfo *data)
+void EOS_CALL AcceptFriendInviteCompleteCallbackFn_old(const EOS_Friends_AcceptInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Friends_AcceptInvite");
@@ -47,13 +47,13 @@ YYEXPORT void EpicGames_Friends_AcceptInvite(RValue &Result, CInstance *selfinst
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Friends_AcceptInvite(HFriends, &AcceptInviteOptions, mcallback, AcceptFriendInviteCompleteCallbackFn);
+	EOS_Friends_AcceptInvite(HFriends, &AcceptInviteOptions, mcallback, AcceptFriendInviteCompleteCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL FriendUpdateCallback(const EOS_Friends_OnFriendsUpdateInfo *data)
+void EOS_CALL FriendUpdateCallback_old(const EOS_Friends_OnFriendsUpdateInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Friends_AddNotifyFriendsUpdate");
@@ -72,7 +72,7 @@ YYEXPORT void EpicGames_Friends_AddNotifyFriendsUpdate(RValue &Result, CInstance
 	EOS_Friends_AddNotifyFriendsUpdateOptions Options;
 	Options.ApiVersion = EOS_FRIENDS_ADDNOTIFYFRIENDSUPDATE_API_LATEST;
 
-	EOS_NotificationId NotificationId = EOS_Friends_AddNotifyFriendsUpdate(HFriends, &Options, nullptr, FriendUpdateCallback);
+	EOS_NotificationId NotificationId = EOS_Friends_AddNotifyFriendsUpdate(HFriends, &Options, nullptr, FriendUpdateCallback_old);
 
 	Result.kind = VALUE_INT64;
 	Result.v64 = static_cast<int64_t>(NotificationId);
@@ -133,7 +133,7 @@ YYEXPORT void EpicGames_Friends_GetStatus(RValue &Result, CInstance *selfinst, C
 	Result.val = (double)FriendStatus;
 }
 
-void EOS_CALL QueryFriendsCompleteCallbackFn(const EOS_Friends_QueryFriendsCallbackInfo *data)
+void EOS_CALL QueryFriendsCompleteCallbackFn_old(const EOS_Friends_QueryFriendsCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Friends_QueryFriends");
@@ -160,13 +160,13 @@ YYEXPORT void EpicGames_Friends_QueryFriends(RValue &Result, CInstance *selfinst
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Friends_QueryFriends(HFriends, &QueryFriendsOptions, mcallback, QueryFriendsCompleteCallbackFn);
+	EOS_Friends_QueryFriends(HFriends, &QueryFriendsOptions, mcallback, QueryFriendsCompleteCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL RejectFriendInviteCompleteCallbackFn(const EOS_Friends_RejectInviteCallbackInfo *data)
+void EOS_CALL RejectFriendInviteCompleteCallbackFn_old(const EOS_Friends_RejectInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Friends_RejectInvite");
@@ -194,7 +194,7 @@ YYEXPORT void EpicGames_Friends_RejectInvite(RValue &Result, CInstance *selfinst
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Friends_RejectInvite(HFriends, &RejectInviteOptions, mcallback, &RejectFriendInviteCompleteCallbackFn);
+	EOS_Friends_RejectInvite(HFriends, &RejectInviteOptions, mcallback, &RejectFriendInviteCompleteCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
@@ -210,7 +210,7 @@ YYEXPORT void EpicGames_Friends_RemoveNotifyFriendsUpdate(RValue &Result, CInsta
 	EOS_Friends_RemoveNotifyFriendsUpdate(HFriends, notifyIndex);
 }
 
-void EOS_CALL SendFriendInviteCompleteCallbackFn(const EOS_Friends_SendInviteCallbackInfo *data)
+void EOS_CALL SendFriendInviteCompleteCallbackFn_old(const EOS_Friends_SendInviteCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_Friends_SendInvite");
@@ -238,7 +238,7 @@ YYEXPORT void EpicGames_Friends_SendInvite(RValue &Result, CInstance *selfinst, 
 
 	callback *mcallback = getCallbackData();
 
-	EOS_Friends_SendInvite(HFriends, &SendInviteOptions, mcallback, &SendFriendInviteCompleteCallbackFn);
+	EOS_Friends_SendInvite(HFriends, &SendInviteOptions, mcallback, &SendFriendInviteCompleteCallbackFn_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;

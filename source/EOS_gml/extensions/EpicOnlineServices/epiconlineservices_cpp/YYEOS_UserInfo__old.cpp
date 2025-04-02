@@ -12,13 +12,13 @@
 #include "YYEpicOnlineServices.h"
 #include <eos_userinfo.h>
 
-EOS_HUserInfo HUserInfo;
+//EOS_HUserInfo HUserInfo;
 void EpicGames_UserInfo_Init()
 {
 	HUserInfo = EOS_Platform_GetUserInfoInterface(PlatformHandle);
 }
 
-RValue ExternalUserInfoToString(EOS_UserInfo_ExternalUserInfo *UserInfo, EOS_EResult Result)
+RValue ExternalUserInfoToString_old(EOS_UserInfo_ExternalUserInfo *UserInfo, EOS_EResult Result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -64,7 +64,7 @@ YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByAccountId(RValue &Result,
 	EOS_UserInfo_ExternalUserInfo *OutExternalUserInfo = nullptr;
 	EOS_EResult CopyResult = EOS_UserInfo_CopyExternalUserInfoByAccountId(HUserInfo, &ExternalUserInfoOptions, &OutExternalUserInfo);
 
-	RValue Struct = ExternalUserInfoToString(OutExternalUserInfo, CopyResult);
+	RValue Struct = ExternalUserInfoToString_old(OutExternalUserInfo, CopyResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -89,7 +89,7 @@ YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByAccountType(RValue &Resul
 	EOS_UserInfo_ExternalUserInfo *OutExternalUserInfo = nullptr;
 	EOS_EResult CopyResult = EOS_UserInfo_CopyExternalUserInfoByAccountType(HUserInfo, &ExternalUserInfoOptions, &OutExternalUserInfo);
 
-	RValue Struct = ExternalUserInfoToString(OutExternalUserInfo, CopyResult);
+	RValue Struct = ExternalUserInfoToString_old(OutExternalUserInfo, CopyResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -114,13 +114,13 @@ YYEXPORT void EpicGames_UserInfo_CopyExternalUserInfoByIndex(RValue &Result, CIn
 	EOS_UserInfo_ExternalUserInfo *OutExternalUserInfo = nullptr;
 	EOS_EResult CopyResult = EOS_UserInfo_CopyExternalUserInfoByIndex(HUserInfo, &ExternalUserInfoOptions, &OutExternalUserInfo);
 
-	RValue Struct = ExternalUserInfoToString(OutExternalUserInfo, CopyResult);
+	RValue Struct = ExternalUserInfoToString_old(OutExternalUserInfo, CopyResult);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
 }
 
-RValue _UserInfoToString(EOS_UserInfo *UserInfo, EOS_EResult Result)
+RValue _UserInfoToString_old(EOS_UserInfo *UserInfo, EOS_EResult Result)
 {
 	RValue Struct = {0};
 	YYStructCreate(&Struct);
@@ -169,7 +169,7 @@ YYEXPORT void EpicGames_UserInfo_CopyUserInfo(RValue &Result, CInstance *selfins
 	EOS_UserInfo *UserInfo = nullptr;
 	EOS_EResult result = EOS_UserInfo_CopyUserInfo(UserInfoInterface, &Options, &UserInfo);
 
-	RValue Struct = _UserInfoToString(UserInfo, result);
+	RValue Struct = _UserInfoToString_old(UserInfo, result);
 
 	COPY_RValue(&Result, &Struct);
 	FREE_RValue(&Struct);
@@ -195,7 +195,7 @@ YYEXPORT void EpicGames_UserInfo_GetExternalUserInfoCount(RValue &Result, CInsta
 	Result.v32 = (int32)count;
 }
 
-void EOS_CALL userInfo_QueryUserInfoCallback(const EOS_UserInfo_QueryUserInfoCallbackInfo *data)
+void EOS_CALL userInfo_QueryUserInfoCallback_old(const EOS_UserInfo_QueryUserInfoCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_UserInfo_QueryUserInfo");
@@ -224,13 +224,13 @@ YYEXPORT void EpicGames_UserInfo_QueryUserInfo(RValue &Result, CInstance *selfin
 
 	callback *mcallback = getCallbackData();
 
-	EOS_UserInfo_QueryUserInfo(HUserInfo, &queryUserInfoOptions, mcallback, userInfo_QueryUserInfoCallback);
+	EOS_UserInfo_QueryUserInfo(HUserInfo, &queryUserInfoOptions, mcallback, userInfo_QueryUserInfoCallback_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL EOS_UserInfo_QueryUserInfoByDisplayNameCallback(const EOS_UserInfo_QueryUserInfoByDisplayNameCallbackInfo *data)
+void EOS_CALL EOS_UserInfo_QueryUserInfoByDisplayNameCallback_old(const EOS_UserInfo_QueryUserInfoByDisplayNameCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_UserInfo_QueryUserInfoByDisplayName");
@@ -259,13 +259,13 @@ YYEXPORT void EpicGames_UserInfo_QueryUserInfoByDisplayName(RValue &Result, CIns
 
 	callback *mcallback = getCallbackData();
 
-	EOS_UserInfo_QueryUserInfoByDisplayName(HUserInfo, &QueryUserInfoOptions, mcallback, EOS_UserInfo_QueryUserInfoByDisplayNameCallback);
+	EOS_UserInfo_QueryUserInfoByDisplayName(HUserInfo, &QueryUserInfoOptions, mcallback, EOS_UserInfo_QueryUserInfoByDisplayNameCallback_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL EOS_UserInfo_QueryUserInfoByExternalAccountCallback(const EOS_UserInfo_QueryUserInfoByExternalAccountCallbackInfo *data)
+void EOS_CALL EOS_UserInfo_QueryUserInfoByExternalAccountCallback_old(const EOS_UserInfo_QueryUserInfoByExternalAccountCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "EpicGames_UserInfo_QueryUserInfoByExternalAccount");
@@ -295,7 +295,7 @@ YYEXPORT void EpicGames_UserInfo_QueryUserInfoByExternalAccount(RValue &Result, 
 
 	callback *mcallback = getCallbackData();
 
-	EOS_UserInfo_QueryUserInfoByExternalAccount(HUserInfo, &Options, mcallback, EOS_UserInfo_QueryUserInfoByExternalAccountCallback);
+	EOS_UserInfo_QueryUserInfoByExternalAccount(HUserInfo, &Options, mcallback, EOS_UserInfo_QueryUserInfoByExternalAccountCallback_old);
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
