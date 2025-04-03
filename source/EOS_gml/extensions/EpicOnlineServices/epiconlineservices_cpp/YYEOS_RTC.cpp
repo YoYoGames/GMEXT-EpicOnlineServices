@@ -123,7 +123,7 @@ void EOS_CALL RTC_AddNotifyParticipantStatusChanged(const EOS_RTC_ParticipantSta
 	DsMapAddString(map, "type", "eos_rtc_add_notify_participant_status_changed");
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "room_name", data->RoomName);
-	DsMapAddDouble(map, "participant_in_blocklist", (double)data->bParticipantInBlocklist);
+	DsMapAddDouble(map, "participant_in_blocklist", data->bParticipantInBlocklist?1.0:0.0);
 	DsMapAddString(map, "participant_id", productID_toString(data->ParticipantId));
 	DsMapAddDouble(map, "participant_status", (double)data->ParticipantStatus);
 	// TODO

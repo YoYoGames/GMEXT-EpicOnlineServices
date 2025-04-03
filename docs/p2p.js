@@ -12,6 +12,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-accept-connecti
 Struct {incoming_packet_queue_current_packet_count: double,incoming_packet_queue_current_size_bytes: double,incoming_packet_queue_max_size_bytes: double,outgoing_packet_queue_current_packet_count: double,outgoing_packet_queue_current_size_bytes: double, outgoing_packet_queue_max_size_bytes": double} eos_p2p_add_notify_incoming_packet_queue_full()
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-incoming-packet-queue-full
 
+ASYNC
 	String -> type eos_p2p_add_notify_incoming_packet_queue_full
 	double -> overflow_packet_channel
 	String -> overflow_packet_local_user_id
@@ -24,6 +25,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-inco
 double eos_p2p_add_notify_peer_connection_closed(String local_user_id,String socket_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-closed
 
+ASYNC
 	String -> type eos_p2p_add_notify_peer_connection_closed
 	String -> local_user_id
 	double -> reason
@@ -35,6 +37,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer
 double eos_p2p_add_notify_peer_connection_established(String local_user_id,String socket_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-established
 
+ASYNC
 	String -> type eos_p2p_add_notify_peer_connection_established
 	String -> local_user_id 
 	double -> status
@@ -48,6 +51,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer
 double eos_p2p_add_notify_peer_connection_interrupted(String local_user_id,String socket_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-interrupted
 
+ASYNC
 	String -> type eos_p2p_add_notify_peer_connection_interrupted
 	String -> local_user_id
 	String -> remote_user_id
@@ -58,6 +62,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer
 double eos_p2p_add_notify_peer_connection_request(String local_user_id,String socket_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-request
 
+ASYNC
 	String -> type eos_p2p_add_notify_peer_connection_request
 	String -> local_user_id
 	String -> remote_user_id
@@ -108,6 +113,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-get-relay-contr
 double eos_p2p_query_nat_type()
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-query-nat-type
 
+ASYNC
 	String -> type "eos_p2p_query_nat_type"
 	double -> status
 	String -> status_message
@@ -146,13 +152,13 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-remove-notify-p
 
 ------------------------------------------------------------------------------------
 
-double eos_p2p_send_packet		[allow_delayed_delivery,buffer_bool],
-		[disable_auto_accept_connection,buffer_bool],
-		[channel,buffer_f32],
-		[local_user_id,buffer_string],
-		[reliability,buffer_u8],
-		[remote_user_id,buffer_string],
-		[socket_name,buffer_string],
+double eos_p2p_send_packet(bool allow_delayed_delivery,
+		bool disable_auto_accept_connection,
+		double channel,
+		string local_user_id,
+		EOS_PacketReliability reliability,
+		String remote_user_id,
+		buffer_string socket_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-send-packet
 
 ------------------------------------------------------------------------------------

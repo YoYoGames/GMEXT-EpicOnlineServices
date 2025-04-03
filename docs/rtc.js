@@ -8,10 +8,10 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-discon
 
 ASYNC
 
-	string -> type"eos_rtc_add_notify_disconnected");
+	string -> type"eos_rtc_add_notify_disconnected"
 	string -> "local_user_id"
 	string -> "room_name"
-	real -> "status"
+	EOS_Result -> "status"
 	string -> "status_message"
 	
 ------------------------------------------------------------------------------------
@@ -21,10 +21,10 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-partic
 
 ASYNC
 
-	string -> type"eos_rtc_add_notify_participant_status_Stringnged");
+	string -> type"eos_rtc_add_notify_participant_status_Stringnged"
 	string -> "local_user_id"
 	string -> "room_name"
-	real -> "participant_in_blocklist"
+	bool -> "participant_in_blocklist"
 	string -> "participant_id"
 	real -> "participant_status"
 	// TODO
@@ -40,7 +40,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-room-s
 
 ASYNC
 
-	string -> type"eos_rtc_add_notify_room_statistics_updated");
+	string -> type"eos_rtc_add_notify_room_statistics_updated"
 	string -> "local_user_id"
 	string -> "room_name"
 	string -> "statistic"
@@ -53,36 +53,36 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-room-s
 
 ASYNC
 
-	string -> type"eos_rtc_block_participant");
+	string -> type"eos_rtc_block_participant"
 	real -> "identifier"
 	string -> "local_user_id"
 	string -> "participant_id"
-	real -> "blocked"
+	bool -> "blocked"
 
 
 ------------------------------------------------------------------------------------
 
 // double eos_rtc_get_audio_interface()
 //{
-//	HRTCAudio = EOS_RTC_GetAudioInterface(HRTC);
+//	HRTCAudio = EOS_RTC_GetAudioInterface(HRTC
 //	return 0.0;
 // }
 
 // double eos_rtc_get_data_interface()
 //{
-//	EOS_HRTCData HRTCData = EOS_RTC_GetDataInterface(HRTC);
+//	EOS_HRTCData HRTCData = EOS_RTC_GetDataInterface(HRTC
 //	return 0.0;
 // }
 
 
 ------------------------------------------------------------------------------------
 
-double eos_rtc_join_room(string local_user_id, String room_name,String participant_id, String participant_token, bool manual_audio_input_enabled, bool manual_audio_output_enabled, String client_base_url, flags)
+double eos_rtc_join_room(string local_user_id, String room_name,String participant_id, String participant_token, bool manual_audio_input_enabled, bool manual_audio_output_enabled, String client_base_url,EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO flags)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-join-room
 
 ASYNC 
 
-	string -> type"eos_rtc_join_room");
+	string -> type"eos_rtc_join_room"
 	real -> "identifier"
 	string -> "local_user_id"
 	string -> "room_name"
@@ -95,7 +95,7 @@ ASYNC
 double eos_rtc_leave_room(char* local_user_id,char* room_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-leave-room
 
-	string -> type"eos_rtc_leave_room");
+	string -> type"eos_rtc_leave_room"
 	real -> "identifier"
 	string -> "local_user_id"
 	string -> "room_name"
@@ -145,7 +145,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-copy-user-t
 double eos_rtc_admin_kick(char* room_name,char* target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-kick
 
-	string -> type"eos_rtc_admin_kick");
+	string -> type"eos_rtc_admin_kick"
 	real -> "identifier"
 
 
@@ -154,9 +154,9 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-kick
 double eos_rtc_admin_query_join_room_token(String local_user_id,String room_name, Array buffer_string, Array array_ips)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-query-join-room-token
 
-	string -> type"eos_rtc_admin_query_join_room_token");
+	string -> type"eos_rtc_admin_query_join_room_token"
 	real -> "identifier"
-	real -> "status"
+	EOS_Result -> "status"
 	string -> "status_message"
 	string -> "client_base_url"
 	real -> "query_id"
@@ -168,9 +168,9 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-query-join-
 double eos_rtc_admin_set_participant_hard_mute(double mute, char* room_name, char* target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-set-participant-hard-mute
 
-	string -> type"eos_rtc_admin_set_participant_hard_mute");
+	string -> type"eos_rtc_admin_set_participant_hard_mute"
 	real -> "identifier"
-	real -> "status"
+	EOS_Result -> "status"
 	string -> "status_message"
 
 
@@ -180,7 +180,7 @@ int64 eos_rtc_audio_add_notify_audio_before_render(char* local_user_id,char* roo
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-before-render
 
 ASYNC
-	string -> type"eos_rtc_audio_add_notify_audio_before_render");
+	string -> type"eos_rtc_audio_add_notify_audio_before_render"
 	string -> "local_user_id"
 	string -> "room_name"
 	string -> "participant_id"
@@ -194,7 +194,7 @@ int64 eos_rtc_audio_add_notify_audio_before_send(char* local_user_id,char* room_
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-before-render
 
 ASYNC
-	string -> type"eos_rtc_audio_add_notify_audio_before_send");
+	string -> type"eos_rtc_audio_add_notify_audio_before_send"
 	string -> "local_user_id"
 	string -> "room_name"
 	// TODO
@@ -207,8 +207,7 @@ int64 eos_rtc_audio_add_notify_audio_devices_changed()
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-devices-Stringnged
 
 ASYNC
-	string -> type"eos_rtc_audio_add_notify_audio_devices_Stringnged");
-	CreateAsyncEventWithDSMap(map
+	string -> type"eos_rtc_audio_add_notify_audio_devices_Stringnged"
 
 
 ------------------------------------------------------------------------------------
@@ -216,10 +215,10 @@ ASYNC
 int64 eos_rtc_audio_add_notify_audio_input_state(local_user_id, room_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-input-state
 
-	string -> type"eos_rtc_audio_add_notify_audio_input_state");
+	string -> type"eos_rtc_audio_add_notify_audio_input_state"
 	string -> "local_user_id"
 	string -> "room_name"
-	real -> "status"
+	EOS_Result -> "status"
 
 
 ------------------------------------------------------------------------------------
@@ -228,10 +227,10 @@ int64 eos_rtc_audio_add_notify_audio_output_state(local_user_id, room_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-output-state
 
 ASYNC
-	string -> type"eos_rtc_audio_add_notify_audio_output_state");
+	string -> type"eos_rtc_audio_add_notify_audio_output_state"
 	string -> "local_user_id"
 	string -> "room_name"
-	real -> "status"
+	EOS_Result -> "status"
 
 
 ------------------------------------------------------------------------------------
@@ -241,7 +240,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-
 
 ASYNC
 
-	string -> type"eos_rtc_audio_add_notify_participant_updated");
+	string -> type"eos_rtc_audio_add_notify_participant_updated"
 	string -> "local_user_id"
 	string -> "room_name"
 	real -> "speaking"
@@ -296,8 +295,8 @@ double eos_rtc_audio_query_input_devices_information()
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-query-input-devices-information
 
 ASYNC
-	string -> type"eos_rtc_audio_query_input_devices_information");
-	real -> "status"
+	string -> type"eos_rtc_audio_query_input_devices_information"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -309,8 +308,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-query-outpu
 
 ASYNC
 
-	string -> type"eos_rtc_audio_query_output_devices_information");
-	real -> "status"
+	string -> type"eos_rtc_audio_query_output_devices_information"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -359,7 +358,7 @@ double eos_rtc_audio_send_audio(String buff_args)
 
 ------------------------------------------------------------------------------------
 
-double eos_rtc_audio_set_audio_input_settings(double platform_aec,char* device_id,char* local_user_id, double volume)
+double eos_rtc_audio_set_audio_input_settings(bool platform_aec,char* device_id,char* local_user_id, double volume)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-set-audio-input-settings
 
 ------------------------------------------------------------------------------------
@@ -369,13 +368,13 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-set-audio-o
 
 ------------------------------------------------------------------------------------
 
-double eos_rtc_audio_set_input_device_settings(double platform_aec,char* local_user_id,char* real_device_id)
+double eos_rtc_audio_set_input_device_settings(bool platform_aec,char* local_user_id,char* real_device_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-set-input-device-settings
 
 ASYNC
 
-	string -> type"eos_rtc_audio_set_input_device_settings");
-	real -> "status"
+	string -> type"eos_rtc_audio_set_input_device_settings"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "real_device_id"
@@ -387,8 +386,8 @@ double eos_rtc_audio_set_output_device_settings(char* local_user_id,char* real_d
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-set-output-device-settings
 
 ASYNC
-	string -> type"eos_rtc_audio_set_output_device_settings");
-	real -> "status"
+	string -> type"eos_rtc_audio_set_output_device_settings"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "real_device_id"
@@ -405,8 +404,8 @@ double eos_rtc_audio_unregister_platform_user(String platform_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-unregister-platform-user
 
 ASYNC
-	string -> type"eos_rtc_audio_unregister_platform_user");
-	real -> "status"
+	string -> type"eos_rtc_audio_unregister_platform_user"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "platform_user_id"
@@ -417,8 +416,8 @@ double eos_rtc_audio_update_participant_volume(char* local_user_id,char* partici
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-participant-volume
 
 ASYNC
-	string -> type"eos_rtc_audio_unregister_platform_user");
-	real -> "status"
+	string -> type"eos_rtc_audio_unregister_platform_user"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "local_user_id"
@@ -434,8 +433,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-rece
 
 ASYNC
 
-	string -> type"eos_rtc_audio_update_receiving");
-	real -> "status"
+	string -> type"eos_rtc_audio_update_receiving"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "participant_id"
@@ -450,8 +449,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-rece
 
 ASYNC
 
-	string -> type"eos_rtc_audio_update_receiving_volume");
-	real -> "status"
+	string -> type"eos_rtc_audio_update_receiving_volume"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -461,8 +460,8 @@ ASYNC
 double eos_rtc_audio_update_sending(char* local_user_id,char* room_name, double audio_status)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-sending
 ASYNC
-	string -> type"eos_rtc_audio_update_sending");
-	real -> "status"
+	string -> type"eos_rtc_audio_update_sending"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "room_name"
@@ -475,8 +474,8 @@ double eos_rtc_audio_update_sending_volume(char* local_user_id,char* room_name, 
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-sending-volume
 
 ASYNC
-	string -> type"eos_rtc_audio_update_sending_volume");
-	real -> "status"
+	string -> type"eos_rtc_audio_update_sending_volume"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -487,7 +486,7 @@ int64 eos_rtc_data_add_notify_data_received(char* local_user_id,char* room_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-add-notify-data-received
 
 ASYNC
-	string -> type"eos_rtc_data_add_notify_data_received");
+	string -> type"eos_rtc_data_add_notify_data_received"
 	string -> "local_user_id"
 	string -> "room_name"
 	string -> "participant_id"
@@ -502,7 +501,7 @@ int64 eos_rtc_data_add_notify_participant_updated(char* local_user_id,char* room
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-add-notify-participant-updated
 
 ASYNC
-	string -> type"eos_rtc_data_add_notify_participant_updated");
+	string -> type"eos_rtc_data_add_notify_participant_updated"
 	string -> "local_user_id"
 	string -> "room_name"
 	string -> "participant_id"
@@ -529,8 +528,8 @@ double eos_rtc_data_update_receiving(char* local_user_id,char* participant_id,ch
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-update-receiving
 
 ASYNC
-	string -> type"eos_rtc_data_update_receiving");
-	real -> "status"
+	string -> type"eos_rtc_data_update_receiving"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "local_user_id"
@@ -544,8 +543,8 @@ double eos_rtc_data_update_sending(char* local_user_id,char* room_name, double d
 https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-data-update-sending
 
 ASYNC
-	string -> type"eos_rtc_data_update_sending");
-	real -> "status"
+	string -> type"eos_rtc_data_update_sending"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "local_user_id"
