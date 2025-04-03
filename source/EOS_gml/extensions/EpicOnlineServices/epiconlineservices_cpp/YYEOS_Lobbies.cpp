@@ -150,7 +150,7 @@ func double __eos_lobby_add_notify_join_lobby_accepted(char* buff_ret)
 	EOS_Lobby_AddNotifyJoinLobbyAcceptedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYJOINLOBBYACCEPTED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyJoinLobbyAccepted(HLobby, &Options, nullptr, Lobby_OnJoinLobbyAcceptedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyJoinLobbyAccepted(HLobby, &Options, nullptr, Lobby_OnJoinLobbyAcceptedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -176,7 +176,7 @@ func double __eos_lobby_add_notify_leave_lobby_requested(char* buff_ret)
 	EOS_Lobby_AddNotifyLeaveLobbyRequestedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYLEAVELOBBYREQUESTED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyLeaveLobbyRequested(HLobby, &Options, nullptr, Lobby_AddNotifyLeaveLobbyRequested);
+	uint64_t notificationId = EOS_Lobby_AddNotifyLeaveLobbyRequested(HLobby, &Options, nullptr, Lobby_AddNotifyLeaveLobbyRequested);
 
 	DataStream data;
 	data << notificationId;
@@ -204,7 +204,7 @@ func double __eos_lobby_add_notify_lobby_invite_accepted(char* buff_ret)
 	EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEACCEPTED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyLobbyInviteAccepted(HLobby, &Options, nullptr, Lobby_OnLobbyInviteAcceptedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyLobbyInviteAccepted(HLobby, &Options, nullptr, Lobby_OnLobbyInviteAcceptedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -231,7 +231,7 @@ func double __eos_lobby_add_notify_lobby_invite_received(char* buff_ret)
 	EOS_Lobby_AddNotifyLobbyInviteReceivedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITERECEIVED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyLobbyInviteReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyInviteReceivedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyLobbyInviteReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyInviteReceivedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -260,7 +260,7 @@ func double __eos_lobby_add_notify_lobby_invite_rejected(char* buff_ret)
 	EOS_Lobby_AddNotifyLobbyInviteRejectedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEREJECTED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyLobbyInviteRejected(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyInviteRejectedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyLobbyInviteRejected(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyInviteRejectedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -288,7 +288,7 @@ func double __eos_lobby_add_notify_lobby_member_status_received(char* buff_ret)
 	EOS_Lobby_AddNotifyLobbyMemberStatusReceivedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYMEMBERSTATUSRECEIVED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyLobbyMemberStatusReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyMemberStatusReceivedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyLobbyMemberStatusReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyMemberStatusReceivedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -315,7 +315,7 @@ func double __eos_lobby_add_notify_lobby_member_update_received(char* buff_ret)
 	EOS_Lobby_AddNotifyLobbyMemberUpdateReceivedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYMEMBERUPDATERECEIVED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyLobbyMemberUpdateReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyMemberUpdateReceivedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyLobbyMemberUpdateReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyMemberUpdateReceivedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -340,7 +340,7 @@ func double __eos_lobby_add_notify_lobby_update_received(char* buff_ret)
 	EOS_Lobby_AddNotifyLobbyUpdateReceivedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYUPDATERECEIVED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyLobbyUpdateReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyUpdateReceivedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyLobbyUpdateReceived(HLobby, &Options, nullptr, Lobby_AddNotifyLobbyUpdateReceivedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -371,7 +371,7 @@ func double __eos_lobby_add_notify_rtc_room_connection_changed(char* buff_ret)
 	// Options.lobby_id_DEPRECATED;
 	// Options.local_user_id_DEPRECATED;
 
-	uint64 notificationId = EOS_Lobby_AddNotifyRTCRoomConnectionChanged(HLobby, &Options, nullptr, Lobby_AddNotifyRTCRoomConnectionChangedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifyRTCRoomConnectionChanged(HLobby, &Options, nullptr, Lobby_AddNotifyRTCRoomConnectionChangedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -402,7 +402,7 @@ func double __eos_lobby_add_notify_send_lobby_native_invite_requested(char* buff
 	EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions Options{};
 	Options.ApiVersion = EOS_LOBBY_ADDNOTIFYSENDLOBBYNATIVEINVITEREQUESTED_API_LATEST;
 
-	uint64 notificationId = EOS_Lobby_AddNotifySendLobbyNativeInviteRequested(HLobby, &Options, nullptr, Lobby_AddNotifySendLobbyNativeInviteRequestedCallback);
+	uint64_t notificationId = EOS_Lobby_AddNotifySendLobbyNativeInviteRequested(HLobby, &Options, nullptr, Lobby_AddNotifySendLobbyNativeInviteRequestedCallback);
 
 	DataStream data;
 	data << notificationId;

@@ -79,7 +79,7 @@ void eos_sessions_init()
 	HSessions = EOS_Platform_GetSessionsInterface(PlatformHandle);
 }
 
-func double __eos_active_session_copy_info(char* session_name,char* buff_ret)
+func double __eos_active_session_copy_info(char* session_name, char* buff_ret)
 {
 	StructStream _struct = {};
 	eos_not_init_return_buffer(buff_ret, _struct);
@@ -114,14 +114,14 @@ func double __eos_active_session_copy_info(char* session_name,char* buff_ret)
 	StructStream _struct_session_details = {};
 	if (OutActiveSessionInfo->SessionDetails->HostAddress != NULL)
 		_struct_session_details.addKeyValue("host_address", (const char* )OutActiveSessionInfo->SessionDetails->HostAddress);
-	if (OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections != NULL)
-		_struct_session_details.addKeyValue("num_open_public_connections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
 	if (OutActiveSessionInfo->SessionDetails->OwnerServerClientId != NULL)
 		_struct_session_details.addKeyValue("owner_server_client_id", (const char* )OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
 	if (OutActiveSessionInfo->SessionDetails->OwnerUserId != NULL)
 		_struct_session_details.addKeyValue("owner_user_id", (const char* )productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
 	if (OutActiveSessionInfo->SessionDetails->SessionId != NULL)
 		_struct_session_details.addKeyValue("session_id", (const char* )OutActiveSessionInfo->SessionDetails->SessionId);
+
+	_struct_session_details.addKeyValue("num_open_public_connections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
 
 	StructStream _struct_settings = {};
 
@@ -215,14 +215,14 @@ func double __eos_session_details_copy_info(char* buff_ret)
 	{
 		if (OutSessionInfo->HostAddress != NULL)
 			_struct.addKeyValue("host_address", (const char* )OutSessionInfo->HostAddress);
-		if (OutSessionInfo->NumOpenPublicConnections != NULL)
-			_struct.addKeyValue("num_open_public_connections", OutSessionInfo->NumOpenPublicConnections);
 		if (OutSessionInfo->OwnerUserId != NULL)
 			_struct.addKeyValue("owner_user_id", (const char* )productID_toString(OutSessionInfo->OwnerUserId));
 		if (OutSessionInfo->OwnerServerClientId != NULL)
 			_struct.addKeyValue("owner_server_client_id", (const char* )OutSessionInfo->OwnerServerClientId);
 		if (OutSessionInfo->SessionId != NULL)
 			_struct.addKeyValue("session_id", (const char* )OutSessionInfo->SessionId);
+
+		_struct.addKeyValue("num_open_public_connections", OutSessionInfo->NumOpenPublicConnections);
 
 		StructStream _struct_settings = {};
 
@@ -494,7 +494,7 @@ func double __eos_sessions_add_notify_join_session_accepted(char* buff_ret)
 	EOS_Sessions_AddNotifyJoinSessionAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYJOINSESSIONACCEPTED_API_LATEST;
 
-	uint64 notificationId = EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions, &Options, NULL /*mcallback*/, Sessions_OnJoinSessionAcceptedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions, &Options, NULL /*mcallback*/, Sessions_OnJoinSessionAcceptedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -523,7 +523,7 @@ func double __eos_sessions_add_notify_leave_session_requested(char* buff_ret)
 	EOS_Sessions_AddNotifyLeaveSessionRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
 
-	uint64 notificationId = EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions, &Options, NULL /*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
+	uint64_t notificationId = EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions, &Options, NULL /*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
 
 	DataStream data;
 	data << notificationId;
@@ -554,7 +554,7 @@ func double __eos_sessions_add_notify_send_session_native_invite_requested(char*
 
 	EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
-	uint64 notificationId = EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSendSessionNativeInviteRequestedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSendSessionNativeInviteRequestedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -585,7 +585,7 @@ func double __eos_sessions_add_notify_session_invite_accepted(char* buff_ret)
 	EOS_Sessions_AddNotifySessionInviteAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEACCEPTED_API_LATEST;
 
-	uint64 notificationId = EOS_Sessions_AddNotifySessionInviteAccepted(HSessions, &Options, NULL /*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
+	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteAccepted(HSessions, &Options, NULL /*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
 
 	DataStream data;
 	data << notificationId;
@@ -614,7 +614,7 @@ func double __eos_sessions_add_notify_session_invite_received(char* buff_ret)
 
 	EOS_Sessions_AddNotifySessionInviteReceivedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
-	uint64 notificationId = EOS_Sessions_AddNotifySessionInviteReceived(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteReceived(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -644,7 +644,7 @@ func double __eos_sessions_add_notify_session_invite_rejected(char* buff_ret)
 
 	EOS_Sessions_AddNotifySessionInviteRejectedOptions Options = {0};
 
-	uint64 notificationId = EOS_Sessions_AddNotifySessionInviteRejected(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteRejected(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
 
 	DataStream data;
 	data << notificationId;

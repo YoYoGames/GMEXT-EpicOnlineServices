@@ -136,6 +136,7 @@ public:
 		else {
 			static_assert(dependent_false<T>::value, "Unsupported type for serialization.");
 		}
+		return GMValueType::Undefined;
 	}
 
 	template <typename T>

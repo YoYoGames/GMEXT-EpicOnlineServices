@@ -89,7 +89,7 @@ func double __eos_p2p_add_notify_incoming_packet_queue_full(char* buff_ret)
 	EOS_P2P_AddNotifyIncomingPacketQueueFullOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYINCOMINGPACKETQUEUEFULL_API_LATEST;
 
-	uint64 notificationId = EOS_P2P_AddNotifyIncomingPacketQueueFull(HP2P, &Options, nullptr, P2P_OnIncomingPacketQueueFullCallback);
+	uint64_t notificationId = EOS_P2P_AddNotifyIncomingPacketQueueFull(HP2P, &Options, nullptr, P2P_OnIncomingPacketQueueFullCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -120,7 +120,7 @@ func double __eos_p2p_add_notify_peer_connection_closed(char* local_user_id,char
 	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
-	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionClosed(HP2P, &Options, nullptr, P2P_OnRemoteConnectionClosedCallback);
+	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionClosed(HP2P, &Options, nullptr, P2P_OnRemoteConnectionClosedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -153,7 +153,7 @@ func double __eos_p2p_add_notify_peer_connection_established(char* local_user_id
 	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
-	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionEstablished(HP2P, &Options, nullptr, P2P_OnPeerConnectionEstablishedCallback);
+	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionEstablished(HP2P, &Options, nullptr, P2P_OnPeerConnectionEstablishedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -183,7 +183,7 @@ func double __eos_p2p_add_notify_peer_connection_interrupted(char* local_user_id
 	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
-	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionInterrupted(HP2P, &Options, nullptr, P2P_OnPeerConnectionInterruptedCallback);
+	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionInterrupted(HP2P, &Options, nullptr, P2P_OnPeerConnectionInterruptedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -213,7 +213,7 @@ func double __eos_p2p_add_notify_peer_connection_request(char* local_user_id,cha
 	FillSocketId(SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
-	uint64 notificationId = EOS_P2P_AddNotifyPeerConnectionRequest(HP2P, &Options, nullptr, P2P_OnIncomingConnectionRequestCallback);
+	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionRequest(HP2P, &Options, nullptr, P2P_OnIncomingConnectionRequestCallback);
 
 	DataStream data;
 	data << notificationId;
