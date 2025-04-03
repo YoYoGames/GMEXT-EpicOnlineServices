@@ -301,10 +301,10 @@ struct FTransferInProgress_old__old
 	bool Done() const { return TotalSize == CurrentIndex; }
 };
 
-std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress_old__old> TransfersInProgress_;
+std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress_old__old> TransfersInProgress_old_;
 void EOS_CALL OnFileReceived_old(const EOS_PlayerDataStorage_ReadFileCallbackInfo *data)
 {
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
+	auto Iter = TransfersInProgress_old_.find(/*stringToWstring*/ (data->Filename));
 	FTransferInProgress_old__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
@@ -331,8 +331,8 @@ EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage_old(const EOS_Pl
 		return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
 	}
 
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
-	if (Iter != TransfersInProgress_.end())
+	auto Iter = TransfersInProgress_old_.find(/*stringToWstring*/ (FileName));
+	if (Iter != TransfersInProgress_old_.end())
 	{
 		FTransferInProgress_old__old &Transfer = Iter->second;
 
@@ -429,7 +429,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_ReadFile(RValue &Result, CInstance *se
 	FTransferInProgress_old__old NewTransfer;
 	NewTransfer.bDownload = true;
 	NewTransfer.Handler = Handle;
-	TransfersInProgress_[/*stringToWstring*/ (file)] = NewTransfer;
+	TransfersInProgress_old_[/*stringToWstring*/ (file)] = NewTransfer;
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
@@ -443,8 +443,8 @@ EOS_PlayerDataStorage_EWriteResult SendData_old(const char *FileName, void *data
 		DebugConsoleOutput("[EOS SDK] Player data storage: could not send data: pointer is null.\n");
 		return EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
 	}
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
-	if (Iter != TransfersInProgress_.end())
+	auto Iter = TransfersInProgress_old_.find(/*stringToWstring*/ (FileName));
+	if (Iter != TransfersInProgress_old_.end())
 	{
 		FTransferInProgress_old__old &Transfer = Iter->second;
 
@@ -511,7 +511,7 @@ void EOS_CALL OnFileTransferProgressUpdated_write_old(const EOS_PlayerDataStorag
 
 void EOS_CALL OnFileSent_old(const EOS_PlayerDataStorage_WriteFileCallbackInfo *data)
 {
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
+	auto Iter = TransfersInProgress_old_.find(/*stringToWstring*/ (data->Filename));
 	FTransferInProgress_old__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
@@ -587,7 +587,7 @@ YYEXPORT void EpicGames_PlayerDataStorage_WriteFile(RValue &Result, CInstance *s
 	}
 	NewTransfer.CurrentIndex = 0;
 
-	TransfersInProgress_[/*stringToWstring*/ (file)] = NewTransfer;
+	TransfersInProgress_old_[/*stringToWstring*/ (file)] = NewTransfer;
 
 	Result.kind = VALUE_REAL;
 	Result.val = (double)mcallback->identifier;
@@ -600,7 +600,7 @@ YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest(RValu
 	eos_ensure_argc(1);
 
 	const char *file = YYGetString(arg, 0);
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (file));
+	auto Iter = TransfersInProgress_old_.find(/*stringToWstring*/ (file));
 	FTransferInProgress_old__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_CancelRequest(Transfer.Handler);
 }
@@ -615,8 +615,8 @@ YYEXPORT void EpicGames_PlayerDataStorageFileTransferRequest_GetFileRequestState
 	// DebugConsoleOutput("EpicGames_PlayerDataStorageFileTransferRequest_GetFileRequestState\n");
 	// DebugConsoleOutput("1\n");
 	// const char* file = YYGetString(arg, 0);
-	// auto Iter = TransfersInProgress_.find(stringToWstring(file));
-	// if (Iter == TransfersInProgress_.end())
+	// auto Iter = TransfersInProgress_old_.find(stringToWstring(file));
+	// if (Iter == TransfersInProgress_old_.end())
 	//{
 	//	RValue Struct = { 0 };
 	//	YYStructCreate(&Struct);
