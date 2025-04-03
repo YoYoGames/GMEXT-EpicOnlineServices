@@ -328,7 +328,7 @@ func double eos_session_details_release()
 	return 0.0;
 }
 
-EOS_Sessions_AttributeData AttributeDataFromStruct(std::map<std::string, const uint8_t *> &Attribute)
+EOS_Sessions_AttributeData SessionsAttributeDataFromStruct(std::map<std::string, const uint8_t *> &Attribute)
 {
 	EOS_Sessions_AttributeData mSessionAttribute = {0};
 
@@ -371,7 +371,7 @@ func double __eos_session_modification_add_attribute(double advertisement_type,c
 	auto args = buffer_unpack((uint8_t *)buff_args);
 	auto Attribute = YYGetStruct(args[0]);
 
-	EOS_Sessions_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	EOS_Sessions_AttributeData mAttributeData = SessionsAttributeDataFromStruct(Attribute);
 
 	Options.SessionAttribute = &mAttributeData;
 
@@ -1256,7 +1256,7 @@ func double __eos_session_search_set_parameter(double comparisonOp,char* buff_ar
 	Options.ApiVersion = EOS_SESSIONSEARCH_SETPARAMETER_API_LATEST;
 	Options.ComparisonOp = (EOS_EComparisonOp)comparisonOp;
 
-	EOS_Sessions_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	EOS_Sessions_AttributeData mAttributeData = SessionsAttributeDataFromStruct(Attribute);
 	Options.Parameter = &mAttributeData;
 
 	return (double)EOS_SessionSearch_SetParameter(mOutSessionSearchHandle, &Options);
