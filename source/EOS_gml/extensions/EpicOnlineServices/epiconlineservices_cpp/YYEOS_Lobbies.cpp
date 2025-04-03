@@ -1427,7 +1427,7 @@ func double eos_lobby_details_release()
 	return 0.0;
 }
 
-EOS_Lobby_AttributeData AttributeDataFromStruct(std::map<std::string, const uint8_t *> &Attribute)
+EOS_Lobby_AttributeData LobbyAttributeDataFromStruct(std::map<std::string, const uint8_t *> &Attribute)
 {
 	EOS_Lobby_AttributeData mSessionAttribute{};
 
@@ -1466,7 +1466,7 @@ func double __eos_lobby_modification_add_attribute(double visibility,char* buff_
 	auto args = buffer_unpack((uint8_t *)buff_args);
 	auto Attribute = YYGetStruct(args[0]);
 
-	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	EOS_Lobby_AttributeData mAttributeData = LobbyAttributeDataFromStruct(Attribute);
 
 	EOS_LobbyModification_AddAttributeOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
@@ -1487,7 +1487,7 @@ func double __eos_lobby_modification_add_member_attribute(double visibility,char
 	auto args = buffer_unpack((uint8_t *)buff_args);
 	auto Attribute = YYGetStruct(args[0]);
 
-	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	EOS_Lobby_AttributeData mAttributeData = LobbyAttributeDataFromStruct(Attribute);
 
 	EOS_LobbyModification_AddMemberAttributeOptions Options{};
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
@@ -1744,7 +1744,7 @@ func double __eos_lobby_search_set_parameter(double comparison_op,char* buff_arg
 	auto args = buffer_unpack((uint8_t *)buff_args);
 	auto Attribute = YYGetStruct(args[0]);
 
-	EOS_Lobby_AttributeData mAttributeData = AttributeDataFromStruct(Attribute);
+	EOS_Lobby_AttributeData mAttributeData = LobbyAttributeDataFromStruct(Attribute);
 
 	EOS_LobbySearch_SetParameterOptions Options{};
 	Options.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
