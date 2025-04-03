@@ -5,7 +5,7 @@ SEASSONS REFERENCE PAGE: https://dev.epicgames.com/docs/api-ref/interfaces/sessi
 ------------------------------------------------------------------------------------
 Struct {
 	session_name: String
-	state: 
+	state: EOS_EOnlineSessionState,
 	session_name: String
 	details:{
 		host_address:string,
@@ -47,7 +47,7 @@ Struct 	{host_address: String,
 		owner_server_client_id: String,
 		session_id: String,
 		settings: {
-			allowed_platform_ids: _array
+			allowed_platform_ids: _array,
 			allow_join_in_progress: bool,
 			invites_allowed: bool,
 			sanctions_enabled: bool,
@@ -136,7 +136,7 @@ int64 eos_sessions_add_notify_join_session_accepted()
 
 ASYNC
 
-	string -> type"eos_sessions_add_notify_join_session_accepted");
+	string -> type"eos_sessions_add_notify_join_session_accepted"
 	string -> "local_user_id"
 	int64 -> "ui_event_id"
 	
@@ -147,8 +147,8 @@ int64 eos_sessions_add_notify_leave_session_requested()
 
 ASYNC
 
-	string -> type"eos_sessions_add_notify_leave_session_requested");
-	// real -> "status"
+	string -> type"eos_sessions_add_notify_leave_session_requested"
+	// EOS_Result -> "status"
 	// string -> "status_message"
 	// real -> "identifier"
 	string -> "local_user_id"
@@ -159,8 +159,8 @@ ASYNC
 int64 eos_sessions_add_notify_send_session_native_invite_requested()
 
 ASYNC
-	string -> type"eos_sessions_add_notify_send_session_native_invite_requested");
-	// real -> "status"
+	string -> type"eos_sessions_add_notify_send_session_native_invite_requested"
+	// EOS_Result -> "status"
 	// string -> "status_message"
 	// real -> "identifier"
 	string -> "local_user_id"
@@ -174,8 +174,8 @@ ASYNC
 int64 eos_sessions_add_notify_session_invite_accepted()
 
 ASYNC
-	string -> type"eos_sessions_add_notify_session_invite_accepted");
-	// real -> "status"
+	string -> type"eos_sessions_add_notify_session_invite_accepted"
+	// EOS_Result -> "status"
 	// string -> "status_message"
 	// real -> "identifier"
 	string -> "local_user_id"
@@ -188,8 +188,8 @@ ASYNC
 int64 eos_sessions_add_notify_session_invite_received()
 
 ASYNC
-	string -> type"eos_sessions_add_notify_session_invite_received");
-	// real -> "status"
+	string -> type"eos_sessions_add_notify_session_invite_received"
+	// EOS_Result -> "status"
 	// string -> "status_message"
 	// real -> "identifier"
 	string -> "invite_id"
@@ -200,8 +200,8 @@ ASYNC
 
 int64 eos_sessions_add_notify_session_invite_rejected()
 ASYNC
-	string -> type"eos_sessions_add_notify_session_invite_rejected");
-	// real -> "status"
+	string -> type"eos_sessions_add_notify_session_invite_rejected"
+	// EOS_Result -> "status"
 	// string -> "status_message"
 	// real -> "identifier"
 	string -> "invite_id"
@@ -249,8 +249,8 @@ double eos_sessions_destroy_session(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-destroy-session
 ASYNC
 
-	string -> type"eos_sessions_destroy_session");
-	real -> "status"
+	string -> type"eos_sessions_destroy_session"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -266,8 +266,8 @@ double eos_sessions_end_session(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-end-session
 
 ASYNC
-	string -> type"eos_sessions_end_session");
-	real -> "status"
+	string -> type"eos_sessions_end_session"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -292,8 +292,8 @@ double eos_sessions_join_session(double presence_enabled,char* local_user_id,cha
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-join-session
 
 ASYNC
-	string -> type"eos_sessions_join_session");
-	real -> "status"
+	string -> type"eos_sessions_join_session"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -304,8 +304,8 @@ double eos_sessions_query_invites(String target_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-query-invites
 
 ASYNC
-	string -> type"eos_sessions_query_invites");
-	real -> "status"
+	string -> type"eos_sessions_query_invites"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "local_user_id"
@@ -317,8 +317,8 @@ double eos_sessions_register_players(String session_name, Array array_product_id
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-register-players
 
 ASYNC
-	string -> type"eos_sessions_register_players");
-	real -> "status"
+	string -> type"eos_sessions_register_players"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "registered_players"
@@ -332,8 +332,8 @@ double eos_sessions_reject_invite(char* local_user_id,char* invite_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-reject-invite
 
 ASYNC
-	string -> type"eos_sessions_reject_invite");
-	real -> "status"
+	string -> type"eos_sessions_reject_invite"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -373,8 +373,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notif
 double eos_sessions_send_invite(char* local_user_id,char* session_name,char* target_user_id)
 
 ASYNC
-	string -> type"eos_sessions_send_invite");
-	real -> "status"
+	string -> type"eos_sessions_send_invite"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -385,8 +385,8 @@ double eos_sessions_start_session(String session_name)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-send-invite
 
 ASYNC
-	string -> type"eos_sessions_start_session");
-	real -> "status"
+	string -> type"eos_sessions_start_session"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -397,8 +397,8 @@ double eos_sessions_unregister_players(String session_name, Array array_product_
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-unregister-players
 
 ASYNC
-	string -> type"eos_sessions_unregister_players");
-	real -> "status"
+	string -> type"eos_sessions_unregister_players"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "unregistered_players"
@@ -409,8 +409,8 @@ ASYNC
 double eos_sessions_update_session()
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-unregister-players
 ASYNC
-	string -> type"eos_sessions_update_session");
-	real -> "status"
+	string -> type"eos_sessions_update_session"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "session_id"
@@ -433,8 +433,8 @@ double eos_session_search_find(String local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-find
 
 ASYNC
-	string -> type"eos_session_search_find");
-	real -> "status"
+	string -> type"eos_session_search_find"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 

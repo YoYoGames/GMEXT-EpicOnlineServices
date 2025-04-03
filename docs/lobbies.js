@@ -8,7 +8,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-join
 
 ASYNC:
 
-	string -> type"eos_lobby_add_notify_join_lobby_accepted");
+	string -> type"eos_lobby_add_notify_join_lobby_accepted"
 	string -> "local_user_id"
 	int64 -> "ui_event_id"
 
@@ -19,7 +19,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-leav
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_leave_lobby_requested");
+	string -> type"eos_lobby_add_notify_leave_lobby_requested"
 	string -> "local_user_id"
 	string -> "lobby_id"
 
@@ -30,7 +30,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobb
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_lobby_invite_accepted");
+	string -> type"eos_lobby_add_notify_lobby_invite_accepted"
 	string -> "local_user_id"
 	string -> "lobby_id"
 	string -> "invite_id"
@@ -43,7 +43,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobb
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_lobby_invite_received");
+	string -> type"eos_lobby_add_notify_lobby_invite_received"
 	string -> "local_user_id"
 	string -> "invite_id"
 	string -> "target_user_id"
@@ -55,7 +55,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobb
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_lobby_invite_rejected");
+	string -> type"eos_lobby_add_notify_lobby_invite_rejected"
 	string -> "local_user_id"
 	string -> "lobby_id"
 	string -> "invite_id"
@@ -68,7 +68,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobb
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_lobby_member_status_received");
+	string -> type"eos_lobby_add_notify_lobby_member_status_received"
 	string -> "target_user_id"
 	string -> "lobby_id"
 	real -> "current_status"
@@ -80,7 +80,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobb
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_lobby_member_update_received");
+	string -> type"eos_lobby_add_notify_lobby_member_update_received"
 	string -> "target_user_id"
 	string -> "lobby_id"
 
@@ -91,19 +91,19 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobb
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_lobby_update_received");
+	string -> type"eos_lobby_add_notify_lobby_update_received"
 	string -> "lobby_id"
 
 ------------------------------------------------------------------------------------
-int64 eos_lobby_add_notify_rtc_room_connection_Stringnged()
+int64 eos_lobby_add_notify_rtc_room_connection_changed()
 https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-lobby-add-notify-rtc-room-connection-Stringnged-options
 
 ASYNC
 
-	string -> type"eos_lobby_add_notify_rtc_room_connection_Stringnged");
+	string -> type"eos_lobby_add_notify_rtc_room_connection_Stringnged"
 	string -> "local_user_id"
 	string -> "lobby_id"
-	real -> "disconnect_reason"
+	EOS_Result -> "disconnect_reason" 
 	real -> "is_connected"
 
 
@@ -113,7 +113,7 @@ int64 eos_lobby_add_notify_send_lobby_native_invite_requested()
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-send-lobby-native-invite-requested
 
 ASYNC
-	string -> type"eos_lobby_add_notify_send_lobby_native_invite_requested");
+	string -> type"eos_lobby_add_notify_send_lobby_native_invite_requested"
 	string -> "local_user_id"
 	string -> "lobby_id"
 	string -> "local_user_id"
@@ -138,28 +138,28 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-deta
 ------------------------------------------------------------------------------------
 
 double eos_lobby_create_lobby
-		[local_user_id,buffer_string],
-		[allowed_platform_ids, buffer_u32],//0,Array
-		[lobby_id,buffer_string],
-		[bucket_id,buffer_string],
-		[max_lobby_members,buffer_f64],
-		[permission_level, buffer_u8],
-		[allow_invites,buffer_bool],
-		[crossplay_opt_out,buffer_bool],
-		[disable_host_migration,buffer_bool],
-		[enable_join_by_id,buffer_bool],
-		[presence_enabled,buffer_bool],
-		[enable_rtc_room,buffer_bool],
-		[flags,buffer_u32],
-		[use_manual_audio_input,buffer_bool],
-		[use_manual_audio_output,buffer_bool],
-		[local_audio_device_input_starts_muted,buffer_bool],
+		(string local_user_id,
+		array allowed_platform_ids,
+		string lobby_id,
+		string bucket_id,
+		real max_lobby_members,
+		EOS_LobbyPermissionLevel permission_level,
+		bool allow_invites,
+		bool crossplay_opt_out,
+		bool disable_host_migration,
+		bool enable_join_by_id,
+		bool presence_enabled,
+		bool enable_rtc_room,
+		EOS_RTC_JoinRoomOptions::Flags  flags,
+		bool use_manual_audio_input,
+		bool use_manual_audio_output,
+		bool local_audio_device_input_starts_muted)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-create-lobby
 
 ASYNC
 
-	string -> type"eos_lobby_create_lobby");
-	real -> "status"
+	string -> type"eos_lobby_create_lobby"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -176,8 +176,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-destroy-lobby
 
 ASYNC
 
-	string -> type"eos_lobby_destroy_lobby");
-	real -> "status"
+	string -> type"eos_lobby_destroy_lobby"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -209,8 +209,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-hard-mute-membe
 
 ASYNC
 
-	string -> type"eos_lobby_hard_mute_member");
-	real -> "status"
+	string -> type"eos_lobby_hard_mute_member"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -229,8 +229,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-join-lobby
 
 ASYNC
 
-	string -> type"eos_lobby_join_lobby");
-	real -> "status"
+	string -> type"eos_lobby_join_lobby"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -242,8 +242,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-join-lobby-by-i
 
 ASYNC
 
-	string -> type"eos_lobby_join_lobby_by_id");
-	real -> "status"
+	string -> type"eos_lobby_join_lobby_by_id"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -255,8 +255,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-kick-member
 
 ASYNC
 
-	string -> type"eos_lobby_kick_member");
-	real -> "status"
+	string -> type"eos_lobby_kick_member"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -266,8 +266,8 @@ ASYNC
 double eos_lobby_leave_lobby(char* lobby_id,char* local_user_id)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-leave-lobby
 ASYNC
-	string -> type"eos_lobby_leave_lobby");
-	real -> "status"
+	string -> type"eos_lobby_leave_lobby"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -284,8 +284,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-promote-member
 
 ASYNC
 
-	string -> type"eos_lobby_promote_member");
-	real -> "status"
+	string -> type"eos_lobby_promote_member"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "lobby_id"
@@ -298,8 +298,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-query-invites
 
 ASYNC
 
-	string -> type"eos_lobby_query_invites");
-	real -> "status"
+	string -> type"eos_lobby_query_invites"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -312,8 +312,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-reject-invite
 
 ASYNC 
 
-	string -> type"eos_lobby_reject_invite");
-	real -> "status"
+	string -> type"eos_lobby_reject_invite"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 	string -> "status_message"
@@ -375,8 +375,8 @@ double eos_lobby_send_invite(char* lobby_id,char* local_user_id,char* target_use
 
 ASYNC
 
-	string -> type"eos_lobby_send_invite");
-	real -> "status"
+	string -> type"eos_lobby_send_invite"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -389,8 +389,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-send-invite
 
 ASYNC
 
-	string -> type"eos_lobby_update_lobby");
-	real -> "status"
+	string -> type"eos_lobby_update_lobby"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -477,12 +477,12 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-info-re
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_add_attribute(double Visibility
+double eos_lobby_modification_add_attribute(EOS_LobbyAttributeVisibility visibility)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-add-attribute
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_add_member_attribute(visibility,_args_buffer_address)
+double eos_lobby_modification_add_member_attribute(EOS_ELobbyAttributeVisibility visibility,Attribute)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-add-member-attribute
 
 ------------------------------------------------------------------------------------
@@ -522,7 +522,7 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-se
 
 ------------------------------------------------------------------------------------
 
-double eos_lobby_modification_set_permission_level(double PermissionLevel)
+double eos_lobby_modification_set_permission_level(EOS_LobbyPermissionLevel PermissionLevel)
 https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-permission-level
 
 ------------------------------------------------------------------------------------
@@ -537,8 +537,8 @@ https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-find
 
 ASYNC
 
-	string -> type"eos_lobby_search_find");
-	real -> "status"
+	string -> type"eos_lobby_search_find"
+	EOS_Result -> "status"
 	string -> "status_message"
 	real -> "identifier"
 
@@ -651,4 +651,6 @@ Uses:
 Release:
 	func double eos_lobby_search_release()
 
+------------------------------------------------------------------------------------
 
+Attribute: {key:string, type: EOS_AttributeType, value: any}
