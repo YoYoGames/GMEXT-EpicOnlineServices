@@ -108,7 +108,7 @@ func double __eos_rtc_add_notify_disconnected(char* room_name,char* local_user_i
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTC_AddNotifyDisconnected(HRTC, &Options, nullptr, RTC_AddNotifyDisconnected);
+	uint64_t notificationId = EOS_RTC_AddNotifyDisconnected(HRTC, &Options, nullptr, RTC_AddNotifyDisconnected);
 
 	DataStream data;
 	data << notificationId;
@@ -142,7 +142,7 @@ func double __eos_rtc_add_notify_participant_status_changed(char* local_user_id,
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTC_AddNotifyParticipantStatusChanged(HRTC, &Options, nullptr, RTC_AddNotifyParticipantStatusChanged);
+	uint64_t notificationId = EOS_RTC_AddNotifyParticipantStatusChanged(HRTC, &Options, nullptr, RTC_AddNotifyParticipantStatusChanged);
 
 	DataStream data;
 	data << notificationId;
@@ -171,7 +171,7 @@ func double __eos_rtc_add_notify_room_statistics_updated(char* local_user_id,cha
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTC_AddNotifyRoomStatisticsUpdated(HRTC, &Options, nullptr, RTC_AddNotifyRoomStatisticsUpdated);
+	uint64_t notificationId = EOS_RTC_AddNotifyRoomStatisticsUpdated(HRTC, &Options, nullptr, RTC_AddNotifyRoomStatisticsUpdated);
 
 	DataStream data;
 	data << notificationId;
@@ -516,7 +516,7 @@ func double __eos_rtc_audio_add_notify_audio_before_render(char* local_user_id,c
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioBeforeRender(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioBeforeRender);
+	uint64_t notificationId = EOS_RTCAudio_AddNotifyAudioBeforeRender(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioBeforeRender);
 
 	DataStream data;
 	data << notificationId;
@@ -546,7 +546,7 @@ func double __eos_rtc_audio_add_notify_audio_before_send(char* local_user_id,cha
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioBeforeSend(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioBeforeSend);
+	uint64_t notificationId = EOS_RTCAudio_AddNotifyAudioBeforeSend(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioBeforeSend);
 
 	DataStream data;
 	data << notificationId;
@@ -569,7 +569,7 @@ func double __eos_rtc_audio_add_notify_audio_devices_changed(char* buff_ret)
 	EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYAUDIODEVICESCHANGED_API_LATEST;
 
-	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioDevicesChanged(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioDevicesChanged);
+	uint64_t notificationId = EOS_RTCAudio_AddNotifyAudioDevicesChanged(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioDevicesChanged);
 
 	DataStream data;
 	data << notificationId;
@@ -598,7 +598,7 @@ func double __eos_rtc_audio_add_notify_audio_input_state(char* local_user_id,cha
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioInputState(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioInputState);
+	uint64_t notificationId = EOS_RTCAudio_AddNotifyAudioInputState(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioInputState);
 
 	DataStream data;
 	data << notificationId;
@@ -627,7 +627,7 @@ func double __eos_rtc_audio_add_notify_audio_output_state(char* local_user_id,ch
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTCAudio_AddNotifyAudioOutputState(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioOutputState);
+	uint64_t notificationId = EOS_RTCAudio_AddNotifyAudioOutputState(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioOutputState);
 
 	DataStream data;
 	data << notificationId;
@@ -658,7 +658,7 @@ func double __eos_rtc_audio_add_notify_participant_updated(char* local_user_id,c
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTCAudio_AddNotifyParticipantUpdated(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioOutputState);
+	uint64_t notificationId = EOS_RTCAudio_AddNotifyParticipantUpdated(HRTCAudio, &Options, nullptr, RTCAudio_AddNotifyAudioOutputState);
 
 	DataStream data;
 	data << notificationId;
@@ -1267,7 +1267,7 @@ func double __eos_rtc_data_add_notify_data_received(char* local_user_id,char* ro
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTCData_AddNotifyDataReceived(HRTCData, &Options, nullptr, RTCData_AddNotifyDataReceived);
+	uint64_t notificationId = EOS_RTCData_AddNotifyDataReceived(HRTCData, &Options, nullptr, RTCData_AddNotifyDataReceived);
 
 	DataStream data;
 	data << notificationId;
@@ -1297,7 +1297,7 @@ func double __eos_rtc_data_add_notify_participant_updated(char* local_user_id,ch
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
 
-	uint64 notificationId = EOS_RTCData_AddNotifyParticipantUpdated(HRTCData, &Options, nullptr, RTCData_AddNotifyDataReceived);
+	uint64_t notificationId = EOS_RTCData_AddNotifyParticipantUpdated(HRTCData, &Options, nullptr, RTCData_AddNotifyDataReceived);
 
 	DataStream data;
 	data << notificationId;

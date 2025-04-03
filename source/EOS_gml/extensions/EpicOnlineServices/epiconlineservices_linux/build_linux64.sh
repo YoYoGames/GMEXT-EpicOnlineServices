@@ -11,12 +11,12 @@ echo Steam RT? "$YYSTEAMRT"
 
 if "$YYCOMPILER" -m64 \
     -std=c++17 \
-	./../epiconlineservices_cpp/*.cpp \
+	EOS_gml/extensions/EpicOnlineServices/epiconlineservices_cpp/*.cpp \
     -Wl,-rpath,assets/ -fPIC \
-	-L./../../../../EOS_sdk/Bin \
-    -l./../../../../EOSSDK-Linux-Shipping \
-	-I./../../../../EOS_sdk/Include \
-    -shared -o ./../EpicOnlineServices.so
+	-LEOS_sdk/Bin \
+    -lEOSSDK-Linux-Shipping \
+	-IEOS_sdk/Include \
+    -shared -o EOS_gml/extensions/EpicOnlineServices/EpicOnlineServices.so
 then
     echo "BUILD SUCCESS";
 else
