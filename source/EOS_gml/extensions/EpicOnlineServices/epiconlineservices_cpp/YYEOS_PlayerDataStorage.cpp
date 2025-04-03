@@ -290,7 +290,7 @@ YYEXPORT void eos_player_data_storage_query_file_list(RValue &Result, CInstance 
 	Result.val = (double)mcallback->identifier;
 }
 
-struct FTransferInProgress_
+struct FTransferInProgress__old
 {
 	bool bDownload = true;
 	size_t TotalSize = 0;
@@ -301,11 +301,11 @@ struct FTransferInProgress_
 	bool Done() const { return TotalSize == CurrentIndex; }
 };
 
-std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress_> TransfersInProgress_;
+std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress__old> TransfersInProgress_;
 void EOS_CALL OnFileReceived(const EOS_PlayerDataStorage_ReadFileCallbackInfo *data)
 {
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
-	FTransferInProgress_ &Transfer = Iter->second;
+	FTransferInProgress__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
 	int map = CreateDsMap(0, 0);
@@ -334,7 +334,7 @@ EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage(const EOS_Player
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
 	if (Iter != TransfersInProgress_.end())
 	{
-		FTransferInProgress_ &Transfer = Iter->second;
+		FTransferInProgress__old &Transfer = Iter->second;
 
 		if (!Transfer.bDownload)
 		{
@@ -422,7 +422,7 @@ YYEXPORT void eos_player_data_storage_read_file(RValue &Result, CInstance *selfi
 
 	EOS_HPlayerDataStorageFileTransferRequest Handle = EOS_PlayerDataStorage_ReadFile(HPlayerDataStorage, &Options, mcallback, OnFileReceived);
 
-	FTransferInProgress_ NewTransfer;
+	FTransferInProgress__old NewTransfer;
 	NewTransfer.bDownload = true;
 	NewTransfer.Handler = Handle;
 	TransfersInProgress_[/*stringToWstring*/ (file)] = NewTransfer;
@@ -442,7 +442,7 @@ EOS_PlayerDataStorage_EWriteResult SendData(const char *FileName, void *data, ui
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
 	if (Iter != TransfersInProgress_.end())
 	{
-		FTransferInProgress_ &Transfer = Iter->second;
+		FTransferInProgress__old &Transfer = Iter->second;
 
 		if (Transfer.bDownload)
 		{
@@ -508,7 +508,7 @@ void EOS_CALL OnFileTransferProgressUpdated_write(const EOS_PlayerDataStorage_Fi
 void EOS_CALL OnFileSent(const EOS_PlayerDataStorage_WriteFileCallbackInfo *data)
 {
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
-	FTransferInProgress_ &Transfer = Iter->second;
+	FTransferInProgress__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
 
 	int map = CreateDsMap(0, 0);
@@ -566,7 +566,7 @@ YYEXPORT void eos_player_data_storage_write_file(RValue &Result, CInstance *self
 		return;
 	}
 
-	FTransferInProgress_ NewTransfer;
+	FTransferInProgress__old NewTransfer;
 	NewTransfer.bDownload = false;
 
 	// std::string NarrowFileData = "YoyoGames X Opera X EpicGames";
@@ -597,7 +597,7 @@ YYEXPORT void eos_player_data_storage_file_transfer_request_cancel_request(RValu
 
 	const char *file = YYGetString(arg, 0);
 	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (file));
-	FTransferInProgress_ &Transfer = Iter->second;
+	FTransferInProgress__old &Transfer = Iter->second;
 	EOS_PlayerDataStorageFileTransferRequest_CancelRequest(Transfer.Handler);
 }
 
@@ -622,7 +622,7 @@ YYEXPORT void eos_player_data_storage_file_transfer_request_get_file_request_sta
 	//	return;
 	//}
 	// DebugConsoleOutput("2\n");
-	// FTransferInProgress_& Transfer = Iter->second;
+	// FTransferInProgress__old& Transfer = Iter->second;
 	// DebugConsoleOutput("2-3\n");
 	// EOS_EResult result = EOS_PlayerDataStorageFileTransferRequest_GetFileRequestState(Transfer.Handler);
 	// DebugConsoleOutput("3\n");
