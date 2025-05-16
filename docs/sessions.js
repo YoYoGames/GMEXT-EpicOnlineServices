@@ -596,8 +596,8 @@
  * @event social
  * @member {string} type the string `"eos_sessions_destroy_session"`
  * @member {constant.eos_result} status The result of the function call
- * @member {string} status_message 
- * @member {real} identifier 
+ * @member {string} status_message Text representation of the status code
+ * @member {real} identifier The identifier returned in the original call to the function
  * @event_end
  * 
  * @func_end
@@ -635,7 +635,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_end_session"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned in the original call to the function
  * @event_end
  * 
@@ -709,7 +709,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_join_session"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -729,7 +729,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_query_invites"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User of the local user who made the request
  * @event_end
@@ -751,7 +751,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_register_players"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} registered_players The players that were successfully registered
  * @member {string} sanctioned_players The players that failed to register because they are sanctioned
@@ -770,7 +770,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_reject_invite"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -856,7 +856,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_send_invite"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -878,7 +878,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_start_session"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -899,7 +899,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_unregister_players"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} unregistered_players The players that successfully unregistered
  * @event_end
@@ -918,7 +918,7 @@
  * @event social
  * @member {string} type the string `"eos_sessions_update_session"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} session_id ID of the session that was created/modified
  * @member {string} session_name Name of the session that was created/modified
@@ -974,7 +974,7 @@
  * @event social
  * @member {string} type the string `"eos_session_search_find"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 

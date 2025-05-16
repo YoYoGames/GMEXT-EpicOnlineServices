@@ -332,7 +332,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_create_lobby"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The new lobby's ID
  * @event_end
@@ -373,7 +373,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_destroy_lobby"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The destroyed lobby's ID
  * @event_end
@@ -452,7 +452,7 @@
  * @event social
  * @param {string} type the string `"eos_lobby_hard_mute_member"`
  * @param {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @param {string} status_message 
+ * @param {string} status_message Text representation of the status code
  * @param {real} identifier The identifier returned by the original call to the function
  * @param {string} lobby_id The ID of the lobby
  * @param {string} target_user_id The Product User ID of the lobby member whose mute status has been updated
@@ -495,7 +495,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_join_lobby"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
  * @event_end
@@ -524,7 +524,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_join_lobby_by_id"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
  * @func_end
@@ -545,7 +545,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_kick_member"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
  * @event_end
@@ -567,7 +567,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_leave_lobby"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
  * @event_end
@@ -601,7 +601,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_promote_member"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby where the user was promoted
  * @event_end
@@ -622,7 +622,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_query_invites"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the local user that made the request
  * @event_end
@@ -644,7 +644,7 @@
  * @event social 
  * @member {string} type the string `"eos_lobby_reject_invite"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} invite_id The ID of the invitation being rejected
  * @event_end
@@ -777,7 +777,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_send_invite"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
  * @event_end
@@ -796,7 +796,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_update_lobby"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
  * @event_end
@@ -1265,7 +1265,7 @@
  * @event social
  * @member {string} type the string `"eos_lobby_search_find"`
  * @member {constant.eos_result} status The result code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original function call
  * @event_end
  * 
