@@ -29,7 +29,7 @@
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
  * @member {string} room_name The room associated with this event.
  * @member {constant.eos_result} status 
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @event_end
  * 
  * @func_end
@@ -317,7 +317,7 @@
  * @member {string} type the string `"eos_rtc_admin_query_join_room_token"`
  * @member {real} identifier The identifier returned by the function
  * @member {EOS_Result} status 
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {string} client_base_url URL passed to backend to join room
  * @member {real} query_id If the query completed successfully, this contains an identifier that should be used to retrieve the tokens. This identifier is only valid for the duration of the callback.
  * @member {real} token_count How many token received as result of the query
@@ -342,7 +342,7 @@
  * @member {string} type the string `"eos_rtc_admin_set_participant_hard_mute"`
  * @member {real} identifier The identifier returned by the function
  * @member {EOS_Result} status 
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @event_end
  * 
  * @func_end
@@ -352,7 +352,7 @@
  * @func eos_rtc_audio_add_notify_audio_before_render
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyAudioBeforeRender](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-before-render)
  * 
- * This function registers to receive notifications with remote audio buffers before they are rendered. This gives you access to the audio data received, allowing for example the implementation of custom filters/effects. If the returned NotificationId is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_before_render} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications with remote audio buffers before they are rendered. This gives you access to the audio data received, allowing for example the implementation of custom filters/effects. If the returned notification ID is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_before_render} when you no longer wish to have the ${event.social} called.
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this event is registered on.
@@ -374,7 +374,7 @@
  * @func eos_rtc_audio_add_notify_audio_before_send
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyAudioBeforeSend](https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-audio-add-notify-audio-before-send)
  * 
- * This function registers to receive notifications when local audio buffers are about to be encoded and sent. This gives you access to the audio data about to be sent, allowing for example the implementation of custom filters/effects. If the returned NotificationId is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_before_send} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications when local audio buffers are about to be encoded and sent. This gives you access to the audio data about to be sent, allowing for example the implementation of custom filters/effects. If the returned notification ID is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_before_send} when you no longer wish to have the ${event.social} called.
  * 
  * @param {string} local_user_id The Product User ID of the user trying to request this operation
  * @param {string} room_name The room this event is registered on
@@ -394,7 +394,7 @@
  * @func eos_rtc_audio_add_notify_audio_devices_changed
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyAudioDevicesChanged](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-devices-changed)
  *
- * This function registers to receive notifications when an audio device is added or removed to the system. If the returned NotificationId is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_devices_changed} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications when an audio device is added or removed to the system. If the returned notification ID is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_devices_changed} when you no longer wish to have the ${event.social} called.
  * 
  * The library will try to use user selected audio device while following these rules:
  * 
@@ -418,7 +418,7 @@
  * @func eos_rtc_audio_add_notify_audio_input_state
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyAudioInputState](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-input-state)
  * 
- * This function registers to receive notifications when audio input state changed. If the returned NotificationId is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_input_state} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications when audio input state changed. If the returned notification ID is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_input_state} when you no longer wish to have the ${event.social} called.
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this event is registered on.
@@ -438,7 +438,7 @@
  * @func eos_rtc_audio_add_notify_audio_output_state
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyAudioOutputState](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-output-state)
  * 
- * This function registers to receive notifications when audio output state changed. If the returned NotificationId is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_output_state} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications when audio output state changed. If the returned notification ID is valid, you must call ${function.eos_rtc_audio_remove_notify_audio_output_state} when you no longer wish to have the ${event.social} called.
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this event is registered on.
@@ -459,7 +459,7 @@
  * @func eos_rtc_audio_add_notify_participant_updated
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyParticipantUpdated](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-participant-updated)
  * 
- * This function registers to receive notifications when a room participant audio status is updated (f.e when mute state changes or speaking flag changes). The notification is raised when the participant's audio status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned NotificationId is valid, you must call ${eos_rtc_audio_remove_notify_participant_updated} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications when a room participant audio status is updated (f.e when mute state changes or speaking flag changes). The notification is raised when the participant's audio status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned notification ID is valid, you must call ${eos_rtc_audio_remove_notify_participant_updated} when you no longer wish to have the ${event.social} called.
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this event is registered on.
@@ -606,7 +606,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_query_input_devices_information"`
  * @member {constant.eos_result} status EOS_Success if the operation succeeded. EOS_InvalidParameters if any of the parameters were incorrect.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -626,7 +626,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_query_output_devices_information"`
  * @member {constant.eos_result} status EOS_Success if the operation succeeded. EOS_InvalidParameters if any of the parameters were incorrect.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -742,7 +742,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_set_input_device_settings"`
  * @member {constant.eos_result} status EOS_Success if the operation succeeded. EOS_InvalidParameters if any of the parameters are incorrect.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} real_device_id The associated audio input device ID.
  * @event_end
@@ -764,7 +764,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_set_output_device_settings"`
  * @member {constant.eos_result} status EOS_Success if the operation succeeded. EOS_InvalidParameters if any of the parameters are incorrect.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} real_device_id The associated audio output device ID.
  * @event_end
@@ -785,7 +785,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_unregister_platform_user"`
  * @member {constant.eos_result} status EOS_Success if the user was successfully unregistered. EOS_InvalidParameters if any of the parameters are incorrect. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} platform_user_id The platform dependent user ID.
  * @event_end
@@ -811,7 +811,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_unregister_platform_user"`
  * @member {constant.eos_result} status EOS_Success if volume of remote participant audio was successfully changed. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
  * @member {string} participant_id The participant to modify or null to update the global configuration
@@ -840,7 +840,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_receiving"`
  * @member {constant.eos_result} status EOS_Success if receiving of channels of remote users was successfully enabled/disabled. EOS_NotFound if the participant isn't found by ParticipantId. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} participant_id The participant to modify or null to update the global configuration
  * @member {string} room_name The room this setting should be applied on.
@@ -867,7 +867,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_receiving_volume"`
  * @member {constant.eos_result} status EOS_Success if receiving volume of channels of the local user was successfully changed. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -891,7 +891,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_sending"`
  * @member {constant.eos_result} status EOS_Success if sending of channels of the local user was successfully enabled/disabled. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} room_name The room this settings should be applied on.
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
@@ -918,7 +918,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_sending_volume"`
  * @member {constant.eos_result} status EOS_Success if sending volume of channels of the local user was successfully changed. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
  * 
@@ -929,7 +929,7 @@
  * @func eos_rtc_data_add_notify_data_received
  * @desc **Epic Online Services Function:** [EOS_RTCData_AddNotifyDataReceived](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-add-notify-data-received)
  * 
- * This function registers to receive notifications with remote data packet received. If the returned NotificationId is valid, you must call ${function.eos_rtc_data_remove_notify_data_received} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications with remote data packet received. If the returned notification ID is valid, you must call ${function.eos_rtc_data_remove_notify_data_received} when you no longer wish to have the ${event.social} called.
  * 
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this event is registered on.
@@ -950,7 +950,7 @@
  * @func eos_rtc_data_add_notify_participant_updated
  * @desc **Epic Online Services Function:** [EOS_RTCData_AddNotifyParticipantUpdated](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-add-notify-participant-updated)
  * 
- * This function registers to receive notifications when a room participant data status is updated (e.g. when connection state changes). The notification is raised when the participant's data status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned NotificationId is valid, you must call ${function.eos_rtc_data_remove_notify_participant_updated} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications when a room participant data status is updated (e.g. when connection state changes). The notification is raised when the participant's data status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned notification ID is valid, you must call ${function.eos_rtc_data_remove_notify_participant_updated} when you no longer wish to have the ${event.social} called.
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this event is registered on.
@@ -1030,7 +1030,7 @@
  * @event social
  * @member {string} type the string "eos_rtc_data_update_receiving"
  * @member {constant.eos_result} status EOS_Success if receiving of channels of remote users was successfully enabled/disabled. EOS_NotFound if the participant isn't found by `participant_id`. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
  * @member {string} participant_id The participant to modify or null to update the global configuration
@@ -1058,7 +1058,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_data_update_sending"`
  * @member {constant.eos_result} status EOS_Success if sending of channels of the local user was successfully enabled/disabled. EOS_UnexpectedError otherwise.
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
  * @member {string} room_name The room this settings should be applied on.

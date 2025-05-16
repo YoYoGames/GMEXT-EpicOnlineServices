@@ -285,7 +285,7 @@
  * @event social
  * @member {string} type the string `"eos_p2p_query_nat_type"`
  * @member {constant.eos_result} status 
- * @member {string} status_message 
+ * @member {string} status_message Text representation of the status code
  * @member {real} identifier 
  * @member {constant.eos_nattype} nat_type The queried NAT type
  * @event_end
