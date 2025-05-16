@@ -154,7 +154,6 @@
  * 
  * @member {constant.EOS_SessionAttributeAdvertisementType} advertisement_type Whether this attribution is advertised with the backend or simply stored locally
  * @member {string} key The name of the session attribute
- * @member {constant.EOS_AttributeType} key The data type of the session attribute
  * @member {any} value The value of the session attribute
  * 
  * @struct_end
