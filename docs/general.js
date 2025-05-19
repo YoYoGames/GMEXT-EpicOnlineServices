@@ -71,211 +71,239 @@
 // Constants
 
 /**
- * @constant eos_result
+ * @constant EOS_Result
  * @desc **Epic Online Services Enum:** [EOS_EResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-result)
  * 
- * These are all the available constants used as task results, for the entire API.
+ * This enum holds the available constants used as task results, for the entire API.
  * 
- * @member EOS_SUCCESS Successful result. no further error processing needed
- * @member EOS_NO_CONNECTION Failed due to no connection
- * @member EOS_INVALID_CREDENTIALS Failed login due to invalid credentials
- * @member EOS_INVALID_USER Failed due to invalid or missing user
- * @member EOS_INVALID_AUTH Failed due to invalid or missing authentication token for user (e.g. not logged in)
- * @member EOS_ACCESS_DENIED Failed due to invalid access
- * @member EOS_MISSING_PERMISSIONS If the client does not possess the permission required
- * @member EOS_TOKEN_NOT_ACCOUNT If the token provided does not represent an account
- * @member EOS_TOO_MANY_REQUESTS Throttled due to too many requests
- * @member EOS_ALREADY_PENDING Async request was already pending
- * @member EOS_INVALID_PARAMETERS Invalid parameters specified for request
- * @member EOS_INVALID_REQUEST Invalid request
- * @member EOS_UNRECOGNIZED_RESPONSE Failed due to unable to parse or recognize a backend response
- * @member EOS_INCOMPATIBLE_VERSION Incompatible client for backend version
- * @member EOS_NOT_CONFIGURED Not configured correctly for use
- * @member EOS_ALREADY_CONFIGURED Already configured for use.
- * @member EOS_NOT_IMPLEMENTED Feature not available on this implementation
- * @member EOS_CANCELED Operation was canceled (likely by user)
- * @member EOS_NOT_FOUND The requested information was not found
- * @member EOS_OPERATION_WILL_RETRY An error occurred during an asynchronous operation, and it will be retried. Callbacks receiving this result will be called again in the future.
- * @member EOS_NO_CHANGE The request had no effect
- * @member EOS_VERSION_MISMATCH The request attempted to use multiple or inconsistent API versions
- * @member EOS_LIMIT_EXCEEDED A maximum limit was exceeded on the client, different from `EOS_TOO_MANY_REQUESTS`
- * @member EOS_DISABLED Feature or client ID performing the operation has been disabled.
- * @member EOS_DUPLICATE_NOT_ALLOWED Duplicate entry not allowed
- * @member EOS_INVALID_SANDBOX_ID Sandbox ID is invalid
- * @member EOS_TIMED_OUT Request timed out
- * @member EOS_PARTIAL_RESULT A query returned some but not all of the requested results.
- * @member EOS_MISSING_ROLE Client is missing the white-listed role
- * @member EOS_MISSING_FEATURE Client is missing the white-listed feature
- * @member EOS_INVALID_SANDBOX The sandbox given to the backend is invalid
- * @member EOS_INVALID_DEPLOYMENT The deployment given to the backend is invalid
- * @member EOS_INVALID_PRODUCT The product ID specified to the backend is invalid
- * @member EOS_INVALID_PRODUCTUserID The product user ID specified to the backend is invalid
- * @member EOS_SERVICE_FAILURE There was a failure with the backend service
- * @member EOS_CACHE_DIRECTORY_MISSING Cache directory is not set in platform options.
- * @member EOS_CACHE_DIRECTORY_INVALID Cache directory is not accessible.
- * @member EOS_INVALID_STATE The request failed because resource was in an invalid state
- * @member EOS_REQUEST_IN_PROGRESS Request is in progress
- * @member EOS_AUTH_ACCOUNT_LOCKED Account locked due to login failures
- * @member EOS_AUTH_ACCOUNT_LOCKEDForUpdate Account locked by update operation.
- * @member EOS_AUTH_INVALID_REFRESH_TOKEN Refresh token used was invalid
- * @member EOS_AUTH_INVALID_TOKEN Invalid access token, typically when switching between backend environments
- * @member EOS_AUTH_AUTHENTICATION_FAILURE Invalid bearer token
- * @member EOS_AUTH_INVALID_PLATFORM_TOKEN Invalid platform token
- * @member EOS_AUTH_WRONG_ACCOUNT Auth parameters are not associated with this account
- * @member EOS_AUTH_WRONG_CLIENT Auth parameters are not associated with this client
- * @member EOS_AUTH_FULL_ACCOUNT_REQUIRED Full account is required
- * @member EOS_AUTH_HEADLESS_ACCOUNT_REQUIRED Headless account is required
- * @member EOS_AUTH_PASSWORD_RESET_REQUIRED Password reset is required
- * @member EOS_AUTH_PASSWORD_CANNOT_BE_REUSED Password was previously used and cannot be reused
- * @member EOS_AUTH_EXPIRED Authorization code/exchange code has expired
- * @member EOS_AUTH_SCOPE_CONSENT_REQUIRED Consent has not been given by the user
- * @member EOS_AUTH_APPLICATION_NOT_FOUND The application has no profile on the backend
- * @member EOS_AUTH_SCOPE_NOT_FOUND The requested consent wasn't found on the backend
- * @member EOS_AUTH_ACCOUNT_FEATURE_RESTRICTED This account has been denied access to login
- * @member EOS_AUTH_PIN_GRANT_CODE Pin grant code initiated
- * @member EOS_AUTH_PIN_GRANT_EXPIRED Pin grant code attempt expired
- * @member EOS_AUTH_PIN_GRANT_PENDING Pin grant code attempt pending
- * @member EOS_AUTH_EXTERNAL_AUTH_NOT_LINKED External auth source did not yield an account
- * @member EOS_AUTH_EXTERNAL_AUTH_REVOKED External auth access revoked
- * @member EOS_AUTH_EXTERNAL_AUTH_INVALID External auth token cannot be interpreted
- * @member EOS_AUTH_EXTERNAL_AUTH_RESTRICTED External auth cannot be linked to his account due to restrictions
- * @member EOS_AUTH_EXTERNAL_AUTH_CANNOT_LOGIN External auth cannot be used for login
- * @member EOS_AUTH_EXTERNAL_AUTH_EXPIRED External auth is expired
- * @member EOS_AUTH_EXTERNAL_AUTH_IS_LAST_LOGIN_TYPE External auth cannot be removed since it's the last possible way to login
- * @member EOS_AUTH_EXCHANGE_CODE_NOT_FOUND Exchange code not found
- * @member EOS_AUTH_ORIGINATING_EXCHANGE_CODE_SESSION_EXPIRED Originating exchange code session has expired
- * @member EOS_AUTH_PERSISTENT_AUTH_ACCOUNT_NOT_ACTIVE The account has been disabled and cannot be used for authentication
- * @member EOS_AUTH_M_F_A_REQUIRED MFA challenge required
- * @member EOS_AUTH_PARENTAL_CONTROLS Parental locks are in place
- * @member EOS_AUTH_NO_REAL_ID Korea real ID association required but missing
- * @member EOS_FRIENDS_INVITE_AWAITING_ACCEPTANCE An outgoing friend invitation is waiting acceptance; sending another invite to the same user is erroneous
- * @member EOS_FRIENDS_NO_INVITATION There is no friend invitation to accept/reject
- * @member EOS_FRIENDS_ALREADY_FRIENDS Users are already friends, so sending another invite is erroneous
- * @member EOS_FRIENDS_NOT_FRIENDS Users are not friends, so deleting the friend is erroneous
- * @member EOS_FRIENDS_TARGET_USER_TOO_MANY_INVITES Remote user has too many invites to receive new invites
- * @member EOS_FRIENDS_LOCAL_USER_TOO_MANY_INVITES Local user has too many invites to send new invites
- * @member EOS_FRIENDS_TARGET_USER_FRIEND_LIMIT_EXCEEDED Remote user has too many friends to make a new friendship
- * @member EOS_FRIENDS_LOCAL_USER_FRIEND_LIMIT_EXCEEDED Local user has too many friends to make a new friendship
- * @member EOS_PRESENCE_DATA_INVALID Request data was null or invalid
- * @member EOS_PRESENCE_DATA_LENGTH_INVALID Request contained too many or too few unique data items, or the request would overflow the maximum amount of data allowed
- * @member EOS_PRESENCE_DATA_KEY_INVALID Request contained data with an invalid key
- * @member EOS_PRESENCE_DATA_KEY_LENGTH_INVALID Request contained data with a key too long or too short
- * @member EOS_PRESENCE_DATA_VALUE_INVALID Request contained data with an invalid value
- * @member EOS_PRESENCE_DATA_VALUE_LENGTH_INVALID Request contained data with a value too long
- * @member EOS_PRESENCE_RICH_TEXT_INVALID Request contained an invalid rich text string
- * @member EOS_PRESENCE_RICH_TEXT_LENGTH_INVALID Request contained a rich text string that was too long
- * @member EOS_PRESENCE_STATUS_INVALID Request contained an invalid status state
- * @member EOS_ECOM_ENTITLEMENT_STALE The entitlement retrieved is stale, re-query for updated information
- * @member EOS_ECOM_CATALOG_OFFER_STALE The offer retrieved is stale, re-query for updated information
- * @member EOS_ECOM_CATALOG_ITEM_STALE The item or associated structure retrieved is stale, re-query for updated information
- * @member EOS_ECOM_CATALOG_OFFER_PRICE_INVALID The one or more offers has an invalid price. This may be caused by the price setup.
- * @member EOS_ECOM_CHECKOUT_LOAD_ERROR The checkout page failed to load
- * @member EOS_SESSIONS_SESSION_IN_PROGRESS Session is already in progress
- * @member EOS_SESSIONS_TOO_MANY_PLAYERS Too many players to register with this session
- * @member EOS_SESSIONS_NO_PERMISSION Client has no permissions to access this session
- * @member EOS_SESSIONS_SESSION_ALREADY_EXISTS Session already exists in the system
- * @member EOS_SESSIONS_INVALID_LOCK Session lock required for operation
- * @member EOS_SESSIONS_INVALID_SESSION Invalid session reference
- * @member EOS_SESSIONS_SANDBOX_NOT_ALLOWED Sandbox ID associated with auth didn't match
- * @member EOS_SESSIONS_INVITE_FAILED Invite failed to send
- * @member EOS_SESSIONS_INVITE_NOT_FOUND Invite was not found with the service
- * @member EOS_SESSIONS_UPSERT_NOT_ALLOWED This client may not modify the session
- * @member EOS_SESSIONS_AGGREGATION_FAILED Backend nodes unavailable to process request
- * @member EOS_SESSIONS_HOST_AT_CAPACITY Individual backend node is as capacity
- * @member EOS_SESSIONS_SANDBOX_AT_CAPACITY Sandbox on node is at capacity
- * @member EOS_SESSIONS_SESSION_NOT_ANONYMOUS An anonymous operation was attempted on a non anonymous session
- * @member EOS_SESSIONS_OUT_OF_SYNC Session is currently out of sync with the backend, data is saved locally but needs to sync with backend
- * @member EOS_SESSIONS_TOO_MANY_INVITES User has received too many invites
- * @member EOS_SESSIONS_PRESENCE_SESSION_EXISTS Presence session already exists for the client
- * @member EOS_SESSIONS_DEPLOYMENT_AT_CAPACITY Deployment on node is at capacity
- * @member EOS_SESSIONS_NOT_ALLOWED Session operation not allowed
- * @member eos_sessions_player_sanctioned Session operation not allowed
- * @member EOS_PLAYER_DATA_STORAGE_FILENAME_INVALID Request filename was invalid
- * @member EOS_PLAYER_DATA_STORAGE_FILENAME_LENGTH_INVALID Request filename was too long
- * @member EOS_PLAYER_DATA_STORAGE_FILENAME_INVALIDChars Request filename contained invalid characters
- * @member EOS_PLAYER_DATA_STORAGE_FILE_SIZE_TOO_LARGE Request operation would grow file too large
- * @member EOS_PLAYER_DATA_STORAGE_FILE_SIZE_INVALID Request file length is not valid
- * @member EOS_PLAYER_DATA_STORAGE_FILE_HANDLE_INVALID Request file handle is not valid
- * @member EOS_PLAYER_DATA_STORAGE_DATA_INVALID Request data is invalid
- * @member EOS_PLAYER_DATA_STORAGE_DATA_LENGTH_INVALID Request data length was invalid
- * @member EOS_PLAYER_DATA_STORAGE_START_INDEX_INVALID Request start index was invalid
- * @member EOS_PLAYER_DATA_STORAGE_REQUEST_IN_PROGRESS Request is in progress
- * @member EOS_PLAYER_DATA_STORAGE_USER_THROTTLED User is marked as throttled which means he can't perform some operations because limits are exceeded.
- * @member EOS_PLAYER_DATA_STORAGE_ENCRYPTION_KEY_NOT_SET Encryption key is not set during SDK init.
- * @member EOS_PLAYER_DATA_STORAGE_USER_ERROR_FROM_DATA_CALLBACK User data callback returned error (eos_player_data_storage_e_write_result::eos_w_r_fail_request or eos_player_data_storage_e_read_result::eos_r_r_fail_request)
- * @member EOS_PLAYER_DATA_STORAGE_FILE_HEADER_HAS_NEWER_VERSION User is trying to read file that has header from newer version of SDK. Game/SDK needs to be updated.
- * @member EOS_PLAYER_DATA_STORAGE_FILE_CORRUPTED The file is corrupted. In some cases retry can fix the issue.
- * @member EOS_CONNECT_EXTERNAL_TOKEN_VALIDATION_FAILED EOS Auth service deemed the external token invalid
- * @member EOS_CONNECT_USER_ALREADY_EXISTS EOS Auth user already exists
- * @member EOS_CONNECT_AUTH_EXPIRED EOS Auth expired
- * @member EOS_CONNECT_INVALID_TOKEN EOS Auth invalid token
- * @member EOS_CONNECT_UNSUPPORTED_TOKEN_TYPE EOS Auth doesn't support this token type
- * @member EOS_CONNECT_LINK_ACCOUNT_FAILED EOS Auth Account link failure
- * @member EOS_CONNECT_EXTERNAL_SERVICE_UNAVAILABLE EOS Auth External service for validation was unavailable
- * @member EOS_CONNECT_EXTERNAL_SERVICE_CONFIGURATION_FAILURE EOS Auth External Service configuration failure with Dev Portal
- * @member EOS_UI_SOCIAL_OVERLAY_LOAD_ERROR The social overlay page failed to load
- * @member EOS_LOBBY_NOT_OWNER Client has no permissions to modify this lobby
- * @member EOS_LOBBY_INVALID_LOCK Lobby lock required for operation
- * @member EOS_LOBBY_LOBBY_ALREADY_EXISTS Lobby already exists in the system
- * @member EOS_LOBBY_SESSION_IN_PROGRESS Lobby is already in progress
- * @member EOS_LOBBY_TOO_MANY_PLAYERS Too many players to register with this lobby
- * @member EOS_LOBBY_NO_PERMISSION Client has no permissions to access this lobby
- * @member EOS_LOBBY_INVALID_SESSION Invalid lobby session reference
- * @member EOS_LOBBY_SANDBOX_NOT_ALLOWED Sandbox ID associated with auth didn't match
- * @member EOS_LOBBY_INVITE_FAILED Invite failed to send
- * @member EOS_LOBBY_INVITE_NOT_FOUND Invite was not found with the service
- * @member EOS_LOBBY_UPSERT_NOT_ALLOWED This client may not modify the lobby
- * @member EOS_LOBBY_AGGREGATION_FAILED Backend nodes unavailable to process request
- * @member EOS_LOBBY_HOST_AT_CAPACITY Individual backend node is as capacity
- * @member EOS_LOBBY_SANDBOX_AT_CAPACITY Sandbox on node is at capacity
- * @member EOS_LOBBY_TOO_MANY_INVITES User has received too many invites
- * @member EOS_LOBBY_DEPLOYMENT_AT_CAPACITY Deployment on node is at capacity
- * @member EOS_LOBBY_NOT_ALLOWED Lobby operation not allowed
- * @member EOS_LOBBY_MEMBER_UPDATE_ONLY While restoring a lost connection lobby ownership changed and only local member data was updated
- * @member EOS_LOBBY_PRESENCE_LOBBY_EXISTS Presence lobby already exists for the client
- * @member EOS_TITLE_STORAGE_USER_ERROR_FROM_DATA_CALLBACK User callback that receives data from storage returned error.
- * @member EOS_TITLE_STORAGE_ENCRYPTION_KEY_NOT_SET User forgot to set Encryption key during platform init. Title Storage can't work without it.
- * @member EOS_TITLE_STORAGE_FILE_CORRUPTED Downloaded file is corrupted.
- * @member EOS_TITLE_STORAGE_FILE_HEADER_HAS_NEWER_VERSION Downloaded file's format is newer than client SDK version.
- * @member EOS_MODS_MOD_SDK_PROCESS_IS_ALREADY_RUNNING ModSdk process is already running. This error comes from the EOSSDK.
- * @member EOS_MODS_MOD_SDK_COMMAND_IS_EMPTY ModSdk command is empty. Either the ModSdk configuration file is missing or the manifest location is empty.
- * @member EOS_MODS_MOD_SDK_PROCESS_CREATION_FAILED Creation of the ModSdk process failed. This error comes from the SDK.
- * @member EOS_MODS_CRITICAL_ERROR A critical error occurred in the external ModSdk process that we were unable to resolve.
- * @member EOS_MODS_TOOL_INTERNAL_ERROR A internal error occurred in the external ModSdk process that we were unable to resolve.
- * @member EOS_MODS_I_P_C_FAILURE A IPC failure occurred in the external ModSdk process.
- * @member EOS_MODS_INVALID_IPC_RESPONSE A invalid IPC response received in the external ModSdk process.
- * @member EOS_MODS_URI_LAUNCH_FAILURE A URI Launch failure occurred in the external ModSdk process.
- * @member EOS_MODS_MOD_IS_NOT_INSTALLED Attempting to perform an action with a mod that is not installed. This error comes from the external ModSdk process.
- * @member EOS_MODS_USER_DOES_NOT_OWN_THE_GAME Attempting to perform an action on a game that the user doesn't own. This error comes from the external ModSdk process.
- * @member EOS_MODS_OFFER_REQUEST_BY_ID_INVALID_RESULT Invalid result of the request to get the offer for the mod. This error comes from the external ModSdk process.
- * @member EOS_MODS_COULD_NOT_FIND_OFFER Could not find the offer for the mod. This error comes from the external ModSdk process.
- * @member EOS_MODS_OFFER_REQUEST_BY_ID_FAILURE Request to get the offer for the mod failed. This error comes from the external ModSdk process.
- * @member EOS_MODS_PURCHASE_FAILURE Request to purchase the mod failed. This error comes from the external ModSdk process.
- * @member EOS_MODS_INVALID_GAME_INSTALL_INFO Attempting to perform an action on a game that is not installed or is partially installed. This error comes from the external ModSdk process.
- * @member EOS_MODS_CANNOT_GET_MANIFEST_LOCATION Failed to get manifest location. Either the ModSdk configuration file is missing or the manifest location is empty
- * @member EOS_MODS_UNSUPPORTED_OS Attempting to perform an action with a mod that does not support the current operating system.
- * @member EOS_ANTI_CHEAT_CLIENT_PROTECTION_NOT_AVAILABLE The anti-cheat client protection is not available. Check that the game was started using the anti-cheat bootstrapper.
- * @member EOS_ANTI_CHEAT_INVALID_MODE The current anti-cheat mode is incorrect for using this API
- * @member EOS_ANTI_CHEAT_CLIENT_PRODUCT_ID_MISMATCH The ProductId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
- * @member EOS_ANTI_CHEAT_CLIENT_SANDBOX_ID_MISMATCH The SandboxId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
- * @member EOS_ANTI_CHEAT_PROTECT_MESSAGE_SESSION_KEY_REQUIRED (ProtectMessage/UnprotectMessage) No session key is available, but it is required to complete this operation
- * @member EOS_ANTI_CHEAT_PROTECT_MESSAGE_VALIDATION_FAILED (ProtectMessage/UnprotectMessage) Message integrity is invalid
- * @member EOS_ANTI_CHEAT_PROTECT_MESSAGE_INITIALIZATION_FAILED (ProtectMessage/UnprotectMessage) Initialization failed
- * @member EOS_ANTI_CHEAT_PEER_ALREADY_REGISTERED (RegisterPeer) Peer is already registered
- * @member EOS_ANTI_CHEAT_PEER_NOT_FOUND (UnregisterPeer) Peer does not exist
- * @member EOS_ANTI_CHEAT_PEER_NOT_PROTECTED (ReceiveMessageFromPeer) Invalid call: Peer is not protected
- * @member EOS_ANTI_CHEAT_CLIENT_DEPLOYMENT_ID_MISMATCH The DeploymentId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
- * @member EOS_ANTI_CHEAT_DEVICE_ID_AUTH_IS_NOT_SUPPORTED EOS Connect DeviceID auth method is not supported for anti-cheat
- * @member EOS_RTC_TOO_MANY_PARTICIPANTS EOS RTC room cannot accept more participants
- * @member EOS_RTC_ROOM_ALREADY_EXISTS EOS RTC room already exists
- * @member EOS_RTC_USER_KICKED The user kicked out from the room
- * @member EOS_RTC_USER_BANNED The user is banned
- * @member EOS_RTC_ROOM_WAS_LEFT EOS RTC room was left successfully
- * @member EOS_RTC_RECONNECTION_TIMEGATE_EXPIRED Connection dropped due to long timeout
- * @member EOS_PROGRESSION_SNAPSHOT_SNAPSHOT_ID_UNAVAILABLE The number of available Snapshot IDs have all been exhausted.
- * @member EOS_KWS_PARENT_EMAIL_MISSING The KWS user does not have a parental email associated with the account. The parent account was unlinked or deleted
- * @member EOS_KWS_USER_GRADUATED The KWS user is no longer a minor and trying to update the parent email
- * @member EOS_ANDROID_JAVA_VM_NOT_STORED EOS Android VM not stored
+ * @member Success Successful result. no further error processing needed
+ * @member NoConnection Failed due to no connection
+ * @member InvalidCredentials Failed login due to invalid credentials
+ * @member InvalidUser Failed due to invalid or missing user
+ * @member InvalidAuth Failed due to invalid or missing authentication token for user (e.g. not logged in)
+ * @member AccessDenied Failed due to invalid access
+ * @member MissingPermissions If the client does not possess the permission required
+ * @member Token_Not_Account If the token provided does not represent an account
+ * @member TooManyRequests Throttled due to too many requests
+ * @member AlreadyPending Async request was already pending
+ * @member InvalidParameters Invalid parameters specified for request
+ * @member InvalidRequest Invalid request
+ * @member UnrecognizedResponse Failed due to unable to parse or recognize a backend response
+ * @member IncompatibleVersion Incompatible client for backend version
+ * @member NotConfigured Not configured correctly for use
+ * @member AlreadyConfigured Already configured for use.
+ * @member NotImplemented Feature not available on this implementation
+ * @member Canceled Operation was canceled (likely by user)
+ * @member NotFound The requested information was not found
+ * @member OperationWillRetry An error occurred during an asynchronous operation, and it will be retried. Callbacks receiving this result will be called again in the future.
+ * @member NoChange The request had no effect
+ * @member VersionMismatch The request attempted to use multiple or inconsistent API versions
+ * @member LimitExceeded A maximum limit was exceeded on the client, different from `TooManyRequests`
+ * @member Disabled Feature or client ID performing the operation has been disabled.
+ * @member DuplicateNotAllowed Duplicate entry not allowed
+ * @member InvalidSandboxId Sandbox ID is invalid
+ * @member TimedOut Request timed out
+ * @member PartialResult A query returned some but not all of the requested results.
+ * @member MissingRole Client is missing the white-listed role
+ * @member MissingFeature Client is missing the white-listed feature
+ * @member Invalid_Sandbox The sandbox given to the backend is invalid
+ * @member Invalid_Deployment The deployment given to the backend is invalid
+ * @member Invalid_Product The product ID specified to the backend is invalid
+ * @member Invalid_ProductUserID The product user ID specified to the backend is invalid
+ * @member ServiceFailure There was a failure with the backend service
+ * @member CacheDirectoryMissing Cache directory is not set in platform options.
+ * @member CacheDirectoryInvalid Cache directory is not accessible.
+ * @member InvalidState The request failed because resource was in an invalid state
+ * @member RequestInProgress Request is in progress
+ * @member ApplicationSuspended Application is suspended
+ * @member NetworkDisconnected Network is disconnected
+ * @member Auth_AccountLocked Account locked due to login failures
+ * @member Auth_AccountLockedForUpdate Account locked by update operation.
+ * @member Auth_InvalidRefreshToken Refresh token used was invalid
+ * @member Auth_InvalidToken Invalid access token, typically when switching between backend environments
+ * @member Auth_AuthenticationFailure Invalid bearer token
+ * @member Auth_InvalidPlatformToken Invalid platform token
+ * @member Auth_WrongAccount Auth parameters are not associated with this account
+ * @member Auth_WrongClient Auth parameters are not associated with this client
+ * @member Auth_FullAccountRequired Full account is required
+ * @member Auth_HeadlessAccountRequired Headless account is required
+ * @member Auth_PasswordResetRequired Password reset is required
+ * @member Auth_PasswordCannotBeReused Password was previously used and cannot be reused
+ * @member Auth_Expired Authorization code/exchange code has expired
+ * @member Auth_ScopeConsentRequired Consent has not been given by the user
+ * @member Auth_ApplicationNotFound The application has no profile on the backend
+ * @member Auth_ScopeNotFound The requested consent wasn't found on the backend
+ * @member Auth_AccountFeatureRestricted This account has been denied access to login
+ * @member Auth_PinGrantCode Pin grant code initiated
+ * @member Auth_PinGrantExpired Pin grant code attempt expired
+ * @member Auth_PinGrantPending Pin grant code attempt pending
+ * @member Auth_ExternalAuthNotLinked External auth source did not yield an account
+ * @member Auth_ExternalAuthRevoked External auth access revoked
+ * @member Auth_ExternalAuthInvalid External auth token cannot be interpreted
+ * @member Auth_ExternalAuthRestricted External auth cannot be linked to his account due to restrictions
+ * @member Auth_ExternalAuthCannotLogin External auth cannot be used for login
+ * @member Auth_ExternalAuthExpired External auth is expired
+ * @member Auth_ExternalAuthIsLastLoginType External auth cannot be removed since it's the last possible way to login
+ * @member Auth_ExchangeCodeNotFound Exchange code not found
+ * @member Auth_OriginatingExchangeCodeSessionExpired Originating exchange code session has expired
+ * @member Auth_AccountNotActive The account has been disabled and cannot be used for authentication
+ * @member Auth_MFARequired MFA challenge required
+ * @member Auth_ParentalControls Parental locks are in place
+ * @member Auth_NoRealId Korea real ID association required but missing
+ * @member Friends_InviteAwaitingAcceptance An outgoing friend invitation is waiting acceptance; sending another invite to the same user is erroneous
+ * @member Friends_NoInvitation There is no friend invitation to accept/reject
+ * @member Friends_AlreadyFriends Users are already friends, so sending another invite is erroneous
+ * @member Friends_NotFriends Users are not friends, so deleting the friend is erroneous
+ * @member Friends_TargetUserTooManyInvites Remote user has too many invites to receive new invites
+ * @member Friends_LocalUserTooManyInvites Local user has too many invites to send new invites
+ * @member Friends_TargetUserFriendLimitExceeded Remote user has too many friends to make a new friendship
+ * @member Friends_LocalUserFriendLimitExceeded Local user has too many friends to make a new friendship
+ * @member Presence_DataInvalid Request data was null or invalid
+ * @member Presence_DataLengthInvalid Request contained too many or too few unique data items, or the request would overflow the maximum amount of data allowed
+ * @member Presence_DataKeyInvalid Request contained data with an invalid key
+ * @member Presence_DataKeyLengthInvalid Request contained data with a key too long or too short
+ * @member Presence_DataValueInvalid Request contained data with an invalid value
+ * @member Presence_DataValueLengthInvalid Request contained data with a value too long
+ * @member Presence_RichTextInvalid Request contained an invalid rich text string
+ * @member Presence_RichTextLengthInvalid Request contained a rich text string that was too long
+ * @member Presence_StatusInvalid Request contained an invalid status state
+ * @member Ecom_EntitlementStale The entitlement retrieved is stale, re-query for updated information
+ * @member Ecom_CatalogOfferStale The offer retrieved is stale, re-query for updated information
+ * @member Ecom_CatalogItemStale The item or associated structure retrieved is stale, re-query for updated information
+ * @member Ecom_CatalogOfferPriceInvalid The one or more offers has an invalid price. This may be caused by the price setup.
+ * @member Ecom_CheckoutLoadError The checkout page failed to load
+ * @member Ecom_PurchaseProcessing The player closed the purchase flow overlay after clicking the purchase button. The purchase may still go through = and the game needs to query unredeemed entitlements for a short time.
+ * @member Sessions_SessionInProgress Session is already in progress
+ * @member Sessions_TooManyPlayers Too many players to register with this session
+ * @member Sessions_NoPermission Client has no permissions to access this session
+ * @member Sessions_SessionAlreadyExists Session already exists in the system
+ * @member Sessions_InvalidLock Session lock required for operation
+ * @member Sessions_InvalidSession Invalid session reference
+ * @member Sessions_SandboxNotAllowed Sandbox ID associated with auth didn't match
+ * @member Sessions_InviteFailed Invite failed to send
+ * @member Sessions_InviteNotFound Invite was not found with the service
+ * @member Sessions_UpsertNotAllowed This client may not modify the session
+ * @member Sessions_AggregationFailed Backend nodes unavailable to process request
+ * @member Sessions_HostAtCapacity Individual backend node is as capacity
+ * @member Sessions_SandboxAtCapacity Sandbox on node is at capacity
+ * @member Sessions_SessionNotAnonymous An anonymous operation was attempted on a non anonymous session
+ * @member Sessions_OutOfSync Session is currently out of sync with the backend, data is saved locally but needs to sync with backend
+ * @member Sessions_TooManyInvites User has received too many invites
+ * @member Sessions_PresenceSessionExists Presence session already exists for the client
+ * @member Sessions_DeploymentAtCapacity Deployment on node is at capacity
+ * @member Sessions_NotAllowed Session operation not allowed
+ * @member Sessions_PlayerSanctioned Session operation not allowed
+ * @member PlayerDataStorage_FilenameInvalid Request filename was invalid
+ * @member PlayerDataStorage_FilenameLengthInvalid Request filename was too long
+ * @member PlayerDataStorage_FilenameInvalidchars Request filename contained invalid characters
+ * @member PlayerDataStorage_FileSizeTooLarge Request operation would grow file too large
+ * @member PlayerDataStorage_FileSizeInvalid Request file length is not valid
+ * @member PlayerDataStorage_FileHandleInvalid Request file handle is not valid
+ * @member PlayerDataStorage_DataInvalid Request data is invalid
+ * @member PlayerDataStorage_DataLengthInvalid Request data length was invalid
+ * @member PlayerDataStorage_StartIndexInvalid Request start index was invalid
+ * @member PlayerDataStorage_RequestInProgress Request is in progress
+ * @member PlayerDataStorage_UserThrottled User is marked as throttled which means he can't perform some operations because limits are exceeded.
+ * @member PlayerDataStorage_EncryptionKeyNotSet Encryption key is not set during SDK init.
+ * @member PlayerDataStorage_UserErrorFromDataCallback User data callback returned error
+ * @member PlayerDataStorage_FileHeaderHasNewerVersion User is trying to read file that has header from newer version of SDK. Game/SDK needs to be updated.
+ * @member PlayerDataStorage_FileCorrupted The file is corrupted. In some cases retry can fix the issue.
+ * @member Connect_ExternalTokenValidationFailed EOS Auth service deemed the external token invalid
+ * @member Connect_UserAlreadyExists EOS Auth user already exists
+ * @member Connect_AuthExpired EOS Auth expired
+ * @member Connect_InvalidToken EOS Auth invalid token
+ * @member Connect_UnsupportedTokenType EOS Auth doesn't support this token type
+ * @member Connect_LinkAccountFailed EOS Auth Account link failure
+ * @member Connect_ExternalServiceUnavailable EOS Auth External service for validation was unavailable
+ * @member Connect_ExternalServiceConfigurationFailure EOS Auth External Service configuration failure with Dev Portal
+ * @member UI_SocialOverlayLoadError The social overlay page failed to load
+ * @member UI_InconsistentVirtualMemoryFunctions Virtual Memory Functions are an inconsistent mix of functions and nullptrs
+ * @member Lobby_NotOwner Client has no permissions to modify this lobby
+ * @member Lobby_InvalidLock Lobby lock required for operation
+ * @member Lobby_LobbyAlreadyExists Lobby already exists in the system
+ * @member Lobby_SessionInProgress Lobby is already in progress
+ * @member Lobby_TooManyPlayers Too many players to register with this lobby
+ * @member Lobby_NoPermission Client has no permissions to access this lobby
+ * @member Lobby_InvalidSession Invalid lobby session reference
+ * @member Lobby_SandboxNotAllowed Sandbox ID associated with auth didn't match
+ * @member Lobby_InviteFailed Invite failed to send
+ * @member Lobby_InviteNotFound Invite was not found with the service
+ * @member Lobby_UpsertNotAllowed This client may not modify the lobby
+ * @member Lobby_AggregationFailed Backend nodes unavailable to process request
+ * @member Lobby_HostAtCapacity Individual backend node is at capacity
+ * @member Lobby_SandboxAtCapacity Sandbox on node is at capacity
+ * @member Lobby_TooManyInvites User has received too many invites
+ * @member Lobby_DeploymentAtCapacity Deployment on node is at capacity
+ * @member Lobby_NotAllowed Lobby operation not allowed
+ * @member Lobby_MemberUpdateOnly While restoring a lost connection lobby ownership changed and only local member data was updated
+ * @member Lobby_PresenceLobbyExists Presence lobby already exists for the client
+ * @member Lobby_VoiceNotEnabled Operation requires lobby with voice enabled
+ * @member Lobby_PlatformNotAllowed The client platform does not match the allowed platform list for the lobby.
+ * @member TitleStorage_UserErrorFromDataCallback User callback that receives data from storage returned error.
+ * @member TitleStorage_EncryptionKeyNotSet User forgot to set Encryption key during platform init. Title Storage can't work without it.
+ * @member TitleStorage_FileCorrupted Downloaded file is corrupted.
+ * @member TitleStorage_FileHeaderHasNewerVersion Downloaded file's format is newer than client SDK version.
+ * @member Mods_ModSdkProcessIsAlreadyRunning ModSdk process is already running. This error comes from the EOSSDK.
+ * @member Mods_ModSdkCommandIsEmpty ModSdk command is empty. Either the ModSdk configuration file is missing or the manifest location is empty.
+ * @member Mods_ModSdkProcessCreationFailed Creation of the ModSdk process failed. This error comes from the SDK.
+ * @member Mods_CriticalError A critical error occurred in the external ModSdk process that we were unable to resolve.
+ * @member Mods_ToolInternalError A internal error occurred in the external ModSdk process that we were unable to resolve.
+ * @member Mods_IPCFailure A IPC failure occurred in the external ModSdk process.
+ * @member Mods_InvalidIPCResponse A invalid IPC response received in the external ModSdk process.
+ * @member Mods_URILaunchFailure A URI Launch failure occurred in the external ModSdk process.
+ * @member Mods_ModIsNotInstalled Attempting to perform an action with a mod that is not installed. This error comes from the external ModSdk process.
+ * @member Mods_UserDoesNotOwnTheGame Attempting to perform an action on a game that the user doesn't own. This error comes from the external ModSdk process.
+ * @member Mods_OfferRequestByIdInvalidResult Invalid result of the request to get the offer for the mod. This error comes from the external ModSdk process.
+ * @member Mods_CouldNotFindOffer Could not find the offer for the mod. This error comes from the external ModSdk process.
+ * @member Mods_OfferRequestByIdFailure Request to get the offer for the mod failed. This error comes from the external ModSdk process.
+ * @member Mods_PurchaseFailure Request to purchase the mod failed. This error comes from the external ModSdk process.
+ * @member Mods_InvalidGameInstallInfo Attempting to perform an action on a game that is not installed or is partially installed. This error comes from the external ModSdk process.
+ * @member Mods_CannotGetManifestLocation Failed to get manifest location. Either the ModSdk configuration file is missing or the manifest location is empty
+ * @member Mods_UnsupportedOS Attempting to perform an action with a mod that does not support the current operating system.
+ * @member AntiCheat_ClientProtectionNotAvailable The anti-cheat client protection is not available. Check that the game was started using the anti-cheat bootstrapper.
+ * @member AntiCheat_InvalidMode The current anti-cheat mode is incorrect for using this API
+ * @member AntiCheat_ClientProductIdMismatch The ProductId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
+ * @member AntiCheat_ClientSandboxIdMismatch The SandboxId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
+ * @member AntiCheat_ProtectMessageSessionKeyRequired (ProtectMessage/UnprotectMessage) No session key is available, but it is required to complete this operation
+ * @member AntiCheat_ProtectMessageValidationFailed (ProtectMessage/UnprotectMessage) Message integrity is invalid
+ * @member AntiCheat_ProtectMessageInitializationFailed (ProtectMessage/UnprotectMessage) Initialization failed
+ * @member AntiCheat_PeerAlreadyRegistered (RegisterPeer) Peer is already registered
+ * @member AntiCheat_PeerNotFound (UnregisterPeer) Peer does not exist
+ * @member AntiCheat_PeerNotProtected (ReceiveMessageFromPeer) Invalid call: Peer is not protected
+ * @member AntiCheat_ClientDeploymentIdMismatch The DeploymentId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
+ * @member AntiCheat_DeviceIdAuthIsNotSupported EOS Connect DeviceID auth method is not supported for anti-cheat
+ * @member RTC_TooManyParticipants EOS RTC room cannot accept more participants
+ * @member RTC_RoomAlreadyExists EOS RTC room already exists
+ * @member RTC_UserKicked The user kicked out from the room
+ * @member RTC_UserBanned The user is banned
+ * @member RTC_RoomWasLeft EOS RTC room was left successfully
+ * @member RTC_ReconnectionTimegateExpired Connection dropped due to long timeout
+ * @member RTC_ShutdownInvoked EOS RTC room was left due to platform release
+ * @member RTC_UserIsInBlocklist EOS RTC operation failed because the user is in the local user's block list
+ * @member ProgressionSnapshot_SnapshotIdUnavailable The number of available Snapshot IDs have all been exhausted.
+ * @member KWS_ParentEmailMissing The KWS user does not have a parental email associated with the account. The parent account was unlinked or deleted
+ * @member KWS_UserGraduated The KWS user is no longer a minor and trying to update the parent email
+ * @member Android_JavaVMNotStored EOS Android VM not stored
+ * @member Android_ReservedMustReferenceLocalVM EOS Android if Reserved is set it must reference stored VM
+ * @member Android_ReservedMustBeNull EOS Android Reserved must not be provided
+ * @member Permission_RequiredPatchAvailable Patch required before the user can use the privilege
+ * @member Permission_RequiredSystemUpdate System update required before the user can use the privilege
+ * @member Permission_AgeRestrictionFailure Parental control failure usually
+ * @member Permission_AccountTypeFailure Premium Account Subscription required but not available
+ * @member Permission_ChatRestriction User restricted from chat
+ * @member Permission_UGCRestriction User restricted from User Generated Content
+ * @member Permission_OnlinePlayRestricted Online play is restricted
+ * @member DesktopCrossplay_ApplicationNotBootstrapped The application was not launched through the Bootstrapper. Desktop crossplay functionality is unavailable.
+ * @member DesktopCrossplay_ServiceNotInstalled The redistributable service is not installed.
+ * @member DesktopCrossplay_ServiceStartFailed The desktop crossplay service failed to start.
+ * @member DesktopCrossplay_ServiceNotRunning The desktop crossplay service is no longer running for an unknown reason.
+ * @member CustomInvites_InviteFailed When sending the custom invite failed.
+ * @member UserInfo_BestDisplayNameIndeterminate The best display name could not be safely determined.
+ * @member ConsoleInit_CacheStorage_SizeKBNotMultipleOf16 CacheStorageSizeKB must be a multiple of 16
+ * @member ConsoleInit_CacheStorage_SizeKBBelowMinimumSize CacheStorageSizeKB is less than the minimum allowed
+ * @member ConsoleInit_CacheStorage_SizeKBExceedsMaximumSize CacheStorageSizeKB is greater than the maximum allowed (4000 MB)
+ * @member ConsoleInit_CacheStorage_IndexOutOfRangeRange CacheStorageIndex is out of its allowed range
+ * @member EOS_UnexpectedError An unexpected error that we cannot identify has occurred
  * @constant_end
  */
 
@@ -339,6 +367,15 @@
  * @constant_end
  */
 
+/**
+ * @constant EOS_INVALID_NOTIFICATIONID
+ * @desc This macro represents an invalid notification ID.
+ * 
+ * @member EOS_INVALID_NOTIFICATIONID 
+ * 
+ * @constant_end
+ */
+
 // Structs
 
 /**
@@ -372,6 +409,7 @@
  * @ref eos_result
  * @ref eos_logging_category
  * @ref eos_logging_level
+ * @ref EOS_INVALID_NOTIFICATIONID
  * 
  * @section_end
  * 
