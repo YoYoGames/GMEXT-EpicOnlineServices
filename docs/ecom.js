@@ -618,7 +618,7 @@ function eos_ecom_get_transaction_count(user) {}
 
 /**
  * @function eos_ecom_transaction_get_transaction_id_by_index_transaction()
- * @desc  **Epic Online Services Function:** [EOS_Ecom_Transaction_GetTransactionId](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-transaction-get-transaction-id)
+ * @desc **Epic Online Services Function:** [EOS_Ecom_Transaction_GetTransactionId](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-transaction-get-transaction-id)
  * 
  * This function gets the ID of the transaction with the given index.
  * 
