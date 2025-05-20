@@ -369,7 +369,7 @@ func double eos_rtc_admin_copy_user_token_by_index(double query_id, double user_
 	Options.QueryId = (uint32_t)query_id;
 	Options.UserTokenIndex = (uint32_t)user_token_index;
 
-	EOS_RTCAdmin_UserToken* OutUserToken = NULL;
+	EOS_RTCAdmin_UserToken* OutUserToken = {0};
 	EOS_EResult result = EOS_RTCAdmin_CopyUserTokenByIndex(HRTCAdmin, &Options, &OutUserToken);
 
 	return (double)result;
@@ -384,7 +384,7 @@ func double __eos_rtc_admin_copy_user_token_by_user_id(double query_id,char* tar
 	Options.QueryId = (uint32_t)query_id;
 	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
-	EOS_RTCAdmin_UserToken* OutUserToken = NULL;
+	EOS_RTCAdmin_UserToken* OutUserToken = { 0 };
 	EOS_RTCAdmin_CopyUserTokenByUserId(HRTCAdmin, &Options, &OutUserToken);
 
 	return 0.0;
