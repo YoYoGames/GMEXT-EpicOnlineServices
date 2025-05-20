@@ -134,7 +134,6 @@ void EOS_CALL P2P_OnPeerConnectionEstablishedCallback(const EOS_P2P_OnPeerConnec
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_p2p_add_notify_peer_connection_established");
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
-	DsMapAddDouble(map, "status", (double)data->ConnectionType);
 	DsMapAddDouble(map, "connection_type", (double)data->ConnectionType);
 	DsMapAddDouble(map, "network_type", (double)data->NetworkType);
 	DsMapAddString(map, "socket_id", data->SocketId->SocketName);
