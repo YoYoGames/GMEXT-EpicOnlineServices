@@ -105,7 +105,6 @@
  * @event social
  * @member {string} type the string `"eos_p2p_add_notify_peer_connection_established"`
  * @member {string} local_user_id The Product User ID of the local user who is being notified of a connection being established
- * @member {real} status 
  * @member {constant.EOS_ConnectionEstablishedType} connection_type Whether this is a new connection or reconnection
  * @member {constant.EOS_NetworkConnectionType} network_type What type of network connection is being used for this connection
  * @member {string} socket_id The socket ID of the connection being established
@@ -282,7 +281,7 @@
  * @member {constant.EOS_Result} status The result code for the query
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the call to the function
- * @member {constant.eos_nattype} nat_type The queried NAT type
+ * @member {constant.EOS_NATType} nat_type The queried NAT type
  * @event_end
  * 
  * @func_end
