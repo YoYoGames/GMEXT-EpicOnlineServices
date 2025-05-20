@@ -16,13 +16,13 @@
 enum EOS_NATType
 {
 	/** NAT type either unknown (remote) or we are unable to determine it (local) */
-	NAT_Unknown = 0,
+	Unknown = 0,
 	/** All peers can directly-connect to you */
-	NAT_Open = 1,
+	Open = 1,
 	/** You can directly-connect to other Moderate and Open peers */
-	NAT_Moderate = 2,
+	Moderate = 2,
 	/** You can only directly-connect to Open peers */
-	NAT_Strict = 3
+	Strict = 3
 };
 
 
@@ -38,11 +38,11 @@ enum EOS_NATType
 enum EOS_PacketReliability
 {
 	/** Packets will only be sent once and may be received out of order */
-	PR_UnreliableUnordered = 0,
+	UnreliableUnordered = 0,
 	/** Packets may be sent multiple times and may be received out of order */
-	PR_ReliableUnordered = 1,
+	ReliableUnordered = 1,
 	/** Packets may be sent multiple times and will be received in order */
-	PR_ReliableOrdered = 2
+	ReliableOrdered = 2
 };
 
 /**
@@ -51,9 +51,9 @@ enum EOS_PacketReliability
 enum EOS_ConnectionEstablishedType
 {
 	/** The connection is brand new */
-	CET_NewConnection = 0,
+	NewConnection = 0,
 	/** The connection is reestablished (reconnection) */
-	CET_Reconnection = 1
+	Reconnection = 1
 };
 
 /**
@@ -62,11 +62,11 @@ enum EOS_ConnectionEstablishedType
 enum EOS_NetworkConnectionType
 {
 	/** There is no established connection */
-	NCT_NoConnection = 0,
+	NoConnection = 0,
 	/** A direct connection to the peer over the Internet or Local Network */
-	NCT_DirectConnection = 1,
+	DirectConnection = 1,
 	/** A relayed connection using Epic-provided servers to the peer over the Internet */
-	NCT_RelayedConnection = 2
+	RelayedConnection = 2
 };
 
 
@@ -76,27 +76,27 @@ enum EOS_NetworkConnectionType
 enum EOS_ConnectionClosedReason
 {
 	/** The connection was closed for unknown reasons. This most notably happens during application shutdown. */
-	CCR_Unknown = 0,
+	Unknown = 0,
 	/** The connection was at least locally accepted, but was closed by the local user via a call to EOS_P2P_CloseConnection / EOS_P2P_CloseConnections. */
-	CCR_ClosedByLocalUser = 1,
+	ClosedByLocalUser = 1,
 	/** The connection was at least locally accepted, but was gracefully closed by the remote user via a call to EOS_P2P_CloseConnection / EOS_P2P_CloseConnections. */
-	CCR_ClosedByPeer = 2,
+	ClosedByPeer = 2,
 	/** The connection was at least locally accepted, but was not remotely accepted in time. */
-	CCR_TimedOut = 3,
+	TimedOut = 3,
 	/** The connection was accepted, but the connection could not be created due to too many other existing connections */
-	CCR_TooManyConnections = 4,
+	TooManyConnections = 4,
 	/** The connection was accepted, The remote user sent an invalid message */
-	CCR_InvalidMessage = 5,
+	InvalidMessage = 5,
 	/** The connection was accepted, but the remote user sent us invalid data */
-	CCR_InvalidData = 6,
+	InvalidData = 6,
 	/** The connection was accepted, but we failed to ever establish a connection with the remote user due to connectivity issues. */
-	CCR_ConnectionFailed = 7,
+	ConnectionFailed = 7,
 	/** The connection was accepted and established, but the peer silently went away. */
-	CCR_ConnectionClosed = 8,
+	ConnectionClosed = 8,
 	/** The connection was locally accepted, but we failed to negotiate a connection with the remote user. This most commonly occurs if the local user goes offline or is logged-out during the connection process. */
-	CCR_NegotiationFailed = 9,
+	NegotiationFailed = 9,
 	/** The connection was accepted, but there was an internal error occurred and the connection cannot be created or continue. */
-	CCR_UnexpectedError = 10
+	UnexpectedError = 10
 }
 
 /**
