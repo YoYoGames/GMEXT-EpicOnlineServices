@@ -109,6 +109,7 @@
  * @member {constant.EOS_NetworkConnectionType} network_type What type of network connection is being used for this connection
  * @member {string} socket_id The socket ID of the connection being established
  * @member {string} remote_user_id The Product User ID of the remote user who this connection was with
+ * @event_end
 	
  * @func_end
  */
@@ -491,7 +492,7 @@
  * 
  * This enum holds the possible reasons why a P2P connection was closed.
  * 
- * @member 
+ * @member member 
  * 
  * @constant_end
  */

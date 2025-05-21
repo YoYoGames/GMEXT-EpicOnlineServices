@@ -479,12 +479,12 @@
  * @returns {real}
  * 
  * @event social
- * @param {string} type the string `"eos_lobby_hard_mute_member"`
- * @param {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
- * @param {string} status_message Text representation of the status code
- * @param {real} identifier The identifier returned by the original call to the function
- * @param {string} lobby_id The ID of the lobby
- * @param {string} target_user_id The Product User ID of the lobby member whose mute status has been updated
+ * @member {string} type the string `"eos_lobby_hard_mute_member"`
+ * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {string} status_message Text representation of the status code
+ * @member {real} identifier The identifier returned by the original call to the function
+ * @member {string} lobby_id The ID of the lobby
+ * @member {string} target_user_id The Product User ID of the lobby member whose mute status has been updated
  * @event_end
  * 
  * @func_end
@@ -556,6 +556,8 @@
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
+ * @event_end
+ * 
  * @func_end
  */
 
