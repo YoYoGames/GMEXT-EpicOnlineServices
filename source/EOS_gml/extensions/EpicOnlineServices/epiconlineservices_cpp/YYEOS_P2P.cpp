@@ -284,14 +284,17 @@ func double eos_p2p_get_nat_type()
 	return (double)OutNATType;
 }
 
-func double eos_p2p_get_next_received_packet_size(char* local_user_id)
+func double eos_p2p_get_next_received_packet_size(char* local_user_id, double requested_channel)
 {
 	eos_not_init_return(-1);
 
 	EOS_P2P_GetNextReceivedPacketSizeOptions Options = {0};
 	Options.ApiVersion = EOS_P2P_GETNEXTRECEIVEDPACKETSIZE_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
-	Options.RequestedChannel = nullptr;
+	if (requested_channel >= 0)
+		Options.RequestedChannel = (const uint8_t*)&requested_channel;
+	else
+		Options.RequestedChannel = NULL;
 
 	uint32_t OutPacketSizeBytes;
 
@@ -415,7 +418,7 @@ func double __eos_p2p_receive_packet(char* buff_ret,char* local_user_id, double 
 	if (requested_channel >= 0)
 		Options.RequestedChannel = (const uint8_t *)&requested_channel;
 	else
-		Options.RequestedChannel = nullptr;
+		Options.RequestedChannel = NULL;
 
 	EOS_ProductUserId OutPeerId;
 	EOS_P2P_SocketId OutSocketId;
