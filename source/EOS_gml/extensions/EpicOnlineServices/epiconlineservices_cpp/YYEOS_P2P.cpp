@@ -34,18 +34,24 @@
 #include "YYEpicOnlineServices.h"
 #include "eos_p2p.h"
 
-inline void FillSocketId(EOS_P2P_SocketId &SocketId, const char* socket_name)
+inline void FillSocketId(EOS_P2P_SocketId *SocketId, const char* socket_name)
 {
+	if (strcmp(socket_name, "") == 0)
+	{
+		SocketId = NULL;
+		return;
+	}
+
 	// Zero the entire struct and set the API version
 	memset(&SocketId, 0, sizeof(SocketId));
-	SocketId.ApiVersion = EOS_P2P_SOCKETID_API_LATEST;
+	SocketId->ApiVersion = EOS_P2P_SOCKETID_API_LATEST;
 
 	// Safely copy up to EOS_P2P_SOCKETID_socket_name_SIZE - 1
 	if (socket_name)
 	{
-		strncpy(SocketId.SocketName, socket_name, EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1);
+		strncpy(SocketId->SocketName, socket_name, EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1);
 		// Ensure it�s null-terminated
-		SocketId.SocketName[EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1] = '\0';
+		SocketId->SocketName[EOS_P2P_SOCKETID_SOCKETNAME_SIZE - 1] = '\0';
 	}
 }
 
@@ -64,7 +70,7 @@ func double eos_p2p_accept_connection(char* local_user_id,char* remote_user_id,c
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RemoteUserId = EOS_ProductUserId_FromString(remote_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	return (double)EOS_P2P_AcceptConnection(HP2P, &Options);
@@ -117,7 +123,7 @@ func double __eos_p2p_add_notify_peer_connection_closed(char* local_user_id,char
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionClosed(HP2P, &Options, nullptr, P2P_OnRemoteConnectionClosedCallback);
@@ -149,7 +155,7 @@ func double __eos_p2p_add_notify_peer_connection_established(char* local_user_id
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONESTABLISHED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionEstablished(HP2P, &Options, nullptr, P2P_OnPeerConnectionEstablishedCallback);
@@ -179,7 +185,7 @@ func double __eos_p2p_add_notify_peer_connection_interrupted(char* local_user_id
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONINTERRUPTED_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionInterrupted(HP2P, &Options, nullptr, P2P_OnPeerConnectionInterruptedCallback);
@@ -209,7 +215,7 @@ func double __eos_p2p_add_notify_peer_connection_request(char* local_user_id,cha
 	Options.ApiVersion = EOS_P2P_ADDNOTIFYPEERCONNECTIONREQUEST_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 
 	uint64_t notificationId = EOS_P2P_AddNotifyPeerConnectionRequest(HP2P, &Options, nullptr, P2P_OnIncomingConnectionRequestCallback);
@@ -229,7 +235,7 @@ func double eos_p2p_clear_packet_queue(char* local_user_id,char* remote_user_id,
 	Options.ApiVersion = EOS_P2P_CLEARPACKETQUEUE_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 	Options.RemoteUserId = EOS_ProductUserId_FromString(remote_user_id);
 
@@ -244,7 +250,7 @@ func double eos_p2p_close_connection(char* local_user_id,char* remote_user_id,ch
 	Options.ApiVersion = EOS_P2P_CLOSECONNECTION_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 	Options.RemoteUserId = EOS_ProductUserId_FromString(remote_user_id);
 
@@ -259,7 +265,7 @@ func double eos_p2p_close_connections(char* local_user_id,char* socket_name)
 	Options.ApiVersion = EOS_P2P_CLOSECONNECTIONS_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, socket_name);
+	FillSocketId(&SocketId, socket_name);
 	Options.SocketId = &SocketId;
 	return (double)EOS_P2P_CloseConnections(HP2P, &Options);
 }
@@ -502,7 +508,7 @@ func double __eos_p2p_send_packet(char* buff_args,char* buff_data, double len)
 	Options.RemoteUserId = EOS_ProductUserId_FromString(YYGetString(args[5]));
 
 	EOS_P2P_SocketId SocketId{};
-	FillSocketId(SocketId, YYGetString(args[6]));
+	FillSocketId(&SocketId, YYGetString(args[6]));
 	Options.SocketId = &SocketId;
 
 	double result = (double)EOS_P2P_SendPacket(HP2P, &Options);
