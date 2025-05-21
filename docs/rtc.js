@@ -824,7 +824,7 @@
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request
- * @member {string} participant_id The participant to modify or null to update the global configuration
+ * @member {string} participant_id The participant to modify
  * @member {string} room_name The room this settings should be applied on
  * @member {real} volume The volume that was set for received audio (range 0.0 to 100.0)
  * @event_end

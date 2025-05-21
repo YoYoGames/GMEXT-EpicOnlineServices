@@ -234,7 +234,7 @@
  * The function returns one of the following:
  * 
  * * `EOS_Result.Success` if removing this parameter was successful
- * * `EOS_Result.InvalidParameters` if the key is null or empty
+ * * `EOS_Result.InvalidParameters` if the key is empty
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * 
  * @param {string} key The session attribute to remove from the session
@@ -272,7 +272,7 @@
  * The function returns one of the following:
  * 
  * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.InvalidParameters` if the bucket ID is invalid or null
+ * * `EOS_Result.InvalidParameters` if the bucket ID is invalid
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * 
  * @param {string} bucket_id The new bucket ID associated with the session
@@ -486,8 +486,8 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available and passed out in OutSessionHandle
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID or a null pointer for the out parameter
+ * * `EOS_Result.Success` if the information is available
+ * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * * `EOS_Result.NotFound` if the invite ID cannot be found
  * 
@@ -506,8 +506,8 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available and passed out in OutSessionHandle
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID or a null pointer for the out parameter
+ * * `EOS_Result.Success` if the information is available
+ * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * * `EOS_Result.NotFound` if the invite ID cannot be found
  * 
@@ -526,10 +526,10 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available and passed out in OutSessionHandle
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID or a null pointer for the out parameter
+ * * `EOS_Result.Success` if the information is available
+ * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.NotFound` if there is no session with bPresenceEnabled
+ * * `EOS_Result.NotFound` if there is no session with `presence_enabled`
  *
  * @param {string} local The Product User ID of the local user associated with the session
  *
@@ -963,8 +963,8 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available and passed out in OutSessionHandle
- * * `EOS_Result.InvalidParameters` if you pass an invalid index or a null pointer for the out parameter
+ * * `EOS_Result.Success` if the information is available
+ * * `EOS_Result.InvalidParameters` if you pass an invalid index
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * 
  * @param {real} session_index The index of the session to retrieve within the completed search query
@@ -1025,7 +1025,7 @@
  * The function returns one of the following:
  * 
  * * `EOS_Result.Success` if removing this search parameter was successful
- * * `EOS_Result.InvalidParameters` if the search key is invalid or null
+ * * `EOS_Result.InvalidParameters` if the search key is invalid
  * * `EOS_Result.NotFound` if the parameter was not a part of the search criteria
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  *
@@ -1065,7 +1065,7 @@
  * The function returns one of the following:
  * 
  * * `EOS_Result.Success` if setting this search parameter was successful
- * * `EOS_Result.InvalidParameters` if the search criteria is invalid or null
+ * * `EOS_Result.InvalidParameters` if the search criteria is invalid
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  *
  * @param {constant.EOS_ComparisonOp} comparison_op The type of comparison to make against the search parameter
@@ -1085,7 +1085,7 @@
  * The function returns one of the following:
  * 
  * * `EOS_Result.Success` if setting this session ID was successful
- * * `EOS_Result.InvalidParameters` if the session ID is invalid or null
+ * * `EOS_Result.InvalidParameters` if the session ID is invalid
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  *
  * @param {string} session_id Search sessions for a specific session ID, returning at most one session
@@ -1106,7 +1106,7 @@
  * The function returns one of the following:
  * 
  * * `EOS_Result.Success` if setting this target user ID was successful
- * * `EOS_Result.InvalidParameters` if the target user ID is invalid or null
+ * * `EOS_Result.InvalidParameters` if the target user ID is invalid
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  *
  * @param {string} target_user_id The Product User ID to find; return any sessions where the user matching this ID is currently registered
