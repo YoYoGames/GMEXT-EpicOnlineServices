@@ -2,9 +2,9 @@
 event_inherited();
 
 var max_loops = 5
-while(eos_p2p_get_next_received_packet_size(userID))
+while(eos_p2p_get_next_received_packet_size(userID),noone)
 {
-	var out_bytes_num = eos_p2p_receive_packet(buffer_get_address(buff_recv),userID,256,noone)
+	var out_bytes_num = eos_p2p_receive_packet(buff_recv,userID,256,noone)
 	buffer_seek(buff_recv,buffer_seek_start,0)
 	
 	var _case = buffer_read(buff_recv,buffer_u8)//it's game data
