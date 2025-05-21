@@ -41,7 +41,7 @@
  * @member {string} type the string `"eos_rtc_add_notify_disconnected"`
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
  * @member {string} room_name The room associated with this event.
- * @member {constant.EOS_Result} status This holds: `EOS_Result.`EOS_Result.Success`` The room was left cleanly. `EOS_Result.NoConnection`: There was a network issue connecting to the server (retryable). `EOS_Result.RTC_UserKicked`: The user has been kicked by the server (retryable). `EOS_Result.ServiceFailure`: A known error occurred during interaction with the server (retryable). `EOS_Result.UnexpectedError` Unexpected error (retryable).
+ * @member {constant.EOS_Result} status This holds: `EOS_Result.Success` The room was left cleanly. `EOS_Result.NoConnection`: There was a network issue connecting to the server (retryable). `EOS_Result.RTC_UserKicked`: The user has been kicked by the server (retryable). `EOS_Result.ServiceFailure`: A known error occurred during interaction with the server (retryable). `EOS_Result.UnexpectedError` Unexpected error (retryable).
  * @member {string} status_message Text representation of the status code
  * @event_end
  * 
@@ -855,7 +855,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_receiving"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if receiving of channels of remote users was successfully enabled/disabled, `EOS_Result.NotFound` if the participant isn't found by ParticipantId, `EOS_Result.UnexpectedError` otherwise
+ * @member {constant.EOS_Result} status `EOS_Result.Success` if receiving of channels of remote users was successfully enabled/disabled, `EOS_Result.NotFound` if the participant isn't found by `participant_id`, `EOS_Result.UnexpectedError` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} participant_id The participant modified
