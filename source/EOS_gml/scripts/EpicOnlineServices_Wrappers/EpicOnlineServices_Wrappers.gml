@@ -311,9 +311,9 @@ function eos_p2p_get_port_range()
 }
 
 //__eos_p2p_receive_packet(buff_ret,local_user_id,max_data_size_bytes,requested_channel)
-function eos_p2p_receive_packet(buff_adress,local_user_id,max_data_size_bytes,requested_channel)
+function eos_p2p_receive_packet(buff,local_user_id,max_data_size_bytes,requested_channel)
 {	
-	return __eos_p2p_receive_packet(buff_adress,local_user_id,max_data_size_bytes,requested_channel)
+	return __eos_p2p_receive_packet(buffer_get_address(buff),local_user_id,max_data_size_bytes,requested_channel)
 }
 
 //__eos_p2p_send_packet(buff_data, len)
