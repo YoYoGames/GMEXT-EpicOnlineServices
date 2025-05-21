@@ -148,10 +148,10 @@
  * @returns {real}
  * 
  * @event social
- * @param {string} type the string `"eos_rtc_join_room"`
- * @param {real} identifier The async identifier returned by the call to the function
- * @param {string} local_user_id The Product User ID of the user who initiated this request
- * @param {string} room_name The room the user was trying to join
+ * @member {string} type the string `"eos_rtc_join_room"`
+ * @member {real} identifier The async identifier returned by the call to the function
+ * @member {string} local_user_id The Product User ID of the user who initiated this request
+ * @member {string} room_name The room the user was trying to join
  * @event_end
  * 
  * @func_end
