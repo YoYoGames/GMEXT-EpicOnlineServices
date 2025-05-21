@@ -136,7 +136,7 @@
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfo](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfo/index.html)
  * 
  * This function is used to start an asynchronous query to retrieve information, such as display name, about another account.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call the function:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call the function:
  * 
  * ${function.eos_user_info_copy_user_info}
  * 
@@ -149,7 +149,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_user_info_query_user_info"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -183,7 +183,7 @@
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfoByDisplayName](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByDisplayName/index.html)
  * 
  * This function is used to start an asynchronous query to retrieve user information by display name. This can be useful for getting the AccountId for a display name.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call the function:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call the function:
  * 
  * * ${function.eos_user_info_copy_user_info}
  * 
@@ -196,7 +196,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_user_info_query_user_info_by_display_name"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -230,7 +230,7 @@
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfoByExternalAccount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByExternalAccount/index.html)
  * 
  * This function is used to start an asynchronous query to retrieve user information by external accounts. This can be useful for getting the AccountId for external accounts.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_user_info_copy_external_user_info_by_account_id}
  * * ${function.eos_user_info_copy_external_user_info_by_account_type}
@@ -246,7 +246,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_user_info_query_user_info_by_external_account"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -307,7 +307,7 @@
  * @struct ExternalUserInfo
  * @desc The external user info is represented by a struct and contains information about a single external user info.
  * 
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} DisplayName The display name of the external account. Can be null.
  * @member {string} AccountId The ID of the external account. Can be null.
@@ -319,7 +319,7 @@
  * @struct UserInfo
  * @desc The user info is represented by a struct and contains information about a single user info.
  * 
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code.
  * @member {string} DisplayName The display name. This may be null.
  * @member {string} Country The name of the owner's country. This may be null.

@@ -3,7 +3,9 @@
  * @title Sessions
  * @desc **Epic Online Services Interface**: [Sessions Interface](https://dev.epicgames.com/docs/api-ref/interfaces/sessions)
  * 
- * Guide: https://dev.epicgames.com/docs/game-services/lobbies-and-sessions/sessions/sessions-intro
+ * Epic Online Services (EOS) gives players the ability to host, find, and interact with online gaming sessions through the Sessions Interface. A session can be short, like filling a certain number of player slots before starting a game, then disbanding after the game ends, or it could be longer, like keeping track of a game that cycles through matches on multiple maps or levels. The Sessions Interface also manages game-specific data that supports the back-end service searching and matchmaking functionality. For more information on the considerations you should take for matchmaking, see the documentation: [Security Considerations](https://dev.epicgames.com/docs/en-US/game-services/lobbies-and-sessions/security-considerations) section.
+ * 
+ * [[Note: See the [Sessions Introduction](https://dev.epicgames.com/docs/game-services/lobbies-and-sessions/sessions/sessions-intro) for a more detailed guide.]]
  * 
  * @section_func
  * @desc 
@@ -26,6 +28,7 @@
  * @ref EOS_OnlineSessionPermissionLevel
  * @ref EOS_OnlineSessionState
  * @ref EOS_SessionAttributeAdvertisementType
+ * @ref EOS_SESSIONS_MAX_SEARCH_RESULTS
  * @section_end
  * 
  * @module_end
@@ -208,8 +211,8 @@
  * * `EOS_Result.InvalidParameters` if the attribution is missing information or otherwise invalid
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  *
- * @param {constant.AdvertisementType} type Whether this attribute is advertised with the backend or simply stored locally
- * @param {struct.Sessionattribute} attribute A key/value pair describing the attribute to add to the session
+ * @param {constant.EOS_SessionAttributeAdvertisementType} type Whether this attribute is advertised with the backend or simply stored locally
+ * @param {struct.SessionAttribute} attribute A key/value pair describing the attribute to add to the session
  *
  * @returns {constant.EOS_Result}
  * 
@@ -430,7 +433,7 @@
  * @member {string} target_native_account_type The Native Platform Account Type. If only a single integrated platform is configured then this will always reference that platform.
  * @member {string} target_user_native_account_id The Native Platform Account ID of the target user being invited
  * @member {string} session_id The session ID that the user is being invited to
- * @member {int64} ui_event_id Identifies this event which will need to be acknowledged with ${function.EOS_UI_AcknowledgeEventId}.
+ * @member {int64} ui_event_id Identifies this event which will need to be acknowledged with ${function.eos_ui_acknowledge_event_id}.
  * @event_end
  * 
  * @func_end
@@ -547,7 +550,7 @@
  * The function returns `EOS_Result.Success` if we successfully created the session modification handle, or an error result if the input data was invalid.
  * 
  * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. If null, the session will be unrestricted.
- * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If `true`, this session will be associated with presence. Only one session at a time can have this flag set to `true`. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.EOS_PresenceModification_SetJoinInfo}.
+ * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If `true`, this session will be associated with presence. Only one session at a time can have this flag set to `true`. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}.
  * @param {bool} sanctions_enabled If `true`, sanctioned players can neither join nor register with this session and, in the case of join, will return ${constant.EOS_Result} code `EOS_Result.Sessions_PlayerSanctioned`.
  * @param {string} bucket_id The bucket ID associated with the session
  * @param {string} local_user_id The Product User ID of the local user associated with the session
@@ -1155,6 +1158,13 @@
  * @member PublicAdvertised Anyone can find this session as long as it isn't full
  * @member JoinViaPresence Players who have access to presence can see this session
  * @member InviteOnly Only players with invites registered can see this session
+ * 
+ * @constant_end
+ */
+
+/**
+ * @constant EOS_SESSIONS_MAX_SEARCH_RESULTS
+ * @desc 
  * 
  * @constant_end
  */

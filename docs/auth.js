@@ -158,7 +158,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_auth_link_account"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} AccountID The Epic Account ID used upon calling the function that generated this callback.
  * @member {real} identifier The asynchronous listener ID.
@@ -207,7 +207,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_auth_login"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @member {string} AccountID The Epic Account ID of the local user who has logged in
@@ -255,7 +255,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_auth_logout"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -297,7 +297,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_auth_query_id_token"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -360,7 +360,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_auth_verify_id_token"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -469,7 +469,7 @@
 /**
  * @struct AuthTokenInfo
  * @desc This struct contains detailed info on an access token used for authentication.
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string
  * @member {string} AccountId The Epic Account ID associated with this auth token
@@ -488,7 +488,7 @@
 /**
  * @struct IdWebTokenInfo
  * @desc This struct contains details on an ID Token in the form of a JSON Web Token string.
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string.
  * @member {string} AccountId The Epic Account ID described by the ID token. Use eos_epic_account_id_from_string to populate this field when validating a received ID token.

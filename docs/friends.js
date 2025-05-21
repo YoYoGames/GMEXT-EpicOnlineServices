@@ -14,7 +14,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_accept_invite"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -162,7 +162,7 @@
  * @desc **Epic Online Services Function:** [EOS_Friends_QueryFriends](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_QueryFriends/index.html)
  * 
  * This function starts an asynchronous task that reads the user's friends list from the backend service, caching it for future use.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  *
  * * ${function.eos_friends_get_friend_at_index}
  * * ${function.eos_friends_get_friends_count}
@@ -173,7 +173,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_query_friends"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -215,7 +215,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_reject_invite"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -277,7 +277,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_send_invite"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end

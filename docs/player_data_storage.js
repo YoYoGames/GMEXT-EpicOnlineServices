@@ -66,7 +66,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_delete_cache"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -108,7 +108,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_delete_file"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -151,7 +151,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_duplicate_file"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -223,7 +223,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_query_file"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -257,7 +257,7 @@
  * @desc **Epic Online Services Function:** [EOS_PlayerDataStorage_QueryFileList](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_QueryFileList/index.html)
  * 
  * This function queries the file metadata, such as file names, size, and a MD5 hash of the data, for all files owned by this user for this application. This is not required before a file may be opened, saved, copied, or deleted.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_player_data_storage_copy_file_metadata_at_index}
  * * ${function.eos_player_data_storage_copy_file_metadata_by_filename}
@@ -269,7 +269,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_query_file_list"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -312,7 +312,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_read_file"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -355,7 +355,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_write_file"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -396,7 +396,7 @@
  * 
  * @event social
  * @member {string} type `"eos_player_data_storage_file_transfer_request_cancel_request"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end

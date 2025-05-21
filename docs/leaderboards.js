@@ -224,7 +224,7 @@
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardDefinitions/index.html)
  * 
  * This function queries for a list of existing leaderboards definitions including their attributes.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_leaderboards_copy_leaderboard_definition_by_index}
  * * ${function.eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id}
@@ -238,7 +238,7 @@
  * 
  * @event social
  * @member {string} type `"eos_leaderboards_query_leaderboard_definitions"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -272,7 +272,7 @@
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardRanks](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardRanks/index.html)
  * 
  * This function retrieves top leaderboard records by rank in the leaderboard matching the given leaderboard ID. 
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_leaderboards_copy_leaderboard_record_by_index}
  * * ${function.eos_leaderboards_copy_leaderboard_record_by_user_id}
@@ -285,7 +285,7 @@
  * 
  * @event social
  * @member {string} type `"eos_leaderboards_query_leaderboard_ranks"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -319,7 +319,7 @@
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardUserScores](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardUserScores/index.html)
  * 
  * This function queries for a list of scores for a given list of users.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_leaderboards_copy_leaderboard_user_score_by_index}
  * * ${function.eos_leaderboards_copy_leaderboard_user_score_by_user_id}
@@ -336,7 +336,7 @@
  * 
  * @event social
  * @member {string} type `"eos_leaderboards_query_leaderboard_user_scores"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -387,7 +387,7 @@
  * @struct LeaderboardUserScore
  * @desc A leaderboard definition is represented by a struct and contains information about a single leaderboard user score.
  * 
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} UserId The Product User ID of the user who got this score
  * @member {real} Score Leaderboard score
@@ -398,7 +398,7 @@
  * @struct LeaderboardRecord
  * @desc A leaderboard record is represented by a struct and contains information about a single leaderboard record.
  * 
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} UserId The Product User ID associated with this record
  * @member {real} Rank Sorted position on leaderboard
@@ -411,7 +411,7 @@
  * @struct LeaderboardDefinition
  * @desc An leaderboard definition is represented by a struct and contains information about a single leaderboard definition.
  * 
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} LeaderboardId Unique ID to identify leaderboard.
  * @member {string} StatName Name of stat used to rank leaderboard.

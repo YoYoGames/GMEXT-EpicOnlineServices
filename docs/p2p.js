@@ -5,6 +5,8 @@
  * 
  * This module contains functionality to interact with the [NAT P2P Interface](https://dev.epicgames.com/docs/game-services/p-2-p), which has functionality to send and receive data between users, and related networking functionality.
  * 
+ * P2P connections enable game clients to send and receive data between one another directly, typically for the purpose of a multiplayer game. Connections made with the EOS P2P Interface are only established between authenticated users, and are secure-by-default using Datagram Transport Layer ([DTLS](https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security)). DTLS provides two distinct advantages over other communications protocols: *The speed of handling P2P connections is significantly increased, resulting in EOS's authentication having a greatly reduced need for connections to be re-negotiated.
+ * 
  * @section_func
  * @desc The following are the functions of the P2P module:
  * @ref eos_p2p_*
@@ -76,7 +78,7 @@
  * The function returns a valid notification ID if successfully bound, or ${constant.EOS_INVALID_NOTIFICATIONID} otherwise.
  * 
  * @param {string} local_user_id The Product User ID of the local user who would like notifications
- * @param {string} socket_name The optional socket ID to listen for to be closed. If not provided, this function handler will be called for all closed connections.
+ * @param {string} socket_name The optional socket ID to listen for to be closed. If an empty string `""` is passed, this function handler will be called for all closed connections.
  *
  * @returns {real}
  * 
@@ -98,7 +100,7 @@
  * This function listens for when a connection is established. This is fired when we first connect to a peer, when we reconnect to a peer after a connection interruption, and when our underlying network connection type changes (for example, from a direct connection to relay, or vice versa). Network Connection Type changes will always be broadcast with a `EOS_ConnectionEstablishedType.RECONNECTION` connection type, even if the connection was not interrupted. If the network status changes from offline to online, you must call this function again.
  * 
  * @param {string} local_user_id The Product User ID of the local user who would like to receive notifications
- * @param {string} socket_name The optional socket ID, used as a filter for established connections. If NULL, this function handler will be called for all sockets.
+ * @param {string} socket_name The optional socket ID, used as a filter for established connections. If an empty string `""` is passed, this function handler will be called for all sockets.
  *
  * @returns {real}
  * 
@@ -228,6 +230,7 @@
  * This function gets the size of the packet that will be returned by ${function.eos_p2p_receive_packet} for a particular user, if there are any available packets to be retrieved.
  * 
  * @param {string} local_user_id The Product User ID of the local user who is receiving the packet
+ * @param {real} requested_channel The channel to request the data for, a value from 0 to 255 (inclusive). If a negative value is passed, we're retrieving the size of the next packet on any channel.
  *
  * @returns {real}
  * 
@@ -296,7 +299,7 @@
  * 
  * The function returns the number of bytes written to the buffer if successful.
  *
- * @param {real} buff_adress The buffer to write the data to
+ * @param {real} buff The buffer to write the data to
  * @param {string} local_user_id The Product User ID of the user who is receiving the packet
  * @param {real} max_data_size_bytes The maximum amount of data in bytes that can be safely copied to OutData in the function call
  * @param {real} requested_channel An optional channel to request the data for. If a value < 0 is passed, the next packet is retrieved on any channel
@@ -380,7 +383,7 @@
  * @param {string} local_user_id The Product User ID of the local user who is sending this packet
  * @param {constant.EOS_PacketReliability} reliability Sets the reliability of the delivery of this packet.
  * @param {string} remote_user_id The Product User ID of the Peer you would like to send a packet to
- * @param {buffer_string} socket_name The socket ID for data you are sending in this packet
+ * @param {string} socket_name The socket ID for data you are sending in this packet
  * 
  * @returns {constant.EOS_Result}
  * 

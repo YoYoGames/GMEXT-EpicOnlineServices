@@ -206,7 +206,7 @@
  * @desc **Epic Online Services Function:** [EOS_Achievements_QueryDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryDefinitions/index.html)
  * 
  * This function queries for a list of definitions for all existing achievements, including localized text, icon IDs and whether an achievement is hidden.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_achievements_copy_achievement_definition_v2_by_achievement_id}
  * * ${function.eos_achievements_copy_achievement_definition_v2_by_index}
@@ -216,7 +216,7 @@
  * 
  * @event social
  * @member {string} type `"eos_achievements_query_definitions"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -254,7 +254,7 @@
  * 
  * This function queries for a list of achievements for a specific player, including progress towards completion for each achievement.
  * 
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_achievements_copy_player_achievement_by_achievement_id}
  * * ${function.eos_achievements_copy_player_achievement_by_index}
@@ -267,7 +267,7 @@
  * 
  * @event social
  * @member {string} type `"eos_achievements_query_player_achievements"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * 
@@ -332,7 +332,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_achievements_unlock_achievement"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -377,7 +377,7 @@
  * * `EOS_NOT_FOUND` if the achievement definition is not found;
  * * `EOS_INVALID_PRODUCTUserID` if you pass an invalid user ID;
  * 
- * @member {constant.eos_result} status The result value of the task
+ * @member {constant.EOS_Result} status The result value of the task
  * @member {string} status_message Text representation of the status code
  * @member {string} AchievementId This achievement's unique identifier
  * @member {real} Progress Progress towards completing this achievement (as a percentage)
@@ -415,7 +415,7 @@
  * * `EOS_NOT_FOUND` if the achievement definition is not found;
  * * `EOS_INVALID_PRODUCTUserID` if any of the userid options are incorrect;
  * 
- * @member {constant.eos_result} status The result value of the task
+ * @member {constant.EOS_Result} status The result value of the task
  * @member {string} status_message Text representation of the status code
  * @member {string} AchievementId Achievement ID that can be used to uniquely identify the achievement
  * @member {string} UnlockedDisplayName Localized display name for the achievement when it has been unlocked
