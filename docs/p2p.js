@@ -265,7 +265,7 @@
  * @func eos_p2p_get_relay_control
  * @desc **Epic Online Services Function:** [EOS_P2P_GetRelayControl](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-get-relay-control)
  *
- * This function gets the current relay control setting.
+ * This function gets the current relay control setting, or a negative value if the operation failed.
  *
  * @returns {constant.EOS_RelayControl}
  * 
