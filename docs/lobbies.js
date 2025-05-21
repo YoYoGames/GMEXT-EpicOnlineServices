@@ -29,6 +29,8 @@
  * @ref EOS_LobbyAttributeVisibility
  * @ref EOS_LobbyMemberStatus
  * @ref EOS_LobbyPermissionLevel
+ * @ref EOS_IntegratedPlatformType
+ * @ref EOS_OnlinePlatformType
  * @section_end
  * 
  * @module_end
@@ -906,7 +908,7 @@
  * 
  * @param {string} attr_key The name of the attribute
  * 
- * @returns {struct.LobbyAttribute}
+ * @returns {struct.EOS_Lobby_Attribute}
  * 
  * @func_end
  */
@@ -963,8 +965,8 @@
  * 
  * [[Note: this information is only available if you are actively in the lobby. It is not available for search results.]]
  * 
- * @param {ind} index The index of the attribute to copy
- * @param {ind} target_user_id The Product User ID of the lobby member
+ * @param {real} index The index of the attribute to copy
+ * @param {string} target_user_id The Product User ID of the lobby member
  *
  * @returns {struct.EOS_Lobby_Attribute}
  * 
@@ -1428,14 +1430,30 @@
  *
  * @param {string} target_user_id Search lobbies for the given user by Product User ID, returning any lobbies where this user is currently registered
  *
- * @returns {eos_result}
+ * @returns {constant.EOS_Result}
  * 
  * @func_end
  */
 
 // Constants & Enums
 
+/**
+ * @constant EOS_IntegratedPlatformType
+ * @desc 
+ * 
+ * @member EOS_IntegratedPlatformType
+ * 
+ * @constant_end
+ */
 
+/**
+ * @constant EOS_OnlinePlatformType
+ * @desc 
+ * 
+ * @member EOS_OnlinePlatformType
+ * 
+ * @constant_end
+ */
 
 /*
 NOTES:

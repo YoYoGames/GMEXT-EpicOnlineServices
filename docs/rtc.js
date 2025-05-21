@@ -3,7 +3,11 @@
  * @title RTC
  * @desc **Epic Online Services Interface**: [RTC Interface](https://dev.epicgames.com/docs/api-ref/interfaces/rtc)
  * 
- * Guides: https://dev.epicgames.com/docs/game-services/real-time-communication-interface/rtc-data-interface, https://dev.epicgames.com/docs/game-services/real-time-communication-interface/voice
+ * Integrate the Real-time Communication (RTC) Data Interface into your game to use the features of the Epic Online Services (EOS) RTC Data service. Use the RTC Data Interface to allow players to send data messages to each other in a voice chat room.
+ * 
+ * [[Note: The RTC-data service restricts the amount of data that a player can send. See the [RTC-data Service Limits](https://dev.epicgames.com/docs/game-services/real-time-communication-interface/rtc-data-interface#rtc-data-service-limits) section of this document for details.]]
+ * 
+ * [[Note: See the [RTC Data Interface](https://dev.epicgames.com/docs/game-services/real-time-communication-interface/rtc-data-interface) for a more detailed introduction.]]
  * 
  * @section_func
  * @ref eos_rtc_*
@@ -73,17 +77,17 @@
  * @func eos_rtc_add_notify_room_statistics_updated
  * @desc **Epic Online Services Function:** [EOS_RTC_AddNotifyRoomStatisticsUpdated](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-room-statistics-updated)
  * 
- * This function registers to receive notifications to receiving periodical statistics update. If the returned notification ID is valid, you must call ${fuction.eos_rtc_remove_notify_room_statistics_updated} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications to receiving periodical statistics update. If the returned notification ID is valid, you must call ${function.eos_rtc_remove_notify_room_statistics_updated} when you no longer wish to have the ${event.social} called.
  * 
- * @param {string} local_user_id The Product User ID of the user trying to request this operation.
- * @param {string} room_name The room this event is registered on.
+ * @param {string} local_user_id The Product User ID of the user trying to request this operation
+ * @param {string} room_name The room this event is registered on
  *
  * @returns {real}
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_add_notify_room_statistics_updated"`
- * @member {string} local_user_id The Product User ID of the user who initiated this request.
- * @member {string} room_name The room associated with this event.
+ * @member {string} local_user_id The Product User ID of the user who initiated this request
+ * @member {string} room_name The room associated with this event
  * @member {string} statistic Statistics in JSON format
  * @event_end
  * 
@@ -490,7 +494,7 @@
  * @func eos_rtc_audio_add_notify_participant_updated
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyParticipantUpdated](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-participant-updated)
  * 
- * This function registers to receive notifications when a room participant audio status is updated (e.g. when mute state changes or speaking flag changes). The notification is raised when the participant's audio status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned notification ID is valid, you must call ${eos_rtc_audio_remove_notify_participant_updated} when you no longer wish to have the ${event.social} called.
+ * This function registers to receive notifications when a room participant audio status is updated (e.g. when mute state changes or speaking flag changes). The notification is raised when the participant's audio status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned notification ID is valid, you must call ${function.eos_rtc_audio_remove_notify_participant_updated} when you no longer wish to have the ${event.social} called.
  * 
  * The function returns a notification ID representing the registered callback if successful, an invalid notification ID if not.
  *

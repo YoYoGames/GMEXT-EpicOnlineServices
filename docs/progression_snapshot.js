@@ -60,7 +60,7 @@
  * 
  * @event social
  * @member {real} type `"eos_progression_snapshot_delete_snapshot"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -127,7 +127,7 @@
  * 
  * @event social
  * @member {string} type `"eos_progression_snapshot_submit_snapshot"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end

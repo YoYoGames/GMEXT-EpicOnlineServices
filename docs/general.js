@@ -308,6 +308,26 @@
  */
 
 /**
+ * @constant EOS_ComparisonOp
+ * @desc **Epic Online Services Enum:** [EOS_EComparisonOp](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-comparison-op)
+ * 
+ * @member EQUAL Value must equal the one stored on the lobby/session
+ * @member NOTEQUAL Value must not equal the one stored on the lobby/session
+ * @member GREATERTHAN Value must be strictly greater than the one stored on the lobby/session
+ * @member GREATERTHANOREQUAL Value must be greater than or equal to the one stored on the lobby/session
+ * @member LESSTHAN Value must be strictly less than the one stored on the lobby/session
+ * @member LESSTHANOREQUAL Value must be less than or equal to the one stored on the lobby/session
+ * @member DISTANCE Prefer values nearest the one specified ie. abs(SearchValue-SessionValue) closest to 0
+ * @member ANYOF Value stored on the lobby/session may be any from a specified list
+ * @member NOTANYOF Value stored on the lobby/session may NOT be any from a specified list
+ * @member ONEOF This one value is a part of a collection
+ * @member NOTONEOF This one value is NOT part of a collection
+ * @member CONTAINS This value is a CASE SENSITIVE substring of an attribute stored on the lobby/session
+ * 
+ * @constant_end
+ */
+
+/**
  * @constant eos_logging_category
  * @desc **Epic Online Services Enum:** [EOS_ELogCategory](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-log-category)
  * 
@@ -382,7 +402,7 @@
  * @struct EpicResult
  * @desc A struct containing a result's status code and its representation in text.
  * 
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code.
  * 
  * @struct_end
@@ -406,10 +426,11 @@
  * @section_const
  * @desc These are the constants used by this API:
  * 
- * @ref eos_result
+ * @ref EOS_Result
  * @ref eos_logging_category
  * @ref eos_logging_level
  * @ref EOS_INVALID_NOTIFICATIONID
+ * @ref EOS_ComparisonOp
  * 
  * @section_end
  * 

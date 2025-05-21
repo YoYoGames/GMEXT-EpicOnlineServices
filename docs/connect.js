@@ -124,7 +124,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_connect_create_user"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @member {string} [LocalUserId] If the operation succeeded, this is the Product User ID of the local user who was created.
@@ -191,7 +191,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_connect_login"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @member {string} [LocalUserId] If the operation succeeded, this is the Product User ID of the local user who logged in.
@@ -274,7 +274,7 @@
  * * `EOS_NOT_FOUND` if the achievement definition is not found;
  * * `EOS_INVALID_PRODUCTUserID` if any of the userid options are incorrect;
  * 
- * @member {constant.eos_result} status The result value of the task
+ * @member {constant.EOS_Result} status The result value of the task
  * @member {string} status_message Text representation of the status code
  * @member {string} DisplayName Display name, can be null if not set.
  * @member {string} userID The Product User ID of the target user.
@@ -287,7 +287,7 @@
 /**
  * @struct IdToken
  * @desc A struct containg information about an ID token.
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string.
  * @member {string} ProductUserId The Product User ID described by the ID token.
