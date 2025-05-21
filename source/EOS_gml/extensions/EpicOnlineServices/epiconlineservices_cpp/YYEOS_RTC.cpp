@@ -385,9 +385,9 @@ func double __eos_rtc_admin_copy_user_token_by_user_id(double query_id,char* tar
 	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
 	EOS_RTCAdmin_UserToken* OutUserToken = { 0 };
-	EOS_RTCAdmin_CopyUserTokenByUserId(HRTCAdmin, &Options, &OutUserToken);
+	EOS_EResult result = EOS_RTCAdmin_CopyUserTokenByUserId(HRTCAdmin, &Options, &OutUserToken);
 
-	return 0.0;
+	return (double)result;
 }
 
 void EOS_CALL RTCAdmin_Kick(const EOS_RTCAdmin_KickCompleteCallbackInfo *data)
@@ -1145,7 +1145,10 @@ func double eos_rtc_audio_update_receiving(char* local_user_id,char* participant
 	EOS_RTCAudio_UpdateReceivingOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATERECEIVING_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
-	Options.ParticipantId = EOS_ProductUserId_FromString(participant_id);
+	if(strcmp(participant_id,"") == 0)
+		Options.ParticipantId = NULL;
+	else
+		Options.ParticipantId = EOS_ProductUserId_FromString(participant_id);
 	Options.RoomName = room_name;
 	Options.bAudioEnabled = audio_enabled > 0.5;
 
@@ -1163,6 +1166,8 @@ void EOS_CALL RTCAudio_UpdateReceivingVolume(const EOS_RTCAudio_UpdateReceivingV
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "room_name", data->RoomName);
+	DsMapAddDouble(map, "volume", data->Volume);
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
@@ -1223,6 +1228,9 @@ void EOS_CALL RTCAudio_UpdateSendingVolume(const EOS_RTCAudio_UpdateSendingVolum
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddString(map, "room_name", data->RoomName);
+	DsMapAddDouble(map, "volume", data->Volume);
+	
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
