@@ -847,7 +847,7 @@
  * [[Note: Due to Epic Online Services implementation details, this function requires that you first register to any notification for room.]]
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation
- * @param {string} participant_id The participant to modify or an empty string to update the global configuration
+ * @param {string} participant_id The participant to modify or an empty string `""` to update the global configuration
  * @param {string} room_name The room this setting should be applied on
  * @param {bool} audio_enabled Whether to mute or unmute audio track
  *
@@ -887,6 +887,8 @@
  * @member {constant.EOS_Result} status `EOS_Result.Success` if receiving volume of channels of the local user was successfully changed. `EOS_Result.UnexpectedError` otherwise.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
+ * @member {string} room_name The room this settings should be applied on
+ * @member {real} volume The volume that was set for received audio (range 0.0 to 100.0)
  * @event_end
  * 
  * @func_end
@@ -942,6 +944,8 @@
  * @member {constant.EOS_Result} status `EOS_Result.Success` if sending volume of channels of the local user was successfully changed, `EOS_Result.UnexpectedError` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
+ * @member {string} room_name The room this settings should be applied on
+ * @member {real} volume The volume that was set for sent audio (range 0.0 to 100.0)
  * @event_end
  * 
  * @func_end
@@ -1022,7 +1026,7 @@
  * 
  * You can use this function to send a data packet to the rest of participants.
  * 
- * The data to be sent needs to be stored in a ${type.buffer}, which you pass to the function. A total of `length` bytes are sent, with the first byte being the first byte in the buffer.
+ * The data to be sent needs to be stored in a ${type.buffer}, which you pass to the function. A total of `length` bytes are sent, from the start of the buffer.
  * 
  * The function returns one of the following:
  * 
