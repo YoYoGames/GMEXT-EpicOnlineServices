@@ -100,17 +100,17 @@ EOS_HLobbyDetails mHLobbyDetails;
 	}
 
 EOS_HLobbySearch mHLobbySearch = nullptr;
-#define eos_assert_lobby_search(value)                                            \
-	if (!mHLobbySearch)                                                           \
-	{                                                                             \
-		DebugConsoleOutput("%s :: Couldn't find lobby search handle.", __func__); \
-		return value;                                                             \
+#define eos_assert_lobby_search(value)               \
+	if (!mHLobbySearch)                              \
+	{                                                \
+		TRACE("Couldn't find lobby search handle."); \
+		return value;                                \
 	}
-#define eos_assert_not_lobby_search(value)                                               \
-	if (mHLobbySearch)                                                                   \
-	{                                                                                    \
-		DebugConsoleOutput("%s :: Previous lobby search handle not release.", __func__); \
-		return value;                                                                    \
+#define eos_assert_not_lobby_search(value)                  \
+	if (mHLobbySearch)                                      \
+	{                                                       \
+		TRACE("Previous lobby search handle not release."); \
+		return value;                                       \
 	}
 
 EOS_HLobbyModification mHLobbyModification = nullptr;
@@ -1141,23 +1141,23 @@ func double eos_lobby_update_lobby_modification(char* lobby_id,char* local_user_
 	return (double)result;
 }
 
-void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructStream* outputSteam)
+void LobbyAtrribute2StructStream(EOS_Lobby_Attribute* OutLobbyAttribute, StructStream* outputStream)
 {
-	outputSteam->addKeyValue("visibility", (double)OutLobbyAttribute->Visibility);
-	outputSteam->addKeyValue("key", (const char*)OutLobbyAttribute->Data->Key);
+	outputStream->addKeyValue("visibility", (double)OutLobbyAttribute->Visibility);
+	outputStream->addKeyValue("key", OutLobbyAttribute->Data->Key);
 	switch (OutLobbyAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
-		outputSteam->addKeyValue("value", (bool)OutLobbyAttribute->Data->Value.AsBool);
+		outputStream->addKeyValue("value", (bool)OutLobbyAttribute->Data->Value.AsBool);
 		break;
 	case EOS_EAttributeType::EOS_AT_DOUBLE:
-		outputSteam->addKeyValue("value", (double)OutLobbyAttribute->Data->Value.AsDouble);
+		outputStream->addKeyValue("value", OutLobbyAttribute->Data->Value.AsDouble);
 		break;
 	case EOS_EAttributeType::EOS_AT_INT64:
-		outputSteam->addKeyValue("value", /*(int64)*/ (int)OutLobbyAttribute->Data->Value.AsInt64);
-		break; // TODO: int64
+		outputStream->addKeyValue("value", OutLobbyAttribute->Data->Value.AsInt64);
+		break;
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam->addKeyValue("value", (const char*)OutLobbyAttribute->Data->Value.AsUtf8);
+		outputStream->addKeyValue("value", OutLobbyAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
@@ -1293,7 +1293,9 @@ func double eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* 
 	Options.AttrKey = attr_key;
 	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
-	// This needs to be returned in a struct (needs return buffer)
+	// TODO - JESÚS
+	// 
+	// This needs to be returned in a struct (needs return buffer) <---------- this needs a 'char* buff_ret' argument 
 	EOS_Lobby_Attribute *OutAttribute;
 	EOS_EResult result = EOS_LobbyDetails_CopyMemberAttributeByKey(mHLobbyDetails, &Options, &OutAttribute);
 
@@ -1397,6 +1399,7 @@ func double eos_lobby_details_get_member_count()
 	return EOS_LobbyDetails_GetMemberCount(mHLobbyDetails, &Options);
 }
 
+// NOTE :: This function is not necessary
 //func double eos_lobby_details_info_release()
 //{
 //	eos_not_init_return(-1);
@@ -1405,11 +1408,11 @@ func double eos_lobby_details_get_member_count()
 //	return 0.0;
 //}
 
+// NOTE :: This function is not necessary
 //func double eos_lobby_details_member_info_release(double AllowsCrossplay, double Platform,char* UserId)
 //{
 //	eos_not_init_return(-1);
 //
-//	// TODO :: This function is not necessary
 //	// EOS_LobbyDetails_MemberInfo_Release(&LobbyDetailsMemberInfo);
 //
 //	return 0.0;
