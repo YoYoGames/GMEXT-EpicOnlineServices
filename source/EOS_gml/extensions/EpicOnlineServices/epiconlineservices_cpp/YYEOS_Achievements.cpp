@@ -93,13 +93,22 @@ RValue EOS_Achievements_DefinitionV2ToMap(EOS_Achievements_DefinitionV2* Achieve
 	if (AchievementDef->LockedIconURL)
 		YYStructAddString(&Struct, "locked_icon_url", AchievementDef->LockedIconURL);
 
+	RValue StatThresholdsArray{};
+	YYCreateArray(&StatThresholdsArray, AchievementDef->StatThresholdsCount);
 	for (uint32_t StatIndex = 0; StatIndex < AchievementDef->StatThresholdsCount; ++StatIndex)
 	{
-		//TODO
-		AchievementDef->StatThresholds[StatIndex].Name;
-		AchievementDef->StatThresholds[StatIndex].Threshold;
-		//StatInfo.emplace_back(StatInfo);
+		RValue StatThresholds{};
+		YYStructCreate(&StatThresholds);
+
+		const auto& thresholds = AchievementDef->StatThresholds[StatIndex];
+
+		YYStructAddString(&StatThresholds, "name", thresholds.Name);
+		YYStructAddInt32(&StatThresholds, "threshold", thresholds.Threshold);
+
+		SET_RValue(&StatThresholdsArray, &StatThresholds, NULL, StatIndex);
 	}
+
+	YYStructAddRValue(&Struct, "stat_thresholds", &StatThresholdsArray);
 
 	EOS_Achievements_DefinitionV2_Release(AchievementDef);
 

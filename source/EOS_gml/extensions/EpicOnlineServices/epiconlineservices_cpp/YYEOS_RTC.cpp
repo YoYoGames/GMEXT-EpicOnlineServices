@@ -126,10 +126,24 @@ void EOS_CALL RTC_AddNotifyParticipantStatusChanged(const EOS_RTC_ParticipantSta
 	DsMapAddDouble(map, "participant_in_blocklist", data->bParticipantInBlocklist?1.0:0.0);
 	DsMapAddString(map, "participant_id", productID_toString(data->ParticipantId));
 	DsMapAddDouble(map, "participant_status", (double)data->ParticipantStatus);
-	// TODO
-	data->ParticipantMetadata;
-	data->ParticipantMetadataCount;
+	
+	RValue ParticipantMetadataArray{};
+	YYCreateArray(&ParticipantMetadataArray, data->ParticipantMetadataCount);
+	for (uint32_t i = 0; i < data->ParticipantMetadataCount; ++i)
+	{
+		RValue Metadata{};
+		YYStructCreate(&Metadata);
 
+		const auto& metadata = data->ParticipantMetadata[i];
+
+		YYStructAddString(&Metadata, "key", metadata.Key);
+		YYStructAddString(&Metadata, "value", metadata.Value);
+
+		SET_RValue(&ParticipantMetadataArray, &Metadata, NULL, i);
+	}
+
+	DsMapAddRValue(map, "metadata", &ParticipantMetadataArray);
+	
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
@@ -228,9 +242,23 @@ void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo *data)
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "room_name", data->RoomName);
-	// TODO: ARRAY of STRUCT
-	// DsMapAddDouble(map, "room_options_count", data->RoomOptionsCount);
-	// DsMapAddDouble(map, "room_options_count", data->RoomOptions.);
+
+	RValue RoomOptionsArray{};
+	YYCreateArray(&RoomOptionsArray, data->RoomOptionsCount);
+	for (uint32_t i = 0; i < data->RoomOptionsCount; ++i)
+	{
+		RValue Option{};
+		YYStructCreate(&Option);
+
+		const auto& option = data->RoomOptions[i];
+
+		YYStructAddString(&Option, "key", option.Key);
+		YYStructAddString(&Option, "value", option.Value);
+
+		SET_RValue(&RoomOptionsArray, &Option, NULL, i);
+	}
+
+	DsMapAddRValue(map, "options", &RoomOptionsArray);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
@@ -274,10 +302,6 @@ void EOS_CALL RTC_LeaveRoom(const EOS_RTC_LeaveRoomCallbackInfo *data)
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "room_name", data->RoomName);
-
-	// TODO: ARRAY of STRUCT
-	// DsMapAddDouble(map, "room_options_count", data->RoomOptionsCount);
-	// DsMapAddDouble(map, "room_options_count", data->RoomOptions.);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
@@ -500,10 +524,22 @@ void EOS_CALL RTCAudio_AddNotifyAudioBeforeRender(const EOS_RTCAudio_AudioBefore
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "room_name", data->RoomName);
 	DsMapAddString(map, "participant_id", productID_toString(data->ParticipantId));
-	// TODO
-	data->Buffer;
 
-	CreateAsyncEventWithDSMap(map, 70);
+	if (auto buffer = data->Buffer)
+	{
+		DsMapAddDouble(map, "sample_rate", buffer->SampleRate);
+		DsMapAddDouble(map, "channels", buffer->Channels);
+		DsMapAddDouble(map, "frame_count", buffer->FramesCount);
+
+		int buff = CreateBuffer(buffer->FramesCount * sizeof(int16_t), eBuffer_Format_Fixed, 1);
+		BufferWriteContent(buff, 0, buffer->Frames, buffer->FramesCount * sizeof(int16_t));
+
+		CreateAsyncEventWithDSMapAndBuffer(map, buff, 70);
+	}
+	else 
+	{
+		CreateAsyncEventWithDSMap(map, 70);
+	}
 }
 
 func double __eos_rtc_audio_add_notify_audio_before_render(char* local_user_id,char* room_name, double unmixed_audio,char* buff_ret)
@@ -531,10 +567,22 @@ void EOS_CALL RTCAudio_AddNotifyAudioBeforeSend(const EOS_RTCAudio_AudioBeforeSe
 	DsMapAddString(map, "type", "eos_rtc_audio_add_notify_audio_before_send");
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "room_name", data->RoomName);
-	// TODO
-	data->Buffer;
 
-	CreateAsyncEventWithDSMap(map, 70);
+	if (auto buffer = data->Buffer)
+	{
+		DsMapAddDouble(map, "sample_rate", buffer->SampleRate);
+		DsMapAddDouble(map, "channels", buffer->Channels);
+		DsMapAddDouble(map, "frame_count", buffer->FramesCount);
+
+		int buff = CreateBuffer(buffer->FramesCount * sizeof(int16_t), eBuffer_Format_Fixed, 1);
+		BufferWriteContent(buff, 0, buffer->Frames, buffer->FramesCount * sizeof(int16_t));
+
+		CreateAsyncEventWithDSMapAndBuffer(map, buff, 70);
+	}
+	else
+	{
+		CreateAsyncEventWithDSMap(map, 70);
+	}
 }
 
 func double __eos_rtc_audio_add_notify_audio_before_send(char* local_user_id,char* room_name,char* buff_ret)
@@ -1259,9 +1307,20 @@ void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_DataReceivedCallba
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "room_name", data->RoomName);
 	DsMapAddString(map, "participant_id", productID_toString(data->ParticipantId));
-	// TODO
-	data->Data;
-	data->DataLengthBytes;
+
+	if (data->Data)
+	{
+		DsMapAddDouble(map, "data_length", data->DataLengthBytes);
+
+		int buff = CreateBuffer(data->DataLengthBytes, eBuffer_Format_Fixed, 1);
+		BufferWriteContent(buff, 0, data->Data, data->DataLengthBytes);
+
+		CreateAsyncEventWithDSMapAndBuffer(map, buff, 70);
+	}
+	else
+	{
+		CreateAsyncEventWithDSMap(map, 70);
+	}
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
