@@ -117,6 +117,10 @@ public:
 		{
 			return GMValueType::UInt64;
 		}
+		else if constexpr (std::is_same_v<T, int64_t>)
+		{
+			return GMValueType::UInt64;
+		}
 		else if constexpr (std::is_same_v<T, float>)
 		{
 			return GMValueType::Float;

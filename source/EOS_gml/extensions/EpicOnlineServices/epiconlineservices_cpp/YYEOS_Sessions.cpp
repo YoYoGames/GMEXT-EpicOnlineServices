@@ -255,20 +255,20 @@ func double __eos_session_details_copy_info(char* buff_ret)
 void SessionDetailsAtrribute2StructStream(EOS_SessionDetails_Attribute *OutSessionAttribute, StructStream &outputSteam)
 {
 	outputSteam.addKeyValue("advertisement_type", (int)OutSessionAttribute->AdvertisementType);
-	outputSteam.addKeyValue("key", (const char* )OutSessionAttribute->Data->Key);
+	outputSteam.addKeyValue("key", OutSessionAttribute->Data->Key);
 	switch (OutSessionAttribute->Data->ValueType)
 	{
 	case EOS_EAttributeType::EOS_AT_BOOLEAN:
 		outputSteam.addKeyValue("value", (bool)OutSessionAttribute->Data->Value.AsBool);
 		break;
 	case EOS_EAttributeType::EOS_AT_DOUBLE:
-		outputSteam.addKeyValue("value", (double)OutSessionAttribute->Data->Value.AsDouble);
+		outputSteam.addKeyValue("value", OutSessionAttribute->Data->Value.AsDouble);
 		break;
 	case EOS_EAttributeType::EOS_AT_INT64:
-		outputSteam.addKeyValue("value", /*(int64)*/ (int)OutSessionAttribute->Data->Value.AsInt64);
-		break; // TODO: int64
+		outputSteam.addKeyValue("value", OutSessionAttribute->Data->Value.AsInt64);
+		break;
 	case EOS_EAttributeType::EOS_AT_STRING:
-		outputSteam.addKeyValue("value", (const char* )OutSessionAttribute->Data->Value.AsUtf8);
+		outputSteam.addKeyValue("value", OutSessionAttribute->Data->Value.AsUtf8);
 		break;
 	}
 }
