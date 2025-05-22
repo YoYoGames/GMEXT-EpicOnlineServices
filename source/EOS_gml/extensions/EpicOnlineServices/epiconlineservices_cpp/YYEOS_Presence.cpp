@@ -43,7 +43,7 @@ YYEXPORT void eos_presence_add_notify_join_game_accepted(RValue &Result, CInstan
 	EOS_Presence_AddNotifyJoinGameAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_PRESENCE_ADDNOTIFYJOINGAMEACCEPTED_API_LATEST;
 
-	auto notificationId = EOS_Presence_AddNotifyJoinGameAccepted(HPresence, &Options, NULL, AddNotifyJoinGameAccepted);
+	auto notificationId = EOS_Presence_AddNotifyJoinGameAccepted(HPresence, &Options, nullptr, AddNotifyJoinGameAccepted);
 
 	Result.kind = VALUE_INT64;
 	Result.v64 = static_cast<int64_t>(notificationId);
@@ -83,7 +83,7 @@ YYEXPORT void eos_presence_copy_presence(RValue &Result, CInstance *selfinst, CI
 	Options.LocalUserId = EOS_EpicAccountId_FromString(local);
 	Options.TargetUserId = EOS_EpicAccountId_FromString(target);
 
-	EOS_Presence_Info *info = NULL;
+	EOS_Presence_Info *info = nullptr;
 
 	EOS_EResult result = EOS_Presence_CopyPresence(HPresence, &Options, &info);
 
@@ -142,7 +142,7 @@ EOS_HPresenceModification EOS_Presence_CreatePresenceModification(const char *us
 	Options.ApiVersion = EOS_PRESENCE_CREATEPRESENCEMODIFICATION_API_LATEST;
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
-	EOS_HPresenceModification presenceModification = NULL;
+	EOS_HPresenceModification presenceModification = nullptr;
 	EOS_Presence_CreatePresenceModification(HPresence, &Options, &presenceModification);
 
 	return presenceModification;
@@ -264,7 +264,7 @@ YYEXPORT void eos_presence_remove_notify_on_presence_changed(RValue &Result, CIn
 //	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 //	Options.PresenceModificationHandle = EOS_Presence_CreatePresenceModification(user);
 //
-//	EOS_Presence_SetPresence(HPresence, &Options, NULL, SetPresence);
+//	EOS_Presence_SetPresence(HPresence, &Options, nullptr, SetPresence);
 //}
 
 void EOS_CALL DeleteData(const EOS_Presence_SetPresenceCallbackInfo *data)

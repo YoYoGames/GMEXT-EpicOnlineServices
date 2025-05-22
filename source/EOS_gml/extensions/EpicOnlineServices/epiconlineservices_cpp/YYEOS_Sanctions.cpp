@@ -87,7 +87,7 @@ YYEXPORT void eos_sanctions_query_active_player_sanctions(RValue &Result, CInsta
 
 	EOS_Sanctions_QueryActivePlayerSanctionsOptions Options = {0};
 	Options.ApiVersion = EOS_SANCTIONS_QUERYACTIVEPLAYERSANCTIONS_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(user);
+	Options.LocalUserId = strcmp(user, "") == 0 ? nullptr : EOS_ProductUserId_FromString(user);
 	Options.TargetUserId = EOS_ProductUserId_FromString(target);
 
 	callback *mcallback = getCallbackData();
