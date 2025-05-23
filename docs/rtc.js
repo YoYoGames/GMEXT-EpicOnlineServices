@@ -142,10 +142,10 @@
  * 
  * @param {string} local_user_id The product user id of the user trying to request this operation.
  * @param {string} room_name The room the user would like to join.
- * @param {string} participant_id The participant id used to join the room. If set to an empty string the `local_user_id` will be used instead.
+ * @param {string} participant_id The participant id used to join the room. If an empty string `""` the `local_user_id` will be used instead.
  * @param {string} participant_token Authorization credential token to join the room
- * @param {bool} manual_audio_input_enabled Enable or disable Manual Audio Input. If manual audio input is enabled audio recording is not started and the audio buffers must be passed manually using ${function.eos_rtc_audio_send_audio}.
- * @param {bool} manual_audio_output_enabled Enable or disable Manual Audio Output. If manual audio output is enabled audio rendering is not started and the audio buffers must be received with ${function.eos_rtc_audio_add_notify_audio_before_render} and rendered manually.
+ * @param {bool} manual_audio_input_enabled Enable or disable Manual Audio Input. If manual audio input is enabled and audio recording is not started the audio buffers must be passed manually using ${function.eos_rtc_audio_send_audio}.
+ * @param {bool} manual_audio_output_enabled Enable or disable Manual Audio Output. If manual audio output is enabled and audio rendering is not started the audio buffers must be received with ${function.eos_rtc_audio_add_notify_audio_before_render} and rendered manually.
  * @param {string} client_base_url The room the user would like to join
  * @param {constant.EOS_RTC_JOINROOMFLAGS} flags Join room flags, e.g., `EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO`. This is a bitwise-or union of the defined flags.
  *

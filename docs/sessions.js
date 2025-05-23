@@ -7,6 +7,64 @@
  * 
  * [[Note: See the [Sessions Introduction](https://dev.epicgames.com/docs/game-services/lobbies-and-sessions/sessions/sessions-intro) for a more detailed guide.]]
  * 
+ * @section Session Handles
+ * @desc Sessions in Epic Online Services make use of session handles. Before you can use certain functions you need to obtain a valid handle for that which you're trying to do. The handles themselves are kept by the extension. However, whenever you request a handle, you should still manually release it afterwards, once you are done using it.
+ * 
+ * The following is an overview of the different session handles and the functions you can use to obtain and release them and the functions that require them.
+ * 
+ * ### OutSessionSearchHandle
+ * 
+ * * Obtain:
+ *   * ${function.eos_sessions_create_session_search}
+ * * Used by:
+ *   * ${function.eos_session_search_copy_search_result_by_index}
+ *   * ${function.eos_session_search_find}
+ *   * ${function.eos_session_search_get_search_result_count}
+ *   * ${function.eos_session_search_remove_parameter}
+ *   * ${function.eos_session_search_set_max_results}
+ *   * ${function.eos_session_search_set_parameter}
+ *   * ${function.eos_session_search_set_session_id}
+ *   * ${function.eos_session_search_set_target_user_id}
+ * * Release:
+ *   * ${function.eos_session_search_release}
+ * 
+ * ### SessionDetails
+ * 
+ * * Obtain:
+ *   * ${function.eos_sessions_copy_session_handle_by_invite_id}
+ *   * ${function.eos_sessions_copy_session_handle_by_ui_event_id}
+ *   * ${function.eos_sessions_copy_session_handle_for_presence}
+ *   * ${function.eos_session_search_copy_search_result_by_index}
+ * * Used by:
+ *   * ${function.eos_session_details_copy_info}
+ *   * ${function.eos_session_details_copy_session_attribute_by_index}
+ *   * ${function.eos_session_details_copy_session_attribute_by_key}
+ *   * ${function.eos_session_details_get_session_attribute_count}
+ *   * ${function.eos_sessions_join_session}
+ * * Release:
+ *   * ${function.eos_session_details_release}
+ * 
+ * ### SessionModification
+ * 
+ * * Obtain:
+ *   * ${function.eos_sessions_create_session_modification}
+ *   * ${function.eos_sessions_update_session_modification}
+ * * Used by:
+ *   * ${function.eos_session_modification_add_attribute}
+ *   * ${function.eos_session_modification_remove_attribute}
+ *   * ${function.eos_session_modification_set_allowed_platform_ids}
+ *   * ${function.eos_session_modification_set_bucket_id}
+ *   * ${function.eos_session_modification_set_host_address}
+ *   * ${function.eos_session_modification_set_invites_allowed}
+ *   * ${function.eos_session_modification_set_join_in_progress_allowed}
+ *   * ${function.eos_session_modification_set_max_players}
+ *   * ${function.eos_session_modification_set_permission_level}
+ *   * ${function.eos_sessions_update_session}
+ * * Release:
+ *   * ${function.eos_session_modification_release}
+ * 
+ * @section_end
+ * 
  * @section_func
  * @desc 
  * @ref eos_active_session_*
@@ -1168,72 +1226,3 @@
  * 
  * @constant_end
  */
-
-/*
-Notes:
-
-------------------------------------------------------------------------------------
-
-mOutSessionSearchHandle
-
-Obtain:
-	eos_sessions_create_session_search
-	
-Uses:
-	eos_session_search_copy_search_result_by_index
-	eos_session_search_find
-	eos_session_search_get_search_result_count
-	eos_session_search_remove_parameter
-	eos_session_search_set_max_results
-	__eos_session_search_set_parameter
-	eos_session_search_set_session_id
-	eos_session_search_set_target_user_id
-	
-	
-Release:
-	eos_session_search_release()
-
-------------------------------------------------------------------------------------
-
-mHSessionDetails
-
-Obtain:
-	eos_sessions_copy_session_handle_by_invite_id
-	__eos_sessions_copy_session_handle_by_ui_event_id
-	eos_sessions_copy_session_handle_for_presence
-	eos_session_search_copy_search_result_by_index
-	
-Uses:
-	__eos_session_details_copy_info
-	__eos_session_details_copy_session_attribute_by_index
-	__eos_session_details_copy_session_attribute_by_key
-	eos_session_details_get_session_attribute_count
-	eos_sessions_join_session
-	
-Release:
-	eos_session_details_release()
-
-------------------------------------------------------------------------------------
-
-mHSessionModification
-
-Obtain:
-	__eos_sessions_create_session_modification
-	eos_sessions_update_session_modification
-	
-Uses:
-	__eos_session_modification_add_attribute
-	eos_session_modification_remove_attribute
-	__eos_session_modification_set_allowed_platform_ids
-	eos_session_modification_set_bucket_id
-	eos_session_modification_set_host_address
-	eos_session_modification_set_invites_allowed
-	eos_session_modification_set_join_in_progress_allowed
-	eos_session_modification_set_max_players
-	eos_session_modification_set_permission_level
-	eos_sessions_update_session
-	
-Release:
-	eos_session_modification_release()
-
-*/

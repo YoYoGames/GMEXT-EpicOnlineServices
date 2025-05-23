@@ -11,6 +11,70 @@
  * 
  * [[Note: See the [Lobbies Introduction](https://dev.epicgames.com/docs/game-services/lobbies-and-sessions/lobbies/lobbies-intro) for a more detailed guide.]]
  * 
+ * @section Handles
+ * @desc Lobbies in Epic Online Services make use of lobby handles. Before you can use certain functions you need to obtain a valid handle for that which you're trying to do. The handles themselves are kept by the extension. However, whenever you request a handle, you should still manually release it afterwards, once you are done using it.
+ * 
+ * The following is an overview of the different lobby handles and the functions you can use to obtain and release them and the functions that require them.
+ * 
+ * ### LobbyDetails
+ * 
+ * * Obtain:
+ *   * ${function.eos_lobby_copy_lobby_details_handle}
+ *   * ${function.eos_lobby_copy_lobby_details_handle_by_invite_id}
+ *   * ${function.eos_lobby_search_copy_search_result_by_index}
+ *   * ${function.eos_lobby_copy_lobby_details_handle_by_ui_event_id}
+ * * Used by:
+ *   * ${function.eos_lobby_join_lobby}
+ *   * ${function.eos_lobby_details_copy_attribute_by_index}
+ *   * ${function.eos_lobby_details_copy_attribute_by_key}
+ *   * ${function.eos_lobby_details_copy_info}
+ *   * ${function.eos_lobby_details_copy_member_attribute_by_index}
+ *   * ${function.eos_lobby_details_copy_member_attribute_by_key}
+ *   * ${function.eos_lobby_details_copy_member_info}
+ *   * ${function.eos_lobby_details_get_attribute_count}
+ *   * ${function.eos_lobby_details_get_lobby_owner}
+ *   * ${function.eos_lobby_details_get_member_attribute_count}
+ *   * ${function.eos_lobby_details_get_member_by_index}
+ *   * ${function.eos_lobby_details_get_member_count}
+ * * Release:
+ *   * ${function.eos_lobby_details_release}
+ * 
+ * ### LobbyModification
+ * 
+ * * Obtain:
+ *   * ${function.eos_lobby_update_lobby_modification}
+ * * Used by:
+ *   * ${function.eos_lobby_update_lobby}
+ *   * ${function.eos_lobby_modification_add_attribute}
+ *   * ${function.eos_lobby_modification_add_member_attribute}
+ *   * ${function.eos_lobby_modification_remove_attribute}
+ *   * ${function.eos_lobby_modification_remove_member_attribute}
+ *   * ${function.eos_lobby_modification_set_allowed_platform_ids}
+ *   * ${function.eos_lobby_modification_set_bucket_id}
+ *   * ${function.eos_lobby_modification_set_invites_allowed}
+ *   * ${function.eos_lobby_modification_set_max_members}
+ *   * ${function.eos_lobby_modification_set_permission_level}
+ * * Release:
+ *   * ${function.eos_lobby_modification_release}
+ * 
+ * ### LobbySearch
+ * 
+ * * Obtain:
+ *   * ${function.eos_lobby_create_lobby_search}
+ * * Used by:
+ *   * ${function.eos_lobby_search_copy_search_result_by_index}
+ *   * ${function.eos_lobby_search_find}
+ *   * ${function.eos_lobby_search_get_search_result_count}
+ *   * ${function.eos_lobby_search_remove_parameter}
+ *   * ${function.eos_lobby_search_set_lobby_id}
+ *   * ${function.eos_lobby_search_set_max_results}
+ *   * ${function.eos_lobby_search_set_parameter}
+ *   * ${function.eos_lobby_search_set_target_user_id}
+ * * Release:
+ *   * ${function.eos_lobby_search_release}
+ * 
+ * @section_end
+ * 
  * @section_func
  * @desc 
  * @ref eos_lobby_*
@@ -29,7 +93,6 @@
  * @ref EOS_LobbyAttributeVisibility
  * @ref EOS_LobbyMemberStatus
  * @ref EOS_LobbyPermissionLevel
- * @ref EOS_IntegratedPlatformType
  * @ref EOS_OnlinePlatformType
  * @section_end
  * 
@@ -262,7 +325,7 @@
  * @member {string} type the string `"eos_lobby_add_notify_send_lobby_native_invite_requested"`
  * @member {string} local_user_id The Product User ID of the local user who is inviting.
  * @member {string} lobby_id The lobby ID that the user is being invited to
- * @member {constant.EOS_IntegratedPlatformType} target_native_account_type The Native Platform Account Type. If only a single integrated platform is configured then this will always reference that platform.
+ * @member {string} target_native_account_type The Native Platform Account Type, as a string. If only a single integrated platform is configured then this will always reference that platform.
  * @member {string} target_user_native_account_id The Native Platform Account ID of the target user being invited.
  * @member {int64} ui_event_id Identifies this event which will need to be acknowledged with EOS_UI_AcknowledgeEventId().
  * @event_end
@@ -1438,98 +1501,12 @@
 // Constants & Enums
 
 /**
- * @constant EOS_IntegratedPlatformType
- * @desc 
- * 
- * @member EOS_IntegratedPlatformType
- * 
- * @constant_end
- */
-
-/**
  * @constant EOS_OnlinePlatformType
  * @desc 
  * 
- * @member EOS_OnlinePlatformType
+ * @member Unknown The platform type is unknown
+ * @member Epic The platform type is Epic Games
+ * @member Steam The platform type is Steam
  * 
  * @constant_end
  */
-
-/*
-NOTES:
-
-------------------------------------------------------------------------------------
-mHLobbyDetails
-
-Obtain:
-	eos_lobby_copy_lobby_details_handle
-	eos_lobby_copy_lobby_details_handle_by_invite_id
-	eos_lobby_search_copy_search_result_by_index
-	__eos_lobby_copy_lobby_details_handle_by_ui_event_id
-Uses:
-	eos_lobby_join_lobby
-	eos_lobby_details_copy_attribute_by_index
-	eos_lobby_details_copy_attribute_by_key
-	eos_lobby_details_copy_info
-	eos_lobby_details_copy_member_attribute_by_index
-	eos_lobby_details_copy_member_attribute_by_key
-	eos_lobby_details_copy_member_info
-	eos_lobby_details_get_attribute_count
-	eos_lobby_details_get_lobby_owner
-	eos_lobby_details_get_member_attribute_count
-	eos_lobby_details_get_member_by_index
-	eos_lobby_details_get_member_count
-Release:
-	eos_lobby_details_release()
-
-
-------------------------------------------------------------------------------------
-
-
-mHLobbyModification
-
-Obtain:
-	eos_lobby_update_lobby_modification
-	
-Uses:
-	eos_lobby_update_lobby
-	__eos_lobby_modification_add_attribute
-	__eos_lobby_modification_add_member_attribute
-	eos_lobby_modification_remove_attribute
-	eos_lobby_modification_remove_member_attribute
-	__eos_lobby_modification_set_allowed_platform_ids
-	eos_lobby_modification_set_bucket_id
-	eos_lobby_modification_set_invites_allowed
-	eos_lobby_modification_set_max_members
-	eos_lobby_modification_set_permission_level
-	
-Release:
-	eos_lobby_modification_release()
-
-
-------------------------------------------------------------------------------------
-
-mHLobbySearch
-
-
-Obtain:
-	eos_lobby_create_lobby_search
-	
-Uses:
-	eos_lobby_search_copy_search_result_by_index
-	eos_lobby_search_find
-	eos_lobby_search_get_search_result_count
-	eos_lobby_search_remove_parameter
-	eos_lobby_search_set_lobby_id
-	eos_lobby_search_set_max_results
-	__eos_lobby_search_set_parameter
-	eos_lobby_search_set_target_user_id
-	
-Release:
-	func real eos_lobby_search_release()
-
-------------------------------------------------------------------------------------
-
-Attribute: {key:string, type: EOS_AttributeType, value: any}
-
-*/
