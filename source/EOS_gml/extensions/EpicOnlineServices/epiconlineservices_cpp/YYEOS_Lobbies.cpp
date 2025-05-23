@@ -1299,7 +1299,7 @@ func double eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* 
 	Options.AttrKey = attr_key;
 	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
-	// TODO - JESÚS
+	// TODO - JESï¿½S
 	// 
 	// This needs to be returned in a struct (needs return buffer) <---------- this needs a 'char* buff_ret' argument 
 	EOS_Lobby_Attribute *OutAttribute;

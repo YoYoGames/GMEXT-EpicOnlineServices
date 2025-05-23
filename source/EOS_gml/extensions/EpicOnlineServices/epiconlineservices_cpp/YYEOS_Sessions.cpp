@@ -897,8 +897,15 @@ void EOS_CALL Sessions_OnRegisterPlayersCallback(const EOS_Sessions_RegisterPlay
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "registered_players", productIds2ArrayStr(data->RegisteredPlayers, data->RegisteredPlayersCount).c_str());
-	DsMapAddString(map, "sanctioned_players", productIds2ArrayStr(data->SanctionedPlayers, data->SanctionedPlayersCount).c_str());
+
+	RValue registeredPlayers{};
+	ProductIdsToArray(registeredPlayers, data->RegisteredPlayers, data->RegisteredPlayersCount);
+	DsMapAddRValue(map, "registered_players", &registeredPlayers);
+
+	RValue sanctionedPlayers{};
+	ProductIdsToArray(sanctionedPlayers, data->SanctionedPlayers, data->SanctionedPlayersCount);
+	DsMapAddRValue(map, "sanctioned_players", &sanctionedPlayers);
+
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
@@ -1080,7 +1087,11 @@ void EOS_CALL Sessions_OnUnregisterPlayersCallback(const EOS_Sessions_Unregister
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "unregistered_players", productIds2ArrayStr(data->UnregisteredPlayers, data->UnregisteredPlayersCount).c_str());
+
+	RValue unregisteredPlayers{};
+	ProductIdsToArray(unregisteredPlayers, data->UnregisteredPlayers, data->UnregisteredPlayersCount);
+	DsMapAddRValue(map, "unregistered_players", &unregisteredPlayers);
+
 	CreateAsyncEventWithDSMap(map, 70);
 
 	delete reinterpret_cast<callback *>(data->ClientData);
@@ -1156,8 +1167,6 @@ func double eos_session_search_copy_search_result_by_index(double session_index)
 	Options.SessionIndex = (uint32_t)session_index;
 
 	double result = (double)EOS_SessionSearch_CopySearchResultByIndex(mOutSessionSearchHandle, &Options, &mHSessionDetails);
-
-	// OutSessionHandle.
 
 	return result;
 }

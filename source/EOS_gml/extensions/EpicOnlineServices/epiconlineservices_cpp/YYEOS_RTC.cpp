@@ -992,22 +992,31 @@ func double __eos_rtc_audio_remove_notify_participant_updated(char* buff_args)
 	return 0.0;
 }
 
-func double __eos_rtc_audio_send_audio(char* buff_args,char* buff_data)
+func double __eos_rtc_audio_send_audio(char* buff_args)
 {
 	eos_not_init_return(-1);
 
 	auto args = buffer_unpack((uint8_t *)buff_args);
 	uint32_t Channels = YYGetUint32(args[0]);
 	uint32_t FramesCount = YYGetUint32(args[1]);
-	uint32_t SampleRate = YYGetUint32(args[2]);
-	char* local_user_id = (char* )YYGetString(args[3]);
-	char* room_name = (char* )YYGetString(args[4]);
+
+	uint32_t buffer_size;
+	void* Frames = YYGetBuffer(args[2], buffer_size);
+
+	if (FramesCount > buffer_size)
+	{
+		return (double)EOS_EResult::EOS_InvalidParameters;
+	}
+
+	uint32_t SampleRate = YYGetUint32(args[3]);
+	char* local_user_id = (char* )YYGetString(args[4]);
+	char* room_name = (char* )YYGetString(args[5]);
 
 	EOS_RTCAudio_SendAudioOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_SENDAUDIO_API_LATEST;
 	Options.Buffer->ApiVersion = EOS_RTCAUDIO_AUDIOBUFFER_API_LATEST;
 	Options.Buffer->Channels = Channels;
-	Options.Buffer->Frames = (int16_t *)buff_data;
+	Options.Buffer->Frames = (int16_t *)Frames;
 	Options.Buffer->FramesCount = FramesCount;
 	Options.Buffer->SampleRate = SampleRate;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
