@@ -145,8 +145,7 @@ struct callback
 	/*std::wstring*/ /*const char**/ std::string string; // optional argument
 };
 
-std::string productIds2ArrayStr(EOS_ProductUserId *user_ids, int count);
-std::string VectorOfStr2ArrayStr(std::vector<const char *> vec);
+void ProductIdsToArray(RValue& result, EOS_ProductUserId* user_ids, int count);
 
 #ifdef OS_Windows
 #define func extern "C" __declspec(dllexport)
