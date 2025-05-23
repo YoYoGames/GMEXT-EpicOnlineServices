@@ -112,14 +112,14 @@ func double __eos_active_session_copy_info(char* session_name, char* buff_ret)
 	_struct.addKeyValue("local_user_id", (const char* )productID_toString(OutActiveSessionInfo->LocalUserId));
 
 	StructStream _struct_session_details = {};
-	if (OutActiveSessionInfo->SessionDetails->HostAddress != NULL)
-		_struct_session_details.addKeyValue("host_address", (const char* )OutActiveSessionInfo->SessionDetails->HostAddress);
-	if (OutActiveSessionInfo->SessionDetails->OwnerServerClientId != NULL)
-		_struct_session_details.addKeyValue("owner_server_client_id", (const char* )OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
-	if (OutActiveSessionInfo->SessionDetails->OwnerUserId != NULL)
-		_struct_session_details.addKeyValue("owner_user_id", (const char* )productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
-	if (OutActiveSessionInfo->SessionDetails->SessionId != NULL)
-		_struct_session_details.addKeyValue("session_id", (const char* )OutActiveSessionInfo->SessionDetails->SessionId);
+	if (OutActiveSessionInfo->SessionDetails->HostAddress != nullptr)
+		_struct_session_details.addKeyValue("host_address", OutActiveSessionInfo->SessionDetails->HostAddress);
+	if (OutActiveSessionInfo->SessionDetails->OwnerServerClientId != nullptr)
+		_struct_session_details.addKeyValue("owner_server_client_id", OutActiveSessionInfo->SessionDetails->OwnerServerClientId);
+	if (OutActiveSessionInfo->SessionDetails->OwnerUserId != nullptr)
+		_struct_session_details.addKeyValue("owner_user_id", (const char*)productID_toString(OutActiveSessionInfo->SessionDetails->OwnerUserId));
+	if (OutActiveSessionInfo->SessionDetails->SessionId != nullptr)
+		_struct_session_details.addKeyValue("session_id", OutActiveSessionInfo->SessionDetails->SessionId);
 
 	_struct_session_details.addKeyValue("num_open_public_connections", OutActiveSessionInfo->SessionDetails->NumOpenPublicConnections);
 
@@ -213,14 +213,14 @@ func double __eos_session_details_copy_info(char* buff_ret)
 
 	if (EOS_EResult::EOS_Success == result)
 	{
-		if (OutSessionInfo->HostAddress != NULL)
-			_struct.addKeyValue("host_address", (const char* )OutSessionInfo->HostAddress);
-		if (OutSessionInfo->OwnerUserId != NULL)
-			_struct.addKeyValue("owner_user_id", (const char* )productID_toString(OutSessionInfo->OwnerUserId));
-		if (OutSessionInfo->OwnerServerClientId != NULL)
-			_struct.addKeyValue("owner_server_client_id", (const char* )OutSessionInfo->OwnerServerClientId);
-		if (OutSessionInfo->SessionId != NULL)
-			_struct.addKeyValue("session_id", (const char* )OutSessionInfo->SessionId);
+		if (OutSessionInfo->HostAddress != nullptr)
+			_struct.addKeyValue("host_address", (const char*)OutSessionInfo->HostAddress);
+		if (OutSessionInfo->OwnerUserId != nullptr)
+			_struct.addKeyValue("owner_user_id", (const char*)productID_toString(OutSessionInfo->OwnerUserId));
+		if (OutSessionInfo->OwnerServerClientId != nullptr)
+			_struct.addKeyValue("owner_server_client_id", (const char*)OutSessionInfo->OwnerServerClientId);
+		if (OutSessionInfo->SessionId != nullptr)
+			_struct.addKeyValue("session_id", (const char*)OutSessionInfo->SessionId);
 
 		_struct.addKeyValue("num_open_public_connections", OutSessionInfo->NumOpenPublicConnections);
 
@@ -408,10 +408,12 @@ func double __eos_session_modification_set_allowed_platform_ids(char* buff_args)
 
 	EOS_SessionModification_SetAllowedPlatformIdsOptions Options = {0};
 
-	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
-
-	Options.AllowedPlatformIds = ids.data();
-	Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
+	if (!array_ids.empty())
+	{
+		std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
+		Options.AllowedPlatformIds = ids.data();
+		Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
+	}
 
 	Options.ApiVersion = EOS_SESSIONMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST;
 	return (double)EOS_SessionModification_SetAllowedPlatformIds(mHSessionModification, &Options);
@@ -494,7 +496,7 @@ func double __eos_sessions_add_notify_join_session_accepted(char* buff_ret)
 	EOS_Sessions_AddNotifyJoinSessionAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYJOINSESSIONACCEPTED_API_LATEST;
 
-	uint64_t notificationId = EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions, &Options, NULL /*mcallback*/, Sessions_OnJoinSessionAcceptedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifyJoinSessionAccepted(HSessions, &Options, nullptr /*mcallback*/, Sessions_OnJoinSessionAcceptedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -507,9 +509,6 @@ void EOS_CALL Sessions_LeaveSessionRequestedCallbackInfo(const EOS_Sessions_Leav
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_sessions_add_notify_leave_session_requested");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "session_name", data->SessionName);
 
@@ -523,7 +522,7 @@ func double __eos_sessions_add_notify_leave_session_requested(char* buff_ret)
 	EOS_Sessions_AddNotifyLeaveSessionRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
 
-	uint64_t notificationId = EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions, &Options, NULL /*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
+	uint64_t notificationId = EOS_Sessions_AddNotifyLeaveSessionRequested(HSessions, &Options, nullptr /*mcallback*/, Sessions_LeaveSessionRequestedCallbackInfo);
 
 	DataStream data;
 	data << notificationId;
@@ -536,9 +535,6 @@ void EOS_CALL Sessions_OnSendSessionNativeInviteRequestedCallback(const EOS_Sess
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_sessions_add_notify_send_session_native_invite_requested");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "target_native_account_type", data->TargetNativeAccountType);
 	DsMapAddString(map, "target_user_native_account_id", data->TargetUserNativeAccountId);
@@ -554,7 +550,7 @@ func double __eos_sessions_add_notify_send_session_native_invite_requested(char*
 
 	EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
-	uint64_t notificationId = EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSendSessionNativeInviteRequestedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifySendSessionNativeInviteRequested(HSessions, &Options, nullptr /*mcallback*/, Sessions_OnSendSessionNativeInviteRequestedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -567,9 +563,6 @@ void EOS_CALL Sessions_SessionInviteAcceptedCallbackInfo(const EOS_Sessions_Sess
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_accepted");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "invite_id", data->InviteId);
 	DsMapAddString(map, "session_id", data->SessionId);
@@ -585,7 +578,7 @@ func double __eos_sessions_add_notify_session_invite_accepted(char* buff_ret)
 	EOS_Sessions_AddNotifySessionInviteAcceptedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEACCEPTED_API_LATEST;
 
-	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteAccepted(HSessions, &Options, NULL /*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
+	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteAccepted(HSessions, &Options, nullptr /*mcallback*/, Sessions_SessionInviteAcceptedCallbackInfo);
 
 	DataStream data;
 	data << notificationId;
@@ -598,9 +591,6 @@ void EOS_CALL Sessions_OnSessionInviteReceivedCallback(const EOS_Sessions_Sessio
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_received");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	DsMapAddString(map, "invite_id", data->InviteId);
 	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
@@ -614,7 +604,7 @@ func double __eos_sessions_add_notify_session_invite_received(char* buff_ret)
 
 	EOS_Sessions_AddNotifySessionInviteReceivedOptions Options = {0};
 	Options.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
-	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteReceived(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteReceived(HSessions, &Options, nullptr /*mcallback*/, Sessions_OnSessionInviteReceivedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -627,9 +617,6 @@ void EOS_CALL Sessions_OnSessionInviteRejectedCallback(const EOS_Sessions_Sessio
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_sessions_add_notify_session_invite_rejected");
-	// DsMapAddDouble(map, "status", (double)data->ResultCode);
-	// DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	// DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	DsMapAddString(map, "invite_id", data->InviteId);
 	DsMapAddString(map, "target_user_id", productID_toString(data->TargetUserId));
 	DsMapAddString(map, "session_id", data->SessionId);
@@ -644,7 +631,7 @@ func double __eos_sessions_add_notify_session_invite_rejected(char* buff_ret)
 
 	EOS_Sessions_AddNotifySessionInviteRejectedOptions Options = {0};
 
-	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteRejected(HSessions, &Options, NULL /*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
+	uint64_t notificationId = EOS_Sessions_AddNotifySessionInviteRejected(HSessions, &Options, nullptr /*mcallback*/, Sessions_OnSessionInviteRejectedCallback);
 
 	DataStream data;
 	data << notificationId;
@@ -701,14 +688,17 @@ func double __eos_sessions_create_session_modification(char* buff_args)
 
 	auto args = buffer_unpack((uint8_t *)buff_args);
 
-	EOS_Sessions_CreateSessionModificationOptions Options;
+	EOS_Sessions_CreateSessionModificationOptions Options{};
 	Options.ApiVersion = EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST;
 
 	auto array_ids = YYGetArray(args[0]);
 
-	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
-	Options.AllowedPlatformIds = ids.data();
-	Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
+	if (!array_ids.empty())
+	{
+		std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
+		Options.AllowedPlatformIds = ids.data();
+		Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
+	}
 
 	Options.bPresenceEnabled = YYGetBool(args[1]);
 	Options.bSanctionsEnabled = YYGetBool(args[2]);
@@ -716,15 +706,8 @@ func double __eos_sessions_create_session_modification(char* buff_args)
 	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[4]));
 	Options.MaxPlayers = YYGetUint32(args[5]);
 
-	std::string session_id = YYGetString(args[6]);
-	if (session_id != "")
-	{
-		Options.SessionId = YYGetString(args[6]);
-	}
-	else
-	{
-		Options.SessionId = NULL;
-	}
+	const char* session_id = YYGetString(args[6]);
+	Options.SessionId = strcmp(session_id, "") == 0 ? nullptr : session_id;
 
 	Options.SessionName = YYGetString(args[7]);
 	double result = (double)EOS_Sessions_CreateSessionModification(HSessions, &Options, &mHSessionModification);

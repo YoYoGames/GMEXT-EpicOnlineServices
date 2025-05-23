@@ -84,7 +84,7 @@ void eos_rtc_init()
 	HRTCAdmin = EOS_Platform_GetRTCAdminInterface(PlatformHandle);
 
 	HRTCAudio = EOS_RTC_GetAudioInterface(HRTC);
-	EOS_HRTCData HRTCData = EOS_RTC_GetDataInterface(HRTC);
+	HRTCData = EOS_RTC_GetDataInterface(HRTC);
 }
 
 void EOS_CALL RTC_AddNotifyDisconnected(const EOS_RTC_DisconnectedCallbackInfo *data)
@@ -139,7 +139,7 @@ void EOS_CALL RTC_AddNotifyParticipantStatusChanged(const EOS_RTC_ParticipantSta
 		YYStructAddString(&Metadata, "key", metadata.Key);
 		YYStructAddString(&Metadata, "value", metadata.Value);
 
-		SET_RValue(&ParticipantMetadataArray, &Metadata, NULL, i);
+		SET_RValue(&ParticipantMetadataArray, &Metadata, nullptr, i);
 	}
 
 	DsMapAddRValue(map, "metadata", &ParticipantMetadataArray);
@@ -223,17 +223,18 @@ func double eos_rtc_block_participant(double blocked,char* local_user_id,char* p
 	return mcallback->identifier;
 }
 
-// func double eos_rtc_get_audio_interface()
+//func double eos_rtc_get_audio_interface()
 //{
-//	HRTCAudio = EOS_RTC_GetAudioInterface(HRTC);
+//	auto HRTCAudio = EOS_RTC_GetAudioInterface(HRTC);
+//
 //	return 0.0;
 // }
-
-// func double eos_rtc_get_data_interface()
+//
+//func double eos_rtc_get_data_interface()
 //{
 //	EOS_HRTCData HRTCData = EOS_RTC_GetDataInterface(HRTC);
 //	return 0.0;
-// }
+//}
 
 void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo *data)
 {
@@ -255,7 +256,7 @@ void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo *data)
 		YYStructAddString(&Option, "key", option.Key);
 		YYStructAddString(&Option, "value", option.Value);
 
-		SET_RValue(&RoomOptionsArray, &Option, NULL, i);
+		SET_RValue(&RoomOptionsArray, &Option, nullptr, i);
 	}
 
 	DsMapAddRValue(map, "options", &RoomOptionsArray);
@@ -283,7 +284,7 @@ func double __eos_rtc_join_room(char* buff_args)
 	Options.ApiVersion = EOS_RTC_BLOCKPARTICIPANT_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
 	Options.RoomName = room_name;
-	Options.ParticipantId = EOS_ProductUserId_FromString(participant_id);
+	Options.ParticipantId = strcmp(participant_id, "") == 0 ? nullptr : EOS_ProductUserId_FromString(participant_id);
 	Options.ParticipantToken = ParticipantToken;
 	Options.bManualAudioInputEnabled = bManualAudioInputEnabled;
 	Options.bManualAudioOutputEnabled = bManualAudioOutputEnabled;
@@ -474,7 +475,7 @@ func double __eos_rtc_admin_query_join_room_token(char* buff_args)
 	Options.TargetUserIds = p_ids.data();
 	Options.TargetUserIdsCount = (uint32_t)p_ids.size();
 	if (p_ips.size() == 0)
-		Options.TargetUserIpAddresses = NULL;
+		Options.TargetUserIpAddresses = nullptr;
 	else
 		Options.TargetUserIpAddresses = p_ips.data();
 
@@ -1161,7 +1162,7 @@ func double eos_rtc_audio_update_participant_volume(char* local_user_id,char* pa
 	EOS_RTCAudio_UpdateParticipantVolumeOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATEPARTICIPANTVOLUME_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
-	Options.ParticipantId = EOS_ProductUserId_FromString(participant_id);
+	Options.ParticipantId = strcmp(participant_id, "") == 0 ? nullptr : EOS_ProductUserId_FromString(participant_id);
 	Options.RoomName = room_name;
 	Options.Volume = (float)volume;
 
@@ -1193,10 +1194,7 @@ func double eos_rtc_audio_update_receiving(char* local_user_id,char* participant
 	EOS_RTCAudio_UpdateReceivingOptions Options = {0};
 	Options.ApiVersion = EOS_RTCAUDIO_UPDATERECEIVING_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
-	if(strcmp(participant_id,"") == 0)
-		Options.ParticipantId = NULL;
-	else
-		Options.ParticipantId = EOS_ProductUserId_FromString(participant_id);
+	Options.ParticipantId = strcmp(participant_id, "") == 0 ? nullptr : EOS_ProductUserId_FromString(participant_id);
 	Options.RoomName = room_name;
 	Options.bAudioEnabled = audio_enabled > 0.5;
 
@@ -1321,8 +1319,6 @@ void EOS_CALL RTCData_AddNotifyDataReceived(const EOS_RTCData_DataReceivedCallba
 	{
 		CreateAsyncEventWithDSMap(map, 70);
 	}
-
-	CreateAsyncEventWithDSMap(map, 70);
 }
 
 func double __eos_rtc_data_add_notify_data_received(char* local_user_id,char* room_name,char* buff_ret)
@@ -1436,7 +1432,7 @@ func double eos_rtc_data_update_receiving(char* local_user_id,char* participant_
 	Options.ApiVersion = EOS_RTCDATA_UPDATERECEIVING_API_LATEST;
 	Options.bDataEnabled = data_enabled > 0.5;
 	Options.LocalUserId = EOS_ProductUserId_FromString(local_user_id);
-	Options.ParticipantId = EOS_ProductUserId_FromString(participant_id);
+	Options.ParticipantId = strcmp(participant_id, "") == 0 ? nullptr : EOS_ProductUserId_FromString(participant_id);
 	Options.RoomName = room_name;
 
 	callback *mcallback = getCallbackData();

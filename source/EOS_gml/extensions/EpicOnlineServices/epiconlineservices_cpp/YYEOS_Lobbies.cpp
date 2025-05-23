@@ -388,8 +388,8 @@ void EOS_CALL Lobby_AddNotifySendLobbyNativeInviteRequestedCallback(const EOS_Lo
 	DsMapAddString(map, "local_user_id", productID_toString(data->LocalUserId));
 	DsMapAddString(map, "lobby_id", data->LobbyId);
 
-	DsMapAddString(map, "local_user_id", data->TargetNativeAccountType);
-	DsMapAddString(map, "lobby_id", data->TargetUserNativeAccountId);
+	DsMapAddString(map, "target_native_account_type", data->TargetNativeAccountType);
+	DsMapAddString(map, "target_user_native_account_id", data->TargetUserNativeAccountId);
 	DsMapAddInt64(map, "ui_event_id", (int64)data->UiEventId);
 
 	CreateAsyncEventWithDSMap(map, 70);
@@ -491,11 +491,17 @@ func double __eos_lobby_create_lobby(char* buff_args)
 
 	Options.ApiVersion = EOS_LOBBY_CREATELOBBY_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(YYGetString(args[0]));
+
 	auto array_ids = YYGetArray(args[1]);
-	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
-	Options.AllowedPlatformIds = ids.data();
-	Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
-	Options.LobbyId = strcmp(YYGetString(args[2]), "") == 0 ? nullptr : YYGetString(args[2]);
+	if (!array_ids.empty())
+	{
+		std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
+		Options.AllowedPlatformIds = ids.data();
+		Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
+	}
+
+	auto lobbyId = YYGetString(args[2]);
+	Options.LobbyId = strcmp(lobbyId, "") == 0 ? nullptr : lobbyId;
 	Options.BucketId = YYGetString(args[3]);
 	Options.MaxLobbyMembers = YYGetUint32(args[4]);
 	Options.PermissionLevel = (EOS_ELobbyPermissionLevel)YYGetUint8(args[5]); // EOS_ELobbyPermissionLevel::EOS_LPL_INVITEONLY;
@@ -1555,10 +1561,12 @@ func double __eos_lobby_modification_set_allowed_platform_ids(char* buff_args)
 	Options.ApiVersion = EOS_LOBBYMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST;
 
 	auto array_ids = YYGetArray(args[0]);
-	std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
-
-	Options.AllowedPlatformIds = ids.data();
-	Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
+	if (!array_ids.empty()) 
+	{
+		std::vector<uint32_t> ids = VectorUInt32FromVector(array_ids);
+		Options.AllowedPlatformIds = ids.data();
+		Options.AllowedPlatformIdsCount = (uint32_t)ids.size();
+	}
 
 	EOS_EResult result = EOS_LobbyModification_SetAllowedPlatformIds(mHLobbyModification, &Options);
 

@@ -156,11 +156,7 @@ YYEXPORT void EpicGames_Auth_DeletePersistentAuth(RValue &Result, CInstance *sel
 
 	EOS_Auth_DeletePersistentAuthOptions Options = {};
 	Options.ApiVersion = EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST;
-
-	if (strcmp(refreshtoken, "") == 0)
-		Options.RefreshToken = NULL;
-	else
-		Options.RefreshToken = refreshtoken;
+	Options.RefreshToken = strcmp(refreshtoken, "") == 0 ? nullptr : refreshtoken;
 
 	callback *mcallback = getCallbackData();
 
