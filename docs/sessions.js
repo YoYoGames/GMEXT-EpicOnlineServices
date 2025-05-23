@@ -485,7 +485,7 @@
  * @func eos_sessions_copy_session_handle_by_invite_id
  * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByInviteId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id)
  * 
- * This function is used to immediately retrieve a handle to the session information from after notification of an invite. If the call returns an `EOS_Result.Success` result, the out parameter, OutSessionHandle, must be passed to ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information from after notification of an invite. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
@@ -505,7 +505,7 @@
  * @func eos_sessions_copy_session_handle_by_ui_event_id
  * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByUiEventId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-ui-event-id)
  * 
- * This function is used to immediately retrieve a handle to the session information from after notification of a join game event. If the call returns an `EOS_Result.Success` result, the out parameter, OutSessionHandle, must be passed to ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information from after notification of a join game event. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
@@ -525,7 +525,7 @@
  * @func eos_sessions_copy_session_handle_for_presence
  * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleForPresence](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-for-presence)
  * 
- * This function is used to immediately retrieve a handle to the session information which was marked with `presence_enabled` on create or join. If the call returns an `EOS_Result.Success` result, the out parameter, OutSessionHandle, must be passed to ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information which was marked with `presence_enabled` on create or join. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
@@ -962,7 +962,7 @@
  * @func eos_session_search_copy_search_result_by_index
  * @desc **Epic Online Services Function:** [EOS_SessionSearch_CopySearchResultByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-copy-search-result-by-index)
  * 
- * This function is used to immediately retrieve a handle to the session information from a given search result. If the call returns an `EOS_Result.Success` result, the out parameter, OutSessionHandle, must be passed to ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information from a given search result. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
