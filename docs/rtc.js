@@ -156,6 +156,7 @@
  * @member {real} identifier The async identifier returned by the call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request
  * @member {string} room_name The room the user was trying to join
+ * @member {array[struct]} options an array of structs holding a `key` and `value`
  * @event_end
  * 
  * @func_end
