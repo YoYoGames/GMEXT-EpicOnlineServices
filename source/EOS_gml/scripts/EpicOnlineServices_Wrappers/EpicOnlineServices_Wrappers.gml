@@ -62,7 +62,7 @@ function eos_session_modification_add_attribute(AdvertisementType,Sessionattribu
 function eos_session_modification_set_allowed_platform_ids(array_ids)
 {
 	var _args = [
-		[array_ids, buffer_u8], // struct
+		[array_ids ?? [], buffer_u32], // struct
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -86,7 +86,7 @@ function eos_sessions_copy_session_handle_by_ui_event_id(ui_event_id)
 function eos_sessions_create_session_modification(allowed_platform_ids,presence_enabled,sanctions_enabled,bucket_id,local_user_id,max_players,session_id,session_name)
 {
 	var _args = [
-		[allowed_platform_ids, buffer_u32],//0,Array
+		[allowed_platform_ids ?? [], buffer_u32],//0,Array
 		[presence_enabled, buffer_bool],//1
 		[sanctions_enabled, buffer_bool],//2
 		[bucket_id, buffer_string],//3
@@ -647,7 +647,7 @@ function eos_lobby_create_lobby(local_user_id,allowed_platform_ids,lobby_id,buck
 {
 	var _args = [
 		[local_user_id,buffer_string],
-		[allowed_platform_ids, buffer_u32],//0,Array
+		[allowed_platform_ids ?? [], buffer_u32],//0,Array
 		[lobby_id,buffer_string],
 		[bucket_id,buffer_string],
 		[max_lobby_members,buffer_f64],
@@ -869,7 +869,7 @@ function eos_lobby_modification_add_member_attribute(visibility,attribute)
 function eos_lobby_modification_set_allowed_platform_ids(allowed_platform_ids)
 {
 	var _args = [
-		[allowed_platform_ids,undefined],//Array
+		[allowed_platform_ids ?? [],undefined],//Array
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -1181,13 +1181,14 @@ function eos_rtc_audio_remove_notify_participant_updated(notification_id)
 }
 
 //__eos_rtc_audio_send_audio
-function eos_rtc_audio_send_audio(channels,frames_count,sample_rate,local_user_id,room_name)
+function eos_rtc_audio_send_audio(channels,frames_count,frames,sample_rate,local_user_id,room_name)
 {
 	var _args = [
 		[channels,buffer_u32],
         [frames_count,buffer_u32],
+        [frames,BUFFER_BUFFER],
         [sample_rate,buffer_u32],
-        [local_user_id,buffer_string],
+        [local_user_id ?? pointer_null],
         [room_name,buffer_string],
 	]
 		
