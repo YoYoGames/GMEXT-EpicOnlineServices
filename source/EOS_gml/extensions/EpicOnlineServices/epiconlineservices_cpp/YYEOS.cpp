@@ -186,36 +186,14 @@
 		YYCreateString(&Result, EOS_EResult_ToString((EOS_EResult)v));
 	}
 	
-
-
-	std::string VectorOfStr2ArrayStr(std::vector<const char*> vec)
+	void ProductIdsToArray(RValue& result, EOS_ProductUserId* user_ids, int count)
 	{
-		std::string str = "[";
-		for (int a = 0; a < vec.size(); a++)
+		YYCreateArray(&result, count);
+
+		for (int i = 0; i < count; i++)
 		{
-			if (a != 0)
-			{
-				str += ",";
-			}
-			
-			std::string element = vec.at(a);
-			str += "\"" + element + "\"";
+			RValue value{};
+			YYCreateString(&value, productID_toString(user_ids[i]));
+			SET_RValue(&result, &value, NULL, i);
 		}
-
-		str += "]";
-
-		return str;
-	}
-
-	std::string productIds2ArrayStr(EOS_ProductUserId* user_ids, int count)
-	{
-		std::vector<const char*> vec = {};
-		for (int a = 0; a < count; a++)
-		{
-			vec.push_back(productID_toString(user_ids[a]));
-		}
-		
-		std::cout << vec.size() << " ->" << VectorOfStr2ArrayStr(vec) << std::endl;
-
-		return VectorOfStr2ArrayStr(vec);
 	}

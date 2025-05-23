@@ -643,7 +643,7 @@ function eos_lobby_copy_lobby_details_handle_by_ui_event_id(ui_event_id)
 }
 
 //__eos_lobby_create_lobby
-function eos_lobby_create_lobby(local_user_id,allowed_platform_ids,lobby_id,bucket_id,max_lobby_members,permission_level,allow_invites,crossplay_opt_out,disable_host_migration,enable_join_by_id,presence_enabled,enable_rtc_room,flags,use_manual_audio_input,use_manual_audio_output,local_audio_device_input_starts_muted)
+function eos_lobby_create_lobby(local_user_id,allowed_platform_ids,lobby_id,bucket_id,max_lobby_members,permission_level,allow_invites,crossplay_opt_out,disable_host_migration,enable_join_by_id,presence_enabled, enable_rtc_room = false, flags = EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL, use_manual_audio_input = false, use_manual_audio_output = false, local_audio_device_input_starts_muted = false)
 {
 	var _args = [
 		[local_user_id,buffer_string],
