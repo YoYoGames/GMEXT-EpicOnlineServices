@@ -11,7 +11,7 @@
  * 
  * @param {string} accountID The Epic Account ID of the local player requesting the information
  * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
- * @param {string} accountID_external The external account ID associated with the (external) user info to retrieve from the cache; cannot be null
+ * @param {string} accountID_external The external account ID associated with the (external) user info to retrieve from the cache
  * 
  * @returns {struct.ExternalUserInfo}
  * 
@@ -305,26 +305,30 @@
 
 /**
  * @struct ExternalUserInfo
- * @desc The external user info is represented by a struct and contains information about a single external user info.
+ * @desc **Epic Online Services Struct:** [EOS_UserInfo_ExternalUserInfo](https://dev.epicgames.com/docs/api-ref/structs/eos-user-info-external-user-info)
+ * 
+ * The external user info is represented by a struct and contains information about a single external user info.
  * 
  * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {string} DisplayName The display name of the external account. Can be null.
- * @member {string} AccountId The ID of the external account. Can be null.
+ * @member {string} DisplayName The display name of the external account. May not be present in the struct if not set.
+ * @member {string} AccountId The ID of the external account. May not be present in the struct if not set.
  * @member {constant.eos_external_account_type} AccountType The type of the external account.
  * @struct_end
  */
 
 /**
  * @struct UserInfo
- * @desc The user info is represented by a struct and contains information about a single user info.
+ * @desc **Epic Online Services Struct:** [EOS_UserInfo](https://dev.epicgames.com/docs/api-ref/structs/eos-user-info)
+ * 
+ * The user info is represented by a struct and contains information about a single user info.
  * 
  * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code.
- * @member {string} DisplayName The display name. This may be null.
- * @member {string} Country The name of the owner's country. This may be null.
- * @member {string} Nickname A nickname/alias for the target user assigned by the local user. This may be null.
- * @member {string} PreferredLanguage The ISO 639 language code for the user's preferred language. This may be null.
+ * @member {string} DisplayName The display name. This value may not be present in the struct if not set.
+ * @member {string} Country The name of the owner's country. This value may not be present in the struct if not set.
+ * @member {string} Nickname A nickname/alias for the target user assigned by the local user. This value may not be present in the struct if not set.
+ * @member {string} PreferredLanguage The ISO 639 language code for the user's preferred language. This value may not be present in the struct if not set.
  * @member {string} AccountID The Epic Account ID of the user
  * @struct_end
  */

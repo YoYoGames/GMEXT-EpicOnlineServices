@@ -8,25 +8,25 @@
  * 
  * @event social
  * @member {string} type The string `"eos_connect_add_notify_auth_expiration"`
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
  * identifier = eos_connect_add_notify_auth_expiration();
  * ```
- * The code sample above save the identifier that can be used inside a ${event.social}.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
  * if (async_load[? "type"] == "eos_connect_add_notify_auth_expiration")
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -44,8 +44,8 @@
  * 
  * @event social
  * @member {string} type The string `"eos_connect_add_notify_login_status_changed"`
- * @member {constant.eos_login_status} CurrentStatus The status at the time of the notification
- * @member {constant.eos_login_status} PrevStatus The status prior to the change
+ * @member {constant.EOS_LoginStatus} current_status The status at the time of the notification
+ * @member {constant.EOS_LoginStatus} previous_status The status prior to the change
  * @event_end
  * 
  * @example
@@ -58,13 +58,13 @@
  * if (async_load[? "type"] == "eos_connect_add_notify_login_status_changed")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -78,16 +78,16 @@
  * 
  * This function fetches an ID token for a Product User ID.
  * 
- * @param {string} user The local Product User ID whose ID token should be copied.
+ * @param {string} user The local Product User ID whose ID token should be copied
  * 
  * @returns {struct.IdToken}
  * 
  * @example
  * ```gml
  * var _struct = eos_connect_copy_id_token(user);
- * if(_struct.status = EOS_SUCCESS)
+ * if(_struct.status = EOS_Result.Success)
  * {
- *     JsonWebToken = _struct.JsonWebToken;
+ *     json_web_token = _struct.json_web_token;
  * }
  * ```
  * The above code shows an example of how the function should be used. The JWT associated with the provided product user ID is returned inside the struct, alongside other useful information.
@@ -100,14 +100,14 @@
  * 
  * This function fetches information about a Product User, using the external account that they most recently logged in with as the reference.
  * 
- * @param {string} userID_target Product user ID to look for when copying external account info from the cache.
+ * @param {string} user_id_target Product user ID to look for when copying external account info from the cache.
  * 
  * @returns {struct.ExternalAccountInfo}
  * 
  * @example
  * ```gml
- * var _struct = eos_connect_copy_product_user_info(userID_target);
- * if(_struct.status == EOS_SUCCESS)
+ * var _struct = eos_connect_copy_product_user_info(user_id_target);
+ * if(_struct.status == EOS_Result.Success)
  * {
  *     // access the data here
  * }
@@ -124,10 +124,10 @@
  * 
  * @event social
  * @member {string} type The string `"eos_connect_create_user"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
- * @member {string} [LocalUserId] If the operation succeeded, this is the Product User ID of the local user who was created.
+ * @member {real} identifier The asynchronous listener ID
+ * @member {string} [local_user_id] If the operation succeeded, this is the Product User ID of the local user who was created
  * @event_end
  * 
  * @returns {real}
@@ -142,13 +142,13 @@
  * if (async_load[? "type"] == "eos_connect_create_user")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -162,13 +162,13 @@
  * 
  * This function fetches the login status for a Product User ID. This Product User ID is considered logged in as long as the underlying access token has not expired.
  * 
- * @param {string} user The Product User ID of the user being queried.
+ * @param {string} user The Product User ID of the user being queried
  * 
  * @returns {real} EpicGames Login Status
  * 
  * @example
  * ```gml
- * if(eos_connect_get_login_status(user) == EOS_LS_LOGGED_IN)
+ * if(eos_connect_get_login_status(user) == EOS_LoginStatus.LoggedIn)
  *     show_debug_message(user + ": is logged");
  * else
  *     show_debug_message(user + ": not logged");
@@ -183,18 +183,18 @@
  * 
  * This function logs in / authenticates given a valid set of external auth credentials.
  * 
- * @param {constant.eos_external_credential_type} type Type of external login; identifies the authentication method to use.
- * @param {string} access_token External token associated with the user logging in.
- * @param {string} display_name The user's display name on the identity provider systems.
+ * @param {constant.EOS_ExternalCredentialType} type Type of external login; identifies the authentication method to use.
+ * @param {string} access_token External token associated with the user logging in
+ * @param {string} display_name The user's display name on the identity provider systems
  * 
  * @returns {real}
  * 
  * @event social
  * @member {string} type The string `"eos_connect_login"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
- * @member {string} [LocalUserId] If the operation succeeded, this is the Product User ID of the local user who logged in.
+ * @member {real} identifier The asynchronous listener ID
+ * @member {string} [local_user_id] If the operation succeeded, this is the Product User ID of the local user who logged in.
  * @event_end
  * 
  * @example
@@ -207,13 +207,13 @@
  * if (async_load[? "type"] == "eos_connect_login")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -231,11 +231,11 @@
  * 
  * @example
  * ```gml
- * AddNotifyAuthExpiration_id = eos_connect_add_notify_auth_expiration();
+ * add_notify_auth_expiration_id = eos_connect_add_notify_auth_expiration();
  * //...
  * //...Later
  * //...
- * eos_connect_remove_notify_auth_expiration(AddNotifyAuthExpiration_id);
+ * eos_connect_remove_notify_auth_expiration(add_notify_auth_expiration_id);
  * ```
  * The code sample above enables the auth expiration notifications (${function.eos_connect_add_notify_auth_expiration}) and later disables them by referring to the previously generated handle.
  * @function_end
@@ -247,15 +247,15 @@
  * 
  * This function unregisters from receiving user login status updates.
  * 
- * @param {real} Id The handle representing the registered callback (returned by ${function.eos_connect_add_notify_login_status_changed})
+ * @param {real} id The handle representing the registered callback (returned by ${function.eos_connect_add_notify_login_status_changed})
  * 
  * @example
  * ```gml
- * NotifyLoginStatusChanged_id = eos_connect_add_notify_login_status_changed();
+ * notify_login_status_changed_id = eos_connect_add_notify_login_status_changed();
  * //...
  * //...Later
  * //...
- * eos_connect_remove_notify_login_status_changed(NotifyLoginStatusChanged_id);
+ * eos_connect_remove_notify_login_status_changed(notify_login_status_changed_id);
  * ```
  * The code sample above enables the login status changed notifications (${function.eos_connect_add_notify_login_status_changed}) and later disables them by referring to the previously generated handle.
  * @function_end
@@ -269,28 +269,28 @@
  * 
  * The status member present in the struct can be represented by one of the following values:
  * 
- * * `EOS_SUCCESS` if the information is available and was correctly returned;
- * * `EOS_INVALID_PARAMETERS` (extension internal error, should never be returned);
- * * `EOS_NOT_FOUND` if the achievement definition is not found;
- * * `EOS_INVALID_PRODUCTUserID` if any of the userid options are incorrect;
+ * * `EOS_Result.Success` if the information is available and was correctly returned;
+ * * `EOS_Result.InvalidParameters` (extension internal error, should never be returned);
+ * * `EOS_Result.NotFound` if the achievement definition is not found;
+ * * `EOS_Result.Invalid_ProductUserID` if any of the user ID options are incorrect;
  * 
  * @member {constant.EOS_Result} status The result value of the task
  * @member {string} status_message Text representation of the status code
- * @member {string} DisplayName Display name, can be null if not set.
- * @member {string} userID The Product User ID of the target user.
- * @member {string} AccountId External account ID. May be set to an empty string if the AccountIdType of another user belongs to different account system than the local user's authenticated account. The availability of this field is dependent on account system specifics.
- * @member {constant.eos_external_account_type} AccountIdType The identity provider that owns the external account.
- * @member {int64} LastLoginTime The POSIX timestamp for the time the user last logged in.
+ * @member {string} display_name Display name, can not be present in the struct if not set
+ * @member {string} user_id The Product User ID of the target user
+ * @member {string} account_id External account ID. May be set to an empty string if the `account_id_type` of another user belongs to different account system than the local user's authenticated account. The availability of this field is dependent on account system specifics.
+ * @member {constant.eos_external_account_type} account_id_type The identity provider that owns the external account
+ * @member {int64} last_login_time The POSIX timestamp for the time the user last logged in
  * @struct_end
  */
 
 /**
  * @struct IdToken
- * @desc A struct containg information about an ID token.
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @desc A struct containing information about an ID token.
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string.
- * @member {string} ProductUserId The Product User ID described by the ID token.
+ * @member {string} json_web_token The ID token as a JSON Web Token (JWT) string
+ * @member {string} product_user_id The Product User ID described by the ID token
  * @struct_end
  */
 

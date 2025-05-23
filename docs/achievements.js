@@ -9,9 +9,9 @@
  * @event social
  * 
  * @member {string} type `"eos_achievements_add_notify_achievements_unlocked_v2"`
- * @member {int64} UnlockTime POSIX timestamp when the achievement was unlocked
- * @member {string} AchievementId The Achievement ID for the achievement that was unlocked. Pass this to ${function.eos_achievements_copy_player_achievement_by_achievement_id} to get the full achievement information.
- * @member {string} UserId The Product User ID for the user who received the unlocked achievements notification
+ * @member {int64} unlock_time POSIX timestamp when the achievement was unlocked
+ * @member {string} achievement_id The achievement ID for the achievement that was unlocked. Pass this to ${function.eos_achievements_copy_player_achievement_by_achievement_id} to get the full achievement information.
+ * @member {string} user_id The Product User ID for the user who received the unlocked achievements notification
  * 
  * @event_end
  * 
@@ -28,13 +28,13 @@
  * if (async_load[? "type"] == "eos_achievements_add_notify_achievements_unlocked_v2")
  * if(async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -50,7 +50,7 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_achievements_query_definitions} to store values in cache.]]
  * 
- * @param {string} AchievementId Achievement ID to look for when copying the definition from the cache
+ * @param {string} achievement_id Achievement ID to look for when copying the definition from the cache
  *
  * @returns {struct.AchievementDefinition}
  * 
@@ -58,9 +58,9 @@
  * 
  * ```gml
  * var _struct = eos_achievements_copy_achievement_definition_v2_by_achievement_id("MyAchievement1");
- * if(_struct.status == EOS_SUCCESS)
+ * if(_struct.status == EOS_Result.Success)
  * {
- *     var _achievement_id = _struct.AchievementId;
+ *     var _achievement_id = _struct.achievement_id;
  * }
  * ```
  * The above code will show an example of how the function should be used. The achievement definition data is returned providing an achievement ID.
@@ -84,9 +84,9 @@
  * for(var i = 0 ; i < eos_achievements_get_achievement_definition_count() ; i ++)
  * {
  *     var _struct = eos_achievements_copy_achievement_definition_v2_by_index(i);
- *     if(_struct.status == EOS_SUCCESS)
+ *     if(_struct.status == EOS_Result.Success)
  *     {
- *          var _achievement_id = _struct.AchievementId;
+ *         var _achievement_id = _struct.achievement_id;
  *     }
  * }
  * ```
@@ -102,18 +102,18 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_achievements_query_player_achievements} to store values in cache.]]
  * 
- * @param {string} userID The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this should be null.
- * @param {string} userID_target The Product User ID for the user whose achievement is to be retrieved.
- * @param {string} achievementID Achievement ID to search for when retrieving player achievement data from the cache.
+ * @param {string} user_id The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this value will not be present in the struct.
+ * @param {string} user_id_target The Product User ID for the user whose achievement is to be retrieved
+ * @param {string} achievement_id Achievement ID to search for when retrieving player achievement data from the cache
  * 
  * @returns {struct.PlayerAchievement}
  * 
  * @example
  * ```gml
- * var _struct = eos_achievements_copy_player_achievement_by_achievement_id(userID, userID_target, achievementID);
- * if(struct.status == EOS_SUCCESS)
+ * var _struct = eos_achievements_copy_player_achievement_by_achievement_id(user_id, user_id_target, achievement_id);
+ * if(struct.status == EOS_Result.Success)
  * {
- *     var _achievementd = _struct.AchievementId;
+ *     var _achievement_id = _struct.achievement_id;
  * }
  * ```
  * The above code will show an example of how the function should be used. The player achievement data is returned providing an achievement ID.
@@ -128,9 +128,9 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_achievements_query_player_achievements} to store values in cache.]]
  * 
- * @param {string} userID The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this should be null.
- * @param {string} userID_target The Product User ID for the user whose achievement is to be retrieved.
- * @param {real} index The index of the player achievement data to retrieve from the cache.
+ * @param {string} user_id The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this value will not be present in the struct.
+ * @param {string} user_id_target The Product User ID for the user whose achievement is to be retrieved
+ * @param {real} index The index of the player achievement data to retrieve from the cache
  * 
  * @returns {struct.PlayerAchievement}
  * 
@@ -139,9 +139,9 @@
  * for(var i = 0 ; i < eos_achievements_get_player_achievement_count(userID) ; i ++)
  * {
  *     var _struct = eos_achievements_copy_player_achievement_by_index(i);
- *     if(_struct.status == EOS_SUCCESS)
+ *     if(_struct.status == EOS_Result.Success)
  *     {
- *          var _achievement_id = _struct.AchievementId;
+ *         var _achievement_id = _struct.achievement_id;
  *     }
  * }
  * ```
@@ -164,9 +164,9 @@
  * for(var i = 0 ; i < eos_achievements_get_achievement_definition_count() ; i ++)
  * {
  *     var _struct = eos_achievements_copy_achievement_definition_v2_by_index(i);
- *     if(_struct.status == EOS_SUCCESS)
+ *     if(_struct.status == EOS_Result.Success)
  *     {
- *          var _achievement_id = _struct.AchievementId;
+ *         var _achievement_id = _struct.achievement_id;
  *     }
  * }
  * ```
@@ -182,7 +182,7 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_achievements_query_player_achievements} to store values in cache.]]
  * 
- * @param {string} userID The Product User ID for the user whose achievement count is being retrieved.
+ * @param {string} user_id The Product User ID for the user whose achievement count is being retrieved
  * 
  * @returns {real}
  * 
@@ -191,9 +191,9 @@
  * for(var i = 0 ; i < eos_achievements_get_player_achievement_count(userID) ; i ++)
  * {
  *     var _struct = eos_achievements_copy_player_achievement_by_index(i);
- *     if(_struct.status == EOS_SUCCESS)
+ *     if(_struct.status == EOS_Result.Success)
  *     {
- *          var _achievement_id = _struct.AchievementId;
+ *         var _achievement_id = _struct.achievement_id;
  *     }
  * }
  * ```
@@ -212,11 +212,11 @@
  * * ${function.eos_achievements_copy_achievement_definition_v2_by_index}
  * * ${function.eos_achievements_get_achievement_definition_count}
  * 
- * @param {string} userId Product User ID for user who is querying definitions.
+ * @param {string} user_id Product User ID for user who is querying definitions.
  * 
  * @event social
  * @member {string} type `"eos_achievements_query_definitions"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -226,7 +226,7 @@
  * @example
  * 
  * ```gml
- * identifier = eos_achievements_query_definitions(userId);
+ * identifier = eos_achievements_query_definitions(user_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -234,13 +234,13 @@
  * if (async_load[? "type"] == "eos_achievements_query_definitions")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -260,14 +260,14 @@
  * * ${function.eos_achievements_copy_player_achievement_by_index}
  * * ${function.eos_achievements_get_player_achievement_count}
  * 
- * @param {string} userID The Product User ID for the user who is querying for player achievements. For a Dedicated Server this should be null.
- * @param {string} userID_target The Product User ID for the user whose achievements are to be retrieved.
+ * @param {string} user_id The Product User ID for the user who is querying for player achievements. For a Dedicated Server this value will not be present in the struct.
+ * @param {string} user_id_target The Product User ID for the user whose achievements are to be retrieved
  * 
  * @returns {real}
  * 
  * @event social
  * @member {string} type `"eos_achievements_query_player_achievements"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * 
@@ -275,7 +275,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_achievements_query_player_achievements(userID, userID);
+ * identifier = eos_achievements_query_player_achievements(user_id, user_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -283,13 +283,13 @@
  * if (async_load[? "type"] == "eos_achievements_query_player_achievements")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -315,7 +315,7 @@
  * //...
  * eos_achievements_remove_notify_achievements_unlocked(handle);
  * ```
- * The code sample above enables the achievement unlock notifications (${function.eos_achievements_add_notify_achievements_unlocked_v2}) and later disables them by referring to the previous generated handle.
+ * The code sample above enables the achievement unlock notifications (${function.eos_achievements_add_notify_achievements_unlocked_v2}) and later disables them by referring to the previously generated handle.
  * @function_end
  */
 
@@ -325,16 +325,16 @@
  * 
  * This function unlocks an achievement for a specific player.
  * 
- * @param {string} userID The Product User ID for the user whose achievements we want to unlock.
- * @param {string} AchievementID Achievement ID to unlock.
+ * @param {string} user_id The Product User ID for the user whose achievements we want to unlock
+ * @param {string} achievement_id Achievement ID to unlock
  * 
  * @returns {real}
  * 
  * @event social
  * @member {string} type The string `"eos_achievements_unlock_achievement"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
@@ -349,13 +349,13 @@
  * if (async_load[? "type"] == "eos_achievements_unlock_achievement")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_Result.Success)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -372,22 +372,22 @@
  * 
  * The status member present in the struct can be represented by one of the following values:
  * 
- * * `EOS_SUCCESS` if the information is available and was correctly returned;
- * * `EOS_INVALID_PARAMETERS` (extension internal error, should never be returned);
- * * `EOS_NOT_FOUND` if the achievement definition is not found;
- * * `EOS_INVALID_PRODUCTUserID` if you pass an invalid user ID;
+ * * `EOS_Result.Success` if the information is available and was correctly returned;
+ * * `EOS_Result.InvalidParameters` (extension internal error, should never be returned);
+ * * `EOS_Result.NotFound` if the achievement definition is not found;
+ * * `EOS_Result.Invalid_ProductUserID` if you pass an invalid user ID;
  * 
  * @member {constant.EOS_Result} status The result value of the task
  * @member {string} status_message Text representation of the status code
- * @member {string} AchievementId This achievement's unique identifier
- * @member {real} Progress Progress towards completing this achievement (as a percentage)
- * @member {string} UnlockTime The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be `EOS_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED`.
- * @member {string} StatInfoCount The number of player stat info entries associated with this achievement.
- * @member {array[struct.PlayerStatInfo]} StatInfo Array of ${struct.PlayerStatInfo} structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats
- * @member {string} DisplayName Localized display name for the achievement based on this specific player's current progress on the achievement
- * @member {string} Description Localized description for the achievement based on this specific player's current progress on the achievement
- * @member {string} IconURL URL of an icon to display for the achievement based on this specific player's current progress on the achievement. This may be null if there is no data configured in the developer portal
- * @member {string} FlavorText Localized flavor text that can be used by the game in an arbitrary manner. This may be null if there is no data configured in the developer portal
+ * @member {string} achievement_id This achievement's unique identifier
+ * @member {real} progress Progress towards completing this achievement (as a percentage)
+ * @member {string} unlock_time The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be `EOS_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED`.
+ * @member {string} stat_info_count The number of player stat info entries associated with this achievement.
+ * @member {array[struct.PlayerStatInfo]} stat_info Array of ${struct.PlayerStatInfo} structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats
+ * @member {string} display_name Localized display name for the achievement based on this specific player's current progress on the achievement
+ * @member {string} description Localized description for the achievement based on this specific player's current progress on the achievement
+ * @member {string} icon_url URL of an icon to display for the achievement based on this specific player's current progress on the achievement. This value may not be present in the struct if there is no data configured in the developer portal
+ * @member {string} flavor_text Localized flavor text that can be used by the game in an arbitrary manner. This value may not be present in the struct if there is no data configured in the developer portal
  * @struct_end
  */
 
@@ -397,10 +397,10 @@
  * 
  * This struct contains information about a collection of stat threshold data.
  * 
- * @member {string} Name The name of the stat.
- * @member {real} ApiVersion The API version.
- * @member {real} CurrentValue The current value of the stat.
- * @member {real} ThresholdValue The value that the stat must surpass to satisfy the requirement for unlocking an achievement.
+ * @member {string} name The name of the stat.
+ * @member {real} api_version The API version.
+ * @member {real} current_value The current value of the stat.
+ * @member {real} threshold_value The value that the stat must surpass to satisfy the requirement for unlocking an achievement.
  * @struct_end
  */
 
@@ -410,22 +410,22 @@
  * 
  *   The status member present in the struct can be represented by one of the following values:
  *   
- * * `EOS_SUCCESS` if the information is available and was correctly returned;
- * * `EOS_INVALID_PARAMETERS` (extension internal error, should never be returned);
- * * `EOS_NOT_FOUND` if the achievement definition is not found;
- * * `EOS_INVALID_PRODUCTUserID` if any of the userid options are incorrect;
+ * * `EOS_Result.Success` if the information is available and was correctly returned;
+ * * `EOS_Result.InvalidParameters` (extension internal error, should never be returned);
+ * * `EOS_Result.NotFound` if the achievement definition is not found;
+ * * `EOS_Result.Invalid_ProductUserID` if any of the user_id options are incorrect;
  * 
  * @member {constant.EOS_Result} status The result value of the task
  * @member {string} status_message Text representation of the status code
- * @member {string} AchievementId Achievement ID that can be used to uniquely identify the achievement
- * @member {string} UnlockedDisplayName Localized display name for the achievement when it has been unlocked
- * @member {string} UnlockedDescription Localized description for the achievement when it has been unlocked
- * @member {string} LockedDisplayName Localized display name for the achievement when it is locked or hidden
- * @member {string} LockedDescription Localized description for the achievement when it is locked or hidden
- * @member {string} FlavorText Localized flavor text that can be used by the game in an arbitrary manner. This may be null if there is no data configured in the development portal
- * @member {string} UnlockedIconURL URL of an icon to display for the achievement when it is unlocked. This may be null if there is no data configured in the development portal
- * @member {string} LockedIconURL URL of an icon to display for the achievement when it is locked or hidden. This may be null if there is no data configured in the development portal
- * @member {bool} bIsHidden `true` if the achievement is hidden; `false` otherwise
+ * @member {string} achievement_id Achievement ID that can be used to uniquely identify the achievement
+ * @member {string} unlocked_display_name Localized display name for the achievement when it has been unlocked
+ * @member {string} unlocked_description Localized description for the achievement when it has been unlocked
+ * @member {string} locked_display_name Localized display name for the achievement when it is locked or hidden
+ * @member {string} locked_description Localized description for the achievement when it is locked or hidden
+ * @member {string} flavor_text Localized flavor text that can be used by the game in an arbitrary manner. This value may not be present in the struct if there is no data configured in the development portal
+ * @member {string} unlocked_icon_url URL of an icon to display for the achievement when it is unlocked. This value may not be present in the struct if there is no data configured in the development portal
+ * @member {string} locked_icon_url URL of an icon to display for the achievement when it is locked or hidden. This value may not be present in the struct if there is no data configured in the development portal
+ * @member {bool} is_hidden `true` if the achievement is hidden; `false` otherwise
  * @struct_end
  */
 

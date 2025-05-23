@@ -62,7 +62,7 @@
  * * ${function.eos_sanctions_copy_player_sanction_by_index}
  * * ${function.eos_sanctions_get_player_sanction_count}
  * 
- * @param {string} UserID The Product User ID of the local user who initiated this request. Dedicated servers should set this to null.
+ * @param {string} UserID The Product User ID of the local user who initiated this request. Dedicated servers should set this to an empty string.
  * @param {string} UserID_target Product User ID of the user whose active sanctions are to be retrieved.
  * 
  * @returns {real}

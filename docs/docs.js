@@ -8,13 +8,15 @@
  * 
  * @section Setup
  * @desc Follow these guides to get yourself going on everything you need for your new game: 
- * @ref page.Setup
+ * @ref page.setup
  * @ref page.logging_in
  * @section_end
  * 
  * @section Modules
  * 
- * @desc This extension API presents a variety of modules that can be used to push your game to the next level. These are the included modules:
+ * @desc This extension API presents a variety of modules that can be used to push your game to the next level. These are the included modules.
+ * 
+ * [[Note: The extension initialises all these modules when you add it to your game.]]
  * 
  * @ref module.achievements
  * @ref module.auth
@@ -22,11 +24,15 @@
  * @ref module.ecom
  * @ref module.friends
  * @ref module.leaderboards
+ * @ref module.lobbies
  * @ref module.metrics
+ * @ref module.p2p
  * @ref module.platform
  * @ref module.player_data_storage
  * @ref module.progression_snapshot
+ * @ref module.rtc
  * @ref module.sanctions
+ * @ref module.sessions
  * @ref module.stats
  * @ref module.title_storage
  * @ref module.user_interface
