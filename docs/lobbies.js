@@ -241,7 +241,7 @@
  * @member {string} type the string `"eos_lobby_add_notify_rtc_room_connection_changed"`
  * @member {string} local_user_id The Product User ID of the local user who is in the lobby and registered for notifications
  * @member {string} lobby_id The ID of the lobby which had a RTC Room connection state change
- * @member {constant.EOS_Result} disconnect_reason If `is_connected` is `false`, this result will be the reason we were disconnected. `EOS_Result.Success`: The room was left locally. This may be because: the associated lobby was left or destroyed, the connection to the lobby was interrupted, or because the SDK is being shutdown. If the lobby connection returns (lobby did not permanently go away), EOS will reconnect. EOS_NoConnection: There was a network issue connecting to the server. EOS will attempt to reconnect soon. EOS_RTC_UserKicked: The user has been kicked by the server. We will not reconnect. EOS_RTC_UserBanned: The user has been banned by the server. We will not reconnect. EOS_ServiceFailure: A known error occurred during interaction with the server. We will attempt to reconnect soon. EOS_UnexpectedError: Unexpected error. We will attempt to reconnect soon.
+ * @member {constant.EOS_Result} disconnect_reason If `is_connected` is `false`, this result will be the reason we were disconnected. `EOS_Result.Success`: The room was left locally. This may be because: the associated lobby was left or destroyed, the connection to the lobby was interrupted, or because the SDK is being shutdown. If the lobby connection returns (lobby did not permanently go away), EOS will reconnect. `EOS_Result.NoConnection`: There was a network issue connecting to the server. EOS will attempt to reconnect soon. `EOS_Result.RTC_UserKicked`: The user has been kicked by the server. We will not reconnect. `EOS_Result.RTC_UserBanned`: The user has been banned by the server. We will not reconnect. `EOS_Result.ServiceFailure`: A known error occurred during interaction with the server. We will attempt to reconnect soon. `EOS_Result.UnexpectedError`: Unexpected error. We will attempt to reconnect soon.
  * @member {bool} is_connected The new connection state of the room
  * @event_end
  * 
@@ -340,7 +340,7 @@
  * The function returns the async identifier.
  * 
  * @param {string} local_user_id The Product User ID of the local user creating the lobby; this user will automatically join the lobby as its owner
- * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. If null, the lobby will be unrestricted.
+ * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The lobby will be unrestricted if you pass an empty array.
  * @param {string} lobby_id Set to a globally unique value to override the backend assignment. If an empty string `""` is specified, the backend service will assign one to the lobby. Do not mix and match override and non override settings. This value can be of size [EOS_LOBBY_MIN_LOBBYIDOVERRIDE_LENGTH, EOS_LOBBY_MAX_LOBBYIDOVERRIDE_LENGTH]
  * @param {string} bucket_id The bucket ID associated with the lobby
  * @param {real} max_lobby_members The maximum number of users that can be in the lobby at a time
@@ -891,7 +891,7 @@
  * @func eos_lobby_details_copy_attribute_by_index
  * @desc **Epic Online Services Function:** [EOS_LobbyDetails_CopyAttributeByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-attribute-by-index)
  * 
- * This function is used to immediately retrieve a copy of a lobby attribute from a given source such as a existing lobby or a search result. If the call returns an `EOS_Result.Success` result, the out parameter, OutAttribute, must be passed to ${function.eos_lobby_attribute_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a copy of a lobby attribute from a given source such as a existing lobby or a search result.
  * 
  * @param {real} index The index of the attribute to retrieve
  * 
@@ -904,7 +904,7 @@
  * @func eos_lobby_details_copy_attribute_by_key
  * @desc **Epic Online Services Function:** [EOS_LobbyDetails_CopyAttributeByKey](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-attribute-by-key)
  * 
- * This function is used to immediately retrieve a copy of a lobby attribute from a given source such as a existing lobby or a search result. If the call returns an `EOS_Result.Success` result, the out parameter, OutAttribute, must be passed to ${function.eos_lobby_attribute_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a copy of a lobby attribute from a given source such as a existing lobby or a search result.
  * 
  * @param {string} attr_key The name of the attribute
  * 
@@ -950,7 +950,7 @@
  * @func eos_lobby_details_copy_info
  * @desc **Epic Online Services Function:** [EOS_LobbyDetails_CopyInfo](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-info)
  * 
- * This function is used to immediately retrieve a copy of lobby information from a given source such as a existing lobby or a search result. If the call returns an `EOS_Result.Success` result, the out parameter, OutLobbyDetailsInfo, must be passed to ${function.eos_lobby_details_info_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a copy of lobby information from a given source such as a existing lobby or a search result.
  * 
  * @returns {struct.EOS_LobbyDetails_Info}
  * 
@@ -961,7 +961,7 @@
  * @func eos_lobby_details_copy_member_attribute_by_index
  * @desc **Epic Online Services Function:** [EOS_LobbyDetails_CopyMemberAttributeByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-attribute-by-index)
  * 
- * This function is used to immediately retrieve a copy of a lobby member attribute from an existing lobby. If the call returns an `EOS_Result.Success` result, the out parameter, OutAttribute, must be passed to EOS_Lobby_Attribute_Release to release the memory associated with it.
+ * This function is used to immediately retrieve a copy of a lobby member attribute from an existing lobby.
  * 
  * [[Note: this information is only available if you are actively in the lobby. It is not available for search results.]]
  * 
@@ -977,7 +977,7 @@
  * @func eos_lobby_details_copy_member_attribute_by_key
  * @desc **Epic Online Services Function:** [EOS_LobbyDetails_CopyMemberAttributeByKey](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-attribute-by-key)
  * 
- * This function is used to immediately retrieve a copy of a lobby member attribute from an existing lobby. If the call returns an `EOS_Result.Success` result, the out parameter, OutAttribute, must be passed to EOS_Lobby_Attribute_Release to release the memory associated with it.
+ * This function is used to immediately retrieve a copy of a lobby member attribute from an existing lobby.
  * 
  * [[Note: this information is only available if you are actively in the lobby. It is not available for search results.]]
  *
@@ -1006,7 +1006,7 @@
  * @func eos_lobby_details_copy_member_info
  * @desc **Epic Online Services Function:** [EOS_LobbyDetails_CopyMemberInfo](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-info)
  * 
- * This function is used to immediately retrieve a copy of lobby member information from an existing lobby. If the call returns an `EOS_Result.Success` result, the out parameter, OutLobbyDetailsMemberInfo, must be passed to EOS_LobbyDetails_MemberInfo_Release to release the memory associated with it.
+ * This function is used to immediately retrieve a copy of lobby member information from an existing lobby.
  * 
  * [[Note: this information is only available if you are actively in the lobby. It is not available for search results.]]
  * 
@@ -1198,7 +1198,7 @@
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * * `EOS_Result.InvalidParameters` if the parameter is invalid
  *
- * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific header file. If null, the lobby will be unrestricted.
+ * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific header file. The lobby will be unrestricted if you pass an empty array.
  *
  * @returns {constant.EOS_Result}
  * 

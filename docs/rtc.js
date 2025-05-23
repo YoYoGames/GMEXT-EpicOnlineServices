@@ -142,11 +142,11 @@
  * 
  * @param {string} local_user_id The product user id of the user trying to request this operation.
  * @param {string} room_name The room the user would like to join.
- * @param {string} participant_id The participant id used to join the room. If set to NULL the LocalUserId will be used instead.
- * @param {string} participant_token Authorization credential token to join the room.
+ * @param {string} participant_id The participant id used to join the room. If set to an empty string the `local_user_id` will be used instead.
+ * @param {string} participant_token Authorization credential token to join the room
  * @param {bool} manual_audio_input_enabled Enable or disable Manual Audio Input. If manual audio input is enabled audio recording is not started and the audio buffers must be passed manually using ${function.eos_rtc_audio_send_audio}.
  * @param {bool} manual_audio_output_enabled Enable or disable Manual Audio Output. If manual audio output is enabled audio rendering is not started and the audio buffers must be received with ${function.eos_rtc_audio_add_notify_audio_before_render} and rendered manually.
- * @param {string} client_base_url The room the user would like to join.
+ * @param {string} client_base_url The room the user would like to join
  * @param {constant.EOS_RTC_JOINROOMFLAGS} flags Join room flags, e.g., `EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO`. This is a bitwise-or union of the defined flags.
  *
  * @returns {real}
@@ -816,7 +816,7 @@
  * [[Note: Due to Epic Online Services implementation details, this function requires that you first register to any notification for room.]]
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation
- * @param {string} participant_id The participant to modify or null to update the global configuration
+ * @param {string} participant_id The participant to modify or an empty string to update the global configuration
  * @param {string} room_name The room this setting should be applied on
  * @param {real} volume The volume to be set for received audio (range 0.0 to 100.0). Volume 50 means that the audio volume is not modified and stays in its source value.
  *
@@ -1053,7 +1053,7 @@
  * The function returns an async identifier.
  * 
  * @param {string} local_user_id The Product User ID of the user trying to request this operation
- * @param {string} participant_id The participant to modify or null to update the global configuration
+ * @param {string} participant_id The participant to modify or an empty string to update the global configuration
  * @param {string} room_name The room this setting should be applied on
  * @param {bool} data_enabled Creates or destroys data channel subscription
  *

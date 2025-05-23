@@ -10,7 +10,7 @@ Epic Online Services offers several ways to log in and authenticate. When you us
 |Steam Client|`EOS_LCT_ExternalAuth`|Steam Session Ticket used to automatically login the Steam user to their associated Epic account.|
 |Other store platforms and standalone distributions on PC and Mobile Devices|`EOS_LCT_AccountPortal` with `EOS_LCT_PersistentAuth`|Users are prompted to login using their Epic account credentials, after which a long-lived refresh token is stored locally to enable automatic login across consecutive application runs.|
 
-[[Note: See (${constant.eos_login_credential_type}) for the corresponding Login Type constants of the extension.]]
+[[Note: See (${constant.EOS_LoginCredentialType}) for the corresponding Login Type constants of the extension.]]
 
 ## Using the Epic Games Launcher
 
@@ -55,7 +55,7 @@ eos_auth_login(
 
 ## External Login Flow Guide
 
-This is a detailed login flow for external accounts (the required credentials depend on the ${constant.eos_external_credential_type} used with the ${function.eos_auth_login} API).
+This is a detailed login flow for external accounts (the required credentials depend on the ${constant.EOS_ExternalCredentialType} used with the ${function.eos_auth_login} API).
 
 1. Game calls ${function.eos_auth_login} with the `EOS_LCT_ExternalAuth` credential type.
 2. ${function.eos_auth_login} callback returns a status `EOS_INVALID_USER` with a non-undefined EOS_ContinuanceToken in the EOS_Auth_LoginCallbackInfo data.

@@ -11,20 +11,20 @@
  * [[Note: If one of the request batches fails, no data is cached and the entire query is marked as failed.]]
  * 
  * @param {string} user The Epic Account ID of the local user whose ownership to query
- * @param {array} CatalogItemIds The array of Catalog Item IDs to check for ownership
- * @param {string} catalogNamespace Optional product namespace, if not the one specified during initialisation
+ * @param {array} catalog_item_ids The array of Catalog Item IDs to check for ownership
+ * @param {string} catalog_namespace Optional product namespace, if not the one specified during initialisation
  * 
  * @event social
- * @member {string} type `"eos_ecom_query_ownership"`
+ * @member {string} type The string `"eos_ecom_query_ownership"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors 
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors 
  * @member {string} status_message A text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose ownership was queried
  * @event_end
  * 
  * @function_end
  */
-function eos_ecom_query_ownership(user, CatalogItemIds, catalogNamespace) {}
+function eos_ecom_query_ownership(user, catalog_item_ids, catalog_namespace) {}
 
 
 /**
@@ -34,20 +34,20 @@ function eos_ecom_query_ownership(user, CatalogItemIds, catalogNamespace) {}
  * This function queries the ownership status of all catalog item IDs under the given list of Sandbox IDs defined with Epic Online Services.
  * This data will be cached for a limited time and retrieved again from the backend when necessary.
  * 
- * @param {string} user The Epic Account ID of the local user whose ownership to query.
- * @param {array} SandboxIds The array of Sandbox IDs to check for ownership.
+ * @param {string} user The Epic Account ID of the local user whose ownership to query
+ * @param {array} sandbox_ids The array of sandbox IDs to check for ownership
  * 
  * @event social
- * @member {string} type `"eos_ecom_query_ownership_by_sandbox_ids"`
+ * @member {string} type The string `"eos_ecom_query_ownership_by_sandbox_ids"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose ownership was queried
  * @event_end
  * 
  * @function_end
  */
-function eos_ecom_query_ownership_by_sandbox_ids(user, SandboxIds) {}
+function eos_ecom_query_ownership_by_sandbox_ids(user, sandbox_ids) {}
 
 
 /**

@@ -125,7 +125,7 @@
  * The function returns the notification ID.
  *
  * @param {string} local_user_id The Product User ID of the local user who would like notifications
- * @param {string} socket_name An optional socket ID to filter interrupted connections on. If NULL, this function handler will be called for all interrupted connections
+ * @param {string} socket_name An optional socket ID to filter interrupted connections on. If an empty string, this function handler will be called for all interrupted connections.
  * 
  * @returns {real}
  * 
@@ -148,7 +148,7 @@
  * The function returns the notification ID.
  *
  * @param {string} local_user_id The Product User ID of the user who is listening for incoming connection requests
- * @param {string} socket_name The optional socket ID to listen for, used as a filter for incoming connection requests; If NULL, incoming connection requests will not be filtered
+ * @param {string} socket_name The optional socket ID to listen for, used as a filter for incoming connection requests; If an empty string, incoming connection requests will not be filtered
  * 
  * @returns {real}
  * 
@@ -187,7 +187,7 @@
  *
  * @param {string} local_user_id The Product User ID of the local user who would like to close a previously accepted connection (or decline a pending invite)
  * @param {string} remote_user_id The Product User ID of the remote user to disconnect from (or to reject a pending invite from)
- * @param {string} socket_name The socket ID of the connection to close (or optionally NULL to not accept any connection requests from the Remote User)
+ * @param {string} socket_name The socket ID of the connection to close (or optionally an empty string to not accept any connection requests from the Remote User)
  *
  * @returns {constant.EOS_Result}
  * 

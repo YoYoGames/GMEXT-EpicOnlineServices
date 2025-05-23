@@ -93,8 +93,8 @@
  * 
  * @member {string} host_address The IP address of this session as visible by the backend service
  * @member {real} num_open_public_connections The number of remaining open spaces on the session (`num_public_connections` - `registered_players`)
- * @member {string} owner_user_id The Product User ID of the session owner. Null if the session is not owned by a user.
- * @member {string} owner_server_client_id The client ID of the session owner. Null if the session is not owned by a server. The session is owned by a server if EOS_Platform_Options::bIsServer is `true`.
+ * @member {string} owner_user_id The Product User ID of the session owner. Pass an empty string if the session is not owned by a user.
+ * @member {string} owner_server_client_id The client ID of the session owner. Pass an empty string if the session is not owned by a server. The session is owned by a server if EOS_Platform_Options::bIsServer is `true`.
  * @member {string} session_id The session ID assigned by the backend service
  * @member {struct.SessionDetails_Settings} settings The additional settings associated with this session
  * @struct_end
@@ -106,7 +106,7 @@
  * 
  * This struct holds common settings associated with a single session.
  * 
- * @member {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. If null, the session will be unrestricted.
+ * @member {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass an empty array.
  * @member {bool} allow_join_in_progress Whether players are allowed to join the session while it is in the "in progress" state
  * @member {bool} invites_allowed Whether players are allowed to send invites for the session
  * @member {bool} sanctions_enabled Whether sanctioned players are allowed to join or not - sanctioned players will be rejected if set to `true`
@@ -259,7 +259,7 @@
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * * `EOS_Result.InvalidParameters` if the attribution is missing information or otherwise invalid
  * 
- * @param {array} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. If null, the session will be unrestricted.
+ * @param {array} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass an empty array.
  *
  * @returns {constant.EOS_Result}
  * 
@@ -549,7 +549,7 @@
  * 
  * The function returns `EOS_Result.Success` if we successfully created the session modification handle, or an error result if the input data was invalid.
  * 
- * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. If null, the session will be unrestricted.
+ * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass an empty array.
  * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If `true`, this session will be associated with presence. Only one session at a time can have this flag set to `true`. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}.
  * @param {bool} sanctions_enabled If `true`, sanctioned players can neither join nor register with this session and, in the case of join, will return ${constant.EOS_Result} code `EOS_Result.Sessions_PlayerSanctioned`.
  * @param {string} bucket_id The bucket ID associated with the session
