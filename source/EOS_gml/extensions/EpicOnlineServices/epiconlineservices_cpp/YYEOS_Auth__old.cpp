@@ -152,7 +152,7 @@ YYEXPORT void EpicGames_Auth_DeletePersistentAuth(RValue &Result, CInstance *sel
 
 	eos_ensure_argc(1);
 
-	const char *refreshtoken = YYGetString(arg, 0);
+	const char* refreshtoken = YYGetString(arg, 0);
 
 	EOS_Auth_DeletePersistentAuthOptions Options = {};
 	Options.ApiVersion = EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST;
