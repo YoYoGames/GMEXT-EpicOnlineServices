@@ -726,6 +726,7 @@
  * 
  * @param {real} channels The number of audio channels
  * @param {real} frames_count The number of frames
+ * @param {buffer} frames The buffer storing the frames
  * @param {real} sample_rate The sample rate of the audio in the buffer
  * @param {string} local_user_id The Product User ID of the user trying to request this operation
  * @param {string} room_name The room this event is registered on

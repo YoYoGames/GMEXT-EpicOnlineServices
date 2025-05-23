@@ -1,5 +1,17 @@
 // Functions
 
+/**
+ * @function eos_ui_acknowledge_event_id
+ * @desc **Epic Online Services Function:** [EOS_UI_AcknowledgeEventId](https://dev.epicgames.com/docs/api-ref/functions/eos-ui-acknowledge-event-id)
+ * 
+ * This function lets the SDK know that the given UI event ID has been acknowledged and should be released. `EOS_RESULT.SUCCESS` is returned if the UI event ID has been acknowledged. `EOS_RESULT.NOT_FOUND` is returned if the UI event ID does not exist.
+ * 
+ * @param {real} ui_event_id The event ID being acknowledged
+ * 
+ * @returns {constant.EOS_Result}
+ * 
+ * @function_end
+ */
 
 /**
  * @function eos_ui_add_notify_display_settings_updated
@@ -215,6 +227,7 @@
  * @section_func
  * @desc These functions are provided for handling user interface:
 
+ * @ref eos_ui_acknowledge_event_id
  * @ref eos_ui_add_notify_display_settings_updated
  * @ref eos_ui_get_friends_visible
  * @ref eos_ui_get_notification_location_preference
