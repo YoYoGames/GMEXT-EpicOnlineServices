@@ -317,7 +317,7 @@
  * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
  * * `EOS_Result.InvalidParameters` if the attribution is missing information or otherwise invalid
  * 
- * @param {array} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass an empty array.
+ * @param {array} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form `EOS_OPT_<PlatformName>`. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass `undefined`.
  *
  * @returns {constant.EOS_Result}
  * 
@@ -607,7 +607,7 @@
  * 
  * The function returns `EOS_Result.Success` if we successfully created the session modification handle, or an error result if the input data was invalid.
  * 
- * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass an empty array.
+ * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form `EOS_OPT_<PlatformName>`. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass undefined.
  * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If `true`, this session will be associated with presence. Only one session at a time can have this flag set to `true`. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}.
  * @param {bool} sanctions_enabled If `true`, sanctioned players can neither join nor register with this session and, in the case of join, will return ${constant.EOS_Result} code `EOS_Result.Sessions_PlayerSanctioned`.
  * @param {string} bucket_id The bucket ID associated with the session
@@ -815,8 +815,8 @@
  * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
- * @member {string} registered_players The players that were successfully registered
- * @member {string} sanctioned_players The players that failed to register because they are sanctioned
+ * @member {array[string]} registered_players The players that were successfully registered
+ * @member {array[string]} sanctioned_players The players that failed to register because they are sanctioned
  * @event_end
  * 
  * @func_end
@@ -973,7 +973,7 @@
  * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
- * @member {string} unregistered_players The players that successfully unregistered
+ * @member {array[string]} unregistered_players The players that successfully unregistered
  * @event_end
  * 
  * @func_end
