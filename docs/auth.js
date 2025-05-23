@@ -493,7 +493,7 @@
  * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} json_web_token The ID token as a JSON Web Token (JWT) string
- * @member {string} account_id The Epic Account ID described by the ID token. Use eos_epic_account_id_from_string to populate this field when validating a received ID token.
+ * @member {string} account_id The Epic Account ID described by the ID token
  * @struct_end
  */
 
