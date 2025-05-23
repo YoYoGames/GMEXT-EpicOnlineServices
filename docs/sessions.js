@@ -110,7 +110,7 @@
  * @func eos_active_session_copy_info
  * @desc **Epic Online Services Function:** [EOS_ActiveSession_CopyInfo](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-copy-info)
  * 
- * This function is used to immediately retrieve a copy of active session information. The returned struct will contain no session info if the result is not `EOS_Result.Success`.
+ * This function is used to immediately retrieve a copy of active session information. The returned struct will be empty if the result is not `EOS_Result.Success`.
  * 
  * @returns {struct.ActiveSessionInfo}
  * 
