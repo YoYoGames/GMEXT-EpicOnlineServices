@@ -450,6 +450,7 @@ void EOS_CALL RTCAdmin_QueryJoinRoomToken(const EOS_RTCAdmin_QueryJoinRoomTokenC
 	DsMapAddString(map, "client_base_url", data->ClientBaseUrl);
 	DsMapAddDouble(map, "query_id", data->QueryId);
 	DsMapAddDouble(map, "token_count", data->TokenCount);
+	DsMapAddString(map, "room_name", data->RoomName);
 
 	CreateAsyncEventWithDSMap(map, 70);
 
