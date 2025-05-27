@@ -11,11 +11,11 @@
 enum EOS_PLAYER_DATA_STORAGE_READ_RESULT
 {
 	/** Signifies the data was read successfully, and we should continue to the next chunk if possible */
-	ContinueReading = 1,
+	CONTINUE_READING = 1,
 	/** Signifies there was a failure reading the data, and the request should end */
-	FailRequest = 2,
+	FAIL_REQUEST = 2,
 	/** Signifies the request should be canceled, but not due to an error */
-	CancelRequest = 3
+	CANCEL_REQUEST = 3
 }
 
 
@@ -25,11 +25,11 @@ enum EOS_PLAYER_DATA_STORAGE_READ_RESULT
 enum EOS_PlayerDataStorage_WriteResult
 {
 	/** Signifies the data was written successfully, and we should write the data the file */
-	ContinueWriting = 1,
+	CONTINUE_WRITING = 1,
 	/** Signifies all data has now been written successfully, and we should upload the data to the cloud */
-	CompleteRequest = 2,
+	COMPLETE_REQUEST = 2,
 	/** Signifies there was a failure writing the data, and the request should end */
-	FailRequest = 3,
+	FAIL_REQUEST = 3,
 	/** Signifies the request should be canceled, but not due to an error */
-	CancelRequest = 4
+	CANCEL_REQUEST = 4
 }

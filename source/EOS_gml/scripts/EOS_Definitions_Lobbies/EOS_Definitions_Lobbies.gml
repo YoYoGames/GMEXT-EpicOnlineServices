@@ -29,11 +29,11 @@
 enum EOS_LOBBY_PERMISSION_LEVEL
 {
 	/** Anyone can find this lobby as long as it isn't full */
-	PUBLICADVERTISED = 0,
+	PUBLIC_ADVERTISED = 0,
 	/** Players who have access to presence can see this lobby */
-	JOINVIAPRESENCE = 1,
+	JOIN_VIA_PRESENCE = 1,
 	/** Only players with invites registered can see this lobby */
-	INVITEONLY = 2
+	INVITE_ONLY = 2
 };
 
 /** Advertisement properties for a single attribute associated with a lobby */

@@ -3,22 +3,22 @@
 enum EOS_USER_CONTROLLER_TYPE
 {
 	/** The game controller type is unknown. */
-	Unknown = 0,
+	UNKNOWN = 0,
 	/** Mouse and keyboard controller. */
-	MouseKeyboard = 1,
+	MOUSE_KEYBOARD = 1,
 	/** Gamepad controller. */
-	GamepadControl = 2,
+	GAMEPAD_CONTROL = 2,
 	/** Touch controller. */
-	TouchControl = 3
+	TOUCH_CONTROL = 3
 }
 
 /** Account ID type for EOS_Metrics_BeginPlayerSession and EOS_Metrics_EndPlayerSession. */
 enum EOS_METRIC_ACCOUNT_ID_TYPE
 {
 	/** An Epic Account ID. */
-	Epic = 0,
+	EPIC = 0,
 	/** An external service Account ID. */
-	External = 1
+	EXTERNAL = 1
 }
 
 

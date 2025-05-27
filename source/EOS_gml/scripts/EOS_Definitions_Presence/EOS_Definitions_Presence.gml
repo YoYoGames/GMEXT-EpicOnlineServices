@@ -2,15 +2,15 @@
 enum EOS_PRESENCE_STATUS
 {
 	/** The status of the account is offline or not known */
-	Offline = 0,
+	OFFLINE = 0,
 	/** The status of the account is online */
-	Online = 1,
+	ONLINE = 1,
 	/** The status of the account is away */
-	Away = 2,
+	AWAY = 2,
 	/** The status of the account is away, and has been away for a while */
-	ExtendedAway = 3,
+	EXTENDED_AWAY = 3,
 	/** The status of the account is do-not-disturb */
-	DoNotDisturb = 4
+	DO_NOT_DISTURB = 4
 }
 
 /**
