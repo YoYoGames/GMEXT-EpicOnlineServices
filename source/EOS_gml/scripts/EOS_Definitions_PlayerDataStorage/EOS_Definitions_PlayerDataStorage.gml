@@ -8,7 +8,7 @@
 /**
  * Return results for EOS_PlayerDataStorage_OnReadFileDataCallback callbacks to return
  */
-enum EOS_PlayerDataStorage_ReadResult
+enum EOS_PLAYER_DATA_STORAGE_READ_RESULT
 {
 	/** Signifies the data was read successfully, and we should continue to the next chunk if possible */
 	ContinueReading = 1,

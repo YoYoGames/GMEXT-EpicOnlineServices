@@ -5,7 +5,7 @@
 
 
 /** Response to an invite request. */
-enum EOS_RequestToJoinResponse
+enum EOS_REQUEST_TO_JOIN_RESPONSE
 {
 	/** The target of the invite request has accepted. */
 	ACCEPTED = 0,

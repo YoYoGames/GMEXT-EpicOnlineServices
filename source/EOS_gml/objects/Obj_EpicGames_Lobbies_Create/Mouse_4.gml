@@ -1,11 +1,11 @@
 	
 eos_lobby_create_lobby(
 		userID,//LocalUserId
-		[/*EOS_OPT_Unknown,EOS_OPT_Epic,EOS_OPT_Steam*/],//AllowedPlatformIds
+		[/*EOS_OPT_UNKNOWN,EOS_OPT_EPIC,EOS_OPT_STEAM*/],//AllowedPlatformIds
 		"",//lobby_id
 		"GameMode:Region:MapName",//BucketId
 		10,//MaxLobbyMembers
-		EOS_LobbyPermissionLevel.PUBLICADVERTISED,//PermissionLevel
+		EOS_LOBBY_PERMISSION_LEVEL.PUBLICADVERTISED,//PermissionLevel
 		true,//bAllowInvites
 		true,//bCrossplayOptOut
 		false,//bDisableHostMigration

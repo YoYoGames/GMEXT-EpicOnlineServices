@@ -1,5 +1,5 @@
 
-enum EOS_PlayerReportsCategory
+enum EOS_PLAYER_REPORTS_CATEGORY
 {
 	/** Not used */
 	Invalid = 0,

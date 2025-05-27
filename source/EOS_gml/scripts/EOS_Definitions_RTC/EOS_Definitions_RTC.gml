@@ -1,6 +1,6 @@
 ///////////////////
 /** Participant RTC's status change */
-enum EOS_RTCParticipantStatus
+enum EOS_RTC_PARTICIPANT_STATUS
 {
 	/** Participant joined the room */
 	Joined = 0,
@@ -42,7 +42,7 @@ enum EOS_RTCParticipantStatus
 //////////////////////////
 
 
-enum EOS_RTCAudioStatus
+enum EOS_RTC_AUDIO_STATUS
 {
 	/** Audio unsupported by the source (no devices) */
 	Unsupported = 0,
@@ -60,7 +60,7 @@ enum EOS_RTCAudioStatus
 /**
  * An enumeration of the different audio input device statuses.
  */
-enum EOS_RTCAudioInputStatus
+enum EOS_RTC_AUDIO_INPUT_STATUS
 {
 	/** The device is not in use right now (e.g., you are alone in the room). In such cases, the hardware resources are not allocated. */
 	Idle = 0,
@@ -84,7 +84,7 @@ enum EOS_RTCAudioInputStatus
 /**
  * An enumeration of the different audio output device statuses.
  */
-enum EOS_RTCAudioOutputStatus
+enum EOS_RTC_AUDIO_OUTPUT_STATUS
 {
 	/** The device is not in used right now (e.g: you are alone in the room). In such cases, the hardware resources are not allocated. */
 	Idle = 0,
@@ -101,7 +101,7 @@ enum EOS_RTCAudioOutputStatus
 /** The maximum length of data chunk in bytes that can be sent and received */
 #macro EOS_RTCDATA_MAX_PACKET_SIZE 1170
 
-enum EOS_RTCDataStatus
+enum EOS_RTC_DATA_STATUS
 {
 	/** Data unsupported */
 	Unsupported = 0,

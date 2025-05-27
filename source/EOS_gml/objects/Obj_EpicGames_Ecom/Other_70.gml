@@ -3,7 +3,7 @@ switch(async_load[? "type"])
 {
 	case "eos_ecom_query_offers":
 		
-		if(async_load[? "status"] != EOS_Result.Success)
+		if(async_load[? "status"] != EOS_RESULT.Success)
 			break
 		
 		var _array_of_offer_ids = []
@@ -44,14 +44,14 @@ switch(async_load[? "type"])
 	
 	case "eos_ecom_query_ownership":
 		
-		if(async_load[? "status"] != EOS_Result.Success)
+		if(async_load[? "status"] != EOS_RESULT.Success)
 			break
 		
 	break
 	
 	case "eos_ecom_query_entitlements":
 	
-		if(async_load[? "status"] != EOS_Result.Success)
+		if(async_load[? "status"] != EOS_RESULT.Success)
 			break
 		
 		//eos_ecom_query_entitlement_token(AccountID,_array_of_item_ids)
@@ -65,7 +65,7 @@ switch(async_load[? "type"])
 	
 	case "eos_ecom_checkout":
 		
-		if(async_load[? "status"] != EOS_Result.Success)
+		if(async_load[? "status"] != EOS_RESULT.Success)
 			break
 		
 		var _transaction_id = async_load[? "transaction_id"]

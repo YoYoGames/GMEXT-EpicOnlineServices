@@ -2,7 +2,7 @@
 /**
  * An enumeration of the different friendship statuses.
  */
-enum EOS_FriendsStatus
+enum EOS_FRIENDS_STATUS
 {
 	/** The two accounts have no friendship status. */
 	NotFriends = 0,

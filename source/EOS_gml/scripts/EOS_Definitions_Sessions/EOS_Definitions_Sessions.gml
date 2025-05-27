@@ -1,6 +1,6 @@
 
 /** All possible states of an existing named session */
-enum EOS_OnlineSessionState
+enum EOS_ONLINE_SESSION_STATE
 {
 	/** An online session has not been created yet */
 	NoSession = 0,
@@ -21,7 +21,7 @@ enum EOS_OnlineSessionState
 }
 
 /** Advertisement properties for a single attribute associated with a session */
-enum EOS_SessionAttributeAdvertisementType
+enum EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE
 {
 	/** Don't advertise via the online service */
 	DontAdvertise = 0,
@@ -31,7 +31,7 @@ enum EOS_SessionAttributeAdvertisementType
 
 
 /** Permission level gets more restrictive further down */
-enum EOS_OnlineSessionPermissionLevel
+enum EOS_ONLINE_SESSION_PERMISSION_LEVEL
 {
 	/** Anyone can find this session as long as it isn't full */
 	PublicAdvertised = 0,

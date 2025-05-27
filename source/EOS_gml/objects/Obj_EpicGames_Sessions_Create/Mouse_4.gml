@@ -1,7 +1,7 @@
 
-//#macro EOS_OPT_Unknown 0
-//#macro EOS_OPT_Epic 100
-//#macro EOS_OPT_Steam 4000
+//#macro EOS_OPT_UNKNOWN 0
+//#macro EOS_OPT_EPIC 100
+//#macro EOS_OPT_STEAM 4000
 
 
 var AllowedPlatformIds = [/*100,0,4000*/]
@@ -41,32 +41,32 @@ var result = eos_sessions_create_session_modification(
 show_debug_message(result)
 
 //var result = eos_sessions_update_session_modification(SessionName)
-//show_debug_message("eos_sessions_update_session_modification: " + eos_result_to_string(result))
+//show_debug_message("eos_sessions_update_session_modification: " + EOS_RESULT_to_string(result))
 
 
-var result = eos_session_modification_set_permission_level(EOS_OnlineSessionPermissionLevel.PublicAdvertised)
-show_debug_message("eos_session_modification_set_permission_level: " + eos_result_to_string(result))
+var result = eos_session_modification_set_permission_level(EOS_ONLINE_SESSION_PERMISSION_LEVEL.PublicAdvertised)
+show_debug_message("eos_session_modification_set_permission_level: " + EOS_RESULT_to_string(result))
 
 var result = eos_session_modification_set_join_in_progress_allowed(true)
-show_debug_message("eos_session_modification_set_join_in_progress_allowed: " + eos_result_to_string(result))
+show_debug_message("eos_session_modification_set_join_in_progress_allowed: " + EOS_RESULT_to_string(result))
 
 var result = eos_session_modification_set_invites_allowed(true)
-show_debug_message("eos_session_modification_set_invites_allowed" + eos_result_to_string(result))
+show_debug_message("eos_session_modification_set_invites_allowed" + EOS_RESULT_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_BUCKET_ID,value_type: EOS_AttributeType.STRING,value: BucketId})
-show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
+var result = eos_session_modification_add_attribute(EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE.Advertise,noone,{key: EOS_SESSIONS_SEARCH_BUCKET_ID,value_type: EOS_ATTRIBUTE_TYPE.STRING,value: BucketId})
+show_debug_message("eos_session_modification_add_attribute:" + EOS_RESULT_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY,value_type: EOS_AttributeType.BOOLEAN,value: false})
-show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
+var result = eos_session_modification_add_attribute(EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE.Advertise,noone,{key: EOS_SESSIONS_SEARCH_EMPTY_SERVERS_ONLY,value_type: EOS_ATTRIBUTE_TYPE.BOOLEAN,value: false})
+show_debug_message("eos_session_modification_add_attribute:" + EOS_RESULT_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY,value_type: EOS_AttributeType.BOOLEAN,value: false})
-show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
+var result = eos_session_modification_add_attribute(EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE.Advertise,noone,{key: EOS_SESSIONS_SEARCH_NONEMPTY_SERVERS_ONLY,value_type: EOS_ATTRIBUTE_TYPE.BOOLEAN,value: false})
+show_debug_message("eos_session_modification_add_attribute:" + EOS_RESULT_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,value_type: EOS_AttributeType.DOUBLE,value: 2})
-show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
+var result = eos_session_modification_add_attribute(EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE.Advertise,noone,{key: EOS_SESSIONS_SEARCH_MINSLOTSAVAILABLE,value_type: EOS_ATTRIBUTE_TYPE.DOUBLE,value: 2})
+show_debug_message("eos_session_modification_add_attribute:" + EOS_RESULT_to_string(result))
 
-var result = eos_session_modification_add_attribute(EOS_SessionAttributeAdvertisementType.Advertise,noone,{key: "session_name",value_type: EOS_AttributeType.STRING,value: "MySessionName :)"})
-show_debug_message("eos_session_modification_add_attribute:" + eos_result_to_string(result))
+var result = eos_session_modification_add_attribute(EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE.Advertise,noone,{key: "session_name",value_type: EOS_ATTRIBUTE_TYPE.STRING,value: "MySessionName :)"})
+show_debug_message("eos_session_modification_add_attribute:" + EOS_RESULT_to_string(result))
 
 eos_sessions_update_session()
 

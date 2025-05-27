@@ -35,7 +35,7 @@
  * @see EOS_Connect_GetLoginStatus
  * @see EOS_Connect_Login
  */
-enum EOS_LoginStatus{
+enum EOS_LOGING_STATUS{
 	/** Player has not logged in or chosen a local profile */
 	NOT_LOGGED_IN = 0,
 	/** Player is using a local profile but is not logged in */
@@ -50,7 +50,7 @@ enum EOS_LoginStatus{
  * @see EOS_LobbySearch_SetParameter
  * @see EOS_SessionSearch_SetParameter
  */
-enum EOS_AttributeType{
+enum EOS_ATTRIBUTE_TYPE{
 	/** Boolean value (true/false) */
 	BOOLEAN = 0,
 	/** 64 bit integers */
@@ -68,7 +68,7 @@ enum EOS_AttributeType{
  * @see EOS_LobbySearch_SetParameter
  * @see EOS_SessionSearch_SetParameter
  */
-enum EOS_ComparisonOp{
+enum EOS_COMPARISON_OP{
 	/** Value must equal the one stored on the lobby/session */
 	EQUAL = 0,
 	/** Value must not equal the one stored on the lobby/session */
@@ -150,7 +150,7 @@ enum EOS_ExternalAccountType
  * @see EOS_Auth_Login
  * @see EOS_Connect_Login
  */
-enum EOS_ExternalCredentialType
+enum EOS_EXTERNAL_CREDENTIAL_TYPE
 {
 	/**
 	 * Epic Account Services Token
@@ -367,6 +367,6 @@ enum EOS_ExternalCredentialType
 }
 
 
-#macro EOS_OPT_Unknown 0
-#macro EOS_OPT_Epic 100
-#macro EOS_OPT_Steam 4000
+#macro EOS_OPT_UNKNOWN 0
+#macro EOS_OPT_EPIC 100
+#macro EOS_OPT_STEAM 4000
