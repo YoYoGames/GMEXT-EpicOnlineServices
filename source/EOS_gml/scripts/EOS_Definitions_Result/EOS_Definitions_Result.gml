@@ -2,7 +2,7 @@
 
 // This file is not intended to be included directly. Include eos_common.h instead.
 
-enum EOS_Result
+enum EOS_RESULT
 {
     /** Successful result. no further error processing needed */
     Success = 0,

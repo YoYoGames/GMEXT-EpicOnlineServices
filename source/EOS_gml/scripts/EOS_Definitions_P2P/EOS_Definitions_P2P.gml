@@ -13,7 +13,7 @@
 /**
  * Categories of NAT strictness.
  */
-enum EOS_NATType
+enum EOS_NAT_TYPE
 {
 	/** NAT type either unknown (remote) or we are unable to determine it (local) */
 	Unknown = 0,
@@ -35,7 +35,7 @@ enum EOS_NATType
  * Ordered packets will only be ordered relative to other ordered packets. Reliable/unreliable and ordered/unordered communication
  * can be sent on the same Socket ID and Channel.
  */
-enum EOS_PacketReliability
+enum EOS_PACKET_RELIABILITY
 {
 	/** Packets will only be sent once and may be received out of order */
 	UnreliableUnordered = 0,
@@ -48,7 +48,7 @@ enum EOS_PacketReliability
 /**
  * Type of established connection
  */
-enum EOS_ConnectionEstablishedType
+enum EOS_CONNECTION_ESTABLISHED_TYPE
 {
 	/** The connection is brand new */
 	NewConnection = 0,
@@ -59,7 +59,7 @@ enum EOS_ConnectionEstablishedType
 /**
  * Types of network connections.
  */
-enum EOS_NetworkConnectionType
+enum EOS_NETWORK_CONNECTION_TYPE
 {
 	/** There is no established connection */
 	NoConnection = 0,
@@ -73,7 +73,7 @@ enum EOS_NetworkConnectionType
 /**
  * Reasons why a P2P connection was closed
  */
-enum EOS_ConnectionClosedReason
+enum EOS_CONNECTION_CLOSED_REASON
 {
 	/** The connection was closed for unknown reasons. This most notably happens during application shutdown. */
 	Unknown = 0,
@@ -113,7 +113,7 @@ enum EOS_ConnectionClosedReason
  * | EOS_RC_ForceRelays           |  Connection Failure |  Compatible                   |  Compatible         |
  * +------------------------------+---------------------+-------------------------------+---------------------+
  */
-enum EOS_RelayControl
+enum EOS_RELAY_CONTROL
 {
 	/** Peer connections will never attempt to use relay servers. Clients with restrictive NATs may not be able to connect to peers. */
 	NoRelays = 0,

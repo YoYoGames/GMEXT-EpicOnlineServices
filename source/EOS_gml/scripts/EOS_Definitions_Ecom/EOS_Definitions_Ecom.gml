@@ -2,7 +2,7 @@
 /**
  * An enumeration of the different ownership statuses.
  */
-enum EOS_OwnershipStatus
+enum EOS_OWNERSHIP_STATUS
 {
 	/** The catalog item is not owned by the local user */
 	NotOwned = 0,
@@ -13,7 +13,7 @@ enum EOS_OwnershipStatus
 /**
  * An enumeration defining the type of catalog item.  The primary use is to identify how the item is expended.
  */
-enum EOS_EcomItemType
+enum EOS_ECOM_ITEM_TYPE
 {
 	/** This entitlement is intended to persist. */
 	Durable = 0,

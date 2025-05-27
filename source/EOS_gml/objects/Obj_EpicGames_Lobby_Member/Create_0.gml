@@ -1,6 +1,6 @@
 
 Speaking = false
-AudioStatus = EOS_RTCAudioStatus.Disabled
+AudioStatus = EOS_RTC_AUDIO_STATUS.Disabled
 
 _struct = {user_id: user_id}
 

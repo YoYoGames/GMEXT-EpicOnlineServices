@@ -6,7 +6,7 @@
 /**
  * Return results for EOS_TitleStorage_OnReadFileDataCallback callbacks
  */
-enum EOS_TitleStorage_ReadResult
+enum EOS_TITLE_STORAGE_READ_RESULT
 {
 	/** Signifies the data was read successfully, and we should continue to the next chunk if possible */
 	ContinueReading = 1,

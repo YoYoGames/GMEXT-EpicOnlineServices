@@ -6,7 +6,7 @@
 /**
  * An enumeration of the different leaderboard aggregation types.
  */
-enum EOS_LeaderboardAggregation
+enum EOS_LEADERBOARD_AGGREGATION
 {
 	/** Minimum */
 	Min = 0,

@@ -1,5 +1,5 @@
 
-enum EOS_Presence_EStatus
+enum EOS_PRESENCE_STATUS
 {
 	/** The status of the account is offline or not known */
 	Offline = 0,

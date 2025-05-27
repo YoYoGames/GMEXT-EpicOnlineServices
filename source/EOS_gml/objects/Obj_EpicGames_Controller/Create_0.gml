@@ -22,11 +22,11 @@ NotifyID_Achievements_UnlockedV2 = eos_achievements_add_notify_achievements_unlo
 NotifyID_UI_DisplaySettingsUpdated = eos_ui_add_notify_display_settings_updated()
 
 
-//show_debug_message("Preference: " + string(eos_ui_set_display_preference(EOS_UI_NotificationLocation.TopLeft)))
+//show_debug_message("Preference: " + string(eos_ui_set_display_preference(EOS_UI_NOTIFICATION_LOCATION.TopLeft)))
 
 eos_auth_login(
-		EOS_LoginCredentialType.PersistentAuth, 
-        EOS_AuthScopeFlags.BasicProfile | EOS_AuthScopeFlags.FriendsList | EOS_AuthScopeFlags.Presence,
+		EOS_LOGIN_CREDENTIAL_TYPE.PersistentAuth, 
+        EOS_AUTH_SCOPE_FLAGS.BasicProfile | EOS_AUTH_SCOPE_FLAGS.FriendsList | EOS_AUTH_SCOPE_FLAGS.Presence,
 		"",
 		"",
 		noone
