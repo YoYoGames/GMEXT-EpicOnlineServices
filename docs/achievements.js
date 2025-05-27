@@ -111,7 +111,7 @@
  * @example
  * ```gml
  * var _struct = eos_achievements_copy_player_achievement_by_achievement_id(user_id, user_id_target, achievement_id);
- * if(struct.status == EOS_Result.Success)
+ * if(_struct.status == EOS_Result.Success)
  * {
  *     var _achievement_id = _struct.achievement_id;
  * }
