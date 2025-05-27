@@ -112,6 +112,8 @@
  * 
  * This function is used to immediately retrieve a copy of active session information. The returned struct will be empty if the result is not `EOS_Result.Success`.
  * 
+ * @param {string} session_name The name of the session
+ * 
  * @returns {struct.ActiveSessionInfo}
  * 
  * @func_end
@@ -123,6 +125,7 @@
  * 
  * This function is used to immediately retrieve individual players registered with the active session.
  *
+ * @param {string} session_name The name of the session
  * @param {real} player_index The index of the registered player to retrieve
  *
  * @returns {string}
@@ -136,7 +139,7 @@
  * 
  * This function gets the number of registered players associated with this active session. It returns the number of registered players in the active session or 0 if there is an error.
  *
- * @param {string} session_name 
+ * @param {string} session_name The name of the session
  *
  * @returns {real}
  * 
