@@ -6,7 +6,7 @@ with(Obj_EpicGames_Leaderboard_Rank)
 	instance_destroy()
 
 stat_selected = "Leaderboard_Stat"
-agregation_seleted = EOS_LEADERBOARD_AGGREGATION.Latest;
+agregation_seleted = EOS_LEADERBOARD_AGGREGATION.LATEST;
 
 //stat_selected = "Leaderboard_Stat_2"
 //agregation_seleted = EOS_LEADERBOARD_AGGREGATION.Max

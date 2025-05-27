@@ -16,7 +16,7 @@ switch(async_load[? "type"])
         
 		switch(async_load[? "status"])
 		{
-			case EOS_RESULT.Success:
+			case EOS_RESULT.SUCCESS:
 			
 				alarm[0] = RefreshPeriod_AccountID
 		
@@ -30,13 +30,13 @@ switch(async_load[? "type"])
 				
 			break
 			
-			case EOS_RESULT.InvalidUser:
+			case EOS_RESULT.INVALID_USER:
 				
 				eos_auth_link_account(AccountID,EOS_LInk_ACCOUNT_FLAGS.NoFlags)
 				
 			break
 			
-			case EOS_RESULT.Auth_MFARequired:
+			case EOS_RESULT.AUTH_MFA_REQUIRED:
 			
 				request_MFA = get_string_async("token","")
 
@@ -50,7 +50,7 @@ switch(async_load[? "type"])
 	
 		switch(async_load[? "status"])
 		{
-			case EOS_RESULT.Success:
+			case EOS_RESULT.SUCCESS:
 				
 				userID = async_load[? "local_user_id"]
 				

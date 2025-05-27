@@ -5,7 +5,7 @@ eos_lobby_create_lobby(
 		"",//lobby_id
 		"GameMode:Region:MapName",//BucketId
 		10,//MaxLobbyMembers
-		EOS_LOBBY_PERMISSION_LEVEL.PUBLICADVERTISED,//PermissionLevel
+		EOS_LOBBY_PERMISSION_LEVEL.PUBLIC_ADVERTISED,//PermissionLevel
 		true,//bAllowInvites
 		true,//bCrossplayOptOut
 		false,//bDisableHostMigration

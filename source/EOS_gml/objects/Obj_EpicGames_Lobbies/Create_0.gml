@@ -21,7 +21,7 @@ notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_in
 
 function request_update_members()
 {
-	if(eos_lobby_copy_lobby_details_handle(lobby_id,userID) == EOS_RESULT.Success)
+	if(eos_lobby_copy_lobby_details_handle(lobby_id,userID) == EOS_RESULT.SUCCESS)
 	{
 		/*var*/ members_array = []
 		var member_count = eos_lobby_details_get_member_count()

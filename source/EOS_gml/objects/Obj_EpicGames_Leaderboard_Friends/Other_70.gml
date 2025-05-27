@@ -56,7 +56,7 @@ switch(async_load[? "type"])
 		with(Obj_EpicGames_Leaderboard_Definition)
 			instance_destroy()
 		
-		if(async_load[? "status"] == EOS_RESULT.Success)
+		if(async_load[? "status"] == EOS_RESULT.SUCCESS)
 		{
 			var count = eos_friends_get_friends_count(AccountID)
 			for(var a = 0 ; a < count ; a ++)

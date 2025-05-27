@@ -5,7 +5,7 @@
 enum EOS_RESULT
 {
     /** Successful result. no further error processing needed */
-    Success = 0,
+    SUCCESS = 0,
     
     /** Failed due to no connection */
     NO_CONNECTION = 1,
@@ -393,7 +393,7 @@ enum EOS_RESULT
     /** Could not find the offer for the mod. This error comes from the external ModSdk process. */
     MODS_COULD_NOT_FIND_OFFER = 11011,
     /** Request to get the offer for the mod failed. This error comes from the external ModSdk process. */
-    MODS_OFFER_REQUEST_BY_ID_`Failure = 11012,
+    MODS_OFFER_REQUEST_BY_ID_FAILURE = 11012,
     /** Request to purchase the mod failed. This error comes from the external ModSdk process. */
     MODS_PURCHASE_FAILURE = 11013,
     /** Attempting to perform an action on a game that is not installed or is partially installed. This error comes from the external ModSdk process. */
@@ -499,8 +499,8 @@ enum EOS_RESULT
     /** CacheStorageSizeKB is greater than the maximum allowed (4000 MB, **/
     CONSOLE_INIT_CACHE_STORAGE_SIZE_KB_EXCEEDS_MAXIMUM_SIZE = 23003,
     /** CacheStorageIndex is out of its allowed range **/
-    Console_Init_Cache_Storage_Index_Out_Of_Range = 23004,
+    CONSOLE_INIT_CACHE_STORAGE_INDEX_OUT_OF_RANGE = 23004,
     
     /** An unexpected error that we cannot identify has occurred. */
-    EOS_UNEXPECTED_ERROR = 0x7FFFFFFF,
+    //EOS_UNEXPECTED_ERROR = 0x7FFFFFFF,
 }
