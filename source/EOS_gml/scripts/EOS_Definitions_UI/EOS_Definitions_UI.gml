@@ -21,8 +21,8 @@
 
 enum EOS_UI_NOTIFICATION_LOCATION
 {
-	TopLeft,
-	TopRight,
-	BottomLeft,
-	BottomRight
+	TOP_LEFT,
+	TOP_RIGHT,
+	BOTTOM_LEFT,
+	BOTTOM_RIGHT
 }

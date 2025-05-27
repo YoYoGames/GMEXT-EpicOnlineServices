@@ -72,25 +72,25 @@ enum EOS_COMPARISON_OP{
 	/** Value must equal the one stored on the lobby/session */
 	EQUAL = 0,
 	/** Value must not equal the one stored on the lobby/session */
-	NOTEQUAL = 1,
+	NOT_EQUAL = 1,
 	/** Value must be strictly greater than the one stored on the lobby/session */
-	GREATERTHAN = 2,
+	GREATER_THAN = 2,
 	/** Value must be greater than or equal to the one stored on the lobby/session */
-	GREATERTHANOREQUAL = 3,
+	GREATER_THAN_OR_EQUAL = 3,
 	/** Value must be strictly less than the one stored on the lobby/session */
-	LESSTHAN = 4,
+	LESS_THAN = 4,
 	/** Value must be less than or equal to the one stored on the lobby/session */
-	LESSTHANOREQUAL = 5,
+	LESS_THAN_OR_EQUAL = 5,
 	/** Prefer values nearest the one specified ie. abs(SearchValue-SessionValue) closest to 0 */
 	DISTANCE = 6,
 	/** Value stored on the lobby/session may be any from a specified list */
-	ANYOF = 7,
+	ANY_OF = 7,
 	/** Value stored on the lobby/session may NOT be any from a specified list */
-	NOTANYOF = 8,
+	NOT_ANY_OF = 8,
 	/** This one value is a part of a collection */
-	ONEOF = 9,
+	ONE_OF = 9,
 	/** This one value is NOT part of a collection */
-	NOTONEOF = 10,
+	NOT_ONE_OF = 10,
 	/** This value is a CASE SENSITIVE substring of an attribute stored on the lobby/session */
 	CONTAINS = 11
 }
