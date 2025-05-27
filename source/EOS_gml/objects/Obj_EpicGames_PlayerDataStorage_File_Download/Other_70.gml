@@ -15,7 +15,7 @@ switch(async_load[? "type"])
 		if(async_load[? "identifier"] != request)
 			exit
 		
-		if(async_load[? "status"] == EOS_RESULT.Success)
+		if(async_load[? "status"] == EOS_RESULT.SUCCESS)
 			color_current = color_done
 		else
 			color_current = color_failed

@@ -77,7 +77,7 @@ enum EOS_LOGIN_CREDENTIAL_TYPE
 	 * On Desktop and Mobile, used when launched through any of the commonly supported platform clients.
 	 *
 	 * @details The user is seamlessly logged in to their Epic account using an external account access token.
-	 * If the local platform account is already linked with the user's Epic account, the login will succeed and EOS_EResult::EOS_RESULT.Success is returned.
+	 * If the local platform account is already linked with the user's Epic account, the login will succeed and EOS_EResult::EOS_RESULT.SUCCESS is returned.
 	 * When the local platform account has not been linked with an Epic account yet,
 	 * EOS_EResult::EOS_InvalidUser is returned and the EOS_ContinuanceToken will be set in the EOS_Auth_LoginCallbackInfo data.
 	 * If EOS_EResult::EOS_InvalidUser is returned,
@@ -90,7 +90,7 @@ enum EOS_LOGIN_CREDENTIAL_TYPE
 	 * 3. Game calls EOS_Auth_LinkAccount with the EOS_ContinuanceToken to initiate the login flow for linking the platform account with the user's Epic account.
 	 * 4. The user is taken automatically to the Epic accounts user onboarding flow managed by the SDK.
 	 * 5. Once the user completes the login, cancels it or if the login flow times out, EOS_Auth_LinkAccount invokes the completion callback to the caller.
-	 *    - If the user was logged in successfully, EOS_EResult::EOS_RESULT.Success is returned in the EOS_Auth_LoginCallbackInfo. Otherwise, an error result code is returned accordingly.
+	 *    - If the user was logged in successfully, EOS_EResult::EOS_RESULT.SUCCESS is returned in the EOS_Auth_LoginCallbackInfo. Otherwise, an error result code is returned accordingly.
 	 *
 	 * @note On Windows, using this login method requires applications to be started through the EOS Bootstrapper application
 	 * and to have the local Epic Online Services redistributable installed on the local system. See EOS_Platform_GetDesktopCrossplayStatus
