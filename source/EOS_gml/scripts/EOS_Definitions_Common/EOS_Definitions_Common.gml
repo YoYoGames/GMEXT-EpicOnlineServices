@@ -37,11 +37,11 @@
  */
 enum EOS_LoginStatus{
 	/** Player has not logged in or chosen a local profile */
-	NotLoggedIn = 0,
+	NOT_LOGGED_IN = 0,
 	/** Player is using a local profile but is not logged in */
-	UsingLocalProfile = 1,
+	USING_LOCAL_PROFILE = 1,
 	/** Player has been validated by the platform specific authentication service */
-	LoggedIn = 2
+	LOGGED_IN = 2
 }
 
 /**
