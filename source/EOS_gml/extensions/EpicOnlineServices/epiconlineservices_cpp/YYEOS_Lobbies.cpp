@@ -933,8 +933,7 @@ void EOS_CALL Lobby_RejectInviteCallback(const EOS_Lobby_RejectInviteCallbackInf
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-
-	DsMapAddString(map, "Invite_id", data->InviteId);
+	DsMapAddString(map, "invite_id", data->InviteId);
 
 	CreateAsyncEventWithDSMap(map, 70);
 

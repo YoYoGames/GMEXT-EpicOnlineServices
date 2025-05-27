@@ -152,7 +152,7 @@ func double __eos_active_session_copy_info(char* session_name, char* buff_ret)
 	return 0.0;
 }
 
-func char* eos_active_session_get_registered_player_by_index(char* session_name)
+func char* eos_active_session_get_registered_player_by_index(char* session_name, double player_index)
 {
 	eos_not_init_return((char*)"");
 
@@ -163,6 +163,7 @@ func char* eos_active_session_get_registered_player_by_index(char* session_name)
 	EOS_Sessions_CopyActiveSessionHandle(HSessions, &HOptions, &HActiveSession);
 
 	EOS_ActiveSession_GetRegisteredPlayerByIndexOptions Options = {0};
+	Options.PlayerIndex = static_cast<uint32_t>(player_index);
 	EOS_ProductUserId ProductUserId = EOS_ActiveSession_GetRegisteredPlayerByIndex(HActiveSession, &Options);
 
 	EOS_ActiveSession_Release(HActiveSession);

@@ -21,7 +21,7 @@ SessionId = ""//eos_create_code(17)
 //show_debug_message("----------------" + string(count))
 //for(var a = 0 ; a < count ; a++)
 //{
-//	var playerid = eos_active_session_get_registered_player_by_index("SessionName")
+//	var playerid = eos_active_session_get_registered_player_by_index("SessionName", a)
 //	show_debug_message(playerid)
 //}
 
