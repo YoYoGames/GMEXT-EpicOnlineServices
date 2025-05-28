@@ -23,8 +23,8 @@
  * 
  * @event social
  * @member {string} type The string `"eos_ui_add_notify_display_settings_updated"`
- * @member {bool} bIsExclusiveInput `true` when the overlay has switched to exclusive input mode. While in exclusive input mode, no keyboard or mouse input will be sent to the game.
- * @member {bool} bIsVisible `true` when any portion of the overlay is visible.
+ * @member {bool} is_exclusive_input `true` when the overlay has switched to exclusive input mode. While in exclusive input mode, no keyboard or mouse input will be sent to the game.
+ * @member {bool} is_visible `true` when any portion of the overlay is visible.
  * @event_end
  * 
  * @example

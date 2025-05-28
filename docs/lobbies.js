@@ -1347,7 +1347,7 @@
  * @func eos_lobby_search_copy_search_result_by_index
  * @desc **Epic Online Services Function:** [EOS_LobbySearch_CopySearchResultByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-copy-search-result-by-index)
  * 
- * This function is used to immediately retrieve a handle to the lobby information from a given search result. If the call returns an `EOS_RESULT.SUCCESS` result, the out parameter, OutLobbyDetailsHandle, must be passed to ${function.eos_lobby_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the lobby information from a given search result. If the call returns an `EOS_RESULT.SUCCESS` result, the lobby details handle must be released with ${function.eos_lobby_details_release} to release the memory associated with it once you are done using it.
  * 
  * The function returns one of the following:
  * 

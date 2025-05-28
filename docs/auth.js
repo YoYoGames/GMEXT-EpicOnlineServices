@@ -87,7 +87,7 @@
  * 
  * This function deletes a previously received and locally stored persistent auth access token for the currently logged in user of the local device. On Desktop and Mobile platforms, the access token is deleted from the keychain of the local user and a backend request is made to revoke the token on the authentication server. On Console platforms, even though the caller is responsible for storing and deleting the access token on the local device, this function should still be called with the access token before its deletion to make the best effort in attempting to also revoke it on the authentication server. If the function would fail on Console, the caller should still proceed as normal to delete the access token locally as intended.
  * 
- * @param {string} refresh_token A long-lived refresh token that is used with the `EOS_LoginCredentialType.PersistentAuth` login type and is to be revoked from the authentication server. Only used on Console platforms. On Desktop and Mobile platforms, set this parameter to `undefined`.
+ * @param {string} refresh_token A long-lived refresh token that is used with the `EOS_LOGIN_CREDENTIAL_TYPE.PERSISTENT_AUTH` login type and is to be revoked from the authentication server. Only used on Console platforms. On Desktop and Mobile platforms, set this parameter to `undefined`.
  * 
  * @example
  * ```gml

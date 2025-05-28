@@ -103,10 +103,10 @@
 /**
  * @struct PlayerSanctionData
  * @desc A struct holding the sanction data for a player
- * @member {string} Action The action associated with this sanction
- * @member {string} ReferenceId A unique identifier for this specific sanction
- * @member {real} TimeExpires The POSIX timestamp when the sanction will expire. If the sanction is permanent, this will be 0
- * @member {real} TimePlaced The POSIX timestamp when the sanction was placed
+ * @member {string} action The action associated with this sanction
+ * @member {string} reference_id A unique identifier for this specific sanction
+ * @member {real} time_expires The POSIX timestamp when the sanction will expire. If the sanction is permanent, this will be 0
+ * @member {real} time_placed The POSIX timestamp when the sanction was placed
  * @struct_end
  */
 

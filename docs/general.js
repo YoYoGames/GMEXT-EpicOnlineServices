@@ -25,7 +25,7 @@
  * 
  * [[Note: By default all log categories will callback for Warnings, Errors, and Fatals.]]
  * 
- * @param {constant.EOS_LOGGING_CATEGORY} category The specific log category to configure. Use `EOS_LC_ALL_CATEGORIES` to configure all categories simultaneously to the same log level. Check the constants under ${constant.EOS_LOGGING_CATEGORY}.
+ * @param {constant.EOS_LOGGING_CATEGORY} category The specific log category to configure. Use `EOS_LOGGING_CATEGORY.ALL_CATEGORIES` to configure all categories simultaneously to the same log level. Check the constants under ${constant.EOS_LOGGING_CATEGORY}.
  * @param {constant.EOS_LOGGING_LEVEL} logLevel the log level to use for the log category. Check the constants under ${constant.EOS_LOGGING_LEVEL}.
  * 
  * @example

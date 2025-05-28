@@ -311,9 +311,9 @@
  * 
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {string} DisplayName The display name of the external account. May not be present in the struct if not set.
- * @member {string} AccountId The ID of the external account. May not be present in the struct if not set.
- * @member {constant.EOS_EXTERNAL_ACCOUNT_TYPE} AccountType The type of the external account.
+ * @member {string} [display_name] The display name of the external account. May not be present in the struct if not set.
+ * @member {string} [account_id] The ID of the external account. May not be present in the struct if not set.
+ * @member {constant.EOS_EXTERNAL_ACCOUNT_TYPE} account_type The type of the external account.
  * @struct_end
  */
 
@@ -321,15 +321,15 @@
  * @struct UserInfo
  * @desc **Epic Online Services Struct:** [EOS_UserInfo](https://dev.epicgames.com/docs/api-ref/structs/eos-user-info)
  * 
- * The user info is represented by a struct and contains information about a single user info.
+ * The user info is represented by a struct and contains information about a single user.
  * 
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code.
- * @member {string} DisplayName The display name. This value may not be present in the struct if not set.
- * @member {string} Country The name of the owner's country. This value may not be present in the struct if not set.
- * @member {string} Nickname A nickname/alias for the target user assigned by the local user. This value may not be present in the struct if not set.
- * @member {string} PreferredLanguage The ISO 639 language code for the user's preferred language. This value may not be present in the struct if not set.
- * @member {string} AccountID The Epic Account ID of the user
+ * @member {string} [display_name] The display name. This value may not be present in the struct if not set.
+ * @member {string} [country] The name of the owner's country. This value may not be present in the struct if not set.
+ * @member {string} [nickname] A nickname/alias for the target user assigned by the local user. This value may not be present in the struct if not set.
+ * @member {string} [preferred_language] The ISO 639 language code for the user's preferred language. This value may not be present in the struct if not set.
+ * @member {string} [account_id] The Epic Account ID of the user
  * @struct_end
  */
 

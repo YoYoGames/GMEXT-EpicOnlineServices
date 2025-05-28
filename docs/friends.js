@@ -53,10 +53,10 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_add_notify_friends_update"`
- * @member {constant.EOS_FRIENDS_STATUS} CurrentStatus The current status of the user.
- * @member {constant.EOS_FRIENDS_STATUS} PreviousStatus The previous status of the user.
- * @member {string} TargetUserId The Epic Account ID of the user whose status is being updated.
- * @member {string} LocalUserId The Epic Account ID of the local user who is receiving the update
+ * @member {constant.EOS_FRIENDS_STATUS} current_status The current status of the user.
+ * @member {constant.EOS_FRIENDS_STATUS} previous_status The previous status of the user.
+ * @member {string} target_user_id The Epic Account ID of the user whose status is being updated.
+ * @member {string} local_user_id The Epic Account ID of the local user who is receiving the update
  * @event_end
  * 
  * @example
@@ -75,7 +75,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -91,7 +91,7 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_friends_query_friends} to store values in cache.]]
  * 
- * @param {string} accountID The user account Identifier to get the friend data from.
+ * @param {string} accountID The user account identifier to get the friend data from.
  * @param {real} index Index into the friend list. This value must be between 0 and ${function.eos_friends_get_friends_count} - 1 inclusively.
  * 
  * @returns {string}

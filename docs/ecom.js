@@ -274,12 +274,12 @@ function eos_ecom_get_entitlements_by_name_count(user, entitlementName) {}
  * 
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {boolean} Redeemed If `true` then the catalog has this entitlement marked as redeemed
- * @member {string} CatalogItemId ID of the item associated with the offer which granted this entitlement
- * @member {int64} EndTimestamp If not -1 then this is a POSIX timestamp that this entitlement will end
- * @member {string} EntitlementId ID of the entitlement owned by an account
- * @member {string} EntitlementName Name of the entitlement
- * @member {real} ServerIndex If queried using pagination then `ServerIndex` represents the index of the entitlement as it exists on the server. If not queried using pagination then `ServerIndex` will be -1.
+ * @member {boolean} redeemed If `true` then the catalog has this entitlement marked as redeemed
+ * @member {string} catalog_item_id ID of the item associated with the offer which granted this entitlement
+ * @member {int64} end_timestamp If not -1 then this is a POSIX timestamp that this entitlement will end
+ * @member {string} entitlement_id ID of the entitlement owned by an account
+ * @member {string} entitlement_name Name of the entitlement
+ * @member {real} server_index If queried using pagination then `server_index` represents the index of the entitlement as it exists on the server. If not queried using pagination then `server_index` will be -1.
  * @struct_end
  */
 
@@ -354,22 +354,22 @@ function eos_ecom_get_offer_count(user) {}
  * 
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {boolean} bAvailableForPurchase True if the user can purchase this offer.
- * @member {string} CatalogNamespace Product namespace in which this offer exists
- * @member {string} CurrencyCode The Currency Code for this offer
- * @member {int64} CurrentPrice64 The current price including discounts of this offer as a 64-bit number.
- * @member {real} DecimalPoint The decimal point for the provided price. For example, DecimalPoint '2' and CurrentPrice64 '12345' would be '123.45'.
- * @member {string} DescriptionText Localised UTF-8 description of this offer
- * @member {real} DiscountPercentage A value from 0 to 100 define the percentage of the OrignalPrice that the CurrentPrice represents
- * @member {int64} EffectiveDateTimestamp Timestamp indicating the effective date of the offer. Can be ignored if set to -1.
- * @member {real} Id The ID of this offer
- * @member {string} LongDescriptionText Localised UTF-8 long description of this offer
- * @member {int64} OriginalPrice64 The original price of this offer as a 64-bit number
- * @member {constant.EOS_RESULT} PriceResult If this value is `EOS_RESULT.SUCCESS` then `OriginalPrice64`, `CurrentPrice64`, and `DiscountPercentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
- * @member {real} PurchaseLimit The maximum number of times that the offer can be purchased. A negative value implies there is no limit.
- * @member {int64} ReleaseDateTimestamp Timestamp indicating when the time when the offer was released. Can be ignored if set to -1.
- * @member {real} ServerIndex The index of this offer as it exists on the server. This is useful for understanding pagination data.
- * @member {string} TitleText Localised UTF-8 title of this offer
+ * @member {boolean} available_for_purchase True if the user can purchase this offer.
+ * @member {string} catalog_namespace Product namespace in which this offer exists
+ * @member {string} currency_code The Currency Code for this offer
+ * @member {int64} current_price64 The current price including discounts of this offer as a 64-bit number.
+ * @member {real} decimal_point The decimal point for the provided price. For example, `decimal_point` '2' and `current_price64` '12345' would be '123.45'.
+ * @member {string} description_text Localised UTF-8 description of this offer
+ * @member {real} discount_percentage A value from 0 to 100 define the percentage of the original price that the current price represents
+ * @member {int64} effective_date_timestamp Timestamp indicating the effective date of the offer. Can be ignored if set to -1.
+ * @member {real} offer_id The ID of this offer
+ * @member {string} long_description_text Localised UTF-8 long description of this offer
+ * @member {int64} original_price64 The original price of this offer as a 64-bit number
+ * @member {constant.EOS_RESULT} price_result If this value is `EOS_RESULT.SUCCESS` then `original_price64`, `CurrentPrice64`, and `discount_percentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
+ * @member {real} purchase_limit The maximum number of times that the offer can be purchased. A negative value implies there is no limit.
+ * @member {int64} release_date_timestamp Timestamp indicating when the time when the offer was released. Can be ignored if set to -1.
+ * @member {real} server_index The index of this offer as it exists on the server. This is useful for understanding pagination data.
+ * @member {string} title_text Localised UTF-8 title of this offer
  * @struct_end
  */
 
@@ -427,17 +427,17 @@ function eos_ecom_get_offer_item_count(user, OfferId) {}
  * 
  * @member {real} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {boolean} bAvailableForPurchase
- * @member {string} CatalogNamespace Product namespace in which this item exists
- * @member {string} DescriptionText Localised UTF-8 description of this item
- * @member {string} DeveloperText Localised UTF-8 developer of this item
- * @member {int64} EntitlementEndTimestamp If not -1 then this is the POSIX timestamp that the entitlement will end
- * @member {string} EntitlementName The entitlement name associated with this item
- * @member {real} Id The ID of this item
- * @member {real} ItemType The type of item as defined in the catalog
- * @member {string} LongDescriptionText Localised UTF-8 long description of this item
- * @member {string} TechnicalDetailsText Localised UTF-8 technical details of this item 
- * @member {string} TitleText Localised UTF-8 title of this item
+ * @member {boolean} available_for_purchase
+ * @member {string} catalog_namespace Product namespace in which this item exists
+ * @member {string} description_text Localised UTF-8 description of this item
+ * @member {string} developer_text Localised UTF-8 developer of this item
+ * @member {int64} entitlement_end_timestamp If not -1 then this is the POSIX timestamp that the entitlement will end
+ * @member {string} entitlement_name The entitlement name associated with this item
+ * @member {real} id The ID of this item
+ * @member {real} item_type The type of item as defined in the catalog
+ * @member {string} long_description_text Localised UTF-8 long description of this item
+ * @member {string} technical_details_text Localised UTF-8 technical details of this item 
+ * @member {string} title_text Localised UTF-8 title of this item
  * @struct_end
  */
 
@@ -499,10 +499,10 @@ function eos_ecom_get_offer_image_info_count(user, OfferId) {}
  * 
  * @member {real} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} Height The expected height in pixels of the image
- * @member {real} Width The expected width in pixels of the image
- * @member {string} Type Describes the usage of the image (ex home_thumbnail)
- * @member {string} Url The URL of the image
+ * @member {real} height The expected height in pixels of the image
+ * @member {real} width The expected width in pixels of the image
+ * @member {string} type Describes the usage of the image (e.g. home_thumbnail)
+ * @member {string} url The URL of the image
  * @struct_end
  */
 
@@ -579,9 +579,9 @@ function eos_ecom_get_item_release_count(user, ItemId) {}
  * 
  * @member {real} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {array[string]} CompatibleAppIds An array of compatible App IDs
- * @member {array[string]} CompatiblePlatforms An array of compatible platforms 
- * @member {string} ReleaseNote Release note for compatible versions
+ * @member {array[string]} compatible_app_ids An array of compatible App IDs
+ * @member {array[string]} compatible_platforms An array of compatible platforms 
+ * @member {string} release_note Release note for compatible versions
  * @struct_end
  */
 

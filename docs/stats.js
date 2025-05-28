@@ -9,7 +9,7 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_stats_query_stats} to store values in cache.]]
  * 
- * @param {string} userID_target The Product User ID of the user who owns the stat
+ * @param {string} user_id_target The Product User ID of the user who owns the stat
  * @param {real} index Index of the stat to retrieve from the cache
  * 
  * @returns {struct.StatData}
@@ -175,10 +175,14 @@
  * @struct StatData
  * @desc The stat data is represented by a struct and contains information for a specific stat.
  * 
- * @member {string} Name The name of the stat.
- * @member {real} StartTime If not `EOS_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for start time.
- * @member {real} EndTime If not `EOS_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for end time.
- * @member {real} Value The current value for the stat.
+ * [[Note: The stat info members are only present in the struct if the request was successful.]]
+ * 
+ * @member {constant.EOS_RESULT} status The status code of the request
+ * @member {string} status_message A text representation of the status code
+ * @member {string} [name] The name of the stat
+ * @member {real} [start_time] If not `EOS_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for start time.
+ * @member {real} [end_time] If not `EOS_STATS_TIME_UNDEFINED` then this is the POSIX timestamp for end time.
+ * @member {real} [value] The current value for the stat.
  * @struct_end
  */
 
