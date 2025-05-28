@@ -28,7 +28,7 @@
  * if (async_load[? "type"] == "eos_achievements_add_notify_achievements_unlocked_v2")
  * if(async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_Result.Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -58,7 +58,7 @@
  * 
  * ```gml
  * var _struct = eos_achievements_copy_achievement_definition_v2_by_achievement_id("MyAchievement1");
- * if(_struct.status == EOS_Result.Success)
+ * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
  *     var _achievement_id = _struct.achievement_id;
  * }
@@ -84,7 +84,7 @@
  * for(var i = 0 ; i < eos_achievements_get_achievement_definition_count() ; i ++)
  * {
  *     var _struct = eos_achievements_copy_achievement_definition_v2_by_index(i);
- *     if(_struct.status == EOS_Result.Success)
+ *     if(_struct.status == EOS_RESULT.SUCCESS)
  *     {
  *         var _achievement_id = _struct.achievement_id;
  *     }
@@ -111,7 +111,7 @@
  * @example
  * ```gml
  * var _struct = eos_achievements_copy_player_achievement_by_achievement_id(user_id, user_id_target, achievement_id);
- * if(_struct.status == EOS_Result.Success)
+ * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
  *     var _achievement_id = _struct.achievement_id;
  * }
@@ -139,7 +139,7 @@
  * for(var i = 0 ; i < eos_achievements_get_player_achievement_count(userID) ; i ++)
  * {
  *     var _struct = eos_achievements_copy_player_achievement_by_index(i);
- *     if(_struct.status == EOS_Result.Success)
+ *     if(_struct.status == EOS_RESULT.SUCCESS)
  *     {
  *         var _achievement_id = _struct.achievement_id;
  *     }
@@ -164,7 +164,7 @@
  * for(var i = 0 ; i < eos_achievements_get_achievement_definition_count() ; i ++)
  * {
  *     var _struct = eos_achievements_copy_achievement_definition_v2_by_index(i);
- *     if(_struct.status == EOS_Result.Success)
+ *     if(_struct.status == EOS_RESULT.SUCCESS)
  *     {
  *         var _achievement_id = _struct.achievement_id;
  *     }
@@ -191,7 +191,7 @@
  * for(var i = 0 ; i < eos_achievements_get_player_achievement_count(userID) ; i ++)
  * {
  *     var _struct = eos_achievements_copy_player_achievement_by_index(i);
- *     if(_struct.status == EOS_Result.Success)
+ *     if(_struct.status == EOS_RESULT.SUCCESS)
  *     {
  *         var _achievement_id = _struct.achievement_id;
  *     }
@@ -206,7 +206,7 @@
  * @desc **Epic Online Services Function:** [EOS_Achievements_QueryDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryDefinitions/index.html)
  * 
  * This function queries for a list of definitions for all existing achievements, including localized text, icon IDs and whether an achievement is hidden.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_achievements_copy_achievement_definition_v2_by_achievement_id}
  * * ${function.eos_achievements_copy_achievement_definition_v2_by_index}
@@ -216,7 +216,7 @@
  * 
  * @event social
  * @member {string} type `"eos_achievements_query_definitions"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -234,7 +234,7 @@
  * if (async_load[? "type"] == "eos_achievements_query_definitions")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_Result.Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -254,7 +254,7 @@
  * 
  * This function queries for a list of achievements for a specific player, including progress towards completion for each achievement.
  * 
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_achievements_copy_player_achievement_by_achievement_id}
  * * ${function.eos_achievements_copy_player_achievement_by_index}
@@ -267,7 +267,7 @@
  * 
  * @event social
  * @member {string} type `"eos_achievements_query_player_achievements"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * 
@@ -283,7 +283,7 @@
  * if (async_load[? "type"] == "eos_achievements_query_player_achievements")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_Result.Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -332,7 +332,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_achievements_unlock_achievement"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -349,7 +349,7 @@
  * if (async_load[? "type"] == "eos_achievements_unlock_achievement")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_Result.Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -372,12 +372,12 @@
  * 
  * The status member present in the struct can be represented by one of the following values:
  * 
- * * `EOS_Result.Success` if the information is available and was correctly returned;
- * * `EOS_Result.InvalidParameters` (extension internal error, should never be returned);
- * * `EOS_Result.NotFound` if the achievement definition is not found;
- * * `EOS_Result.Invalid_ProductUserID` if you pass an invalid user ID;
+ * * `EOS_RESULT.SUCCESS` if the information is available and was correctly returned;
+ * * `EOS_RESULT.INVALID_PARAMETERS` (extension internal error, should never be returned);
+ * * `EOS_RESULT.NOT_FOUND` if the achievement definition is not found;
+ * * `EOS_RESULT.INVALID_PRODUCT_USER_ID` if you pass an invalid user ID;
  * 
- * @member {constant.EOS_Result} status The result value of the task
+ * @member {constant.EOS_RESULT} status The result value of the task
  * @member {string} status_message Text representation of the status code
  * @member {string} achievement_id This achievement's unique identifier
  * @member {real} progress Progress towards completing this achievement (as a percentage)
@@ -410,12 +410,12 @@
  * 
  *   The status member present in the struct can be represented by one of the following values:
  *   
- * * `EOS_Result.Success` if the information is available and was correctly returned;
- * * `EOS_Result.InvalidParameters` (extension internal error, should never be returned);
- * * `EOS_Result.NotFound` if the achievement definition is not found;
- * * `EOS_Result.Invalid_ProductUserID` if any of the user_id options are incorrect;
+ * * `EOS_RESULT.SUCCESS` if the information is available and was correctly returned;
+ * * `EOS_RESULT.INVALID_PARAMETERS` (extension internal error, should never be returned);
+ * * `EOS_RESULT.NOT_FOUND` if the achievement definition is not found;
+ * * `EOS_RESULT.INVALID_PRODUCT_USER_ID` if any of the user_id options are incorrect;
  * 
- * @member {constant.EOS_Result} status The result value of the task
+ * @member {constant.EOS_RESULT} status The result value of the task
  * @member {string} status_message Text representation of the status code
  * @member {string} achievement_id Achievement ID that can be used to uniquely identify the achievement
  * @member {string} unlocked_display_name Localized display name for the achievement when it has been unlocked

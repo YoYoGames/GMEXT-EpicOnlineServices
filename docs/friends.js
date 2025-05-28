@@ -14,7 +14,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_accept_invite"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -29,7 +29,7 @@
  * if (async_load[? "type"] == "eos_friends_accept_invite")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -53,8 +53,8 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_add_notify_friends_update"`
- * @member {constant.eos_friendship_status} CurrentStatus The current status of the user.
- * @member {constant.eos_friendship_status} PreviousStatus The previous status of the user.
+ * @member {constant.EOS_FRIENDS_STATUS} CurrentStatus The current status of the user.
+ * @member {constant.EOS_FRIENDS_STATUS} PreviousStatus The previous status of the user.
  * @member {string} TargetUserId The Epic Account ID of the user whose status is being updated.
  * @member {string} LocalUserId The Epic Account ID of the local user who is receiving the update
  * @event_end
@@ -69,7 +69,7 @@
  * if (async_load[? "type"] == "eos_friends_add_notify_friends_update")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -140,7 +140,7 @@
  * @param {string} accountID The Epic Account ID of the local, logged in user
  * @param {string} accountID_target The Epic Account ID of the user whose friendship status with the local user is being queried
  * 
- * @returns {constant.eos_friendship_status}
+ * @returns {constant.EOS_FRIENDS_STATUS}
  * 
  * @example
  * ```gml
@@ -162,7 +162,7 @@
  * @desc **Epic Online Services Function:** [EOS_Friends_QueryFriends](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_QueryFriends/index.html)
  * 
  * This function starts an asynchronous task that reads the user's friends list from the backend service, caching it for future use.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  *
  * * ${function.eos_friends_get_friend_at_index}
  * * ${function.eos_friends_get_friends_count}
@@ -173,7 +173,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_query_friends"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -188,7 +188,7 @@
  * if (async_load[? "type"] == "eos_friends_query_friends")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -215,7 +215,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_reject_invite"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -230,7 +230,7 @@
  * if (async_load[? "type"] == "eos_friends_reject_invite")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -277,7 +277,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_friends_send_invite"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -292,7 +292,7 @@
  * if (async_load[? "type"] == "eos_friends_send_invite")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -306,15 +306,15 @@
  */
 
 /**
- * @constant eos_friendship_status
+ * @constant EOS_FRIENDS_STATUS
  * @desc **Epic Online Services Enum:** [EOS_EFriendsStatus](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-friends-status)
  * 
  * These constants are used to describe the friendship status with a given account.
  * 
- * @member EOS_FS_NOT_FRIENDS The two accounts have no friendship status
- * @member EOS_FS_INVITE_SENT The local account has sent a friend invite to the other account
- * @member EOS_FS_INVITE_RECEIVED The other account has sent a friend invite to the local account
- * @member EOS_FS_FRIENDS The accounts have accepted friendship
+ * @member NOT_FRIENDS The two accounts have no friendship status
+ * @member INVITE_SENT The local account has sent a friend invite to the other account
+ * @member INVITE_RECEIVED The other account has sent a friend invite to the local account
+ * @member FRIENDS The accounts have accepted friendship
  * @constant_end
  */
 
@@ -339,7 +339,7 @@
  * 
  * @section_const
  * @desc These are the constants used by this API:
- * @ref eos_friendship_status
+ * @ref EOS_FRIENDS_STATUS
  * @section_end
  * 
  * @module_end

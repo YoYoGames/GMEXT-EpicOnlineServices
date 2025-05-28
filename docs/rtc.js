@@ -30,7 +30,7 @@
  * @func eos_rtc_add_notify_disconnected
  * @desc **Epic Online Services Function:** [EOS_RTC_AddNotifyDisconnected](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-disconnected)
  * 
- * This function registers to receive notifications when disconnected from the room. If the returned notification ID is valid, you must call ${function.eos_rtc_remove_notify_disconnected} when you no longer wish to have the ${event.social} called. This function will always return `EOS_INVALID_NOTIFICATIONID` when used with lobby RTC room. To be notified of the connection status of a Lobby-managed RTC room, use the ${function.eos_lobby_add_notify_rtc_room_connection_changed} function instead.
+ * This function registers to receive notifications when disconnected from the room. If the returned notification ID is valid, you must call ${function.eos_rtc_remove_notify_disconnected} when you no longer wish to have the ${event.social} called. This function will always return ${constant.EOS_INVALID_NOTIFICATIONID} when used with lobby RTC room. To be notified of the connection status of a Lobby-managed RTC room, use the ${function.eos_lobby_add_notify_rtc_room_connection_changed} function instead.
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this event is registered on.
@@ -41,7 +41,7 @@
  * @member {string} type the string `"eos_rtc_add_notify_disconnected"`
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
  * @member {string} room_name The room associated with this event.
- * @member {constant.EOS_Result} status This holds: `EOS_Result.Success` The room was left cleanly. `EOS_Result.NoConnection`: There was a network issue connecting to the server (retryable). `EOS_Result.RTC_UserKicked`: The user has been kicked by the server (retryable). `EOS_Result.ServiceFailure`: A known error occurred during interaction with the server (retryable). `EOS_Result.UnexpectedError` Unexpected error (retryable).
+ * @member {constant.EOS_RESULT} status This holds: `EOS_RESULT.SUCCESS` The room was left cleanly. `EOS_RESULT.NO_CONNECTION`: There was a network issue connecting to the server (retryable). `EOS_RESULT.RTC_USER_KICKED`: The user has been kicked by the server (retryable). `EOS_RESULT.SERVICE_FAILURE`: A known error occurred during interaction with the server (retryable). `EOS_RESULT.UNEXPECTED_ERROR` Unexpected error (retryable).
  * @member {string} status_message Text representation of the status code
  * @event_end
  * 
@@ -52,7 +52,7 @@
  * @func eos_rtc_add_notify_participant_status_changed
  * @desc **Epic Online Services Function:** [EOS_RTC_AddNotifyParticipantStatusChanged](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-participant-status-changed)
  * 
- * This function registers to receive notifications when a participant's status changes (e.g.: join or leave the room), or when the participant is added or removed from an applicable block list (e.g.: Epic block list and/or current platform's block list). If the returned notification ID is valid, you must call ${function.eos_rtc_remove_notify_participant_status_changed} when you no longer wish to have the ${event.social} triggered. If you register to this notification before joining a room, you will receive a notification for every member already in the room when you join said room. This allows you to know who is already in the room when you join. To be used effectively with a Lobby-managed RTC room, this should be registered during the ${function.eos_lobby_create_lobby} or ${function.eos_lobby_join_lobby} completion callbacks when the ResultCode is `EOS_Result.Success`. If this notification is registered after that point, it is possible to miss notifications for already-existing room participants. You can use this notification to detect internal automatic RTC blocks due to block lists. When a participant joins a room and while the system resolves the block list status of said participant, the participant is set to blocked and you'll receive a notification with `participant_status` set to EOS_RTCPS_Joined and `participant_in_blocklist` set to `true`. Once the block list status is resolved, if the player is not in any applicable block list(s), it is then unblocked and a new notification is sent with `participant_status` set to EOS_RTCPS_Joined and `participant_in_blocklist` set to `false`.
+ * This function registers to receive notifications when a participant's status changes (e.g.: join or leave the room), or when the participant is added or removed from an applicable block list (e.g.: Epic block list and/or current platform's block list). If the returned notification ID is valid, you must call ${function.eos_rtc_remove_notify_participant_status_changed} when you no longer wish to have the ${event.social} triggered. If you register to this notification before joining a room, you will receive a notification for every member already in the room when you join said room. This allows you to know who is already in the room when you join. To be used effectively with a Lobby-managed RTC room, this should be registered during the ${function.eos_lobby_create_lobby} or ${function.eos_lobby_join_lobby} completion callbacks when the ResultCode is `EOS_RESULT.SUCCESS`. If this notification is registered after that point, it is possible to miss notifications for already-existing room participants. You can use this notification to detect internal automatic RTC blocks due to block lists. When a participant joins a room and while the system resolves the block list status of said participant, the participant is set to blocked and you'll receive a notification with `participant_status` set to `EOS_RTC_PARTICIPANT_STATUS.JOINED` and `participant_in_blocklist` set to `true`. Once the block list status is resolved, if the player is not in any applicable block list(s), it is then unblocked and a new notification is sent with `participant_status` set to `EOS_RTC_PARTICIPANT_STATUS.JOINED` and `participant_in_blocklist` set to `false`.
  * 
  * [[Note: This notification is also raised when the local user joins the room, but NOT when the local user leaves the room.]]
  *
@@ -65,9 +65,9 @@
  * @member {string} type the string `"eos_rtc_add_notify_participant_status_changed"`
  * @member {string} local_user_id The Product User ID of the user who initiated this request.
  * @member {string} room_name The room associated with this event.
- * @member {bool} participant_in_blocklist The participant's block list status, if `participant_status` is `EOS_RTCParticipantStatus.Joined`. This is set to `true` if the participant is in any of the local user's applicable block lists, such as Epic block list or any of the current platform's block lists. It can be used to detect when an internal automatic RTC block is applied because of trust and safety restrictions.
+ * @member {bool} participant_in_blocklist The participant's block list status, if `participant_status` is `EOS_RTC_PARTICIPANT_STATUS.JOINED`. This is set to `true` if the participant is in any of the local user's applicable block lists, such as Epic block list or any of the current platform's block lists. It can be used to detect when an internal automatic RTC block is applied because of trust and safety restrictions.
  * @member {string} participant_id The participant whose status changed.
- * @member {constant.EOS_RTCParticipantStatus} participant_status What status change occurred
+ * @member {constant.EOS_RTC_PARTICIPANT_STATUS} participant_status What status change occurred
  * @event_end
  * 
  * @func_end
@@ -136,7 +136,7 @@
  * @func eos_rtc_join_room
  * @desc **Epic Online Services Function:** [EOS_RTC_JoinRoom](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-join-room)
  * 
- * You can use this function to join a room. This function does not need to be called for the Lobby RTC Room system; doing so will return `EOS_Result.AccessDenied`. The lobby system will automatically join and leave RTC Rooms for all lobbies that have RTC rooms enabled.
+ * You can use this function to join a room. This function does not need to be called for the Lobby RTC Room system; doing so will return `EOS_RESULT.ACCESS_DENIED`. The lobby system will automatically join and leave RTC Rooms for all lobbies that have RTC rooms enabled.
  * 
  * The function returns an async identifier.
  * 
@@ -166,7 +166,7 @@
  * @func eos_rtc_leave_room
  * @desc **Epic Online Services Function:** [EOS_RTC_LeaveRoom](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-leave-room)
  * 
- * You can use this function to leave a room and clean up all the resources associated with it. This function has to always be called when the room is abandoned even if the user is already disconnected for other reasons. This function does not need to called for the Lobby RTC Room system; doing so will return EOS_AccessDenied. The lobby system will automatically join and leave RTC Rooms for all lobbies that have RTC rooms enabled.
+ * You can use this function to leave a room and clean up all the resources associated with it. This function has to always be called when the room is abandoned even if the user is already disconnected for other reasons. This function does not need to called for the Lobby RTC Room system; doing so will return `EOS_RESULT.ACCESS_DENIED`. The lobby system will automatically join and leave RTC Rooms for all lobbies that have RTC rooms enabled.
  * 
  * The function returns an async identifier.
  * 
@@ -233,16 +233,16 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` when the setting is successfully set
- * * `EOS_Result.NotFound` when the setting is unknown
- * * `EOS_Result.InvalidParameters` when the value is invalid
+ * * `EOS_RESULT.SUCCESS` when the setting is successfully set
+ * * `EOS_RESULT.NOT_FOUND` when the setting is unknown
+ * * `EOS_RESULT.INVALID_PARAMETERS` when the value is invalid
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation
  * @param {string} room_name The room the setting will be applied to
  * @param {string} setting_name The setting that should be set
  * @param {string} setting_value The value to set the setting to
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -260,14 +260,14 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` when the setting is successfully set
- * * `EOS_Result.NotFound` when the setting is unknown
- * * `EOS_Result.InvalidParameters` when the value is invalid
+ * * `EOS_RESULT.SUCCESS` when the setting is successfully set
+ * * `EOS_RESULT.NOT_FOUND` when the setting is unknown
+ * * `EOS_RESULT.INVALID_PARAMETERS` when the value is invalid
  *
  * @param {string} setting_name The setting that should be set
  * @param {string} setting_value The value to set the setting to
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -280,13 +280,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available
- * * `EOS_Result.NotFound` if the user token is not found
+ * * `EOS_RESULT.SUCCESS` if the information is available
+ * * `EOS_RESULT.NOT_FOUND` if the user token is not found
  * 
  * @param {real} query_id The query identifier received as part of a previous query
  * @param {real} user_token_index The Product User ID for the user whose user token we're copying
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -344,7 +344,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_admin_query_join_room_token"`
  * @member {real} identifier The identifier returned by the function
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {string} client_base_url URL passed to backend to join room
  * @member {real} query_id If the query completed successfully, this contains an identifier that should be used to retrieve the tokens. This identifier is only valid for the duration of the callback.
@@ -371,7 +371,7 @@
  * @event social
  * @member {string} type the string `"eos_rtc_admin_set_participant_hard_mute"`
  * @member {real} identifier The identifier returned by the function
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @event_end
  * 
@@ -606,7 +606,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_query_input_devices_information"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if the operation succeeded, `EOS_Result.InvalidParameters` if any of the parameters were incorrect
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if the operation succeeded, `EOS_RESULT.INVALID_PARAMETERS` if any of the parameters were incorrect
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
@@ -626,7 +626,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_query_output_devices_information"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if the operation succeeded, `EOS_Result.InvalidParameters` if any of the parameters were incorrect
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if the operation succeeded, `EOS_RESULT.INVALID_PARAMETERS` if any of the parameters were incorrect
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
@@ -642,13 +642,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `"EOS_Result.Success"` if the user was successfully registered
- * * `"EOS_Result.InvalidParameters"` if any of the parameters are incorrect
- * * `"EOS_Result.UnexpectedError"` otherwise
+ * * `"EOS_RESULT.SUCCESS"` if the user was successfully registered
+ * * `"EOS_RESULT.INVALID_PARAMETERS"` if any of the parameters are incorrect
+ * * `"EOS_RESULT.UNEXPECTED_ERROR"` otherwise
  * 
  * @param {string} user_id The platform dependent user ID
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -751,7 +751,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_set_input_device_settings"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if the operation succeeded, `EOS_Result.InvalidParameters` if any of the parameters are incorrect
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if the operation succeeded, `EOS_RESULT.INVALID_PARAMETERS` if any of the parameters are incorrect
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} real_device_id The associated audio input device ID
@@ -775,7 +775,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_set_output_device_settings"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if the operation succeeded, `EOS_Result.InvalidParameters` if any of the parameters are incorrect
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if the operation succeeded, `EOS_RESULT.INVALID_PARAMETERS` if any of the parameters are incorrect
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} real_device_id The associated audio output device ID
@@ -798,7 +798,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_unregister_platform_user"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if the user was successfully unregistered, `EOS_Result.InvalidParameters` if any of the parameters are incorrect, `EOS_Result.UnexpectedError` otherwise
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if the user was successfully unregistered, `EOS_RESULT.INVALID_PARAMETERS` if any of the parameters are incorrect, `EOS_RESULT.UNEXPECTED_ERROR` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} platform_user_id The platform dependent user ID
@@ -826,7 +826,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_unregister_platform_user"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if volume of remote participant audio was successfully changed, `EOS_Result.UnexpectedError` otherwise
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if volume of remote participant audio was successfully changed, `EOS_RESULT.UNEXPECTED_ERROR` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request
@@ -857,7 +857,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_receiving"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if receiving of channels of remote users was successfully enabled/disabled, `EOS_Result.NotFound` if the participant isn't found by `participant_id`, `EOS_Result.UnexpectedError` otherwise
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if receiving of channels of remote users was successfully enabled/disabled, `EOS_RESULT.NOT_FOUND` if the participant isn't found by `participant_id`, `EOS_RESULT.UNEXPECTED_ERROR` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} participant_id The participant modified
@@ -886,7 +886,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_receiving_volume"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if receiving volume of channels of the local user was successfully changed. `EOS_Result.UnexpectedError` otherwise.
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if receiving volume of channels of the local user was successfully changed. `EOS_RESULT.UNEXPECTED_ERROR` otherwise.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} room_name The room this settings should be applied on
@@ -914,7 +914,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_sending"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if sending of channels of the local user was successfully enabled/disabled. `EOS_Result.UnexpectedError` otherwise.
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if sending of channels of the local user was successfully enabled/disabled. `EOS_RESULT.UNEXPECTED_ERROR` otherwise.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} room_name The room this setting was applied on
@@ -943,7 +943,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_audio_update_sending_volume"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if sending volume of channels of the local user was successfully changed, `EOS_Result.UnexpectedError` otherwise
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if sending volume of channels of the local user was successfully changed, `EOS_RESULT.UNEXPECTED_ERROR` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} room_name The room this settings should be applied on
@@ -1032,16 +1032,16 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the data packet was queued for sending
- * * `EOS_Result.InvalidParameters` if any of the options are invalid
- * * `EOS_Result.NotFound` if the specified room was not found
+ * * `EOS_RESULT.SUCCESS` if the data packet was queued for sending
+ * * `EOS_RESULT.INVALID_PARAMETERS` if any of the options are invalid
+ * * `EOS_RESULT.NOT_FOUND` if the specified room was not found
  * 
  * @param {buffer} buff The buffer containing the data to send
  * @param {real} length The number of bytes to send
  * @param {string} local_user_id The Product User ID of the user trying to request this operation
  * @param {string} room_name The room this event is registered on
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1063,7 +1063,7 @@
  * 
  * @event social
  * @member {string} type the string "eos_rtc_data_update_receiving"
- * @member {constant.EOS_Result} status `EOS_Result.Success` if receiving of channels of remote users was successfully enabled/disabled, `EOS_Result.NotFound` if the participant isn't found by `participant_id`, `EOS_Result.UnexpectedError` otherwise
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if receiving of channels of remote users was successfully enabled/disabled, `EOS_RESULT.NOT_FOUND` if the participant isn't found by `participant_id`, `EOS_RESULT.UNEXPECTED_ERROR` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request
@@ -1091,7 +1091,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_rtc_data_update_sending"`
- * @member {constant.EOS_Result} status `EOS_Result.Success` if sending of channels of the local user was successfully enabled/disabled, `EOS_Result.UnexpectedError` otherwise
+ * @member {constant.EOS_RESULT} status `EOS_RESULT.SUCCESS` if sending of channels of the local user was successfully enabled/disabled, `EOS_RESULT.UNEXPECTED_ERROR` otherwise
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the user who initiated this request
@@ -1105,40 +1105,40 @@
 // Constants & Enums
 
 /**
- * @constant EOS_RTCParticipantStatus
+ * @constant EOS_RTC_PARTICIPANT_STATUS
  * @desc **Epic Online Services Enum:** [EOS_ERTCParticipantStatus](https://dev.epicgames.com/docs/ja/api-ref/enums/eos-ertc-participant-status)
  * 
  * This enumeration holds the possible values for a participant's RTC status change.
  * 
- * @member Joined The participant joined the room
- * @member Left The participant left the room
+ * @member JOINED The participant joined the room
+ * @member LEFT The participant left the room
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_RTCBackgroundMode
+ * @constant EOS_RTC_BACKGROUND_MODE
  * @desc **Epic Online Services Enum:** [EOS_ERTCBackgroundMode](https://dev.epicgames.com/docs/ja/api-ref/enums/eos-ertc-background-mode)
  * 
  * This enumeration holds the possible background modes supported by the RTC components.
  * 
- * @member LeaveRooms Upon entering a background application status, all logged in users leave any RTC rooms. All subsequent attempts to join any RTC rooms will be rejected. Upon returning to a foreground application status, all subsequent attempts to join any RTC rooms will be allowed.
- * @member KeepRoomsAlive Application status has no effect on RTC rooms. Audio is captured from input devices and is played to output devices. Games should obtain consent from users and otherwise make users aware this is occurring.
+ * @member LEAVE_ROOMS Upon entering a background application status, all logged in users leave any RTC rooms. All subsequent attempts to join any RTC rooms will be rejected. Upon returning to a foreground application status, all subsequent attempts to join any RTC rooms will be allowed.
+ * @member KEEP_ROOMS_ALIVE Application status has no effect on RTC rooms. Audio is captured from input devices and is played to output devices. Games should obtain consent from users and otherwise make users aware this is occurring.
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_RTCAudioStatus
+ * @constant EOS_RTC_AUDIO_STATUS
  * @desc **Epic Online Services Enum:** [EOS_ERTCAudioStatus](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-audio-status)
  * 
  * This enumeration holds the different possible audio channel statuses.
  * 
- * @member Unsupported Audio unsupported by the source (no devices)
- * @member Enabled Audio enabled
- * @member Disabled Audio disabled
- * @member AdminDisabled Audio disabled by the administrator
- * @member NotListeningDisabled Audio channel is disabled temporarily for both sending and receiving
+ * @member UNSUPPORTED Audio unsupported by the source (no devices)
+ * @member ENABLED Audio enabled
+ * @member DISABLED Audio disabled
+ * @member ADMIN_DISABLED Audio disabled by the administrator
+ * @member NOT_LISTENING_DISABLED Audio channel is disabled temporarily for both sending and receiving
  * 
  * @constant_end
  */
@@ -1156,43 +1156,42 @@
  */
 
 /**
- * @constant EOS_RTCAudioInputStatus
+ * @constant EOS_RTC_AUDIO_INPUT_STATUS
  * @desc **Epic Online Services Enum:** [EOS_ERTCAudioInputStatus](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-audio-input-status)
  * 
  * This enumeration holds the different audio input device statuses.
  * 
- * @member Idle The device is not in use right now (e.g., you are alone in the room). In such cases, the hardware resources are not allocated.
- * @member Recording The device is being used and capturing audio.
- * @member RecordingSilent The SDK is in a recording state, but actually capturing silence because the device is exclusively being used by the platform at the moment. This only applies to certain platforms.
- * @member RecordingDisconnected The SDK is in a recording state, but actually capturing silence because the device is disconnected (e.g., the microphone is not plugged in). This only applies to certain platforms.
- * @member Failed Something failed while trying to use the device.
+ * @member IDLE The device is not in use right now (e.g., you are alone in the room). In such cases, the hardware resources are not allocated.
+ * @member RECORDING The device is being used and capturing audio.
+ * @member RECORDING_SILENT The SDK is in a recording state, but actually capturing silence because the device is exclusively being used by the platform at the moment. This only applies to certain platforms.
+ * @member RECORDING_DISCONNECTED The SDK is in a recording state, but actually capturing silence because the device is disconnected (e.g., the microphone is not plugged in). This only applies to certain platforms.
+ * @member FAILED Something failed while trying to use the device.
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_RTCAudioOutputStatus
+ * @constant EOS_RTC_AUDIO_OUTPUT_STATUS
  * @desc **Epic Online Services Enum:** [EOS_ERTCAudioOutputStatus](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-audio-output-status)
  * 
  * This enumeration holds the different audio output device statuses.
  * 
- * @member Idle The device is not in used right now (e.g.: you are alone in the room). In such cases, the hardware resources are not allocated.
- * @member Playing Device is in use
- * @member Failed Something failed while trying to use the device
+ * @member IDLE The device is not in used right now (e.g.: you are alone in the room). In such cases, the hardware resources are not allocated.
+ * @member PLAYING Device is in use
+ * @member FAILED Something failed while trying to use the device
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_RTCDataStatus
+ * @constant EOS_RTC_DATA_STATUS
  * @desc **Epic Online Services Enum:** [EOS_ERTCDataStatus](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-data-status)
  * 
  * This enumeration holds the different data channel statuses.
  * 
- * @member Unsupported Data unsupported
- * @member Enabled Data enabled
- * @member Disabled Data disabled
+ * @member UNSUPPORTED Data unsupported
+ * @member ENABLED Data enabled
+ * @member DISABLED Data disabled
  * 
  * @constant_end
  */
-

@@ -57,7 +57,7 @@
  * @desc **Epic Online Services Function:** [EOS_Sanctions_QueryActivePlayerSanctions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Sanctions/EOS_Sanctions_QueryActivePlayerSanctions/index.html)
  * 
  * This function starts an asynchronous query to retrieve any active sanctions for a specified user.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_sanctions_copy_player_sanction_by_index}
  * * ${function.eos_sanctions_get_player_sanction_count}
@@ -69,7 +69,7 @@
  *
  * @event social
  * @member {string} type The string `"eos_sanctions_query_active_player_sanctions"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -84,7 +84,7 @@
  * if (async_load[? "type"] == "eos_sanctions_query_active_player_sanctions")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }

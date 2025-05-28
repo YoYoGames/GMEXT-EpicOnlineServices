@@ -8,7 +8,7 @@
  * 
  * @param {real} ui_event_id The event ID being acknowledged
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @function_end
  */
@@ -93,7 +93,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_ui_hide_friends"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -108,7 +108,7 @@
  * if (async_load[? "type"] == "eos_ui_hide_friends")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -172,7 +172,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_ui_show_friends"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -187,7 +187,7 @@
  * if (async_load[? "type"] == "eos_ui_show_friends")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -204,15 +204,15 @@
 // Constants
 
 /**
- * @constant eos_ui_notification_location
+ * @constant EOS_UI_NOTIFICATION_LOCATION
  * @desc **Epic Online Services Enum:** [EOS_UI_ENotificationLocation](https://dev.epicgames.com/docs/api-ref/enums/eos-ui-e-notification-location)
  * 
  * The UI Notification Location allows to change the positioning of the EOS notifications.
  * 
- * @member EOS_UNL_TOP_left Positions the overlay notification on the top-left corner
- * @member EOS_UNL_TOP_RIGHT Positions the overlay notification on the top-right corner
- * @member EOS_UNL_BOTTOM_LEFT Positions the overlay notification on the bottom-left corner
- * @member EOS_UNL_BOTTOM_RIGHT Positions the overlay notification on the bottom-right corner
+ * @member TOP_left Positions the overlay notification on the top-left corner
+ * @member TOP_RIGHT Positions the overlay notification on the top-right corner
+ * @member BOTTOM_LEFT Positions the overlay notification on the bottom-left corner
+ * @member BOTTOM_RIGHT Positions the overlay notification on the bottom-right corner
  * @constant_end
  */
 
@@ -241,7 +241,7 @@
  * @section_constant
  * @desc These are the constants used by this API:
  * 
- * @ref eos_ui_notification_location
+ * @ref EOS_UI_NOTIFICATION_LOCATION
  * 
  * @section_end
  * 

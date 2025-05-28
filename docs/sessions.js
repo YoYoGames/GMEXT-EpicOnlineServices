@@ -82,10 +82,10 @@
  * 
  * @section_const
  * @desc 
- * @ref EOS_AttributeType
- * @ref EOS_OnlineSessionPermissionLevel
- * @ref EOS_OnlineSessionState
- * @ref EOS_SessionAttributeAdvertisementType
+ * @ref EOS_ATTRIBUTE_TYPE
+ * @ref EOS_ONLINE_SESSION_PERMISSION_LEVEL
+ * @ref EOS_ONLINE_SESSION_STATE
+ * @ref EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE
  * @ref EOS_SESSIONS_MAX_SEARCH_RESULTS
  * @section_end
  * 
@@ -99,7 +99,7 @@
  * This struct holds top level details about an active session.
  * 
  * @member {string} session_name The name of the session
- * @member {constant.EOS_OnlineSessionState} state The current state of the session
+ * @member {constant.EOS_ONLINE_SESSION_STATE} state The current state of the session
  * @member {struct.SessionDetails_Info} details Details about the session
  * @member {struct.SessionDetails_Settings} settings The session's settings
  * 
@@ -110,7 +110,7 @@
  * @func eos_active_session_copy_info
  * @desc **Epic Online Services Function:** [EOS_ActiveSession_CopyInfo](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-copy-info)
  * 
- * This function is used to immediately retrieve a copy of active session information. The returned struct will be empty if the result is not `EOS_Result.Success`.
+ * This function is used to immediately retrieve a copy of active session information. The returned struct will be empty if the result is not `EOS_RESULT.SUCCESS`.
  * 
  * @param {string} session_name The name of the session
  * 
@@ -154,8 +154,8 @@
  * 
  * @member {string} host_address The IP address of this session as visible by the backend service
  * @member {real} num_open_public_connections The number of remaining open spaces on the session (`num_public_connections` - `registered_players`)
- * @member {string} owner_user_id The Product User ID of the session owner. Pass an empty string if the session is not owned by a user.
- * @member {string} owner_server_client_id The client ID of the session owner. Pass an empty string if the session is not owned by a server. The session is owned by a server if EOS_Platform_Options::bIsServer is `true`.
+ * @member {string} owner_user_id The Product User ID of the session owner. Pass an empty string `""` if the session is not owned by a user.
+ * @member {string} owner_server_client_id The client ID of the session owner. Pass an empty string `""` if the session is not owned by a server. The session is owned by a server if EOS_Platform_Options::bIsServer is `true`.
  * @member {string} session_id The session ID assigned by the backend service
  * @member {struct.SessionDetails_Settings} settings The additional settings associated with this session
  * @struct_end
@@ -173,7 +173,7 @@
  * @member {bool} sanctions_enabled Whether sanctioned players are allowed to join or not - sanctioned players will be rejected if set to `true`
  * @member {string} bucket_id The main indexed parameter for this session, can be any string (i.e. `"Region:GameMode"`)
  * @member {real} num_public_connections The number of total players allowed in the session
- * @member {constant.EOS_OnlineSessionPermissionLevel} permission_level The permission level describing allowed access to the session when joining or searching for the session
+ * @member {constant.EOS_ONLINE_SESSION_PERMISSION_LEVEL} permission_level The permission level describing allowed access to the session when joining or searching for the session
  * 
  * @struct_end
  */
@@ -190,7 +190,7 @@
  */
 
 /**
- * @constant EOS_AttributeType
+ * @constant EOS_ATTRIBUTE_TYPE
  * @desc This enumeration holds the supported types of data that can be stored inside an attribute (used by sessions/lobbies/etc.).
  * 
  * @member BOOLEAN A boolean value (`true`/`false`)
@@ -207,7 +207,7 @@
  * 
  * This struct holds an attribution value and its advertisement setting stored with a session.
  * 
- * @member {constant.EOS_SessionAttributeAdvertisementType} advertisement_type Whether this attribution is advertised with the backend or simply stored locally
+ * @member {constant.EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE} advertisement_type Whether this attribution is advertised with the backend or simply stored locally
  * @member {string} key The name of the session attribute
  * @member {any} value The value of the session attribute
  * 
@@ -268,14 +268,14 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.InvalidParameters` if the attribution is missing information or otherwise invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the attribution is missing information or otherwise invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
- * @param {constant.EOS_SessionAttributeAdvertisementType} type Whether this attribute is advertised with the backend or simply stored locally
+ * @param {constant.EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE} type Whether this attribute is advertised with the backend or simply stored locally
  * @param {struct.SessionAttribute} attribute A key/value pair describing the attribute to add to the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -297,13 +297,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if removing this parameter was successful
- * * `EOS_Result.InvalidParameters` if the key is empty
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if removing this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the key is empty
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {string} key The session attribute to remove from the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -316,13 +316,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.InvalidParameters` if the attribution is missing information or otherwise invalid
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the attribution is missing information or otherwise invalid
  * 
  * @param {array} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form `EOS_OPT_<PlatformName>`. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass `undefined`.
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -335,13 +335,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.InvalidParameters` if the bucket ID is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the bucket ID is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {string} bucket_id The new bucket ID associated with the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -354,15 +354,15 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.InvalidParameters` if the host ID is an empty string
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the host ID is an empty string
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * [[Note: No validation of this value occurs to allow for flexibility in addressing methods.]]
  * 
  * @param {string} host_address A string representing the host address for the session, its meaning is up to the application
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -375,12 +375,12 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {bool} invites_allowed If `true` then invites can currently be sent for the associated session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -393,12 +393,12 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {bool} allow_join_in_progress Whether the session allows join in progress
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -411,12 +411,12 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {real} max_players The max number of players to allow in the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -425,16 +425,16 @@
  * @func eos_session_modification_set_permission_level
  * @desc **Epic Online Services Function:** [EOS_SessionModification_SetPermissionLevel](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-permission-level)
  * 
- * This function sets the session permissions associated with this session. The permissions range from "public" to "invite only" and are described by ${constant.EOS_OnlineSessionPermissionLevel}.
+ * This function sets the session permissions associated with this session. The permissions range from "public" to "invite only" and are described by ${constant.EOS_ONLINE_SESSION_PERMISSION_LEVEL}.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
- * @param {constant.EOS_OnlineSessionPermissionLevel} permission_level The permission level to set on the session
+ * @param {constant.EOS_ONLINE_SESSION_PERMISSION_LEVEL} permission_level The permission level to set on the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -546,18 +546,18 @@
  * @func eos_sessions_copy_session_handle_by_invite_id
  * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByInviteId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id)
  * 
- * This function is used to immediately retrieve a handle to the session information from after notification of an invite. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information from after notification of an invite. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.NotFound` if the invite ID cannot be found
+ * * `EOS_RESULT.SUCCESS` if the information is available
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.NOT_FOUND` if the invite ID cannot be found
  * 
  * @param {string} invite_id The invite ID for which to retrieve a session handle
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -566,18 +566,18 @@
  * @func eos_sessions_copy_session_handle_by_ui_event_id
  * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByUiEventId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-ui-event-id)
  * 
- * This function is used to immediately retrieve a handle to the session information from after notification of a join game event. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information from after notification of a join game event. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.NotFound` if the invite ID cannot be found
+ * * `EOS_RESULT.SUCCESS` if the information is available
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.NOT_FOUND` if the invite ID cannot be found
  * 
  * @param {int64} ui_event_id The UI Event associated with the session
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -586,18 +586,18 @@
  * @func eos_sessions_copy_session_handle_for_presence
  * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleForPresence](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-for-presence)
  * 
- * This function is used to immediately retrieve a handle to the session information which was marked with `presence_enabled` on create or join. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information which was marked with `presence_enabled` on create or join. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.NotFound` if there is no session with `presence_enabled`
+ * * `EOS_RESULT.SUCCESS` if the information is available
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.NOT_FOUND` if there is no session with `presence_enabled`
  *
  * @param {string} local The Product User ID of the local user associated with the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -608,18 +608,18 @@
  * 
  * This function creates a session modification handle. The session modification handle is used to build a new session and can be applied with ${function.eos_sessions_update_session}. The handle must be released by calling ${function.eos_session_modification_release} once it is no longer needed.
  * 
- * The function returns `EOS_Result.Success` if we successfully created the session modification handle, or an error result if the input data was invalid.
+ * The function returns `EOS_RESULT.SUCCESS` if we successfully created the session modification handle, or an error result if the input data was invalid.
  * 
  * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form `EOS_OPT_<PlatformName>`. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass undefined.
  * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If `true`, this session will be associated with presence. Only one session at a time can have this flag set to `true`. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}.
- * @param {bool} sanctions_enabled If `true`, sanctioned players can neither join nor register with this session and, in the case of join, will return ${constant.EOS_Result} code `EOS_Result.Sessions_PlayerSanctioned`.
+ * @param {bool} sanctions_enabled If `true`, sanctioned players can neither join nor register with this session and, in the case of join, will return ${constant.EOS_RESULT} code `EOS_RESULT.SESSIONS_PLAYER_SANCTIONED`.
  * @param {string} bucket_id The bucket ID associated with the session
  * @param {string} local_user_id The Product User ID of the local user associated with the session
  * @param {real} max_players The maximum number of players allowed in the session
  * @param {string} session_id An optional session ID - set to a globally unique value to override the backend assignment. If not specified, the backend service will assign one to the session. Do not mix and match. This value can be of size [EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH, EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH]
  * @param {string} session_name The name of the session to create
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -636,10 +636,10 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the search creation completes successfully
- * * `EOS_Result.InvalidParameters` if any of the options are incorrect
+ * * `EOS_RESULT.SUCCESS` if the search creation completes successfully
+ * * `EOS_RESULT.INVALID_PARAMETERS` if any of the options are incorrect
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -656,7 +656,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_destroy_session"`
- * @member {constant.EOS_Result} status The result of the function call
+ * @member {constant.EOS_RESULT} status The result of the function call
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned in the original call to the function
  * @event_end
@@ -672,13 +672,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the output operation completes successfully
- * * `EOS_Result.NotFound` if the session specified does not exist
- * * `EOS_Result.InvalidParameters` if any of the options are incorrect
+ * * `EOS_RESULT.SUCCESS` if the output operation completes successfully
+ * * `EOS_RESULT.NOT_FOUND` if the session specified does not exist
+ * * `EOS_RESULT.INVALID_PARAMETERS` if any of the options are incorrect
  *
  * @param {string} session_name The name of the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -697,7 +697,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_end_session"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned in the original call to the function
  * @event_end
@@ -740,17 +740,17 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the user is found in the specified session
- * * `EOS_Result.NotFound` if the user is not found in the specified session
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.Invalid_ProductUserID` if an invalid target user is specified
- * * `EOS_Result.Sessions_InvalidSession` if the session specified is invalid
+ * * `EOS_RESULT.SUCCESS` if the user is found in the specified session
+ * * `EOS_RESULT.NOT_FOUND` if the user is not found in the specified session
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.INVALID_PRODUCT_USER_ID` if an invalid target user is specified
+ * * `EOS_RESULT.SESSIONS_INVALID_SESSION` if the session specified is invalid
  * 
  * @param {string} session_name The active session name to search within
  * @param {string} target_user_id The product User ID to search for in the session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -763,7 +763,7 @@
  * 
  * The function returns the async identifier.
  * 
- * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If true, this session will be associated with presence. Only one session at a time can have this flag true. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the bPresenceEnabled flags within the Sessions interface * using the bPresenceEnabled flags within the Lobby interface * using EOS_PresenceModification_SetJoinInfo
+ * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If true, this session will be associated with presence. Only one session at a time can have this flag true. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}
  * @param {string} local_user_id The Product User ID of the local user who is joining the session
  * @param {string} session_name Name of the session to create after joining session
  * 
@@ -771,7 +771,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_join_session"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
@@ -791,7 +791,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_query_invites"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User of the local user who made the request
@@ -815,7 +815,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_register_players"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {array[string]} registered_players The players that were successfully registered
@@ -838,7 +838,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_reject_invite"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
@@ -928,7 +928,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_send_invite"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
@@ -950,7 +950,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_start_session"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
@@ -973,7 +973,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_unregister_players"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {array[string]} unregistered_players The players that successfully unregistered
@@ -994,7 +994,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_sessions_update_session"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} session_id ID of the session that was created/modified
@@ -1010,11 +1010,11 @@
  * 
  * This function creates a session modification handle. The session modification handle is used to modify an existing session and can be applied with ${function.eos_sessions_update_session}. The handle must be released by calling ${function.eos_session_modification_release} once it is no longer needed.
  * 
- * The function returns `EOS_Result.Success` if the session modification handle could be successfully created, or an error result if the input data was invalid.
+ * The function returns `EOS_RESULT.SUCCESS` if the session modification handle could be successfully created, or an error result if the input data was invalid.
  *
  * @param {string} session_name The name of the session to update
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1023,17 +1023,17 @@
  * @func eos_session_search_copy_search_result_by_index
  * @desc **Epic Online Services Function:** [EOS_SessionSearch_CopySearchResultByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-copy-search-result-by-index)
  * 
- * This function is used to immediately retrieve a handle to the session information from a given search result. If the call returns an `EOS_Result.Success` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the session information from a given search result. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available
- * * `EOS_Result.InvalidParameters` if you pass an invalid index
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if the information is available
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid index
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {real} session_index The index of the session to retrieve within the completed search query
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1052,7 +1052,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_session_search_find"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @event_end
@@ -1088,15 +1088,15 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if removing this search parameter was successful
- * * `EOS_Result.InvalidParameters` if the search key is invalid
- * * `EOS_Result.NotFound` if the parameter was not a part of the search criteria
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if removing this search parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the search key is invalid
+ * * `EOS_RESULT.NOT_FOUND` if the parameter was not a part of the search criteria
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {string} key The search parameter key to remove from the search
- * @param {constant.EOS_ComparisonOp} comparison_op The search comparison operation associated with the key to remove
+ * @param {constant.EOS_COMPARISON_OP} comparison_op The search comparison operation associated with the key to remove
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1109,13 +1109,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting the max results was successful
- * * `EOS_Result.InvalidParameters` if the number of results requested is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting the max results was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the number of results requested is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {real} max_search_results The maximum number of search results returned with this query, may not exceed ${constant.EOS_SESSIONS_MAX_SEARCH_RESULTS}
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1128,14 +1128,14 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this search parameter was successful
- * * `EOS_Result.InvalidParameters` if the search criteria is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this search parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the search criteria is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
- * @param {constant.EOS_ComparisonOp} comparison_op The type of comparison to make against the search parameter
+ * @param {constant.EOS_COMPARISON_OP} comparison_op The type of comparison to make against the search parameter
  * @param {struct.SessionAttribute} attribute Search parameter describing a key and a value to compare
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1148,13 +1148,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this session ID was successful
- * * `EOS_Result.InvalidParameters` if the session ID is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this session ID was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the session ID is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {string} session_id Search sessions for a specific session ID, returning at most one session
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1169,56 +1169,56 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this target user ID was successful
- * * `EOS_Result.InvalidParameters` if the target user ID is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this target user ID was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the target user ID is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {string} target_user_id The Product User ID to find; return any sessions where the user matching this ID is currently registered
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
 
 /**
- * @constant EOS_OnlineSessionState
+ * @constant EOS_ONLINE_SESSION_STATE
  * @desc **Epic Online Services Enum:** [EOS_EOnlineSessionState](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-online-session-state)
  * 
  * This enum contains all possible states of an existing named session.
  * 
- * @member NoSession An online session has not been created yet
- * @member Creating An online session is in the process of being created
- * @member Pending Session has been created but the session hasn't started (pre match lobby)
- * @member Starting Session has been asked to start (may take time due to communication with backend)
- * @member InProgress The current session has started. Sessions with join in progress disabled are no longer joinable
- * @member Ending The session is still valid, but the session is no longer being played (post match lobby)
- * @member Ended The session is closed and any stats committed
- * @member Destroying The session is being destroyed
+ * @member NO_SESSION An online session has not been created yet
+ * @member CREATING An online session is in the process of being created
+ * @member PENDING Session has been created but the session hasn't started (pre match lobby)
+ * @member STARTING Session has been asked to start (may take time due to communication with backend)
+ * @member IN_PROGRESS The current session has started. Sessions with join in progress disabled are no longer joinable
+ * @member ENDING The session is still valid, but the session is no longer being played (post match lobby)
+ * @member ENDED The session is closed and any stats committed
+ * @member DESTROYING The session is being destroyed
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_SessionAttributeAdvertisementType
+ * @constant EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE
  * @desc **Epic Online Services Enum:** [EOS_ESessionAttributeAdvertisementType](https://dev.epicgames.com/docs/ja/api-ref/enums/eos-e-session-attribute-advertisement-type)
  * 
  * This enum holds the possible advertisement properties for a single attribute associated with a session.
  * 
- * @member DontAdvertise Don't advertise via the online service
- * @member Advertise Advertise via the online service only
+ * @member DONT_ADVERTISE Don't advertise via the online service
+ * @member ADVERTISE Advertise via the online service only
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_OnlineSessionPermissionLevel
+ * @constant EOS_ONLINE_SESSION_PERMISSION_LEVEL
  * @desc **Epic Online Services Enum:** [EOS_EOnlineSessionState](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-online-session-state)
  * 
  * This enum holds the possible permission levels for a session. The permission level gets more restrictive further down.
  * 
- * @member PublicAdvertised Anyone can find this session as long as it isn't full
- * @member JoinViaPresence Players who have access to presence can see this session
- * @member InviteOnly Only players with invites registered can see this session
+ * @member PUBLIC_ADVERTISED Anyone can find this session as long as it isn't full
+ * @member JOIN_VIA_PRESENCE Players who have access to presence can see this session
+ * @member INVITE_ONLY Only players with invites registered can see this session
  * 
  * @constant_end
  */

@@ -17,7 +17,7 @@
  * @event social
  * @member {string} type The string `"eos_ecom_query_ownership"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors 
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors 
  * @member {string} status_message A text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose ownership was queried
  * @event_end
@@ -40,7 +40,7 @@ function eos_ecom_query_ownership(user, catalog_item_ids, catalog_namespace) {}
  * @event social
  * @member {string} type The string `"eos_ecom_query_ownership_by_sandbox_ids"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose ownership was queried
  * @event_end
@@ -63,7 +63,7 @@ function eos_ecom_query_ownership_by_sandbox_ids(user, sandbox_ids) {}
  * @event social
  * @member {string} type `"eos_ecom_query_ownership_token"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose ownership token was queried
  * @member {string} ownership_token Ownership token containing details about the catalog items queried
@@ -96,7 +96,7 @@ function eos_ecom_query_ownership_token(user, CatalogItemIds) {}
  * @event social
  * @member {string} type `"eos_ecom_query_entitlements`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose entitlement was queried
  * @event_end
@@ -121,7 +121,7 @@ function eos_ecom_query_entitlements(user, EntitlementNames, bIncludeRedeemed) {
  * @event social
  * @member {string} type `"eos_ecom_query_entitlement_token"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose entitlement was queried
  * @member {string} entitlement_token Entitlements token containing details about the catalog items queried
@@ -145,7 +145,7 @@ function eos_ecom_query_entitlement_token(user, EntitlementNames) {}
  * @event social
  * @member {string} type `"eos_ecom_query_offers"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} account_id The Epic Account ID of the local user whose offer was queried; needed for localisation of Catalog Item (Item) description text and pricing information
  * @event_end
@@ -171,7 +171,7 @@ function eos_ecom_query_offers(user, OverrideCatalogNamespace) {}
  * @event social
  * @member {string} type `"eos_ecom_checkout"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message A text representation of the status code
  * @member {string} account_id The Epic Account ID of the user who initiated the purchase
  * @member {string} transaction_id The transaction ID
@@ -195,7 +195,7 @@ function eos_ecom_checkout(user, Entries, OverrideCatalogNamespace) {}
  * @event social
  * @member {string} type `"eos_ecom_redeem_entitlements"`
  * @member {real} identifier The asynchronous listener ID
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} account_id The Epic Account ID of the user who has redeemed entitlements
  * @member {real} redeemed_entitlement_ids_count The number of redeemed entitlements
@@ -270,9 +270,9 @@ function eos_ecom_get_entitlements_by_name_count(user, entitlementName) {}
  * 
  * This struct contains information about a single entitlement associated with an account.
  * 
- * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_SUCCESS`).]]
+ * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_RESULT.SUCCESS`).]]
  * 
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {boolean} Redeemed If `true` then the catalog has this entitlement marked as redeemed
  * @member {string} CatalogItemId ID of the item associated with the offer which granted this entitlement
@@ -350,9 +350,9 @@ function eos_ecom_get_offer_count(user) {}
  * 
  * Prices are stored in the lowest denomination for the associated currency. If CurrencyCode is "USD" then a price of 299 represents "$2.99".
  * 
- * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_SUCCESS`).]]
+ * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_RESULT.SUCCESS`).]]
  * 
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {boolean} bAvailableForPurchase True if the user can purchase this offer.
  * @member {string} CatalogNamespace Product namespace in which this offer exists
@@ -365,7 +365,7 @@ function eos_ecom_get_offer_count(user) {}
  * @member {real} Id The ID of this offer
  * @member {string} LongDescriptionText Localised UTF-8 long description of this offer
  * @member {int64} OriginalPrice64 The original price of this offer as a 64-bit number
- * @member {constant.EOS_Result} PriceResult If this value is `EOS_SUCCESS` then `OriginalPrice64`, `CurrentPrice64`, and `DiscountPercentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
+ * @member {constant.EOS_RESULT} PriceResult If this value is `EOS_RESULT.SUCCESS` then `OriginalPrice64`, `CurrentPrice64`, and `DiscountPercentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
  * @member {real} PurchaseLimit The maximum number of times that the offer can be purchased. A negative value implies there is no limit.
  * @member {int64} ReleaseDateTimestamp Timestamp indicating when the time when the offer was released. Can be ignored if set to -1.
  * @member {real} ServerIndex The index of this offer as it exists on the server. This is useful for understanding pagination data.
@@ -423,9 +423,9 @@ function eos_ecom_get_offer_item_count(user, OfferId) {}
  * 
  * This struct contains information about a single item within the catalog.
  * 
- * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_SUCCESS`).]]
+ * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_RESULT.SUCCESS`).]]
  * 
- * @member {real} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {real} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {boolean} bAvailableForPurchase
  * @member {string} CatalogNamespace Product namespace in which this item exists
@@ -495,9 +495,9 @@ function eos_ecom_get_offer_image_info_count(user, OfferId) {}
  * 
  * A Key Image is defined within Dev Portal and is associated with a Catalog Item. It is intended to be used to provide imagery for an in-game store.
  * 
- * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_SUCCESS`).]]
+ * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_RESULT.SUCCESS`).]]
  * 
- * @member {real} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {real} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} Height The expected height in pixels of the image
  * @member {real} Width The expected width in pixels of the image
@@ -575,9 +575,9 @@ function eos_ecom_get_item_release_count(user, ItemId) {}
  * 
  * This struct contains information about a single release within the catalog.
  * 
- * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_SUCCESS`).]]
+ * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_RESULT.SUCCESS`).]]
  * 
- * @member {real} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {real} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {array[string]} CompatibleAppIds An array of compatible App IDs
  * @member {array[string]} CompatiblePlatforms An array of compatible platforms 

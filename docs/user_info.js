@@ -19,7 +19,7 @@
  * ```gml
  * var _struct = eos_user_info_copy_external_user_info_by_account_id(accountID, accountID_target, accountID_external);
  * 
- * if (_struct.status == EOS_SUCCESS)
+ * if (_struct.status == EOS_RESULT.SUCCESS)
  * {
  *      DisplayName = _struct.DisplayName;
  * }
@@ -46,7 +46,7 @@
  * ```gml
  * var _struct = eos_user_info_copy_external_user_info_by_account_type(accountID, accountID_target, accountType);
  * 
- * if (_struct.status == EOS_SUCCESS)
+ * if (_struct.status == EOS_RESULT.SUCCESS)
  * {
  *      DisplayName = _struct.DisplayName;
  * }
@@ -96,7 +96,7 @@
  * @example
  * ```gml
  * var _struct = eos_user_info_copy_user_info(accountID, accountID_target);
- * if (_struct.status == EOS_SUCCESS)
+ * if (_struct.status == EOS_RESULT.SUCCESS)
  * {
  *      nickname = _struct.Nickname;
  * }
@@ -136,7 +136,7 @@
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfo](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfo/index.html)
  * 
  * This function is used to start an asynchronous query to retrieve information, such as display name, about another account.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call the function:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call the function:
  * 
  * ${function.eos_user_info_copy_user_info}
  * 
@@ -149,7 +149,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_user_info_query_user_info"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -164,7 +164,7 @@
  * if (async_load[? "type"] == "eos_user_info_query_user_info")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -183,7 +183,7 @@
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfoByDisplayName](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByDisplayName/index.html)
  * 
  * This function is used to start an asynchronous query to retrieve user information by display name. This can be useful for getting the AccountId for a display name.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call the function:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call the function:
  * 
  * * ${function.eos_user_info_copy_user_info}
  * 
@@ -196,7 +196,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_user_info_query_user_info_by_display_name"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -211,7 +211,7 @@
  * if (async_load[? "type"] == "eos_user_info_query_user_info_by_display_name")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -230,7 +230,7 @@
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfoByExternalAccount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByExternalAccount/index.html)
  * 
  * This function is used to start an asynchronous query to retrieve user information by external accounts. This can be useful for getting the AccountId for external accounts.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_user_info_copy_external_user_info_by_account_id}
  * * ${function.eos_user_info_copy_external_user_info_by_account_type}
@@ -246,7 +246,7 @@
  * 
  * @event social
  * @member {string} type The string `"eos_user_info_query_user_info_by_external_account"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -261,7 +261,7 @@
  * if (async_load[? "type"] == "eos_user_info_query_user_info_by_external_account")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -277,27 +277,27 @@
 // Constants
 
 /**
- * @constant eos_external_account_type
+ * @constant EOS_EXTERNAL_ACCOUNT_TYPE
  * @desc **Epic Online Services Enum:** [EOS_EExternalAccountType](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-external-account-type)
  * 
  * These constants are used to describe the type of an external account or connection.
  * 
  * These constants are also part of the ${struct.ExternalAccountInfo} struct.
  *
- * @member EOS_EAT_EPIC External account is associated with Epic Games
- * @member EOS_EAT_STEAM External account is associated with Steam
- * @member EOS_EAT_PSN External account is associated with PlayStation(TM)Network
- * @member EOS_EAT_XBL External account is associated with Xbox Live
- * @member EOS_EAT_DISCORD External account is associated with Discord
- * @member EOS_EAT_GOG External account is associated with GOG
- * @member EOS_EAT_NINTENDO External account is associated with Nintendo With both EOS Connect and EOS UserInfo APIs, the associated account type is Nintendo Service Account ID. Local user authentication is possible using Nintendo Account ID, while the account type does not get exposed to the SDK in queries related to linked accounts information.
- * @member EOS_EAT_UPLAY External account is associated with Uplay
- * @member EOS_EAT_OPENID External account is associated with an OpenID Provider
- * @member EOS_EAT_APPLE External account is associated with Apple
- * @member EOS_EAT_GOOGLE External account is associated with Google
- * @member EOS_EAT_OCULUS External account is associated with Oculus
- * @member EOS_EAT_ITCHIO External account is associated with itch.io
- * @member EOS_EAT_AMAZON External account is associated with Amazon
+ * @member EPIC External account is associated with Epic Games
+ * @member STEAM External account is associated with Steam
+ * @member PSN External account is associated with PlayStation(TM)Network
+ * @member XBL External account is associated with Xbox Live
+ * @member DISCORD External account is associated with Discord
+ * @member GOG External account is associated with GOG
+ * @member NINTENDO External account is associated with Nintendo With both EOS Connect and EOS UserInfo APIs, the associated account type is Nintendo Service Account ID. Local user authentication is possible using Nintendo Account ID, while the account type does not get exposed to the SDK in queries related to linked accounts information.
+ * @member UPLAY External account is associated with Uplay
+ * @member OPENID External account is associated with an OpenID Provider
+ * @member APPLE External account is associated with Apple
+ * @member GOOGLE External account is associated with Google
+ * @member OCULUS External account is associated with Oculus
+ * @member ITCHIO External account is associated with itch.io
+ * @member AMAZON External account is associated with Amazon
  * @constant_end
  */
 
@@ -309,7 +309,7 @@
  * 
  * The external user info is represented by a struct and contains information about a single external user info.
  * 
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} DisplayName The display name of the external account. May not be present in the struct if not set.
  * @member {string} AccountId The ID of the external account. May not be present in the struct if not set.
@@ -323,7 +323,7 @@
  * 
  * The user info is represented by a struct and contains information about a single user info.
  * 
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code.
  * @member {string} DisplayName The display name. This value may not be present in the struct if not set.
  * @member {string} Country The name of the owner's country. This value may not be present in the struct if not set.

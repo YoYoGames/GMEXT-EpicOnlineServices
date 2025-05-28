@@ -23,11 +23,11 @@
  * 
  * This function sets your new join info custom game-data string. This is a helper function for reading the presence data related to how a user can be joined. Its meaning is entirely application dependent.
  * 
- * The function returns `EOS_Result.Success` if the modification was added successfully, otherwise an error code related to the problem.
+ * The function returns `EOS_RESULT.SUCCESS` if the modification was added successfully, otherwise an error code related to the problem.
  * 
  * @param {string} join_info The string which will be advertised as this player's join info. An application is expected to freely define the meaning of this string to use for connecting to an active game session. The string should not exceed EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH in length. This affects the ability of the Social Overlay to show game related actions to take in the player's social graph. * using the `presence_enabled` flags within the ${module.sessions} interface * using the `presence_enabled` flags within the ${module.lobbies} interface * using ${function.eos_presence_modification_set_join_info}
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
