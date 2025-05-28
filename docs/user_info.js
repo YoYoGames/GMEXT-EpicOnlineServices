@@ -38,7 +38,7 @@
  * 
  * @param {string} accountID The Epic Account ID of the local player requesting the information
  * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
- * @param {constant.eos_external_account_type} accountType Account type of the external user info to retrieve from the cache
+ * @param {constant.EOS_EXTERNAL_ACCOUNT_TYPE} accountType Account type of the external user info to retrieve from the cache
  * 
  * @returns {struct.ExternalUserInfo}
  * 
@@ -240,7 +240,7 @@
  * 
  * @param {string} accountID The Epic Account ID of the local player requesting the information
  * @param {string} ExternalAccountId External account ID of the user whose information is being retrieved
- * @param {constant.eos_external_account_type} accountType Account type of the external user info to query
+ * @param {constant.EOS_EXTERNAL_ACCOUNT_TYPE} accountType Account type of the external user info to query
  * 
  * @returns {real}
  * 
@@ -313,7 +313,7 @@
  * @member {string} status_message Text representation of the status code
  * @member {string} DisplayName The display name of the external account. May not be present in the struct if not set.
  * @member {string} AccountId The ID of the external account. May not be present in the struct if not set.
- * @member {constant.eos_external_account_type} AccountType The type of the external account.
+ * @member {constant.EOS_EXTERNAL_ACCOUNT_TYPE} AccountType The type of the external account.
  * @struct_end
  */
 
@@ -365,7 +365,7 @@
  * @section_const
  * @desc These are the constants used by this API:
  * 
- * @ref eos_external_account_type
+ * @ref EOS_EXTERNAL_ACCOUNT_TYPE
  * 
  * @section_end
  * 

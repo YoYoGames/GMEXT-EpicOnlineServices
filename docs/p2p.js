@@ -285,7 +285,7 @@
  * @member {constant.EOS_RESULT} status The result code for the query
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the call to the function
- * @member {constant.EOS_NATType} nat_type The queried NAT type
+ * @member {constant.EOS_NAT_TYPE} nat_type The queried NAT type
  * @event_end
  * 
  * @func_end

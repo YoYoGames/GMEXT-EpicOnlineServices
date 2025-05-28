@@ -25,8 +25,8 @@
  * 
  * [[Note: By default all log categories will callback for Warnings, Errors, and Fatals.]]
  * 
- * @param {constant.eos_logging_category} category The specific log category to configure. Use `EOS_LC_ALL_CATEGORIES` to configure all categories simultaneously to the same log level. Check the constants under ${constant.eos_logging_category}.
- * @param {constant.eos_logging_level} logLevel the log level to use for the log category. Check the constants under ${constant.eos_logging_level}.
+ * @param {constant.EOS_LOGGING_CATEGORY} category The specific log category to configure. Use `EOS_LC_ALL_CATEGORIES` to configure all categories simultaneously to the same log level. Check the constants under ${constant.EOS_LOGGING_CATEGORY}.
+ * @param {constant.EOS_LOGGING_LEVEL} logLevel the log level to use for the log category. Check the constants under ${constant.EOS_LOGGING_LEVEL}.
  * 
  * @example
  * ```gml
@@ -82,7 +82,7 @@
 // Constants
 
 /**
- * @constant.EOS_RESULT
+ * @constant EOS_RESULT
  * @desc **Epic Online Services Enum:** [EOS_EResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-result)
  * 
  * This enum holds the available constants used as task results, for the entire API.
