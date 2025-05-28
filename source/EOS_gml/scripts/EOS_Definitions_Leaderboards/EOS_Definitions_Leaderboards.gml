@@ -6,14 +6,14 @@
 /**
  * An enumeration of the different leaderboard aggregation types.
  */
-enum EOS_LeaderboardAggregation
+enum EOS_LEADERBOARD_AGGREGATION
 {
 	/** Minimum */
-	Min = 0,
+	MIN = 0,
 	/** Maximum */
-	Max = 1,
+	MAX = 1,
 	/** Sum */
-	Sum = 2,
+	SUM = 2,
 	/** Latest */
-	Latest = 3
+	LATEST = 3
 }

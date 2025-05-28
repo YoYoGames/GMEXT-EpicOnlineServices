@@ -26,18 +26,18 @@
 
 
 /** Permission level gets more restrictive further down */
-enum EOS_LobbyPermissionLevel
+enum EOS_LOBBY_PERMISSION_LEVEL
 {
 	/** Anyone can find this lobby as long as it isn't full */
-	PUBLICADVERTISED = 0,
+	PUBLIC_ADVERTISED = 0,
 	/** Players who have access to presence can see this lobby */
-	JOINVIAPRESENCE = 1,
+	JOIN_VIA_PRESENCE = 1,
 	/** Only players with invites registered can see this lobby */
-	INVITEONLY = 2
+	INVITE_ONLY = 2
 };
 
 /** Advertisement properties for a single attribute associated with a lobby */
-enum EOS_LobbyAttributeVisibility
+enum EOS_LOBBY_ATTRIBUTE_VISIBILITY
 {
 	/** Data is visible to lobby members, searchable and visible in search results. */
 	PUBLIC = 0,
@@ -46,7 +46,7 @@ enum EOS_LobbyAttributeVisibility
 };
 
 /** Various types of lobby member updates */
-enum EOS_LobbyMemberStatus
+enum EOS_LOBBY_MEMBER_STATUS
 {
 	/** The user has joined the lobby */
 	JOINED = 0,

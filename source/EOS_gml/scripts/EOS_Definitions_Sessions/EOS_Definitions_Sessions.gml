@@ -1,44 +1,44 @@
 
 /** All possible states of an existing named session */
-enum EOS_OnlineSessionState
+enum EOS_ONLINE_SESSION_STATE
 {
 	/** An online session has not been created yet */
-	NoSession = 0,
+	NO_SESSION = 0,
 	/** An online session is in the process of being created */
-	Creating = 1,
+	CREATING = 1,
 	/** Session has been created but the session hasn't started (pre match lobby) */
-	Pending = 2,
+	PENDING = 2,
 	/** Session has been asked to start (may take time due to communication with backend) */
-	Starting = 3,
+	STARTING = 3,
 	/** The current session has started. Sessions with join in progress disabled are no longer joinable */
-	InProgress = 4,
+	IN_PROGRESS = 4,
 	/** The session is still valid, but the session is no longer being played (post match lobby) */
-	Ending = 5,
+	ENDING = 5,
 	/** The session is closed and any stats committed */
-	Ended = 6,
+	ENDED = 6,
 	/** The session is being destroyed */
-	Destroying = 7
+	DESTROYING = 7
 }
 
 /** Advertisement properties for a single attribute associated with a session */
-enum EOS_SessionAttributeAdvertisementType
+enum EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE
 {
 	/** Don't advertise via the online service */
-	DontAdvertise = 0,
+	DONT_ADVERTISE = 0,
 	/** Advertise via the online service only */
-	Advertise = 1
+	ADVERTISE = 1
 }
 
 
 /** Permission level gets more restrictive further down */
-enum EOS_OnlineSessionPermissionLevel
+enum EOS_ONLINE_SESSION_PERMISSION_LEVEL
 {
 	/** Anyone can find this session as long as it isn't full */
-	PublicAdvertised = 0,
+	PUBLIC_ADVERTISED = 0,
 	/** Players who have access to presence can see this session */
-	JoinViaPresence = 1,
+	JOIN_VIA_PRESENCE = 1,
 	/** Only players with invites registered can see this session */
-	InviteOnly = 2
+	INVITE_ONLY = 2
 };
 
 

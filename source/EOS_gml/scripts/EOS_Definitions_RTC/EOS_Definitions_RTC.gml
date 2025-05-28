@@ -1,6 +1,6 @@
 ///////////////////
 /** Participant RTC's status change */
-enum EOS_RTCParticipantStatus
+enum EOS_RTC_PARTICIPANT_STATUS
 {
 	/** Participant joined the room */
 	Joined = 0,
@@ -42,56 +42,56 @@ enum EOS_RTCParticipantStatus
 //////////////////////////
 
 
-enum EOS_RTCAudioStatus
+enum EOS_RTC_AUDIO_STATUS
 {
 	/** Audio unsupported by the source (no devices) */
-	Unsupported = 0,
+	UNSUPPORTED = 0,
 	/** Audio enabled */
-	Enabled = 1,
+	ENABLED = 1,
 	/** Audio disabled */
-	Disabled = 2,
+	DISABLED = 2,
 	/** Audio disabled by the administrator */
-	AdminDisabled = 3,
+	ADMIN_DISABLED = 3,
 	/** Audio channel is disabled temporarily for both sending and receiving */
-	NotListeningDisabled = 4
+	NOT_LISTENING_DISABLED = 4
 };
 
 
 /**
  * An enumeration of the different audio input device statuses.
  */
-enum EOS_RTCAudioInputStatus
+enum EOS_RTC_AUDIO_INPUT_STATUS
 {
 	/** The device is not in use right now (e.g., you are alone in the room). In such cases, the hardware resources are not allocated. */
-	Idle = 0,
+	IDLE = 0,
 	/** The device is being used and capturing audio. */
-	Recording = 1,
+	RECORDING = 1,
 	/**
 	 * The SDK is in a recording state, but actually capturing silence because the device is exclusively being used by the platform at the moment.
 	 * This only applies to certain platforms.
 	 */
-	RecordingSilent = 2,
+	RECORDING_SILENT = 2,
 	/**
 	 * The SDK is in a recording state, but actually capturing silence because the device is disconnected (e.g., the microphone is not plugged in).
 	 * This only applies to certain platforms.
 	 */
-	RecordingDisconnected = 3,
+	RECORDING_DISCONNECTED = 3,
 	/** Something failed while trying to use the device. */
-	Failed = 4
+	FAILED = 4
 };
 
 
 /**
  * An enumeration of the different audio output device statuses.
  */
-enum EOS_RTCAudioOutputStatus
+enum EOS_RTC_AUDIO_OUTPUT_STATUS
 {
 	/** The device is not in used right now (e.g: you are alone in the room). In such cases, the hardware resources are not allocated. */
-	Idle = 0,
+	IDLE = 0,
 	/** Device is in use */
-	Playing = 1,
+	PLAYING = 1,
 	/** Something failed while trying to use the device */
-	Failed = 2
+	FAILED = 2
 };
 
 
@@ -101,14 +101,14 @@ enum EOS_RTCAudioOutputStatus
 /** The maximum length of data chunk in bytes that can be sent and received */
 #macro EOS_RTCDATA_MAX_PACKET_SIZE 1170
 
-enum EOS_RTCDataStatus
+enum EOS_RTC_DATA_STATUS
 {
 	/** Data unsupported */
-	Unsupported = 0,
+	UNSUPPORTED = 0,
 	/** Data enabled */
-	Enabled = 1,
+	ENABLED = 1,
 	/** Data disabled */
-	Disabled = 2
+	DISABLED = 2
 };
 
 

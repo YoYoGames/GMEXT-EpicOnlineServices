@@ -6,13 +6,13 @@
 /**
  * Return results for EOS_TitleStorage_OnReadFileDataCallback callbacks
  */
-enum EOS_TitleStorage_ReadResult
+enum EOS_TITLE_STORAGE_READ_RESULT
 {
 	/** Signifies the data was read successfully, and we should continue to the next chunk if possible */
-	ContinueReading = 1,
+	CONTINUE_READING = 1,
 	/** Signifies there was a failure reading the data, and the request should end */
-	FailRequest = 2,
+	FAIL_REQUEST = 2,
 	/** Signifies the request should be canceled, but not due to an error */
-	CancelRequest = 3
+	CANCEL_REQUEST = 3
 }
 

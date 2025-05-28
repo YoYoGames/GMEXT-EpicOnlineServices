@@ -2,29 +2,29 @@
 /**
  * An enumeration of the different ownership statuses.
  */
-enum EOS_OwnershipStatus
+enum EOS_OWNERSHIP_STATUS
 {
 	/** The catalog item is not owned by the local user */
-	NotOwned = 0,
+	NOT_OWNED = 0,
 	/** The catalog item is owned by the local user */
-	Owned = 1
+	OWNED = 1
 }
 
 /**
  * An enumeration defining the type of catalog item.  The primary use is to identify how the item is expended.
  */
-enum EOS_EcomItemType
+enum EOS_ECOM_ITEM_TYPE
 {
 	/** This entitlement is intended to persist. */
-	Durable = 0,
+	DURABLE = 0,
 	/**
 	 * This entitlement is intended to be transient and redeemed.
 	 *
 	 * @see EOS_Ecom_RedeemEntitlements
 	 */
-	Consumable = 1,
+	CONSUMABLE = 1,
 	/** This entitlement has a type that is not currently intended for an in-game store. */
-	Other = 2
+	OTHER = 2
 }
 
 /** Timestamp value representing an undefined ExpirationTimestamp for EOS_Ecom_CatalogOffer */

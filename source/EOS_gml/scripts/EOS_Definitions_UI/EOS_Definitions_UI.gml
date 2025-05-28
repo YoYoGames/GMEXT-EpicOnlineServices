@@ -19,10 +19,10 @@
 //#undef EOS_UI_KEY_ENTRY
 //#undef EOS_UI_KEY_CONSTANT_LAST
 
-enum EOS_UI_NotificationLocation
+enum EOS_UI_NOTIFICATION_LOCATION
 {
-	TopLeft,
-	TopRight,
-	BottomLeft,
-	BottomRight
+	TOP_LEFT,
+	TOP_RIGHT,
+	BOTTOM_LEFT,
+	BOTTOM_RIGHT
 }
