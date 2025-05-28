@@ -21,7 +21,7 @@ enum EOS_ONLINE_SESSION_STATE
 }
 
 /** Advertisement properties for a single attribute associated with a session */
-enum EOS_SESSION_ATTRIBUTE_ADVERSEMENT_TYPE
+enum EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE
 {
 	/** Don't advertise via the online service */
 	DONT_ADVERTISE = 0,

@@ -94,6 +94,7 @@
     {"name":"EOS_Definitions_Friends","order":8,"path":"scripts/EOS_Definitions_Friends/EOS_Definitions_Friends.yy",},
     {"name":"EOS_Definitions_Leaderboards","order":9,"path":"scripts/EOS_Definitions_Leaderboards/EOS_Definitions_Leaderboards.yy",},
     {"name":"EOS_Definitions_Lobbies","order":2,"path":"scripts/EOS_Definitions_Lobbies/EOS_Definitions_Lobbies.yy",},
+    {"name":"EOS_Definitions_Logging","order":21,"path":"scripts/EOS_Definitions_Logging/EOS_Definitions_Logging.yy",},
     {"name":"EOS_Definitions_Metrics","order":10,"path":"scripts/EOS_Definitions_Metrics/EOS_Definitions_Metrics.yy",},
     {"name":"EOS_Definitions_P2P","order":20,"path":"scripts/EOS_Definitions_P2P/EOS_Definitions_P2P.yy",},
     {"name":"EOS_Definitions_PlayerDataStorage","order":13,"path":"scripts/EOS_Definitions_PlayerDataStorage/EOS_Definitions_PlayerDataStorage.yy",},

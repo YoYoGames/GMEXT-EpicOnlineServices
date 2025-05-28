@@ -35,7 +35,7 @@
  * @see EOS_Connect_GetLoginStatus
  * @see EOS_Connect_Login
  */
-enum EOS_LOGING_STATUS{
+enum EOS_LOGIN_STATUS{
 	/** Player has not logged in or chosen a local profile */
 	NOT_LOGGED_IN = 0,
 	/** Player is using a local profile but is not logged in */
@@ -100,7 +100,7 @@ enum EOS_COMPARISON_OP{
  *
  * @see EOS_Connect_QueryExternalAccountMappings
  */
-enum EOS_ExternalAccountType
+enum EOS_EXTERNAL_ACCOUNT_TYPE
 {
 	/** External account is associated with Epic Games */
 	EPIC = 0,
