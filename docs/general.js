@@ -37,6 +37,17 @@
  */
 
 /**
+ * @function eos_result_to_string
+ * @desc This function returns a text representation of the status code passed to it.
+ * 
+ * @param {constant.EOS_Result} result The result code for which to get the text representation
+ * 
+ * @returns {string}
+ * 
+ * @function_end
+ */
+
+/**
  * @function eos_shutdown
  * @desc **Epic Online Services Function:** [EOS_Shutdown](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/NoInterface/EOS_Shutdown/index.html)
  * 
@@ -419,6 +430,7 @@
  * 
  * @ref eos_get_version
  * @ref eos_logging_set_log_level
+ * @ref eos_result_to_string
  * @ref eos_shutdown
  * 
  * @section_end
