@@ -148,7 +148,7 @@
  * 
  * This function defines any preferences for any display settings.
  * 
- * @param {constant.eos_ui_notification_location} location preference for notification pop-up locations.
+ * @param {constant.EOS_UI_NOTIFICATION_LOCATION} location preference for notification pop-up locations.
  * 
  * @returns {struct.EpicResult}
  * 

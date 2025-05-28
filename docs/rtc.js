@@ -464,7 +464,7 @@
  * @member {string} type the string `"eos_rtc_audio_add_notify_audio_input_state"`
  * @member {string} local_user_id The Product User ID of the user who initiated this request
  * @member {string} room_name The room associated with this event
- * @member {constant.EOS_RTCAudioInputStatus} status The status of the audio input
+ * @member {constant.EOS_RTC_AUDIO_INPUT_STATUS} status The status of the audio input
  * @event_end
  * 
  * @func_end
@@ -485,7 +485,7 @@
  * @member {string} type the string `"eos_rtc_audio_add_notify_audio_output_state"`
  * @member {string} local_user_id The Product User ID of the user who initiated this request
  * @member {string} room_name The room associated with this event
- * @member {constant.EOS_RTCAudioOutputStatus} status The status of the audio output
+ * @member {constant.EOS_RTC_AUDIO_OUTPUT_STATUS} status The status of the audio output
  * @event_end
  * 
  * @func_end
@@ -509,7 +509,7 @@
  * @member {string} local_user_id The Product User ID of the user who initiated this request
  * @member {string} room_name The room associated with this event
  * @member {real} speaking The participant speaking / non-speaking status
- * @member {constant.EOS_RTCAudioStatus} audio_status The participant audio status (enabled, disabled)
+ * @member {constant.EOS_RTC_AUDIO_STATUS} audio_status The participant audio status (enabled, disabled)
  * @member {string} participant_id The participant updated
  * @event_end
  * 
@@ -908,7 +908,7 @@
  *
  * @param {string} local_user_id The Product User ID of the user trying to request this operation.
  * @param {string} room_name The room this settings should be applied on.
- * @param {constant.EOS_RTCAudioStatus} audio_status Muted or unmuted audio track status
+ * @param {constant.EOS_RTC_AUDIO_STATUS} audio_status Muted or unmuted audio track status
  *
  * @returns {real}
  * 
@@ -919,7 +919,7 @@
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} room_name The room this setting was applied on
  * @member {string} local_user_id The Product User ID of the user who initiated this request
- * @member {constant.EOS_RTCAudioStatus} audio_status Muted or unmuted audio track status
+ * @member {constant.EOS_RTC_AUDIO_STATUS} audio_status Muted or unmuted audio track status
  * @event_end
  * 
  * @func_end
@@ -994,7 +994,7 @@
  * @member {string} local_user_id The Product User ID of the user who initiated this request
  * @member {string} room_name The room associated with this event
  * @member {string} participant_id The participant updated
- * @member {constant.EOS_RTCDataStatus} data_status The data channel status
+ * @member {constant.EOS_RTC_DATA_STATUS} data_status The data channel status
  * @event_end
  * 
  * @func_end
