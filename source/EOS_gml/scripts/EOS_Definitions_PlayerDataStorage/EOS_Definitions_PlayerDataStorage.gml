@@ -22,7 +22,7 @@ enum EOS_PLAYER_DATA_STORAGE_READ_RESULT
 /**
  * Return results for EOS_PlayerDataStorage_OnWriteFileDataCallback callbacks to return
  */
-enum EOS_PlayerDataStorage_WriteResult
+enum EOS_PLAYER_DATA_STORAGE_WRITE_RESULT
 {
 	/** Signifies the data was written successfully, and we should write the data the file */
 	CONTINUE_WRITING = 1,

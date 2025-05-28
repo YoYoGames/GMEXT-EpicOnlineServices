@@ -88,7 +88,7 @@ enum EOS_RESULT
     /** Application is suspended */
     APPLICATION_SUSPENDED = 40,
     /** Network is disconnected */
-    NETWORKD_IS_CONNECTED = 41,
+    NETWORK_DISCONNECTED = 41,
     
     /** Account locked due to login failures */
     AUTH_ACCOUNT_LOCKED = 1001,
@@ -103,7 +103,7 @@ enum EOS_RESULT
     /** Invalid platform token */
     AUTH_INVALID_PLATFORM_TOKEN = 1006,
     /** Auth parameters are not associated with this account */
-    AUTH_WRON_GACCOUNT = 1007,
+    AUTH_WRONG_ACCOUNT = 1007,
     /** Auth parameters are not associated with this client */
     AUTH_WRONG_CLIENT = 1008,
     /** Full account is required */
@@ -195,7 +195,7 @@ enum EOS_RESULT
     /** Request contained data with an invalid key */
     PRESENCE_DATA_KEY_INVALID = 3002,
     /** Request contained data with a key too long or too short */
-    PRESENCE_DATA_KEY_LENGTH_IN_VALID = 3003,
+    PRESENCE_DATA_KEY_LENGTH_INVALID = 3003,
     /** Request contained data with an invalid value */
     PRESENCE_DATA_VALUE_INVALID = 3004,
     /** Request contained data with a value too long */
@@ -255,7 +255,7 @@ enum EOS_RESULT
     /** Presence session already exists for the client */
     SESSIONS_PRESENCE_SESSION_EXISTS = 5016,
     /** Deployment on node is at capacity */
-    SESSIONS_DEPLOYMENTAT_CAPACITY = 5017,
+    SESSIONS_DEPLOYMENT_AT_CAPACITY = 5017,
     /** Session operation not allowed */
     SESSIONS_NOT_ALLOWED = 5018,
     /** Session operation not allowed */
@@ -290,7 +290,7 @@ enum EOS_RESULT
     /** User is trying to read file that has header from newer version of SDK. Game/SDK needs to be updated. */
     PLAYER_DATA_STORAGE_FILE_HEADER_HAS_NEWER_VERSION = 6013,
     /** The file is corrupted. In some cases retry can fix the issue. */
-    PLAYER_DATA_STORAGE_FILECORRUPTED = 6014,
+    PLAYER_DATA_STORAGE_FILE_CORRUPTED = 6014,
     
     /** EOS Auth service deemed the external token invalid */
     CONNECT_EXTERNAL_TOKEN_VALIDATION_FAILED = 7000,
@@ -408,7 +408,7 @@ enum EOS_RESULT
     /** The current anti-cheat mode is incorrect for using this API */
     ANTICHEAT_INVALID_MODE = 12001,
     /** The ProductId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK */
-    ANTICHEAT_CLIENT_PRODUCTID_MISMATCH = 12002,
+    ANTICHEAT_CLIENT_PRODUCT_ID_MISMATCH = 12002,
     /** The SandboxId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK */
     ANTICHEAT_CLIENT_SANDBOX_ID_MISMATCH = 12003,
     /** (ProtectMessage/UnprotectMessage, No session key is available = but it is required to complete this operation */
@@ -443,10 +443,10 @@ enum EOS_RESULT
     /** EOS RTC room was left due to platform release */
     RTC_SHUTDOWN_INVOKED = 13006,
     /** EOS RTC operation failed because the user is in the local user's block list */
-    RTC_USER_IS_IN_BLOCK_LIST = 13007,
+    RTC_USER_IS_IN_BLOCKLIST = 13007,
     
     /** The number of available Snapshot IDs have all been exhausted. */
-    ProgressionSnapshot_SnapshotIdUnavailable = 14000,
+    PROGRESSION_SNAPSHOT_SNAPSHOT_ID_UNAVAILABLE = 14000,
     
     /** The KWS user does not have a parental email associated with the account.  The parent account was unlinked or deleted */
     KWS_PARENT_EMAIL_MISSING = 15000,
@@ -476,7 +476,7 @@ enum EOS_RESULT
     PERMISSION_ONLINE_PLAY_RESTRICTED = 18006,
     
     /** The application was not launched through the Bootstrapper. Desktop crossplay functionality is unavailable. */
-    DESKTOP_CROSSPLAY_APPLICATION_NOT_BOOTS_TRAPPED = 19000,
+    DESKTOP_CROSSPLAY_APPLICATION_NOT_BOOTSTRAPPED = 19000,
     /** The redistributable service is not installed. */
     DESKTOP_CROSSPLAY_SERVICE_NOT_INSTALLED = 19001,
     /** The desktop crossplay service failed to start. */

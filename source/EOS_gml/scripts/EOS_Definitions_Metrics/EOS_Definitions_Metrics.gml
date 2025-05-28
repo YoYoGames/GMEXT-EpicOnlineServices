@@ -13,7 +13,7 @@ enum EOS_USER_CONTROLLER_TYPE
 }
 
 /** Account ID type for EOS_Metrics_BeginPlayerSession and EOS_Metrics_EndPlayerSession. */
-enum EOS_METRIC_ACCOUNT_ID_TYPE
+enum EOS_METRICS_ACCOUNT_ID_TYPE
 {
 	/** An Epic Account ID. */
 	EPIC = 0,

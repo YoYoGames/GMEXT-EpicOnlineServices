@@ -3,7 +3,7 @@ with(Obj_EpicGames_Lobby)
 	instance_destroy()
 
 var result = eos_lobby_create_lobby_search(10)
-show_debug_message($"CreateLobbySearch {EOS_RESULT_to_string(result)}")
+show_debug_message($"CreateLobbySearch {eos_result_to_string(result)}")
 
 var BucketId = "GameMode:Region:MapName"
 

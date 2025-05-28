@@ -26,7 +26,7 @@ switch(async_load[? "type"])
 	case "eos_p2p_add_notify_peer_connection_request":
 		
 		var result = eos_p2p_accept_connection(userID,async_load[? "remote_user_id"],"OtherSocket")
-		show_debug_message("eos_p2p_accept_connection: " + EOS_RESULT_to_string(result))
+		show_debug_message("eos_p2p_accept_connection: " + eos_result_to_string(result))
 		
 		var buff = buffer_create(256,buffer_fixed,1)
 		buffer_write(buff,buffer_u8,1)
