@@ -41,7 +41,7 @@
  * @example
  * ```gml
  * var _struct = eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id("MyLeaderboard");
- * if(_struct.status == EOS_SUCCESS)
+ * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
  *     var LeaderboardId = _struct.LeaderboardId;
  * }
@@ -90,7 +90,7 @@
  * @example
  * ```gml
  * var _struct = eos_leaderboards_copy_leaderboard_record_by_user_id("MyLeaderboard");
- * if(_struct.status == EOS_SUCCESS)
+ * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
  *     var _rank = struct.Rank;
  * }
@@ -141,7 +141,7 @@
  * @example
  * ```gml
  * var _struct = eos_leaderboards_copy_leaderboard_user_score_by_user_id("MyLeaderboard");
- * if(_struct.status == EOS_SUCCESS)
+ * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
  *     var _score = struct.Score;
  * }
@@ -224,7 +224,7 @@
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardDefinitions/index.html)
  * 
  * This function queries for a list of existing leaderboards definitions including their attributes.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_leaderboards_copy_leaderboard_definition_by_index}
  * * ${function.eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id}
@@ -238,7 +238,7 @@
  * 
  * @event social
  * @member {string} type `"eos_leaderboards_query_leaderboard_definitions"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -253,7 +253,7 @@
  * if (async_load[? "type"] == "eos_leaderboards_query_leaderboard_definitions")
  * if(async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -272,7 +272,7 @@
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardRanks](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardRanks/index.html)
  * 
  * This function retrieves top leaderboard records by rank in the leaderboard matching the given leaderboard ID. 
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_leaderboards_copy_leaderboard_record_by_index}
  * * ${function.eos_leaderboards_copy_leaderboard_record_by_user_id}
@@ -285,7 +285,7 @@
  * 
  * @event social
  * @member {string} type `"eos_leaderboards_query_leaderboard_ranks"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -300,7 +300,7 @@
  * if (async_load[? "type"] == "eos_leaderboards_query_leaderboard_ranks")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -319,7 +319,7 @@
  * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardUserScores](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardUserScores/index.html)
  * 
  * This function queries for a list of scores for a given list of users.
- * Once the callback has been fired with a successful ${constant.EOS_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_leaderboards_copy_leaderboard_user_score_by_index}
  * * ${function.eos_leaderboards_copy_leaderboard_user_score_by_user_id}
@@ -328,7 +328,7 @@
  * @param {string} userID The argument to be passed in
  * @param {string} LeaderboardId Product User ID indicating the users whose scores you want to retrieve
  * @param {string} name The name of the stat to query.
- * @param {constant.eos_leaderboard_aggregation} aggregation Aggregation used to sort the cached user scores.
+ * @param {constant.EOS_LEADERBOARD_AGGREGATION} aggregation Aggregation used to sort the cached user scores.
  * @param {real} startTime An optional POSIX timestamp, or `undefined`; results will only include scores made after this time
  * @param {real} endTime An optional POSIX timestamp, or `undefined`; results will only include scores made before this time
  * 
@@ -336,7 +336,7 @@
  * 
  * @event social
  * @member {string} type `"eos_leaderboards_query_leaderboard_user_scores"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -351,7 +351,7 @@
  * if (async_load[? "type"] == "eos_leaderboards_query_leaderboard_user_scores")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -368,15 +368,22 @@
 // Constants
 
 /**
- * @constant eos_leaderboard_aggregation
+ * @constant EOS_LEADERBOARD_AGGREGATION
  * @desc **Epic Online Services Enum:** [EOS_ELeaderboardAggregation](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-leaderboard-aggregation)
  * 
  * These constants represent the different leaderboard aggregation types.
  * 
- * @member EOS_LA_MIN Scores are aggregated by minimum.
- * @member EOS_LA_MAX Scores are aggregated by maximum.
- * @member EOS_LA_SUM Scores are aggregated by the sum of the values.
- * @member EOS_LA_LATEST Scores are aggregated by the last value.
+ * @member MIN Scores are aggregated by minimum.
+ * @member MAX Scores are aggregated by maximum.
+ * @member SUM Scores are aggregated by the sum of the values.
+ * @member LATEST Scores are aggregated by the last value.
+ * @constant_end
+ */
+
+/**
+ * @constant EOS_LEADERBOARDS_TIME_UNDEFINED
+ * @desc This macro holds a timestamp value representing an undefined time for Epic Online Services leaderboards.
+ * 
  * @constant_end
  */
 
@@ -387,7 +394,7 @@
  * @struct LeaderboardUserScore
  * @desc A leaderboard definition is represented by a struct and contains information about a single leaderboard user score.
  * 
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} UserId The Product User ID of the user who got this score
  * @member {real} Score Leaderboard score
@@ -398,7 +405,7 @@
  * @struct LeaderboardRecord
  * @desc A leaderboard record is represented by a struct and contains information about a single leaderboard record.
  * 
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} UserId The Product User ID associated with this record
  * @member {real} Rank Sorted position on leaderboard
@@ -411,13 +418,13 @@
  * @struct LeaderboardDefinition
  * @desc An leaderboard definition is represented by a struct and contains information about a single leaderboard definition.
  * 
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {string} LeaderboardId Unique ID to identify leaderboard.
  * @member {string} StatName Name of stat used to rank leaderboard.
- * @member {real} StartTime The POSIX timestamp for the start time, or `EOS_LEADERBOARDS_TIME_UNDEFINED`.
- * @member {real} EndTime The POSIX timestamp for the end time, or `EOS_LEADERBOARDS_TIME_UNDEFINED`.
- * @member {constant.eos_leaderboard_aggregation} Aggregation used to sort the leaderboard.
+ * @member {real} StartTime The POSIX timestamp for the start time, or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
+ * @member {real} EndTime The POSIX timestamp for the end time, or or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
+ * @member {constant.EOS_LEADERBOARD_AGGREGATION} Aggregation used to sort the leaderboard.
  * @struct_end
  */
 
@@ -450,7 +457,8 @@
  * @section_const
  * @desc These are the constants used for leaderboards:
  * 
- * @ref eos_leaderboard_aggregation
+ * @ref EOS_LEADERBOARD_AGGREGATION
+ * @ref EOS_LEADERBOARDS_TIME_UNDEFINED
  * 
  * @section_end
  * 

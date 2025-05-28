@@ -8,17 +8,17 @@
  * This function checks if the app was launched through the Epic Launcher, and relaunches it through the Epic Launcher if it wasn't.
  * The function returns one of 3 possible results:
  * 
- * 1. `EOS_SUCCESS` is returned if the app is being restarted. You should quit your process as soon as possible. 
- * 2. `EOS_NO_CHANGE` is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.
- * 3. `EOS_UNEXPECTED_ERROR` is returned if the **LauncherCheck** module failed to initialise, or the module tried and failed to restart the app.
+ * 1. `EOS_RESULT.SUCCESS` is returned if the app is being restarted. You should quit your process as soon as possible. 
+ * 2. `EOS_RESULT.NO_CHANGE` is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.
+ * 3. `EOS_RESULT.UNEXPECTED_ERROR` is returned if the **LauncherCheck** module failed to initialise, or the module tried and failed to restart the app.
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * if (eos_platform_check_for_launcher_and_restart() != EOS_NO_CHANGE) { game_end(); }
+ * if (eos_platform_check_for_launcher_and_restart() != EOS_RESULT.NO_CHANGE) { game_end(); }
  * ```
- * The above code shows an example of how the function should be used. If the output of the function is other than `EOS_NO_CHANGE` it will force close the project.
+ * The above code shows an example of how the function should be used. If the output of the function is other than `EOS_RESULT.NO_CHANGE` it will force close the project.
  * @function_end
  */
 

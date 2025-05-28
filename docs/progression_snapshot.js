@@ -60,7 +60,7 @@
  * 
  * @event social
  * @member {real} type `"eos_progression_snapshot_delete_snapshot"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -75,7 +75,7 @@
  * if (async_load[? "type"] == "eos_progression_snapshot_delete_snapshot")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -104,7 +104,7 @@
  * @example
  * ```gml
  * result = eos_progression_snapshot_end_snapshot(snapshotId);
- * if (result.status == EOS_SUCCESS)
+ * if (result.status == EOS_RESULT.SUCCESS)
  * {
  *     show_debug_message("eos_progression_snapshot_end_snapshot: success");
  * }
@@ -127,7 +127,7 @@
  * 
  * @event social
  * @member {string} type `"eos_progression_snapshot_submit_snapshot"`
- * @member {constant.EOS_Result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
@@ -142,7 +142,7 @@
  * if (async_load[? "type"] == "eos_progression_snapshot_submit_snapshot")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }

@@ -90,10 +90,10 @@
  * @section_const
  * @desc 
  * @ref EOS_LOBBY_MAX_SEARCH_RESULTS
- * @ref EOS_LobbyAttributeVisibility
- * @ref EOS_LobbyMemberStatus
- * @ref EOS_LobbyPermissionLevel
- * @ref EOS_OnlinePlatformType
+ * @ref EOS_LOBBY_ATTRIBUTE_VISIBILITY
+ * @ref EOS_LOBBY_MEMBER_STATUS
+ * @ref EOS_LOBBY_PERMISSION_LEVEL
+ * @ref EOS_ONLINE_PLATFORM_TYPE
  * @section_end
  * 
  * @module_end
@@ -212,7 +212,7 @@
  */
 
 /**
- * @constant EOS_LobbyMemberStatus
+ * @constant EOS_LOBBY_MEMBER_STATUS
  * @desc **Epic Online Services Function:** [EOS_ELobbyMemberStatus](https://dev.epicgames.com/docs/api-ref/enums/eos-e-lobby-member-status)
  * 
  * This enumeration holds the possible types of lobby member status.
@@ -243,7 +243,7 @@
  * @member {string} type the string `"eos_lobby_add_notify_lobby_member_status_received"`
  * @member {string} target_user_id The Product User ID of the lobby member
  * @member {string} lobby_id The ID of the lobby
- * @member {constant.EOS_LobbyMemberStatus} current_status The latest status of the user
+ * @member {constant.EOS_LOBBY_MEMBER_STATUS} current_status The latest status of the user
  * @event_end
  * 
  * @func_end
@@ -296,7 +296,7 @@
  *
  * This function registers to receive notifications of when the RTC Room for a particular lobby has a connection status change. The RTC Room connection status is independent of the lobby connection status, however the lobby system will attempt to keep them consistent, automatically connecting to the RTC room after joining a lobby which has an associated RTC room and disconnecting from the RTC room when a lobby is left or disconnected. This notification is entirely informational and requires no action in response by the application. If the connected status is offline (`is_connected` is `false`), the connection will automatically attempt to reconnect. The purpose of this notification is to allow applications to show the current connection status of the RTC room when the connection is not established. Unlike ${function.eos_rtc_add_notify_disconnected}, ${function.eos_rtc_leave_room} should not be called when the RTC room is disconnected. This function will only succeed when called on a lobby the local user is currently a member of.
  * 
- * A valid notification ID if the callback handler was successfully registered, or EOS_INVALID_NOTIFICATIONID if the input was invalid, the lobby did not exist, or the lobby did not have an RTC room.
+ * A valid notification ID if the callback handler was successfully registered, or ${constant.EOS_INVALID_NOTIFICATIONID} if the input was invalid, the lobby did not exist, or the lobby did not have an RTC room.
  *
  * @returns {int64}
  * 
@@ -304,7 +304,7 @@
  * @member {string} type the string `"eos_lobby_add_notify_rtc_room_connection_changed"`
  * @member {string} local_user_id The Product User ID of the local user who is in the lobby and registered for notifications
  * @member {string} lobby_id The ID of the lobby which had a RTC Room connection state change
- * @member {constant.EOS_Result} disconnect_reason If `is_connected` is `false`, this result will be the reason we were disconnected. `EOS_Result.Success`: The room was left locally. This may be because: the associated lobby was left or destroyed, the connection to the lobby was interrupted, or because the SDK is being shutdown. If the lobby connection returns (lobby did not permanently go away), EOS will reconnect. `EOS_Result.NoConnection`: There was a network issue connecting to the server. EOS will attempt to reconnect soon. `EOS_Result.RTC_UserKicked`: The user has been kicked by the server. We will not reconnect. `EOS_Result.RTC_UserBanned`: The user has been banned by the server. We will not reconnect. `EOS_Result.ServiceFailure`: A known error occurred during interaction with the server. We will attempt to reconnect soon. `EOS_Result.UnexpectedError`: Unexpected error. We will attempt to reconnect soon.
+ * @member {constant.EOS_RESULT} disconnect_reason If `is_connected` is `false`, this result will be the reason we were disconnected. `EOS_RESULT.SUCCESS`: The room was left locally. This may be because: the associated lobby was left or destroyed, the connection to the lobby was interrupted, or because the SDK is being shutdown. If the lobby connection returns (lobby did not permanently go away), EOS will reconnect. `EOS_RESULT.NO_CONNECTION`: There was a network issue connecting to the server. EOS will attempt to reconnect soon. `EOS_RESULT.RTC_USER_KICKED`: The user has been kicked by the server. We will not reconnect. `EOS_RESULT.RTC_USER_BANNED`: The user has been banned by the server. We will not reconnect. `EOS_RESULT.SERVICE_FAILURE`: A known error occurred during interaction with the server. We will attempt to reconnect soon. `EOS_RESULT.UNEXPECTED_ERROR`: Unexpected error. We will attempt to reconnect soon.
  * @member {bool} is_connected The new connection state of the room
  * @event_end
  * 
@@ -327,7 +327,7 @@
  * @member {string} lobby_id The lobby ID that the user is being invited to
  * @member {string} target_native_account_type The Native Platform Account Type, as a string. If only a single integrated platform is configured then this will always reference that platform.
  * @member {string} target_user_native_account_id The Native Platform Account ID of the target user being invited.
- * @member {int64} ui_event_id Identifies this event which will need to be acknowledged with EOS_UI_AcknowledgeEventId().
+ * @member {int64} ui_event_id Identifies this event which will need to be acknowledged with ${function.eos_ui_acknowledge_event_id}.
  * @event_end
  * 
  * @func_end
@@ -337,19 +337,19 @@
  * @func eos_lobby_copy_lobby_details_handle
  * @desc **Epic Online Services Function:** [EOS_Lobby_CopyLobbyDetailsHandle](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-details-handle)
  * 
- * This function creates a handle to an existing lobby. If the call returns an `EOS_Result.Success` result, the out parameter, OutLobbyDetailsHandle, must be passed to ${function.eos_lobby_details_release} to release the memory associated with it.
+ * This function creates a handle to an existing lobby. If the call returns an `EOS_RESULT.SUCCESS` result, the function ${function.eos_lobby_details_release} to release the memory associated with the handle.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the lobby handle was created successfully
- * * `EOS_Result.InvalidParameters` if any of the options are incorrect
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.NotFound` if the lobby doesn't exist
+ * * `EOS_RESULT.SUCCESS` if the lobby handle was created successfully
+ * * `EOS_RESULT.INVALID_PARAMETERS` if any of the options are incorrect
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.NOT_FOUND` if the lobby doesn't exist
  * 
  * @param {string} lobby_id The ID of the lobby
  * @param {string} local_user_id The Product User ID of the local user making the request
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -358,18 +358,18 @@
  * @func eos_lobby_copy_lobby_details_handle_by_invite_id
  * @desc **Epic Online Services Function:** [EOS_Lobby_CopyLobbyDetailsHandleByInviteId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-details-handle-by-invite-id)
  * 
- * This function is used to immediately retrieve a handle to the lobby information from after notification of an invite. If the call returns an `EOS_Result.Success` result, the out parameter, OutLobbyDetailsHandle, must be passed to ${function.eos_lobby_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the lobby information from after notification of an invite. If the call returns an `EOS_RESULT.SUCCESS` result, the lobby details handle must be freed with ${function.eos_lobby_details_release} to release the memory associated with it after you're finished using it.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available
- * * `EOS_Result.InvalidParameters` if you pass an invalid invite ID
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.NotFound` If the invite ID cannot be found
+ * * `EOS_RESULT.SUCCESS` if the information is available
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.NOT_FOUND` If the invite ID cannot be found
  * 
  * @param {string} invite_id The ID of an invitation to join the lobby
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -378,18 +378,18 @@
  * @func eos_lobby_copy_lobby_details_handle_by_ui_event_id
  * @desc **Epic Online Services Function:** [EOS_Lobby_CopyLobbyDetailsHandleByUiEventId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-details-handle-by-ui-event-id)
  * 
- * This function is used to immediately retrieve a handle to the lobby information from after notification of an join game. If the call returns an `EOS_Result.Success` result, the out parameter, OutLobbyDetailsHandle, must be passed to ${function.eos_lobby_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the lobby information from after notification of an join game. If the call returns an `EOS_RESULT.SUCCESS` result, the lobby details handle must be freed with ${function.eos_lobby_details_release} to release the memory associated with it once you're done using it.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available and passed out in OutLobbyDetailsHandle
- * * `EOS_Result.InvalidParameters` if you pass an invalid ui event ID
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.NotFound` If the invite ID cannot be found
+ * * `EOS_RESULT.SUCCESS` if the information is available and passed out in OutLobbyDetailsHandle
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid UI event ID
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.NOT_FOUND` If the invite ID cannot be found
  * 
  * @param {real} ui_event_id The UI Event associated with the lobby
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -409,7 +409,7 @@
  * @param {string} lobby_id Set to a globally unique value to override the backend assignment. If an empty string `""` is specified, the backend service will assign one to the lobby. Do not mix and match override and non override settings. This value can be of size [EOS_LOBBY_MIN_LOBBYIDOVERRIDE_LENGTH, EOS_LOBBY_MAX_LOBBYIDOVERRIDE_LENGTH]
  * @param {string} bucket_id The bucket ID associated with the lobby
  * @param {real} max_lobby_members The maximum number of users that can be in the lobby at a time
- * @param {constant.EOS_LobbyPermissionLevel} permission_level The initial permission level of the lobby
+ * @param {constant.EOS_LOBBY_PERMISSION_LEVEL} permission_level The initial permission level of the lobby
  * @param {bool} allow_invites Whether members of the lobby are allowed to invite others
  * @param {bool} crossplay_opt_out This value indicates whether or not the lobby owner allows crossplay interactions. If `false`, the lobby owner will be treated as allowing crossplay. If it is set to `true`, `allowed_platform_ids` must have a single entry that matches the platform of the lobby owner.
  * @param {bool} disable_host_migration Is host migration allowed (will the lobby stay open if the original host leaves?) NOTE: ${function.eos_lobby_promote_member} is still allowed regardless of this setting.
@@ -425,7 +425,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_create_lobby"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The new lobby's ID
@@ -444,13 +444,13 @@
  * * set the target user ID to find a specific user
  * * set lobby parameters to find an array of lobbies that match the search criteria
  * 
- * The function returns `EOS_Result.Success` if the search creation completes successfully, or `EOS_Result.InvalidParameters` if any of the options are incorrect.
+ * The function returns `EOS_RESULT.SUCCESS` if the search creation completes successfully, or `EOS_RESULT.INVALID_PARAMETERS` if any of the options are incorrect.
  * 
  * [[Note: You should make sure to free the handle when no longer needed with ${function.eos_lobby_search_release}.]]
  *
  * @param {real} max_results The maximum number of results allowed from the search
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -468,7 +468,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_destroy_lobby"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The destroyed lobby's ID
@@ -522,7 +522,7 @@
  * @func eos_lobby_get_rtc_room_name
  * @desc **Epic Online Services Function:** [EOS_Lobby_GetRTCRoomName](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-rtc-room-name)
  * 
- * This function gets the name of the RTC room associated with a specific lobby a local user belongs to. This value can be used whenever you need a `room_name` value in the `rtc_*` suite of functions. RTC room names must not be used with ${function.eos_rtc_join_room}, ${function.eos_rtc_leave_room}, or ${function.eos_rtc_add_notify_disconnected}. Doing so will return `EOS_Result.AccessDenied` or ${constant.EOS_INVALID_NOTIFICATIONID} if used with those functions. This function will only succeed when called on a lobby the local user is currently a member of.
+ * This function gets the name of the RTC room associated with a specific lobby a local user belongs to. This value can be used whenever you need a `room_name` value in the `rtc_*` suite of functions. RTC room names must not be used with ${function.eos_rtc_join_room}, ${function.eos_rtc_leave_room}, or ${function.eos_rtc_add_notify_disconnected}. Doing so will return `EOS_RESULT.ACCESS_DENIED` or ${constant.EOS_INVALID_NOTIFICATIONID} if used with those functions. This function will only succeed when called on a lobby the local user is currently a member of.
  * 
  * @param {string} local_user_id The Product User ID of the local user in the lobby
  * @param {string} lobby_id The ID of the lobby to get the RTC room name for
@@ -547,7 +547,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_hard_mute_member"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
@@ -590,7 +590,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_join_lobby"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
@@ -619,7 +619,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_join_lobby_by_id"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
@@ -642,7 +642,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_kick_member"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
@@ -664,7 +664,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_leave_lobby"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
@@ -700,7 +700,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_promote_member"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby where the user was promoted
@@ -721,7 +721,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_query_invites"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} local_user_id The Product User ID of the local user that made the request
@@ -743,7 +743,7 @@
  * 
  * @event social 
  * @member {string} type the string `"eos_lobby_reject_invite"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} invite_id The ID of the invitation being rejected
@@ -878,7 +878,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_send_invite"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
@@ -899,7 +899,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_update_lobby"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original call to the function
  * @member {string} lobby_id The ID of the lobby
@@ -916,13 +916,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if EOS successfully created the lobby modification handle, or an error result if the input data was invalid
- * * `EOS_Result.InvalidParameters` if any of the options are incorrect
+ * * `EOS_RESULT.SUCCESS` if EOS successfully created the lobby modification handle, or an error result if the input data was invalid
+ * * `EOS_RESULT.INVALID_PARAMETERS` if any of the options are incorrect
  * 
  * @param {string} lobby_id The ID of the lobby
  * @param {string} local_user_id The ID of the local user making modifications. Must be the owner to modify lobby data, but any lobby member can modify their own attributes.
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -935,13 +935,13 @@
  * 
  * @member {string} key The name of the lobby attribute
  * @member {any} value The value of the lobby attribute
- * @member {constant.EOS_LobbyAttributeVisibility} visibility Whether this attribute is public or private to the lobby and its members
+ * @member {constant.EOS_LOBBY_ATTRIBUTE_VISIBILITY} visibility Whether this attribute is public or private to the lobby and its members
  * 
  * @struct_end
  */
 
 /**
- * @constant EOS_LobbyAttributeVisibility
+ * @constant EOS_LOBBY_ATTRIBUTE_VISIBILITY
  * @desc **Epic Online Services Enumeration:** [EOS_ELobbyAttributeVisibility](https://dev.epicgames.com/docs/api-ref/enums/eos-e-lobby-attribute-visibility)
  * 
  * This enum holds the possible advertisement properties for a single attribute associated with a lobby.
@@ -979,12 +979,12 @@
  */
 
 /**
- * @constant EOS_LobbyPermissionLevel
+ * @constant EOS_LOBBY_PERMISSION_LEVEL
  * @desc **Epic Online Services Struct:** [EOS_ELobbyPermissionLevel](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-lobby-permission-level)
  * 
- * @member PUBLICADVERTISED Anyone can find this lobby as long as it isn't full
- * @member JOINVIAPRESENCE Players who have access to presence can see this lobby
- * @member INVITEONLY Only players with invites registered can see this lobby
+ * @member PUBLIC_ADVERTISED Anyone can find this lobby as long as it isn't full
+ * @member JOIN_VIA_PRESENCE Players who have access to presence can see this lobby
+ * @member INVITE_ONLY Only players with invites registered can see this lobby
  * 
  * @constant_end
  */
@@ -1006,7 +1006,7 @@
  * @member {string} lobby_id The lobby ID
  * @member {string} lobby_owner_user_id The Product User ID of the current owner of the lobby
  * @member {real} max_members Max allowed members in the lobby
- * @member {constant.EOS_LobbyPermissionLevel} permission_level The permission level of the lobby
+ * @member {constant.EOS_LOBBY_PERMISSION_LEVEL} permission_level The permission level of the lobby
  * 
  * @struct_end
  */
@@ -1061,7 +1061,7 @@
  * This struct holds information on a lobby member.
  * 
  * @member {bool} allows_crossplay Whether this member allows crossplay
- * @member {constant.EOS_OnlinePlatformType} platform The platform of the lobby member
+ * @member {constant.EOS_ONLINE_PLATFORM_TYPE} platform The platform of the lobby member
  * @member {string} user_id The Product User ID of the lobby member
  * 
  * @struct_end
@@ -1164,18 +1164,18 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.InvalidParameters` if the attribute is missing information or otherwise invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the attribute is missing information or otherwise invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
- * @param {constant.EOS_LobbyAttributeVisibility} visibility Whether this attribute is public or private to the lobby and its members
+ * @param {constant.EOS_LOBBY_ATTRIBUTE_VISIBILITY} visibility Whether this attribute is public or private to the lobby and its members
  * @param {struct} attribute A struct that defines a single key/value pair describing the attribute to add to the lobby. The struct must contain the following variables:
  * 
  * * `key` (${type.string})
- * * `value_type` (${constant.EOS_AttributeType})
+ * * `value_type` (${constant.EOS_ATTRIBUTE_TYPE})
  * * `value` (a value of the given `value_type`)
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1188,18 +1188,18 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.InvalidParameters` if the attribute is missing information or otherwise invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the attribute is missing information or otherwise invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
- * @param {constant.EOS_LobbyAttributeVisibility} visibility Whether this attribute is public or private to the rest of the lobby members
+ * @param {constant.EOS_LOBBY_ATTRIBUTE_VISIBILITY} visibility Whether this attribute is public or private to the rest of the lobby members
  * @param {struct} attribute A struct that defines a single key/value pair describing the attribute to add to the lobby member. The struct must contain the following variables:
  * 
  * * `key` (${type.string})
- * * `value_type` (${constant.EOS_AttributeType})
+ * * `value_type` (${constant.EOS_ATTRIBUTE_TYPE})
  * * `value` (a value of the given `value_type`)
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1221,13 +1221,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if removing this parameter was successful
- * * `EOS_Result.InvalidParameters` if the key is empty
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if removing this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the key is empty
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {string} key The name of the key
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1240,13 +1240,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if removing this parameter was successful
- * * `EOS_Result.InvalidParameters` if the key is empty
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if removing this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the key is empty
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {string} key The name of the key
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1259,13 +1259,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
- * * `EOS_Result.InvalidParameters` if the parameter is invalid
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the parameter is invalid
  *
  * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific header file. The lobby will be unrestricted if you pass an empty array.
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1278,13 +1278,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.InvalidParameters` if the bucket ID is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the bucket ID is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {string} bucket_id The new bucket ID associated with the lobby
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1297,12 +1297,12 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {bool} invites_allowed If `true` then invites can currently be sent for the associated lobby
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1315,12 +1315,12 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {real} max_members The new maximum number of lobby members
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1329,16 +1329,16 @@
  * @func eos_lobby_modification_set_permission_level
  * @desc **Epic Online Services Function:** [EOS_LobbyModification_SetPermissionLevel](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-permission-level)
  * 
- * This function sets the permissions associated with this lobby. The permissions range from "public" to "invite only" and are described by ${constant.EOS_LobbyPermissionLevel}.
+ * This function sets the permissions associated with this lobby. The permissions range from "public" to "invite only" and are described by ${constant.EOS_LOBBY_PERMISSION_LEVEL}.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this parameter was successful
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
- * @param {constant.EOS_LobbyPermissionLevel} permission_level The permission level of the lobby
+ * @param {constant.EOS_LOBBY_PERMISSION_LEVEL} permission_level The permission level of the lobby
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1347,17 +1347,17 @@
  * @func eos_lobby_search_copy_search_result_by_index
  * @desc **Epic Online Services Function:** [EOS_LobbySearch_CopySearchResultByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-copy-search-result-by-index)
  * 
- * This function is used to immediately retrieve a handle to the lobby information from a given search result. If the call returns an `EOS_Result.Success` result, the out parameter, OutLobbyDetailsHandle, must be passed to ${function.eos_lobby_details_release} to release the memory associated with it.
+ * This function is used to immediately retrieve a handle to the lobby information from a given search result. If the call returns an `EOS_RESULT.SUCCESS` result, the out parameter, OutLobbyDetailsHandle, must be passed to ${function.eos_lobby_details_release} to release the memory associated with it.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if the information is available
- * * `EOS_Result.InvalidParameters` if you pass an invalid index
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if the information is available
+ * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid index
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {real} lobby_index The index of the lobby to retrieve within the completed search query
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1376,7 +1376,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_lobby_search_find"`
- * @member {constant.EOS_Result} status The result code for the operation. `EOS_Result.Success` indicates that the operation succeeded; other codes indicate errors.
+ * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the original function call
  * @event_end
@@ -1411,7 +1411,7 @@
  * This function removes a parameter from the array of search criteria.
  * 
  * @param {string} key The search parameter key to remove from the search
- * @param {constant.EOS_ComparisonOp} comparison_op The search comparison operation associated with the key to remove
+ * @param {constant.EOS_COMPARISON_OP} comparison_op The search comparison operation associated with the key to remove
  * 
  * @func_end
  */
@@ -1424,13 +1424,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this lobby ID was successful
- * * `EOS_Result.InvalidParameters` if the lobby ID is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this lobby ID was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the lobby ID is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {string} lobby_id The ID of the lobby to find
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1450,13 +1450,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting the max results was successful
- * * `EOS_Result.InvalidParameters` if the number of results requested is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting the max results was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the number of results requested is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * 
  * @param {real} max_results The maximum number of search results to return from the query
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1469,14 +1469,14 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this search parameter was successful
- * * `EOS_Result.InvalidParameters` if the search criteria is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this search parameter was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the search criteria is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
- * @param {constant.EOS_ComparisonOp} comparison_op The type of comparison to make against the search parameter
+ * @param {constant.EOS_COMPARISON_OP} comparison_op The type of comparison to make against the search parameter
  * @param {struct.EOS_Lobby_Attribute} parameter A search parameter describing a key and a value to compare
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1489,13 +1489,13 @@
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` if setting this target user ID was successful
- * * `EOS_Result.InvalidParameters` if the target user ID is invalid
- * * `EOS_Result.IncompatibleVersion` if the API version passed in is incorrect
+ * * `EOS_RESULT.SUCCESS` if setting this target user ID was successful
+ * * `EOS_RESULT.INVALID_PARAMETERS` if the target user ID is invalid
+ * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {string} target_user_id Search lobbies for the given user by Product User ID, returning any lobbies where this user is currently registered
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -1503,12 +1503,12 @@
 // Constants & Enums
 
 /**
- * @constant EOS_OnlinePlatformType
+ * @constant EOS_ONLINE_PLATFORM_TYPE
  * @desc 
  * 
- * @member Unknown The platform type is unknown
- * @member Epic The platform type is Epic Games
- * @member Steam The platform type is Steam
+ * @member UNKNOWN The platform type is unknown
+ * @member EPIC The platform type is Epic Games
+ * @member STEAM The platform type is Steam
  * 
  * @constant_end
  */

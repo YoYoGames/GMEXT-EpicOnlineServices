@@ -19,12 +19,12 @@
  * 
  * @section_const
  * @desc The following are the constants and enums of the P2P module:
- * @ref EOS_ConnectionClosedReason
- * @ref EOS_ConnectionEstablishedType
- * @ref EOS_NATType
- * @ref EOS_NetworkConnectionType
- * @ref EOS_PacketReliability
- * @ref EOS_RelayControl
+ * @ref EOS_CONNECTION_CLOSED_REASON
+ * @ref EOS_CONNECTION_ESTABLISHED_TYPE
+ * @ref EOS_NAT_TYPE
+ * @ref EOS_NETWORK_CONNECTION_TYPE
+ * @ref EOS_PACKET_RELIABILITY
+ * @ref EOS_RELAY_CONTROL
  * @section_end
  * 
  * @module_end
@@ -36,13 +36,13 @@
  * @func eos_p2p_accept_connection
  * @desc **Epic Online Services Function:** [EOS_P2P_AcceptConnection](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-accept-connection)
  * 
- * This function accepts or requests a connection with a specific peer on a specific Socket ID. If this connection was not already locally accepted, EOS will securely message the peer, and trigger a PeerConnectionRequest notification notifying them of the connection request. If the PeerConnectionRequest notification is not bound for all socket IDs or for the requested socket ID in particular, the request will be silently ignored. If the remote peer accepts the connection, a notification will be broadcast to the EOS_P2P_AddNotifyPeerConnectionEstablished when the connection is ready to send packets. If multiple Socket IDs are accepted with one peer, they will share one physical socket. Even if a connection is already locally accepted, `EOS_Result.Success` will still be returned if the input was valid. `EOS_Result.InvalidParameters` will be returned if the input is invalid.
+ * This function accepts or requests a connection with a specific peer on a specific Socket ID. If this connection was not already locally accepted, EOS will securely message the peer, and trigger a PeerConnectionRequest notification notifying them of the connection request. If the PeerConnectionRequest notification is not bound for all socket IDs or for the requested socket ID in particular, the request will be silently ignored. If the remote peer accepts the connection, a notification will be broadcast to the EOS_P2P_AddNotifyPeerConnectionEstablished when the connection is ready to send packets. If multiple Socket IDs are accepted with one peer, they will share one physical socket. Even if a connection is already locally accepted, `EOS_RESULT.SUCCESS` will still be returned if the input was valid. `EOS_RESULT.INVALID_PARAMETERS` will be returned if the input is invalid.
  *
  * @param {string} local_user_id The Product User ID of the local user who is accepting any pending or future connections with `remote_user_id`
  * @param {string} remote_user_id The Product User ID of the remote user who has either sent a connection request or is expected to in the future
  * @param {string} socket_name The socket ID of the connection to accept on
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -85,7 +85,7 @@
  * @event social
  * @member {string} type the string `"eos_p2p_add_notify_peer_connection_closed"`
  * @member {string} local_user_id The local user who is being notified of a connection being closed
- * @member {constant.EOS_ConnectionClosedReason} reason The reason the connection was closed (if known)
+ * @member {constant.EOS_CONNECTION_CLOSED_REASON} reason The reason the connection was closed (if known)
  * @member {string} remote_user_id The Product User ID of the remote user who this connection was with
  * @member {string} socket_name The socket ID of the connection being closed
  * @event_end
@@ -97,7 +97,7 @@
  * @func eos_p2p_add_notify_peer_connection_established
  * @desc **Epic Online Services Function:** [EOS_P2P_AddNotifyPeerConnectionEstablished](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-established)
  * 
- * This function listens for when a connection is established. This is fired when we first connect to a peer, when we reconnect to a peer after a connection interruption, and when our underlying network connection type changes (for example, from a direct connection to relay, or vice versa). Network Connection Type changes will always be broadcast with a `EOS_ConnectionEstablishedType.RECONNECTION` connection type, even if the connection was not interrupted. If the network status changes from offline to online, you must call this function again.
+ * This function listens for when a connection is established. This is fired when we first connect to a peer, when we reconnect to a peer after a connection interruption, and when our underlying network connection type changes (for example, from a direct connection to relay, or vice versa). Network Connection Type changes will always be broadcast with a `EOS_CONNECTION_ESTABLISHED_TYPE.RECONNECTION` connection type, even if the connection was not interrupted. If the network status changes from offline to online, you must call this function again.
  * 
  * @param {string} local_user_id The Product User ID of the local user who would like to receive notifications
  * @param {string} socket_name The optional socket ID, used as a filter for established connections. If an empty string `""` is passed, this function handler will be called for all sockets.
@@ -107,8 +107,8 @@
  * @event social
  * @member {string} type the string `"eos_p2p_add_notify_peer_connection_established"`
  * @member {string} local_user_id The Product User ID of the local user who is being notified of a connection being established
- * @member {constant.EOS_ConnectionEstablishedType} connection_type Whether this is a new connection or reconnection
- * @member {constant.EOS_NetworkConnectionType} network_type What type of network connection is being used for this connection
+ * @member {constant.EOS_CONNECTION_ESTABLISHED_TYPE} connection_type Whether this is a new connection or reconnection
+ * @member {constant.EOS_NETWORK_CONNECTION_TYPE} network_type What type of network connection is being used for this connection
  * @member {string} socket_id The socket ID of the connection being established
  * @member {string} remote_user_id The Product User ID of the remote user who this connection was with
  * @event_end
@@ -120,7 +120,7 @@
  * @func eos_p2p_add_notify_peer_connection_interrupted
  * @desc **Epic Online Services Function:** [EOS_P2P_AddNotifyPeerConnectionInterrupted](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-interrupted)
  * 
- * This function listens for when a previously opened connection is interrupted. The connection will automatically attempt to reestablish, but it may not be successful. If a connection reconnects, it will trigger the P2P PeerConnectionEstablished notification with the `EOS_ConnectionEstablishedType.RECONNECTION` connection type. If a connection fails to reconnect, it will trigger the P2P PeerConnectionClosed notification. Packets remain queued during connection interruptions. When a connection closes, packets are flushed. This includes reliable packets.
+ * This function listens for when a previously opened connection is interrupted. The connection will automatically attempt to reestablish, but it may not be successful. If a connection reconnects, it will trigger the P2P PeerConnectionEstablished notification with the `EOS_CONNECTION_ESTABLISHED_TYPE.RECONNECTION` connection type. If a connection fails to reconnect, it will trigger the P2P PeerConnectionClosed notification. Packets remain queued during connection interruptions. When a connection closes, packets are flushed. This includes reliable packets.
  * 
  * The function returns the notification ID.
  *
@@ -172,7 +172,7 @@
  * @param {string} remote_user_id The Product User ID to who (outgoing) or from who (incoming) packets are queued
  * @param {string} socket_name The socket used for packets to be cleared
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -183,13 +183,13 @@
  * 
  * For all (or optionally one specific) Socket ID(s) with a specific peer: stop receiving packets, drop any locally queued packets, and if no other Socket ID is using the connection with the peer, close the underlying connection. If your application wants to migrate an existing connection with a peer it already connected to, it is recommended to call ${function.eos_p2p_accept_connection} with the new Socket ID first before calling $ {function.eos_p2p_close_connection}, to prevent the shared physical socket from being torn down prematurely.
  * 
- * The function returns `EOS_Result.Success` if the provided data is valid, `EOS_Result.InvalidParameters` otherwise.
+ * The function returns `EOS_RESULT.SUCCESS` if the provided data is valid, `EOS_RESULT.INVALID_PARAMETERS` otherwise.
  *
  * @param {string} local_user_id The Product User ID of the local user who would like to close a previously accepted connection (or decline a pending invite)
  * @param {string} remote_user_id The Product User ID of the remote user to disconnect from (or to reject a pending invite from)
  * @param {string} socket_name The socket ID of the connection to close (or optionally an empty string to not accept any connection requests from the Remote User)
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -200,12 +200,12 @@
  * 
  * This function closes any open Connections for a specific Peer Connection ID.
  * 
- * The function returns `EOS_Result.Success` if the provided data is valid, `EOS_Result.InvalidParameters` otherwise.
+ * The function returns `EOS_RESULT.SUCCESS` if the provided data is valid, `EOS_RESULT.INVALID_PARAMETERS` otherwise.
  *
  * @param {string} local_user_id The Product User ID of the local user who would like to close all connections that use a particular socket ID
  * @param {string} socket_name The socket ID of the connections to close
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -216,9 +216,9 @@
  *
  * This function gets the last queried NAT type, if it has been successfully queried with ${function.eos_p2p_query_nat_type} before.
  * 
- * The function returns the previously queried NAT type if cached data is available, or `EOS_NATType.UNKNOWN` otherwise.
+ * The function returns the previously queried NAT type if cached data is available, or `EOS_NAT_TYPE.UNKNOWN` otherwise.
  *
- * @returns {constant.EOS_NATType}
+ * @returns {constant.EOS_NAT_TYPE}
  * 
  * @func_end
  */
@@ -267,7 +267,7 @@
  *
  * This function gets the current relay control setting, or a negative value if the operation failed.
  *
- * @returns {constant.EOS_RelayControl}
+ * @returns {constant.EOS_RELAY_CONTROL}
  * 
  * @func_end
  */
@@ -282,7 +282,7 @@
  * 
  * @event social
  * @member {string} type the string `"eos_p2p_query_nat_type"`
- * @member {constant.EOS_Result} status The result code for the query
+ * @member {constant.EOS_RESULT} status The result code for the query
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The identifier returned by the call to the function
  * @member {constant.EOS_NATType} nat_type The queried NAT type
@@ -368,24 +368,24 @@
  * @func eos_p2p_send_packet
  * @desc **Epic Online Services Function:** [EOS_P2P_SendPacket](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-send-packet)
  * 
- * This function sends a packet to a peer at the specified address. If there is already an open connection to this peer, it will be sent immediately. If there is no open connection, an attempt to connect to the peer will be made. An `EOS_Result.Success` result only means the data was accepted to be sent, not that it has been successfully delivered to the peer.
+ * This function sends a packet to a peer at the specified address. If there is already an open connection to this peer, it will be sent immediately. If there is no open connection, an attempt to connect to the peer will be made. An `EOS_RESULT.SUCCESS` result only means the data was accepted to be sent, not that it has been successfully delivered to the peer.
  * 
  * The function returns one of the following:
  * 
- * * `EOS_Result.Success` - If the packet was queued to be sent successfully
- * * `EOS_Result.InvalidParameters` - If the input was invalid
- * * `EOS_Result.LimitExceeded` - If the amount of data being sent is too large, or the outgoing packet queue was full
- * * `EOS_Result.NoConnection` -  If `disable_auto_accept_connection` was set to `true` and the connection was not currently accepted (call ${function.eos_p2p_accept_connection} first, or set `disable_auto_accept_connection` to `false`)
+ * * `EOS_RESULT.SUCCESS` - If the packet was queued to be sent successfully
+ * * `EOS_RESULT.INVALID_PARAMETERS` - If the input was invalid
+ * * `EOS_RESULT.LIMIT_EXCEEDED` - If the amount of data being sent is too large, or the outgoing packet queue was full
+ * * `EOS_RESULT.NO_CONNECTION` -  If `disable_auto_accept_connection` was set to `true` and the connection was not currently accepted (call ${function.eos_p2p_accept_connection} first, or set `disable_auto_accept_connection` to `false`)
  * 
  * @param {bool} allow_delayed_delivery If `false` and we do not already have an established connection to the peer, this data will be dropped
  * @param {bool} disable_auto_accept_connection If set to `true`, ${function.eos_p2p_send_packet} will not automatically establish a connection with the `remote_user_id` and will require explicit calls to ${function.eos_p2p_accept_connection} first whenever the connection is closed. If set to `false`, ${function.eos_p2p_send_packet} will automatically accept and start the connection any time it is called and the connection is not already open.
  * @param {real} channel The channel associated with this data
  * @param {string} local_user_id The Product User ID of the local user who is sending this packet
- * @param {constant.EOS_PacketReliability} reliability Sets the reliability of the delivery of this packet.
+ * @param {constant.EOS_PACKET_RELIABILITY} reliability Sets the reliability of the delivery of this packet.
  * @param {string} remote_user_id The Product User ID of the Peer you would like to send a packet to
  * @param {string} socket_name The socket ID for data you are sending in this packet
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -396,12 +396,12 @@
  * 
  * This function sets the maximum packet queue sizes that packets waiting to be sent or received can use. If the packet queue size is made smaller than the current queue size while there are packets in the queue that would push this packet size over, existing packets are kept but new packets may not be added to the full queue until enough packets are sent or received.
  * 
- * The function returns `EOS_Result.Success` if the input options were valid, or `EOS_Result.InvalidParameters` if the input was invalid in some way.
+ * The function returns `EOS_RESULT.SUCCESS` if the input options were valid, or `EOS_RESULT.INVALID_PARAMETERS` if the input was invalid in some way.
  * 
  * @param {real} incoming_packet_queue_max_size_bytes The ideal maximum amount of bytes the incoming packet queue can consume
  * @param {real} outgoing_packet_queue_max_size_bytes The ideal maximum amount of bytes the outgoing packet queue can consume
  * 
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -414,13 +414,13 @@
  * 
  * It returns one of the following: 
  * 
- * * `EOS_Result.Success` - if the options were set successfully
- * * `EOS_Result.InvalidParameters` - if the options are invalid in some way
+ * * `EOS_RESULT.SUCCESS` - if the options were set successfully
+ * * `EOS_RESULT.INVALID_PARAMETERS` - if the options are invalid in some way
  * 
  * @param {real} port The ideal port to use for P2P traffic. The default value is 7777. If set to 0, the OS will choose a port. If set to 0, `max_additional_ports_to_try` must be set to 0.
  * @param {real} max_additional_ports_to_try The maximum amount of additional ports to try if `port` is unavailable. Ports will be tried from `port` to `port + max_additional_ports_to_try` inclusive, until one is available or we run out of ports. If no ports are available, P2P connections will fail. The default value is 99.
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -433,12 +433,12 @@
  * 
  * The function returns one of the following: 
  * 
- * * `EOS_Result.Success` - if the options were set successfully
- * * `EOS_Result.InvalidParameters` - if the options are invalid in some way
+ * * `EOS_RESULT.SUCCESS` - if the options were set successfully
+ * * `EOS_RESULT.INVALID_PARAMETERS` - if the options are invalid in some way
  *
- * @param {constant.EOS_RelayControl} relay_control The requested level of relay servers for P2P connections. This setting is only applied to new P2P connections, or when existing P2P connections reconnect during a temporary connectivity outage. Peers with an incompatible setting to the local setting will not be able to connect.
+ * @param {constant.EOS_RELAY_CONTROL} relay_control The requested level of relay servers for P2P connections. This setting is only applied to new P2P connections, or when existing P2P connections reconnect during a temporary connectivity outage. Peers with an incompatible setting to the local setting will not be able to connect.
  *
- * @returns {constant.EOS_Result}
+ * @returns {constant.EOS_RESULT}
  * 
  * @func_end
  */
@@ -464,7 +464,7 @@
 // Constants & Enums
 
 /**
- * @constant EOS_NATType
+ * @constant EOS_NAT_TYPE
  * @desc **Epic Online Services Enum:** [EOS_ENATType](https://dev.epicgames.com/docs/api-ref/enums/eos-enat-type)
  * 
  * This enum holds the possible categories of NAT strictness.
@@ -478,30 +478,40 @@
  */
 
 /**
- * @constant EOS_ConnectionEstablishedType
+ * @constant EOS_CONNECTION_ESTABLISHED_TYPE
  * @desc **Epic Online Services Enum:** [EOS_EConnectionEstablishedType](https://dev.epicgames.com/docs/api-ref/enums/eos-e-connection-established-type)
  * 
  * This enum holds the possible types of established connection.
  * 
- * @member NEWCONNECTION The connection is brand new
+ * @member NEW_CONNECTION The connection is brand new
  * @member RECONNECTION The connection is reestablished (reconnection)
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_ConnectionClosedReason
+ * @constant EOS_CONNECTION_CLOSED_REASON
  * @desc **Epic Online Services Enum:** [EOS_EConnectionClosedReason](https://dev.epicgames.com/docs/api-ref/enums/eos-e-connection-closed-reason)
  * 
  * This enum holds the possible reasons why a P2P connection was closed.
  * 
- * @member member 
+ * @member UNKNOWN The connection was closed for unknown reasons. This most notably happens during application shutdown.
+ * @member CLOSED_BY_LOCAL_USER The connection was at least locally accepted, but was closed by the local user via a call to ${function.eos_p2p_close_connection} / ${function.eos_p2p_close_connections}.
+ * @member CLOSED_BY_PEER The connection was at least locally accepted, but was gracefully closed by the remote user via a call to ${function.eos_p2p_close_connection} / ${function.eos_p2p_close_connections}.
+ * @member TIMED_OUT The connection was at least locally accepted, but was not remotely accepted in time.
+ * @member TOO_MANY_CONNECTIONS The connection was accepted, but the connection could not be created due to too many other existing connections.
+ * @member INVALID_MESSAGE The connection was accepted, The remote user sent an invalid message.
+ * @member INVALID_DATA The connection was accepted, but the remote user sent us invalid data.
+ * @member CONNECTION_FAILED The connection was accepted, but we failed to ever establish a connection with the remote user due to connectivity issues.
+ * @member CONNECTION_CLOSED The connection was accepted and established, but the peer silently went away.
+ * @member NEGOTIATION_FAILED The connection was locally accepted, but we failed to negotiate a connection with the remote user. This most commonly occurs if the local user goes offline or is logged-out during the connection process.
+ * @member UNEXPECTED_ERROR The connection was accepted, but there was an internal error occurred and the connection cannot be created or continue.
  * 
  * @constant_end
  */
 
 /**
- * @constant EOS_NetworkConnectionType
+ * @constant EOS_NETWORK_CONNECTION_TYPE
  * @desc **Epic Online Services Enum:** [EOS_ENetworkConnectionType](https://dev.epicgames.com/docs/api-ref/enums/eos-e-network-connection-type)
  * 
  * This enum holds the possible types of network connection.
@@ -514,7 +524,7 @@
  */
 
 /**
- * @constant EOS_PacketReliability
+ * @constant EOS_PACKET_RELIABILITY
  * @desc **Epic Online Services Enum:** [EOS_EPacketReliability](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-packet-reliability)
  * 
  * This enum holds the different types of packet reliability. Ordered packets will only be ordered relative to other ordered packets. Reliable/unreliable and ordered/unordered communication can be sent on the same Socket ID and Channel.
@@ -527,10 +537,10 @@
  */
 
 /**
- * @constant EOS_RelayControl
+ * @constant EOS_RELAY_CONTROL
  * @desc **Epic Online Services Enum:** [EOS_ERelayControl](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-relay-control)
  * 
- * This enum holds the possible settings for controlling whether relay servers are used. Please see the following EOS_ERelayControl value compatibility-chart to better understand how changing this value can affect compatibility between clients with different settings. Connections between clients using Incompatible settings may succeed in limited scenarios but should be treated as though they will consistently fail.
+ * This enum holds the possible settings for controlling whether relay servers are used. Please see the relay control value compatibility-chart in the Epic Online Services documentation to better understand how changing this value can affect compatibility between clients with different settings. Connections between clients using Incompatible settings may succeed in limited scenarios but should be treated as though they will consistently fail.
  * 
  * @member NO_RELAYS Peer connections will never attempt to use relay servers. Clients with restrictive NATs may not be able to connect to peers.
  * @member ALLOW_RELAYS Peer connections will attempt to use relay servers, but only after direct connection attempts fail. This is the default value if not changed.

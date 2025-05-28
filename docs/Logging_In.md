@@ -6,11 +6,11 @@ Epic Online Services offers several ways to log in and authenticate. When you us
 
 |Platform |Login Type |Summary |
 |---------|-----------|--------|
-|Epic Games Launcher|`EOS_LCT_ExchangeCode`|Exchange code received from the launcher and used to automatically login the user.|
-|Steam Client|`EOS_LCT_ExternalAuth`|Steam Session Ticket used to automatically login the Steam user to their associated Epic account.|
-|Other store platforms and standalone distributions on PC and Mobile Devices|`EOS_LCT_AccountPortal` with `EOS_LCT_PersistentAuth`|Users are prompted to login using their Epic account credentials, after which a long-lived refresh token is stored locally to enable automatic login across consecutive application runs.|
+|Epic Games Launcher|`EOS_LOGIN_CREDENTIAL_TYPE.EXCHANGE_CODE`|Exchange code received from the launcher and used to automatically login the user.|
+|Steam Client|`EOS_LOGIN_CREDENTIAL_TYPE.EXTERNAL_AUTH`|Steam Session Ticket used to automatically login the Steam user to their associated Epic account.|
+|Other store platforms and standalone distributions on PC and Mobile Devices|`EOS_LOGIN_CREDENTIAL_TYPE.ACCOUNT_PORTAL` with `EOS_LOGIN_CREDENTIAL_TYPE.PERSISTENT_AUTH`|Users are prompted to login using their Epic account credentials, after which a long-lived refresh token is stored locally to enable automatic login across consecutive application runs.|
 
-[[Note: See (${constant.EOS_LoginCredentialType}) for the corresponding Login Type constants of the extension.]]
+[[Note: See (${constant.EOS_LOGIN_CREDENTIAL_TYPE}) for the Login Type constants of the extension.]]
 
 ## Using the Epic Games Launcher
 
@@ -20,7 +20,7 @@ When you log into Epic Online Services using the extension, a straightforward wa
 -AUTH_LOGIN=unused -AUTH_PASSWORD=<password> -AUTH_TYPE=exchangecode -epicapp=<appid> -epicenv=Prod -EpicPortal  -epicusername=<username> -epicuserid=<userid> -epiclocale=en-US -epicsandboxid=<sandboxid> -epicdeploymentid=<deploymentid>
 ```
 
-The `AUTH_PASSWORD` parameter value contains the token that you should pass into ${function.eos_auth_login}. This function should then be called with a credential type of `EOS_LCT_EXCHANGE_CODE`. The `id` parameter can be blank (an empty string `""`), as this login method does not require an ID. The `token` parameter needs to be set to the Exchange Code from the `AUTH_PASSWORD` command line parameter.
+The `AUTH_PASSWORD` parameter value contains the token that you should pass into ${function.eos_auth_login}. This function should then be called with a credential type of `EOS_LOGIN_CREDENTIAL_TYPE.EXCHANGE_CODE`. The `id` parameter can be blank (an empty string `""`), as this login method does not require an ID. The `token` parameter needs to be set to the Exchange Code from the `AUTH_PASSWORD` command line parameter.
 
 ```gml
 // Retrieve the AUTH_PASSWORD command-line parameter
@@ -43,8 +43,8 @@ if (_p_num > 0)
 
 // Login using the AUTH_PASSWORD as the token parameter
 eos_auth_login(
-    EOS_LCT_EXCHANGE_CODE,
-    EOS_AS_BASIC_PROFILE | EOS_AS_FRIENDS_LIST | EOS_AS_PRESENCE,
+    EOS_LOGIN_CREDENTIAL_TYPE.EXCHANGE_CODE,
+    EOS_AUTH_SCOPE_FLAGS.BASIC_PROFILE | EOS_AUTH_SCOPE_FLAGS.FRIENDS_LIST | EOS_AUTH_SCOPE_FLAGS.PRESENCE,
     "",
     _p_auth_password,
     -1
@@ -55,10 +55,10 @@ eos_auth_login(
 
 ## External Login Flow Guide
 
-This is a detailed login flow for external accounts (the required credentials depend on the ${constant.EOS_ExternalCredentialType} used with the ${function.eos_auth_login} API).
+This is a detailed login flow for external accounts (the required credentials depend on the ${constant.EOS_EXTERNAL_CREDENTIAL_TYPE} used with the ${function.eos_auth_login} API).
 
-1. Game calls ${function.eos_auth_login} with the `EOS_LCT_ExternalAuth` credential type.
-2. ${function.eos_auth_login} callback returns a status `EOS_INVALID_USER` with a non-undefined EOS_ContinuanceToken in the EOS_Auth_LoginCallbackInfo data.
+1. Game calls ${function.eos_auth_login} with the `EOS_LOGIN_CREDENTIAL_TYPE.EXTERNAL_AUTH` credential type.
+2. ${function.eos_auth_login} callback returns a status `EOS_RESULT.INVALID_USER` with a non-undefined EOS_ContinuanceToken in the EOS_Auth_LoginCallbackInfo data.
 3. Game calls ${function.eos_auth_link_account} with the `EOS_ContinuanceToken` to initiate the login flow for linking the platform account with the user's Epic account.
 4. EOS SDK automatically opens the local default web browser and takes the user to the Epic account portal web page.
   * The user is able to login to their existing Epic account or create a new account if needed.
@@ -66,4 +66,4 @@ This is a detailed login flow for external accounts (the required credentials de
 5. The user is able to login to their existing Epic account or create a new account if needed.
 6. In the meantime, EOS SDK will internally keep polling the backend for a completion status of the login flow.
 7. Once user completes the login, cancels it or if the login flow times out, ${function.eos_auth_link_account} invokes the completion callback to the caller.
-8. If the user was logged in successfully, `EOS_SUCCESS` is returned in the callback event. Otherwise, an error result code is returned accordingly.
+8. If the user was logged in successfully, `EOS_RESULT.SUCCESS` is returned in the callback event. Otherwise, an error result code is returned accordingly.
