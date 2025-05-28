@@ -301,10 +301,12 @@
  * @struct TitleFileMetadata
  * @desc  The player file metadata is represented by a struct and contains metadata information for a specific title file.
  * 
- * @member {double} FileSizeBytes The total size of the file in bytes (includes the file header in addition to the file contents)
- * @member {string} MD5Hash The MD5 Hash of the entire file (including additional file header), in hex digits
- * @member {string} Filename The file's name
- * @member {real} UnencryptedDataSizeBytes The size of data (payload) in file in unencrypted (original) form.
+ * @member {constant.EOS_RESULT} status The status code of the request
+ * @member {string} status_message A text representation of the status code
+ * @member {string} [filename] The file's name
+ * @member {real} [size] The total size of the file in bytes (includes the file header in addition to the file contents)
+ * @member {string} [md5_hash] The MD5 Hash of the entire file (including additional file header), in hex digits
+ * @member {real} [size_unencrypted] The size of data (payload) in file in unencrypted (original) form.
  * @struct_end
  */
 

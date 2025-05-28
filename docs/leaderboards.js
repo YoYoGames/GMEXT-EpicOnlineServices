@@ -396,8 +396,8 @@
  * 
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {string} UserId The Product User ID of the user who got this score
- * @member {real} Score Leaderboard score
+ * @member {string} user_id The Product User ID of the user who got this score
+ * @member {real} score Leaderboard score
  * @struct_end
  */
 
@@ -407,10 +407,10 @@
  * 
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {string} UserId The Product User ID associated with this record
- * @member {real} Rank Sorted position on leaderboard
- * @member {real} Score Leaderboard score
- * @member {string} UserDisplayName The latest display name seen for the user since they last time logged in. This is empty if the user does not have a display name set
+ * @member {string} user_id The Product User ID associated with this record
+ * @member {real} rank Sorted position on leaderboard
+ * @member {real} score Leaderboard score
+ * @member {string} user_display_name The latest display name seen for the user since they last time logged in. This is empty if the user does not have a display name set
  * @struct_end
  */
 
@@ -420,11 +420,11 @@
  * 
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {string} LeaderboardId Unique ID to identify leaderboard.
- * @member {string} StatName Name of stat used to rank leaderboard.
- * @member {real} StartTime The POSIX timestamp for the start time, or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
- * @member {real} EndTime The POSIX timestamp for the end time, or or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
- * @member {constant.EOS_LEADERBOARD_AGGREGATION} Aggregation used to sort the leaderboard.
+ * @member {string} leaderboard_id Unique ID to identify leaderboard.
+ * @member {string} stat_name Name of stat used to rank leaderboard.
+ * @member {real} start_time The POSIX timestamp for the start time, or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
+ * @member {real} end_time The POSIX timestamp for the end time, or or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
+ * @member {constant.EOS_LEADERBOARD_AGGREGATION} aggregation Aggregation used to sort the leaderboard.
  * @struct_end
  */
 

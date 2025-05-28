@@ -431,11 +431,13 @@
  * @struct PlayerFileMetadata
  * @desc The player file metadata is represented by a struct and contains metadata information for a specific player file.
  *
- * @member {real} FileSizeBytes The total size of the file in bytes (includes the file header in addition to the file contents)
- * @member {string} MD5Hash The MD5 Hash of the entire file (including additional file header), in hex digits
- * @member {string} Filename The file's name
- * @member {real} LastModifiedTime The POSIX timestamp when the file was saved last time.
- * @member {real} UnencryptedDataSizeBytes The size of data (payload) in file in unencrypted (original) form.
+ * @member {constant.EOS_RESULT} status The status of the request
+ * @member {string} status_message A text representation of the status value
+ * @member {string} filename The file's name
+ * @member {real} size The total size of the file in bytes (includes the file header in addition to the file contents)
+ * @member {string} md5_hash The MD5 Hash of the entire file (including additional file header), in hex digits
+ * @member {real} size_unencrypted The size of data (payload) in file in unencrypted (original) form.
+ * @member {real} last_modified_time The POSIX timestamp when the file was saved last time.
  * @struct_end
  */
 
