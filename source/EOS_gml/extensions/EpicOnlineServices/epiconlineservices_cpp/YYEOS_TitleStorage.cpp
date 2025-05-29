@@ -46,7 +46,7 @@ RValue FileMetadataToStruct(EOS_TitleStorage_FileMetadata *file, EOS_EResult res
 	{
 		YYStructAddString(&Struct, "filename", file->Filename);
 		YYStructAddDouble(&Struct, "size", file->FileSizeBytes);
-		YYStructAddString(&Struct, "m_d5_hash", file->MD5Hash);
+		YYStructAddString(&Struct, "md5_hash", file->MD5Hash);
 		YYStructAddDouble(&Struct, "size_unencrypted", file->UnencryptedDataSizeBytes);
 	}
 
