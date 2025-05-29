@@ -75,7 +75,7 @@
  * for(var i = 0 ; i < _count ; i ++)
  * {
  *     var _struct = eos_user_info_copy_external_user_info_by_index(i);
- *     var _displayName = _struct.display_name;
+ *     var _display_name = _struct.display_name;
  * }
  * ```
  * The above code shows an example of how the function should be used. The external user info data is returned given the provided index (from a cached array).
@@ -267,7 +267,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```

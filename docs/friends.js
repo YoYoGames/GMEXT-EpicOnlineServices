@@ -144,7 +144,7 @@
  * 
  * @example
  * ```gml
- * if(eos_friends_get_status(account_id,account_id_target) == EOS_FS_FRIENDS)
+ * if(eos_friends_get_status(account_id,account_id_target) == EOS_FRIENDS_STATUS.FRIENDS)
  * {
  *      show_debug_message("It's my friend!!!");
  * }
@@ -194,7 +194,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -236,7 +236,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -298,7 +298,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```

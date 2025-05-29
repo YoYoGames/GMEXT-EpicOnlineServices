@@ -348,7 +348,7 @@ function eos_ecom_get_offer_count(user) {}
  * 
  * This struct contains information about a single offer within the catalog.
  * 
- * Prices are stored in the lowest denomination for the associated currency. If CurrencyCode is "USD" then a price of 299 represents "$2.99".
+ * Prices are stored in the lowest denomination for the associated currency. If `currency_code` is `"USD"` then a price of 299 represents `"$2.99"`.
  * 
  * [[Note: `status` and `status_message` will always be present in the struct, all other variables are only present on success (i.e. when `status` equals `EOS_RESULT.SUCCESS`).]]
  * 
@@ -365,7 +365,7 @@ function eos_ecom_get_offer_count(user) {}
  * @member {real} offer_id The ID of this offer
  * @member {string} long_description_text Localised UTF-8 long description of this offer
  * @member {int64} original_price64 The original price of this offer as a 64-bit number
- * @member {constant.EOS_RESULT} price_result If this value is `EOS_RESULT.SUCCESS` then `original_price64`, `CurrentPrice64`, and `discount_percentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
+ * @member {constant.EOS_RESULT} price_result If this value is `EOS_RESULT.SUCCESS` then `original_price64`, `current_price64`, and `discount_percentage` contain valid data. Otherwise, this value represents the error that occurred on the price query.
  * @member {real} purchase_limit The maximum number of times that the offer can be purchased. A negative value implies there is no limit.
  * @member {int64} release_date_timestamp Timestamp indicating when the time when the offer was released. Can be ignored if set to -1.
  * @member {real} server_index The index of this offer as it exists on the server. This is useful for understanding pagination data.

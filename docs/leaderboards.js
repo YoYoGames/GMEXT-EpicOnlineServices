@@ -68,7 +68,7 @@
  * for(var i = 0 ; i < _count ; i++)
  * {
  *     var _struct = eos_leaderboards_copy_leaderboard_record_by_index(i);
- *     var _rank = _struct.Rank;
+ *     var _rank = _struct.rank;
  * }
  * ```
  * The above code shows an example of how the function should be used. The leaderboard record data is returned providing a leaderboard index.
@@ -259,7 +259,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```

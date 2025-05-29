@@ -181,7 +181,7 @@
  * @func eos_p2p_close_connection
  * @desc **Epic Online Services Function:** [EOS_P2P_CloseConnection](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-close-connection)
  * 
- * For all (or optionally one specific) Socket ID(s) with a specific peer: stop receiving packets, drop any locally queued packets, and if no other Socket ID is using the connection with the peer, close the underlying connection. If your application wants to migrate an existing connection with a peer it already connected to, it is recommended to call ${function.eos_p2p_accept_connection} with the new Socket ID first before calling $ {function.eos_p2p_close_connection}, to prevent the shared physical socket from being torn down prematurely.
+ * For all (or optionally one specific) Socket ID(s) with a specific peer: stop receiving packets, drop any locally queued packets, and if no other Socket ID is using the connection with the peer, close the underlying connection. If your application wants to migrate an existing connection with a peer it already connected to, it is recommended to call ${function.eos_p2p_accept_connection} with the new Socket ID first before calling ${function.eos_p2p_close_connection}, to prevent the shared physical socket from being torn down prematurely.
  * 
  * The function returns `EOS_RESULT.SUCCESS` if the provided data is valid, `EOS_RESULT.INVALID_PARAMETERS` otherwise.
  *
@@ -301,7 +301,7 @@
  *
  * @param {real} buff The buffer to write the data to
  * @param {string} local_user_id The Product User ID of the user who is receiving the packet
- * @param {real} max_data_size_bytes The maximum amount of data in bytes that can be safely copied to OutData in the function call
+ * @param {real} max_data_size_bytes The maximum amount of data in bytes that can be safely copied to the buffer in the function call
  * @param {real} requested_channel An optional channel to request the data for. If a value < 0 is passed, the next packet is retrieved on any channel
  *
  * @returns {real}

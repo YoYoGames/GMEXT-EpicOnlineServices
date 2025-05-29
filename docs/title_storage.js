@@ -20,7 +20,7 @@
  * for(var i = 0 ; i < _count ; i ++)
  * {
  *     var _struct = eos_title_storage_copy_file_metadata_at_index(user_id, i);
- *     var _Filename = _struct.filename;
+ *     var _filename = _struct.filename;
  * }
  * ```
  * The above code shows an example of how the function should be used. The title file metadata is returned for the provided file index.
