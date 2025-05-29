@@ -167,7 +167,7 @@
  * 
  * This struct holds common settings associated with a single session.
  * 
- * @member {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass an empty array.
+ * @member {array[constant.EOS_ONLINE_PLATFORM_TYPE]} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass an empty array.
  * @member {bool} allow_join_in_progress Whether players are allowed to join the session while it is in the "in progress" state
  * @member {bool} invites_allowed Whether players are allowed to send invites for the session
  * @member {bool} sanctions_enabled Whether sanctioned players are allowed to join or not - sanctioned players will be rejected if set to `true`
@@ -273,7 +273,7 @@
  * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {constant.EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE} type Whether this attribute is advertised with the backend or simply stored locally
- * @param {struct.SessionAttribute} attribute A key/value pair describing the attribute to add to the session
+ * @param {struct} attribute A struct with two variables `key` and `value`, representing the key/value pair that describes the attribute to add to the session
  *
  * @returns {constant.EOS_RESULT}
  * 
@@ -320,7 +320,7 @@
  * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * * `EOS_RESULT.INVALID_PARAMETERS` if the attribution is missing information or otherwise invalid
  * 
- * @param {array} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form `EOS_OPT_<PlatformName>`. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass `undefined`.
+ * @param {array[constant.EOS_ONLINE_PLATFORM_TYPE]} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass `undefined`.
  *
  * @returns {constant.EOS_RESULT}
  * 
@@ -809,7 +809,7 @@
  * The function returns an async identifier.
  *
  * @param {string} session_name The name of the session for which to register players
- * @param {array} array_product_ids Array of players to register with the session
+ * @param {array} array_product_user_ids Array of players to register with the session
  *
  * @returns {real}
  * 
@@ -885,7 +885,7 @@
  * 
  * This function unregisters from receiving notifications when a user accepts a session invite via the social overlay.
  *
- * @param {real} notification_id 
+ * @param {real} notification_id A handle representing the registered callback
  * 
  * @func_end
  */
@@ -1133,7 +1133,7 @@
  * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  *
  * @param {constant.EOS_COMPARISON_OP} comparison_op The type of comparison to make against the search parameter
- * @param {struct.SessionAttribute} attribute Search parameter describing a key and a value to compare
+ * @param {struct} attribute A struct with two variables `key` and `value`, representing the key/value pair that describes the search parameter
  *
  * @returns {constant.EOS_RESULT}
  * 
@@ -1225,7 +1225,7 @@
 
 /**
  * @constant EOS_SESSIONS_MAX_SEARCH_RESULTS
- * @desc 
+ * @desc This macro defines the maximum number of session search results.
  * 
  * @constant_end
  */

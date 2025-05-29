@@ -109,7 +109,7 @@
  * @member OPERATION_WILL_RETRY An error occurred during an asynchronous operation, and it will be retried. Callbacks receiving this result will be called again in the future.
  * @member NO_CHANGE The request had no effect
  * @member VERSION_MISMATCH The request attempted to use multiple or inconsistent API versions
- * @member LIMIT_EXCEEDED A maximum limit was exceeded on the client, different from `TooManyRequests`
+ * @member LIMIT_EXCEEDED A maximum limit was exceeded on the client, different from `TOO_MANY_REQUESTS`
  * @member DISABLED Feature or client ID performing the operation has been disabled.
  * @member DUPLICATE_NOT_ALLOWED Duplicate entry not allowed
  * @member INVALID_SANDBOX_ID Sandbox ID is invalid
@@ -374,7 +374,7 @@
  * @member PROGRESSION_SNAPSHOTS Logs related to the Progression Snapshot service
  * @member KWS Logs related to the Kids Web Services integration
  * @member RTC Logs related to the RTC API
- * @member RTCAdmin Logs related to the RTC Admin API
+ * @member RTC_ADMIN Logs related to the RTC Admin API
  * @member INVENTORY Logs related to the Inventory service
  * @member RECEIPT_VALIDATOR Logs related to the Receipt Validator API
  * @member CUSTOM_INVITES Logs related to the Custom Invites API
