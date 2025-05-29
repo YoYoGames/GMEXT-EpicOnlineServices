@@ -50,15 +50,15 @@
  * 
  * This function gets the friends overlay visibility.
  * 
- * @param {real} accountID The Epic Account ID of the user whose overlay is being updated.
+ * @param {real} account_id The Epic Account ID of the user whose overlay is being updated.
  * 
  * @returns {bool}
  * 
  * @example
  * ```gml
- * if (eos_ui_get_friends_visible(accountID))
+ * if (eos_ui_get_friends_visible(account_id))
  * {
- *     PauseGame(); // add logic to pause the game here
+ *     pause_game(); // add logic to pause the game here
  * }
  * ```
  * The above code shows an example of how the function should be used. If the Friends UI is being displayed, the developer must make sure the game is set to pause.
@@ -87,7 +87,7 @@
  * 
  * This function hides the active Social Overlay.
  * 
- * @param {real} accountID The Epic Account ID of the user whose friend list is being shown.
+ * @param {real} account_id The Epic Account ID of the user whose friend list is being shown
  * 
  * @returns {real}
  * 
@@ -114,7 +114,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -148,13 +148,13 @@
  * 
  * This function defines any preferences for any display settings.
  * 
- * @param {constant.EOS_UI_NOTIFICATION_LOCATION} location preference for notification pop-up locations.
+ * @param {constant.EOS_UI_NOTIFICATION_LOCATION} location The preference for notification pop-up locations
  * 
  * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
- * eos_ui_set_display_preference(eos_unl_top_left);
+ * eos_ui_set_display_preference(EOS_UI_NOTIFICATION_LOCATION.TOP_LEFT);
  * ```
  * The above code shows an example of how the function should be used. The position of the notifications will now be the top-left corner of the game screen.
  * @function_end
@@ -174,7 +174,7 @@
  * @member {string} type The string `"eos_ui_show_friends"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
@@ -209,7 +209,7 @@
  * 
  * The UI Notification Location allows to change the positioning of the EOS notifications.
  * 
- * @member TOP_left Positions the overlay notification on the top-left corner
+ * @member TOP_LEFT Positions the overlay notification on the top-left corner
  * @member TOP_RIGHT Positions the overlay notification on the top-right corner
  * @member BOTTOM_LEFT Positions the overlay notification on the bottom-left corner
  * @member BOTTOM_RIGHT Positions the overlay notification on the bottom-right corner
@@ -226,7 +226,7 @@
  * 
  * @section_func
  * @desc These functions are provided for handling user interface:
-
+ * 
  * @ref eos_ui_acknowledge_event_id
  * @ref eos_ui_add_notify_display_settings_updated
  * @ref eos_ui_get_friends_visible

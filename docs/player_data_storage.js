@@ -9,18 +9,18 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_player_data_storage_query_file_list} to store values in cache.]]
  * 
- * @param {string} userID The Product User ID of the local user who is requesting file metadata
+ * @param {string} user_id The Product User ID of the local user who is requesting file metadata
  * @param {real} index The index to get metadata for
  * 
  * @returns {struct.PlayerFileMetadata}
  * 
  * @example
  * ```gml
- * var _count = eos_player_data_storage_get_file_metadata_count(userID);
+ * var _count = eos_player_data_storage_get_file_metadata_count(user_id);
  * for(var i = 0 ; i < _count; i++)
  * {
- *     var _struct = eos_player_data_storage_copy_file_metadata_at_index(userID, i);
- *     Filename = _struct.Filename;
+ *     var _struct = eos_player_data_storage_copy_file_metadata_at_index(user_id, i);
+ *     var _filename = _struct.filename;
  * }
  * ```
  * The above code shows an example of how the function should be used. The player file metadata is returned providing an index.
@@ -35,17 +35,17 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_player_data_storage_query_file_list} to store values in cache.]]
  * 
- * @param {string} userID The Product User ID of the local user who is requesting file metadata
+ * @param {string} user_id The Product User ID of the local user who is requesting file metadata
  * @param {string} filename The file's name to get metadata for
  * 
  * @returns {struct.PlayerFileMetadata}
  * 
  * @example
  * ```gml
- * var _struct = eos_player_data_storage_copy_file_metadata_by_filename(userID, filename);
+ * var _struct = eos_player_data_storage_copy_file_metadata_by_filename(user_id, filename);
  * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
- *     var _filename = _struct.Filename;
+ *     var _filename = _struct.filename;
  * }
  * ```
  * The above code shows an example of how the function should be used. The player file metadata is returned for a provided filename.
@@ -60,7 +60,7 @@
  * 
  * [[Warning: Use this with care. The cache system generally tries to clear old and unused cached files from time to time. Unnecessarily clearing the cache can degrade performance as the SDK will have to re-download data.]]
  * 
- * @param {string} userID Product User ID of the local user who is deleting his cache
+ * @param {string} user_id Product User ID of the local user who is deleting his cache
  * 
  * @returns {real}
  * 
@@ -73,7 +73,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_player_data_storage_delete_cache(userID);
+ * identifier = eos_player_data_storage_delete_cache(user_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -87,7 +87,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -101,7 +101,7 @@
  * 
  * This function deletes an existing file in the cloud. If successful, the file's data will be removed from our local cache.
  * 
- * @param {string} userID The Product User ID of the local user who authorizes deletion of the file; must be the file's owner
+ * @param {string} user_id The Product User ID of the local user who authorizes deletion of the file; must be the file's owner
  * @param {string} filename The name of the file to delete
  * 
  * @returns {real}
@@ -115,7 +115,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_player_data_storage_delete_file(userID, "MyFilename.txt");
+ * identifier = eos_player_data_storage_delete_file(user_id, "MyFilename.txt");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -129,7 +129,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -143,7 +143,7 @@
  * 
  * This function copies the data of an existing file to a new filename. This action happens entirely on the server and will not upload the contents of the source destination file from the host. This function paired with a subsequent ${function.eos_player_data_storage_delete_file} can be used to rename a file. If successful, the destination file's metadata will be updated in our local cache.
  * 
- * @param {string} userID The Product User ID of the local user who authorized the duplication of the requested file; must be the original file's owner
+ * @param {string} user_id The Product User ID of the local user who authorized the duplication of the requested file; must be the original file's owner
  * @param {string} source The name of the existing file to duplicate
  * @param {string} destination The name of the new file
  * 
@@ -153,12 +153,12 @@
  * @member {string} type `"eos_player_data_storage_duplicate_file"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = eos_player_data_storage_duplicate_file(userID,"myNiceFile.dat", "myNiceFile2.dat");
+ * identifier = eos_player_data_storage_duplicate_file(user_id,"myNiceFile.dat", "myNiceFile2.dat");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -172,7 +172,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -188,17 +188,17 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_player_data_storage_query_file_list} to store values in cache.]]
  * 
- * @param {string} userID The Product User ID of the local user who is requesting file metadata
+ * @param {string} user_id The Product User ID of the local user who is requesting file metadata
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * var _count = eos_player_data_storage_get_file_metadata_count(userID);
+ * var _count = eos_player_data_storage_get_file_metadata_count(user_id);
  * for (var i = 0 ; i < _count; i ++)
  * {
- *     var _struct = eos_player_data_storage_copy_file_metadata_at_index(userID, i);
- *     Filename = _struct.Filename;
+ *     var _struct = eos_player_data_storage_copy_file_metadata_at_index(user_id, i);
+ *     var _filename = _struct.filename;
  * }
  * ```
  * The above code shows an example of how the function should be used. After a successful call to ${function.eos_player_data_storage_query_file_list}, the function ${function.eos_player_data_storage_get_file_metadata_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_player_data_storage_copy_file_metadata_at_index} function.
@@ -216,7 +216,7 @@
  * * ${function.eos_player_data_storage_copy_file_metadata_at_index}
  * * ${function.eos_player_data_storage_copy_file_metadata_by_filename}
  * 
- * @param {string} userID The Product User ID of the local user requesting file metadata
+ * @param {string} user_id The Product User ID of the local user requesting file metadata
  * @param {string} filename The name of the file being queried
  * 
  * @returns {real}
@@ -230,7 +230,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_player_data_storage_query_file(userID, "myFile.txt");
+ * identifier = eos_player_data_storage_query_file(user_id, "myFile.txt");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -263,7 +263,7 @@
  * * ${function.eos_player_data_storage_copy_file_metadata_by_filename}
  * * ${function.eos_player_data_storage_get_file_metadata_count}
  * 
- * @param {string} userID The Product User ID of the local user who requested file metadata
+ * @param {string} user_id The Product User ID of the local user who requested file metadata
  * 
  * @returns {real}
  * 
@@ -271,12 +271,12 @@
  * @member {string} type `"eos_player_data_storage_query_file_list"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = eos_player_data_storage_query_file_list(userID);
+ * identifier = eos_player_data_storage_query_file_list(user_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -304,7 +304,7 @@
  * 
  * This function retrieves the contents of a specific file, potentially downloading the contents if we do not have a local copy, from the cloud. This request will occur asynchronously, potentially over multiple frames. All callbacks for this function will come from the same thread that the SDK is ticked from. If specified, the FileTransferProgressCallback will always be called at least once if the request is started successfully.
  * 
- * @param {string} userID The Product User ID of the local user who is reading the requested file
+ * @param {string} user_id The Product User ID of the local user who is reading the requested file
  * @param {string} filename The file name to read; this file must already exist
  * @param {string} path local path where to save the file
  * 
@@ -314,12 +314,12 @@
  * @member {string} type `"eos_player_data_storage_read_file"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = eos_player_data_storage_read_file(userID, "MyFavPic.png", "path/to/save/MyFavPic.png");
+ * identifier = eos_player_data_storage_read_file(user_id, "MyFavPic.png", "path/to/save/MyFavPic.png");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -333,7 +333,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -347,7 +347,7 @@
  * 
  * This function writes new data to a specific file, potentially overwriting any existing file by the same name, to the cloud. This request will occur asynchronously, potentially over multiple frames. All callbacks for this function will come from the same thread that the SDK is ticked from. If specified, the FileTransferProgressCallback will always be called at least once if the request is started successfully.
  * 
- * @param {string} userID The Product User ID of the local user who is writing the requested file to the cloud
+ * @param {string} user_id The Product User ID of the local user who is writing the requested file to the cloud
  * @param {string} filename The name of the file to write; if this file already exists, the contents will be replaced if the write request completes successfully.
  * @param {string} path Local path of the file to upload
  * 
@@ -357,12 +357,12 @@
  * @member {string} type `"eos_player_data_storage_write_file"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = eos_player_data_storage_write_file(userID, "myData.dat", "/path/to/file/myData.dat");
+ * identifier = eos_player_data_storage_write_file(user_id, "myData.dat", "/path/to/file/myData.dat");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -376,7 +376,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```

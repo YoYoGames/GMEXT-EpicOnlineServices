@@ -9,18 +9,18 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_title_storage_query_file_list} to store values in cache.]]
  * 
- * @param {string} userID Product User ID of the local user who is requesting file metadata (optional)
+ * @param {string} user_id Product User ID of the local user who is requesting file metadata (optional)
  * @param {real} index The index to get data for
  * 
  * @returns {struct.TitleFileMetadata}
  * 
  * @example
  * ```gml
- * var _count = eos_title_storage_get_file_metadata_count(userID);
+ * var _count = eos_title_storage_get_file_metadata_count(user_id);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = eos_title_storage_copy_file_metadata_at_index(userID, i);
- *     Filename = _struct.Filename;
+ *     var _struct = eos_title_storage_copy_file_metadata_at_index(user_id, i);
+ *     var _Filename = _struct.filename;
  * }
  * ```
  * The above code shows an example of how the function should be used. The title file metadata is returned for the provided file index.
@@ -35,16 +35,16 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_title_storage_query_file_list} to store values in cache.]]
  * 
- * @param {string} userID Product User ID of the local user who is requesting file metadata (optional)
+ * @param {string} user_id Product User ID of the local user who is requesting file metadata (optional)
  * @param {string} name The file's name to get data for
  * @returns {struct.TitleFileMetadata}
  * 
  * @example
  * ```gml
- * var _struct = eos_title_storage_copy_file_metadata_by_filename(userID, i);
+ * var _struct = eos_title_storage_copy_file_metadata_by_filename(user_id, "TheFile");
  * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
- *     Filename = _struct.Filename;
+ *     var _filename = _struct.filename;
  * }
  * ```
  * The above code shows an example of how the function should be used. The title file metadata is returned for the provided file name.
@@ -57,9 +57,9 @@
  * 
  * This function clears previously cached file data. This operation will be done asynchronously. All cached files except those corresponding to the transfers in progress will be removed.
  * 
- * [[Warning: Use this with care. Cache system generally tries to clear old and unused cached files from time to time. Unnecessarily clearing the cache can degrade performance as the SDK will have to re-download data.]]
+ * [[Warning: Use this with care. The cache system generally tries to clear old and unused cached files from time to time. Unnecessarily clearing the cache can degrade performance as the SDK will have to re-download data.]]
  * 
- * @param {string} userID Product User ID of the local user who is deleting his cache (optional)
+ * @param {string} [user_id] Product User ID of the local user who is deleting his cache (optional)
  * 
  * @returns {real}
  * 
@@ -72,7 +72,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_title_storage_delete_cache(userID);
+ * identifier = eos_title_storage_delete_cache(user_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -86,7 +86,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -102,17 +102,17 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_title_storage_query_file_list} to store values in cache.]]
  * 
- * @param {string} userID The Product User ID of the local user who is requesting file metadata.
+ * @param {string} user_id The Product User ID of the local user who is requesting file metadata.
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * var _count = eos_title_storage_get_file_metadata_count(userID);
+ * var _count = eos_title_storage_get_file_metadata_count(user_id);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = eos_title_storage_copy_file_metadata_at_index(userID, i);
- *     Filename = _struct.Filename;
+ *     var _struct = eos_title_storage_copy_file_metadata_at_index(user_id, i);
+ *     var _filename = _struct.filename;
  * }
  * ```
  * The above code shows an example of how the function should be used. After a successful call to ${function.eos_title_storage_query_file_list}, the function ${function.eos_title_storage_get_file_metadata_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_title_storage_copy_file_metadata_at_index} function.
@@ -127,7 +127,7 @@
  * 
  * Once a file has been queried, its metadata will be available by the ${function.eos_title_storage_copy_file_metadata_at_index} and ${function.eos_title_storage_copy_file_metadata_by_filename} functions.
  * 
- * @param {string} userID Product User ID of the local user requesting file metadata
+ * @param {string} user_id Product User ID of the local user requesting file metadata
  * @param {string} filename The requested file's name
  * 
  * @returns {real}
@@ -136,12 +136,12 @@
  * @member {string} type The string `"eos_title_storage_query_file"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = eos_title_storage_query_file(userID, "myFile.dat");
+ * identifier = eos_title_storage_query_file(user_id, "myFile.dat");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -155,7 +155,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -175,8 +175,8 @@
  * * ${function.eos_title_storage_copy_file_metadata_by_filename}
  * * ${function.eos_title_storage_get_file_metadata_count}
  * 
- * @param {string} userID Product User ID of the local user who requested file metadata
- * @param {string} tag List of tags to use for lookup, either a ${type.string} (single tag) or an ${type.array} of strings (multiple tags)
+ * @param {string} user_id Product User ID of the local user who requested file metadata
+ * @param {string|array[string]} tag List of tags to use for lookup, either a ${type.string} (single tag) or an ${type.array} of strings (multiple tags)
  * 
  * @returns {real}
  * 
@@ -184,12 +184,12 @@
  * @member {string} type The string `"eos_title_storage_query_file_list"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = eos_title_storage_query_file_list(userID, "Tag1");
+ * identifier = eos_title_storage_query_file_list(user_id, "Tag1");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -203,7 +203,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -217,7 +217,7 @@
  * 
  * This function retrieves the contents of a specific file, potentially downloading the contents if we do not have a local copy, from the cloud. This request will occur asynchronously, potentially over multiple frames.
  * 
- * @param {string} userID Product User ID of the local user who is reading the requested file
+ * @param {string} user_id Product User ID of the local user who is reading the requested file
  * @param {string} filename The file name to read; this file must already exist
  * @param {string} path Local path where save the file
  * 
@@ -227,12 +227,12 @@
  * @member {string} type The string `"eos_title_storage_read_file"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = eos_title_storage_read_file(userID, "Preferences.json", "/path/to/save/Preferences.json");
+ * identifier = eos_title_storage_read_file(user_id, "Preferences.json", "/path/to/save/Preferences.json");
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -246,7 +246,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -268,7 +268,7 @@
  * @member {string} type The string `"eos_title_storage_file_transfer_request_cancel_request"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
@@ -287,7 +287,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```

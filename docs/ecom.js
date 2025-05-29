@@ -58,7 +58,7 @@ function eos_ecom_query_ownership_by_sandbox_ids(user, sandbox_ids) {}
  * The data is returned via the ${event.social} in the form of a signed JWT that should be verified by an external backend server using a public key for authenticity.
  * 
  * @param {string} user The Epic Account ID of the local user whose ownership token you want to query
- * @param {array} CatalogItemIds The array of Catalog Item IDs to check for ownership, matching in number to the CatalogItemIdCount
+ * @param {array} catalog_item_ids The array of Catalog Item IDs to check for ownership, matching in number to the CatalogItemIdCount
  * 
  * @event social
  * @member {string} type `"eos_ecom_query_ownership_token"`
@@ -71,7 +71,7 @@ function eos_ecom_query_ownership_by_sandbox_ids(user, sandbox_ids) {}
  *
  * @function_end
  */
-function eos_ecom_query_ownership_token(user, CatalogItemIds) {}
+function eos_ecom_query_ownership_token(user, catalog_item_ids) {}
 
 
 /**
@@ -90,8 +90,8 @@ function eos_ecom_query_ownership_token(user, CatalogItemIds) {}
  * Use ${function.eos_ecom_get_entitlements_by_name_count} to retrieve the number of entitlements with a specific entitlement name.
  * 
  * @param {string} user The Epic Account ID of the local user whose entitlements you want to retrieve
- * @param {array} EntitlementNames An array of entitlement names that you want to check
- * @param {bool} bIncludeRedeemed If `true`, entitlements that have been redeemed will be included in the results
+ * @param {array} entitlement_names An array of entitlement names that you want to check
+ * @param {bool} include_redeemed If `true`, entitlements that have been redeemed will be included in the results
  * 
  * @event social
  * @member {string} type `"eos_ecom_query_entitlements`
@@ -103,7 +103,7 @@ function eos_ecom_query_ownership_token(user, CatalogItemIds) {}
  * 
  * @function_end
  */
-function eos_ecom_query_entitlements(user, EntitlementNames, bIncludeRedeemed) {}
+function eos_ecom_query_entitlements(user, entitlement_names, include_redeemed) {}
 
 
 /**
@@ -116,7 +116,7 @@ function eos_ecom_query_entitlements(user, EntitlementNames, bIncludeRedeemed) {
  * The data is returned via the ${event.social} in the form of a signed JWT that should be verified by an external backend server using a public key for authenticity.
  * 
  * @param {string} user The Epic Account ID of the local user whose Entitlements you want to retrieve
- * @param {array} EntitlementNames An array of Entitlement Names that you want to check
+ * @param {array} entitlement_names An array of Entitlement Names that you want to check
 
  * @event social
  * @member {string} type `"eos_ecom_query_entitlement_token"`
@@ -129,7 +129,7 @@ function eos_ecom_query_entitlements(user, EntitlementNames, bIncludeRedeemed) {
 
  * @function_end
  */
-function eos_ecom_query_entitlement_token(user, EntitlementNames) {}
+function eos_ecom_query_entitlement_token(user, entitlement_names) {}
 
 
 /**
@@ -140,7 +140,7 @@ function eos_ecom_query_entitlement_token(user, EntitlementNames) {}
  * This data will be cached for a limited time and retrieved again from the backend when necessary.
  * 
  * @param {string} user The Epic Account ID of the local user whose offer to query
- * @param {string} OverrideCatalogNamespace If not provided then the SandboxId is used as the catalog namespace
+ * @param {string} override_catalog_namespace If not provided then the SandboxId is used as the catalog namespace
 
  * @event social
  * @member {string} type `"eos_ecom_query_offers"`
@@ -152,7 +152,7 @@ function eos_ecom_query_entitlement_token(user, EntitlementNames) {}
 
  * @function_end
  */
-function eos_ecom_query_offers(user, OverrideCatalogNamespace) {}
+function eos_ecom_query_offers(user, override_catalog_namespace) {}
 
 
 /**
@@ -165,8 +165,8 @@ function eos_ecom_query_offers(user, OverrideCatalogNamespace) {}
  * On success, a Transaction ID will be returned. The Transaction ID can be used with the `eos_ecom_transaction_*` functions to retrieve the entitlements rewarded by the purchase.
  * 
  * @param {string} user The Epic Account ID of the local user who is making the purchase
- * @param {array[string]} Entries An array of strings, each containing the details of a single offer
- * @param {string} OverrideCatalogNamespace The catalog namespace will be the current Sandbox ID, unless overridden by this field
+ * @param {array[string]} entries An array of strings, each containing the details of a single offer
+ * @param {string} override_catalog_namespace The catalog namespace will be the current Sandbox ID, unless overridden by this field
  *
  * @event social
  * @member {string} type `"eos_ecom_checkout"`
@@ -180,7 +180,7 @@ function eos_ecom_query_offers(user, OverrideCatalogNamespace) {}
  * 
  * @function_end
  */
-function eos_ecom_checkout(user, Entries, OverrideCatalogNamespace) {}
+function eos_ecom_checkout(user, entries, override_catalog_namespace) {}
 
 
 /**
@@ -190,7 +190,7 @@ function eos_ecom_checkout(user, Entries, OverrideCatalogNamespace) {}
  * This function requests that the provided entitlement be marked redeemed. This will cause that entitlement to no longer be returned from ${function.eos_ecom_query_entitlements} unless the `bIncludeRedeemed` request flag is set to `true`.
  * 
  * @param {string} user The Epic Account ID of the user who is redeeming Entitlements
- * @param {array} EntitlementIds The array of Entitlements to redeem
+ * @param {array} entitlement_ids The array of entitlements to redeem
  * 
  * @event social
  * @member {string} type `"eos_ecom_redeem_entitlements"`
@@ -203,7 +203,7 @@ function eos_ecom_checkout(user, Entries, OverrideCatalogNamespace) {}
 
  * @function_end
  */
-function eos_ecom_redeem_entitlements(user, EntitlementIds) {}
+function eos_ecom_redeem_entitlements(user, entitlement_ids) {}
 
 
 /**
@@ -228,11 +228,11 @@ function eos_ecom_get_last_redeemed_entitlements_count(user) {}
  * Only entitlements that were redeemed during the last ${function.eos_ecom_redeem_entitlements} call can be copied.
  * 
  * @param {string} user The Epic Account ID of the local user whose last redeemed entitlement ID is being copied
- * @param {real} RedeemedEntitlementIndex Index of the last redeemed entitlement ID to retrieve from the cache
+ * @param {real} redeemed_entitlement_index Index of the last redeemed entitlement ID to retrieve from the cache
  * @returns {string}
  * @function_end
  */
-function eos_ecom_copy_last_redeemed_entitlement_by_index(user, RedeemedEntitlementIndex) {}
+function eos_ecom_copy_last_redeemed_entitlement_by_index(user, redeemed_entitlement_index) {}
 
 
 /**
@@ -256,12 +256,12 @@ function eos_ecom_get_entitlements_count(user) {}
  * This function returns the number of entitlements with the given entitlement name that are cached for a given local user.
  * 
  * @param {string} user The Epic Account ID of the local user for which to retrieve the entitlement count
- * @param {string} entitlementName Name of the entitlement to count in the cache
+ * @param {string} entitlement_name Name of the entitlement to count in the cache
  * @returns {real}
  * 
  * @function_end
  */
-function eos_ecom_get_entitlements_by_name_count(user, entitlementName) {}
+function eos_ecom_get_entitlements_by_name_count(user, entitlement_name) {}
 
 
 /**
@@ -303,16 +303,16 @@ function eos_ecom_copy_entitlement_by_index(user, index) {}
  * @function eos_ecom_copy_entitlement_by_name_and_index
  * @desc **Epic Online Services Function:** [EOS_Ecom_CopyEntitlementByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-ecom-copy-entitlement-by-name-and-index)
  * 
- * This function fetches a single entitlement with a given Entitlement Name. The Index is used to access individual entitlements among those with the same Entitlement Name. The Index can be a value from 0 to one less than the result from ${function.eos_ecom_get_entitlements_by_name_count}.
+ * This function fetches a single entitlement with a given Entitlement Name. The index is used to access individual entitlements among those with the same Entitlement Name. The Index can be a value from 0 to one less than the result from ${function.eos_ecom_get_entitlements_by_name_count}.
  * 
  * @param {string} user The Epic Account ID of the local user whose entitlement is being copied
- * @param {string} EntitlementName Name of the entitlement to retrieve from the cache
- * @param {real} Index Index of the entitlement within the named set to retrieve from the cache
+ * @param {string} entitlement_name Name of the entitlement to retrieve from the cache
+ * @param {real} index Index of the entitlement within the named set to retrieve from the cache
  * @returns {struct.Entitlement}
  * 
  * @function_end
  */
-function eos_ecom_copy_entitlement_by_name_and_index(user, EntitlementName, Index) {}
+function eos_ecom_copy_entitlement_by_name_and_index(user, entitlement_name, index) {}
 
 /**
  * @function eos_ecom_copy_entitlement_by_id
@@ -321,12 +321,12 @@ function eos_ecom_copy_entitlement_by_name_and_index(user, EntitlementName, Inde
  * This function fetches the entitlement with the given ID.
  * 
  * @param {string} user The Epic Account ID of the local user whose entitlement is being copied
- * @param {string} EntitlementName ID of the entitlement to retrieve from the cache
+ * @param {string} entitlement_name ID of the entitlement to retrieve from the cache
  * @returns {struct.Entitlement}
  *
  * @function_end
  */
-function eos_ecom_copy_entitlement_by_id(user, EntitlementName) {}
+function eos_ecom_copy_entitlement_by_id(user, entitlement_name) {}
 
 
 /**
@@ -381,12 +381,12 @@ function eos_ecom_get_offer_count(user) {}
  * This function fetches an offer from a given index. The pricing and text are localised to the provided account.
  * 
  * @param {string} user The Epic Account ID of the local user whose offer is being copied
- * @param {real} OfferIndex The index of the offer to get.
+ * @param {real} offer_index The index of the offer to get.
  * @returns {struct.CatalogOffer}
  * 
  * @function_end
  */
-function eos_ecom_copy_offer_by_index(user, OfferIndex) {}
+function eos_ecom_copy_offer_by_index(user, offer_index) {}
 
 
 /**
@@ -396,12 +396,12 @@ function eos_ecom_copy_offer_by_index(user, OfferIndex) {}
  * This function fetches an offer with a given ID. The pricing and text are localised to the provided account.
  * 
  * @param {string} user The Epic Account ID of the local user whose offer is being copied
- * @param {string} OfferId The ID of the offer to get.
+ * @param {string} offer_index The ID of the offer to get.
  * @returns {struct.CatalogOffer}
  * 
  * @function_end
  */
-function eos_ecom_copy_offer_by_id(user, OfferId) {}
+function eos_ecom_copy_offer_by_id(user, offer_index) {}
 
 /**
  * @function eos_ecom_get_offer_item_count
@@ -410,11 +410,11 @@ function eos_ecom_copy_offer_by_id(user, OfferId) {}
  * This function fetches the number of items that are associated with a given cached offer for a local user.
  * 
  * @param {string} user The Epic Account ID of the local user who made the initial request for the Catalog Offer through ${function.eos_ecom_query_offers}
- * @param {string} OfferId An ID that corresponds to a cached Catalog Offer (retrieved by ${function.eos_ecom_copy_offer_by_index})
+ * @param {string} offer_index An ID that corresponds to a cached Catalog Offer (retrieved by ${function.eos_ecom_copy_offer_by_index})
  * @returns {real}
  * @function_end
  */
-function eos_ecom_get_offer_item_count(user, OfferId) {}
+function eos_ecom_get_offer_item_count(user, offer_index) {}
 
 
 /**
@@ -449,13 +449,13 @@ function eos_ecom_get_offer_item_count(user, OfferId) {}
  * This function fetches an item from a given index.
  * 
  * @param {string} user The Epic Account ID of the local user whose item is being copied
- * @param {string} OfferId The ID of the offer to get the items for.
- * @param {real} ItemIndex The index of the item to get
+ * @param {string} offer_id The ID of the offer to get the items for.
+ * @param {real} item_index The index of the item to get
  * @returns {struct.CatalogItem}
  * 
  * @function_end
  */
-function eos_ecom_copy_offer_item_by_index(user, OfferId, ItemIndex) {}
+function eos_ecom_copy_offer_item_by_index(user, offer_id, item_index) {}
 
 
 /**
@@ -465,12 +465,12 @@ function eos_ecom_copy_offer_item_by_index(user, OfferId, ItemIndex) {}
  * This function fetches an item with a given ID.
  * 
  * @param {string} user The Epic Account ID of the local user whose item is being copied
- * @param {string} ItemId The ID of the item to get
+ * @param {string} item_id The ID of the item to get
  * @returns {struct.CatalogItem}
  * 
  * @function_end
  */
-function eos_ecom_copy_item_by_id(user, ItemId) {}
+function eos_ecom_copy_item_by_id(user, item_id) {}
 
 /**
  * @function eos_ecom_get_offer_image_info_count
@@ -479,12 +479,12 @@ function eos_ecom_copy_item_by_id(user, ItemId) {}
  * This function returns the number of images that are associated with a given cached offer for a local user.
  * 
  * @param {string} user The Epic Account ID of the local user whose offer image is being accessed.
- * @param {string} OfferId The ID of the offer to get the images for.
+ * @param {string} offer_id The ID of the offer to get the images for.
  * @returns {real}
  * 
  * @function_end
  */
-function eos_ecom_get_offer_image_info_count(user, OfferId) {}
+function eos_ecom_get_offer_image_info_count(user, offer_id) {}
 
 
 /**
@@ -514,13 +514,13 @@ function eos_ecom_get_offer_image_info_count(user, OfferId) {}
  * This function fetches an image from a given index.
  * 
  * @param {string} user The Epic Account ID of the local user whose offer image is being copied.
- * @param {string} OfferId The ID of the offer to get the images for.
- * @param {real} ImageInfoIndex The index of the image to get.
+ * @param {string} offer_id The ID of the offer to get the images for.
+ * @param {real} image_info_index The index of the image to get.
  * @returns {struct.KeyImageInfo}
  * 
  * @function_end
  */
-function eos_ecom_copy_offer_image_info_by_index(user, OfferId, ImageInfoIndex) {}
+function eos_ecom_copy_offer_image_info_by_index(user, offer_id, image_info_index) {}
 
 
 /**
@@ -530,12 +530,12 @@ function eos_ecom_copy_offer_image_info_by_index(user, OfferId, ImageInfoIndex) 
  * This function returns the number of images that are associated with a given cached item for a local user.
  * 
  * @param {string} user The Epic Account ID of the local user whose item image is being accessed
- * @param {string} ItemId The ID of the item to get the images for.
+ * @param {string} item_id The ID of the item to get the images for.
  * @returns {real}
  * 
  * @function_end
  */
-function eos_ecom_get_item_image_info_count(user, ItemId) {}
+function eos_ecom_get_item_image_info_count(user, item_id) {}
 
 
 /**
@@ -545,13 +545,13 @@ function eos_ecom_get_item_image_info_count(user, ItemId) {}
  * This function fetches an image from a given index.
  * 
  * @param {string} user The Epic Account ID of the local user whose item image is being copied
- * @param {string} ItemId The ID of the item to get the images for
- * @param {real} ImageInfoIndex The index of the image to get
+ * @param {string} item_id The ID of the item to get the images for
+ * @param {real} image_info_index The index of the image to get
  * @returns {struct.KeyImageInfo}
  * 
  * @function_end
  */
-function eos_ecom_copy_item_image_info_by_index(user, ItemId, ImageInfoIndex) {}
+function eos_ecom_copy_item_image_info_by_index(user, item_id, image_info_index) {}
 
 
 /**
@@ -561,12 +561,12 @@ function eos_ecom_copy_item_image_info_by_index(user, ItemId, ImageInfoIndex) {}
  * This function returns the number of releases that are associated with a given cached item for a local user.
  * 
  * @param {string} user The Epic Account ID of the local user whose item release is being accessed
- * @param {string} ItemId The ID of the item to get the releases for
+ * @param {string} item_id The ID of the item to get the releases for
  * @returns {real}
  * 
  * @function_end
  */
-function eos_ecom_get_item_release_count(user, ItemId) {}
+function eos_ecom_get_item_release_count(user, item_id) {}
 
 
 /**
@@ -593,13 +593,13 @@ function eos_ecom_get_item_release_count(user, ItemId) {}
  * This function fetches a release from a given index.
  * 
  * @param {string} user The Epic Account ID of the local user whose item release is being copied
- * @param {string} ItemId The ID of the item to get the releases for
- * @param {real} ReleaseIndex The index of the release to get
+ * @param {string} item_id The ID of the item to get the releases for
+ * @param {real} release_index The index of the release to get
  * @returns {struct.CatalogRelease}
  * 
  * @function_end
  */
-function eos_ecom_copy_item_release_by_index(user, ItemId, ReleaseIndex) {}
+function eos_ecom_copy_item_release_by_index(user, item_id, release_index) {}
 
 
 /**
@@ -650,7 +650,7 @@ function eos_ecom_get_transaction_count(user) {}
  * This function returns the number of entitlements that are part of this transaction.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
- * @param {string} TransactionId The ID of the transaction to get
+ * @param {string} transaction_id The ID of the transaction to get
  * 
  * @returns {real}
  * 
@@ -664,8 +664,8 @@ function eos_ecom_get_transaction_count(user) {}
  * This function fetches an entitlement from a given index.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
- * @param {real} TransactionIndex The index of the transaction to get
- * @param {real} EntitlementIndex The index of the entitlement to get
+ * @param {real} transaction_index The index of the transaction to get
+ * @param {real} entitlement_index The index of the entitlement to get
  * @returns {struct.Entitlement}
  * 
  * @function_end
@@ -680,8 +680,8 @@ function eos_ecom_transaction_copy_entitlement_by_index_by_index_transaction(use
  * This function fetches an entitlement from a given index.
  * 
  * @param {string} user The Epic Account ID of the local user who is associated with the transaction
- * @param {string} TransactionId The ID of the transaction to get
- * @param {real} EntitlementIndex The index of the entitlement to get
+ * @param {string} transaction_id The ID of the transaction to get
+ * @param {real} entitlement_index The index of the entitlement to get
  * @returns {struct.Entitlement}
  * 
  * @function_end

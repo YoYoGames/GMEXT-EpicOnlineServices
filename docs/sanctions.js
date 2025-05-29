@@ -9,18 +9,18 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_sanctions_query_active_player_sanctions} to store values in cache.]]
  * 
- * @param {string} UserID_target Product User ID of the user whose active sanctions are to be copied
+ * @param {string} user_id_target Product User ID of the user whose active sanctions are to be copied
  * @param {real} index Index of the sanction to retrieve from the cache
  * 
  * @returns {struct.PlayerSanctionData}
  * 
  * @example
  * ```gml
- * var _count = eos_sanctions_get_player_sanction_count(UserID_target);
+ * var _count = eos_sanctions_get_player_sanction_count(user_id_target);
  * for(var i = 0 ; i < _count ; i++)
  * {
- *     eos_sanctions_copy_player_sanction_by_index(UserID_target, i);
- *     var Action = struct.Action;
+ *     eos_sanctions_copy_player_sanction_by_index(user_id_target, i);
+ *     var _action = _struct.action;
  * }
  * ```
  * The above code shows an example of how the function should be used. The player sanction data is returned for the provided index.
@@ -35,17 +35,17 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_sanctions_query_active_player_sanctions} to store values in cache.]]
  * 
- * @param {string} UserID_target Product User ID of the user whose sanction count should be returned
+ * @param {string} user_id_target Product User ID of the user whose sanction count should be returned
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * var _count = eos_sanctions_get_player_sanction_count(UserID_target);
+ * var _count = eos_sanctions_get_player_sanction_count(user_id_target);
  * for(var i = 0 ; i < _count ; i++)
  * {
- *     var _struct = eos_sanctions_copy_player_sanction_by_index(UserID_target, i);
- *     var _action = _struct.Action;
+ *     var _struct = eos_sanctions_copy_player_sanction_by_index(user_id_target, i);
+ *     var _action = _struct.action;
  * }
  * ```
  * The above code shows an example of how the function should be used. After a successful call to ${function.eos_sanctions_query_active_player_sanctions}, the function ${function.eos_sanctions_get_player_sanction_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_sanctions_copy_player_sanction_by_index} function.
@@ -62,8 +62,8 @@
  * * ${function.eos_sanctions_copy_player_sanction_by_index}
  * * ${function.eos_sanctions_get_player_sanction_count}
  * 
- * @param {string} UserID The Product User ID of the local user who initiated this request. Dedicated servers should set this to an empty string.
- * @param {string} UserID_target Product User ID of the user whose active sanctions are to be retrieved.
+ * @param {string} user_id The Product User ID of the local user who initiated this request. Dedicated servers should set this to an empty string.
+ * @param {string} user_id_target Product User ID of the user whose active sanctions are to be retrieved.
  * 
  * @returns {real}
  *
@@ -90,7 +90,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```

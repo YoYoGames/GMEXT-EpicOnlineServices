@@ -16,11 +16,11 @@
  * 
  * @example
  * ```gml
- * var _count = eos_stats_get_stats_count(userID_target);
+ * var _count = eos_stats_get_stats_count(user_id_target);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = eos_stats_copy_stat_by_index(userID_target, i);
- *     var Name = _struct.Name;
+ *     var _struct = eos_stats_copy_stat_by_index(user_id_target, i);
+ *     var _name = _struct.name;
  * }
  * ```
  * The above code shows an example of how the function should be used. The stats data is returned for the provided stat index.
@@ -35,15 +35,15 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_stats_query_stats} to store values in cache.]]
  * 
- * @param {string} user_target The Product User ID of the user who owns the stat
+ * @param {string} user_id_target The Product User ID of the user who owns the stat
  * @param {string} name Name of the stat to retrieve from the cache
  * 
  * @returns {struct.StatData}
  * 
  * @example
  * ```gml
- * var _struct = eos_stats_copy_stat_by_name(userID_target, "MyStatName");
- * var _name = _struct.Name;
+ * var _struct = eos_stats_copy_stat_by_name(user_id_target, "MyStatName");
+ * var _name = _struct.name;
  * ```
  * The above code shows an example of how the function should be used. The stats data is returned for the provided stat name.
  * @function_end
@@ -57,17 +57,17 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_stats_query_stats} to store values in cache.]]
  * 
- * @param {string} userID_target The Product User ID for the user whose stats are being counted
+ * @param {string} user_id_target The Product User ID for the user whose stats are being counted
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * var _count = eos_stats_get_stats_count(userID_target);
+ * var _count = eos_stats_get_stats_count(user_id_target);
  * for(var i = 0 ; i < _count ; i ++)
  * {
- *     var _struct = eos_stats_copy_stat_by_index(userID_target, i);
- *     var _name = _struct.Name;
+ *     var _struct = eos_stats_copy_stat_by_index(user_id_target, i);
+ *     var _name = _struct.name;
  * }
  * ```
  * The above code shows an example of how the function should be used. After a successful call to ${function.eos_stats_query_stats}, the function ${function.eos_stats_get_stats_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_stats_copy_stat_by_index} function.
@@ -82,9 +82,9 @@
  * 
  * When the operation is complete and the delegate is triggered the stat will be uploaded to the backend to be processed. The stat may not be updated immediately and an achievement using the stat may take a while to be unlocked once the stat has been uploaded.
  * 
- * @param {string} userID The Product User ID of the local user requesting the ingest. Set to `undefined` for dedicated server.
- * @param {string} userID_target The Product User ID for the user whose stat is being ingested
- * @param {string} statName Name of the Stat to ingest
+ * @param {string} user_id The Product User ID of the local user requesting the ingest. Set to `undefined` for dedicated server.
+ * @param {string} user_id_target The Product User ID for the user whose stat is being ingested
+ * @param {string} stat_name Name of the Stat to ingest
  * @param {real} amount Amount of the Stat to ingest
  * 
  * @returns {real}
@@ -98,7 +98,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_stats_ingest_stat(userID, userID, "Leaderboard_Stat", 183);
+ * identifier = eos_stats_ingest_stat(user_id, user_id, "Leaderboard_Stat", 183);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -112,7 +112,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -131,10 +131,10 @@
  * * ${function.eos_stats_copy_stat_by_name}
  * * ${function.eos_stats_get_stats_count}
  * 
- * @param {string} userID The Product User ID of the local user requesting the stats. Set to `undefined` for dedicated server.
- * @param {string} userID_target The Product User ID for the user whose stats are being retrieved
- * @param {real} [startTime] The POSIX timestamp for start time
- * @param {real} [endTime] The POSIX timestamp for end time
+ * @param {string} user_id The Product User ID of the local user requesting the stats. Set to `undefined` for dedicated server.
+ * @param {string} user_id_target The Product User ID for the user whose stats are being retrieved
+ * @param {real} [start_time] The POSIX timestamp for start time
+ * @param {real} [end_time] The POSIX timestamp for end time
  * 
  * @returns {real}
  * 
