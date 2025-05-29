@@ -25,8 +25,8 @@
  * 
  * [[Note: By default all log categories will callback for Warnings, Errors, and Fatals.]]
  * 
- * @param {constant.EOS_LOGGING_CATEGORY} category The specific log category to configure. Use `EOS_LOGGING_CATEGORY.ALL_CATEGORIES` to configure all categories simultaneously to the same log level. Check the constants under ${constant.EOS_LOGGING_CATEGORY}.
- * @param {constant.EOS_LOGGING_LEVEL} logLevel the log level to use for the log category. Check the constants under ${constant.EOS_LOGGING_LEVEL}.
+ * @param {constant.EOS_LOG_CATEGORY} category The specific log category to configure. Use `EOS_LOG_CATEGORY.ALL_CATEGORIES` to configure all categories simultaneously to the same log level. Check the constants under ${constant.EOS_LOG_CATEGORY}.
+ * @param {constant.EOS_LOG_LEVEL} log_level the log level to use for the log category. Check the constants under ${constant.EOS_LOG_LEVEL}.
  * 
  * @example
  * ```gml
@@ -339,7 +339,7 @@
  */
 
 /**
- * @constant EOS_LOGGING_CATEGORY
+ * @constant EOS_LOG_CATEGORY
  * @desc **Epic Online Services Enum:** [EOS_ELogCategory](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-log-category)
  * 
  * These constants represent the available logging categories.
@@ -383,7 +383,7 @@
  */
 
 /**
- * @constant EOS_LOGGING_LEVEL
+ * @constant EOS_LOG_LEVEL
  * @desc **Epic Online Services Enum:** [EOS_ELogLevel](https://dev.epicgames.com/docs/api-ref/enums/eos-e-log-level)
  * 
  * These constants represent the available logging levels. When a log message is output, it has an associated log level. Messages will only be sent to the callback function if the message is associated log level is less than or equal to the configured log level for that category.
@@ -439,8 +439,8 @@
  * @desc These are the constants used by this API:
  * 
  * @ref EOS_RESULT
- * @ref EOS_LOGGING_CATEGORY
- * @ref EOS_LOGGING_LEVEL
+ * @ref EOS_LOG_CATEGORY
+ * @ref EOS_LOG_LEVEL
  * @ref EOS_INVALID_NOTIFICATIONID
  * @ref EOS_COMPARISON_OP
  * 

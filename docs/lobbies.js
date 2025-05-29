@@ -1263,7 +1263,7 @@
  * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
  * * `EOS_RESULT.INVALID_PARAMETERS` if the parameter is invalid
  *
- * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific header file. The lobby will be unrestricted if you pass an empty array.
+ * @param {array[constant.EOS_ONLINE_PLATFORM_TYPE]} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. The lobby will be unrestricted if you pass an empty array.
  *
  * @returns {constant.EOS_RESULT}
  * 

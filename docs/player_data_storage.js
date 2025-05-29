@@ -425,6 +425,35 @@
  * @function_end
  */
 
+// Constants
+
+/**
+ * @constant EOS_PLAYER_DATA_STORAGE_READ_RESULT
+ * @desc 
+ * 
+ * This enum holds the return results for EOS_PlayerDataStorage_OnReadFileDataCallback callbacks to return.
+ * 
+ * @member CONTINUE_READING Signifies the data was read successfully, and we should continue to the next chunk if possible
+ * @member FAIL_REQUEST Signifies there was a failure reading the data, and the request should end
+ * @member CANCEL_REQUEST Signifies the request should be canceled, but not due to an error
+ * 
+ * @constant_end
+ */
+
+/**
+ * @constant EOS_PLAYER_DATA_STORAGE_WRITE_RESULT
+ * @desc 
+ * 
+ * This enum holds the return results for EOS_PlayerDataStorage_OnWriteFileDataCallback callbacks to return.
+ * 
+ * @member CONTINUE_WRITING Signifies the data was written successfully, and we should write the data the file
+ * @member COMPLETE_REQUEST Signifies all data has now been written successfully, and we should upload the data to the cloud
+ * @member FAIL_REQUEST Signifies there was a failure writing the data, and the request should end
+ * @member CANCEL_REQUEST Signifies the request should be canceled, but not due to an error
+ * 
+ * @constant_end
+ */
+
 // Structs
 
 /**
@@ -465,6 +494,14 @@
  * @ref eos_player_data_storage_read_file
  * @ref eos_player_data_storage_write_file
  * @ref eos_player_data_storage_file_transfer_request_cancel_request
+ * 
+ * @section_end
+ * 
+ * @section_const
+ * @desc These are the constants used with player data storage:
+ * 
+ * @ref EOS_PLAYER_DATA_STORAGE_READ_RESULT
+ * @ref EOS_PLAYER_DATA_STORAGE_WRITE_RESULT
  * 
  * @section_end
  * 

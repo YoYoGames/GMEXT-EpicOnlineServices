@@ -176,7 +176,7 @@
  * * ${function.eos_title_storage_get_file_metadata_count}
  * 
  * @param {string} user_id Product User ID of the local user who requested file metadata
- * @param {string|array[string]} tag List of tags to use for lookup, either a ${type.string} (single tag) or an ${type.array} of strings (multiple tags)
+ * @param {string|array} tag List of tags to use for lookup, either a ${type.string} (single tag) or an ${type.array} of strings (multiple tags)
  * 
  * @returns {real}
  * 

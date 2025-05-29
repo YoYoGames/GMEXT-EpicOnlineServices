@@ -610,7 +610,7 @@
  * 
  * The function returns `EOS_RESULT.SUCCESS` if we successfully created the session modification handle, or an error result if the input data was invalid.
  * 
- * @param {array} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form `EOS_OPT_<PlatformName>`. For some platforms, the value will be in the EOS Platform specific header file. The session will be unrestricted if you pass undefined.
+ * @param {array[constant.EOS_ONLINE_PLATFORM_TYPE]} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass `undefined`.
  * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If `true`, this session will be associated with presence. Only one session at a time can have this flag set to `true`. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}.
  * @param {bool} sanctions_enabled If `true`, sanctioned players can neither join nor register with this session and, in the case of join, will return ${constant.EOS_RESULT} code `EOS_RESULT.SESSIONS_PLAYER_SANCTIONED`.
  * @param {string} bucket_id The bucket ID associated with the session
