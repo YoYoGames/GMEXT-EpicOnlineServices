@@ -9,22 +9,22 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_user_info_query_user_info_by_external_account} to store values in cache.]]
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
- * @param {string} accountID_external The external account ID associated with the (external) user info to retrieve from the cache
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} account_id_target The Epic Account ID of the player whose information is being retrieved
+ * @param {string} account_id_external The external account ID associated with the (external) user info to retrieve from the cache
  * 
  * @returns {struct.ExternalUserInfo}
  * 
  * @example
  * ```gml
- * var _struct = eos_user_info_copy_external_user_info_by_account_id(accountID, accountID_target, accountID_external);
+ * var _struct = eos_user_info_copy_external_user_info_by_account_id(account_id, account_id_target, account_id_external);
  * 
  * if (_struct.status == EOS_RESULT.SUCCESS)
  * {
- *      DisplayName = _struct.DisplayName;
+ *      var _display_name = _struct.display_name;
  * }
  * ```
- * The above code shows an example of how the function should be used. The external user info data is returned given the provided accountID.
+ * The above code shows an example of how the function should be used. The external user info data is returned given the provided account_id.
  * @function_end
  */
 
@@ -36,19 +36,19 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_user_info_query_user_info_by_external_account} to store values in cache.]]
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
- * @param {constant.EOS_EXTERNAL_ACCOUNT_TYPE} accountType Account type of the external user info to retrieve from the cache
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} account_id_target The Epic Account ID of the player whose information is being retrieved
+ * @param {constant.EOS_EXTERNAL_ACCOUNT_TYPE} account_type Account type of the external user info to retrieve from the cache
  * 
  * @returns {struct.ExternalUserInfo}
  * 
  * @example
  * ```gml
- * var _struct = eos_user_info_copy_external_user_info_by_account_type(accountID, accountID_target, accountType);
+ * var _struct = eos_user_info_copy_external_user_info_by_account_type(account_id, account_id_target, accountType);
  * 
  * if (_struct.status == EOS_RESULT.SUCCESS)
  * {
- *      DisplayName = _struct.DisplayName;
+ *      var _display_name = _struct.display_name;
  * }
  * ```
  * The above code shows an example of how the function should be used. The external user info data is returned given the provided account type.
@@ -63,19 +63,19 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_user_info_query_user_info_by_external_account} to store values in cache.]]
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} account_id_target The Epic Account ID of the player whose information is being retrieved
  * @param {real} index Index of the external user info to retrieve from the cache
  * 
  * @returns {struct.ExternalUserInfo}
  * 
  * @example
  * ```gml
- * var _count = eos_user_info_get_external_user_info_count(accountID, accountID_target);
+ * var _count = eos_user_info_get_external_user_info_count(account_id, account_id_target);
  * for(var i = 0 ; i < _count ; i ++)
  * {
  *     var _struct = eos_user_info_copy_external_user_info_by_index(i);
- *     DisplayName = _struct.DisplayName;
+ *     var _displayName = _struct.display_name;
  * }
  * ```
  * The above code shows an example of how the function should be used. The external user info data is returned given the provided index (from a cached array).
@@ -88,17 +88,17 @@
  * 
  * This function is used to immediately retrieve a copy of user information based on an Epic Account ID, cached by a previous call to ${function.eos_user_info_query_user_info}.
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} account_id_target The Epic Account ID of the player whose information is being retrieved
  * 
  * @returns {struct.UserInfo}
  * 
  * @example
  * ```gml
- * var _struct = eos_user_info_copy_user_info(accountID, accountID_target);
+ * var _struct = eos_user_info_copy_user_info(account_id, account_id_target);
  * if (_struct.status == EOS_RESULT.SUCCESS)
  * {
- *      nickname = _struct.Nickname;
+ *      var _nickname = _struct.nickname;
  * }
  * ```
  * The above code shows an example of how the function should be used. The user info data is returned given the provided account ID.
@@ -113,18 +113,18 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_user_info_query_user_info_by_external_account} to store values in cache.]]
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} account_id_target The Epic Account ID of the player whose information is being retrieved
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * var _count = eos_user_info_get_external_user_info_count(accountID, accountID_target);
+ * var _count = eos_user_info_get_external_user_info_count(account_id, account_id_target);
  * for(var i = 0 ; i < _count ; i ++)
  * {
  *     var _struct = eos_user_info_copy_external_user_info_by_index(i);
- *     DisplayName = _struct.DisplayName;
+ *     var _display_name = _struct._display_name;
  * }
  * ```
  * The above code shows an example of how the function should be used. After a successful call to ${function.eos_user_info_query_user_info_by_external_account}, the function ${function.eos_user_info_get_external_user_info_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_user_info_copy_external_user_info_by_index} function.
@@ -140,10 +140,10 @@
  * 
  * ${function.eos_user_info_copy_user_info}
  * 
- * to receive an ${struct.UserInfo} containing the available information.
+ * to receive a ${struct.UserInfo} containing the available information.
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} accountID_target The Epic Account ID of the player whose information is being retrieved
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} account_id_target The Epic Account ID of the player whose information is being retrieved
  * 
  * @returns {real}
  * 
@@ -151,7 +151,7 @@
  * @member {string} type The string `"eos_user_info_query_user_info"`
  * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
@@ -182,15 +182,15 @@
  * @function eos_user_info_query_user_info_by_display_name
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfoByDisplayName](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByDisplayName/index.html)
  * 
- * This function is used to start an asynchronous query to retrieve user information by display name. This can be useful for getting the AccountId for a display name.
+ * This function is used to start an asynchronous query to retrieve user information by display name. This can be useful for getting the account_id for a display name.
  * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call the function:
  * 
  * * ${function.eos_user_info_copy_user_info}
  * 
  * to receive a ${struct.UserInfo} containing the available information.
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} DisplayName Display name of the player being queried
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} display_name Display name of the player being queried
  * 
  * @returns {real}
  * 
@@ -229,7 +229,7 @@
  * @function eos_user_info_query_user_info_by_external_account
  * @desc **Epic Online Services Function:** [EOS_UserInfo_QueryUserInfoByExternalAccount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByExternalAccount/index.html)
  * 
- * This function is used to start an asynchronous query to retrieve user information by external accounts. This can be useful for getting the AccountId for external accounts.
+ * This function is used to start an asynchronous query to retrieve user information by external accounts. This can be useful for getting the account_id for external accounts.
  * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_user_info_copy_external_user_info_by_account_id}
@@ -238,9 +238,9 @@
  * 
  * to receive a ${struct.ExternalUserInfo} containing the available information.
  * 
- * @param {string} accountID The Epic Account ID of the local player requesting the information
- * @param {string} ExternalAccountId External account ID of the user whose information is being retrieved
- * @param {constant.EOS_EXTERNAL_ACCOUNT_TYPE} accountType Account type of the external user info to query
+ * @param {string} account_id The Epic Account ID of the local player requesting the information
+ * @param {string} external_account_id External account ID of the user whose information is being retrieved
+ * @param {constant.EOS_EXTERNAL_ACCOUNT_TYPE} account_type Account type of the external user info to query
  * 
  * @returns {real}
  * 

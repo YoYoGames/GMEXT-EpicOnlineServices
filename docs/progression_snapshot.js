@@ -9,13 +9,13 @@
  * 
  * If multiple calls happen with the same key, the last invocation wins, overwriting the previous value for that given key. The order in which the Key/Value pairs are added is stored as is for later retrieval/display. Ideally, you would make multiple calls to ${function.eos_progression_snapshot_add_progression} followed by a single call to ${function.eos_progression_snapshot_submit_snapshot}.
  * 
- * @param {real} snapshotId The Snapshot ID received via a ${function.eos_progression_snapshot_begin_snapshot} function.
+ * @param {real} snapshot_id The Snapshot ID received via a ${function.eos_progression_snapshot_begin_snapshot} function.
  * @param {string} key The key in a key/value pair of progression entry
  * @param {string} value The value in a key/value pair of progression entry
  * 
  * @example
  * ```gml
- * identifier = eos_progression_snapshot_begin_snapshot(local_UserId);
+ * identifier = eos_progression_snapshot_begin_snapshot(local_user_id);
  * eos_progression_snapshot_add_progression(identifier, "PlayerName", "Hero");
  * ```
  * The code sample above shows an example of how to create a snapshot (${function.eos_progression_snapshot_begin_snapshot}) and add a progression value to it.
@@ -35,13 +35,13 @@
  * * ${function.eos_progression_snapshot_end_snapshot}
  * * ${function.eos_progression_snapshot_submit_snapshot}
  * 
- * @param {string} local_UserId The Product User ID of the local user to whom the key/value pair belongs
+ * @param {string} local_user_id The Product User ID of the local user to whom the key/value pair belongs
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * identifier = eos_progression_snapshot_begin_snapshot(local_UserId);
+ * identifier = eos_progression_snapshot_begin_snapshot(local_user_id);
  * eos_progression_snapshot_add_progression(identifier, "PlayerName", "Hero");
  * ```
  * The code sample above shows how to create a snapshot and add a progression value to it (${function.eos_progression_snapshot_add_progression}).
@@ -54,7 +54,7 @@
  * 
  * This function wipes out all progression data for the given user from the service. However, any previous progression data that haven't been submitted yet are retained.
  * 
- * @param {string} userId The Product User ID of the local user to whom the key/value pair belong
+ * @param {string} user_id The Product User ID of the local user to whom the key/value pair belong
  * 
  * @returns {real}
  * 
@@ -67,7 +67,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_progression_snapshot_delete_snapshot(userId);
+ * identifier = eos_progression_snapshot_delete_snapshot(user_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -81,7 +81,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -97,13 +97,13 @@
  * 
  * [[Note: This function should be called after submission (${function.eos_progression_snapshot_submit_snapshot}).]]
  * 
- * @param {string} snapshotId The Snapshot ID received via a call to the ${function.eos_progression_snapshot_begin_snapshot} function.
+ * @param {string} snapshot_id The Snapshot ID received via a call to the ${function.eos_progression_snapshot_begin_snapshot} function.
  * 
  * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
- * result = eos_progression_snapshot_end_snapshot(snapshotId);
+ * result = eos_progression_snapshot_end_snapshot(snapshot_id);
  * if (result.status == EOS_RESULT.SUCCESS)
  * {
  *     show_debug_message("eos_progression_snapshot_end_snapshot: success");
@@ -121,7 +121,7 @@
  * 
  * [[Note: This will overwrite any prior progression data stored with the service that's associated with the user.]]
  * 
- * @param {real} snapshotId The Snapshot ID received via a call to the ${function.eos_progression_snapshot_begin_snapshot} function.
+ * @param {real} snapshot_id The Snapshot ID received via a call to the ${function.eos_progression_snapshot_begin_snapshot} function.
  * 
  * @returns {real}
  * 
@@ -134,7 +134,7 @@
  * 
  * @example
  * ```gml
- * identifier = eos_progression_snapshot_submit_snapshot(snapshotId);
+ * identifier = eos_progression_snapshot_submit_snapshot(snapshot_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
@@ -148,7 +148,7 @@
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
