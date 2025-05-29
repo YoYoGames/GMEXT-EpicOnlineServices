@@ -4,7 +4,7 @@ with(Obj_EpicGames_Session)
 
 eos_session_search_release()
 var result = eos_sessions_create_session_search(10)
-show_debug_message($"CreateSessionSearch {EOS_RESULT_to_string(result)}")
+show_debug_message($"CreateSessionSearch {eos_result_to_string(result)}")
 
 var BucketId = "GameMode:Region:MapName"
 

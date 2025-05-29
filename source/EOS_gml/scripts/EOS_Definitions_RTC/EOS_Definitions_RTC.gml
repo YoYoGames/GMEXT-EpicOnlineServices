@@ -3,9 +3,9 @@
 enum EOS_RTC_PARTICIPANT_STATUS
 {
 	/** Participant joined the room */
-	Joined = 0,
+	JOINED = 0,
 	/** Participant left the room */
-	Left = 1
+	LEFT = 1
 };
 
 /**
