@@ -49,7 +49,7 @@ RValue _FileMetadataToStruct(EOS_PlayerDataStorage_FileMetadata *file, EOS_EResu
 	{
 		YYStructAddString(&Struct, "filename", file->Filename);
 		YYStructAddDouble(&Struct, "size", file->FileSizeBytes);
-		YYStructAddString(&Struct, "m_d5_hash", file->MD5Hash);
+		YYStructAddString(&Struct, "md5_hash", file->MD5Hash);
 		YYStructAddDouble(&Struct, "size_unencrypted", file->UnencryptedDataSizeBytes);
 		YYStructAddInt64(&Struct, "last_modified_time", file->LastModifiedTime);
 	}

@@ -21,19 +21,19 @@ void eos_ui_init()
 	HUI = EOS_Platform_GetUIInterface(PlatformHandle);
 }
 
-void AcknowledgeEventId(EOS_UI_EventId JoinUiEvent, EOS_EResult Result)
+YYEXPORT void eos_ui_acknowledge_event_id(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	if (JoinUiEvent != EOS_UI_EVENTID_INVALID)
-	{
-		EOS_UI_AcknowledgeEventIdOptions Options = {};
-		Options.ApiVersion = EOS_UI_ACKNOWLEDGECORRELATIONID_API_LATEST;
-		Options.UiEventId = JoinUiEvent;
-		Options.Result = Result;
+	auto UiEventId = YYGetInt64(arg,0);
+	auto _result = YYGetReal(arg, 1);
 
-		EOS_UI_AcknowledgeEventId(HUI, &Options);
+	EOS_UI_AcknowledgeEventIdOptions Options = {};
+	Options.ApiVersion = EOS_UI_ACKNOWLEDGECORRELATIONID_API_LATEST;
+	Options.UiEventId = (EOS_UI_EventId)UiEventId;
+	Options.Result = (EOS_EResult) _result;
 
-		JoinUiEvent = EOS_UI_EVENTID_INVALID;
-	}
+	const EOS_EResult result = EOS_UI_AcknowledgeEventId(HUI, &Options);
+
+	return_EOS_EResult(&Result, result);
 }
 
 void EOS_CALL OnDisplaySettingsUpdated(const EOS_UI_OnDisplaySettingsUpdatedCallbackInfo *UpdatedData)
