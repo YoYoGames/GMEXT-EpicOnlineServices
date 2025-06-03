@@ -618,6 +618,18 @@ function eos_lobby_details_copy_member_attribute_by_index(index,target_user_id)
 	return _return_value;
 }
 
+//__eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* target_user_id,char* buff_ret)
+function eos_lobby_details_copy_member_attribute_by_key(attr_key,target_user_id)
+{
+	var _return_buffer_address = ext_return_buffer_address();
+	
+	__eos_lobby_details_copy_member_attribute_by_key(index,target_user_id,_return_buffer_address)
+	
+	var _return_value = ext_buffer_unpack(ext_return_buffer());
+	
+	return _return_value;
+}
+
 //__eos_lobby_details_copy_member_info(char *target_user_id,char* buff_ret)
 function eos_lobby_details_copy_member_info(target_user_id)
 {

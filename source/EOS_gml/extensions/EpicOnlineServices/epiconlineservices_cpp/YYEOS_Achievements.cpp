@@ -94,7 +94,7 @@ RValue EOS_Achievements_DefinitionV2ToMap(EOS_Achievements_DefinitionV2* Achieve
 		YYStructAddString(&Struct, "locked_icon_url", AchievementDef->LockedIconURL);
 
 	RValue StatThresholdsArray{};
-	YYCreateArray(&StatThresholdsArray, AchievementDef->StatThresholdsCount);
+	YYCreateArray(&StatThresholdsArray);
 	for (uint32_t StatIndex = 0; StatIndex < AchievementDef->StatThresholdsCount; ++StatIndex)
 	{
 		RValue StatThresholds{};

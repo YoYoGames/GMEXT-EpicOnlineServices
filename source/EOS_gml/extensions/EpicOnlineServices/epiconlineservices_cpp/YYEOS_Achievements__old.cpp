@@ -94,7 +94,8 @@ RValue EOS_Achievements_DefinitionV2ToMap_old(EOS_Achievements_DefinitionV2* Ach
 		YYStructAddString(&Struct, "LockedIconURL", AchievementDef->LockedIconURL);
 
 	RValue StatThresholds{};
-	YYCreateArray(&StatThresholds, AchievementDef->StatThresholdsCount);
+	
+	YYCreateArray(&StatThresholds);
 	for (uint32_t StatIndex = 0; StatIndex < AchievementDef->StatThresholdsCount; ++StatIndex)
 	{
 		RValue StatThreshold{};
@@ -107,7 +108,6 @@ RValue EOS_Achievements_DefinitionV2ToMap_old(EOS_Achievements_DefinitionV2* Ach
 
 		SET_RValue(&StatThresholds, &StatThreshold, NULL, StatIndex);
 	}
-
 	YYStructAddRValue(&Struct, "stat_thresholds", &StatThresholds);
 
 	EOS_Achievements_DefinitionV2_Release(AchievementDef);
