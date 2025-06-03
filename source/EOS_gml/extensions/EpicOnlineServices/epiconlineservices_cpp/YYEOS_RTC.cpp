@@ -128,7 +128,7 @@ void EOS_CALL RTC_AddNotifyParticipantStatusChanged(const EOS_RTC_ParticipantSta
 	DsMapAddDouble(map, "participant_status", (double)data->ParticipantStatus);
 	
 	RValue ParticipantMetadataArray{};
-	YYCreateArray(&ParticipantMetadataArray, data->ParticipantMetadataCount);
+	YYCreateArray(&ParticipantMetadataArray);
 	for (uint32_t i = 0; i < data->ParticipantMetadataCount; ++i)
 	{
 		RValue Metadata{};
@@ -245,7 +245,7 @@ void EOS_CALL RTC_JoinRoom(const EOS_RTC_JoinRoomCallbackInfo *data)
 	DsMapAddString(map, "room_name", data->RoomName);
 
 	RValue RoomOptionsArray{};
-	YYCreateArray(&RoomOptionsArray, data->RoomOptionsCount);
+	YYCreateArray(&RoomOptionsArray);
 	for (uint32_t i = 0; i < data->RoomOptionsCount; ++i)
 	{
 		RValue Option{};

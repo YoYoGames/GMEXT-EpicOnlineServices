@@ -188,7 +188,7 @@
 	
 	void ProductIdsToArray(RValue& result, EOS_ProductUserId* user_ids, int count)
 	{
-		YYCreateArray(&result, count);
+		YYCreateArray(&result);
 
 		for (int i = 0; i < count; i++)
 		{

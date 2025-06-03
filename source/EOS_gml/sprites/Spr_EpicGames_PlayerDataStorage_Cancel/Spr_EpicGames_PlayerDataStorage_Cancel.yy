@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"Spr_EpicGames_PlayerDataStorage_Cancel",
   "bboxMode":0,
   "bbox_bottom":73,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7701f00c-200f-49f6-86d1-210c9fd36dd6","name":"7701f00c-200f-49f6-86d1-210c9fd36dd6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7701f00c-200f-49f6-86d1-210c9fd36dd6","name":"7701f00c-200f-49f6-86d1-210c9fd36dd6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
