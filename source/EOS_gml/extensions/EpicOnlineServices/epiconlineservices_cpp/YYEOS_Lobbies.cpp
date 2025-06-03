@@ -1272,7 +1272,6 @@ func double __eos_lobby_details_copy_member_attribute_by_index(double index,char
 	Options.AttrIndex = (uint32_t)index;
 	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
-	// This needs to be returned in a struct (needs return buffer)
 	EOS_Lobby_Attribute *OutAttribute;
 	EOS_EResult result = EOS_LobbyDetails_CopyMemberAttributeByIndex(mHLobbyDetails, &Options, &OutAttribute);
 
@@ -1281,15 +1280,15 @@ func double __eos_lobby_details_copy_member_attribute_by_index(double index,char
 
 	_struct.writeTo(buff_ret);
 
-	// This needs to be released afterwards
 	EOS_Lobby_Attribute_Release(OutAttribute);
 
 	return (double)result;
 }
 
-func double eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* target_user_id)
+func double __eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* target_user_id,char* buff_ret)
 {
-	eos_not_init_return(-1);
+	StructStream _struct = {};
+	eos_not_init_return_buffer(buff_ret, _struct);
 
 	eos_assert_lobby_details(-1);
 
@@ -1298,13 +1297,13 @@ func double eos_lobby_details_copy_member_attribute_by_key(char* attr_key,char* 
 	Options.AttrKey = attr_key;
 	Options.TargetUserId = EOS_ProductUserId_FromString(target_user_id);
 
-	// TODO - JES�S
-	// 
-	// This needs to be returned in a struct (needs return buffer) <---------- this needs a 'char* buff_ret' argument 
 	EOS_Lobby_Attribute *OutAttribute;
 	EOS_EResult result = EOS_LobbyDetails_CopyMemberAttributeByKey(mHLobbyDetails, &Options, &OutAttribute);
+	
+	LobbyAtrribute2StructStream(OutAttribute, &_struct);
 
-	// This needs to be released afterwards
+	_struct.writeTo(buff_ret);
+
 	EOS_Lobby_Attribute_Release(OutAttribute);
 
 	return (double)result;
