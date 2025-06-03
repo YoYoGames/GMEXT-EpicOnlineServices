@@ -43,7 +43,7 @@ inline void FillSocketId(EOS_P2P_SocketId *SocketId, const char* socket_name)
 	}
 
 	// Zero the entire struct and set the API version
-	memset(&SocketId, 0, sizeof(SocketId));
+	memset(SocketId, 0, sizeof(SocketId));
 	SocketId->ApiVersion = EOS_P2P_SOCKETID_API_LATEST;
 
 	// Safely copy up to EOS_P2P_SOCKETID_socket_name_SIZE - 1
