@@ -2,6 +2,7 @@
 switch(async_load[? "type"])
 {
 	case "eos_lobby_create_lobby":
+		show_debug_message("eos_lobby_create_lobby: " + eos_result_to_string(async_load[? "status"]))
 		if(async_load[? "status"] == EOS_RESULT.SUCCESS)
 		{
 			lobby_id = async_load[? "lobby_id"]
