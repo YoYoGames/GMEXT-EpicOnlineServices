@@ -8,17 +8,17 @@
  * This function checks if the app was launched through the Epic Launcher, and relaunches it through the Epic Launcher if it wasn't.
  * The function returns one of 3 possible results:
  * 
- * 1. `EOS_SUCCESS` is returned if the app is being restarted. You should quit your process as soon as possible. 
- * 2. `EOS_NO_CHANGE` is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.
- * 3. `EOS_UNEXPECTED_ERROR` is returned if the **LauncherCheck** module failed to initialise, or the module tried and failed to restart the app.
+ * 1. `EOS_RESULT.SUCCESS` is returned if the app is being restarted. You should quit your process as soon as possible. 
+ * 2. `EOS_RESULT.NO_CHANGE` is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.
+ * 3. `EOS_RESULT.UNEXPECTED_ERROR` is returned if the **LauncherCheck** module failed to initialise, or the module tried and failed to restart the app.
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * if (eos_platform_check_for_launcher_and_restart() != EOS_NO_CHANGE) { game_end(); }
+ * if (eos_platform_check_for_launcher_and_restart() != EOS_RESULT.NO_CHANGE) { game_end(); }
  * ```
- * The above code shows an example of how the function should be used. If the output of the function is other than `EOS_NO_CHANGE` it will force close the project.
+ * The above code shows an example of how the function should be used. If the output of the function is other than `EOS_RESULT.NO_CHANGE` it will force close the project.
  * @function_end
  */
 
@@ -30,13 +30,13 @@
  * 
  * [[Note: This is NOT currently used for anything internally.]]
  * 
- * @param {string} accountID The account to get the active country code of
+ * @param {string} account_id The account to get the active country code of
  * 
  * @returns {string}
  * 
  * @example
  * ```gml
- * show_debug_message("CountryCode: " + eos_platform_get_active_country_code(accountID));
+ * show_debug_message("CountryCode: " + eos_platform_get_active_country_code(account_id));
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
@@ -48,13 +48,13 @@
  * 
  * This function gets the active locale code that the SDK will send to services which require it. This returns the override value otherwise it will use the locale code of the given user. This is used for localization. This follows ISO 639.
  * 
- * @param {string} accountID The account to get the local code of
+ * @param {string} account_id The account to get the local code of
  * 
  * @returns {string}
  * 
  * @example
  * ```gml
- * show_debug_message("LocaleCode: " + eos_platform_get_active_locale_code(accountID));
+ * show_debug_message("LocaleCode: " + eos_platform_get_active_locale_code(account_id));
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
@@ -118,7 +118,7 @@
  * 
  * This function sets the override country code that the SDK will send to services which require it. This is not currently used for anything internally.
  * 
- * @param {string} countryCode New country code ISO 639
+ * @param {string} country_code New country code ISO 639
  * 
  * @example
  * ```gml
@@ -134,7 +134,7 @@
  * 
  * This function sets the override locale code that the SDK will send to services which require it. This is used for localization. This follows ISO 639.
  * 
- * @param {string} localCode New local code
+ * @param {string} local_code New local code
  * 
  * @example
  * ```gml

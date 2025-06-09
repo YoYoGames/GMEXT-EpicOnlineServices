@@ -9,18 +9,18 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_sanctions_query_active_player_sanctions} to store values in cache.]]
  * 
- * @param {string} UserID_target Product User ID of the user whose active sanctions are to be copied
+ * @param {string} user_id_target Product User ID of the user whose active sanctions are to be copied
  * @param {real} index Index of the sanction to retrieve from the cache
  * 
  * @returns {struct.PlayerSanctionData}
  * 
  * @example
  * ```gml
- * var _count = eos_sanctions_get_player_sanction_count(UserID_target);
+ * var _count = eos_sanctions_get_player_sanction_count(user_id_target);
  * for(var i = 0 ; i < _count ; i++)
  * {
- *     eos_sanctions_copy_player_sanction_by_index(UserID_target, i);
- *     var Action = struct.Action;
+ *     eos_sanctions_copy_player_sanction_by_index(user_id_target, i);
+ *     var _action = _struct.action;
  * }
  * ```
  * The above code shows an example of how the function should be used. The player sanction data is returned for the provided index.
@@ -35,17 +35,17 @@
  * 
  * [[Note: Requires a previous call to ${function.eos_sanctions_query_active_player_sanctions} to store values in cache.]]
  * 
- * @param {string} UserID_target Product User ID of the user whose sanction count should be returned
+ * @param {string} user_id_target Product User ID of the user whose sanction count should be returned
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * var _count = eos_sanctions_get_player_sanction_count(UserID_target);
+ * var _count = eos_sanctions_get_player_sanction_count(user_id_target);
  * for(var i = 0 ; i < _count ; i++)
  * {
- *     var _struct = eos_sanctions_copy_player_sanction_by_index(UserID_target, i);
- *     var _action = _struct.Action;
+ *     var _struct = eos_sanctions_copy_player_sanction_by_index(user_id_target, i);
+ *     var _action = _struct.action;
  * }
  * ```
  * The above code shows an example of how the function should be used. After a successful call to ${function.eos_sanctions_query_active_player_sanctions}, the function ${function.eos_sanctions_get_player_sanction_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_sanctions_copy_player_sanction_by_index} function.
@@ -57,19 +57,19 @@
  * @desc **Epic Online Services Function:** [EOS_Sanctions_QueryActivePlayerSanctions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Sanctions/EOS_Sanctions_QueryActivePlayerSanctions/index.html)
  * 
  * This function starts an asynchronous query to retrieve any active sanctions for a specified user.
- * Once the callback has been fired with a successful ${constant.eos_result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  * 
  * * ${function.eos_sanctions_copy_player_sanction_by_index}
  * * ${function.eos_sanctions_get_player_sanction_count}
  * 
- * @param {string} UserID The Product User ID of the local user who initiated this request. Dedicated servers should set this to null.
- * @param {string} UserID_target Product User ID of the user whose active sanctions are to be retrieved.
+ * @param {string} user_id The Product User ID of the local user who initiated this request. Dedicated servers should set this to an empty string.
+ * @param {string} user_id_target Product User ID of the user whose active sanctions are to be retrieved.
  * 
  * @returns {real}
  *
  * @event social
  * @member {string} type The string `"eos_sanctions_query_active_player_sanctions"`
- * @member {constant.eos_result} status The status code for the operation. `EOS_SUCCESS` indicates that the operation succeeded; other codes indicate errors
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
@@ -84,13 +84,13 @@
  * if (async_load[? "type"] == "eos_sanctions_query_active_player_sanctions")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EOS_SUCCESS)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -103,10 +103,10 @@
 /**
  * @struct PlayerSanctionData
  * @desc A struct holding the sanction data for a player
- * @member {string} Action The action associated with this sanction
- * @member {string} ReferenceId A unique identifier for this specific sanction
- * @member {real} TimeExpires The POSIX timestamp when the sanction will expire. If the sanction is permanent, this will be 0
- * @member {real} TimePlaced The POSIX timestamp when the sanction was placed
+ * @member {string} action The action associated with this sanction
+ * @member {string} reference_id A unique identifier for this specific sanction
+ * @member {real} time_expires The POSIX timestamp when the sanction will expire. If the sanction is permanent, this will be 0
+ * @member {real} time_placed The POSIX timestamp when the sanction was placed
  * @struct_end
  */
 

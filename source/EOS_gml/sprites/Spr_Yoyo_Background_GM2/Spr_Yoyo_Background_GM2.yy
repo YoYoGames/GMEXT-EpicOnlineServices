@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"Spr_Yoyo_Background_GM2",
   "bboxMode":0,
   "bbox_bottom":767,

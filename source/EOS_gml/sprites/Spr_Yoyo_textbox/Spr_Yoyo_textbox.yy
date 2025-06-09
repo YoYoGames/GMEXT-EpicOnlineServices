@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"Spr_YoYo_textbox",
   "bboxMode":0,
   "bbox_bottom":63,
