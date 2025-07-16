@@ -1,3 +1,3 @@
 
-EpicGames_Stats_QueryStats(userID,userID,noone,noone)
+eos_stats_query_stats(userID,userID,noone,noone)
 

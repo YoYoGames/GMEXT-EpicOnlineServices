@@ -1,0 +1,13 @@
+
+NotifyDisconnected = eos_rtc_add_notify_disconnected(userID,RoomName)
+ParticipantStatusChanged = eos_rtc_add_notify_participant_status_changed(userID,RoomName)
+RoomStatisticsUpdated = eos_rtc_add_notify_room_statistics_updated(userID,RoomName)
+//AudioBeforeRender = eos_rtc_audio_add_notify_audio_before_render(userID,RoomName,true)//Unnecesary of this example
+//AudioBeforeSend = eos_rtc_audio_add_notify_audio_before_send(userID,RoomName)//Unnecesary of this example
+AudioDevicesChanged = eos_rtc_audio_add_notify_audio_devices_changed()
+AudioInputState = eos_rtc_audio_add_notify_audio_input_state(userID,RoomName)
+AudioOutputState = eos_rtc_audio_add_notify_audio_output_state(userID,RoomName)
+Audio_ParticipantUpdated = eos_rtc_audio_add_notify_participant_updated(userID,RoomName)
+DataReceived = eos_rtc_data_add_notify_data_received(userID,RoomName)
+Data_ParticipantUpdated = eos_rtc_data_add_notify_participant_updated(userID,RoomName)
+

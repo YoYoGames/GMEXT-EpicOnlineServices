@@ -22,29 +22,29 @@
 #include <vector>
 
 EOS_HAchievements HAchievements;
-void EpicGames_Achievements_Init()
+void eos_achievements_init()
 {
 	HAchievements = EOS_Platform_GetAchievementsInterface(PlatformHandle);
 }
 
-void EOS_CALL AchievementsUnlockedReceivedCallbackFn(const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* Data)
+void EOS_CALL AchievementsUnlockedReceivedCallbackFn(const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* data)
 {
 	static char TempBuffer[EOS_PRODUCTUSERID_MAX_LENGTH + 1];
 	int32_t TempBufferSize = sizeof(TempBuffer);
-	EOS_EResult Result = EOS_ProductUserId_ToString(Data->UserId, TempBuffer, &TempBufferSize);
+	EOS_EResult Result = EOS_ProductUserId_ToString(data->UserId, TempBuffer, &TempBufferSize);
 
 	int map = CreateDsMap(0,0);
-	DsMapAddString(map, "type", "EpicGames_Achievements_AddNotifyAchievementsUnlockedV2");
-	DsMapAddInt64(map, "UnlockTime", Data->UnlockTime);
-	DsMapAddString(map, "AchievementId", Data->AchievementId);
-	DsMapAddString(map, "UserId", TempBuffer);
+	DsMapAddString(map, "type", "eos_achievements_add_notify_achievements_unlocked_v2");
+	DsMapAddInt64(map, "unlock_time", data->UnlockTime);
+	DsMapAddString(map, "achievement_id", data->AchievementId);
+	DsMapAddString(map, "user_id", TempBuffer);
 
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void EpicGames_Achievements_AddNotifyAchievementsUnlockedV2(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_add_notify_achievements_unlocked_v2(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_int64;
 
 	EOS_Achievements_AddNotifyAchievementsUnlockedV2Options AchievementsUnlockedNotifyOptions = {};
 	AchievementsUnlockedNotifyOptions.ApiVersion = EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST;
@@ -67,48 +67,57 @@ RValue EOS_Achievements_DefinitionV2ToMap(EOS_Achievements_DefinitionV2* Achieve
 		return Struct;
 
 	
-	YYStructAddString(&Struct, "AchievementId", AchievementDef->AchievementId);
+	YYStructAddString(&Struct, "achievement_id", AchievementDef->AchievementId);
 
 	if (AchievementDef->bIsHidden)
-		YYStructAddDouble(&Struct, "bIsHidden", (double)AchievementDef->bIsHidden);
+		YYStructAddDouble(&Struct, "is_hidden", (double)AchievementDef->bIsHidden);
 
 	if (AchievementDef->UnlockedDisplayName)
-		YYStructAddString(&Struct, "UnlockedDisplayName", AchievementDef->UnlockedDisplayName);
+		YYStructAddString(&Struct, "unlocked_display_name", AchievementDef->UnlockedDisplayName);
 
 	if (AchievementDef->UnlockedDescription)
-		YYStructAddString(&Struct, "UnlockedDescription", AchievementDef->UnlockedDescription);
+		YYStructAddString(&Struct, "unlocked_description", AchievementDef->UnlockedDescription);
 
 	if (AchievementDef->LockedDisplayName)
-		YYStructAddString(&Struct, "LockedDisplayName", AchievementDef->LockedDisplayName);
+		YYStructAddString(&Struct, "locked_display_name", AchievementDef->LockedDisplayName);
 
 	if (AchievementDef->LockedDescription)
-		YYStructAddString(&Struct, "LockedDescription", AchievementDef->LockedDescription);
+		YYStructAddString(&Struct, "locked_description", AchievementDef->LockedDescription);
 
 	if (AchievementDef->FlavorText)
-		YYStructAddString(&Struct, "FlavorText", AchievementDef->FlavorText);
+		YYStructAddString(&Struct, "flavor_text", AchievementDef->FlavorText);
 
 	if (AchievementDef->UnlockedIconURL)
-		YYStructAddString(&Struct, "UnlockedIconURL", AchievementDef->UnlockedIconURL);
+		YYStructAddString(&Struct, "unlocked_icon_url", AchievementDef->UnlockedIconURL);
 
 	if (AchievementDef->LockedIconURL)
-		YYStructAddString(&Struct, "LockedIconURL", AchievementDef->LockedIconURL);
+		YYStructAddString(&Struct, "locked_icon_url", AchievementDef->LockedIconURL);
 
+	RValue StatThresholdsArray{};
+	YYCreateArray(&StatThresholdsArray);
 	for (uint32_t StatIndex = 0; StatIndex < AchievementDef->StatThresholdsCount; ++StatIndex)
 	{
-		//TODO
-		AchievementDef->StatThresholds[StatIndex].Name;
-		AchievementDef->StatThresholds[StatIndex].Threshold;
-		//StatInfo.emplace_back(StatInfo);
+		RValue StatThresholds{};
+		YYStructCreate(&StatThresholds);
+
+		const auto& thresholds = AchievementDef->StatThresholds[StatIndex];
+
+		YYStructAddString(&StatThresholds, "name", thresholds.Name);
+		YYStructAddInt32(&StatThresholds, "threshold", thresholds.Threshold);
+
+		SET_RValue(&StatThresholdsArray, &StatThresholds, NULL, StatIndex);
 	}
+
+	YYStructAddRValue(&Struct, "stat_thresholds", &StatThresholdsArray);
 
 	EOS_Achievements_DefinitionV2_Release(AchievementDef);
 
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_copy_achievement_definition_v2_by_achievement_id(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(1);
 
@@ -127,9 +136,9 @@ YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByAchievementId(
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Achievements_CopyAchievementDefinitionV2ByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_copy_achievement_definition_v2_by_index(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(1);
 
@@ -164,25 +173,25 @@ RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef
 		return Struct;
 
 	if(AchievementDef->AchievementId)
-		YYStructAddString(&Struct, "AchievementId", AchievementDef->AchievementId);
+		YYStructAddString(&Struct, "achievement_id", AchievementDef->AchievementId);
 
 	//if(AchievementDef->ApiVersion)
-	//	DsMapAddInt64(map_achievement, "ApiVersion", (int64)AchievementDef->ApiVersion);
+	//	DsMapAddInt64(map_achievement, "api_version", (int64)AchievementDef->ApiVersion);
 
 	if (AchievementDef->Description)
-		YYStructAddString(&Struct, "Description", AchievementDef->Description);
+		YYStructAddString(&Struct, "description", AchievementDef->Description);
 
 	if (AchievementDef->DisplayName)
-		YYStructAddString(&Struct, "DisplayName", AchievementDef->DisplayName);
+		YYStructAddString(&Struct, "display_name", AchievementDef->DisplayName);
 
 	if (AchievementDef->FlavorText)
-		YYStructAddString(&Struct, "FlavorText", AchievementDef->FlavorText);
+		YYStructAddString(&Struct, "flavor_text", AchievementDef->FlavorText);
 
 	if (AchievementDef->IconURL)
-		YYStructAddString(&Struct, "IconURL", AchievementDef->IconURL);
+		YYStructAddString(&Struct, "icon_url", AchievementDef->IconURL);
 
 	if (AchievementDef->Progress)
-		YYStructAddDouble(&Struct, "Progress", AchievementDef->Progress);
+		YYStructAddDouble(&Struct, "progress", AchievementDef->Progress);
 
 	RValue stats = { 0 };
 	YYCreateArray(&stats);
@@ -193,20 +202,20 @@ RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef
 		RValue statInfo = { 0 };
 		YYStructCreate(&statInfo);
 
-		YYStructAddString(&statInfo, "Name", value.Name);
-		YYStructAddInt32(&statInfo, "ApiVersion", value.ApiVersion);
-		YYStructAddInt32(&statInfo, "CurrentValue", value.CurrentValue);
-		YYStructAddInt32(&statInfo, "ThresholdValue", value.ThresholdValue);
+		YYStructAddString(&statInfo, "name", value.Name);
+		YYStructAddInt32(&statInfo, "api_version", value.ApiVersion);
+		YYStructAddInt32(&statInfo, "current_value", value.CurrentValue);
+		YYStructAddInt32(&statInfo, "threshold_value", value.ThresholdValue);
 
 		SET_RValue(&stats, &statInfo, NULL, i);
 	}
-	YYStructAddRValue(&Struct, "StatInfo", &stats);
+	YYStructAddRValue(&Struct, "stat_info", &stats);
 
 	if (AchievementDef->StatInfoCount)
-		YYStructAddInt32(&Struct, "StatInfoCount", AchievementDef->StatInfoCount);
+		YYStructAddInt32(&Struct, "stat_info_count", AchievementDef->StatInfoCount);
 
 	if (AchievementDef->UnlockTime)
-		YYStructAddInt64(&Struct, "UnlockTime", AchievementDef->UnlockTime);
+		YYStructAddInt64(&Struct, "unlock_time", AchievementDef->UnlockTime);
 
 	// Release
 	EOS_Achievements_PlayerAchievement_Release(AchievementDef);
@@ -214,9 +223,9 @@ RValue PlayerAchievementToMap(EOS_Achievements_PlayerAchievement* AchievementDef
 	return Struct;
 }
 
-YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByAchievementId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_copy_player_achievement_by_achievement_id(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(3);
 
@@ -239,9 +248,9 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByAchievementId(RValue
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByIndex(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_copy_player_achievement_by_index(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRUCT;
+	eos_not_init_return_rvalue_struct;
 
 	eos_ensure_argc(3);
 
@@ -264,9 +273,9 @@ YYEXPORT void EpicGames_Achievements_CopyPlayerAchievementByIndex(RValue& Result
 	FREE_RValue(&Struct);
 }
 
-YYEXPORT void EpicGames_Achievements_GetAchievementDefinitionCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_get_achievement_definition_count(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_INT32;
+	eos_not_init_return_rvalue_int32;
 
 	EOS_Achievements_GetAchievementDefinitionCountOptions AchievementDefinitionsCountOptions = {};
 	AchievementDefinitionsCountOptions.ApiVersion = EOS_ACHIEVEMENTS_GETACHIEVEMENTDEFINITIONCOUNT_API_LATEST;
@@ -275,9 +284,9 @@ YYEXPORT void EpicGames_Achievements_GetAchievementDefinitionCount(RValue& Resul
 	Result.v32 = EOS_Achievements_GetAchievementDefinitionCount(HAchievements, &AchievementDefinitionsCountOptions);
 }
 
-YYEXPORT void EpicGames_Achievements_GetPlayerAchievementCount(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_get_player_achievement_count(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_INT32;
+	eos_not_init_return_rvalue_int32;
 
 	eos_ensure_argc(1);
 
@@ -291,18 +300,20 @@ YYEXPORT void EpicGames_Achievements_GetPlayerAchievementCount(RValue& Result, C
 	Result.v32 = EOS_Achievements_GetPlayerAchievementCount(HAchievements, &AchievementsCountOptions);
 }
 
-void EOS_CALL AchievementDefinitionsReceivedCallbackFn(const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* Data)
+void EOS_CALL AchievementDefinitionsReceivedCallbackFn(const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
-	DsMapAddString(map, "type", "EpicGames_Achievements_QueryDefinitions");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "type", "eos_achievements_query_definitions");
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
-YYEXPORT void EpicGames_Achievements_QueryDefinitions(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_query_definitions(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_STRING;
+	eos_not_init_return_rvalue_string;
 
 	eos_ensure_argc(1);
 
@@ -321,19 +332,21 @@ YYEXPORT void EpicGames_Achievements_QueryDefinitions(RValue& Result, CInstance*
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL PlayerAchievementsReceivedCallbackFn(const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* Data)
+void EOS_CALL PlayerAchievementsReceivedCallbackFn(const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
-	DsMapAddString(map, "type", "EpicGames_Achievements_QueryPlayerAchievements");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "type", "eos_achievements_query_player_achievements");
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
 
-YYEXPORT void EpicGames_Achievements_QueryPlayerAchievements(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_query_player_achievements(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL;
+	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
@@ -353,20 +366,22 @@ YYEXPORT void EpicGames_Achievements_QueryPlayerAchievements(RValue& Result, CIn
 	Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL UnlockAchievementsReceivedCallbackFn(const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* Data)
+void EOS_CALL UnlockAchievementsReceivedCallbackFn(const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* data)
 {
 	int map = CreateDsMap(0,0);
-	DsMapAddString(map, "type", "EpicGames_Achievements_UnlockAchievement");
-	DsMapAddDouble(map, "status", (double)Data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(Data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback*)(Data->ClientData))->identifier);
+	DsMapAddString(map, "type", "eos_achievements_unlock_achievement");
+	DsMapAddDouble(map, "status", (double)data->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
 
 //EOS_Achievements_UnlockAchievements
-YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_unlock_achievement(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_REAL;
+	eos_not_init_return_rvalue_real;
 
 	eos_ensure_argc(2);
 
@@ -391,9 +406,9 @@ YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance
 }
 
 
-YYEXPORT void EpicGames_Achievements_RemoveNotifyAchievementsUnlocked(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+YYEXPORT void eos_achievements_remove_notify_achievements_unlocked(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	EOS_NotInitialisedReturn_BOOL;
+	eos_not_init_return_rvalue_bool;
 
 	eos_ensure_argc(1);
 

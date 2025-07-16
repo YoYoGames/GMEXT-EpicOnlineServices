@@ -1,21 +1,21 @@
 
-switch(async_load[?"type"])
+switch(async_load[? "type"])
 {
-	case "EpicGames_PlayerDataStorage_WriteFile_OnFileTransferProgressUpdated":
+	case "eos_player_data_storage_write_file_on_file_transfer_progress_updated":
 		
-		if(async_load[?"identifier"] != request)
+		if(async_load[? "identifier"] != request)
 			exit
 		
-		porcent = async_load[?"BytesTransferred"]/async_load[?"TotalFileSizeBytes"] * 100
+		porcent = async_load[? "bytes_transferred"]/async_load[? "total_file_size_bytes"] * 100
 		
 	break
 	
-	case "EpicGames_PlayerDataStorage_WriteFile_OnFileSent":
+	case "eos_player_data_storage_write_file_on_file_sent":
 
-		if(async_load[?"identifier"] != request)
+		if(async_load[? "identifier"] != request)
 			exit
 		
-		if(async_load[?"status"] == EpicGames_Success)
+		if(async_load[? "status"] == EOS_RESULT.SUCCESS)
 			color_current = color_done
 		else
 			color_current = color_failed

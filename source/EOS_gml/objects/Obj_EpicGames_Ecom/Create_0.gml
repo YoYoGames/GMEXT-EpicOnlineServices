@@ -1,4 +1,4 @@
 
 event_inherited();
 
-EpicGames_Ecom_QueryOffers(AccountID)
+eos_ecom_query_offers(AccountID)

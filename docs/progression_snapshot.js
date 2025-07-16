@@ -2,86 +2,86 @@
 
 
 /**
- * @function EpicGames_ProgressionSnapshot_AddProgression
+ * @function eos_progression_snapshot_add_progression
  * @desc **Epic Online Services Function:** [EOS_ProgressionSnapshot_AddProgression](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_AddProgression/index.html)
  * 
  * This function stores a Key/Value pair in memory for a given snapshot.
  * 
- * If multiple calls happen with the same key, the last invocation wins, overwriting the previous value for that given key. The order in which the Key/Value pairs are added is stored as is for later retrieval/display. Ideally, you would make multiple calls to ${function.EpicGames_ProgressionSnapshot_AddProgression} followed by a single call to ${function.EpicGames_ProgressionSnapshot_SubmitSnapshot}.
+ * If multiple calls happen with the same key, the last invocation wins, overwriting the previous value for that given key. The order in which the Key/Value pairs are added is stored as is for later retrieval/display. Ideally, you would make multiple calls to ${function.eos_progression_snapshot_add_progression} followed by a single call to ${function.eos_progression_snapshot_submit_snapshot}.
  * 
- * @param {real} snapshotId The Snapshot ID received via a ${function.EpicGames_ProgressionSnapshot_BeginSnapshot} function.
+ * @param {real} snapshot_id The Snapshot ID received via a ${function.eos_progression_snapshot_begin_snapshot} function.
  * @param {string} key The key in a key/value pair of progression entry
  * @param {string} value The value in a key/value pair of progression entry
  * 
  * @example
  * ```gml
- * identifier = EpicGames_ProgressionSnapshot_BeginSnapshot(local_UserId);
- * EpicGames_ProgressionSnapshot_AddProgression(identifier, "PlayerName", "Hero");
+ * identifier = eos_progression_snapshot_begin_snapshot(local_user_id);
+ * eos_progression_snapshot_add_progression(identifier, "PlayerName", "Hero");
  * ```
- * The code sample above shows an example of how to create a snapshot (${function.EpicGames_ProgressionSnapshot_BeginSnapshot}) and add a progression value to it.
+ * The code sample above shows an example of how to create a snapshot (${function.eos_progression_snapshot_begin_snapshot}) and add a progression value to it.
  * @function_end
  */
 
 /**
- * @function EpicGames_ProgressionSnapshot_BeginSnapshot
+ * @function eos_progression_snapshot_begin_snapshot
  * @desc **Epic Online Services Function:** [EOS_ProgressionSnapshot_BeginSnapshot](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_BeginSnapshot/index.html)
  * 
  * This function creates a new progression-snapshot resource for a given user. 
  * 
  * The function will return a progression-snapshot identifier output parameter. Use that identifier to reference the snapshot in the other functions:
  * 
- * * ${function.EpicGames_ProgressionSnapshot_AddProgression}
- * * ${function.EpicGames_ProgressionSnapshot_DeleteSnapshot}
- * * ${function.EpicGames_ProgressionSnapshot_EndSnapshot}
- * * ${function.EpicGames_ProgressionSnapshot_SubmitSnapshot}
+ * * ${function.eos_progression_snapshot_add_progression}
+ * * ${function.eos_progression_snapshot_delete_snapshot}
+ * * ${function.eos_progression_snapshot_end_snapshot}
+ * * ${function.eos_progression_snapshot_submit_snapshot}
  * 
- * @param {string} local_UserId The Product User ID of the local user to whom the key/value pair belongs
+ * @param {string} local_user_id The Product User ID of the local user to whom the key/value pair belongs
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * identifier = EpicGames_ProgressionSnapshot_BeginSnapshot(local_UserId);
- * EpicGames_ProgressionSnapshot_AddProgression(identifier, "PlayerName", "Hero");
+ * identifier = eos_progression_snapshot_begin_snapshot(local_user_id);
+ * eos_progression_snapshot_add_progression(identifier, "PlayerName", "Hero");
  * ```
- * The code sample above shows how to create a snapshot and add a progression value to it (${function.EpicGames_ProgressionSnapshot_AddProgression}).
+ * The code sample above shows how to create a snapshot and add a progression value to it (${function.eos_progression_snapshot_add_progression}).
  * @function_end
  */
 
 /**
- * @function EpicGames_ProgressionSnapshot_DeleteSnapshot
+ * @function eos_progression_snapshot_delete_snapshot
  * @desc **Epic Online Services Function:** [EOS_ProgressionSnapshot_DeleteSnapshot](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_DeleteSnapshot/index.html)
  * 
  * This function wipes out all progression data for the given user from the service. However, any previous progression data that haven't been submitted yet are retained.
  * 
- * @param {string} userId The Product User ID of the local user to whom the key/value pair belong
+ * @param {string} user_id The Product User ID of the local user to whom the key/value pair belong
  * 
  * @returns {real}
  * 
  * @event social
- * @member {real} type `"EpicGames_ProgressionSnapshot_DeleteSnapshot"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {real} type `"eos_progression_snapshot_delete_snapshot"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_ProgressionSnapshot_DeleteSnapshot(userId);
+ * identifier = eos_progression_snapshot_delete_snapshot(user_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_ProgressionSnapshot_DeleteSnapshot")
+ * if (async_load[? "type"] == "eos_progression_snapshot_delete_snapshot")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -90,23 +90,23 @@
  */
 
 /**
- * @function EpicGames_ProgressionSnapshot_EndSnapshot
+ * @function eos_progression_snapshot_end_snapshot
  * @desc **Epic Online Services Function:** [EOS_ProgressionSnapshot_EndSnapshot](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_EndSnapshot/index.html)
  * 
  * This function cleans up and releases resources associated with the given progression snapshot identifier.
  * 
- * [[Note: This function should be called after submission (${function.EpicGames_ProgressionSnapshot_SubmitSnapshot}).]]
+ * [[Note: This function should be called after submission (${function.eos_progression_snapshot_submit_snapshot}).]]
  * 
- * @param {string} snapshotId The Snapshot ID received via a call to the ${function.EpicGames_ProgressionSnapshot_BeginSnapshot} function.
+ * @param {string} snapshot_id The Snapshot ID received via a call to the ${function.eos_progression_snapshot_begin_snapshot} function.
  * 
  * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
- * result = EpicGames_ProgressionSnapshot_EndSnapshot(snapshotId);
- * if (result.status == EpicGames_Success)
+ * result = eos_progression_snapshot_end_snapshot(snapshot_id);
+ * if (result.status == EOS_RESULT.SUCCESS)
  * {
- *     show_debug_message("EpicGames_ProgressionSnapshot_EndSnapshot: success");
+ *     show_debug_message("eos_progression_snapshot_end_snapshot: success");
  * }
  * ```
  * The code above matches the response status and logs the success of the task.
@@ -114,41 +114,41 @@
  */
 
 /**
- * @function EpicGames_ProgressionSnapshot_SubmitSnapshot
+ * @function eos_progression_snapshot_submit_snapshot
  * @desc **Epic Online Services Function:** [EOS_ProgressionSnapshot_SubmitSnapshot](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/ProgressionSnapshot/EOS_ProgressionSnapshot_SubmitSnapshot/index.html)
  * 
  * This function saves the previously added Key/Value pairs of a given Snapshot to the service.
  * 
  * [[Note: This will overwrite any prior progression data stored with the service that's associated with the user.]]
  * 
- * @param {real} snapshotId The Snapshot ID received via a call to the ${function.EpicGames_ProgressionSnapshot_BeginSnapshot} function.
+ * @param {real} snapshot_id The Snapshot ID received via a call to the ${function.eos_progression_snapshot_begin_snapshot} function.
  * 
  * @returns {real}
  * 
  * @event social
- * @member {string} type `"EpicGames_ProgressionSnapshot_SubmitSnapshot"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type `"eos_progression_snapshot_submit_snapshot"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_ProgressionSnapshot_SubmitSnapshot(snapshotId);
+ * identifier = eos_progression_snapshot_submit_snapshot(snapshot_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_ProgressionSnapshot_SubmitSnapshot")
+ * if (async_load[? "type"] == "eos_progression_snapshot_submit_snapshot")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -168,11 +168,11 @@
  * @section_func 
  * @desc These functions are provided for handling progression snapshot:
  * 
- * @ref function.EpicGames_ProgressionSnapshot_AddProgression
- * @ref function.EpicGames_ProgressionSnapshot_BeginSnapshot
- * @ref function.EpicGames_ProgressionSnapshot_DeleteSnapshot
- * @ref function.EpicGames_ProgressionSnapshot_EndSnapshot
- * @ref function.EpicGames_ProgressionSnapshot_SubmitSnapshot
+ * @ref function.eos_progression_snapshot_add_progression
+ * @ref function.eos_progression_snapshot_begin_snapshot
+ * @ref function.eos_progression_snapshot_delete_snapshot
+ * @ref function.eos_progression_snapshot_end_snapshot
+ * @ref function.eos_progression_snapshot_submit_snapshot
  * @section_end
  * 
  * @module_end

@@ -16,14 +16,14 @@ draw_set_font(Font_YoYo_15)
 
 if(locked)
 {
-	draw_text(x,y+110,LockedDisplayName)
-	draw_text(x,y+140,LockedDescription)
+	draw_text(x,y+110,locked_display_name)
+	draw_text(x,y+140,locked_description)
 }
 else
 {
-	draw_text(x,y+110,UnlockedDisplayName)
-	draw_text(x,y+140,UnlockedDescription)
+	draw_text(x,y+110,unlocked_display_name)
+	draw_text(x,y+140,unlocked_description)
 }
 
-draw_text(x,y+170,FlavorText)
-draw_text(x,y+200,bIsHidden)
+draw_text(x,y+170,flavor_text)
+draw_text(x,y+200,is_hidden)

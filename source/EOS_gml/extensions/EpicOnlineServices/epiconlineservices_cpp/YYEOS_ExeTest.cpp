@@ -65,7 +65,7 @@
 //
 //	if (Data->ResultCode == EOS_EResult::EOS_Success)
 //	{
-//		printf("EpicGames_Connect_Login SUCCESS\n");
+//		printf("eos_connect_login SUCCESS\n");
 //
 //		int32_t ContinuanceTokenSize = 0;
 //		EOS_ContinuanceToken_ToString(Data->ContinuanceToken, NULL, &ContinuanceTokenSize);
@@ -80,13 +80,13 @@
 //	}
 //	else if (Data->ResultCode == EOS_EResult::EOS_InvalidUser)
 //	{
-//		printf("EpicGames_Connect_Login INVALID USER\n");
+//		printf("eos_connect_login INVALID USER\n");
 //		/*EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(FPlatform::GetPlatformHandle());
 //		EOS_Connect_CreateUser(ConnectHandle, &Options, ClientData.release(), ConnectCreateUserCompleteCb);*/
 //	}
 //	else
 //	{
-//		printf("EpicGames_Connect_Login INVALID .....\n");
+//		printf("eos_connect_login INVALID .....\n");
 //	}
 //}
 //
@@ -96,7 +96,7 @@
 //	//std::unique_ptr<FConnectLoginContext> ClientData(static_cast<FConnectLoginContext*>(Data->ClientData));
 //
 //	/*int map = g_pYYRunnerInterface->CreateDsMap(0);
-//	g_pYYRunnerInterface->DsMapAddString(map, "type", "EpicGames_Login");*/
+//	g_pYYRunnerInterface->DsMapAddString(map, "type", "eos_login");*/
 //
 //	if (Data->ResultCode == EOS_EResult::EOS_Success)
 //	{
@@ -116,13 +116,13 @@
 //		EOS_EResult Result = EOS_EpicAccountId_ToString(/*AccountId*/Data->LocalUserId, TempBuffer, &TempBufferSize);
 //		if (Result == EOS_EResult::EOS_Success)
 //		{
-//			printf("EpicGames_EpicAccountId_ToString SUCCESS: ");
+//			printf("eos_epic_account_id_to_string SUCCESS: ");
 //			printf(TempBuffer);
 //			printf("\n");
 //		}
 //		else
 //		{
-//			printf("EpicGames_EpicAccountId_ToString FAILED: ");
+//			printf("eos_epic_account_id_to_string FAILED: ");
 //			printf(EOS_EResult_ToString(Result));
 //			printf("\n");
 //		}
@@ -130,13 +130,13 @@
 //		Result = EOS_EpicAccountId_ToString(AccountId, TempBuffer, &TempBufferSize);
 //		if (Result == EOS_EResult::EOS_Success)
 //		{
-//			printf("EpicGames_EpicAccountId_ToString SUCCESS: ");
+//			printf("eos_epic_account_id_to_string SUCCESS: ");
 //			printf(TempBuffer);
 //			printf("\n");
 //		}
 //		else
 //		{
-//			printf("EpicGames_EpicAccountId_ToString FAILED: ");
+//			printf("eos_epic_account_id_to_string FAILED: ");
 //			printf(EOS_EResult_ToString(Result));
 //			printf("\n");
 //		}
@@ -148,18 +148,18 @@
 //		EOS_EResult ResultCode = EOS_Auth_CopyUserAuthToken(EXE_HAuth, &CopyTokenOptions, /*AccountId*/Data->LocalUserId, &UserAuthToken);
 //		if (ResultCode == EOS_EResult::EOS_Success)
 //		{
-//			printf("EpicGames_Auth_CopyUserAuthToken SUCCESS \n");
+//			printf("eos_auth_copy_user_auth_token SUCCESS \n");
 //
 //			
 //
 //			/*EOS_EpicAccountId_ToString*/
-//			//g_pYYRunnerInterface->DsMapAddString(map, "AccessToken", UserAuthToken->AccessToken);
-//			////g_pYYRunnerInterface->DsMapAddString(map, "AccountId", UserAuthToken->AccountId);
-//			////g_pYYRunnerInterface->DsMapAddString(map, "ApiVersion", UserAuthToken->ApiVersion);
-//			//g_pYYRunnerInterface->DsMapAddString(map, "App", UserAuthToken->App);
-//			//g_pYYRunnerInterface->DsMapAddString(map, "ExpiresAt", UserAuthToken->ExpiresAt);
-//			////g_pYYRunnerInterface->DsMapAddString(map, "ExpiresInExpiresAt", UserAuthToken->ExpiresInExpiresAt);
-//			//g_pYYRunnerInterface->DsMapAddString(map, "RefreshToken", UserAuthToken->RefreshToken);
+//			//g_pYYRunnerInterface->DsMapAddString(map, "access_token", UserAuthToken->AccessToken);
+//			////g_pYYRunnerInterface->DsMapAddString(map, "account_id", UserAuthToken->AccountId);
+//			////g_pYYRunnerInterface->DsMapAddString(map, "api_version", UserAuthToken->ApiVersion);
+//			//g_pYYRunnerInterface->DsMapAddString(map, "app", UserAuthToken->App);
+//			//g_pYYRunnerInterface->DsMapAddString(map, "expires_at", UserAuthToken->ExpiresAt);
+//			////g_pYYRunnerInterface->DsMapAddString(map, "expires_in_expires_at", UserAuthToken->ExpiresInExpiresAt);
+//			//g_pYYRunnerInterface->DsMapAddString(map, "refresh_token", UserAuthToken->RefreshToken);
 //
 //
 //
@@ -176,7 +176,7 @@
 //			Options.UserLoginInfo = nullptr;
 //
 //			//assert(ConnectHandle != nullptr);
-//			printf("EpicGames_Connect_Login\n");
+//			printf("eos_connect_login\n");
 //			EOS_Connect_Login(EXE_ConnectHandle, &Options, NULL, EXE_ConnectLoginCompleteCb);
 //		}
 //		else
@@ -187,20 +187,20 @@
 //			
 //			// NOTE: We're not deleting the received context because we're passing it down to another SDK call
 //			EOS_Connect_CreateUser(EXE_ConnectHandle, &Options, NULL, EXE_ConnectCreateUserCompleteCb_);
-//			printf("EpicGames_Auth_CopyUserAuthToken FAILED: ");
+//			printf("eos_auth_copy_user_auth_token FAILED: ");
 //			printf(EOS_EResult_ToString(ResultCode));
 //			printf("\n");
 //		}
 //
 //
-//		/*g_pYYRunnerInterface->DsMapAddBool(map, "Success", true);
-//		g_pYYRunnerInterface->DsMapAddString(map, "LocalUserId", TempBuffer);*/
-//		//g_pYYRunnerInterface->DsMapAddString(map, "ContinuanceToken", EOS_ContinuanceToken_ToString(mContinuanceToken));
-//		//g_pYYRunnerInterface->DsMapAddString(map, "LocalUserId", Data->SelectedAccountId);
+//		/*g_pYYRunnerInterface->DsMapAddBool(map, "success", true);
+//		g_pYYRunnerInterface->DsMapAddString(map, "local_user_id", TempBuffer);*/
+//		//g_pYYRunnerInterface->DsMapAddString(map, "continuance_token", EOS_ContinuanceToken_ToString(mContinuanceToken));
+//		//g_pYYRunnerInterface->DsMapAddString(map, "local_user_id", Data->SelectedAccountId);
 //	}
 //	else
 //	{
-//		//g_pYYRunnerInterface->DsMapAddBool(map, "Success", false);
+//		//g_pYYRunnerInterface->DsMapAddBool(map, "success", false);
 //	}
 //
 //	//g_pYYRunnerInterface->CreateAsyncEventWithDSMap(map, 70);

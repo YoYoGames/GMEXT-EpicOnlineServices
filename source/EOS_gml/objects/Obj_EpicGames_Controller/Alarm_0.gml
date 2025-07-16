@@ -1,12 +1,12 @@
 
 alarm[0] = RefreshPeriod_AccountID
 
-var struct = EpicGames_Auth_CopyUserAuthToken(AccountID)
+var struct = eos_auth_copy_user_auth_token(AccountID)
 
-EpicGames_Auth_Login(
-	EpicGames_LCT_RefreshToken,
-	EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence,
+eos_auth_login(
+		EOS_LOGIN_CREDENTIAL_TYPE.REFRESH_TOKEN, 
+        EOS_AUTH_SCOPE_FLAGS.BASIC_PROFILE | EOS_AUTH_SCOPE_FLAGS.FRIENDS_LIST | EOS_AUTH_SCOPE_FLAGS.PRESENCE,
 	"",
-	struct.RefreshToken,
+	struct.refresh_token,
 	noone
 	)

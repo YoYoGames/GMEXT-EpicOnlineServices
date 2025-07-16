@@ -1,14 +1,13 @@
 
-if(async_load[?"type"] == "EpicGames_TitleStorage_QueryFileList")
+if(async_load[? "type"] == "eos_title_storage_query_file_list")
 {
-	var count = EpicGames_TitleStorage_GetFileMetadataCount(userID)
+	var count = eos_title_storage_get_file_metadata_count(userID)
 	for(var a = 0 ; a < count ; a++)
 	{
-		var struct = EpicGames_TitleStorage_CopyFileMetadataAtIndex(userID,a)
-		if(struct.status == EpicGames_Success)
+		var struct = eos_title_storage_copy_file_metadata_at_index(userID,a)
+		if(struct.status == EOS_RESULT.SUCCESS)
 		{
-			var ins = instance_create_depth(bbox_left,300+a*100,0,Obj_EpicGames_TitleStorage_File)
-			ins.Filename = struct.Filename
+			instance_create_depth(bbox_left,300+a*100,0,Obj_EpicGames_TitleStorage_File,struct)
 		}
 	}
 }

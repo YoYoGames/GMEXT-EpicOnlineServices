@@ -1,16 +1,16 @@
 
 if(userID == "")
 {
-	//show_debug_message("EpicGames_Auth_Login CALLED")
-	EpicGames_Auth_Login(
-		EpicGames_LCT_AccountPortal,
-		EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence,
+	//show_debug_message("eos_auth_login CALLED")
+	eos_auth_login(
+		EOS_LOGIN_CREDENTIAL_TYPE.ACCOUNT_PORTAL, 
+        EOS_AUTH_SCOPE_FLAGS.BASIC_PROFILE | EOS_AUTH_SCOPE_FLAGS.FRIENDS_LIST | EOS_AUTH_SCOPE_FLAGS.PRESENCE,
 		"",
 		"",
 		noone
 		)
 }
 else
-	EpicGames_Auth_Logout()
+	eos_auth_logout(AccountID)
 
 

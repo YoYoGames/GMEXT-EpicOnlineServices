@@ -1,0 +1,3 @@
+
+show_debug_message(SessionName)
+show_debug_message(eos_active_session_copy_info(SessionName))

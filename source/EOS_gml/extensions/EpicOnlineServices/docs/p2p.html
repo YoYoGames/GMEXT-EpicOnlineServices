@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>P2P - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P2P";
+        var mkdocs_page_input_path = "p2p.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">P2P</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P2P</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/p2p.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="p2p"><strong>P2P</strong></h1>
+<p><strong>Epic Online Services Interface</strong>: <a href="https://dev.epicgames.com/docs/en-US/api-ref/interfaces/p-2-p">P2P Interface</a></p>
+<p>This module contains functionality to interact with the <a href="https://dev.epicgames.com/docs/game-services/p-2-p">NAT P2P Interface</a>, which has functionality to send and receive data between users, and related networking functionality.</p>
+<p>P2P connections enable game clients to send and receive data between one another directly, typically for the purpose of a multiplayer game. Connections made with the EOS P2P Interface are only established between authenticated users, and are secure-by-default using Datagram Transport Layer (<a href="https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security">DTLS</a>). DTLS provides two distinct advantages over other communications protocols: *The speed of handling P2P connections is significantly increased, resulting in EOS's authentication having a greatly reduced need for connections to be re-negotiated.</p>
+<h2 id="functions">Functions</h2>
+<p>The following are the functions of the P2P module:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_accept_connection">eos_p2p_accept_connection</a></li>
+<li><a href="p2p.html#eos_p2p_add_notify_incoming_packet_queue_full">eos_p2p_add_notify_incoming_packet_queue_full</a></li>
+<li><a href="p2p.html#eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed</a></li>
+<li><a href="p2p.html#eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</a></li>
+<li><a href="p2p.html#eos_p2p_add_notify_peer_connection_interrupted">eos_p2p_add_notify_peer_connection_interrupted</a></li>
+<li><a href="p2p.html#eos_p2p_add_notify_peer_connection_request">eos_p2p_add_notify_peer_connection_request</a></li>
+<li><a href="p2p.html#eos_p2p_clear_packet_queue">eos_p2p_clear_packet_queue</a></li>
+<li><a href="p2p.html#eos_p2p_close_connection">eos_p2p_close_connection</a></li>
+<li><a href="p2p.html#eos_p2p_close_connections">eos_p2p_close_connections</a></li>
+<li><a href="p2p.html#eos_p2p_get_nat_type">eos_p2p_get_nat_type</a></li>
+<li><a href="p2p.html#eos_p2p_get_next_received_packet_size">eos_p2p_get_next_received_packet_size</a></li>
+<li><a href="p2p.html#eos_p2p_get_packet_queue_info">eos_p2p_get_packet_queue_info</a></li>
+<li><a href="p2p.html#eos_p2p_get_port_range">eos_p2p_get_port_range</a></li>
+<li><a href="p2p.html#eos_p2p_get_relay_control">eos_p2p_get_relay_control</a></li>
+<li><a href="p2p.html#eos_p2p_query_nat_type">eos_p2p_query_nat_type</a></li>
+<li><a href="p2p.html#eos_p2p_receive_packet">eos_p2p_receive_packet</a></li>
+<li><a href="p2p.html#eos_p2p_remove_notify_incoming_packet_queue_full">eos_p2p_remove_notify_incoming_packet_queue_full</a></li>
+<li><a href="p2p.html#eos_p2p_remove_notify_peer_connection_closed">eos_p2p_remove_notify_peer_connection_closed</a></li>
+<li><a href="p2p.html#eos_p2p_remove_notify_peer_connection_established">eos_p2p_remove_notify_peer_connection_established</a></li>
+<li><a href="p2p.html#eos_p2p_remove_notify_peer_connection_interrupted">eos_p2p_remove_notify_peer_connection_interrupted</a></li>
+<li><a href="p2p.html#eos_p2p_remove_notify_peer_connection_request">eos_p2p_remove_notify_peer_connection_request</a></li>
+<li><a href="p2p.html#eos_p2p_send_packet">eos_p2p_send_packet</a></li>
+<li><a href="p2p.html#eos_p2p_set_packet_queue_size">eos_p2p_set_packet_queue_size</a></li>
+<li><a href="p2p.html#eos_p2p_set_port_range">eos_p2p_set_port_range</a></li>
+<li><a href="p2p.html#eos_p2p_set_relay_control">eos_p2p_set_relay_control</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>The following are the structs of the P2P module:</p>
+<ul>
+<li><a href="p2p.html#packetqueueinfo">PacketQueueInfo</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>The following are the constants and enums of the P2P module:</p>
+<ul>
+<li><a href="p2p.html#eos_connection_closed_reason">EOS_CONNECTION_CLOSED_REASON</a></li>
+<li><a href="p2p.html#eos_connection_established_type">EOS_CONNECTION_ESTABLISHED_TYPE</a></li>
+<li><a href="p2p.html#eos_nat_type">EOS_NAT_TYPE</a></li>
+<li><a href="p2p.html#eos_network_connection_type">EOS_NETWORK_CONNECTION_TYPE</a></li>
+<li><a href="p2p.html#eos_packet_reliability">EOS_PACKET_RELIABILITY</a></li>
+<li><a href="p2p.html#eos_relay_control">EOS_RELAY_CONTROL</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_accept_connection">eos_p2p_accept_connection</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-accept-connection">EOS_P2P_AcceptConnection</a></p>
+<p>This function accepts or requests a connection with a specific peer on a specific Socket ID. If this connection was not already locally accepted, EOS will securely message the peer, and trigger a PeerConnectionRequest notification notifying them of the connection request. If the PeerConnectionRequest notification is not bound for all socket IDs or for the requested socket ID in particular, the request will be silently ignored. If the remote peer accepts the connection, a notification will be broadcast to the EOS_P2P_AddNotifyPeerConnectionEstablished when the connection is ready to send packets. If multiple Socket IDs are accepted with one peer, they will share one physical socket. Even if a connection is already locally accepted, <code>EOS_RESULT.SUCCESS</code> will still be returned if the input was valid. <code>EOS_RESULT.INVALID_PARAMETERS</code> will be returned if the input is invalid.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_accept_connection(local_user_id, remote_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is accepting any pending or future connections with <code>remote_user_id</code></td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the remote user who has either sent a connection request or is expected to in the future</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket ID of the connection to accept on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_add_notify_incoming_packet_queue_full">eos_p2p_add_notify_incoming_packet_queue_full</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-incoming-packet-queue-full">EOS_P2P_AddNotifyIncomingPacketQueueFull</a></p>
+<p>This function listens for when the packet queue has become full. This event gives an opportunity to read packets to make room for new incoming packets. If this event fires and no packets are read by calling <a href="p2p.html#eos_p2p_receive_packet">eos_p2p_receive_packet</a> or the packet queue size is not increased by <a href="p2p.html#eos_p2p_set_packet_queue_size">eos_p2p_set_packet_queue_size</a>, any packets that are received after this event are discarded until there is room again in the queue.</p>
+<p>The function returns a valid notification ID if successfully bound, or <a href="general.html#eos_invalid_notificationid">EOS_INVALID_NOTIFICATIONID</a> otherwise.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_incoming_packet_queue_full()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_p2p_add_notify_incoming_packet_queue_full"</code></td>
+</tr>
+<tr>
+<td>overflow_packet_channel</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The channel the incoming packet is for</td>
+</tr>
+<tr>
+<td>overflow_packet_local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is receiving the packet that would overflow the queue</td>
+</tr>
+<tr>
+<td>overflow_packet_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The size in bytes of the incoming packet (and related metadata) that would overflow the queue</td>
+</tr>
+<tr>
+<td>packet_queue_current_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current size in bytes the incoming packet queue is currently using</td>
+</tr>
+<tr>
+<td>packet_queue_max_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum size in bytes the incoming packet queue is allowed to use</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-closed">EOS_P2P_AddNotifyPeerConnectionClosed</a></p>
+<p>This function listens for when a previously accepted connection that was either open or pending is closed. When a connection closes, packets are flushed. This includes reliable packets.</p>
+<p>The function returns a valid notification ID if successfully bound, or <a href="general.html#eos_invalid_notificationid">EOS_INVALID_NOTIFICATIONID</a> otherwise.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_closed(local_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who would like notifications</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The optional socket ID to listen for to be closed. If an empty string <code>""</code> is passed, this function handler will be called for all closed connections.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_p2p_add_notify_peer_connection_closed"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The local user who is being notified of a connection being closed</td>
+</tr>
+<tr>
+<td>reason</td>
+<td><a href="p2p.html#eos_connection_closed_reason">EOS_CONNECTION_CLOSED_REASON</a></td>
+<td>The reason the connection was closed (if known)</td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the remote user who this connection was with</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket ID of the connection being closed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-established">EOS_P2P_AddNotifyPeerConnectionEstablished</a></p>
+<p>This function listens for when a connection is established. This is fired when we first connect to a peer, when we reconnect to a peer after a connection interruption, and when our underlying network connection type changes (for example, from a direct connection to relay, or vice versa). Network Connection Type changes will always be broadcast with a <code>EOS_CONNECTION_ESTABLISHED_TYPE.RECONNECTION</code> connection type, even if the connection was not interrupted. If the network status changes from offline to online, you must call this function again.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_established(local_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who would like to receive notifications</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The optional socket ID, used as a filter for established connections. If an empty string <code>""</code> is passed, this function handler will be called for all sockets.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_p2p_add_notify_peer_connection_established"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is being notified of a connection being established</td>
+</tr>
+<tr>
+<td>connection_type</td>
+<td><a href="p2p.html#eos_connection_established_type">EOS_CONNECTION_ESTABLISHED_TYPE</a></td>
+<td>Whether this is a new connection or reconnection</td>
+</tr>
+<tr>
+<td>network_type</td>
+<td><a href="p2p.html#eos_network_connection_type">EOS_NETWORK_CONNECTION_TYPE</a></td>
+<td>What type of network connection is being used for this connection</td>
+</tr>
+<tr>
+<td>socket_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket ID of the connection being established</td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the remote user who this connection was with</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_add_notify_peer_connection_interrupted">eos_p2p_add_notify_peer_connection_interrupted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-interrupted">EOS_P2P_AddNotifyPeerConnectionInterrupted</a></p>
+<p>This function listens for when a previously opened connection is interrupted. The connection will automatically attempt to reestablish, but it may not be successful. If a connection reconnects, it will trigger the P2P PeerConnectionEstablished notification with the <code>EOS_CONNECTION_ESTABLISHED_TYPE.RECONNECTION</code> connection type. If a connection fails to reconnect, it will trigger the P2P PeerConnectionClosed notification. Packets remain queued during connection interruptions. When a connection closes, packets are flushed. This includes reliable packets.</p>
+<p>The function returns the notification ID.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_interrupted(local_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who would like notifications</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An optional socket ID to filter interrupted connections on. If an empty string, this function handler will be called for all interrupted connections.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_p2p_add_notify_peer_connection_interrupted"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The local user who is being notified of a connection that was interrupted</td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the remote user who this connection was with</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket ID of the connection that was interrupted</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_add_notify_peer_connection_request">eos_p2p_add_notify_peer_connection_request</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-add-notify-peer-connection-request">EOS_P2P_AddNotifyPeerConnectionRequest</a></p>
+<p>This function listens for incoming connection requests on a particular Socket ID, or optionally all Socket IDs. The <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> will only be called if the connection has not already been accepted. If the network status changes from offline to online, you must call this function again.</p>
+<p>The function returns the notification ID.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_request(local_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who is listening for incoming connection requests</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The optional socket ID to listen for, used as a filter for incoming connection requests; If an empty string, incoming connection requests will not be filtered</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"eos_p2p_add_notify_peer_connection_request"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is being requested to open a P2P session with <code>remote_user_id</code></td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the remote user who requested a peer connection with the local user</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the socket the Remote User wishes to communicate on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_clear_packet_queue">eos_p2p_clear_packet_queue</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-clear-packet-queue">EOS_P2P_ClearPacketQueue</a></p>
+<p>This function clears queued incoming and outgoing packets.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_clear_packet_queue(local_user_id, remote_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user for whom we want to clear the queued packets</td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to who (outgoing) or from who (incoming) packets are queued</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket used for packets to be cleared</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_close_connection">eos_p2p_close_connection</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-close-connection">EOS_P2P_CloseConnection</a></p>
+<p>For all (or optionally one specific) Socket ID(s) with a specific peer: stop receiving packets, drop any locally queued packets, and if no other Socket ID is using the connection with the peer, close the underlying connection. If your application wants to migrate an existing connection with a peer it already connected to, it is recommended to call <a href="p2p.html#eos_p2p_accept_connection">eos_p2p_accept_connection</a> with the new Socket ID first before calling <a href="p2p.html#eos_p2p_close_connection">eos_p2p_close_connection</a>, to prevent the shared physical socket from being torn down prematurely.</p>
+<p>The function returns <code>EOS_RESULT.SUCCESS</code> if the provided data is valid, <code>EOS_RESULT.INVALID_PARAMETERS</code> otherwise.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_close_connection(local_user_id, remote_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who would like to close a previously accepted connection (or decline a pending invite)</td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the remote user to disconnect from (or to reject a pending invite from)</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket ID of the connection to close (or optionally an empty string to not accept any connection requests from the Remote User)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_close_connections">eos_p2p_close_connections</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-close-connections">EOS_P2P_CloseConnections</a></p>
+<p>This function closes any open Connections for a specific Peer Connection ID.</p>
+<p>The function returns <code>EOS_RESULT.SUCCESS</code> if the provided data is valid, <code>EOS_RESULT.INVALID_PARAMETERS</code> otherwise.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_close_connections(local_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who would like to close all connections that use a particular socket ID</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket ID of the connections to close</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_get_nat_type">eos_p2p_get_nat_type</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-get-nat-type">EOS_P2P_GetNATType</a></p>
+<p>This function gets the last queried NAT type, if it has been successfully queried with <a href="p2p.html#eos_p2p_query_nat_type">eos_p2p_query_nat_type</a> before.</p>
+<p>The function returns the previously queried NAT type if cached data is available, or <code>EOS_NAT_TYPE.UNKNOWN</code> otherwise.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_nat_type()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="p2p.html#eos_nat_type">EOS_NAT_TYPE</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_get_next_received_packet_size">eos_p2p_get_next_received_packet_size</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-get-next-received-packet-size">EOS_P2P_GetNextReceivedPacketSize</a></p>
+<p>This function gets the size of the packet that will be returned by <a href="p2p.html#eos_p2p_receive_packet">eos_p2p_receive_packet</a> for a particular user, if there are any available packets to be retrieved.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_next_received_packet_size(local_user_id, requested_channel)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is receiving the packet</td>
+</tr>
+<tr>
+<td>requested_channel</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The channel to request the data for, a value from 0 to 255 (inclusive). If a negative value is passed, we're retrieving the size of the next packet on any channel.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_get_packet_queue_info">eos_p2p_get_packet_queue_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-get-packet-queue-info">EOS_P2P_GetPacketQueueInfo</a></p>
+<p>This function gets the current cached information related to the incoming and outgoing packet queues. An empty struct is returned if the input was invalid in some way.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_packet_queue_info()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="p2p.html#packetqueueinfo">PacketQueueInfo</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_get_port_range">eos_p2p_get_port_range</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-get-port-range">EOS_P2P_GetPortRange</a></p>
+<p>This function gets the current chosen port and the number of other ports to try above the chosen port if the chosen port is unavailable.</p>
+<p>The function returns a struct with two variables: <code>out_port</code> and <code>out_num_additional_ports_to_try</code>. An empty struct is returned if the input was invalid in some way.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_port_range()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_get_relay_control">eos_p2p_get_relay_control</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-get-relay-control">EOS_P2P_GetRelayControl</a></p>
+<p>This function gets the current relay control setting, or a negative value if the operation failed.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_relay_control()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="p2p.html#eos_relay_control">EOS_RELAY_CONTROL</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_query_nat_type">eos_p2p_query_nat_type</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-query-nat-type">EOS_P2P_QueryNATType</a></p>
+<p>This function queries the current NAT-type of the connection. It returns an async ID.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_query_nat_type()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_p2p_query_nat_type"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the query</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the call to the function</td>
+</tr>
+<tr>
+<td>nat_type</td>
+<td><a href="p2p.html#eos_nat_type">EOS_NAT_TYPE</a></td>
+<td>The queried NAT type</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_receive_packet">eos_p2p_receive_packet</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-receive-packet">EOS_P2P_ReceivePacket</a></p>
+<p>This function receives the next packet for the local user, and information associated with this packet, if it exists.</p>
+<p>The function returns the number of bytes written to the buffer if successful.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_receive_packet(buff, local_user_id, max_data_size_bytes, requested_channel)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buff</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The buffer to write the data to</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who is receiving the packet</td>
+</tr>
+<tr>
+<td>max_data_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum amount of data in bytes that can be safely copied to the buffer in the function call</td>
+</tr>
+<tr>
+<td>requested_channel</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>An optional channel to request the data for. If a value &lt; 0 is passed, the next packet is retrieved on any channel</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_remove_notify_incoming_packet_queue_full">eos_p2p_remove_notify_incoming_packet_queue_full</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-remove-notify-incoming-packet-queue-full">EOS_P2P_RemoveNotifyIncomingPacketQueueFull</a></p>
+<p>This function stops listening for full incoming packet queue events on a previously bound handler.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_incoming_packet_queue_full(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The previously bound notification ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_remove_notify_peer_connection_closed">eos_p2p_remove_notify_peer_connection_closed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-closed">EOS_P2P_RemoveNotifyPeerConnectionClosed</a></p>
+<p>This function stops notifications for connections being closed on a previously bound handler.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_closed(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The previously bound notification ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_remove_notify_peer_connection_established">eos_p2p_remove_notify_peer_connection_established</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-established">EOS_P2P_RemoveNotifyPeerConnectionEstablished</a></p>
+<p>This function stops notifications for connections being established on a previously bound handler.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_established(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The previously bound notification ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_remove_notify_peer_connection_interrupted">eos_p2p_remove_notify_peer_connection_interrupted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-interrupted">EOS_P2P_RemoveNotifyPeerConnectionInterrupted</a></p>
+<p>This function stops notifications for connections being interrupted on a previously bound handler.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_interrupted(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The previously bound notification ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_remove_notify_peer_connection_request">eos_p2p_remove_notify_peer_connection_request</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-request">EOS_P2P_RemoveNotifyPeerConnectionRequest</a></p>
+<p>This function stops listening for connection requests on a previously bound handler.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_request(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The previously bound notification ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_send_packet">eos_p2p_send_packet</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-send-packet">EOS_P2P_SendPacket</a></p>
+<p>This function sends a packet to a peer at the specified address. If there is already an open connection to this peer, it will be sent immediately. If there is no open connection, an attempt to connect to the peer will be made. An <code>EOS_RESULT.SUCCESS</code> result only means the data was accepted to be sent, not that it has been successfully delivered to the peer.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> - If the packet was queued to be sent successfully</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> - If the input was invalid</li>
+<li><code>EOS_RESULT.LIMIT_EXCEEDED</code> - If the amount of data being sent is too large, or the outgoing packet queue was full</li>
+<li><code>EOS_RESULT.NO_CONNECTION</code> -  If <code>disable_auto_accept_connection</code> was set to <code>true</code> and the connection was not currently accepted (call <a href="p2p.html#eos_p2p_accept_connection">eos_p2p_accept_connection</a> first, or set <code>disable_auto_accept_connection</code> to <code>false</code>)</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_send_packet(allow_delayed_delivery, disable_auto_accept_connection, channel, local_user_id, reliability, remote_user_id, socket_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow_delayed_delivery</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>false</code> and we do not already have an established connection to the peer, this data will be dropped</td>
+</tr>
+<tr>
+<td>disable_auto_accept_connection</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If set to <code>true</code>, <a href="p2p.html#eos_p2p_send_packet">eos_p2p_send_packet</a> will not automatically establish a connection with the <code>remote_user_id</code> and will require explicit calls to <a href="p2p.html#eos_p2p_accept_connection">eos_p2p_accept_connection</a> first whenever the connection is closed. If set to <code>false</code>, <a href="p2p.html#eos_p2p_send_packet">eos_p2p_send_packet</a> will automatically accept and start the connection any time it is called and the connection is not already open.</td>
+</tr>
+<tr>
+<td>channel</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The channel associated with this data</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is sending this packet</td>
+</tr>
+<tr>
+<td>reliability</td>
+<td><a href="p2p.html#eos_packet_reliability">EOS_PACKET_RELIABILITY</a></td>
+<td>Sets the reliability of the delivery of this packet.</td>
+</tr>
+<tr>
+<td>remote_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the Peer you would like to send a packet to</td>
+</tr>
+<tr>
+<td>socket_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The socket ID for data you are sending in this packet</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_set_packet_queue_size">eos_p2p_set_packet_queue_size</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-set-packet-queue-size">EOS_P2P_SetPacketQueueSize</a></p>
+<p>This function sets the maximum packet queue sizes that packets waiting to be sent or received can use. If the packet queue size is made smaller than the current queue size while there are packets in the queue that would push this packet size over, existing packets are kept but new packets may not be added to the full queue until enough packets are sent or received.</p>
+<p>The function returns <code>EOS_RESULT.SUCCESS</code> if the input options were valid, or <code>EOS_RESULT.INVALID_PARAMETERS</code> if the input was invalid in some way.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_set_packet_queue_size(incoming_packet_queue_max_size_bytes, outgoing_packet_queue_max_size_bytes)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>incoming_packet_queue_max_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ideal maximum amount of bytes the incoming packet queue can consume</td>
+</tr>
+<tr>
+<td>outgoing_packet_queue_max_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ideal maximum amount of bytes the outgoing packet queue can consume</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_set_port_range">eos_p2p_set_port_range</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-set-port-range">EOS_P2P_SetPortRange</a></p>
+<p>This function sets configuration options related to network ports.</p>
+<p>It returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> - if the options were set successfully</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> - if the options are invalid in some way</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_set_port_range(port, max_additional_ports_to_try)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ideal port to use for P2P traffic. The default value is 7777. If set to 0, the OS will choose a port. If set to 0, <code>max_additional_ports_to_try</code> must be set to 0.</td>
+</tr>
+<tr>
+<td>max_additional_ports_to_try</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum amount of additional ports to try if <code>port</code> is unavailable. Ports will be tried from <code>port</code> to <code>port + max_additional_ports_to_try</code> inclusive, until one is available or we run out of ports. If no ports are available, P2P connections will fail. The default value is 99.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_p2p_set_relay_control">eos_p2p_set_relay_control</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-p-2-p-set-relay-control">EOS_P2P_SetRelayControl</a></p>
+<p>This function sets how relay servers are to be used. This setting does not immediately apply to existing connections, but may apply to existing connections if the connection requires renegotiation.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> - if the options were set successfully</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> - if the options are invalid in some way</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_p2p_set_relay_control(relay_control)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>relay_control</td>
+<td><a href="p2p.html#eos_relay_control">EOS_RELAY_CONTROL</a></td>
+<td>The requested level of relay servers for P2P connections. This setting is only applied to new P2P connections, or when existing P2P connections reconnect during a temporary connectivity outage. Peers with an incompatible setting to the local setting will not be able to connect.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_nat_type">EOS_NAT_TYPE</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-enat-type">EOS_ENATType</a></p>
+<p>This enum holds the possible categories of NAT strictness.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_get_nat_type">eos_p2p_get_nat_type</a></li>
+<li><a href="p2p.html#eos_p2p_query_nat_type">eos_p2p_query_nat_type</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNKNOWN</code></td>
+<td>The NAT type is either unknown (remote) or EOS is unable to determine it (local)</td>
+</tr>
+<tr>
+<td><code>OPEN</code></td>
+<td>All peers can directly-connect to you</td>
+</tr>
+<tr>
+<td><code>MODERATE</code></td>
+<td>You can directly-connect to other Moderate and Open peers</td>
+</tr>
+<tr>
+<td><code>STRICT</code></td>
+<td>You can only directly-connect to Open peers</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connection_established_type">EOS_CONNECTION_ESTABLISHED_TYPE</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-connection-established-type">EOS_EConnectionEstablishedType</a></p>
+<p>This enum holds the possible types of established connection.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NEW_CONNECTION</code></td>
+<td>The connection is brand new</td>
+</tr>
+<tr>
+<td><code>RECONNECTION</code></td>
+<td>The connection is reestablished (reconnection)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connection_closed_reason">EOS_CONNECTION_CLOSED_REASON</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-connection-closed-reason">EOS_EConnectionClosedReason</a></p>
+<p>This enum holds the possible reasons why a P2P connection was closed.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNKNOWN</code></td>
+<td>The connection was closed for unknown reasons. This most notably happens during application shutdown.</td>
+</tr>
+<tr>
+<td><code>CLOSED_BY_LOCAL_USER</code></td>
+<td>The connection was at least locally accepted, but was closed by the local user via a call to <a href="p2p.html#eos_p2p_close_connection">eos_p2p_close_connection</a> / <a href="p2p.html#eos_p2p_close_connections">eos_p2p_close_connections</a>.</td>
+</tr>
+<tr>
+<td><code>CLOSED_BY_PEER</code></td>
+<td>The connection was at least locally accepted, but was gracefully closed by the remote user via a call to <a href="p2p.html#eos_p2p_close_connection">eos_p2p_close_connection</a> / <a href="p2p.html#eos_p2p_close_connections">eos_p2p_close_connections</a>.</td>
+</tr>
+<tr>
+<td><code>TIMED_OUT</code></td>
+<td>The connection was at least locally accepted, but was not remotely accepted in time.</td>
+</tr>
+<tr>
+<td><code>TOO_MANY_CONNECTIONS</code></td>
+<td>The connection was accepted, but the connection could not be created due to too many other existing connections.</td>
+</tr>
+<tr>
+<td><code>INVALID_MESSAGE</code></td>
+<td>The connection was accepted, The remote user sent an invalid message.</td>
+</tr>
+<tr>
+<td><code>INVALID_DATA</code></td>
+<td>The connection was accepted, but the remote user sent us invalid data.</td>
+</tr>
+<tr>
+<td><code>CONNECTION_FAILED</code></td>
+<td>The connection was accepted, but we failed to ever establish a connection with the remote user due to connectivity issues.</td>
+</tr>
+<tr>
+<td><code>CONNECTION_CLOSED</code></td>
+<td>The connection was accepted and established, but the peer silently went away.</td>
+</tr>
+<tr>
+<td><code>NEGOTIATION_FAILED</code></td>
+<td>The connection was locally accepted, but we failed to negotiate a connection with the remote user. This most commonly occurs if the local user goes offline or is logged-out during the connection process.</td>
+</tr>
+<tr>
+<td><code>UNEXPECTED_ERROR</code></td>
+<td>The connection was accepted, but there was an internal error occurred and the connection cannot be created or continue.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_network_connection_type">EOS_NETWORK_CONNECTION_TYPE</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-network-connection-type">EOS_ENetworkConnectionType</a></p>
+<p>This enum holds the possible types of network connection.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NO_CONNECTION</code></td>
+<td>There is no established connection</td>
+</tr>
+<tr>
+<td><code>DIRECT_CONNECTION</code></td>
+<td>A direct connection to the peer over the Internet or Local Network</td>
+</tr>
+<tr>
+<td><code>RELAYED_CONNECTION</code></td>
+<td>A relayed connection using Epic-provided servers to the peer over the Internet</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_packet_reliability">EOS_PACKET_RELIABILITY</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-packet-reliability">EOS_EPacketReliability</a></p>
+<p>This enum holds the different types of packet reliability. Ordered packets will only be ordered relative to other ordered packets. Reliable/unreliable and ordered/unordered communication can be sent on the same Socket ID and Channel.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_send_packet">eos_p2p_send_packet</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNRELIABLE_UNORDERED</code></td>
+<td>Packets will only be sent once and may be received out of order</td>
+</tr>
+<tr>
+<td><code>RELIABLE_UNORDERED</code></td>
+<td>Packets may be sent multiple times and may be received out of order</td>
+</tr>
+<tr>
+<td><code>RELIABLE_ORDERED</code></td>
+<td>Packets may be sent multiple times and will be received in order</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_relay_control">EOS_RELAY_CONTROL</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-relay-control">EOS_ERelayControl</a></p>
+<p>This enum holds the possible settings for controlling whether relay servers are used. Please see the relay control value compatibility-chart in the Epic Online Services documentation to better understand how changing this value can affect compatibility between clients with different settings. Connections between clients using Incompatible settings may succeed in limited scenarios but should be treated as though they will consistently fail.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_get_relay_control">eos_p2p_get_relay_control</a></li>
+<li><a href="p2p.html#eos_p2p_set_relay_control">eos_p2p_set_relay_control</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NO_RELAYS</code></td>
+<td>Peer connections will never attempt to use relay servers. Clients with restrictive NATs may not be able to connect to peers.</td>
+</tr>
+<tr>
+<td><code>ALLOW_RELAYS</code></td>
+<td>Peer connections will attempt to use relay servers, but only after direct connection attempts fail. This is the default value if not changed.</td>
+</tr>
+<tr>
+<td><code>FORCE_RELAYS</code></td>
+<td>Peer connections will only ever use relay servers. This will add latency to all connections, but will hide IP Addresses from peers.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="packetqueueinfo">PacketQueueInfo</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-p-2-p-packet-queue-info">EOS_P2P_PacketQueueInfo</a></p>
+<p>This struct contains information related to the current state of the packet queues. It is possible for the current size to be larger than the maximum size if the maximum size changes or if the maximum queue size is set to <code>EOS_P2P_MAX_QUEUE_SIZE_UNLIMITED</code>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="p2p.html#eos_p2p_get_packet_queue_info">eos_p2p_get_packet_queue_info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>incoming_packet_queue_current_packet_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current number of queued packets in the incoming packet queue</td>
+</tr>
+<tr>
+<td>incoming_packet_queue_current_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current size in bytes of the incoming packet queue</td>
+</tr>
+<tr>
+<td>incoming_packet_queue_max_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum size in bytes of the incoming packet queue</td>
+</tr>
+<tr>
+<td>outgoing_packet_queue_current_packet_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current amount of queued packets in the outgoing packet queue</td>
+</tr>
+<tr>
+<td>outgoing_packet_queue_current_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current size in bytes of the outgoing packet queue</td>
+</tr>
+<tr>
+<td>outgoing_packet_queue_max_size_bytes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum size in bytes of the outgoing packet queue</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="metrics.html" class="btn btn-neutral float-left" title="Metrics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="platform.html" class="btn btn-neutral float-right" title="Platform">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2025</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="metrics.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="platform.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

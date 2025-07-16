@@ -36,7 +36,50 @@ YYEXPORT void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions,
     OldPreGraphicsInitialisation();
 }
 
-std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func)
+std::vector<EOS_ProductUserId> _SW_GetArrayOfProductUserId(RValue* arg, int arg_idx, const char* _func)
+{
+	RValue* pV = &(arg[arg_idx]);
+
+	std::vector<EOS_ProductUserId> EOS_ProductUserIds = {};
+
+	if (KIND_RValue(pV) == VALUE_ARRAY){
+		std::vector<const char*> vec_Users = _SW_GetArrayOfStrings(arg, arg_idx, _func);
+		for (const char* e : vec_Users) {
+			EOS_ProductUserIds.push_back(EOS_ProductUserId_FromString(e));
+		}
+	}
+
+	return EOS_ProductUserIds;
+}
+
+std::vector<RValue> _SW_GetArrayOfRValues(RValue* arg, int arg_idx, const char* _func)
+{
+	RValue* pV = &(arg[arg_idx]);
+
+	std::vector<RValue> strings;
+
+	if (KIND_RValue(pV) == VALUE_ARRAY)
+	{
+		RValue elem;
+		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+		{
+			if (KIND_RValue(&elem) != VALUE_OBJECT)
+			{
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a Struct", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+			}
+
+			strings.push_back(elem);
+		}
+	}
+	else {
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
+	}
+
+	return strings;
+}
+
+
+std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);
 
@@ -49,20 +92,20 @@ std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const c
 		{
 			if (KIND_RValue(&elem) != VALUE_STRING)
 			{
-				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
 			}
 
 			strings.push_back(elem.GetString());
 		}
 	}
 	else {
-		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
 	}
 
 	return strings;
 }
 
-std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* func)
+std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);
 
@@ -75,20 +118,20 @@ std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* fun
 		{
 			if (KIND_RValue(&elem) != VALUE_INT32)
 			{
-				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
 			}
 
 			vec.push_back(YYGetInt32(&elem, i));
 		}
 	}
 	else {
-		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
 	}
 
 	return vec;
 }
 
-std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* func)
+std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* _func)
 {
 	RValue* pV = &(arg[arg_idx]);
 
@@ -101,14 +144,14 @@ std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* f
 		{
 			if (KIND_RValue(&elem) != VALUE_INT64)
 			{
-				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
 			}
 
 			vec.push_back(YYGetInt64(&elem, i));
 		}
 	}
 	else {
-		YYError("%s argument %d incorrect type (%s) expecting an Array", func, (arg_idx + 1), KIND_NAME_RValue(pV));
+		YYError("%s argument %d incorrect type (%s) expecting an Array", _func, (arg_idx + 1), KIND_NAME_RValue(pV));
 	}
 
 	return vec;

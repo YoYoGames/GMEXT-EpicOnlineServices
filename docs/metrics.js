@@ -2,33 +2,33 @@
 
 
 /**
- * @function EpicGames_Metrics_BeginPlayerSession
+ * @function eos_metrics_begin_player_session
  * @desc **Epic Online Services Function:** [EOS_Metrics_BeginPlayerSession](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Metrics/EOS_Metrics_BeginPlayerSession/index.html)
  * 
- * This function logs the start of a new game session for a local player. The game client should call this function whenever it joins into a new multiplayer, peer-to-peer or single player game session. Each call to ${function.EpicGames_Metrics_BeginPlayerSession} must be matched with a corresponding call to ${function.EpicGames_Metrics_EndPlayerSession}.
+ * This function logs the start of a new game session for a local player. The game client should call this function whenever it joins into a new multiplayer, peer-to-peer or single player game session. Each call to ${function.eos_metrics_begin_player_session} must be matched with a corresponding call to ${function.eos_metrics_end_player_session}.
  * 
- * @param {string} accountID An Epic Account ID. Set this field when `AccountIdType` is set to `EpicGames_MAIT_Epic`.
- * @param {string} DisplayName The in-game display name for the user.
- * @param {constant.EpicGames_Metrics_Account_Id_Type} AccountIdType Account ID type that is set in the union.
- * @param {constant.EpicGames_Metrics_Account_Id_Type} ControllerType The user's game controller type.
- * @param {string} ServerIp IP address of the game server hosting the game session. For a localhost session, set to `undefined`. If both IPv4 and IPv6 addresses are available, use the **IPv6** address.
- * @param {string} GameSessionId Optional, application-defined custom match session identifier. If the identifier is not used, set to `undefined` which will be shown in the Played Sessions listing at the user profile dashboard.
+ * @param {string} account_id An Epic Account ID. Set this field when `account_id_type` is set to `EOS_METRICS_ACCOUNT_ID_TYPE.EPIC`.
+ * @param {string} display_name The in-game display name for the user.
+ * @param {constant.EOS_METRICS_ACCOUNT_ID_TYPE} account_id_type Account ID type that is set in the union.
+ * @param {constant.EOS_USER_CONTROLLER_TYPE} controller_type The user's game controller type.
+ * @param {string} server_ip IP address of the game server hosting the game session. For a localhost session, set to `undefined`. If both IPv4 and IPv6 addresses are available, use the **IPv6** address.
+ * @param {string} [game_session_id] Optional, application-defined custom match session identifier. If the identifier is not used, set to `undefined` which will be shown in the Played Sessions listing at the user profile dashboard.
  * 
  * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
- * var _struct = EpicGames_Metrics_BeginPlayerSession(
- *         AccountID,
+ * var _struct = eos_metrics_begin_player_session(
+ *         account_id,
  *         "YYEpicGames",
- *         EpicGames_MAIT_Epic,
- *         EpicGames_UCT_MouseKeyboard,
+ *         EOS_METRICS_ACCOUNT_ID_TYPE.EPIC,
+ *         EOS_USER_CONTROLLER_TYPE.MOUSE_KEYBOARD,
  *         "No Server",
  *         "AnyRandomIDString");
  * 
- * if(struct.status != EpicGames_Success)
+ * if(_struct.status != EOS_RESULT.SUCCESS)
  * {
- *     show_debug_message("EpicGames_Metrics_BeginPlayerSession Failed");
+ *     show_debug_message("eos_metrics_begin_player_session failed");
  * }
  * ```
  * The above code shows an example of how the function should be used.
@@ -36,20 +36,20 @@
  */
 
 /**
- * @function EpicGames_Metrics_EndPlayerSession
+ * @function eos_metrics_end_player_session
  * @desc **Epic Online Services Function:** [EOS_Metrics_EndPlayerSession](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Metrics/EOS_Metrics_EndPlayerSession/index.html)
  * 
- * This function logs the end of a game session for a local player. Call once when the game client leaves the active game session. Each call to ${function.EpicGames_Metrics_BeginPlayerSession} must be matched with a corresponding call to ${function.EpicGames_Metrics_EndPlayerSession}.
+ * This function logs the end of a game session for a local player. Call once when the game client leaves the active game session. Each call to ${function.eos_metrics_begin_player_session} must be matched with a corresponding call to ${function.eos_metrics_end_player_session}.
  * 
- * @param {string} accountID Set this field when `AccountIdType` is set to `EpicGames_MAIT_Epic`
- * @param {constant.EpicGames_Metrics_Account_Id_Type} AccountIdType The Account ID type that is set in the union
+ * @param {string} account_id Set this field when `account_id_type` is set to `EOS_METRICS_ACCOUNT_ID_TYPE.EPIC`
+ * @param {constant.EOS_METRICS_ACCOUNT_ID_TYPE} account_id_type The Account ID type that is set in the union
  * 
  * @returns {struct.EpicResult}
  * 
  * @example
  * ```gml
- * var _struct = EpicGames_Metrics_EndPlayerSession(AccountID, EpicGames_MAIT_Epic);
- * show_debug_message("EpicGames_Metrics_EndPlayerSession: " + string(_struct.status_message));
+ * var _struct = eos_metrics_end_player_session(account_id, EOS_METRICS_ACCOUNT_ID_TYPE.EPIC);
+ * show_debug_message("eos_metrics_end_player_session: " + string(_struct.status_message));
  * ```
  * The above code shows an example of how the function should be used.
  * @function_end
@@ -58,26 +58,26 @@
 // Constants
 
 /**
- * @constant EpicGames_Metrics_Account_Id_Type
+ * @constant EOS_METRICS_ACCOUNT_ID_TYPE
  * @desc **Epic Online Services Enum:** [EOS_EMetricsAccountIdType](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-metrics-account-id-type)
  * 
- * These constants are used to describe the AccountId type.
+ * These constants are used to describe the account ID type.
  * 
- * @member EpicGames_MAIT_Epic An Epic Account ID
- * @member EpicGames_MAIT_External An external service Account ID
+ * @member EPIC An Epic Account ID
+ * @member EXTERNAL An external service Account ID
  * @constant_end
  */
 
 /**
- * @constant EpicGames_User_Controller_Type
+ * @constant EOS_USER_CONTROLLER_TYPE
  * @desc **Epic Online Services Enum:** [EOS_EUserControllerType](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-user-controller-type)
  * 
  * These constants are used to describe the type of controller being used during the current player session.
  * 
- * @member EpicGames_UCT_Unknown The game controller type is unknown
- * @member EpicGames_UCT_MouseKeyboard Mouse and keyboard controller
- * @member EpicGames_UCT_GamepadControl Gamepad controller
- * @member EpicGames_UCT_UCT_TouchControl Touch controller
+ * @member UNKNOWN The game controller type is unknown
+ * @member MOUSE_KEYBOARD Mouse and keyboard controller
+ * @member GAMEPAD_CONTROL Gamepad controller
+ * @member TOUCH_CONTROL Touch controller
  * @constant_end
  */
 
@@ -91,15 +91,15 @@
  * @section_func
  * @desc These functions are provided for handling metrics:
  * 
- * @ref EpicGames_Metrics_BeginPlayerSession
- * @ref EpicGames_Metrics_EndPlayerSession
+ * @ref eos_metrics_begin_player_session
+ * @ref eos_metrics_end_player_session
  * @section_end
  * 
  * @section_const
  * @desc These are the constants used by this API:
  * 
- * @ref EpicGames_Metrics_Account_Id_Type
- * @ref EpicGames_User_Controller_Type
+ * @ref EOS_METRICS_ACCOUNT_ID_TYPE
+ * @ref EOS_USER_CONTROLLER_TYPE
  * @section_end
 
  * @module_end

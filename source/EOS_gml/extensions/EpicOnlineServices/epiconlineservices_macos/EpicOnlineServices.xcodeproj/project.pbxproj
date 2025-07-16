@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B01D8A62D9E2F7500994F53 /* ExtBufferIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8A52D9E2F7500994F53 /* ExtBufferIO.cpp */; };
+		2B01D8AB2D9E2FBC00994F53 /* YYEOS_Lobbies.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8A72D9E2FBC00994F53 /* YYEOS_Lobbies.cpp */; };
+		2B01D8AC2D9E2FBC00994F53 /* YYEOS_Sessions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8AA2D9E2FBC00994F53 /* YYEOS_Sessions.cpp */; };
+		2B01D8AD2D9E2FBC00994F53 /* YYEOS_P2P.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8A82D9E2FBC00994F53 /* YYEOS_P2P.cpp */; };
+		2B01D8AE2D9E2FBC00994F53 /* YYEOS_RTC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8A92D9E2FBC00994F53 /* YYEOS_RTC.cpp */; };
+		2B01D8BE2D9E312400994F53 /* YYEOS_Presence__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B62D9E312400994F53 /* YYEOS_Presence__old.cpp */; };
+		2B01D8BF2D9E312400994F53 /* YYEOS_Ecom__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B22D9E312400994F53 /* YYEOS_Ecom__old.cpp */; };
+		2B01D8C02D9E312400994F53 /* YYEOS_Reports__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B82D9E312400994F53 /* YYEOS_Reports__old.cpp */; };
+		2B01D8C12D9E312400994F53 /* YYEOS_Achievements__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8AF2D9E312400994F53 /* YYEOS_Achievements__old.cpp */; };
+		2B01D8C22D9E312400994F53 /* YYEOS_Connect__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B12D9E312400994F53 /* YYEOS_Connect__old.cpp */; };
+		2B01D8C32D9E312400994F53 /* YYEOS_Friends__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B32D9E312400994F53 /* YYEOS_Friends__old.cpp */; };
+		2B01D8C42D9E312400994F53 /* YYEOS_PlayerDataStorage__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B52D9E312400994F53 /* YYEOS_PlayerDataStorage__old.cpp */; };
+		2B01D8C52D9E312400994F53 /* YYEOS_TitleStorage__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8BB2D9E312400994F53 /* YYEOS_TitleStorage__old.cpp */; };
+		2B01D8C62D9E312400994F53 /* YYEOS_UI__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8BC2D9E312400994F53 /* YYEOS_UI__old.cpp */; };
+		2B01D8C72D9E312400994F53 /* YYEOS_Auth__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B02D9E312400994F53 /* YYEOS_Auth__old.cpp */; };
+		2B01D8C82D9E312400994F53 /* YYEOS_Leaderboards__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B42D9E312400994F53 /* YYEOS_Leaderboards__old.cpp */; };
+		2B01D8C92D9E312400994F53 /* YYEOS_ProgressionSnapshot__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B72D9E312400994F53 /* YYEOS_ProgressionSnapshot__old.cpp */; };
+		2B01D8CA2D9E312400994F53 /* YYEOS_Stats__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8BA2D9E312400994F53 /* YYEOS_Stats__old.cpp */; };
+		2B01D8CB2D9E312400994F53 /* YYEOS_Sanctions__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8B92D9E312400994F53 /* YYEOS_Sanctions__old.cpp */; };
+		2B01D8CC2D9E312400994F53 /* YYEOS_UserInfo__old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B01D8BD2D9E312400994F53 /* YYEOS_UserInfo__old.cpp */; };
 		2B15C7312C375A41008ED693 /* YYEOS_Ecom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B15C7302C375A41008ED693 /* YYEOS_Ecom.cpp */; };
 		2B75FEA62C21F51500B207CF /* eos_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE592C21F51400B207CF /* eos_version.h */; };
 		2B75FEA72C21F51500B207CF /* eos_leaderboards_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B75FE5A2C21F51500B207CF /* eos_leaderboards_types.h */; };
@@ -130,6 +150,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B01D8A52D9E2F7500994F53 /* ExtBufferIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExtBufferIO.cpp; sourceTree = "<group>"; };
+		2B01D8A72D9E2FBC00994F53 /* YYEOS_Lobbies.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Lobbies.cpp; sourceTree = "<group>"; };
+		2B01D8A82D9E2FBC00994F53 /* YYEOS_P2P.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_P2P.cpp; sourceTree = "<group>"; };
+		2B01D8A92D9E2FBC00994F53 /* YYEOS_RTC.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_RTC.cpp; sourceTree = "<group>"; };
+		2B01D8AA2D9E2FBC00994F53 /* YYEOS_Sessions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Sessions.cpp; sourceTree = "<group>"; };
+		2B01D8AF2D9E312400994F53 /* YYEOS_Achievements__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Achievements__old.cpp; sourceTree = "<group>"; };
+		2B01D8B02D9E312400994F53 /* YYEOS_Auth__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Auth__old.cpp; sourceTree = "<group>"; };
+		2B01D8B12D9E312400994F53 /* YYEOS_Connect__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Connect__old.cpp; sourceTree = "<group>"; };
+		2B01D8B22D9E312400994F53 /* YYEOS_Ecom__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Ecom__old.cpp; sourceTree = "<group>"; };
+		2B01D8B32D9E312400994F53 /* YYEOS_Friends__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Friends__old.cpp; sourceTree = "<group>"; };
+		2B01D8B42D9E312400994F53 /* YYEOS_Leaderboards__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Leaderboards__old.cpp; sourceTree = "<group>"; };
+		2B01D8B52D9E312400994F53 /* YYEOS_PlayerDataStorage__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_PlayerDataStorage__old.cpp; sourceTree = "<group>"; };
+		2B01D8B62D9E312400994F53 /* YYEOS_Presence__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Presence__old.cpp; sourceTree = "<group>"; };
+		2B01D8B72D9E312400994F53 /* YYEOS_ProgressionSnapshot__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_ProgressionSnapshot__old.cpp; sourceTree = "<group>"; };
+		2B01D8B82D9E312400994F53 /* YYEOS_Reports__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Reports__old.cpp; sourceTree = "<group>"; };
+		2B01D8B92D9E312400994F53 /* YYEOS_Sanctions__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Sanctions__old.cpp; sourceTree = "<group>"; };
+		2B01D8BA2D9E312400994F53 /* YYEOS_Stats__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Stats__old.cpp; sourceTree = "<group>"; };
+		2B01D8BB2D9E312400994F53 /* YYEOS_TitleStorage__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_TitleStorage__old.cpp; sourceTree = "<group>"; };
+		2B01D8BC2D9E312400994F53 /* YYEOS_UI__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_UI__old.cpp; sourceTree = "<group>"; };
+		2B01D8BD2D9E312400994F53 /* YYEOS_UserInfo__old.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_UserInfo__old.cpp; sourceTree = "<group>"; };
 		2B15C7302C375A41008ED693 /* YYEOS_Ecom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YYEOS_Ecom.cpp; sourceTree = "<group>"; };
 		2B75FE592C21F51400B207CF /* eos_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_version.h; path = ../../EOS_sdk/Include/eos_version.h; sourceTree = "<group>"; };
 		2B75FE5A2C21F51500B207CF /* eos_leaderboards_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eos_leaderboards_types.h; path = ../../EOS_sdk/Include/eos_leaderboards_types.h; sourceTree = "<group>"; };
@@ -344,6 +384,22 @@
 		2BD17D7428349CA100C86127 /* GML */ = {
 			isa = PBXGroup;
 			children = (
+				2B01D8AF2D9E312400994F53 /* YYEOS_Achievements__old.cpp */,
+				2B01D8B02D9E312400994F53 /* YYEOS_Auth__old.cpp */,
+				2B01D8B12D9E312400994F53 /* YYEOS_Connect__old.cpp */,
+				2B01D8B22D9E312400994F53 /* YYEOS_Ecom__old.cpp */,
+				2B01D8B32D9E312400994F53 /* YYEOS_Friends__old.cpp */,
+				2B01D8B42D9E312400994F53 /* YYEOS_Leaderboards__old.cpp */,
+				2B01D8B52D9E312400994F53 /* YYEOS_PlayerDataStorage__old.cpp */,
+				2B01D8B62D9E312400994F53 /* YYEOS_Presence__old.cpp */,
+				2B01D8B72D9E312400994F53 /* YYEOS_ProgressionSnapshot__old.cpp */,
+				2B01D8B82D9E312400994F53 /* YYEOS_Reports__old.cpp */,
+				2B01D8B92D9E312400994F53 /* YYEOS_Sanctions__old.cpp */,
+				2B01D8BA2D9E312400994F53 /* YYEOS_Stats__old.cpp */,
+				2B01D8BB2D9E312400994F53 /* YYEOS_TitleStorage__old.cpp */,
+				2B01D8BC2D9E312400994F53 /* YYEOS_UI__old.cpp */,
+				2B01D8BD2D9E312400994F53 /* YYEOS_UserInfo__old.cpp */,
+				2B01D8A52D9E2F7500994F53 /* ExtBufferIO.cpp */,
 				2B15C7302C375A41008ED693 /* YYEOS_Ecom.cpp */,
 				2BD17D8228349CC200C86127 /* YYEOS_Platform.cpp */,
 				2BD17D7C28349CC200C86127 /* YYEOS_Achievements.cpp */,
@@ -353,6 +409,10 @@
 				2BD17D8528349CC200C86127 /* YYEOS_ExeTest.cpp */,
 				2BD17D7528349CC200C86127 /* YYEOS_Friends.cpp */,
 				2BD17D7928349CC200C86127 /* YYEOS_Leaderboards.cpp */,
+				2B01D8A72D9E2FBC00994F53 /* YYEOS_Lobbies.cpp */,
+				2B01D8A82D9E2FBC00994F53 /* YYEOS_P2P.cpp */,
+				2B01D8A92D9E2FBC00994F53 /* YYEOS_RTC.cpp */,
+				2B01D8AA2D9E2FBC00994F53 /* YYEOS_Sessions.cpp */,
 				2BD17D8928349CC200C86127 /* YYEOS_Lobbies.cpp */,
 				2BD17D8128349CC200C86127 /* YYEOS_Metrics.cpp */,
 				2BD17D7E28349CC200C86127 /* YYEOS_P2P.cpp */,
@@ -556,6 +616,21 @@
 				2BD17D9728349CC200C86127 /* YYEOS_Stats.cpp in Sources */,
 				2BC97929287F41760079F3E2 /* DesktopExtensionTools.mm in Sources */,
 				2BD17DA028349CC200C86127 /* YYEOS_Lobbies.cpp in Sources */,
+				2B01D8BE2D9E312400994F53 /* YYEOS_Presence__old.cpp in Sources */,
+				2B01D8BF2D9E312400994F53 /* YYEOS_Ecom__old.cpp in Sources */,
+				2B01D8C02D9E312400994F53 /* YYEOS_Reports__old.cpp in Sources */,
+				2B01D8C12D9E312400994F53 /* YYEOS_Achievements__old.cpp in Sources */,
+				2B01D8C22D9E312400994F53 /* YYEOS_Connect__old.cpp in Sources */,
+				2B01D8C32D9E312400994F53 /* YYEOS_Friends__old.cpp in Sources */,
+				2B01D8C42D9E312400994F53 /* YYEOS_PlayerDataStorage__old.cpp in Sources */,
+				2B01D8C52D9E312400994F53 /* YYEOS_TitleStorage__old.cpp in Sources */,
+				2B01D8C62D9E312400994F53 /* YYEOS_UI__old.cpp in Sources */,
+				2B01D8C72D9E312400994F53 /* YYEOS_Auth__old.cpp in Sources */,
+				2B01D8C82D9E312400994F53 /* YYEOS_Leaderboards__old.cpp in Sources */,
+				2B01D8C92D9E312400994F53 /* YYEOS_ProgressionSnapshot__old.cpp in Sources */,
+				2B01D8CA2D9E312400994F53 /* YYEOS_Stats__old.cpp in Sources */,
+				2B01D8CB2D9E312400994F53 /* YYEOS_Sanctions__old.cpp in Sources */,
+				2B01D8CC2D9E312400994F53 /* YYEOS_UserInfo__old.cpp in Sources */,
 				2BD17D9428349CC200C86127 /* YYEOS_CustomInvites.cpp in Sources */,
 				2BE86CFE281A0EA90072D68B /* dllmain.cpp in Sources */,
 				2BD17D9628349CC200C86127 /* YYEOS_Reports.cpp in Sources */,
@@ -570,7 +645,12 @@
 				2BD17D9B28349CC200C86127 /* YYEOS_Presence.cpp in Sources */,
 				2BD17D9E28349CC200C86127 /* YYEOS_UI.cpp in Sources */,
 				2BD17D9A28349CC200C86127 /* YYEOS_Connect.cpp in Sources */,
+				2B01D8AB2D9E2FBC00994F53 /* YYEOS_Lobbies.cpp in Sources */,
+				2B01D8AC2D9E2FBC00994F53 /* YYEOS_Sessions.cpp in Sources */,
+				2B01D8AD2D9E2FBC00994F53 /* YYEOS_P2P.cpp in Sources */,
+				2B01D8AE2D9E2FBC00994F53 /* YYEOS_RTC.cpp in Sources */,
 				2B15C7312C375A41008ED693 /* YYEOS_Ecom.cpp in Sources */,
+				2B01D8A62D9E2F7500994F53 /* ExtBufferIO.cpp in Sources */,
 				2BD17D9028349CC200C86127 /* YYEOS_Leaderboards.cpp in Sources */,
 				2BD17D9228349CC200C86127 /* YYEOS_PlayerDataStorage.cpp in Sources */,
 			);

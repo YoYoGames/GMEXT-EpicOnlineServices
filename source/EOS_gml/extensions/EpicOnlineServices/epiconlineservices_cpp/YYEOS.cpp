@@ -15,10 +15,8 @@
 #include <unistd.h>
 #endif
 
-	///////////////////////////////// EOS ///////////////////////////////////
 
-	EOS_HPlatform PlatformHandle = nullptr;
-	EOS_ContinuanceToken ContinuanceToken = nullptr;
+	///////////////////////////////// EOS ///////////////////////////////////
 
 	int identifier_count = 0;
 
@@ -81,12 +79,50 @@
 
 
 
+	std::vector<uint32_t> VectorUInt32FromVector(std::vector<const uint8_t*> array_ids)
+	{
+		EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
+
+		std::vector<uint32_t> ids = {};
+		for (int a = 0; a < array_ids.size(); a++)
+		{
+			ids.push_back((uint32_t)YYGetInt32(array_ids[a]));
+		}
+
+		return ids;
+	}
+
+	std::vector<const char*> VectorStringFromVector(std::vector<const uint8_t*> array_ids)
+	{
+		EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
+
+		std::vector<const char*> ids = {};
+		for (int a = 0; a < array_ids.size(); a++)
+		{
+			ids.push_back(YYGetString(array_ids[a]));
+		}
+
+		return ids;
+	}
+
+	std::vector<EOS_ProductUserId> VectorProductIdsFromVector(std::vector<const uint8_t*> array_ids)
+	{
+		EOS_SessionModification_SetAllowedPlatformIdsOptions Options = { 0 };
+
+		std::vector<EOS_ProductUserId> ids = {};
+		for (int a = 0; a < array_ids.size(); a++)
+		{
+			ids.push_back(EOS_ProductUserId_FromString(YYGetString(array_ids[a])));
+		}
+
+		return ids;
+	}
 
 	//////////////////////// NO INTERFACE FUNCTIONS:
 
-	YYEXPORT void EpicGames_EpicAccountId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_epic_account_id_is_valid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(1);
 
@@ -96,17 +132,17 @@
 		Result.val = EOS_EpicAccountId_IsValid(EOS_EpicAccountId_FromString(accountId));;
 	}
 
-	YYEXPORT void EpicGames_GetVersion(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_get_version(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_STRING;
+		eos_not_init_return_rvalue_string;
 
 		Result.kind = VALUE_STRING;
 		YYCreateString(&Result, EOS_GetVersion());
 	}
 
-	YYEXPORT void EpicGames_Logging_SetLogLevel(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_logging_set_log_level(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(2);
 
@@ -119,9 +155,9 @@
 		Result.val = true;
 	}
 
-	YYEXPORT void EpicGames_ProductUserId_IsValid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_product_user_id_is_valid(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		eos_ensure_argc(1);
 
@@ -131,9 +167,33 @@
 		Result.val = EOS_ProductUserId_IsValid(EOS_ProductUserId_FromString(mProductUserId));
 	}
 
-	YYEXPORT void EpicGames_Shutdown(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	YYEXPORT void eos_shutdown(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 	{
-		EOS_NotInitialisedReturn_BOOL;
+		eos_not_init_return_rvalue_bool;
 
 		return_EOS_EResult(&Result, EOS_Shutdown());
+	}
+
+	YYEXPORT void eos_result_to_string(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+	{
+		eos_not_init_return_rvalue_string;
+
+		eos_ensure_argc(1);
+
+		double v = YYGetReal(arg, 0);
+		
+		Result.kind = VALUE_STRING;
+		YYCreateString(&Result, EOS_EResult_ToString((EOS_EResult)v));
+	}
+	
+	void ProductIdsToArray(RValue& result, EOS_ProductUserId* user_ids, int count)
+	{
+		YYCreateArray(&result);
+
+		for (int i = 0; i < count; i++)
+		{
+			RValue value{};
+			YYCreateString(&value, productID_toString(user_ids[i]));
+			SET_RValue(&result, &value, NULL, i);
+		}
 	}

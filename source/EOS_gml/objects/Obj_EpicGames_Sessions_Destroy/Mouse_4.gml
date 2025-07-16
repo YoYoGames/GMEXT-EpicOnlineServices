@@ -1,0 +1,2 @@
+
+eos_sessions_destroy_session(Obj_EpicGames_Sessions.SessionName)

@@ -81,11 +81,23 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
                 </li>
               </ul>
               <ul>
@@ -97,7 +109,15 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
                 </li>
               </ul>
               <ul>
@@ -151,33 +171,33 @@ Friends lists are stored by the online service's servers, and can change during 
 <h2 id="functions">Functions</h2>
 <p>These functions are provided for handling friend lists:</p>
 <ul>
-<li><a href="friends.html#epicgames_friends_acceptinvite">EpicGames_Friends_AcceptInvite</a></li>
-<li><a href="friends.html#epicgames_friends_addnotifyfriendsupdate">EpicGames_Friends_AddNotifyFriendsUpdate</a></li>
-<li><a href="friends.html#epicgames_friends_getfriendatindex">EpicGames_Friends_GetFriendAtIndex</a></li>
-<li><a href="friends.html#epicgames_friends_getfriendscount">EpicGames_Friends_GetFriendsCount</a></li>
-<li><a href="friends.html#epicgames_friends_getstatus">EpicGames_Friends_GetStatus</a></li>
-<li><a href="friends.html#epicgames_friends_queryfriends">EpicGames_Friends_QueryFriends</a></li>
-<li><a href="friends.html#epicgames_friends_rejectinvite">EpicGames_Friends_RejectInvite</a></li>
-<li><a href="friends.html#epicgames_friends_removenotifyfriendsupdate">EpicGames_Friends_RemoveNotifyFriendsUpdate</a></li>
-<li><a href="friends.html#epicgames_friends_sendinvite">EpicGames_Friends_SendInvite</a></li>
+<li><a href="friends.html#eos_friends_accept_invite">eos_friends_accept_invite</a></li>
+<li><a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a></li>
+<li><a href="friends.html#eos_friends_get_friend_at_index">eos_friends_get_friend_at_index</a></li>
+<li><a href="friends.html#eos_friends_get_friends_count">eos_friends_get_friends_count</a></li>
+<li><a href="friends.html#eos_friends_get_status">eos_friends_get_status</a></li>
+<li><a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a></li>
+<li><a href="friends.html#eos_friends_reject_invite">eos_friends_reject_invite</a></li>
+<li><a href="friends.html#eos_friends_remove_notify_friends_update">eos_friends_remove_notify_friends_update</a></li>
+<li><a href="friends.html#eos_friends_send_invite">eos_friends_send_invite</a></li>
 </ul>
 <h2 id="constants">Constants</h2>
 <p>These are the constants used by this API:</p>
 <ul>
-<li><a href="friends.html#epicgames_friendship_status">EpicGames_Friendship_Status</a></li>
+<li><a href="friends.html#eos_friends_status">EOS_FRIENDS_STATUS</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_acceptinvite">EpicGames_Friends_AcceptInvite</h1>
+<h1 id="eos_friends_accept_invite">eos_friends_accept_invite</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_AcceptInvite/index.html">EOS_Friends_AcceptInvite</a></p>
 <p>This function starts an asynchronous task that accepts a friend invitation from another user. The completion delegate is executed after the backend response has been received.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_AcceptInvite(accountID, accountID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_accept_invite(account_id, account_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -189,12 +209,12 @@ Friends lists are stored by the online service's servers, and can change during 
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local, logged-in user who is accepting the friends list invitation</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the user who sent the friends list invitation</td>
 </tr>
@@ -224,12 +244,12 @@ Friends lists are stored by the online service's servers, and can change during 
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_Friends_AcceptInvite"</code></td>
+<td>The string <code>"eos_friends_accept_invite"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -245,12 +265,12 @@ Friends lists are stored by the online service's servers, and can change during 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Friends_AcceptInvite(accountID, accountID_target);</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_friends_accept_invite(account_id, account_id_target);</code></pre>
 The code sample above save the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Friends_AcceptInvite")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_friends_accept_invite")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
@@ -265,14 +285,14 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_addnotifyfriendsupdate">EpicGames_Friends_AddNotifyFriendsUpdate</h1>
+<h1 id="eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_AddNotifyFriendsUpdate/index.html">EOS_Friends_AddNotifyFriendsUpdate</a></p>
 <p>This function listens for changes to friends for a particular account.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_AddNotifyFriendsUpdate()</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_add_notify_friends_update()</code></pre>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -298,25 +318,25 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_Friends_AddNotifyFriendsUpdate"</code></td>
+<td>The string <code>"eos_friends_add_notify_friends_update"</code></td>
 </tr>
 <tr>
-<td>CurrentStatus</td>
-<td><a href="friends.html#epicgames_friendship_status">EpicGames_Friendship_Status</a></td>
+<td>current_status</td>
+<td><a href="friends.html#eos_friends_status">EOS_FRIENDS_STATUS</a></td>
 <td>The current status of the user.</td>
 </tr>
 <tr>
-<td>PreviousStatus</td>
-<td><a href="friends.html#epicgames_friendship_status">EpicGames_Friendship_Status</a></td>
+<td>previous_status</td>
+<td><a href="friends.html#eos_friends_status">EOS_FRIENDS_STATUS</a></td>
 <td>The previous status of the user.</td>
 </tr>
 <tr>
-<td>TargetUserId</td>
+<td>target_user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the user whose status is being updated.</td>
 </tr>
 <tr>
-<td>LocalUserId</td>
+<td>local_user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local user who is receiving the update</td>
 </tr>
@@ -324,18 +344,18 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Friends_AddNotifyFriendsUpdate();</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_friends_add_notify_friends_update();</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Friends_AddNotifyFriendsUpdate")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_friends_add_notify_friends_update")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -344,17 +364,17 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_getfriendatindex">EpicGames_Friends_GetFriendAtIndex</h1>
+<h1 id="eos_friends_get_friend_at_index">eos_friends_get_friend_at_index</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_GetFriendAtIndex/index.html">EOS_Friends_GetFriendAtIndex</a></p>
-<p>This function retrieves the Epic Account ID of an entry from the friends list that has already been cached. The Epic Account ID returned by this function may belong to an account that has been invited to be a friend or that has invited the local user to be a friend. To determine if the Epic Account ID returned by this function is a friend or a pending friend invitation, use the <a href="friends.html#epicgames_friends_getstatus">EpicGames_Friends_GetStatus</a> function.</p>
+<p>This function retrieves the Epic Account ID of an entry from the friends list that has already been cached. The Epic Account ID returned by this function may belong to an account that has been invited to be a friend or that has invited the local user to be a friend. To determine if the Epic Account ID returned by this function is a friend or a pending friend invitation, use the <a href="friends.html#eos_friends_get_status">eos_friends_get_status</a> function.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="friends.html#epicgames_friends_queryfriends">EpicGames_Friends_QueryFriends</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_GetFriendAtIndex(accountID, index)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_get_friend_at_index(account_id, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -366,14 +386,14 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The user account Identifier to get the friend data from.</td>
+<td>The user account identifier to get the friend data from.</td>
 </tr>
 <tr>
 <td>index</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>Index into the friend list. This value must be between 0 and <a href="friends.html#epicgames_friends_getfriendscount">EpicGames_Friends_GetFriendsCount</a> - 1 inclusively.</td>
+<td>Index into the friend list. This value must be between 0 and <a href="friends.html#eos_friends_get_friends_count">eos_friends_get_friends_count</a> - 1 inclusively.</td>
 </tr>
 </tbody>
 </table>
@@ -386,10 +406,10 @@ The code above matches the response against the correct event <strong>type</stro
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_Friends_GetFriendsCount(accountID);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_friends_get_friends_count(account_id);
 for(var i = 0 ; i &lt; _count; i++)
 {
-    var _friend_account = EpicGames_Friends_GetFriendAtIndex(accountID, i);
+    var _friend_account = eos_friends_get_friend_at_index(account_id, i);
 }</code></pre>
 The above code shows an example of how the function should be used. The friend's data is returned providing an index.</p>
 <p><br></p>
@@ -397,17 +417,17 @@ The above code shows an example of how the function should be used. The friend's
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_getfriendscount">EpicGames_Friends_GetFriendsCount</h1>
+<h1 id="eos_friends_get_friends_count">eos_friends_get_friends_count</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_GetFriendsCount/index.html">EOS_Friends_GetFriendsCount</a></p>
 <p>This function retrieves the number of friends on the friends list.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="friends.html#epicgames_friends_queryfriends">EpicGames_Friends_QueryFriends</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_GetFriendsCount(accountID)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_get_friends_count(account_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -419,7 +439,7 @@ The above code shows an example of how the function should be used. The friend's
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the user whose friends should be counted</td>
 </tr>
@@ -434,24 +454,24 @@ The above code shows an example of how the function should be used. The friend's
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_Friends_GetFriendsCount(accountID);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_friends_get_friends_count(account_id);
 for(var i = 0 ; i &lt; _count ; i++)
 {
-    var _friend_account = EpicGames_Friends_GetFriendAtIndex(accountID, i);
+    var _friend_account = eos_friends_get_friend_at_index(account_id, i);
 }</code></pre>
-The above code shows an example of how the function should be used. After a successful call to <a href="friends.html#epicgames_friends_queryfriends">EpicGames_Friends_QueryFriends</a>, the function <a href="friends.html#epicgames_friends_getfriendscount">EpicGames_Friends_GetFriendsCount</a> will return the number of entries in the query array which can then be accessed using the <a href="friends.html#epicgames_friends_getfriendatindex">EpicGames_Friends_GetFriendAtIndex</a> function.</p>
+The above code shows an example of how the function should be used. After a successful call to <a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a>, the function <a href="friends.html#eos_friends_get_friends_count">eos_friends_get_friends_count</a> will return the number of entries in the query array which can then be accessed using the <a href="friends.html#eos_friends_get_friend_at_index">eos_friends_get_friend_at_index</a> function.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_getstatus">EpicGames_Friends_GetStatus</h1>
+<h1 id="eos_friends_get_status">eos_friends_get_status</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_GetStatus/index.html">EOS_Friends_GetStatus</a></p>
 <p>This function retrieves the friendship status between the local user and another user.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_GetStatus(accountID, accountID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_get_status(account_id, account_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -463,12 +483,12 @@ The above code shows an example of how the function should be used. After a succ
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local, logged in user</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the user whose friendship status with the local user is being queried</td>
 </tr>
@@ -479,11 +499,11 @@ The above code shows an example of how the function should be used. After a succ
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="friends.html#epicgames_friendship_status">EpicGames_Friendship_Status</a></p>
+<p><a href="friends.html#eos_friends_status">EOS_FRIENDS_STATUS</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">if(EpicGames_Friends_GetStatus(accountID,accountID_target) == EpicGames_FS_Friends)
+<p><pre class="highlight"><code class="language-gml">if(eos_friends_get_status(account_id,account_id_target) == EOS_FRIENDS_STATUS.FRIENDS)
 {
      show_debug_message("It's my friend!!!");
 }
@@ -497,19 +517,19 @@ The above code shows an example of how the function should be used. The friendsh
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_queryfriends">EpicGames_Friends_QueryFriends</h1>
+<h1 id="eos_friends_query_friends">eos_friends_query_friends</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_QueryFriends/index.html">EOS_Friends_QueryFriends</a></p>
 <p>This function starts an asynchronous task that reads the user's friends list from the backend service, caching it for future use.
-Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call one of the following functions:</p>
+Once the callback has been fired with a successful <a href="general.html#eos_result">EOS_RESULT</a>, it is possible to call one of the following functions:</p>
 <ul>
-<li><a href="friends.html#epicgames_friends_getfriendatindex">EpicGames_Friends_GetFriendAtIndex</a></li>
-<li><a href="friends.html#epicgames_friends_getfriendscount">EpicGames_Friends_GetFriendsCount</a></li>
+<li><a href="friends.html#eos_friends_get_friend_at_index">eos_friends_get_friend_at_index</a></li>
+<li><a href="friends.html#eos_friends_get_friends_count">eos_friends_get_friends_count</a></li>
 </ul>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_QueryFriends(accountID)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_query_friends(account_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -521,7 +541,7 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local, logged-in user whose friends list you want to retrieve</td>
 </tr>
@@ -551,12 +571,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_Friends_QueryFriends"</code></td>
+<td>The string <code>"eos_friends_query_friends"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -572,18 +592,18 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Friends_QueryFriends(accountID);</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_friends_query_friends(account_id);</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Friends_QueryFriends")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_friends_query_friends")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -592,14 +612,14 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_rejectinvite">EpicGames_Friends_RejectInvite</h1>
+<h1 id="eos_friends_reject_invite">eos_friends_reject_invite</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_RejectInvite/index.html">EOS_Friends_RejectInvite</a></p>
 <p>This function starts an asynchronous task that rejects a friend invitation from another user. The completion delegate is executed after the backend response has been received.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_RejectInvite(accountID, accountID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_reject_invite(account_id, account_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -611,12 +631,12 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local, logged-in user who is rejecting a friends list invitation</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the user who sent the friends list invitation</td>
 </tr>
@@ -646,12 +666,12 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_Friends_RejectInvite"</code></td>
+<td>The string <code>"eos_friends_reject_invite"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -667,18 +687,18 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Friends_RejectInvite(accountID, accountID_target);</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_friends_reject_invite(account_id, account_id_target);</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Friends_RejectInvite")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_friends_reject_invite")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -687,13 +707,13 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_removenotifyfriendsupdate">EpicGames_Friends_RemoveNotifyFriendsUpdate</h1>
+<h1 id="eos_friends_remove_notify_friends_update">eos_friends_remove_notify_friends_update</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_RemoveNotifyFriendsUpdate/index.html">EOS_Friends_RemoveNotifyFriendsUpdate</a></p>
 <p>This function stop listening for friends changes on a previously bound handler.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_RemoveNotifyFriendsUpdate(id)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_remove_notify_friends_update(id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -707,7 +727,7 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The handle representing the registered callback (return by <a href="friends.html#epicgames_friends_addnotifyfriendsupdate">EpicGames_Friends_AddNotifyFriendsUpdate</a>)</td>
+<td>The handle representing the registered callback (return by <a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -720,25 +740,25 @@ The code above matches the response against the correct event <strong>type</stro
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">handle = EpicGames_Friends_AddNotifyFriendsUpdate();
+<p><pre class="highlight"><code class="language-gml">handle = eos_friends_add_notify_friends_update();
 //...
 //...later
 //...
-EpicGames_Friends_RemoveNotifyFriendsUpdate(handle);</code></pre>
-The code sample above enables the friend update notifications (<a href="friends.html#epicgames_friends_addnotifyfriendsupdate">EpicGames_Friends_AddNotifyFriendsUpdate</a>) and later disables them by referring to the previously generated handle.</p>
+eos_friends_remove_notify_friends_update(handle);</code></pre>
+The code sample above enables the friend update notifications (<a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a>) and later disables them by referring to the previously generated handle.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friends_sendinvite">EpicGames_Friends_SendInvite</h1>
+<h1 id="eos_friends_send_invite">eos_friends_send_invite</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_SendInvite/index.html">EOS_Friends_SendInvite</a></p>
 <p>This function starts an asynchronous task that sends a friend invitation to another user. The completion delegate is executed after the backend response has been received. It does not indicate that the target user has responded to the friend invitation.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Friends_SendInvite(accountID, accountID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_friends_send_invite(account_id, account_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -750,12 +770,12 @@ The code sample above enables the friend update notifications (<a href="friends.
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local, logged-in user who is sending the friends list invitation</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the user who is receiving the friends list invitation</td>
 </tr>
@@ -785,12 +805,12 @@ The code sample above enables the friend update notifications (<a href="friends.
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_Friends_SendInvite"</code></td>
+<td>The string <code>"eos_friends_send_invite"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -806,18 +826,18 @@ The code sample above enables the friend update notifications (<a href="friends.
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Friends_SendInvite(accountID, accountID_target);</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_friends_send_invite(account_id, account_id_target);</code></pre>
 The code sample above save the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Friends_SendInvite")
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_friends_send_invite")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 <p><br></p>
@@ -825,13 +845,13 @@ if (async_load[? "identifier"] == identifier)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_friendship_status">EpicGames_Friendship_Status</h1>
+<h1 id="eos_friends_status">EOS_FRIENDS_STATUS</h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-friends-status">EOS_EFriendsStatus</a></p>
 <p>These constants are used to describe the friendship status with a given account.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
-<li><a href="friends.html#epicgames_friends_addnotifyfriendsupdate">EpicGames_Friends_AddNotifyFriendsUpdate</a></li>
-<li><a href="friends.html#epicgames_friends_getstatus">EpicGames_Friends_GetStatus</a></li>
+<li><a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a></li>
+<li><a href="friends.html#eos_friends_get_status">eos_friends_get_status</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -843,19 +863,19 @@ if (async_load[? "identifier"] == identifier)
 </thead>
 <tbody>
 <tr>
-<td><code>EpicGames_FS_NotFriends</code></td>
+<td><code>NOT_FRIENDS</code></td>
 <td>The two accounts have no friendship status</td>
 </tr>
 <tr>
-<td><code>EpicGames_FS_InviteSent</code></td>
+<td><code>INVITE_SENT</code></td>
 <td>The local account has sent a friend invite to the other account</td>
 </tr>
 <tr>
-<td><code>EpicGames_FS_InviteReceived</code></td>
+<td><code>INVITE_RECEIVED</code></td>
 <td>The other account has sent a friend invite to the local account</td>
 </tr>
 <tr>
-<td><code>EpicGames_FS_Friends</code></td>
+<td><code>FRIENDS</code></td>
 <td>The accounts have accepted friendship</td>
 </tr>
 </tbody>
@@ -873,7 +893,7 @@ if (async_load[? "identifier"] == identifier)
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>YoYoGames 2024</p>
+      <p><p align="center">GameMaker 2025</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

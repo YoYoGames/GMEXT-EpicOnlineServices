@@ -1,0 +1,12 @@
+
+eos_p2p_remove_notify_incoming_packet_queue_full(notifyIncomingPacketQueueFull)
+eos_p2p_remove_notify_peer_connection_closed(notifyPeerConnectionClosed)
+eos_p2p_remove_notify_peer_connection_established(notifyPeerConnectionEstablished)
+eos_p2p_remove_notify_peer_connection_interrupted(notifyPeerConnectionInterrupted)
+eos_p2p_remove_notify_peer_connection_request(notifyPeerConnectionRequest)
+
+show_debug_message("CLEAN UP")
+for(var a = 0 ; a < array_length(EstablishedProductIDs) ; a++)
+{
+	disconnect(EstablishedProductIDs[a])
+}

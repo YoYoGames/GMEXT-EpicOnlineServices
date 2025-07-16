@@ -2,34 +2,34 @@
 
 
 /**
- * @function EpicGames_Friends_AcceptInvite
+ * @function eos_friends_accept_invite
  * @desc **Epic Online Services Function:** [EOS_Friends_AcceptInvite](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_AcceptInvite/index.html)
  * 
  * This function starts an asynchronous task that accepts a friend invitation from another user. The completion delegate is executed after the backend response has been received.
  * 
- * @param {string} accountID The Epic Account ID of the local, logged-in user who is accepting the friends list invitation
- * @param {string} accountID_target The Epic Account ID of the user who sent the friends list invitation
+ * @param {string} account_id The Epic Account ID of the local, logged-in user who is accepting the friends list invitation
+ * @param {string} account_id_target The Epic Account ID of the user who sent the friends list invitation
  * 
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Friends_AcceptInvite"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_friends_accept_invite"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Friends_AcceptInvite(accountID, accountID_target);
+ * identifier = eos_friends_accept_invite(account_id, account_id_target);
  * ```
  * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Friends_AcceptInvite")
+ * if (async_load[? "type"] == "eos_friends_accept_invite")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
@@ -44,7 +44,7 @@
  */
 
 /**
- * @function EpicGames_Friends_AddNotifyFriendsUpdate
+ * @function eos_friends_add_notify_friends_update
  * @desc **Epic Online Services Function:** [EOS_Friends_AddNotifyFriendsUpdate](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_AddNotifyFriendsUpdate/index.html)
  * 
  * This function listens for changes to friends for a particular account.
@@ -52,30 +52,30 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Friends_AddNotifyFriendsUpdate"`
- * @member {constant.EpicGames_Friendship_Status} CurrentStatus The current status of the user.
- * @member {constant.EpicGames_Friendship_Status} PreviousStatus The previous status of the user.
- * @member {string} TargetUserId The Epic Account ID of the user whose status is being updated.
- * @member {string} LocalUserId The Epic Account ID of the local user who is receiving the update
+ * @member {string} type The string `"eos_friends_add_notify_friends_update"`
+ * @member {constant.EOS_FRIENDS_STATUS} current_status The current status of the user.
+ * @member {constant.EOS_FRIENDS_STATUS} previous_status The previous status of the user.
+ * @member {string} target_user_id The Epic Account ID of the user whose status is being updated.
+ * @member {string} local_user_id The Epic Account ID of the local user who is receiving the update
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Friends_AddNotifyFriendsUpdate();
+ * identifier = eos_friends_add_notify_friends_update();
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Friends_AddNotifyFriendsUpdate")
+ * if (async_load[? "type"] == "eos_friends_add_notify_friends_update")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -84,23 +84,23 @@
  */
 
 /**
- * @function EpicGames_Friends_GetFriendAtIndex
+ * @function eos_friends_get_friend_at_index
  * @desc **Epic Online Services Function:** [EOS_Friends_GetFriendAtIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_GetFriendAtIndex/index.html)
  * 
- * This function retrieves the Epic Account ID of an entry from the friends list that has already been cached. The Epic Account ID returned by this function may belong to an account that has been invited to be a friend or that has invited the local user to be a friend. To determine if the Epic Account ID returned by this function is a friend or a pending friend invitation, use the ${function.EpicGames_Friends_GetStatus} function.
+ * This function retrieves the Epic Account ID of an entry from the friends list that has already been cached. The Epic Account ID returned by this function may belong to an account that has been invited to be a friend or that has invited the local user to be a friend. To determine if the Epic Account ID returned by this function is a friend or a pending friend invitation, use the ${function.eos_friends_get_status} function.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_Friends_QueryFriends} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_friends_query_friends} to store values in cache.]]
  * 
- * @param {string} accountID The user account Identifier to get the friend data from.
- * @param {real} index Index into the friend list. This value must be between 0 and ${function.EpicGames_Friends_GetFriendsCount} - 1 inclusively.
+ * @param {string} account_id The user account identifier to get the friend data from.
+ * @param {real} index Index into the friend list. This value must be between 0 and ${function.eos_friends_get_friends_count} - 1 inclusively.
  * 
  * @returns {string}
  * @example
  * ```gml
- * var _count = EpicGames_Friends_GetFriendsCount(accountID);
+ * var _count = eos_friends_get_friends_count(account_id);
  * for(var i = 0 ; i < _count; i++)
  * {
- *     var _friend_account = EpicGames_Friends_GetFriendAtIndex(accountID, i);
+ *     var _friend_account = eos_friends_get_friend_at_index(account_id, i);
  * }
  * ```
  * The above code shows an example of how the function should be used. The friend's data is returned providing an index.
@@ -108,43 +108,43 @@
  */
 
 /**
- * @function EpicGames_Friends_GetFriendsCount
+ * @function eos_friends_get_friends_count
  * @desc **Epic Online Services Function:** [EOS_Friends_GetFriendsCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_GetFriendsCount/index.html)
  * 
  * This function retrieves the number of friends on the friends list.
  * 
- * [[Note: Requires a previous call to ${function.EpicGames_Friends_QueryFriends} to store values in cache.]]
+ * [[Note: Requires a previous call to ${function.eos_friends_query_friends} to store values in cache.]]
  * 
- * @param {string} accountID The Epic Account ID of the user whose friends should be counted
+ * @param {string} account_id The Epic Account ID of the user whose friends should be counted
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * var _count = EpicGames_Friends_GetFriendsCount(accountID);
+ * var _count = eos_friends_get_friends_count(account_id);
  * for(var i = 0 ; i < _count ; i++)
  * {
- *     var _friend_account = EpicGames_Friends_GetFriendAtIndex(accountID, i);
+ *     var _friend_account = eos_friends_get_friend_at_index(account_id, i);
  * }
  * ```
- * The above code shows an example of how the function should be used. After a successful call to ${function.EpicGames_Friends_QueryFriends}, the function ${function.EpicGames_Friends_GetFriendsCount} will return the number of entries in the query array which can then be accessed using the ${function.EpicGames_Friends_GetFriendAtIndex} function.
+ * The above code shows an example of how the function should be used. After a successful call to ${function.eos_friends_query_friends}, the function ${function.eos_friends_get_friends_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_friends_get_friend_at_index} function.
  * @function_end
  */
 
 /**
- * @function EpicGames_Friends_GetStatus
+ * @function eos_friends_get_status
  * @desc **Epic Online Services Function:** [EOS_Friends_GetStatus](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_GetStatus/index.html)
  * 
  * This function retrieves the friendship status between the local user and another user.
  * 
- * @param {string} accountID The Epic Account ID of the local, logged in user
- * @param {string} accountID_target The Epic Account ID of the user whose friendship status with the local user is being queried
+ * @param {string} account_id The Epic Account ID of the local, logged in user
+ * @param {string} account_id_target The Epic Account ID of the user whose friendship status with the local user is being queried
  * 
- * @returns {constant.EpicGames_Friendship_Status}
+ * @returns {constant.EOS_FRIENDS_STATUS}
  * 
  * @example
  * ```gml
- * if(EpicGames_Friends_GetStatus(accountID,accountID_target) == EpicGames_FS_Friends)
+ * if(eos_friends_get_status(account_id,account_id_target) == EOS_FRIENDS_STATUS.FRIENDS)
  * {
  *      show_debug_message("It's my friend!!!");
  * }
@@ -158,43 +158,43 @@
  */
 
 /**
- * @function EpicGames_Friends_QueryFriends
+ * @function eos_friends_query_friends
  * @desc **Epic Online Services Function:** [EOS_Friends_QueryFriends](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_QueryFriends/index.html)
  * 
  * This function starts an asynchronous task that reads the user's friends list from the backend service, caching it for future use.
- * Once the callback has been fired with a successful ${constant.EpicGames_Result}, it is possible to call one of the following functions:
+ * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
  *
- * * ${function.EpicGames_Friends_GetFriendAtIndex}
- * * ${function.EpicGames_Friends_GetFriendsCount}
+ * * ${function.eos_friends_get_friend_at_index}
+ * * ${function.eos_friends_get_friends_count}
  * 
- * @param {string} accountID The Epic Account ID of the local, logged-in user whose friends list you want to retrieve
+ * @param {string} account_id The Epic Account ID of the local, logged-in user whose friends list you want to retrieve
  * 
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Friends_QueryFriends"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_friends_query_friends"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Friends_QueryFriends(accountID);
+ * identifier = eos_friends_query_friends(account_id);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Friends_QueryFriends")
+ * if (async_load[? "type"] == "eos_friends_query_friends")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -203,40 +203,40 @@
  */
 
 /**
- * @function EpicGames_Friends_RejectInvite
+ * @function eos_friends_reject_invite
  * @desc **Epic Online Services Function:** [EOS_Friends_RejectInvite](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_RejectInvite/index.html)
  * 
  * This function starts an asynchronous task that rejects a friend invitation from another user. The completion delegate is executed after the backend response has been received.
  * 
- * @param {string} accountID The Epic Account ID of the local, logged-in user who is rejecting a friends list invitation
- * @param {string} accountID_target The Epic Account ID of the user who sent the friends list invitation
+ * @param {string} account_id The Epic Account ID of the local, logged-in user who is rejecting a friends list invitation
+ * @param {string} account_id_target The Epic Account ID of the user who sent the friends list invitation
  * 
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Friends_RejectInvite"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_friends_reject_invite"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Friends_RejectInvite(accountID, accountID_target);
+ * identifier = eos_friends_reject_invite(account_id, account_id_target);
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Friends_RejectInvite")
+ * if (async_load[? "type"] == "eos_friends_reject_invite")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -245,60 +245,60 @@
  */
 
 /**
- * @function EpicGames_Friends_RemoveNotifyFriendsUpdate
+ * @function eos_friends_remove_notify_friends_update
  * @desc **Epic Online Services Function:** [EOS_Friends_RemoveNotifyFriendsUpdate](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_RemoveNotifyFriendsUpdate/index.html)
  * 
  * This function stop listening for friends changes on a previously bound handler.
  * 
- * @param {real} id The handle representing the registered callback (return by ${function.EpicGames_Friends_AddNotifyFriendsUpdate})
+ * @param {real} id The handle representing the registered callback (return by ${function.eos_friends_add_notify_friends_update})
  * 
  * @example
  * ```gml
- * handle = EpicGames_Friends_AddNotifyFriendsUpdate();
+ * handle = eos_friends_add_notify_friends_update();
  * //...
  * //...later
  * //...
- * EpicGames_Friends_RemoveNotifyFriendsUpdate(handle);
+ * eos_friends_remove_notify_friends_update(handle);
  * ```
- * The code sample above enables the friend update notifications (${function.EpicGames_Friends_AddNotifyFriendsUpdate}) and later disables them by referring to the previously generated handle.
+ * The code sample above enables the friend update notifications (${function.eos_friends_add_notify_friends_update}) and later disables them by referring to the previously generated handle.
  * @function_end
  */
 
 /**
- * @function EpicGames_Friends_SendInvite
+ * @function eos_friends_send_invite
  * @desc **Epic Online Services Function:** [EOS_Friends_SendInvite](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Friends/EOS_Friends_SendInvite/index.html)
  * 
  * This function starts an asynchronous task that sends a friend invitation to another user. The completion delegate is executed after the backend response has been received. It does not indicate that the target user has responded to the friend invitation.
  * 
- * @param {string} accountID The Epic Account ID of the local, logged-in user who is sending the friends list invitation
- * @param {string} accountID_target The Epic Account ID of the user who is receiving the friends list invitation
+ * @param {string} account_id The Epic Account ID of the local, logged-in user who is sending the friends list invitation
+ * @param {string} account_id_target The Epic Account ID of the user who is receiving the friends list invitation
  * 
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Friends_SendInvite"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_friends_send_invite"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
  * @member {real} identifier The asynchronous listener ID.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Friends_SendInvite(accountID, accountID_target);
+ * identifier = eos_friends_send_invite(account_id, account_id_target);
  * ```
  * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Friends_SendInvite")
+ * if (async_load[? "type"] == "eos_friends_send_invite")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -306,15 +306,15 @@
  */
 
 /**
- * @constant EpicGames_Friendship_Status
+ * @constant EOS_FRIENDS_STATUS
  * @desc **Epic Online Services Enum:** [EOS_EFriendsStatus](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-friends-status)
  * 
  * These constants are used to describe the friendship status with a given account.
  * 
- * @member EpicGames_FS_NotFriends The two accounts have no friendship status
- * @member EpicGames_FS_InviteSent The local account has sent a friend invite to the other account
- * @member EpicGames_FS_InviteReceived The other account has sent a friend invite to the local account
- * @member EpicGames_FS_Friends The accounts have accepted friendship
+ * @member NOT_FRIENDS The two accounts have no friendship status
+ * @member INVITE_SENT The local account has sent a friend invite to the other account
+ * @member INVITE_RECEIVED The other account has sent a friend invite to the local account
+ * @member FRIENDS The accounts have accepted friendship
  * @constant_end
  */
 
@@ -326,20 +326,20 @@
  * 
  * @section_func
  * @desc These functions are provided for handling friend lists:
- * @ref EpicGames_Friends_AcceptInvite
- * @ref EpicGames_Friends_AddNotifyFriendsUpdate
- * @ref EpicGames_Friends_GetFriendAtIndex
- * @ref EpicGames_Friends_GetFriendsCount
- * @ref EpicGames_Friends_GetStatus
- * @ref EpicGames_Friends_QueryFriends
- * @ref EpicGames_Friends_RejectInvite
- * @ref EpicGames_Friends_RemoveNotifyFriendsUpdate
- * @ref EpicGames_Friends_SendInvite
+ * @ref eos_friends_accept_invite
+ * @ref eos_friends_add_notify_friends_update
+ * @ref eos_friends_get_friend_at_index
+ * @ref eos_friends_get_friends_count
+ * @ref eos_friends_get_status
+ * @ref eos_friends_query_friends
+ * @ref eos_friends_reject_invite
+ * @ref eos_friends_remove_notify_friends_update
+ * @ref eos_friends_send_invite
  * @section_end
  * 
  * @section_const
  * @desc These are the constants used by this API:
- * @ref EpicGames_Friendship_Status
+ * @ref EOS_FRIENDS_STATUS
  * @section_end
  * 
  * @module_end

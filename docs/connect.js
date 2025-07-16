@@ -1,32 +1,32 @@
 // Functions
 
 /**
- * @function EpicGames_Connect_AddNotifyAuthExpiration
+ * @function eos_connect_add_notify_auth_expiration
  * @desc **Epic Online Services Function:** [EOS_Connect_AddNotifyAuthExpiration](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_AddNotifyAuthExpiration/index.html)
  * 
- * This function registers to receive upcoming authentication expiration notifications. Notification is approximately 10 minutes prior to expiration. Call ${function.EpicGames_Connect_Login} again with valid third-party credentials to refresh access.
+ * This function registers to receive upcoming authentication expiration notifications. Notification is approximately 10 minutes prior to expiration. Call ${function.eos_connect_login} again with valid third-party credentials to refresh access.
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Connect_AddNotifyAuthExpiration"`
- * @member {real} identifier The asynchronous listener ID.
+ * @member {string} type The string `"eos_connect_add_notify_auth_expiration"`
+ * @member {real} identifier The asynchronous listener ID
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Connect_AddNotifyAuthExpiration();
+ * identifier = eos_connect_add_notify_auth_expiration();
  * ```
- * The code sample above save the identifier that can be used inside a ${event.social}.
+ * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Connect_AddNotifyAuthExpiration")
+ * if (async_load[? "type"] == "eos_connect_add_notify_auth_expiration")
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -35,7 +35,7 @@
  */
 
 /**
- * @function EpicGames_Connect_AddNotifyLoginStatusChanged
+ * @function eos_connect_add_notify_login_status_changed
  * @desc **Epic Online Services Function:** [EOS_Connect_AddNotifyLoginStatusChanged](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_AddNotifyLoginStatusChanged/index.html)
  * 
  * This function registers to receive user login status updates.
@@ -43,28 +43,28 @@
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Connect_AddNotifyLoginStatusChanged"`
- * @member {constant.EpicGames_Login_Status} CurrentStatus The status at the time of the notification
- * @member {constant.EpicGames_Login_Status} PrevStatus The status prior to the change
+ * @member {string} type The string `"eos_connect_add_notify_login_status_changed"`
+ * @member {constant.EOS_LOGIN_STATUS} current_status The status at the time of the notification
+ * @member {constant.EOS_LOGIN_STATUS} previous_status The status prior to the change
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Connect_AddNotifyLoginStatusChanged();
+ * identifier = eos_connect_add_notify_login_status_changed();
  * ```
  * The code sample above save the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Connect_AddNotifyLoginStatusChanged")
+ * if (async_load[? "type"] == "eos_connect_add_notify_login_status_changed")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -73,21 +73,21 @@
  */
 
 /**
- * @function EpicGames_Connect_CopyIdToken
+ * @function eos_connect_copy_id_token
  * @desc **Epic Online Services Function:** [EOS_Connect_CopyIdToken](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_CopyIdToken/index.html)
  * 
  * This function fetches an ID token for a Product User ID.
  * 
- * @param {string} user The local Product User ID whose ID token should be copied.
+ * @param {string} user The local Product User ID whose ID token should be copied
  * 
  * @returns {struct.IdToken}
  * 
  * @example
  * ```gml
- * var _struct = EpicGames_Connect_CopyIdToken(user);
- * if(_struct.status = EpicGames_Success)
+ * var _struct = eos_connect_copy_id_token(user);
+ * if(_struct.status = EOS_RESULT.SUCCESS)
  * {
- *     JsonWebToken = _struct.JsonWebToken;
+ *     json_web_token = _struct.json_web_token;
  * }
  * ```
  * The above code shows an example of how the function should be used. The JWT associated with the provided product user ID is returned inside the struct, alongside other useful information.
@@ -95,19 +95,19 @@
  */
 
 /**
- * @function EpicGames_Connect_CopyProductUserInfo
+ * @function eos_connect_copy_product_user_info
  * @desc **Epic Online Services Function:** [EOS_Connect_CopyProductUserInfo](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_CopyProductUserInfo/index.html)
  * 
  * This function fetches information about a Product User, using the external account that they most recently logged in with as the reference.
  * 
- * @param {string} userID_target Product user ID to look for when copying external account info from the cache.
+ * @param {string} user_id_target Product user ID to look for when copying external account info from the cache.
  * 
  * @returns {struct.ExternalAccountInfo}
  * 
  * @example
  * ```gml
- * var _struct = EpicGames_Connect_CopyProductUserInfo(userID_target);
- * if(_struct.status == EpicGames_Success)
+ * var _struct = eos_connect_copy_product_user_info(user_id_target);
+ * if(_struct.status == EOS_RESULT.SUCCESS)
  * {
  *     // access the data here
  * }
@@ -117,38 +117,38 @@
  */
 
 /**
- * @function EpicGames_Connect_CreateUser
+ * @function eos_connect_create_user
  * @desc **Epic Online Services Function:** [EOS_Connect_CreateUser](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_CreateUser/index.html)
  * 
  * This function creates an account association with the Epic Online Services as a product user given their external auth credentials.
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Connect_CreateUser"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_connect_create_user"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
- * @member {string} [LocalUserId] If the operation succeeded, this is the Product User ID of the local user who was created.
+ * @member {real} identifier The asynchronous listener ID
+ * @member {string} [local_user_id] If the operation succeeded, this is the Product User ID of the local user who was created
  * @event_end
  * 
  * @returns {real}
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Connect_CreateUser();
+ * identifier = eos_connect_create_user();
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Connect_CreateUser")
+ * if (async_load[? "type"] == "eos_connect_create_user")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -157,63 +157,63 @@
  */
 
 /**
- * @function EpicGames_Connect_GetLoginStatus
+ * @function eos_connect_get_login_status
  * @desc **Epic Online Services Function:** [EOS_Connect_GetLoginStatus](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_GetLoginStatus/index.html)
  * 
  * This function fetches the login status for a Product User ID. This Product User ID is considered logged in as long as the underlying access token has not expired.
  * 
- * @param {string} user The Product User ID of the user being queried.
+ * @param {string} user The Product User ID of the user being queried
  * 
  * @returns {real} EpicGames Login Status
  * 
  * @example
  * ```gml
- * if(EpicGames_Connect_GetLoginStatus(user) == EpicGames_LS_LoggedIn)
- *     show_debug_message(user + ": is logged");
+ * if(eos_connect_get_login_status(user) == EOS_LOGIN_STATUS.LOGGED_IN)
+ *     show_debug_message(user + ": is logged in");
  * else
- *     show_debug_message(user + ": not logged");
+ *     show_debug_message(user + ": not logged in");
  * ```
  * The above code shows an example of how the function should be used. A login status constant is returned and checked against the provided built-in constants.
  * @function_end
  */
 
 /**
- * @function EpicGames_Connect_Login
+ * @function eos_connect_login
  * @desc **Epic Online Services Function:** [EOS_Connect_Login](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_Login/index.html)
  * 
  * This function logs in / authenticates given a valid set of external auth credentials.
  * 
- * @param {constant.EpicGames_External_Credential_Type} type Type of external login; identifies the authentication method to use.
- * @param {string} access_token External token associated with the user logging in.
- * @param {string} display_name The user's display name on the identity provider systems.
+ * @param {constant.EOS_EXTERNAL_CREDENTIAL_TYPE} type Type of external login; identifies the authentication method to use.
+ * @param {string} access_token External token associated with the user logging in
+ * @param {string} display_name The user's display name on the identity provider systems
  * 
  * @returns {real}
  * 
  * @event social
- * @member {string} type The string `"EpicGames_Connect_Login"`
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @member {string} type The string `"eos_connect_login"`
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID.
- * @member {string} [LocalUserId] If the operation succeeded, this is the Product User ID of the local user who logged in.
+ * @member {real} identifier The asynchronous listener ID
+ * @member {string} [local_user_id] If the operation succeeded, this is the Product User ID of the local user who logged in.
  * @event_end
  * 
  * @example
  * ```gml
- * identifier = EpicGames_Connect_Login();
+ * identifier = eos_connect_login();
  * ```
  * The code sample above saves the identifier that can be used inside a ${event.social}.
  * 
  * ```gml
- * if (async_load[? "type"] == "EpicGames_Connect_Login")
+ * if (async_load[? "type"] == "eos_connect_login")
  * if (async_load[? "identifier"] == identifier)
  * {
- *     if (async_load[? "status"] == EpicGames_Success)
+ *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
  *     {
  *         show_debug_message(async_load[? "type"] + " succeeded!");
  *     }
  *     else
  *     {
- *          show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+ *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
  *     }
  * }
  * ```
@@ -222,42 +222,42 @@
  */
 
 /**
- * @function EpicGames_Connect_RemoveNotifyAuthExpiration
+ * @function eos_connect_remove_notify_auth_expiration
  * @desc **Epic Online Services Function:** [EOS_Connect_RemoveNotifyAuthExpiration](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_RemoveNotifyAuthExpiration/index.html)
  * 
  * This function unregisters from receiving expiration notifications.
  * 
- * @param {real} id The handle representing the registered callback (returned by ${function.EpicGames_Connect_AddNotifyAuthExpiration})
+ * @param {real} id The handle representing the registered callback (returned by ${function.eos_connect_add_notify_auth_expiration})
  * 
  * @example
  * ```gml
- * AddNotifyAuthExpiration_id = EpicGames_Connect_AddNotifyAuthExpiration();
+ * add_notify_auth_expiration_id = eos_connect_add_notify_auth_expiration();
  * //...
  * //...Later
  * //...
- * EpicGames_Connect_RemoveNotifyAuthExpiration(AddNotifyAuthExpiration_id);
+ * eos_connect_remove_notify_auth_expiration(add_notify_auth_expiration_id);
  * ```
- * The code sample above enables the auth expiration notifications (${function.EpicGames_Connect_AddNotifyAuthExpiration}) and later disables them by referring to the previously generated handle.
+ * The code sample above enables the auth expiration notifications (${function.eos_connect_add_notify_auth_expiration}) and later disables them by referring to the previously generated handle.
  * @function_end
  */
 
 /**
- * @function EpicGames_Connect_RemoveNotifyLoginStatusChanged
+ * @function eos_connect_remove_notify_login_status_changed
  * @desc **Epic Online Services Function:** [EOS_Connect_RemoveNotifyLoginStatusChanged](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Connect/EOS_Connect_RemoveNotifyLoginStatusChanged/index.html)
  * 
  * This function unregisters from receiving user login status updates.
  * 
- * @param {real} Id The handle representing the registered callback (returned by ${function.EpicGames_Connect_AddNotifyLoginStatusChanged})
+ * @param {real} id The handle representing the registered callback (returned by ${function.eos_connect_add_notify_login_status_changed})
  * 
  * @example
  * ```gml
- * NotifyLoginStatusChanged_id = EpicGames_Connect_AddNotifyLoginStatusChanged();
+ * notify_login_status_changed_id = eos_connect_add_notify_login_status_changed();
  * //...
  * //...Later
  * //...
- * EpicGames_Connect_RemoveNotifyLoginStatusChanged(NotifyLoginStatusChanged_id);
+ * eos_connect_remove_notify_login_status_changed(notify_login_status_changed_id);
  * ```
- * The code sample above enables the login status changed notifications (${function.EpicGames_Connect_AddNotifyLoginStatusChanged}) and later disables them by referring to the previously generated handle.
+ * The code sample above enables the login status changed notifications (${function.eos_connect_add_notify_login_status_changed}) and later disables them by referring to the previously generated handle.
  * @function_end
  */
 
@@ -269,28 +269,28 @@
  * 
  * The status member present in the struct can be represented by one of the following values:
  * 
- * * `EpicGames_Success` if the information is available and was correctly returned;
- * * `EpicGames_InvalidParameters` (extension internal error, should never be returned);
- * * `EpicGames_NotFound` if the achievement definition is not found;
- * * `EpicGames_Invalid_ProductUserID` if any of the userid options are incorrect;
+ * * `EOS_RESULT.SUCCESS` if the information is available and was correctly returned;
+ * * `EOS_RESULT.INVALID_PARAMETERS` (extension internal error, should never be returned);
+ * * `EOS_RESULT.NOT_FOUND` if the achievement definition is not found;
+ * * `EOS_RESULT.INVALID_PRODUCT_USER_ID` if any of the user ID options are incorrect;
  * 
- * @member {constant.EpicGames_Result} status The result value of the task
+ * @member {constant.EOS_RESULT} status The result value of the task
  * @member {string} status_message Text representation of the status code
- * @member {string} DisplayName Display name, can be null if not set.
- * @member {string} userID The Product User ID of the target user.
- * @member {string} AccountId External account ID. May be set to an empty string if the AccountIdType of another user belongs to different account system than the local user's authenticated account. The availability of this field is dependent on account system specifics.
- * @member {constant.EpicGames_ExternalAccountType} AccountIdType The identity provider that owns the external account.
- * @member {int64} LastLoginTime The POSIX timestamp for the time the user last logged in.
+ * @member {string} display_name Display name, can not be present in the struct if not set
+ * @member {string} user_id The Product User ID of the target user
+ * @member {string} account_id External account ID. May be set to an empty string if the `account_id_type` of another user belongs to different account system than the local user's authenticated account. The availability of this field is dependent on account system specifics.
+ * @member {constant.EOS_EXTERNAL_ACCOUNT_TYPE} account_id_type The identity provider that owns the external account
+ * @member {int64} last_login_time The POSIX timestamp for the time the user last logged in
  * @struct_end
  */
 
 /**
  * @struct IdToken
- * @desc A struct containg information about an ID token.
- * @member {constant.EpicGames_Result} status The status code for the operation. `EpicGames_Success` indicates that the operation succeeded; other codes indicate errors
+ * @desc A struct containing information about an ID token.
+ * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
  * @member {string} status_message Text representation of the status code
- * @member {string} JsonWebToken The ID token as a JSON Web Token (JWT) string.
- * @member {string} ProductUserId The Product User ID described by the ID token.
+ * @member {string} json_web_token The ID token as a JSON Web Token (JWT) string
+ * @member {string} product_user_id The Product User ID described by the ID token
  * @struct_end
  */
 
@@ -304,15 +304,15 @@
  * @section_func Functions
  * @desc These functions are provided for handling connectivity:
  * 
- * @ref EpicGames_Connect_AddNotifyAuthExpiration
- * @ref EpicGames_Connect_AddNotifyLoginStatusChanged
- * @ref EpicGames_Connect_CopyIdToken
- * @ref EpicGames_Connect_CopyProductUserInfo
- * @ref EpicGames_Connect_CreateUser
- * @ref EpicGames_Connect_GetLoginStatus
- * @ref EpicGames_Connect_Login
- * @ref EpicGames_Connect_RemoveNotifyAuthExpiration
- * @ref EpicGames_Connect_RemoveNotifyLoginStatusChanged
+ * @ref eos_connect_add_notify_auth_expiration
+ * @ref eos_connect_add_notify_login_status_changed
+ * @ref eos_connect_copy_id_token
+ * @ref eos_connect_copy_product_user_info
+ * @ref eos_connect_create_user
+ * @ref eos_connect_get_login_status
+ * @ref eos_connect_login
+ * @ref eos_connect_remove_notify_auth_expiration
+ * @ref eos_connect_remove_notify_login_status_changed
  * @section_end
  *
  * @section_struct Structs

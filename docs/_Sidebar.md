@@ -9,11 +9,16 @@
   * ### ${module.ecom}
   * ### ${module.friends}
   * ### ${module.leaderboards}
+  * ### ${module.lobbies}
   * ### ${module.metrics}
+  * ### ${module.p2p}
   * ### ${module.platform}
+  * ### ${module.presence}
   * ### ${module.player_data_storage}
   * ### ${module.progression_snapshot}
+  * ### ${module.rtc}
   * ### ${module.sanctions}
+  * ### ${module.sessions}
   * ### ${module.stats}
   * ### ${module.title_storage}
   * ### ${module.user_interface}

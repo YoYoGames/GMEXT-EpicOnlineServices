@@ -1,0 +1,2 @@
+
+eos_lobby_promote_member(Obj_EpicGames_Lobbies.lobby_id,userID,user_id)

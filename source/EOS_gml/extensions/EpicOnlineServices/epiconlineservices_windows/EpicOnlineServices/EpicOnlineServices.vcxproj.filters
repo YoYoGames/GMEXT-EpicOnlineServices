@@ -93,6 +93,12 @@
     <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_UserInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\epiconlineservices_cpp\YYEOS_RTC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\epiconlineservices_cpp\ExtBufferIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\epiconlineservices_cpp\DesktopExtensionTools.h">
