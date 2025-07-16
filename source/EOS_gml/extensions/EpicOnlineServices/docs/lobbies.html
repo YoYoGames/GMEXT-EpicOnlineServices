@@ -1,0 +1,4442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Lobbies - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Lobbies";
+        var mkdocs_page_input_path = "lobbies.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Lobbies</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#handles">Handles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#lobbydetails">LobbyDetails</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lobbymodification">LobbyModification</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lobbysearch">LobbySearch</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Lobbies</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/lobbies.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="lobbies"><strong>Lobbies</strong></h1>
+<p><strong>Epic Online Services Interface</strong>: <a href="https://dev.epicgames.com/docs/api-ref/interfaces/lobby">Lobby Interface</a></p>
+<p>This module can be used to add lobbies to your game so players can create, join, leave, and manage lobbies.</p>
+<p>Lobbies provide a persistent connection between players (also called "users") for the purpose of sharing game (or other software application) and player state with real-time updates. Typically, players can create or join lobbies to form teams, select pre-game options, and wait for additional players to join in before playing together. Using the Lobbies module, your players can create, join, leave, and manage lobbies.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a href="https://dev.epicgames.com/docs/game-services/lobbies-and-sessions/lobbies/lobbies-intro">Lobbies Introduction</a> for a more detailed guide.</p>
+</div>
+<h2 id="handles">Handles</h2>
+<p>Lobbies in Epic Online Services make use of lobby handles. Before you can use certain functions you need to obtain a valid handle for that which you're trying to do. The handles themselves are kept by the extension. However, whenever you request a handle, you should still manually release it afterwards, once you are done using it.</p>
+<p>The following is an overview of the different lobby handles and the functions you can use to obtain and release them and the functions that require them.</p>
+<h3 id="lobbydetails">LobbyDetails</h3>
+<ul>
+<li>Obtain:</li>
+<li><a href="lobbies.html#eos_lobby_copy_lobby_details_handle">eos_lobby_copy_lobby_details_handle</a></li>
+<li><a href="lobbies.html#eos_lobby_copy_lobby_details_handle_by_invite_id">eos_lobby_copy_lobby_details_handle_by_invite_id</a></li>
+<li><a href="lobbies.html#eos_lobby_search_copy_search_result_by_index">eos_lobby_search_copy_search_result_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_copy_lobby_details_handle_by_ui_event_id">eos_lobby_copy_lobby_details_handle_by_ui_event_id</a></li>
+<li>Used by:</li>
+<li><a href="lobbies.html#eos_lobby_join_lobby">eos_lobby_join_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_attribute_by_index">eos_lobby_details_copy_attribute_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_attribute_by_key">eos_lobby_details_copy_attribute_by_key</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_info">eos_lobby_details_copy_info</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_attribute_by_index">eos_lobby_details_copy_member_attribute_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_attribute_by_key">eos_lobby_details_copy_member_attribute_by_key</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_info">eos_lobby_details_copy_member_info</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_attribute_count">eos_lobby_details_get_attribute_count</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_lobby_owner">eos_lobby_details_get_lobby_owner</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_member_attribute_count">eos_lobby_details_get_member_attribute_count</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_member_by_index">eos_lobby_details_get_member_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_member_count">eos_lobby_details_get_member_count</a></li>
+<li>Release:</li>
+<li><a href="lobbies.html#eos_lobby_details_release">eos_lobby_details_release</a></li>
+</ul>
+<h3 id="lobbymodification">LobbyModification</h3>
+<ul>
+<li>Obtain:</li>
+<li><a href="lobbies.html#eos_lobby_update_lobby_modification">eos_lobby_update_lobby_modification</a></li>
+<li>Used by:</li>
+<li><a href="lobbies.html#eos_lobby_update_lobby">eos_lobby_update_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_add_attribute">eos_lobby_modification_add_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_add_member_attribute">eos_lobby_modification_add_member_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_remove_attribute">eos_lobby_modification_remove_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_remove_member_attribute">eos_lobby_modification_remove_member_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_allowed_platform_ids">eos_lobby_modification_set_allowed_platform_ids</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_bucket_id">eos_lobby_modification_set_bucket_id</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_invites_allowed">eos_lobby_modification_set_invites_allowed</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_max_members">eos_lobby_modification_set_max_members</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_permission_level">eos_lobby_modification_set_permission_level</a></li>
+<li>Release:</li>
+<li><a href="lobbies.html#eos_lobby_modification_release">eos_lobby_modification_release</a></li>
+</ul>
+<h3 id="lobbysearch">LobbySearch</h3>
+<ul>
+<li>Obtain:</li>
+<li><a href="lobbies.html#eos_lobby_create_lobby_search">eos_lobby_create_lobby_search</a></li>
+<li>Used by:</li>
+<li><a href="lobbies.html#eos_lobby_search_copy_search_result_by_index">eos_lobby_search_copy_search_result_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_search_find">eos_lobby_search_find</a></li>
+<li><a href="lobbies.html#eos_lobby_search_get_search_result_count">eos_lobby_search_get_search_result_count</a></li>
+<li><a href="lobbies.html#eos_lobby_search_remove_parameter">eos_lobby_search_remove_parameter</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_lobby_id">eos_lobby_search_set_lobby_id</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_max_results">eos_lobby_search_set_max_results</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_parameter">eos_lobby_search_set_parameter</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_target_user_id">eos_lobby_search_set_target_user_id</a></li>
+<li>Release:</li>
+<li><a href="lobbies.html#eos_lobby_search_release">eos_lobby_search_release</a></li>
+</ul>
+<h2 id="functions">Functions</h2>
+<p>This module offers a collection of functions designed to address specific tasks and provide utilities for various purposes. Explore the available functions to make the most of the functionalities provided by this module.</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_add_notify_join_lobby_accepted">eos_lobby_add_notify_join_lobby_accepted</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_leave_lobby_requested">eos_lobby_add_notify_leave_lobby_requested</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_lobby_invite_accepted">eos_lobby_add_notify_lobby_invite_accepted</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_lobby_invite_received">eos_lobby_add_notify_lobby_invite_received</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_lobby_invite_rejected">eos_lobby_add_notify_lobby_invite_rejected</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_lobby_member_status_received">eos_lobby_add_notify_lobby_member_status_received</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_lobby_member_update_received">eos_lobby_add_notify_lobby_member_update_received</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_lobby_update_received">eos_lobby_add_notify_lobby_update_received</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_rtc_room_connection_changed">eos_lobby_add_notify_rtc_room_connection_changed</a></li>
+<li><a href="lobbies.html#eos_lobby_add_notify_send_lobby_native_invite_requested">eos_lobby_add_notify_send_lobby_native_invite_requested</a></li>
+<li><a href="lobbies.html#eos_lobby_copy_lobby_details_handle">eos_lobby_copy_lobby_details_handle</a></li>
+<li><a href="lobbies.html#eos_lobby_copy_lobby_details_handle_by_invite_id">eos_lobby_copy_lobby_details_handle_by_invite_id</a></li>
+<li><a href="lobbies.html#eos_lobby_copy_lobby_details_handle_by_ui_event_id">eos_lobby_copy_lobby_details_handle_by_ui_event_id</a></li>
+<li><a href="lobbies.html#eos_lobby_create_lobby">eos_lobby_create_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_create_lobby_search">eos_lobby_create_lobby_search</a></li>
+<li><a href="lobbies.html#eos_lobby_destroy_lobby">eos_lobby_destroy_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_get_connect_string">eos_lobby_get_connect_string</a></li>
+<li><a href="lobbies.html#eos_lobby_get_invite_count">eos_lobby_get_invite_count</a></li>
+<li><a href="lobbies.html#eos_lobby_get_invite_id_by_index">eos_lobby_get_invite_id_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_get_rtc_room_name">eos_lobby_get_rtc_room_name</a></li>
+<li><a href="lobbies.html#eos_lobby_hard_mute_member">eos_lobby_hard_mute_member</a></li>
+<li><a href="lobbies.html#eos_lobby_is_rtc_room_connected">eos_lobby_is_rtc_room_connected</a></li>
+<li><a href="lobbies.html#eos_lobby_join_lobby">eos_lobby_join_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_join_lobby_by_id">eos_lobby_join_lobby_by_id</a></li>
+<li><a href="lobbies.html#eos_lobby_kick_member">eos_lobby_kick_member</a></li>
+<li><a href="lobbies.html#eos_lobby_leave_lobby">eos_lobby_leave_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_parse_connect_string">eos_lobby_parse_connect_string</a></li>
+<li><a href="lobbies.html#eos_lobby_promote_member">eos_lobby_promote_member</a></li>
+<li><a href="lobbies.html#eos_lobby_query_invites">eos_lobby_query_invites</a></li>
+<li><a href="lobbies.html#eos_lobby_reject_invite">eos_lobby_reject_invite</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_join_lobby_accepted">eos_lobby_remove_notify_join_lobby_accepted</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_lobby_invite_accepted">eos_lobby_remove_notify_lobby_invite_accepted</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_lobby_invite_received">eos_lobby_remove_notify_lobby_invite_received</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_lobby_invite_rejected">eos_lobby_remove_notify_lobby_invite_rejected</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_lobby_member_status_received">eos_lobby_remove_notify_lobby_member_status_received</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_lobby_member_update_received">eos_lobby_remove_notify_lobby_member_update_received</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_lobby_update_received">eos_lobby_remove_notify_lobby_update_received</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_rtc_room_connection_changed">eos_lobby_remove_notify_rtc_room_connection_changed</a></li>
+<li><a href="lobbies.html#eos_lobby_remove_notify_send_lobby_native_invite_requested">eos_lobby_remove_notify_send_lobby_native_invite_requested</a></li>
+<li><a href="lobbies.html#eos_lobby_send_invite">eos_lobby_send_invite</a></li>
+<li><a href="lobbies.html#eos_lobby_update_lobby">eos_lobby_update_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_update_lobby_modification">eos_lobby_update_lobby_modification</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_attribute_by_index">eos_lobby_details_copy_attribute_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_attribute_by_key">eos_lobby_details_copy_attribute_by_key</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_info">eos_lobby_details_copy_info</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_attribute_by_index">eos_lobby_details_copy_member_attribute_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_attribute_by_key">eos_lobby_details_copy_member_attribute_by_key</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_info">eos_lobby_details_copy_member_info</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_attribute_count">eos_lobby_details_get_attribute_count</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_lobby_owner">eos_lobby_details_get_lobby_owner</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_member_attribute_count">eos_lobby_details_get_member_attribute_count</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_member_by_index">eos_lobby_details_get_member_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_get_member_count">eos_lobby_details_get_member_count</a></li>
+<li><a href="lobbies.html#eos_lobby_details_release">eos_lobby_details_release</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_add_attribute">eos_lobby_modification_add_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_add_member_attribute">eos_lobby_modification_add_member_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_release">eos_lobby_modification_release</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_remove_attribute">eos_lobby_modification_remove_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_remove_member_attribute">eos_lobby_modification_remove_member_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_allowed_platform_ids">eos_lobby_modification_set_allowed_platform_ids</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_bucket_id">eos_lobby_modification_set_bucket_id</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_invites_allowed">eos_lobby_modification_set_invites_allowed</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_max_members">eos_lobby_modification_set_max_members</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_permission_level">eos_lobby_modification_set_permission_level</a></li>
+<li><a href="lobbies.html#eos_lobby_search_copy_search_result_by_index">eos_lobby_search_copy_search_result_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_search_find">eos_lobby_search_find</a></li>
+<li><a href="lobbies.html#eos_lobby_search_get_search_result_count">eos_lobby_search_get_search_result_count</a></li>
+<li><a href="lobbies.html#eos_lobby_search_release">eos_lobby_search_release</a></li>
+<li><a href="lobbies.html#eos_lobby_search_remove_parameter">eos_lobby_search_remove_parameter</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_lobby_id">eos_lobby_search_set_lobby_id</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_max_results">eos_lobby_search_set_max_results</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_parameter">eos_lobby_search_set_parameter</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_target_user_id">eos_lobby_search_set_target_user_id</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>This module offers a collection of structs, which serve as custom data models for organizing and structuring data. Explore the provided structs to better understand the relationships between data elements and simplify your data manipulation tasks.</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_attribute">EOS_Lobby_Attribute</a></li>
+<li><a href="lobbies.html#eos_lobbydetails_info">EOS_LobbyDetails_Info</a></li>
+<li><a href="lobbies.html#eos_lobbydetails_memberinfo">EOS_LobbyDetails_MemberInfo</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>This module includes a set of predefined constants that can be utilized for various purposes. Browse through the available constants to find values relevant to your needs and enhance the efficiency of your code.</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_max_search_results">EOS_LOBBY_MAX_SEARCH_RESULTS</a></li>
+<li><a href="lobbies.html#eos_lobby_attribute_visibility">EOS_LOBBY_ATTRIBUTE_VISIBILITY</a></li>
+<li><a href="lobbies.html#eos_lobby_member_status">EOS_LOBBY_MEMBER_STATUS</a></li>
+<li><a href="lobbies.html#eos_lobby_permission_level">EOS_LOBBY_PERMISSION_LEVEL</a></li>
+<li><a href="lobbies.html#eos_online_platform_type">EOS_ONLINE_PLATFORM_TYPE</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_join_lobby_accepted">eos_lobby_add_notify_join_lobby_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-join-lobby-accepted">EOS_Lobby_AddNotifyJoinLobbyAccepted</a></p>
+<p>This function registers to receive notifications about lobby "JOIN" performed by local user (when no invite) via the overlay.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_join_lobby_accepted">eos_lobby_remove_notify_join_lobby_accepted</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_join_lobby_accepted()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_join_lobby_accepted"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is joining</td>
+</tr>
+<tr>
+<td>ui_event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The UI Event associated with this Join Game event. This should be used with <a href="lobbies.html#eos_lobby_copy_lobby_details_handle_by_ui_event_id">eos_lobby_copy_lobby_details_handle_by_ui_event_id</a> to get a handle to be used when calling <a href="lobbies.html#eos_lobby_join_lobby">eos_lobby_join_lobby</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_leave_lobby_requested">eos_lobby_add_notify_leave_lobby_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-leave-lobby-requested">EOS_Lobby_AddNotifyLeaveLobbyRequested</a></p>
+<p>This function registers to receive notifications about leave lobby requests performed by the local user via the overlay. When a user requests to leave the lobby in the social overlay, the SDK does not automatically leave the lobby, it is up to the game to perform any necessary cleanup and call the <a href="lobbies.html#eos_lobby_leave_lobby">eos_lobby_leave_lobby</a> method using the <code>lobby_id</code> sent in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_leave_lobby_requested()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_leave_lobby_requested"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who received the leave lobby notification.</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The lobby ID associated with the leave lobby request.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_lobby_invite_accepted">eos_lobby_add_notify_lobby_invite_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobby-invite-accepted">EOS_Lobby_AddNotifyLobbyInviteAccepted</a></p>
+<p>This function registers to receive notifications about lobby invites accepted by local user via the overlay.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_lobby_invite_accepted()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_lobby_invite_accepted"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who received the invitation</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Lobby ID that the user has been invited to</td>
+</tr>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The invite ID</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who sent the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_lobby_invite_received">eos_lobby_add_notify_lobby_invite_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobby-invite-received">EOS_Lobby_AddNotifyLobbyInviteReceived</a></p>
+<p>This function registers to receive notifications about lobby invites sent to local users.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_lobby_invite_received()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_lobby_invite_received"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who received the invitation</td>
+</tr>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the invitation</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who sent the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_lobby_invite_rejected">eos_lobby_add_notify_lobby_invite_rejected</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobby-invite-rejected">EOS_Lobby_AddNotifyLobbyInviteRejected</a></p>
+<p>This function registers to receive notifications about lobby invites rejected by local user.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_lobby_invite_rejected()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_lobby_invite_rejected"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who received the invitation</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Lobby ID that the user has been invited to</td>
+</tr>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The invite ID</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who sent the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_lobby_member_status_received">eos_lobby_add_notify_lobby_member_status_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobby-member-status-received">EOS_Lobby_AddNotifyLobbyMemberStatusReceived</a></p>
+<p>This function registers to receive notifications about the changing status of lobby members.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_lobby_member_status_received()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_lobby_member_status_received"</code></td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>current_status</td>
+<td><a href="lobbies.html#eos_lobby_member_status">EOS_LOBBY_MEMBER_STATUS</a></td>
+<td>The latest status of the user</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_lobby_member_update_received">eos_lobby_add_notify_lobby_member_update_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobby-member-update-received">EOS_Lobby_AddNotifyLobbyMemberUpdateReceived</a></p>
+<p>This function registers to receive notifications when a lobby member updates the attributes associated with themselves inside the lobby.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_lobby_member_update_received()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_lobby_member_update_received"</code></td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_lobby_update_received">eos_lobby_add_notify_lobby_update_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-lobby-update-received">EOS_Lobby_AddNotifyLobbyUpdateReceived</a></p>
+<p>This function registers to receive notifications when a lobby owner updates the attributes associated with the lobby.</p>
+<p>The function returns a notification ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_lobby_update_received()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_lobby_update_received"</code></td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_rtc_room_connection_changed">eos_lobby_add_notify_rtc_room_connection_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-lobby-add-notify-rtc-room-connection-changed">EOS_Lobby_AddNotifyRTCRoomConnectionChanged</a></p>
+<p>This function registers to receive notifications of when the RTC Room for a particular lobby has a connection status change. The RTC Room connection status is independent of the lobby connection status, however the lobby system will attempt to keep them consistent, automatically connecting to the RTC room after joining a lobby which has an associated RTC room and disconnecting from the RTC room when a lobby is left or disconnected. This notification is entirely informational and requires no action in response by the application. If the connected status is offline (<code>is_connected</code> is <code>false</code>), the connection will automatically attempt to reconnect. The purpose of this notification is to allow applications to show the current connection status of the RTC room when the connection is not established. Unlike <a href="rtc.html#eos_rtc_add_notify_disconnected">eos_rtc_add_notify_disconnected</a>, <a href="rtc.html#eos_rtc_leave_room">eos_rtc_leave_room</a> should not be called when the RTC room is disconnected. This function will only succeed when called on a lobby the local user is currently a member of.</p>
+<p>A valid notification ID if the callback handler was successfully registered, or <a href="general.html#eos_invalid_notificationid">EOS_INVALID_NOTIFICATIONID</a> if the input was invalid, the lobby did not exist, or the lobby did not have an RTC room.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_rtc_room_connection_changed()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_rtc_room_connection_changed"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is in the lobby and registered for notifications</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby which had a RTC Room connection state change</td>
+</tr>
+<tr>
+<td>disconnect_reason</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>If <code>is_connected</code> is <code>false</code>, this result will be the reason we were disconnected. <code>EOS_RESULT.SUCCESS</code>: The room was left locally. This may be because: the associated lobby was left or destroyed, the connection to the lobby was interrupted, or because the SDK is being shutdown. If the lobby connection returns (lobby did not permanently go away), EOS will reconnect. <code>EOS_RESULT.NO_CONNECTION</code>: There was a network issue connecting to the server. EOS will attempt to reconnect soon. <code>EOS_RESULT.RTC_USER_KICKED</code>: The user has been kicked by the server. We will not reconnect. <code>EOS_RESULT.RTC_USER_BANNED</code>: The user has been banned by the server. We will not reconnect. <code>EOS_RESULT.SERVICE_FAILURE</code>: A known error occurred during interaction with the server. We will attempt to reconnect soon. <code>EOS_RESULT.UNEXPECTED_ERROR</code>: Unexpected error. We will attempt to reconnect soon.</td>
+</tr>
+<tr>
+<td>is_connected</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>The new connection state of the room</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_add_notify_send_lobby_native_invite_requested">eos_lobby_add_notify_send_lobby_native_invite_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-add-notify-send-lobby-native-invite-requested">EOS_Lobby_AddNotifySendLobbyNativeInviteRequested</a></p>
+<p>This function registers to receive notifications about a lobby "INVITE" performed by a local user via the overlay. This is only needed when a configured integrated platform has EOS_IPMF_DisableSDKManagedSessions set. The EOS SDK will then use the state of EOS_IPMF_PreferEOSIdentity and EOS_IPMF_PreferIntegratedIdentity to determine when the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> is called.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="lobbies.html#eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_add_notify_send_lobby_native_invite_requested()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_add_notify_send_lobby_native_invite_requested"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is inviting.</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The lobby ID that the user is being invited to</td>
+</tr>
+<tr>
+<td>target_native_account_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Native Platform Account Type, as a string. If only a single integrated platform is configured then this will always reference that platform.</td>
+</tr>
+<tr>
+<td>target_user_native_account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Native Platform Account ID of the target user being invited.</td>
+</tr>
+<tr>
+<td>ui_event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>Identifies this event which will need to be acknowledged with <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_copy_lobby_details_handle">eos_lobby_copy_lobby_details_handle</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-details-handle">EOS_Lobby_CopyLobbyDetailsHandle</a></p>
+<p>This function creates a handle to an existing lobby. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, the function <a href="lobbies.html#eos_lobby_details_release">eos_lobby_details_release</a> to release the memory associated with the handle.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the lobby handle was created successfully</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the options are incorrect</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the lobby doesn't exist</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_copy_lobby_details_handle(lobby_id, local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user making the request</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_copy_lobby_details_handle_by_invite_id">eos_lobby_copy_lobby_details_handle_by_invite_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-details-handle-by-invite-id">EOS_Lobby_CopyLobbyDetailsHandleByInviteId</a></p>
+<p>This function is used to immediately retrieve a handle to the lobby information from after notification of an invite. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, the lobby details handle must be freed with <a href="lobbies.html#eos_lobby_details_release">eos_lobby_details_release</a> to release the memory associated with it after you're finished using it.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid invite ID</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> If the invite ID cannot be found</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_copy_lobby_details_handle_by_invite_id(invite_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of an invitation to join the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_copy_lobby_details_handle_by_ui_event_id">eos_lobby_copy_lobby_details_handle_by_ui_event_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-copy-lobby-details-handle-by-ui-event-id">EOS_Lobby_CopyLobbyDetailsHandleByUiEventId</a></p>
+<p>This function is used to immediately retrieve a handle to the lobby information from after notification of an join game. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, the lobby details handle must be freed with <a href="lobbies.html#eos_lobby_details_release">eos_lobby_details_release</a> to release the memory associated with it once you're done using it.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available and passed out in OutLobbyDetailsHandle</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid UI event ID</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> If the invite ID cannot be found</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_copy_lobby_details_handle_by_ui_event_id(ui_event_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ui_event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The UI Event associated with the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_create_lobby">eos_lobby_create_lobby</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-create-lobby">EOS_Lobby_CreateLobby</a></p>
+<p>This function creates a lobby and adds the user to the lobby membership. There is no data associated with the lobby at the start and can be added with <a href="lobbies.html#eos_lobby_update_lobby_modification">eos_lobby_update_lobby_modification</a>. If the lobby is successfully created with an RTC Room enabled, the lobby system will automatically join and maintain the connection to the RTC room as long as the local user remains in the lobby. Applications can use the <a href="lobbies.html#eos_lobby_get_rtc_room_name">eos_lobby_get_rtc_room_name</a> to get the name of the RTC Room associated with a lobby, which may be used with many of the <code>eos_rtc_*</code> suite of functions. This can be useful to: register for notifications for talking status; to mute or unmute the local user's audio output; to block or unblock room participants; to set local audio device settings; and more.</p>
+<p>Set the <code>enable_rtc_room</code> parameter to <code>true</code> to enable an RTC room. If set to <code>true</code>, you can also pass the parameters <code>flags</code>, <code>use_manual_audio_input</code>, <code>use_manual_audio_output</code> and <code>local_audio_device_input_starts_muted</code> to configure the RTC room.</p>
+<p>The function returns the async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_create_lobby(local_user_id, allowed_platform_ids, lobby_id, bucket_id, max_lobby_members, permission_level, allow_invites, crossplay_opt_out, disable_host_migration, enable_join_by_id, presence_enabled, enable_rtc_room=false, flags=EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL, use_manual_audio_input=false, use_manual_audio_output=false, local_audio_device_input_starts_muted=false)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user creating the lobby; this user will automatically join the lobby as its owner</td>
+</tr>
+<tr>
+<td>allowed_platform_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>An array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are found in the EOS header file. These values are of the form EOS_OPT_<PlatformName>. For some platforms, the value will be in the EOS Platform specific header file. The lobby will be unrestricted if you pass an empty array.</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Set to a globally unique value to override the backend assignment. If an empty string <code>""</code> is specified, the backend service will assign one to the lobby. Do not mix and match override and non override settings. This value can be of size [EOS_LOBBY_MIN_LOBBYIDOVERRIDE_LENGTH, EOS_LOBBY_MAX_LOBBYIDOVERRIDE_LENGTH]</td>
+</tr>
+<tr>
+<td>bucket_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The bucket ID associated with the lobby</td>
+</tr>
+<tr>
+<td>max_lobby_members</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum number of users that can be in the lobby at a time</td>
+</tr>
+<tr>
+<td>permission_level</td>
+<td><a href="lobbies.html#eos_lobby_permission_level">EOS_LOBBY_PERMISSION_LEVEL</a></td>
+<td>The initial permission level of the lobby</td>
+</tr>
+<tr>
+<td>allow_invites</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether members of the lobby are allowed to invite others</td>
+</tr>
+<tr>
+<td>crossplay_opt_out</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>This value indicates whether or not the lobby owner allows crossplay interactions. If <code>false</code>, the lobby owner will be treated as allowing crossplay. If it is set to <code>true</code>, <code>allowed_platform_ids</code> must have a single entry that matches the platform of the lobby owner.</td>
+</tr>
+<tr>
+<td>disable_host_migration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Is host migration allowed (will the lobby stay open if the original host leaves?) NOTE: <a href="lobbies.html#eos_lobby_promote_member">eos_lobby_promote_member</a> is still allowed regardless of this setting.</td>
+</tr>
+<tr>
+<td>enable_join_by_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether <a href="lobbies.html#eos_lobby_join_lobby_by_id">eos_lobby_join_lobby_by_id</a> is allowed. This is provided to support cases where an integrated platform's invite system is used. In these cases the game should provide the lobby ID securely to the invited player. Such as by attaching the lobby ID to the integrated platform's session data or sending the lobby ID within the invite data.</td>
+</tr>
+<tr>
+<td>presence_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code>, this lobby will be associated with the local user's presence information. A user's presence can only be associated with one lobby at a time. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the <code>presence_enabled</code> flags within the Sessions module * using the <code>presence_enabled</code> flags within the Lobby module * using <a href="presence.html#eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</a>.</td>
+</tr>
+<tr>
+<td>enable_rtc_room</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Creates a real-time communication (RTC) room for all members of this lobby. All members of the lobby will automatically join the RTC room when they connect to the lobby and they will automatically leave the RTC room when they leave or are removed from the lobby. While the joining and leaving of the RTC room is automatic, applications will still need to use the EOS RTC interfaces to handle all other functionality for the room. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>flags</td>
+<td><a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a></td>
+<td>Flags for the local user in this room. Set to 0 to not specify any flags. See <a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a>. The default is <code>EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL</code>.</td>
+</tr>
+<tr>
+<td>use_manual_audio_input</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to enable Manual Audio Input. If manual audio input is enabled, audio recording is not started and the audio buffers must be passed manually using <a href="rtc.html#eos_rtc_audio_send_audio">eos_rtc_audio_send_audio</a>. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>use_manual_audio_output</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to enable Manual Audio Output. If manual audio output is enabled, audio rendering is not started and the audio buffers must be received with <a href="rtc.html#eos_rtc_audio_add_notify_audio_before_render">eos_rtc_audio_add_notify_audio_before_render</a> and rendered manually. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>local_audio_device_input_starts_muted</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to start the audio input device's stream as muted when first connecting to the RTC room. It must be manually unmuted with a call to <a href="rtc.html#eos_rtc_audio_update_sending">eos_rtc_audio_update_sending</a>. If manual audio output is enabled, this value is ignored. The default is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_create_lobby"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The new lobby's ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_create_lobby_search">eos_lobby_create_lobby_search</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-create-lobby-search">EOS_Lobby_CreateLobbySearch</a></p>
+<p>This function creates a lobby search handle. This handle may be modified to include various search parameters. Searching is possible in three methods, all mutually exclusive:</p>
+<ul>
+<li>set the lobby ID to find a specific lobby</li>
+<li>set the target user ID to find a specific user</li>
+<li>set lobby parameters to find an array of lobbies that match the search criteria</li>
+</ul>
+<p>The function returns <code>EOS_RESULT.SUCCESS</code> if the search creation completes successfully, or <code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the options are incorrect.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should make sure to free the handle when no longer needed with <a href="lobbies.html#eos_lobby_search_release">eos_lobby_search_release</a>.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_create_lobby_search(max_results)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max_results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum number of results allowed from the search</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_destroy_lobby">eos_lobby_destroy_lobby</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-destroy-lobby">EOS_Lobby_DestroyLobby</a></p>
+<p>This function destroys a lobby given a lobby ID. It returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_destroy_lobby(lobby_id, local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby to destroy</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user requesting destruction of the lobby; this user must currently own the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_destroy_lobby"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The destroyed lobby's ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_get_connect_string">eos_lobby_get_connect_string</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-connect-string">EOS_Lobby_GetConnectString</a></p>
+<p>This function gets the connection string for an EOS lobby. The connection string describes the presence of a player in terms of game state. Xbox platforms expect titles to embed this into their MultiplayerActivity at creation. When present, the SDK will use this value to populate session presence in the social overlay and facilitate platform invitations.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_get_connect_string(lobby_id, local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby to generate a connection string for</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user requesting the connection string generated from the lobby; this user must currently own the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_get_invite_count">eos_lobby_get_invite_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-invite-count">EOS_Lobby_GetInviteCount</a></p>
+<p>This function gets the number of known invites for a given user. It returns the number of known invites for a given user or 0 if there is an error.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_get_invite_count(local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user whose cached lobby invitations you want to count</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_get_invite_id_by_index">eos_lobby_get_invite_id_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-invite-id-by-index">EOS_Lobby_GetInviteIdByIndex</a></p>
+<p>This function retrieves an invite ID from a list of active invites for a given user.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_get_invite_id_by_index(local_user_id, index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who received the cached invitation</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the invitation ID to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_get_rtc_room_name">eos_lobby_get_rtc_room_name</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-get-rtc-room-name">EOS_Lobby_GetRTCRoomName</a></p>
+<p>This function gets the name of the RTC room associated with a specific lobby a local user belongs to. This value can be used whenever you need a <code>room_name</code> value in the <code>rtc_*</code> suite of functions. RTC room names must not be used with <a href="rtc.html#eos_rtc_join_room">eos_rtc_join_room</a>, <a href="rtc.html#eos_rtc_leave_room">eos_rtc_leave_room</a>, or <a href="rtc.html#eos_rtc_add_notify_disconnected">eos_rtc_add_notify_disconnected</a>. Doing so will return <code>EOS_RESULT.ACCESS_DENIED</code> or <a href="general.html#eos_invalid_notificationid">EOS_INVALID_NOTIFICATIONID</a> if used with those functions. This function will only succeed when called on a lobby the local user is currently a member of.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_get_rtc_room_name(local_user_id, lobby_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user in the lobby</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby to get the RTC room name for</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_hard_mute_member">eos_lobby_hard_mute_member</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-hard-mute-member">EOS_Lobby_HardMuteMember</a></p>
+<p>This function hard mutes an existing member in the lobby, can't speak but can hear other members of the lobby.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_hard_mute_member(hard_mute, lobby_id, local_user_id, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hard_mute</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>The <code>target_user_id</code> hard mute status (mute on or off)</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user requesting the hard mute; this user must be the lobby owner</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member to hard mute</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_hard_mute_member"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member whose mute status has been updated</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_is_rtc_room_connected">eos_lobby_is_rtc_room_connected</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-is-rtc-room-connected">EOS_Lobby_IsRTCRoomConnected</a></p>
+<p>This function gets the current connection status of the RTC Room for a lobby. The RTC Room connection status is independent of the lobby connection status, however the lobby system will attempt to keep them consistent, automatically connecting to the RTC room after joining a lobby which has an associated RTC room and disconnecting from the RTC room when a lobby is left or disconnected. This function will only succeed when called on a lobby the local user is currently a member of.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_is_rtc_room_connected(lobby_id, local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby to get the RTC Room name for</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user in the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_join_lobby">eos_lobby_join_lobby</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-join-lobby">EOS_Lobby_JoinLobby</a></p>
+<p>This function joins a lobby, creating a local instance under a given lobby ID. The backend will validate various conditions to make sure it is possible to join the lobby. If the lobby is successfully join has an RTC room enabled, the lobby system will automatically join and maintain the connection to the RTC room as long as the local user remains in the lobby. Applications can use the <a href="lobbies.html#eos_lobby_get_rtc_room_name">eos_lobby_get_rtc_room_name</a> to get the name of the RTC room associated with a lobby, which may be used with many of the <code>eos_rtc_*</code> suite of functions. This can be useful to: register for notifications for talking status; to mute or unmute the local user's audio output; to block or unblock room participants; to set local audio device settings; and more.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_join_lobby(local_user_id, crossplay_opt_out, presence_enabled, enable_rtc_room, local_audio_device_input_starts_muted, use_manual_audio_input, use_manual_audio_output, flags)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user joining the lobby</td>
+</tr>
+<tr>
+<td>crossplay_opt_out</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>This value indicates whether or not the local user allows crossplay interactions. If it is <code>false</code>, the local user will be treated as allowing crossplay.</td>
+</tr>
+<tr>
+<td>presence_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code>, this lobby will be associated with the local user's presence information. A user can only associate one lobby at a time with their presence information. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the <code>presence_enabled</code> flags within the Sessions interface * using the <code>presence_enabled</code> flags within the Lobby interface * using <a href="presence.html#eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</a></td>
+</tr>
+<tr>
+<td>enable_rtc_room</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Creates a real-time communication (RTC) room for all members of this lobby. All members of the lobby will automatically join the RTC room when they connect to the lobby and they will automatically leave the RTC room when they leave or are removed from the lobby. While the joining and leaving of the RTC room is automatic, applications will still need to use the EOS RTC interfaces to handle all other functionality for the room.</td>
+</tr>
+<tr>
+<td>local_audio_device_input_starts_muted</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to start the audio input device's stream as muted when first connecting to the RTC room. It must be manually unmuted with a call to <a href="rtc.html#eos_rtc_audio_update_sending">eos_rtc_audio_update_sending</a>. If manual audio output is enabled, this value is ignored.</td>
+</tr>
+<tr>
+<td>use_manual_audio_input</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to enable Manual Audio Input. If manual audio input is enabled, audio recording is not started and the audio buffers must be passed manually using <a href="rtc.html#eos_rtc_audio_send_audio">eos_rtc_audio_send_audio</a>.</td>
+</tr>
+<tr>
+<td>use_manual_audio_output</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to enable Manual Audio Output. If manual audio output is enabled, audio rendering is not started and the audio buffers must be received with <a href="rtc.html#eos_rtc_audio_add_notify_audio_before_render">eos_rtc_audio_add_notify_audio_before_render</a> and rendered manually.</td>
+</tr>
+<tr>
+<td>flags</td>
+<td><a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a></td>
+<td>Flags for the local user in this room. Set to 0 to not specify any flags. See <a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_join_lobby"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_join_lobby_by_id">eos_lobby_join_lobby_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-join-lobby-by-id">EOS_Lobby_JoinLobbyById</a></p>
+<p>This function is a special case of <a href="lobbies.html#eos_lobby_join_lobby">eos_lobby_join_lobby</a>. It should only be used if the lobby has had Join-by-ID enabled. Additionally, Join-by-ID should only be enabled to support native invites on an integrated platform.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_join_lobby_by_id(local_user_id, crossplay_opt_out, presence_enabled, lobby_id, enable_rtc_room, local_audio_device_input_starts_muted, use_manual_audio_input, use_manual_audio_output, flags)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user joining the lobby</td>
+</tr>
+<tr>
+<td>crossplay_opt_out</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>This value indicates whether or not the local user allows crossplay interactions. If it is <code>false</code>, the local user will be treated as allowing crossplay.</td>
+</tr>
+<tr>
+<td>presence_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code>, this lobby will be associated with the user's presence information. A user can only associate one lobby at a time with their presence information. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the <code>presence_enabled</code> flags within the Sessions interface * using the <code>presence_enabled</code> flags within the Lobby interface * using <a href="presence.html#eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</a></td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>enable_rtc_room</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Creates a real-time communication (RTC) room for all members of this lobby. All members of the lobby will automatically join the RTC room when they connect to the lobby and they will automatically leave the RTC room when they leave or are removed from the lobby. While the joining and leaving of the RTC room is automatic, applications will still need to use the EOS RTC interfaces to handle all other functionality for the room.</td>
+</tr>
+<tr>
+<td>local_audio_device_input_starts_muted</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to start the audio input device's stream as muted when first connecting to the RTC room. It must be manually unmuted with a call to <a href="rtc.html#eos_rtc_audio_update_sending">eos_rtc_audio_update_sending</a>. If manual audio output is enabled, this value is ignored.</td>
+</tr>
+<tr>
+<td>use_manual_audio_input</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to enable Manual Audio Input. If manual audio input is enabled, audio recording is not started and the audio buffers must be passed manually using <a href="rtc.html#eos_rtc_audio_send_audio">eos_rtc_audio_send_audio</a>.</td>
+</tr>
+<tr>
+<td>use_manual_audio_output</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to enable Manual Audio Output. If manual audio output is enabled, audio rendering is not started and the audio buffers must be received with <a href="rtc.html#eos_rtc_audio_add_notify_audio_before_render">eos_rtc_audio_add_notify_audio_before_render</a> and rendered manually.</td>
+</tr>
+<tr>
+<td>flags</td>
+<td><a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a></td>
+<td>Flags for the local user in this room. Set to 0 to not specify any flags. See <a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_join_lobby_by_id"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_kick_member">eos_lobby_kick_member</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-kick-member">EOS_Lobby_KickMember</a></p>
+<p>This function kicks an existing member from the lobby.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_kick_member(lobby_id, local_user_id, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user requesting the removal; this user must be the lobby owner</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member to remove</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_kick_member"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_leave_lobby">eos_lobby_leave_lobby</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-leave-lobby">EOS_Lobby_LeaveLobby</a></p>
+<p>This function leaves a lobby given a lobby ID. If the lobby you are leaving had an RTC Room enabled, leaving the lobby will also automatically leave the RTC room.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_leave_lobby(lobby_id, local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user leaving the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_leave_lobby"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_parse_connect_string">eos_lobby_parse_connect_string</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-parse-connect-string">EOS_Lobby_ParseConnectString</a></p>
+<p>This function parses the ConnectString for an EOS lobby invitation to extract just the lobby ID. Used for joining a lobby from a connection string (as generated by <a href="lobbies.html#eos_lobby_get_connect_string">eos_lobby_get_connect_string</a>) found in a platform invitation or presence.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_parse_connect_string()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_promote_member">eos_lobby_promote_member</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-promote-member">EOS_Lobby_PromoteMember</a></p>
+<p>This function promotes an existing member of the lobby to owner, allowing them to make lobby data modifications.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_promote_member(lobby_id, local_user_id, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user making the request</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the member to promote to owner of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_promote_member"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby where the user was promoted</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_query_invites">eos_lobby_query_invites</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-query-invites">EOS_Lobby_QueryInvites</a></p>
+<p>This function retrieves all existing invites for a single user.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_query_invites(local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user whose invitations you want to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_query_invites"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user that made the request</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_reject_invite">eos_lobby_reject_invite</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-reject-invite">EOS_Lobby_RejectInvite</a></p>
+<p>This function rejects an invite from another user.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_reject_invite(invite_id, local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby associated with the invitation</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is rejecting the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_reject_invite"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the invitation being rejected</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_join_lobby_accepted">eos_lobby_remove_notify_join_lobby_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-join-lobby-accepted">EOS_Lobby_RemoveNotifyJoinLobbyAccepted</a></p>
+<p>This function unregisters from receiving notifications when a user accepts a lobby invitation via the overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_join_lobby_accepted(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_leave_lobby_requested">eos_lobby_remove_notify_leave_lobby_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-leave-lobby-requested">EOS_Lobby_RemoveNotifyLeaveLobbyRequested</a></p>
+<p>This function unregisters from receiving notifications when a user performs a leave lobby action via the overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_leave_lobby_requested(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_lobby_invite_accepted">eos_lobby_remove_notify_lobby_invite_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-lobby-invite-accepted">EOS_Lobby_RemoveNotifyLobbyInviteAccepted</a></p>
+<p>This function unregisters from receiving notifications when a user accepts a lobby invitation via the overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_lobby_invite_accepted(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_lobby_invite_received">eos_lobby_remove_notify_lobby_invite_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-lobby-invite-received">EOS_Lobby_RemoveNotifyLobbyInviteReceived</a></p>
+<p>This function unregisters from receiving notifications when a user receives a lobby invitation.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_lobby_invite_received(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_lobby_invite_rejected">eos_lobby_remove_notify_lobby_invite_rejected</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-lobby-invite-rejected">EOS_Lobby_RemoveNotifyLobbyInviteRejected</a></p>
+<p>This function unregisters from receiving notifications when a user rejects a lobby invitation via the overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_lobby_invite_rejected(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_lobby_member_status_received">eos_lobby_remove_notify_lobby_member_status_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-lobby-member-status-received">EOS_Lobby_RemoveNotifyLobbyMemberStatusReceived</a></p>
+<p>This function unregisters from receiving notifications when lobby members status change.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_lobby_member_status_received(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_lobby_member_update_received">eos_lobby_remove_notify_lobby_member_update_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-lobby-member-update-received">EOS_Lobby_RemoveNotifyLobbyMemberUpdateReceived</a></p>
+<p>This function unregisters from receiving notifications when lobby members change their data.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_lobby_member_update_received(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_lobby_update_received">eos_lobby_remove_notify_lobby_update_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-lobby-update-received">EOS_Lobby_RemoveNotifyLobbyUpdateReceived</a></p>
+<p>This function unregisters from receiving notifications when a lobby changes its data.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_lobby_update_received(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_rtc_room_connection_changed">eos_lobby_remove_notify_rtc_room_connection_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-rtc-room-connection-changed">EOS_Lobby_RemoveNotifyRTCRoomConnectionChanged</a></p>
+<p>This function unregisters from receiving notifications when an RTC Room's connection status changes. This should be called when the local user is leaving a lobby.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_rtc_room_connection_changed(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_remove_notify_send_lobby_native_invite_requested">eos_lobby_remove_notify_send_lobby_native_invite_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-remove-notify-send-lobby-native-invite-requested">EOS_Lobby_RemoveNotifySendLobbyNativeInviteRequested</a></p>
+<p>This function unregisters from receiving notifications when a user requests a send invite via the overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_remove_notify_send_lobby_native_invite_requested(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_send_invite">eos_lobby_send_invite</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-send-invite">EOS_Lobby_SendInvite</a></p>
+<p>This function sends an invite to another user. The user must be a member of the lobby or else the call will fail.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_send_invite(lobby_id, local_user_id, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby associated with the invitation</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user sending the invitation</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user receiving the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_send_invite"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_update_lobby">eos_lobby_update_lobby</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-lobby-update-lobby">EOS_Lobby_UpdateLobby</a></p>
+<p>This function updates a lobby given a lobby modification handle created by <a href="lobbies.html#eos_lobby_update_lobby_modification">eos_lobby_update_lobby_modification</a>.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_update_lobby()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_update_lobby"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_update_lobby_modification">eos_lobby_update_lobby_modification</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-update-lobby-modification">EOS_Lobby_UpdateLobbyModification</a></p>
+<p>This function creates a lobby modification handle. The lobby modification handle is used to modify an existing lobby and can be applied with <a href="lobbies.html#eos_lobby_update_lobby">eos_lobby_update_lobby</a>. The handle must be released by calling <a href="lobbies.html#eos_lobby_modification_release">eos_lobby_modification_release</a> once it is no longer needed.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if EOS successfully created the lobby modification handle, or an error result if the input data was invalid</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the options are incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_update_lobby_modification(lobby_id, local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the local user making modifications. Must be the owner to modify lobby data, but any lobby member can modify their own attributes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_copy_attribute_by_index">eos_lobby_details_copy_attribute_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-attribute-by-index">EOS_LobbyDetails_CopyAttributeByIndex</a></p>
+<p>This function is used to immediately retrieve a copy of a lobby attribute from a given source such as a existing lobby or a search result.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_copy_attribute_by_index(index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the attribute to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="lobbies.html#eos_lobby_attribute">EOS_Lobby_Attribute</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_copy_attribute_by_key">eos_lobby_details_copy_attribute_by_key</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-attribute-by-key">EOS_LobbyDetails_CopyAttributeByKey</a></p>
+<p>This function is used to immediately retrieve a copy of a lobby attribute from a given source such as a existing lobby or a search result.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_copy_attribute_by_key(attr_key)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attr_key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the attribute</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="lobbies.html#eos_lobby_attribute">EOS_Lobby_Attribute</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_copy_info">eos_lobby_details_copy_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-info">EOS_LobbyDetails_CopyInfo</a></p>
+<p>This function is used to immediately retrieve a copy of lobby information from a given source such as a existing lobby or a search result.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_copy_info()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="lobbies.html#eos_lobbydetails_info">EOS_LobbyDetails_Info</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_copy_member_attribute_by_index">eos_lobby_details_copy_member_attribute_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-attribute-by-index">EOS_LobbyDetails_CopyMemberAttributeByIndex</a></p>
+<p>This function is used to immediately retrieve a copy of a lobby member attribute from an existing lobby.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this information is only available if you are actively in the lobby. It is not available for search results.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_copy_member_attribute_by_index(index, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the attribute to copy</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="lobbies.html#eos_lobby_attribute">EOS_Lobby_Attribute</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_copy_member_attribute_by_key">eos_lobby_details_copy_member_attribute_by_key</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-attribute-by-key">EOS_LobbyDetails_CopyMemberAttributeByKey</a></p>
+<p>This function is used to immediately retrieve a copy of a lobby member attribute from an existing lobby.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this information is only available if you are actively in the lobby. It is not available for search results.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_copy_member_attribute_by_key(attr_key, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attr_key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the attribute to copy</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="lobbies.html#eos_lobby_attribute">EOS_Lobby_Attribute</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_copy_member_info">eos_lobby_details_copy_member_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-copy-member-info">EOS_LobbyDetails_CopyMemberInfo</a></p>
+<p>This function is used to immediately retrieve a copy of lobby member information from an existing lobby.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this information is only available if you are actively in the lobby. It is not available for search results.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_copy_member_info(target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member to copy</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="lobbies.html#eos_lobbydetails_memberinfo">EOS_LobbyDetails_MemberInfo</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_get_attribute_count">eos_lobby_details_get_attribute_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-get-attribute-count">EOS_LobbyDetails_GetAttributeCount</a></p>
+<p>This function gets the number of attributes associated with this lobby. It returns the number of attributes on the lobby or 0 if there is an error.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_get_attribute_count()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_get_lobby_owner">eos_lobby_details_get_lobby_owner</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-get-lobby-owner">EOS_LobbyDetails_GetLobbyOwner</a></p>
+<p>This function gets the product user ID of the current owner for a given lobby, or an empty string <code>""</code> if the input parameters are invalid.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_get_lobby_owner()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_get_member_attribute_count">eos_lobby_details_get_member_attribute_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-get-member-attribute-count">EOS_LobbyDetails_GetMemberAttributeCount</a></p>
+<p>This function is used to immediately retrieve the attribute count for members in a lobby. It returns the number of attributes associated with a given lobby member or 0 if that member is invalid.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this information is only available if you are actively in the lobby. It is not available for search results.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_get_member_attribute_count(target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_get_member_by_index">eos_lobby_details_get_member_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-get-member-by-index">EOS_LobbyDetails_GetMemberByIndex</a></p>
+<p>This function is used to immediately retrieve individual members registered with a lobby.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this information is only available if you are actively in the lobby. It is not available for search results.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_get_member_by_index(index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the member to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_get_member_count">eos_lobby_details_get_member_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-get-member-count">EOS_LobbyDetails_GetMemberCount</a></p>
+<p>This function gets the number of members associated with this lobby.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_get_member_count()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_details_release">eos_lobby_details_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-details-info-release">EOS_LobbyDetails_Info_Release</a></p>
+<p>This function releases previously retrieved lobby details.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_details_release()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_add_attribute">eos_lobby_modification_add_attribute</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-add-attribute">EOS_LobbyModification_AddAttribute</a></p>
+<p>This function associates an attribute with this lobby. An attribute is something that may be public or private with the lobby. If public, it can be queried for in a search, otherwise the data remains known only to lobby members.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the attribute is missing information or otherwise invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_add_attribute(visibility, attribute)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visibility</td>
+<td><a href="lobbies.html#eos_lobby_attribute_visibility">EOS_LOBBY_ATTRIBUTE_VISIBILITY</a></td>
+<td>Whether this attribute is public or private to the lobby and its members</td>
+</tr>
+<tr>
+<td>attribute</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A struct that defines a single key/value pair describing the attribute to add to the lobby. The struct must contain the following variables:<br><br><em> <code>key</code> (<a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a>)<br></em> <code>value_type</code> (<a href="sessions.html#eos_attribute_type">EOS_ATTRIBUTE_TYPE</a>)<br>* <code>value</code> (a value of the given <code>value_type</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_add_member_attribute">eos_lobby_modification_add_member_attribute</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-add-member-attribute">EOS_LobbyModification_AddMemberAttribute</a></p>
+<p>This function associates an attribute with a member of the lobby. Lobby member data is always private to the lobby.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the attribute is missing information or otherwise invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_add_member_attribute(visibility, attribute)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visibility</td>
+<td><a href="lobbies.html#eos_lobby_attribute_visibility">EOS_LOBBY_ATTRIBUTE_VISIBILITY</a></td>
+<td>Whether this attribute is public or private to the rest of the lobby members</td>
+</tr>
+<tr>
+<td>attribute</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A struct that defines a single key/value pair describing the attribute to add to the lobby member. The struct must contain the following variables:<br><br><em> <code>key</code> (<a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a>)<br></em> <code>value_type</code> (<a href="sessions.html#eos_attribute_type">EOS_ATTRIBUTE_TYPE</a>)<br>* <code>value</code> (a value of the given <code>value_type</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_release">eos_lobby_modification_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-release">EOS_LobbyModification_Release</a></p>
+<p>This function releases a previously obtained lobby modification.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_release()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_remove_attribute">eos_lobby_modification_remove_attribute</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-lobby-modification-remove-attribute">EOS_LobbyModification_RemoveAttribute</a></p>
+<p>This function removes an attribute associated with the lobby.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if removing this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the key is empty</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_remove_attribute(key)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the key</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_remove_member_attribute">eos_lobby_modification_remove_member_attribute</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-remove-member-attribute">EOS_LobbyModification_RemoveMemberAttribute</a></p>
+<p>This function removes an attribute associated with of member of the lobby.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if removing this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the key is empty</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_remove_member_attribute(key)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the key</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_set_allowed_platform_ids">eos_lobby_modification_set_allowed_platform_ids</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-allowed-platform-ids">EOS_LobbyModification_SetAllowedPlatformIds</a></p>
+<p>This function sets the Allowed Platform IDs for the lobby.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the parameter is invalid</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_set_allowed_platform_ids(allowed_platform_ids)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowed_platform_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="lobbies.html#eos_online_platform_type">EOS_ONLINE_PLATFORM_TYPE</a></td>
+<td>An array of platform IDs indicating the player platforms allowed to register with the session. The lobby will be unrestricted if you pass an empty array.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_set_bucket_id">eos_lobby_modification_set_bucket_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-bucket-id">EOS_LobbyModification_SetBucketId</a></p>
+<p>This function sets the bucket ID associated with this lobby. Values such as region, game mode, etc., can be combined here depending on game need. Setting this is strongly recommended to improve search performance.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the bucket ID is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_set_bucket_id(bucket_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The new bucket ID associated with the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_set_invites_allowed">eos_lobby_modification_set_invites_allowed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-invites-allowed">EOS_LobbyModification_SetInvitesAllowed</a></p>
+<p>This function allows enabling or disabling invites for this lobby. The lobby will also need to have <code>presence_enabled</code> set to <code>true</code>.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_set_invites_allowed(invites_allowed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invites_allowed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code> then invites can currently be sent for the associated lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_set_max_members">eos_lobby_modification_set_max_members</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-max-members">EOS_LobbyModification_SetMaxMembers</a></p>
+<p>This function sets the maximum number of members allowed in this lobby. When updating the lobby, it is not possible to reduce this number below the current number of existing members.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_set_max_members(max_members)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max_members</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The new maximum number of lobby members</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_modification_set_permission_level">eos_lobby_modification_set_permission_level</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-modification-set-permission-level">EOS_LobbyModification_SetPermissionLevel</a></p>
+<p>This function sets the permissions associated with this lobby. The permissions range from "public" to "invite only" and are described by <a href="lobbies.html#eos_lobby_permission_level">EOS_LOBBY_PERMISSION_LEVEL</a>.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_modification_set_permission_level(permission_level)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>permission_level</td>
+<td><a href="lobbies.html#eos_lobby_permission_level">EOS_LOBBY_PERMISSION_LEVEL</a></td>
+<td>The permission level of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_copy_search_result_by_index">eos_lobby_search_copy_search_result_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-copy-search-result-by-index">EOS_LobbySearch_CopySearchResultByIndex</a></p>
+<p>This function is used to immediately retrieve a handle to the lobby information from a given search result. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, the lobby details handle must be released with <a href="lobbies.html#eos_lobby_details_release">eos_lobby_details_release</a> to release the memory associated with it once you are done using it.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid index</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_copy_search_result_by_index(lobby_index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the lobby to retrieve within the completed search query</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_find">eos_lobby_search_find</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-find">EOS_LobbySearch_Find</a></p>
+<p>This function finds lobbies matching the search criteria setup via this lobby search handle. When the operation completes, this handle will have the search results that can be parsed.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_find(local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user making the search request</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_lobby_search_find"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original function call</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_get_search_result_count">eos_lobby_search_get_search_result_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-get-search-result-count">EOS_LobbySearch_GetSearchResultCount</a></p>
+<p>This function gets the number of search results found by the search parameters in this search. It returns the number of search results found by the query or 0 if search is not complete.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_get_search_result_count()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_release">eos_lobby_search_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-lobby-search-release">EOS_LobbySearch_Release</a></p>
+<p>This function releases the memory associated with a lobby search. This must be called on data retrieved from <a href="lobbies.html#eos_lobby_create_lobby_search">eos_lobby_create_lobby_search</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_release()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_remove_parameter">eos_lobby_search_remove_parameter</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-remove-parameter">EOS_LobbySearch_RemoveParameter</a></p>
+<p>This function removes a parameter from the array of search criteria.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_remove_parameter(key, comparison_op)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The search parameter key to remove from the search</td>
+</tr>
+<tr>
+<td>comparison_op</td>
+<td><a href="general.html#eos_comparison_op">EOS_COMPARISON_OP</a></td>
+<td>The search comparison operation associated with the key to remove</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_set_lobby_id">eos_lobby_search_set_lobby_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-lobby-id">EOS_LobbySearch_SetLobbyId</a></p>
+<p>This function sets a lobby ID to find and will return at most one search result. Setting TargetUserId or SearchParameters will result in <a href="lobbies.html#eos_lobby_search_find">eos_lobby_search_find</a> failing.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this lobby ID was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the lobby ID is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_set_lobby_id(lobby_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the lobby to find</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_set_max_results">eos_lobby_search_set_max_results</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-max-results">EOS_LobbySearch_SetMaxResults</a></p>
+<p>This function sets the maximum number of search results to return in the query, can't be more than <a href="lobbies.html#eos_lobby_max_search_results">EOS_LOBBY_MAX_SEARCH_RESULTS</a>.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting the max results was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the number of results requested is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_set_max_results(max_results)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max_results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum number of search results to return from the query</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_set_parameter">eos_lobby_search_set_parameter</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-parameter">EOS_LobbySearch_SetParameter</a></p>
+<p>This function adds a parameter to an array of search criteria combined via an implicit AND operator. Setting LobbyId or TargetUserId will result in <a href="lobbies.html#eos_lobby_search_find">eos_lobby_search_find</a> failing.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this search parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the search criteria is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_set_parameter(comparison_op, parameter)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>comparison_op</td>
+<td><a href="general.html#eos_comparison_op">EOS_COMPARISON_OP</a></td>
+<td>The type of comparison to make against the search parameter</td>
+</tr>
+<tr>
+<td>parameter</td>
+<td><a href="lobbies.html#eos_lobby_attribute">EOS_Lobby_Attribute</a></td>
+<td>A search parameter describing a key and a value to compare</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_search_set_target_user_id">eos_lobby_search_set_target_user_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-lobby-search-set-target-user-id">EOS_LobbySearch_SetTargetUserId</a></p>
+<p>This function sets a target user ID to find. Setting LobbyId or SearchParameters will result in <a href="lobbies.html#eos_lobby_search_find">eos_lobby_search_find</a> failing.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this target user ID was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the target user ID is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_lobby_search_set_target_user_id(target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Search lobbies for the given user by Product User ID, returning any lobbies where this user is currently registered</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_member_status">EOS_LOBBY_MEMBER_STATUS</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-lobby-member-status">EOS_ELobbyMemberStatus</a></p>
+<p>This enumeration holds the possible types of lobby member status.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_add_notify_lobby_member_status_received">eos_lobby_add_notify_lobby_member_status_received</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JOINED</code></td>
+<td>The user has joined the lobby</td>
+</tr>
+<tr>
+<td><code>LEFT</code></td>
+<td>The user has explicitly left the lobby</td>
+</tr>
+<tr>
+<td><code>DISCONNECTED</code></td>
+<td>The user has unexpectedly left the lobby</td>
+</tr>
+<tr>
+<td><code>KICKED</code></td>
+<td>The user has been kicked from the lobby</td>
+</tr>
+<tr>
+<td><code>PROMOTED</code></td>
+<td>The user has been promoted to lobby owner</td>
+</tr>
+<tr>
+<td><code>CLOSED</code></td>
+<td>The lobby has been closed and user has been removed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_attribute_visibility">EOS_LOBBY_ATTRIBUTE_VISIBILITY</h1>
+<p><strong>Epic Online Services Enumeration:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-lobby-attribute-visibility">EOS_ELobbyAttributeVisibility</a></p>
+<p>This enum holds the possible advertisement properties for a single attribute associated with a lobby.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_modification_add_attribute">eos_lobby_modification_add_attribute</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_add_member_attribute">eos_lobby_modification_add_member_attribute</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_attribute">EOS_Lobby_Attribute</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PUBLIC</code></td>
+<td>Data is visible to lobby members, searchable and visible in search results.</td>
+</tr>
+<tr>
+<td><code>PRIVATE</code></td>
+<td>Data is only visible to the user setting the data. Data is not visible to lobby members, not searchable, and not visible in search results.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_permission_level">EOS_LOBBY_PERMISSION_LEVEL</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-lobby-permission-level">EOS_ELobbyPermissionLevel</a></p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_create_lobby">eos_lobby_create_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_modification_set_permission_level">eos_lobby_modification_set_permission_level</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobbydetails_info">EOS_LobbyDetails_Info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PUBLIC_ADVERTISED</code></td>
+<td>Anyone can find this lobby as long as it isn't full</td>
+</tr>
+<tr>
+<td><code>JOIN_VIA_PRESENCE</code></td>
+<td>Players who have access to presence can see this lobby</td>
+</tr>
+<tr>
+<td><code>INVITE_ONLY</code></td>
+<td>Only players with invites registered can see this lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_max_search_results">EOS_LOBBY_MAX_SEARCH_RESULTS</h1>
+<p>This macro holds the maximum number of lobby search results.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_online_platform_type">EOS_ONLINE_PLATFORM_TYPE</h1>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_modification_set_allowed_platform_ids">eos_lobby_modification_set_allowed_platform_ids</a></li>
+<li><a href="sessions.html#eos_session_modification_set_allowed_platform_ids">eos_session_modification_set_allowed_platform_ids</a></li>
+<li><a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobbydetails_memberinfo">EOS_LobbyDetails_MemberInfo</a></li>
+<li><a href="sessions.html#sessiondetails_settings">SessionDetails_Settings</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNKNOWN</code></td>
+<td>The platform type is unknown</td>
+</tr>
+<tr>
+<td><code>EPIC</code></td>
+<td>The platform type is Epic Games</td>
+</tr>
+<tr>
+<td><code>STEAM</code></td>
+<td>The platform type is Steam</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobby_attribute">EOS_Lobby_Attribute</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-lobby-attribute">EOS_Lobby_Attribute</a></p>
+<p>This struct stores an attribute and its visibility setting stored with a lobby. Used to store both lobby and lobby member data.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_details_copy_attribute_by_index">eos_lobby_details_copy_attribute_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_attribute_by_key">eos_lobby_details_copy_attribute_by_key</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_attribute_by_index">eos_lobby_details_copy_member_attribute_by_index</a></li>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_attribute_by_key">eos_lobby_details_copy_member_attribute_by_key</a></li>
+<li><a href="lobbies.html#eos_lobby_search_set_parameter">eos_lobby_search_set_parameter</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the lobby attribute</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
+<td>The value of the lobby attribute</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td><a href="lobbies.html#eos_lobby_attribute_visibility">EOS_LOBBY_ATTRIBUTE_VISIBILITY</a></td>
+<td>Whether this attribute is public or private to the lobby and its members</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobbydetails_info">EOS_LobbyDetails_Info</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-lobby-details-info">EOS_LobbyDetails_Info</a></p>
+<p>This struct holds details on a lobby.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_details_copy_info">eos_lobby_details_copy_info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>available_slots</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current available space</td>
+</tr>
+<tr>
+<td>allow_host_migration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether host migration is allowed</td>
+</tr>
+<tr>
+<td>allow_invites</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code>, users can invite others to this lobby</td>
+</tr>
+<tr>
+<td>allow_join_by_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether <a href="lobbies.html#eos_lobby_join_lobby_by_id">eos_lobby_join_lobby_by_id</a> is allowed</td>
+</tr>
+<tr>
+<td>presence_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code>, this lobby will be associated with the local user's presence information.</td>
+</tr>
+<tr>
+<td>rejoin_after_kick_requires_invite</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether rejoining after being kicked requires an invite</td>
+</tr>
+<tr>
+<td>rtc_room_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Was a Real-Time Communication (RTC) room enabled at lobby creation?</td>
+</tr>
+<tr>
+<td>bucket_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The main indexed parameter for this lobby, can be any string (i.e. <code>"Region:GameMode"</code>)</td>
+</tr>
+<tr>
+<td>lobby_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The lobby ID</td>
+</tr>
+<tr>
+<td>lobby_owner_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the current owner of the lobby</td>
+</tr>
+<tr>
+<td>max_members</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Max allowed members in the lobby</td>
+</tr>
+<tr>
+<td>permission_level</td>
+<td><a href="lobbies.html#eos_lobby_permission_level">EOS_LOBBY_PERMISSION_LEVEL</a></td>
+<td>The permission level of the lobby</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_lobbydetails_memberinfo">EOS_LobbyDetails_MemberInfo</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-lobby-details-member-info">EOS_LobbyDetails_MemberInfo</a></p>
+<p>This struct holds information on a lobby member.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_details_copy_member_info">eos_lobby_details_copy_member_info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allows_crossplay</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether this member allows crossplay</td>
+</tr>
+<tr>
+<td>platform</td>
+<td><a href="lobbies.html#eos_online_platform_type">EOS_ONLINE_PLATFORM_TYPE</a></td>
+<td>The platform of the lobby member</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the lobby member</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="leaderboards.html" class="btn btn-neutral float-left" title="Leaderboards"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="metrics.html" class="btn btn-neutral float-right" title="Metrics">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2025</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="leaderboards.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="metrics.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

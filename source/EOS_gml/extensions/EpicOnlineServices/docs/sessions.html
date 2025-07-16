@@ -1,0 +1,3522 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Sessions - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sessions";
+        var mkdocs_page_input_path = "sessions.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Sessions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#session-handles">Session Handles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#outsessionsearchhandle">OutSessionSearchHandle</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sessiondetails">SessionDetails</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sessionmodification">SessionModification</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Sessions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/sessions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="sessions"><strong>Sessions</strong></h1>
+<p><strong>Epic Online Services Interface</strong>: <a href="https://dev.epicgames.com/docs/api-ref/interfaces/sessions">Sessions Interface</a></p>
+<p>Epic Online Services (EOS) gives players the ability to host, find, and interact with online gaming sessions through the Sessions Interface. A session can be short, like filling a certain number of player slots before starting a game, then disbanding after the game ends, or it could be longer, like keeping track of a game that cycles through matches on multiple maps or levels. The Sessions Interface also manages game-specific data that supports the back-end service searching and matchmaking functionality. For more information on the considerations you should take for matchmaking, see the documentation: <a href="https://dev.epicgames.com/docs/en-US/game-services/lobbies-and-sessions/security-considerations">Security Considerations</a> section.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a href="https://dev.epicgames.com/docs/game-services/lobbies-and-sessions/sessions/sessions-intro">Sessions Introduction</a> for a more detailed guide.</p>
+</div>
+<h2 id="session-handles">Session Handles</h2>
+<p>Sessions in Epic Online Services make use of session handles. Before you can use certain functions you need to obtain a valid handle for that which you're trying to do. The handles themselves are kept by the extension. However, whenever you request a handle, you should still manually release it afterwards, once you are done using it.</p>
+<p>The following is an overview of the different session handles and the functions you can use to obtain and release them and the functions that require them.</p>
+<h3 id="outsessionsearchhandle">OutSessionSearchHandle</h3>
+<ul>
+<li>Obtain:</li>
+<li><a href="sessions.html#eos_sessions_create_session_search">eos_sessions_create_session_search</a></li>
+<li>Used by:</li>
+<li><a href="sessions.html#eos_session_search_copy_search_result_by_index">eos_session_search_copy_search_result_by_index</a></li>
+<li><a href="sessions.html#eos_session_search_find">eos_session_search_find</a></li>
+<li><a href="sessions.html#eos_session_search_get_search_result_count">eos_session_search_get_search_result_count</a></li>
+<li><a href="sessions.html#eos_session_search_remove_parameter">eos_session_search_remove_parameter</a></li>
+<li><a href="sessions.html#eos_session_search_set_max_results">eos_session_search_set_max_results</a></li>
+<li><a href="sessions.html#eos_session_search_set_parameter">eos_session_search_set_parameter</a></li>
+<li><a href="sessions.html#eos_session_search_set_session_id">eos_session_search_set_session_id</a></li>
+<li><a href="sessions.html#eos_session_search_set_target_user_id">eos_session_search_set_target_user_id</a></li>
+<li>Release:</li>
+<li><a href="sessions.html#eos_session_search_release">eos_session_search_release</a></li>
+</ul>
+<h3 id="sessiondetails">SessionDetails</h3>
+<ul>
+<li>Obtain:</li>
+<li><a href="sessions.html#eos_sessions_copy_session_handle_by_invite_id">eos_sessions_copy_session_handle_by_invite_id</a></li>
+<li><a href="sessions.html#eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id</a></li>
+<li><a href="sessions.html#eos_sessions_copy_session_handle_for_presence">eos_sessions_copy_session_handle_for_presence</a></li>
+<li><a href="sessions.html#eos_session_search_copy_search_result_by_index">eos_session_search_copy_search_result_by_index</a></li>
+<li>Used by:</li>
+<li><a href="sessions.html#eos_session_details_copy_info">eos_session_details_copy_info</a></li>
+<li><a href="sessions.html#eos_session_details_copy_session_attribute_by_index">eos_session_details_copy_session_attribute_by_index</a></li>
+<li><a href="sessions.html#eos_session_details_copy_session_attribute_by_key">eos_session_details_copy_session_attribute_by_key</a></li>
+<li><a href="sessions.html#eos_session_details_get_session_attribute_count">eos_session_details_get_session_attribute_count</a></li>
+<li><a href="sessions.html#eos_sessions_join_session">eos_sessions_join_session</a></li>
+<li>Release:</li>
+<li><a href="sessions.html#eos_session_details_release">eos_session_details_release</a></li>
+</ul>
+<h3 id="sessionmodification">SessionModification</h3>
+<ul>
+<li>Obtain:</li>
+<li><a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a></li>
+<li><a href="sessions.html#eos_sessions_update_session_modification">eos_sessions_update_session_modification</a></li>
+<li>Used by:</li>
+<li><a href="sessions.html#eos_session_modification_add_attribute">eos_session_modification_add_attribute</a></li>
+<li><a href="sessions.html#eos_session_modification_remove_attribute">eos_session_modification_remove_attribute</a></li>
+<li><a href="sessions.html#eos_session_modification_set_allowed_platform_ids">eos_session_modification_set_allowed_platform_ids</a></li>
+<li><a href="sessions.html#eos_session_modification_set_bucket_id">eos_session_modification_set_bucket_id</a></li>
+<li><a href="sessions.html#eos_session_modification_set_host_address">eos_session_modification_set_host_address</a></li>
+<li><a href="sessions.html#eos_session_modification_set_invites_allowed">eos_session_modification_set_invites_allowed</a></li>
+<li><a href="sessions.html#eos_session_modification_set_join_in_progress_allowed">eos_session_modification_set_join_in_progress_allowed</a></li>
+<li><a href="sessions.html#eos_session_modification_set_max_players">eos_session_modification_set_max_players</a></li>
+<li><a href="sessions.html#eos_session_modification_set_permission_level">eos_session_modification_set_permission_level</a></li>
+<li><a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a></li>
+<li>Release:</li>
+<li><a href="sessions.html#eos_session_modification_release">eos_session_modification_release</a></li>
+</ul>
+<h2 id="functions">Functions</h2>
+<p>This module offers a collection of functions designed to address specific tasks and provide utilities for various purposes. Explore the available functions to make the most of the functionalities provided by this module.</p>
+<ul>
+<li><a href="sessions.html#eos_active_session_copy_info">eos_active_session_copy_info</a></li>
+<li><a href="sessions.html#eos_active_session_get_registered_player_by_index">eos_active_session_get_registered_player_by_index</a></li>
+<li><a href="sessions.html#eos_active_session_get_registered_player_count">eos_active_session_get_registered_player_count</a></li>
+<li><a href="sessions.html#eos_session_details_copy_info">eos_session_details_copy_info</a></li>
+<li><a href="sessions.html#eos_session_details_copy_session_attribute_by_index">eos_session_details_copy_session_attribute_by_index</a></li>
+<li><a href="sessions.html#eos_session_details_copy_session_attribute_by_key">eos_session_details_copy_session_attribute_by_key</a></li>
+<li><a href="sessions.html#eos_session_details_get_session_attribute_count">eos_session_details_get_session_attribute_count</a></li>
+<li><a href="sessions.html#eos_session_details_release">eos_session_details_release</a></li>
+<li><a href="sessions.html#eos_session_modification_add_attribute">eos_session_modification_add_attribute</a></li>
+<li><a href="sessions.html#eos_session_modification_release">eos_session_modification_release</a></li>
+<li><a href="sessions.html#eos_session_modification_remove_attribute">eos_session_modification_remove_attribute</a></li>
+<li><a href="sessions.html#eos_session_modification_set_allowed_platform_ids">eos_session_modification_set_allowed_platform_ids</a></li>
+<li><a href="sessions.html#eos_session_modification_set_bucket_id">eos_session_modification_set_bucket_id</a></li>
+<li><a href="sessions.html#eos_session_modification_set_host_address">eos_session_modification_set_host_address</a></li>
+<li><a href="sessions.html#eos_session_modification_set_invites_allowed">eos_session_modification_set_invites_allowed</a></li>
+<li><a href="sessions.html#eos_session_modification_set_join_in_progress_allowed">eos_session_modification_set_join_in_progress_allowed</a></li>
+<li><a href="sessions.html#eos_session_modification_set_max_players">eos_session_modification_set_max_players</a></li>
+<li><a href="sessions.html#eos_session_modification_set_permission_level">eos_session_modification_set_permission_level</a></li>
+<li><a href="sessions.html#eos_session_search_copy_search_result_by_index">eos_session_search_copy_search_result_by_index</a></li>
+<li><a href="sessions.html#eos_session_search_find">eos_session_search_find</a></li>
+<li><a href="sessions.html#eos_session_search_get_search_result_count">eos_session_search_get_search_result_count</a></li>
+<li><a href="sessions.html#eos_session_search_release">eos_session_search_release</a></li>
+<li><a href="sessions.html#eos_session_search_remove_parameter">eos_session_search_remove_parameter</a></li>
+<li><a href="sessions.html#eos_session_search_set_max_results">eos_session_search_set_max_results</a></li>
+<li><a href="sessions.html#eos_session_search_set_parameter">eos_session_search_set_parameter</a></li>
+<li><a href="sessions.html#eos_session_search_set_session_id">eos_session_search_set_session_id</a></li>
+<li><a href="sessions.html#eos_session_search_set_target_user_id">eos_session_search_set_target_user_id</a></li>
+<li><a href="sessions.html#eos_sessions_add_notify_join_session_accepted">eos_sessions_add_notify_join_session_accepted</a></li>
+<li><a href="sessions.html#eos_sessions_add_notify_leave_session_requested">eos_sessions_add_notify_leave_session_requested</a></li>
+<li><a href="sessions.html#eos_sessions_add_notify_send_session_native_invite_requested">eos_sessions_add_notify_send_session_native_invite_requested</a></li>
+<li><a href="sessions.html#eos_sessions_add_notify_session_invite_accepted">eos_sessions_add_notify_session_invite_accepted</a></li>
+<li><a href="sessions.html#eos_sessions_add_notify_session_invite_rejected">eos_sessions_add_notify_session_invite_rejected</a></li>
+<li><a href="sessions.html#eos_sessions_copy_session_handle_by_invite_id">eos_sessions_copy_session_handle_by_invite_id</a></li>
+<li><a href="sessions.html#eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id</a></li>
+<li><a href="sessions.html#eos_sessions_copy_session_handle_for_presence">eos_sessions_copy_session_handle_for_presence</a></li>
+<li><a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a></li>
+<li><a href="sessions.html#eos_sessions_create_session_search">eos_sessions_create_session_search</a></li>
+<li><a href="sessions.html#eos_sessions_destroy_session">eos_sessions_destroy_session</a></li>
+<li><a href="sessions.html#eos_sessions_dump_session_state">eos_sessions_dump_session_state</a></li>
+<li><a href="sessions.html#eos_sessions_end_session">eos_sessions_end_session</a></li>
+<li><a href="sessions.html#eos_sessions_get_invite_count">eos_sessions_get_invite_count</a></li>
+<li><a href="sessions.html#eos_sessions_get_invite_id_by_index">eos_sessions_get_invite_id_by_index</a></li>
+<li><a href="sessions.html#eos_sessions_is_user_in_session">eos_sessions_is_user_in_session</a></li>
+<li><a href="sessions.html#eos_sessions_join_session">eos_sessions_join_session</a></li>
+<li><a href="sessions.html#eos_sessions_query_invites">eos_sessions_query_invites</a></li>
+<li><a href="sessions.html#eos_sessions_register_players">eos_sessions_register_players</a></li>
+<li><a href="sessions.html#eos_sessions_reject_invite">eos_sessions_reject_invite</a></li>
+<li><a href="sessions.html#eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</a></li>
+<li><a href="sessions.html#eos_sessions_remove_notify_leave_session_requested">eos_sessions_remove_notify_leave_session_requested</a></li>
+<li><a href="sessions.html#eos_sessions_remove_notify_send_session_native_invite_requested">eos_sessions_remove_notify_send_session_native_invite_requested</a></li>
+<li><a href="sessions.html#eos_sessions_remove_notify_session_invite_accepted">eos_sessions_remove_notify_session_invite_accepted</a></li>
+<li><a href="sessions.html#eos_sessions_remove_notify_session_invite_received">eos_sessions_remove_notify_session_invite_received</a></li>
+<li><a href="sessions.html#eos_sessions_remove_notify_session_invite_rejected">eos_sessions_remove_notify_session_invite_rejected</a></li>
+<li><a href="sessions.html#eos_sessions_send_invite">eos_sessions_send_invite</a></li>
+<li><a href="sessions.html#eos_sessions_start_session">eos_sessions_start_session</a></li>
+<li><a href="sessions.html#eos_sessions_unregister_players">eos_sessions_unregister_players</a></li>
+<li><a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a></li>
+<li><a href="sessions.html#eos_sessions_update_session_modification">eos_sessions_update_session_modification</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>This module offers a collection of structs, which serve as custom data models for organizing and structuring data. Explore the provided structs to better understand the relationships between data elements and simplify your data manipulation tasks.</p>
+<ul>
+<li><a href="sessions.html#activesessioninfo">ActiveSessionInfo</a></li>
+<li><a href="sessions.html#sessionattribute">SessionAttribute</a></li>
+<li><a href="sessions.html#sessiondetails_info">SessionDetails_Info</a></li>
+<li><a href="sessions.html#sessiondetails_settings">SessionDetails_Settings</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>This module includes a set of predefined constants that can be utilized for various purposes. Browse through the available constants to find values relevant to your needs and enhance the efficiency of your code.</p>
+<ul>
+<li><a href="sessions.html#eos_attribute_type">EOS_ATTRIBUTE_TYPE</a></li>
+<li><a href="sessions.html#eos_online_session_permission_level">EOS_ONLINE_SESSION_PERMISSION_LEVEL</a></li>
+<li><a href="sessions.html#eos_online_session_state">EOS_ONLINE_SESSION_STATE</a></li>
+<li><a href="sessions.html#eos_session_attribute_advertisement_type">EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE</a></li>
+<li><a href="sessions.html#eos_sessions_max_search_results">EOS_SESSIONS_MAX_SEARCH_RESULTS</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_active_session_copy_info">eos_active_session_copy_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-copy-info">EOS_ActiveSession_CopyInfo</a></p>
+<p>This function is used to immediately retrieve a copy of active session information. The returned struct will be empty if the result is not <code>EOS_RESULT.SUCCESS</code>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_active_session_copy_info(session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="sessions.html#activesessioninfo">ActiveSessionInfo</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_active_session_get_registered_player_by_index">eos_active_session_get_registered_player_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-by-index">EOS_ActiveSession_GetRegisteredPlayerByIndex</a></p>
+<p>This function is used to immediately retrieve individual players registered with the active session.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_active_session_get_registered_player_by_index(session_name, player_index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session</td>
+</tr>
+<tr>
+<td>player_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the registered player to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_active_session_get_registered_player_count">eos_active_session_get_registered_player_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-count">EOS_ActiveSession_GetRegisteredPlayerCount</a></p>
+<p>This function gets the number of registered players associated with this active session. It returns the number of registered players in the active session or 0 if there is an error.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_active_session_get_registered_player_count(session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_details_copy_info">eos_session_details_copy_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-info">EOS_SessionDetails_CopyInfo</a></p>
+<p>This function is used to immediately retrieve a copy of session information from a given source such as a active session or a search result.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_details_copy_info()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="sessions.html#sessiondetails_info">SessionDetails_Info</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_details_copy_session_attribute_by_index">eos_session_details_copy_session_attribute_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-index">EOS_SessionDetails_CopySessionAttributeByIndex</a></p>
+<p>This function is used to immediately retrieve a copy of session attribution from a given source such as a active session or a search result.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_details_copy_session_attribute_by_index(attr_index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attr_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the attribute to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="sessions.html#sessionattribute">SessionAttribute</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_details_copy_session_attribute_by_key">eos_session_details_copy_session_attribute_by_key</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-key">EOS_SessionDetails_CopySessionAttributeByKey</a></p>
+<p>This function is used to immediately retrieve a copy of session attribution from a given source such as a active session or a search result.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_details_copy_session_attribute_by_key(attr_key)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attr_key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the key to get the session attribution for</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="sessions.html#sessionattribute">SessionAttribute</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_details_get_session_attribute_count">eos_session_details_get_session_attribute_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-get-session-attribute-count">EOS_SessionDetails_GetSessionAttributeCount</a></p>
+<p>This function gets the number of attributes associated with this session. It returns the number of attributes on the session or 0 if there is an error.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_details_get_session_attribute_count()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_details_release">eos_session_details_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-release">EOS_SessionDetails_Release</a></p>
+<p>This function releases the memory associated with a single session. This must be called on data retrieved from <a href="sessions.html#eos_session_search_copy_search_result_by_index">eos_session_search_copy_search_result_by_index</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_details_release()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_add_attribute">eos_session_modification_add_attribute</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-add-attribute">EOS_SessionModification_AddAttribute</a></p>
+<p>This function associates an attribute with this session. An attribute is something that may or may not be advertised with the session. If advertised, it can be queried for in a search, otherwise the data remains local to the client.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the attribution is missing information or otherwise invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_add_attribute(type, attribute)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="sessions.html#eos_session_attribute_advertisement_type">EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE</a></td>
+<td>Whether this attribute is advertised with the backend or simply stored locally</td>
+</tr>
+<tr>
+<td>attribute</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A struct with two variables <code>key</code> and <code>value</code>, representing the key/value pair that describes the attribute to add to the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_release">eos_session_modification_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-release">EOS_SessionModification_Release</a></p>
+<p>This function releases the memory associated with session modification. This must be called on data retrieved from <a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a> or <a href="sessions.html#eos_sessions_update_session_modification">eos_sessions_update_session_modification</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_release()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_remove_attribute">eos_session_modification_remove_attribute</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-remove-attribute">EOS_SessionModification_RemoveAttribute</a></p>
+<p>This function removes an attribute from this session.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if removing this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the key is empty</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_remove_attribute(key)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The session attribute to remove from the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_set_allowed_platform_ids">eos_session_modification_set_allowed_platform_ids</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-allowed-platform-ids">EOS_SessionModification_SetAllowedPlatformIds</a></p>
+<p>This function sets the Allowed Platform IDs for the session.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the attribution is missing information or otherwise invalid</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_set_allowed_platform_ids(array_ids)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="lobbies.html#eos_online_platform_type">EOS_ONLINE_PLATFORM_TYPE</a></td>
+<td>An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass <code>undefined</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_set_bucket_id">eos_session_modification_set_bucket_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-bucket-id">EOS_SessionModification_SetBucketId</a></p>
+<p>This function sets the bucket ID associated with this session. Values such as region, game mode, etc., can be combined here depending on game need. Setting this is strongly recommended to improve search performance.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the bucket ID is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_set_bucket_id(bucket_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The new bucket ID associated with the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_set_host_address">eos_session_modification_set_host_address</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-host-address">EOS_SessionModification_SetHostAddress</a></p>
+<p>This function sets the host address associated with this session. Setting this is optional, if the value is not set, the SDK will fill the value in from the service. It is useful to set if other addressing mechanisms are desired or if LAN addresses are preferred during development.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the host ID is an empty string</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No validation of this value occurs to allow for flexibility in addressing methods.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_set_host_address(host_address)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host_address</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string representing the host address for the session, its meaning is up to the application</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_set_invites_allowed">eos_session_modification_set_invites_allowed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-invites-allowed">EOS_SessionModification_SetInvitesAllowed</a></p>
+<p>This function allows enabling or disabling invites for this session. The session will also need to have <code>presence_enabled</code> true.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_set_invites_allowed(invites_allowed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invites_allowed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code> then invites can currently be sent for the associated session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_set_join_in_progress_allowed">eos_session_modification_set_join_in_progress_allowed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-join-in-progress-allowed">EOS_SessionModification_SetJoinInProgressAllowed</a></p>
+<p>This function sets whether or not join in progress is allowed. Once a session is started, it will no longer be visible to search queries unless this flag is set or the session returns to the pending or ended state.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_set_join_in_progress_allowed(allow_join_in_progress)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow_join_in_progress</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the session allows join in progress</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_set_max_players">eos_session_modification_set_max_players</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-max-players">EOS_SessionModification_SetMaxPlayers</a></p>
+<p>This function sets the maximum number of players allowed in this session. When updating the session, it is not possible to reduce this number below the current number of existing players.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_set_max_players(max_players)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max_players</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The max number of players to allow in the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_modification_set_permission_level">eos_session_modification_set_permission_level</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-permission-level">EOS_SessionModification_SetPermissionLevel</a></p>
+<p>This function sets the session permissions associated with this session. The permissions range from "public" to "invite only" and are described by <a href="sessions.html#eos_online_session_permission_level">EOS_ONLINE_SESSION_PERMISSION_LEVEL</a>.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this parameter was successful</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_modification_set_permission_level(permission_level)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>permission_level</td>
+<td><a href="sessions.html#eos_online_session_permission_level">EOS_ONLINE_SESSION_PERMISSION_LEVEL</a></td>
+<td>The permission level to set on the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_add_notify_join_session_accepted">eos_sessions_add_notify_join_session_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-join-session-accepted">EOS_Sessions_AddNotifyJoinSessionAccepted</a></p>
+<p>This function registers to receive notifications when a user accepts a session join game via the social overlay.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="sessions.html#eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_join_session_accepted()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_add_notify_join_session_accepted"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user who initialized the game</td>
+</tr>
+<tr>
+<td>ui_event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The UI Event associated with this Join Game event. This should be used with <a href="sessions.html#eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id</a> to get a handle to be used when calling <a href="sessions.html#eos_sessions_join_session">eos_sessions_join_session</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_add_notify_leave_session_requested">eos_sessions_add_notify_leave_session_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-leave-session-requested">EOS_Sessions_AddNotifyLeaveSessionRequested</a></p>
+<p>This function registers to receive notifications about leave session requests performed by local user via the overlay. When user requests to leave the session in the social overlay, the SDK does not automatically leave the session, it is up to the game to perform any necessary cleanup and call the <a href="sessions.html#eos_sessions_destroy_session">eos_sessions_destroy_session</a> method using the <code>session_name</code> sent in the notification function.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="sessions.html#eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_leave_session_requested()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_add_notify_leave_session_requested"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who received the leave session notification.</td>
+</tr>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session associated with the leave session request.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_add_notify_send_session_native_invite_requested">eos_sessions_add_notify_send_session_native_invite_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-send-session-native-invite-requested">EOS_Sessions_AddNotifySendSessionNativeInviteRequested</a></p>
+<p>This function registers to receive notifications about a session "INVITE" performed by a local user via the overlay. This is only needed when a configured integrated platform has EOS_IPMF_DisableSDKManagedSessions set. The EOS SDK will then use the state of EOS_IPMF_PreferEOSIdentity and EOS_IPMF_PreferIntegratedIdentity to determine when the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> is triggered.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="sessions.html#eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_send_session_native_invite_requested()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_add_notify_send_session_native_invite_requested"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is inviting</td>
+</tr>
+<tr>
+<td>target_native_account_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Native Platform Account Type. If only a single integrated platform is configured then this will always reference that platform.</td>
+</tr>
+<tr>
+<td>target_user_native_account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Native Platform Account ID of the target user being invited</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The session ID that the user is being invited to</td>
+</tr>
+<tr>
+<td>ui_event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>Identifies this event which will need to be acknowledged with <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_add_notify_session_invite_accepted">eos_sessions_add_notify_session_invite_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-accepted">EOS_Sessions_AddNotifySessionInviteAccepted</a></p>
+<p>This function registers to receive notifications when a user accepts a session invite via the social overlay.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="sessions.html#eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_session_invite_accepted()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_add_notify_session_invite_accepted"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who accepted the invitation</td>
+</tr>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The invite ID that was accepted</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The session ID that should be used for joining</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who sent the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_add_notify_session_invite_rejected">eos_sessions_add_notify_session_invite_rejected</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-rejected">EOS_Sessions_AddNotifySessionInviteRejected</a></p>
+<p>This function registers to receive notifications when a user rejects a session invite.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the returned notification ID is valid, you must call <a href="sessions.html#eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_session_invite_rejected()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_add_notify_session_invite_rejected"</code></td>
+</tr>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The invite ID</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who sent the invitation</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Session ID</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who rejected the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_copy_session_handle_by_invite_id">eos_sessions_copy_session_handle_by_invite_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id">EOS_Sessions_CopySessionHandleByInviteId</a></p>
+<p>This function is used to immediately retrieve a handle to the session information from after notification of an invite. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, a handle has been created and you need to manually free it afterwards by calling <a href="sessions.html#eos_session_details_release">eos_session_details_release</a> to release the memory associated with it.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid invite ID</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the invite ID cannot be found</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_copy_session_handle_by_invite_id(invite_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The invite ID for which to retrieve a session handle</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-ui-event-id">EOS_Sessions_CopySessionHandleByUiEventId</a></p>
+<p>This function is used to immediately retrieve a handle to the session information from after notification of a join game event. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, a handle has been created and you need to manually free it afterwards by calling <a href="sessions.html#eos_session_details_release">eos_session_details_release</a> to release the memory associated with it.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid invite ID</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the invite ID cannot be found</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_copy_session_handle_by_ui_event_id(ui_event_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ui_event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The UI Event associated with the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_copy_session_handle_for_presence">eos_sessions_copy_session_handle_for_presence</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-for-presence">EOS_Sessions_CopySessionHandleForPresence</a></p>
+<p>This function is used to immediately retrieve a handle to the session information which was marked with <code>presence_enabled</code> on create or join. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, a handle has been created and you need to manually free it afterwards by calling <a href="sessions.html#eos_session_details_release">eos_session_details_release</a> to release the memory associated with it.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid invite ID</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if there is no session with <code>presence_enabled</code></li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_copy_session_handle_for_presence(local)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user associated with the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_create_session_modification">eos_sessions_create_session_modification</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-modification">EOS_Sessions_CreateSessionModification</a></p>
+<p>This function creates a session modification handle. The session modification handle is used to build a new session and can be applied with <a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a>. The handle must be released by calling <a href="sessions.html#eos_session_modification_release">eos_session_modification_release</a> once it is no longer needed.</p>
+<p>The function returns <code>EOS_RESULT.SUCCESS</code> if we successfully created the session modification handle, or an error result if the input data was invalid.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_create_session_modification(allowed_platform_ids, presence_enabled, sanctions_enabled, bucket_id, local_user_id, max_players, session_id, session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowed_platform_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="lobbies.html#eos_online_platform_type">EOS_ONLINE_PLATFORM_TYPE</a></td>
+<td>An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass <code>undefined</code>.</td>
+</tr>
+<tr>
+<td>presence_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Determines whether or not this session should be the one associated with the local user's presence information. If <code>true</code>, this session will be associated with presence. Only one session at a time can have this flag set to <code>true</code>. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the <code>presence_enabled</code> flags within the Sessions interface * using the <code>presence_enabled</code> flags within the Lobby interface * using <a href="presence.html#eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</a>.</td>
+</tr>
+<tr>
+<td>sanctions_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If <code>true</code>, sanctioned players can neither join nor register with this session and, in the case of join, will return <a href="general.html#eos_result">EOS_RESULT</a> code <code>EOS_RESULT.SESSIONS_PLAYER_SANCTIONED</code>.</td>
+</tr>
+<tr>
+<td>bucket_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The bucket ID associated with the session</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user associated with the session</td>
+</tr>
+<tr>
+<td>max_players</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum number of players allowed in the session</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An optional session ID - set to a globally unique value to override the backend assignment. If not specified, the backend service will assign one to the session. Do not mix and match. This value can be of size [EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH, EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH]</td>
+</tr>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session to create</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_create_session_search">eos_sessions_create_session_search</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-search">EOS_Sessions_CreateSessionSearch</a></p>
+<p>This function creates a session search handle. This handle may be modified to include various search parameters. Searching is possible in three methods, all mutually exclusive:</p>
+<ul>
+<li>set the session ID to find a specific session</li>
+<li>set the target user ID to find a specific user</li>
+<li>set session parameters to find an array of sessions that match the search criteria</li>
+</ul>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the search creation completes successfully</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the options are incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_create_session_search()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_destroy_session">eos_sessions_destroy_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-destroy-session">EOS_Sessions_DestroySession</a></p>
+<p>This function destroys a session given a session name.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_destroy_session(session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session to destroy</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_destroy_session"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result of the function call</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned in the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_dump_session_state">eos_sessions_dump_session_state</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-dump-session-state">EOS_Sessions_DumpSessionState</a></p>
+<p>This function dumps the contents of active sessions that exist locally to the log output, purely for debug purposes.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the output operation completes successfully</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the session specified does not exist</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the options are incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_dump_session_state(session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_end_session">eos_sessions_end_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-end-session">EOS_Sessions_EndSession</a></p>
+<p>This function marks a session as ended, making it available to find if "join in progress" was disabled. The session may be started again if desired.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_end_session(session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session to set as no longer in progress</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_end_session"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned in the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_get_invite_count">eos_sessions_get_invite_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-count">EOS_Sessions_GetInviteCount</a></p>
+<p>This function gets the number of known invites for a given user. It returns the number of known invites for a given user or 0 if there is an error.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_get_invite_count(local)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who has one or more invitations in the cache</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_get_invite_id_by_index">eos_sessions_get_invite_id_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-id-by-index">EOS_Sessions_GetInviteIdByIndex</a></p>
+<p>This function retrieves an invite ID from a list of active invites for a given user.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_get_invite_id_by_index(local_user_id, index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who has an invitation in the cache</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the invite ID to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_is_user_in_session">eos_sessions_is_user_in_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-is-user-in-session">EOS_Sessions_IsUserInSession</a></p>
+<p>This function returns whether or not a given user can be found in a specified session.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the user is found in the specified session</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the user is not found in the specified session</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid invite ID</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+<li><code>EOS_RESULT.INVALID_PRODUCT_USER_ID</code> if an invalid target user is specified</li>
+<li><code>EOS_RESULT.SESSIONS_INVALID_SESSION</code> if the session specified is invalid</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_is_user_in_session(session_name, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The active session name to search within</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product User ID to search for in the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_join_session">eos_sessions_join_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-join-session">EOS_Sessions_JoinSession</a></p>
+<p>This function joins a session, creating a local session under a given session name. The backend will validate various conditions to make sure it is possible to join the session.</p>
+<p>The function returns the async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_join_session(presence_enabled, local_user_id, session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>presence_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Determines whether or not this session should be the one associated with the local user's presence information. If true, this session will be associated with presence. Only one session at a time can have this flag true. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the <code>presence_enabled</code> flags within the Sessions interface * using the <code>presence_enabled</code> flags within the Lobby interface * using <a href="presence.html#eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</a></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is joining the session</td>
+</tr>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Name of the session to create after joining session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_join_session"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_query_invites">eos_sessions_query_invites</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-query-invites">EOS_Sessions_QueryInvites</a></p>
+<p>This function retrieves all existing invites for a single user.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_query_invites(target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to query for invitations</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_query_invites"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User of the local user who made the request</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_register_players">eos_sessions_register_players</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-register-players">EOS_Sessions_RegisterPlayers</a></p>
+<p>This function registers a group of players with the session, allowing them to invite others or otherwise indicate they are part of the session for determining a full session.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_register_players(session_name, array_product_user_ids)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session for which to register players</td>
+</tr>
+<tr>
+<td>array_product_user_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>Array of players to register with the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_register_players"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>registered_players</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The players that were successfully registered</td>
+</tr>
+<tr>
+<td>sanctioned_players</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The players that failed to register because they are sanctioned</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_reject_invite">eos_sessions_reject_invite</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-reject-invite">EOS_Sessions_RejectInvite</a></p>
+<p>This function rejects an invite from another player.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_reject_invite(local_user_id, invite_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user rejecting the invitation</td>
+</tr>
+<tr>
+<td>invite_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The invite ID to reject</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_reject_invite"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-join-session-accepted">EOS_Sessions_RemoveNotifyJoinSessionAccepted</a></p>
+<p>This function unregisters from receiving notifications when a user accepts a session join game via the social overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_join_session_accepted(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_remove_notify_leave_session_requested">eos_sessions_remove_notify_leave_session_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-leave-session-requested">EOS_Sessions_RemoveNotifyLeaveSessionRequested</a></p>
+<p>This function unregisters from receiving notifications when a user performs a leave lobby action via the overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_leave_session_requested(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_remove_notify_send_session_native_invite_requested">eos_sessions_remove_notify_send_session_native_invite_requested</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-send-session-native-invite-requested">EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested</a></p>
+<p>This function unregisters from receiving notifications when a user requests a send invite via the overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_send_session_native_invite_requested(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_remove_notify_session_invite_accepted">eos_sessions_remove_notify_session_invite_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-accepted">EOS_Sessions_RemoveNotifySessionInviteAccepted</a></p>
+<p>This function unregisters from receiving notifications when a user accepts a session invite via the social overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_session_invite_accepted(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_remove_notify_session_invite_received">eos_sessions_remove_notify_session_invite_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-received">EOS_Sessions_RemoveNotifySessionInviteReceived</a></p>
+<p>This function unregisters from receiving session invites.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_session_invite_received(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_remove_notify_session_invite_rejected">eos_sessions_remove_notify_session_invite_rejected</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-rejected">EOS_Sessions_RemoveNotifySessionInviteReceived</a></p>
+<p>This function unregisters from receiving notifications when a user rejects a session invite via the social overlay.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_session_invite_rejected(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A handle representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_send_invite">eos_sessions_send_invite</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-send-invite">EOS_Sessions_SendInvite</a></p>
+<p>This function sends an invite to another player. User must have created the session or be registered in the session or else the call will fail.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_send_invite(local_user_id, session_name, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user sending the invitation</td>
+</tr>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session associated with the invite</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User of the remote user receiving the invitation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_send_invite"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_start_session">eos_sessions_start_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-start-session">EOS_Sessions_StartSession</a></p>
+<p>This function marks a session as started, making it unable to find if session properties indicate "join in progress" is not available.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_start_session(session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session to set in progress</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_start_session"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_unregister_players">eos_sessions_unregister_players</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-unregister-players">EOS_Sessions_UnregisterPlayers</a></p>
+<p>This function unregisters a group of players with the session, freeing up space for others to join.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_unregister_players(session_name, array_product_user_ids)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session for which to unregister players</td>
+</tr>
+<tr>
+<td>array_product_user_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>An array of players to unregister from the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_unregister_players"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>unregistered_players</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The players that successfully unregistered</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_update_session">eos_sessions_update_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-update-session">EOS_Sessions_UpdateSession</a></p>
+<p>This function updates a session given a session modification handle created by <a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a> or <a href="sessions.html#eos_sessions_update_session_modification">eos_sessions_update_session_modification</a>.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_update_session()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_sessions_update_session"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the session that was created/modified</td>
+</tr>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Name of the session that was created/modified</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_update_session_modification">eos_sessions_update_session_modification</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-update-session-modification">EOS_Sessions_UpdateSessionModification</a></p>
+<p>This function creates a session modification handle. The session modification handle is used to modify an existing session and can be applied with <a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a>. The handle must be released by calling <a href="sessions.html#eos_session_modification_release">eos_session_modification_release</a> once it is no longer needed.</p>
+<p>The function returns <code>EOS_RESULT.SUCCESS</code> if the session modification handle could be successfully created, or an error result if the input data was invalid.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_sessions_update_session_modification(session_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session to update</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_copy_search_result_by_index">eos_session_search_copy_search_result_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-copy-search-result-by-index">EOS_SessionSearch_CopySearchResultByIndex</a></p>
+<p>This function is used to immediately retrieve a handle to the session information from a given search result. If the call returns an <code>EOS_RESULT.SUCCESS</code> result, a handle has been created and you need to manually free it afterwards by calling <a href="sessions.html#eos_session_details_release">eos_session_details_release</a> to release the memory associated with it.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if you pass an invalid index</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_copy_search_result_by_index(session_index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the session to retrieve within the completed search query</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_find">eos_session_search_find</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-find">EOS_SessionSearch_Find</a></p>
+<p>This function finds sessions matching the search criteria set up via this session search handle. When the operation completes, this handle will have the search results that can be parsed.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_find(local_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user who is searching</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_session_search_find"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_get_search_result_count">eos_session_search_get_search_result_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-get-search-result-count">EOS_SessionSearch_GetSearchResultCount</a></p>
+<p>This function gets the number of search results found by the search parameters in this search. It returns the number of search results found by the query or 0 if the search is not complete.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_get_search_result_count()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_release">eos_session_search_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-release">EOS_SessionSearch_Release</a></p>
+<p>This function releases the memory associated with a session search. This must be called on data retrieved from <a href="sessions.html#eos_sessions_create_session_search">eos_sessions_create_session_search</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_release()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_remove_parameter">eos_session_search_remove_parameter</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-remove-parameter">EOS_SessionSearch_RemoveParameter</a></p>
+<p>This function removes a parameter from the array of search criteria.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if removing this search parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the search key is invalid</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the parameter was not a part of the search criteria</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_remove_parameter(key, comparison_op)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The search parameter key to remove from the search</td>
+</tr>
+<tr>
+<td>comparison_op</td>
+<td><a href="general.html#eos_comparison_op">EOS_COMPARISON_OP</a></td>
+<td>The search comparison operation associated with the key to remove</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_set_max_results">eos_session_search_set_max_results</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-max-results">EOS_SessionSearch_SetMaxResults</a></p>
+<p>This function sets the maximum number of search results to return in the query, can't be more than <a href="sessions.html#eos_sessions_max_search_results">EOS_SESSIONS_MAX_SEARCH_RESULTS</a>.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting the max results was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the number of results requested is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_set_max_results(max_search_results)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max_search_results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum number of search results returned with this query, may not exceed <a href="sessions.html#eos_sessions_max_search_results">EOS_SESSIONS_MAX_SEARCH_RESULTS</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_set_parameter">eos_session_search_set_parameter</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-parameter">EOS_SessionSearch_SetParameter</a></p>
+<p>This function adds a parameter to an array of search criteria combined via an implicit AND operator. Setting SessionId or TargetUserId will result in <a href="sessions.html#eos_session_search_find">eos_session_search_find</a> failing.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this search parameter was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the search criteria is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_set_parameter(comparison_op, attribute)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>comparison_op</td>
+<td><a href="general.html#eos_comparison_op">EOS_COMPARISON_OP</a></td>
+<td>The type of comparison to make against the search parameter</td>
+</tr>
+<tr>
+<td>attribute</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A struct with two variables <code>key</code> and <code>value</code>, representing the key/value pair that describes the search parameter</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_set_session_id">eos_session_search_set_session_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-session-id">EOS_SessionSearch_SetSessionId</a></p>
+<p>This function sets a session ID to find and will return at most one search result. Setting TargetUserId or SearchParameters will result in <a href="sessions.html#eos_session_search_find">eos_session_search_find</a> failing.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this session ID was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the session ID is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_set_session_id(session_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Search sessions for a specific session ID, returning at most one session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_search_set_target_user_id">eos_session_search_set_target_user_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-target-user-id">EOS_SessionSearch_SetTargetUserId</a></p>
+<p>This function sets a target user ID to find and will return at most one search result. Setting SessionId or SearchParameters will result in <a href="sessions.html#eos_session_search_find">eos_session_search_find</a> failing.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A search result will only be found if this user is in a public session.</p>
+</div>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if setting this target user ID was successful</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if the target user ID is invalid</li>
+<li><code>EOS_RESULT.INCOMPATIBLE_VERSION</code> if the API version passed in is incorrect</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_session_search_set_target_user_id(target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to find; return any sessions where the user matching this ID is currently registered</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_attribute_type">EOS_ATTRIBUTE_TYPE</h1>
+<p>This enumeration holds the supported types of data that can be stored inside an attribute (used by sessions/lobbies/etc.).</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BOOLEAN</code></td>
+<td>A boolean value (<code>true</code>/<code>false</code>)</td>
+</tr>
+<tr>
+<td><code>INT64</code></td>
+<td>A 64 bit integer</td>
+</tr>
+<tr>
+<td><code>DOUBLE</code></td>
+<td>A double precision floating point value</td>
+</tr>
+<tr>
+<td><code>STRING</code></td>
+<td>A UTF-8 string</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_online_session_state">EOS_ONLINE_SESSION_STATE</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-online-session-state">EOS_EOnlineSessionState</a></p>
+<p>This enum contains all possible states of an existing named session.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="sessions.html#activesessioninfo">ActiveSessionInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NO_SESSION</code></td>
+<td>An online session has not been created yet</td>
+</tr>
+<tr>
+<td><code>CREATING</code></td>
+<td>An online session is in the process of being created</td>
+</tr>
+<tr>
+<td><code>PENDING</code></td>
+<td>Session has been created but the session hasn't started (pre match lobby)</td>
+</tr>
+<tr>
+<td><code>STARTING</code></td>
+<td>Session has been asked to start (may take time due to communication with backend)</td>
+</tr>
+<tr>
+<td><code>IN_PROGRESS</code></td>
+<td>The current session has started. Sessions with join in progress disabled are no longer joinable</td>
+</tr>
+<tr>
+<td><code>ENDING</code></td>
+<td>The session is still valid, but the session is no longer being played (post match lobby)</td>
+</tr>
+<tr>
+<td><code>ENDED</code></td>
+<td>The session is closed and any stats committed</td>
+</tr>
+<tr>
+<td><code>DESTROYING</code></td>
+<td>The session is being destroyed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_session_attribute_advertisement_type">EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/ja/api-ref/enums/eos-e-session-attribute-advertisement-type">EOS_ESessionAttributeAdvertisementType</a></p>
+<p>This enum holds the possible advertisement properties for a single attribute associated with a session.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="sessions.html#eos_session_modification_add_attribute">eos_session_modification_add_attribute</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="sessions.html#sessionattribute">SessionAttribute</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DONT_ADVERTISE</code></td>
+<td>Don't advertise via the online service</td>
+</tr>
+<tr>
+<td><code>ADVERTISE</code></td>
+<td>Advertise via the online service only</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_online_session_permission_level">EOS_ONLINE_SESSION_PERMISSION_LEVEL</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-online-session-state">EOS_EOnlineSessionState</a></p>
+<p>This enum holds the possible permission levels for a session. The permission level gets more restrictive further down.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="sessions.html#eos_session_modification_set_permission_level">eos_session_modification_set_permission_level</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="sessions.html#sessiondetails_settings">SessionDetails_Settings</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PUBLIC_ADVERTISED</code></td>
+<td>Anyone can find this session as long as it isn't full</td>
+</tr>
+<tr>
+<td><code>JOIN_VIA_PRESENCE</code></td>
+<td>Players who have access to presence can see this session</td>
+</tr>
+<tr>
+<td><code>INVITE_ONLY</code></td>
+<td>Only players with invites registered can see this session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_sessions_max_search_results">EOS_SESSIONS_MAX_SEARCH_RESULTS</h1>
+<p>This macro defines the maximum number of session search results.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="activesessioninfo">ActiveSessionInfo</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-active-session-info">EOS_ActiveSession_Info</a></p>
+<p>This struct holds top level details about an active session.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="sessions.html#eos_active_session_copy_info">eos_active_session_copy_info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session</td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="sessions.html#eos_online_session_state">EOS_ONLINE_SESSION_STATE</a></td>
+<td>The current state of the session</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="sessions.html#sessiondetails_info">SessionDetails_Info</a></td>
+<td>Details about the session</td>
+</tr>
+<tr>
+<td>settings</td>
+<td><a href="sessions.html#sessiondetails_settings">SessionDetails_Settings</a></td>
+<td>The session's settings</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="sessiondetails_info">SessionDetails_Info</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-session-details-info">EOS_SessionDetails_Info</a></p>
+<p>This struct holds internal details about a session, found on both active sessions and within search results.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="sessions.html#eos_session_details_copy_info">eos_session_details_copy_info</a></li>
+</ul>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="sessions.html#activesessioninfo">ActiveSessionInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host_address</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The IP address of this session as visible by the backend service</td>
+</tr>
+<tr>
+<td>num_open_public_connections</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of remaining open spaces on the session (<code>num_public_connections</code> - <code>registered_players</code>)</td>
+</tr>
+<tr>
+<td>owner_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the session owner. Pass an empty string <code>""</code> if the session is not owned by a user.</td>
+</tr>
+<tr>
+<td>owner_server_client_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The client ID of the session owner. Pass an empty string <code>""</code> if the session is not owned by a server. The session is owned by a server if EOS_Platform_Options::bIsServer is <code>true</code>.</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The session ID assigned by the backend service</td>
+</tr>
+<tr>
+<td>settings</td>
+<td><a href="sessions.html#sessiondetails_settings">SessionDetails_Settings</a></td>
+<td>The additional settings associated with this session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="sessiondetails_settings">SessionDetails_Settings</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-session-details-settings">EOS_SessionDetails_Settings</a></p>
+<p>This struct holds common settings associated with a single session.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="sessions.html#activesessioninfo">ActiveSessionInfo</a></li>
+<li><a href="sessions.html#sessiondetails_info">SessionDetails_Info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowed_platform_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="lobbies.html#eos_online_platform_type">EOS_ONLINE_PLATFORM_TYPE</a></td>
+<td>An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass an empty array.</td>
+</tr>
+<tr>
+<td>allow_join_in_progress</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether players are allowed to join the session while it is in the "in progress" state</td>
+</tr>
+<tr>
+<td>invites_allowed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether players are allowed to send invites for the session</td>
+</tr>
+<tr>
+<td>sanctions_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether sanctioned players are allowed to join or not - sanctioned players will be rejected if set to <code>true</code></td>
+</tr>
+<tr>
+<td>bucket_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The main indexed parameter for this session, can be any string (i.e. <code>"Region:GameMode"</code>)</td>
+</tr>
+<tr>
+<td>num_public_connections</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of total players allowed in the session</td>
+</tr>
+<tr>
+<td>permission_level</td>
+<td><a href="sessions.html#eos_online_session_permission_level">EOS_ONLINE_SESSION_PERMISSION_LEVEL</a></td>
+<td>The permission level describing allowed access to the session when joining or searching for the session</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="sessionattribute">SessionAttribute</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-session-details-attribute">EOS_SessionDetails_Attribute</a></p>
+<p>This struct holds an attribution value and its advertisement setting stored with a session.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="sessions.html#eos_session_details_copy_session_attribute_by_index">eos_session_details_copy_session_attribute_by_index</a></li>
+<li><a href="sessions.html#eos_session_details_copy_session_attribute_by_key">eos_session_details_copy_session_attribute_by_key</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>advertisement_type</td>
+<td><a href="sessions.html#eos_session_attribute_advertisement_type">EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE</a></td>
+<td>Whether this attribution is advertised with the backend or simply stored locally</td>
+</tr>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the session attribute</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
+<td>The value of the session attribute</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="sanctions.html" class="btn btn-neutral float-left" title="Sanctions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="stats.html" class="btn btn-neutral float-right" title="Stats">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2025</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="sanctions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="stats.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

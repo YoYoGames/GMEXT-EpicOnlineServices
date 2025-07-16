@@ -81,11 +81,23 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
                 </li>
               </ul>
               <ul>
@@ -97,7 +109,15 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
                 </li>
               </ul>
               <ul>
@@ -157,29 +177,29 @@
 <tbody>
 <tr>
 <td>Epic Games Launcher</td>
-<td><code>EOS_LCT_ExchangeCode</code></td>
+<td><code>EOS_LOGIN_CREDENTIAL_TYPE.EXCHANGE_CODE</code></td>
 <td>Exchange code received from the launcher and used to automatically login the user.</td>
 </tr>
 <tr>
 <td>Steam Client</td>
-<td><code>EOS_LCT_ExternalAuth</code></td>
+<td><code>EOS_LOGIN_CREDENTIAL_TYPE.EXTERNAL_AUTH</code></td>
 <td>Steam Session Ticket used to automatically login the Steam user to their associated Epic account.</td>
 </tr>
 <tr>
 <td>Other store platforms and standalone distributions on PC and Mobile Devices</td>
-<td><code>EOS_LCT_AccountPortal</code> with <code>EOS_LCT_PersistentAuth</code></td>
+<td><code>EOS_LOGIN_CREDENTIAL_TYPE.ACCOUNT_PORTAL</code> with <code>EOS_LOGIN_CREDENTIAL_TYPE.PERSISTENT_AUTH</code></td>
 <td>Users are prompted to login using their Epic account credentials, after which a long-lived refresh token is stored locally to enable automatic login across consecutive application runs.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>See (<a href="auth.html#epicgames_login_credential_type">EpicGames_Login_Credential_Type</a>) for the corresponding Login Type constants of the extension.</p>
+<p>See (<a href="auth.html#eos_login_credential_type">EOS_LOGIN_CREDENTIAL_TYPE</a>) for the Login Type constants of the extension.</p>
 </div>
 <h2 id="using-the-epic-games-launcher">Using the Epic Games Launcher</h2>
 <p>When you log into Epic Online Services using the extension, a straightforward way is to <a href="https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface#epic-games-launcher">use the Epic Games Launcher</a>. The launcher opens the game by running the executable, along with a few command-line parameters:</p>
 <pre class="highlight"><code>-AUTH_LOGIN=unused -AUTH_PASSWORD=&lt;password&gt; -AUTH_TYPE=exchangecode -epicapp=&lt;appid&gt; -epicenv=Prod -EpicPortal  -epicusername=&lt;username&gt; -epicuserid=&lt;userid&gt; -epiclocale=en-US -epicsandboxid=&lt;sandboxid&gt; -epicdeploymentid=&lt;deploymentid&gt;</code></pre>
-<p>The <code>AUTH_PASSWORD</code> parameter value contains the token that you should pass into <a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a>. This function should then be called with a credential type of <code>EpicGames_LCT_ExchangeCode</code>. The <code>id</code> parameter can be blank (an empty string <code>""</code>), as this login method does not require an ID. The <code>token</code> parameter needs to be set to the Exchange Code from the <code>AUTH_PASSWORD</code> command line parameter.</p>
+<p>The <code>AUTH_PASSWORD</code> parameter value contains the token that you should pass into <a href="auth.html#eos_auth_login">eos_auth_login</a>. This function should then be called with a credential type of <code>EOS_LOGIN_CREDENTIAL_TYPE.EXCHANGE_CODE</code>. The <code>id</code> parameter can be blank (an empty string <code>""</code>), as this login method does not require an ID. The <code>token</code> parameter needs to be set to the Exchange Code from the <code>AUTH_PASSWORD</code> command line parameter.</p>
 <pre class="highlight"><code class="language-gml">// Retrieve the AUTH_PASSWORD command-line parameter
 // (available when launching from the Epic Games Launcher)
 var _p_num = parameter_count();
@@ -199,9 +219,9 @@ if (_p_num &gt; 0)
 }
 
 // Login using the AUTH_PASSWORD as the token parameter
-EpicGames_Auth_Login(
-    EpicGames_LCT_ExchangeCode,
-    EpicGames_AS_BasicProfile | EpicGames_AS_FriendsList | EpicGames_AS_Presence,
+eos_auth_login(
+    EOS_LOGIN_CREDENTIAL_TYPE.EXCHANGE_CODE,
+    EOS_AUTH_SCOPE_FLAGS.BASIC_PROFILE | EOS_AUTH_SCOPE_FLAGS.FRIENDS_LIST | EOS_AUTH_SCOPE_FLAGS.PRESENCE,
     "",
     _p_auth_password,
     -1
@@ -211,18 +231,18 @@ EpicGames_Auth_Login(
 <p>The permissions that you pass must correspond exactly to the ones you set in the <a href="https://dev.epicgames.com/docs/dev-portal">Developer Portal</a>. See <a href="https://dev.epicgames.com/docs/epic-account-services/getting-started#permissions">Permissions</a>.</p>
 </div>
 <h2 id="external-login-flow-guide">External Login Flow Guide</h2>
-<p>This is a detailed login flow for external accounts (the required credentials depend on the <a href="auth.html#epicgames_external_credential_type">EpicGames_External_Credential_Type</a> used with the <a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a> API).</p>
+<p>This is a detailed login flow for external accounts (the required credentials depend on the <a href="auth.html#eos_external_credential_type">EOS_EXTERNAL_CREDENTIAL_TYPE</a> used with the <a href="auth.html#eos_auth_login">eos_auth_login</a> API).</p>
 <ol>
-<li>Game calls <a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a> with the <code>EOS_LCT_ExternalAuth</code> credential type.</li>
-<li><a href="auth.html#epicgames_auth_login">EpicGames_Auth_Login</a> callback returns a status <code>EpicGames_InvalidUser</code> with a non-undefined EOS_ContinuanceToken in the EOS_Auth_LoginCallbackInfo data.</li>
-<li>Game calls <a href="auth.html#epicgames_auth_linkaccount">EpicGames_Auth_LinkAccount</a> with the <code>EOS_ContinuanceToken</code> to initiate the login flow for linking the platform account with the user's Epic account.</li>
+<li>Game calls <a href="auth.html#eos_auth_login">eos_auth_login</a> with the <code>EOS_LOGIN_CREDENTIAL_TYPE.EXTERNAL_AUTH</code> credential type.</li>
+<li><a href="auth.html#eos_auth_login">eos_auth_login</a> callback returns a status <code>EOS_RESULT.INVALID_USER</code> with a non-undefined EOS_ContinuanceToken in the EOS_Auth_LoginCallbackInfo data.</li>
+<li>Game calls <a href="auth.html#eos_auth_link_account">eos_auth_link_account</a> with the <code>EOS_ContinuanceToken</code> to initiate the login flow for linking the platform account with the user's Epic account.</li>
 <li>EOS SDK automatically opens the local default web browser and takes the user to the Epic account portal web page.</li>
 <li>The user is able to login to their existing Epic account or create a new account if needed.</li>
 <li>In the meantime, EOS SDK will internally keep polling the backend for a completion status of the login flow.</li>
 <li>The user is able to login to their existing Epic account or create a new account if needed.</li>
 <li>In the meantime, EOS SDK will internally keep polling the backend for a completion status of the login flow.</li>
-<li>Once user completes the login, cancels it or if the login flow times out, <a href="auth.html#epicgames_auth_linkaccount">EpicGames_Auth_LinkAccount</a> invokes the completion callback to the caller.</li>
-<li>If the user was logged in successfully, <code>EpicGames_Success</code> is returned in the callback event. Otherwise, an error result code is returned accordingly.</li>
+<li>Once user completes the login, cancels it or if the login flow times out, <a href="auth.html#eos_auth_link_account">eos_auth_link_account</a> invokes the completion callback to the caller.</li>
+<li>If the user was logged in successfully, <code>EOS_RESULT.SUCCESS</code> is returned in the callback event. Otherwise, an error result code is returned accordingly.</li>
 </ol>
               
             </div>
@@ -236,7 +256,7 @@ EpicGames_Auth_Login(
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>YoYoGames 2024</p>
+      <p><p align="center">GameMaker 2025</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

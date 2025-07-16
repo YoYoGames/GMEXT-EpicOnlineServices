@@ -75,11 +75,23 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
                 </li>
               </ul>
               <ul>
@@ -91,7 +103,15 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
                 </li>
               </ul>
               <ul class="current">
@@ -151,11 +171,11 @@
 <h2 id="functions">Functions</h2>
 <p>These functions are provided for handling stats:</p>
 <ul>
-<li><a href="stats.html#epicgames_stats_copystatbyindex">EpicGames_Stats_CopyStatByIndex</a></li>
-<li><a href="stats.html#epicgames_stats_copystatbyname">EpicGames_Stats_CopyStatByName</a></li>
-<li><a href="stats.html#epicgames_stats_getstatscount">EpicGames_Stats_GetStatsCount</a></li>
-<li><a href="stats.html#epicgames_stats_ingeststat">EpicGames_Stats_IngestStat</a></li>
-<li><a href="stats.html#epicgames_stats_querystats">EpicGames_Stats_QueryStats</a></li>
+<li><a href="stats.html#eos_stats_copy_stat_by_index">eos_stats_copy_stat_by_index</a></li>
+<li><a href="stats.html#eos_stats_copy_stat_by_name">eos_stats_copy_stat_by_name</a></li>
+<li><a href="stats.html#eos_stats_get_stats_count">eos_stats_get_stats_count</a></li>
+<li><a href="stats.html#eos_stats_ingest_stat">eos_stats_ingest_stat</a></li>
+<li><a href="stats.html#eos_stats_query_stats">eos_stats_query_stats</a></li>
 </ul>
 <h2 id="structs">Structs</h2>
 <p>These are the structures used by this API:</p>
@@ -166,17 +186,17 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_stats_copystatbyindex">EpicGames_Stats_CopyStatByIndex</h1>
+<h1 id="eos_stats_copy_stat_by_index">eos_stats_copy_stat_by_index</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_CopyStatByIndex/index.html">EOS_Stats_CopyStatByIndex</a></p>
 <p>This function fetches a stat from a given index.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="stats.html#epicgames_stats_querystats">EpicGames_Stats_QueryStats</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="stats.html#eos_stats_query_stats">eos_stats_query_stats</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Stats_CopyStatByIndex(userID_target, index)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_stats_copy_stat_by_index(user_id_target, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -188,7 +208,7 @@
 </thead>
 <tbody>
 <tr>
-<td>userID_target</td>
+<td>user_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the user who owns the stat</td>
 </tr>
@@ -208,11 +228,11 @@
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_Stats_GetStatsCount(userID_target);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_stats_get_stats_count(user_id_target);
 for(var i = 0 ; i &lt; _count ; i ++)
 {
-    var _struct = EpicGames_Stats_CopyStatByIndex(userID_target, i);
-    var Name = _struct.Name;
+    var _struct = eos_stats_copy_stat_by_index(user_id_target, i);
+    var _name = _struct.name;
 }</code></pre>
 The above code shows an example of how the function should be used. The stats data is returned for the provided stat index.</p>
 <p><br></p>
@@ -220,17 +240,17 @@ The above code shows an example of how the function should be used. The stats da
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_stats_copystatbyname">EpicGames_Stats_CopyStatByName</h1>
+<h1 id="eos_stats_copy_stat_by_name">eos_stats_copy_stat_by_name</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_CopyStatByName/index.html">EOS_Stats_CopyStatByName</a></p>
 <p>This function fetches a stat from cached stats by name.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="stats.html#epicgames_stats_querystats">EpicGames_Stats_QueryStats</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="stats.html#eos_stats_query_stats">eos_stats_query_stats</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Stats_CopyStatByName(user_target, name)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_stats_copy_stat_by_name(user_id_target, name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -242,7 +262,7 @@ The above code shows an example of how the function should be used. The stats da
 </thead>
 <tbody>
 <tr>
-<td>user_target</td>
+<td>user_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the user who owns the stat</td>
 </tr>
@@ -262,25 +282,25 @@ The above code shows an example of how the function should be used. The stats da
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_Stats_CopyStatByName(userID_target, "MyStatName");
-var _name = _struct.Name;</code></pre>
+<p><pre class="highlight"><code class="language-gml">var _struct = eos_stats_copy_stat_by_name(user_id_target, "MyStatName");
+var _name = _struct.name;</code></pre>
 The above code shows an example of how the function should be used. The stats data is returned for the provided stat name.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_stats_getstatscount">EpicGames_Stats_GetStatsCount</h1>
+<h1 id="eos_stats_get_stats_count">eos_stats_get_stats_count</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_GetStatsCount/index.html">EOS_Stats_GetStatsCount</a></p>
 <p>This function fetches the number of stats that are cached locally.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="stats.html#epicgames_stats_querystats">EpicGames_Stats_QueryStats</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="stats.html#eos_stats_query_stats">eos_stats_query_stats</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Stats_GetStatsCount(userID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_stats_get_stats_count(user_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -292,7 +312,7 @@ The above code shows an example of how the function should be used. The stats da
 </thead>
 <tbody>
 <tr>
-<td>userID_target</td>
+<td>user_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID for the user whose stats are being counted</td>
 </tr>
@@ -307,19 +327,19 @@ The above code shows an example of how the function should be used. The stats da
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_Stats_GetStatsCount(userID_target);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_stats_get_stats_count(user_id_target);
 for(var i = 0 ; i &lt; _count ; i ++)
 {
-    var _struct = EpicGames_Stats_CopyStatByIndex(userID_target, i);
-    var _name = _struct.Name;
+    var _struct = eos_stats_copy_stat_by_index(user_id_target, i);
+    var _name = _struct.name;
 }</code></pre>
-The above code shows an example of how the function should be used. After a successful call to <a href="stats.html#epicgames_stats_querystats">EpicGames_Stats_QueryStats</a>, the function <a href="stats.html#epicgames_stats_getstatscount">EpicGames_Stats_GetStatsCount</a> will return the number of entries in the query array which can then be accessed using the <a href="stats.html#epicgames_stats_copystatbyindex">EpicGames_Stats_CopyStatByIndex</a> function.</p>
+The above code shows an example of how the function should be used. After a successful call to <a href="stats.html#eos_stats_query_stats">eos_stats_query_stats</a>, the function <a href="stats.html#eos_stats_get_stats_count">eos_stats_get_stats_count</a> will return the number of entries in the query array which can then be accessed using the <a href="stats.html#eos_stats_copy_stat_by_index">eos_stats_copy_stat_by_index</a> function.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_stats_ingeststat">EpicGames_Stats_IngestStat</h1>
+<h1 id="eos_stats_ingest_stat">eos_stats_ingest_stat</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_IngestStat/index.html">EOS_Stats_IngestStat</a></p>
 <p>This function ingests a stat by the amount specified in Options.</p>
 <p>When the operation is complete and the delegate is triggered the stat will be uploaded to the backend to be processed. The stat may not be updated immediately and an achievement using the stat may take a while to be unlocked once the stat has been uploaded.</p>
@@ -327,7 +347,7 @@ The above code shows an example of how the function should be used. After a succ
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Stats_IngestStat(userID, userID_target, statName, amount)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_stats_ingest_stat(user_id, user_id_target, stat_name, amount)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -339,17 +359,17 @@ The above code shows an example of how the function should be used. After a succ
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user requesting the ingest. Set to <code>undefined</code> for dedicated server.</td>
 </tr>
 <tr>
-<td>userID_target</td>
+<td>user_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID for the user whose stat is being ingested</td>
 </tr>
 <tr>
-<td>statName</td>
+<td>stat_name</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>Name of the Stat to ingest</td>
 </tr>
@@ -384,12 +404,12 @@ The above code shows an example of how the function should be used. After a succ
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_Stats_IngestStat"</code></td>
+<td>The string <code>"eos_stats_ingest_stat"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -405,18 +425,18 @@ The above code shows an example of how the function should be used. After a succ
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Stats_IngestStat(userID, userID, "Leaderboard_Stat", 183);</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_stats_ingest_stat(user_id, user_id, "Leaderboard_Stat", 183);</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Stats_IngestStat")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_stats_ingest_stat")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -425,20 +445,20 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_stats_querystats">EpicGames_Stats_QueryStats</h1>
+<h1 id="eos_stats_query_stats">eos_stats_query_stats</h1>
 <p><strong>Epic Online Services Function:</strong>  <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Stats/EOS_Stats_QueryStats/index.html">EOS_Stats_QueryStats</a></p>
 <p>This function queries a list of stats for a specific player.
-Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call one of the following functions:</p>
+Once the callback has been fired with a successful <a href="general.html#eos_result">EOS_RESULT</a>, it is possible to call one of the following functions:</p>
 <ul>
-<li><a href="stats.html#epicgames_stats_copystatbyindex">EpicGames_Stats_CopyStatByIndex</a></li>
-<li><a href="stats.html#epicgames_stats_copystatbyname">EpicGames_Stats_CopyStatByName</a></li>
-<li><a href="stats.html#epicgames_stats_getstatscount">EpicGames_Stats_GetStatsCount</a></li>
+<li><a href="stats.html#eos_stats_copy_stat_by_index">eos_stats_copy_stat_by_index</a></li>
+<li><a href="stats.html#eos_stats_copy_stat_by_name">eos_stats_copy_stat_by_name</a></li>
+<li><a href="stats.html#eos_stats_get_stats_count">eos_stats_get_stats_count</a></li>
 </ul>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Stats_QueryStats(userID, userID_target, startTime=undefined, endTime=undefined)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_stats_query_stats(user_id, user_id_target, start_time=undefined, end_time=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -450,22 +470,22 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user requesting the stats. Set to <code>undefined</code> for dedicated server.</td>
 </tr>
 <tr>
-<td>userID_target</td>
+<td>user_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID for the user whose stats are being retrieved</td>
 </tr>
 <tr>
-<td>startTime</td>
+<td>start_time</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
 <td>The POSIX timestamp for start time</td>
 </tr>
 <tr>
-<td>endTime</td>
+<td>end_time</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
 <td>The POSIX timestamp for end time</td>
 </tr>
@@ -495,12 +515,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_Stats_QueryStats"</code></td>
+<td>The string <code>"eos_stats_query_stats"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -516,12 +536,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_Stats_QueryStats();</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_stats_query_stats();</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_Stats_QueryStats")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_stats_query_stats")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
@@ -538,10 +558,14 @@ The code above matches the response against the correct event <strong>type</stro
 
 <h1 id="statdata">StatData</h1>
 <p>The stat data is represented by a struct and contains information for a specific stat.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The stat info members are only present in the struct if the request was successful.</p>
+</div>
 <p>This struct is referenced by the following functions:</p>
 <ul>
-<li><a href="stats.html#epicgames_stats_copystatbyindex">EpicGames_Stats_CopyStatByIndex</a></li>
-<li><a href="stats.html#epicgames_stats_copystatbyname">EpicGames_Stats_CopyStatByName</a></li>
+<li><a href="stats.html#eos_stats_copy_stat_by_index">eos_stats_copy_stat_by_index</a></li>
+<li><a href="stats.html#eos_stats_copy_stat_by_name">eos_stats_copy_stat_by_name</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -554,22 +578,32 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>Name</td>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code of the request</td>
+</tr>
+<tr>
+<td>status_message</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The name of the stat.</td>
+<td>A text representation of the status code</td>
 </tr>
 <tr>
-<td>StartTime</td>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the stat</td>
+</tr>
+<tr>
+<td>start_time</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>If not <code>EpicGames_STATS_TIME_UNDEFINED</code> then this is the POSIX timestamp for start time.</td>
+<td>If not <code>EOS_STATS_TIME_UNDEFINED</code> then this is the POSIX timestamp for start time.</td>
 </tr>
 <tr>
-<td>EndTime</td>
+<td>end_time</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>If not <code>EpicGames_STATS_TIME_UNDEFINED</code> then this is the POSIX timestamp for end time.</td>
+<td>If not <code>EOS_STATS_TIME_UNDEFINED</code> then this is the POSIX timestamp for end time.</td>
 </tr>
 <tr>
-<td>Value</td>
+<td>value</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
 <td>The current value for the stat.</td>
 </tr>
@@ -580,7 +614,7 @@ The code above matches the response against the correct event <strong>type</stro
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="sanctions.html" class="btn btn-neutral float-left" title="Sanctions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="sessions.html" class="btn btn-neutral float-left" title="Sessions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="title_storage.html" class="btn btn-neutral float-right" title="Title Storage">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -588,7 +622,7 @@ The code above matches the response against the correct event <strong>type</stro
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>YoYoGames 2024</p>
+      <p><p align="center">GameMaker 2025</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
@@ -609,7 +643,7 @@ The code above matches the response against the correct event <strong>type</stro
         </span>
     
     
-      <span><a href="sanctions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="sessions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="title_storage.html" style="color: #fcfcfc">Next &raquo;</a></span>

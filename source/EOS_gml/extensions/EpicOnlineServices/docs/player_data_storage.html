@@ -75,17 +75,31 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Player Data Storage</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
     </li>
@@ -97,7 +111,15 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
                 </li>
               </ul>
               <ul>
@@ -152,17 +174,23 @@
 <h2 id="functions">Functions</h2>
 <p>These functions are provided for handling player data storage:</p>
 <ul>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadataatindex">EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadatabyfilename">EpicGames_PlayerDataStorage_CopyFileMetadataByFilename</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_deletecache">EpicGames_PlayerDataStorage_DeleteCache</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_deletefile">EpicGames_PlayerDataStorage_DeleteFile</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_duplicatefile">EpicGames_PlayerDataStorage_DuplicateFile</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_getfilemetadatacount">EpicGames_PlayerDataStorage_GetFileMetadataCount</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_queryfile">EpicGames_PlayerDataStorage_QueryFile</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_queryfilelist">EpicGames_PlayerDataStorage_QueryFileList</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_readfile">EpicGames_PlayerDataStorage_ReadFile</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_writefile">EpicGames_PlayerDataStorage_WriteFile</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastoragefiletransferrequest_cancelrequest">EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_at_index">eos_player_data_storage_copy_file_metadata_at_index</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_by_filename">eos_player_data_storage_copy_file_metadata_by_filename</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_delete_cache">eos_player_data_storage_delete_cache</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_delete_file">eos_player_data_storage_delete_file</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_duplicate_file">eos_player_data_storage_duplicate_file</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_get_file_metadata_count">eos_player_data_storage_get_file_metadata_count</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_query_file">eos_player_data_storage_query_file</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_query_file_list">eos_player_data_storage_query_file_list</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_read_file">eos_player_data_storage_read_file</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_write_file">eos_player_data_storage_write_file</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_file_transfer_request_cancel_request">eos_player_data_storage_file_transfer_request_cancel_request</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used with player data storage:</p>
+<ul>
+<li><a href="player_data_storage.html#eos_player_data_storage_read_result">EOS_PLAYER_DATA_STORAGE_READ_RESULT</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_write_result">EOS_PLAYER_DATA_STORAGE_WRITE_RESULT</a></li>
 </ul>
 <h2 id="structs">Structs</h2>
 <p>These are the structures used by this API:</p>
@@ -173,17 +201,17 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_copyfilemetadataatindex">EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex</h1>
+<h1 id="eos_player_data_storage_copy_file_metadata_at_index">eos_player_data_storage_copy_file_metadata_at_index</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_CopyFileMetadataAtIndex/index.html">EOS_PlayerDataStorage_CopyFileMetadataAtIndex</a></p>
-<p>This function gets the cached copy of a file's metadata by index. The metadata will be for the last retrieved or successfully saved version, and will not include any local changes that have not been committed by calling <a href="player_data_storage.html#epicgames_playerdatastorage_writefile">EpicGames_PlayerDataStorage_WriteFile</a>.</p>
+<p>This function gets the cached copy of a file's metadata by index. The metadata will be for the last retrieved or successfully saved version, and will not include any local changes that have not been committed by calling <a href="player_data_storage.html#eos_player_data_storage_write_file">eos_player_data_storage_write_file</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="player_data_storage.html#epicgames_playerdatastorage_queryfilelist">EpicGames_PlayerDataStorage_QueryFileList</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="player_data_storage.html#eos_player_data_storage_query_file_list">eos_player_data_storage_query_file_list</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(userID, index)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_copy_file_metadata_at_index(user_id, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -195,7 +223,7 @@
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who is requesting file metadata</td>
 </tr>
@@ -215,11 +243,11 @@
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_PlayerDataStorage_GetFileMetadataCount(userID);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_player_data_storage_get_file_metadata_count(user_id);
 for(var i = 0 ; i &lt; _count; i++)
 {
-    var _struct = EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(userID, i);
-    Filename = _struct.Filename;
+    var _struct = eos_player_data_storage_copy_file_metadata_at_index(user_id, i);
+    var _filename = _struct.filename;
 }</code></pre>
 The above code shows an example of how the function should be used. The player file metadata is returned providing an index.</p>
 <p><br></p>
@@ -227,17 +255,17 @@ The above code shows an example of how the function should be used. The player f
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_copyfilemetadatabyfilename">EpicGames_PlayerDataStorage_CopyFileMetadataByFilename</h1>
+<h1 id="eos_player_data_storage_copy_file_metadata_by_filename">eos_player_data_storage_copy_file_metadata_by_filename</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_CopyFileMetadataByFilename/index.html">EOS_PlayerDataStorage_CopyFileMetadataByFilename</a></p>
 <p>This function creates the cached copy of a file's metadata by filename. The metadata will be for the last retrieved or successfully saved version, and will not include any changes that have not completed writing.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="player_data_storage.html#epicgames_playerdatastorage_queryfilelist">EpicGames_PlayerDataStorage_QueryFileList</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="player_data_storage.html#eos_player_data_storage_query_file_list">eos_player_data_storage_query_file_list</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_CopyFileMetadataByFilename(userID, filename)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_copy_file_metadata_by_filename(user_id, filename)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -249,7 +277,7 @@ The above code shows an example of how the function should be used. The player f
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who is requesting file metadata</td>
 </tr>
@@ -269,10 +297,10 @@ The above code shows an example of how the function should be used. The player f
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_PlayerDataStorage_CopyFileMetadataByFilename(userID, filename);
-if(_struct.status == EpicGames_Success)
+<p><pre class="highlight"><code class="language-gml">var _struct = eos_player_data_storage_copy_file_metadata_by_filename(user_id, filename);
+if(_struct.status == EOS_RESULT.SUCCESS)
 {
-    var _filename = _struct.Filename;
+    var _filename = _struct.filename;
 }</code></pre>
 The above code shows an example of how the function should be used. The player file metadata is returned for a provided filename.</p>
 <p><br></p>
@@ -280,7 +308,7 @@ The above code shows an example of how the function should be used. The player f
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_deletecache">EpicGames_PlayerDataStorage_DeleteCache</h1>
+<h1 id="eos_player_data_storage_delete_cache">eos_player_data_storage_delete_cache</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_DeleteCache/index.html">EOS_PlayerDataStorage_DeleteCache</a></p>
 <p>This function clears previously cached file data. This operation will be done asynchronously. All cached files except those corresponding to the transfers in progress will be removed.</p>
 <div class="admonition warning">
@@ -291,7 +319,7 @@ The above code shows an example of how the function should be used. The player f
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_DeleteCache(userID)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_delete_cache(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -303,7 +331,7 @@ The above code shows an example of how the function should be used. The player f
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>Product User ID of the local user who is deleting his cache</td>
 </tr>
@@ -333,12 +361,12 @@ The above code shows an example of how the function should be used. The player f
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorage_DeleteCache"</code></td>
+<td><code>"eos_player_data_storage_delete_cache"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -354,18 +382,18 @@ The above code shows an example of how the function should be used. The player f
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorage_DeleteCache(userID);</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_delete_cache(user_id);</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorage_DeleteCache")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_delete_cache")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -374,14 +402,14 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_deletefile">EpicGames_PlayerDataStorage_DeleteFile</h1>
+<h1 id="eos_player_data_storage_delete_file">eos_player_data_storage_delete_file</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_DeleteFile/index.html">EOS_PlayerDataStorage_DeleteFile</a></p>
 <p>This function deletes an existing file in the cloud. If successful, the file's data will be removed from our local cache.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_DeleteFile(userID, filename)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_delete_file(user_id, filename)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -393,7 +421,7 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who authorizes deletion of the file; must be the file's owner</td>
 </tr>
@@ -428,12 +456,12 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorage_DeleteFile"</code></td>
+<td><code>"eos_player_data_storage_delete_file"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -449,18 +477,18 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorage_DeleteFile(userID, "MyFilename.txt");</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_delete_file(user_id, "MyFilename.txt");</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorage_DeleteFile")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_delete_file")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -469,14 +497,14 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_duplicatefile">EpicGames_PlayerDataStorage_DuplicateFile</h1>
+<h1 id="eos_player_data_storage_duplicate_file">eos_player_data_storage_duplicate_file</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_DuplicateFile/index.html">EOS_PlayerDataStorage_DuplicateFile</a></p>
-<p>This function copies the data of an existing file to a new filename. This action happens entirely on the server and will not upload the contents of the source destination file from the host. This function paired with a subsequent <a href="player_data_storage.html#epicgames_playerdatastorage_deletefile">EpicGames_PlayerDataStorage_DeleteFile</a> can be used to rename a file. If successful, the destination file's metadata will be updated in our local cache.</p>
+<p>This function copies the data of an existing file to a new filename. This action happens entirely on the server and will not upload the contents of the source destination file from the host. This function paired with a subsequent <a href="player_data_storage.html#eos_player_data_storage_delete_file">eos_player_data_storage_delete_file</a> can be used to rename a file. If successful, the destination file's metadata will be updated in our local cache.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_DuplicateFile(userID, source, destination)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_duplicate_file(user_id, source, destination)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -488,7 +516,7 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who authorized the duplication of the requested file; must be the original file's owner</td>
 </tr>
@@ -528,12 +556,12 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorage_DuplicateFile"</code></td>
+<td><code>"eos_player_data_storage_duplicate_file"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -543,24 +571,24 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>identifier</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The asynchronous listener ID.</td>
+<td>The asynchronous listener ID</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorage_DuplicateFile(userID,"myNiceFile.dat", "myNiceFile2.dat");</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_duplicate_file(user_id,"myNiceFile.dat", "myNiceFile2.dat");</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorage_DuplicateFile")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_duplicate_file")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -569,17 +597,17 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_getfilemetadatacount">EpicGames_PlayerDataStorage_GetFileMetadataCount</h1>
+<h1 id="eos_player_data_storage_get_file_metadata_count">eos_player_data_storage_get_file_metadata_count</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_GetFileMetadataCount/index.html">EOS_PlayerDataStorage_GetFileMetadataCount</a></p>
 <p>This function gets the count of files we have previously queried information for and files we have previously read from / written to.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="player_data_storage.html#epicgames_playerdatastorage_queryfilelist">EpicGames_PlayerDataStorage_QueryFileList</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="player_data_storage.html#eos_player_data_storage_query_file_list">eos_player_data_storage_query_file_list</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_GetFileMetadataCount(userID)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_get_file_metadata_count(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -591,7 +619,7 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who is requesting file metadata</td>
 </tr>
@@ -606,31 +634,31 @@ The code above matches the response against the correct event <strong>type</stro
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_PlayerDataStorage_GetFileMetadataCount(userID);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_player_data_storage_get_file_metadata_count(user_id);
 for (var i = 0 ; i &lt; _count; i ++)
 {
-    var _struct = EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex(userID, i);
-    Filename = _struct.Filename;
+    var _struct = eos_player_data_storage_copy_file_metadata_at_index(user_id, i);
+    var _filename = _struct.filename;
 }</code></pre>
-The above code shows an example of how the function should be used. After a successful call to <a href="player_data_storage.html#epicgames_playerdatastorage_queryfilelist">EpicGames_PlayerDataStorage_QueryFileList</a>, the function <a href="player_data_storage.html#epicgames_playerdatastorage_getfilemetadatacount">EpicGames_PlayerDataStorage_GetFileMetadataCount</a> will return the number of entries in the query array which can then be accessed using the <a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadataatindex">EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex</a> function.</p>
+The above code shows an example of how the function should be used. After a successful call to <a href="player_data_storage.html#eos_player_data_storage_query_file_list">eos_player_data_storage_query_file_list</a>, the function <a href="player_data_storage.html#eos_player_data_storage_get_file_metadata_count">eos_player_data_storage_get_file_metadata_count</a> will return the number of entries in the query array which can then be accessed using the <a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_at_index">eos_player_data_storage_copy_file_metadata_at_index</a> function.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_queryfile">EpicGames_PlayerDataStorage_QueryFile</h1>
+<h1 id="eos_player_data_storage_query_file">eos_player_data_storage_query_file</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_QueryFile/index.html">EOS_PlayerDataStorage_QueryFile</a></p>
 <p>This function queries a specific file's metadata, such as file names, size, and a MD5 hash of the data. This is not required before a file may be opened, saved, copied, or deleted.</p>
 <p>Once a file has been queried, its metadata will be available by the one of the following functions:</p>
 <ul>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadataatindex">EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadatabyfilename">EpicGames_PlayerDataStorage_CopyFileMetadataByFilename</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_at_index">eos_player_data_storage_copy_file_metadata_at_index</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_by_filename">eos_player_data_storage_copy_file_metadata_by_filename</a></li>
 </ul>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_QueryFile(userID, filename)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_query_file(user_id, filename)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -642,7 +670,7 @@ The above code shows an example of how the function should be used. After a succ
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user requesting file metadata</td>
 </tr>
@@ -677,12 +705,12 @@ The above code shows an example of how the function should be used. After a succ
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorage_QueryFile"</code></td>
+<td><code>"eos_player_data_storage_query_file"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -698,12 +726,12 @@ The above code shows an example of how the function should be used. After a succ
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorage_QueryFile(userID, "myFile.txt");</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_query_file(user_id, "myFile.txt");</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorage_QueryFile")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_query_file")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
@@ -718,20 +746,20 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_queryfilelist">EpicGames_PlayerDataStorage_QueryFileList</h1>
+<h1 id="eos_player_data_storage_query_file_list">eos_player_data_storage_query_file_list</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_QueryFileList/index.html">EOS_PlayerDataStorage_QueryFileList</a></p>
 <p>This function queries the file metadata, such as file names, size, and a MD5 hash of the data, for all files owned by this user for this application. This is not required before a file may be opened, saved, copied, or deleted.
-Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call one of the following functions:</p>
+Once the callback has been fired with a successful <a href="general.html#eos_result">EOS_RESULT</a>, it is possible to call one of the following functions:</p>
 <ul>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadataatindex">EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadatabyfilename">EpicGames_PlayerDataStorage_CopyFileMetadataByFilename</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_getfilemetadatacount">EpicGames_PlayerDataStorage_GetFileMetadataCount</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_at_index">eos_player_data_storage_copy_file_metadata_at_index</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_by_filename">eos_player_data_storage_copy_file_metadata_by_filename</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_get_file_metadata_count">eos_player_data_storage_get_file_metadata_count</a></li>
 </ul>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_QueryFileList(userID)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_query_file_list(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -743,7 +771,7 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who requested file metadata</td>
 </tr>
@@ -773,12 +801,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorage_QueryFileList"</code></td>
+<td><code>"eos_player_data_storage_query_file_list"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -788,18 +816,18 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>identifier</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The asynchronous listener ID.</td>
+<td>The asynchronous listener ID</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorage_QueryFileList(userID);</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_query_file_list(user_id);</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorage_QueryFileList")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_query_file_list")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
@@ -814,14 +842,14 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_readfile">EpicGames_PlayerDataStorage_ReadFile</h1>
+<h1 id="eos_player_data_storage_read_file">eos_player_data_storage_read_file</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_ReadFile/index.html">EOS_PlayerDataStorage_ReadFile</a></p>
 <p>This function retrieves the contents of a specific file, potentially downloading the contents if we do not have a local copy, from the cloud. This request will occur asynchronously, potentially over multiple frames. All callbacks for this function will come from the same thread that the SDK is ticked from. If specified, the FileTransferProgressCallback will always be called at least once if the request is started successfully.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_ReadFile(userID, filename, path)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_read_file(user_id, filename, path)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -833,7 +861,7 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who is reading the requested file</td>
 </tr>
@@ -873,12 +901,12 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorage_ReadFile"</code></td>
+<td><code>"eos_player_data_storage_read_file"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -888,24 +916,24 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>identifier</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The asynchronous listener ID.</td>
+<td>The asynchronous listener ID</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorage_ReadFile(userID, "MyFavPic.png", "path/to/save/MyFavPic.png");</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_read_file(user_id, "MyFavPic.png", "path/to/save/MyFavPic.png");</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorage_ReadFile")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_read_file")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -914,14 +942,14 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastorage_writefile">EpicGames_PlayerDataStorage_WriteFile</h1>
+<h1 id="eos_player_data_storage_write_file">eos_player_data_storage_write_file</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorage_WriteFile/index.html">EOS_PlayerDataStorage_WriteFile</a></p>
 <p>This function writes new data to a specific file, potentially overwriting any existing file by the same name, to the cloud. This request will occur asynchronously, potentially over multiple frames. All callbacks for this function will come from the same thread that the SDK is ticked from. If specified, the FileTransferProgressCallback will always be called at least once if the request is started successfully.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorage_WriteFile(userID, filename, path)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_write_file(user_id, filename, path)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -933,7 +961,7 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>userID</td>
+<td>user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Product User ID of the local user who is writing the requested file to the cloud</td>
 </tr>
@@ -973,12 +1001,12 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorage_WriteFile"</code></td>
+<td><code>"eos_player_data_storage_write_file"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -988,24 +1016,24 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>identifier</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The asynchronous listener ID.</td>
+<td>The asynchronous listener ID</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorage_WriteFile(userID, "myData.dat", "/path/to/file/myData.dat");</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_write_file(user_id, "myData.dat", "/path/to/file/myData.dat");</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorage_WriteFile")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_write_file")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
@@ -1014,14 +1042,14 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_playerdatastoragefiletransferrequest_cancelrequest">EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest</h1>
+<h1 id="eos_player_data_storage_file_transfer_request_cancel_request">eos_player_data_storage_file_transfer_request_cancel_request</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/PlayerDataStorage/EOS_PlayerDataStorageFileTransferRequest_CancelRequest/index.html">EOS_PlayerDataStorageFileTransferRequest_CancelRequest</a></p>
 <p>This function attempts to cancel this file request in progress. This is a best-effort command and is not guaranteed to be successful if the request has completed before this function is called.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest(filename)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_player_data_storage_file_transfer_request_cancel_request(filename)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1063,12 +1091,12 @@ The code above matches the response against the correct event <strong>type</stro
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td><code>"EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest"</code></td>
+<td><code>"eos_player_data_storage_file_transfer_request_cancel_request"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -1084,12 +1112,12 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest("myFile.txt");</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_player_data_storage_file_transfer_request_cancel_request("myFile.txt");</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_PlayerDataStorageFileTransferRequest_CancelRequest")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_player_data_storage_file_transfer_request_cancel_request")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
@@ -1104,12 +1132,74 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
+<h1 id="eos_player_data_storage_read_result">EOS_PLAYER_DATA_STORAGE_READ_RESULT</h1>
+<p>This enum holds the return results for EOS_PlayerDataStorage_OnReadFileDataCallback callbacks to return.</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONTINUE_READING</code></td>
+<td>Signifies the data was read successfully, and we should continue to the next chunk if possible</td>
+</tr>
+<tr>
+<td><code>FAIL_REQUEST</code></td>
+<td>Signifies there was a failure reading the data, and the request should end</td>
+</tr>
+<tr>
+<td><code>CANCEL_REQUEST</code></td>
+<td>Signifies the request should be canceled, but not due to an error</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_player_data_storage_write_result">EOS_PLAYER_DATA_STORAGE_WRITE_RESULT</h1>
+<p>This enum holds the return results for EOS_PlayerDataStorage_OnWriteFileDataCallback callbacks to return.</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONTINUE_WRITING</code></td>
+<td>Signifies the data was written successfully, and we should write the data the file</td>
+</tr>
+<tr>
+<td><code>COMPLETE_REQUEST</code></td>
+<td>Signifies all data has now been written successfully, and we should upload the data to the cloud</td>
+</tr>
+<tr>
+<td><code>FAIL_REQUEST</code></td>
+<td>Signifies there was a failure writing the data, and the request should end</td>
+</tr>
+<tr>
+<td><code>CANCEL_REQUEST</code></td>
+<td>Signifies the request should be canceled, but not due to an error</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
 <h1 id="playerfilemetadata">PlayerFileMetadata</h1>
 <p>The player file metadata is represented by a struct and contains metadata information for a specific player file.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadataatindex">EpicGames_PlayerDataStorage_CopyFileMetadataAtIndex</a></li>
-<li><a href="player_data_storage.html#epicgames_playerdatastorage_copyfilemetadatabyfilename">EpicGames_PlayerDataStorage_CopyFileMetadataByFilename</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_at_index">eos_player_data_storage_copy_file_metadata_at_index</a></li>
+<li><a href="player_data_storage.html#eos_player_data_storage_copy_file_metadata_by_filename">eos_player_data_storage_copy_file_metadata_by_filename</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -1122,29 +1212,39 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td>FileSizeBytes</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The total size of the file in bytes (includes the file header in addition to the file contents)</td>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status of the request</td>
 </tr>
 <tr>
-<td>MD5Hash</td>
+<td>status_message</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The MD5 Hash of the entire file (including additional file header), in hex digits</td>
+<td>A text representation of the status value</td>
 </tr>
 <tr>
-<td>Filename</td>
+<td>filename</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The file's name</td>
 </tr>
 <tr>
-<td>LastModifiedTime</td>
+<td>size</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The POSIX timestamp when the file was saved last time.</td>
+<td>The total size of the file in bytes (includes the file header in addition to the file contents)</td>
 </tr>
 <tr>
-<td>UnencryptedDataSizeBytes</td>
+<td>md5_hash</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The MD5 Hash of the entire file (including additional file header), in hex digits</td>
+</tr>
+<tr>
+<td>size_unencrypted</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
 <td>The size of data (payload) in file in unencrypted (original) form.</td>
+</tr>
+<tr>
+<td>last_modified_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The POSIX timestamp when the file was saved last time.</td>
 </tr>
 </tbody>
 </table>
@@ -1153,7 +1253,7 @@ The code above matches the response against the correct event <strong>type</stro
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="platform.html" class="btn btn-neutral float-left" title="Platform"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="presence.html" class="btn btn-neutral float-left" title="Presence"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="progression_snapshot.html" class="btn btn-neutral float-right" title="Progression Snapshot">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -1161,7 +1261,7 @@ The code above matches the response against the correct event <strong>type</stro
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>YoYoGames 2024</p>
+      <p><p align="center">GameMaker 2025</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
@@ -1182,7 +1282,7 @@ The code above matches the response against the correct event <strong>type</stro
         </span>
     
     
-      <span><a href="platform.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="presence.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="progression_snapshot.html" style="color: #fcfcfc">Next &raquo;</a></span>

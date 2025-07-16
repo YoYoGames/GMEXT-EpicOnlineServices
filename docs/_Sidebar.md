@@ -13,6 +13,7 @@
   * ### ${module.metrics}
   * ### ${module.p2p}
   * ### ${module.platform}
+  * ### ${module.presence}
   * ### ${module.player_data_storage}
   * ### ${module.progression_snapshot}
   * ### ${module.rtc}

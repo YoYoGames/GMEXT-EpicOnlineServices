@@ -75,11 +75,23 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
                 </li>
               </ul>
               <ul>
@@ -91,7 +103,15 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
                 </li>
               </ul>
               <ul>
@@ -153,14 +173,14 @@
 <h2 id="functions">Functions</h2>
 <p>These functions are provided for handling user info:</p>
 <ul>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyaccountid">EpicGames_UserInfo_CopyExternalUserInfoByAccountId</a></li>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyaccounttype">EpicGames_UserInfo_CopyExternalUserInfoByAccountType</a></li>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyindex">EpicGames_UserInfo_CopyExternalUserInfoByIndex</a></li>
-<li><a href="user_info.html#epicgames_userinfo_copyuserinfo">EpicGames_UserInfo_CopyUserInfo</a></li>
-<li><a href="user_info.html#epicgames_userinfo_getexternaluserinfocount">EpicGames_UserInfo_GetExternalUserInfoCount</a></li>
-<li><a href="user_info.html#epicgames_userinfo_queryuserinfo">EpicGames_UserInfo_QueryUserInfo</a></li>
-<li><a href="user_info.html#epicgames_userinfo_queryuserinfobydisplayname">EpicGames_UserInfo_QueryUserInfoByDisplayName</a></li>
-<li><a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_id">eos_user_info_copy_external_user_info_by_account_id</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</a></li>
+<li><a href="user_info.html#eos_user_info_copy_user_info">eos_user_info_copy_user_info</a></li>
+<li><a href="user_info.html#eos_user_info_get_external_user_info_count">eos_user_info_get_external_user_info_count</a></li>
+<li><a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a></li>
+<li><a href="user_info.html#eos_user_info_query_user_info_by_display_name">eos_user_info_query_user_info_by_display_name</a></li>
+<li><a href="user_info.html#eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</a></li>
 </ul>
 <h2 id="structs">Structs</h2>
 <p>These are the structures used by this API:</p>
@@ -171,23 +191,23 @@
 <h2 id="constants">Constants</h2>
 <p>These are the constants used by this API:</p>
 <ul>
-<li><a href="user_info.html#epicgames_externalaccounttype">EpicGames_ExternalAccountType</a></li>
+<li><a href="user_info.html#eos_external_account_type">EOS_EXTERNAL_ACCOUNT_TYPE</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_copyexternaluserinfobyaccountid">EpicGames_UserInfo_CopyExternalUserInfoByAccountId</h1>
+<h1 id="eos_user_info_copy_external_user_info_by_account_id">eos_user_info_copy_external_user_info_by_account_id</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_CopyExternalUserInfoByAccountId/index.html">EOS_UserInfo_CopyExternalUserInfoByAccountId</a></p>
 <p>This function fetches an external user info for a given external account ID.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="user_info.html#eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_CopyExternalUserInfoByAccountId(accountID, accountID_target, accountID_external)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_copy_external_user_info_by_account_id(account_id, account_id_target, account_id_external)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -199,19 +219,19 @@
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the player whose information is being retrieved</td>
 </tr>
 <tr>
-<td>accountID_external</td>
+<td>account_id_external</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The external account ID associated with the (external) user info to retrieve from the cache; cannot be null</td>
+<td>The external account ID associated with the (external) user info to retrieve from the cache</td>
 </tr>
 </tbody>
 </table>
@@ -224,29 +244,29 @@
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_UserInfo_CopyExternalUserInfoByAccountId(accountID, accountID_target, accountID_external);
+<p><pre class="highlight"><code class="language-gml">var _struct = eos_user_info_copy_external_user_info_by_account_id(account_id, account_id_target, account_id_external);
 
-if (_struct.status == EpicGames_Success)
+if (_struct.status == EOS_RESULT.SUCCESS)
 {
-     DisplayName = _struct.DisplayName;
+     var _display_name = _struct.display_name;
 }</code></pre>
-The above code shows an example of how the function should be used. The external user info data is returned given the provided accountID.</p>
+The above code shows an example of how the function should be used. The external user info data is returned given the provided account_id.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_copyexternaluserinfobyaccounttype">EpicGames_UserInfo_CopyExternalUserInfoByAccountType</h1>
+<h1 id="eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_CopyExternalUserInfoByAccountType/index.html">EOS_UserInfo_CopyExternalUserInfoByAccountType</a></p>
 <p>This function fetches an external user info for a given external account type.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="user_info.html#eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_CopyExternalUserInfoByAccountType(accountID, accountID_target, accountType)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_copy_external_user_info_by_account_type(account_id, account_id_target, account_type)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -258,18 +278,18 @@ The above code shows an example of how the function should be used. The external
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the player whose information is being retrieved</td>
 </tr>
 <tr>
-<td>accountType</td>
-<td><a href="user_info.html#epicgames_externalaccounttype">EpicGames_ExternalAccountType</a></td>
+<td>account_type</td>
+<td><a href="user_info.html#eos_external_account_type">EOS_EXTERNAL_ACCOUNT_TYPE</a></td>
 <td>Account type of the external user info to retrieve from the cache</td>
 </tr>
 </tbody>
@@ -283,11 +303,11 @@ The above code shows an example of how the function should be used. The external
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_UserInfo_CopyExternalUserInfoByAccountType(accountID, accountID_target, accountType);
+<p><pre class="highlight"><code class="language-gml">var _struct = eos_user_info_copy_external_user_info_by_account_type(account_id, account_id_target, accountType);
 
-if (_struct.status == EpicGames_Success)
+if (_struct.status == EOS_RESULT.SUCCESS)
 {
-     DisplayName = _struct.DisplayName;
+     var _display_name = _struct.display_name;
 }</code></pre>
 The above code shows an example of how the function should be used. The external user info data is returned given the provided account type.</p>
 <p><br></p>
@@ -295,17 +315,17 @@ The above code shows an example of how the function should be used. The external
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_copyexternaluserinfobyindex">EpicGames_UserInfo_CopyExternalUserInfoByIndex</h1>
+<h1 id="eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_CopyExternalUserInfoByIndex/index.html">EOS_UserInfo_CopyExternalUserInfoByIndex</a></p>
 <p>This function fetches an external user info from a given index.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="user_info.html#eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_CopyExternalUserInfoByIndex(accountID, accountID_target, index)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_copy_external_user_info_by_index(account_id, account_id_target, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -317,12 +337,12 @@ The above code shows an example of how the function should be used. The external
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the player whose information is being retrieved</td>
 </tr>
@@ -342,11 +362,11 @@ The above code shows an example of how the function should be used. The external
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_UserInfo_GetExternalUserInfoCount(accountID, accountID_target);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_user_info_get_external_user_info_count(account_id, account_id_target);
 for(var i = 0 ; i &lt; _count ; i ++)
 {
-    var _struct = EpicGames_UserInfo_CopyExternalUserInfoByIndex(i);
-    DisplayName = _struct.DisplayName;
+    var _struct = eos_user_info_copy_external_user_info_by_index(i);
+    var _display_name = _struct.display_name;
 }</code></pre>
 The above code shows an example of how the function should be used. The external user info data is returned given the provided index (from a cached array).</p>
 <p><br></p>
@@ -354,13 +374,13 @@ The above code shows an example of how the function should be used. The external
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_copyuserinfo">EpicGames_UserInfo_CopyUserInfo</h1>
+<h1 id="eos_user_info_copy_user_info">eos_user_info_copy_user_info</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_CopyUserInfo/index.html">EOS_UserInfo_CopyUserInfo</a></p>
-<p>This function is used to immediately retrieve a copy of user information based on an Epic Account ID, cached by a previous call to <a href="user_info.html#epicgames_userinfo_queryuserinfo">EpicGames_UserInfo_QueryUserInfo</a>.</p>
+<p>This function is used to immediately retrieve a copy of user information based on an Epic Account ID, cached by a previous call to <a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_CopyUserInfo(accountID, accountID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_copy_user_info(account_id, account_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -372,12 +392,12 @@ The above code shows an example of how the function should be used. The external
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the player whose information is being retrieved</td>
 </tr>
@@ -392,10 +412,10 @@ The above code shows an example of how the function should be used. The external
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_UserInfo_CopyUserInfo(accountID, accountID_target);
-if (_struct.status == EpicGames_Success)
+<p><pre class="highlight"><code class="language-gml">var _struct = eos_user_info_copy_user_info(account_id, account_id_target);
+if (_struct.status == EOS_RESULT.SUCCESS)
 {
-     nickname = _struct.Nickname;
+     var _nickname = _struct.nickname;
 }</code></pre>
 The above code shows an example of how the function should be used. The user info data is returned given the provided account ID.</p>
 <p><br></p>
@@ -403,17 +423,17 @@ The above code shows an example of how the function should be used. The user inf
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_getexternaluserinfocount">EpicGames_UserInfo_GetExternalUserInfoCount</h1>
+<h1 id="eos_user_info_get_external_user_info_count">eos_user_info_get_external_user_info_count</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_GetExternalUserInfoCount/index.html">EOS_UserInfo_GetExternalUserInfoCount</a></p>
 <p>This function fetches the number of external user information that are cached locally.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires a previous call to <a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a> to store values in cache.</p>
+<p>Requires a previous call to <a href="user_info.html#eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</a> to store values in cache.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_GetExternalUserInfoCount(accountID, accountID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_get_external_user_info_count(account_id, account_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -425,12 +445,12 @@ The above code shows an example of how the function should be used. The user inf
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the player whose information is being retrieved</td>
 </tr>
@@ -445,29 +465,29 @@ The above code shows an example of how the function should be used. The user inf
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _count = EpicGames_UserInfo_GetExternalUserInfoCount(accountID, accountID_target);
+<p><pre class="highlight"><code class="language-gml">var _count = eos_user_info_get_external_user_info_count(account_id, account_id_target);
 for(var i = 0 ; i &lt; _count ; i ++)
 {
-    var _struct = EpicGames_UserInfo_CopyExternalUserInfoByIndex(i);
-    DisplayName = _struct.DisplayName;
+    var _struct = eos_user_info_copy_external_user_info_by_index(i);
+    var _display_name = _struct._display_name;
 }</code></pre>
-The above code shows an example of how the function should be used. After a successful call to <a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a>, the function <a href="user_info.html#epicgames_userinfo_getexternaluserinfocount">EpicGames_UserInfo_GetExternalUserInfoCount</a> will return the number of entries in the query array which can then be accessed using the <a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyindex">EpicGames_UserInfo_CopyExternalUserInfoByIndex</a> function.</p>
+The above code shows an example of how the function should be used. After a successful call to <a href="user_info.html#eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</a>, the function <a href="user_info.html#eos_user_info_get_external_user_info_count">eos_user_info_get_external_user_info_count</a> will return the number of entries in the query array which can then be accessed using the <a href="user_info.html#eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</a> function.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_queryuserinfo">EpicGames_UserInfo_QueryUserInfo</h1>
+<h1 id="eos_user_info_query_user_info">eos_user_info_query_user_info</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfo/index.html">EOS_UserInfo_QueryUserInfo</a></p>
 <p>This function is used to start an asynchronous query to retrieve information, such as display name, about another account.
-Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call the function:</p>
-<p><a href="user_info.html#epicgames_userinfo_copyuserinfo">EpicGames_UserInfo_CopyUserInfo</a></p>
-<p>to receive an <a href="user_info.html#userinfo">UserInfo</a> containing the available information.</p>
+Once the callback has been fired with a successful <a href="general.html#eos_result">EOS_RESULT</a>, it is possible to call the function:</p>
+<p><a href="user_info.html#eos_user_info_copy_user_info">eos_user_info_copy_user_info</a></p>
+<p>to receive a <a href="user_info.html#userinfo">UserInfo</a> containing the available information.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_QueryUserInfo(accountID, accountID_target)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_query_user_info(account_id, account_id_target)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -479,12 +499,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>accountID_target</td>
+<td>account_id_target</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the player whose information is being retrieved</td>
 </tr>
@@ -514,12 +534,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_UserInfo_QueryUserInfo"</code></td>
+<td>The string <code>"eos_user_info_query_user_info"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -529,18 +549,18 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>identifier</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The asynchronous listener ID.</td>
+<td>The asynchronous listener ID</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_UserInfo_QueryUserInfo();</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_user_info_query_user_info();</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_UserInfo_QueryUserInfo")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_user_info_query_user_info")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
@@ -555,19 +575,19 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_queryuserinfobydisplayname">EpicGames_UserInfo_QueryUserInfoByDisplayName</h1>
+<h1 id="eos_user_info_query_user_info_by_display_name">eos_user_info_query_user_info_by_display_name</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByDisplayName/index.html">EOS_UserInfo_QueryUserInfoByDisplayName</a></p>
-<p>This function is used to start an asynchronous query to retrieve user information by display name. This can be useful for getting the AccountId for a display name.
-Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call the function:</p>
+<p>This function is used to start an asynchronous query to retrieve user information by display name. This can be useful for getting the account_id for a display name.
+Once the callback has been fired with a successful <a href="general.html#eos_result">EOS_RESULT</a>, it is possible to call the function:</p>
 <ul>
-<li><a href="user_info.html#epicgames_userinfo_copyuserinfo">EpicGames_UserInfo_CopyUserInfo</a></li>
+<li><a href="user_info.html#eos_user_info_copy_user_info">eos_user_info_copy_user_info</a></li>
 </ul>
 <p>to receive a <a href="user_info.html#userinfo">UserInfo</a> containing the available information.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_QueryUserInfoByDisplayName(accountID, DisplayName)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_query_user_info_by_display_name(account_id, display_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -579,12 +599,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>DisplayName</td>
+<td>display_name</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>Display name of the player being queried</td>
 </tr>
@@ -614,12 +634,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_UserInfo_QueryUserInfoByDisplayName"</code></td>
+<td>The string <code>"eos_user_info_query_user_info_by_display_name"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -635,12 +655,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_UserInfo_QueryUserInfoByDisplayName();</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_user_info_query_user_info_by_display_name();</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_UserInfo_QueryUserInfoByDisplayName")
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_user_info_query_user_info_by_display_name")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
@@ -655,21 +675,21 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</h1>
+<h1 id="eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UserInfo/EOS_UserInfo_QueryUserInfoByExternalAccount/index.html">EOS_UserInfo_QueryUserInfoByExternalAccount</a></p>
-<p>This function is used to start an asynchronous query to retrieve user information by external accounts. This can be useful for getting the AccountId for external accounts.
-Once the callback has been fired with a successful <a href="general.html#epicgames_result">EpicGames_Result</a>, it is possible to call one of the following functions:</p>
+<p>This function is used to start an asynchronous query to retrieve user information by external accounts. This can be useful for getting the account_id for external accounts.
+Once the callback has been fired with a successful <a href="general.html#eos_result">EOS_RESULT</a>, it is possible to call one of the following functions:</p>
 <ul>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyaccountid">EpicGames_UserInfo_CopyExternalUserInfoByAccountId</a></li>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyaccounttype">EpicGames_UserInfo_CopyExternalUserInfoByAccountType</a></li>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyindex">EpicGames_UserInfo_CopyExternalUserInfoByIndex</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_id">eos_user_info_copy_external_user_info_by_account_id</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</a></li>
 </ul>
 <p>to receive a <a href="user_info.html#externaluserinfo">ExternalUserInfo</a> containing the available information.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_UserInfo_QueryUserInfoByExternalAccount(accountID, ExternalAccountId, accountType)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_user_info_query_user_info_by_external_account(account_id, external_account_id, account_type)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -681,18 +701,18 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the local player requesting the information</td>
 </tr>
 <tr>
-<td>ExternalAccountId</td>
+<td>external_account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>External account ID of the user whose information is being retrieved</td>
 </tr>
 <tr>
-<td>accountType</td>
-<td><a href="user_info.html#epicgames_externalaccounttype">EpicGames_ExternalAccountType</a></td>
+<td>account_type</td>
+<td><a href="user_info.html#eos_external_account_type">EOS_EXTERNAL_ACCOUNT_TYPE</a></td>
 <td>Account type of the external user info to query</td>
 </tr>
 </tbody>
@@ -721,12 +741,12 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 <tr>
 <td>type</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"EpicGames_UserInfo_QueryUserInfoByExternalAccount"</code></td>
+<td>The string <code>"eos_user_info_query_user_info_by_external_account"</code></td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -742,18 +762,18 @@ Once the callback has been fired with a successful <a href="general.html#epicgam
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = EpicGames_UserInfo_QueryUserInfoByExternalAccount();</code></pre>
+<p><pre class="highlight"><code class="language-gml">identifier = eos_user_info_query_user_info_by_external_account();</code></pre>
 The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "EpicGames_UserInfo_QueryUserInfoByExternalAccount")
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_user_info_query_user_info_by_external_account")
 if (async_load[? "identifier"] == identifier)
 {
-    if (async_load[? "status"] == EpicGames_Success)
+    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
     {
         show_debug_message(async_load[? "type"] + " succeeded!");
     }
     else
     {
-         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
+        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
     }
 }</code></pre>
 <p><br></p>
@@ -761,14 +781,14 @@ if (async_load[? "identifier"] == identifier)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_externalaccounttype">EpicGames_ExternalAccountType</h1>
+<h1 id="eos_external_account_type">EOS_EXTERNAL_ACCOUNT_TYPE</h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-external-account-type">EOS_EExternalAccountType</a></p>
 <p>These constants are used to describe the type of an external account or connection.</p>
 <p>These constants are also part of the <a href="connect.html#externalaccountinfo">ExternalAccountInfo</a> struct.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyaccounttype">EpicGames_UserInfo_CopyExternalUserInfoByAccountType</a></li>
-<li><a href="user_info.html#epicgames_userinfo_queryuserinfobyexternalaccount">EpicGames_UserInfo_QueryUserInfoByExternalAccount</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</a></li>
+<li><a href="user_info.html#eos_user_info_query_user_info_by_external_account">eos_user_info_query_user_info_by_external_account</a></li>
 </ul>
 <p>These constants are referenced by the following structs:</p>
 <ul>
@@ -785,59 +805,59 @@ if (async_load[? "identifier"] == identifier)
 </thead>
 <tbody>
 <tr>
-<td><code>EpicGames_EAT_EPIC</code></td>
+<td><code>EPIC</code></td>
 <td>External account is associated with Epic Games</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_STEAM</code></td>
+<td><code>STEAM</code></td>
 <td>External account is associated with Steam</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_PSN</code></td>
+<td><code>PSN</code></td>
 <td>External account is associated with PlayStation(TM)Network</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_XBL</code></td>
+<td><code>XBL</code></td>
 <td>External account is associated with Xbox Live</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_DISCORD</code></td>
+<td><code>DISCORD</code></td>
 <td>External account is associated with Discord</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_GOG</code></td>
+<td><code>GOG</code></td>
 <td>External account is associated with GOG</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_NINTENDO</code></td>
+<td><code>NINTENDO</code></td>
 <td>External account is associated with Nintendo With both EOS Connect and EOS UserInfo APIs, the associated account type is Nintendo Service Account ID. Local user authentication is possible using Nintendo Account ID, while the account type does not get exposed to the SDK in queries related to linked accounts information.</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_UPLAY</code></td>
+<td><code>UPLAY</code></td>
 <td>External account is associated with Uplay</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_OPENID</code></td>
+<td><code>OPENID</code></td>
 <td>External account is associated with an OpenID Provider</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_APPLE</code></td>
+<td><code>APPLE</code></td>
 <td>External account is associated with Apple</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_GOOGLE</code></td>
+<td><code>GOOGLE</code></td>
 <td>External account is associated with Google</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_OCULUS</code></td>
+<td><code>OCULUS</code></td>
 <td>External account is associated with Oculus</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_ITCHIO</code></td>
+<td><code>ITCHIO</code></td>
 <td>External account is associated with itch.io</td>
 </tr>
 <tr>
-<td><code>EpicGames_EAT_AMAZON</code></td>
+<td><code>AMAZON</code></td>
 <td>External account is associated with Amazon</td>
 </tr>
 </tbody>
@@ -847,12 +867,13 @@ if (async_load[? "identifier"] == identifier)
 <p align="right"><a href="#top">Back To Top</a></p>
 
 <h1 id="externaluserinfo">ExternalUserInfo</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-user-info-external-user-info">EOS_UserInfo_ExternalUserInfo</a></p>
 <p>The external user info is represented by a struct and contains information about a single external user info.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyaccountid">EpicGames_UserInfo_CopyExternalUserInfoByAccountId</a></li>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyaccounttype">EpicGames_UserInfo_CopyExternalUserInfoByAccountType</a></li>
-<li><a href="user_info.html#epicgames_userinfo_copyexternaluserinfobyindex">EpicGames_UserInfo_CopyExternalUserInfoByIndex</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_id">eos_user_info_copy_external_user_info_by_account_id</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -866,8 +887,8 @@ if (async_load[? "identifier"] == identifier)
 <tbody>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -875,18 +896,18 @@ if (async_load[? "identifier"] == identifier)
 <td>Text representation of the status code</td>
 </tr>
 <tr>
-<td>DisplayName</td>
+<td>display_name</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The display name of the external account. Can be null.</td>
+<td>The display name of the external account. May not be present in the struct if not set.</td>
 </tr>
 <tr>
-<td>AccountId</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The ID of the external account. Can be null.</td>
+<td>The ID of the external account. May not be present in the struct if not set.</td>
 </tr>
 <tr>
-<td>AccountType</td>
-<td><a href="user_info.html#epicgames_externalaccounttype">EpicGames_ExternalAccountType</a></td>
+<td>account_type</td>
+<td><a href="user_info.html#eos_external_account_type">EOS_EXTERNAL_ACCOUNT_TYPE</a></td>
 <td>The type of the external account.</td>
 </tr>
 </tbody>
@@ -896,10 +917,11 @@ if (async_load[? "identifier"] == identifier)
 <p align="right"><a href="#top">Back To Top</a></p>
 
 <h1 id="userinfo">UserInfo</h1>
-<p>The user info is represented by a struct and contains information about a single user info.</p>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-user-info">EOS_UserInfo</a></p>
+<p>The user info is represented by a struct and contains information about a single user.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
-<li><a href="user_info.html#epicgames_userinfo_copyuserinfo">EpicGames_UserInfo_CopyUserInfo</a></li>
+<li><a href="user_info.html#eos_user_info_copy_user_info">eos_user_info_copy_user_info</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -913,8 +935,8 @@ if (async_load[? "identifier"] == identifier)
 <tbody>
 <tr>
 <td>status</td>
-<td><a href="general.html#epicgames_result">EpicGames_Result</a></td>
-<td>The status code for the operation. <code>EpicGames_Success</code> indicates that the operation succeeded; other codes indicate errors</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
 </tr>
 <tr>
 <td>status_message</td>
@@ -922,27 +944,27 @@ if (async_load[? "identifier"] == identifier)
 <td>Text representation of the status code.</td>
 </tr>
 <tr>
-<td>DisplayName</td>
+<td>display_name</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The display name. This may be null.</td>
+<td>The display name. This value may not be present in the struct if not set.</td>
 </tr>
 <tr>
-<td>Country</td>
+<td>country</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The name of the owner's country. This may be null.</td>
+<td>The name of the owner's country. This value may not be present in the struct if not set.</td>
 </tr>
 <tr>
-<td>Nickname</td>
+<td>nickname</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>A nickname/alias for the target user assigned by the local user. This may be null.</td>
+<td>A nickname/alias for the target user assigned by the local user. This value may not be present in the struct if not set.</td>
 </tr>
 <tr>
-<td>PreferredLanguage</td>
+<td>preferred_language</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The ISO 639 language code for the user's preferred language. This may be null.</td>
+<td>The ISO 639 language code for the user's preferred language. This value may not be present in the struct if not set.</td>
 </tr>
 <tr>
-<td>AccountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The Epic Account ID of the user</td>
 </tr>
@@ -961,7 +983,7 @@ if (async_load[? "identifier"] == identifier)
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>YoYoGames 2024</p>
+      <p><p align="center">GameMaker 2025</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

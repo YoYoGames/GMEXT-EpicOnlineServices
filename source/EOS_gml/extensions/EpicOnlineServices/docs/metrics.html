@@ -74,6 +74,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Metrics</a>
     <ul class="current">
@@ -85,7 +89,15 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
                 </li>
               </ul>
               <ul>
@@ -97,7 +109,15 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
                 </li>
               </ul>
               <ul>
@@ -151,26 +171,26 @@
 <h2 id="functions">Functions</h2>
 <p>These functions are provided for handling metrics:</p>
 <ul>
-<li><a href="metrics.html#epicgames_metrics_beginplayersession">EpicGames_Metrics_BeginPlayerSession</a></li>
-<li><a href="metrics.html#epicgames_metrics_endplayersession">EpicGames_Metrics_EndPlayerSession</a></li>
+<li><a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a></li>
+<li><a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a></li>
 </ul>
 <h2 id="constants">Constants</h2>
 <p>These are the constants used by this API:</p>
 <ul>
-<li><a href="metrics.html#epicgames_metrics_account_id_type">EpicGames_Metrics_Account_Id_Type</a></li>
-<li><a href="metrics.html#epicgames_user_controller_type">EpicGames_User_Controller_Type</a></li>
+<li><a href="metrics.html#eos_metrics_account_id_type">EOS_METRICS_ACCOUNT_ID_TYPE</a></li>
+<li><a href="metrics.html#eos_user_controller_type">EOS_USER_CONTROLLER_TYPE</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_metrics_beginplayersession">EpicGames_Metrics_BeginPlayerSession</h1>
+<h1 id="eos_metrics_begin_player_session">eos_metrics_begin_player_session</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Metrics/EOS_Metrics_BeginPlayerSession/index.html">EOS_Metrics_BeginPlayerSession</a></p>
-<p>This function logs the start of a new game session for a local player. The game client should call this function whenever it joins into a new multiplayer, peer-to-peer or single player game session. Each call to <a href="metrics.html#epicgames_metrics_beginplayersession">EpicGames_Metrics_BeginPlayerSession</a> must be matched with a corresponding call to <a href="metrics.html#epicgames_metrics_endplayersession">EpicGames_Metrics_EndPlayerSession</a>.</p>
+<p>This function logs the start of a new game session for a local player. The game client should call this function whenever it joins into a new multiplayer, peer-to-peer or single player game session. Each call to <a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a> must be matched with a corresponding call to <a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Metrics_BeginPlayerSession(accountID, DisplayName, AccountIdType, ControllerType, ServerIp, GameSessionId)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_metrics_begin_player_session(account_id, display_name, account_id_type, controller_type, server_ip, game_session_id=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -182,32 +202,32 @@
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>An Epic Account ID. Set this field when <code>AccountIdType</code> is set to <code>EpicGames_MAIT_Epic</code>.</td>
+<td>An Epic Account ID. Set this field when <code>account_id_type</code> is set to <code>EOS_METRICS_ACCOUNT_ID_TYPE.EPIC</code>.</td>
 </tr>
 <tr>
-<td>DisplayName</td>
+<td>display_name</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The in-game display name for the user.</td>
 </tr>
 <tr>
-<td>AccountIdType</td>
-<td><a href="metrics.html#epicgames_metrics_account_id_type">EpicGames_Metrics_Account_Id_Type</a></td>
+<td>account_id_type</td>
+<td><a href="metrics.html#eos_metrics_account_id_type">EOS_METRICS_ACCOUNT_ID_TYPE</a></td>
 <td>Account ID type that is set in the union.</td>
 </tr>
 <tr>
-<td>ControllerType</td>
-<td><a href="metrics.html#epicgames_metrics_account_id_type">EpicGames_Metrics_Account_Id_Type</a></td>
+<td>controller_type</td>
+<td><a href="metrics.html#eos_user_controller_type">EOS_USER_CONTROLLER_TYPE</a></td>
 <td>The user's game controller type.</td>
 </tr>
 <tr>
-<td>ServerIp</td>
+<td>server_ip</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>IP address of the game server hosting the game session. For a localhost session, set to <code>undefined</code>. If both IPv4 and IPv6 addresses are available, use the <strong>IPv6</strong> address.</td>
 </tr>
 <tr>
-<td>GameSessionId</td>
+<td>game_session_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>Optional, application-defined custom match session identifier. If the identifier is not used, set to <code>undefined</code> which will be shown in the Played Sessions listing at the user profile dashboard.</td>
 </tr>
@@ -222,17 +242,17 @@
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_Metrics_BeginPlayerSession(
-        AccountID,
+<p><pre class="highlight"><code class="language-gml">var _struct = eos_metrics_begin_player_session(
+        account_id,
         "YYEpicGames",
-        EpicGames_MAIT_Epic,
-        EpicGames_UCT_MouseKeyboard,
+        EOS_METRICS_ACCOUNT_ID_TYPE.EPIC,
+        EOS_USER_CONTROLLER_TYPE.MOUSE_KEYBOARD,
         "No Server",
         "AnyRandomIDString");
 
-if(struct.status != EpicGames_Success)
+if(_struct.status != EOS_RESULT.SUCCESS)
 {
-    show_debug_message("EpicGames_Metrics_BeginPlayerSession Failed");
+    show_debug_message("eos_metrics_begin_player_session failed");
 }</code></pre>
 The above code shows an example of how the function should be used.</p>
 <p><br></p>
@@ -240,13 +260,13 @@ The above code shows an example of how the function should be used.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_metrics_endplayersession">EpicGames_Metrics_EndPlayerSession</h1>
+<h1 id="eos_metrics_end_player_session">eos_metrics_end_player_session</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Metrics/EOS_Metrics_EndPlayerSession/index.html">EOS_Metrics_EndPlayerSession</a></p>
-<p>This function logs the end of a game session for a local player. Call once when the game client leaves the active game session. Each call to <a href="metrics.html#epicgames_metrics_beginplayersession">EpicGames_Metrics_BeginPlayerSession</a> must be matched with a corresponding call to <a href="metrics.html#epicgames_metrics_endplayersession">EpicGames_Metrics_EndPlayerSession</a>.</p>
+<p>This function logs the end of a game session for a local player. Call once when the game client leaves the active game session. Each call to <a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a> must be matched with a corresponding call to <a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">EpicGames_Metrics_EndPlayerSession(accountID, AccountIdType)</code></pre>
+<pre class="highlight"><code class="language-gml">eos_metrics_end_player_session(account_id, account_id_type)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -258,13 +278,13 @@ The above code shows an example of how the function should be used.</p>
 </thead>
 <tbody>
 <tr>
-<td>accountID</td>
+<td>account_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Set this field when <code>AccountIdType</code> is set to <code>EpicGames_MAIT_Epic</code></td>
+<td>Set this field when <code>account_id_type</code> is set to <code>EOS_METRICS_ACCOUNT_ID_TYPE.EPIC</code></td>
 </tr>
 <tr>
-<td>AccountIdType</td>
-<td><a href="metrics.html#epicgames_metrics_account_id_type">EpicGames_Metrics_Account_Id_Type</a></td>
+<td>account_id_type</td>
+<td><a href="metrics.html#eos_metrics_account_id_type">EOS_METRICS_ACCOUNT_ID_TYPE</a></td>
 <td>The Account ID type that is set in the union</td>
 </tr>
 </tbody>
@@ -278,21 +298,21 @@ The above code shows an example of how the function should be used.</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _struct = EpicGames_Metrics_EndPlayerSession(AccountID, EpicGames_MAIT_Epic);
-show_debug_message("EpicGames_Metrics_EndPlayerSession: " + string(_struct.status_message));</code></pre>
+<p><pre class="highlight"><code class="language-gml">var _struct = eos_metrics_end_player_session(account_id, EOS_METRICS_ACCOUNT_ID_TYPE.EPIC);
+show_debug_message("eos_metrics_end_player_session: " + string(_struct.status_message));</code></pre>
 The above code shows an example of how the function should be used.</p>
 <p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_metrics_account_id_type">EpicGames_Metrics_Account_Id_Type</h1>
+<h1 id="eos_metrics_account_id_type">EOS_METRICS_ACCOUNT_ID_TYPE</h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-metrics-account-id-type">EOS_EMetricsAccountIdType</a></p>
-<p>These constants are used to describe the AccountId type.</p>
+<p>These constants are used to describe the account ID type.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
-<li><a href="metrics.html#epicgames_metrics_beginplayersession">EpicGames_Metrics_BeginPlayerSession</a></li>
-<li><a href="metrics.html#epicgames_metrics_endplayersession">EpicGames_Metrics_EndPlayerSession</a></li>
+<li><a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a></li>
+<li><a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -304,11 +324,11 @@ The above code shows an example of how the function should be used.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>EpicGames_MAIT_Epic</code></td>
+<td><code>EPIC</code></td>
 <td>An Epic Account ID</td>
 </tr>
 <tr>
-<td><code>EpicGames_MAIT_External</code></td>
+<td><code>EXTERNAL</code></td>
 <td>An external service Account ID</td>
 </tr>
 </tbody>
@@ -317,9 +337,13 @@ The above code shows an example of how the function should be used.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicgames_user_controller_type">EpicGames_User_Controller_Type</h1>
+<h1 id="eos_user_controller_type">EOS_USER_CONTROLLER_TYPE</h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-user-controller-type">EOS_EUserControllerType</a></p>
 <p>These constants are used to describe the type of controller being used during the current player session.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a></li>
+</ul>
 <p><br></p>
 <table>
 <thead>
@@ -330,19 +354,19 @@ The above code shows an example of how the function should be used.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>EpicGames_UCT_Unknown</code></td>
+<td><code>UNKNOWN</code></td>
 <td>The game controller type is unknown</td>
 </tr>
 <tr>
-<td><code>EpicGames_UCT_MouseKeyboard</code></td>
+<td><code>MOUSE_KEYBOARD</code></td>
 <td>Mouse and keyboard controller</td>
 </tr>
 <tr>
-<td><code>EpicGames_UCT_GamepadControl</code></td>
+<td><code>GAMEPAD_CONTROL</code></td>
 <td>Gamepad controller</td>
 </tr>
 <tr>
-<td><code>EpicGames_UCT_UCT_TouchControl</code></td>
+<td><code>TOUCH_CONTROL</code></td>
 <td>Touch controller</td>
 </tr>
 </tbody>
@@ -352,15 +376,15 @@ The above code shows an example of how the function should be used.</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="leaderboards.html" class="btn btn-neutral float-left" title="Leaderboards"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="platform.html" class="btn btn-neutral float-right" title="Platform">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="lobbies.html" class="btn btn-neutral float-left" title="Lobbies"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="p2p.html" class="btn btn-neutral float-right" title="P2P">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>YoYoGames 2024</p>
+      <p><p align="center">GameMaker 2025</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
@@ -381,10 +405,10 @@ The above code shows an example of how the function should be used.</p>
         </span>
     
     
-      <span><a href="leaderboards.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="lobbies.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="platform.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="p2p.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

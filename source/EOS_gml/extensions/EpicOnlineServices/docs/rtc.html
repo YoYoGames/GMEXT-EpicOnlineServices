@@ -1,0 +1,4011 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>RTC - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "RTC";
+        var mkdocs_page_input_path = "rtc.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">RTC</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">RTC</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/rtc.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="rtc"><strong>RTC</strong></h1>
+<p><strong>Epic Online Services Interface</strong>: <a href="https://dev.epicgames.com/docs/api-ref/interfaces/rtc">RTC Interface</a></p>
+<p>Integrate the Real-time Communication (RTC) Data Interface into your game to use the features of the Epic Online Services (EOS) RTC Data service. Use the RTC Data Interface to allow players to send data messages to each other in a voice chat room.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The RTC-data service restricts the amount of data that a player can send. See the <a href="https://dev.epicgames.com/docs/game-services/real-time-communication-interface/rtc-data-interface#rtc-data-service-limits">RTC-data Service Limits</a> section of this document for details.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a href="https://dev.epicgames.com/docs/game-services/real-time-communication-interface/rtc-data-interface">RTC Data Interface</a> for a more detailed introduction.</p>
+</div>
+<h2 id="functions">Functions</h2>
+<p>This module offers a collection of functions designed to address specific tasks and provide utilities for various purposes. Explore the available functions to make the most of the functionalities provided by this module.</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_add_notify_disconnected">eos_rtc_add_notify_disconnected</a></li>
+<li><a href="rtc.html#eos_rtc_add_notify_participant_status_changed">eos_rtc_add_notify_participant_status_changed</a></li>
+<li><a href="rtc.html#eos_rtc_add_notify_room_statistics_updated">eos_rtc_add_notify_room_statistics_updated</a></li>
+<li><a href="rtc.html#eos_rtc_block_participant">eos_rtc_block_participant</a></li>
+<li><a href="rtc.html#eos_rtc_join_room">eos_rtc_join_room</a></li>
+<li><a href="rtc.html#eos_rtc_leave_room">eos_rtc_leave_room</a></li>
+<li><a href="rtc.html#eos_rtc_remove_notify_disconnected">eos_rtc_remove_notify_disconnected</a></li>
+<li><a href="rtc.html#eos_rtc_remove_notify_participant_status_changed">eos_rtc_remove_notify_participant_status_changed</a></li>
+<li><a href="rtc.html#eos_rtc_remove_notify_room_statistics_updated">eos_rtc_remove_notify_room_statistics_updated</a></li>
+<li><a href="rtc.html#eos_rtc_set_room_setting">eos_rtc_set_room_setting</a></li>
+<li><a href="rtc.html#eos_rtc_set_setting">eos_rtc_set_setting</a></li>
+<li><a href="rtc.html#eos_rtc_admin_copy_user_token_by_index">eos_rtc_admin_copy_user_token_by_index</a></li>
+<li><a href="rtc.html#eos_rtc_admin_copy_user_token_by_user_id">eos_rtc_admin_copy_user_token_by_user_id</a></li>
+<li><a href="rtc.html#eos_rtc_admin_kick">eos_rtc_admin_kick</a></li>
+<li><a href="rtc.html#eos_rtc_admin_query_join_room_token">eos_rtc_admin_query_join_room_token</a></li>
+<li><a href="rtc.html#eos_rtc_admin_set_participant_hard_mute">eos_rtc_admin_set_participant_hard_mute</a></li>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_audio_before_render">eos_rtc_audio_add_notify_audio_before_render</a></li>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_audio_before_send">eos_rtc_audio_add_notify_audio_before_send</a></li>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_audio_devices_changed">eos_rtc_audio_add_notify_audio_devices_changed</a></li>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_audio_input_state">eos_rtc_audio_add_notify_audio_input_state</a></li>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_audio_output_state">eos_rtc_audio_add_notify_audio_output_state</a></li>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_participant_updated">eos_rtc_audio_add_notify_participant_updated</a></li>
+<li><a href="rtc.html#eos_rtc_audio_copy_input_device_information_by_index">eos_rtc_audio_copy_input_device_information_by_index</a></li>
+<li><a href="rtc.html#eos_rtc_audio_copy_output_device_information_by_index">eos_rtc_audio_copy_output_device_information_by_index</a></li>
+<li><a href="rtc.html#eos_rtc_audio_get_audio_output_devices_count">eos_rtc_audio_get_audio_output_devices_count</a></li>
+<li><a href="rtc.html#eos_rtc_audio_get_input_devices_count">eos_rtc_audio_get_input_devices_count</a></li>
+<li><a href="rtc.html#eos_rtc_audio_query_input_devices_information">eos_rtc_audio_query_input_devices_information</a></li>
+<li><a href="rtc.html#eos_rtc_audio_query_output_devices_information">eos_rtc_audio_query_output_devices_information</a></li>
+<li><a href="rtc.html#eos_rtc_audio_register_platform_user">eos_rtc_audio_register_platform_user</a></li>
+<li><a href="rtc.html#eos_rtc_audio_remove_notify_audio_before_render">eos_rtc_audio_remove_notify_audio_before_render</a></li>
+<li><a href="rtc.html#eos_rtc_audio_remove_notify_audio_before_send">eos_rtc_audio_remove_notify_audio_before_send</a></li>
+<li><a href="rtc.html#eos_rtc_audio_remove_notify_audio_devices_changed">eos_rtc_audio_remove_notify_audio_devices_changed</a></li>
+<li><a href="rtc.html#eos_rtc_audio_remove_notify_audio_input_state">eos_rtc_audio_remove_notify_audio_input_state</a></li>
+<li><a href="rtc.html#eos_rtc_audio_remove_notify_audio_output_state">eos_rtc_audio_remove_notify_audio_output_state</a></li>
+<li><a href="rtc.html#eos_rtc_audio_remove_notify_participant_updated">eos_rtc_audio_remove_notify_participant_updated</a></li>
+<li><a href="rtc.html#eos_rtc_audio_send_audio">eos_rtc_audio_send_audio</a></li>
+<li><a href="rtc.html#eos_rtc_audio_set_input_device_settings">eos_rtc_audio_set_input_device_settings</a></li>
+<li><a href="rtc.html#eos_rtc_audio_set_output_device_settings">eos_rtc_audio_set_output_device_settings</a></li>
+<li><a href="rtc.html#eos_rtc_audio_unregister_platform_user">eos_rtc_audio_unregister_platform_user</a></li>
+<li><a href="rtc.html#eos_rtc_audio_update_participant_volume">eos_rtc_audio_update_participant_volume</a></li>
+<li><a href="rtc.html#eos_rtc_audio_update_receiving">eos_rtc_audio_update_receiving</a></li>
+<li><a href="rtc.html#eos_rtc_audio_update_receiving_volume">eos_rtc_audio_update_receiving_volume</a></li>
+<li><a href="rtc.html#eos_rtc_audio_update_sending">eos_rtc_audio_update_sending</a></li>
+<li><a href="rtc.html#eos_rtc_audio_update_sending_volume">eos_rtc_audio_update_sending_volume</a></li>
+<li><a href="rtc.html#eos_rtc_data_add_notify_data_received">eos_rtc_data_add_notify_data_received</a></li>
+<li><a href="rtc.html#eos_rtc_data_add_notify_participant_updated">eos_rtc_data_add_notify_participant_updated</a></li>
+<li><a href="rtc.html#eos_rtc_data_remove_notify_data_received">eos_rtc_data_remove_notify_data_received</a></li>
+<li><a href="rtc.html#eos_rtc_data_remove_notify_participant_updated">eos_rtc_data_remove_notify_participant_updated</a></li>
+<li><a href="rtc.html#eos_rtc_data_send_data">eos_rtc_data_send_data</a></li>
+<li><a href="rtc.html#eos_rtc_data_update_receiving">eos_rtc_data_update_receiving</a></li>
+<li><a href="rtc.html#eos_rtc_data_update_sending">eos_rtc_data_update_sending</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>This module offers a collection of structs, which serve as custom data models for organizing and structuring data. Explore the provided structs to better understand the relationships between data elements and simplify your data manipulation tasks.</p>
+<ul>
+<li><a href="rtc.html#audioinputdeviceinformation">AudioInputDeviceInformation</a></li>
+<li><a href="rtc.html#audiooutputdeviceinformation">AudioOutputDeviceInformation</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>This module includes a set of predefined constants that can be utilized for various purposes. Browse through the available constants to find values relevant to your needs and enhance the efficiency of your code.</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_participant_status">EOS_RTC_PARTICIPANT_STATUS</a></li>
+<li><a href="rtc.html#eos_rtc_background_mode">EOS_RTC_BACKGROUND_MODE</a></li>
+<li><a href="rtc.html#eos_rtc_audio_status">EOS_RTC_AUDIO_STATUS</a></li>
+<li><a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a></li>
+<li><a href="rtc.html#eos_rtc_audio_input_status">EOS_RTC_AUDIO_INPUT_STATUS</a></li>
+<li><a href="rtc.html#eos_rtc_audio_output_status">EOS_RTC_AUDIO_OUTPUT_STATUS</a></li>
+<li><a href="rtc.html#eos_rtc_data_status">EOS_RTC_DATA_STATUS</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_add_notify_disconnected">eos_rtc_add_notify_disconnected</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-disconnected">EOS_RTC_AddNotifyDisconnected</a></p>
+<p>This function registers to receive notifications when disconnected from the room. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_remove_notify_disconnected">eos_rtc_remove_notify_disconnected</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called. This function will always return <a href="general.html#eos_invalid_notificationid">EOS_INVALID_NOTIFICATIONID</a> when used with lobby RTC room. To be notified of the connection status of a Lobby-managed RTC room, use the <a href="lobbies.html#eos_lobby_add_notify_rtc_room_connection_changed">eos_lobby_add_notify_rtc_room_connection_changed</a> function instead.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_add_notify_disconnected(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_add_notify_disconnected"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>This holds: <code>EOS_RESULT.SUCCESS</code> The room was left cleanly. <code>EOS_RESULT.NO_CONNECTION</code>: There was a network issue connecting to the server (retryable). <code>EOS_RESULT.RTC_USER_KICKED</code>: The user has been kicked by the server (retryable). <code>EOS_RESULT.SERVICE_FAILURE</code>: A known error occurred during interaction with the server (retryable). <code>EOS_RESULT.UNEXPECTED_ERROR</code> Unexpected error (retryable).</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_add_notify_participant_status_changed">eos_rtc_add_notify_participant_status_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-participant-status-changed">EOS_RTC_AddNotifyParticipantStatusChanged</a></p>
+<p>This function registers to receive notifications when a participant's status changes (e.g.: join or leave the room), or when the participant is added or removed from an applicable block list (e.g.: Epic block list and/or current platform's block list). If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_remove_notify_participant_status_changed">eos_rtc_remove_notify_participant_status_changed</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> triggered. If you register to this notification before joining a room, you will receive a notification for every member already in the room when you join said room. This allows you to know who is already in the room when you join. To be used effectively with a Lobby-managed RTC room, this should be registered during the <a href="lobbies.html#eos_lobby_create_lobby">eos_lobby_create_lobby</a> or <a href="lobbies.html#eos_lobby_join_lobby">eos_lobby_join_lobby</a> completion callbacks when the ResultCode is <code>EOS_RESULT.SUCCESS</code>. If this notification is registered after that point, it is possible to miss notifications for already-existing room participants. You can use this notification to detect internal automatic RTC blocks due to block lists. When a participant joins a room and while the system resolves the block list status of said participant, the participant is set to blocked and you'll receive a notification with <code>participant_status</code> set to <code>EOS_RTC_PARTICIPANT_STATUS.JOINED</code> and <code>participant_in_blocklist</code> set to <code>true</code>. Once the block list status is resolved, if the player is not in any applicable block list(s), it is then unblocked and a new notification is sent with <code>participant_status</code> set to <code>EOS_RTC_PARTICIPANT_STATUS.JOINED</code> and <code>participant_in_blocklist</code> set to <code>false</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This notification is also raised when the local user joins the room, but NOT when the local user leaves the room.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_add_notify_participant_status_changed(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_add_notify_participant_status_changed"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event.</td>
+</tr>
+<tr>
+<td>participant_in_blocklist</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>The participant's block list status, if <code>participant_status</code> is <code>EOS_RTC_PARTICIPANT_STATUS.JOINED</code>. This is set to <code>true</code> if the participant is in any of the local user's applicable block lists, such as Epic block list or any of the current platform's block lists. It can be used to detect when an internal automatic RTC block is applied because of trust and safety restrictions.</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant whose status changed.</td>
+</tr>
+<tr>
+<td>participant_status</td>
+<td><a href="rtc.html#eos_rtc_participant_status">EOS_RTC_PARTICIPANT_STATUS</a></td>
+<td>What status change occurred</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_add_notify_room_statistics_updated">eos_rtc_add_notify_room_statistics_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-add-notify-room-statistics-updated">EOS_RTC_AddNotifyRoomStatisticsUpdated</a></p>
+<p>This function registers to receive notifications to receiving periodical statistics update. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_remove_notify_room_statistics_updated">eos_rtc_remove_notify_room_statistics_updated</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_add_notify_room_statistics_updated(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_add_notify_room_statistics_updated"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event</td>
+</tr>
+<tr>
+<td>statistic</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Statistics in JSON format</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_block_participant">eos_rtc_block_participant</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-block-participant">EOS_RTC_BlockParticipant</a></p>
+<p>You can use this function to block a participant already connected to the room. After blocking them no media will be sent or received between that user and the local user. This method can be used after receiving the OnParticipantStatusChanged notification.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_block_participant(blocked, local_user_id, participant_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>blocked</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Block or unblock the participant</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the participant to block</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room the users should be blocked on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_block_participant"</code></td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The async identifier returned by the call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the participant being blocked</td>
+</tr>
+<tr>
+<td>blocked</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>The block state that should have been set</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_join_room">eos_rtc_join_room</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-join-room">EOS_RTC_JoinRoom</a></p>
+<p>You can use this function to join a room. This function does not need to be called for the Lobby RTC Room system; doing so will return <code>EOS_RESULT.ACCESS_DENIED</code>. The lobby system will automatically join and leave RTC Rooms for all lobbies that have RTC rooms enabled.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_join_room(local_user_id, room_name, participant_id, participant_token, manual_audio_input_enabled, manual_audio_output_enabled, client_base_url, flags)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product user id of the user trying to request this operation.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room the user would like to join.</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant id used to join the room. If an empty string <code>""</code> is passed the <code>local_user_id</code> will be used instead.</td>
+</tr>
+<tr>
+<td>participant_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Authorization credential token to join the room</td>
+</tr>
+<tr>
+<td>manual_audio_input_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Enable or disable Manual Audio Input. If manual audio input is enabled and audio recording is not started the audio buffers must be passed manually using <a href="rtc.html#eos_rtc_audio_send_audio">eos_rtc_audio_send_audio</a>.</td>
+</tr>
+<tr>
+<td>manual_audio_output_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Enable or disable Manual Audio Output. If manual audio output is enabled and audio rendering is not started the audio buffers must be received with <a href="rtc.html#eos_rtc_audio_add_notify_audio_before_render">eos_rtc_audio_add_notify_audio_before_render</a> and rendered manually.</td>
+</tr>
+<tr>
+<td>client_base_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room the user would like to join</td>
+</tr>
+<tr>
+<td>flags</td>
+<td><a href="rtc.html#eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</a></td>
+<td>Join room flags, e.g., <code>EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO</code>. This is a bitwise-or union of the defined flags.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_join_room"</code></td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The async identifier returned by the call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room the user was trying to join</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>an array of structs holding a <code>key</code> and <code>value</code> variable</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_leave_room">eos_rtc_leave_room</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-leave-room">EOS_RTC_LeaveRoom</a></p>
+<p>You can use this function to leave a room and clean up all the resources associated with it. This function has to always be called when the room is abandoned even if the user is already disconnected for other reasons. This function does not need to called for the Lobby RTC Room system; doing so will return <code>EOS_RESULT.ACCESS_DENIED</code>. The lobby system will automatically join and leave RTC Rooms for all lobbies that have RTC rooms enabled.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_leave_room(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Product User ID of the user requesting to leave the room</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room to leave</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_leave_room"</code></td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The async identifier returned by the call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room the user was trying to leave</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_remove_notify_disconnected">eos_rtc_remove_notify_disconnected</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-remove-notify-disconnected">EOS_RTC_RemoveNotifyDisconnected</a></p>
+<p>This function unregisters a previously bound notification handler from receiving room disconnection notifications.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_remove_notify_disconnected(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The Notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_remove_notify_participant_status_changed">eos_rtc_remove_notify_participant_status_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-remove-notify-participant-status-changed">EOS_RTC_RemoveNotifyParticipantStatusChanged</a></p>
+<p>This function unregisters a previously bound notification handler from receiving participant status change notifications.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_remove_notify_participant_status_changed(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The Notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_remove_notify_room_statistics_updated">eos_rtc_remove_notify_room_statistics_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-remove-notify-room-statistics-updated">EOS_RTC_RemoveNotifyRoomStatisticsUpdated</a></p>
+<p>This function unregisters a previously bound notification handler from receiving periodical statistics update notifications.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_remove_notify_room_statistics_updated(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The Notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_set_room_setting">eos_rtc_set_room_setting</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-set-room-setting">EOS_RTC_SetRoomSetting</a></p>
+<p>You can use this function to control settings for the specific room.</p>
+<p>The available values of <code>setting_name</code> are:</p>
+<ul>
+<li><code>"DisableEchoCancelation"</code>: Disables the use of echo cancellation for the audio channel. Default <code>"False"</code>.</li>
+<li><code>"DisableNoiseSupression"</code>: Disables the use of noise suppression for the audio channel. Default <code>"False"</code>.</li>
+<li><code>"DisableAutoGainControl"</code>: Disables the use of auto gain control for the audio channel. Default <code>"False"</code>.</li>
+<li><code>"DisableDtx"</code>: Allows to disable the use of DTX. Default <code>"False"</code>.</li>
+</ul>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> when the setting is successfully set</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> when the setting is unknown</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> when the value is invalid</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_set_room_setting(local_user_id, room_name, setting_name, setting_value)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room the setting will be applied to</td>
+</tr>
+<tr>
+<td>setting_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The setting that should be set</td>
+</tr>
+<tr>
+<td>setting_value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The value to set the setting to</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_set_setting">eos_rtc_set_setting</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-set-setting">EOS_RTC_SetSetting</a></p>
+<p>You can use this function to control settings.</p>
+<ul>
+<li><code>"DisableEchoCancelation"</code>: Disables the use of echo cancellation for the audio channel. Default <code>"False"</code>.</li>
+<li><code>"DisableNoiseSupression"</code>: Disables the use of noise suppression for the audio channel. Default <code>"False"</code>.</li>
+<li><code>"DisableAutoGainControl"</code>: Disables the use of auto gain control for the audio channel. Default <code>"False"</code>.</li>
+<li><code>"DisableDtx"</code>: Allows to disable the use of DTX. Default <code>"False"</code>.</li>
+</ul>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> when the setting is successfully set</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> when the setting is unknown</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> when the value is invalid</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_set_setting(setting_name, setting_value)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setting_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The setting that should be set</td>
+</tr>
+<tr>
+<td>setting_value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The value to set the setting to</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_admin_copy_user_token_by_index">eos_rtc_admin_copy_user_token_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-copy-user-token-by-index">EOS_RTCAdmin_CopyUserTokenByIndex</a></p>
+<p>This function fetches a user token when called inside of the OnQueryJoinRoomTokenComplete callback, initiating the query.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the information is available</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the user token is not found</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_admin_copy_user_token_by_index(query_id, user_token_index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The query identifier received as part of a previous query</td>
+</tr>
+<tr>
+<td>user_token_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The Product User ID for the user whose user token we're copying</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_admin_copy_user_token_by_user_id">eos_rtc_admin_copy_user_token_by_user_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-copy-user-token-by-user-id">EOS_RTCAdmin_CopyUserTokenByUserId</a></p>
+<p>This function fetches a user token for a given user ID when called inside of the OnQueryJoinRoomTokenComplete callback.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_admin_copy_user_token_by_user_id(query_id, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The query identifier received as part of a previous query</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID for the user whose user token we're copying</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_admin_kick">eos_rtc_admin_kick</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-kick">EOS_RTCAdmin_Kick</a></p>
+<p>This function starts an asynchronous task that removes a participant from a room and revokes their token.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_admin_kick(room_name, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room name to kick the participant from</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product User ID of the participant to kick from the room</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_admin_kick"</code></td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_admin_query_join_room_token">eos_rtc_admin_query_join_room_token</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-query-join-room-token">EOS_RTCAdmin_QueryJoinRoomToken</a></p>
+<p>This function queries for a list of user tokens for joining a room. Each query generates a query ID (see the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>) which should be used to retrieve the tokens from inside the callback. This query ID and query result itself are only valid for the duration of the callback.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_admin_query_join_room_token(local_user_id, room_name, array_ids, array_ips)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product User ID for the local user who is querying join room tokens</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room name to request a token for</td>
+</tr>
+<tr>
+<td>array_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>An array of Product User IDs indicating the users to retrieve a token for</td>
+</tr>
+<tr>
+<td>array_ips</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>An array of IP Addresses, one for each of the users to query tokens for. If you pass an empty array, IP Addresses will be ignored. IPv4 format: <code>"0.0.0.0"</code>, IPv6 format: <code>"0:0:0:0:0:0:0:0"</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_admin_query_join_room_token"</code></td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the function</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>client_base_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>URL passed to backend to join room</td>
+</tr>
+<tr>
+<td>query_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>If the query completed successfully, this contains an identifier that should be used to retrieve the tokens. This identifier is only valid for the duration of the callback.</td>
+</tr>
+<tr>
+<td>token_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>How many tokens received as result of the query</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_admin_set_participant_hard_mute">eos_rtc_admin_set_participant_hard_mute</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-admin-set-participant-hard-mute">EOS_RTCAdmin_SetParticipantHardMute</a></p>
+<p>This function starts an asynchronous task that remotely mutes/unmutes a room participant. This remotely mutes the specified participant, so no audio is sent from that participant to any other participant in the room.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_admin_set_participant_hard_mute(mute, room_name, target_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mute</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>The hard mute status (mute on or off)</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room to kick the participant from</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product User ID of the participant to hard mute for every participant in the room</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_admin_set_participant_hard_mute"</code></td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the function</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td>The result code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_add_notify_audio_before_render">eos_rtc_audio_add_notify_audio_before_render</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-before-render">EOS_RTCAudio_AddNotifyAudioBeforeRender</a></p>
+<p>This function registers to receive notifications with remote audio buffers before they are rendered. This gives you access to the audio data received, allowing for example the implementation of custom filters/effects. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_audio_remove_notify_audio_before_render">eos_rtc_audio_remove_notify_audio_before_render</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>The function returns a notification ID representing the registered callback if successful, an invalid notification ID if not.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_add_notify_audio_before_render(local_user_id, room_name, unmixed_audio)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on.</td>
+</tr>
+<tr>
+<td>unmixed_audio</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Mixed audio or unmixed audio.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_add_notify_audio_before_render"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event.</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the participant if <code>unmixed_audio</code> was set to <code>true</code> when setting the notifications, or empty if <code>unmixed_audio</code> was set to <code>false</code> and thus the buffer is the mixed audio of all participants</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_add_notify_audio_before_send">eos_rtc_audio_add_notify_audio_before_send</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-audio-add-notify-audio-before-send">EOS_RTCAudio_AddNotifyAudioBeforeSend</a></p>
+<p>This function registers to receive notifications when local audio buffers are about to be encoded and sent. This gives you access to the audio data about to be sent, allowing for example the implementation of custom filters/effects. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_audio_remove_notify_audio_before_send">eos_rtc_audio_remove_notify_audio_before_send</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_add_notify_audio_before_send(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_add_notify_audio_before_send"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_add_notify_audio_devices_changed">eos_rtc_audio_add_notify_audio_devices_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-devices-changed">EOS_RTCAudio_AddNotifyAudioDevicesChanged</a></p>
+<p>This function registers to receive notifications when an audio device is added or removed to the system. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_audio_remove_notify_audio_devices_changed">eos_rtc_audio_remove_notify_audio_devices_changed</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>The library will try to use user selected audio device while following these rules:</p>
+<ul>
+<li>if none of the audio devices has been available and connected before - the library will try to use it;</li>
+<li>if user selected device failed for some reason, default device will be used instead (and user selected device will be memorized);</li>
+<li>if user selected a device but it was not used for some reason (and default was used instead), when devices selection is triggered we will try to use user selected device again;</li>
+<li>triggers to change a device: when new audio device appears or disappears - library will try to use previously user selected;</li>
+<li>if for any reason, a device cannot be used - the library will fallback to using default;</li>
+<li>if a configuration of the current audio device has been changed, it will be restarted.</li>
+</ul>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_add_notify_audio_devices_changed()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_add_notify_audio_devices_changed"</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_add_notify_audio_input_state">eos_rtc_audio_add_notify_audio_input_state</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-input-state">EOS_RTCAudio_AddNotifyAudioInputState</a></p>
+<p>This function registers to receive notifications when audio input state changed. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_audio_remove_notify_audio_input_state">eos_rtc_audio_remove_notify_audio_input_state</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>The function returns the notification ID representing the registered callback if successful, an invalid notification ID if not.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_add_notify_audio_input_state(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_add_notify_audio_input_state"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="rtc.html#eos_rtc_audio_input_status">EOS_RTC_AUDIO_INPUT_STATUS</a></td>
+<td>The status of the audio input</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_add_notify_audio_output_state">eos_rtc_audio_add_notify_audio_output_state</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-audio-output-state">EOS_RTCAudio_AddNotifyAudioOutputState</a></p>
+<p>This function registers to receive notifications when audio output state changed. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_audio_remove_notify_audio_output_state">eos_rtc_audio_remove_notify_audio_output_state</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_add_notify_audio_output_state(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_add_notify_audio_output_state"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="rtc.html#eos_rtc_audio_output_status">EOS_RTC_AUDIO_OUTPUT_STATUS</a></td>
+<td>The status of the audio output</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_add_notify_participant_updated">eos_rtc_audio_add_notify_participant_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-add-notify-participant-updated">EOS_RTCAudio_AddNotifyParticipantUpdated</a></p>
+<p>This function registers to receive notifications when a room participant audio status is updated (e.g. when mute state changes or speaking flag changes). The notification is raised when the participant's audio status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_audio_remove_notify_participant_updated">eos_rtc_audio_remove_notify_participant_updated</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>The function returns a notification ID representing the registered callback if successful, an invalid notification ID if not.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_add_notify_participant_updated(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_add_notify_participant_updated"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event</td>
+</tr>
+<tr>
+<td>speaking</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The participant speaking / non-speaking status</td>
+</tr>
+<tr>
+<td>audio_status</td>
+<td><a href="rtc.html#eos_rtc_audio_status">EOS_RTC_AUDIO_STATUS</a></td>
+<td>The participant audio status (enabled, disabled)</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant updated</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_copy_input_device_information_by_index">eos_rtc_audio_copy_input_device_information_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-copy-input-device-information-by-index">EOS_RTCAudio_CopyInputDeviceInformationByIndex</a></p>
+<p>This function fetches an audio input device's information from the given index that are cached locally.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_copy_input_device_information_by_index(device_index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the audio input device's information to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="rtc.html#audioinputdeviceinformation">AudioInputDeviceInformation</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_copy_output_device_information_by_index">eos_rtc_audio_copy_output_device_information_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-copy-output-device-information-by-index">EOS_RTCAudio_CopyOutputDeviceInformationByIndex</a></p>
+<p>This function fetches an audio output device's information from the given index that are cached locally.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_copy_output_device_information_by_index(device_index)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The index of the audio output device's information to retrieve</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="rtc.html#audiooutputdeviceinformation">AudioOutputDeviceInformation</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_get_audio_output_devices_count">eos_rtc_audio_get_audio_output_devices_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-get-output-devices-count">EOS_RTCAudio_GetOutputDevicesCount</a></p>
+<p>This function fetches the number of audio output devices available in the system that are cached locally. The returned value should not be cached and should instead be used immediately with the <a href="rtc.html#eos_rtc_audio_copy_output_device_information_by_index">eos_rtc_audio_copy_output_device_information_by_index</a> function.</p>
+<p>The function returns the number of audio output devices available in the system or 0 if there is an error.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_get_audio_output_devices_count()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_get_input_devices_count">eos_rtc_audio_get_input_devices_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-get-input-devices-count">EOS_RTCAudio_GetInputDevicesCount</a></p>
+<p>This function fetches the number of audio input devices available in the system that are cached locally. The returned value should not be cached and should instead be used immediately with the <a href="rtc.html#eos_rtc_audio_copy_input_device_information_by_index">eos_rtc_audio_copy_input_device_information_by_index</a> function.</p>
+<p>The function returns the number of audio input devices available in the system or 0 if there is an error.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_get_input_devices_count()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_query_input_devices_information">eos_rtc_audio_query_input_devices_information</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-query-input-devices-information">EOS_RTCAudio_QueryInputDevicesInformation</a></p>
+<p>This function queries for a list of audio input devices available in the system together with their specifications.</p>
+<p>It returns the async identifier that you can compare against in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_query_input_devices_information()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_query_input_devices_information"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if the operation succeeded, <code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the parameters were incorrect</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_query_output_devices_information">eos_rtc_audio_query_output_devices_information</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-query-output-devices-information">EOS_RTCAudio_QueryOutputDevicesInformation</a></p>
+<p>This function queries for a list of audio output devices available in the system together with their specifications.</p>
+<p>It returns the async identifier that you can compare against in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_query_output_devices_information()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_query_output_devices_information"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if the operation succeeded, <code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the parameters were incorrect</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_register_platform_user">eos_rtc_audio_register_platform_user</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-register-platform-user">EOS_RTCAudio_RegisterPlatformUser</a></p>
+<p>You can use this function to inform the audio system of a user. This function is only necessary for some platforms.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>"EOS_RESULT.SUCCESS"</code> if the user was successfully registered</li>
+<li><code>"EOS_RESULT.INVALID_PARAMETERS"</code> if any of the parameters are incorrect</li>
+<li><code>"EOS_RESULT.UNEXPECTED_ERROR"</code> otherwise</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_register_platform_user(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The platform dependent user ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_remove_notify_audio_before_render">eos_rtc_audio_remove_notify_audio_before_render</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-remove-notify-audio-before-render">EOS_RTCAudio_RemoveNotifyAudioBeforeRender</a></p>
+<p>This function unregisters a previously bound notification handler from receiving remote audio buffers before they are rendered.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_remove_notify_audio_before_render(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_remove_notify_audio_before_send">eos_rtc_audio_remove_notify_audio_before_send</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-remove-notify-audio-before-send">EOS_RTCAudio_RemoveNotifyAudioBeforeSend</a></p>
+<p>This function unregisters a previously bound notification handler from receiving local audio buffers before they are encoded and sent.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_remove_notify_audio_before_send(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_remove_notify_audio_devices_changed">eos_rtc_audio_remove_notify_audio_devices_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-remove-notify-audio-devices-changed">EOS_RTCAudio_RemoveNotifyAudioDevicesChanged</a></p>
+<p>This function unregisters a previously bound notification handler from receiving audio devices notifications.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_remove_notify_audio_devices_changed(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_remove_notify_audio_input_state">eos_rtc_audio_remove_notify_audio_input_state</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-remove-notify-audio-input-state">EOS_RTCAudio_RemoveNotifyAudioInputState</a></p>
+<p>This function unregisters a previously bound notification handler from receiving notifications on audio output state changed.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_remove_notify_audio_input_state(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_remove_notify_audio_output_state">eos_rtc_audio_remove_notify_audio_output_state</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-remove-notify-audio-output-state">EOS_RTCAudio_RemoveNotifyAudioOutputState</a></p>
+<p>This function unregisters a previously bound notification handler from receiving notifications on audio output state changed.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_remove_notify_audio_output_state(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_remove_notify_participant_updated">eos_rtc_audio_remove_notify_participant_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-remove-notify-participant-updated">EOS_RTCAudio_RemoveNotifyParticipantUpdated</a></p>
+<p>This function unregisters a previously bound notification handler from receiving participant updated notifications.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_remove_notify_participant_updated(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_send_audio">eos_rtc_audio_send_audio</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-audio-send-audio">EOS_RTCAudio_SendAudio</a></p>
+<p>You can use this function to push a new audio buffer to be sent to the participants of a room. This should only be used if Manual Audio Input was enabled locally for the specified room.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_send_audio(channels, frames_count, frames, sample_rate, local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>channels</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of audio channels</td>
+</tr>
+<tr>
+<td>frames_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of frames</td>
+</tr>
+<tr>
+<td>frames</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/Buffers.htm">Buffer</a></td>
+<td>The buffer storing the frames</td>
+</tr>
+<tr>
+<td>sample_rate</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The sample rate of the audio in the buffer</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_set_input_device_settings">eos_rtc_audio_set_input_device_settings</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-set-input-device-settings">EOS_RTCAudio_SetInputDeviceSettings</a></p>
+<p>You can use this function to set audio input device settings, such as the active input device, or platform AEC.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_set_input_device_settings(platform_aec, local_user_id, real_device_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platform_aec</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether to enable or disable Platform AEC (Acoustic Echo Cancellation) if available.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation.</td>
+</tr>
+<tr>
+<td>real_device_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The device ID to be used for this user. Pass an empty string to use a default input device. If the device ID is invalid, the default device will be used instead. Despite this fact, that device ID will be stored and the library will try to move on it when an audio device pool is being changed. The actual hardware audio input device usage depends on the current payload and optimized not to use it when generated audio frames cannot be processed by someone else based on a scope of rules (For instance, when a client is alone in a room).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_set_input_device_settings"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if the operation succeeded, <code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the parameters are incorrect</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>real_device_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The associated audio input device ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_set_output_device_settings">eos_rtc_audio_set_output_device_settings</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-set-output-device-settings">EOS_RTCAudio_SetOutputDeviceSettings</a></p>
+<p>You can use this function to set audio output device settings, such as the active output device.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_set_output_device_settings(local_user_id, real_device_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>real_device_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The device ID to be used for this user. Pass an empty string to use a default output device. If the device ID is invalid, the default device will be used instead. Despite this fact, that device ID will be stored and the library will try to move on it when an audio device pool is being changed. The actual hardware audio output device usage depends on the current payload and optimized not to use it when generated audio frames cannot be processed by someone else based on a scope of rules (For instance, when a client is alone in a room).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_set_output_device_settings"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if the operation succeeded, <code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the parameters are incorrect</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>real_device_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The associated audio output device ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_unregister_platform_user">eos_rtc_audio_unregister_platform_user</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-unregister-platform-user">EOS_RTCAudio_UnregisterPlatformUser</a></p>
+<p>You can use this function to remove a user that was added with <a href="rtc.html#eos_rtc_audio_register_platform_user">eos_rtc_audio_register_platform_user</a>. This function is only necessary for some platforms.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_unregister_platform_user(platform_user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platform_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The account of a user associated with this event</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_unregister_platform_user"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if the user was successfully unregistered, <code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the parameters are incorrect, <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>platform_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The platform dependent user ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_update_participant_volume">eos_rtc_audio_update_participant_volume</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-participant-volume">EOS_RTCAudio_UpdateParticipantVolume</a></p>
+<p>You can use this function to change participant audio volume for a room.</p>
+<p>The function returns an async identifier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to Epic Online Services implementation details, this function requires that you first register to any notification for room.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_update_participant_volume(local_user_id, participant_id, room_name, volume)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant to modify or an empty string to update the global configuration</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this setting should be applied on</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The volume to be set for received audio (range 0.0 to 100.0). Volume 50 means that the audio volume is not modified and stays in its source value.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_unregister_platform_user"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if volume of remote participant audio was successfully changed, <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant to modify</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this settings should be applied on</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The volume that was set for received audio (range 0.0 to 100.0)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_update_receiving">eos_rtc_audio_update_receiving</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-receiving">EOS_RTCAudio_UpdateReceiving</a></p>
+<p>You can use this function to tweak incoming audio options for a room.</p>
+<p>The function returns an async identifier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to Epic Online Services implementation details, this function requires that you first register to any notification for room.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_update_receiving(local_user_id, participant_id, room_name, audio_enabled)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant to modify or an empty string <code>""</code> to update the global configuration</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this setting should be applied on</td>
+</tr>
+<tr>
+<td>audio_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether to mute or unmute audio track</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_update_receiving"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if receiving of channels of remote users was successfully enabled/disabled, <code>EOS_RESULT.NOT_FOUND</code> if the participant isn't found by <code>participant_id</code>, <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant modified</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this setting was applied on</td>
+</tr>
+<tr>
+<td>audio_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the audio track is muted or unmuted</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_update_receiving_volume">eos_rtc_audio_update_receiving_volume</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-receiving-volume">EOS_RTCAudio_UpdateReceivingVolume</a></p>
+<p>You can use this function to change the incoming audio volume for a room.</p>
+<p>The function returns an async identifier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to Epic Online Services implementation details, this function requires that you first register to any notification for room.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_update_receiving_volume(local_user_id, room_name, volume)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this setting should be applied on.</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The volume to be set for received audio (range 0.0 to 100.0). Volume 50 means that the audio volume is not modified and stays in its source value.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_update_receiving_volume"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if receiving volume of channels of the local user was successfully changed. <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this settings should be applied on</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The volume that was set for received audio (range 0.0 to 100.0)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_update_sending">eos_rtc_audio_update_sending</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-sending">EOS_RTCAudio_UpdateSending</a></p>
+<p>You can use this function to tweak outgoing audio options for a room.</p>
+<p>The function returns an async identifier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to Epic Online Services implementation details, this function requires that you first register to any notification for room.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_update_sending(local_user_id, room_name, audio_status)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation.</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this settings should be applied on.</td>
+</tr>
+<tr>
+<td>audio_status</td>
+<td><a href="rtc.html#eos_rtc_audio_status">EOS_RTC_AUDIO_STATUS</a></td>
+<td>Muted or unmuted audio track status</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_update_sending"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if sending of channels of the local user was successfully enabled/disabled. <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise.</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this setting was applied on</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>audio_status</td>
+<td><a href="rtc.html#eos_rtc_audio_status">EOS_RTC_AUDIO_STATUS</a></td>
+<td>Muted or unmuted audio track status</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_update_sending_volume">eos_rtc_audio_update_sending_volume</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-audio-update-sending-volume">EOS_RTCAudio_UpdateSendingVolume</a></p>
+<p>You can use this function to change outgoing audio volume for a room.</p>
+<p>The function returns an async identifier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to Epic Online Services implementation details, this function requires that you first register to any notification for room.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_audio_update_sending_volume(local_user_id, room_name, volume)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this settings should be applied on</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The volume to be set for sent audio (range 0.0 to 100.0). Volume 50 means that the audio volume is not modified and stays in its source value.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_audio_update_sending_volume"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if sending volume of channels of the local user was successfully changed, <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this settings should be applied on</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The volume that was set for sent audio (range 0.0 to 100.0)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_add_notify_data_received">eos_rtc_data_add_notify_data_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-add-notify-data-received">EOS_RTCData_AddNotifyDataReceived</a></p>
+<p>This function registers to receive notifications with remote data packet received. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_data_remove_notify_data_received">eos_rtc_data_remove_notify_data_received</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_data_add_notify_data_received(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_data_add_notify_data_received"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the participant that sent the data</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_add_notify_participant_updated">eos_rtc_data_add_notify_participant_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-add-notify-participant-updated">EOS_RTCData_AddNotifyParticipantUpdated</a></p>
+<p>This function registers to receive notifications when a room participant data status is updated (e.g. when connection state changes). The notification is raised when the participant's data status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room. If the returned notification ID is valid, you must call <a href="rtc.html#eos_rtc_data_remove_notify_participant_updated">eos_rtc_data_remove_notify_participant_updated</a> when you no longer wish to have the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> called.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_data_add_notify_participant_updated(local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_data_add_notify_participant_updated"</code></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room associated with this event</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant updated</td>
+</tr>
+<tr>
+<td>data_status</td>
+<td><a href="rtc.html#eos_rtc_data_status">EOS_RTC_DATA_STATUS</a></td>
+<td>The data channel status</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_remove_notify_data_received">eos_rtc_data_remove_notify_data_received</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-remove-notify-data-received">EOS_RTCData_RemoveNotifyDataReceived</a></p>
+<p>This function unregisters a previously bound notification handler from receiving remote data packets.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_data_remove_notify_data_received(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_remove_notify_participant_updated">eos_rtc_data_remove_notify_participant_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-remove-notify-participant-updated">EOS_RTCData_RemoveNotifyParticipantUpdated</a></p>
+<p>This function unregisters a previously bound notification handler from receiving participant updated notifications.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_data_remove_notify_participant_updated(notification_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID representing the registered callback</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_send_data">eos_rtc_data_send_data</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-send-data">EOS_RTCData_SendData</a></p>
+<p>You can use this function to send a data packet to the rest of participants.</p>
+<p>The data to be sent needs to be stored in a <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/Buffers.htm">Buffer</a>, which you pass to the function. A total of <code>length</code> bytes are sent, from the start of the buffer.</p>
+<p>The function returns one of the following:</p>
+<ul>
+<li><code>EOS_RESULT.SUCCESS</code> if the data packet was queued for sending</li>
+<li><code>EOS_RESULT.INVALID_PARAMETERS</code> if any of the options are invalid</li>
+<li><code>EOS_RESULT.NOT_FOUND</code> if the specified room was not found</li>
+</ul>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_data_send_data(buff, length, local_user_id, room_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buff</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/Buffers.htm">Buffer</a></td>
+<td>The buffer containing the data to send</td>
+</tr>
+<tr>
+<td>length</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of bytes to send</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this event is registered on</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_update_receiving">eos_rtc_data_update_receiving</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-rtc-data-update-receiving">EOS_RTCData_UpdateReceiving</a></p>
+<p>You can use this function to tweak incoming data options for a room.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_data_update_receiving(local_user_id, participant_id, room_name, data_enabled)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant to modify or an empty string to update the global configuration</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this setting should be applied on</td>
+</tr>
+<tr>
+<td>data_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Creates or destroys data channel subscription</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string "eos_rtc_data_update_receiving"</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if receiving of channels of remote users was successfully enabled/disabled, <code>EOS_RESULT.NOT_FOUND</code> if the participant isn't found by <code>participant_id</code>, <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>participant_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The participant to modify or an empty string to update the global configuration</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this settings should be applied on</td>
+</tr>
+<tr>
+<td>data_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Created or destroyed data channel</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_update_sending">eos_rtc_data_update_sending</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-data-update-sending">EOS_RTCData_UpdateSending</a></p>
+<p>You can use this function to tweak outgoing data options for a room.</p>
+<p>The function returns an async identifier.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">eos_rtc_data_update_sending(local_user_id, room_name, data_enabled)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user trying to request this operation</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this setting should be applied on</td>
+</tr>
+<tr>
+<td>data_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Creates or destroys data channel</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>the string <code>"eos_rtc_data_update_sending"</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="general.html#eos_result">EOS_RESULT</a></td>
+<td><code>EOS_RESULT.SUCCESS</code> if sending of channels of the local user was successfully enabled/disabled, <code>EOS_RESULT.UNEXPECTED_ERROR</code> otherwise</td>
+</tr>
+<tr>
+<td>status_message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Text representation of the status code</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The identifier returned by the original call to the function</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user who initiated this request</td>
+</tr>
+<tr>
+<td>room_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The room this settings should be applied on</td>
+</tr>
+<tr>
+<td>data_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Created or destroyed data channel</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_participant_status">EOS_RTC_PARTICIPANT_STATUS</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/ja/api-ref/enums/eos-ertc-participant-status">EOS_ERTCParticipantStatus</a></p>
+<p>This enumeration holds the possible values for a participant's RTC status change.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_add_notify_participant_status_changed">eos_rtc_add_notify_participant_status_changed</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JOINED</code></td>
+<td>The participant joined the room</td>
+</tr>
+<tr>
+<td><code>LEFT</code></td>
+<td>The participant left the room</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_background_mode">EOS_RTC_BACKGROUND_MODE</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/ja/api-ref/enums/eos-ertc-background-mode">EOS_ERTCBackgroundMode</a></p>
+<p>This enumeration holds the possible background modes supported by the RTC components.</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LEAVE_ROOMS</code></td>
+<td>Upon entering a background application status, all logged in users leave any RTC rooms. All subsequent attempts to join any RTC rooms will be rejected. Upon returning to a foreground application status, all subsequent attempts to join any RTC rooms will be allowed.</td>
+</tr>
+<tr>
+<td><code>KEEP_ROOMS_ALIVE</code></td>
+<td>Application status has no effect on RTC rooms. Audio is captured from input devices and is played to output devices. Games should obtain consent from users and otherwise make users aware this is occurring.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_status">EOS_RTC_AUDIO_STATUS</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-audio-status">EOS_ERTCAudioStatus</a></p>
+<p>This enumeration holds the different possible audio channel statuses.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_participant_updated">eos_rtc_audio_add_notify_participant_updated</a></li>
+<li><a href="rtc.html#eos_rtc_audio_update_sending">eos_rtc_audio_update_sending</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNSUPPORTED</code></td>
+<td>Audio unsupported by the source (no devices)</td>
+</tr>
+<tr>
+<td><code>ENABLED</code></td>
+<td>Audio enabled</td>
+</tr>
+<tr>
+<td><code>DISABLED</code></td>
+<td>Audio disabled</td>
+</tr>
+<tr>
+<td><code>ADMIN_DISABLED</code></td>
+<td>Audio disabled by the administrator</td>
+</tr>
+<tr>
+<td><code>NOT_LISTENING_DISABLED</code></td>
+<td>Audio channel is disabled temporarily for both sending and receiving</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_joinroomflags">EOS_RTC_JOINROOMFLAGS</h1>
+<p><strong>Epic Online Services Docs:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-rtc-join-room-options">EOS_RTC_JoinRoomOptions::Flags</a></p>
+<p>This set of macros holds flags that can be used when joining a room (using the function <a href="rtc.html#eos_rtc_join_room">eos_rtc_join_room</a>).</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="lobbies.html#eos_lobby_create_lobby">eos_lobby_create_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_join_lobby">eos_lobby_join_lobby</a></li>
+<li><a href="lobbies.html#eos_lobby_join_lobby_by_id">eos_lobby_join_lobby_by_id</a></li>
+<li><a href="rtc.html#eos_rtc_join_room">eos_rtc_join_room</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO</code></td>
+<td>Enables echo mode. This can be used during development to have the server send your voice back to you so you don't need 2 clients to test if voice is being sent and received.</td>
+</tr>
+<tr>
+<td><code>EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL</code></td>
+<td>Enables the (optional) data channel feature for RTC rooms. This feature allows members of a room to send packets to all members of a room they are in, and automatically receive data packets sent by other players in that room. Data packets sent this way will be automatically relayed by EOS RTC servers to all other members of the room that are listening. It is not currently possible to send packets to only a subset of members of a room chosen by the sender, all members listening will receive the data.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_input_status">EOS_RTC_AUDIO_INPUT_STATUS</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-audio-input-status">EOS_ERTCAudioInputStatus</a></p>
+<p>This enumeration holds the different audio input device statuses.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_audio_input_state">eos_rtc_audio_add_notify_audio_input_state</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IDLE</code></td>
+<td>The device is not in use right now (e.g., you are alone in the room). In such cases, the hardware resources are not allocated.</td>
+</tr>
+<tr>
+<td><code>RECORDING</code></td>
+<td>The device is being used and capturing audio.</td>
+</tr>
+<tr>
+<td><code>RECORDING_SILENT</code></td>
+<td>The SDK is in a recording state, but actually capturing silence because the device is exclusively being used by the platform at the moment. This only applies to certain platforms.</td>
+</tr>
+<tr>
+<td><code>RECORDING_DISCONNECTED</code></td>
+<td>The SDK is in a recording state, but actually capturing silence because the device is disconnected (e.g., the microphone is not plugged in). This only applies to certain platforms.</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>Something failed while trying to use the device.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_audio_output_status">EOS_RTC_AUDIO_OUTPUT_STATUS</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-audio-output-status">EOS_ERTCAudioOutputStatus</a></p>
+<p>This enumeration holds the different audio output device statuses.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_audio_add_notify_audio_output_state">eos_rtc_audio_add_notify_audio_output_state</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IDLE</code></td>
+<td>The device is not in used right now (e.g.: you are alone in the room). In such cases, the hardware resources are not allocated.</td>
+</tr>
+<tr>
+<td><code>PLAYING</code></td>
+<td>Device is in use</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>Something failed while trying to use the device</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_rtc_data_status">EOS_RTC_DATA_STATUS</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-ertc-data-status">EOS_ERTCDataStatus</a></p>
+<p>This enumeration holds the different data channel statuses.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_data_add_notify_participant_updated">eos_rtc_data_add_notify_participant_updated</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNSUPPORTED</code></td>
+<td>Data unsupported</td>
+</tr>
+<tr>
+<td><code>ENABLED</code></td>
+<td>Data enabled</td>
+</tr>
+<tr>
+<td><code>DISABLED</code></td>
+<td>Data disabled</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="audioinputdeviceinformation">AudioInputDeviceInformation</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-rtc-audio-input-device-information">EOS_RTCAudio_InputDeviceInformation</a></p>
+<p>This struct holds information about an audio input device.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_audio_copy_input_device_information_by_index">eos_rtc_audio_copy_input_device_information_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default_device</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>True if this is the default audio input device in the system.</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The persistent unique ID of the audio input device. The value can be cached - invalidated only when the audio device pool is changed.</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The human-readable name of the audio input device</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="audiooutputdeviceinformation">AudioOutputDeviceInformation</h1>
+<p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-rtc-audio-output-device-information">EOS_RTCAudio_OutputDeviceInformation</a></p>
+<p>This struct holds information about an audio output device.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="rtc.html#eos_rtc_audio_copy_output_device_information_by_index">eos_rtc_audio_copy_output_device_information_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default_device</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>True if this is the default audio output device in the system.</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The persistent unique ID of the audio output device. The value can be cached - invalidated only when the audio device pool is changed.</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The human-readable name of the audio output device</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="progression_snapshot.html" class="btn btn-neutral float-left" title="Progression Snapshot"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="sanctions.html" class="btn btn-neutral float-right" title="Sanctions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2025</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="progression_snapshot.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="sanctions.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
