@@ -513,9 +513,9 @@ func double __eos_lobby_create_lobby(char* buff_args)
 
 	Options.bEnableRTCRoom = YYGetBool(args[11]);
 
+	EOS_Lobby_LocalRTCOptions LocalRTCOptions{};
 	if (Options.bEnableRTCRoom)
 	{
-		EOS_Lobby_LocalRTCOptions LocalRTCOptions{};
 		LocalRTCOptions.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
 		LocalRTCOptions.Flags = YYGetUint32(args[12]);							 // EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL;
 		LocalRTCOptions.bUseManualAudioInput = YYGetBool(args[13]);				 // false;
