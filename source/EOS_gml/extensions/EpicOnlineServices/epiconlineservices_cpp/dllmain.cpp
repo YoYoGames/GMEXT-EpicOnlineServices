@@ -61,8 +61,10 @@ std::vector<RValue> _SW_GetArrayOfRValues(RValue* arg, int arg_idx, const char* 
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
 		RValue elem;
-		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+        int length = YYArrayGetLength(pV);
+        for (int i = 0; i < length; ++i)
 		{
+            GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_OBJECT)
 			{
 				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a Struct", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
@@ -88,8 +90,10 @@ std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const c
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
 		RValue elem;
-		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+        int length = YYArrayGetLength(pV);
+		for (int i = 0; i < length; ++i)
 		{
+            GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_STRING)
 			{
 				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
@@ -114,8 +118,10 @@ std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* _fu
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
 		RValue elem;
-		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+        int length = YYArrayGetLength(pV);
+        for (int i = 0; i < length; ++i)
 		{
+            GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_INT32)
 			{
 				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
@@ -140,8 +146,10 @@ std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* _
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
 		RValue elem;
-		for (int i = 0; GET_RValue(&elem, pV, NULL, i); ++i)
+        int length = YYArrayGetLength(pV);
+		for (int i = 0; length; ++i)
 		{
+            GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_INT64)
 			{
 				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", _func, (arg_idx + 1), i, KIND_NAME_RValue(pV));

@@ -1423,8 +1423,23 @@ struct YYRunnerInterface
 extern YYRunnerInterface* g_pYYRunnerInterface;
 
 // basic interaction with the user
-#define DebugConsoleOutput(fmt, ...) g_pYYRunnerInterface->DebugConsoleOutput(fmt, __VA_ARGS__)
-#define ReleaseConsoleOutput(fmt, ...) g_pYYRunnerInterface->ReleaseConsoleOutput(fmt, __VA_ARGS__)
+#define BAR(...) printf(FIRST(__VA_ARGS__) "\n" REST(__VA_ARGS__))
+#define DebugConsoleOutput(...) g_pYYRunnerInterface->DebugConsoleOutput(FIRST(__VA_ARGS__) /*"\n"*/ REST(__VA_ARGS__))
+#define ReleaseConsoleOutput(fmt, ...) g_pYYRunnerInterface->ReleaseConsoleOutput(FIRST(__VA_ARGS__) "\n" REST(__VA_ARGS__))
+
+//This #definitions make compatible DebugConsoleOutput() with MacOS//https://stackoverflow.com/a/11172679/10547574
+#define FIRST(...) FIRST_HELPER(__VA_ARGS__, throwaway)
+#define FIRST_HELPER(first, ...) first
+#define REST(...) REST_HELPER(NUM(__VA_ARGS__), __VA_ARGS__)
+#define REST_HELPER(qty, ...) REST_HELPER2(qty, __VA_ARGS__)
+#define REST_HELPER2(qty, ...) REST_HELPER_##qty(__VA_ARGS__)
+#define REST_HELPER_ONE(first)
+#define REST_HELPER_TWOORMORE(first, ...) , __VA_ARGS__
+#define NUM(...) \
+    SELECT_10TH(__VA_ARGS__, TWOORMORE, TWOORMORE, TWOORMORE, TWOORMORE,\
+                TWOORMORE, TWOORMORE, TWOORMORE, TWOORMORE, ONE, throwaway)
+#define SELECT_10TH(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, ...) a10
+
 inline void ShowMessage(const char* msg) { g_pYYRunnerInterface->ShowMessage(msg); }
 
 // for printing error messages
