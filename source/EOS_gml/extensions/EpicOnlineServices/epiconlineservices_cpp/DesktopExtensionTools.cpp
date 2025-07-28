@@ -43,19 +43,6 @@ std::vector<std::string> GetCommandLineArgs() {
     return args;
 }
 
-#elif defined(OS_MacOs)
-#include <crt_externs.h> // for _NSGetArgc and _NSGetArgv
-
-std::vector<std::string> GetCommandLineArgs() {
-    std::vector<std::string> args;
-    int argc = *_NSGetArgc();
-    char** argv = *_NSGetArgv();
-    for (int i = 0; i < argc; ++i) {
-        args.push_back(std::string(argv[i]));
-    }
-    return args;
-}
-
 #elif defined(OS_Linux)
 #include <fstream>
 #include <iterator>
