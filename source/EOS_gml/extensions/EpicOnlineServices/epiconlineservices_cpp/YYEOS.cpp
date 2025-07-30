@@ -16,6 +16,10 @@
 #endif
 
 
+#ifdef _MSC_VER
+#define strdup _strdup
+#endif
+
 	///////////////////////////////// EOS ///////////////////////////////////
 
 	int identifier_count = 0;
@@ -31,16 +35,11 @@
 
 	StringOwnerCallback* getStringOwnerCallback(const std::vector<const char*> &vec) {
 		StringOwnerCallback* mCallback = new StringOwnerCallback();
-		mCallback->identifier = identifier_count;
-		identifier_count++;
+		mCallback->identifier = identifier_count++;
 
-		mCallback->ownedStrings.reserve(vec.size());
-		for (const auto& user : vec) {
-			mCallback->ownedStrings.push_back(user);
-		}
 		mCallback->cStrings.reserve(vec.size());
-		for (const auto& user : mCallback->ownedStrings) {
-			mCallback->cStrings.push_back(user.c_str());
+		for (const auto& item : vec) {
+			mCallback->cStrings.push_back(strdup(item));
 		}
 
 		return mCallback;
