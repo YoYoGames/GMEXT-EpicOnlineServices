@@ -29,15 +29,6 @@
 		return mCallback;
 	}
 
-	StringOwnerCallback* getStringOwnerCallback(std::vector<std::string>&& v) {
-		auto* cb = new StringOwnerCallback();
-		cb->identifier = identifier_count++;
-		cb->owned = std::move(v);
-		cb->cstrs.reserve(cb->owned.size());
-		for (auto& s : cb->owned) cb->cstrs.push_back(s.c_str());
-		return cb;
-	}
-
 	/*std::wstring stringToWstring(const std::string& t_str)
 	{
 		//setup converter

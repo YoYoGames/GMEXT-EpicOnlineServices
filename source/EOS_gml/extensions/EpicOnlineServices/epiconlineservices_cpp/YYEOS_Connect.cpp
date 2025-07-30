@@ -524,11 +524,13 @@ void EOS_CALL OnQueryExternalAccountMappingsCallback(const EOS_Connect_QueryExte
 	DsMapAddString(map, "type", "eos_connect_query_external_account_mappings");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
+
+std::vector<std::string> userIds;
 
 YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
@@ -537,31 +539,29 @@ YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInsta
 		const char *userID = YYGetString(arg, 0);
 	int accountIdType = (int)YYGetReal(arg, 1);
 
-	auto vec_Users = _SW_GetArrayOfStdStrings(arg, 2, "eos_connect_query_external_account_mappings");
+	auto vec_Users = _SW_GetArrayOfStrings(arg, 2, "eos_connect_query_external_account_mappings");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec_Users));
+	userIds.clear();
+	userIds.reserve(vec_Users.size());
+	for (auto user : vec_Users) {
+		userIds.push_back(user);
+	}
+	std::vector<const char*> cstrs;
+	for (const auto& id : userIds) {
+		cstrs.push_back(id.c_str());
+	}
 
     EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions{};
 	QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	QueryOptions.AccountIdType = (EOS_EExternalAccountType)accountIdType; // EOS_EExternalAccountType // ::EOS_EAT_EPIC;
 	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 
-	QueryOptions.ExternalAccountIdCount = (uint32_t)mcallback->cstrs.size();
-	QueryOptions.ExternalAccountIds = mcallback->cstrs.data();
+	QueryOptions.ExternalAccountIdCount = (uint32_t)cstrs.size();
+	QueryOptions.ExternalAccountIds = cstrs.data();
 
 	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
 
-    for (size_t i = 0; i < mcallback->owned.size(); ++i) {
-        const char* a = mcallback->owned[i].c_str();
-        const char* b = mcallback->cstrs[i];
-        if (a != b) {
-            printf("mismatch at %zu: owned=%p cstrs=%p\n", i, (void*)a, (void*)b);
-#ifndef _MSC_VER
-			__builtin_trap(); // or __debugbreak() on MSVC
-#endif
-        }
-    }
-
+	callback* mcallback = getCallbackData();
 	EOS_Connect_QueryExternalAccountMappings(ConnectHandle, &QueryOptions, mcallback, OnQueryExternalAccountMappingsCallback);
 
 	Result.kind = VALUE_REAL;

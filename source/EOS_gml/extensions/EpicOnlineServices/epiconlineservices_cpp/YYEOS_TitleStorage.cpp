@@ -189,10 +189,10 @@ void EOS_CALL QueryFileList(const EOS_TitleStorage_QueryFileListCallbackInfo *da
 	DsMapAddString(map, "type", "eos_title_storage_query_file_list");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((callback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
+	delete reinterpret_cast<callback*>(data->ClientData);
 }
 
 YYEXPORT void eos_title_storage_query_file_list(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -203,7 +203,7 @@ YYEXPORT void eos_title_storage_query_file_list(RValue &Result, CInstance *selfi
 
 	const char *user = YYGetString(arg, 0);
 
-	std::vector<std::string> Tags;
+	std::vector<const char*> Tags;
 	if (KIND_RValue(&arg[1]) == VALUE_STRING)
 	{
 		Tags.push_back(YYGetString(arg, 1));
@@ -211,20 +211,20 @@ YYEXPORT void eos_title_storage_query_file_list(RValue &Result, CInstance *selfi
 	else if (KIND_RValue(&arg[1]) == VALUE_ARRAY)
 	{
 
-		auto vec = _SW_GetArrayOfStdStrings(arg, 1, "eos_title_storage_query_file_list");
+		auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_title_storage_query_file_list");
 		for (const auto &e : vec)
 		{
 			Tags.push_back(e);
 		}
 	}
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(Tags));
+	callback* mcallback = getCallbackData();
 
 	EOS_TitleStorage_QueryFileListOptions Options = {0};
 	Options.ApiVersion = EOS_TITLESTORAGE_QUERYFILELISTOPTIONS_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-	Options.ListOfTagsCount = static_cast<uint32_t>(mcallback->cstrs.size());
-	Options.ListOfTags = mcallback->cstrs.data();
+	Options.ListOfTagsCount = static_cast<uint32_t>(Tags.size());
+	Options.ListOfTags = Tags.data();
 
 	EOS_TitleStorage_QueryFileList(HTitleStorage, &Options, mcallback, QueryFileList);
 
