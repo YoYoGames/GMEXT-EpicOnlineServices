@@ -556,7 +556,9 @@ YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInsta
         const char* b = mcallback->cstrs[i];
         if (a != b) {
             printf("mismatch at %zu: owned=%p cstrs=%p\n", i, (void*)a, (void*)b);
-            __builtin_trap(); // or __debugbreak() on MSVC
+#ifndef _MSC_VER
+			__builtin_trap(); // or __debugbreak() on MSVC
+#endif
         }
     }
 
