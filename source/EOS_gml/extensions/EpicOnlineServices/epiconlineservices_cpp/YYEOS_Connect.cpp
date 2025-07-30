@@ -541,7 +541,7 @@ YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInsta
 
 	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec_Users));
 
-	EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
+    EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions{};
 	QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	QueryOptions.AccountIdType = (EOS_EExternalAccountType)accountIdType; // EOS_EExternalAccountType // ::EOS_EAT_EPIC;
 	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
@@ -551,6 +551,14 @@ YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInsta
 
 	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
 
+    for (size_t i = 0; i < mcallback->owned.size(); ++i) {
+        const char* a = mcallback->owned[i].c_str();
+        const char* b = mcallback->cstrs[i];
+        if (a != b) {
+            printf("mismatch at %zu: owned=%p cstrs=%p\n", i, (void*)a, (void*)b);
+            __builtin_trap(); // or __debugbreak() on MSVC
+        }
+    }
 
 	EOS_Connect_QueryExternalAccountMappings(ConnectHandle, &QueryOptions, mcallback, OnQueryExternalAccountMappingsCallback);
 
