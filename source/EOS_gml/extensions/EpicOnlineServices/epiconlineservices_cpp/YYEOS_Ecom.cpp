@@ -53,7 +53,7 @@ void EOS_CALL QueryOwnershipCallback(const EOS_Ecom_QueryOwnershipCallbackInfo *
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_ecom_query_ownership");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
@@ -77,7 +77,7 @@ void EOS_CALL QueryOwnershipCallback(const EOS_Ecom_QueryOwnershipCallbackInfo *
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void eos_ecom_query_ownership(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -88,13 +88,13 @@ YYEXPORT void eos_ecom_query_ownership(RValue &Result, CInstance *selfinst, CIns
 
 	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership");
-	// arg2 optional
+
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
 
 	EOS_Ecom_QueryOwnershipOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_QUERYOWNERSHIP_API_LATEST;
-
-	Options.CatalogItemIdCount = static_cast<uint32_t>(vec.size());
-	Options.CatalogItemIds = vec.data();
+	Options.CatalogItemIdCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.CatalogItemIds = mcallback->cStrings.data();
 
 	if (argc > 2)
 	{
@@ -104,7 +104,6 @@ YYEXPORT void eos_ecom_query_ownership(RValue &Result, CInstance *selfinst, CIns
 
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
-	callback *mcallback = getCallbackData();
 	EOS_Ecom_QueryOwnership(HEcom, &Options, mcallback, QueryOwnershipCallback);
 
 	Result.kind = VALUE_REAL;
@@ -115,7 +114,7 @@ void EOS_CALL QueryOwnershipBySandboxIdsCallback(const EOS_Ecom_QueryOwnershipBy
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_ecom_query_ownership_by_sandbox_ids");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
@@ -150,7 +149,7 @@ void EOS_CALL QueryOwnershipBySandboxIdsCallback(const EOS_Ecom_QueryOwnershipBy
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void eos_ecom_query_ownership_by_sandbox_ids(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -162,14 +161,15 @@ YYEXPORT void eos_ecom_query_ownership_by_sandbox_ids(RValue &Result, CInstance 
 	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership_by_sandbox_ids");
 
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+
 	EOS_Ecom_QueryOwnershipBySandboxIdsOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_QUERYOWNERSHIPBYSANDBOXIDSOPTIONS_API_LATEST;
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
-	Options.SandboxIdsCount = static_cast<uint32_t>(vec.size());
-	Options.SandboxIds = vec.data();
+	Options.SandboxIdsCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.SandboxIds = mcallback->cStrings.data();
 
-	callback *mcallback = getCallbackData();
 	EOS_Ecom_QueryOwnershipBySandboxIds(HEcom, &Options, mcallback, QueryOwnershipBySandboxIdsCallback);
 
 	Result.kind = VALUE_REAL;
@@ -180,7 +180,7 @@ void EOS_CALL QueryOwnershipTokenCallback(const EOS_Ecom_QueryOwnershipTokenCall
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_ecom_query_ownership_token");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
@@ -188,7 +188,7 @@ void EOS_CALL QueryOwnershipTokenCallback(const EOS_Ecom_QueryOwnershipTokenCall
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void eos_ecom_query_ownership_token(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -199,13 +199,14 @@ YYEXPORT void eos_ecom_query_ownership_token(RValue &Result, CInstance *selfinst
 
 	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_ownership_token");
-	// arg2 oprtional
+
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
 
 	EOS_Ecom_QueryOwnershipTokenOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_QUERYOWNERSHIPTOKEN_API_LATEST;
 
-	Options.CatalogItemIdCount = static_cast<uint32_t>(vec.size());
-	Options.CatalogItemIds = vec.data();
+	Options.CatalogItemIdCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.CatalogItemIds = mcallback->cStrings.data();
 
 	if (argc > 2)
 	{
@@ -214,7 +215,6 @@ YYEXPORT void eos_ecom_query_ownership_token(RValue &Result, CInstance *selfinst
 	}
 
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
-	callback *mcallback = getCallbackData();
 
 	EOS_Ecom_QueryOwnershipToken(HEcom, &Options, mcallback, QueryOwnershipTokenCallback);
 
@@ -226,14 +226,14 @@ void EOS_CALL OnQueryEntitlementsCallback(const EOS_Ecom_QueryEntitlementsCallba
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_ecom_query_entitlements");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void eos_ecom_query_entitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -246,15 +246,14 @@ YYEXPORT void eos_ecom_query_entitlements(RValue &Result, CInstance *selfinst, C
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_entitlements");
 	bool bIncludeRedeemed = YYGetBool(arg, 2);
 
-	EOS_Ecom_QueryEntitlementsOptions Options = {0};
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
 
+	EOS_Ecom_QueryEntitlementsOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_QUERYENTITLEMENTS_API_LATEST;
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
-	Options.EntitlementNameCount = static_cast<uint32_t>(vec.size());
-	Options.EntitlementNames = vec.data();
+	Options.EntitlementNameCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.EntitlementNames = mcallback->cStrings.data();
 	Options.bIncludeRedeemed = bIncludeRedeemed;
-
-	callback *mcallback = getCallbackData();
 
 	EOS_Ecom_QueryEntitlements(HEcom, &Options, mcallback, OnQueryEntitlementsCallback);
 
@@ -266,7 +265,7 @@ void EOS_CALL QueryEntitlementTokenCallback(const EOS_Ecom_QueryEntitlementToken
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_ecom_query_entitlement_token");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
@@ -274,7 +273,7 @@ void EOS_CALL QueryEntitlementTokenCallback(const EOS_Ecom_QueryEntitlementToken
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void eos_ecom_query_entitlement_token(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -286,13 +285,14 @@ YYEXPORT void eos_ecom_query_entitlement_token(RValue &Result, CInstance *selfin
 	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_query_entitlement_token");
 
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+
 	EOS_Ecom_QueryEntitlementTokenOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_QUERYENTITLEMENTTOKEN_API_LATEST;
-	Options.EntitlementNameCount = static_cast<uint32_t>(vec.size());
-	Options.EntitlementNames = vec.data();
+	Options.EntitlementNameCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.EntitlementNames = mcallback->cStrings.data();
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
-	callback *mcallback = getCallbackData();
 	EOS_Ecom_QueryEntitlementToken(HEcom, &Options, mcallback, QueryEntitlementTokenCallback);
 
 	Result.kind = VALUE_REAL;
@@ -344,7 +344,7 @@ void EOS_CALL CheckoutCallback(const EOS_Ecom_CheckoutCallbackInfo *data)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_ecom_checkout");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
@@ -365,7 +365,7 @@ void EOS_CALL CheckoutCallback(const EOS_Ecom_CheckoutCallbackInfo *data)
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void eos_ecom_checkout(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -381,17 +381,20 @@ YYEXPORT void eos_ecom_checkout(RValue &Result, CInstance *selfinst, CInstance *
 
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_checkout");
 
-	entries.clear();
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
 
-	for (int i = 0; i < vec.size(); i++)
+	entries.clear();
+	entries.reserve(mcallback->cStrings.size());
+
+	for (int i = 0; i < mcallback->cStrings.size(); i++)
 	{
 		EOS_Ecom_CheckoutEntry _entry = {0};
 		_entry.ApiVersion = EOS_ECOM_CHECKOUTENTRY_API_LATEST;
-		_entry.OfferId = vec[i];
+		_entry.OfferId = mcallback->cStrings[i];
 		entries.push_back(_entry);
 	}
 
-	Options.EntryCount = static_cast<uint32_t>(vec.size());
+	Options.EntryCount = static_cast<uint32_t>(mcallback->cStrings.size());
 	Options.Entries = entries.data();
 
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
@@ -401,7 +404,6 @@ YYEXPORT void eos_ecom_checkout(RValue &Result, CInstance *selfinst, CInstance *
 		Options.OverrideCatalogNamespace = OverrideCatalogNamespace;
 	}
 
-	callback *mcallback = getCallbackData();
 	EOS_Ecom_Checkout(HEcom, &Options, mcallback, CheckoutCallback);
 
 	Result.kind = VALUE_REAL;
@@ -412,7 +414,7 @@ void EOS_CALL RedeemEntitlementsCallback(const EOS_Ecom_RedeemEntitlementsCallba
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_ecom_redeem_entitlements");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
 	DsMapAddString(map, "account_id", AccountID_toString(data->LocalUserId));
@@ -420,7 +422,7 @@ void EOS_CALL RedeemEntitlementsCallback(const EOS_Ecom_RedeemEntitlementsCallba
 
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void eos_ecom_redeem_entitlements(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -432,13 +434,14 @@ YYEXPORT void eos_ecom_redeem_entitlements(RValue &Result, CInstance *selfinst, 
 	const char* user = YYGetString(arg, 0);
 	auto vec = _SW_GetArrayOfStrings(arg, 1, "eos_ecom_redeem_entitlements");
 
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+
 	EOS_Ecom_RedeemEntitlementsOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_REDEEMENTITLEMENTS_API_LATEST;
-	Options.EntitlementIdCount = static_cast<uint32_t>(vec.size());
-	Options.EntitlementIds = vec.data();
+	Options.EntitlementIdCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.EntitlementIds = mcallback->cStrings.data();
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
-	callback *mcallback = getCallbackData();
 	EOS_Ecom_RedeemEntitlements(HEcom, &Options, mcallback, RedeemEntitlementsCallback);
 
 	Result.kind = VALUE_REAL;

@@ -189,10 +189,10 @@ void EOS_CALL QueryFileList_old(const EOS_TitleStorage_QueryFileListCallbackInfo
 	DsMapAddString(map, "type", "EpicGames_TitleStorage_QueryFileList");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -218,13 +218,13 @@ YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue &Result, CInstance *se
 		}
 	}
 
-	EOS_TitleStorage_QueryFileListOptions Options = {0};
+	StringOwnerCallback* mcallback = getStringOwnerCallback(Tags);
+
+	EOS_TitleStorage_QueryFileListOptions Options = { 0 };
 	Options.ApiVersion = EOS_TITLESTORAGE_QUERYFILELISTOPTIONS_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-	Options.ListOfTagsCount = static_cast<uint32_t>(Tags.size());
-	Options.ListOfTags = Tags.data();
-
-	callback *mcallback = getCallbackData();
+	Options.ListOfTagsCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.ListOfTags = mcallback->cStrings.data();
 
 	EOS_TitleStorage_QueryFileList(HTitleStorage, &Options, mcallback, QueryFileList_old);
 

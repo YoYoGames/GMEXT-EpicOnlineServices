@@ -524,10 +524,10 @@ void EOS_CALL OnQueryExternalAccountMappingsCallback_old(const EOS_Connect_Query
 	DsMapAddString(map, "type", "EpicGames_Connect_QueryExternalAccountMappings");
 	DsMapAddDouble(map, "status", (double)data->ResultCode);
 	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
+	DsMapAddDouble(map, "identifier", (double)((StringOwnerCallback*)(data->ClientData))->identifier);
 	CreateAsyncEventWithDSMap(map, 70);
 
-	delete reinterpret_cast<callback *>(data->ClientData);
+	delete reinterpret_cast<StringOwnerCallback*>(data->ClientData);
 }
 
 YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
@@ -537,21 +537,19 @@ YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue &Result, CIn
 		const char *userID = YYGetString(arg, 0);
 	int accountIdType = (int)YYGetReal(arg, 1);
 
-	// if (KIND_RValue(&arg[2]) == VALUE_ARRAY) {
 	std::vector<const char *> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Connect_QueryExternalAccountMappings");
-	//}
+
+	StringOwnerCallback* mcallback = getStringOwnerCallback(vec_Users);
 
 	EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
 	QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	QueryOptions.AccountIdType = (EOS_EExternalAccountType)accountIdType; // EOS_EExternalAccountType // ::EOS_EAT_EPIC;
 	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 
-	QueryOptions.ExternalAccountIdCount = (uint32_t)vec_Users.size();
-	QueryOptions.ExternalAccountIds = vec_Users.data();
+	QueryOptions.ExternalAccountIdCount = (uint32_t)mcallback->cStrings.size();
+	QueryOptions.ExternalAccountIds = mcallback->cStrings.data();
 
 	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
-
-	callback *mcallback = getCallbackData();
 
 	EOS_Connect_QueryExternalAccountMappings(ConnectHandle, &QueryOptions, mcallback, OnQueryExternalAccountMappingsCallback_old);
 

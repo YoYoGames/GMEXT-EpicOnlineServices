@@ -29,6 +29,23 @@
 		return mCallback;
 	}
 
+	StringOwnerCallback* getStringOwnerCallback(const std::vector<const char*> &vec) {
+		StringOwnerCallback* mCallback = new StringOwnerCallback();
+		mCallback->identifier = identifier_count;
+		identifier_count++;
+
+		mCallback->ownedStrings.reserve(vec.size());
+		for (const auto& user : vec) {
+			mCallback->ownedStrings.push_back(user);
+		}
+		mCallback->cStrings.reserve(vec.size());
+		for (const auto& user : mCallback->ownedStrings) {
+			mCallback->cStrings.push_back(user.c_str());
+		}
+
+		return mCallback;
+	}
+
 	/*std::wstring stringToWstring(const std::string& t_str)
 	{
 		//setup converter

@@ -19,8 +19,11 @@ extern bool EOS_isInitialised;
 
 extern int identifier_count;
 struct callback;
+struct StringOwnerCallback;
+
 extern callback *getCallbackData();
 extern callback *getCallbackData(const char *str);
+extern StringOwnerCallback *getStringOwnerCallback(const std::vector<const char*> &vec);
 
 extern char *AccountID_toString(EOS_EpicAccountId account);
 extern char *productID_toString(EOS_ProductUserId user);
@@ -143,6 +146,15 @@ struct callback
 {
 	int identifier;
 	/*std::wstring*/ /*const char**/ std::string string; // optional argument
+};
+
+struct StringOwnerCallback
+{
+	int identifier;
+	// Own copies of all external account IDs
+	std::vector<std::string>      ownedStrings;
+	// Pointers into ownedStrings (what you pass to EOS)
+	std::vector<const char*>      cStrings;
 };
 
 void ProductIdsToArray(RValue& result, EOS_ProductUserId* user_ids, int count);
