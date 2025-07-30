@@ -203,28 +203,23 @@ YYEXPORT void EpicGames_TitleStorage_QueryFileList(RValue &Result, CInstance *se
 
 	const char *user = YYGetString(arg, 0);
 
-	std::vector<const char *> Tags;
+	std::vector<std::string> Tags;
 	if (KIND_RValue(&arg[1]) == VALUE_STRING)
 	{
 		Tags.push_back(YYGetString(arg, 1));
 	}
 	else if (KIND_RValue(&arg[1]) == VALUE_ARRAY)
 	{
-
-		auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_TitleStorage_QueryFileList");
-		for (const auto &e : vec)
-		{
-			Tags.push_back(e);
-		}
+		Tags = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_TitleStorage_QueryFileList");
 	}
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(Tags);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(Tags));
 
 	EOS_TitleStorage_QueryFileListOptions Options = { 0 };
 	Options.ApiVersion = EOS_TITLESTORAGE_QUERYFILELISTOPTIONS_API_LATEST;
 	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-	Options.ListOfTagsCount = static_cast<uint32_t>(mcallback->cStrings.size());
-	Options.ListOfTags = mcallback->cStrings.data();
+	Options.ListOfTagsCount = static_cast<uint32_t>(mcallback->cstrs.size());
+	Options.ListOfTags = mcallback->cstrs.data();
 
 	EOS_TitleStorage_QueryFileList(HTitleStorage, &Options, mcallback, QueryFileList_old);
 

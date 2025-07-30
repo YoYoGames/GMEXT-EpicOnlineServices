@@ -33,16 +33,13 @@
 		return mCallback;
 	}
 
-	StringOwnerCallback* getStringOwnerCallback(const std::vector<const char*> &vec) {
-		StringOwnerCallback* mCallback = new StringOwnerCallback();
-		mCallback->identifier = identifier_count++;
-
-		mCallback->cStrings.reserve(vec.size());
-		for (const auto& item : vec) {
-			mCallback->cStrings.push_back(strdup(item));
-		}
-
-		return mCallback;
+	StringOwnerCallback* getStringOwnerCallback(std::vector<std::string>&& v) {
+		auto* cb = new StringOwnerCallback();
+		cb->identifier = identifier_count++;
+		cb->owned = std::move(v);
+		cb->cstrs.reserve(cb->owned.size());
+		for (auto& s : cb->owned) cb->cstrs.push_back(s.c_str());
+		return cb;
 	}
 
 	/*std::wstring stringToWstring(const std::string& t_str)

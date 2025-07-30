@@ -87,14 +87,14 @@ YYEXPORT void EpicGames_Ecom_QueryOwnership(RValue &Result, CInstance *selfinst,
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryOwnership");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_Ecom_QueryOwnership");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	EOS_Ecom_QueryOwnershipOptions Options = { 0 };
 	Options.ApiVersion = EOS_ECOM_QUERYOWNERSHIP_API_LATEST;
-	Options.CatalogItemIdCount = static_cast<uint32_t>(mcallback->cStrings.size());
-	Options.CatalogItemIds = mcallback->cStrings.data();
+	Options.CatalogItemIdCount = static_cast<uint32_t>(mcallback->cstrs.size());
+	Options.CatalogItemIds = mcallback->cstrs.data();
 
 	if (argc > 2)
 	{
@@ -159,16 +159,16 @@ YYEXPORT void EpicGames_Ecom_QueryOwnershipBySandboxIds(RValue &Result, CInstanc
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryOwnershipBySandboxIds");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_Ecom_QueryOwnershipBySandboxIds");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	EOS_Ecom_QueryOwnershipBySandboxIdsOptions Options = { 0 };
 	Options.ApiVersion = EOS_ECOM_QUERYOWNERSHIPBYSANDBOXIDSOPTIONS_API_LATEST;
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
-	Options.SandboxIdsCount = static_cast<uint32_t>(mcallback->cStrings.size());
-	Options.SandboxIds = mcallback->cStrings.data();
+	Options.SandboxIdsCount = static_cast<uint32_t>(mcallback->cstrs.size());
+	Options.SandboxIds = mcallback->cstrs.data();
 
 	EOS_Ecom_QueryOwnershipBySandboxIds(HEcom, &Options, mcallback, QueryOwnershipBySandboxIdsCallback_old);
 
@@ -198,15 +198,15 @@ YYEXPORT void EpicGames_Ecom_QueryOwnershipToken(RValue &Result, CInstance *self
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryOwnershipToken");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_Ecom_QueryOwnershipToken");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	EOS_Ecom_QueryOwnershipTokenOptions Options = { 0 };
 	Options.ApiVersion = EOS_ECOM_QUERYOWNERSHIPTOKEN_API_LATEST;
 
-	Options.CatalogItemIdCount = static_cast<uint32_t>(mcallback->cStrings.size());
-	Options.CatalogItemIds = mcallback->cStrings.data();
+	Options.CatalogItemIdCount = static_cast<uint32_t>(mcallback->cstrs.size());
+	Options.CatalogItemIds = mcallback->cstrs.data();
 
 	if (argc > 2)
 	{
@@ -243,16 +243,16 @@ YYEXPORT void EpicGames_Ecom_QueryEntitlements(RValue &Result, CInstance *selfin
 	eos_ensure_argc(3);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryEntitlements");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_Ecom_QueryEntitlements");
 	bool bIncludeRedeemed = YYGetBool(arg, 2);
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	EOS_Ecom_QueryEntitlementsOptions Options = { 0 };
 	Options.ApiVersion = EOS_ECOM_QUERYENTITLEMENTS_API_LATEST;
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
-	Options.EntitlementNameCount = static_cast<uint32_t>(mcallback->cStrings.size());
-	Options.EntitlementNames = mcallback->cStrings.data();
+	Options.EntitlementNameCount = static_cast<uint32_t>(mcallback->cstrs.size());
+	Options.EntitlementNames = mcallback->cstrs.data();
 	Options.bIncludeRedeemed = bIncludeRedeemed;
 
 	EOS_Ecom_QueryEntitlements(HEcom, &Options, mcallback, OnQueryEntitlementsCallback_old);
@@ -283,14 +283,14 @@ YYEXPORT void EpicGames_Ecom_QueryEntitlementToken(RValue &Result, CInstance *se
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_QueryEntitlementToken");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_Ecom_QueryEntitlementToken");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	EOS_Ecom_QueryEntitlementTokenOptions Options = { 0 };
 	Options.ApiVersion = EOS_ECOM_QUERYENTITLEMENTTOKEN_API_LATEST;
-	Options.EntitlementNameCount = static_cast<uint32_t>(mcallback->cStrings.size());
-	Options.EntitlementNames = mcallback->cStrings.data();
+	Options.EntitlementNameCount = static_cast<uint32_t>(mcallback->cstrs.size());
+	Options.EntitlementNames = mcallback->cstrs.data();
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
 	EOS_Ecom_QueryEntitlementToken(HEcom, &Options, mcallback, QueryEntitlementTokenCallback_old);
@@ -379,22 +379,22 @@ YYEXPORT void EpicGames_Ecom_Checkout(RValue &Result, CInstance *selfinst, CInst
 	EOS_Ecom_CheckoutOptions Options = {0};
 	Options.ApiVersion = EOS_ECOM_CHECKOUT_API_LATEST;
 
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_Checkout");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_Ecom_Checkout");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	entries_old.clear();
-	entries_old.reserve(mcallback->cStrings.size());
+	entries_old.reserve(mcallback->cstrs.size());
 
-	for (int i = 0; i < mcallback->cStrings.size(); i++)
+	for (int i = 0; i < mcallback->cstrs.size(); i++)
 	{
 		EOS_Ecom_CheckoutEntry _entry = { 0 };
 		_entry.ApiVersion = EOS_ECOM_CHECKOUTENTRY_API_LATEST;
-		_entry.OfferId = mcallback->cStrings[i];
+		_entry.OfferId = mcallback->cstrs[i];
 		entries_old.push_back(_entry);
 	}
 
-	Options.EntryCount = static_cast<uint32_t>(mcallback->cStrings.size());
+	Options.EntryCount = static_cast<uint32_t>(mcallback->cstrs.size());
 	Options.Entries = entries_old.data();
 
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
@@ -432,14 +432,14 @@ YYEXPORT void EpicGames_Ecom_RedeemEntitlements(RValue &Result, CInstance *selfi
 	eos_ensure_argc(2);
 
 	const char *user = YYGetString(arg, 0);
-	auto vec = _SW_GetArrayOfStrings(arg, 1, "EpicGames_Ecom_RedeemEntitlements");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 1, "EpicGames_Ecom_RedeemEntitlements");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	EOS_Ecom_RedeemEntitlementsOptions Options = { 0 };
 	Options.ApiVersion = EOS_ECOM_REDEEMENTITLEMENTS_API_LATEST;
-	Options.EntitlementIdCount = static_cast<uint32_t>(mcallback->cStrings.size());
-	Options.EntitlementIds = mcallback->cStrings.data();
+	Options.EntitlementIdCount = static_cast<uint32_t>(mcallback->cstrs.size());
+	Options.EntitlementIds = mcallback->cstrs.data();
 	Options.LocalUserId = EOS_EpicAccountId_FromString(user);
 
 	EOS_Ecom_RedeemEntitlements(HEcom, &Options, mcallback, RedeemEntitlementsCallback_old);

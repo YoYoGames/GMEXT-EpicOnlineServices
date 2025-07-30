@@ -80,6 +80,33 @@ std::vector<RValue> _SW_GetArrayOfRValues(RValue* arg, int arg_idx, const char* 
 	return strings;
 }
 
+std::vector<std::string> _SW_GetArrayOfStdStrings(RValue* arg, int arg_idx, const char* fn)
+{
+	RValue* pV = &arg[arg_idx];
+	std::vector<std::string> out;
+
+	if (KIND_RValue(pV) != VALUE_ARRAY) {
+		YYError("%s argument %d incorrect type (%s) expecting an Array",
+			fn, arg_idx + 1, KIND_NAME_RValue(pV));
+		return out;
+	}
+
+	int len = YYArrayGetLength(pV);
+	out.reserve(len);
+	for (int i = 0; i < len; ++i) {
+		RValue elem;
+		GET_RValue(&elem, pV, NULL, i);
+		if (KIND_RValue(&elem) != VALUE_STRING) {
+			YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String",
+				fn, arg_idx + 1, i, KIND_NAME_RValue(&elem));
+			continue;
+		}
+		// COPY while 'elem' is alive
+		out.emplace_back(elem.GetString());
+	}
+	return out;
+}
+
 
 std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* _func)
 {

@@ -537,17 +537,17 @@ YYEXPORT void EpicGames_Connect_QueryExternalAccountMappings(RValue &Result, CIn
 		const char *userID = YYGetString(arg, 0);
 	int accountIdType = (int)YYGetReal(arg, 1);
 
-	std::vector<const char *> vec_Users = _SW_GetArrayOfStrings(arg, 2, "EpicGames_Connect_QueryExternalAccountMappings");
+	auto vec = _SW_GetArrayOfStdStrings(arg, 2, "EpicGames_Connect_QueryExternalAccountMappings");
 
-	StringOwnerCallback* mcallback = getStringOwnerCallback(vec_Users);
+	StringOwnerCallback* mcallback = getStringOwnerCallback(std::move(vec));
 
 	EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions;
 	QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	QueryOptions.AccountIdType = (EOS_EExternalAccountType)accountIdType; // EOS_EExternalAccountType // ::EOS_EAT_EPIC;
 	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 
-	QueryOptions.ExternalAccountIdCount = (uint32_t)mcallback->cStrings.size();
-	QueryOptions.ExternalAccountIds = mcallback->cStrings.data();
+	QueryOptions.ExternalAccountIdCount = (uint32_t)mcallback->cstrs.size();
+	QueryOptions.ExternalAccountIds = mcallback->cstrs.data();
 
 	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
 

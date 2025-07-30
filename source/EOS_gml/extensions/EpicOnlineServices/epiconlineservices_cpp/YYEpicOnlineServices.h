@@ -23,7 +23,7 @@ struct StringOwnerCallback;
 
 extern callback *getCallbackData();
 extern callback *getCallbackData(const char *str);
-extern StringOwnerCallback *getStringOwnerCallback(const std::vector<const char*> &vec);
+extern StringOwnerCallback *getStringOwnerCallback(std::vector<std::string>&& v);
 
 extern char *AccountID_toString(EOS_EpicAccountId account);
 extern char *productID_toString(EOS_ProductUserId user);
@@ -63,7 +63,8 @@ extern void _SW_SetArrayOfReal(RValue *_array, std::vector<double> &values);
 extern void _SW_SetArrayOfRValue(RValue *_array, std::vector<RValue> &values);
 std::vector<EOS_ProductUserId> _SW_GetArrayOfProductUserId(RValue *arg, int arg_idx, const char *_func);
 extern std::vector<RValue> _SW_GetArrayOfRValues(RValue *arg, int arg_idx, const char *func);
-extern std::vector<const char *> _SW_GetArrayOfStrings(RValue *arg, int arg_idx, const char *func);
+extern std::vector<std::string> _SW_GetArrayOfStdStrings(RValue* arg, int arg_idx, const char* fn);
+extern std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func);
 extern std::vector<int32> _SW_GetArrayOfInt32(RValue *arg, int arg_idx, const char *func);
 extern std::vector<uint64> _SW_GetArrayOfUint64(RValue *arg, int arg_idx, const char *func);
 
@@ -148,13 +149,11 @@ struct callback
 	/*std::wstring*/ /*const char**/ std::string string; // optional argument
 };
 
-struct StringOwnerCallback
-{
-	int identifier;
-	// Own copies of all external account IDs
-	std::vector<std::string>      ownedStrings;
-	// Pointers into ownedStrings (what you pass to EOS)
-	std::vector<const char*>      cStrings;
+struct StringOwnerCallback {
+	int                         identifier;
+	std::vector<std::string>    owned;    // owns bytes
+	std::vector<const char*>    cstrs;    // pointers into 'owned'
+	~StringOwnerCallback() = default;
 };
 
 void ProductIdsToArray(RValue& result, EOS_ProductUserId* user_ids, int count);
