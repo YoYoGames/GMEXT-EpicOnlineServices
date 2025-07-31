@@ -60,10 +60,10 @@ std::vector<RValue> _SW_GetArrayOfRValues(RValue* arg, int arg_idx, const char* 
 
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
-		RValue elem;
         int length = YYArrayGetLength(pV);
         for (int i = 0; i < length; ++i)
 		{
+            RValue elem{};
             GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_OBJECT)
 			{
@@ -88,10 +88,10 @@ std::vector<const char*> _SW_GetArrayOfStrings(RValue* arg, int arg_idx, const c
 
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
-		RValue elem;
         int length = YYArrayGetLength(pV);
 		for (int i = 0; i < length; ++i)
 		{
+            RValue elem{};
             GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_STRING)
 			{
@@ -116,10 +116,10 @@ std::vector<int32> _SW_GetArrayOfInt32(RValue* arg, int arg_idx, const char* _fu
 
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
-		RValue elem;
         int length = YYArrayGetLength(pV);
         for (int i = 0; i < length; ++i)
 		{
+            RValue elem{};
             GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_INT32)
 			{
@@ -144,10 +144,10 @@ std::vector<uint64> _SW_GetArrayOfUint64(RValue* arg, int arg_idx, const char* _
 
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
-		RValue elem;
         int length = YYArrayGetLength(pV);
 		for (int i = 0; length; ++i)
 		{
+            RValue elem{};
             GET_RValue(&elem, pV, NULL, i);
 			if (KIND_RValue(&elem) != VALUE_INT64)
 			{

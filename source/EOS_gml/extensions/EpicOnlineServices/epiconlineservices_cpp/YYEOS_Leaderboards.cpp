@@ -426,33 +426,34 @@ YYEXPORT void eos_leaderboards_query_leaderboard_user_scores(RValue &Result, CIn
 {
 	eos_not_init_return_rvalue_real
 
-		const char* userID = YYGetString(arg, 0);
+    const char* userID = YYGetString(arg, 0);
 	const char* LeaderboardId = YYGetString(arg, 1); // not in use...
 
-	std::vector<EOS_ProductUserId> productUserIds = _SW_GetArrayOfProductUserId(arg, 2, "eos_leaderboards_query_leaderboard_user_scores");
+    // Convert to std::string for safety (this makes sure the strings survive GameMaker GC)
+    auto productUserIds = _SW_GetArrayOfProductUserId(arg, 2, "eos_leaderboards_query_leaderboard_user_scores");
 
 	// const char* name = YYGetString(arg, 3);
 	// double agregation = YYGetReal(arg, 4);
-	EOS_Leaderboards_UserScoresQueryStatInfo *StatInfoData = new EOS_Leaderboards_UserScoresQueryStatInfo[1024];
-	int vec_StatInfoData_count = 0;
+	std::vector<EOS_Leaderboards_UserScoresQueryStatInfo> StatInfoData;
 	if (KIND_RValue(&arg[3]) == VALUE_ARRAY)
 	{
+        EOS_Leaderboards_UserScoresQueryStatInfo info{};
+        
 		std::vector<RValue> vec_StatInfoData = _SW_GetArrayOfRValues(arg, 3, "eos_leaderboards_query_leaderboard_user_scores");
 		for (const auto &e : vec_StatInfoData)
 		{
-
 			RValue *RValue_StatName = YYStructGetMember((RValue *)&e, "stat_name");
 			RValue *RValue_Aggregation = YYStructGetMember((RValue *)&e, "aggregation");
-			StatInfoData[vec_StatInfoData_count].StatName = RValue_StatName->GetString();
-			StatInfoData[vec_StatInfoData_count].Aggregation = (EOS_ELeaderboardAggregation)RValue_Aggregation->val;
-			vec_StatInfoData_count++;
+            info.StatName = RValue_StatName->GetString();
+            info.Aggregation = (EOS_ELeaderboardAggregation)RValue_Aggregation->val;
+            StatInfoData.push_back(info);
 		}
 	}
 
 	int64 startTime = YYGetInt64(arg, 4);
 	int64 endTime = YYGetInt64(arg, 5);
 
-	EOS_Leaderboards_QueryLeaderboardUserScoresOptions QueryUserScoresOptions = {0};
+	EOS_Leaderboards_QueryLeaderboardUserScoresOptions QueryUserScoresOptions{};
 	QueryUserScoresOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 	QueryUserScoresOptions.ApiVersion = EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST;
 	QueryUserScoresOptions.UserIds = productUserIds.data();
@@ -461,8 +462,8 @@ YYEXPORT void eos_leaderboards_query_leaderboard_user_scores(RValue &Result, CIn
 	// EOS_ProductUserId* UserData = new EOS_ProductUserId[1];
 	// UserData[0] = EOS_ProductUserId_FromString(userID_target);
 
-	QueryUserScoresOptions.StatInfoCount = vec_StatInfoData_count;
-	QueryUserScoresOptions.StatInfo = StatInfoData;
+	QueryUserScoresOptions.StatInfoCount = (uint32_t)StatInfoData.size();
+	QueryUserScoresOptions.StatInfo = StatInfoData.data();
 
 	if (startTime > 0)
 		QueryUserScoresOptions.StartTime = startTime;

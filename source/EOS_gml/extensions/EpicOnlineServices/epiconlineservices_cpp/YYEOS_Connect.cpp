@@ -530,8 +530,6 @@ void EOS_CALL OnQueryExternalAccountMappingsCallback(const EOS_Connect_QueryExte
 	delete reinterpret_cast<callback*>(data->ClientData);
 }
 
-std::vector<std::string> userIds;
-
 YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
 {
 	eos_not_init_return_rvalue_real
@@ -539,25 +537,15 @@ YYEXPORT void eos_connect_query_external_account_mappings(RValue &Result, CInsta
 		const char *userID = YYGetString(arg, 0);
 	int accountIdType = (int)YYGetReal(arg, 1);
 
-	auto vec_Users = _SW_GetArrayOfStrings(arg, 2, "eos_connect_query_external_account_mappings");
-
-	userIds.clear();
-	userIds.reserve(vec_Users.size());
-	for (auto user : vec_Users) {
-		userIds.push_back(user);
-	}
-	std::vector<const char*> cstrs;
-	for (const auto& id : userIds) {
-		cstrs.push_back(id.c_str());
-	}
+	auto userIds = _SW_GetArrayOfStrings(arg, 2, "eos_connect_query_external_account_mappings");
 
     EOS_Connect_QueryExternalAccountMappingsOptions QueryOptions{};
 	QueryOptions.ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	QueryOptions.AccountIdType = (EOS_EExternalAccountType)accountIdType; // EOS_EExternalAccountType // ::EOS_EAT_EPIC;
 	QueryOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 
-	QueryOptions.ExternalAccountIdCount = (uint32_t)cstrs.size();
-	QueryOptions.ExternalAccountIds = cstrs.data();
+	QueryOptions.ExternalAccountIdCount = (uint32_t)userIds.size();
+	QueryOptions.ExternalAccountIds = userIds.data();
 
 	EOS_HConnect ConnectHandle = EOS_Platform_GetConnectInterface(PlatformHandle);
 

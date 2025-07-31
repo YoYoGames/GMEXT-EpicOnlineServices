@@ -433,23 +433,22 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue &Result, 
 
 	// const char* name = YYGetString(arg, 3);
 	// double agregation = YYGetReal(arg, 4);
-	EOS_Leaderboards_UserScoresQueryStatInfo *StatInfoData = new EOS_Leaderboards_UserScoresQueryStatInfo[1024];
-	int vec_StatInfoData_count = 0;
-	if (KIND_RValue(&arg[3]) == VALUE_ARRAY)
-	{
-		std::vector<RValue> vec_StatInfoData = _SW_GetArrayOfRValues(arg, 3, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
-		for (const auto &e : vec_StatInfoData)
-		{
-
-			RValue *RValue_StatName = YYStructGetMember((RValue *)&e, "StatName");
-			RValue *RValue_Aggregation = YYStructGetMember((RValue *)&e, "Aggregation");
-			DebugConsoleOutput(RValue_StatName->GetString());
-			DebugConsoleOutput("\n");
-			StatInfoData[vec_StatInfoData_count].StatName = RValue_StatName->GetString();
-			StatInfoData[vec_StatInfoData_count].Aggregation = (EOS_ELeaderboardAggregation)RValue_Aggregation->val;
-			vec_StatInfoData_count++;
-		}
-	}
+    std::vector<EOS_Leaderboards_UserScoresQueryStatInfo> StatInfoData;
+    if (KIND_RValue(&arg[3]) == VALUE_ARRAY)
+    {
+        EOS_Leaderboards_UserScoresQueryStatInfo info{};
+        
+        std::vector<RValue> vec_StatInfoData = _SW_GetArrayOfRValues(arg, 3, "EpicGames_Leaderboards_QueryLeaderboardUserScores");
+        for (const auto &e : vec_StatInfoData)
+        {
+            RValue *RValue_StatName = YYStructGetMember((RValue *)&e, "StatName");
+            RValue *RValue_Aggregation = YYStructGetMember((RValue *)&e, "Aggregation");
+            info.StatName = RValue_StatName->GetString();
+            info.Aggregation = (EOS_ELeaderboardAggregation)RValue_Aggregation->val;
+            StatInfoData.push_back(info);
+        }
+    }
+    
 
 	int64 startTime = YYGetInt64(arg, 4);
 	int64 endTime = YYGetInt64(arg, 5);
@@ -463,8 +462,8 @@ YYEXPORT void EpicGames_Leaderboards_QueryLeaderboardUserScores(RValue &Result, 
 	// EOS_ProductUserId* UserData = new EOS_ProductUserId[1];
 	// UserData[0] = EOS_ProductUserId_FromString(userID_target);
 
-	QueryUserScoresOptions.StatInfoCount = vec_StatInfoData_count;
-	QueryUserScoresOptions.StatInfo = StatInfoData;
+    QueryUserScoresOptions.StatInfoCount = (uint32_t)StatInfoData.size();
+    QueryUserScoresOptions.StatInfo = StatInfoData.data();
 
 	if (startTime > 0)
 		QueryUserScoresOptions.StartTime = startTime;
