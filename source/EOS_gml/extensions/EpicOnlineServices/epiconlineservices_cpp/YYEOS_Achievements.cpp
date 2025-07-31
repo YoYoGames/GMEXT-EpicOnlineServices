@@ -392,8 +392,7 @@ YYEXPORT void eos_achievements_unlock_achievement(RValue& Result, CInstance* sel
 	UnlockAchievementsOptions.ApiVersion = EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST;
 	UnlockAchievementsOptions.UserId = EOS_ProductUserId_FromString(mProductUserId);
 	UnlockAchievementsOptions.AchievementsCount = 1;
-	UnlockAchievementsOptions.AchievementIds = new const char* [1];
-	UnlockAchievementsOptions.AchievementIds[0] = AchievementId;//NarrowIDs[0].c_str();
+	UnlockAchievementsOptions.AchievementIds = &AchievementId;//NarrowIDs[0].c_str();
 
 	callback* mcallback = getCallbackData();
 

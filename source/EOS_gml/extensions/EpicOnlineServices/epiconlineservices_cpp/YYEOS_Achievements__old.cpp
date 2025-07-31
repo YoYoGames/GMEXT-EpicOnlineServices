@@ -392,8 +392,7 @@ YYEXPORT void EpicGames_Achievements_UnlockAchievement(RValue& Result, CInstance
 	UnlockAchievementsOptions.ApiVersion = EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST;
 	UnlockAchievementsOptions.UserId = EOS_ProductUserId_FromString(mProductUserId);
 	UnlockAchievementsOptions.AchievementsCount = 1;
-	UnlockAchievementsOptions.AchievementIds = new const char* [1];
-	UnlockAchievementsOptions.AchievementIds[0] = AchievementId;//NarrowIDs[0].c_str();
+	UnlockAchievementsOptions.AchievementIds = &AchievementId;
 
 	callback* mcallback = getCallbackData();
 
