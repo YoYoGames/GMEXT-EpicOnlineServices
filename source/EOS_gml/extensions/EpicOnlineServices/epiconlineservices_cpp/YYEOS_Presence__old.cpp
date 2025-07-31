@@ -288,13 +288,13 @@ YYEXPORT void EpicGames_PresenceModification_DeleteData(RValue &Result, CInstanc
 	const char *user = YYGetString(arg, 0);
 	const char *key = YYGetString(arg, 1);
 
-	EOS_PresenceModification_DataRecordId *record = new EOS_PresenceModification_DataRecordId[1];
-	record[0].ApiVersion = EOS_PRESENCEMODIFICATION_DATARECORDID_API_LATEST;
-	record[0].Key = key;
+	EOS_PresenceModification_DataRecordId record{};
+	record.ApiVersion = EOS_PRESENCEMODIFICATION_DATARECORDID_API_LATEST;
+	record.Key = key;
 
-	EOS_PresenceModification_DeleteDataOptions Options = {0};
+	EOS_PresenceModification_DeleteDataOptions Options{};
 	Options.ApiVersion = EOS_PRESENCEMODIFICATION_DELETEDATA_API_LATEST;
-	Options.Records = record;
+	Options.Records = &record;
 	Options.RecordsCount = 1;
 
 	EOS_HPresenceModification HPresenceModification = EOS_Presence_CreatePresenceModification_old(user);
@@ -337,15 +337,15 @@ YYEXPORT void EpicGames_PresenceModification_SetData(RValue &Result, CInstance *
 	const char *key = YYGetString(arg, 1);
 	const char *value = YYGetString(arg, 2);
 
-	EOS_Presence_DataRecord *record = new EOS_Presence_DataRecord[1];
-	record[0].ApiVersion = EOS_PRESENCEMODIFICATION_DATARECORDID_API_LATEST;
-	record[0].Key = key;
-	record[0].Value = value;
+	EOS_Presence_DataRecord record{};
+	record.ApiVersion = EOS_PRESENCEMODIFICATION_DATARECORDID_API_LATEST;
+	record.Key = key;
+	record.Value = value;
 
-	EOS_PresenceModification_SetDataOptions Options = {0};
+	EOS_PresenceModification_SetDataOptions Options{};
 	Options.ApiVersion = EOS_PRESENCEMODIFICATION_SETDATA_API_LATEST;
 	Options.RecordsCount = 1;
-	Options.Records = record;
+	Options.Records = &record;
 
 	EOS_HPresenceModification HPresenceModification = EOS_Presence_CreatePresenceModification_old(user);
 

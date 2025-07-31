@@ -393,16 +393,15 @@ YYEXPORT void eos_leaderboards_query_leaderboard_user_score(RValue &Result, CIns
 	QueryUserScoresOptions.LocalUserId = EOS_ProductUserId_FromString(userID);
 	QueryUserScoresOptions.ApiVersion = EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST;
 	QueryUserScoresOptions.UserIdsCount = 1;
-	EOS_ProductUserId *UserData = new EOS_ProductUserId[1];
-	UserData[0] = EOS_ProductUserId_FromString(userID_target);
-	QueryUserScoresOptions.UserIds = UserData;
+	EOS_ProductUserId UserData = EOS_ProductUserId_FromString(userID_target);
+	QueryUserScoresOptions.UserIds = &UserData;
 
 	QueryUserScoresOptions.StatInfoCount = 1;
-	EOS_Leaderboards_UserScoresQueryStatInfo *StatInfoData = new EOS_Leaderboards_UserScoresQueryStatInfo[1];
-	StatInfoData[0].StatName = name;
-	StatInfoData[0].Aggregation = (EOS_ELeaderboardAggregation)agregation;
+	EOS_Leaderboards_UserScoresQueryStatInfo StatInfoData{};
+	StatInfoData.StatName = name;
+	StatInfoData.Aggregation = (EOS_ELeaderboardAggregation)agregation;
 
-	QueryUserScoresOptions.StatInfo = StatInfoData;
+	QueryUserScoresOptions.StatInfo = &StatInfoData;
 
 	if (startTime > 0)
 		QueryUserScoresOptions.StartTime = startTime;

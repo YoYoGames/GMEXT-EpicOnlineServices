@@ -141,13 +141,13 @@ YYEXPORT void EpicGames_Stats_IngestStat(RValue &Result, CInstance *selfinst, CI
 	StatsIngestOptions.TargetUserId = EOS_ProductUserId_FromString(target);
 	StatsIngestOptions.StatsCount = 1;
 
-	EOS_Stats_IngestData *IngestData = new EOS_Stats_IngestData[StatsIngestOptions.StatsCount];
+	EOS_Stats_IngestData IngestData{};
 
-	IngestData[0].ApiVersion = EOS_STATS_INGESTDATA_API_LATEST;
-	IngestData[0].StatName = statName;
-	IngestData[0].IngestAmount = amount;
+	IngestData.ApiVersion = EOS_STATS_INGESTDATA_API_LATEST;
+	IngestData.StatName = statName;
+	IngestData.IngestAmount = amount;
 
-	StatsIngestOptions.Stats = IngestData;
+	StatsIngestOptions.Stats = &IngestData;
 
 	callback *mcallback = getCallbackData();
 
