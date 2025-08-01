@@ -33,7 +33,7 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"GMEXT-EpicOnlineServices.html","CopyToMask":-1,"filePath":"datafiles","name":"GMEXT-EpicOnlineServices.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"GMEXT-EpicOnlineServices.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-EpicOnlineServices.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
