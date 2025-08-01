@@ -13,14 +13,26 @@ After compilation the exported dll/dylib file is automatically copied into the e
 
 ---
 
+## News
+
+Version 3.0.0 comes with new previously missing modules:
+
+- P2P API
+- Sessions API
+- Lobbies API
+- ECom API
+- RTC API
+
+---
+
 ## Requirements
 
-In order to compile for Windows/macOS you are required to download the [EpicOnlineSerives SDK 1.16.3-CL35276460](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
+In order to compile for Windows/macOS you are required to download the [EpicOnlineSerives SDK 1.17.0-CL41373641](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`
 
 > [!IMPORTANT]
-> Latest version 2.0.0 is a major release:
+> Latest version 3.0.0 is a major release:
 >
-> * You will need to make sure the SDK is updated to version 1.16.3-CL35276460
+> * You will need to make sure the SDK is updated to version 1.17.0-CL41373641
 
 ---
 
