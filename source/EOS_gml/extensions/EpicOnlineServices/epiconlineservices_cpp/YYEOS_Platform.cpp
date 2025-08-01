@@ -129,6 +129,7 @@ void OldPreGraphicsInitialisation()
 		std::filesystem::path cwd_ = std::filesystem::current_path();
 		// PlatformOptions.CacheDirectory = cwd_.string().c_str();
 #endif
+
 #if defined(OS_MacOs)
 		// NSString* bundlename = [[NSBundle mainBundle]executablePath];
 		// std::filesystem::path exePath = [bundlename UTF8String];
