@@ -28,6 +28,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <mutex>
 
 const size_t MaxChunkSize = 4096;
 
@@ -290,315 +291,309 @@ YYEXPORT void eos_player_data_storage_query_file_list(RValue &Result, CInstance 
 	Result.val = (double)mcallback->identifier;
 }
 
-struct FTransferInProgress__old
-{
-	bool bDownload = true;
-	size_t TotalSize = 0;
-	size_t CurrentIndex = 0;
-	std::vector<char> Data;
-	EOS_HPlayerDataStorageFileTransferRequest Handler = {0};
 
-	bool Done() const { return TotalSize == CurrentIndex; }
+struct FTransferInProgress_PDS {
+    bool bDownload = true;  // true = read (download); false = write (upload)
+    size_t TotalSize = 0;
+    size_t CurrentIndex = 0;
+    std::vector<char> Data;
+    EOS_HPlayerDataStorageFileTransferRequest Handle = nullptr;
+    std::string output_path; // for read, full file path to write at completion
+
+    bool Done() const { return TotalSize > 0 && CurrentIndex >= TotalSize; }
 };
 
-std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress__old> TransfersInProgress_;
-void EOS_CALL OnFileReceived(const EOS_PlayerDataStorage_ReadFileCallbackInfo *data)
-{
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
-	FTransferInProgress__old &Transfer = Iter->second;
-	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
+static std::mutex g_pdsMutex;
+static std::unordered_map<std::string, FTransferInProgress_PDS> TransfersInProgressPDS;
 
-	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_player_data_storage_read_file_on_file_received");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "filename", data->Filename);
-	CreateAsyncEventWithDSMap(map, 70);
+static void write_entire_file(const std::string& path, const std::vector<char>& buf) {
+    std::ofstream f(path, std::ios::binary | std::ios::trunc);
+    if (f && !buf.empty()) {
+        f.write(buf.data(), static_cast<std::streamsize>(buf.size()));
+    }
 }
 
-EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo *Data_)
-{
-	const char *FileName = Data_->Filename;
-	/*std::wstring path*/ /*const char**/ std::string path = ((callback *)(Data_->ClientData))->string;
-	const void *data = Data_->DataChunk;
-	size_t NumBytes = Data_->DataChunkLengthBytes;
-	size_t TotalSize = Data_->TotalFileSizeBytes;
-
-	if (!data)
-	{
-		DebugConsoleOutput("[EOS SDK] Title storage: could not receive data: data pointer is null.");
-		return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
-	}
-
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
-	if (Iter != TransfersInProgress_.end())
-	{
-		FTransferInProgress__old &Transfer = Iter->second;
-
-		if (!Transfer.bDownload)
-		{
-			DebugConsoleOutput("[EOS SDK] Title storage: can't load file data: download/upload mismatch.");
-			return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
-		}
-
-		// First update
-		if (Transfer.CurrentIndex == 0 && Transfer.TotalSize == 0)
-		{
-			Transfer.TotalSize = TotalSize;
-
-			if (Transfer.TotalSize == 0)
-			{
-				return EOS_PlayerDataStorage_EReadResult::EOS_RR_ContinueReading;
-			}
-
-			Transfer.Data.resize(TotalSize);
-		}
-
-		// Make sure we have enough space
-		if (Transfer.TotalSize - Transfer.CurrentIndex >= NumBytes)
-		{
-			memcpy(static_cast<void *>(&Transfer.Data[Transfer.CurrentIndex]), data, NumBytes);
-			Transfer.CurrentIndex += NumBytes;
-
-			// DebugConsoleOutput("PATHS:\n%ls\n", ((callback*)(Data_->ClientData))->string);
-			
-			std::ofstream file(path /*path + filename*/, std::ios::binary);
-			for (const char p : Transfer.Data)
-				file.write(&p, sizeof(p));
-
-			return EOS_PlayerDataStorage_EReadResult::EOS_RR_ContinueReading;
-		}
-		else
-		{
-			DebugConsoleOutput("[EOS SDK] Title storage: could not receive data: too much of it.");
-			return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
-		}
-	}
-
-	return EOS_PlayerDataStorage_EReadResult::EOS_RR_CancelRequest;
+static std::vector<unsigned char> readBinaryFile_(const char* filename) {
+    std::ifstream file(filename, std::ios::binary);
+    if (!file) return {};
+    file.seekg(0, std::ios::end);
+    std::streampos end = file.tellg();
+    if (end <= 0) return {};
+    std::vector<unsigned char> data(static_cast<size_t>(end));
+    file.seekg(0, std::ios::beg);
+    file.read(reinterpret_cast<char*>(data.data()), end);
+    return data;
 }
 
-EOS_PlayerDataStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo *data)
+EOS_PlayerDataStorage_EReadResult ReceiveData_PlayerDataStorage(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo* info)
 {
-	if (data)
-		return ReceiveData_PlayerDataStorage(data);
+    if (!info) return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
 
-	return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
+    const char* file = info->Filename;
+    const void* chunk = info->DataChunk;
+    size_t n = info->DataChunkLengthBytes;
+    size_t total = info->TotalFileSizeBytes;
+
+    std::lock_guard<std::mutex> lk(g_pdsMutex);
+    auto it = TransfersInProgressPDS.find(std::string(file));
+    if (it == TransfersInProgressPDS.end())
+        return EOS_PlayerDataStorage_EReadResult::EOS_RR_CancelRequest;
+
+    auto& tr = it->second;
+    if (!tr.bDownload) return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
+
+    if (tr.TotalSize == 0 && total > 0) {
+        tr.TotalSize = total;
+        tr.Data.resize(tr.TotalSize);
+    }
+
+    if (chunk && n > 0) {
+        if (tr.CurrentIndex + n > tr.TotalSize) {
+            return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
+        }
+        std::memcpy(tr.Data.data() + tr.CurrentIndex, chunk, n);
+        tr.CurrentIndex += n;
+    }
+
+    return EOS_PlayerDataStorage_EReadResult::EOS_RR_ContinueReading;
 }
 
-void EOS_CALL OnFileTransferProgressUpdated_read(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
+EOS_PlayerDataStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_PlayerDataStorage_ReadFileDataCallbackInfo* info)
 {
-	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_player_data_storage_read_file_on_file_transfer_progress_updated");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "filename", data->Filename);
-	DsMapAddDouble(map, "bytes_transferred", data->BytesTransferred);
-	DsMapAddDouble(map, "total_file_size_bytes", data->TotalFileSizeBytes);
-	CreateAsyncEventWithDSMap(map, 70);
-
-	delete reinterpret_cast<callback *>(data->ClientData);
+    return info ? ReceiveData_PlayerDataStorage(info)
+        : EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
 }
 
-YYEXPORT void eos_player_data_storage_read_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+void EOS_CALL OnFileTransferProgressUpdated_read(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo* data)
 {
-	eos_not_init_return_rvalue_real;
-
-	eos_ensure_argc(3);
-
-	const char *user = YYGetString(arg, 0);
-	const char *file = YYGetString(arg, 1);
-	const char *path = YYGetString(arg, 2);
-
-	EOS_PlayerDataStorage_ReadFileOptions Options;
-	Options.ApiVersion = EOS_PLAYERDATASTORAGE_READFILEOPTIONS_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-	Options.Filename = file;
-	Options.ReadChunkLengthBytes = MaxChunkSize;
-
-	Options.ReadFileDataCallback = OnFileDataReceived;
-	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_read;
-	callback *mcallback = getCallbackData(path);
-
-	EOS_HPlayerDataStorageFileTransferRequest Handle = EOS_PlayerDataStorage_ReadFile(HPlayerDataStorage, &Options, mcallback, OnFileReceived);
-
-	FTransferInProgress__old NewTransfer;
-	NewTransfer.bDownload = true;
-	NewTransfer.Handler = Handle;
-	TransfersInProgress_[/*stringToWstring*/ (file)] = NewTransfer;
-
-	Result.kind = VALUE_REAL;
-	Result.val = (double)mcallback->identifier;
+    int map = CreateDsMap(0, 0);
+    DsMapAddString(map, "type", "eos_player_data_storage_read_file_on_file_transfer_progress_updated");
+    DsMapAddDouble(map, "identifier", (double)((callback*)data->ClientData)->identifier);
+    DsMapAddString(map, "filename", data->Filename);
+    DsMapAddInt64(map, "bytes_transferred", data->BytesTransferred);
+    DsMapAddInt64(map, "total_file_size_bytes", data->TotalFileSizeBytes);
+    CreateAsyncEventWithDSMap(map, 70);
 }
 
-EOS_PlayerDataStorage_EWriteResult SendData(const char *FileName, void *data, uint32_t *BytesWritten)
+void EOS_CALL OnFileReceived(const EOS_PlayerDataStorage_ReadFileCallbackInfo* data)
 {
-	DebugConsoleOutput("[EOS SDK] EOS_PlayerDataStorage_EWriteResult\n");
-	if (!data || !BytesWritten)
-	{
-		DebugConsoleOutput("[EOS SDK] Player data storage: could not send data: pointer is null.\n");
-		return EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
-	}
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (FileName));
-	if (Iter != TransfersInProgress_.end())
-	{
-		FTransferInProgress__old &Transfer = Iter->second;
+    // Write the file if success, release handle, erase entry.
+    {
+        std::lock_guard<std::mutex> lk(g_pdsMutex);
+        auto it = TransfersInProgressPDS.find(std::string(data->Filename));
+        if (it != TransfersInProgressPDS.end()) {
+            auto& tr = it->second;
+            if (data->ResultCode == EOS_EResult::EOS_Success && tr.Done() && !tr.output_path.empty()) {
+                write_entire_file(tr.output_path, tr.Data);
+            }
+            if (tr.Handle) {
+                EOS_PlayerDataStorageFileTransferRequest_Release(tr.Handle);
+                tr.Handle = nullptr;
+            }
+            TransfersInProgressPDS.erase(it);
+        }
+    }
 
-		if (Transfer.bDownload)
-		{
-			DebugConsoleOutput("[EOS SDK] Player data storage: can't send file data: download/upload mismatch.\n");
-			return EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
-		}
-		if (Transfer.Done())
-		{
-			*BytesWritten = 0;
-			DebugConsoleOutput("[EOS SDK] EOS_PlayerDataStorage_EWriteResult COMPLETE\n");
-			return EOS_PlayerDataStorage_EWriteResult::EOS_WR_CompleteRequest;
-		}
-		size_t BytesToWrite;
-		if (MaxChunkSize < Transfer.TotalSize - Transfer.CurrentIndex)
-			BytesToWrite = MaxChunkSize;
-		else
-			BytesToWrite = Transfer.TotalSize - Transfer.CurrentIndex;
-		if (BytesToWrite > 0)
-		{
-			memcpy(data, static_cast<const void *>(&Transfer.Data[Transfer.CurrentIndex]), BytesToWrite);
-		}
-		*BytesWritten = static_cast<uint32_t>(BytesToWrite);
+    int map = CreateDsMap(0, 0);
+    DsMapAddString(map, "type", "eos_player_data_storage_read_file_on_file_received");
+    DsMapAddDouble(map, "status", (double)data->ResultCode);
+    DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+    DsMapAddDouble(map, "identifier", (double)((callback*)data->ClientData)->identifier);
+    DsMapAddString(map, "filename", data->Filename);
+    CreateAsyncEventWithDSMap(map, 70);
 
-		Transfer.CurrentIndex += BytesToWrite;
-		if (Transfer.Done())
-		{
-			// DebugConsoleOutput("[EOS SDK] EOS_PlayerDataStorage_EWriteResult EOS_WR_CompleteRequest\n");
-			return EOS_PlayerDataStorage_EWriteResult::EOS_WR_CompleteRequest;
-		}
-		else
-		{
-			// DebugConsoleOutput("[EOS SDK] EOS_PlayerDataStorage_EWriteResult EOS_WR_ContinueWriting\n");
-			return EOS_PlayerDataStorage_EWriteResult::EOS_WR_ContinueWriting;
-		}
-	}
-	else
-	{
-		DebugConsoleOutput("[EOS SDK] Player data storage: could not send data as this file is not being uploaded at the moment.\n");
-		*BytesWritten = 0;
-		return EOS_PlayerDataStorage_EWriteResult::EOS_WR_CancelRequest;
-	}
+    // Delete ClientData exactly once in the terminal callback.
+    delete reinterpret_cast<callback*>(data->ClientData);
 }
 
-EOS_PlayerDataStorage_EWriteResult EOS_CALL OnFileDataSend(const EOS_PlayerDataStorage_WriteFileDataCallbackInfo *data, void *OutDataBuffer, uint32_t *OutDataWritten)
+YYEXPORT void eos_player_data_storage_read_file(RValue& Result, CInstance*, CInstance*, int argc, RValue* arg)
 {
-	if (data)
-		return SendData(data->Filename, OutDataBuffer, OutDataWritten);
+    eos_not_init_return_rvalue_real;
+    eos_ensure_argc(3);
 
-	return EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
+    const char* user = YYGetString(arg, 0);
+    const char* file = YYGetString(arg, 1);
+    const char* path = YYGetString(arg, 2); // full output path
+
+    EOS_PlayerDataStorage_ReadFileOptions Options{};
+    Options.ApiVersion = EOS_PLAYERDATASTORAGE_READFILEOPTIONS_API_LATEST;
+    Options.LocalUserId = EOS_ProductUserId_FromString(user);
+    Options.Filename = file;
+    Options.ReadChunkLengthBytes = MaxChunkSize;
+    Options.ReadFileDataCallback = OnFileDataReceived;
+    Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_read;
+
+    callback* mcallback = getCallbackData(path); // freed in OnFileReceived
+    EOS_HPlayerDataStorageFileTransferRequest Handle =
+        EOS_PlayerDataStorage_ReadFile(HPlayerDataStorage, &Options, mcallback, OnFileReceived);
+
+    {
+        std::lock_guard<std::mutex> lk(g_pdsMutex);
+        FTransferInProgress_PDS tr;
+        tr.bDownload = true;
+        tr.Handle = Handle;
+        tr.output_path = path;
+        TransfersInProgressPDS[std::string(file)] = std::move(tr);
+    }
+
+    Result.kind = VALUE_REAL;
+    Result.val = (double)mcallback->identifier;
 }
 
-void EOS_CALL OnFileTransferProgressUpdated_write(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo *data)
+EOS_PlayerDataStorage_EWriteResult SendData_PlayerDataStorage(const char* file, void* outBuf, uint32_t* outWritten)
 {
-	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_player_data_storage_write_file_on_file_transfer_progress_updated");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "filename", data->Filename);
-	DsMapAddDouble(map, "bytes_transferred", data->BytesTransferred);
-	DsMapAddDouble(map, "total_file_size_bytes", data->TotalFileSizeBytes);
-	CreateAsyncEventWithDSMap(map, 70);
+    if (!file || !outBuf || !outWritten)
+        return EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
+
+    std::lock_guard<std::mutex> lk(g_pdsMutex);
+    auto it = TransfersInProgressPDS.find(std::string(file));
+    if (it == TransfersInProgressPDS.end()) {
+        *outWritten = 0;
+        return EOS_PlayerDataStorage_EWriteResult::EOS_WR_CancelRequest;
+    }
+    auto& tr = it->second;
+    if (tr.bDownload) {
+        *outWritten = 0;
+        return EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
+    }
+
+    if (tr.Done()) {
+        *outWritten = 0;
+        return EOS_PlayerDataStorage_EWriteResult::EOS_WR_CompleteRequest;
+    }
+
+    size_t remaining = tr.TotalSize - tr.CurrentIndex;
+    size_t toWrite = remaining > MaxChunkSize ? MaxChunkSize : remaining;
+    if (toWrite > 0) {
+        std::memcpy(outBuf, tr.Data.data() + tr.CurrentIndex, toWrite);
+        tr.CurrentIndex += toWrite;
+    }
+    *outWritten = static_cast<uint32_t>(toWrite);
+
+    return tr.Done()
+        ? EOS_PlayerDataStorage_EWriteResult::EOS_WR_CompleteRequest
+        : EOS_PlayerDataStorage_EWriteResult::EOS_WR_ContinueWriting;
 }
 
-void EOS_CALL OnFileSent(const EOS_PlayerDataStorage_WriteFileCallbackInfo *data)
+EOS_PlayerDataStorage_EWriteResult EOS_CALL OnFileDataSend(
+    const EOS_PlayerDataStorage_WriteFileDataCallbackInfo* data,
+    void* OutDataBuffer, uint32_t* OutDataWritten)
 {
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (data->Filename));
-	FTransferInProgress__old &Transfer = Iter->second;
-	EOS_PlayerDataStorageFileTransferRequest_Release(Transfer.Handler);
-
-	int map = CreateDsMap(0, 0);
-	DsMapAddString(map, "type", "eos_player_data_storage_write_file_on_file_sent");
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "filename", data->Filename);
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	CreateAsyncEventWithDSMap(map, 70);
-
-	delete reinterpret_cast<callback *>(data->ClientData);
+    return data ? SendData_PlayerDataStorage(data->Filename, OutDataBuffer, OutDataWritten)
+        : EOS_PlayerDataStorage_EWriteResult::EOS_WR_FailRequest;
 }
 
-std::vector<unsigned char> readBinaryFile_(const char *filename)
+void EOS_CALL OnFileTransferProgressUpdated_write(const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo* data)
 {
-	// open the file:
-	std::streampos fileSize;
-	std::ifstream file(filename, std::ios::binary);
-
-	// get its size:
-	file.seekg(0, std::ios::end);
-	fileSize = file.tellg();
-	file.seekg(0, std::ios::beg);
-
-	// read the data:
-	std::vector</*BYTE*/ unsigned char> fileData(fileSize);
-	file.read((char *)&fileData[0], fileSize);
-	return fileData;
+    // NOTE: Do NOT delete ClientData here; terminal callback will do it.
+    int map = CreateDsMap(0, 0);
+    DsMapAddString(map, "type", "eos_player_data_storage_write_file_on_file_transfer_progress_updated");
+    DsMapAddDouble(map, "identifier", (double)((callback*)data->ClientData)->identifier);
+    DsMapAddString(map, "filename", data->Filename);
+    DsMapAddInt64(map, "bytes_transferred", data->BytesTransferred);
+    DsMapAddInt64(map, "total_file_size_bytes", data->TotalFileSizeBytes);
+    CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void eos_player_data_storage_write_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+void EOS_CALL OnFileSent(const EOS_PlayerDataStorage_WriteFileCallbackInfo* data)
 {
-	eos_not_init_return_rvalue_real;
+    {
+        std::lock_guard<std::mutex> lk(g_pdsMutex);
+        auto it = TransfersInProgressPDS.find(std::string(data->Filename));
+        if (it != TransfersInProgressPDS.end()) {
+            if (it->second.Handle) {
+                EOS_PlayerDataStorageFileTransferRequest_Release(it->second.Handle);
+                it->second.Handle = nullptr;
+            }
+            TransfersInProgressPDS.erase(it);
+        }
+    }
 
-	eos_ensure_argc(3);
+    int map = CreateDsMap(0, 0);
+    DsMapAddString(map, "type", "eos_player_data_storage_write_file_on_file_sent");
+    DsMapAddDouble(map, "identifier", (double)((callback*)data->ClientData)->identifier);
+    DsMapAddString(map, "filename", data->Filename);
+    DsMapAddDouble(map, "status", (double)data->ResultCode);
+    DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
+    CreateAsyncEventWithDSMap(map, 70);
 
-	const char *user = YYGetString(arg, 0);
-	const char *file = YYGetString(arg, 1);
-	const char *path = YYGetString(arg, 2);
-
-	EOS_PlayerDataStorage_WriteFileOptions Options;
-	Options.ApiVersion = EOS_PLAYERDATASTORAGE_WRITEFILEOPTIONS_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-	Options.Filename = file;
-	Options.ChunkLengthBytes = MaxChunkSize;
-	Options.WriteFileDataCallback = OnFileDataSend;
-	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_write;
-
-	callback *mcallback = getCallbackData();
-
-	EOS_HPlayerDataStorageFileTransferRequest Handle = EOS_PlayerDataStorage_WriteFile(HPlayerDataStorage, &Options, mcallback, OnFileSent);
-
-	if (!Handle)
-	{
-		return;
-	}
-
-	FTransferInProgress__old NewTransfer;
-	NewTransfer.bDownload = false;
-
-	// std::string NarrowFileData = "YoyoGames X Opera X EpicGames";
-	std::vector<unsigned char> v = readBinaryFile_(path);
-
-	NewTransfer.TotalSize = v.size();  // NarrowFileData.size();
-	NewTransfer.Data.resize(v.size()); //(NarrowFileData.size());
-	NewTransfer.Handler = Handle;
-
-	if (NewTransfer.TotalSize > 0)
-	{
-		// memcpy(static_cast<void*>(&NewTransfer.Data[0]), static_cast<const void*>(&NarrowFileData[0]), NarrowFileData.size());
-		std::copy(v.begin(), v.end(), &NewTransfer.Data[0]);
-	}
-	NewTransfer.CurrentIndex = 0;
-
-	TransfersInProgress_[/*stringToWstring*/ (file)] = NewTransfer;
-
-	Result.kind = VALUE_REAL;
-	Result.val = (double)mcallback->identifier;
+    delete reinterpret_cast<callback*>(data->ClientData);
 }
 
-YYEXPORT void eos_player_data_storage_file_transfer_request_cancel_request(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_player_data_storage_write_file(RValue& Result, CInstance*, CInstance*, int argc, RValue* arg)
 {
-	eos_not_init_return_rvalue_bool;
+    eos_not_init_return_rvalue_real;
+    eos_ensure_argc(3);
 
-	eos_ensure_argc(1);
+    const char* user = YYGetString(arg, 0);
+    const char* file = YYGetString(arg, 1);
+    const char* path = YYGetString(arg, 2); // path to local file you want to upload
 
-	const char *file = YYGetString(arg, 0);
-	auto Iter = TransfersInProgress_.find(/*stringToWstring*/ (file));
-	FTransferInProgress__old &Transfer = Iter->second;
-	EOS_PlayerDataStorageFileTransferRequest_CancelRequest(Transfer.Handler);
+    // Load file into memory (you can stream from disk if needed)
+    std::vector<unsigned char> v = readBinaryFile_(path);
+
+    EOS_PlayerDataStorage_WriteFileOptions Options{};
+    Options.ApiVersion = EOS_PLAYERDATASTORAGE_WRITEFILEOPTIONS_API_LATEST;
+    Options.LocalUserId = EOS_ProductUserId_FromString(user);
+    Options.Filename = file;
+    Options.ChunkLengthBytes = MaxChunkSize;
+    Options.WriteFileDataCallback = OnFileDataSend;
+    Options.FileTransferProgressCallback = OnFileTransferProgressUpdated_write;
+
+    callback* mcallback = getCallbackData(); // freed in OnFileSent
+
+    EOS_HPlayerDataStorageFileTransferRequest Handle =
+        EOS_PlayerDataStorage_WriteFile(HPlayerDataStorage, &Options, mcallback, OnFileSent);
+
+    if (!Handle) {
+        delete mcallback; // avoid leaking client data if the call failed to start
+        Result.kind = VALUE_REAL;
+        Result.val = -1.0;
+        return;
+    }
+
+    {
+        std::lock_guard<std::mutex> lk(g_pdsMutex);
+        FTransferInProgress_PDS tr;
+        tr.bDownload = false;
+        tr.Handle = Handle;
+        tr.TotalSize = v.size();
+        tr.Data.resize(v.size());
+        if (!v.empty()) {
+            std::memcpy(tr.Data.data(), v.data(), v.size());
+        }
+        tr.CurrentIndex = 0;
+        TransfersInProgressPDS[std::string(file)] = std::move(tr);
+    }
+
+    Result.kind = VALUE_REAL;
+    Result.val = (double)mcallback->identifier;
+}
+
+YYEXPORT void eos_player_data_storage_file_transfer_request_cancel_request(RValue& Result, CInstance*, CInstance*, int argc, RValue* arg)
+{
+    eos_not_init_return_rvalue_bool;
+    eos_ensure_argc(1);
+
+    const char* file = YYGetString(arg, 0);
+    bool ok = false;
+
+    {
+        std::lock_guard<std::mutex> lk(g_pdsMutex);
+        auto it = TransfersInProgressPDS.find(std::string(file));
+        if (it != TransfersInProgressPDS.end()) {
+            if (it->second.Handle) {
+                EOS_PlayerDataStorageFileTransferRequest_CancelRequest(it->second.Handle);
+                EOS_PlayerDataStorageFileTransferRequest_Release(it->second.Handle);
+                it->second.Handle = nullptr;
+            }
+            TransfersInProgressPDS.erase(it);
+            ok = true;
+        }
+    }
+
+    Result.kind = VALUE_BOOL;
+    Result.val = ok ? 1.0 : 0.0;
 }
 
 YYEXPORT void eos_player_data_storage_file_transfer_request_get_filename(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)

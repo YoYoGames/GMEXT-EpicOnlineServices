@@ -25,6 +25,7 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <mutex>
 
 const size_t MaxChunkSize = 4096;
 
@@ -232,161 +233,166 @@ YYEXPORT void eos_title_storage_query_file_list(RValue &Result, CInstance *selfi
 	Result.val = (double)mcallback->identifier;
 }
 
-struct FTransferInProgress
-{
+struct FTransferInProgress {
 	bool bDownload = true;
 	size_t TotalSize = 0;
 	size_t CurrentIndex = 0;
 	std::vector<char> Data;
-	EOS_HTitleStorageFileTransferRequest handler = {0};
-
-	bool Done() const { return TotalSize == CurrentIndex; }
+	EOS_HTitleStorageFileTransferRequest handle = nullptr;
+	std::string output_path;   // full path to write
+	bool Done() const { return CurrentIndex >= TotalSize && TotalSize > 0; }
 };
 
-std::unordered_map</*std::wstring*/ /*const char**/ std::string, FTransferInProgress> TransfersInProgress;
-EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_ReadFileDataCallbackInfo *Data_)
-{
-	const char *FileName = Data_->Filename;
-	/*std::wstring*/ std::string path = ((callback *)(Data_->ClientData))->string;
-	const void *data = Data_->DataChunk;
-	size_t NumBytes = Data_->DataChunkLengthBytes;
-	size_t TotalSize = Data_->TotalFileSizeBytes;
+static std::mutex g_tsMutex;
+static std::unordered_map<std::string, FTransferInProgress> TransfersInProgress;
 
-	if (!data)
-	{
-		// FDebugLog::LogError(L"[EOS SDK] Title storage: could not receive data: Data pointer is null.");
-		return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
-	}
-
-	auto Iter = TransfersInProgress.find(/*stringToWstring*/ (FileName));
-	if (Iter != TransfersInProgress.end())
-	{
-		FTransferInProgress &Transfer = Iter->second;
-
-		if (!Transfer.bDownload)
-		{
-			// FDebugLog::LogError(L"[EOS SDK] Title storage: can't load file data: download/upload mismatch.");
-			return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
-		}
-
-		// First update
-		if (Transfer.CurrentIndex == 0 && Transfer.TotalSize == 0)
-		{
-			Transfer.TotalSize = TotalSize;
-
-			if (Transfer.TotalSize == 0)
-			{
-				return EOS_TitleStorage_EReadResult::EOS_TS_RR_ContinueReading;
-			}
-
-			Transfer.Data.resize(TotalSize);
-		}
-
-		// Make sure we have enough space
-		if (Transfer.TotalSize - Transfer.CurrentIndex >= NumBytes)
-		{
-			memcpy(static_cast<void *>(&Transfer.Data[Transfer.CurrentIndex]), data, NumBytes);
-			Transfer.CurrentIndex += NumBytes;
-
-			// std::string path = "C:/Users/chuyz/Desktop/Here/";
-			// std::string filename = FileName;
-			std::ofstream file(path /*path+filename*/, std::ios::binary);
-			for (const char p : Transfer.Data)
-				file.write(&p, sizeof(p));
-
-			// DebugConsoleOutput("HERE: EOS_TitleStorage_EReadResult::EOS_TS_RR_ContinueReading");
-			return EOS_TitleStorage_EReadResult::EOS_TS_RR_ContinueReading;
-		}
-		else
-		{
-			// FDebugLog::LogError(L"[EOS SDK] Title storage: could not receive data: too much of it.");
-			return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
-		}
-	}
-	//	DebugConsoleOutput("HERE: EOS_TitleStorage_EReadResult::EOS_TS_RR_CancelRequest");
-	return EOS_TitleStorage_EReadResult::EOS_TS_RR_CancelRequest;
+static void write_entire_file(const std::string& path, const std::vector<char>& buf) {
+	std::ofstream f(path, std::ios::binary | std::ios::trunc);
+	f.write(buf.data(), static_cast<std::streamsize>(buf.size()));
 }
 
-void EOS_CALL OnFileReceived(const EOS_TitleStorage_ReadFileCallbackInfo *data)
+EOS_TitleStorage_EReadResult ReceiveData_TitleStorage(const EOS_TitleStorage_ReadFileDataCallbackInfo* info)
 {
+	const char* file = info->Filename;
+	const void* chunk = info->DataChunk;
+	size_t n = info->DataChunkLengthBytes;
+	size_t total = info->TotalFileSizeBytes;
+
+	if (!chunk && n > 0) return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
+
+	std::lock_guard<std::mutex> lk(g_tsMutex);
+	auto it = TransfersInProgress.find(file);
+	if (it == TransfersInProgress.end())
+		return EOS_TitleStorage_EReadResult::EOS_TS_RR_CancelRequest;
+
+	auto& tr = it->second;
+
+	if (!tr.bDownload) return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
+
+	if (tr.TotalSize == 0) {
+		tr.TotalSize = total;
+		if (tr.TotalSize > 0) tr.Data.resize(tr.TotalSize);
+	}
+
+	if (n > 0) {
+		if (tr.CurrentIndex + n > tr.TotalSize) return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
+		std::memcpy(tr.Data.data() + tr.CurrentIndex, chunk, n);
+		tr.CurrentIndex += n;
+	}
+
+	// Keep reading until EOS signals completion through the final callback.
+	return EOS_TitleStorage_EReadResult::EOS_TS_RR_ContinueReading;
+}
+
+void EOS_CALL OnFileReceived(const EOS_TitleStorage_ReadFileCallbackInfo* info)
+{
+	// Result of the transfer (success/fail/cancel)
+	std::string file = info->Filename;
+
+	// If EOS invokes this off-main-thread, consider dispatching the DSMap work to the main thread.
+	{
+		std::lock_guard<std::mutex> lk(g_tsMutex);
+		auto it = TransfersInProgress.find(file);
+		if (it != TransfersInProgress.end()) {
+			auto& tr = it->second;
+			if (info->ResultCode == EOS_EResult::EOS_Success && tr.Done()) {
+				write_entire_file(tr.output_path, tr.Data);
+			}
+			if (tr.handle) {
+				EOS_TitleStorageFileTransferRequest_Release(tr.handle);
+				tr.handle = nullptr;
+			}
+			TransfersInProgress.erase(it);
+		}
+	}
+
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_title_storage_read_file_on_file_received");
-	DsMapAddDouble(map, "status", (double)data->ResultCode);
-	DsMapAddString(map, "status_message", EOS_EResult_ToString(data->ResultCode));
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddString(map, "filename", data->Filename);
+	DsMapAddDouble(map, "status", (double)info->ResultCode);
+	DsMapAddString(map, "status_message", EOS_EResult_ToString(info->ResultCode));
+	DsMapAddDouble(map, "identifier", (double)((callback*)info->ClientData)->identifier);
+	DsMapAddString(map, "filename", info->Filename);
 	CreateAsyncEventWithDSMap(map, 70);
+
+	// Free the client data now that we're done
+	delete reinterpret_cast<callback*>(info->ClientData);
 }
 
-EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_TitleStorage_ReadFileDataCallbackInfo *data)
+EOS_TitleStorage_EReadResult EOS_CALL OnFileDataReceived(const EOS_TitleStorage_ReadFileDataCallbackInfo* info)
 {
-	const char *file = data->Filename;
+	if (!info) return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
 
-	auto Iter = TransfersInProgress.find(/*stringToWstring*/ (file));
-
-	FTransferInProgress &Transfer = Iter->second;
-	EOS_HTitleStorageFileTransferRequest Handle = Transfer.handler;
-	// EOS_TitleStorageFileTransferRequest_CancelRequest(Handle);
-
-	// return FGame::Get().GetTitleStorage()->ReceiveData(FStringUtils::Widen(data->Filename), data->DataChunk, data->DataChunkLengthBytes, data->TotalFileSizeBytes);
-	if (data)
-		return ReceiveData_TitleStorage(data);
-
-	return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
+	// If you need to support cancel mid-stream, you can lookup and cancel here using the handle.
+	return ReceiveData_TitleStorage(info);
 }
 
-void EOS_CALL OnFileTransferProgressUpdated(const EOS_TitleStorage_FileTransferProgressCallbackInfo *data)
+void EOS_CALL OnFileTransferProgressUpdated(const EOS_TitleStorage_FileTransferProgressCallbackInfo* info)
 {
 	int map = CreateDsMap(0, 0);
 	DsMapAddString(map, "type", "eos_title_storage_read_file_on_file_transfer_progress_updated");
-	DsMapAddString(map, "filename", data->Filename);
-	DsMapAddDouble(map, "identifier", (double)((callback *)(data->ClientData))->identifier);
-	DsMapAddInt64(map, "bytes_transferred", data->BytesTransferred);
-	DsMapAddInt64(map, "total_file_size_bytes", data->TotalFileSizeBytes);
+	DsMapAddString(map, "filename", info->Filename);
+	DsMapAddDouble(map, "identifier", (double)((callback*)info->ClientData)->identifier);
+	DsMapAddInt64(map, "bytes_transferred", info->BytesTransferred);
+	DsMapAddInt64(map, "total_file_size_bytes", info->TotalFileSizeBytes);
 	CreateAsyncEventWithDSMap(map, 70);
 }
 
-YYEXPORT void eos_title_storage_read_file(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_read_file(RValue& Result, CInstance*, CInstance*, int argc, RValue* arg)
 {
 	eos_not_init_return_rvalue_real;
-
 	eos_ensure_argc(3);
 
-	const char *user = YYGetString(arg, 0);
-	const char *file = YYGetString(arg, 1);
-	const char *path = YYGetString(arg, 2);
+	const char* user = YYGetString(arg, 0);
+	const char* file = YYGetString(arg, 1);
+	const char* out_path = YYGetString(arg, 2); // should be full file path
 
-	EOS_TitleStorage_ReadFileOptions Options = {};
-	Options.ApiVersion = EOS_TITLESTORAGE_READFILEOPTIONS_API_LATEST;
-	Options.LocalUserId = EOS_ProductUserId_FromString(user);
-	Options.Filename = file;
-	Options.ReadChunkLengthBytes = MaxChunkSize;
-	Options.ReadFileDataCallback = OnFileDataReceived;
-	Options.FileTransferProgressCallback = OnFileTransferProgressUpdated;
+	EOS_TitleStorage_ReadFileOptions opt{};
+	opt.ApiVersion = EOS_TITLESTORAGE_READFILEOPTIONS_API_LATEST;
+	opt.LocalUserId = EOS_ProductUserId_FromString(user);
+	opt.Filename = file;
+	opt.ReadChunkLengthBytes = MaxChunkSize;
+	opt.ReadFileDataCallback = OnFileDataReceived;
+	opt.FileTransferProgressCallback = OnFileTransferProgressUpdated;
 
-	callback *mcallback = getCallbackData(path);
-	EOS_HTitleStorageFileTransferRequest Handle = EOS_TitleStorage_ReadFile(HTitleStorage, &Options, mcallback, OnFileReceived);
+	auto* cb = getCallbackData(out_path); // allocates; freed in OnFileReceived
+	EOS_HTitleStorageFileTransferRequest h =
+		EOS_TitleStorage_ReadFile(HTitleStorage, &opt, cb, OnFileReceived);
 
-	FTransferInProgress NewTransfer;
-	NewTransfer.bDownload = true;
-	NewTransfer.handler = Handle;
-
-	TransfersInProgress[/*stringToWstring*/ (file)] = NewTransfer;
+	{
+		std::lock_guard<std::mutex> lk(g_tsMutex);
+		FTransferInProgress tr;
+		tr.bDownload = true;
+		tr.handle = h;
+		tr.output_path = out_path; // full path
+		TransfersInProgress[std::string(file)] = std::move(tr);
+	}
 
 	Result.kind = VALUE_REAL;
-	Result.val = (double)mcallback->identifier;
+	Result.val = (double)cb->identifier;
 }
 
-YYEXPORT void eos_title_storage_file_transfer_request_cancel_request(RValue &Result, CInstance *selfinst, CInstance *otherinst, int argc, RValue *arg)
+YYEXPORT void eos_title_storage_file_transfer_request_cancel_request(RValue& Result, CInstance*, CInstance*, int argc, RValue* arg)
 {
 	eos_not_init_return_rvalue_bool;
-
 	eos_ensure_argc(1);
 
-	const char *file = YYGetString(arg, 0);
-	auto Iter = TransfersInProgress.find(/*stringToWstring*/ (file));
-	FTransferInProgress &Transfer = Iter->second;
-	EOS_TitleStorageFileTransferRequest_CancelRequest(Transfer.handler);
+	const char* file = YYGetString(arg, 0);
+	bool ok = false;
+	{
+		std::lock_guard<std::mutex> lk(g_tsMutex);
+		auto it = TransfersInProgress.find(file);
+		if (it != TransfersInProgress.end()) {
+			if (it->second.handle) {
+				EOS_TitleStorageFileTransferRequest_CancelRequest(it->second.handle);
+				EOS_TitleStorageFileTransferRequest_Release(it->second.handle);
+				it->second.handle = nullptr;
+			}
+			TransfersInProgress.erase(it);
+			ok = true;
+		}
+	}
+	Result.kind = VALUE_BOOL;
+	Result.val = ok ? 1.0 : 0.0;
 }
 
 // YYEXPORT void eos_title_storage_file_transfer_request_get_filename(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)

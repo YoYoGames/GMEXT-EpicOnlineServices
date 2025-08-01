@@ -52,10 +52,12 @@ exit %errorlevel%
 :: ----------------------------------------------------------------------------------------------------
 :setupWindows
    set SDK_SOURCE="%SDK_PATH%\Bin\EOSSDK-Win64-Shipping.dll"
+   set XAUDIO_SOURCE="%SDK_PATH%\Bin\x64\xaudio2_9redist.dll"
    call %Utils% assertFileHashEquals %SDK_SOURCE% %SDK_HASH_WIN% %ERROR_SDK_HASH%
 
    echo "Copying Windows (64 bit) dependencies"
    if not exist "EOSSDK-Win64-Shipping.dll" call %Utils% itemCopyTo %SDK_SOURCE% "EOSSDK-Win64-Shipping.dll"
+   if not exist "xaudio2_9redist.dll" call %Utils% itemCopyTo %XAUDIO_SOURCE% "xaudio2_9redist.dll"
    
 exit /b %errorlevel%
 

@@ -1126,7 +1126,6 @@
         {"$GMProxyFile":"","%Name":"EpicOnlineServices.so","name":"EpicOnlineServices.so","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":7,},
       ],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
     {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":2,"filename":"libEOSSDK-Mac-Shipping.dylib","final":"","functions":[],"init":"","kind":1,"name":"","order":[],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
-    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":-1,"filename":"xaudio2_9redist.dll","final":"","functions":[],"init":"","kind":1,"name":"","order":[],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject":"",
   "hasConvertedCodeInjection":true,
