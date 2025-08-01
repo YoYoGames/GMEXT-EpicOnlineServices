@@ -14,7 +14,7 @@
   "copyToTargets":194,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"2.0.0",
+  "extensionVersion":"3.0.0",
   "files":[
     {"$GMExtensionFile":"","%Name":"","constants":[
         {"$GMExtensionConstant":"","%Name":"EOS_LS_NOT_LOGGED_IN","hidden":false,"name":"EOS_LS_NOT_LOGGED_IN","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"0",},
