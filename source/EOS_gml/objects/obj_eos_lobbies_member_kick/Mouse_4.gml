@@ -1,0 +1,2 @@
+
+eos_lobby_kick_member(obj_eos_lobbies.lobby_id,global.product_user_id,user_id)

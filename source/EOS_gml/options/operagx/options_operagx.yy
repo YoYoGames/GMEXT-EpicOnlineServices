@@ -1,7 +1,7 @@
 {
   "$GMOperaGXOptions":"v1",
-  "%Name":"operagx",
-  "name":"operagx",
+  "%Name":"Opera GX",
+  "name":"Opera GX",
   "option_operagx_display_cursor":true,
   "option_operagx_editUrl":"",
   "option_operagx_game_name":"${project_name}",

@@ -1,0 +1,3 @@
+
+eos_sessions_start_session(obj_eos_sessions.SessionName)
+

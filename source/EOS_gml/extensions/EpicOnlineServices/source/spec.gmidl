@@ -1,0 +1,3069 @@
+[gml_api]
+module EpicOnlineServices;
+
+[global, bind = typed_gml]
+function eos_test(): real;
+
+group
+{
+
+// ============================================================
+// EOS API (No Interface)
+// ============================================================
+
+[global, bind = typed_gml]
+function eos_api_last_error(): string;
+
+[global, bind = typed_gml]
+function eos_api_is_initialized(): bool;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_api_initialize(product_name: string, product_version: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_api_shutdown(): gmval;
+
+[global, bind = typed_gml]
+function eos_api_get_version(): string;
+
+[global, bind = typed_gml]
+function eos_api_result_to_string([type_hint=`EpicResult`] result: gmval): string;
+
+[global, bind = typed_gml]
+function eos_api_result_is_operation_complete([type_hint=`EpicResult`] result: gmval): bool;
+
+[global, bind = typed_gml]
+function eos_api_application_status_to_string([type_hint=`EpicApplicationStatus`] status: gmval): string;
+
+[global, bind = typed_gml]
+function eos_api_network_status_to_string([type_hint=`EpicNetworkStatus`] status: gmval): string;
+
+[global, bind = typed_gml]
+function eos_api_epic_account_id_is_valid(account_id: string): bool;
+
+[global, bind = typed_gml]
+function eos_api_product_user_id_is_valid(product_user_id: string): bool;
+
+}
+
+
+group
+{
+
+// ============================================================
+// EOS Platform
+// ============================================================
+
+[global, bind = typed_gml]
+function eos_platform_is_created(): bool;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_platform_create(
+    is_server: bool,
+    product_id: string,
+    sandbox_id: string,
+    deployment_id: string,
+    client_id: string,
+    client_secret: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_platform_release(): unit;
+
+[global, bind = typed_gml]
+function eos_platform_tick(): unit;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_platform_check_for_launcher_and_restart(): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_platform_set_network_status([type_hint=`EpicNetworkStatus`] status: gmval): gmval;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Logging
+// ============================================================
+
+[global]
+class `[[EpicLoggingMessage]]` prototype Object
+{
+    [field, type_hint = `EpicLogCategory`]
+    property category : gmval { get; set; }
+
+    [field, type_hint = `EpicLogLevel`]
+    property level : gmval { get; set; }
+
+    [field]
+    property message : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_logging_set_callback(callback:func): unit;
+
+[global, bind = typed_gml]
+function eos_logging_clear_callback(): unit;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_logging_set_log_level(
+    [type_hint=`EpicLogCategory`] log_category: gmval,
+    [type_hint=`EpicLogLevel`] log_level: gmval
+): gmval;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Auth (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicAuthLoginCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property selected_account_id : string { get; set; }
+
+    [field]
+    property has_continuance_token : bool { get; set; }
+}
+
+[global]
+class `[[EpicAuthLogoutCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicAuthLinkAccountCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property selected_account_id : string { get; set; }
+}
+
+[global]
+class `[[EpicAuthDeletePersistentAuthCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_auth_login(
+    credentials_id: string,
+    credentials_token: string,
+    [type_hint=`EpicLoginCredentialType`] credentials_type: gmval,
+    [type_hint=`EpicExternalCredentialType`] external_credential_type: gmval,
+    [type_hint=`EpicAuthScopeFlags`] scope_flags: gmval,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_auth_logout(
+    local_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_auth_link_account(
+    local_user_id: string,
+    [type_hint=`EpicLinkAccountFlags`] link_account_flags: gmval,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_auth_delete_persistent_auth(callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_auth_get_logged_in_accounts_count(): int64;
+
+[global, bind = typed_gml]
+function eos_auth_get_logged_in_account_by_index(index: int64): string;
+
+[global, bind = typed_gml, type_hint=`EpicLoginStatus`]
+function eos_auth_get_login_status(local_user_id: string): gmval;
+
+// ============================================================
+// EOS Auth (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicAuthIdToken]]` prototype Object
+{
+    [field]
+    property account_id : string { get; set; }
+
+    [field]
+    property json_web_token : string { get; set; }
+}
+
+[global]
+class `[[EpicAuthUserAuthToken]]` prototype Object
+{
+    [field]
+    property app : string { get; set; }
+
+    [field]
+    property client_id : string { get; set; }
+
+    [field]
+    property account_id : string { get; set; }
+
+    [field]
+    property access_token : string { get; set; }
+
+    [field]
+    property expires_in : real { get; set; }
+
+    [field]
+    property expires_at : string { get; set; }
+
+    [field, type_hint=`EpicAuthTokenType`]
+    property auth_type : gmval { get; set; }
+
+    [field]
+    property refresh_token : string { get; set; }
+
+    [field]
+    property refresh_expires_in : real { get; set; }
+
+    [field]
+    property refresh_expires_at : string { get; set; }
+}
+
+[global]
+class `[[EpicAuthQueryIdTokenCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_account_id : string { get; set; }
+}
+
+[global]
+class `[[EpicAuthVerifyIdTokenCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property application_id : string { get; set; }
+
+    [field]
+    property client_id : string { get; set; }
+
+    [field]
+    property product_id : string { get; set; }
+
+    [field]
+    property sandbox_id : string { get; set; }
+
+    [field]
+    property deployment_id : string { get; set; }
+
+    [field]
+    property display_name : string { get; set; }
+
+    [field]
+    property is_external_account_info_present : bool { get; set; }
+}
+
+[global]
+class `[[EpicAuthVerifyUserAuthCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicAuthIdToken`]
+function eos_auth_copy_id_token(local_user_id: string, target_account_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicAuthUserAuthToken`]
+function eos_auth_copy_user_auth_token(local_user_id: string): gmval;
+
+[global, bind = typed_gml]
+function eos_auth_query_id_token(local_user_id: string, target_account_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_auth_verify_id_token(json_web_token: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_auth_verify_user_auth(access_token: string, callback: func): unit;
+
+[global]
+class `[[EpicAuthLoginStatusChangedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`EpicLoginStatus`]
+    property previous_status : gmval { get; set; }
+
+    [field, type_hint=`EpicLoginStatus`]
+    property current_status : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_auth_add_notify_login_status_changed(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_auth_remove_notify_login_status_changed([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Connect (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicConnectLoginCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property has_continuance_token : bool { get; set; }
+}
+
+[global]
+class `[[EpicConnectCreateUserCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectLinkAccountCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectUnlinkAccountCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectCreateDeviceIdCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property device_model : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectDeleteDeviceIdCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicConnectTransferDeviceIdAccountCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectLogoutCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_connect_login(
+    token: string,
+    [type_hint=`EpicExternalCredentialType`] external_credential_type: gmval,
+    display_name: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_connect_create_user(callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_connect_link_account(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_connect_unlink_account(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_connect_create_device_id(device_model: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_connect_delete_device_id(callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_connect_transfer_device_id_account(primary_local_user_id: string, local_device_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_connect_logout(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_connect_get_logged_in_users_count(): int64;
+
+[global, bind = typed_gml]
+function eos_connect_get_logged_in_user_by_index(index: int64): string;
+
+[global, bind = typed_gml, type_hint=`EpicLoginStatus`]
+function eos_connect_get_login_status(local_user_id: string): gmval;
+
+// ============================================================
+// EOS Connect (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicConnectIdToken]]` prototype Object
+{
+    [field]
+    property product_user_id : string { get; set; }
+
+    [field]
+    property json_web_token : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectExternalAccountInfo]]` prototype Object
+{
+    [field]
+    property product_user_id : string { get; set; }
+
+    [field]
+    property display_name : string { get; set; }
+
+    [field]
+    property account_id : string { get; set; }
+
+    [field, type_hint = `EpicExternalAccountType`]
+    property account_id_type : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property last_login_time : gmval { get; set; }
+}
+
+[global]
+class `[[EpicConnectVerifyIdTokenCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicConnectIdToken`]
+function eos_connect_copy_id_token(local_user_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+function eos_connect_copy_product_user_info(target_user_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+function eos_connect_copy_product_user_external_account_by_index(target_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+function eos_connect_copy_product_user_external_account_by_account_type(target_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+function eos_connect_copy_product_user_external_account_by_account_id(target_user_id: string, account_id: string): gmval;
+
+[global, bind = typed_gml]
+function eos_connect_get_product_user_id_mapping(local_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval, target_external_user_id: string): string;
+
+[global, bind = typed_gml]
+function eos_connect_get_external_account_mapping(local_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval, target_external_user_id: string): string;
+
+[global, bind = typed_gml]
+function eos_connect_verify_id_token(json_web_token: string, callback: func): unit;
+
+[global]
+class `[[EpicConnectQueryExternalAccountMappingsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectQueryProductUserIdMappingsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_connect_query_external_account_mappings(
+    local_user_id: string,
+    [type_hint=`EpicExternalAccountType`] account_id_type: gmval,
+    [type_hint=`string[]`] target_external_user_ids: gmval,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_connect_query_product_user_id_mappings(
+    local_user_id: string,
+    [type_hint=`EpicExternalAccountType`] account_id_type: gmval,
+    [type_hint=`string[]`] target_product_user_ids: gmval,
+    callback: func
+): unit;
+
+
+[global]
+class `[[EpicConnectAuthExpirationCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicConnectLoginStatusChangedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`EpicLoginStatus`]
+    property previous_status : gmval { get; set; }
+
+    [field, type_hint=`EpicLoginStatus`]
+    property current_status : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_connect_add_notify_auth_expiration(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_connect_remove_notify_auth_expiration([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_connect_add_notify_login_status_changed(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_connect_remove_notify_login_status_changed([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Friends
+// ============================================================
+
+[global]
+class `[[EpicFriendsQueryFriendsCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_friends_query_friends(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_friends_get_friends_count(local_user_id: string): int64;
+
+[global, bind = typed_gml]
+function eos_friends_get_friend_at_index(local_user_id: string, index: int64): string;
+
+[global, bind = typed_gml, type_hint=`EpicFriendsStatus`]
+function eos_friends_get_status(local_user_id: string, target_user_id: string): gmval;
+
+[global]
+class `[[EpicFriendsFriendsUpdateCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field, type_hint=`EpicFriendsStatus`]
+    property previous_status : gmval { get; set; }
+
+    [field, type_hint=`EpicFriendsStatus`]
+    property current_status : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_friends_add_notify_friends_update(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_friends_remove_notify_friends_update([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS UserInfo (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicUserInfo]]` prototype Object
+{
+    [field]
+    property user_id : string { get; set; }
+
+    [field]
+    property country : string { get; set; }
+
+    [field]
+    property display_name : string { get; set; }
+
+    [field]
+    property preferred_language : string { get; set; }
+
+    [field]
+    property nickname : string { get; set; }
+}
+
+[global]
+class `[[EpicUserInfoQueryUserInfoCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_user_info_query_user_info(local_user_id: string, target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml, type_hint=`EpicUserInfo`]
+function eos_user_info_copy_user_info(local_user_id: string, target_user_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicExternalAccountType`]
+function eos_user_info_get_local_platform_type(): gmval;
+
+[global, bind = typed_gml]
+function eos_user_info_copy_best_display_name(local_user_id: string, target_user_id: string): string;
+
+// ============================================================
+// EOS UserInfo (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicUserInfoExternalUserInfo]]` prototype Object
+{
+    [field]
+    property account_id : string { get; set; }
+
+    [field, type_hint=`EpicExternalAccountType`]
+    property account_type : gmval { get; set; }
+
+    [field]
+    property display_name : string { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo`]
+function eos_user_info_copy_external_user_info_by_index(
+    local_user_id: string,
+    target_user_id: string,
+    index: int64
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo`]
+function eos_user_info_copy_external_user_info_by_account_type(
+    local_user_id: string,
+    target_user_id: string,
+    [type_hint=`EpicExternalAccountType`] account_type: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo`]
+function eos_user_info_copy_external_user_info_by_account_id(
+    local_user_id: string,
+    target_user_id: string,
+    account_id: string
+): gmval;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Stats (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicStatsStat]]` prototype Object
+{
+    [field]
+    property name : string { get; set; }
+    [field]
+    property start_time : int64 { get; set; }
+    [field]
+    property end_time : int64 { get; set; }
+    [field]
+    property value : int64 { get; set; }
+}
+
+[global]
+class `[[EpicStatsIngestStatCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicStatsQueryStatsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_stats_ingest_stat(
+    local_user_id: string,
+    target_user_id: string,
+    stat_name: string,
+    ingest_amount: int64,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_stats_query_stats(
+    local_user_id: string,
+    target_user_id: string,
+    start_time: int64,
+    end_time: int64,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_stats_get_stats_count(target_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicStatsStat`]
+function eos_stats_copy_stat_by_index(target_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicStatsStat`]
+function eos_stats_copy_stat_by_name(target_user_id: string, name: string): gmval;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS UI (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicUIShowFriendsCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicUIShowNativeProfileCallbackInfo]]` prototype Object
+{
+    [field, type_hint = `EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_ui_show_friends(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ui_show_native_profile(local_user_id: string, target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_ui_set_display_preference([type_hint=`EpicUINotificationLocation`] notification_location: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_ui_report_input_state(button_down: bool, button_up: bool, button_left: bool, button_right: bool, button_accept: bool, button_cancel: bool): unit;
+
+// ============================================================
+// EOS UI (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicUIDisplaySettingsUpdatedCallbackInfo]]` prototype Object
+{
+    [field]
+    property is_visible : bool { get; set; }
+
+    [field]
+    property is_exclusive_input : bool { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_ui_add_notify_display_settings_updated(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_ui_remove_notify_display_settings_updated([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Metrics
+// ============================================================
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_metrics_begin_player_session(
+    product_user_id: string,
+    [type_hint=`EpicMetricsAccountIdType`] account_id_type: gmval,
+    [type_hint=`EpicUserControllerType`] controller_type: gmval,
+    server_ip: string,
+    game_session_id: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_metrics_end_player_session(
+    product_user_id: string,
+    [type_hint=`EpicMetricsAccountIdType`] account_id_type: gmval,
+    [type_hint=`EpicUserControllerType`] controller_type: gmval,
+    server_ip: string,
+    game_session_id: string
+): gmval;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Reports
+// ============================================================
+
+[global]
+class `[[EpicReportsSendPlayerBehaviorReportCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_reports_send_player_behavior_report(
+    reporter_user_id: string,
+    reported_user_id: string,
+    [type_hint=`EpicPlayerReportsCategory`] category: gmval,
+    message: string,
+    context: string,
+    callback: func
+): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Sanctions
+// ============================================================
+
+[global]
+class `[[EpicSanctionsPlayerSanction]]` prototype Object
+{
+    [field]
+    property time_placed : int64 { get; set; }
+
+    [field]
+    property action : string { get; set; }
+
+    [field]
+    property time_expires : int64 { get; set; }
+
+    [field]
+    property reference_id : string { get; set; }
+}
+
+[global]
+class `[[EpicSanctionsQueryActivePlayerSanctionsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicSanctionsCreatePlayerSanctionAppealCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property reference_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_sanctions_query_active_player_sanctions(target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_sanctions_get_player_sanction_count(target_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicSanctionsPlayerSanction`]
+function eos_sanctions_copy_player_sanction_by_index(target_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml]
+function eos_sanctions_create_player_sanction_appeal(
+    local_user_id: string,
+    reference_id: string,
+    [type_hint=`EpicSanctionAppealReason`] reason: gmval,
+    callback: func
+): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Achievements (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicAchievementsQueryDefinitionsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicAchievementsQueryPlayerAchievementsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_achievements_query_definitions(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_achievements_query_player_achievements(local_user_id: string, target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_achievements_get_achievement_definition_count(): int64;
+
+[global, bind = typed_gml]
+function eos_achievements_get_player_achievement_count(local_user_id: string, target_user_id: string): int64;
+
+// ============================================================
+// EOS Achievements (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicAchievementsDefinition]]` prototype Object
+{
+    [field]
+    property achievement_id : string { get; set; }
+
+    [field]
+    property display_name : string { get; set; }
+
+    [field]
+    property description : string { get; set; }
+
+    [field]
+    property locked_display_name : string { get; set; }
+
+    [field]
+    property locked_description : string { get; set; }
+
+    [field]
+    property hidden_description : string { get; set; }
+
+    [field]
+    property completion_description : string { get; set; }
+
+    [field]
+    property unlocked_icon_id : string { get; set; }
+
+    [field]
+    property locked_icon_id : string { get; set; }
+
+    [field]
+    property is_hidden : bool { get; set; }
+
+    [field, type_hint=`int64`]
+    property stat_thresholds_count : gmval { get; set; }
+}
+
+[global]
+class `[[EpicPlayerAchievement]]` prototype Object
+{
+    [field]
+    property achievement_id : string { get; set; }
+
+    [field]
+    property progress : real { get; set; }
+
+    [field]
+    property unlock_time : int64 { get; set; }
+
+    [field]
+    property stat_info_count : int64 { get; set; }
+}
+
+[global]
+class `[[EpicAchievementsUnlockAchievementsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property achievements_count : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicAchievementsDefinition`]
+function eos_achievements_copy_achievement_definition_by_index(index: int64): gmval;
+
+[global]
+class `[[EpicAchievementsDefinitionV2]]` prototype Object
+{
+    [field]
+    property achievement_id : string { get; set; }
+
+    [field]
+    property unlocked_display_name : string { get; set; }
+
+    [field]
+    property unlocked_description : string { get; set; }
+
+    [field]
+    property locked_display_name : string { get; set; }
+
+    [field]
+    property locked_description : string { get; set; }
+
+    [field]
+    property flavor_text : string { get; set; }
+
+    [field]
+    property completion_description : string { get; set; }
+
+    [field]
+    property unlocked_icon_url : string { get; set; }
+
+    [field]
+    property locked_icon_url : string { get; set; }
+
+    [field]
+    property is_hidden : bool { get; set; }
+
+    [field, type_hint=`int64`]
+    property stat_thresholds_count : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicAchievementsDefinitionV2`]
+function eos_achievements_copy_achievement_definition_v2_by_index(index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicAchievementsDefinition`]
+function eos_achievements_copy_achievement_definition_by_id(achievement_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicPlayerAchievement`]
+function eos_achievements_copy_player_achievement_by_index(local_user_id: string, target_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicPlayerAchievement`]
+function eos_achievements_copy_player_achievement_by_id(local_user_id: string, target_user_id: string, achievement_id: string): gmval;
+
+[global, bind = typed_gml]
+function eos_achievements_unlock_achievements(user_id: string, [type_hint=`string[]`]achievement_ids, callback: func): unit;
+
+[global]
+class `[[EpicAchievementsUnlockedV2CallbackInfo]]` prototype Object
+{
+    [field]
+    property user_id : string { get; set; }
+
+    [field]
+    property achievement_id : string { get; set; }
+
+    [field]
+    property unlock_time : int64 { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_achievements_add_notify_achievements_unlocked_v2(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_achievements_remove_notify_achievements_unlocked([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Leaderboards (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicLeaderboardsQueryDefinitionsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicLeaderboardsQueryRanksCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicLeaderboardsQueryUserScoresCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_leaderboards_query_definitions(
+    local_user_id: string,
+    start_time: int64,
+    end_time: int64,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_leaderboards_query_ranks(
+    local_user_id: string,
+    leaderboard_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_leaderboards_query_user_scores(
+    local_user_id: string,
+    stat_name: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_leaderboards_get_definition_count(): int64;
+
+[global, bind = typed_gml]
+function eos_leaderboards_get_record_count(): int64;
+
+[global, bind = typed_gml]
+function eos_leaderboards_get_user_score_count(): int64;
+
+// ============================================================
+// EOS Leaderboards (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicLeaderboardDefinition]]` prototype Object
+{
+    [field]
+    property leaderboard_id : string { get; set; }
+
+    [field]
+    property stat_name : string { get; set; }
+
+    [field]
+    property start_time : int64 { get; set; }
+
+    [field]
+    property end_time : int64 { get; set; }
+
+    [field]
+    property aggregation : string { get; set; }
+}
+
+[global]
+class `[[EpicLeaderboardRecord]]` prototype Object
+{
+    [field]
+    property user_id : string { get; set; }
+
+    [field]
+    property rank : int64 { get; set; }
+
+    [field, type_hint=`int64`]
+    property score : gmval { get; set; }
+
+    [field]
+    property user_display_name : string { get; set; }
+}
+
+[global]
+class `[[EpicLeaderboardUserScore]]` prototype Object
+{
+    [field]
+    property user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property score : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicLeaderboardDefinition`]
+function eos_leaderboards_copy_definition_by_index(index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicLeaderboardDefinition`]
+function eos_leaderboards_copy_definition_by_id(leaderboard_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicLeaderboardRecord`]
+function eos_leaderboards_copy_record_by_index(index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicLeaderboardRecord`]
+function eos_leaderboards_copy_record_by_user_id(user_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicLeaderboardUserScore`]
+function eos_leaderboards_copy_user_score_by_index(index: int64): gmval;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Presence (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicPresenceInfo]]` prototype Object
+{
+    [field]
+    property user_id : string { get; set; }
+
+    [field, type_hint=`EpicPresenceStatus`]
+    property status : gmval { get; set; }
+
+    [field]
+    property product_id : string { get; set; }
+
+    [field]
+    property product_version : string { get; set; }
+
+    [field]
+    property platform : string { get; set; }
+
+    [field]
+    property rich_text : string { get; set; }
+
+    [field]
+    property records_count : int64 { get; set; }
+}
+
+[global]
+class `[[EpicPresenceQueryPresenceCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_presence_query_presence(local_user_id: string, target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_presence_has_presence(local_user_id: string, target_user_id: string): bool;
+
+[global, bind = typed_gml, type_hint=`EpicPresenceInfo`]
+function eos_presence_copy_presence(local_user_id: string, target_user_id: string): gmval;
+
+// ============================================================
+// EOS Presence (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicPresenceSetPresenceCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicPresenceChangedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property presence_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicPresenceJoinGameAcceptedCallbackInfo]]` prototype Object
+{
+    [field]
+    property join_info : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field, type_hint=`uint64`]
+    property ui_event_id : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_presence_create_presence_modification(local_user_id: string): gmval;
+
+[global, bind = typed_gml]
+function eos_presence_modification_release([type_hint=`uint64`] modification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_presence_modification_set_status(
+    [type_hint=`uint64`] modification_id: gmval,
+    [type_hint=`EpicPresenceStatus`] status: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_presence_modification_set_raw_rich_text(
+    [type_hint=`uint64`] modification_id: gmval,
+    rich_text: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_presence_modification_set_data(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_presence_modification_delete_data(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_presence_set_presence(
+    local_user_id: string,
+    [type_hint=`uint64`] modification_id: gmval,
+    callback: func
+): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_presence_add_notify_on_presence_changed(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_presence_remove_notify_on_presence_changed([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_presence_add_notify_join_game_accepted(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_presence_remove_notify_join_game_accepted([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Sessions (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicSessionsUpdateSessionCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property session_name : string { get; set; }
+}
+
+[global]
+class `[[EpicSessionsDestroySessionCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicSessionsStartSessionCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicSessionsEndSessionCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_create_session_modification(
+    session_name: string,
+    session_id: string,
+    bucket_id: string,
+    [type_hint=`int64`] max_players: gmval,
+    local_user_id: string,
+    presence_enabled: bool,
+    sanctions_enabled: bool,
+    [type_hint=`uint32[]`]allowed_platform_ids: gmval
+): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_session_modification_release([type_hint=`uint64`] modification_id: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_update_session(
+    [type_hint=`uint64`] modification_id: gmval,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_destroy_session(session_name: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_start_session(session_name: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_end_session(session_name: string, callback: func): unit;
+
+/// ============================================================
+// EOS Sessions (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicSessionsJoinSessionCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicSessionsRegisterPlayersCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field, type_hint=`string[]`]
+    property registered_players : gmval { get; set; }
+
+    [field, type_hint=`string[]`]
+    property sanctioned_players : gmval { get; set; }
+}
+
+[global]
+class `[[EpicSessionsUnregisterPlayersCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field, type_hint=`string[]`]
+    property unregistered_players : gmval { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_sessions_join_session(
+    session_name: string,
+    local_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_register_players(
+    session_name: string,
+    [type_hint=`string[]`]target_user_ids:gmval,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_unregister_players(
+    session_name: string,
+    [type_hint=`string[]`]target_user_ids: gmval,
+    callback: func
+): unit;
+
+// ============================================================
+// EOS Sessions (Part 3)
+// ============================================================
+
+[global]
+class `[[EpicSessionsFindCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_create_session_search([type_hint=`int64`] max_search_results: gmval): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_session_search_release([type_hint=`uint64`] search_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_search_set_session_id(
+    [type_hint=`uint64`] search_id: gmval,
+    session_id: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_search_set_target_user_id(
+    [type_hint=`uint64`] search_id: gmval,
+    target_user_id: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_session_search_find(
+    [type_hint=`uint64`] search_id: gmval,
+    local_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_session_search_copy_search_result_by_index(
+    [type_hint=`uint64`] search_id: gmval,
+    index: int64
+): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_session_details_release([type_hint=`uint64`] session_details_id: gmval): unit;
+
+[global]
+class `[[EpicSessionDetailsInfo]]` prototype Object
+{
+    [field]
+    property session_id : string { get; set; }
+
+    [field]
+    property host_address : string { get; set; }
+
+    [field]
+    property owner_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property num_open_public_connections : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property settings_count : gmval { get; set; }
+}
+
+[global]
+class `[[EpicActiveSessionInfo]]` prototype Object
+{
+    [field]
+    property session_name : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property session_id : string { get; set; }
+
+    [field]
+    property bucket_id : string { get; set; }
+}
+
+[global]
+class `[[EpicSessionsSessionInviteReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property invite_id : string { get; set; }
+}
+
+[global]
+class `[[EpicSessionsSessionInviteAcceptedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property invite_id : string { get; set; }
+}
+
+[global]
+class `[[EpicSessionsJoinSessionAcceptedCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`uint64`]
+    property ui_event_id : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_copy_active_session_handle(session_name: string): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_active_session_release([type_hint=`uint64`] active_session_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`EpicActiveSessionInfo`]
+function eos_sessions_active_session_copy_info([type_hint=`uint64`] active_session_id: gmval): gmval;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_copy_session_handle_by_invite_id(invite_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_copy_session_handle_by_ui_event_id([type_hint=`uint64`] ui_event_id: gmval): gmval;
+
+// [global, bind = typed_gml]
+// function eos_sessions_session_details_release([type_hint=`uint64`] session_details_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`EpicSessionDetailsInfo`]
+function eos_sessions_session_details_copy_info([type_hint=`uint64`] session_details_id: gmval): gmval;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_add_notify_session_invite_received(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_remove_notify_session_invite_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_add_notify_session_invite_accepted(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_remove_notify_session_invite_accepted([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_add_notify_join_session_accepted(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_remove_notify_join_session_accepted([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Lobby (Part 1)
+// ============================================================
+
+[global]
+class `[[EpicLobbyCreateLobbyCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyDestroyLobbyCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyJoinLobbyCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLeaveLobbyCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_lobby_create_lobby(
+    local_user_id: string,
+    [type_hint=`int64`] max_lobby_members: gmval,
+    [type_hint=`EpicLobbyPermissionLevel`] permission_level: gmval,
+    presence_enabled: bool,
+    allow_invites: bool,
+    bucket_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_destroy_lobby(
+    lobby_id: string,
+    local_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_join_lobby(
+    lobby_id: string,
+    local_user_id: string,
+    presence_enabled: bool,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_leave_lobby(
+    lobby_id: string,
+    local_user_id: string,
+    callback: func
+): unit;
+
+// ============================================================
+// EOS Lobby (Part 2)
+// ============================================================
+
+[global]
+class `[[EpicLobbyUpdateLobbyCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyPromoteMemberCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyKickMemberCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_update_lobby_modification(
+    lobby_id: string,
+    local_user_id: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_lobby_modification_release([type_hint=`uint64`] modification_id: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_update_lobby(
+    lobby_id: string,
+    [type_hint=`uint64`] modification_id: gmval,
+    callback: func
+): unit;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_set_permission_level(
+    [type_hint=`uint64`] modification_id: gmval,
+    [type_hint=`EpicLobbyPermissionLevel`] permission_level: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_set_max_members(
+    [type_hint=`uint64`] modification_id: gmval,
+    [type_hint=`int64`] max_members: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_set_bucket_id(
+    [type_hint=`uint64`] modification_id: gmval,
+    bucket_id: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_set_invites_allowed(
+    [type_hint=`uint64`] modification_id: gmval,
+    invites_allowed: bool
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_add_attribute(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: string,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_remove_attribute(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_add_member_attribute(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: string,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_remove_member_attribute(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_promote_member(
+    lobby_id: string,
+    local_user_id: string,
+    target_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_kick_member(
+    lobby_id: string,
+    local_user_id: string,
+    target_user_id: string,
+    callback: func
+): unit;
+
+// ============================================================
+// EOS Lobby (Part 3)
+// ============================================================
+
+[global]
+class `[[EpicLobbySearchFindCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_create_lobby_search([type_hint=`int64`] max_results: gmval): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_lobby_search_release([type_hint=`uint64`] search_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_search_set_lobby_id(
+    [type_hint=`uint64`] search_id: gmval,
+    lobby_id: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_search_set_target_user_id(
+    [type_hint=`uint64`] search_id: gmval,
+    target_user_id: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_search_set_parameter(
+    [type_hint=`uint64`] search_id: gmval,
+    key: string,
+    value: string,
+    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_search_remove_parameter(
+    [type_hint=`uint64`] search_id: gmval,
+    key: string,
+    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_search_set_max_results(
+    [type_hint=`uint64`] search_id: gmval,
+    [type_hint=`int64`] max_results: gmval
+): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_lobby_search_find(
+    [type_hint=`uint64`] search_id: gmval,
+    local_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_lobby_search_get_search_result_count([type_hint=`uint64`] search_id: gmval): int64;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_lobby_search_copy_search_result_by_index(
+    [type_hint=`uint64`] search_id: gmval,
+    index: int64
+): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_details_release([type_hint=`uint64`] lobby_details_id: gmval): unit;
+
+// ============================================================
+// EOS Lobby (Part 4)
+// ============================================================
+
+[global]
+class `[[EpicLobbyDetailsInfo]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property bucket_id : string { get; set; }
+
+    [field]
+    property lobby_owner_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property available_slots : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property max_members : gmval { get; set; }
+
+    [field, type_hint=`EpicLobbyPermissionLevel`]
+    property permission_level : gmval { get; set; }
+
+    [field]
+    property allow_invites : bool { get; set; }
+
+    [field]
+    property presence_enabled : bool { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLobbyUpdateReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLobbyMemberUpdateReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLobbyMemberStatusReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`EpicLobbyMemberStatus`]
+    property current_status : gmval { get; set; }
+}
+
+[global]
+class `[[EpicLobbyJoinLobbyAcceptedCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`uint64`]
+    property ui_event_id : gmval { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLeaveLobbyRequestedCallbackInfo]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbySendLobbyNativeInviteRequestedCallbackInfo]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_native_account_type : string { get; set; }
+
+    [field]
+    property target_user_native_account_id : string { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_copy_lobby_details_handle(lobby_id: string, local_user_id: string): gmval;
+
+// [global, bind = typed_gml]
+// function eos_lobby_details_release([type_hint=`uint64`] lobby_details_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsInfo`]
+function eos_lobby_details_copy_info([type_hint=`uint64`] lobby_details_id: gmval): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_details_get_member_count([type_hint=`uint64`] lobby_details_id: gmval): int64;
+
+[global, bind = typed_gml]
+function eos_lobby_details_get_member_by_index([type_hint=`uint64`] lobby_details_id: gmval, index: int64): string;
+
+[global, bind = typed_gml]
+function eos_lobby_details_get_lobby_owner([type_hint=`uint64`] lobby_details_id: gmval): string;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_lobby_update_received(local_user_id: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_lobby_update_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_lobby_member_update_received(local_user_id: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_lobby_member_update_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_lobby_member_status_received(local_user_id: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_lobby_member_status_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_join_lobby_accepted(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_join_lobby_accepted([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_leave_lobby_requested(local_user_id: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_leave_lobby_requested([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_send_lobby_native_invite_requested([type_hint=`uint64`] notification_id: gmval): unit;
+
+
+}
+
+///////////////ENUMS/////////////
+
+group
+{
+
+[global, bind = typed_gml] // eos_result.h
+enum EpicResult
+{
+    // General
+    Success = 0,
+    NoConnection = 1,
+    InvalidCredentials = 2,
+    InvalidUser = 3,
+    InvalidAuth = 4,
+    AccessDenied = 5,
+    MissingPermissions = 6,
+    Token_Not_Account = 7,
+    TooManyRequests = 8,
+    AlreadyPending = 9,
+    InvalidParameters = 10,
+    InvalidRequest = 11,
+    UnrecognizedResponse = 12,
+    IncompatibleVersion = 13,
+    NotConfigured = 14,
+    AlreadyConfigured = 15,
+    NotImplemented = 16,
+    Canceled = 17,
+    NotFound = 18,
+    OperationWillRetry = 19,
+    NoChange = 20,
+    VersionMismatch = 21,
+    LimitExceeded = 22,
+    Disabled = 23,
+    DuplicateNotAllowed = 24,
+    MissingParameters_DEPRECATED = 25,
+    InvalidSandboxId = 26,
+    TimedOut = 27,
+    PartialResult = 28,
+    Missing_Role = 29,
+    Missing_Feature = 30,
+    Invalid_Sandbox = 31,
+    Invalid_Deployment = 32,
+    Invalid_Product = 33,
+    Invalid_ProductUserID = 34,
+    ServiceFailure = 35,
+    CacheDirectoryMissing = 36,
+    CacheDirectoryInvalid = 37,
+    InvalidState = 38,
+    RequestInProgress = 39,
+    ApplicationSuspended = 40,
+    NetworkDisconnected = 41,
+
+    // Auth
+    Auth_AccountLocked = 1001,
+    Auth_AccountLockedForUpdate = 1002,
+    Auth_InvalidRefreshToken = 1003,
+    Auth_InvalidToken = 1004,
+    Auth_AuthenticationFailure = 1005,
+    Auth_InvalidPlatformToken = 1006,
+    Auth_WrongAccount = 1007,
+    Auth_WrongClient = 1008,
+    Auth_FullAccountRequired = 1009,
+    Auth_HeadlessAccountRequired = 1010,
+    Auth_PasswordResetRequired = 1011,
+    Auth_PasswordCannotBeReused = 1012,
+    Auth_Expired = 1013,
+    Auth_ScopeConsentRequired = 1014,
+    Auth_ApplicationNotFound = 1015,
+    Auth_ScopeNotFound = 1016,
+    Auth_AccountFeatureRestricted = 1017,
+    Auth_AccountPortalLoadError = 1018,
+    Auth_CorrectiveActionRequired = 1019,
+    Auth_PinGrantCode = 1020,
+    Auth_PinGrantExpired = 1021,
+    Auth_PinGrantPending = 1022,
+    Auth_ExternalAuthNotLinked = 1030,
+    Auth_ExternalAuthRevoked = 1032,
+    Auth_ExternalAuthInvalid = 1033,
+    Auth_ExternalAuthRestricted = 1034,
+    Auth_ExternalAuthCannotLogin = 1035,
+    Auth_ExternalAuthExpired = 1036,
+    Auth_ExternalAuthIsLastLoginType = 1037,
+    Auth_ExchangeCodeNotFound = 1040,
+    Auth_OriginatingExchangeCodeSessionExpired = 1041,
+    Auth_AccountNotActive = 1050,
+    Auth_MFARequired = 1060,
+    Auth_ParentalControls = 1070,
+    Auth_NoRealId = 1080,
+    Auth_UserInterfaceRequired = 1090,
+
+    // Friends
+    Friends_InviteAwaitingAcceptance = 2000,
+    Friends_NoInvitation = 2001,
+    Friends_AlreadyFriends = 2003,
+    Friends_NotFriends = 2004,
+    Friends_TargetUserTooManyInvites = 2005,
+    Friends_LocalUserTooManyInvites = 2006,
+    Friends_TargetUserFriendLimitExceeded = 2007,
+    Friends_LocalUserFriendLimitExceeded = 2008,
+
+    // Presence
+    Presence_DataInvalid = 3000,
+    Presence_DataLengthInvalid = 3001,
+    Presence_DataKeyInvalid = 3002,
+    Presence_DataKeyLengthInvalid = 3003,
+    Presence_DataValueInvalid = 3004,
+    Presence_DataValueLengthInvalid = 3005,
+    Presence_RichTextInvalid = 3006,
+    Presence_RichTextLengthInvalid = 3007,
+    Presence_StatusInvalid = 3008,
+
+    // Ecom
+    Ecom_EntitlementStale = 4000,
+    Ecom_CatalogOfferStale = 4001,
+    Ecom_CatalogItemStale = 4002,
+    Ecom_CatalogOfferPriceInvalid = 4003,
+    Ecom_CheckoutLoadError = 4004,
+    Ecom_PurchaseProcessing = 4005,
+
+    // Sessions
+    Sessions_SessionInProgress = 5000,
+    Sessions_TooManyPlayers = 5001,
+    Sessions_NoPermission = 5002,
+    Sessions_SessionAlreadyExists = 5003,
+    Sessions_InvalidLock = 5004,
+    Sessions_InvalidSession = 5005,
+    Sessions_SandboxNotAllowed = 5006,
+    Sessions_InviteFailed = 5007,
+    Sessions_InviteNotFound = 5008,
+    Sessions_UpsertNotAllowed = 5009,
+    Sessions_AggregationFailed = 5010,
+    Sessions_HostAtCapacity = 5011,
+    Sessions_SandboxAtCapacity = 5012,
+    Sessions_SessionNotAnonymous = 5013,
+    Sessions_OutOfSync = 5014,
+    Sessions_TooManyInvites = 5015,
+    Sessions_PresenceSessionExists = 5016,
+    Sessions_DeploymentAtCapacity = 5017,
+    Sessions_NotAllowed = 5018,
+    Sessions_PlayerSanctioned = 5019,
+
+    // PlayerDataStorage
+    PlayerDataStorage_FilenameInvalid = 6000,
+    PlayerDataStorage_FilenameLengthInvalid = 6001,
+    PlayerDataStorage_FilenameInvalidChars = 6002,
+    PlayerDataStorage_FileSizeTooLarge = 6003,
+    PlayerDataStorage_FileSizeInvalid = 6004,
+    PlayerDataStorage_FileHandleInvalid = 6005,
+    PlayerDataStorage_DataInvalid = 6006,
+    PlayerDataStorage_DataLengthInvalid = 6007,
+    PlayerDataStorage_StartIndexInvalid = 6008,
+    PlayerDataStorage_RequestInProgress = 6009,
+    PlayerDataStorage_UserThrottled = 6010,
+    PlayerDataStorage_EncryptionKeyNotSet = 6011,
+    PlayerDataStorage_UserErrorFromDataCallback = 6012,
+    PlayerDataStorage_FileHeaderHasNewerVersion = 6013,
+    PlayerDataStorage_FileCorrupted = 6014,
+
+    // Connect
+    Connect_ExternalTokenValidationFailed = 7000,
+    Connect_UserAlreadyExists = 7001,
+    Connect_AuthExpired = 7002,
+    Connect_InvalidToken = 7003,
+    Connect_UnsupportedTokenType = 7004,
+    Connect_LinkAccountFailed = 7005,
+    Connect_ExternalServiceUnavailable = 7006,
+    Connect_ExternalServiceConfigurationFailure = 7007,
+    Connect_LinkAccountFailedMissingNintendoIdAccount_DEPRECATED = 7008,
+
+    // UI
+    UI_SocialOverlayLoadError = 8000,
+    UI_InconsistentVirtualMemoryFunctions = 8001,
+
+    // Lobby
+    Lobby_NotOwner = 9000,
+    Lobby_InvalidLock = 9001,
+    Lobby_LobbyAlreadyExists = 9002,
+    Lobby_SessionInProgress = 9003,
+    Lobby_TooManyPlayers = 9004,
+    Lobby_NoPermission = 9005,
+    Lobby_InvalidSession = 9006,
+    Lobby_SandboxNotAllowed = 9007,
+    Lobby_InviteFailed = 9008,
+    Lobby_InviteNotFound = 9009,
+    Lobby_UpsertNotAllowed = 9010,
+    Lobby_AggregationFailed = 9011,
+    Lobby_HostAtCapacity = 9012,
+    Lobby_SandboxAtCapacity = 9013,
+    Lobby_TooManyInvites = 9014,
+    Lobby_DeploymentAtCapacity = 9015,
+    Lobby_NotAllowed = 9016,
+    Lobby_MemberUpdateOnly = 9017,
+    Lobby_PresenceLobbyExists = 9018,
+    Lobby_VoiceNotEnabled = 9019,
+    Lobby_PlatformNotAllowed = 9020,
+
+    UnexpectedError = 0x7FFFFFFF
+}
+
+// eos_anticheatclient_types.h
+enum EpicAntiCheatClientMode
+{
+    Invalid = 0,
+    ClientServer = 1,
+    PeerToPeer = 2,
+}
+
+[global, bind = typed_gml]// eos_anticheatclient_types.h
+enum EpicAntiCheatClientViolationType
+{
+    Invalid = 0,
+    IntegrityCatalogNotFound = 1,
+    IntegrityCatalogError = 2,
+    IntegrityCatalogCertificateRevoked = 3,
+    IntegrityCatalogMissingMainExecutable = 4,
+    GameFileMismatch = 5,
+    RequiredGameFileNotFound = 6,
+    UnknownGameFileForbidden = 7,
+    SystemFileUntrusted = 8,
+    ForbiddenModuleLoaded = 9,
+    CorruptedMemory = 10,
+    ForbiddenToolDetected = 11,
+    InternalAntiCheatViolation = 12,
+    CorruptedNetworkMessageFlow = 13,
+    VirtualMachineNotAllowed = 14,
+    ForbiddenSystemConfiguration = 15,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonClientType
+{
+    ProtectedClient = 0,
+    UnprotectedClient = 1,
+    AIBot = 2,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonClientPlatform
+{
+    Unknown = 0,
+    Windows = 1,
+    Mac = 2,
+    Linux = 3,
+    Xbox = 4,
+    PlayStation = 5,
+    Nintendo = 6,
+    IOS = 7,
+    Android = 8,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonClientAction
+{
+    Invalid = 0,
+    RemovePlayer = 1,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonClientActionReason
+{
+    Invalid = 0,
+    InternalError = 1,
+    InvalidMessage = 2,
+    AuthenticationFailed = 3,
+    NullClient = 4,
+    HeartbeatTimeout = 5,
+    ClientViolation = 6,
+    BackendViolation = 7,
+    TemporaryCooldown = 8,
+    TemporaryBanned = 9,
+    PermanentBanned = 10,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonClientAuthStatus
+{
+    Invalid = 0,
+    LocalAuthComplete = 1,
+    RemoteAuthComplete = 2,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonClientFlags
+{
+    None = 0,
+    // Admin = (1 << 0),
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonClientInput
+{
+    Unknown = 0,
+    MouseKeyboard = 1,
+    Gamepad = 2,
+    TouchInput = 3,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonEventType
+{
+    Invalid = 0,
+    GameEvent = 1,
+    PlayerEvent = 2,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonEventParamType
+{
+    Invalid = 0,
+    ClientHandle = 1,
+    String = 2,
+    UInt32 = 3,
+    Int32 = 4,
+    UInt64 = 5,
+    Int64 = 6,
+    Vector3f = 7,
+    Quat = 8,
+    Float = 9,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonGameRoundCompetitionType
+{
+    None = 0,
+    Casual = 1,
+    Ranked = 2,
+    Competitive = 3,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonPlayerMovementState
+{
+    None = 0,
+    Crouching = 1,
+    Prone = 2,
+    Mounted = 3,
+    Swimming = 4,
+    Falling = 5,
+    Flying = 6,
+    OnLadder = 7,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonPlayerTakeDamageSource
+{
+    None = 0,
+    Player = 1,
+    NonPlayerCharacter = 2,
+    World = 3,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonPlayerTakeDamageType
+{
+    None = 0,
+    PointDamage = 1,
+    RadialDamage = 2,
+    DamageOverTime = 3,
+}
+
+[global, bind = typed_gml]// eos_anticheatcommon_types.h
+enum EpicAntiCheatCommonPlayerTakeDamageResult
+{
+    None = 0,
+    DownedDeprecated = 1,
+    EliminatedDeprecated = 2,
+    NormalToDowned = 3,
+    NormalToEliminated = 4,
+    DownedToEliminated = 5,
+}
+
+[global, bind = typed_gml]// eos_auth_types.h
+enum EpicLoginCredentialType
+{
+    Password = 0,
+    ExchangeCode = 1,
+    PersistentAuth = 2,
+    DeviceCode = 3,
+    Developer = 4,
+    RefreshToken = 5,
+    AccountPortal = 6,
+    ExternalAuth = 7,
+}
+
+[global, bind = typed_gml]// eos_auth_types.h
+enum EpicAuthTokenType
+{
+    Client = 0,
+    User = 1,
+}
+
+[global, bind = typed_gml]// eos_auth_types.h
+enum EpicAuthScopeFlags
+{
+    NoFlags = 0x0,
+    BasicProfile = 0x1,
+    FriendsList = 0x2,
+    Presence = 0x4,
+    FriendsManagement = 0x8,
+    Email = 0x10,
+    Country = 0x20,
+}
+
+[global, bind = typed_gml]// eos_auth_types.h
+enum EpicLinkAccountFlags
+{
+    NoFlags = 0x0,
+    NintendoNsaId = 0x1,
+}
+
+[global, bind = typed_gml]// eos_base.h
+enum Epicname
+{
+}
+
+[global, bind = typed_gml]// eos_common.h
+enum EpicLoginStatus
+{
+    NotLoggedIn = 0,
+    UsingLocalProfile = 1,
+    LoggedIn = 2,
+}
+
+[global, bind = typed_gml]// eos_common.h
+enum EpicAttributeType
+{
+    Boolean = 0,
+    Int64 = 1,
+    Double = 2,
+    String = 3,
+}
+
+[global, bind = typed_gml]// eos_common.h
+enum EpicComparisonOp
+{
+    Equal = 0,
+    NotEqual = 1,
+    GreaterThan = 2,
+    GreaterThanOrEqual = 3,
+    LessThan = 4,
+    LessThanOrEqual = 5,
+    Distance = 6,
+    AnyOf = 7,
+    NotAnyOf = 8,
+    OneOf = 9,
+    NotOneOf = 10,
+    Contains = 11,
+}
+
+[global, bind = typed_gml]// eos_common.h
+enum EpicExternalAccountType
+{
+    Epic = 0,
+    Steam = 1,
+    Psn = 2,
+    Xbl = 3,
+    Discord = 4,
+    Gog = 5,
+    Nintendo = 6,
+    Uplay = 7,
+    OpenId = 8,
+    Apple = 9,
+    Google = 10,
+    Oculus = 11,
+    ItchIo = 12,
+    Amazon = 13,
+    Viveport = 14,
+}
+
+[global, bind = typed_gml]// eos_common.h
+enum EpicExternalCredentialType
+{
+    Epic = 0,
+    SteamAppTicket = 1,
+    PsnIdToken = 2,
+    XblXstsToken = 3,
+    DiscordAccessToken = 4,
+    GogSessionTicket = 5,
+    NintendoIdToken = 6,
+    NintendoNsaIdToken = 7,
+    UplayAccessToken = 8,
+    OpenIdAccessToken = 9,
+    DeviceIdAccessToken = 10,
+    AppleIdToken = 11,
+    GoogleIdToken = 12,
+    OculusUseridNonce = 13,
+    ItchIoJwt = 14,
+    ItchIoKey = 15,
+    EpicIdToken = 16,
+    AmazonAccessToken = 17,
+    SteamSessionTicket = 18,
+    ViveportUserToken = 19,
+}
+
+[global, bind = typed_gml]// eos_custominvites_types.h
+enum EpicRequestToJoinResponse
+{
+    Accepted = 0,
+    Rejected = 1,
+}
+
+[global, bind = typed_gml]// eos_ecom_types.h
+enum EpicOwnershipStatus
+{
+    NotOwned = 0,
+    Owned = 1,
+}
+
+[global, bind = typed_gml]// eos_ecom_types.h
+enum EpicEcomItemType
+{
+    Durable = 0,
+    Consumable = 1,
+    Other = 2,
+}
+
+[global, bind = typed_gml]// eos_ecom_types.h
+enum EpicCheckoutOrientation
+{
+    Default = 0,
+    Portrait = 1,
+    Landscape = 2,
+}
+
+[global, bind = typed_gml]// eos_friends_types.h
+enum EpicFriendsStatus
+{
+    NotFriends = 0,
+    InviteSent = 1,
+    InviteReceived = 2,
+    Friends = 3,
+}
+
+[global, bind = typed_gml]// eos_integratedplatform_types.h
+enum EpicIntegratedPlatformManagementFlags
+{
+    Disabled = 0x0001,
+    LibraryManagedByApplication = 0x0002,
+    LibraryManagedBySDK = 0x0004,
+    DisablePresenceMirroring = 0x0008,
+    DisableSDKManagedSessions = 0x0010,
+    PreferEOSIdentity = 0x0020,
+    PreferIntegratedIdentity = 0x0040,
+    ApplicationManagedIdentityLogin = 0x0080,
+}
+
+[global, bind = typed_gml]// eos_integratedplatform_types.h
+enum EpicIntegratedPlatformPreLogoutAction
+{
+    ProcessLogoutImmediately = 0,
+    DeferLogout = 1,
+}
+
+[global, bind = typed_gml]// eos_kws_types.h
+enum EpicKWSPermissionStatus
+{
+    Granted = 0,
+    Rejected = 1,
+    Pending = 2,
+}
+
+[global, bind = typed_gml]// eos_leaderboards_types.h
+enum EpicLeaderboardAggregation
+{
+    Min = 0,
+    Max = 1,
+    Sum = 2,
+    Latest = 3,
+}
+
+[global, bind = typed_gml]// eos_lobby_types.h
+enum EpicLobbyPermissionLevel
+{
+    PublicAdvertised = 0,
+    JoinViaPresence = 1,
+    InviteOnly = 2,
+}
+
+[global, bind = typed_gml]// eos_lobby_types.h
+enum EpicLobbyAttributeVisibility
+{
+    Public = 0,
+    Private = 1,
+}
+
+[global, bind = typed_gml]// eos_lobby_types.h
+enum EpicLobbyMemberStatus
+{
+    Joined = 0,
+    Left = 1,
+    Disconnected = 2,
+    Kicked = 3,
+    Promoted = 4,
+    Closed = 5,
+}
+
+[global, bind = typed_gml]// eos_lobby_types.h
+enum EpicLobbyRTCRoomJoinActionType
+{
+    AutomaticJoin = 0,
+    ManualJoin = 1,
+}
+
+[global, bind = typed_gml]// eos_logging.h
+enum EpicLogLevel
+{
+    Off = 0,
+    Fatal = 100,
+    Error = 200,
+    Warning = 300,
+    Info = 400,
+    Verbose = 500,
+    VeryVerbose = 600,
+}
+
+[global, bind = typed_gml]// eos_logging.h
+enum EpicLogCategory
+{
+    Core = 0,
+    Auth = 1,
+    Friends = 2,
+    Presence = 3,
+    UserInfo = 4,
+    HttpSerialization = 5,
+    Ecom = 6,
+    P2P = 7,
+    Sessions = 8,
+    RateLimiter = 9,
+    PlayerDataStorage = 10,
+    Analytics = 11,
+    Messaging = 12,
+    Connect = 13,
+    Overlay = 14,
+    Achievements = 15,
+    Stats = 16,
+    UI = 17,
+    Lobby = 18,
+    Leaderboards = 19,
+    Keychain = 20,
+    IntegratedPlatform = 21,
+    TitleStorage = 22,
+    Mods = 23,
+    AntiCheat = 24,
+    Reports = 25,
+    Sanctions = 26,
+    ProgressionSnapshots = 27,
+    KWS = 28,
+    RTC = 29,
+    RTCAdmin = 30,
+    CustomInvites = 31,
+    AllCategories = 0x7fffffff,
+}
+
+[global, bind = typed_gml]// eos_metrics_types.h
+enum EpicUserControllerType
+{
+    Unknown = 0,
+    MouseKeyboard = 1,
+    GamepadControl = 2,
+    TouchControl = 3,
+}
+
+[global, bind = typed_gml]// eos_metrics_types.h
+enum EpicMetricsAccountIdType
+{
+    Epic = 0,
+    External = 1,
+}
+
+[global, bind = typed_gml]// eos_mods_types.h
+enum EpicModEnumerationType
+{
+    Installed = 0,
+    AllAvailable,
+}
+
+[global, bind = typed_gml]// eos_p2p_types.h
+enum EpicNATType
+{
+    Unknown = 0,
+    Open = 1,
+    Moderate = 2,
+    Strict = 3,
+}
+
+[global, bind = typed_gml]// eos_p2p_types.h
+enum EpicPacketReliability
+{
+    UnreliableUnordered = 0,
+    ReliableUnordered = 1,
+    ReliableOrdered = 2,
+}
+
+[global, bind = typed_gml]// eos_p2p_types.h
+enum EpicConnectionEstablishedType
+{
+    NewConnection = 0,
+    Reconnection = 1,
+}
+
+[global, bind = typed_gml]// eos_p2p_types.h
+enum EpicNetworkConnectionType
+{
+    NoConnection = 0,
+    DirectConnection = 1,
+    RelayedConnection = 2,
+}
+
+[global, bind = typed_gml]// eos_p2p_types.h
+enum EpicConnectionClosedReason
+{
+    Unknown = 0,
+    ClosedByLocalUser = 1,
+    ClosedByPeer = 2,
+    TimedOut = 3,
+    TooManyConnections = 4,
+    InvalidMessage = 5,
+    InvalidData = 6,
+    ConnectionFailed = 7,
+    ConnectionClosed = 8,
+    NegotiationFailed = 9,
+    UnexpectedError = 10,
+    ConnectionIgnored = 11,
+}
+
+[global, bind = typed_gml]// eos_p2p_types.h
+enum EpicRelayControl
+{
+    NoRelays = 0,
+    AllowRelays = 1,
+    ForceRelays = 2,
+}
+
+[global, bind = typed_gml]// eos_playerdatastorage_types.h
+enum EpicPlayerDataStorageReadResult
+{
+    ContinueReading = 1,
+    FailRequest = 2,
+    CancelRequest = 3,
+}
+
+[global, bind = typed_gml]// eos_playerdatastorage_types.h
+enum EpicPlayerDataStorageWriteResult
+{
+    ContinueWriting = 1,
+    CompleteRequest = 2,
+    FailRequest = 3,
+    CancelRequest = 4,
+}
+
+[global, bind = typed_gml]// eos_presence_types.h
+enum EpicPresenceStatus
+{
+    Offline = 0,
+    Online = 1,
+    Away = 2,
+    ExtendedAway = 3,
+    DoNotDisturb = 4,
+}
+
+[global, bind = typed_gml]// eos_reports_types.h
+enum EpicPlayerReportsCategory
+{
+    Invalid = 0,
+    Cheating = 1,
+    Exploiting = 2,
+    OffensiveProfile = 3,
+    VerbalAbuse = 4,
+    Scamming = 5,
+    Spamming = 6,
+    Other = 7,
+}
+
+[global, bind = typed_gml]// eos_rtc_audio_types.h
+enum EpicRTCAudioStatus
+{
+    Unsupported = 0,
+    Enabled = 1,
+    Disabled = 2,
+    AdminDisabled = 3,
+    NotListeningDisabled = 4,
+}
+
+[global, bind = typed_gml]// eos_rtc_audio_types.h
+enum EpicRTCAudioInputStatus
+{
+    Idle = 0,
+    Recording = 1,
+    RecordingSilent = 2,
+    RecordingDisconnected = 3,
+    Failed = 4,
+}
+
+[global, bind = typed_gml]// eos_rtc_audio_types.h
+enum EpicRTCAudioOutputStatus
+{
+    Idle = 0,
+    Playing = 1,
+    Failed = 2,
+}
+
+[global, bind = typed_gml]// eos_rtc_data_types.h
+enum EpicRTCDataStatus
+{
+    Unsupported = 0,
+    Enabled = 1,
+    Disabled = 2,
+}
+
+[global, bind = typed_gml]// eos_rtc_types.h
+enum EpicRTCParticipantStatus
+{
+    Joined = 0,
+    Left = 1,
+}
+
+[global, bind = typed_gml]// eos_sanctions_types.h
+enum EpicSanctionAppealReason
+{
+    Invalid = 0,
+    IncorrectSanction = 1,
+    CompromisedAccount = 2,
+    UnfairPunishment = 3,
+    AppealForForgiveness = 4,
+}
+
+[global, bind = typed_gml]// eos_sessions_types.h
+enum EpicOnlineSessionState
+{
+    NoSession = 0,
+    Creating = 1,
+    Pending = 2,
+    Starting = 3,
+    InProgress = 4,
+    Ending = 5,
+    Ended = 6,
+    Destroying = 7,
+}
+
+[global, bind = typed_gml]// eos_sessions_types.h
+enum EpicSessionAttributeAdvertisementType
+{
+    DontAdvertise = 0,
+    Advertise = 1,
+}
+
+[global, bind = typed_gml]// eos_sessions_types.h
+enum EpicOnlineSessionPermissionLevel
+{
+    PublicAdvertised = 0,
+    JoinViaPresence = 1,
+    InviteOnly = 2,
+}
+
+[global, bind = typed_gml]// eos_titlestorage_types.h
+enum EpicTitleStorageReadResult
+{
+    ContinueReading = 1,
+    FailRequest = 2,
+    CancelRequest = 3,
+}
+
+[global, bind = typed_gml]// eos_types.h
+enum EpicRTCBackgroundMode
+{
+    LeaveRooms = 0,
+    KeepRoomsAlive = 1,
+}
+
+[global, bind = typed_gml]// eos_types.h
+enum EpicApplicationStatus
+{
+    BackgroundConstrained = 0,
+    BackgroundUnconstrained = 1,
+    BackgroundSuspended = 2,
+    Foreground = 3,
+}
+
+[global, bind = typed_gml]// eos_types.h
+enum EpicNetworkStatus
+{
+    Disabled = 0,
+    Offline = 1,
+    Online = 2,
+}
+
+[global, bind = typed_gml]// eos_types.h
+enum EpicDesktopCrossplayStatus
+{
+    Ok = 0,
+    ApplicationNotBootstrapped = 1,
+    ServiceNotInstalled = 2,
+    ServiceStartFailed = 3,
+    ServiceNotRunning = 4,
+    OverlayDisabled = 5,
+    OverlayNotInstalled = 6,
+    OverlayTrustCheckFailed = 7,
+    OverlayLoadFailed = 8,
+}
+
+[global, bind = typed_gml]// eos_ui_types.h
+enum EpicUINotificationLocation
+{
+    TopLeft,
+    TopRight,
+    BottomLeft,
+    BottomRight,
+}
+
+}

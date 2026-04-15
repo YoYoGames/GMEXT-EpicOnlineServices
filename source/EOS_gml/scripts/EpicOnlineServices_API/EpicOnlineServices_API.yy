@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"EpicOnlineServices_API",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"EpicOnlineServices_API",
+  "parent":{
+    "name":"EpicOnlineServices",
+    "path":"EpicOnlineServices.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

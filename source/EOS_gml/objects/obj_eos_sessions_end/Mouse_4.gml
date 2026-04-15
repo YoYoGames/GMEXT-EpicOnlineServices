@@ -1,0 +1,2 @@
+
+eos_sessions_end_session(obj_eos_sessions.SessionName)

@@ -1,0 +1,2 @@
+
+eos_lobby_query_invites(global.product_user_id)
