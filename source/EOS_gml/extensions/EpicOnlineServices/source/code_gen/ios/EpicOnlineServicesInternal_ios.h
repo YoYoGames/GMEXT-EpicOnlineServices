@@ -98,6 +98,11 @@
 - (double)__EXT_NATIVE__eos_ui_show_report_player:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_metrics_begin_player_session:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_metrics_end_player_session:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_progression_snapshot_begin_snapshot:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_progression_snapshot_add_progression:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_progression_snapshot_end_snapshot:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_progression_snapshot_submit_snapshot:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (double)__EXT_NATIVE__eos_progression_snapshot_delete_snapshot:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_reports_send_player_behavior_report:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_sanctions_query_active_player_sanctions:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_sanctions_get_player_sanction_count:(char*)target_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length;

@@ -697,6 +697,43 @@
  */
 
 /**
+ * @function_partial eos_progression_snapshot_begin_snapshot
+ * @param {String} local_user_id
+ * @returns {Real} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_progression_snapshot_add_progression
+ * @param {Real} snapshot_id
+ * @param {String} key
+ * @param {String} value
+ * @returns {Enum.EpicResult} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_progression_snapshot_end_snapshot
+ * @param {Real} snapshot_id
+ * @returns {Enum.EpicResult} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_progression_snapshot_submit_snapshot
+ * @param {Real} snapshot_id
+ * @param {Function} callback
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_progression_snapshot_delete_snapshot
+ * @param {String} local_user_id
+ * @param {Function} callback
+ * @function_end 
+ */
+
+/**
  * @function_partial eos_reports_send_player_behavior_report
  * @param {String} reporter_user_id
  * @param {String} reported_user_id
@@ -3272,6 +3309,18 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicProgressionSnapshotSubmitSnapshotCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicProgressionSnapshotDeleteSnapshotCallbackInfo
+ * @member {Enum.EpicResult} result_code
  * @struct_end 
  */
 

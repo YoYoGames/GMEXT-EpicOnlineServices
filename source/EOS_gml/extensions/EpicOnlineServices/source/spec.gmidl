@@ -984,6 +984,44 @@ group
 {
 
 // ============================================================
+// EOS Progression Snapshot
+// ============================================================
+
+[global]
+class `[[EpicProgressionSnapshotSubmitSnapshotCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicProgressionSnapshotDeleteSnapshotCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_progression_snapshot_begin_snapshot(local_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_progression_snapshot_add_progression(snapshot_id: int64, key: string, value: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_progression_snapshot_end_snapshot(snapshot_id: int64): gmval;
+
+[global, bind = typed_gml]
+function eos_progression_snapshot_submit_snapshot(snapshot_id: int64, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_progression_snapshot_delete_snapshot(local_user_id: string, callback: func): unit;
+
+}
+
+group
+{
+
+// ============================================================
 // EOS Reports
 // ============================================================
 

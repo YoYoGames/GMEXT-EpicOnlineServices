@@ -1413,6 +1413,84 @@ static jdouble __JNI_WRAPPER__eos_metrics_end_player_session_30ADF7B6C38C(JNIEnv
     return static_cast<jdouble>(__ret);
 }
 
+// eos_progression_snapshot_begin_snapshot JNI wrapper signature: (Ljava/lang/String;Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_progression_snapshot_begin_snapshot_85BC6A679D6D(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring local_user_id, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    UtfChars __pin_local_user_id(env, local_user_id);
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_progression_snapshot_begin_snapshot((char *)__pin_local_user_id.c_str(), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_progression_snapshot_add_progression JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_progression_snapshot_add_progression_01084B4BC3B6(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_progression_snapshot_add_progression((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_progression_snapshot_end_snapshot JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_progression_snapshot_end_snapshot_001D5C233726(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_progression_snapshot_end_snapshot((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_progression_snapshot_submit_snapshot JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_progression_snapshot_submit_snapshot_EDFF07ED7DD5(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_progression_snapshot_submit_snapshot((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_progression_snapshot_delete_snapshot JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_progression_snapshot_delete_snapshot_AF7BFCE88B7B(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_progression_snapshot_delete_snapshot((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
 // eos_reports_send_player_behavior_report JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
 static jdouble __JNI_WRAPPER__eos_reports_send_player_behavior_report_30B202D525BD(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
 {
@@ -6166,6 +6244,11 @@ extern "C" {
             { "__EXT_JNI__eos_ui_show_report_player", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_show_report_player_D4E69E6B69B9 },
             { "__EXT_JNI__eos_metrics_begin_player_session", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_metrics_begin_player_session_7B9D8C8D179F },
             { "__EXT_JNI__eos_metrics_end_player_session", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_metrics_end_player_session_30ADF7B6C38C },
+            { "__EXT_JNI__eos_progression_snapshot_begin_snapshot", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_progression_snapshot_begin_snapshot_85BC6A679D6D },
+            { "__EXT_JNI__eos_progression_snapshot_add_progression", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_progression_snapshot_add_progression_01084B4BC3B6 },
+            { "__EXT_JNI__eos_progression_snapshot_end_snapshot", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_progression_snapshot_end_snapshot_001D5C233726 },
+            { "__EXT_JNI__eos_progression_snapshot_submit_snapshot", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_progression_snapshot_submit_snapshot_EDFF07ED7DD5 },
+            { "__EXT_JNI__eos_progression_snapshot_delete_snapshot", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_progression_snapshot_delete_snapshot_AF7BFCE88B7B },
             { "__EXT_JNI__eos_reports_send_player_behavior_report", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_reports_send_player_behavior_report_30B202D525BD },
             { "__EXT_JNI__eos_sanctions_query_active_player_sanctions", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sanctions_query_active_player_sanctions_32B270487308 },
             { "__EXT_JNI__eos_sanctions_get_player_sanction_count", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sanctions_get_player_sanction_count_B1CB6514CB91 },

@@ -1500,6 +1500,36 @@ function EpicUIShowReportPlayerCallbackInfo() constructor
 }
 
 /**
+ * @returns {Struct.EpicProgressionSnapshotSubmitSnapshotCallbackInfo} 
+ */
+function EpicProgressionSnapshotSubmitSnapshotCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 3622848284;
+
+    self.result_code = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicProgressionSnapshotDeleteSnapshotCallbackInfo} 
+ */
+function EpicProgressionSnapshotDeleteSnapshotCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 2290669999;
+
+    self.result_code = undefined;
+
+}
+
+/**
  * @returns {Struct.EpicReportsSendPlayerBehaviorReportCallbackInfo} 
  */
 function EpicReportsSendPlayerBehaviorReportCallbackInfo() constructor
@@ -6215,6 +6245,92 @@ function __EpicUIShowReportPlayerCallbackInfo_decode(_buffer, _offset)
         // field: target_user_id, type: String
         buffer_read(_buffer, buffer_u32);
         self.target_user_id = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicProgressionSnapshotSubmitSnapshotCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+
+        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
+        buffer_write(_buffer, buffer_u64, self.result_code);
+
+    }
+}
+
+/**
+ * @func __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicProgressionSnapshotSubmitSnapshotCallbackInfo} 
+ * @ignore 
+ */
+function __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicProgressionSnapshotSubmitSnapshotCallbackInfo();
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+        self.result_code = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicProgressionSnapshotDeleteSnapshotCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+
+        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
+        buffer_write(_buffer, buffer_u64, self.result_code);
+
+    }
+}
+
+/**
+ * @func __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicProgressionSnapshotDeleteSnapshotCallbackInfo} 
+ * @ignore 
+ */
+function __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicProgressionSnapshotDeleteSnapshotCallbackInfo();
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+        self.result_code = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -16672,6 +16788,124 @@ function eos_metrics_end_player_session(_product_user_id, _account_id_type, _con
 }
 
 /**
+ * @param {String} _local_user_id
+ * @returns {Real} 
+ */
+function eos_progression_snapshot_begin_snapshot(_local_user_id)
+{
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_progression_snapshot_begin_snapshot(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _snapshot_id
+ * @param {String} _key
+ * @param {String} _value
+ * @returns {Enum.EpicResult} 
+ */
+function eos_progression_snapshot_add_progression(_snapshot_id, _key, _value)
+{
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _snapshot_id, type: Int64
+    if (!is_numeric(_snapshot_id)) show_error($"{_GMFUNCTION_} :: _snapshot_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _snapshot_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: String
+    if (!is_string(_value)) show_error($"{_GMFUNCTION_} :: _value expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_value));
+    buffer_write(__args_buffer, buffer_string, _value);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_progression_snapshot_add_progression(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _snapshot_id
+ * @returns {Enum.EpicResult} 
+ */
+function eos_progression_snapshot_end_snapshot(_snapshot_id)
+{
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _snapshot_id, type: Int64
+    if (!is_numeric(_snapshot_id)) show_error($"{_GMFUNCTION_} :: _snapshot_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _snapshot_id);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_progression_snapshot_end_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _snapshot_id
+ * @param {Function} _callback
+ */
+function eos_progression_snapshot_submit_snapshot(_snapshot_id, _callback)
+{
+    static __dispatcher = __EpicOnlineServices_get_dispatcher();
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _snapshot_id, type: Int64
+    if (!is_numeric(_snapshot_id)) show_error($"{_GMFUNCTION_} :: _snapshot_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _snapshot_id);
+
+    // param: _callback, type: Function
+    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+
+    var _return_value = __eos_progression_snapshot_submit_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
+/**
+ * @param {String} _local_user_id
+ * @param {Function} _callback
+ */
+function eos_progression_snapshot_delete_snapshot(_local_user_id, _callback)
+{
+    static __dispatcher = __EpicOnlineServices_get_dispatcher();
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _local_user_id, type: String
+    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
+    buffer_write(__args_buffer, buffer_string, _local_user_id);
+
+    // param: _callback, type: Function
+    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+
+    var _return_value = __eos_progression_snapshot_delete_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
+/**
  * @param {String} _reporter_user_id
  * @param {String} _reported_user_id
  * @param {Enum.EpicPlayerReportsCategory} _category
@@ -24144,6 +24378,8 @@ function __EpicOnlineServices_get_decoders()
         __EpicUIHideFriendsCallbackInfo_decode,
         __EpicUIShowBlockPlayerCallbackInfo_decode,
         __EpicUIShowReportPlayerCallbackInfo_decode,
+        __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_decode,
+        __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_decode,
         __EpicReportsSendPlayerBehaviorReportCallbackInfo_decode,
         __EpicSanctionsPlayerSanction_decode,
         __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_decode,

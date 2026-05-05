@@ -114,6 +114,11 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_ui_show_report_player(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_metrics_begin_player_session(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_metrics_end_player_session(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_progression_snapshot_begin_snapshot(String local_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_progression_snapshot_add_progression(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_progression_snapshot_end_snapshot(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_progression_snapshot_submit_snapshot(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_progression_snapshot_delete_snapshot(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_reports_send_player_behavior_report(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_sanctions_query_active_player_sanctions(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_sanctions_get_player_sanction_count(String target_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length);

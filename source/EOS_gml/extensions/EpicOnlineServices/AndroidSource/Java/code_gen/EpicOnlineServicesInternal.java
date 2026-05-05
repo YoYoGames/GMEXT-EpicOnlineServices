@@ -392,6 +392,26 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_metrics_end_player_session(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
+    public double __EXT_NATIVE__eos_progression_snapshot_begin_snapshot(String local_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_progression_snapshot_begin_snapshot(local_user_id, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_progression_snapshot_add_progression(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_progression_snapshot_add_progression(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_progression_snapshot_end_snapshot(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_progression_snapshot_end_snapshot(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_progression_snapshot_submit_snapshot(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_progression_snapshot_submit_snapshot(__arg_buffer, __arg_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_progression_snapshot_delete_snapshot(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_progression_snapshot_delete_snapshot(__arg_buffer, __arg_buffer_length);
+    }
     public double __EXT_NATIVE__eos_reports_send_player_behavior_report(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_reports_send_player_behavior_report(__arg_buffer, __arg_buffer_length);

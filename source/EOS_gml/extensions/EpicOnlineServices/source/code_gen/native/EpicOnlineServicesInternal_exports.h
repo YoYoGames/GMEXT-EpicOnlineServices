@@ -104,6 +104,11 @@ GMEXPORT double __EXT_NATIVE__eos_ui_show_block_player(char* __arg_buffer, doubl
 GMEXPORT double __EXT_NATIVE__eos_ui_show_report_player(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_metrics_begin_player_session(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_metrics_end_player_session(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_begin_snapshot(char* local_user_id, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_add_progression(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_end_snapshot(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_submit_snapshot(char* __arg_buffer, double __arg_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_delete_snapshot(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_reports_send_player_behavior_report(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_sanctions_query_active_player_sanctions(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_sanctions_get_player_sanction_count(char* target_user_id, char* __ret_buffer, double __ret_buffer_length);

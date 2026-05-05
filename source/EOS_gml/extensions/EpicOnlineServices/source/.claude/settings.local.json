@@ -10,7 +10,17 @@
       "Bash(find \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\" -type d \\\\\\( -iname \"*include*\" -o -iname \"*sdk*\" -o -iname \"*eossdk*\" \\\\\\) 2>/dev/null | head -20)",
       "Read(//d/Github/GMEXT-EpicOnlineServices/**)",
       "Bash(Get-ChildItem -Recurse -Filter \"eos_custominvites*.h\" \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\")",
-      "PowerShell(head -20)"
+      "PowerShell(head -20)",
+      "Bash(grep -oE \"type_hint\\\\s*=\\\\s*\\\\`[^\\\\`]+\\\\`\" spec.gmidl)",
+      "Bash(grep -A1 '^\\\\[global.*bind.*typed_gml\\\\]$')",
+      "Bash(awk '/^\\\\[global.*bind.*typed_gml\\\\]$/{getline; if\\($0 ~ /function.*:.*gmval/ && $0 !~ /type_hint/\\) print NR\": \"$0}' spec.gmidl)",
+      "Bash(awk 'NR==1{label=$0; next} /^function/{if\\(label !~ /type_hint/\\) print NR\": \"label\"\\\\n\"NR+1\": \"$0; label=\"\"} /^\\\\[/{label=$0}')",
+      "Bash(awk 'NR==1 {line=$0; next} /^function/ && line ~ /^\\\\[global.*typed_gml\\\\]$/ && $0 ~ /: gmval/ && line !~ /type_hint/ {print NR\": \"line\"\\\\n\"NR+1\": \"$0} {line=$0}' spec.gmidl)",
+      "Bash(awk 'NR==1 {line=$0; next} /^function/ && line ~ /^\\\\[global.*typed_gml\\\\]$/ && $0 ~ /: gmval$/ && line !~ /type_hint/ {print NR\": \"line\" \\\\n\"NR+1\": \"$0} {line=$0}' spec.gmidl)",
+      "Bash(grep -E \"^\\\\s*\\\\[field\\\\]\\\\s*$\" spec.gmidl -A1)",
+      "Bash(git ls-tree *)",
+      "Bash(ls \"C:\\\\Users\\\\jzavala\\\\Desktop\" 2>&1 | head -30)",
+      "Read(//c/Users/jzavala/Desktop/**)"
     ]
   }
 }

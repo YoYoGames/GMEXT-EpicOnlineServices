@@ -1276,6 +1276,80 @@ GMEXPORT double __EXT_NATIVE__eos_metrics_end_player_session(char* __arg_buffer,
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_begin_snapshot(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_progression_snapshot_begin_snapshot(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_add_progression(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: snapshot_id, type: Int64
+    std::int64_t snapshot_id = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: String
+    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_progression_snapshot_add_progression(snapshot_id, key, value);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_end_snapshot(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: snapshot_id, type: Int64
+    std::int64_t snapshot_id = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_progression_snapshot_end_snapshot(snapshot_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_submit_snapshot(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: snapshot_id, type: Int64
+    std::int64_t snapshot_id = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_progression_snapshot_submit_snapshot(snapshot_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_delete_snapshot(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_progression_snapshot_delete_snapshot(local_user_id, callback);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_reports_send_player_behavior_report(char* __arg_buffer, double __arg_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};

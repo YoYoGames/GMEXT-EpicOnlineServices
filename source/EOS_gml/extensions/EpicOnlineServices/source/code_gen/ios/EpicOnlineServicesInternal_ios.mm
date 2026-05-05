@@ -468,6 +468,26 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_metrics_end_player_session(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
+- (double)__EXT_NATIVE__eos_progression_snapshot_begin_snapshot:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_progression_snapshot_begin_snapshot(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_progression_snapshot_add_progression:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_progression_snapshot_add_progression(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_progression_snapshot_end_snapshot:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_progression_snapshot_end_snapshot(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_progression_snapshot_submit_snapshot:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_progression_snapshot_submit_snapshot(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_progression_snapshot_delete_snapshot:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_progression_snapshot_delete_snapshot(__arg_buffer, __arg_buffer_length);
+}
 - (double)__EXT_NATIVE__eos_reports_send_player_behavior_report:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_reports_send_player_behavior_report(__arg_buffer, __arg_buffer_length);
