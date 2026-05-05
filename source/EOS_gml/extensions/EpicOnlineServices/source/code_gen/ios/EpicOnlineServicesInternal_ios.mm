@@ -1656,5 +1656,9 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__EpicOnlineServices_invocation_handler(__arg_buffer, __arg_buffer_length);
 }
+- (double)__EXT_NATIVE__EpicOnlineServices_queue_buffer:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__EpicOnlineServices_queue_buffer(__arg_buffer, __arg_buffer_length);
+}
 @end
 

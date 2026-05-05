@@ -6,6 +6,9 @@
 // Internal function used for fetching dispatched function calls to GML
 GMEXPORT double __EXT_NATIVE__EpicOnlineServices_invocation_handler(char* __ret_buffer, double __ret_buffer_length);
 
+// Internal function used for queueing buffers to native code
+GMEXPORT double __EXT_NATIVE__EpicOnlineServices_queue_buffer(char* __arg_buffer, double __arg_buffer_length);
+
 GMEXPORT double __EXT_NATIVE__eos_test();
 GMEXPORT char* __EXT_NATIVE__eos_api_last_error();
 GMEXPORT double __EXT_NATIVE__eos_api_is_initialized();

@@ -1930,7 +1930,8 @@
  * @param {String} remote_user_id
  * @param {String} socket_name
  * @param {Real} channel
- * @param {String} data
+ * @param {Buffer} data
+ * @param {Real} bytes
  * @param {Bool} allow_delayed_delivery
  * @param {Enum.EpicPacketReliability} reliability
  * @param {Bool} disable_auto_accept_connection
@@ -1949,7 +1950,9 @@
 /**
  * @function_partial eos_p2p_receive_packet
  * @param {String} local_user_id
- * @param {Real} max_data_size_bytes
+ * @param {Buffer} out_data
+ * @param {Real} max_bytes
+ * @param {Real} offset
  * @param {Real} channel
  * @returns {Struct.EpicP2PReceivedPacket} 
  * @function_end 
@@ -3802,7 +3805,7 @@
  * @member {String} peer_id
  * @member {String} socket_name
  * @member {Real} channel
- * @member {String} data
+ * @member {Bool} ok
  * @member {Real} bytes_written
  * @struct_end 
  */

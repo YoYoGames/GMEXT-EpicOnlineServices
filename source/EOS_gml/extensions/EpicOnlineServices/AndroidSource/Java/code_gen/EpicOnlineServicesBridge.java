@@ -18,6 +18,7 @@ public final class EpicOnlineServicesBridge {
     }
 
     public static native double __EXT_JNI__EpicOnlineServices_invocation_handler(ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__EpicOnlineServices_queue_buffer(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_test();
     public static native String __EXT_JNI__eos_api_last_error();
     public static native double __EXT_JNI__eos_api_is_initialized();

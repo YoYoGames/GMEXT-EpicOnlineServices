@@ -2641,7 +2641,7 @@ function EpicP2PReceivedPacket() constructor
     self.peer_id = undefined;
     self.socket_name = undefined;
     self.channel = undefined;
-    self.data = undefined;
+    self.ok = undefined;
     self.bytes_written = undefined;
 
 }
@@ -10236,10 +10236,9 @@ function __EpicP2PReceivedPacket_encode(_inst, _buffer, _offset, _where = _GMFUN
         if (!is_numeric(self.channel)) show_error($"{_where} :: self.channel expected number", true);
         buffer_write(_buffer, buffer_u64, self.channel);
 
-        // field: data, type: String
-        if (!is_string(self.data)) show_error($"{_where} :: self.data expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.data));
-        buffer_write(_buffer, buffer_string, self.data);
+        // field: ok, type: Bool
+        if (!is_bool(self.ok)) show_error($"{_where} :: self.ok expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.ok);
 
         // field: bytes_written, type: Int64
         if (!is_numeric(self.bytes_written)) show_error($"{_where} :: self.bytes_written expected number", true);
@@ -10273,9 +10272,8 @@ function __EpicP2PReceivedPacket_decode(_buffer, _offset)
         // field: channel, type: Int64
         self.channel = buffer_read(_buffer, buffer_u64);
 
-        // field: data, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.data = buffer_read(_buffer, buffer_string);
+        // field: ok, type: Bool
+        self.ok = buffer_read(_buffer, buffer_bool);
 
         // field: bytes_written, type: Int64
         self.bytes_written = buffer_read(_buffer, buffer_u64);
@@ -20714,13 +20712,14 @@ function eos_lobby_remove_notify_lobby_invite_rejected(_notification_id)
  * @param {String} _remote_user_id
  * @param {String} _socket_name
  * @param {Real} _channel
- * @param {String} _data
+ * @param {Id.Buffer} _data
+ * @param {Real} _bytes
  * @param {Bool} _allow_delayed_delivery
  * @param {Enum.EpicPacketReliability} _reliability
  * @param {Bool} _disable_auto_accept_connection
  * @returns {Enum.EpicResult} 
  */
-function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _channel, _data, _allow_delayed_delivery, _reliability, _disable_auto_accept_connection)
+function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _channel, _data, _bytes, _allow_delayed_delivery, _reliability, _disable_auto_accept_connection)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20743,10 +20742,13 @@ function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _cha
     if (!is_numeric(_channel)) show_error($"{_GMFUNCTION_} :: _channel expected number", true);
     buffer_write(__args_buffer, buffer_u64, _channel);
 
-    // param: _data, type: String
-    if (!is_string(_data)) show_error($"{_GMFUNCTION_} :: _data expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_data));
-    buffer_write(__args_buffer, buffer_string, _data);
+    // param: _data, type: Buffer
+    if (!buffer_exists(_data)) show_error($"{_GMFUNCTION_} :: _data expected Id.Buffer", true);
+    __EpicOnlineServices_queue_buffer(buffer_get_address(_data), buffer_get_size(_data));
+
+    // param: _bytes, type: UInt32
+    if (!is_numeric(_bytes)) show_error($"{_GMFUNCTION_} :: _bytes expected number", true);
+    buffer_write(__args_buffer, buffer_u32, _bytes);
 
     // param: _allow_delayed_delivery, type: Bool
     if (!is_bool(_allow_delayed_delivery)) show_error($"{_GMFUNCTION_} :: _allow_delayed_delivery expected bool", true);
@@ -20799,11 +20801,13 @@ function eos_p2p_get_next_received_packet_size(_local_user_id, _channel)
 
 /**
  * @param {String} _local_user_id
- * @param {Real} _max_data_size_bytes
+ * @param {Id.Buffer} _out_data
+ * @param {Real} _max_bytes
+ * @param {Real} _offset
  * @param {Real} _channel
  * @returns {Struct.EpicP2PReceivedPacket} 
  */
-function eos_p2p_receive_packet(_local_user_id, _max_data_size_bytes, _channel)
+function eos_p2p_receive_packet(_local_user_id, _out_data, _max_bytes, _offset, _channel)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20812,9 +20816,17 @@ function eos_p2p_receive_packet(_local_user_id, _max_data_size_bytes, _channel)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _max_data_size_bytes, type: Int64
-    if (!is_numeric(_max_data_size_bytes)) show_error($"{_GMFUNCTION_} :: _max_data_size_bytes expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _max_data_size_bytes);
+    // param: _out_data, type: Buffer
+    if (!buffer_exists(_out_data)) show_error($"{_GMFUNCTION_} :: _out_data expected Id.Buffer", true);
+    __EpicOnlineServices_queue_buffer(buffer_get_address(_out_data), buffer_get_size(_out_data));
+
+    // param: _max_bytes, type: UInt32
+    if (!is_numeric(_max_bytes)) show_error($"{_GMFUNCTION_} :: _max_bytes expected number", true);
+    buffer_write(__args_buffer, buffer_u32, _max_bytes);
+
+    // param: _offset, type: UInt32
+    if (!is_numeric(_offset)) show_error($"{_GMFUNCTION_} :: _offset expected number", true);
+    buffer_write(__args_buffer, buffer_u32, _offset);
 
     // param: _channel, type: Int64
     if (!is_numeric(_channel)) show_error($"{_GMFUNCTION_} :: _channel expected number", true);

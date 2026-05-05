@@ -15,6 +15,17 @@ GMEXPORT double __EXT_NATIVE__EpicOnlineServices_invocation_handler(char* __ret_
     return __dispatch_queue.fetch(__bw);
 }
 
+static std::queue<gm::wire::GMBuffer> __buffer_queue;
+
+// Internal function used for queueing buffers to native code
+GMEXPORT double __EXT_NATIVE__EpicOnlineServices_queue_buffer(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::wire::GMBuffer __buff{__arg_buffer, static_cast<uint64_t>(__arg_buffer_length)};
+    __buffer_queue.push(__buff);
+
+    return 1.0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_test()
 {
     auto&& __result = eos_test();
@@ -3820,8 +3831,12 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_send_packet(char* __arg_buffer, double __a
     // field: channel, type: Int64
     std::int64_t channel = gm::wire::codec::readValue<std::int64_t>(__br);
 
-    // field: data, type: String
-    std::string_view data = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: data, type: Buffer
+    gm::wire::GMBuffer data = __buffer_queue.front();
+    __buffer_queue.pop();
+
+    // field: bytes, type: UInt32
+    std::uint32_t bytes = gm::wire::codec::readValue<std::uint32_t>(__br);
 
     // field: allow_delayed_delivery, type: Bool
     bool allow_delayed_delivery = gm::wire::codec::readValue<bool>(__br);
@@ -3832,7 +3847,7 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_send_packet(char* __arg_buffer, double __a
     // field: disable_auto_accept_connection, type: Bool
     bool disable_auto_accept_connection = gm::wire::codec::readValue<bool>(__br);
 
-    auto&& __result = eos_p2p_send_packet(local_user_id, remote_user_id, socket_name, channel, data, allow_delayed_delivery, reliability, disable_auto_accept_connection);
+    auto&& __result = eos_p2p_send_packet(local_user_id, remote_user_id, socket_name, channel, data, bytes, allow_delayed_delivery, reliability, disable_auto_accept_connection);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -3865,13 +3880,20 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_receive_packet(char* __arg_buffer, double 
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: max_data_size_bytes, type: Int64
-    std::int64_t max_data_size_bytes = gm::wire::codec::readValue<std::int64_t>(__br);
+    // field: out_data, type: Buffer
+    gm::wire::GMBuffer out_data = __buffer_queue.front();
+    __buffer_queue.pop();
+
+    // field: max_bytes, type: UInt32
+    std::uint32_t max_bytes = gm::wire::codec::readValue<std::uint32_t>(__br);
+
+    // field: offset, type: UInt32
+    std::uint32_t offset = gm::wire::codec::readValue<std::uint32_t>(__br);
 
     // field: channel, type: Int64
     std::int64_t channel = gm::wire::codec::readValue<std::int64_t>(__br);
 
-    auto&& __result = eos_p2p_receive_packet(local_user_id, max_data_size_bytes, channel);
+    auto&& __result = eos_p2p_receive_packet(local_user_id, out_data, max_bytes, offset, channel);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: struct EpicP2PReceivedPacket

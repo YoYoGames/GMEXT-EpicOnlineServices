@@ -8,6 +8,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__EpicOnlineServices_invocation_handler(__ret_buffer, __ret_buffer_length);
     }
+    public double __EXT_NATIVE__EpicOnlineServices_queue_buffer(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__EpicOnlineServices_queue_buffer(__arg_buffer, __arg_buffer_length);
+    }
     public double __EXT_NATIVE__eos_test()
     {
         return __EXT_JNI__eos_test();

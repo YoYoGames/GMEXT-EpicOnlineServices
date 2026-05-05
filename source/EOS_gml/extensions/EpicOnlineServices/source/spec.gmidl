@@ -2716,7 +2716,7 @@ class `[[EpicP2PReceivedPacket]]` prototype Object
     property channel : gmval { get; set; }
 
     [field]
-    property data : string { get; set; }
+    property ok : bool { get; set; }
 
     [field, type_hint=`int64`]
     property bytes_written : gmval { get; set; }
@@ -2850,7 +2850,8 @@ function eos_p2p_send_packet(
     remote_user_id: string,
     socket_name: string,
     channel: int64,
-    data: string,
+    [type_hint=buffer] data: gmval,
+    bytes: uint32,
     allow_delayed_delivery: bool,
     [type_hint=`EpicPacketReliability`] reliability: gmval,
     disable_auto_accept_connection: bool
@@ -2860,7 +2861,7 @@ function eos_p2p_send_packet(
 function eos_p2p_get_next_received_packet_size(local_user_id: string, channel: int64): int64;
 
 [global, bind = typed_gml, type_hint=`EpicP2PReceivedPacket`]
-function eos_p2p_receive_packet(local_user_id: string, max_data_size_bytes: int64, channel: int64): gmval;
+function eos_p2p_receive_packet(local_user_id: string, [type_hint=buffer] out_data: gmval, max_bytes: uint32, offset: uint32, channel: int64): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_p2p_accept_connection(local_user_id: string, remote_user_id: string, socket_name: string): gmval;

@@ -123,6 +123,19 @@ static jdouble __JNI_WRAPPER__EpicOnlineServices_invocation_handler(JNIEnv* env,
     double __ret = __EXT_NATIVE__EpicOnlineServices_invocation_handler((char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
+// __EpicOnlineServices_queue_buffer JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__EpicOnlineServices_queue_buffer(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+
+    double __ret = __EXT_NATIVE__EpicOnlineServices_queue_buffer((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
 // eos_test JNI wrapper signature: ()D
 static jdouble __JNI_WRAPPER__eos_test_A88F417FC731(JNIEnv* /* env */, jclass /* EpicOnlineServicesBridge */)
 {
@@ -6057,6 +6070,7 @@ extern "C" {
         // Registers all the native methods
         static const JNINativeMethod methods[] = {
             { "__EXT_JNI__EpicOnlineServices_invocation_handler", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__EpicOnlineServices_invocation_handler },
+            { "__EXT_JNI__EpicOnlineServices_queue_buffer", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__EpicOnlineServices_queue_buffer },
             { "__EXT_JNI__eos_test", "()D", (void*)__JNI_WRAPPER__eos_test_A88F417FC731 },
             { "__EXT_JNI__eos_api_last_error", "()Ljava/lang/String;", (void*)__JNI_WRAPPER__eos_api_last_error_CD71975C9C13 },
             { "__EXT_JNI__eos_api_is_initialized", "()D", (void*)__JNI_WRAPPER__eos_api_is_initialized_768AC01976A4 },

@@ -52,67 +52,6 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
     return std::string(buf);
 }
 
-// ---- Base64 ----
-
-static const char k_b64_chars[] =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-static std::string base64_encode(const void* data, size_t len)
-{
-    const auto* src = static_cast<const uint8_t*>(data);
-    std::string out;
-    out.reserve(((len + 2) / 3) * 4);
-    for (size_t i = 0; i < len; i += 3) {
-        uint32_t b = (uint32_t)src[i] << 16;
-        if (i + 1 < len) b |= (uint32_t)src[i + 1] << 8;
-        if (i + 2 < len) b |= src[i + 2];
-        out += k_b64_chars[(b >> 18) & 0x3f];
-        out += k_b64_chars[(b >> 12) & 0x3f];
-        out += (i + 1 < len) ? k_b64_chars[(b >> 6) & 0x3f] : '=';
-        out += (i + 2 < len) ? k_b64_chars[b & 0x3f] : '=';
-    }
-    return out;
-}
-
-static std::vector<uint8_t> base64_decode(std::string_view encoded)
-{
-    static const int8_t lut[256] = {
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,62,-1,-1,-1,63,
-        52,53,54,55,56,57,58,59,60,61,-1,-1,-1,-1,-1,-1,
-        -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,
-        15,16,17,18,19,20,21,22,23,24,25,-1,-1,-1,-1,-1,
-        -1,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-        41,42,43,44,45,46,47,48,49,50,51,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
-    };
-    std::vector<uint8_t> out;
-    out.reserve((encoded.size() / 4) * 3);
-    uint32_t buf = 0;
-    int bits = 0;
-    for (char c : encoded) {
-        if (c == '=') break;
-        int8_t v = lut[(uint8_t)c];
-        if (v < 0) continue;
-        buf = (buf << 6) | (uint32_t)v;
-        bits += 6;
-        if (bits >= 8) {
-            bits -= 8;
-            out.push_back((uint8_t)(buf >> bits));
-            buf &= (1u << bits) - 1u;
-        }
-    }
-    return out;
-}
-
 // ---- Notify callback storage ----
 
 static std::mutex g_notify_mutex;
@@ -232,7 +171,8 @@ gm_enums::EpicResult eos_p2p_send_packet(
     std::string_view remote_user_id,
     std::string_view socket_name,
     int64_t channel,
-    std::string_view data,
+    gm::wire::GMBuffer data,
+    std::uint32_t bytes,
     bool allow_delayed_delivery,
     gm_enums::EpicPacketReliability reliability,
     bool disable_auto_accept_connection)
@@ -253,8 +193,6 @@ gm_enums::EpicResult eos_p2p_send_packet(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::vector<uint8_t> packet_data = base64_decode(data);
-
     EOS_P2P_SocketId socket_id{};
     eos_p2p_fill_socket_id(socket_id, socket_name);
 
@@ -264,8 +202,8 @@ gm_enums::EpicResult eos_p2p_send_packet(
     opts.RemoteUserId = remote_user;
     opts.SocketId = &socket_id;
     opts.Channel = (uint8_t)(channel & 0xFF);
-    opts.DataLengthBytes = (uint32_t)packet_data.size();
-    opts.Data = packet_data.empty() ? nullptr : packet_data.data();
+    opts.DataLengthBytes = bytes;
+    opts.Data = (const void*)data.data();
     opts.bAllowDelayedDelivery = allow_delayed_delivery ? EOS_TRUE : EOS_FALSE;
     opts.Reliability = (EOS_EPacketReliability)reliability;
     opts.bDisableAutoAcceptConnection = disable_auto_accept_connection ? EOS_TRUE : EOS_FALSE;
@@ -316,7 +254,9 @@ int64_t eos_p2p_get_next_received_packet_size(std::string_view local_user_id, in
 
 gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(
     std::string_view local_user_id,
-    int64_t max_data_size_bytes,
+    gm::wire::GMBuffer out_data,
+    std::uint32_t max_bytes,
+    std::uint32_t offset,
     int64_t channel)
 {
     gm_structs::EpicP2PReceivedPacket out{};
@@ -337,15 +277,15 @@ gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(
     uint8_t channel_val = (uint8_t)(channel & 0xFF);
     const uint8_t* channel_ptr = (channel >= 0 && channel <= 255) ? &channel_val : nullptr;
 
-    if (max_data_size_bytes <= 0)
-        max_data_size_bytes = EOS_P2P_MAX_PACKET_SIZE;
+    if (max_bytes == 0)
+        max_bytes = EOS_P2P_MAX_PACKET_SIZE;
 
-    std::vector<uint8_t> buf((size_t)max_data_size_bytes);
+    std::vector<uint8_t> buf(max_bytes);
 
     EOS_P2P_ReceivePacketOptions opts{};
     opts.ApiVersion = EOS_P2P_RECEIVEPACKET_API_LATEST;
     opts.LocalUserId = local_user;
-    opts.MaxDataSizeBytes = (uint32_t)max_data_size_bytes;
+    opts.MaxDataSizeBytes = max_bytes;
     opts.RequestedChannel = channel_ptr;
 
     EOS_ProductUserId peer_id = nullptr;
@@ -365,7 +305,10 @@ gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(
     out.peer_id = eos_product_user_id_to_string_internal(peer_id);
     out.socket_name = std::string(socket_id.SocketName);
     out.channel = (int64_t)out_channel;
-    out.data = base64_encode(buf.data(), (size_t)bytes_written);
+    auto w = out_data.getWriter();
+    w.skip(offset);
+    w.writeBytes((const char*)buf.data(), bytes_written);
+    out.ok = true;
     out.bytes_written = (int64_t)bytes_written;
     return out;
 }

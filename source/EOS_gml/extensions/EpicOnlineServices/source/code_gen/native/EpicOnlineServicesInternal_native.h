@@ -1748,7 +1748,7 @@ namespace gm_structs
         std::string peer_id;
         std::string socket_name;
         std::int64_t channel;
-        std::string data;
+        bool ok;
         std::int64_t bytes_written;
     };
 
@@ -4169,7 +4169,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.peer_id);
         gm::wire::codec::writeValue(_buf, obj.socket_name);
         gm::wire::codec::writeValue(_buf, obj.channel);
-        gm::wire::codec::writeValue(_buf, obj.data);
+        gm::wire::codec::writeValue(_buf, obj.ok);
         gm::wire::codec::writeValue(_buf, obj.bytes_written);
     }
 
@@ -4180,7 +4180,7 @@ namespace gm::wire::codec
         obj.peer_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.socket_name = gm::wire::codec::readValue<std::string>(_buf);
         obj.channel = gm::wire::codec::readValue<std::int64_t>(_buf);
-        obj.data = gm::wire::codec::readValue<std::string>(_buf);
+        obj.ok = gm::wire::codec::readValue<bool>(_buf);
         obj.bytes_written = gm::wire::codec::readValue<std::int64_t>(_buf);
         return obj;
     }
@@ -6993,9 +6993,9 @@ std::uint64_t eos_lobby_add_notify_lobby_invite_accepted(const gm::wire::GMFunct
 void eos_lobby_remove_notify_lobby_invite_accepted(std::uint64_t notification_id);
 std::uint64_t eos_lobby_add_notify_lobby_invite_rejected(const gm::wire::GMFunction& callback);
 void eos_lobby_remove_notify_lobby_invite_rejected(std::uint64_t notification_id);
-gm_enums::EpicResult eos_p2p_send_packet(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name, std::int64_t channel, std::string_view data, bool allow_delayed_delivery, gm_enums::EpicPacketReliability reliability, bool disable_auto_accept_connection);
+gm_enums::EpicResult eos_p2p_send_packet(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name, std::int64_t channel, gm::wire::GMBuffer data, std::uint32_t bytes, bool allow_delayed_delivery, gm_enums::EpicPacketReliability reliability, bool disable_auto_accept_connection);
 std::int64_t eos_p2p_get_next_received_packet_size(std::string_view local_user_id, std::int64_t channel);
-gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(std::string_view local_user_id, std::int64_t max_data_size_bytes, std::int64_t channel);
+gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(std::string_view local_user_id, gm::wire::GMBuffer out_data, std::uint32_t max_bytes, std::uint32_t offset, std::int64_t channel);
 gm_enums::EpicResult eos_p2p_accept_connection(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name);
 gm_enums::EpicResult eos_p2p_close_connection(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name);
 gm_enums::EpicResult eos_p2p_close_connections(std::string_view local_user_id, std::string_view socket_name);

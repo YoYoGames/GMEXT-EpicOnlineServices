@@ -395,5 +395,6 @@
 - (double)__EXT_NATIVE__eos_rtc_audio_add_notify_audio_output_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__EpicOnlineServices_invocation_handler:(char*)__ret_buffer arg1:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__EpicOnlineServices_queue_buffer:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 @end
 
