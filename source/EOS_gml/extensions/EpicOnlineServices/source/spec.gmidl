@@ -879,6 +879,78 @@ function eos_ui_add_notify_display_settings_updated(callback: func): gmval;
 [global, bind = typed_gml]
 function eos_ui_remove_notify_display_settings_updated([type_hint=`uint64`] notification_id: gmval): unit;
 
+// ============================================================
+// EOS UI (Part 3) — Additional functions
+// ============================================================
+
+[global]
+class `[[EpicUIHideFriendsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicUIShowBlockPlayerCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicUIShowReportPlayerCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_ui_hide_friends(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ui_get_friends_visible(local_user_id: string): bool;
+
+[global, bind = typed_gml]
+function eos_ui_get_friends_exclusive_input(local_user_id: string): bool;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_ui_pause_social_overlay(is_paused: bool): gmval;
+
+[global, bind = typed_gml]
+function eos_ui_is_social_overlay_paused(): bool;
+
+[global, bind = typed_gml, type_hint=`EpicUINotificationLocation`]
+function eos_ui_get_notification_location_preference(): gmval;
+
+[global, bind = typed_gml]
+function eos_ui_show_block_player(
+    local_user_id: string,
+    target_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_ui_show_report_player(
+    local_user_id: string,
+    target_user_id: string,
+    callback: func
+): unit;
+
 }
 
 group
@@ -1727,6 +1799,235 @@ function eos_sessions_add_notify_join_session_accepted(callback: func): gmval;
 [global, bind = typed_gml]
 function eos_sessions_remove_notify_join_session_accepted([type_hint=`uint64`] notification_id: gmval): unit;
 
+// ============================================================
+// EOS Sessions (Part 5) — SessionModification setters
+// ============================================================
+
+[global]
+class `[[EpicSessionDetailsAttribute]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+
+    [field, type_hint=`EpicAttributeType`]
+    property value_type : gmval { get; set; }
+
+    [field, type_hint=`EpicSessionAttributeAdvertisementType`]
+    property advertisement_type : gmval { get; set; }
+}
+
+[global]
+class `[[EpicSessionsSendInviteCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicSessionsRejectInviteCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicSessionsQueryInvitesCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicSessionsSessionInviteRejectedCallbackInfo]]` prototype Object
+{
+    [field]
+    property invite_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property session_id : string { get; set; }
+}
+
+[global]
+class `[[EpicSessionsLeaveSessionRequestedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property session_name : string { get; set; }
+}
+
+[global]
+class `[[EpicSessionsSendSessionNativeInviteRequestedCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`uint64`]
+    property ui_event_id : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property session_id : string { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_set_bucket_id(
+    [type_hint=`uint64`] modification_id: gmval,
+    bucket_id: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_set_host_address(
+    [type_hint=`uint64`] modification_id: gmval,
+    host_address: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_set_permission_level(
+    [type_hint=`uint64`] modification_id: gmval,
+    [type_hint=`EpicOnlineSessionPermissionLevel`] permission_level: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_set_join_in_progress_allowed(
+    [type_hint=`uint64`] modification_id: gmval,
+    allow_join_in_progress: bool
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_set_max_players(
+    [type_hint=`uint64`] modification_id: gmval,
+    [type_hint=`int64`] max_players: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_set_invites_allowed(
+    [type_hint=`uint64`] modification_id: gmval,
+    invites_allowed: bool
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_add_attribute(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: string,
+    [type_hint=`EpicSessionAttributeAdvertisementType`] advertisement_type: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_remove_attribute(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_session_details_get_session_attribute_count(
+    [type_hint=`uint64`] session_details_id: gmval
+): int64;
+
+[global, bind = typed_gml, type_hint=`EpicSessionDetailsAttribute`]
+function eos_sessions_session_details_copy_session_attribute_by_index(
+    [type_hint=`uint64`] session_details_id: gmval,
+    index: int64
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicSessionDetailsAttribute`]
+function eos_sessions_session_details_copy_session_attribute_by_key(
+    [type_hint=`uint64`] session_details_id: gmval,
+    key: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_active_session_get_registered_player_count(
+    [type_hint=`uint64`] active_session_id: gmval
+): int64;
+
+[global, bind = typed_gml]
+function eos_sessions_active_session_get_registered_player_by_index(
+    [type_hint=`uint64`] active_session_id: gmval,
+    index: int64
+): string;
+
+[global, bind = typed_gml]
+function eos_sessions_send_invite(
+    session_name: string,
+    local_user_id: string,
+    target_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_reject_invite(
+    local_user_id: string,
+    invite_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_query_invites(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_sessions_get_invite_count(local_user_id: string): int64;
+
+[global, bind = typed_gml]
+function eos_sessions_get_invite_id_by_index(local_user_id: string, index: int64): string;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_search_set_parameter(
+    [type_hint=`uint64`] search_id: gmval,
+    key: string,
+    value: string,
+    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_search_remove_parameter(
+    [type_hint=`uint64`] search_id: gmval,
+    key: string,
+    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_session_search_get_search_result_count(
+    [type_hint=`uint64`] search_id: gmval
+): int64;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_add_notify_session_invite_rejected(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_remove_notify_session_invite_rejected(
+    [type_hint=`uint64`] notification_id: gmval
+): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_add_notify_leave_session_requested(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_remove_notify_leave_session_requested(
+    [type_hint=`uint64`] notification_id: gmval
+): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_sessions_add_notify_send_session_native_invite_requested(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_sessions_remove_notify_send_session_native_invite_requested(
+    [type_hint=`uint64`] notification_id: gmval
+): unit;
+
 }
 
 group
@@ -2154,6 +2455,1737 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id: 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_send_lobby_native_invite_requested([type_hint=`uint64`] notification_id: gmval): unit;
 
+// ============================================================
+// EOS Lobby (Part N) — LobbyDetails attribute/member accessors, JoinById, HardMute, Invites
+// ============================================================
+
+[global]
+class `[[EpicLobbyDetailsAttribute]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+
+    [field, type_hint=`EpicAttributeType`]
+    property value_type : gmval { get; set; }
+
+    [field, type_hint=`EpicLobbyAttributeVisibility`]
+    property visibility : gmval { get; set; }
+}
+
+[global]
+class `[[EpicLobbyDetailsMemberInfo]]` prototype Object
+{
+    [field]
+    property user_id : string { get; set; }
+
+    [field]
+    property platform : int64 { get; set; }
+
+    [field]
+    property allows_crossplay : bool { get; set; }
+}
+
+[global]
+class `[[EpicLobbyJoinLobbyByIdCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyHardMuteMemberCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbySendInviteCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyRejectInviteCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property invite_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyQueryInvitesCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLobbyInviteReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property invite_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLobbyInviteAcceptedCallbackInfo]]` prototype Object
+{
+    [field]
+    property invite_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global]
+class `[[EpicLobbyLobbyInviteRejectedCallbackInfo]]` prototype Object
+{
+    [field]
+    property invite_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property lobby_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_lobby_details_get_attribute_count(
+    [type_hint=`uint64`] lobby_details_id: gmval
+): int64;
+
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+function eos_lobby_details_copy_attribute_by_index(
+    [type_hint=`uint64`] lobby_details_id: gmval,
+    index: int64
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+function eos_lobby_details_copy_attribute_by_key(
+    [type_hint=`uint64`] lobby_details_id: gmval,
+    key: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_details_get_member_attribute_count(
+    [type_hint=`uint64`] lobby_details_id: gmval,
+    target_user_id: string
+): int64;
+
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+function eos_lobby_details_copy_member_attribute_by_index(
+    [type_hint=`uint64`] lobby_details_id: gmval,
+    target_user_id: string,
+    index: int64
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+function eos_lobby_details_copy_member_attribute_by_key(
+    [type_hint=`uint64`] lobby_details_id: gmval,
+    target_user_id: string,
+    key: string
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsMemberInfo`]
+function eos_lobby_details_copy_member_info(
+    [type_hint=`uint64`] lobby_details_id: gmval,
+    target_user_id: string
+): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_join_lobby_by_id(
+    lobby_id: string,
+    local_user_id: string,
+    presence_enabled: bool,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_hard_mute_member(
+    lobby_id: string,
+    local_user_id: string,
+    target_user_id: string,
+    hard_mute: bool,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_send_invite(
+    lobby_id: string,
+    local_user_id: string,
+    target_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_reject_invite(
+    invite_id: string,
+    local_user_id: string,
+    callback: func
+): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_query_invites(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_lobby_get_invite_count(local_user_id: string): int64;
+
+[global, bind = typed_gml]
+function eos_lobby_get_invite_id_by_index(local_user_id: string, index: int64): string;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_lobby_invite_received(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_lobby_invite_received(
+    [type_hint=`uint64`] notification_id: gmval
+): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_lobby_invite_accepted(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_lobby_invite_accepted(
+    [type_hint=`uint64`] notification_id: gmval
+): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_lobby_invite_rejected(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_lobby_invite_rejected(
+    [type_hint=`uint64`] notification_id: gmval
+): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS P2P
+// ============================================================
+
+[global]
+class `[[EpicP2PReceivedPacket]]` prototype Object
+{
+    [field]
+    property peer_id : string { get; set; }
+
+    [field]
+    property socket_name : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property channel : gmval { get; set; }
+
+    [field]
+    property data : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property bytes_written : gmval { get; set; }
+}
+
+[global]
+class `[[EpicP2PQueryNATTypeCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field, type_hint=`EpicNATType`]
+    property nat_type : gmval { get; set; }
+}
+
+[global]
+class `[[EpicP2PConnectionRequestCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property remote_user_id : string { get; set; }
+
+    [field]
+    property socket_name : string { get; set; }
+}
+
+[global]
+class `[[EpicP2PConnectionEstablishedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property remote_user_id : string { get; set; }
+
+    [field]
+    property socket_name : string { get; set; }
+
+    [field, type_hint=`EpicConnectionEstablishedType`]
+    property connection_type : gmval { get; set; }
+
+    [field, type_hint=`EpicNetworkConnectionType`]
+    property network_type : gmval { get; set; }
+}
+
+[global]
+class `[[EpicP2PConnectionInterruptedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property remote_user_id : string { get; set; }
+
+    [field]
+    property socket_name : string { get; set; }
+}
+
+[global]
+class `[[EpicP2PConnectionClosedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property remote_user_id : string { get; set; }
+
+    [field]
+    property socket_name : string { get; set; }
+
+    [field, type_hint=`EpicConnectionClosedReason`]
+    property reason : gmval { get; set; }
+}
+
+[global]
+class `[[EpicP2PPacketQueueInfo]]` prototype Object
+{
+    [field, type_hint=`int64`]
+    property incoming_packet_queue_max_size_bytes : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property incoming_packet_queue_current_size_bytes : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property incoming_packet_queue_current_packet_count : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property outgoing_packet_queue_max_size_bytes : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property outgoing_packet_queue_current_size_bytes : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property outgoing_packet_queue_current_packet_count : gmval { get; set; }
+}
+
+[global]
+class `[[EpicP2PPortRange]]` prototype Object
+{
+    [field, type_hint=`int64`]
+    property port : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property num_additional_ports_to_try : gmval { get; set; }
+}
+
+[global]
+class `[[EpicP2PIncomingPacketQueueFullCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`int64`]
+    property packet_queue_max_size_bytes : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property packet_queue_current_size_bytes : gmval { get; set; }
+
+    [field]
+    property overflow_packet_local_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property overflow_packet_channel : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property overflow_packet_size_bytes : gmval { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_send_packet(
+    local_user_id: string,
+    remote_user_id: string,
+    socket_name: string,
+    channel: int64,
+    data: string,
+    allow_delayed_delivery: bool,
+    [type_hint=`EpicPacketReliability`] reliability: gmval,
+    disable_auto_accept_connection: bool
+): gmval;
+
+[global, bind = typed_gml]
+function eos_p2p_get_next_received_packet_size(local_user_id: string, channel: int64): int64;
+
+[global, bind = typed_gml, type_hint=`EpicP2PReceivedPacket`]
+function eos_p2p_receive_packet(local_user_id: string, max_data_size_bytes: int64, channel: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_accept_connection(local_user_id: string, remote_user_id: string, socket_name: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_close_connection(local_user_id: string, remote_user_id: string, socket_name: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_close_connections(local_user_id: string, socket_name: string): gmval;
+
+[global, bind = typed_gml]
+function eos_p2p_query_nat_type(callback: func): unit;
+
+[global, bind = typed_gml, type_hint=`EpicNATType`]
+function eos_p2p_get_nat_type(): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_set_relay_control([type_hint=`EpicRelayControl`] relay_control: gmval): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicRelayControl`]
+function eos_p2p_get_relay_control(): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_set_port_range(port: int64, max_additional_ports_to_try: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicP2PPortRange`]
+function eos_p2p_get_port_range(): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_set_packet_queue_size(incoming_max_bytes: int64, outgoing_max_bytes: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicP2PPacketQueueInfo`]
+function eos_p2p_get_packet_queue_info(): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_p2p_clear_packet_queue(local_user_id: string, remote_user_id: string, socket_name: string): gmval;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_p2p_add_notify_peer_connection_request(local_user_id: string, socket_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_p2p_remove_notify_peer_connection_request([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_p2p_add_notify_peer_connection_established(local_user_id: string, socket_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_p2p_remove_notify_peer_connection_established([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_p2p_add_notify_peer_connection_interrupted(local_user_id: string, socket_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_p2p_remove_notify_peer_connection_interrupted([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_p2p_add_notify_peer_connection_closed(local_user_id: string, socket_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_p2p_remove_notify_peer_connection_closed([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_p2p_add_notify_incoming_packet_queue_full(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_p2p_remove_notify_incoming_packet_queue_full([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Player Data Storage
+// ============================================================
+
+[global]
+class `[[EpicPlayerDataStorageFileMetadata]]` prototype Object
+{
+    [field, type_hint=`int64`]
+    property file_size_bytes : gmval { get; set; }
+
+    [field]
+    property md5_hash : string { get; set; }
+
+    [field]
+    property filename : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property last_modified_time : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property unencrypted_data_size_bytes : gmval { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageQueryFileCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageQueryFileListCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property file_count : gmval { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageDuplicateFileCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageDeleteFileCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageReadFileCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property filename : string { get; set; }
+
+    [field]
+    property data : string { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageWriteFileCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property filename : string { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageDeleteCacheCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_query_file(local_user_id: string, filename: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_query_file_list(local_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_get_file_metadata_count(local_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicPlayerDataStorageFileMetadata`]
+function eos_playerdatastorage_copy_file_metadata_at_index(local_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicPlayerDataStorageFileMetadata`]
+function eos_playerdatastorage_copy_file_metadata_by_filename(local_user_id: string, filename: string): gmval;
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_duplicate_file(local_user_id: string, source_filename: string, destination_filename: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_delete_file(local_user_id: string, filename: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_read_file(local_user_id: string, filename: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_write_file(local_user_id: string, filename: string, data_base64: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_playerdatastorage_delete_cache(local_user_id: string, callback: func): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Title Storage
+// ============================================================
+
+[global]
+class `[[EpicTitleStorageFileMetadata]]` prototype Object
+{
+    [field, type_hint=`int64`]
+    property file_size_bytes : gmval { get; set; }
+
+    [field]
+    property md5_hash : string { get; set; }
+
+    [field]
+    property filename : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property unencrypted_data_size_bytes : gmval { get; set; }
+}
+
+[global]
+class `[[EpicTitleStorageQueryFileCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicTitleStorageQueryFileListCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property file_count : gmval { get; set; }
+}
+
+[global]
+class `[[EpicTitleStorageReadFileCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property filename : string { get; set; }
+
+    [field]
+    property data : string { get; set; }
+}
+
+[global]
+class `[[EpicTitleStorageDeleteCacheCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_titlestorage_query_file(local_user_id: string, filename: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_titlestorage_query_file_list(local_user_id: string, [type_hint=`string[]`] tags: gmval, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_titlestorage_get_file_metadata_count(local_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicTitleStorageFileMetadata`]
+function eos_titlestorage_copy_file_metadata_at_index(local_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicTitleStorageFileMetadata`]
+function eos_titlestorage_copy_file_metadata_by_filename(local_user_id: string, filename: string): gmval;
+
+[global, bind = typed_gml]
+function eos_titlestorage_read_file(local_user_id: string, filename: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_titlestorage_delete_cache(local_user_id: string, callback: func): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Ecom
+// ============================================================
+
+[global]
+class `[[EpicEcomEntitlement]]` prototype Object
+{
+    [field]
+    property entitlement_name : string { get; set; }
+
+    [field]
+    property entitlement_id : string { get; set; }
+
+    [field]
+    property catalog_item_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property server_index : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property redeemed : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property end_timestamp : gmval { get; set; }
+}
+
+[global]
+class `[[EpicEcomItemOwnership]]` prototype Object
+{
+    [field]
+    property id : string { get; set; }
+
+    [field, type_hint=`EpicOwnershipStatus`]
+    property ownership_status : gmval { get; set; }
+}
+
+[global]
+class `[[EpicEcomSandboxIdItemOwnership]]` prototype Object
+{
+    [field]
+    property sandbox_id : string { get; set; }
+
+    [field]
+    property owned_catalog_item_ids : string { get; set; }
+}
+
+[global]
+class `[[EpicEcomCatalogOffer]]` prototype Object
+{
+    [field, type_hint=`int64`]
+    property server_index : gmval { get; set; }
+
+    [field]
+    property catalog_namespace : string { get; set; }
+
+    [field]
+    property id : string { get; set; }
+
+    [field]
+    property title_text : string { get; set; }
+
+    [field]
+    property description_text : string { get; set; }
+
+    [field]
+    property long_description_text : string { get; set; }
+
+    [field]
+    property currency_code : string { get; set; }
+
+    [field, type_hint=`EpicResult`]
+    property price_result : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property discount_percentage : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property expiration_timestamp : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property purchase_limit : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property available_for_purchase : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property original_price64 : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property current_price64 : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property decimal_point : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property release_date_timestamp : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property effective_date_timestamp : gmval { get; set; }
+}
+
+[global]
+class `[[EpicEcomCatalogItem]]` prototype Object
+{
+    [field]
+    property catalog_namespace : string { get; set; }
+
+    [field]
+    property id : string { get; set; }
+
+    [field]
+    property entitlement_name : string { get; set; }
+
+    [field]
+    property title_text : string { get; set; }
+
+    [field]
+    property description_text : string { get; set; }
+
+    [field]
+    property long_description_text : string { get; set; }
+
+    [field]
+    property technical_details_text : string { get; set; }
+
+    [field]
+    property developer_text : string { get; set; }
+
+    [field, type_hint=`EpicEcomItemType`]
+    property item_type : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property entitlement_end_timestamp : gmval { get; set; }
+}
+
+[global]
+class `[[EpicEcomKeyImageInfo]]` prototype Object
+{
+    [field]
+    property type : string { get; set; }
+
+    [field]
+    property url : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property width : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property height : gmval { get; set; }
+}
+
+[global]
+class `[[EpicEcomCatalogRelease]]` prototype Object
+{
+    [field]
+    property compatible_app_ids : string { get; set; }
+
+    [field]
+    property compatible_platforms : string { get; set; }
+
+    [field]
+    property release_note : string { get; set; }
+}
+
+[global]
+class `[[EpicEcomQueryOwnershipCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property item_ownership_count : gmval { get; set; }
+}
+
+[global]
+class `[[EpicEcomQueryOwnershipBySandboxIdsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property sandbox_ownership_count : gmval { get; set; }
+}
+
+[global]
+class `[[EpicEcomQueryOwnershipTokenCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property ownership_token : string { get; set; }
+}
+
+[global]
+class `[[EpicEcomQueryEntitlementsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicEcomQueryEntitlementTokenCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property entitlement_token : string { get; set; }
+}
+
+[global]
+class `[[EpicEcomQueryOffersCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicEcomCheckoutCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property transaction_id : string { get; set; }
+}
+
+[global]
+class `[[EpicEcomRedeemEntitlementsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property redeemed_count : gmval { get; set; }
+}
+
+// Async queries
+
+[global, bind = typed_gml]
+function eos_ecom_query_ownership(local_user_id: string, [type_hint=`string[]`] catalog_item_ids: gmval, catalog_namespace: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ecom_query_ownership_by_sandbox_ids(local_user_id: string, [type_hint=`string[]`] sandbox_ids: gmval, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ecom_query_ownership_token(local_user_id: string, [type_hint=`string[]`] catalog_item_ids: gmval, catalog_namespace: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ecom_query_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, include_redeemed: int64, catalog_namespace: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ecom_query_entitlement_token(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ecom_query_offers(local_user_id: string, catalog_namespace: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ecom_checkout(local_user_id: string, [type_hint=`string[]`] offer_ids: gmval, catalog_namespace: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_ecom_redeem_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_ids: gmval, callback: func): unit;
+
+// Ownership cache accessors
+
+[global, bind = typed_gml]
+function eos_ecom_get_item_ownership_count(local_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomItemOwnership`]
+function eos_ecom_copy_item_ownership_at_index(local_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml]
+function eos_ecom_get_sandbox_ownership_count(local_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomSandboxIdItemOwnership`]
+function eos_ecom_copy_sandbox_ownership_at_index(local_user_id: string, index: int64): gmval;
+
+// Entitlement accessors
+
+[global, bind = typed_gml]
+function eos_ecom_get_entitlements_count(local_user_id: string): int64;
+
+[global, bind = typed_gml]
+function eos_ecom_get_entitlements_by_name_count(local_user_id: string, entitlement_name: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+function eos_ecom_copy_entitlement_by_index(local_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+function eos_ecom_copy_entitlement_by_name_and_index(local_user_id: string, entitlement_name: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+function eos_ecom_copy_entitlement_by_id(local_user_id: string, entitlement_id: string): gmval;
+
+[global, bind = typed_gml]
+function eos_ecom_get_last_redeemed_entitlements_count(local_user_id: string): int64;
+
+[global, bind = typed_gml]
+function eos_ecom_copy_last_redeemed_entitlement_by_index(local_user_id: string, index: int64): string;
+
+// Offer accessors
+
+[global, bind = typed_gml]
+function eos_ecom_get_offer_count(local_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogOffer`]
+function eos_ecom_copy_offer_by_index(local_user_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogOffer`]
+function eos_ecom_copy_offer_by_id(local_user_id: string, offer_id: string): gmval;
+
+[global, bind = typed_gml]
+function eos_ecom_get_offer_item_count(local_user_id: string, offer_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogItem`]
+function eos_ecom_copy_offer_item_by_index(local_user_id: string, offer_id: string, item_index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogItem`]
+function eos_ecom_copy_item_by_id(local_user_id: string, item_id: string): gmval;
+
+// Image info accessors
+
+[global, bind = typed_gml]
+function eos_ecom_get_offer_image_info_count(local_user_id: string, offer_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomKeyImageInfo`]
+function eos_ecom_copy_offer_image_info_by_index(local_user_id: string, offer_id: string, image_info_index: int64): gmval;
+
+[global, bind = typed_gml]
+function eos_ecom_get_item_image_info_count(local_user_id: string, item_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomKeyImageInfo`]
+function eos_ecom_copy_item_image_info_by_index(local_user_id: string, item_id: string, image_info_index: int64): gmval;
+
+// Release accessors
+
+[global, bind = typed_gml]
+function eos_ecom_get_item_release_count(local_user_id: string, item_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogRelease`]
+function eos_ecom_copy_item_release_by_index(local_user_id: string, item_id: string, release_index: int64): gmval;
+
+// Transaction accessors
+
+[global, bind = typed_gml]
+function eos_ecom_get_transaction_count(local_user_id: string): int64;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_ecom_copy_transaction_by_index(local_user_id: string, transaction_index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_ecom_copy_transaction_by_id(local_user_id: string, transaction_id: string): gmval;
+
+[global, bind = typed_gml]
+function eos_ecom_transaction_get_transaction_id([type_hint=`uint64`] tx_handle_id: gmval): string;
+
+[global, bind = typed_gml]
+function eos_ecom_transaction_get_entitlements_count([type_hint=`uint64`] tx_handle_id: gmval): int64;
+
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+function eos_ecom_transaction_copy_entitlement_by_index([type_hint=`uint64`] tx_handle_id: gmval, index: int64): gmval;
+
+[global, bind = typed_gml]
+function eos_ecom_transaction_release([type_hint=`uint64`] tx_handle_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS Custom Invites
+// ============================================================
+
+[global]
+class `[[EpicCustomInvitesSendCustomInviteCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesCustomInviteReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property custom_invite_id : string { get; set; }
+
+    [field]
+    property payload : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesCustomInviteAcceptedCallbackInfo]]` prototype Object
+{
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property custom_invite_id : string { get; set; }
+
+    [field]
+    property payload : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesCustomInviteRejectedCallbackInfo]]` prototype Object
+{
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property custom_invite_id : string { get; set; }
+
+    [field]
+    property payload : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesSendRequestToJoinCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property from_user_id : string { get; set; }
+
+    [field]
+    property to_user_id : string { get; set; }
+
+    [field, type_hint=`EpicRequestToJoinResponse`]
+    property response : gmval { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesRequestToJoinReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property from_user_id : string { get; set; }
+
+    [field]
+    property to_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesAcceptRequestToJoinCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesRejectRequestToJoinCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`int64`]
+    property ui_event_id : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_native_account_type : string { get; set; }
+
+    [field]
+    property target_user_native_account_id : string { get; set; }
+
+    [field]
+    property invite_id : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesRequestToJoinAcceptedCallbackInfo]]` prototype Object
+{
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global]
+class `[[EpicCustomInvitesRequestToJoinRejectedCallbackInfo]]` prototype Object
+{
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_custominvites_set_custom_invite(local_user_id: string, payload: string): bool;
+
+[global, bind = typed_gml]
+function eos_custominvites_send_custom_invite(local_user_id: string, [type_hint=`string[]`] target_user_ids: gmval, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_custominvites_finalize_invite(target_user_id: string, local_user_id: string, custom_invite_id: string, [type_hint=`EpicResult`] processing_result: gmval): bool;
+
+[global, bind = typed_gml]
+function eos_custominvites_send_request_to_join(local_user_id: string, target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_custominvites_accept_request_to_join(local_user_id: string, target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_custominvites_reject_request_to_join(local_user_id: string, target_user_id: string, callback: func): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_custom_invite_received(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_custom_invite_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_custom_invite_accepted(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_custom_invite_accepted([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_custom_invite_rejected(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_custom_invite_rejected([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_request_to_join_response_received(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_request_to_join_response_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_request_to_join_received(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_request_to_join_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_send_custom_native_invite_requested(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_send_custom_native_invite_requested([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_request_to_join_accepted(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_request_to_join_accepted([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_custominvites_add_notify_request_to_join_rejected(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_custominvites_remove_notify_request_to_join_rejected([type_hint=`uint64`] notification_id: gmval): unit;
+
+}
+
+group
+{
+
+// ============================================================
+// EOS RTC
+// ============================================================
+
+[global]
+class `[[EpicRTCJoinRoomCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCLeaveRoomCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCBlockParticipantCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field]
+    property blocked : bool { get; set; }
+}
+
+[global]
+class `[[EpicRTCDisconnectedCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCParticipantStatusChangedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field, type_hint=`EpicRTCParticipantStatus`]
+    property participant_status : gmval { get; set; }
+
+    [field]
+    property participant_in_blocklist : bool { get; set; }
+}
+
+[global]
+class `[[EpicRTCRoomStatisticsUpdatedInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property statistic : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioParticipantUpdatedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field]
+    property speaking : bool { get; set; }
+
+    [field, type_hint=`EpicRTCAudioStatus`]
+    property audio_status : gmval { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioDevicesChangedCallbackInfo]]` prototype Object
+{
+    [field]
+    property triggered : bool { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioInputStateCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field, type_hint=`EpicRTCAudioInputStatus`]
+    property status : gmval { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioOutputStateCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field, type_hint=`EpicRTCAudioOutputStatus`]
+    property status : gmval { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioUpdateSendingCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field, type_hint=`EpicRTCAudioStatus`]
+    property audio_status : gmval { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioUpdateReceivingCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field]
+    property audio_enabled : bool { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioUpdateSendingVolumeCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property volume : real { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioUpdateReceivingVolumeCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property volume : real { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioUpdateParticipantVolumeCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field]
+    property volume : real { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioInputDeviceInfo]]` prototype Object
+{
+    [field]
+    property default_device : bool { get; set; }
+
+    [field]
+    property device_id : string { get; set; }
+
+    [field]
+    property device_name : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioOutputDeviceInfo]]` prototype Object
+{
+    [field]
+    property default_device : bool { get; set; }
+
+    [field]
+    property device_id : string { get; set; }
+
+    [field]
+    property device_name : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioSetInputDeviceSettingsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property real_device_id : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioSetOutputDeviceSettingsCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property real_device_id : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioQueryInputDevicesCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioQueryOutputDevicesCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_rtc_join_room(local_user_id: string, room_name: string, client_base_url: string, participant_token: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_leave_room(local_user_id: string, room_name: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_block_participant(local_user_id: string, room_name: string, participant_id: string, blocked: bool, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_set_setting(setting_name: string, setting_value: string): bool;
+
+[global, bind = typed_gml]
+function eos_rtc_set_room_setting(local_user_id: string, room_name: string, setting_name: string, setting_value: string): bool;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_add_notify_disconnected(local_user_id: string, room_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_remove_notify_disconnected([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_add_notify_participant_status_changed(local_user_id: string, room_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_remove_notify_participant_status_changed([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_add_notify_room_statistics_updated(local_user_id: string, room_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_remove_notify_room_statistics_updated([type_hint=`uint64`] notification_id: gmval): unit;
+
+// RTC Audio
+
+[global, bind = typed_gml]
+function eos_rtc_audio_update_sending(local_user_id: string, room_name: string, [type_hint=`EpicRTCAudioStatus`] audio_status: gmval, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_update_receiving(local_user_id: string, room_name: string, participant_id: string, audio_enabled: bool, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_update_sending_volume(local_user_id: string, room_name: string, volume: real, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_update_receiving_volume(local_user_id: string, room_name: string, volume: real, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_update_participant_volume(local_user_id: string, room_name: string, participant_id: string, volume: real, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_get_input_devices_count(): int64;
+
+[global, bind = typed_gml, type_hint=`EpicRTCAudioInputDeviceInfo`]
+function eos_rtc_audio_copy_input_device_info_by_index(index: int64): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_get_output_devices_count(): int64;
+
+[global, bind = typed_gml, type_hint=`EpicRTCAudioOutputDeviceInfo`]
+function eos_rtc_audio_copy_output_device_info_by_index(index: int64): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_query_input_devices(callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_query_output_devices(callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_set_input_device_settings(local_user_id: string, real_device_id: string, platform_aec: bool, callback: func): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_set_output_device_settings(local_user_id: string, real_device_id: string, callback: func): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_audio_add_notify_participant_updated(local_user_id: string, room_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_remove_notify_participant_updated([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_audio_add_notify_audio_devices_changed(callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_remove_notify_audio_devices_changed([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_audio_add_notify_audio_input_state(local_user_id: string, room_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_remove_notify_audio_input_state([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_audio_add_notify_audio_output_state(local_user_id: string, room_name: string, callback: func): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_remove_notify_audio_output_state([type_hint=`uint64`] notification_id: gmval): unit;
 
 }
 

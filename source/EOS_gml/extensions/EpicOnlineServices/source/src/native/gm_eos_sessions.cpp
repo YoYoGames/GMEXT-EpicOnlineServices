@@ -1313,3 +1313,823 @@ void eos_sessions_remove_notify_join_session_accepted(uint64_t notification_id)
         (EOS_NotificationId)notification_id
     );
 }
+
+// ============================================================
+// EOS Sessions (Part 5) — SessionModification setters
+// ============================================================
+
+gm_enums::EpicResult eos_sessions_session_modification_set_bucket_id(
+    uint64_t modification_id,
+    std::string_view bucket_id)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string bucket_id_storage(bucket_id);
+    if (bucket_id_storage.empty()) {
+        eos_set_last_error("EOS_SessionModification_SetBucketId: bucket_id is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_SessionModification_SetBucketIdOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_SETBUCKETID_API_LATEST;
+    opts.BucketId = bucket_id_storage.c_str();
+
+    const EOS_EResult result = EOS_SessionModification_SetBucketId(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_SetBucketId failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_set_host_address(
+    uint64_t modification_id,
+    std::string_view host_address)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string host_address_storage(host_address);
+
+    EOS_SessionModification_SetHostAddressOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_SETHOSTADDRESS_API_LATEST;
+    opts.HostAddress = host_address_storage.empty() ? nullptr : host_address_storage.c_str();
+
+    const EOS_EResult result = EOS_SessionModification_SetHostAddress(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_SetHostAddress failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_set_permission_level(
+    uint64_t modification_id,
+    gm_enums::EpicOnlineSessionPermissionLevel permission_level)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_SessionModification_SetPermissionLevelOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_SETPERMISSIONLEVEL_API_LATEST;
+    opts.PermissionLevel = (EOS_EOnlineSessionPermissionLevel)permission_level;
+
+    const EOS_EResult result = EOS_SessionModification_SetPermissionLevel(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_SetPermissionLevel failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_set_join_in_progress_allowed(
+    uint64_t modification_id,
+    bool allow_join_in_progress)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_SessionModification_SetJoinInProgressAllowedOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_SETJOININPROGRESSALLOWED_API_LATEST;
+    opts.bAllowJoinInProgress = allow_join_in_progress ? EOS_TRUE : EOS_FALSE;
+
+    const EOS_EResult result = EOS_SessionModification_SetJoinInProgressAllowed(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_SetJoinInProgressAllowed failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_set_max_players(
+    uint64_t modification_id,
+    int64_t max_players)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_SessionModification_SetMaxPlayersOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_SETMAXPLAYERS_API_LATEST;
+    opts.MaxPlayers = (uint32_t)max_players;
+
+    const EOS_EResult result = EOS_SessionModification_SetMaxPlayers(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_SetMaxPlayers failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_set_invites_allowed(
+    uint64_t modification_id,
+    bool invites_allowed)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_SessionModification_SetInvitesAllowedOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST;
+    opts.bInvitesAllowed = invites_allowed ? EOS_TRUE : EOS_FALSE;
+
+    const EOS_EResult result = EOS_SessionModification_SetInvitesAllowed(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_SetInvitesAllowed failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_add_attribute(
+    uint64_t modification_id,
+    std::string_view key,
+    std::string_view value,
+    gm_enums::EpicSessionAttributeAdvertisementType advertisement_type)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+    std::string value_storage(value);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_SessionModification_AddAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Sessions_AttributeData attr{};
+    attr.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsUtf8 = value_storage.c_str();
+    attr.ValueType = EOS_ESessionAttributeType::EOS_AT_STRING;
+
+    EOS_SessionModification_AddAttributeOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST;
+    opts.SessionAttribute = &attr;
+    opts.AdvertisementType = (EOS_ESessionAttributeAdvertisementType)advertisement_type;
+
+    const EOS_EResult result = EOS_SessionModification_AddAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_AddAttribute failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_remove_attribute(
+    uint64_t modification_id,
+    std::string_view key)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_SessionModification_RemoveAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_SessionModification_RemoveAttributeOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_REMOVEATTRIBUTE_API_LATEST;
+    opts.Key = key_storage.c_str();
+
+    const EOS_EResult result = EOS_SessionModification_RemoveAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_RemoveAttribute failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+// ============================================================
+// EOS Sessions (Part 6) — SessionDetails attribute accessors
+// ============================================================
+
+static gm_structs::EpicSessionDetailsAttribute eos_sessions_attribute_from_native(
+    const EOS_SessionDetails_Attribute* a)
+{
+    gm_structs::EpicSessionDetailsAttribute out{};
+    if (!a || !a->Data) return out;
+
+    out.key = a->Data->Key ? std::string(a->Data->Key) : std::string();
+    out.advertisement_type = (gm_enums::EpicSessionAttributeAdvertisementType)a->AdvertisementType;
+    out.value_type = (gm_enums::EpicAttributeType)a->Data->ValueType;
+    switch (a->Data->ValueType) {
+        case EOS_EAttributeType::EOS_AT_BOOLEAN:
+            out.value = a->Data->Value.AsBool ? "true" : "false";
+            break;
+        case EOS_EAttributeType::EOS_AT_INT64:
+            out.value = std::to_string(a->Data->Value.AsInt64);
+            break;
+        case EOS_EAttributeType::EOS_AT_DOUBLE:
+            out.value = std::to_string(a->Data->Value.AsDouble);
+            break;
+        case EOS_EAttributeType::EOS_AT_STRING:
+        default:
+            out.value = a->Data->Value.AsUtf8 ? std::string(a->Data->Value.AsUtf8) : std::string();
+            break;
+    }
+    return out;
+}
+
+int64_t eos_sessions_session_details_get_session_attribute_count(uint64_t session_details_id)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionDetails details = eos_sessions_details_get(session_details_id);
+    if (!details) {
+        eos_set_last_error("EOS SessionDetails handle invalid.");
+        return 0;
+    }
+
+    EOS_SessionDetails_GetSessionAttributeCountOptions opts{};
+    opts.ApiVersion = EOS_SESSIONDETAILS_GETSESSIONATTRIBUTECOUNT_API_LATEST;
+    return (int64_t)EOS_SessionDetails_GetSessionAttributeCount(details, &opts);
+}
+
+gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_index(
+    uint64_t session_details_id,
+    int64_t index)
+{
+    eos_clear_last_error();
+    gm_structs::EpicSessionDetailsAttribute out{};
+
+    EOS_HSessionDetails details = eos_sessions_details_get(session_details_id);
+    if (!details) {
+        eos_set_last_error("EOS SessionDetails handle invalid.");
+        return out;
+    }
+
+    EOS_SessionDetails_CopySessionAttributeByIndexOptions opts{};
+    opts.ApiVersion = EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYINDEX_API_LATEST;
+    opts.AttrIndex = (uint32_t)index;
+
+    EOS_SessionDetails_Attribute* attr = nullptr;
+    const EOS_EResult result = EOS_SessionDetails_CopySessionAttributeByIndex(details, &opts, &attr);
+    if (result != EOS_EResult::EOS_Success || !attr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionDetails_CopySessionAttributeByIndex failed.");
+        return out;
+    }
+
+    out = eos_sessions_attribute_from_native(attr);
+    EOS_SessionDetails_Attribute_Release(attr);
+    return out;
+}
+
+gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_key(
+    uint64_t session_details_id,
+    std::string_view key)
+{
+    eos_clear_last_error();
+    gm_structs::EpicSessionDetailsAttribute out{};
+
+    EOS_HSessionDetails details = eos_sessions_details_get(session_details_id);
+    if (!details) {
+        eos_set_last_error("EOS SessionDetails handle invalid.");
+        return out;
+    }
+
+    std::string key_storage(key);
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_SessionDetails_CopySessionAttributeByKey: key is required.");
+        return out;
+    }
+
+    EOS_SessionDetails_CopySessionAttributeByKeyOptions opts{};
+    opts.ApiVersion = EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYKEY_API_LATEST;
+    opts.AttrKey = key_storage.c_str();
+
+    EOS_SessionDetails_Attribute* attr = nullptr;
+    const EOS_EResult result = EOS_SessionDetails_CopySessionAttributeByKey(details, &opts, &attr);
+    if (result != EOS_EResult::EOS_Success || !attr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionDetails_CopySessionAttributeByKey failed.");
+        return out;
+    }
+
+    out = eos_sessions_attribute_from_native(attr);
+    EOS_SessionDetails_Attribute_Release(attr);
+    return out;
+}
+
+// ============================================================
+// EOS Sessions (Part 7) — ActiveSession player accessors
+// ============================================================
+
+int64_t eos_sessions_active_session_get_registered_player_count(uint64_t active_session_id)
+{
+    eos_clear_last_error();
+
+    EOS_HActiveSession active = eos_sessions_active_get(active_session_id);
+    if (!active) {
+        eos_set_last_error("EOS ActiveSession handle invalid.");
+        return 0;
+    }
+
+    EOS_ActiveSession_GetRegisteredPlayerCountOptions opts{};
+    opts.ApiVersion = EOS_ACTIVESESSION_GETREGISTEREDPLAYERCOUNT_API_LATEST;
+    return (int64_t)EOS_ActiveSession_GetRegisteredPlayerCount(active, &opts);
+}
+
+std::string eos_sessions_active_session_get_registered_player_by_index(
+    uint64_t active_session_id,
+    int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HActiveSession active = eos_sessions_active_get(active_session_id);
+    if (!active) {
+        eos_set_last_error("EOS ActiveSession handle invalid.");
+        return std::string();
+    }
+
+    EOS_ActiveSession_GetRegisteredPlayerByIndexOptions opts{};
+    opts.ApiVersion = EOS_ACTIVESESSION_GETREGISTEREDPLAYERBYINDEX_API_LATEST;
+    opts.PlayerIndex = (uint32_t)index;
+
+    EOS_ProductUserId player = EOS_ActiveSession_GetRegisteredPlayerByIndex(active, &opts);
+    return eos_sessions_product_user_id_to_string_internal(player);
+}
+
+// ============================================================
+// EOS Sessions (Part 8) — Invite flow
+// ============================================================
+
+static void EOS_CALL eos_sessions_send_invite_callback_native(
+    const EOS_Sessions_SendInviteCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicSessionsSendInviteCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_sessions_reject_invite_callback_native(
+    const EOS_Sessions_RejectInviteCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicSessionsRejectInviteCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_sessions_query_invites_callback_native(
+    const EOS_Sessions_QueryInvitesCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicSessionsQueryInvitesCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+void eos_sessions_send_invite(
+    std::string_view session_name,
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return;
+    }
+
+    std::string session_name_storage(session_name);
+    if (session_name_storage.empty()) {
+        eos_set_last_error("EOS_Sessions_SendInvite: session_name is required.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Sessions_SendInvite: invalid local_user_id.");
+        return;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_Sessions_SendInvite: invalid target_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Sessions_SendInviteOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_SENDINVITE_API_LATEST;
+    opts.SessionName = session_name_storage.c_str();
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+
+    EOS_Sessions_SendInvite(sessions, &opts, ctx, &eos_sessions_send_invite_callback_native);
+}
+
+void eos_sessions_reject_invite(
+    std::string_view local_user_id,
+    std::string_view invite_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Sessions_RejectInvite: invalid local_user_id.");
+        return;
+    }
+
+    std::string invite_id_storage(invite_id);
+    if (invite_id_storage.empty()) {
+        eos_set_last_error("EOS_Sessions_RejectInvite: invite_id is required.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Sessions_RejectInviteOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_REJECTINVITE_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.InviteId = invite_id_storage.c_str();
+
+    EOS_Sessions_RejectInvite(sessions, &opts, ctx, &eos_sessions_reject_invite_callback_native);
+}
+
+void eos_sessions_query_invites(
+    std::string_view local_user_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Sessions_QueryInvites: invalid local_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Sessions_QueryInvitesOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_QUERYINVITES_API_LATEST;
+    opts.LocalUserId = local_user;
+
+    EOS_Sessions_QueryInvites(sessions, &opts, ctx, &eos_sessions_query_invites_callback_native);
+}
+
+int64_t eos_sessions_get_invite_count(std::string_view local_user_id)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return 0;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Sessions_GetInviteCount: invalid local_user_id.");
+        return 0;
+    }
+
+    EOS_Sessions_GetInviteCountOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_GETINVITECOUNT_API_LATEST;
+    opts.LocalUserId = local_user;
+
+    return (int64_t)EOS_Sessions_GetInviteCount(sessions, &opts);
+}
+
+std::string eos_sessions_get_invite_id_by_index(
+    std::string_view local_user_id,
+    int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return std::string();
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Sessions_GetInviteIdByIndex: invalid local_user_id.");
+        return std::string();
+    }
+
+    EOS_Sessions_GetInviteIdByIndexOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_GETINVITEIDBYINDEX_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.Index = (uint32_t)index;
+
+    char buf[EOS_SESSIONS_INVITEID_MAX_LENGTH + 1] = {};
+    int32_t len = (int32_t)sizeof(buf);
+    const EOS_EResult result = EOS_Sessions_GetInviteIdByIndex(sessions, &opts, buf, &len);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Sessions_GetInviteIdByIndex failed.");
+        return std::string();
+    }
+    return std::string(buf);
+}
+
+// ============================================================
+// EOS Sessions (Part 9) — SessionSearch parameter functions
+// ============================================================
+
+gm_enums::EpicResult eos_sessions_session_search_set_parameter(
+    uint64_t search_id,
+    std::string_view key,
+    std::string_view value,
+    gm_enums::EpicComparisonOp comparison_op)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionSearch search = eos_sessions_search_get(search_id);
+    if (!search) {
+        eos_set_last_error("EOS SessionSearch handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+    std::string value_storage(value);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_SessionSearch_SetParameter: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Sessions_AttributeData attr{};
+    attr.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsUtf8 = value_storage.c_str();
+    attr.ValueType = EOS_ESessionAttributeType::EOS_AT_STRING;
+
+    EOS_SessionSearch_SetParameterOptions opts{};
+    opts.ApiVersion = EOS_SESSIONSEARCH_SETPARAMETER_API_LATEST;
+    opts.Parameter = &attr;
+    opts.ComparisonOp = (EOS_EOnlineComparisonOp)comparison_op;
+
+    const EOS_EResult result = EOS_SessionSearch_SetParameter(search, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionSearch_SetParameter failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_search_remove_parameter(
+    uint64_t search_id,
+    std::string_view key,
+    gm_enums::EpicComparisonOp comparison_op)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionSearch search = eos_sessions_search_get(search_id);
+    if (!search) {
+        eos_set_last_error("EOS SessionSearch handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_SessionSearch_RemoveParameter: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_SessionSearch_RemoveParameterOptions opts{};
+    opts.ApiVersion = EOS_SESSIONSEARCH_REMOVEPARAMETER_API_LATEST;
+    opts.Key = key_storage.c_str();
+    opts.ComparisonOp = (EOS_EOnlineComparisonOp)comparison_op;
+
+    const EOS_EResult result = EOS_SessionSearch_RemoveParameter(search, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionSearch_RemoveParameter failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+int64_t eos_sessions_session_search_get_search_result_count(uint64_t search_id)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionSearch search = eos_sessions_search_get(search_id);
+    if (!search) {
+        eos_set_last_error("EOS SessionSearch handle invalid.");
+        return 0;
+    }
+
+    EOS_SessionSearch_GetSearchResultCountOptions opts{};
+    opts.ApiVersion = EOS_SESSIONSEARCH_GETSEARCHRESULTCOUNT_API_LATEST;
+    return (int64_t)EOS_SessionSearch_GetSearchResultCount(search, &opts);
+}
+
+// ============================================================
+// EOS Sessions (Part 10) — Additional notifications
+// ============================================================
+
+static GMFunction g_cb_sessions_invite_rejected = nullptr;
+static GMFunction g_cb_sessions_leave_requested = nullptr;
+static GMFunction g_cb_sessions_native_invite_requested = nullptr;
+
+static void EOS_CALL eos_sessions_invite_rejected_callback_native(
+    const EOS_Sessions_SessionInviteRejectedCallbackInfo* data)
+{
+    if (!data || !g_cb_sessions_invite_rejected) return;
+
+    gm_structs::EpicSessionsSessionInviteRejectedCallbackInfo out{};
+    out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
+    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
+    out.target_user_id = eos_sessions_product_user_id_to_string_internal(data->TargetUserId);
+    out.session_id = data->SessionId ? std::string(data->SessionId) : std::string();
+    g_cb_sessions_invite_rejected.call(out);
+}
+
+static void EOS_CALL eos_sessions_leave_requested_callback_native(
+    const EOS_Sessions_LeaveSessionRequestedCallbackInfo* data)
+{
+    if (!data || !g_cb_sessions_leave_requested) return;
+
+    gm_structs::EpicSessionsLeaveSessionRequestedCallbackInfo out{};
+    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
+    out.session_name = data->SessionName ? std::string(data->SessionName) : std::string();
+    g_cb_sessions_leave_requested.call(out);
+}
+
+static void EOS_CALL eos_sessions_native_invite_requested_callback_native(
+    const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo* data)
+{
+    if (!data || !g_cb_sessions_native_invite_requested) return;
+
+    gm_structs::EpicSessionsSendSessionNativeInviteRequestedCallbackInfo out{};
+    out.ui_event_id = (uint64_t)data->UiEventId;
+    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
+    out.session_id = data->SessionId ? std::string(data->SessionId) : std::string();
+    g_cb_sessions_native_invite_requested.call(out);
+}
+
+uint64_t eos_sessions_add_notify_session_invite_rejected(const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return 0;
+    }
+
+    g_cb_sessions_invite_rejected = callback;
+
+    EOS_Sessions_AddNotifySessionInviteRejectedOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEREJECTED_API_LATEST;
+
+    return (uint64_t)EOS_Sessions_AddNotifySessionInviteRejected(
+        sessions, &opts, nullptr, &eos_sessions_invite_rejected_callback_native);
+}
+
+void eos_sessions_remove_notify_session_invite_rejected(uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return;
+    }
+
+    EOS_Sessions_RemoveNotifySessionInviteRejected(sessions, (EOS_NotificationId)notification_id);
+}
+
+uint64_t eos_sessions_add_notify_leave_session_requested(const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return 0;
+    }
+
+    g_cb_sessions_leave_requested = callback;
+
+    EOS_Sessions_AddNotifyLeaveSessionRequestedOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
+
+    return (uint64_t)EOS_Sessions_AddNotifyLeaveSessionRequested(
+        sessions, &opts, nullptr, &eos_sessions_leave_requested_callback_native);
+}
+
+void eos_sessions_remove_notify_leave_session_requested(uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return;
+    }
+
+    EOS_Sessions_RemoveNotifyLeaveSessionRequested(sessions, (EOS_NotificationId)notification_id);
+}
+
+uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return 0;
+    }
+
+    g_cb_sessions_native_invite_requested = callback;
+
+    EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions opts{};
+    opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
+
+    return (uint64_t)EOS_Sessions_AddNotifySendSessionNativeInviteRequested(
+        sessions, &opts, nullptr, &eos_sessions_native_invite_requested_callback_native);
+}
+
+void eos_sessions_remove_notify_send_session_native_invite_requested(uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HSessions sessions = eos_sessions_iface();
+    if (!sessions) {
+        eos_set_last_error("EOS Sessions interface unavailable.");
+        return;
+    }
+
+    EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested(
+        sessions, (EOS_NotificationId)notification_id);
+}

@@ -211,6 +211,9 @@
             "outputFolder": {
               "type": "string"
             },
+            "outputSourceFolder": {
+              "type": "string"
+            },
             "enabled": {
               "type": "boolean"
             }
@@ -239,6 +242,9 @@
               "type": "string"
             },
             "outputFolder": {
+              "type": "string"
+            },
+            "outputSourceFolder": {
               "type": "string"
             },
             "enabled": {
@@ -297,12 +303,6 @@
             "null"
           ],
           "properties": {
-            "userProps": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
             "outputFolder": {
               "type": "string"
             },

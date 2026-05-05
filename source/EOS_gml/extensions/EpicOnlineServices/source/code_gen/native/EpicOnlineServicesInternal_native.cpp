@@ -1125,6 +1125,92 @@ GMEXPORT double __EXT_NATIVE__eos_ui_remove_notify_display_settings_updated(char
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_ui_hide_friends(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ui_hide_friends(local_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ui_get_friends_visible(char* local_user_id)
+{
+    auto&& __result = eos_ui_get_friends_visible(local_user_id);
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ui_get_friends_exclusive_input(char* local_user_id)
+{
+    auto&& __result = eos_ui_get_friends_exclusive_input(local_user_id);
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ui_pause_social_overlay(double is_paused, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ui_pause_social_overlay(static_cast<bool>(is_paused));
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ui_is_social_overlay_paused()
+{
+    auto&& __result = eos_ui_is_social_overlay_paused();
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ui_get_notification_location_preference(char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ui_get_notification_location_preference();
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicUINotificationLocation
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ui_show_block_player(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ui_show_block_player(local_user_id, target_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ui_show_report_player(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ui_show_report_player(local_user_id, target_user_id, callback);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_metrics_begin_player_session(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
@@ -2206,6 +2292,451 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_remove_notify_join_session_accepted(c
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_bucket_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: bucket_id, type: String
+    std::string_view bucket_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_sessions_session_modification_set_bucket_id(modification_id, bucket_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_host_address(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: host_address, type: String
+    std::string_view host_address = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_sessions_session_modification_set_host_address(modification_id, host_address);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_permission_level(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: permission_level, type: enum EpicOnlineSessionPermissionLevel
+    gm_enums::EpicOnlineSessionPermissionLevel permission_level = gm::wire::codec::readValue<gm_enums::EpicOnlineSessionPermissionLevel>(__br);
+
+    auto&& __result = eos_sessions_session_modification_set_permission_level(modification_id, permission_level);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_join_in_progress_allowed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: allow_join_in_progress, type: Bool
+    bool allow_join_in_progress = gm::wire::codec::readValue<bool>(__br);
+
+    auto&& __result = eos_sessions_session_modification_set_join_in_progress_allowed(modification_id, allow_join_in_progress);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_max_players(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: max_players, type: Int64
+    std::int64_t max_players = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_sessions_session_modification_set_max_players(modification_id, max_players);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_invites_allowed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: invites_allowed, type: Bool
+    bool invites_allowed = gm::wire::codec::readValue<bool>(__br);
+
+    auto&& __result = eos_sessions_session_modification_set_invites_allowed(modification_id, invites_allowed);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: String
+    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: advertisement_type, type: enum EpicSessionAttributeAdvertisementType
+    gm_enums::EpicSessionAttributeAdvertisementType advertisement_type = gm::wire::codec::readValue<gm_enums::EpicSessionAttributeAdvertisementType>(__br);
+
+    auto&& __result = eos_sessions_session_modification_add_attribute(modification_id, key, value, advertisement_type);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_remove_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_sessions_session_modification_remove_attribute(modification_id, key);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_details_get_session_attribute_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: session_details_id, type: UInt64
+    std::uint64_t session_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    auto&& __result = eos_sessions_session_details_get_session_attribute_count(session_details_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_details_copy_session_attribute_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: session_details_id, type: UInt64
+    std::uint64_t session_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_sessions_session_details_copy_session_attribute_by_index(session_details_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicSessionDetailsAttribute
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_details_copy_session_attribute_by_key(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: session_details_id, type: UInt64
+    std::uint64_t session_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_sessions_session_details_copy_session_attribute_by_key(session_details_id, key);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicSessionDetailsAttribute
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_active_session_get_registered_player_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: active_session_id, type: UInt64
+    std::uint64_t active_session_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    auto&& __result = eos_sessions_active_session_get_registered_player_count(active_session_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT char* __EXT_NATIVE__eos_sessions_active_session_get_registered_player_by_index(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: active_session_id, type: UInt64
+    std::uint64_t active_session_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    static std::string __result;
+    __result = eos_sessions_active_session_get_registered_player_by_index(active_session_id, index);
+    return (char*)__result.c_str();
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_send_invite(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: session_name, type: String
+    std::string_view session_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_sessions_send_invite(session_name, local_user_id, target_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_reject_invite(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: invite_id, type: String
+    std::string_view invite_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_sessions_reject_invite(local_user_id, invite_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_query_invites(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_sessions_query_invites(local_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_get_invite_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_sessions_get_invite_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT char* __EXT_NATIVE__eos_sessions_get_invite_id_by_index(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    static std::string __result;
+    __result = eos_sessions_get_invite_id_by_index(local_user_id, index);
+    return (char*)__result.c_str();
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_search_set_parameter(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: search_id, type: UInt64
+    std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: String
+    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: comparison_op, type: enum EpicComparisonOp
+    gm_enums::EpicComparisonOp comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(__br);
+
+    auto&& __result = eos_sessions_session_search_set_parameter(search_id, key, value, comparison_op);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_search_remove_parameter(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: search_id, type: UInt64
+    std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: comparison_op, type: enum EpicComparisonOp
+    gm_enums::EpicComparisonOp comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(__br);
+
+    auto&& __result = eos_sessions_session_search_remove_parameter(search_id, key, comparison_op);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_search_get_search_result_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: search_id, type: UInt64
+    std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    auto&& __result = eos_sessions_session_search_get_search_result_count(search_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_session_invite_rejected(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_sessions_add_notify_session_invite_rejected(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_remove_notify_session_invite_rejected(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_sessions_remove_notify_session_invite_rejected(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_leave_session_requested(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_sessions_add_notify_leave_session_requested(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_remove_notify_leave_session_requested(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_sessions_remove_notify_leave_session_requested(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_send_session_native_invite_requested(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_sessions_add_notify_send_session_native_invite_requested(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_remove_notify_send_session_native_invite_requested(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_sessions_remove_notify_send_session_native_invite_requested(notification_id);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_lobby_create_lobby(char* __arg_buffer, double __arg_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
@@ -2944,6 +3475,2373 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_remove_notify_send_lobby_native_invite_r
     std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
     eos_lobby_remove_notify_send_lobby_native_invite_requested(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_details_get_attribute_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_details_id, type: UInt64
+    std::uint64_t lobby_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    auto&& __result = eos_lobby_details_get_attribute_count(lobby_details_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_attribute_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_details_id, type: UInt64
+    std::uint64_t lobby_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_lobby_details_copy_attribute_by_index(lobby_details_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicLobbyDetailsAttribute
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_attribute_by_key(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_details_id, type: UInt64
+    std::uint64_t lobby_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_lobby_details_copy_attribute_by_key(lobby_details_id, key);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicLobbyDetailsAttribute
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_details_get_member_attribute_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_details_id, type: UInt64
+    std::uint64_t lobby_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_lobby_details_get_member_attribute_count(lobby_details_id, target_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_details_id, type: UInt64
+    std::uint64_t lobby_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_lobby_details_copy_member_attribute_by_index(lobby_details_id, target_user_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicLobbyDetailsAttribute
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_key(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_details_id, type: UInt64
+    std::uint64_t lobby_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_lobby_details_copy_member_attribute_by_key(lobby_details_id, target_user_id, key);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicLobbyDetailsAttribute
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_member_info(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_details_id, type: UInt64
+    std::uint64_t lobby_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_lobby_details_copy_member_info(lobby_details_id, target_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicLobbyDetailsMemberInfo
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_join_lobby_by_id(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_id, type: String
+    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: presence_enabled, type: Bool
+    bool presence_enabled = gm::wire::codec::readValue<bool>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_lobby_join_lobby_by_id(lobby_id, local_user_id, presence_enabled, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_hard_mute_member(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_id, type: String
+    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: hard_mute, type: Bool
+    bool hard_mute = gm::wire::codec::readValue<bool>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_lobby_hard_mute_member(lobby_id, local_user_id, target_user_id, hard_mute, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_send_invite(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: lobby_id, type: String
+    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_lobby_send_invite(lobby_id, local_user_id, target_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_reject_invite(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: invite_id, type: String
+    std::string_view invite_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_lobby_reject_invite(invite_id, local_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_query_invites(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_lobby_query_invites(local_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_get_invite_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_lobby_get_invite_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT char* __EXT_NATIVE__eos_lobby_get_invite_id_by_index(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    static std::string __result;
+    __result = eos_lobby_get_invite_id_by_index(local_user_id, index);
+    return (char*)__result.c_str();
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_received(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_lobby_add_notify_lobby_invite_received(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_received(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_lobby_remove_notify_lobby_invite_received(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_accepted(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_lobby_add_notify_lobby_invite_accepted(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_accepted(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_lobby_remove_notify_lobby_invite_accepted(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_rejected(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_lobby_add_notify_lobby_invite_rejected(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_rejected(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_lobby_remove_notify_lobby_invite_rejected(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_send_packet(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: remote_user_id, type: String
+    std::string_view remote_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: channel, type: Int64
+    std::int64_t channel = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: data, type: String
+    std::string_view data = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: allow_delayed_delivery, type: Bool
+    bool allow_delayed_delivery = gm::wire::codec::readValue<bool>(__br);
+
+    // field: reliability, type: enum EpicPacketReliability
+    gm_enums::EpicPacketReliability reliability = gm::wire::codec::readValue<gm_enums::EpicPacketReliability>(__br);
+
+    // field: disable_auto_accept_connection, type: Bool
+    bool disable_auto_accept_connection = gm::wire::codec::readValue<bool>(__br);
+
+    auto&& __result = eos_p2p_send_packet(local_user_id, remote_user_id, socket_name, channel, data, allow_delayed_delivery, reliability, disable_auto_accept_connection);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_get_next_received_packet_size(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: channel, type: Int64
+    std::int64_t channel = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_p2p_get_next_received_packet_size(local_user_id, channel);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_receive_packet(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: max_data_size_bytes, type: Int64
+    std::int64_t max_data_size_bytes = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: channel, type: Int64
+    std::int64_t channel = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_p2p_receive_packet(local_user_id, max_data_size_bytes, channel);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicP2PReceivedPacket
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_accept_connection(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: remote_user_id, type: String
+    std::string_view remote_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_p2p_accept_connection(local_user_id, remote_user_id, socket_name);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_close_connection(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: remote_user_id, type: String
+    std::string_view remote_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_p2p_close_connection(local_user_id, remote_user_id, socket_name);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_close_connections(char* local_user_id, char* socket_name, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_p2p_close_connections(local_user_id, socket_name);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_query_nat_type(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_p2p_query_nat_type(callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_get_nat_type(char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_p2p_get_nat_type();
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicNATType
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_set_relay_control(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: relay_control, type: enum EpicRelayControl
+    gm_enums::EpicRelayControl relay_control = gm::wire::codec::readValue<gm_enums::EpicRelayControl>(__br);
+
+    auto&& __result = eos_p2p_set_relay_control(relay_control);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_get_relay_control(char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_p2p_get_relay_control();
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicRelayControl
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_set_port_range(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: port, type: Int64
+    std::int64_t port = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: max_additional_ports_to_try, type: Int64
+    std::int64_t max_additional_ports_to_try = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_p2p_set_port_range(port, max_additional_ports_to_try);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_get_port_range(char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_p2p_get_port_range();
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicP2PPortRange
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_set_packet_queue_size(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: incoming_max_bytes, type: Int64
+    std::int64_t incoming_max_bytes = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: outgoing_max_bytes, type: Int64
+    std::int64_t outgoing_max_bytes = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_p2p_set_packet_queue_size(incoming_max_bytes, outgoing_max_bytes);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_get_packet_queue_info(char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_p2p_get_packet_queue_info();
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicP2PPacketQueueInfo
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_clear_packet_queue(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: remote_user_id, type: String
+    std::string_view remote_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_p2p_clear_packet_queue(local_user_id, remote_user_id, socket_name);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_request(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_p2p_add_notify_peer_connection_request(local_user_id, socket_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_request(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_p2p_remove_notify_peer_connection_request(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_established(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_p2p_add_notify_peer_connection_established(local_user_id, socket_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_established(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_p2p_remove_notify_peer_connection_established(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_interrupted(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_p2p_add_notify_peer_connection_interrupted(local_user_id, socket_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_interrupted(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_p2p_remove_notify_peer_connection_interrupted(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_closed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: socket_name, type: String
+    std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_p2p_add_notify_peer_connection_closed(local_user_id, socket_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_closed(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_p2p_remove_notify_peer_connection_closed(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_incoming_packet_queue_full(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_p2p_add_notify_incoming_packet_queue_full(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_p2p_remove_notify_incoming_packet_queue_full(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_p2p_remove_notify_incoming_packet_queue_full(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_query_file(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: filename, type: String
+    std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_playerdatastorage_query_file(local_user_id, filename, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_query_file_list(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_playerdatastorage_query_file_list(local_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_get_file_metadata_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_playerdatastorage_get_file_metadata_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_at_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_playerdatastorage_copy_file_metadata_at_index(local_user_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicPlayerDataStorageFileMetadata
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_by_filename(char* local_user_id, char* filename, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_playerdatastorage_copy_file_metadata_by_filename(local_user_id, filename);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicPlayerDataStorageFileMetadata
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_duplicate_file(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: source_filename, type: String
+    std::string_view source_filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: destination_filename, type: String
+    std::string_view destination_filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_playerdatastorage_duplicate_file(local_user_id, source_filename, destination_filename, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_delete_file(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: filename, type: String
+    std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_playerdatastorage_delete_file(local_user_id, filename, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_read_file(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: filename, type: String
+    std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_playerdatastorage_read_file(local_user_id, filename, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_write_file(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: filename, type: String
+    std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: data_base64, type: String
+    std::string_view data_base64 = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_playerdatastorage_write_file(local_user_id, filename, data_base64, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_delete_cache(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_playerdatastorage_delete_cache(local_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_query_file(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: filename, type: String
+    std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_titlestorage_query_file(local_user_id, filename, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_query_file_list(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: tags, type: String[]
+    std::vector<std::string_view> tags = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_titlestorage_query_file_list(local_user_id, tags, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_get_file_metadata_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_titlestorage_get_file_metadata_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_copy_file_metadata_at_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_titlestorage_copy_file_metadata_at_index(local_user_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicTitleStorageFileMetadata
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_copy_file_metadata_by_filename(char* local_user_id, char* filename, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_titlestorage_copy_file_metadata_by_filename(local_user_id, filename);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicTitleStorageFileMetadata
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_read_file(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: filename, type: String
+    std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_titlestorage_read_file(local_user_id, filename, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_delete_cache(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_titlestorage_delete_cache(local_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_query_ownership(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: catalog_item_ids, type: String[]
+    std::vector<std::string_view> catalog_item_ids = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: catalog_namespace, type: String
+    std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_query_ownership(local_user_id, catalog_item_ids, catalog_namespace, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_query_ownership_by_sandbox_ids(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: sandbox_ids, type: String[]
+    std::vector<std::string_view> sandbox_ids = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_query_ownership_by_sandbox_ids(local_user_id, sandbox_ids, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_query_ownership_token(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: catalog_item_ids, type: String[]
+    std::vector<std::string_view> catalog_item_ids = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: catalog_namespace, type: String
+    std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_query_ownership_token(local_user_id, catalog_item_ids, catalog_namespace, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_query_entitlements(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: entitlement_names, type: String[]
+    std::vector<std::string_view> entitlement_names = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: include_redeemed, type: Int64
+    std::int64_t include_redeemed = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: catalog_namespace, type: String
+    std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_query_entitlements(local_user_id, entitlement_names, include_redeemed, catalog_namespace, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_query_entitlement_token(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: entitlement_names, type: String[]
+    std::vector<std::string_view> entitlement_names = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_query_entitlement_token(local_user_id, entitlement_names, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_query_offers(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: catalog_namespace, type: String
+    std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_query_offers(local_user_id, catalog_namespace, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_checkout(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: offer_ids, type: String[]
+    std::vector<std::string_view> offer_ids = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: catalog_namespace, type: String
+    std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_checkout(local_user_id, offer_ids, catalog_namespace, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_redeem_entitlements(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: entitlement_ids, type: String[]
+    std::vector<std::string_view> entitlement_ids = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_ecom_redeem_entitlements(local_user_id, entitlement_ids, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_item_ownership_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_item_ownership_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_ownership_at_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_item_ownership_at_index(local_user_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomItemOwnership
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_sandbox_ownership_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_sandbox_ownership_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_sandbox_ownership_at_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_sandbox_ownership_at_index(local_user_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomSandboxIdItemOwnership
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_entitlements_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_entitlements_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_entitlements_by_name_count(char* local_user_id, char* entitlement_name, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_entitlements_by_name_count(local_user_id, entitlement_name);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_entitlement_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_entitlement_by_index(local_user_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomEntitlement
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_entitlement_by_name_and_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: entitlement_name, type: String
+    std::string_view entitlement_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_entitlement_by_name_and_index(local_user_id, entitlement_name, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomEntitlement
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_entitlement_by_id(char* local_user_id, char* entitlement_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_copy_entitlement_by_id(local_user_id, entitlement_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomEntitlement
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_last_redeemed_entitlements_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_last_redeemed_entitlements_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT char* __EXT_NATIVE__eos_ecom_copy_last_redeemed_entitlement_by_index(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    static std::string __result;
+    __result = eos_ecom_copy_last_redeemed_entitlement_by_index(local_user_id, index);
+    return (char*)__result.c_str();
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_offer_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_offer_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_offer_by_index(local_user_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomCatalogOffer
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_by_id(char* local_user_id, char* offer_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_copy_offer_by_id(local_user_id, offer_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomCatalogOffer
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_offer_item_count(char* local_user_id, char* offer_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_offer_item_count(local_user_id, offer_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_item_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: offer_id, type: String
+    std::string_view offer_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: item_index, type: Int64
+    std::int64_t item_index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_offer_item_by_index(local_user_id, offer_id, item_index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomCatalogItem
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_by_id(char* local_user_id, char* item_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_copy_item_by_id(local_user_id, item_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomCatalogItem
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_offer_image_info_count(char* local_user_id, char* offer_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_offer_image_info_count(local_user_id, offer_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_image_info_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: offer_id, type: String
+    std::string_view offer_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: image_info_index, type: Int64
+    std::int64_t image_info_index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_offer_image_info_by_index(local_user_id, offer_id, image_info_index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomKeyImageInfo
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_item_image_info_count(char* local_user_id, char* item_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_item_image_info_count(local_user_id, item_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_image_info_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: item_id, type: String
+    std::string_view item_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: image_info_index, type: Int64
+    std::int64_t image_info_index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_item_image_info_by_index(local_user_id, item_id, image_info_index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomKeyImageInfo
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_item_release_count(char* local_user_id, char* item_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_item_release_count(local_user_id, item_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_release_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: item_id, type: String
+    std::string_view item_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: release_index, type: Int64
+    std::int64_t release_index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_item_release_by_index(local_user_id, item_id, release_index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomCatalogRelease
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_get_transaction_count(char* local_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_get_transaction_count(local_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_transaction_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: transaction_index, type: Int64
+    std::int64_t transaction_index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_copy_transaction_by_index(local_user_id, transaction_index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_copy_transaction_by_id(char* local_user_id, char* transaction_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_ecom_copy_transaction_by_id(local_user_id, transaction_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT char* __EXT_NATIVE__eos_ecom_transaction_get_transaction_id(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: tx_handle_id, type: UInt64
+    std::uint64_t tx_handle_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    static std::string __result;
+    __result = eos_ecom_transaction_get_transaction_id(tx_handle_id);
+    return (char*)__result.c_str();
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_transaction_get_entitlements_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: tx_handle_id, type: UInt64
+    std::uint64_t tx_handle_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    auto&& __result = eos_ecom_transaction_get_entitlements_count(tx_handle_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_transaction_copy_entitlement_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: tx_handle_id, type: UInt64
+    std::uint64_t tx_handle_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_ecom_transaction_copy_entitlement_by_index(tx_handle_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicEcomEntitlement
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_ecom_transaction_release(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: tx_handle_id, type: UInt64
+    std::uint64_t tx_handle_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_ecom_transaction_release(tx_handle_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_set_custom_invite(char* local_user_id, char* payload)
+{
+    auto&& __result = eos_custominvites_set_custom_invite(local_user_id, payload);
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_send_custom_invite(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_ids, type: String[]
+    std::vector<std::string_view> target_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_custominvites_send_custom_invite(local_user_id, target_user_ids, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_finalize_invite(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: custom_invite_id, type: String
+    std::string_view custom_invite_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: processing_result, type: enum EpicResult
+    gm_enums::EpicResult processing_result = gm::wire::codec::readValue<gm_enums::EpicResult>(__br);
+
+    auto&& __result = eos_custominvites_finalize_invite(target_user_id, local_user_id, custom_invite_id, processing_result);
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_send_request_to_join(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_custominvites_send_request_to_join(local_user_id, target_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_accept_request_to_join(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_custominvites_accept_request_to_join(local_user_id, target_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_reject_request_to_join(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_custominvites_reject_request_to_join(local_user_id, target_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_received(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_custom_invite_received(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_received(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_custom_invite_received(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_accepted(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_custom_invite_accepted(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_accepted(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_custom_invite_accepted(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_rejected(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_custom_invite_rejected(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_rejected(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_custom_invite_rejected(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_response_received(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_request_to_join_response_received(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_response_received(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_request_to_join_response_received(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_received(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_request_to_join_received(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_received(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_request_to_join_received(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_send_custom_native_invite_requested(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_send_custom_native_invite_requested(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_send_custom_native_invite_requested(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_send_custom_native_invite_requested(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_accepted(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_request_to_join_accepted(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_accepted(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_request_to_join_accepted(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_rejected(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_custominvites_add_notify_request_to_join_rejected(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_rejected(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_custominvites_remove_notify_request_to_join_rejected(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_join_room(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: client_base_url, type: String
+    std::string_view client_base_url = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: participant_token, type: String
+    std::string_view participant_token = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_join_room(local_user_id, room_name, client_base_url, participant_token, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_leave_room(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_leave_room(local_user_id, room_name, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_block_participant(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: participant_id, type: String
+    std::string_view participant_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: blocked, type: Bool
+    bool blocked = gm::wire::codec::readValue<bool>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_block_participant(local_user_id, room_name, participant_id, blocked, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_set_setting(char* setting_name, char* setting_value)
+{
+    auto&& __result = eos_rtc_set_setting(setting_name, setting_value);
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_set_room_setting(char* local_user_id, char* room_name, char* setting_name, char* setting_value)
+{
+    auto&& __result = eos_rtc_set_room_setting(local_user_id, room_name, setting_name, setting_value);
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_add_notify_disconnected(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_rtc_add_notify_disconnected(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_remove_notify_disconnected(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_remove_notify_disconnected(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_add_notify_participant_status_changed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_rtc_add_notify_participant_status_changed(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_remove_notify_participant_status_changed(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_remove_notify_participant_status_changed(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_add_notify_room_statistics_updated(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_rtc_add_notify_room_statistics_updated(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_remove_notify_room_statistics_updated(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_remove_notify_room_statistics_updated(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_sending(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: audio_status, type: enum EpicRTCAudioStatus
+    gm_enums::EpicRTCAudioStatus audio_status = gm::wire::codec::readValue<gm_enums::EpicRTCAudioStatus>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_update_sending(local_user_id, room_name, audio_status, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_receiving(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: participant_id, type: String
+    std::string_view participant_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: audio_enabled, type: Bool
+    bool audio_enabled = gm::wire::codec::readValue<bool>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_update_receiving(local_user_id, room_name, participant_id, audio_enabled, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_sending_volume(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: volume, type: Float64
+    double volume = gm::wire::codec::readValue<double>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_update_sending_volume(local_user_id, room_name, volume, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_receiving_volume(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: volume, type: Float64
+    double volume = gm::wire::codec::readValue<double>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_update_receiving_volume(local_user_id, room_name, volume, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_participant_volume(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: participant_id, type: String
+    std::string_view participant_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: volume, type: Float64
+    double volume = gm::wire::codec::readValue<double>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_update_participant_volume(local_user_id, room_name, participant_id, volume, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_get_input_devices_count(char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_rtc_audio_get_input_devices_count();
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_copy_input_device_info_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_rtc_audio_copy_input_device_info_by_index(index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicRTCAudioInputDeviceInfo
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_get_output_devices_count(char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_rtc_audio_get_output_devices_count();
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_copy_output_device_info_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_rtc_audio_copy_output_device_info_by_index(index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicRTCAudioOutputDeviceInfo
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_query_input_devices(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_query_input_devices(callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_query_output_devices(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_query_output_devices(callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_set_input_device_settings(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: real_device_id, type: String
+    std::string_view real_device_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: platform_aec, type: Bool
+    bool platform_aec = gm::wire::codec::readValue<bool>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_set_input_device_settings(local_user_id, real_device_id, platform_aec, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_set_output_device_settings(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: real_device_id, type: String
+    std::string_view real_device_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    eos_rtc_audio_set_output_device_settings(local_user_id, real_device_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_participant_updated(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_rtc_audio_add_notify_participant_updated(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_participant_updated(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_audio_remove_notify_participant_updated(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_devices_changed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_rtc_audio_add_notify_audio_devices_changed(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_devices_changed(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_audio_remove_notify_audio_devices_changed(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_input_state(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_rtc_audio_add_notify_audio_input_state(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_input_state(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_audio_remove_notify_audio_input_state(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_output_state(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: Function
+    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+
+    auto&& __result = eos_rtc_audio_add_notify_audio_output_state(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_audio_remove_notify_audio_output_state(notification_id);
     return 0;
 }
 

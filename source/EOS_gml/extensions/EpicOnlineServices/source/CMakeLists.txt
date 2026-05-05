@@ -1,4 +1,41 @@
 cmake_minimum_required(VERSION 3.18)
+
+# ============================================================
+# Console platform options (must be set before project())
+# ============================================================
+# Switch requires explicit opt-in because the Nintendo SDK toolchain must be
+# configured before CMake's project() call. Other consoles (PS4, PS5, Xbox)
+# have their SDKs auto-detected by Visual Studio via the architecture set in
+# CMakePresets.json, so their flags default to OFF unless pre-project hooks
+# are needed.
+option(EXTGEN_PLATFORM_SWITCH        "Enable Nintendo Switch pre-project setup" OFF)
+option(EXTGEN_PLATFORM_PS4           "Enable PS4 pre-project setup"             OFF)
+option(EXTGEN_PLATFORM_PS5           "Enable PS5 pre-project setup"             OFF)
+option(EXTGEN_PLATFORM_XBOX_ONE      "Enable Xbox One pre-project setup"        OFF)
+option(EXTGEN_PLATFORM_XBOX_SCARLETT "Enable Xbox Series pre-project setup"     OFF)
+
+set(NINTENDO_SDK_PROPS_PATH "" CACHE STRING
+    "Path to Nintendo SDK props file (relative to NINTENDO_SDK_ROOT) - REQUIRED for Switch builds")
+
+if(EXTGEN_PLATFORM_SWITCH)
+  include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/switch/extgen_pre_project.cmake")
+endif()
+if(EXTGEN_PLATFORM_PS4)
+  include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ps4/extgen_pre_project.cmake")
+endif()
+if(EXTGEN_PLATFORM_PS5)
+  include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ps5/extgen_pre_project.cmake")
+endif()
+if(EXTGEN_PLATFORM_XBOX_ONE)
+  include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/xbox_one/extgen_pre_project.cmake")
+endif()
+if(EXTGEN_PLATFORM_XBOX_SCARLETT)
+  include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/xbox_scarlett/extgen_pre_project.cmake")
+endif()
+
+# ============================================================
+# Make project
+# ============================================================
 project(EpicOnlineServices LANGUAGES CXX)
 
 # ============================================================
@@ -43,8 +80,6 @@ endif()
 set(EXT_SWITCH_USER_PROPS "" CACHE FILEPATH
     "Path to a user-provided Nintendo Switch .props file to import into generated VS projects")
 
-option(EXTGEN_PLATFORM_SWITCH "Enable Switch-specific VS integration" OFF)
-
 set(EXT_OUTPUT_DIR "../" CACHE STRING "Where to copy the final built binary")
 set(EXT_APPLE_DROP_DIR "" CACHE STRING "Where to copy packaged Apple xcframework zip (optional)")
 set(EXT_ANDROID_OUTPUT_DIR "" CACHE STRING "Where to copy the JNI binaries (optional)")
@@ -55,8 +90,31 @@ set(EXT_ANDROID_OUTPUT_DIR "" CACHE STRING "Where to copy the JNI binaries (opti
 set(EXTGEN_IS_IOS FALSE)
 set(EXTGEN_IS_TVOS FALSE)
 set(EXTGEN_IS_APPLE_MOBILE FALSE)
+set(EXTGEN_IS_SWITCH FALSE)
 set(EXTGEN_IS_PS4 FALSE)
 set(EXTGEN_IS_PS5 FALSE)
+set(EXTGEN_IS_XBOX_ONE FALSE)
+set(EXTGEN_IS_XBOX_SCARLETT FALSE)
+
+if(EXTGEN_PLATFORM_SWITCH)
+  set(EXTGEN_IS_SWITCH TRUE)
+endif()
+
+# PS4/PS5: detected via CMAKE_SYSTEM_NAME (set by the ORBIS/Prospero VS architecture)
+# Also honoured if the explicit option is set for pre-project hook compatibility.
+if(EXTGEN_PLATFORM_PS4 OR CMAKE_SYSTEM_NAME STREQUAL "ORBIS")
+  set(EXTGEN_IS_PS4 TRUE)
+elseif(EXTGEN_PLATFORM_PS5 OR CMAKE_SYSTEM_NAME STREQUAL "Prospero")
+  set(EXTGEN_IS_PS5 TRUE)
+endif()
+
+# Xbox: detected via CMAKE_GENERATOR_PLATFORM (GDK architecture strings).
+# WIN32 is also TRUE for GDK builds, so these must be classified before WIN32 is checked.
+if(EXTGEN_PLATFORM_XBOX_ONE OR CMAKE_GENERATOR_PLATFORM STREQUAL "Gaming.Xbox.XboxOne.x64")
+  set(EXTGEN_IS_XBOX_ONE TRUE)
+elseif(EXTGEN_PLATFORM_XBOX_SCARLETT OR CMAKE_GENERATOR_PLATFORM STREQUAL "Gaming.Xbox.Scarlett.x64")
+  set(EXTGEN_IS_XBOX_SCARLETT TRUE)
+endif()
 
 if(APPLE)
   # CMAKE_OSX_SYSROOT may be: iphoneos, iphonesimulator, appletvos, appletvsimulator, or a full path.
@@ -67,12 +125,6 @@ if(APPLE)
     set(EXTGEN_IS_TVOS TRUE)
     set(EXTGEN_IS_APPLE_MOBILE TRUE)
   endif()
-endif()
-
-if(CMAKE_SYSTEM_NAME STREQUAL "ORBIS")
-  set(EXTGEN_IS_PS4 TRUE)
-elseif(CMAKE_SYSTEM_NAME STREQUAL "Prospero")
-  set(EXTGEN_IS_PS5 TRUE)
 endif()
 
 # ============================================================
@@ -90,155 +142,37 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 # ============================================================
-# Includes & source discovery (code_gen)
-# ============================================================
-file(GLOB SRC_CORE CONFIGURE_DEPENDS
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/core/*.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/core/*.mm
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/core/*.swift
-)
-target_sources(${PROJECT_NAME} PRIVATE ${SRC_CORE})
-
-target_include_directories(
-  ${PROJECT_NAME} PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/code_gen
-    ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/core
-)
-
-file(GLOB SRC_COMMON CONFIGURE_DEPENDS
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/*.cpp
-)
-target_sources(${PROJECT_NAME} PRIVATE ${SRC_COMMON})
-
-# Platform folders inside code_gen
-file(GLOB_RECURSE SRC_ANDROID CONFIGURE_DEPENDS
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/android/*.[cS]
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/android/*.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/native/*.[cS]
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/native/*.cpp
-)
-
-file(GLOB_RECURSE SRC_NATIVE CONFIGURE_DEPENDS
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/native/*.[cS]
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/native/*.cpp
-)
-
-file(GLOB_RECURSE SRC_IOS CONFIGURE_DEPENDS
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/ios/*.[cS]
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/ios/*.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/ios/*.mm
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/ios/*.swift
-)
-
-file(GLOB_RECURSE SRC_TVOS CONFIGURE_DEPENDS
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/tvos/*.[cS]
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/tvos/*.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/tvos/*.mm
-  ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/tvos/*.swift
-)
-
-# "Native flavour" uses native + ios/tvos roots
-set(SRC_IOS_NATIVE  ${SRC_NATIVE} ${SRC_IOS})
-set(SRC_TVOS_NATIVE ${SRC_NATIVE} ${SRC_TVOS})
-
-# User sources
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src")
-
-# ============================================================
-# Inject user properties into VS
-# ============================================================
-if(MSVC AND EXTGEN_PLATFORM_SWITCH)
-  if(NOT EXT_SWITCH_USER_PROPS)
-    message(FATAL_ERROR "EXTGEN_PLATFORM_SWITCH=ON but EXT_SWITCH_USER_PROPS is empty. Set it to your Nintendo .props.")
-  endif()
-  if(NOT EXISTS "${EXT_SWITCH_USER_PROPS}")
-    message(FATAL_ERROR "EXT_SWITCH_USER_PROPS not found: ${EXT_SWITCH_USER_PROPS}")
-  endif()
-  
-  set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY VS_USER_PROPS "${EXT_SWITCH_USER_PROPS}")
-endif()
-
-# ============================================================
-# Platform selection & defines
+# Platform post-project hook: code_gen source discovery, includes, defines
+# Each platform file is self-contained — it GLOBs exactly the code_gen
+# sources it needs and adds them alongside its platform-specific setup.
+# Note: Xbox and consoles checked before WIN32 — GDK builds have WIN32=TRUE.
 # ============================================================
 if(ANDROID)
-  message(STATUS "Including Android sources")
-  target_sources(${PROJECT_NAME} PRIVATE ${SRC_ANDROID})
-  target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/code_gen/android)
-  target_compile_definitions(${PROJECT_NAME} PRIVATE OS_ANDROID EXTGEN_HAS_JNI=1)
-  find_library(_log_lib log)
-  find_library(_android_lib android)
-  target_link_libraries(${PROJECT_NAME} PRIVATE ${_log_lib} ${_android_lib})
-  message(STATUS "Android ABI=${CMAKE_ANDROID_ARCH_ABI}, STL=c++_static")
-
+  include(cmake/android/extgen_post_project.cmake)
+elseif(EXTGEN_IS_SWITCH)
+  include(cmake/switch/extgen_post_project.cmake)
+elseif(EXTGEN_IS_XBOX_ONE)
+  include(cmake/xbox_one/extgen_post_project.cmake)
+elseif(EXTGEN_IS_XBOX_SCARLETT)
+  include(cmake/xbox_scarlett/extgen_post_project.cmake)
+elseif(EXTGEN_IS_PS4)
+  include(cmake/ps4/extgen_post_project.cmake)
+elseif(EXTGEN_IS_PS5)
+  include(cmake/ps5/extgen_post_project.cmake)
 elseif(WIN32)
-  message(STATUS "Including Windows sources")
-  target_sources(${PROJECT_NAME} PRIVATE ${SRC_NATIVE})
-  target_compile_definitions(${PROJECT_NAME} PRIVATE OS_WINDOWS EXTGEN_HAS_JNI=0)
-
+  include(cmake/windows/extgen_post_project.cmake)
 elseif(EXTGEN_IS_IOS)
-  message(STATUS "Including iOS sources")
-  enable_language(OBJCXX)
-  if(EXTGEN_ENABLE_SWIFT)
-    enable_language(Swift)
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-      XCODE_ATTRIBUTE_DEFINES_MODULE YES
-      XCODE_ATTRIBUTE_SWIFT_INSTALL_OBJC_HEADER YES
-      XCODE_ATTRIBUTE_SWIFT_OBJC_INTERFACE_HEADER_NAME "${PROJECT_NAME}-Swift.h"
-      XCODE_ATTRIBUTE_SWIFT_OBJC_INTEROP_MODE objcxx
-      XCODE_ATTRIBUTE_SWIFT_OBJC_BRIDGING_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/code_gen/ios/${PROJECT_NAME}-Bridging-Header.h"
-    )
-  endif()
-
-  if(EXT_APPLE_NATIVE_FRAMEWORK)
-    message(STATUS "iOS flavour: NATIVE (ObjC wrapper + C++ native core)")
-    target_sources(${PROJECT_NAME} PRIVATE ${SRC_IOS_NATIVE})
-    target_compile_definitions(${PROJECT_NAME} PRIVATE EXTGEN_APPLE_NATIVE_FW=1)
-  else()
-    message(STATUS "iOS flavour: STANDARD (platform-native implementation)")
-    target_sources(${PROJECT_NAME} PRIVATE ${SRC_IOS})
-    target_compile_definitions(${PROJECT_NAME} PRIVATE EXTGEN_APPLE_NATIVE_FW=0)
-  endif()
-
-  target_compile_definitions(${PROJECT_NAME} PRIVATE OS_IOS EXTGEN_HAS_JNI=0)
-
+  include(cmake/ios/extgen_post_project.cmake)
 elseif(EXTGEN_IS_TVOS)
-  message(STATUS "Including tvOS sources")
-  enable_language(OBJCXX)
-  if(EXTGEN_ENABLE_SWIFT)
-    enable_language(Swift)
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-      XCODE_ATTRIBUTE_DEFINES_MODULE YES
-      XCODE_ATTRIBUTE_SWIFT_INSTALL_OBJC_HEADER YES
-      XCODE_ATTRIBUTE_SWIFT_OBJC_INTERFACE_HEADER_NAME "${PROJECT_NAME}-Swift.h"
-      XCODE_ATTRIBUTE_SWIFT_OBJC_INTEROP_MODE objcxx
-      XCODE_ATTRIBUTE_SWIFT_OBJC_BRIDGING_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/code_gen/tvos/${PROJECT_NAME}-Bridging-Header.h"
-    )
-  endif()
-
-  if(EXT_APPLE_NATIVE_FRAMEWORK)
-    message(STATUS "tvOS flavour: NATIVE (ObjC wrapper + C++ native core)")
-    target_sources(${PROJECT_NAME} PRIVATE ${SRC_TVOS_NATIVE})
-    target_compile_definitions(${PROJECT_NAME} PRIVATE EXTGEN_APPLE_NATIVE_FW=1)
-  else()
-    message(STATUS "tvOS flavour: STANDARD (platform-native implementation)")
-    target_sources(${PROJECT_NAME} PRIVATE ${SRC_TVOS})
-    target_compile_definitions(${PROJECT_NAME} PRIVATE EXTGEN_APPLE_NATIVE_FW=0)
-  endif()
-
-  target_compile_definitions(${PROJECT_NAME} PRIVATE OS_TVOS EXTGEN_HAS_JNI=0)
-
+  include(cmake/tvos/extgen_post_project.cmake)
 elseif(APPLE)
-  message(STATUS "Including macOS sources")
-  enable_language(OBJCXX)
-  target_sources(${PROJECT_NAME} PRIVATE ${SRC_NATIVE})
-  target_compile_definitions(${PROJECT_NAME} PRIVATE OS_MACOS EXTGEN_HAS_JNI=0)
-
+  include(cmake/macos/extgen_post_project.cmake)
 elseif(UNIX)
-  message(STATUS "Including Linux sources")
-  target_sources(${PROJECT_NAME} PRIVATE ${SRC_NATIVE})
-  target_compile_definitions(${PROJECT_NAME} PRIVATE OS_LINUX EXTGEN_HAS_JNI=0)
+  include(cmake/linux/extgen_post_project.cmake)
 endif()
+
+# User implementation sources (developer-owned, in src/)
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # ============================================================
 # Warnings
@@ -279,26 +213,6 @@ else()
 endif()
 
 # ============================================================
-# RPATH for *nix (not iOS/tvOS)
-# ============================================================
-if(APPLE AND NOT EXTGEN_IS_APPLE_MOBILE)
-  set_target_properties(
-    ${PROJECT_NAME}
-    PROPERTIES
-      MACOSX_RPATH ON
-      BUILD_WITH_INSTALL_RPATH ON
-      INSTALL_RPATH "@loader_path"
-  )
-elseif(UNIX AND NOT ANDROID)
-  set_target_properties(
-    ${PROJECT_NAME}
-    PROPERTIES
-      BUILD_WITH_INSTALL_RPATH ON
-      INSTALL_RPATH "$ORIGIN"
-  )
-endif()
-
-# ============================================================
 # Outputs / post-build copies
 # ============================================================
 
@@ -314,121 +228,25 @@ else()
   )
 endif()
 
+# Note: Xbox and consoles checked before WIN32 — GDK builds have WIN32=TRUE.
 if(ANDROID)
-
-  if(EXT_ANDROID_OUTPUT_DIR STREQUAL "")
-    set(_EXT_ANDROID_OUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../AndroidSource")
-  elseif(IS_ABSOLUTE "${EXT_ANDROID_OUTPUT_DIR}")
-    set(_EXT_ANDROID_OUT_DIR "${EXT_ANDROID_OUTPUT_DIR}")
-  else()
-    get_filename_component(_EXT_ANDROID_OUT_DIR
-    "${CMAKE_CURRENT_SOURCE_DIR}/${EXT_ANDROID_OUTPUT_DIR}"
-    ABSOLUTE
-    )
-  endif()
-
-  set(_ANDROID_OUT_BASE "${_EXT_ANDROID_OUT_DIR}/libs")
-  set(_ANDROID_ABI_DIR "${_ANDROID_OUT_BASE}/${CMAKE_ANDROID_ARCH_ABI}")
-
-  add_custom_command(
-    TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${_ANDROID_ABI_DIR}"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${PROJECT_NAME}>"
-            "${_ANDROID_ABI_DIR}/lib$<TARGET_PROPERTY:${PROJECT_NAME},OUTPUT_NAME>.so"
-    COMMENT "Copying Android shared library to ${_ANDROID_ABI_DIR}"
-  )
-
-  if(DEFINED EXT_TP_ANDROID_AAR AND EXISTS "${EXT_TP_ANDROID_AAR}")
-    set(_ANDROID_AAR_DIR "${_EXT_ANDROID_OUT_DIR}/libs-aar")
-    add_custom_command(
-      TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E make_directory "${_ANDROID_AAR_DIR}"
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${EXT_TP_ANDROID_AAR}" "${_ANDROID_AAR_DIR}/"
-      COMMENT "Copying third-party AAR to ${_ANDROID_AAR_DIR}"
-    )
-  endif()
-
-  if(EXT_TP_RUNTIME_DLLS)
-    add_custom_command(
-      TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EXT_TP_RUNTIME_DLLS} "${_ANDROID_ABI_DIR}/"
-      COMMENT "Copying third-party Android .so(s) to ${_ANDROID_ABI_DIR}"
-    )
-  endif()
-
+  include(cmake/android/extgen_post_build.cmake)
 elseif(EXTGEN_IS_APPLE_MOBILE)
-  message(STATUS "Apple mobile build: use package_ios_xcframework / package_tvos_xcframework targets.")
-
-else()
-  add_custom_command(
-    TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND "${CMAKE_COMMAND}" -E copy_if_different "$<TARGET_FILE:${PROJECT_NAME}>"
-            "${_EXT_OUT_DIR}/$<TARGET_FILE_NAME:${PROJECT_NAME}>"
-    COMMENT "Copying shared library to ${_EXT_OUT_DIR}"
-  )
-
-  if(WIN32 AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.21)
-    file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/_copy_runtime_dlls.cmake" [=[
-      if(NOT DEFINED dlls OR dlls STREQUAL "")
-        message(STATUS "No runtime DLLs to copy")
-        return()
-      endif()
-      foreach(f IN LISTS dlls)
-        if(EXISTS "${f}")
-          file(COPY "${f}" DESTINATION "${dst}")
-        endif()
-      endforeach()
-    ]=])
-
-    add_custom_command(
-      TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND "${CMAKE_COMMAND}" -Ddlls="$<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>"
-              -Ddst="${_EXT_OUT_DIR}" -P "${CMAKE_CURRENT_BINARY_DIR}/_copy_runtime_dlls.cmake"
-      COMMENT "Copying dependent runtime DLLs (if any)"
-    )
-  endif()
-
-  if(DEFINED EXT_TP_RUNTIME_DLLS AND EXT_TP_RUNTIME_DLLS)
-    add_custom_command(
-      TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND "${CMAKE_COMMAND}" -E copy_if_different ${EXT_TP_RUNTIME_DLLS} "${_EXT_OUT_DIR}/"
-      COMMAND_EXPAND_LISTS
-      COMMENT "Copying third-party runtime(s)"
-    )
-  endif()
+  include(cmake/apple_mobile/extgen_post_build.cmake)
+elseif(EXTGEN_IS_SWITCH)
+  include(cmake/switch/extgen_post_build.cmake)
+elseif(EXTGEN_IS_XBOX_ONE)
+  include(cmake/xbox_one/extgen_post_build.cmake)
+elseif(EXTGEN_IS_XBOX_SCARLETT)
+  include(cmake/xbox_scarlett/extgen_post_build.cmake)
+elseif(EXTGEN_IS_PS4)
+  include(cmake/ps4/extgen_post_build.cmake)
+elseif(EXTGEN_IS_PS5)
+  include(cmake/ps5/extgen_post_build.cmake)
+elseif(WIN32)
+  include(cmake/windows/extgen_post_build.cmake)
+elseif(APPLE)
+  include(cmake/macos/extgen_post_build.cmake)
+elseif(UNIX)
+  include(cmake/linux/extgen_post_build.cmake)
 endif()
-
-# ============================================================
-# Apple XCFramework packagers and Xcode auto-integration (iOS/tvOS)
-# ============================================================
-if(EXTGEN_IS_APPLE_MOBILE)
-  include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/extgen_xcframework.cmake)
-
-  # Effective values
-  set(_EXT_GM_XCODEPROJ "${EXT_GM_XCODEPROJ}")
-  if(NOT EXT_GM_XCODEPROJ_OVERRIDE STREQUAL "")
-    set(_EXT_GM_XCODEPROJ "${EXT_GM_XCODEPROJ_OVERRIDE}")
-  endif()
-  
-  set(_EXT_GM_APP_TARGET "${EXT_GM_APP_TARGET}")
-  if(NOT EXT_GM_APP_TARGET_OVERRIDE STREQUAL "")
-    set(_EXT_GM_APP_TARGET "${EXT_GM_APP_TARGET_OVERRIDE}")
-  endif()
-
-  add_custom_target(integrate_gamemaker
-    COMMAND ${CMAKE_COMMAND}
-      -DEXT_REPO_ROOT:PATH=${CMAKE_SOURCE_DIR}
-      -DEXT_GM_XCODEPROJ:FILEPATH=${_EXT_GM_XCODEPROJ}
-      -DEXT_GM_APP_TARGET:STRING=${_EXT_GM_APP_TARGET}
-      -DEXT_EXT_XCODEPROJ:FILEPATH=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.xcodeproj
-      -DEXT_EXT_TARGET:STRING=${PROJECT_NAME}
-      -P "${CMAKE_SOURCE_DIR}/cmake/extgen_integrate_gamemaker_xcode.cmake"
-    COMMENT "Integrating extension into GameMaker Xcode project"
-    VERBATIM
-  )
-
-  if(NOT EXT_ENABLE_GM_INTEGRATION)
-    set_property(TARGET integrate_gamemaker PROPERTY EXCLUDE_FROM_ALL TRUE)
-  endif()
-endif()
-

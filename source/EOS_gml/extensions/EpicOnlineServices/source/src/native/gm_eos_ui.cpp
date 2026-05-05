@@ -229,21 +229,29 @@ void eos_ui_report_input_state(bool button_down, bool button_up, bool button_lef
         return;
     }
 
+    using Flags = EOS_UI_EInputStateButtonFlags;
+    Flags flags = Flags::EOS_UISBF_None;
+    if (button_down)   flags = flags | Flags::EOS_UISBF_DPad_Down;
+    if (button_up)     flags = flags | Flags::EOS_UISBF_DPad_Up;
+    if (button_left)   flags = flags | Flags::EOS_UISBF_DPad_Left;
+    if (button_right)  flags = flags | Flags::EOS_UISBF_DPad_Right;
+    if (button_accept) flags = flags | Flags::EOS_UISBF_FaceButton_Bottom;
+    if (button_cancel) flags = flags | Flags::EOS_UISBF_FaceButton_Right;
+
     EOS_UI_ReportInputStateOptions opts{};
     opts.ApiVersion = EOS_UI_REPORTINPUTSTATE_API_LATEST;
-    //TODO
-	EOS_UI_EInputStateButtonFlags ButtonDownFlags;
-	EOS_Bool bAcceptIsFaceButtonRight;
-	EOS_Bool bMouseButtonDown;
-	uint32_t MousePosX;
-	uint32_t MousePosY;
-	uint32_t GamepadIndex;
-	float LeftStickX;
-	float LeftStickY;
-	float RightStickX;
-	float RightStickY;
-	float LeftTrigger;
-	float RightTrigger;
+    opts.ButtonDownFlags = flags;
+    opts.bAcceptIsFaceButtonRight = EOS_FALSE;
+    opts.bMouseButtonDown = EOS_FALSE;
+    opts.MousePosX = 0;
+    opts.MousePosY = 0;
+    opts.GamepadIndex = 0;
+    opts.LeftStickX = 0.0f;
+    opts.LeftStickY = 0.0f;
+    opts.RightStickX = 0.0f;
+    opts.RightStickY = 0.0f;
+    opts.LeftTrigger = 0.0f;
+    opts.RightTrigger = 0.0f;
 
     EOS_UI_ReportInputState(ui, &opts);
 }
@@ -314,4 +322,246 @@ void eos_ui_remove_notify_display_settings_updated(uint64_t notification_id)
         ui,
         (EOS_NotificationId)notification_id
     );
+}
+
+// ============================================================
+// EOS UI (Part 3) — Additional functions
+// ============================================================
+
+static void EOS_CALL eos_ui_hide_friends_callback_native(const EOS_UI_HideFriendsCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicUIHideFriendsCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_ui_show_block_player_callback_native(
+    const EOS_UI_OnShowBlockPlayerCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicUIShowBlockPlayerCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
+    out.target_user_id = eos_epic_account_id_to_string_internal(data->TargetUserId);
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_ui_show_report_player_callback_native(
+    const EOS_UI_OnShowReportPlayerCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicUIShowReportPlayerCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
+    out.target_user_id = eos_epic_account_id_to_string_internal(data->TargetUserId);
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+void eos_ui_hide_friends(std::string_view local_user_id, const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return;
+    }
+
+    EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_UI_HideFriends: invalid local_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_UI_HideFriendsOptions opts{};
+    opts.ApiVersion = EOS_UI_HIDEFRIENDS_API_LATEST;
+    opts.LocalUserId = local_user;
+
+    EOS_UI_HideFriends(ui, &opts, ctx, &eos_ui_hide_friends_callback_native);
+}
+
+bool eos_ui_get_friends_visible(std::string_view local_user_id)
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return false;
+    }
+
+    EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_UI_GetFriendsVisible: invalid local_user_id.");
+        return false;
+    }
+
+    EOS_UI_GetFriendsVisibleOptions opts{};
+    opts.ApiVersion = EOS_UI_GETFRIENDSVISIBLE_API_LATEST;
+    opts.LocalUserId = local_user;
+
+    return EOS_UI_GetFriendsVisible(ui, &opts) == EOS_TRUE;
+}
+
+bool eos_ui_get_friends_exclusive_input(std::string_view local_user_id)
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return false;
+    }
+
+    EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_UI_GetFriendsExclusiveInput: invalid local_user_id.");
+        return false;
+    }
+
+    EOS_UI_GetFriendsExclusiveInputOptions opts{};
+    opts.ApiVersion = EOS_UI_GETFRIENDSEXCLUSIVEINPUT_API_LATEST;
+    opts.LocalUserId = local_user;
+
+    return EOS_UI_GetFriendsExclusiveInput(ui, &opts) == EOS_TRUE;
+}
+
+gm_enums::EpicResult eos_ui_pause_social_overlay(bool is_paused)
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_UI_PauseSocialOverlayOptions opts{};
+    opts.ApiVersion = EOS_UI_PAUSESOCIALOVERLAY_API_LATEST;
+    opts.bIsPaused = is_paused ? EOS_TRUE : EOS_FALSE;
+
+    const EOS_EResult result = EOS_UI_PauseSocialOverlay(ui, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_UI_PauseSocialOverlay failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+bool eos_ui_is_social_overlay_paused()
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return false;
+    }
+
+    EOS_UI_IsSocialOverlayPausedOptions opts{};
+    opts.ApiVersion = EOS_UI_ISSOCIALOVERLAYPAUSED_API_LATEST;
+
+    return EOS_UI_IsSocialOverlayPaused(ui, &opts) == EOS_TRUE;
+}
+
+gm_enums::EpicUINotificationLocation eos_ui_get_notification_location_preference()
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return (gm_enums::EpicUINotificationLocation)EOS_UI_ENotificationLocation::EOS_UNL_TopLeft;
+    }
+
+    return (gm_enums::EpicUINotificationLocation)EOS_UI_GetNotificationLocationPreference(ui);
+}
+
+void eos_ui_show_block_player(
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return;
+    }
+
+    EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
+    EOS_EpicAccountId target_user = eos_epic_account_id_from_string_internal(target_user_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_UI_ShowBlockPlayer: invalid local_user_id.");
+        return;
+    }
+    if (!target_user) {
+        eos_set_last_error("EOS_UI_ShowBlockPlayer: invalid target_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_UI_ShowBlockPlayerOptions opts{};
+    opts.ApiVersion = EOS_UI_SHOWBLOCKPLAYER_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+
+    EOS_UI_ShowBlockPlayer(ui, &opts, ctx, &eos_ui_show_block_player_callback_native);
+}
+
+void eos_ui_show_report_player(
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HUI ui = eos_ui_iface();
+    if (!ui) {
+        eos_set_last_error("EOS UI interface unavailable.");
+        return;
+    }
+
+    EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
+    EOS_EpicAccountId target_user = eos_epic_account_id_from_string_internal(target_user_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_UI_ShowReportPlayer: invalid local_user_id.");
+        return;
+    }
+    if (!target_user) {
+        eos_set_last_error("EOS_UI_ShowReportPlayer: invalid target_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_UI_ShowReportPlayerOptions opts{};
+    opts.ApiVersion = EOS_UI_SHOWREPORTPLAYER_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+
+    EOS_UI_ShowReportPlayer(ui, &opts, ctx, &eos_ui_show_report_player_callback_native);
 }

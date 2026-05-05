@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:dev.epicgames.com)",
+      "Bash(Get-ChildItem -Path \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\extensions\\\\EpicOnlineServices\\\\source\\\\src\\\\native\" -File -Recurse)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Get-ChildItem -Path \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\extensions\\\\EpicOnlineServices\\\\source\\\\src\\\\native\" -File)",
+      "WebSearch",
+      "Bash(find \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\" -type d \\\\\\( -iname \"*include*\" -o -iname \"*sdk*\" -o -iname \"*eossdk*\" \\\\\\) 2>/dev/null | head -20)",
+      "Read(//d/Github/GMEXT-EpicOnlineServices/**)",
+      "Bash(Get-ChildItem -Recurse -Filter \"eos_custominvites*.h\" \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\")",
+      "PowerShell(head -20)"
+    ]
+  }
+}

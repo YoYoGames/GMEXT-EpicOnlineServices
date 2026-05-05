@@ -332,108 +332,74 @@
       "displayName": "Xbox Series (Scarlett) Debug",
       "hidden": true,
       "inherits": "base-vs",
-      "architecture": { "value": "Gaming.Xbox.Scarlett.x64" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
+      "architecture": { "value": "Gaming.Xbox.Scarlett.x64", "strategy": "set" },
+      "toolset": { "value": "v142" },
+      "cacheVariables": { "EXTGEN_PLATFORM_XBOX_SCARLETT": "ON", "EXT_OUTPUT_DIR": "../" }
     },
     {
       "name": "xbox-scarlett-release",
       "displayName": "Xbox Series (Scarlett) Release",
       "hidden": true,
       "inherits": "base-vs",
-      "architecture": { "value": "Gaming.Xbox.Scarlett.x64" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
+      "architecture": { "value": "Gaming.Xbox.Scarlett.x64", "strategy": "set" },
+      "toolset": { "value": "v142" },
+      "cacheVariables": { "EXTGEN_PLATFORM_XBOX_SCARLETT": "ON", "EXT_OUTPUT_DIR": "../" }
     },
     {
       "name": "xbox-one-debug",
       "displayName": "Xbox One Debug",
       "hidden": true,
       "inherits": "base-vs",
-      "architecture": { "value": "Gaming.Xbox.XboxOne.x64" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
+      "architecture": { "value": "Gaming.Xbox.XboxOne.x64", "strategy": "set" },
+      "toolset": { "value": "v142" },
+      "cacheVariables": { "EXTGEN_PLATFORM_XBOX_ONE": "ON", "EXT_OUTPUT_DIR": "../" }
     },
     {
       "name": "xbox-one-release",
       "displayName": "Xbox One Release",
       "hidden": true,
       "inherits": "base-vs",
-      "architecture": { "value": "Gaming.Xbox.XboxOne.x64" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
+      "architecture": { "value": "Gaming.Xbox.XboxOne.x64", "strategy": "set" },
+      "toolset": { "value": "v142" },
+      "cacheVariables": { "EXTGEN_PLATFORM_XBOX_ONE": "ON", "EXT_OUTPUT_DIR": "../" }
     },
 
     {
-      "name": "ps-base-vs",
+      "name": "base-vs-ps4",
       "hidden": true,
       "inherits": "base-vs",
+      "architecture": { "value": "ORBIS", "strategy": "set" },
       "cacheVariables": {
-        "BUILD_SHARED_LIBS": "ON"
+        "BUILD_SHARED_LIBS": "ON",
+        "EXTGEN_PLATFORM_PS4": "ON",
+        "EXT_OUTPUT_DIR": "../"
       }
     },
 
     {
-      "name": "ps4-debug",
-      "displayName": "PlayStation 4 (ORBIS) Debug",
-      "hidden": true,
-      "inherits": "ps-base-vs",
-      "architecture": { "value": "ORBIS" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
-    },
-    {
-      "name": "ps4-release",
-      "displayName": "PlayStation 4 (ORBIS) Release",
-      "hidden": true,
-      "inherits": "ps-base-vs",
-      "architecture": { "value": "ORBIS" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
-    },
-
-    {
-      "name": "ps5-debug",
-      "displayName": "PlayStation 5 (Prospero) Debug",
-      "hidden": true,
-      "inherits": "ps-base-vs",
-      "architecture": { "value": "Prospero" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
-    },
-    {
-      "name": "ps5-release",
-      "displayName": "PlayStation 5 (Prospero) Release",
-      "hidden": true,
-      "inherits": "ps-base-vs",
-      "architecture": { "value": "Prospero" },
-      "cacheVariables": { "EXT_OUTPUT_DIR": "../" }
-    },
-
-    {
-      "name": "base-vs-switch",
+      "name": "base-vs-ps5",
       "hidden": true,
       "inherits": "base-vs",
-      "architecture": { "value": "NX64" },
-
+      "architecture": { "value": "Prospero", "strategy": "set" },
       "cacheVariables": {
-        "CMAKE_CXX_STANDARD": "17",
-        "CMAKE_POSITION_INDEPENDENT_CODE": "ON",
-
-        "EXTGEN_PLATFORM_SWITCH": "ON",
-        "EXT_SWITCH_USER_PROPS": "$env{EXT_SWITCH_USER_PROPS}",
+        "BUILD_SHARED_LIBS": "ON",
+        "EXTGEN_PLATFORM_PS5": "ON",
         "EXT_OUTPUT_DIR": "../"
       }
     },
     {
-      "name": "switch-nx64-debug",
-      "displayName": "Nintendo Switch (NX64) Debug",
+      "name": "base-vs-switch",
       "hidden": true,
-      "inherits": "base-vs-switch",
+      "inherits": "base-vs",
+      "architecture": {
+        "value": "NX64",
+        "strategy": "set"
+      },
+
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
-    },
-    {
-      "name": "switch-nx64-release",
-      "displayName": "Nintendo Switch (NX64) Release",
-      "hidden": true,
-      "inherits": "base-vs-switch",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "BUILD_SHARED_LIBS": "ON",
+        "EXTGEN_PLATFORM_SWITCH": "ON",
+        "EXT_OUTPUT_DIR": "../"
       }
     }
   ],
@@ -461,24 +427,6 @@
 
     { "name": "xbox-scarlett-debug",  "configurePreset": "xbox-scarlett-debug",  "configuration": "Debug" },
     { "name": "xbox-scarlett-release","configurePreset": "xbox-scarlett-release","configuration": "Release" },
-
-    { "name": "ps4-debug",   "configurePreset": "ps4-debug",   "configuration": "Debug" },
-    { "name": "ps4-release", "configurePreset": "ps4-release", "configuration": "Release" },
-
-    { "name": "ps5-debug",   "configurePreset": "ps5-debug",   "configuration": "Debug" },
-    { "name": "ps5-release", "configurePreset": "ps5-release", "configuration": "Release" },
-
-    {
-      "name": "switch-nx64-debug",
-      "configurePreset": "switch-nx64-debug",
-      "configuration": "Debug"
-    },
-    {
-      "name": "switch-nx64-release",
-      "configurePreset": "switch-nx64-release",
-      "configuration": "Release"
-    },
-
 
     {
       "name": "ios-xcframework-release",

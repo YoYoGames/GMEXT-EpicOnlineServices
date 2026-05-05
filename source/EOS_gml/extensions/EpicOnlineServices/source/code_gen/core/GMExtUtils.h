@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <string>
 
-#ifdef OS_WINDOWS
+#if defined(OS_WINDOWS) || defined(OS_PS4) || defined(OS_PS5) || defined(OS_GDK)
 #define GMEXPORT extern "C" __declspec(dllexport)
 #define YYEXPORT __declspec(dllexport)
 #elif defined(OS_ANDROID)

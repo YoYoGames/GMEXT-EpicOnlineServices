@@ -1825,3 +1825,730 @@ void eos_lobby_remove_notify_send_lobby_native_invite_requested(uint64_t notific
         (EOS_NotificationId)notification_id
     );
 }
+
+// ============================================================
+// EOS Lobby (Part N) — LobbyDetails attribute accessors
+// ============================================================
+
+static gm_structs::EpicLobbyDetailsAttribute eos_lobby_attribute_from_native(
+    const EOS_Lobby_Attribute* a)
+{
+    gm_structs::EpicLobbyDetailsAttribute out{};
+    if (!a || !a->Data) return out;
+
+    out.key = a->Data->Key ? std::string(a->Data->Key) : std::string();
+    out.visibility = (gm_enums::EpicLobbyAttributeVisibility)a->Visibility;
+    out.value_type = (gm_enums::EpicAttributeType)a->Data->ValueType;
+    switch (a->Data->ValueType) {
+        case EOS_EAttributeType::EOS_AT_BOOLEAN:
+            out.value = a->Data->Value.AsBool ? "true" : "false";
+            break;
+        case EOS_EAttributeType::EOS_AT_INT64:
+            out.value = std::to_string(a->Data->Value.AsInt64);
+            break;
+        case EOS_EAttributeType::EOS_AT_DOUBLE:
+            out.value = std::to_string(a->Data->Value.AsDouble);
+            break;
+        case EOS_EAttributeType::EOS_AT_STRING:
+        default:
+            out.value = a->Data->Value.AsUtf8 ? std::string(a->Data->Value.AsUtf8) : std::string();
+            break;
+    }
+    return out;
+}
+
+int64_t eos_lobby_details_get_attribute_count(uint64_t lobby_details_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
+    if (!details) {
+        eos_set_last_error("EOS LobbyDetails handle invalid.");
+        return 0;
+    }
+
+    EOS_LobbyDetails_GetAttributeCountOptions opts{};
+    opts.ApiVersion = EOS_LOBBYDETAILS_GETATTRIBUTECOUNT_API_LATEST;
+    return (int64_t)EOS_LobbyDetails_GetAttributeCount(details, &opts);
+}
+
+gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_attribute_by_index(
+    uint64_t lobby_details_id,
+    int64_t index)
+{
+    eos_clear_last_error();
+    gm_structs::EpicLobbyDetailsAttribute out{};
+
+    EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
+    if (!details) {
+        eos_set_last_error("EOS LobbyDetails handle invalid.");
+        return out;
+    }
+
+    EOS_LobbyDetails_CopyAttributeByIndexOptions opts{};
+    opts.ApiVersion = EOS_LOBBYDETAILS_COPYATTRIBUTEBYINDEX_API_LATEST;
+    opts.AttrIndex = (uint32_t)index;
+
+    EOS_Lobby_Attribute* attr = nullptr;
+    const EOS_EResult result = EOS_LobbyDetails_CopyAttributeByIndex(details, &opts, &attr);
+    if (result != EOS_EResult::EOS_Success || !attr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyAttributeByIndex failed.");
+        return out;
+    }
+
+    out = eos_lobby_attribute_from_native(attr);
+    EOS_Lobby_Attribute_Release(attr);
+    return out;
+}
+
+gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_attribute_by_key(
+    uint64_t lobby_details_id,
+    std::string_view key)
+{
+    eos_clear_last_error();
+    gm_structs::EpicLobbyDetailsAttribute out{};
+
+    EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
+    if (!details) {
+        eos_set_last_error("EOS LobbyDetails handle invalid.");
+        return out;
+    }
+
+    std::string key_storage(key);
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbyDetails_CopyAttributeByKey: key is required.");
+        return out;
+    }
+
+    EOS_LobbyDetails_CopyAttributeByKeyOptions opts{};
+    opts.ApiVersion = EOS_LOBBYDETAILS_COPYATTRIBUTEBYKEY_API_LATEST;
+    opts.AttrKey = key_storage.c_str();
+
+    EOS_Lobby_Attribute* attr = nullptr;
+    const EOS_EResult result = EOS_LobbyDetails_CopyAttributeByKey(details, &opts, &attr);
+    if (result != EOS_EResult::EOS_Success || !attr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyAttributeByKey failed.");
+        return out;
+    }
+
+    out = eos_lobby_attribute_from_native(attr);
+    EOS_Lobby_Attribute_Release(attr);
+    return out;
+}
+
+int64_t eos_lobby_details_get_member_attribute_count(
+    uint64_t lobby_details_id,
+    std::string_view target_user_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
+    if (!details) {
+        eos_set_last_error("EOS LobbyDetails handle invalid.");
+        return 0;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_LobbyDetails_GetMemberAttributeCount: invalid target_user_id.");
+        return 0;
+    }
+
+    EOS_LobbyDetails_GetMemberAttributeCountOptions opts{};
+    opts.ApiVersion = EOS_LOBBYDETAILS_GETMEMBERATTRIBUTECOUNT_API_LATEST;
+    opts.TargetUserId = target_user;
+    return (int64_t)EOS_LobbyDetails_GetMemberAttributeCount(details, &opts);
+}
+
+gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by_index(
+    uint64_t lobby_details_id,
+    std::string_view target_user_id,
+    int64_t index)
+{
+    eos_clear_last_error();
+    gm_structs::EpicLobbyDetailsAttribute out{};
+
+    EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
+    if (!details) {
+        eos_set_last_error("EOS LobbyDetails handle invalid.");
+        return out;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_LobbyDetails_CopyMemberAttributeByIndex: invalid target_user_id.");
+        return out;
+    }
+
+    EOS_LobbyDetails_CopyMemberAttributeByIndexOptions opts{};
+    opts.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYINDEX_API_LATEST;
+    opts.TargetUserId = target_user;
+    opts.AttrIndex = (uint32_t)index;
+
+    EOS_Lobby_Attribute* attr = nullptr;
+    const EOS_EResult result = EOS_LobbyDetails_CopyMemberAttributeByIndex(details, &opts, &attr);
+    if (result != EOS_EResult::EOS_Success || !attr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyMemberAttributeByIndex failed.");
+        return out;
+    }
+
+    out = eos_lobby_attribute_from_native(attr);
+    EOS_Lobby_Attribute_Release(attr);
+    return out;
+}
+
+gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by_key(
+    uint64_t lobby_details_id,
+    std::string_view target_user_id,
+    std::string_view key)
+{
+    eos_clear_last_error();
+    gm_structs::EpicLobbyDetailsAttribute out{};
+
+    EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
+    if (!details) {
+        eos_set_last_error("EOS LobbyDetails handle invalid.");
+        return out;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_LobbyDetails_CopyMemberAttributeByKey: invalid target_user_id.");
+        return out;
+    }
+
+    std::string key_storage(key);
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbyDetails_CopyMemberAttributeByKey: key is required.");
+        return out;
+    }
+
+    EOS_LobbyDetails_CopyMemberAttributeByKeyOptions opts{};
+    opts.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYKEY_API_LATEST;
+    opts.TargetUserId = target_user;
+    opts.AttrKey = key_storage.c_str();
+
+    EOS_Lobby_Attribute* attr = nullptr;
+    const EOS_EResult result = EOS_LobbyDetails_CopyMemberAttributeByKey(details, &opts, &attr);
+    if (result != EOS_EResult::EOS_Success || !attr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyMemberAttributeByKey failed.");
+        return out;
+    }
+
+    out = eos_lobby_attribute_from_native(attr);
+    EOS_Lobby_Attribute_Release(attr);
+    return out;
+}
+
+gm_structs::EpicLobbyDetailsMemberInfo eos_lobby_details_copy_member_info(
+    uint64_t lobby_details_id,
+    std::string_view target_user_id)
+{
+    eos_clear_last_error();
+    gm_structs::EpicLobbyDetailsMemberInfo out{};
+
+    EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
+    if (!details) {
+        eos_set_last_error("EOS LobbyDetails handle invalid.");
+        return out;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_LobbyDetails_CopyMemberInfo: invalid target_user_id.");
+        return out;
+    }
+
+    EOS_LobbyDetails_CopyMemberInfoOptions opts{};
+    opts.ApiVersion = EOS_LOBBYDETAILS_COPYMEMBERINFO_API_LATEST;
+    opts.TargetUserId = target_user;
+
+    EOS_LobbyDetails_MemberInfo* info = nullptr;
+    const EOS_EResult result = EOS_LobbyDetails_CopyMemberInfo(details, &opts, &info);
+    if (result != EOS_EResult::EOS_Success || !info) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyMemberInfo failed.");
+        return out;
+    }
+
+    out.user_id = eos_product_user_id_to_string_internal(info->UserId);
+    out.platform = (int64_t)info->Platform;
+    out.allows_crossplay = info->bAllowsCrossplay == EOS_TRUE;
+    EOS_LobbyDetails_MemberInfo_Release(info);
+    return out;
+}
+
+// ============================================================
+// EOS Lobby (Part N+1) — JoinLobbyById, HardMuteMember
+// ============================================================
+
+static void EOS_CALL eos_lobby_join_by_id_callback_native(
+    const EOS_Lobby_JoinLobbyByIdCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicLobbyJoinLobbyByIdCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_lobby_hard_mute_member_callback_native(
+    const EOS_Lobby_HardMuteMemberCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicLobbyHardMuteMemberCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
+    out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+void eos_lobby_join_lobby_by_id(
+    std::string_view lobby_id,
+    std::string_view local_user_id,
+    bool presence_enabled,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    std::string lobby_id_storage(lobby_id);
+    if (lobby_id_storage.empty()) {
+        eos_set_last_error("EOS_Lobby_JoinLobbyById: lobby_id is required.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_JoinLobbyById: invalid local_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Lobby_JoinLobbyByIdOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_JOINLOBBYBYID_API_LATEST;
+    opts.LobbyId = lobby_id_storage.c_str();
+    opts.LocalUserId = local_user;
+    opts.bPresenceEnabled = presence_enabled ? EOS_TRUE : EOS_FALSE;
+    opts.LocalRTCOptions = nullptr;
+    opts.RTCRoomJoinActionType = EOS_ELobbyRTCRoomJoinActionType::EOS_LRRJAT_AutomaticJoin;
+
+    EOS_Lobby_JoinLobbyById(lobby, &opts, ctx, &eos_lobby_join_by_id_callback_native);
+}
+
+void eos_lobby_hard_mute_member(
+    std::string_view lobby_id,
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    bool hard_mute,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    std::string lobby_id_storage(lobby_id);
+    if (lobby_id_storage.empty()) {
+        eos_set_last_error("EOS_Lobby_HardMuteMember: lobby_id is required.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_HardMuteMember: invalid local_user_id.");
+        return;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_Lobby_HardMuteMember: invalid target_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Lobby_HardMuteMemberOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_HARDMUTEMEMBER_API_LATEST;
+    opts.LobbyId = lobby_id_storage.c_str();
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+    opts.bHardMute = hard_mute ? EOS_TRUE : EOS_FALSE;
+
+    EOS_Lobby_HardMuteMember(lobby, &opts, ctx, &eos_lobby_hard_mute_member_callback_native);
+}
+
+// ============================================================
+// EOS Lobby (Part N+2) — Invite flow
+// ============================================================
+
+static void EOS_CALL eos_lobby_send_invite_callback_native(
+    const EOS_Lobby_SendInviteCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicLobbySendInviteCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_lobby_reject_invite_callback_native(
+    const EOS_Lobby_RejectInviteCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicLobbyRejectInviteCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_lobby_query_invites_callback_native(
+    const EOS_Lobby_QueryInvitesCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
+    gm_structs::EpicLobbyQueryInvitesCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    ctx->callback.call(out);
+    delete ctx;
+}
+
+void eos_lobby_send_invite(
+    std::string_view lobby_id,
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    std::string lobby_id_storage(lobby_id);
+    if (lobby_id_storage.empty()) {
+        eos_set_last_error("EOS_Lobby_SendInvite: lobby_id is required.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_SendInvite: invalid local_user_id.");
+        return;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_Lobby_SendInvite: invalid target_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Lobby_SendInviteOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_SENDINVITE_API_LATEST;
+    opts.LobbyId = lobby_id_storage.c_str();
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+
+    EOS_Lobby_SendInvite(lobby, &opts, ctx, &eos_lobby_send_invite_callback_native);
+}
+
+void eos_lobby_reject_invite(
+    std::string_view invite_id,
+    std::string_view local_user_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    std::string invite_id_storage(invite_id);
+    if (invite_id_storage.empty()) {
+        eos_set_last_error("EOS_Lobby_RejectInvite: invite_id is required.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_RejectInvite: invalid local_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Lobby_RejectInviteOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_REJECTINVITE_API_LATEST;
+    opts.InviteId = invite_id_storage.c_str();
+    opts.LocalUserId = local_user;
+
+    EOS_Lobby_RejectInvite(lobby, &opts, ctx, &eos_lobby_reject_invite_callback_native);
+}
+
+void eos_lobby_query_invites(
+    std::string_view local_user_id,
+    const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_QueryInvites: invalid local_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Lobby_QueryInvitesOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_QUERYINVITES_API_LATEST;
+    opts.LocalUserId = local_user;
+
+    EOS_Lobby_QueryInvites(lobby, &opts, ctx, &eos_lobby_query_invites_callback_native);
+}
+
+int64_t eos_lobby_get_invite_count(std::string_view local_user_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return 0;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_GetInviteCount: invalid local_user_id.");
+        return 0;
+    }
+
+    EOS_Lobby_GetInviteCountOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_GETINVITECOUNT_API_LATEST;
+    opts.LocalUserId = local_user;
+    return (int64_t)EOS_Lobby_GetInviteCount(lobby, &opts);
+}
+
+std::string eos_lobby_get_invite_id_by_index(
+    std::string_view local_user_id,
+    int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return std::string();
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_GetInviteIdByIndex: invalid local_user_id.");
+        return std::string();
+    }
+
+    EOS_Lobby_GetInviteIdByIndexOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.Index = (uint32_t)index;
+
+    char buf[EOS_LOBBY_INVITEID_MAX_LENGTH + 1] = {};
+    int32_t len = (int32_t)sizeof(buf);
+    const EOS_EResult result = EOS_Lobby_GetInviteIdByIndex(lobby, &opts, buf, &len);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Lobby_GetInviteIdByIndex failed.");
+        return std::string();
+    }
+    return std::string(buf);
+}
+
+// ============================================================
+// EOS Lobby (Part N+3) — Invite notifications
+// ============================================================
+
+static GMFunction g_cb_lobby_invite_received = nullptr;
+static GMFunction g_cb_lobby_invite_accepted = nullptr;
+static GMFunction g_cb_lobby_invite_rejected = nullptr;
+
+static void EOS_CALL eos_lobby_invite_received_callback_native(
+    const EOS_Lobby_LobbyInviteReceivedCallbackInfo* data)
+{
+    if (!data || !g_cb_lobby_invite_received) return;
+
+    gm_structs::EpicLobbyLobbyInviteReceivedCallbackInfo out{};
+    out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
+    g_cb_lobby_invite_received.call(out);
+}
+
+static void EOS_CALL eos_lobby_invite_accepted_callback_native(
+    const EOS_Lobby_LobbyInviteAcceptedCallbackInfo* data)
+{
+    if (!data || !g_cb_lobby_invite_accepted) return;
+
+    gm_structs::EpicLobbyLobbyInviteAcceptedCallbackInfo out{};
+    out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
+    out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
+    g_cb_lobby_invite_accepted.call(out);
+}
+
+static void EOS_CALL eos_lobby_invite_rejected_callback_native(
+    const EOS_Lobby_LobbyInviteRejectedCallbackInfo* data)
+{
+    if (!data || !g_cb_lobby_invite_rejected) return;
+
+    gm_structs::EpicLobbyLobbyInviteRejectedCallbackInfo out{};
+    out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
+    out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
+    g_cb_lobby_invite_rejected.call(out);
+}
+
+uint64_t eos_lobby_add_notify_lobby_invite_received(const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return 0;
+    }
+
+    g_cb_lobby_invite_received = callback;
+
+    EOS_Lobby_AddNotifyLobbyInviteReceivedOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITERECEIVED_API_LATEST;
+
+    return (uint64_t)EOS_Lobby_AddNotifyLobbyInviteReceived(
+        lobby, &opts, nullptr, &eos_lobby_invite_received_callback_native);
+}
+
+void eos_lobby_remove_notify_lobby_invite_received(uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    EOS_Lobby_RemoveNotifyLobbyInviteReceived(lobby, (EOS_NotificationId)notification_id);
+}
+
+uint64_t eos_lobby_add_notify_lobby_invite_accepted(const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return 0;
+    }
+
+    g_cb_lobby_invite_accepted = callback;
+
+    EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEACCEPTED_API_LATEST;
+
+    return (uint64_t)EOS_Lobby_AddNotifyLobbyInviteAccepted(
+        lobby, &opts, nullptr, &eos_lobby_invite_accepted_callback_native);
+}
+
+void eos_lobby_remove_notify_lobby_invite_accepted(uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    EOS_Lobby_RemoveNotifyLobbyInviteAccepted(lobby, (EOS_NotificationId)notification_id);
+}
+
+uint64_t eos_lobby_add_notify_lobby_invite_rejected(const GMFunction& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return 0;
+    }
+
+    g_cb_lobby_invite_rejected = callback;
+
+    EOS_Lobby_AddNotifyLobbyInviteRejectedOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEREJECTED_API_LATEST;
+
+    return (uint64_t)EOS_Lobby_AddNotifyLobbyInviteRejected(
+        lobby, &opts, nullptr, &eos_lobby_invite_rejected_callback_native);
+}
+
+void eos_lobby_remove_notify_lobby_invite_rejected(uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    EOS_Lobby_RemoveNotifyLobbyInviteRejected(lobby, (EOS_NotificationId)notification_id);
+}

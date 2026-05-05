@@ -7,7 +7,7 @@
 
 extern "C" const char* extOptGetString(char* _ext, char* _opt);
 
-// Adapter: matches const signature expected by your C++ API
+// Adapter: matches const signature expected by the C++ API
 static const char* ExtOptGetString(const char* ext, const char* opt)
 {
     return extOptGetString(const_cast<char*>(ext), const_cast<char*>(opt));
@@ -40,7 +40,7 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
         SEL sel = method_getName(baseList[i]);
         const char *name = sel_getName(sel);
 
-        // Only inject your extension selectors
+        // Only inject extension selectors (methods prefixed with __EXT_NATIVE__)
         if (!name || strncmp(name, "__EXT_NATIVE__", 13) != 0) continue;
 
         // Add only if subclass doesn't already have it
@@ -428,6 +428,38 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_ui_remove_notify_display_settings_updated(__arg_buffer, __arg_buffer_length);
 }
+- (double)__EXT_NATIVE__eos_ui_hide_friends:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ui_hide_friends(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ui_get_friends_visible:(char*)local_user_id
+{
+    return __EXT_NATIVE__eos_ui_get_friends_visible(local_user_id);
+}
+- (double)__EXT_NATIVE__eos_ui_get_friends_exclusive_input:(char*)local_user_id
+{
+    return __EXT_NATIVE__eos_ui_get_friends_exclusive_input(local_user_id);
+}
+- (double)__EXT_NATIVE__eos_ui_pause_social_overlay:(double)is_paused arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ui_pause_social_overlay(is_paused, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ui_is_social_overlay_paused
+{
+    return __EXT_NATIVE__eos_ui_is_social_overlay_paused();
+}
+- (double)__EXT_NATIVE__eos_ui_get_notification_location_preference:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ui_get_notification_location_preference(__ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ui_show_block_player:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ui_show_block_player(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ui_show_report_player:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ui_show_report_player(__arg_buffer, __arg_buffer_length);
+}
 - (double)__EXT_NATIVE__eos_metrics_begin_player_session:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
     return __EXT_NATIVE__eos_metrics_begin_player_session(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
@@ -716,6 +748,114 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_sessions_remove_notify_join_session_accepted(__arg_buffer, __arg_buffer_length);
 }
+- (double)__EXT_NATIVE__eos_sessions_session_modification_set_bucket_id:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_set_bucket_id(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_set_host_address:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_set_host_address(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_set_permission_level:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_set_permission_level(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_set_join_in_progress_allowed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_set_join_in_progress_allowed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_set_max_players:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_set_max_players(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_set_invites_allowed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_set_invites_allowed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_add_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_remove_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_remove_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_details_get_session_attribute_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_details_get_session_attribute_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_details_copy_session_attribute_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_details_copy_session_attribute_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_details_copy_session_attribute_by_key:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_details_copy_session_attribute_by_key(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_active_session_get_registered_player_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_active_session_get_registered_player_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (char*)__EXT_NATIVE__eos_sessions_active_session_get_registered_player_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_active_session_get_registered_player_by_index(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_send_invite:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_send_invite(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_reject_invite:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_reject_invite(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_query_invites:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_query_invites(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_get_invite_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_get_invite_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (char*)__EXT_NATIVE__eos_sessions_get_invite_id_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_get_invite_id_by_index(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_search_set_parameter:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_search_set_parameter(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_search_remove_parameter:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_search_remove_parameter(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_search_get_search_result_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_search_get_search_result_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_add_notify_session_invite_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_add_notify_session_invite_rejected(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_remove_notify_session_invite_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_remove_notify_session_invite_rejected(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_add_notify_leave_session_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_add_notify_leave_session_requested(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_remove_notify_leave_session_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_remove_notify_leave_session_requested(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_add_notify_send_session_native_invite_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_add_notify_send_session_native_invite_requested(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_remove_notify_send_session_native_invite_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_remove_notify_send_session_native_invite_requested(__arg_buffer, __arg_buffer_length);
+}
 - (double)__EXT_NATIVE__eos_lobby_create_lobby:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_lobby_create_lobby(__arg_buffer, __arg_buffer_length);
@@ -895,6 +1035,622 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 - (double)__EXT_NATIVE__eos_lobby_remove_notify_send_lobby_native_invite_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_lobby_remove_notify_send_lobby_native_invite_requested(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_details_get_attribute_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_details_get_attribute_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_details_copy_attribute_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_details_copy_attribute_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_details_copy_attribute_by_key:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_details_copy_attribute_by_key(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_details_get_member_attribute_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_details_get_member_attribute_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_key:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_key(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_details_copy_member_info:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_details_copy_member_info(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_join_lobby_by_id:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_join_lobby_by_id(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_hard_mute_member:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_hard_mute_member(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_send_invite:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_send_invite(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_reject_invite:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_reject_invite(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_query_invites:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_query_invites(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_get_invite_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_get_invite_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (char*)__EXT_NATIVE__eos_lobby_get_invite_id_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_get_invite_id_by_index(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_add_notify_lobby_invite_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_received(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_received(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_add_notify_lobby_invite_accepted:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_accepted(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_accepted:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_accepted(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_add_notify_lobby_invite_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_rejected(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_remove_notify_lobby_invite_rejected(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_send_packet:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_send_packet(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_get_next_received_packet_size:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_get_next_received_packet_size(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_receive_packet:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_receive_packet(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_accept_connection:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_accept_connection(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_close_connection:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_close_connection(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_close_connections:(char*)local_user_id arg1:(char*)socket_name arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_close_connections(local_user_id, socket_name, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_query_nat_type:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_query_nat_type(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_get_nat_type:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_get_nat_type(__ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_set_relay_control:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_set_relay_control(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_get_relay_control:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_get_relay_control(__ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_set_port_range:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_set_port_range(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_get_port_range:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_get_port_range(__ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_set_packet_queue_size:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_set_packet_queue_size(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_get_packet_queue_info:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_get_packet_queue_info(__ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_clear_packet_queue:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_clear_packet_queue(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_add_notify_peer_connection_request:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_add_notify_peer_connection_request(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_remove_notify_peer_connection_request:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_request(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_add_notify_peer_connection_established:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_add_notify_peer_connection_established(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_remove_notify_peer_connection_established:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_established(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_add_notify_peer_connection_interrupted:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_add_notify_peer_connection_interrupted(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_remove_notify_peer_connection_interrupted:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_interrupted(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_add_notify_peer_connection_closed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_add_notify_peer_connection_closed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_remove_notify_peer_connection_closed:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_remove_notify_peer_connection_closed(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_add_notify_incoming_packet_queue_full:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_add_notify_incoming_packet_queue_full(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_p2p_remove_notify_incoming_packet_queue_full:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_p2p_remove_notify_incoming_packet_queue_full(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_query_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_query_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_query_file_list:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_query_file_list(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_get_file_metadata_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_get_file_metadata_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_at_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_at_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_by_filename:(char*)local_user_id arg1:(char*)filename arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_by_filename(local_user_id, filename, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_duplicate_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_duplicate_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_delete_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_delete_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_read_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_read_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_write_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_write_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_playerdatastorage_delete_cache:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_playerdatastorage_delete_cache(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_query_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_titlestorage_query_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_query_file_list:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_titlestorage_query_file_list(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_get_file_metadata_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_titlestorage_get_file_metadata_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_copy_file_metadata_at_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_titlestorage_copy_file_metadata_at_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_copy_file_metadata_by_filename:(char*)local_user_id arg1:(char*)filename arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_titlestorage_copy_file_metadata_by_filename(local_user_id, filename, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_read_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_titlestorage_read_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_delete_cache:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_titlestorage_delete_cache(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_query_ownership:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_query_ownership(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_query_ownership_by_sandbox_ids:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_query_ownership_by_sandbox_ids(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_query_ownership_token:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_query_ownership_token(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_query_entitlements:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_query_entitlements(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_query_entitlement_token:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_query_entitlement_token(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_query_offers:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_query_offers(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_checkout:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_checkout(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_redeem_entitlements:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_redeem_entitlements(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_item_ownership_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_item_ownership_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_item_ownership_at_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_item_ownership_at_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_sandbox_ownership_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_sandbox_ownership_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_sandbox_ownership_at_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_sandbox_ownership_at_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_entitlements_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_entitlements_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_entitlements_by_name_count:(char*)local_user_id arg1:(char*)entitlement_name arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_entitlements_by_name_count(local_user_id, entitlement_name, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_entitlement_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_entitlement_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_entitlement_by_name_and_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_entitlement_by_name_and_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_entitlement_by_id:(char*)local_user_id arg1:(char*)entitlement_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_entitlement_by_id(local_user_id, entitlement_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_last_redeemed_entitlements_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_last_redeemed_entitlements_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (char*)__EXT_NATIVE__eos_ecom_copy_last_redeemed_entitlement_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_last_redeemed_entitlement_by_index(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_offer_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_offer_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_offer_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_offer_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_offer_by_id:(char*)local_user_id arg1:(char*)offer_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_offer_by_id(local_user_id, offer_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_offer_item_count:(char*)local_user_id arg1:(char*)offer_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_offer_item_count(local_user_id, offer_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_offer_item_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_offer_item_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_item_by_id:(char*)local_user_id arg1:(char*)item_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_item_by_id(local_user_id, item_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_offer_image_info_count:(char*)local_user_id arg1:(char*)offer_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_offer_image_info_count(local_user_id, offer_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_offer_image_info_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_offer_image_info_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_item_image_info_count:(char*)local_user_id arg1:(char*)item_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_item_image_info_count(local_user_id, item_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_item_image_info_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_item_image_info_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_item_release_count:(char*)local_user_id arg1:(char*)item_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_item_release_count(local_user_id, item_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_item_release_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_item_release_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_get_transaction_count:(char*)local_user_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_get_transaction_count(local_user_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_transaction_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_transaction_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_copy_transaction_by_id:(char*)local_user_id arg1:(char*)transaction_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_copy_transaction_by_id(local_user_id, transaction_id, __ret_buffer, __ret_buffer_length);
+}
+- (char*)__EXT_NATIVE__eos_ecom_transaction_get_transaction_id:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_transaction_get_transaction_id(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_transaction_get_entitlements_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_transaction_get_entitlements_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_transaction_copy_entitlement_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_transaction_copy_entitlement_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_ecom_transaction_release:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_ecom_transaction_release(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_set_custom_invite:(char*)local_user_id arg1:(char*)payload
+{
+    return __EXT_NATIVE__eos_custominvites_set_custom_invite(local_user_id, payload);
+}
+- (double)__EXT_NATIVE__eos_custominvites_send_custom_invite:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_send_custom_invite(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_finalize_invite:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_finalize_invite(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_send_request_to_join:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_send_request_to_join(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_accept_request_to_join:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_accept_request_to_join(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_reject_request_to_join:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_reject_request_to_join(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_custom_invite_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_received(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_received(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_custom_invite_accepted:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_accepted(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_accepted:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_accepted(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_custom_invite_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_rejected(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_custom_invite_rejected(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_request_to_join_response_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_response_received(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_response_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_response_received(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_request_to_join_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_received(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_received(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_send_custom_native_invite_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_send_custom_native_invite_requested(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_send_custom_native_invite_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_send_custom_native_invite_requested(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_request_to_join_accepted:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_accepted(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_accepted:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_accepted(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_add_notify_request_to_join_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_rejected(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_rejected:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_custominvites_remove_notify_request_to_join_rejected(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_join_room:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_join_room(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_leave_room:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_leave_room(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_block_participant:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_block_participant(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_set_setting:(char*)setting_name arg1:(char*)setting_value
+{
+    return __EXT_NATIVE__eos_rtc_set_setting(setting_name, setting_value);
+}
+- (double)__EXT_NATIVE__eos_rtc_set_room_setting:(char*)local_user_id arg1:(char*)room_name arg2:(char*)setting_name arg3:(char*)setting_value
+{
+    return __EXT_NATIVE__eos_rtc_set_room_setting(local_user_id, room_name, setting_name, setting_value);
+}
+- (double)__EXT_NATIVE__eos_rtc_add_notify_disconnected:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_add_notify_disconnected(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_remove_notify_disconnected:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_remove_notify_disconnected(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_add_notify_participant_status_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_add_notify_participant_status_changed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_remove_notify_participant_status_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_remove_notify_participant_status_changed(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_add_notify_room_statistics_updated:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_add_notify_room_statistics_updated(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_remove_notify_room_statistics_updated:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_remove_notify_room_statistics_updated(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_update_sending:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_update_sending(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_update_receiving:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_update_receiving(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_update_sending_volume:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_update_sending_volume(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_update_receiving_volume:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_update_receiving_volume(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_update_participant_volume:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_update_participant_volume(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_get_input_devices_count:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_get_input_devices_count(__ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_copy_input_device_info_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_copy_input_device_info_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_get_output_devices_count:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_get_output_devices_count(__ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_copy_output_device_info_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_copy_output_device_info_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_query_input_devices:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_query_input_devices(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_query_output_devices:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_query_output_devices(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_set_input_device_settings:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_set_input_device_settings(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_set_output_device_settings:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_set_output_device_settings(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_add_notify_participant_updated:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_add_notify_participant_updated(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_participant_updated:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_remove_notify_participant_updated(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_add_notify_audio_devices_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_add_notify_audio_devices_changed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_audio_devices_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_devices_changed(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_add_notify_audio_input_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_add_notify_audio_input_state(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_audio_input_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_input_state(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_add_notify_audio_output_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_add_notify_audio_output_state(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state(__arg_buffer, __arg_buffer_length);
 }
 - (double)__EXT_NATIVE__EpicOnlineServices_invocation_handler:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
