@@ -5,6 +5,7 @@
 #include <eos_progressionsnapshot.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 
@@ -18,7 +19,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HProgressionSnapshot eos_progressionsnapshot_iface()
@@ -47,7 +48,7 @@ static void EOS_CALL eos_progressionsnapshot_submit_callback_native(
 
     gm_structs::EpicProgressionSnapshotSubmitSnapshotCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -60,7 +61,7 @@ static void EOS_CALL eos_progressionsnapshot_delete_callback_native(
 
     gm_structs::EpicProgressionSnapshotDeleteSnapshotCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -153,9 +154,9 @@ gm_enums::EpicResult eos_progression_snapshot_end_snapshot(std::int64_t snapshot
 
 void eos_progression_snapshot_submit_snapshot(
     std::int64_t snapshot_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
-    EOS_GUARD;
+    EOS_GUARD();
 
     EOS_HProgressionSnapshot iface = eos_progressionsnapshot_iface();
     if (!iface) {
@@ -176,9 +177,9 @@ void eos_progression_snapshot_submit_snapshot(
 
 void eos_progression_snapshot_delete_snapshot(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
-    EOS_GUARD;
+    EOS_GUARD();
 
     EOS_HProgressionSnapshot iface = eos_progressionsnapshot_iface();
     if (!iface) {

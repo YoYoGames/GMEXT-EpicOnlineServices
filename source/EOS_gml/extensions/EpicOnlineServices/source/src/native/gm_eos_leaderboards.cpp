@@ -5,6 +5,7 @@
 #include <eos_leaderboards.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 
@@ -18,7 +19,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HLeaderboards eos_leaderboards_iface()
@@ -81,7 +82,7 @@ static void EOS_CALL eos_leaderboards_query_definitions_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_leaderboards_query_definitions_info_from_native(data)
     );
     delete ctx;
@@ -97,7 +98,7 @@ static void EOS_CALL eos_leaderboards_query_ranks_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_leaderboards_query_ranks_info_from_native(data)
     );
     delete ctx;
@@ -113,7 +114,7 @@ static void EOS_CALL eos_leaderboards_query_user_scores_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_leaderboards_query_user_scores_info_from_native(data)
     );
     delete ctx;
@@ -127,7 +128,7 @@ void eos_leaderboards_query_definitions(
     std::string_view local_user_id,
     int64_t start_time,
     int64_t end_time,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -163,7 +164,7 @@ void eos_leaderboards_query_definitions(
 void eos_leaderboards_query_ranks(
     std::string_view local_user_id,
     std::string_view leaderboard_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -204,7 +205,7 @@ void eos_leaderboards_query_ranks(
 void eos_leaderboards_query_user_scores(
     std::string_view local_user_id,
     std::string_view stat_name,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 

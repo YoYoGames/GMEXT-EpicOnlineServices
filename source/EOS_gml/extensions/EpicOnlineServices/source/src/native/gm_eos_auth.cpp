@@ -5,6 +5,7 @@
 #include <eos_auth.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -21,7 +22,7 @@ static EOS_ContinuanceToken g_eos_auth_continuance_token = nullptr;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HAuth eos_auth_iface()
@@ -144,7 +145,7 @@ static void EOS_CALL eos_auth_login_callback_native(const EOS_Auth_LoginCallback
         return;
 
     g_eos_auth_continuance_token = data->ContinuanceToken;
-    ctx->callback.call(eos_auth_login_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_auth_login_info_from_native(data));
     delete ctx;
 }
 
@@ -157,7 +158,7 @@ static void EOS_CALL eos_auth_logout_callback_native(const EOS_Auth_LogoutCallba
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_auth_logout_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_auth_logout_info_from_native(data));
     delete ctx;
 }
 
@@ -171,7 +172,7 @@ static void EOS_CALL eos_auth_link_account_callback_native(const EOS_Auth_LinkAc
         return;
 
     g_eos_auth_continuance_token = nullptr;
-    ctx->callback.call(eos_auth_link_account_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_auth_link_account_info_from_native(data));
     delete ctx;
 }
 
@@ -184,7 +185,7 @@ static void EOS_CALL eos_auth_delete_persistent_auth_callback_native(const EOS_A
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_auth_delete_persistent_auth_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_auth_delete_persistent_auth_info_from_native(data));
     delete ctx;
 }
 
@@ -198,7 +199,7 @@ void eos_auth_login(
     gm_enums::EpicLoginCredentialType credentials_type,
     gm_enums::EpicExternalCredentialType external_credential_type,
     gm_enums::EpicAuthScopeFlags scope_flags,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -229,7 +230,7 @@ void eos_auth_login(
     EOS_Auth_Login(auth, &opts, ctx, &eos_auth_login_callback_native);
 }
 
-void eos_auth_logout(std::string_view local_user_id, const GMFunction& callback)
+void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -258,7 +259,7 @@ void eos_auth_logout(std::string_view local_user_id, const GMFunction& callback)
 void eos_auth_link_account(
     std::string_view local_user_id,
     gm_enums::EpicLinkAccountFlags link_account_flags,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -291,7 +292,7 @@ void eos_auth_link_account(
     EOS_Auth_LinkAccount(auth, &opts, ctx, &eos_auth_link_account_callback_native);
 }
 
-void eos_auth_delete_persistent_auth(const GMFunction& callback)
+void eos_auth_delete_persistent_auth(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -469,7 +470,7 @@ static void EOS_CALL eos_auth_query_id_token_callback_native(const EOS_Auth_Quer
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_auth_query_id_token_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_auth_query_id_token_info_from_native(data));
     delete ctx;
 }
 
@@ -482,7 +483,7 @@ static void EOS_CALL eos_auth_verify_id_token_callback_native(const EOS_Auth_Ver
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_auth_verify_id_token_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_auth_verify_id_token_info_from_native(data));
     delete ctx;
 }
 
@@ -495,7 +496,7 @@ static void EOS_CALL eos_auth_verify_user_auth_callback_native(const EOS_Auth_Ve
     if (!ctx)
         return;
 
-     ctx->callback.call(eos_auth_verify_user_auth_info_from_native(data));
+     if (ctx->callback) ctx->callback.value().call(eos_auth_verify_user_auth_info_from_native(data));
     delete ctx;
 }
 
@@ -540,7 +541,7 @@ gm_structs::EpicAuthIdToken eos_auth_copy_id_token(std::string_view local_user_i
     return out;
 }
 
-void eos_auth_query_id_token(std::string_view local_user_id, std::string_view target_account_id, const GMFunction& callback)
+void eos_auth_query_id_token(std::string_view local_user_id, std::string_view target_account_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -574,7 +575,7 @@ void eos_auth_query_id_token(std::string_view local_user_id, std::string_view ta
     EOS_Auth_QueryIdToken(auth, &opts, ctx, &eos_auth_query_id_token_callback_native);
 }
 
-void eos_auth_verify_id_token(std::string_view json_web_token, const GMFunction& callback)
+void eos_auth_verify_id_token(std::string_view json_web_token, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -604,7 +605,7 @@ void eos_auth_verify_id_token(std::string_view json_web_token, const GMFunction&
     EOS_Auth_VerifyIdToken(auth, &opts, ctx, &eos_auth_verify_id_token_callback_native);
 }
 
-void eos_auth_verify_user_auth(std::string_view access_token, const GMFunction& callback)
+void eos_auth_verify_user_auth(std::string_view access_token, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -669,7 +670,7 @@ static void EOS_CALL eos_auth_login_status_changed_callback(
 }
 
 uint64_t eos_auth_add_notify_login_status_changed(
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -680,7 +681,7 @@ uint64_t eos_auth_add_notify_login_status_changed(
         return 0;
     }
 
-    g_cb_auth_login_status_changed = callback;
+    g_cb_auth_login_status_changed = callback.value_or(GMFunction{});
 
     EOS_Auth_AddNotifyLoginStatusChangedOptions opts{};
     opts.ApiVersion = EOS_AUTH_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST;

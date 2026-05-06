@@ -5,6 +5,7 @@
 #include <eos_sanctions.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HSanctions eos_sanctions_iface()
@@ -120,7 +121,7 @@ static void EOS_CALL eos_sanctions_query_active_player_sanctions_callback_native
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sanctions_query_active_player_sanctions_info_from_native(data)
     );
     delete ctx;
@@ -136,7 +137,7 @@ static void EOS_CALL eos_sanctions_create_player_sanction_appeal_callback_native
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sanctions_create_player_sanction_appeal_info_from_native(data)
     );
     delete ctx;
@@ -148,7 +149,7 @@ static void EOS_CALL eos_sanctions_create_player_sanction_appeal_callback_native
 
 void eos_sanctions_query_active_player_sanctions(
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -244,7 +245,7 @@ void eos_sanctions_create_player_sanction_appeal(
     std::string_view local_user_id,
     std::string_view reference_id,
     gm_enums::EpicSanctionAppealReason reason,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 

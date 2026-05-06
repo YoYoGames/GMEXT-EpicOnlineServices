@@ -4,6 +4,7 @@
 #include <eos_sdk.h>
 #include <eos_logging.h>
 
+#include <optional>
 #include <string>
 
 using namespace gm::wire;
@@ -42,11 +43,11 @@ static void EOS_CALL eos_logging_message_hook(const EOS_LogMessage* p)
 // EOS Logging
 // ============================================================
 
-void eos_logging_set_callback(const gm::wire::GMFunction& callback)
+void eos_logging_set_callback(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
-    g_cb_logging = callback;
+    g_cb_logging = callback.value_or(GMFunction{});
 
     const EOS_EResult result = EOS_Logging_SetCallback(
         g_cb_logging ? &eos_logging_message_hook : nullptr

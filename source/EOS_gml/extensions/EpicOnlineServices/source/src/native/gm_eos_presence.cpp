@@ -5,6 +5,7 @@
 #include <eos_presence.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HPresence eos_presence_iface()
@@ -108,7 +109,7 @@ static void EOS_CALL eos_presence_query_presence_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_presence_query_presence_info_from_native(data)
     );
     delete ctx;
@@ -121,7 +122,7 @@ static void EOS_CALL eos_presence_query_presence_callback_native(
 void eos_presence_query_presence(
     std::string_view local_user_id,
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -326,7 +327,7 @@ static void EOS_CALL eos_presence_set_presence_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_presence_set_presence_info_from_native(data)
     );
     delete ctx;
@@ -522,7 +523,7 @@ gm_enums::EpicResult eos_presence_modification_delete_data(
 void eos_presence_set_presence(
     std::string_view local_user_id,
     uint64_t modification_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -563,7 +564,7 @@ void eos_presence_set_presence(
     eos_presence_modification_erase(modification_id);
 }
 
-uint64_t eos_presence_add_notify_on_presence_changed(const GMFunction& callback)
+uint64_t eos_presence_add_notify_on_presence_changed(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -573,7 +574,7 @@ uint64_t eos_presence_add_notify_on_presence_changed(const GMFunction& callback)
         return 0;
     }
 
-    g_cb_presence_changed = callback;
+    g_cb_presence_changed = callback.value_or(GMFunction{});
 
     EOS_Presence_AddNotifyOnPresenceChangedOptions opts{};
     opts.ApiVersion = EOS_PRESENCE_ADDNOTIFYONPRESENCECHANGED_API_LATEST;
@@ -602,7 +603,7 @@ void eos_presence_remove_notify_on_presence_changed(uint64_t notification_id)
     );
 }
 
-uint64_t eos_presence_add_notify_join_game_accepted(const GMFunction& callback)
+uint64_t eos_presence_add_notify_join_game_accepted(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -612,7 +613,7 @@ uint64_t eos_presence_add_notify_join_game_accepted(const GMFunction& callback)
         return 0;
     }
 
-    g_cb_presence_join_game_accepted = callback;
+    g_cb_presence_join_game_accepted = callback.value_or(GMFunction{});
 
     EOS_Presence_AddNotifyJoinGameAcceptedOptions opts{};
     opts.ApiVersion = EOS_PRESENCE_ADDNOTIFYJOINGAMEACCEPTED_API_LATEST;

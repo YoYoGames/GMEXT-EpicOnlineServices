@@ -121,7 +121,7 @@
 
 /**
  * @function_partial eos_logging_set_callback
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -145,14 +145,14 @@
  * @param {Enum.EpicLoginCredentialType} credentials_type
  * @param {Enum.EpicExternalCredentialType} external_credential_type
  * @param {Enum.EpicAuthScopeFlags} scope_flags
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_auth_logout
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -160,13 +160,13 @@
  * @function_partial eos_auth_link_account
  * @param {String} local_user_id
  * @param {Enum.EpicLinkAccountFlags} link_account_flags
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_auth_delete_persistent_auth
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -209,27 +209,27 @@
  * @function_partial eos_auth_query_id_token
  * @param {String} local_user_id
  * @param {String} target_account_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_auth_verify_id_token
  * @param {String} json_web_token
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_auth_verify_user_auth
  * @param {String} access_token
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_auth_add_notify_login_status_changed
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -245,40 +245,40 @@
  * @param {String} token
  * @param {Enum.EpicExternalCredentialType} external_credential_type
  * @param {String} display_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_connect_create_user
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_connect_link_account
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_connect_unlink_account
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_connect_create_device_id
  * @param {String} device_model
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_connect_delete_device_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -286,14 +286,14 @@
  * @function_partial eos_connect_transfer_device_id_account
  * @param {String} primary_local_user_id
  * @param {String} local_device_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_connect_logout
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -376,7 +376,7 @@
 /**
  * @function_partial eos_connect_verify_id_token
  * @param {String} json_web_token
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -385,7 +385,7 @@
  * @param {String} local_user_id
  * @param {Enum.EpicExternalAccountType} account_id_type
  * @param {Array[String]} target_external_user_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -394,13 +394,13 @@
  * @param {String} local_user_id
  * @param {Enum.EpicExternalAccountType} account_id_type
  * @param {Array[String]} target_product_user_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_connect_add_notify_auth_expiration
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -413,7 +413,7 @@
 
 /**
  * @function_partial eos_connect_add_notify_login_status_changed
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -427,7 +427,7 @@
 /**
  * @function_partial eos_friends_query_friends
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -456,7 +456,7 @@
 
 /**
  * @function_partial eos_friends_add_notify_friends_update
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -471,7 +471,7 @@
  * @function_partial eos_user_info_query_user_info
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -530,7 +530,7 @@
  * @param {String} target_user_id
  * @param {String} stat_name
  * @param {Real} ingest_amount
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -540,7 +540,7 @@
  * @param {String} target_user_id
  * @param {Real} start_time
  * @param {Real} end_time
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -570,7 +570,7 @@
 /**
  * @function_partial eos_ui_show_friends
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -578,7 +578,7 @@
  * @function_partial eos_ui_show_native_profile
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -607,7 +607,7 @@
 
 /**
  * @function_partial eos_ui_add_notify_display_settings_updated
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -621,7 +621,7 @@
 /**
  * @function_partial eos_ui_hide_friends
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -662,7 +662,7 @@
  * @function_partial eos_ui_show_block_player
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -670,7 +670,7 @@
  * @function_partial eos_ui_show_report_player
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -722,14 +722,14 @@
 /**
  * @function_partial eos_progression_snapshot_submit_snapshot
  * @param {Real} snapshot_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_progression_snapshot_delete_snapshot
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -740,14 +740,14 @@
  * @param {Enum.EpicPlayerReportsCategory} category
  * @param {String} message
  * @param {String} context
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_sanctions_query_active_player_sanctions
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -771,14 +771,14 @@
  * @param {String} local_user_id
  * @param {String} reference_id
  * @param {Enum.EpicSanctionAppealReason} reason
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_achievements_query_definitions
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -786,7 +786,7 @@
  * @function_partial eos_achievements_query_player_achievements
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -847,13 +847,13 @@
  * @function_partial eos_achievements_unlock_achievements
  * @param {String} user_id
  * @param {Array[String]} achievement_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_achievements_add_notify_achievements_unlocked_v2
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -869,7 +869,7 @@
  * @param {String} local_user_id
  * @param {Real} start_time
  * @param {Real} end_time
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -877,7 +877,7 @@
  * @function_partial eos_leaderboards_query_ranks
  * @param {String} local_user_id
  * @param {String} leaderboard_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -885,7 +885,7 @@
  * @function_partial eos_leaderboards_query_user_scores
  * @param {String} local_user_id
  * @param {String} stat_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -946,7 +946,7 @@
  * @function_partial eos_presence_query_presence
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1016,13 +1016,13 @@
  * @function_partial eos_presence_set_presence
  * @param {String} local_user_id
  * @param {Real} modification_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_presence_add_notify_on_presence_changed
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1035,7 +1035,7 @@
 
 /**
  * @function_partial eos_presence_add_notify_join_game_accepted
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1069,28 +1069,28 @@
 /**
  * @function_partial eos_sessions_update_session
  * @param {Real} modification_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_sessions_destroy_session
  * @param {String} session_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_sessions_start_session
  * @param {String} session_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_sessions_end_session
  * @param {String} session_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1098,7 +1098,7 @@
  * @function_partial eos_sessions_join_session
  * @param {String} session_name
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1106,7 +1106,7 @@
  * @function_partial eos_sessions_register_players
  * @param {String} session_name
  * @param {Array[String]} target_user_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1114,7 +1114,7 @@
  * @function_partial eos_sessions_unregister_players
  * @param {String} session_name
  * @param {Array[String]} target_user_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1151,7 +1151,7 @@
  * @function_partial eos_sessions_session_search_find
  * @param {Real} search_id
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1212,7 +1212,7 @@
 
 /**
  * @function_partial eos_sessions_add_notify_session_invite_received
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1225,7 +1225,7 @@
 
 /**
  * @function_partial eos_sessions_add_notify_session_invite_accepted
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1238,7 +1238,7 @@
 
 /**
  * @function_partial eos_sessions_add_notify_join_session_accepted
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1358,7 +1358,7 @@
  * @param {String} session_name
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1366,14 +1366,14 @@
  * @function_partial eos_sessions_reject_invite
  * @param {String} local_user_id
  * @param {String} invite_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_sessions_query_invites
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1420,7 +1420,7 @@
 
 /**
  * @function_partial eos_sessions_add_notify_session_invite_rejected
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1433,7 +1433,7 @@
 
 /**
  * @function_partial eos_sessions_add_notify_leave_session_requested
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1446,7 +1446,7 @@
 
 /**
  * @function_partial eos_sessions_add_notify_send_session_native_invite_requested
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1459,13 +1459,8 @@
 
 /**
  * @function_partial eos_lobby_create_lobby
- * @param {String} local_user_id
- * @param {Real} max_lobby_members
- * @param {Enum.EpicLobbyPermissionLevel} permission_level
- * @param {Bool} presence_enabled
- * @param {Bool} allow_invites
- * @param {String} bucket_id
- * @param {Function} callback
+ * @param {Struct.EpicLobbyCreateLobbyOptions} options
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1473,16 +1468,14 @@
  * @function_partial eos_lobby_destroy_lobby
  * @param {String} lobby_id
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_lobby_join_lobby
- * @param {String} lobby_id
- * @param {String} local_user_id
- * @param {Bool} presence_enabled
- * @param {Function} callback
+ * @param {Struct.EpicLobbyJoinLobbyOptions} options
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1490,7 +1483,7 @@
  * @function_partial eos_lobby_leave_lobby
  * @param {String} lobby_id
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1512,7 +1505,7 @@
  * @function_partial eos_lobby_update_lobby
  * @param {String} lobby_id
  * @param {Real} modification_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1551,9 +1544,7 @@
 /**
  * @function_partial eos_lobby_lobby_modification_add_attribute
  * @param {Real} modification_id
- * @param {String} key
- * @param {String} value
- * @param {Enum.EpicLobbyAttributeVisibility} visibility
+ * @param {Struct.EpicLobbyModificationAddAttributeOptions} options
  * @returns {Enum.EpicResult} 
  * @function_end 
  */
@@ -1569,9 +1560,7 @@
 /**
  * @function_partial eos_lobby_lobby_modification_add_member_attribute
  * @param {Real} modification_id
- * @param {String} key
- * @param {String} value
- * @param {Enum.EpicLobbyAttributeVisibility} visibility
+ * @param {Struct.EpicLobbyModificationAddMemberAttributeOptions} options
  * @returns {Enum.EpicResult} 
  * @function_end 
  */
@@ -1586,19 +1575,15 @@
 
 /**
  * @function_partial eos_lobby_promote_member
- * @param {String} lobby_id
- * @param {String} local_user_id
- * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Struct.EpicLobbyPromoteMemberOptions} options
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_lobby_kick_member
- * @param {String} lobby_id
- * @param {String} local_user_id
- * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Struct.EpicLobbyKickMemberOptions} options
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1634,9 +1619,7 @@
 /**
  * @function_partial eos_lobby_lobby_search_set_parameter
  * @param {Real} search_id
- * @param {String} key
- * @param {String} value
- * @param {Enum.EpicComparisonOp} comparison_op
+ * @param {Struct.EpicLobbySearchSetParameterOptions} options
  * @returns {Enum.EpicResult} 
  * @function_end 
  */
@@ -1644,8 +1627,7 @@
 /**
  * @function_partial eos_lobby_lobby_search_remove_parameter
  * @param {Real} search_id
- * @param {String} key
- * @param {Enum.EpicComparisonOp} comparison_op
+ * @param {Struct.EpicLobbySearchRemoveParameterOptions} options
  * @returns {Enum.EpicResult} 
  * @function_end 
  */
@@ -1662,7 +1644,7 @@
  * @function_partial eos_lobby_lobby_search_find
  * @param {Real} search_id
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1727,7 +1709,7 @@
 /**
  * @function_partial eos_lobby_add_notify_lobby_update_received
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1741,7 +1723,7 @@
 /**
  * @function_partial eos_lobby_add_notify_lobby_member_update_received
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1755,7 +1737,7 @@
 /**
  * @function_partial eos_lobby_add_notify_lobby_member_status_received
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1768,7 +1750,7 @@
 
 /**
  * @function_partial eos_lobby_add_notify_join_lobby_accepted
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1782,7 +1764,7 @@
 /**
  * @function_partial eos_lobby_add_notify_leave_lobby_requested
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1796,7 +1778,7 @@
 /**
  * @function_partial eos_lobby_add_notify_send_lobby_native_invite_requested
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1866,29 +1848,22 @@
 
 /**
  * @function_partial eos_lobby_join_lobby_by_id
- * @param {String} lobby_id
- * @param {String} local_user_id
- * @param {Bool} presence_enabled
- * @param {Function} callback
+ * @param {Struct.EpicLobbyJoinLobbyByIdOptions} options
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_lobby_hard_mute_member
- * @param {String} lobby_id
- * @param {String} local_user_id
- * @param {String} target_user_id
- * @param {Bool} hard_mute
- * @param {Function} callback
+ * @param {Struct.EpicLobbyHardMuteMemberOptions} options
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_lobby_send_invite
- * @param {String} lobby_id
- * @param {String} local_user_id
- * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Struct.EpicLobbySendInviteOptions} options
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1896,14 +1871,14 @@
  * @function_partial eos_lobby_reject_invite
  * @param {String} invite_id
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_lobby_query_invites
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -1924,7 +1899,7 @@
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_invite_received
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1937,7 +1912,7 @@
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_invite_accepted
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -1950,7 +1925,7 @@
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_invite_rejected
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2023,7 +1998,7 @@
 
 /**
  * @function_partial eos_p2p_query_nat_type
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2087,7 +2062,7 @@
  * @function_partial eos_p2p_add_notify_peer_connection_request
  * @param {String} local_user_id
  * @param {String} socket_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2102,7 +2077,7 @@
  * @function_partial eos_p2p_add_notify_peer_connection_established
  * @param {String} local_user_id
  * @param {String} socket_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2117,7 +2092,7 @@
  * @function_partial eos_p2p_add_notify_peer_connection_interrupted
  * @param {String} local_user_id
  * @param {String} socket_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2132,7 +2107,7 @@
  * @function_partial eos_p2p_add_notify_peer_connection_closed
  * @param {String} local_user_id
  * @param {String} socket_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2145,7 +2120,7 @@
 
 /**
  * @function_partial eos_p2p_add_notify_incoming_packet_queue_full
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2160,14 +2135,14 @@
  * @function_partial eos_playerdatastorage_query_file
  * @param {String} local_user_id
  * @param {String} filename
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_playerdatastorage_query_file_list
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2199,7 +2174,7 @@
  * @param {String} local_user_id
  * @param {String} source_filename
  * @param {String} destination_filename
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2207,7 +2182,7 @@
  * @function_partial eos_playerdatastorage_delete_file
  * @param {String} local_user_id
  * @param {String} filename
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2215,7 +2190,7 @@
  * @function_partial eos_playerdatastorage_read_file
  * @param {String} local_user_id
  * @param {String} filename
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2224,14 +2199,14 @@
  * @param {String} local_user_id
  * @param {String} filename
  * @param {String} data_base64
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_playerdatastorage_delete_cache
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2239,7 +2214,7 @@
  * @function_partial eos_titlestorage_query_file
  * @param {String} local_user_id
  * @param {String} filename
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2247,7 +2222,7 @@
  * @function_partial eos_titlestorage_query_file_list
  * @param {String} local_user_id
  * @param {Array[String]} tags
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2278,14 +2253,14 @@
  * @function_partial eos_titlestorage_read_file
  * @param {String} local_user_id
  * @param {String} filename
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_titlestorage_delete_cache
  * @param {String} local_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2294,7 +2269,7 @@
  * @param {String} local_user_id
  * @param {Array[String]} catalog_item_ids
  * @param {String} catalog_namespace
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2302,7 +2277,7 @@
  * @function_partial eos_ecom_query_ownership_by_sandbox_ids
  * @param {String} local_user_id
  * @param {Array[String]} sandbox_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2311,7 +2286,7 @@
  * @param {String} local_user_id
  * @param {Array[String]} catalog_item_ids
  * @param {String} catalog_namespace
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2321,7 +2296,7 @@
  * @param {Array[String]} entitlement_names
  * @param {Real} include_redeemed
  * @param {String} catalog_namespace
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2329,7 +2304,7 @@
  * @function_partial eos_ecom_query_entitlement_token
  * @param {String} local_user_id
  * @param {Array[String]} entitlement_names
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2337,7 +2312,7 @@
  * @function_partial eos_ecom_query_offers
  * @param {String} local_user_id
  * @param {String} catalog_namespace
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2346,7 +2321,7 @@
  * @param {String} local_user_id
  * @param {Array[String]} offer_ids
  * @param {String} catalog_namespace
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2354,7 +2329,7 @@
  * @function_partial eos_ecom_redeem_entitlements
  * @param {String} local_user_id
  * @param {Array[String]} entitlement_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2605,7 +2580,7 @@
  * @function_partial eos_custominvites_send_custom_invite
  * @param {String} local_user_id
  * @param {Array[String]} target_user_ids
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2623,7 +2598,7 @@
  * @function_partial eos_custominvites_send_request_to_join
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2631,7 +2606,7 @@
  * @function_partial eos_custominvites_accept_request_to_join
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2639,13 +2614,13 @@
  * @function_partial eos_custominvites_reject_request_to_join
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_custom_invite_received
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2658,7 +2633,7 @@
 
 /**
  * @function_partial eos_custominvites_add_notify_custom_invite_accepted
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2671,7 +2646,7 @@
 
 /**
  * @function_partial eos_custominvites_add_notify_custom_invite_rejected
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2684,7 +2659,7 @@
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_response_received
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2697,7 +2672,7 @@
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_received
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2710,7 +2685,7 @@
 
 /**
  * @function_partial eos_custominvites_add_notify_send_custom_native_invite_requested
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2723,7 +2698,7 @@
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_accepted
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2736,7 +2711,7 @@
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_rejected
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2753,7 +2728,7 @@
  * @param {String} room_name
  * @param {String} client_base_url
  * @param {String} participant_token
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2761,7 +2736,7 @@
  * @function_partial eos_rtc_leave_room
  * @param {String} local_user_id
  * @param {String} room_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2771,7 +2746,7 @@
  * @param {String} room_name
  * @param {String} participant_id
  * @param {Bool} blocked
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2797,7 +2772,7 @@
  * @function_partial eos_rtc_add_notify_disconnected
  * @param {String} local_user_id
  * @param {String} room_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2812,7 +2787,7 @@
  * @function_partial eos_rtc_add_notify_participant_status_changed
  * @param {String} local_user_id
  * @param {String} room_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2827,7 +2802,7 @@
  * @function_partial eos_rtc_add_notify_room_statistics_updated
  * @param {String} local_user_id
  * @param {String} room_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2843,7 +2818,7 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Enum.EpicRTCAudioStatus} audio_status
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2853,7 +2828,7 @@
  * @param {String} room_name
  * @param {String} participant_id
  * @param {Bool} audio_enabled
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2862,7 +2837,7 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Real} volume
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2871,7 +2846,7 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Real} volume
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2881,7 +2856,7 @@
  * @param {String} room_name
  * @param {String} participant_id
  * @param {Real} volume
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2913,13 +2888,13 @@
 
 /**
  * @function_partial eos_rtc_audio_query_input_devices
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
 /**
  * @function_partial eos_rtc_audio_query_output_devices
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2928,7 +2903,7 @@
  * @param {String} local_user_id
  * @param {String} real_device_id
  * @param {Bool} platform_aec
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2936,7 +2911,7 @@
  * @function_partial eos_rtc_audio_set_output_device_settings
  * @param {String} local_user_id
  * @param {String} real_device_id
- * @param {Function} callback
+ * @param {Function} [callback]
  * @function_end 
  */
 
@@ -2944,7 +2919,7 @@
  * @function_partial eos_rtc_audio_add_notify_participant_updated
  * @param {String} local_user_id
  * @param {String} room_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2957,7 +2932,7 @@
 
 /**
  * @function_partial eos_rtc_audio_add_notify_audio_devices_changed
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2972,7 +2947,7 @@
  * @function_partial eos_rtc_audio_add_notify_audio_input_state
  * @param {String} local_user_id
  * @param {String} room_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -2987,7 +2962,7 @@
  * @function_partial eos_rtc_audio_add_notify_audio_output_state
  * @param {String} local_user_id
  * @param {String} room_name
- * @param {Function} callback
+ * @param {Function} [callback]
  * @returns {Real} 
  * @function_end 
  */
@@ -3685,6 +3660,29 @@
  */
 
 /**
+ * @struct_partial EpicLobbyCreateLobbyOptions
+ * @member {String} local_user_id
+ * @member {Real} max_lobby_members
+ * @member {Enum.EpicLobbyPermissionLevel} permission_level
+ * @member {Bool} presence_enabled
+ * @member {Bool} allow_invites
+ * @member {String} bucket_id
+ * @member {Bool} disable_host_migration
+ * @member {Bool} enable_rtc_room
+ * @member {Bool} enable_join_by_id
+ * @member {Bool} rejoin_after_kick_requires_invite
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbyJoinLobbyOptions
+ * @member {String} lobby_id
+ * @member {String} local_user_id
+ * @member {Bool} presence_enabled
+ * @struct_end 
+ */
+
+/**
  * @struct_partial EpicLobbyUpdateLobbyCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
@@ -3706,8 +3704,55 @@
  */
 
 /**
+ * @struct_partial EpicLobbyModificationAddAttributeOptions
+ * @member {String} key
+ * @member {String} value
+ * @member {Enum.EpicLobbyAttributeVisibility} visibility
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbyModificationAddMemberAttributeOptions
+ * @member {String} key
+ * @member {String} value
+ * @member {Enum.EpicLobbyAttributeVisibility} visibility
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbyPromoteMemberOptions
+ * @member {String} lobby_id
+ * @member {String} local_user_id
+ * @member {String} target_user_id
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbyKickMemberOptions
+ * @member {String} lobby_id
+ * @member {String} local_user_id
+ * @member {String} target_user_id
+ * @struct_end 
+ */
+
+/**
  * @struct_partial EpicLobbySearchFindCallbackInfo
  * @member {Enum.EpicResult} result_code
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbySearchSetParameterOptions
+ * @member {String} key
+ * @member {String} value
+ * @member {Enum.EpicComparisonOp} comparison_op
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbySearchRemoveParameterOptions
+ * @member {String} key
+ * @member {Enum.EpicComparisonOp} comparison_op
  * @struct_end 
  */
 
@@ -3846,6 +3891,31 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {String} lobby_id
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbyJoinLobbyByIdOptions
+ * @member {String} lobby_id
+ * @member {String} local_user_id
+ * @member {Bool} presence_enabled
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbyHardMuteMemberOptions
+ * @member {String} lobby_id
+ * @member {String} local_user_id
+ * @member {String} target_user_id
+ * @member {Bool} hard_mute
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbySendInviteOptions
+ * @member {String} lobby_id
+ * @member {String} local_user_id
+ * @member {String} target_user_id
  * @struct_end 
  */
 

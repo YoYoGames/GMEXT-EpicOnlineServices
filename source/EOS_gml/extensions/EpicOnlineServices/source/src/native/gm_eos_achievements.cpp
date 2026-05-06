@@ -5,6 +5,7 @@
 #include <eos_achievements.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HAchievements eos_achievements_iface()
@@ -112,7 +113,7 @@ static void EOS_CALL eos_achievements_query_definitions_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_achievements_query_definitions_info_from_native(data)
     );
     delete ctx;
@@ -128,7 +129,7 @@ static void EOS_CALL eos_achievements_query_player_achievements_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_achievements_query_player_achievements_info_from_native(data)
     );
     delete ctx;
@@ -138,7 +139,7 @@ static void EOS_CALL eos_achievements_query_player_achievements_callback_native(
 // EOS Achievements (Part 1)
 // ============================================================
 
-void eos_achievements_query_definitions(std::string_view local_user_id, const GMFunction& callback)
+void eos_achievements_query_definitions(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -173,7 +174,7 @@ void eos_achievements_query_definitions(std::string_view local_user_id, const GM
 void eos_achievements_query_player_achievements(
     std::string_view local_user_id,
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -332,7 +333,7 @@ static void EOS_CALL eos_achievements_unlock_achievements_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_achievements_unlock_achievements_info_from_native(data)
     );
     delete ctx;
@@ -589,7 +590,7 @@ gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_id
 void eos_achievements_unlock_achievements(
     std::string_view user_id,
     const std::vector<std::string_view>& achievement_ids,
-    const gm::wire::GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -680,7 +681,7 @@ static void EOS_CALL eos_achievements_unlocked_v2_callback(
 }
 
 uint64_t eos_achievements_add_notify_achievements_unlocked_v2(
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -691,7 +692,7 @@ uint64_t eos_achievements_add_notify_achievements_unlocked_v2(
         return 0;
     }
 
-    g_cb_achievements_unlocked_v2 = callback;
+    g_cb_achievements_unlocked_v2 = callback.value_or(GMFunction{});
 
     EOS_Achievements_AddNotifyAchievementsUnlockedV2Options opts{};
     opts.ApiVersion = EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST;

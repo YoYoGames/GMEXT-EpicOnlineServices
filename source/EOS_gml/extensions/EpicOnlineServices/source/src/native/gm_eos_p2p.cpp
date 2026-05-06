@@ -5,6 +5,7 @@
 #include <eos_p2p.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -21,12 +22,12 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 struct EOSNotifyCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HP2P eos_p2p_iface()
@@ -88,7 +89,7 @@ static void EOS_CALL eos_p2p_query_nat_type_callback_native(const EOS_P2P_OnQuer
     gm_structs::EpicP2PQueryNATTypeCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.nat_type = (gm_enums::EpicNATType)data->NATType;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -102,7 +103,7 @@ static void EOS_CALL eos_p2p_connection_request_callback_native(const EOS_P2P_On
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.remote_user_id = eos_product_user_id_to_string_internal(data->RemoteUserId);
     out.socket_name = data->SocketId ? std::string(data->SocketId->SocketName) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_p2p_connection_established_callback_native(const EOS_P2P_OnPeerConnectionEstablishedInfo* data)
@@ -117,7 +118,7 @@ static void EOS_CALL eos_p2p_connection_established_callback_native(const EOS_P2
     out.socket_name = data->SocketId ? std::string(data->SocketId->SocketName) : std::string();
     out.connection_type = (gm_enums::EpicConnectionEstablishedType)data->ConnectionType;
     out.network_type = (gm_enums::EpicNetworkConnectionType)data->NetworkType;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_p2p_connection_interrupted_callback_native(const EOS_P2P_OnPeerConnectionInterruptedInfo* data)
@@ -130,7 +131,7 @@ static void EOS_CALL eos_p2p_connection_interrupted_callback_native(const EOS_P2
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.remote_user_id = eos_product_user_id_to_string_internal(data->RemoteUserId);
     out.socket_name = data->SocketId ? std::string(data->SocketId->SocketName) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_p2p_connection_closed_callback_native(const EOS_P2P_OnRemoteConnectionClosedInfo* data)
@@ -144,7 +145,7 @@ static void EOS_CALL eos_p2p_connection_closed_callback_native(const EOS_P2P_OnR
     out.remote_user_id = eos_product_user_id_to_string_internal(data->RemoteUserId);
     out.socket_name = data->SocketId ? std::string(data->SocketId->SocketName) : std::string();
     out.reason = (gm_enums::EpicConnectionClosedReason)data->Reason;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_p2p_packet_queue_full_callback_native(const EOS_P2P_OnIncomingPacketQueueFullInfo* data)
@@ -159,7 +160,7 @@ static void EOS_CALL eos_p2p_packet_queue_full_callback_native(const EOS_P2P_OnI
     out.overflow_packet_local_user_id = eos_product_user_id_to_string_internal(data->OverflowPacketLocalUserId);
     out.overflow_packet_channel = (int64_t)data->OverflowPacketChannel;
     out.overflow_packet_size_bytes = (int64_t)data->OverflowPacketSizeBytes;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 // ============================================================
@@ -464,7 +465,7 @@ gm_enums::EpicResult eos_p2p_clear_packet_queue(
 // EOS P2P — NAT type
 // ============================================================
 
-void eos_p2p_query_nat_type(const GMFunction& callback)
+void eos_p2p_query_nat_type(const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -671,7 +672,7 @@ gm_structs::EpicP2PPacketQueueInfo eos_p2p_get_packet_queue_info()
 uint64_t eos_p2p_add_notify_peer_connection_request(
     std::string_view local_user_id,
     std::string_view socket_name,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD_RET(0);
 
@@ -731,7 +732,7 @@ void eos_p2p_remove_notify_peer_connection_request(uint64_t notification_id)
 uint64_t eos_p2p_add_notify_peer_connection_established(
     std::string_view local_user_id,
     std::string_view socket_name,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD_RET(0);
 
@@ -788,7 +789,7 @@ void eos_p2p_remove_notify_peer_connection_established(uint64_t notification_id)
 uint64_t eos_p2p_add_notify_peer_connection_interrupted(
     std::string_view local_user_id,
     std::string_view socket_name,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD_RET(0);
 
@@ -845,7 +846,7 @@ void eos_p2p_remove_notify_peer_connection_interrupted(uint64_t notification_id)
 uint64_t eos_p2p_add_notify_peer_connection_closed(
     std::string_view local_user_id,
     std::string_view socket_name,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD_RET(0);
 
@@ -899,7 +900,7 @@ void eos_p2p_remove_notify_peer_connection_closed(uint64_t notification_id)
     }
 }
 
-uint64_t eos_p2p_add_notify_incoming_packet_queue_full(const GMFunction& callback)
+uint64_t eos_p2p_add_notify_incoming_packet_queue_full(const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD_RET(0);
 

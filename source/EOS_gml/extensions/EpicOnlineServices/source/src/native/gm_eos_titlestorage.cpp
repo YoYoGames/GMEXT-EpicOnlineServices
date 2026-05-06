@@ -5,6 +5,7 @@
 #include <eos_titlestorage.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,12 +20,12 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 struct EOSTSReadContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
     std::string local_user_id;
     std::string filename;
     std::vector<uint8_t> data;
@@ -103,7 +104,7 @@ static void EOS_CALL eos_ts_query_file_callback_native(
     gm_structs::EpicTitleStorageQueryFileCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -118,7 +119,7 @@ static void EOS_CALL eos_ts_query_file_list_callback_native(
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.file_count = (int64_t)data->FileCount;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -132,7 +133,7 @@ static void EOS_CALL eos_ts_delete_cache_callback_native(
     gm_structs::EpicTitleStorageDeleteCacheCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -165,7 +166,7 @@ static void EOS_CALL eos_ts_read_file_callback_native(
     out.filename = ctx->filename;
     if (data->ResultCode == EOS_EResult::EOS_Success && !ctx->data.empty())
         out.data = base64_encode(ctx->data.data(), ctx->data.size());
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -176,7 +177,7 @@ static void EOS_CALL eos_ts_read_file_callback_native(
 void eos_titlestorage_query_file(
     std::string_view local_user_id,
     std::string_view filename,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -200,7 +201,7 @@ void eos_titlestorage_query_file(
 void eos_titlestorage_query_file_list(
     std::string_view local_user_id,
     const std::vector<std::string_view>& tags,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -312,7 +313,7 @@ gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_by_
 void eos_titlestorage_read_file(
     std::string_view local_user_id,
     std::string_view filename,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -350,7 +351,7 @@ void eos_titlestorage_read_file(
 
 void eos_titlestorage_delete_cache(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 

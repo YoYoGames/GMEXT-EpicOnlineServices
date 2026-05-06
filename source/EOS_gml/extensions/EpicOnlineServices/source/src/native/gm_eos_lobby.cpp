@@ -5,6 +5,7 @@
 #include <eos_lobby.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HLobby eos_lobby_iface()
@@ -125,7 +126,7 @@ static void EOS_CALL eos_lobby_create_lobby_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_create_lobby_info_from_native(data)
     );
     delete ctx;
@@ -141,7 +142,7 @@ static void EOS_CALL eos_lobby_destroy_lobby_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_destroy_lobby_info_from_native(data)
     );
     delete ctx;
@@ -157,7 +158,7 @@ static void EOS_CALL eos_lobby_join_lobby_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_join_lobby_info_from_native(data)
     );
     delete ctx;
@@ -173,7 +174,7 @@ static void EOS_CALL eos_lobby_leave_lobby_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_leave_lobby_info_from_native(data)
     );
     delete ctx;
@@ -184,13 +185,8 @@ static void EOS_CALL eos_lobby_leave_lobby_callback_native(
 // ============================================================
 
 void eos_lobby_create_lobby(
-    std::string_view local_user_id,
-    int64_t max_lobby_members,
-    gm_enums::EpicLobbyPermissionLevel permission_level,
-    bool presence_enabled,
-    bool allow_invites,
-    std::string_view bucket_id,
-    const GMFunction& callback)
+    const gm_structs::EpicLobbyCreateLobbyOptions& options,
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -200,13 +196,13 @@ void eos_lobby_create_lobby(
         return;
     }
 
-    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(options.local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_Lobby_CreateLobby: invalid local_user_id.");
         return;
     }
 
-    std::string bucket_id_storage(bucket_id);
+    std::string bucket_id_storage(options.bucket_id);
 
     auto* ctx = new EOSAsyncCallbackContext{};
     ctx->callback = callback;
@@ -214,11 +210,15 @@ void eos_lobby_create_lobby(
     EOS_Lobby_CreateLobbyOptions opts{};
     opts.ApiVersion = EOS_LOBBY_CREATELOBBY_API_LATEST;
     opts.LocalUserId = local_user;
-    opts.MaxLobbyMembers = (uint32_t)max_lobby_members;
-    opts.PermissionLevel = (EOS_ELobbyPermissionLevel)permission_level;
-    opts.bPresenceEnabled = presence_enabled ? EOS_TRUE : EOS_FALSE;
-    opts.bAllowInvites = allow_invites ? EOS_TRUE : EOS_FALSE;
+    opts.MaxLobbyMembers = (uint32_t)options.max_lobby_members;
+    opts.PermissionLevel = (EOS_ELobbyPermissionLevel)options.permission_level;
+    opts.bPresenceEnabled = options.presence_enabled ? EOS_TRUE : EOS_FALSE;
+    opts.bAllowInvites = options.allow_invites ? EOS_TRUE : EOS_FALSE;
     opts.BucketId = bucket_id_storage.empty() ? nullptr : bucket_id_storage.c_str();
+    opts.bDisableHostMigration = options.disable_host_migration ? EOS_TRUE : EOS_FALSE;
+    opts.bEnableRTCRoom = options.enable_rtc_room ? EOS_TRUE : EOS_FALSE;
+    opts.bEnableJoinById = options.enable_join_by_id ? EOS_TRUE : EOS_FALSE;
+    opts.bRejoinAfterKickRequiresInvite = options.rejoin_after_kick_requires_invite ? EOS_TRUE : EOS_FALSE;
 
     EOS_Lobby_CreateLobby(
         lobby,
@@ -231,7 +231,7 @@ void eos_lobby_create_lobby(
 void eos_lobby_destroy_lobby(
     std::string_view lobby_id,
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -270,10 +270,8 @@ void eos_lobby_destroy_lobby(
 }
 
 void eos_lobby_join_lobby(
-    std::string_view lobby_id,
-    std::string_view local_user_id,
-    bool presence_enabled,
-    const GMFunction& callback)
+    const gm_structs::EpicLobbyJoinLobbyOptions& options,
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -283,13 +281,13 @@ void eos_lobby_join_lobby(
         return;
     }
 
-    std::string lobby_id_storage(lobby_id);
+    std::string lobby_id_storage(options.lobby_id);
     if (lobby_id_storage.empty()) {
         eos_set_last_error("EOS_Lobby_JoinLobby: lobby_id is required.");
         return;
     }
 
-    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(options.local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_Lobby_JoinLobby: invalid local_user_id.");
         return;
@@ -303,7 +301,7 @@ void eos_lobby_join_lobby(
     //TODO
     // opts.LobbyId = lobby_id_storage.c_str();
     opts.LocalUserId = local_user;
-    opts.bPresenceEnabled = presence_enabled ? EOS_TRUE : EOS_FALSE;
+    opts.bPresenceEnabled = options.presence_enabled ? EOS_TRUE : EOS_FALSE;
     opts.bCrossplayOptOut = EOS_FALSE;
 
     EOS_Lobby_JoinLobby(
@@ -317,7 +315,7 @@ void eos_lobby_join_lobby(
 void eos_lobby_leave_lobby(
     std::string_view lobby_id,
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -437,7 +435,7 @@ static void EOS_CALL eos_lobby_update_lobby_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_update_lobby_info_from_native(data)
     );
     delete ctx;
@@ -453,7 +451,7 @@ static void EOS_CALL eos_lobby_promote_member_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_promote_member_info_from_native(data)
     );
     delete ctx;
@@ -469,7 +467,7 @@ static void EOS_CALL eos_lobby_kick_member_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_kick_member_info_from_native(data)
     );
     delete ctx;
@@ -524,7 +522,7 @@ void eos_lobby_lobby_modification_release(uint64_t modification_id)
 void eos_lobby_update_lobby(
     std::string_view lobby_id,
     uint64_t modification_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -671,9 +669,7 @@ gm_enums::EpicResult eos_lobby_lobby_modification_set_invites_allowed(
 
 gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(
     uint64_t modification_id,
-    std::string_view key,
-    std::string_view value,
-    gm_enums::EpicLobbyAttributeVisibility visibility)
+    const gm_structs::EpicLobbyModificationAddAttributeOptions& options)
 {
     eos_clear_last_error();
 
@@ -683,8 +679,8 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::string key_storage(key);
-    std::string value_storage(value);
+    std::string key_storage(options.key);
+    std::string value_storage(options.value);
 
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbyModification_AddAttribute: key is required.");
@@ -701,7 +697,7 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(
     EOS_LobbyModification_AddAttributeOptions opts{};
     opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
     opts.Attribute = &attr;
-    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)options.visibility;
 
     const EOS_EResult result = EOS_LobbyModification_AddAttribute(mod, &opts);
     if (result != EOS_EResult::EOS_Success) {
@@ -749,9 +745,7 @@ gm_enums::EpicResult eos_lobby_lobby_modification_remove_attribute(
 
 gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(
     uint64_t modification_id,
-    std::string_view key,
-    std::string_view value,
-    gm_enums::EpicLobbyAttributeVisibility visibility)
+    const gm_structs::EpicLobbyModificationAddMemberAttributeOptions& options)
 {
     eos_clear_last_error();
 
@@ -761,8 +755,8 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::string key_storage(key);
-    std::string value_storage(value);
+    std::string key_storage(options.key);
+    std::string value_storage(options.value);
 
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbyModification_AddMemberAttribute: key is required.");
@@ -779,7 +773,7 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(
     EOS_LobbyModification_AddMemberAttributeOptions opts{};
     opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
     opts.Attribute = &attr;
-    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)options.visibility;
 
     const EOS_EResult result = EOS_LobbyModification_AddMemberAttribute(mod, &opts);
     if (result != EOS_EResult::EOS_Success) {
@@ -822,10 +816,8 @@ gm_enums::EpicResult eos_lobby_lobby_modification_remove_member_attribute(
 }
 
 void eos_lobby_promote_member(
-    std::string_view lobby_id,
-    std::string_view local_user_id,
-    std::string_view target_user_id,
-    const GMFunction& callback)
+    const gm_structs::EpicLobbyPromoteMemberOptions& options,
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -835,14 +827,14 @@ void eos_lobby_promote_member(
         return;
     }
 
-    std::string lobby_id_storage(lobby_id);
+    std::string lobby_id_storage(options.lobby_id);
     if (lobby_id_storage.empty()) {
         eos_set_last_error("EOS_Lobby_PromoteMember: lobby_id is required.");
         return;
     }
 
-    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
-    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(options.local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(options.target_user_id);
 
     if (!local_user) {
         eos_set_last_error("EOS_Lobby_PromoteMember: invalid local_user_id.");
@@ -872,10 +864,8 @@ void eos_lobby_promote_member(
 }
 
 void eos_lobby_kick_member(
-    std::string_view lobby_id,
-    std::string_view local_user_id,
-    std::string_view target_user_id,
-    const GMFunction& callback)
+    const gm_structs::EpicLobbyKickMemberOptions& options,
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -885,14 +875,14 @@ void eos_lobby_kick_member(
         return;
     }
 
-    std::string lobby_id_storage(lobby_id);
+    std::string lobby_id_storage(options.lobby_id);
     if (lobby_id_storage.empty()) {
         eos_set_last_error("EOS_Lobby_KickMember: lobby_id is required.");
         return;
     }
 
-    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
-    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(options.local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(options.target_user_id);
 
     if (!local_user) {
         eos_set_last_error("EOS_Lobby_KickMember: invalid local_user_id.");
@@ -1008,7 +998,7 @@ static void EOS_CALL eos_lobby_search_find_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_lobby_search_find_info_from_native(data)
     );
     delete ctx;
@@ -1109,9 +1099,7 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_target_user_id(
 
 gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
     uint64_t search_id,
-    std::string_view key,
-    std::string_view value,
-    gm_enums::EpicComparisonOp comparison_op)
+    const gm_structs::EpicLobbySearchSetParameterOptions& options)
 {
     eos_clear_last_error();
 
@@ -1121,8 +1109,8 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::string key_storage(key);
-    std::string value_storage(value);
+    std::string key_storage(options.key);
+    std::string value_storage(options.value);
 
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbySearch_SetParameter: key is required.");
@@ -1139,7 +1127,7 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
     EOS_LobbySearch_SetParameterOptions opts{};
     opts.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
     opts.Parameter = &attr;
-    opts.ComparisonOp = (EOS_EComparisonOp)comparison_op;
+    opts.ComparisonOp = (EOS_EComparisonOp)options.comparison_op;
 
     const EOS_EResult result = EOS_LobbySearch_SetParameter(search, &opts);
     if (result != EOS_EResult::EOS_Success) {
@@ -1152,8 +1140,7 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
 
 gm_enums::EpicResult eos_lobby_lobby_search_remove_parameter(
     uint64_t search_id,
-    std::string_view key,
-    gm_enums::EpicComparisonOp comparison_op)
+    const gm_structs::EpicLobbySearchRemoveParameterOptions& options)
 {
     eos_clear_last_error();
 
@@ -1163,7 +1150,7 @@ gm_enums::EpicResult eos_lobby_lobby_search_remove_parameter(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::string key_storage(key);
+    std::string key_storage(options.key);
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbySearch_RemoveParameter: key is required.");
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
@@ -1172,7 +1159,7 @@ gm_enums::EpicResult eos_lobby_lobby_search_remove_parameter(
     EOS_LobbySearch_RemoveParameterOptions opts{};
     opts.ApiVersion = EOS_LOBBYSEARCH_REMOVEPARAMETER_API_LATEST;
     opts.Key = key_storage.c_str();
-    opts.ComparisonOp = (EOS_EComparisonOp)comparison_op;
+    opts.ComparisonOp = (EOS_EComparisonOp)options.comparison_op;
 
     const EOS_EResult result = EOS_LobbySearch_RemoveParameter(search, &opts);
     if (result != EOS_EResult::EOS_Success) {
@@ -1211,7 +1198,7 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_max_results(
 void eos_lobby_lobby_search_find(
     uint64_t search_id,
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1584,7 +1571,7 @@ std::string eos_lobby_details_get_lobby_owner(uint64_t lobby_details_id)
 
 uint64_t eos_lobby_add_notify_lobby_update_received(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1594,7 +1581,7 @@ uint64_t eos_lobby_add_notify_lobby_update_received(
         return 0;
     }
 
-    g_cb_lobby_update_received = callback;
+    g_cb_lobby_update_received = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyLobbyUpdateReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYUPDATERECEIVED_API_LATEST;
@@ -1625,7 +1612,7 @@ void eos_lobby_remove_notify_lobby_update_received(uint64_t notification_id)
 
 uint64_t eos_lobby_add_notify_lobby_member_update_received(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1635,7 +1622,7 @@ uint64_t eos_lobby_add_notify_lobby_member_update_received(
         return 0;
     }
 
-    g_cb_lobby_member_update_received = callback;
+    g_cb_lobby_member_update_received = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyLobbyMemberUpdateReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYMEMBERUPDATERECEIVED_API_LATEST;
@@ -1666,7 +1653,7 @@ void eos_lobby_remove_notify_lobby_member_update_received(uint64_t notification_
 
 uint64_t eos_lobby_add_notify_lobby_member_status_received(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1676,7 +1663,7 @@ uint64_t eos_lobby_add_notify_lobby_member_status_received(
         return 0;
     }
 
-    g_cb_lobby_member_status_received = callback;
+    g_cb_lobby_member_status_received = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyLobbyMemberStatusReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYMEMBERSTATUSRECEIVED_API_LATEST;
@@ -1705,7 +1692,7 @@ void eos_lobby_remove_notify_lobby_member_status_received(uint64_t notification_
     );
 }
 
-uint64_t eos_lobby_add_notify_join_lobby_accepted(const GMFunction& callback)
+uint64_t eos_lobby_add_notify_join_lobby_accepted(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1715,7 +1702,7 @@ uint64_t eos_lobby_add_notify_join_lobby_accepted(const GMFunction& callback)
         return 0;
     }
 
-    g_cb_lobby_join_accepted = callback;
+    g_cb_lobby_join_accepted = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyJoinLobbyAcceptedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYJOINLOBBYACCEPTED_API_LATEST;
@@ -1746,7 +1733,7 @@ void eos_lobby_remove_notify_join_lobby_accepted(uint64_t notification_id)
 
 uint64_t eos_lobby_add_notify_leave_lobby_requested(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1756,7 +1743,7 @@ uint64_t eos_lobby_add_notify_leave_lobby_requested(
         return 0;
     }
 
-    g_cb_lobby_leave_requested = callback;
+    g_cb_lobby_leave_requested = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyLeaveLobbyRequestedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLEAVELOBBYREQUESTED_API_LATEST;
@@ -1787,7 +1774,7 @@ void eos_lobby_remove_notify_leave_lobby_requested(uint64_t notification_id)
 
 uint64_t eos_lobby_add_notify_send_lobby_native_invite_requested(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1797,7 +1784,7 @@ uint64_t eos_lobby_add_notify_send_lobby_native_invite_requested(
         return 0;
     }
 
-    g_cb_lobby_native_invite_requested = callback;
+    g_cb_lobby_native_invite_requested = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYSENDLOBBYNATIVEINVITEREQUESTED_API_LATEST;
@@ -2096,7 +2083,7 @@ static void EOS_CALL eos_lobby_join_by_id_callback_native(
     gm_structs::EpicLobbyJoinLobbyByIdCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -2111,15 +2098,13 @@ static void EOS_CALL eos_lobby_hard_mute_member_callback_native(
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
     out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
 void eos_lobby_join_lobby_by_id(
-    std::string_view lobby_id,
-    std::string_view local_user_id,
-    bool presence_enabled,
-    const GMFunction& callback)
+    const gm_structs::EpicLobbyJoinLobbyByIdOptions& options,
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2129,13 +2114,13 @@ void eos_lobby_join_lobby_by_id(
         return;
     }
 
-    std::string lobby_id_storage(lobby_id);
+    std::string lobby_id_storage(options.lobby_id);
     if (lobby_id_storage.empty()) {
         eos_set_last_error("EOS_Lobby_JoinLobbyById: lobby_id is required.");
         return;
     }
 
-    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(options.local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_Lobby_JoinLobbyById: invalid local_user_id.");
         return;
@@ -2148,7 +2133,7 @@ void eos_lobby_join_lobby_by_id(
     opts.ApiVersion = EOS_LOBBY_JOINLOBBYBYID_API_LATEST;
     opts.LobbyId = lobby_id_storage.c_str();
     opts.LocalUserId = local_user;
-    opts.bPresenceEnabled = presence_enabled ? EOS_TRUE : EOS_FALSE;
+    opts.bPresenceEnabled = options.presence_enabled ? EOS_TRUE : EOS_FALSE;
     opts.LocalRTCOptions = nullptr;
     opts.RTCRoomJoinActionType = EOS_ELobbyRTCRoomJoinActionType::EOS_LRRJAT_AutomaticJoin;
 
@@ -2156,11 +2141,8 @@ void eos_lobby_join_lobby_by_id(
 }
 
 void eos_lobby_hard_mute_member(
-    std::string_view lobby_id,
-    std::string_view local_user_id,
-    std::string_view target_user_id,
-    bool hard_mute,
-    const GMFunction& callback)
+    const gm_structs::EpicLobbyHardMuteMemberOptions& options,
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2170,19 +2152,19 @@ void eos_lobby_hard_mute_member(
         return;
     }
 
-    std::string lobby_id_storage(lobby_id);
+    std::string lobby_id_storage(options.lobby_id);
     if (lobby_id_storage.empty()) {
         eos_set_last_error("EOS_Lobby_HardMuteMember: lobby_id is required.");
         return;
     }
 
-    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(options.local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_Lobby_HardMuteMember: invalid local_user_id.");
         return;
     }
 
-    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(options.target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_Lobby_HardMuteMember: invalid target_user_id.");
         return;
@@ -2196,7 +2178,7 @@ void eos_lobby_hard_mute_member(
     opts.LobbyId = lobby_id_storage.c_str();
     opts.LocalUserId = local_user;
     opts.TargetUserId = target_user;
-    opts.bHardMute = hard_mute ? EOS_TRUE : EOS_FALSE;
+    opts.bHardMute = options.hard_mute ? EOS_TRUE : EOS_FALSE;
 
     EOS_Lobby_HardMuteMember(lobby, &opts, ctx, &eos_lobby_hard_mute_member_callback_native);
 }
@@ -2215,7 +2197,7 @@ static void EOS_CALL eos_lobby_send_invite_callback_native(
     gm_structs::EpicLobbySendInviteCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -2229,7 +2211,7 @@ static void EOS_CALL eos_lobby_reject_invite_callback_native(
     gm_structs::EpicLobbyRejectInviteCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -2243,15 +2225,13 @@ static void EOS_CALL eos_lobby_query_invites_callback_native(
     gm_structs::EpicLobbyQueryInvitesCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
 void eos_lobby_send_invite(
-    std::string_view lobby_id,
-    std::string_view local_user_id,
-    std::string_view target_user_id,
-    const GMFunction& callback)
+    const gm_structs::EpicLobbySendInviteOptions& options,
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2261,19 +2241,19 @@ void eos_lobby_send_invite(
         return;
     }
 
-    std::string lobby_id_storage(lobby_id);
+    std::string lobby_id_storage(options.lobby_id);
     if (lobby_id_storage.empty()) {
         eos_set_last_error("EOS_Lobby_SendInvite: lobby_id is required.");
         return;
     }
 
-    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(options.local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_Lobby_SendInvite: invalid local_user_id.");
         return;
     }
 
-    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(options.target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_Lobby_SendInvite: invalid target_user_id.");
         return;
@@ -2294,7 +2274,7 @@ void eos_lobby_send_invite(
 void eos_lobby_reject_invite(
     std::string_view invite_id,
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2329,7 +2309,7 @@ void eos_lobby_reject_invite(
 
 void eos_lobby_query_invites(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2457,7 +2437,7 @@ static void EOS_CALL eos_lobby_invite_rejected_callback_native(
     g_cb_lobby_invite_rejected.call(out);
 }
 
-uint64_t eos_lobby_add_notify_lobby_invite_received(const GMFunction& callback)
+uint64_t eos_lobby_add_notify_lobby_invite_received(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2467,7 +2447,7 @@ uint64_t eos_lobby_add_notify_lobby_invite_received(const GMFunction& callback)
         return 0;
     }
 
-    g_cb_lobby_invite_received = callback;
+    g_cb_lobby_invite_received = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyLobbyInviteReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITERECEIVED_API_LATEST;
@@ -2489,7 +2469,7 @@ void eos_lobby_remove_notify_lobby_invite_received(uint64_t notification_id)
     EOS_Lobby_RemoveNotifyLobbyInviteReceived(lobby, (EOS_NotificationId)notification_id);
 }
 
-uint64_t eos_lobby_add_notify_lobby_invite_accepted(const GMFunction& callback)
+uint64_t eos_lobby_add_notify_lobby_invite_accepted(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2499,7 +2479,7 @@ uint64_t eos_lobby_add_notify_lobby_invite_accepted(const GMFunction& callback)
         return 0;
     }
 
-    g_cb_lobby_invite_accepted = callback;
+    g_cb_lobby_invite_accepted = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEACCEPTED_API_LATEST;
@@ -2521,7 +2501,7 @@ void eos_lobby_remove_notify_lobby_invite_accepted(uint64_t notification_id)
     EOS_Lobby_RemoveNotifyLobbyInviteAccepted(lobby, (EOS_NotificationId)notification_id);
 }
 
-uint64_t eos_lobby_add_notify_lobby_invite_rejected(const GMFunction& callback)
+uint64_t eos_lobby_add_notify_lobby_invite_rejected(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2531,7 +2511,7 @@ uint64_t eos_lobby_add_notify_lobby_invite_rejected(const GMFunction& callback)
         return 0;
     }
 
-    g_cb_lobby_invite_rejected = callback;
+    g_cb_lobby_invite_rejected = callback.value_or(GMFunction{});
 
     EOS_Lobby_AddNotifyLobbyInviteRejectedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEREJECTED_API_LATEST;

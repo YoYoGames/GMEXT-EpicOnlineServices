@@ -5,6 +5,7 @@
 #include <eos_friends.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HFriends eos_friends_iface()
@@ -90,7 +91,7 @@ static void EOS_CALL eos_friends_query_friends_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_friends_query_friends_info_from_native(data)
     );
     delete ctx;
@@ -100,7 +101,7 @@ static void EOS_CALL eos_friends_query_friends_callback_native(
 // EOS Friends
 // ============================================================
 
-void eos_friends_query_friends(std::string_view local_user_id, const GMFunction& callback)
+void eos_friends_query_friends(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -251,7 +252,7 @@ static void EOS_CALL eos_friends_update_callback(
 }
 
 uint64_t eos_friends_add_notify_friends_update(
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -262,7 +263,7 @@ uint64_t eos_friends_add_notify_friends_update(
         return 0;
     }
 
-    g_cb_friends_update = callback;
+    g_cb_friends_update = callback.value_or(GMFunction{});
 
     EOS_Friends_AddNotifyFriendsUpdateOptions opts{};
     opts.ApiVersion = EOS_FRIENDS_ADDNOTIFYFRIENDSUPDATE_API_LATEST;

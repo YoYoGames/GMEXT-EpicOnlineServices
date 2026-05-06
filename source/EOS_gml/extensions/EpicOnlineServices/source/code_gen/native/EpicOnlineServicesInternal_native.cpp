@@ -208,8 +208,12 @@ GMEXPORT double __EXT_NATIVE__eos_logging_set_callback(char* __arg_buffer, doubl
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_logging_set_callback(callback);
     return 0;
@@ -258,8 +262,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_login(char* __arg_buffer, double __arg_bu
     // field: scope_flags, type: enum EpicAuthScopeFlags
     gm_enums::EpicAuthScopeFlags scope_flags = gm::wire::codec::readValue<gm_enums::EpicAuthScopeFlags>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_auth_login(credentials_id, credentials_token, credentials_type, external_credential_type, scope_flags, callback);
     return 0;
@@ -272,8 +280,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_logout(char* __arg_buffer, double __arg_b
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_auth_logout(local_user_id, callback);
     return 0;
@@ -289,8 +301,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_link_account(char* __arg_buffer, double _
     // field: link_account_flags, type: enum EpicLinkAccountFlags
     gm_enums::EpicLinkAccountFlags link_account_flags = gm::wire::codec::readValue<gm_enums::EpicLinkAccountFlags>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_auth_link_account(local_user_id, link_account_flags, callback);
     return 0;
@@ -300,8 +316,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_delete_persistent_auth(char* __arg_buffer
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_auth_delete_persistent_auth(callback);
     return 0;
@@ -369,8 +389,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_query_id_token(char* __arg_buffer, double
     // field: target_account_id, type: String
     std::string_view target_account_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_auth_query_id_token(local_user_id, target_account_id, callback);
     return 0;
@@ -383,8 +407,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_verify_id_token(char* __arg_buffer, doubl
     // field: json_web_token, type: String
     std::string_view json_web_token = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_auth_verify_id_token(json_web_token, callback);
     return 0;
@@ -397,8 +425,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_verify_user_auth(char* __arg_buffer, doub
     // field: access_token, type: String
     std::string_view access_token = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_auth_verify_user_auth(access_token, callback);
     return 0;
@@ -408,8 +440,12 @@ GMEXPORT double __EXT_NATIVE__eos_auth_add_notify_login_status_changed(char* __a
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_auth_add_notify_login_status_changed(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -443,8 +479,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_login(char* __arg_buffer, double __arg
     // field: display_name, type: String
     std::string_view display_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_login(token, external_credential_type, display_name, callback);
     return 0;
@@ -454,8 +494,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_create_user(char* __arg_buffer, double
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_create_user(callback);
     return 0;
@@ -468,8 +512,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_link_account(char* __arg_buffer, doubl
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_link_account(local_user_id, callback);
     return 0;
@@ -482,8 +530,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_unlink_account(char* __arg_buffer, dou
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_unlink_account(local_user_id, callback);
     return 0;
@@ -496,8 +548,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_create_device_id(char* __arg_buffer, d
     // field: device_model, type: String
     std::string_view device_model = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_create_device_id(device_model, callback);
     return 0;
@@ -507,8 +563,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_delete_device_id(char* __arg_buffer, d
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_delete_device_id(callback);
     return 0;
@@ -524,8 +584,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_transfer_device_id_account(char* __arg
     // field: local_device_user_id, type: String
     std::string_view local_device_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_transfer_device_id_account(primary_local_user_id, local_device_user_id, callback);
     return 0;
@@ -538,8 +602,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_logout(char* __arg_buffer, double __ar
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_logout(local_user_id, callback);
     return 0;
@@ -686,8 +754,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_verify_id_token(char* __arg_buffer, do
     // field: json_web_token, type: String
     std::string_view json_web_token = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_verify_id_token(json_web_token, callback);
     return 0;
@@ -706,8 +778,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_query_external_account_mappings(char* 
     // field: target_external_user_ids, type: String[]
     std::vector<std::string_view> target_external_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_query_external_account_mappings(local_user_id, account_id_type, target_external_user_ids, callback);
     return 0;
@@ -726,8 +802,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_query_product_user_id_mappings(char* _
     // field: target_product_user_ids, type: String[]
     std::vector<std::string_view> target_product_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_connect_query_product_user_id_mappings(local_user_id, account_id_type, target_product_user_ids, callback);
     return 0;
@@ -737,8 +817,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_add_notify_auth_expiration(char* __arg
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_connect_add_notify_auth_expiration(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -763,8 +847,12 @@ GMEXPORT double __EXT_NATIVE__eos_connect_add_notify_login_status_changed(char* 
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_connect_add_notify_login_status_changed(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -792,8 +880,12 @@ GMEXPORT double __EXT_NATIVE__eos_friends_query_friends(char* __arg_buffer, doub
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_friends_query_friends(local_user_id, callback);
     return 0;
@@ -838,8 +930,12 @@ GMEXPORT double __EXT_NATIVE__eos_friends_add_notify_friends_update(char* __arg_
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_friends_add_notify_friends_update(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -870,8 +966,12 @@ GMEXPORT double __EXT_NATIVE__eos_user_info_query_user_info(char* __arg_buffer, 
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_user_info_query_user_info(local_user_id, target_user_id, callback);
     return 0;
@@ -983,8 +1083,12 @@ GMEXPORT double __EXT_NATIVE__eos_stats_ingest_stat(char* __arg_buffer, double _
     // field: ingest_amount, type: Int64
     std::int64_t ingest_amount = gm::wire::codec::readValue<std::int64_t>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_stats_ingest_stat(local_user_id, target_user_id, stat_name, ingest_amount, callback);
     return 0;
@@ -1006,8 +1110,12 @@ GMEXPORT double __EXT_NATIVE__eos_stats_query_stats(char* __arg_buffer, double _
     // field: end_time, type: Int64
     std::int64_t end_time = gm::wire::codec::readValue<std::int64_t>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_stats_query_stats(local_user_id, target_user_id, start_time, end_time, callback);
     return 0;
@@ -1058,8 +1166,12 @@ GMEXPORT double __EXT_NATIVE__eos_ui_show_friends(char* __arg_buffer, double __a
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ui_show_friends(local_user_id, callback);
     return 0;
@@ -1075,8 +1187,12 @@ GMEXPORT double __EXT_NATIVE__eos_ui_show_native_profile(char* __arg_buffer, dou
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ui_show_native_profile(local_user_id, target_user_id, callback);
     return 0;
@@ -1114,8 +1230,12 @@ GMEXPORT double __EXT_NATIVE__eos_ui_add_notify_display_settings_updated(char* _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_ui_add_notify_display_settings_updated(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -1143,8 +1263,12 @@ GMEXPORT double __EXT_NATIVE__eos_ui_hide_friends(char* __arg_buffer, double __a
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ui_hide_friends(local_user_id, callback);
     return 0;
@@ -1198,8 +1322,12 @@ GMEXPORT double __EXT_NATIVE__eos_ui_show_block_player(char* __arg_buffer, doubl
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ui_show_block_player(local_user_id, target_user_id, callback);
     return 0;
@@ -1215,8 +1343,12 @@ GMEXPORT double __EXT_NATIVE__eos_ui_show_report_player(char* __arg_buffer, doub
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ui_show_report_player(local_user_id, target_user_id, callback);
     return 0;
@@ -1329,8 +1461,12 @@ GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_submit_snapshot(char* __a
     // field: snapshot_id, type: Int64
     std::int64_t snapshot_id = gm::wire::codec::readValue<std::int64_t>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_progression_snapshot_submit_snapshot(snapshot_id, callback);
     return 0;
@@ -1343,8 +1479,12 @@ GMEXPORT double __EXT_NATIVE__eos_progression_snapshot_delete_snapshot(char* __a
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_progression_snapshot_delete_snapshot(local_user_id, callback);
     return 0;
@@ -1369,8 +1509,12 @@ GMEXPORT double __EXT_NATIVE__eos_reports_send_player_behavior_report(char* __ar
     // field: context, type: String
     std::string_view context = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_reports_send_player_behavior_report(reporter_user_id, reported_user_id, category, message, context, callback);
     return 0;
@@ -1383,8 +1527,12 @@ GMEXPORT double __EXT_NATIVE__eos_sanctions_query_active_player_sanctions(char* 
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sanctions_query_active_player_sanctions(target_user_id, callback);
     return 0;
@@ -1431,8 +1579,12 @@ GMEXPORT double __EXT_NATIVE__eos_sanctions_create_player_sanction_appeal(char* 
     // field: reason, type: enum EpicSanctionAppealReason
     gm_enums::EpicSanctionAppealReason reason = gm::wire::codec::readValue<gm_enums::EpicSanctionAppealReason>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sanctions_create_player_sanction_appeal(local_user_id, reference_id, reason, callback);
     return 0;
@@ -1445,8 +1597,12 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_query_definitions(char* __arg_buf
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_achievements_query_definitions(local_user_id, callback);
     return 0;
@@ -1462,8 +1618,12 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_query_player_achievements(char* _
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_achievements_query_player_achievements(local_user_id, target_user_id, callback);
     return 0;
@@ -1581,8 +1741,12 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_unlock_achievements(char* __arg_b
     // field: achievement_ids, type: String[]
     std::vector<std::string_view> achievement_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_achievements_unlock_achievements(user_id, achievement_ids, callback);
     return 0;
@@ -1592,8 +1756,12 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_add_notify_achievements_unlocked_
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_achievements_add_notify_achievements_unlocked_v2(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -1627,8 +1795,12 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_query_definitions(char* __arg_buf
     // field: end_time, type: Int64
     std::int64_t end_time = gm::wire::codec::readValue<std::int64_t>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_leaderboards_query_definitions(local_user_id, start_time, end_time, callback);
     return 0;
@@ -1644,8 +1816,12 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_query_ranks(char* __arg_buffer, d
     // field: leaderboard_id, type: String
     std::string_view leaderboard_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_leaderboards_query_ranks(local_user_id, leaderboard_id, callback);
     return 0;
@@ -1661,8 +1837,12 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_query_user_scores(char* __arg_buf
     // field: stat_name, type: String
     std::string_view stat_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_leaderboards_query_user_scores(local_user_id, stat_name, callback);
     return 0;
@@ -1773,8 +1953,12 @@ GMEXPORT double __EXT_NATIVE__eos_presence_query_presence(char* __arg_buffer, do
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_presence_query_presence(local_user_id, target_user_id, callback);
     return 0;
@@ -1902,8 +2086,12 @@ GMEXPORT double __EXT_NATIVE__eos_presence_set_presence(char* __arg_buffer, doub
     // field: modification_id, type: UInt64
     std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_presence_set_presence(local_user_id, modification_id, callback);
     return 0;
@@ -1913,8 +2101,12 @@ GMEXPORT double __EXT_NATIVE__eos_presence_add_notify_on_presence_changed(char* 
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_presence_add_notify_on_presence_changed(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -1939,8 +2131,12 @@ GMEXPORT double __EXT_NATIVE__eos_presence_add_notify_join_game_accepted(char* _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_presence_add_notify_join_game_accepted(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -2015,8 +2211,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_update_session(char* __arg_buffer, do
     // field: modification_id, type: UInt64
     std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_update_session(modification_id, callback);
     return 0;
@@ -2029,8 +2229,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_destroy_session(char* __arg_buffer, d
     // field: session_name, type: String
     std::string_view session_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_destroy_session(session_name, callback);
     return 0;
@@ -2043,8 +2247,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_start_session(char* __arg_buffer, dou
     // field: session_name, type: String
     std::string_view session_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_start_session(session_name, callback);
     return 0;
@@ -2057,8 +2265,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_end_session(char* __arg_buffer, doubl
     // field: session_name, type: String
     std::string_view session_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_end_session(session_name, callback);
     return 0;
@@ -2074,8 +2286,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_join_session(char* __arg_buffer, doub
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_join_session(session_name, local_user_id, callback);
     return 0;
@@ -2091,8 +2307,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_register_players(char* __arg_buffer, 
     // field: target_user_ids, type: String[]
     std::vector<std::string_view> target_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_register_players(session_name, target_user_ids, callback);
     return 0;
@@ -2108,8 +2328,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_unregister_players(char* __arg_buffer
     // field: target_user_ids, type: String[]
     std::vector<std::string_view> target_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_unregister_players(session_name, target_user_ids, callback);
     return 0;
@@ -2187,8 +2411,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_search_find(char* __arg_buffe
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_session_search_find(search_id, local_user_id, callback);
     return 0;
@@ -2303,8 +2531,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_session_invite_received(ch
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_sessions_add_notify_session_invite_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -2329,8 +2561,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_session_invite_accepted(ch
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_sessions_add_notify_session_invite_accepted(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -2355,8 +2591,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_join_session_accepted(char
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_sessions_add_notify_join_session_accepted(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -2621,8 +2861,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_send_invite(char* __arg_buffer, doubl
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_send_invite(session_name, local_user_id, target_user_id, callback);
     return 0;
@@ -2638,8 +2882,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_reject_invite(char* __arg_buffer, dou
     // field: invite_id, type: String
     std::string_view invite_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_reject_invite(local_user_id, invite_id, callback);
     return 0;
@@ -2652,8 +2900,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_query_invites(char* __arg_buffer, dou
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_sessions_query_invites(local_user_id, callback);
     return 0;
@@ -2748,8 +3000,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_session_invite_rejected(ch
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_sessions_add_notify_session_invite_rejected(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -2774,8 +3030,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_leave_session_requested(ch
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_sessions_add_notify_leave_session_requested(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -2800,8 +3060,12 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_add_notify_send_session_native_invite
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_sessions_add_notify_send_session_native_invite_requested(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -2826,28 +3090,17 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_create_lobby(char* __arg_buffer, double 
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyCreateLobbyOptions
+    gm_structs::EpicLobbyCreateLobbyOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyCreateLobbyOptions>(__br);
 
-    // field: max_lobby_members, type: Int64
-    std::int64_t max_lobby_members = gm::wire::codec::readValue<std::int64_t>(__br);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
-    // field: permission_level, type: enum EpicLobbyPermissionLevel
-    gm_enums::EpicLobbyPermissionLevel permission_level = gm::wire::codec::readValue<gm_enums::EpicLobbyPermissionLevel>(__br);
-
-    // field: presence_enabled, type: Bool
-    bool presence_enabled = gm::wire::codec::readValue<bool>(__br);
-
-    // field: allow_invites, type: Bool
-    bool allow_invites = gm::wire::codec::readValue<bool>(__br);
-
-    // field: bucket_id, type: String
-    std::string_view bucket_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
-
-    eos_lobby_create_lobby(local_user_id, max_lobby_members, permission_level, presence_enabled, allow_invites, bucket_id, callback);
+    eos_lobby_create_lobby(options, callback);
     return 0;
 }
 
@@ -2861,8 +3114,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_destroy_lobby(char* __arg_buffer, double
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_lobby_destroy_lobby(lobby_id, local_user_id, callback);
     return 0;
@@ -2872,19 +3129,17 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_join_lobby(char* __arg_buffer, double __
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: lobby_id, type: String
-    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyJoinLobbyOptions
+    gm_structs::EpicLobbyJoinLobbyOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyJoinLobbyOptions>(__br);
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
-    // field: presence_enabled, type: Bool
-    bool presence_enabled = gm::wire::codec::readValue<bool>(__br);
-
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
-
-    eos_lobby_join_lobby(lobby_id, local_user_id, presence_enabled, callback);
+    eos_lobby_join_lobby(options, callback);
     return 0;
 }
 
@@ -2898,8 +3153,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_leave_lobby(char* __arg_buffer, double _
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_lobby_leave_lobby(lobby_id, local_user_id, callback);
     return 0;
@@ -2936,8 +3195,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_update_lobby(char* __arg_buffer, double 
     // field: modification_id, type: UInt64
     std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_lobby_update_lobby(lobby_id, modification_id, callback);
     return 0;
@@ -3022,16 +3285,10 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute(char* _
     // field: modification_id, type: UInt64
     std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: key, type: String
-    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyModificationAddAttributeOptions
+    gm_structs::EpicLobbyModificationAddAttributeOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyModificationAddAttributeOptions>(__br);
 
-    // field: value, type: String
-    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: visibility, type: enum EpicLobbyAttributeVisibility
-    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
-
-    auto&& __result = eos_lobby_lobby_modification_add_attribute(modification_id, key, value, visibility);
+    auto&& __result = eos_lobby_lobby_modification_add_attribute(modification_id, options);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -3064,16 +3321,10 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute(
     // field: modification_id, type: UInt64
     std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: key, type: String
-    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyModificationAddMemberAttributeOptions
+    gm_structs::EpicLobbyModificationAddMemberAttributeOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyModificationAddMemberAttributeOptions>(__br);
 
-    // field: value, type: String
-    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: visibility, type: enum EpicLobbyAttributeVisibility
-    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
-
-    auto&& __result = eos_lobby_lobby_modification_add_member_attribute(modification_id, key, value, visibility);
+    auto&& __result = eos_lobby_lobby_modification_add_member_attribute(modification_id, options);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -3103,19 +3354,17 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_promote_member(char* __arg_buffer, doubl
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: lobby_id, type: String
-    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyPromoteMemberOptions
+    gm_structs::EpicLobbyPromoteMemberOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyPromoteMemberOptions>(__br);
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
-    // field: target_user_id, type: String
-    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
-
-    eos_lobby_promote_member(lobby_id, local_user_id, target_user_id, callback);
+    eos_lobby_promote_member(options, callback);
     return 0;
 }
 
@@ -3123,19 +3372,17 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_kick_member(char* __arg_buffer, double _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: lobby_id, type: String
-    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyKickMemberOptions
+    gm_structs::EpicLobbyKickMemberOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyKickMemberOptions>(__br);
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
-    // field: target_user_id, type: String
-    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
-
-    eos_lobby_kick_member(lobby_id, local_user_id, target_user_id, callback);
+    eos_lobby_kick_member(options, callback);
     return 0;
 }
 
@@ -3208,16 +3455,10 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter(char* __arg_b
     // field: search_id, type: UInt64
     std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: key, type: String
-    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbySearchSetParameterOptions
+    gm_structs::EpicLobbySearchSetParameterOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbySearchSetParameterOptions>(__br);
 
-    // field: value, type: String
-    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: comparison_op, type: enum EpicComparisonOp
-    gm_enums::EpicComparisonOp comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(__br);
-
-    auto&& __result = eos_lobby_lobby_search_set_parameter(search_id, key, value, comparison_op);
+    auto&& __result = eos_lobby_lobby_search_set_parameter(search_id, options);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -3232,13 +3473,10 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_remove_parameter(char* __ar
     // field: search_id, type: UInt64
     std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: key, type: String
-    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbySearchRemoveParameterOptions
+    gm_structs::EpicLobbySearchRemoveParameterOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbySearchRemoveParameterOptions>(__br);
 
-    // field: comparison_op, type: enum EpicComparisonOp
-    gm_enums::EpicComparisonOp comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(__br);
-
-    auto&& __result = eos_lobby_lobby_search_remove_parameter(search_id, key, comparison_op);
+    auto&& __result = eos_lobby_lobby_search_remove_parameter(search_id, options);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -3274,8 +3512,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_find(char* __arg_buffer, do
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_lobby_lobby_search_find(search_id, local_user_id, callback);
     return 0;
@@ -3399,8 +3641,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_update_received(char* _
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_lobby_update_received(local_user_id, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3428,8 +3674,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_member_update_received(
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_lobby_member_update_received(local_user_id, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3457,8 +3707,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_member_status_received(
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_lobby_member_status_received(local_user_id, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3483,8 +3737,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_join_lobby_accepted(char* __a
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_join_lobby_accepted(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3512,8 +3770,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_leave_lobby_requested(char* _
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_leave_lobby_requested(local_user_id, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3541,8 +3803,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_send_lobby_native_invite_requ
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3696,19 +3962,17 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_join_lobby_by_id(char* __arg_buffer, dou
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: lobby_id, type: String
-    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyJoinLobbyByIdOptions
+    gm_structs::EpicLobbyJoinLobbyByIdOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyJoinLobbyByIdOptions>(__br);
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
-    // field: presence_enabled, type: Bool
-    bool presence_enabled = gm::wire::codec::readValue<bool>(__br);
-
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
-
-    eos_lobby_join_lobby_by_id(lobby_id, local_user_id, presence_enabled, callback);
+    eos_lobby_join_lobby_by_id(options, callback);
     return 0;
 }
 
@@ -3716,22 +3980,17 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_hard_mute_member(char* __arg_buffer, dou
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: lobby_id, type: String
-    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbyHardMuteMemberOptions
+    gm_structs::EpicLobbyHardMuteMemberOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyHardMuteMemberOptions>(__br);
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
-    // field: target_user_id, type: String
-    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: hard_mute, type: Bool
-    bool hard_mute = gm::wire::codec::readValue<bool>(__br);
-
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
-
-    eos_lobby_hard_mute_member(lobby_id, local_user_id, target_user_id, hard_mute, callback);
+    eos_lobby_hard_mute_member(options, callback);
     return 0;
 }
 
@@ -3739,19 +3998,17 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_send_invite(char* __arg_buffer, double _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: lobby_id, type: String
-    std::string_view lobby_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: options, type: struct EpicLobbySendInviteOptions
+    gm_structs::EpicLobbySendInviteOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbySendInviteOptions>(__br);
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
-    // field: target_user_id, type: String
-    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
-
-    eos_lobby_send_invite(lobby_id, local_user_id, target_user_id, callback);
+    eos_lobby_send_invite(options, callback);
     return 0;
 }
 
@@ -3765,8 +4022,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_reject_invite(char* __arg_buffer, double
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_lobby_reject_invite(invite_id, local_user_id, callback);
     return 0;
@@ -3779,8 +4040,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_query_invites(char* __arg_buffer, double
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_lobby_query_invites(local_user_id, callback);
     return 0;
@@ -3815,8 +4080,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_received(char* _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_lobby_invite_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3841,8 +4110,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_accepted(char* _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_lobby_invite_accepted(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -3867,8 +4140,12 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_invite_rejected(char* _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_lobby_add_notify_lobby_invite_rejected(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -4031,8 +4308,12 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_query_nat_type(char* __arg_buffer, double 
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_p2p_query_nat_type(callback);
     return 0;
@@ -4160,8 +4441,12 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_request(char* _
     // field: socket_name, type: String
     std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_p2p_add_notify_peer_connection_request(local_user_id, socket_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -4192,8 +4477,12 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_established(cha
     // field: socket_name, type: String
     std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_p2p_add_notify_peer_connection_established(local_user_id, socket_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -4224,8 +4513,12 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_interrupted(cha
     // field: socket_name, type: String
     std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_p2p_add_notify_peer_connection_interrupted(local_user_id, socket_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -4256,8 +4549,12 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_peer_connection_closed(char* __
     // field: socket_name, type: String
     std::string_view socket_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_p2p_add_notify_peer_connection_closed(local_user_id, socket_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -4282,8 +4579,12 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_add_notify_incoming_packet_queue_full(char
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_p2p_add_notify_incoming_packet_queue_full(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -4314,8 +4615,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_query_file(char* __arg_buffe
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_playerdatastorage_query_file(local_user_id, filename, callback);
     return 0;
@@ -4328,8 +4633,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_query_file_list(char* __arg_
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_playerdatastorage_query_file_list(local_user_id, callback);
     return 0;
@@ -4386,8 +4695,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_duplicate_file(char* __arg_b
     // field: destination_filename, type: String
     std::string_view destination_filename = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_playerdatastorage_duplicate_file(local_user_id, source_filename, destination_filename, callback);
     return 0;
@@ -4403,8 +4716,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_delete_file(char* __arg_buff
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_playerdatastorage_delete_file(local_user_id, filename, callback);
     return 0;
@@ -4420,8 +4737,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_read_file(char* __arg_buffer
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_playerdatastorage_read_file(local_user_id, filename, callback);
     return 0;
@@ -4440,8 +4761,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_write_file(char* __arg_buffe
     // field: data_base64, type: String
     std::string_view data_base64 = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_playerdatastorage_write_file(local_user_id, filename, data_base64, callback);
     return 0;
@@ -4454,8 +4779,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_delete_cache(char* __arg_buf
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_playerdatastorage_delete_cache(local_user_id, callback);
     return 0;
@@ -4471,8 +4800,12 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_query_file(char* __arg_buffer, do
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_titlestorage_query_file(local_user_id, filename, callback);
     return 0;
@@ -4488,8 +4821,12 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_query_file_list(char* __arg_buffe
     // field: tags, type: String[]
     std::vector<std::string_view> tags = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_titlestorage_query_file_list(local_user_id, tags, callback);
     return 0;
@@ -4543,8 +4880,12 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_read_file(char* __arg_buffer, dou
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_titlestorage_read_file(local_user_id, filename, callback);
     return 0;
@@ -4557,8 +4898,12 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_delete_cache(char* __arg_buffer, 
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_titlestorage_delete_cache(local_user_id, callback);
     return 0;
@@ -4577,8 +4922,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_query_ownership(char* __arg_buffer, doubl
     // field: catalog_namespace, type: String
     std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_query_ownership(local_user_id, catalog_item_ids, catalog_namespace, callback);
     return 0;
@@ -4594,8 +4943,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_query_ownership_by_sandbox_ids(char* __ar
     // field: sandbox_ids, type: String[]
     std::vector<std::string_view> sandbox_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_query_ownership_by_sandbox_ids(local_user_id, sandbox_ids, callback);
     return 0;
@@ -4614,8 +4967,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_query_ownership_token(char* __arg_buffer,
     // field: catalog_namespace, type: String
     std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_query_ownership_token(local_user_id, catalog_item_ids, catalog_namespace, callback);
     return 0;
@@ -4637,8 +4994,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_query_entitlements(char* __arg_buffer, do
     // field: catalog_namespace, type: String
     std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_query_entitlements(local_user_id, entitlement_names, include_redeemed, catalog_namespace, callback);
     return 0;
@@ -4654,8 +5015,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_query_entitlement_token(char* __arg_buffe
     // field: entitlement_names, type: String[]
     std::vector<std::string_view> entitlement_names = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_query_entitlement_token(local_user_id, entitlement_names, callback);
     return 0;
@@ -4671,8 +5036,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_query_offers(char* __arg_buffer, double _
     // field: catalog_namespace, type: String
     std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_query_offers(local_user_id, catalog_namespace, callback);
     return 0;
@@ -4691,8 +5060,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_checkout(char* __arg_buffer, double __arg
     // field: catalog_namespace, type: String
     std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_checkout(local_user_id, offer_ids, catalog_namespace, callback);
     return 0;
@@ -4708,8 +5081,12 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_redeem_entitlements(char* __arg_buffer, d
     // field: entitlement_ids, type: String[]
     std::vector<std::string_view> entitlement_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_ecom_redeem_entitlements(local_user_id, entitlement_ids, callback);
     return 0;
@@ -5147,8 +5524,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_send_custom_invite(char* __arg_b
     // field: target_user_ids, type: String[]
     std::vector<std::string_view> target_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_custominvites_send_custom_invite(local_user_id, target_user_ids, callback);
     return 0;
@@ -5184,8 +5565,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_send_request_to_join(char* __arg
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_custominvites_send_request_to_join(local_user_id, target_user_id, callback);
     return 0;
@@ -5201,8 +5586,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_accept_request_to_join(char* __a
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_custominvites_accept_request_to_join(local_user_id, target_user_id, callback);
     return 0;
@@ -5218,8 +5607,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_reject_request_to_join(char* __a
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_custominvites_reject_request_to_join(local_user_id, target_user_id, callback);
     return 0;
@@ -5229,8 +5622,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_receive
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_custom_invite_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5255,8 +5652,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_accepte
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_custom_invite_accepted(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5281,8 +5682,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_custom_invite_rejecte
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_custom_invite_rejected(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5307,8 +5712,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_respo
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_request_to_join_response_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5333,8 +5742,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_recei
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_request_to_join_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5359,8 +5772,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_send_custom_native_in
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_send_custom_native_invite_requested(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5385,8 +5802,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_accep
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_request_to_join_accepted(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5411,8 +5832,12 @@ GMEXPORT double __EXT_NATIVE__eos_custominvites_add_notify_request_to_join_rejec
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_custominvites_add_notify_request_to_join_rejected(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5449,8 +5874,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_join_room(char* __arg_buffer, double __arg
     // field: participant_token, type: String
     std::string_view participant_token = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_join_room(local_user_id, room_name, client_base_url, participant_token, callback);
     return 0;
@@ -5466,8 +5895,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_leave_room(char* __arg_buffer, double __ar
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_leave_room(local_user_id, room_name, callback);
     return 0;
@@ -5489,8 +5922,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_block_participant(char* __arg_buffer, doub
     // field: blocked, type: Bool
     bool blocked = gm::wire::codec::readValue<bool>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_block_participant(local_user_id, room_name, participant_id, blocked, callback);
     return 0;
@@ -5518,8 +5955,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_add_notify_disconnected(char* __arg_buffer
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_rtc_add_notify_disconnected(local_user_id, room_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5550,8 +5991,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_add_notify_participant_status_changed(char
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_rtc_add_notify_participant_status_changed(local_user_id, room_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5582,8 +6027,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_add_notify_room_statistics_updated(char* _
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_rtc_add_notify_room_statistics_updated(local_user_id, room_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5617,8 +6066,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_sending(char* __arg_buffer, d
     // field: audio_status, type: enum EpicRTCAudioStatus
     gm_enums::EpicRTCAudioStatus audio_status = gm::wire::codec::readValue<gm_enums::EpicRTCAudioStatus>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_update_sending(local_user_id, room_name, audio_status, callback);
     return 0;
@@ -5640,8 +6093,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_receiving(char* __arg_buffer,
     // field: audio_enabled, type: Bool
     bool audio_enabled = gm::wire::codec::readValue<bool>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_update_receiving(local_user_id, room_name, participant_id, audio_enabled, callback);
     return 0;
@@ -5660,8 +6117,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_sending_volume(char* __arg_bu
     // field: volume, type: Float64
     double volume = gm::wire::codec::readValue<double>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_update_sending_volume(local_user_id, room_name, volume, callback);
     return 0;
@@ -5680,8 +6141,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_receiving_volume(char* __arg_
     // field: volume, type: Float64
     double volume = gm::wire::codec::readValue<double>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_update_receiving_volume(local_user_id, room_name, volume, callback);
     return 0;
@@ -5703,8 +6168,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_update_participant_volume(char* __ar
     // field: volume, type: Float64
     double volume = gm::wire::codec::readValue<double>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_update_participant_volume(local_user_id, room_name, participant_id, volume, callback);
     return 0;
@@ -5764,8 +6233,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_query_input_devices(char* __arg_buff
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_query_input_devices(callback);
     return 0;
@@ -5775,8 +6248,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_query_output_devices(char* __arg_buf
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_query_output_devices(callback);
     return 0;
@@ -5795,8 +6272,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_set_input_device_settings(char* __ar
     // field: platform_aec, type: Bool
     bool platform_aec = gm::wire::codec::readValue<bool>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_set_input_device_settings(local_user_id, real_device_id, platform_aec, callback);
     return 0;
@@ -5812,8 +6293,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_set_output_device_settings(char* __a
     // field: real_device_id, type: String
     std::string_view real_device_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     eos_rtc_audio_set_output_device_settings(local_user_id, real_device_id, callback);
     return 0;
@@ -5829,8 +6314,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_participant_updated(char*
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_rtc_audio_add_notify_participant_updated(local_user_id, room_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5855,8 +6344,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_devices_changed(cha
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_rtc_audio_add_notify_audio_devices_changed(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5887,8 +6380,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_input_state(char* _
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_rtc_audio_add_notify_audio_input_state(local_user_id, room_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
@@ -5919,8 +6416,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_output_state(char* 
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: callback, type: Function
-    gm::wire::GMFunction callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
 
     auto&& __result = eos_rtc_audio_add_notify_audio_output_state(local_user_id, room_name, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};

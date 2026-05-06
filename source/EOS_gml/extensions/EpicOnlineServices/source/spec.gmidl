@@ -102,7 +102,7 @@ class `[[EpicLoggingMessage]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_logging_set_callback(callback:func): unit;
+function eos_logging_set_callback([type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_logging_clear_callback(): unit;
@@ -175,24 +175,24 @@ function eos_auth_login(
     [type_hint=`EpicLoginCredentialType`] credentials_type: gmval,
     [type_hint=`EpicExternalCredentialType`] external_credential_type: gmval,
     [type_hint=`EpicAuthScopeFlags`] scope_flags: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_auth_logout(
     local_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_auth_link_account(
     local_user_id: string,
     [type_hint=`EpicLinkAccountFlags`] link_account_flags: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
-function eos_auth_delete_persistent_auth(callback: func): unit;
+function eos_auth_delete_persistent_auth([type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_auth_get_logged_in_accounts_count(): int64;
@@ -306,13 +306,13 @@ function eos_auth_copy_id_token(local_user_id: string, target_account_id: string
 function eos_auth_copy_user_auth_token(local_user_id: string): gmval;
 
 [global, bind = typed_gml]
-function eos_auth_query_id_token(local_user_id: string, target_account_id: string, callback: func): unit;
+function eos_auth_query_id_token(local_user_id: string, target_account_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_auth_verify_id_token(json_web_token: string, callback: func): unit;
+function eos_auth_verify_id_token(json_web_token: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_auth_verify_user_auth(access_token: string, callback: func): unit;
+function eos_auth_verify_user_auth(access_token: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global]
 class `[[EpicAuthLoginStatusChangedCallbackInfo]]` prototype Object
@@ -328,7 +328,7 @@ class `[[EpicAuthLoginStatusChangedCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_auth_add_notify_login_status_changed(callback: func): gmval;
+function eos_auth_add_notify_login_status_changed([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_auth_remove_notify_login_status_changed([type_hint=`uint64`] notification_id: gmval): unit;
@@ -427,29 +427,29 @@ function eos_connect_login(
     token: string,
     [type_hint=`EpicExternalCredentialType`] external_credential_type: gmval,
     display_name: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
-function eos_connect_create_user(callback: func): unit;
+function eos_connect_create_user([type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_connect_link_account(local_user_id: string, callback: func): unit;
+function eos_connect_link_account(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_connect_unlink_account(local_user_id: string, callback: func): unit;
+function eos_connect_unlink_account(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_connect_create_device_id(device_model: string, callback: func): unit;
+function eos_connect_create_device_id(device_model: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_connect_delete_device_id(callback: func): unit;
+function eos_connect_delete_device_id([type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_connect_transfer_device_id_account(primary_local_user_id: string, local_device_user_id: string, callback: func): unit;
+function eos_connect_transfer_device_id_account(primary_local_user_id: string, local_device_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_connect_logout(local_user_id: string, callback: func): unit;
+function eos_connect_logout(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_connect_get_logged_in_users_count(): int64;
@@ -522,7 +522,7 @@ function eos_connect_get_product_user_id_mapping(local_user_id: string, [type_hi
 function eos_connect_get_external_account_mapping(local_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval, target_external_user_id: string): string;
 
 [global, bind = typed_gml]
-function eos_connect_verify_id_token(json_web_token: string, callback: func): unit;
+function eos_connect_verify_id_token(json_web_token: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global]
 class `[[EpicConnectQueryExternalAccountMappingsCallbackInfo]]` prototype Object
@@ -549,7 +549,7 @@ function eos_connect_query_external_account_mappings(
     local_user_id: string,
     [type_hint=`EpicExternalAccountType`] account_id_type: gmval,
     [type_hint=`string[]`] target_external_user_ids: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
@@ -557,7 +557,7 @@ function eos_connect_query_product_user_id_mappings(
     local_user_id: string,
     [type_hint=`EpicExternalAccountType`] account_id_type: gmval,
     [type_hint=`string[]`] target_product_user_ids: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 
@@ -582,13 +582,13 @@ class `[[EpicConnectLoginStatusChangedCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_connect_add_notify_auth_expiration(callback: func): gmval;
+function eos_connect_add_notify_auth_expiration([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_connect_remove_notify_auth_expiration([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_connect_add_notify_login_status_changed(callback: func): gmval;
+function eos_connect_add_notify_login_status_changed([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_connect_remove_notify_login_status_changed([type_hint=`uint64`] notification_id: gmval): unit;
@@ -613,7 +613,7 @@ class `[[EpicFriendsQueryFriendsCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_friends_query_friends(local_user_id: string, callback: func): unit;
+function eos_friends_query_friends(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_friends_get_friends_count(local_user_id: string): int64;
@@ -641,7 +641,7 @@ class `[[EpicFriendsFriendsUpdateCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_friends_add_notify_friends_update(callback: func): gmval;
+function eos_friends_add_notify_friends_update([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_friends_remove_notify_friends_update([type_hint=`uint64`] notification_id: gmval): unit;
@@ -688,7 +688,7 @@ class `[[EpicUserInfoQueryUserInfoCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_user_info_query_user_info(local_user_id: string, target_user_id: string, callback: func): unit;
+function eos_user_info_query_user_info(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`EpicUserInfo`]
 function eos_user_info_copy_user_info(local_user_id: string, target_user_id: string): gmval;
@@ -791,7 +791,7 @@ function eos_stats_ingest_stat(
     target_user_id: string,
     stat_name: string,
     ingest_amount: int64,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
@@ -800,7 +800,7 @@ function eos_stats_query_stats(
     target_user_id: string,
     start_time: int64,
     end_time: int64,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
@@ -845,10 +845,10 @@ class `[[EpicUIShowNativeProfileCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_ui_show_friends(local_user_id: string, callback: func): unit;
+function eos_ui_show_friends(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ui_show_native_profile(local_user_id: string, target_user_id: string, callback: func): unit;
+function eos_ui_show_native_profile(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): unit;
@@ -874,7 +874,7 @@ class `[[EpicUIDisplaySettingsUpdatedCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_ui_add_notify_display_settings_updated(callback: func): gmval;
+function eos_ui_add_notify_display_settings_updated([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_ui_remove_notify_display_settings_updated([type_hint=`uint64`] notification_id: gmval): unit;
@@ -920,7 +920,7 @@ class `[[EpicUIShowReportPlayerCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_ui_hide_friends(local_user_id: string, callback: func): unit;
+function eos_ui_hide_friends(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_ui_get_friends_visible(local_user_id: string): bool;
@@ -941,14 +941,14 @@ function eos_ui_get_notification_location_preference(): gmval;
 function eos_ui_show_block_player(
     local_user_id: string,
     target_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_ui_show_report_player(
     local_user_id: string,
     target_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 }
@@ -1011,10 +1011,10 @@ function eos_progression_snapshot_add_progression(snapshot_id: int64, key: strin
 function eos_progression_snapshot_end_snapshot(snapshot_id: int64): gmval;
 
 [global, bind = typed_gml]
-function eos_progression_snapshot_submit_snapshot(snapshot_id: int64, callback: func): unit;
+function eos_progression_snapshot_submit_snapshot(snapshot_id: int64, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_progression_snapshot_delete_snapshot(local_user_id: string, callback: func): unit;
+function eos_progression_snapshot_delete_snapshot(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 }
 
@@ -1039,7 +1039,7 @@ function eos_reports_send_player_behavior_report(
     [type_hint=`EpicPlayerReportsCategory`] category: gmval,
     message: string,
     context: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 }
@@ -1088,7 +1088,7 @@ class `[[EpicSanctionsCreatePlayerSanctionAppealCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_sanctions_query_active_player_sanctions(target_user_id: string, callback: func): unit;
+function eos_sanctions_query_active_player_sanctions(target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_sanctions_get_player_sanction_count(target_user_id: string): int64;
@@ -1101,7 +1101,7 @@ function eos_sanctions_create_player_sanction_appeal(
     local_user_id: string,
     reference_id: string,
     [type_hint=`EpicSanctionAppealReason`] reason: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 }
@@ -1134,10 +1134,10 @@ class `[[EpicAchievementsQueryPlayerAchievementsCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_achievements_query_definitions(local_user_id: string, callback: func): unit;
+function eos_achievements_query_definitions(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_achievements_query_player_achievements(local_user_id: string, target_user_id: string, callback: func): unit;
+function eos_achievements_query_player_achievements(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_achievements_get_achievement_definition_count(): int64;
@@ -1268,7 +1268,7 @@ function eos_achievements_copy_player_achievement_by_index(local_user_id: string
 function eos_achievements_copy_player_achievement_by_id(local_user_id: string, target_user_id: string, achievement_id: string): gmval;
 
 [global, bind = typed_gml]
-function eos_achievements_unlock_achievements(user_id: string, [type_hint=`string[]`]achievement_ids, callback: func): unit;
+function eos_achievements_unlock_achievements(user_id: string, [type_hint=`string[]`]achievement_ids, [type_hint=`func?`] callback: gmval): unit;
 
 [global]
 class `[[EpicAchievementsUnlockedV2CallbackInfo]]` prototype Object
@@ -1284,7 +1284,7 @@ class `[[EpicAchievementsUnlockedV2CallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_achievements_add_notify_achievements_unlocked_v2(callback: func): gmval;
+function eos_achievements_add_notify_achievements_unlocked_v2([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_achievements_remove_notify_achievements_unlocked([type_hint=`uint64`] notification_id: gmval): unit;
@@ -1324,21 +1324,21 @@ function eos_leaderboards_query_definitions(
     local_user_id: string,
     start_time: int64,
     end_time: int64,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_leaderboards_query_ranks(
     local_user_id: string,
     leaderboard_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_leaderboards_query_user_scores(
     local_user_id: string,
     stat_name: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
@@ -1462,7 +1462,7 @@ class `[[EpicPresenceQueryPresenceCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_presence_query_presence(local_user_id: string, target_user_id: string, callback: func): unit;
+function eos_presence_query_presence(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_presence_has_presence(local_user_id: string, target_user_id: string): bool;
@@ -1545,17 +1545,17 @@ function eos_presence_modification_delete_data(
 function eos_presence_set_presence(
     local_user_id: string,
     [type_hint=`uint64`] modification_id: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_presence_add_notify_on_presence_changed(callback: func): gmval;
+function eos_presence_add_notify_on_presence_changed([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_presence_remove_notify_on_presence_changed([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_presence_add_notify_join_game_accepted(callback: func): gmval;
+function eos_presence_add_notify_join_game_accepted([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_presence_remove_notify_join_game_accepted([type_hint=`uint64`] notification_id: gmval): unit;
@@ -1618,17 +1618,17 @@ function eos_sessions_session_modification_release([type_hint=`uint64`] modifica
 [global, bind = typed_gml]
 function eos_sessions_update_session(
     [type_hint=`uint64`] modification_id: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
-function eos_sessions_destroy_session(session_name: string, callback: func): unit;
+function eos_sessions_destroy_session(session_name: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_sessions_start_session(session_name: string, callback: func): unit;
+function eos_sessions_start_session(session_name: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_sessions_end_session(session_name: string, callback: func): unit;
+function eos_sessions_end_session(session_name: string, [type_hint=`func?`] callback: gmval): unit;
 
 /// ============================================================
 // EOS Sessions (Part 2)
@@ -1668,21 +1668,21 @@ class `[[EpicSessionsUnregisterPlayersCallbackInfo]]` prototype Object
 function eos_sessions_join_session(
     session_name: string,
     local_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_sessions_register_players(
     session_name: string,
     [type_hint=`string[]`]target_user_ids:gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_sessions_unregister_players(
     session_name: string,
     [type_hint=`string[]`]target_user_ids: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 // ============================================================
@@ -1718,7 +1718,7 @@ function eos_sessions_session_search_set_target_user_id(
 function eos_sessions_session_search_find(
     [type_hint=`uint64`] search_id: gmval,
     local_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
@@ -1820,19 +1820,19 @@ function eos_sessions_copy_session_handle_by_ui_event_id([type_hint=`uint64`] ui
 function eos_sessions_session_details_copy_info([type_hint=`uint64`] session_details_id: gmval): gmval;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_sessions_add_notify_session_invite_received(callback: func): gmval;
+function eos_sessions_add_notify_session_invite_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_sessions_remove_notify_session_invite_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_sessions_add_notify_session_invite_accepted(callback: func): gmval;
+function eos_sessions_add_notify_session_invite_accepted([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_sessions_remove_notify_session_invite_accepted([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_sessions_add_notify_join_session_accepted(callback: func): gmval;
+function eos_sessions_add_notify_join_session_accepted([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_sessions_remove_notify_join_session_accepted([type_hint=`uint64`] notification_id: gmval): unit;
@@ -2003,18 +2003,18 @@ function eos_sessions_send_invite(
     session_name: string,
     local_user_id: string,
     target_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_sessions_reject_invite(
     local_user_id: string,
     invite_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
-function eos_sessions_query_invites(local_user_id: string, callback: func): unit;
+function eos_sessions_query_invites(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_sessions_get_invite_count(local_user_id: string): int64;
@@ -2043,7 +2043,7 @@ function eos_sessions_session_search_get_search_result_count(
 ): int64;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_sessions_add_notify_session_invite_rejected(callback: func): gmval;
+function eos_sessions_add_notify_session_invite_rejected([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_sessions_remove_notify_session_invite_rejected(
@@ -2051,7 +2051,7 @@ function eos_sessions_remove_notify_session_invite_rejected(
 ): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_sessions_add_notify_leave_session_requested(callback: func): gmval;
+function eos_sessions_add_notify_leave_session_requested([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_sessions_remove_notify_leave_session_requested(
@@ -2059,7 +2059,7 @@ function eos_sessions_remove_notify_leave_session_requested(
 ): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_sessions_add_notify_send_session_native_invite_requested(callback: func): gmval;
+function eos_sessions_add_notify_send_session_native_invite_requested([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_sessions_remove_notify_send_session_native_invite_requested(
@@ -2115,37 +2115,77 @@ class `[[EpicLobbyLeaveLobbyCallbackInfo]]` prototype Object
     property lobby_id : string { get; set; }
 }
 
+[global]
+class `[[EpicLobbyCreateLobbyOptions]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property max_lobby_members : gmval { get; set; }
+
+    [field, type_hint=`EpicLobbyPermissionLevel`]
+    property permission_level : gmval { get; set; }
+
+    [field]
+    property presence_enabled : bool { get; set; }
+
+    [field]
+    property allow_invites : bool { get; set; }
+
+    [field]
+    property bucket_id : string { get; set; }
+
+    [field]
+    property disable_host_migration : bool { get; set; }
+
+    [field]
+    property enable_rtc_room : bool { get; set; }
+
+    [field]
+    property enable_join_by_id : bool { get; set; }
+
+    [field]
+    property rejoin_after_kick_requires_invite : bool { get; set; }
+}
+
 [global, bind = typed_gml]
 function eos_lobby_create_lobby(
-    local_user_id: string,
-    [type_hint=`int64`] max_lobby_members: gmval,
-    [type_hint=`EpicLobbyPermissionLevel`] permission_level: gmval,
-    presence_enabled: bool,
-    allow_invites: bool,
-    bucket_id: string,
-    callback: func
+    [type_hint=`EpicLobbyCreateLobbyOptions`] options: gmval,
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_lobby_destroy_lobby(
     lobby_id: string,
     local_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
+
+[global]
+class `[[EpicLobbyJoinLobbyOptions]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property presence_enabled : bool { get; set; }
+}
 
 [global, bind = typed_gml]
 function eos_lobby_join_lobby(
-    lobby_id: string,
-    local_user_id: string,
-    presence_enabled: bool,
-    callback: func
+    [type_hint=`EpicLobbyJoinLobbyOptions`] options: gmval,
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_lobby_leave_lobby(
     lobby_id: string,
     local_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 // ============================================================
@@ -2195,7 +2235,7 @@ function eos_lobby_lobby_modification_release([type_hint=`uint64`] modification_
 function eos_lobby_update_lobby(
     lobby_id: string,
     [type_hint=`uint64`] modification_id: gmval,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
@@ -2222,12 +2262,23 @@ function eos_lobby_lobby_modification_set_invites_allowed(
     invites_allowed: bool
 ): gmval;
 
+[global]
+class `[[EpicLobbyModificationAddAttributeOptions]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+
+    [field, type_hint=`EpicLobbyAttributeVisibility`]
+    property visibility : gmval { get; set; }
+}
+
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_lobby_lobby_modification_add_attribute(
     [type_hint=`uint64`] modification_id: gmval,
-    key: string,
-    value: string,
-    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+    [type_hint=`EpicLobbyModificationAddAttributeOptions`] options: gmval
 ): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
@@ -2236,12 +2287,23 @@ function eos_lobby_lobby_modification_remove_attribute(
     key: string
 ): gmval;
 
+[global]
+class `[[EpicLobbyModificationAddMemberAttributeOptions]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+
+    [field, type_hint=`EpicLobbyAttributeVisibility`]
+    property visibility : gmval { get; set; }
+}
+
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_lobby_lobby_modification_add_member_attribute(
     [type_hint=`uint64`] modification_id: gmval,
-    key: string,
-    value: string,
-    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+    [type_hint=`EpicLobbyModificationAddMemberAttributeOptions`] options: gmval
 ): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
@@ -2250,20 +2312,42 @@ function eos_lobby_lobby_modification_remove_member_attribute(
     key: string
 ): gmval;
 
+[global]
+class `[[EpicLobbyPromoteMemberOptions]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
+
 [global, bind = typed_gml]
 function eos_lobby_promote_member(
-    lobby_id: string,
-    local_user_id: string,
-    target_user_id: string,
-    callback: func
+    [type_hint=`EpicLobbyPromoteMemberOptions`] options: gmval,
+    [type_hint=`func?`] callback: gmval
 ): unit;
+
+[global]
+class `[[EpicLobbyKickMemberOptions]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
 
 [global, bind = typed_gml]
 function eos_lobby_kick_member(
-    lobby_id: string,
-    local_user_id: string,
-    target_user_id: string,
-    callback: func
+    [type_hint=`EpicLobbyKickMemberOptions`] options: gmval,
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 // ============================================================
@@ -2295,19 +2379,39 @@ function eos_lobby_lobby_search_set_target_user_id(
     target_user_id: string
 ): gmval;
 
+[global]
+class `[[EpicLobbySearchSetParameterOptions]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+
+    [field, type_hint=`EpicComparisonOp`]
+    property comparison_op : gmval { get; set; }
+}
+
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_lobby_lobby_search_set_parameter(
     [type_hint=`uint64`] search_id: gmval,
-    key: string,
-    value: string,
-    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+    [type_hint=`EpicLobbySearchSetParameterOptions`] options: gmval
 ): gmval;
+
+[global]
+class `[[EpicLobbySearchRemoveParameterOptions]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field, type_hint=`EpicComparisonOp`]
+    property comparison_op : gmval { get; set; }
+}
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_lobby_lobby_search_remove_parameter(
     [type_hint=`uint64`] search_id: gmval,
-    key: string,
-    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+    [type_hint=`EpicLobbySearchRemoveParameterOptions`] options: gmval
 ): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
@@ -2320,7 +2424,7 @@ function eos_lobby_lobby_search_set_max_results(
 function eos_lobby_lobby_search_find(
     [type_hint=`uint64`] search_id: gmval,
     local_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
@@ -2458,37 +2562,37 @@ function eos_lobby_details_get_member_by_index([type_hint=`uint64`] lobby_detail
 function eos_lobby_details_get_lobby_owner([type_hint=`uint64`] lobby_details_id: gmval): string;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_update_received(local_user_id: string, callback: func): gmval;
+function eos_lobby_add_notify_lobby_update_received(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_update_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_member_update_received(local_user_id: string, callback: func): gmval;
+function eos_lobby_add_notify_lobby_member_update_received(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_member_update_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_member_status_received(local_user_id: string, callback: func): gmval;
+function eos_lobby_add_notify_lobby_member_status_received(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_member_status_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_join_lobby_accepted(callback: func): gmval;
+function eos_lobby_add_notify_join_lobby_accepted([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_join_lobby_accepted([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_leave_lobby_requested(local_user_id: string, callback: func): gmval;
+function eos_lobby_add_notify_leave_lobby_requested(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_leave_lobby_requested([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id: string, callback: func): gmval;
+function eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_send_lobby_native_invite_requested([type_hint=`uint64`] notification_id: gmval): unit;
@@ -2667,40 +2771,75 @@ function eos_lobby_details_copy_member_info(
     target_user_id: string
 ): gmval;
 
+[global]
+class `[[EpicLobbyJoinLobbyByIdOptions]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property presence_enabled : bool { get; set; }
+}
+
 [global, bind = typed_gml]
 function eos_lobby_join_lobby_by_id(
-    lobby_id: string,
-    local_user_id: string,
-    presence_enabled: bool,
-    callback: func
+    [type_hint=`EpicLobbyJoinLobbyByIdOptions`] options: gmval,
+    [type_hint=`func?`] callback: gmval
 ): unit;
+
+[global]
+class `[[EpicLobbyHardMuteMemberOptions]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+
+    [field]
+    property hard_mute : bool { get; set; }
+}
 
 [global, bind = typed_gml]
 function eos_lobby_hard_mute_member(
-    lobby_id: string,
-    local_user_id: string,
-    target_user_id: string,
-    hard_mute: bool,
-    callback: func
+    [type_hint=`EpicLobbyHardMuteMemberOptions`] options: gmval,
+    [type_hint=`func?`] callback: gmval
 ): unit;
+
+[global]
+class `[[EpicLobbySendInviteOptions]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property target_user_id : string { get; set; }
+}
 
 [global, bind = typed_gml]
 function eos_lobby_send_invite(
-    lobby_id: string,
-    local_user_id: string,
-    target_user_id: string,
-    callback: func
+    [type_hint=`EpicLobbySendInviteOptions`] options: gmval,
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
 function eos_lobby_reject_invite(
     invite_id: string,
     local_user_id: string,
-    callback: func
+    [type_hint=`func?`] callback: gmval
 ): unit;
 
 [global, bind = typed_gml]
-function eos_lobby_query_invites(local_user_id: string, callback: func): unit;
+function eos_lobby_query_invites(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_lobby_get_invite_count(local_user_id: string): int64;
@@ -2709,7 +2848,7 @@ function eos_lobby_get_invite_count(local_user_id: string): int64;
 function eos_lobby_get_invite_id_by_index(local_user_id: string, index: int64): string;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_invite_received(callback: func): gmval;
+function eos_lobby_add_notify_lobby_invite_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_invite_received(
@@ -2717,7 +2856,7 @@ function eos_lobby_remove_notify_lobby_invite_received(
 ): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_invite_accepted(callback: func): gmval;
+function eos_lobby_add_notify_lobby_invite_accepted([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_invite_accepted(
@@ -2725,7 +2864,7 @@ function eos_lobby_remove_notify_lobby_invite_accepted(
 ): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_invite_rejected(callback: func): gmval;
+function eos_lobby_add_notify_lobby_invite_rejected([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_invite_rejected(
@@ -2911,7 +3050,7 @@ function eos_p2p_close_connection(local_user_id: string, remote_user_id: string,
 function eos_p2p_close_connections(local_user_id: string, socket_name: string): gmval;
 
 [global, bind = typed_gml]
-function eos_p2p_query_nat_type(callback: func): unit;
+function eos_p2p_query_nat_type([type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`EpicNATType`]
 function eos_p2p_get_nat_type(): gmval;
@@ -2938,31 +3077,31 @@ function eos_p2p_get_packet_queue_info(): gmval;
 function eos_p2p_clear_packet_queue(local_user_id: string, remote_user_id: string, socket_name: string): gmval;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_p2p_add_notify_peer_connection_request(local_user_id: string, socket_name: string, callback: func): gmval;
+function eos_p2p_add_notify_peer_connection_request(local_user_id: string, socket_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_p2p_remove_notify_peer_connection_request([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_p2p_add_notify_peer_connection_established(local_user_id: string, socket_name: string, callback: func): gmval;
+function eos_p2p_add_notify_peer_connection_established(local_user_id: string, socket_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_p2p_remove_notify_peer_connection_established([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_p2p_add_notify_peer_connection_interrupted(local_user_id: string, socket_name: string, callback: func): gmval;
+function eos_p2p_add_notify_peer_connection_interrupted(local_user_id: string, socket_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_p2p_remove_notify_peer_connection_interrupted([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_p2p_add_notify_peer_connection_closed(local_user_id: string, socket_name: string, callback: func): gmval;
+function eos_p2p_add_notify_peer_connection_closed(local_user_id: string, socket_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_p2p_remove_notify_peer_connection_closed([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_p2p_add_notify_incoming_packet_queue_full(callback: func): gmval;
+function eos_p2p_add_notify_incoming_packet_queue_full([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_p2p_remove_notify_incoming_packet_queue_full([type_hint=`uint64`] notification_id: gmval): unit;
@@ -3078,10 +3217,10 @@ class `[[EpicPlayerDataStorageDeleteCacheCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_query_file(local_user_id: string, filename: string, callback: func): unit;
+function eos_playerdatastorage_query_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_query_file_list(local_user_id: string, callback: func): unit;
+function eos_playerdatastorage_query_file_list(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_playerdatastorage_get_file_metadata_count(local_user_id: string): int64;
@@ -3093,19 +3232,19 @@ function eos_playerdatastorage_copy_file_metadata_at_index(local_user_id: string
 function eos_playerdatastorage_copy_file_metadata_by_filename(local_user_id: string, filename: string): gmval;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_duplicate_file(local_user_id: string, source_filename: string, destination_filename: string, callback: func): unit;
+function eos_playerdatastorage_duplicate_file(local_user_id: string, source_filename: string, destination_filename: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_delete_file(local_user_id: string, filename: string, callback: func): unit;
+function eos_playerdatastorage_delete_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_read_file(local_user_id: string, filename: string, callback: func): unit;
+function eos_playerdatastorage_read_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_write_file(local_user_id: string, filename: string, data_base64: string, callback: func): unit;
+function eos_playerdatastorage_write_file(local_user_id: string, filename: string, data_base64: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_delete_cache(local_user_id: string, callback: func): unit;
+function eos_playerdatastorage_delete_cache(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 }
 
@@ -3182,10 +3321,10 @@ class `[[EpicTitleStorageDeleteCacheCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_titlestorage_query_file(local_user_id: string, filename: string, callback: func): unit;
+function eos_titlestorage_query_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_titlestorage_query_file_list(local_user_id: string, [type_hint=`string[]`] tags: gmval, callback: func): unit;
+function eos_titlestorage_query_file_list(local_user_id: string, [type_hint=`string[]`] tags: gmval, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_titlestorage_get_file_metadata_count(local_user_id: string): int64;
@@ -3197,10 +3336,10 @@ function eos_titlestorage_copy_file_metadata_at_index(local_user_id: string, ind
 function eos_titlestorage_copy_file_metadata_by_filename(local_user_id: string, filename: string): gmval;
 
 [global, bind = typed_gml]
-function eos_titlestorage_read_file(local_user_id: string, filename: string, callback: func): unit;
+function eos_titlestorage_read_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_titlestorage_delete_cache(local_user_id: string, callback: func): unit;
+function eos_titlestorage_delete_cache(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 }
 
@@ -3472,28 +3611,28 @@ class `[[EpicEcomRedeemEntitlementsCallbackInfo]]` prototype Object
 // Async queries
 
 [global, bind = typed_gml]
-function eos_ecom_query_ownership(local_user_id: string, [type_hint=`string[]`] catalog_item_ids: gmval, catalog_namespace: string, callback: func): unit;
+function eos_ecom_query_ownership(local_user_id: string, [type_hint=`string[]`] catalog_item_ids: gmval, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_query_ownership_by_sandbox_ids(local_user_id: string, [type_hint=`string[]`] sandbox_ids: gmval, callback: func): unit;
+function eos_ecom_query_ownership_by_sandbox_ids(local_user_id: string, [type_hint=`string[]`] sandbox_ids: gmval, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_query_ownership_token(local_user_id: string, [type_hint=`string[]`] catalog_item_ids: gmval, catalog_namespace: string, callback: func): unit;
+function eos_ecom_query_ownership_token(local_user_id: string, [type_hint=`string[]`] catalog_item_ids: gmval, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_query_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, include_redeemed: int64, catalog_namespace: string, callback: func): unit;
+function eos_ecom_query_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, include_redeemed: int64, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_query_entitlement_token(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, callback: func): unit;
+function eos_ecom_query_entitlement_token(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_query_offers(local_user_id: string, catalog_namespace: string, callback: func): unit;
+function eos_ecom_query_offers(local_user_id: string, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_checkout(local_user_id: string, [type_hint=`string[]`] offer_ids: gmval, catalog_namespace: string, callback: func): unit;
+function eos_ecom_checkout(local_user_id: string, [type_hint=`string[]`] offer_ids: gmval, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_redeem_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_ids: gmval, callback: func): unit;
+function eos_ecom_redeem_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_ids: gmval, [type_hint=`func?`] callback: gmval): unit;
 
 // Ownership cache accessors
 
@@ -3769,64 +3908,64 @@ class `[[EpicCustomInvitesRequestToJoinRejectedCallbackInfo]]` prototype Object
 function eos_custominvites_set_custom_invite(local_user_id: string, payload: string): bool;
 
 [global, bind = typed_gml]
-function eos_custominvites_send_custom_invite(local_user_id: string, [type_hint=`string[]`] target_user_ids: gmval, callback: func): unit;
+function eos_custominvites_send_custom_invite(local_user_id: string, [type_hint=`string[]`] target_user_ids: gmval, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_custominvites_finalize_invite(target_user_id: string, local_user_id: string, custom_invite_id: string, [type_hint=`EpicResult`] processing_result: gmval): bool;
 
 [global, bind = typed_gml]
-function eos_custominvites_send_request_to_join(local_user_id: string, target_user_id: string, callback: func): unit;
+function eos_custominvites_send_request_to_join(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_custominvites_accept_request_to_join(local_user_id: string, target_user_id: string, callback: func): unit;
+function eos_custominvites_accept_request_to_join(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_custominvites_reject_request_to_join(local_user_id: string, target_user_id: string, callback: func): unit;
+function eos_custominvites_reject_request_to_join(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_custom_invite_received(callback: func): gmval;
+function eos_custominvites_add_notify_custom_invite_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_custom_invite_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_custom_invite_accepted(callback: func): gmval;
+function eos_custominvites_add_notify_custom_invite_accepted([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_custom_invite_accepted([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_custom_invite_rejected(callback: func): gmval;
+function eos_custominvites_add_notify_custom_invite_rejected([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_custom_invite_rejected([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_request_to_join_response_received(callback: func): gmval;
+function eos_custominvites_add_notify_request_to_join_response_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_request_to_join_response_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_request_to_join_received(callback: func): gmval;
+function eos_custominvites_add_notify_request_to_join_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_request_to_join_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_send_custom_native_invite_requested(callback: func): gmval;
+function eos_custominvites_add_notify_send_custom_native_invite_requested([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_send_custom_native_invite_requested([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_request_to_join_accepted(callback: func): gmval;
+function eos_custominvites_add_notify_request_to_join_accepted([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_request_to_join_accepted([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_custominvites_add_notify_request_to_join_rejected(callback: func): gmval;
+function eos_custominvites_add_notify_request_to_join_rejected([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_custominvites_remove_notify_request_to_join_rejected([type_hint=`uint64`] notification_id: gmval): unit;
@@ -4129,13 +4268,13 @@ class `[[EpicRTCAudioQueryOutputDevicesCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_rtc_join_room(local_user_id: string, room_name: string, client_base_url: string, participant_token: string, callback: func): unit;
+function eos_rtc_join_room(local_user_id: string, room_name: string, client_base_url: string, participant_token: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_leave_room(local_user_id: string, room_name: string, callback: func): unit;
+function eos_rtc_leave_room(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_block_participant(local_user_id: string, room_name: string, participant_id: string, blocked: bool, callback: func): unit;
+function eos_rtc_block_participant(local_user_id: string, room_name: string, participant_id: string, blocked: bool, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_rtc_set_setting(setting_name: string, setting_value: string): bool;
@@ -4144,19 +4283,19 @@ function eos_rtc_set_setting(setting_name: string, setting_value: string): bool;
 function eos_rtc_set_room_setting(local_user_id: string, room_name: string, setting_name: string, setting_value: string): bool;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_add_notify_disconnected(local_user_id: string, room_name: string, callback: func): gmval;
+function eos_rtc_add_notify_disconnected(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_remove_notify_disconnected([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_add_notify_participant_status_changed(local_user_id: string, room_name: string, callback: func): gmval;
+function eos_rtc_add_notify_participant_status_changed(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_remove_notify_participant_status_changed([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_add_notify_room_statistics_updated(local_user_id: string, room_name: string, callback: func): gmval;
+function eos_rtc_add_notify_room_statistics_updated(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_remove_notify_room_statistics_updated([type_hint=`uint64`] notification_id: gmval): unit;
@@ -4164,19 +4303,19 @@ function eos_rtc_remove_notify_room_statistics_updated([type_hint=`uint64`] noti
 // RTC Audio
 
 [global, bind = typed_gml]
-function eos_rtc_audio_update_sending(local_user_id: string, room_name: string, [type_hint=`EpicRTCAudioStatus`] audio_status: gmval, callback: func): unit;
+function eos_rtc_audio_update_sending(local_user_id: string, room_name: string, [type_hint=`EpicRTCAudioStatus`] audio_status: gmval, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_update_receiving(local_user_id: string, room_name: string, participant_id: string, audio_enabled: bool, callback: func): unit;
+function eos_rtc_audio_update_receiving(local_user_id: string, room_name: string, participant_id: string, audio_enabled: bool, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_update_sending_volume(local_user_id: string, room_name: string, volume: real, callback: func): unit;
+function eos_rtc_audio_update_sending_volume(local_user_id: string, room_name: string, volume: real, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_update_receiving_volume(local_user_id: string, room_name: string, volume: real, callback: func): unit;
+function eos_rtc_audio_update_receiving_volume(local_user_id: string, room_name: string, volume: real, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_update_participant_volume(local_user_id: string, room_name: string, participant_id: string, volume: real, callback: func): unit;
+function eos_rtc_audio_update_participant_volume(local_user_id: string, room_name: string, participant_id: string, volume: real, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_get_input_devices_count(): int64;
@@ -4191,37 +4330,37 @@ function eos_rtc_audio_get_output_devices_count(): int64;
 function eos_rtc_audio_copy_output_device_info_by_index(index: int64): gmval;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_query_input_devices(callback: func): unit;
+function eos_rtc_audio_query_input_devices([type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_query_output_devices(callback: func): unit;
+function eos_rtc_audio_query_output_devices([type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_set_input_device_settings(local_user_id: string, real_device_id: string, platform_aec: bool, callback: func): unit;
+function eos_rtc_audio_set_input_device_settings(local_user_id: string, real_device_id: string, platform_aec: bool, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_set_output_device_settings(local_user_id: string, real_device_id: string, callback: func): unit;
+function eos_rtc_audio_set_output_device_settings(local_user_id: string, real_device_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_audio_add_notify_participant_updated(local_user_id: string, room_name: string, callback: func): gmval;
+function eos_rtc_audio_add_notify_participant_updated(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_participant_updated([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_audio_add_notify_audio_devices_changed(callback: func): gmval;
+function eos_rtc_audio_add_notify_audio_devices_changed([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_devices_changed([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_audio_add_notify_audio_input_state(local_user_id: string, room_name: string, callback: func): gmval;
+function eos_rtc_audio_add_notify_audio_input_state(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_input_state([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_audio_add_notify_audio_output_state(local_user_id: string, room_name: string, callback: func): gmval;
+function eos_rtc_audio_add_notify_audio_output_state(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_output_state([type_hint=`uint64`] notification_id: gmval): unit;

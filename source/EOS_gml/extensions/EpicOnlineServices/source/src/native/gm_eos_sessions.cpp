@@ -5,6 +5,7 @@
 #include <eos_sessions.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -51,7 +52,7 @@ static std::string eos_sessions_product_user_id_to_string_internal(EOS_ProductUs
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static std::unordered_map<uint64_t, EOS_HSessionModification> g_session_modifications;
@@ -149,7 +150,7 @@ static void EOS_CALL eos_sessions_update_session_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_update_session_info_from_native(data)
     );
     delete ctx;
@@ -165,7 +166,7 @@ static void EOS_CALL eos_sessions_destroy_session_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_destroy_session_info_from_native(data)
     );
     delete ctx;
@@ -181,7 +182,7 @@ static void EOS_CALL eos_sessions_start_session_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_start_session_info_from_native(data)
     );
     delete ctx;
@@ -197,7 +198,7 @@ static void EOS_CALL eos_sessions_end_session_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_end_session_info_from_native(data)
     );
     delete ctx;
@@ -266,7 +267,7 @@ void eos_sessions_session_modification_release(uint64_t modification_id)
 
 void eos_sessions_update_session(
     uint64_t modification_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -299,7 +300,7 @@ void eos_sessions_update_session(
     eos_sessions_modification_erase(modification_id);
 }
 
-void eos_sessions_destroy_session(std::string_view session_name, const GMFunction& callback)
+void eos_sessions_destroy_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -330,7 +331,7 @@ void eos_sessions_destroy_session(std::string_view session_name, const GMFunctio
     );
 }
 
-void eos_sessions_start_session(std::string_view session_name, const GMFunction& callback)
+void eos_sessions_start_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -361,7 +362,7 @@ void eos_sessions_start_session(std::string_view session_name, const GMFunction&
     );
 }
 
-void eos_sessions_end_session(std::string_view session_name, const GMFunction& callback)
+void eos_sessions_end_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -457,7 +458,7 @@ static void EOS_CALL eos_sessions_join_session_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_join_session_info_from_native(data)
     );
     delete ctx;
@@ -473,7 +474,7 @@ static void EOS_CALL eos_sessions_register_players_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_register_players_info_from_native(data)
     );
     delete ctx;
@@ -489,7 +490,7 @@ static void EOS_CALL eos_sessions_unregister_players_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_unregister_players_info_from_native(data)
     );
     delete ctx;
@@ -498,7 +499,7 @@ static void EOS_CALL eos_sessions_unregister_players_callback_native(
 void eos_sessions_join_session(
     std::string_view session_name,
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -539,7 +540,7 @@ void eos_sessions_join_session(
 
 void eos_sessions_register_players(std::string_view session_name, 
     const std::vector<std::string_view>& target_user_ids, 
-    const gm::wire::GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -593,7 +594,7 @@ void eos_sessions_register_players(std::string_view session_name,
 void eos_sessions_unregister_players(
     std::string_view session_name,
     const std::vector<std::string_view>& target_user_ids,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -730,7 +731,7 @@ static void EOS_CALL eos_sessions_find_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_sessions_find_info_from_native(data)
     );
     delete ctx;
@@ -832,7 +833,7 @@ gm_enums::EpicResult eos_sessions_session_search_set_target_user_id(
 void eos_sessions_session_search_find(
     uint64_t search_id,
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1197,7 +1198,7 @@ gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_copy_info(uint64
     return out;
 }
 
-uint64_t eos_sessions_add_notify_session_invite_received(const GMFunction& callback)
+uint64_t eos_sessions_add_notify_session_invite_received(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1207,7 +1208,7 @@ uint64_t eos_sessions_add_notify_session_invite_received(const GMFunction& callb
         return 0;
     }
 
-    g_cb_sessions_invite_received = callback;
+    g_cb_sessions_invite_received = callback.value_or(GMFunction{});
 
     EOS_Sessions_AddNotifySessionInviteReceivedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
@@ -1236,7 +1237,7 @@ void eos_sessions_remove_notify_session_invite_received(uint64_t notification_id
     );
 }
 
-uint64_t eos_sessions_add_notify_session_invite_accepted(const GMFunction& callback)
+uint64_t eos_sessions_add_notify_session_invite_accepted(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1246,7 +1247,7 @@ uint64_t eos_sessions_add_notify_session_invite_accepted(const GMFunction& callb
         return 0;
     }
 
-    g_cb_sessions_invite_accepted = callback;
+    g_cb_sessions_invite_accepted = callback.value_or(GMFunction{});
 
     EOS_Sessions_AddNotifySessionInviteAcceptedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEACCEPTED_API_LATEST;
@@ -1275,7 +1276,7 @@ void eos_sessions_remove_notify_session_invite_accepted(uint64_t notification_id
     );
 }
 
-uint64_t eos_sessions_add_notify_join_session_accepted(const GMFunction& callback)
+uint64_t eos_sessions_add_notify_join_session_accepted(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1285,7 +1286,7 @@ uint64_t eos_sessions_add_notify_join_session_accepted(const GMFunction& callbac
         return 0;
     }
 
-    g_cb_sessions_join_accepted = callback;
+    g_cb_sessions_join_accepted = callback.value_or(GMFunction{});
 
     EOS_Sessions_AddNotifyJoinSessionAcceptedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYJOINSESSIONACCEPTED_API_LATEST;
@@ -1705,7 +1706,7 @@ static void EOS_CALL eos_sessions_send_invite_callback_native(
 
     gm_structs::EpicSessionsSendInviteCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -1718,7 +1719,7 @@ static void EOS_CALL eos_sessions_reject_invite_callback_native(
 
     gm_structs::EpicSessionsRejectInviteCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -1732,7 +1733,7 @@ static void EOS_CALL eos_sessions_query_invites_callback_native(
     gm_structs::EpicSessionsQueryInvitesCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -1740,7 +1741,7 @@ void eos_sessions_send_invite(
     std::string_view session_name,
     std::string_view local_user_id,
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1783,7 +1784,7 @@ void eos_sessions_send_invite(
 void eos_sessions_reject_invite(
     std::string_view local_user_id,
     std::string_view invite_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1818,7 +1819,7 @@ void eos_sessions_reject_invite(
 
 void eos_sessions_query_invites(
     std::string_view local_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2037,7 +2038,7 @@ static void EOS_CALL eos_sessions_native_invite_requested_callback_native(
     g_cb_sessions_native_invite_requested.call(out);
 }
 
-uint64_t eos_sessions_add_notify_session_invite_rejected(const GMFunction& callback)
+uint64_t eos_sessions_add_notify_session_invite_rejected(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2047,7 +2048,7 @@ uint64_t eos_sessions_add_notify_session_invite_rejected(const GMFunction& callb
         return 0;
     }
 
-    g_cb_sessions_invite_rejected = callback;
+    g_cb_sessions_invite_rejected = callback.value_or(GMFunction{});
 
     EOS_Sessions_AddNotifySessionInviteRejectedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEREJECTED_API_LATEST;
@@ -2069,7 +2070,7 @@ void eos_sessions_remove_notify_session_invite_rejected(uint64_t notification_id
     EOS_Sessions_RemoveNotifySessionInviteRejected(sessions, (EOS_NotificationId)notification_id);
 }
 
-uint64_t eos_sessions_add_notify_leave_session_requested(const GMFunction& callback)
+uint64_t eos_sessions_add_notify_leave_session_requested(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2079,7 +2080,7 @@ uint64_t eos_sessions_add_notify_leave_session_requested(const GMFunction& callb
         return 0;
     }
 
-    g_cb_sessions_leave_requested = callback;
+    g_cb_sessions_leave_requested = callback.value_or(GMFunction{});
 
     EOS_Sessions_AddNotifyLeaveSessionRequestedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
@@ -2101,7 +2102,7 @@ void eos_sessions_remove_notify_leave_session_requested(uint64_t notification_id
     EOS_Sessions_RemoveNotifyLeaveSessionRequested(sessions, (EOS_NotificationId)notification_id);
 }
 
-uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const GMFunction& callback)
+uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -2111,7 +2112,7 @@ uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const GMFu
         return 0;
     }
 
-    g_cb_sessions_native_invite_requested = callback;
+    g_cb_sessions_native_invite_requested = callback.value_or(GMFunction{});
 
     EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;

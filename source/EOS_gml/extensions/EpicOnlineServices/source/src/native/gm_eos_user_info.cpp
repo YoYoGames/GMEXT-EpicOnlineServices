@@ -5,6 +5,7 @@
 #include <eos_userinfo.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HUserInfo eos_user_info_iface()
@@ -104,7 +105,7 @@ static void EOS_CALL eos_user_info_query_user_info_callback_native(
     auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
     if (!ctx)
         return;
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_user_info_query_user_info_info_from_native(data)
     );
     delete ctx;
@@ -117,7 +118,7 @@ static void EOS_CALL eos_user_info_query_user_info_callback_native(
 void eos_user_info_query_user_info(
     std::string_view local_user_id,
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 

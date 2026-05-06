@@ -4,6 +4,7 @@
 #include <eos_sdk.h>
 #include <eos_reports.h>
 
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -18,7 +19,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HReports eos_reports_iface()
@@ -89,7 +90,7 @@ static void EOS_CALL eos_reports_send_player_behavior_report_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_reports_send_player_behavior_report_info_from_native(data)
     );
     delete ctx;
@@ -105,7 +106,7 @@ void eos_reports_send_player_behavior_report(
     gm_enums::EpicPlayerReportsCategory category,
     std::string_view message,
     std::string_view context,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 

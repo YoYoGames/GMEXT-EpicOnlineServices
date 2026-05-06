@@ -5,6 +5,7 @@
 #include <eos_connect.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_ContinuanceToken g_eos_connect_continuance_token = nullptr;
@@ -179,7 +180,7 @@ static void EOS_CALL eos_connect_login_callback_native(const EOS_Connect_LoginCa
         return;
 
     g_eos_connect_continuance_token = data->ContinuanceToken;
-    ctx->callback.call(eos_connect_login_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_login_info_from_native(data));
     delete ctx;
 }
 
@@ -193,7 +194,7 @@ static void EOS_CALL eos_connect_create_user_callback_native(const EOS_Connect_C
         return;
 
     g_eos_connect_continuance_token = nullptr;
-    ctx->callback.call(eos_connect_create_user_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_create_user_info_from_native(data));
     delete ctx;
 }
 
@@ -207,7 +208,7 @@ static void EOS_CALL eos_connect_link_account_callback_native(const EOS_Connect_
         return;
 
     g_eos_connect_continuance_token = nullptr;
-    ctx->callback.call(eos_connect_link_account_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_link_account_info_from_native(data));
     delete ctx;
 }
 
@@ -220,7 +221,7 @@ static void EOS_CALL eos_connect_unlink_account_callback_native(const EOS_Connec
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_connect_unlink_account_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_unlink_account_info_from_native(data));
     delete ctx;
 }
 
@@ -248,7 +249,7 @@ static void EOS_CALL eos_connect_delete_device_id_callback_native(const EOS_Conn
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_connect_delete_device_id_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_delete_device_id_info_from_native(data));
     delete ctx;
 }
 
@@ -261,7 +262,7 @@ static void EOS_CALL eos_connect_transfer_device_id_account_callback_native(cons
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_connect_transfer_device_id_account_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_transfer_device_id_account_info_from_native(data));
     delete ctx;
 }
 
@@ -274,7 +275,7 @@ static void EOS_CALL eos_connect_logout_callback_native(const EOS_Connect_Logout
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_connect_logout_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_logout_info_from_native(data));
     delete ctx;
 }
 
@@ -286,7 +287,7 @@ void eos_connect_login(
     std::string_view token,
     gm_enums::EpicExternalCredentialType external_credential_type,
     std::string_view display_name,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -324,7 +325,7 @@ void eos_connect_login(
     EOS_Connect_Login(connect, &opts, ctx, &eos_connect_login_callback_native);
 }
 
-void eos_connect_create_user(const GMFunction& callback)
+void eos_connect_create_user(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -349,7 +350,7 @@ void eos_connect_create_user(const GMFunction& callback)
     EOS_Connect_CreateUser(connect, &opts, ctx, &eos_connect_create_user_callback_native);
 }
 
-void eos_connect_link_account(std::string_view local_user_id, const GMFunction& callback)
+void eos_connect_link_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -381,7 +382,7 @@ void eos_connect_link_account(std::string_view local_user_id, const GMFunction& 
     EOS_Connect_LinkAccount(connect, &opts, ctx, &eos_connect_link_account_callback_native);
 }
 
-void eos_connect_unlink_account(std::string_view local_user_id, const GMFunction& callback)
+void eos_connect_unlink_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -407,7 +408,7 @@ void eos_connect_unlink_account(std::string_view local_user_id, const GMFunction
     EOS_Connect_UnlinkAccount(connect, &opts, ctx, &eos_connect_unlink_account_callback_native);
 }
 
-void eos_connect_create_device_id(std::string_view device_model, const GMFunction& callback)
+void eos_connect_create_device_id(std::string_view device_model, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -436,7 +437,7 @@ void eos_connect_create_device_id(std::string_view device_model, const GMFunctio
     // EOS_Connect_CreateDeviceId(connect, &opts, ctx, &eos_connect_create_device_id_callback_native);
 }
 
-void eos_connect_delete_device_id(const GMFunction& callback)
+void eos_connect_delete_device_id(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -458,7 +459,7 @@ void eos_connect_delete_device_id(const GMFunction& callback)
 void eos_connect_transfer_device_id_account(
     std::string_view primary_local_user_id,
     std::string_view local_device_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -492,7 +493,7 @@ void eos_connect_transfer_device_id_account(
     EOS_Connect_TransferDeviceIdAccount(connect, &opts, ctx, &eos_connect_transfer_device_id_account_callback_native);
 }
 
-void eos_connect_logout(std::string_view local_user_id, const GMFunction& callback)
+void eos_connect_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -647,7 +648,7 @@ static void EOS_CALL eos_connect_query_external_account_mappings_callback_native
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_connect_query_external_account_mappings_info_from_native(data)
     );
     delete ctx;
@@ -663,7 +664,7 @@ static void EOS_CALL eos_connect_query_product_user_id_mappings_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_connect_query_product_user_id_mappings_info_from_native(data)
     );
     delete ctx;
@@ -678,7 +679,7 @@ static void EOS_CALL eos_connect_verify_id_token_callback_native(const EOS_Conne
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_connect_verify_id_token_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_connect_verify_id_token_info_from_native(data));
     delete ctx;
 }
 
@@ -954,7 +955,7 @@ std::string eos_connect_get_external_account_mapping(
     return "";
 }
 
-void eos_connect_verify_id_token(std::string_view json_web_token, const GMFunction& callback)
+void eos_connect_verify_id_token(std::string_view json_web_token, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -989,7 +990,7 @@ void eos_connect_query_external_account_mappings(
     std::string_view local_user_id,
     gm_enums::EpicExternalAccountType account_id_type,
     const std::vector<std::string_view>& target_external_user_ids,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1046,7 +1047,7 @@ void eos_connect_query_product_user_id_mappings(
     std::string_view local_user_id,
     gm_enums::EpicExternalAccountType account_id_type,
     const std::vector<std::string_view>& target_product_user_ids,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1165,7 +1166,7 @@ static void EOS_CALL eos_connect_login_status_changed_callback(
 }
 
 uint64_t eos_connect_add_notify_auth_expiration(
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1176,7 +1177,7 @@ uint64_t eos_connect_add_notify_auth_expiration(
         return 0;
     }
 
-    g_cb_connect_auth_expiration = callback;
+    g_cb_connect_auth_expiration = callback.value_or(GMFunction{});
 
     EOS_Connect_AddNotifyAuthExpirationOptions opts{};
     opts.ApiVersion = EOS_CONNECT_ADDNOTIFYAUTHEXPIRATION_API_LATEST;
@@ -1208,7 +1209,7 @@ void eos_connect_remove_notify_auth_expiration(
 }
 
 uint64_t eos_connect_add_notify_login_status_changed(
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -1219,7 +1220,7 @@ uint64_t eos_connect_add_notify_login_status_changed(
         return 0;
     }
 
-    g_cb_connect_login_status_changed = callback;
+    g_cb_connect_login_status_changed = callback.value_or(GMFunction{});
 
     EOS_Connect_AddNotifyLoginStatusChangedOptions opts{};
     opts.ApiVersion = EOS_CONNECT_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST;

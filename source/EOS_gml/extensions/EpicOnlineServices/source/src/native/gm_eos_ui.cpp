@@ -5,6 +5,7 @@
 #include <eos_ui.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HUI eos_ui_iface()
@@ -101,7 +102,7 @@ static void EOS_CALL eos_ui_show_friends_callback_native(const EOS_UI_ShowFriend
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_ui_show_friends_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_ui_show_friends_info_from_native(data));
     delete ctx;
 }
 
@@ -114,7 +115,7 @@ static void EOS_CALL eos_ui_show_native_profile_callback_native(const EOS_UI_Sho
     if (!ctx)
         return;
 
-    ctx->callback.call(eos_ui_show_native_profile_info_from_native(data));
+    if (ctx->callback) ctx->callback.value().call(eos_ui_show_native_profile_info_from_native(data));
     delete ctx;
 }
 
@@ -122,7 +123,7 @@ static void EOS_CALL eos_ui_show_native_profile_callback_native(const EOS_UI_Sho
 // EOS UI (Part 1)
 // ============================================================
 
-void eos_ui_show_friends(std::string_view local_user_id, const GMFunction& callback)
+void eos_ui_show_friends(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -151,7 +152,7 @@ void eos_ui_show_friends(std::string_view local_user_id, const GMFunction& callb
 void eos_ui_show_native_profile(
     std::string_view local_user_id,
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -285,7 +286,7 @@ static void EOS_CALL eos_ui_display_settings_updated_callback_native(
     );
 }
 
-uint64_t eos_ui_add_notify_display_settings_updated(const GMFunction& callback)
+uint64_t eos_ui_add_notify_display_settings_updated(const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -295,7 +296,7 @@ uint64_t eos_ui_add_notify_display_settings_updated(const GMFunction& callback)
         return 0;
     }
 
-    g_cb_ui_display_settings_updated = callback;
+    g_cb_ui_display_settings_updated = callback.value_or(GMFunction{});
 
     EOS_UI_AddNotifyDisplaySettingsUpdatedOptions opts{};
     opts.ApiVersion = EOS_UI_ADDNOTIFYDISPLAYSETTINGSUPDATED_API_LATEST;
@@ -337,7 +338,7 @@ static void EOS_CALL eos_ui_hide_friends_callback_native(const EOS_UI_HideFriend
     gm_structs::EpicUIHideFriendsCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -352,7 +353,7 @@ static void EOS_CALL eos_ui_show_block_player_callback_native(
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
     out.target_user_id = eos_epic_account_id_to_string_internal(data->TargetUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -367,11 +368,11 @@ static void EOS_CALL eos_ui_show_report_player_callback_native(
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
     out.target_user_id = eos_epic_account_id_to_string_internal(data->TargetUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
-void eos_ui_hide_friends(std::string_view local_user_id, const GMFunction& callback)
+void eos_ui_hide_friends(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -497,7 +498,7 @@ gm_enums::EpicUINotificationLocation eos_ui_get_notification_location_preference
 void eos_ui_show_block_player(
     std::string_view local_user_id,
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -533,7 +534,7 @@ void eos_ui_show_block_player(
 void eos_ui_show_report_player(
     std::string_view local_user_id,
     std::string_view target_user_id,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 

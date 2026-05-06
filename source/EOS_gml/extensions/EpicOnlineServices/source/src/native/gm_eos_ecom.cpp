@@ -5,6 +5,7 @@
 #include <eos_ecom.h>
 
 #include <cstdint>
+#include <optional>
 #include <cstring>
 #include <mutex>
 #include <string>
@@ -22,7 +23,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HEcom eos_ecom_iface()
@@ -222,7 +223,7 @@ static void EOS_CALL eos_ecom_query_ownership_callback_native(
     out.result_code         = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id       = user_id;
     out.item_ownership_count = (int64_t)data->ItemOwnershipCount;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -256,7 +257,7 @@ static void EOS_CALL eos_ecom_query_ownership_by_sandbox_ids_callback_native(
     out.result_code              = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id            = user_id;
     out.sandbox_ownership_count  = (int64_t)data->SandboxIdItemOwnershipsCount;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -271,7 +272,7 @@ static void EOS_CALL eos_ecom_query_ownership_token_callback_native(
     out.result_code   = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
     out.ownership_token = data->OwnershipToken ? std::string(data->OwnershipToken) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -285,7 +286,7 @@ static void EOS_CALL eos_ecom_query_entitlements_callback_native(
     gm_structs::EpicEcomQueryEntitlementsCallbackInfo out{};
     out.result_code   = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -300,7 +301,7 @@ static void EOS_CALL eos_ecom_query_entitlement_token_callback_native(
     out.result_code       = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id     = eos_epic_account_id_to_string_internal(data->LocalUserId);
     out.entitlement_token = data->EntitlementToken ? std::string(data->EntitlementToken) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -314,7 +315,7 @@ static void EOS_CALL eos_ecom_query_offers_callback_native(
     gm_structs::EpicEcomQueryOffersCallbackInfo out{};
     out.result_code   = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_epic_account_id_to_string_internal(data->LocalUserId);
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -329,7 +330,7 @@ static void EOS_CALL eos_ecom_checkout_callback_native(
     out.result_code    = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id  = eos_epic_account_id_to_string_internal(data->LocalUserId);
     out.transaction_id = data->TransactionId ? std::string(data->TransactionId) : std::string();
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -344,7 +345,7 @@ static void EOS_CALL eos_ecom_redeem_entitlements_callback_native(
     out.result_code    = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id  = eos_epic_account_id_to_string_internal(data->LocalUserId);
     out.redeemed_count = (int64_t)data->RedeemedEntitlementIdsCount;
-    ctx->callback.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
 
@@ -356,7 +357,7 @@ void eos_ecom_query_ownership(
     std::string_view local_user_id,
     const std::vector<std::string_view>& catalog_item_ids,
     std::string_view catalog_namespace,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -388,7 +389,7 @@ void eos_ecom_query_ownership(
 void eos_ecom_query_ownership_by_sandbox_ids(
     std::string_view local_user_id,
     const std::vector<std::string_view>& sandbox_ids,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -418,7 +419,7 @@ void eos_ecom_query_ownership_token(
     std::string_view local_user_id,
     const std::vector<std::string_view>& catalog_item_ids,
     std::string_view catalog_namespace,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -452,7 +453,7 @@ void eos_ecom_query_entitlements(
     const std::vector<std::string_view>& entitlement_names,
     int64_t include_redeemed,
     std::string_view catalog_namespace,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -485,7 +486,7 @@ void eos_ecom_query_entitlements(
 void eos_ecom_query_entitlement_token(
     std::string_view local_user_id,
     const std::vector<std::string_view>& entitlement_names,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -514,7 +515,7 @@ void eos_ecom_query_entitlement_token(
 void eos_ecom_query_offers(
     std::string_view local_user_id,
     std::string_view catalog_namespace,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -540,7 +541,7 @@ void eos_ecom_checkout(
     std::string_view local_user_id,
     const std::vector<std::string_view>& offer_ids,
     std::string_view catalog_namespace,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 
@@ -577,7 +578,7 @@ void eos_ecom_checkout(
 void eos_ecom_redeem_entitlements(
     std::string_view local_user_id,
     const std::vector<std::string_view>& entitlement_ids,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
 

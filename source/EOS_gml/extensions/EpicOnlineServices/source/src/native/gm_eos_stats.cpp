@@ -5,6 +5,7 @@
 #include <eos_stats.h>
 
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -19,7 +20,7 @@ using namespace gm_enums;
 
 struct EOSAsyncCallbackContext
 {
-    GMFunction callback;
+    std::optional<GMFunction> callback;
 };
 
 static EOS_HStats eos_stats_iface()
@@ -119,7 +120,7 @@ static void EOS_CALL eos_stats_ingest_stat_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_stats_ingest_stat_info_from_native(data)
     );
     delete ctx;
@@ -135,7 +136,7 @@ static void EOS_CALL eos_stats_query_stats_callback_native(
     if (!ctx)
         return;
 
-    ctx->callback.call(
+    if (ctx->callback) ctx->callback.value().call(
         eos_stats_query_stats_info_from_native(data)
     );
     delete ctx;
@@ -150,7 +151,7 @@ void eos_stats_ingest_stat(
     std::string_view target_user_id,
     std::string_view stat_name,
     int64_t ingest_amount,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -202,7 +203,7 @@ void eos_stats_query_stats(
     std::string_view target_user_id,
     int64_t start_time,
     int64_t end_time,
-    const GMFunction& callback)
+    const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 

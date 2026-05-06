@@ -921,10 +921,18 @@ namespace gm_structs
     struct EpicLobbyDestroyLobbyCallbackInfo;
     struct EpicLobbyJoinLobbyCallbackInfo;
     struct EpicLobbyLeaveLobbyCallbackInfo;
+    struct EpicLobbyCreateLobbyOptions;
+    struct EpicLobbyJoinLobbyOptions;
     struct EpicLobbyUpdateLobbyCallbackInfo;
     struct EpicLobbyPromoteMemberCallbackInfo;
     struct EpicLobbyKickMemberCallbackInfo;
+    struct EpicLobbyModificationAddAttributeOptions;
+    struct EpicLobbyModificationAddMemberAttributeOptions;
+    struct EpicLobbyPromoteMemberOptions;
+    struct EpicLobbyKickMemberOptions;
     struct EpicLobbySearchFindCallbackInfo;
+    struct EpicLobbySearchSetParameterOptions;
+    struct EpicLobbySearchRemoveParameterOptions;
     struct EpicLobbyDetailsInfo;
     struct EpicLobbyLobbyUpdateReceivedCallbackInfo;
     struct EpicLobbyLobbyMemberUpdateReceivedCallbackInfo;
@@ -942,6 +950,9 @@ namespace gm_structs
     struct EpicLobbyLobbyInviteReceivedCallbackInfo;
     struct EpicLobbyLobbyInviteAcceptedCallbackInfo;
     struct EpicLobbyLobbyInviteRejectedCallbackInfo;
+    struct EpicLobbyJoinLobbyByIdOptions;
+    struct EpicLobbyHardMuteMemberOptions;
+    struct EpicLobbySendInviteOptions;
     struct EpicP2PReceivedPacket;
     struct EpicP2PQueryNATTypeCallbackInfo;
     struct EpicP2PConnectionRequestCallbackInfo;
@@ -1611,6 +1622,27 @@ namespace gm_structs
         std::string lobby_id;
     };
 
+    struct EpicLobbyCreateLobbyOptions
+    {
+        std::string local_user_id;
+        std::int64_t max_lobby_members;
+        gm_enums::EpicLobbyPermissionLevel permission_level;
+        bool presence_enabled;
+        bool allow_invites;
+        std::string bucket_id;
+        bool disable_host_migration;
+        bool enable_rtc_room;
+        bool enable_join_by_id;
+        bool rejoin_after_kick_requires_invite;
+    };
+
+    struct EpicLobbyJoinLobbyOptions
+    {
+        std::string lobby_id;
+        std::string local_user_id;
+        bool presence_enabled;
+    };
+
     struct EpicLobbyUpdateLobbyCallbackInfo
     {
         gm_enums::EpicResult result_code;
@@ -1629,9 +1661,50 @@ namespace gm_structs
         std::string lobby_id;
     };
 
+    struct EpicLobbyModificationAddAttributeOptions
+    {
+        std::string key;
+        std::string value;
+        gm_enums::EpicLobbyAttributeVisibility visibility;
+    };
+
+    struct EpicLobbyModificationAddMemberAttributeOptions
+    {
+        std::string key;
+        std::string value;
+        gm_enums::EpicLobbyAttributeVisibility visibility;
+    };
+
+    struct EpicLobbyPromoteMemberOptions
+    {
+        std::string lobby_id;
+        std::string local_user_id;
+        std::string target_user_id;
+    };
+
+    struct EpicLobbyKickMemberOptions
+    {
+        std::string lobby_id;
+        std::string local_user_id;
+        std::string target_user_id;
+    };
+
     struct EpicLobbySearchFindCallbackInfo
     {
         gm_enums::EpicResult result_code;
+    };
+
+    struct EpicLobbySearchSetParameterOptions
+    {
+        std::string key;
+        std::string value;
+        gm_enums::EpicComparisonOp comparison_op;
+    };
+
+    struct EpicLobbySearchRemoveParameterOptions
+    {
+        std::string key;
+        gm_enums::EpicComparisonOp comparison_op;
     };
 
     struct EpicLobbyDetailsInfo
@@ -1753,6 +1826,28 @@ namespace gm_structs
         std::string local_user_id;
         std::string target_user_id;
         std::string lobby_id;
+    };
+
+    struct EpicLobbyJoinLobbyByIdOptions
+    {
+        std::string lobby_id;
+        std::string local_user_id;
+        bool presence_enabled;
+    };
+
+    struct EpicLobbyHardMuteMemberOptions
+    {
+        std::string lobby_id;
+        std::string local_user_id;
+        std::string target_user_id;
+        bool hard_mute;
+    };
+
+    struct EpicLobbySendInviteOptions
+    {
+        std::string lobby_id;
+        std::string local_user_id;
+        std::string target_user_id;
     };
 
     struct EpicP2PReceivedPacket
@@ -3832,6 +3927,56 @@ namespace gm::wire::codec
     }
 
     template<>
+    inline void writeValue<gm_structs::EpicLobbyCreateLobbyOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyCreateLobbyOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.max_lobby_members);
+        gm::wire::codec::writeValue(_buf, obj.permission_level);
+        gm::wire::codec::writeValue(_buf, obj.presence_enabled);
+        gm::wire::codec::writeValue(_buf, obj.allow_invites);
+        gm::wire::codec::writeValue(_buf, obj.bucket_id);
+        gm::wire::codec::writeValue(_buf, obj.disable_host_migration);
+        gm::wire::codec::writeValue(_buf, obj.enable_rtc_room);
+        gm::wire::codec::writeValue(_buf, obj.enable_join_by_id);
+        gm::wire::codec::writeValue(_buf, obj.rejoin_after_kick_requires_invite);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyCreateLobbyOptions readValue<gm_structs::EpicLobbyCreateLobbyOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyCreateLobbyOptions obj;
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.max_lobby_members = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.permission_level = gm::wire::codec::readValue<gm_enums::EpicLobbyPermissionLevel>(_buf);
+        obj.presence_enabled = gm::wire::codec::readValue<bool>(_buf);
+        obj.allow_invites = gm::wire::codec::readValue<bool>(_buf);
+        obj.bucket_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.disable_host_migration = gm::wire::codec::readValue<bool>(_buf);
+        obj.enable_rtc_room = gm::wire::codec::readValue<bool>(_buf);
+        obj.enable_join_by_id = gm::wire::codec::readValue<bool>(_buf);
+        obj.rejoin_after_kick_requires_invite = gm::wire::codec::readValue<bool>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbyJoinLobbyOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyJoinLobbyOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.lobby_id);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.presence_enabled);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyJoinLobbyOptions readValue<gm_structs::EpicLobbyJoinLobbyOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyJoinLobbyOptions obj;
+        obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.presence_enabled = gm::wire::codec::readValue<bool>(_buf);
+        return obj;
+    }
+
+    template<>
     inline void writeValue<gm_structs::EpicLobbyUpdateLobbyCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyUpdateLobbyCallbackInfo& obj)
     {
         gm::wire::codec::writeValue(_buf, obj.result_code);
@@ -3880,6 +4025,78 @@ namespace gm::wire::codec
     }
 
     template<>
+    inline void writeValue<gm_structs::EpicLobbyModificationAddAttributeOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyModificationAddAttributeOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.key);
+        gm::wire::codec::writeValue(_buf, obj.value);
+        gm::wire::codec::writeValue(_buf, obj.visibility);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyModificationAddAttributeOptions readValue<gm_structs::EpicLobbyModificationAddAttributeOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyModificationAddAttributeOptions obj;
+        obj.key = gm::wire::codec::readValue<std::string>(_buf);
+        obj.value = gm::wire::codec::readValue<std::string>(_buf);
+        obj.visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbyModificationAddMemberAttributeOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyModificationAddMemberAttributeOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.key);
+        gm::wire::codec::writeValue(_buf, obj.value);
+        gm::wire::codec::writeValue(_buf, obj.visibility);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyModificationAddMemberAttributeOptions readValue<gm_structs::EpicLobbyModificationAddMemberAttributeOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyModificationAddMemberAttributeOptions obj;
+        obj.key = gm::wire::codec::readValue<std::string>(_buf);
+        obj.value = gm::wire::codec::readValue<std::string>(_buf);
+        obj.visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbyPromoteMemberOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyPromoteMemberOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.lobby_id);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.target_user_id);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyPromoteMemberOptions readValue<gm_structs::EpicLobbyPromoteMemberOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyPromoteMemberOptions obj;
+        obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.target_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbyKickMemberOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyKickMemberOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.lobby_id);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.target_user_id);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyKickMemberOptions readValue<gm_structs::EpicLobbyKickMemberOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyKickMemberOptions obj;
+        obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.target_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
     inline void writeValue<gm_structs::EpicLobbySearchFindCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbySearchFindCallbackInfo& obj)
     {
         gm::wire::codec::writeValue(_buf, obj.result_code);
@@ -3890,6 +4107,40 @@ namespace gm::wire::codec
     {
         gm_structs::EpicLobbySearchFindCallbackInfo obj;
         obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbySearchSetParameterOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbySearchSetParameterOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.key);
+        gm::wire::codec::writeValue(_buf, obj.value);
+        gm::wire::codec::writeValue(_buf, obj.comparison_op);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbySearchSetParameterOptions readValue<gm_structs::EpicLobbySearchSetParameterOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbySearchSetParameterOptions obj;
+        obj.key = gm::wire::codec::readValue<std::string>(_buf);
+        obj.value = gm::wire::codec::readValue<std::string>(_buf);
+        obj.comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbySearchRemoveParameterOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbySearchRemoveParameterOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.key);
+        gm::wire::codec::writeValue(_buf, obj.comparison_op);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbySearchRemoveParameterOptions readValue<gm_structs::EpicLobbySearchRemoveParameterOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbySearchRemoveParameterOptions obj;
+        obj.key = gm::wire::codec::readValue<std::string>(_buf);
+        obj.comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(_buf);
         return obj;
     }
 
@@ -4200,6 +4451,62 @@ namespace gm::wire::codec
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.target_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbyJoinLobbyByIdOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyJoinLobbyByIdOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.lobby_id);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.presence_enabled);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyJoinLobbyByIdOptions readValue<gm_structs::EpicLobbyJoinLobbyByIdOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyJoinLobbyByIdOptions obj;
+        obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.presence_enabled = gm::wire::codec::readValue<bool>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbyHardMuteMemberOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyHardMuteMemberOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.lobby_id);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.target_user_id);
+        gm::wire::codec::writeValue(_buf, obj.hard_mute);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbyHardMuteMemberOptions readValue<gm_structs::EpicLobbyHardMuteMemberOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbyHardMuteMemberOptions obj;
+        obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.target_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.hard_mute = gm::wire::codec::readValue<bool>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicLobbySendInviteOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbySendInviteOptions& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.lobby_id);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.target_user_id);
+    }
+
+    template<>
+    inline gm_structs::EpicLobbySendInviteOptions readValue<gm_structs::EpicLobbySendInviteOptions>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicLobbySendInviteOptions obj;
+        obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.target_user_id = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
 
@@ -6152,640 +6459,717 @@ namespace gm::wire::details
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyUpdateLobbyCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyCreateLobbyOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 88;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyPromoteMemberCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyJoinLobbyOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 89;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyKickMemberCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyUpdateLobbyCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 90;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbySearchFindCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyPromoteMemberCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 91;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyDetailsInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyKickMemberCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 92;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyLobbyUpdateReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyModificationAddAttributeOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 93;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyLobbyMemberUpdateReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyModificationAddMemberAttributeOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 94;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyLobbyMemberStatusReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyPromoteMemberOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 95;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyJoinLobbyAcceptedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyKickMemberOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 96;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyLeaveLobbyRequestedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbySearchFindCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 97;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbySearchSetParameterOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 98;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyDetailsAttribute>
+    struct gm_struct_traits<gm_structs::EpicLobbySearchRemoveParameterOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 99;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyDetailsMemberInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyDetailsInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 100;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyJoinLobbyByIdCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyLobbyUpdateReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 101;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyHardMuteMemberCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyLobbyMemberUpdateReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 102;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbySendInviteCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyLobbyMemberStatusReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 103;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyRejectInviteCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyJoinLobbyAcceptedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 104;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyQueryInvitesCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyLeaveLobbyRequestedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 105;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyLobbyInviteReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 106;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyLobbyInviteAcceptedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyDetailsAttribute>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 107;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicLobbyLobbyInviteRejectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyDetailsMemberInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 108;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PReceivedPacket>
+    struct gm_struct_traits<gm_structs::EpicLobbyJoinLobbyByIdCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 109;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PQueryNATTypeCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyHardMuteMemberCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 110;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PConnectionRequestCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbySendInviteCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 111;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PConnectionEstablishedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyRejectInviteCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 112;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PConnectionInterruptedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyQueryInvitesCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 113;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PConnectionClosedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyLobbyInviteReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 114;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PPacketQueueInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyLobbyInviteAcceptedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 115;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PPortRange>
+    struct gm_struct_traits<gm_structs::EpicLobbyLobbyInviteRejectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 116;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicP2PIncomingPacketQueueFullCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbyJoinLobbyByIdOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 117;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageFileMetadata>
+    struct gm_struct_traits<gm_structs::EpicLobbyHardMuteMemberOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 118;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageQueryFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicLobbySendInviteOptions>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 119;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageQueryFileListCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PReceivedPacket>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 120;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDuplicateFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PQueryNATTypeCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 121;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDeleteFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PConnectionRequestCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 122;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageReadFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PConnectionEstablishedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 123;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageWriteFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PConnectionInterruptedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 124;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDeleteCacheCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PConnectionClosedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 125;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageFileMetadata>
+    struct gm_struct_traits<gm_structs::EpicP2PPacketQueueInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 126;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PPortRange>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 127;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileListCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicP2PIncomingPacketQueueFullCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 128;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageReadFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageFileMetadata>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 129;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageDeleteCacheCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageQueryFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 130;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomEntitlement>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageQueryFileListCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 131;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomItemOwnership>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDuplicateFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 132;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomSandboxIdItemOwnership>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDeleteFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 133;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCatalogOffer>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageReadFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 134;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCatalogItem>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageWriteFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 135;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomKeyImageInfo>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDeleteCacheCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 136;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCatalogRelease>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageFileMetadata>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 137;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 138;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipBySandboxIdsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileListCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 139;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipTokenCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageReadFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 140;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageDeleteCacheCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 141;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementTokenCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomEntitlement>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 142;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOffersCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomItemOwnership>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 143;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCheckoutCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomSandboxIdItemOwnership>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 144;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomRedeemEntitlementsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomCatalogOffer>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 145;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomInviteCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomCatalogItem>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 146;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomKeyImageInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 147;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteAcceptedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomCatalogRelease>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 148;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteRejectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 149;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendRequestToJoinCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipBySandboxIdsCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 150;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipTokenCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 151;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementsCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 152;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesAcceptRequestToJoinCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementTokenCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 153;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRejectRequestToJoinCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOffersCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 154;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomCheckoutCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 155;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinAcceptedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomRedeemEntitlementsCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 156;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinRejectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomInviteCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 157;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 158;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCLeaveRoomCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteAcceptedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 159;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCBlockParticipantCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteRejectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 160;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCDisconnectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendRequestToJoinCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 161;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 162;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCRoomStatisticsUpdatedInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 163;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioParticipantUpdatedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesAcceptRequestToJoinCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 164;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioDevicesChangedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRejectRequestToJoinCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 165;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioInputStateCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 166;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputStateCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinAcceptedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 167;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinRejectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 168;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 169;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingVolumeCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCLeaveRoomCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 170;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingVolumeCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCBlockParticipantCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 171;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateParticipantVolumeCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCDisconnectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 172;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioInputDeviceInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 173;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputDeviceInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCRoomStatisticsUpdatedInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 174;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioSetInputDeviceSettingsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioParticipantUpdatedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 175;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioSetOutputDeviceSettingsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioDevicesChangedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 176;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryInputDevicesCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioInputStateCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 177;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryOutputDevicesCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputStateCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 178;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 179;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 180;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingVolumeCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 181;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingVolumeCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 182;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateParticipantVolumeCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 183;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioInputDeviceInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 184;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputDeviceInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 185;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioSetInputDeviceSettingsCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 186;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioSetOutputDeviceSettingsCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 187;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryInputDevicesCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 188;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryOutputDevicesCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 189;
     };
 
 }
@@ -6808,31 +7192,31 @@ void eos_platform_release();
 void eos_platform_tick();
 gm_enums::EpicResult eos_platform_check_for_launcher_and_restart();
 gm_enums::EpicResult eos_platform_set_network_status(gm_enums::EpicNetworkStatus status);
-void eos_logging_set_callback(const gm::wire::GMFunction& callback);
+void eos_logging_set_callback(const std::optional<gm::wire::GMFunction>& callback);
 void eos_logging_clear_callback();
 gm_enums::EpicResult eos_logging_set_log_level(gm_enums::EpicLogCategory log_category, gm_enums::EpicLogLevel log_level);
-void eos_auth_login(std::string_view credentials_id, std::string_view credentials_token, gm_enums::EpicLoginCredentialType credentials_type, gm_enums::EpicExternalCredentialType external_credential_type, gm_enums::EpicAuthScopeFlags scope_flags, const gm::wire::GMFunction& callback);
-void eos_auth_logout(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_auth_link_account(std::string_view local_user_id, gm_enums::EpicLinkAccountFlags link_account_flags, const gm::wire::GMFunction& callback);
-void eos_auth_delete_persistent_auth(const gm::wire::GMFunction& callback);
+void eos_auth_login(std::string_view credentials_id, std::string_view credentials_token, gm_enums::EpicLoginCredentialType credentials_type, gm_enums::EpicExternalCredentialType external_credential_type, gm_enums::EpicAuthScopeFlags scope_flags, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_link_account(std::string_view local_user_id, gm_enums::EpicLinkAccountFlags link_account_flags, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_delete_persistent_auth(const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_auth_get_logged_in_accounts_count();
 std::string eos_auth_get_logged_in_account_by_index(std::int64_t index);
 gm_enums::EpicLoginStatus eos_auth_get_login_status(std::string_view local_user_id);
 gm_structs::EpicAuthIdToken eos_auth_copy_id_token(std::string_view local_user_id, std::string_view target_account_id);
 gm_structs::EpicAuthUserAuthToken eos_auth_copy_user_auth_token(std::string_view local_user_id);
-void eos_auth_query_id_token(std::string_view local_user_id, std::string_view target_account_id, const gm::wire::GMFunction& callback);
-void eos_auth_verify_id_token(std::string_view json_web_token, const gm::wire::GMFunction& callback);
-void eos_auth_verify_user_auth(std::string_view access_token, const gm::wire::GMFunction& callback);
-std::uint64_t eos_auth_add_notify_login_status_changed(const gm::wire::GMFunction& callback);
+void eos_auth_query_id_token(std::string_view local_user_id, std::string_view target_account_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_verify_id_token(std::string_view json_web_token, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_verify_user_auth(std::string_view access_token, const std::optional<gm::wire::GMFunction>& callback);
+std::uint64_t eos_auth_add_notify_login_status_changed(const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_remove_notify_login_status_changed(std::uint64_t notification_id);
-void eos_connect_login(std::string_view token, gm_enums::EpicExternalCredentialType external_credential_type, std::string_view display_name, const gm::wire::GMFunction& callback);
-void eos_connect_create_user(const gm::wire::GMFunction& callback);
-void eos_connect_link_account(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_connect_unlink_account(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_connect_create_device_id(std::string_view device_model, const gm::wire::GMFunction& callback);
-void eos_connect_delete_device_id(const gm::wire::GMFunction& callback);
-void eos_connect_transfer_device_id_account(std::string_view primary_local_user_id, std::string_view local_device_user_id, const gm::wire::GMFunction& callback);
-void eos_connect_logout(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_connect_login(std::string_view token, gm_enums::EpicExternalCredentialType external_credential_type, std::string_view display_name, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_create_user(const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_link_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_unlink_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_create_device_id(std::string_view device_model, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_delete_device_id(const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_transfer_device_id_account(std::string_view primary_local_user_id, std::string_view local_device_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_connect_get_logged_in_users_count();
 std::string eos_connect_get_logged_in_user_by_index(std::int64_t index);
 gm_enums::EpicLoginStatus eos_connect_get_login_status(std::string_view local_user_id);
@@ -6843,60 +7227,60 @@ gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_externa
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_account_id(std::string_view target_user_id, std::string_view account_id);
 std::string eos_connect_get_product_user_id_mapping(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, std::string_view target_external_user_id);
 std::string eos_connect_get_external_account_mapping(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, std::string_view target_external_user_id);
-void eos_connect_verify_id_token(std::string_view json_web_token, const gm::wire::GMFunction& callback);
-void eos_connect_query_external_account_mappings(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, const std::vector<std::string_view>& target_external_user_ids, const gm::wire::GMFunction& callback);
-void eos_connect_query_product_user_id_mappings(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, const std::vector<std::string_view>& target_product_user_ids, const gm::wire::GMFunction& callback);
-std::uint64_t eos_connect_add_notify_auth_expiration(const gm::wire::GMFunction& callback);
+void eos_connect_verify_id_token(std::string_view json_web_token, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_query_external_account_mappings(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, const std::vector<std::string_view>& target_external_user_ids, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_query_product_user_id_mappings(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, const std::vector<std::string_view>& target_product_user_ids, const std::optional<gm::wire::GMFunction>& callback);
+std::uint64_t eos_connect_add_notify_auth_expiration(const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_remove_notify_auth_expiration(std::uint64_t notification_id);
-std::uint64_t eos_connect_add_notify_login_status_changed(const gm::wire::GMFunction& callback);
+std::uint64_t eos_connect_add_notify_login_status_changed(const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_remove_notify_login_status_changed(std::uint64_t notification_id);
-void eos_friends_query_friends(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_friends_query_friends(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_friends_get_friends_count(std::string_view local_user_id);
 std::string eos_friends_get_friend_at_index(std::string_view local_user_id, std::int64_t index);
 gm_enums::EpicFriendsStatus eos_friends_get_status(std::string_view local_user_id, std::string_view target_user_id);
-std::uint64_t eos_friends_add_notify_friends_update(const gm::wire::GMFunction& callback);
+std::uint64_t eos_friends_add_notify_friends_update(const std::optional<gm::wire::GMFunction>& callback);
 void eos_friends_remove_notify_friends_update(std::uint64_t notification_id);
-void eos_user_info_query_user_info(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
+void eos_user_info_query_user_info(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 gm_structs::EpicUserInfo eos_user_info_copy_user_info(std::string_view local_user_id, std::string_view target_user_id);
 gm_enums::EpicExternalAccountType eos_user_info_get_local_platform_type();
 std::string eos_user_info_copy_best_display_name(std::string_view local_user_id, std::string_view target_user_id);
 gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_by_index(std::string_view local_user_id, std::string_view target_user_id, std::int64_t index);
 gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_by_account_type(std::string_view local_user_id, std::string_view target_user_id, gm_enums::EpicExternalAccountType account_type);
 gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_by_account_id(std::string_view local_user_id, std::string_view target_user_id, std::string_view account_id);
-void eos_stats_ingest_stat(std::string_view local_user_id, std::string_view target_user_id, std::string_view stat_name, std::int64_t ingest_amount, const gm::wire::GMFunction& callback);
-void eos_stats_query_stats(std::string_view local_user_id, std::string_view target_user_id, std::int64_t start_time, std::int64_t end_time, const gm::wire::GMFunction& callback);
+void eos_stats_ingest_stat(std::string_view local_user_id, std::string_view target_user_id, std::string_view stat_name, std::int64_t ingest_amount, const std::optional<gm::wire::GMFunction>& callback);
+void eos_stats_query_stats(std::string_view local_user_id, std::string_view target_user_id, std::int64_t start_time, std::int64_t end_time, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_stats_get_stats_count(std::string_view target_user_id);
 gm_structs::EpicStatsStat eos_stats_copy_stat_by_index(std::string_view target_user_id, std::int64_t index);
 gm_structs::EpicStatsStat eos_stats_copy_stat_by_name(std::string_view target_user_id, std::string_view name);
-void eos_ui_show_friends(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_ui_show_native_profile(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
+void eos_ui_show_friends(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ui_show_native_profile(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ui_acknowledge_event_id(std::uint64_t ui_event_id);
 void eos_ui_set_display_preference(gm_enums::EpicUINotificationLocation notification_location);
 void eos_ui_report_input_state(bool button_down, bool button_up, bool button_left, bool button_right, bool button_accept, bool button_cancel);
-std::uint64_t eos_ui_add_notify_display_settings_updated(const gm::wire::GMFunction& callback);
+std::uint64_t eos_ui_add_notify_display_settings_updated(const std::optional<gm::wire::GMFunction>& callback);
 void eos_ui_remove_notify_display_settings_updated(std::uint64_t notification_id);
-void eos_ui_hide_friends(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_ui_hide_friends(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 bool eos_ui_get_friends_visible(std::string_view local_user_id);
 bool eos_ui_get_friends_exclusive_input(std::string_view local_user_id);
 gm_enums::EpicResult eos_ui_pause_social_overlay(bool is_paused);
 bool eos_ui_is_social_overlay_paused();
 gm_enums::EpicUINotificationLocation eos_ui_get_notification_location_preference();
-void eos_ui_show_block_player(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
-void eos_ui_show_report_player(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
+void eos_ui_show_block_player(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ui_show_report_player(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 gm_enums::EpicResult eos_metrics_begin_player_session(std::string_view product_user_id, gm_enums::EpicMetricsAccountIdType account_id_type, gm_enums::EpicUserControllerType controller_type, std::string_view server_ip, std::string_view game_session_id);
 gm_enums::EpicResult eos_metrics_end_player_session(std::string_view product_user_id, gm_enums::EpicMetricsAccountIdType account_id_type, gm_enums::EpicUserControllerType controller_type, std::string_view server_ip, std::string_view game_session_id);
 std::int64_t eos_progression_snapshot_begin_snapshot(std::string_view local_user_id);
 gm_enums::EpicResult eos_progression_snapshot_add_progression(std::int64_t snapshot_id, std::string_view key, std::string_view value);
 gm_enums::EpicResult eos_progression_snapshot_end_snapshot(std::int64_t snapshot_id);
-void eos_progression_snapshot_submit_snapshot(std::int64_t snapshot_id, const gm::wire::GMFunction& callback);
-void eos_progression_snapshot_delete_snapshot(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_reports_send_player_behavior_report(std::string_view reporter_user_id, std::string_view reported_user_id, gm_enums::EpicPlayerReportsCategory category, std::string_view message, std::string_view context, const gm::wire::GMFunction& callback);
-void eos_sanctions_query_active_player_sanctions(std::string_view target_user_id, const gm::wire::GMFunction& callback);
+void eos_progression_snapshot_submit_snapshot(std::int64_t snapshot_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_progression_snapshot_delete_snapshot(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_reports_send_player_behavior_report(std::string_view reporter_user_id, std::string_view reported_user_id, gm_enums::EpicPlayerReportsCategory category, std::string_view message, std::string_view context, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sanctions_query_active_player_sanctions(std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_sanctions_get_player_sanction_count(std::string_view target_user_id);
 gm_structs::EpicSanctionsPlayerSanction eos_sanctions_copy_player_sanction_by_index(std::string_view target_user_id, std::int64_t index);
-void eos_sanctions_create_player_sanction_appeal(std::string_view local_user_id, std::string_view reference_id, gm_enums::EpicSanctionAppealReason reason, const gm::wire::GMFunction& callback);
-void eos_achievements_query_definitions(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_achievements_query_player_achievements(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
+void eos_sanctions_create_player_sanction_appeal(std::string_view local_user_id, std::string_view reference_id, gm_enums::EpicSanctionAppealReason reason, const std::optional<gm::wire::GMFunction>& callback);
+void eos_achievements_query_definitions(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_achievements_query_player_achievements(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_achievements_get_achievement_definition_count();
 std::int64_t eos_achievements_get_player_achievement_count(std::string_view local_user_id, std::string_view target_user_id);
 gm_structs::EpicAchievementsDefinition eos_achievements_copy_achievement_definition_by_index(std::int64_t index);
@@ -6904,12 +7288,12 @@ gm_structs::EpicAchievementsDefinitionV2 eos_achievements_copy_achievement_defin
 gm_structs::EpicAchievementsDefinition eos_achievements_copy_achievement_definition_by_id(std::string_view achievement_id);
 gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_index(std::string_view local_user_id, std::string_view target_user_id, std::int64_t index);
 gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_id(std::string_view local_user_id, std::string_view target_user_id, std::string_view achievement_id);
-void eos_achievements_unlock_achievements(std::string_view user_id, const std::vector<std::string_view>& achievement_ids, const gm::wire::GMFunction& callback);
-std::uint64_t eos_achievements_add_notify_achievements_unlocked_v2(const gm::wire::GMFunction& callback);
+void eos_achievements_unlock_achievements(std::string_view user_id, const std::vector<std::string_view>& achievement_ids, const std::optional<gm::wire::GMFunction>& callback);
+std::uint64_t eos_achievements_add_notify_achievements_unlocked_v2(const std::optional<gm::wire::GMFunction>& callback);
 void eos_achievements_remove_notify_achievements_unlocked(std::uint64_t notification_id);
-void eos_leaderboards_query_definitions(std::string_view local_user_id, std::int64_t start_time, std::int64_t end_time, const gm::wire::GMFunction& callback);
-void eos_leaderboards_query_ranks(std::string_view local_user_id, std::string_view leaderboard_id, const gm::wire::GMFunction& callback);
-void eos_leaderboards_query_user_scores(std::string_view local_user_id, std::string_view stat_name, const gm::wire::GMFunction& callback);
+void eos_leaderboards_query_definitions(std::string_view local_user_id, std::int64_t start_time, std::int64_t end_time, const std::optional<gm::wire::GMFunction>& callback);
+void eos_leaderboards_query_ranks(std::string_view local_user_id, std::string_view leaderboard_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_leaderboards_query_user_scores(std::string_view local_user_id, std::string_view stat_name, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_leaderboards_get_definition_count();
 std::int64_t eos_leaderboards_get_record_count();
 std::int64_t eos_leaderboards_get_user_score_count();
@@ -6918,7 +7302,7 @@ gm_structs::EpicLeaderboardDefinition eos_leaderboards_copy_definition_by_id(std
 gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_index(std::int64_t index);
 gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_user_id(std::string_view user_id);
 gm_structs::EpicLeaderboardUserScore eos_leaderboards_copy_user_score_by_index(std::int64_t index);
-void eos_presence_query_presence(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
+void eos_presence_query_presence(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 bool eos_presence_has_presence(std::string_view local_user_id, std::string_view target_user_id);
 gm_structs::EpicPresenceInfo eos_presence_copy_presence(std::string_view local_user_id, std::string_view target_user_id);
 std::uint64_t eos_presence_create_presence_modification(std::string_view local_user_id);
@@ -6927,25 +7311,25 @@ gm_enums::EpicResult eos_presence_modification_set_status(std::uint64_t modifica
 gm_enums::EpicResult eos_presence_modification_set_raw_rich_text(std::uint64_t modification_id, std::string_view rich_text);
 gm_enums::EpicResult eos_presence_modification_set_data(std::uint64_t modification_id, std::string_view key, std::string_view value);
 gm_enums::EpicResult eos_presence_modification_delete_data(std::uint64_t modification_id, std::string_view key);
-void eos_presence_set_presence(std::string_view local_user_id, std::uint64_t modification_id, const gm::wire::GMFunction& callback);
-std::uint64_t eos_presence_add_notify_on_presence_changed(const gm::wire::GMFunction& callback);
+void eos_presence_set_presence(std::string_view local_user_id, std::uint64_t modification_id, const std::optional<gm::wire::GMFunction>& callback);
+std::uint64_t eos_presence_add_notify_on_presence_changed(const std::optional<gm::wire::GMFunction>& callback);
 void eos_presence_remove_notify_on_presence_changed(std::uint64_t notification_id);
-std::uint64_t eos_presence_add_notify_join_game_accepted(const gm::wire::GMFunction& callback);
+std::uint64_t eos_presence_add_notify_join_game_accepted(const std::optional<gm::wire::GMFunction>& callback);
 void eos_presence_remove_notify_join_game_accepted(std::uint64_t notification_id);
 std::uint64_t eos_sessions_create_session_modification(std::string_view session_name, std::string_view session_id, std::string_view bucket_id, std::int64_t max_players, std::string_view local_user_id, bool presence_enabled, bool sanctions_enabled, const std::vector<std::uint32_t>& allowed_platform_ids);
 void eos_sessions_session_modification_release(std::uint64_t modification_id);
-void eos_sessions_update_session(std::uint64_t modification_id, const gm::wire::GMFunction& callback);
-void eos_sessions_destroy_session(std::string_view session_name, const gm::wire::GMFunction& callback);
-void eos_sessions_start_session(std::string_view session_name, const gm::wire::GMFunction& callback);
-void eos_sessions_end_session(std::string_view session_name, const gm::wire::GMFunction& callback);
-void eos_sessions_join_session(std::string_view session_name, std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_sessions_register_players(std::string_view session_name, const std::vector<std::string_view>& target_user_ids, const gm::wire::GMFunction& callback);
-void eos_sessions_unregister_players(std::string_view session_name, const std::vector<std::string_view>& target_user_ids, const gm::wire::GMFunction& callback);
+void eos_sessions_update_session(std::uint64_t modification_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_destroy_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_start_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_end_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_join_session(std::string_view session_name, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_register_players(std::string_view session_name, const std::vector<std::string_view>& target_user_ids, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_unregister_players(std::string_view session_name, const std::vector<std::string_view>& target_user_ids, const std::optional<gm::wire::GMFunction>& callback);
 std::uint64_t eos_sessions_create_session_search(std::int64_t max_search_results);
 void eos_sessions_session_search_release(std::uint64_t search_id);
 gm_enums::EpicResult eos_sessions_session_search_set_session_id(std::uint64_t search_id, std::string_view session_id);
 gm_enums::EpicResult eos_sessions_session_search_set_target_user_id(std::uint64_t search_id, std::string_view target_user_id);
-void eos_sessions_session_search_find(std::uint64_t search_id, std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_sessions_session_search_find(std::uint64_t search_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::uint64_t eos_sessions_session_search_copy_search_result_by_index(std::uint64_t search_id, std::int64_t index);
 void eos_sessions_session_details_release(std::uint64_t session_details_id);
 std::uint64_t eos_sessions_copy_active_session_handle(std::string_view session_name);
@@ -6954,11 +7338,11 @@ gm_structs::EpicActiveSessionInfo eos_sessions_active_session_copy_info(std::uin
 std::uint64_t eos_sessions_copy_session_handle_by_invite_id(std::string_view invite_id);
 std::uint64_t eos_sessions_copy_session_handle_by_ui_event_id(std::uint64_t ui_event_id);
 gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_copy_info(std::uint64_t session_details_id);
-std::uint64_t eos_sessions_add_notify_session_invite_received(const gm::wire::GMFunction& callback);
+std::uint64_t eos_sessions_add_notify_session_invite_received(const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_remove_notify_session_invite_received(std::uint64_t notification_id);
-std::uint64_t eos_sessions_add_notify_session_invite_accepted(const gm::wire::GMFunction& callback);
+std::uint64_t eos_sessions_add_notify_session_invite_accepted(const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_remove_notify_session_invite_accepted(std::uint64_t notification_id);
-std::uint64_t eos_sessions_add_notify_join_session_accepted(const gm::wire::GMFunction& callback);
+std::uint64_t eos_sessions_add_notify_join_session_accepted(const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_remove_notify_join_session_accepted(std::uint64_t notification_id);
 gm_enums::EpicResult eos_sessions_session_modification_set_bucket_id(std::uint64_t modification_id, std::string_view bucket_id);
 gm_enums::EpicResult eos_sessions_session_modification_set_host_address(std::uint64_t modification_id, std::string_view host_address);
@@ -6973,45 +7357,45 @@ gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_sessio
 gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_key(std::uint64_t session_details_id, std::string_view key);
 std::int64_t eos_sessions_active_session_get_registered_player_count(std::uint64_t active_session_id);
 std::string eos_sessions_active_session_get_registered_player_by_index(std::uint64_t active_session_id, std::int64_t index);
-void eos_sessions_send_invite(std::string_view session_name, std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
-void eos_sessions_reject_invite(std::string_view local_user_id, std::string_view invite_id, const gm::wire::GMFunction& callback);
-void eos_sessions_query_invites(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_sessions_send_invite(std::string_view session_name, std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_reject_invite(std::string_view local_user_id, std::string_view invite_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_query_invites(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_sessions_get_invite_count(std::string_view local_user_id);
 std::string eos_sessions_get_invite_id_by_index(std::string_view local_user_id, std::int64_t index);
 gm_enums::EpicResult eos_sessions_session_search_set_parameter(std::uint64_t search_id, std::string_view key, std::string_view value, gm_enums::EpicComparisonOp comparison_op);
 gm_enums::EpicResult eos_sessions_session_search_remove_parameter(std::uint64_t search_id, std::string_view key, gm_enums::EpicComparisonOp comparison_op);
 std::int64_t eos_sessions_session_search_get_search_result_count(std::uint64_t search_id);
-std::uint64_t eos_sessions_add_notify_session_invite_rejected(const gm::wire::GMFunction& callback);
+std::uint64_t eos_sessions_add_notify_session_invite_rejected(const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_remove_notify_session_invite_rejected(std::uint64_t notification_id);
-std::uint64_t eos_sessions_add_notify_leave_session_requested(const gm::wire::GMFunction& callback);
+std::uint64_t eos_sessions_add_notify_leave_session_requested(const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_remove_notify_leave_session_requested(std::uint64_t notification_id);
-std::uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const gm::wire::GMFunction& callback);
+std::uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_remove_notify_send_session_native_invite_requested(std::uint64_t notification_id);
-void eos_lobby_create_lobby(std::string_view local_user_id, std::int64_t max_lobby_members, gm_enums::EpicLobbyPermissionLevel permission_level, bool presence_enabled, bool allow_invites, std::string_view bucket_id, const gm::wire::GMFunction& callback);
-void eos_lobby_destroy_lobby(std::string_view lobby_id, std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_lobby_join_lobby(std::string_view lobby_id, std::string_view local_user_id, bool presence_enabled, const gm::wire::GMFunction& callback);
-void eos_lobby_leave_lobby(std::string_view lobby_id, std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_lobby_create_lobby(const gm_structs::EpicLobbyCreateLobbyOptions& options, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_destroy_lobby(std::string_view lobby_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_join_lobby(const gm_structs::EpicLobbyJoinLobbyOptions& options, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_leave_lobby(std::string_view lobby_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::uint64_t eos_lobby_update_lobby_modification(std::string_view lobby_id, std::string_view local_user_id);
 void eos_lobby_lobby_modification_release(std::uint64_t modification_id);
-void eos_lobby_update_lobby(std::string_view lobby_id, std::uint64_t modification_id, const gm::wire::GMFunction& callback);
+void eos_lobby_update_lobby(std::string_view lobby_id, std::uint64_t modification_id, const std::optional<gm::wire::GMFunction>& callback);
 gm_enums::EpicResult eos_lobby_lobby_modification_set_permission_level(std::uint64_t modification_id, gm_enums::EpicLobbyPermissionLevel permission_level);
 gm_enums::EpicResult eos_lobby_lobby_modification_set_max_members(std::uint64_t modification_id, std::int64_t max_members);
 gm_enums::EpicResult eos_lobby_lobby_modification_set_bucket_id(std::uint64_t modification_id, std::string_view bucket_id);
 gm_enums::EpicResult eos_lobby_lobby_modification_set_invites_allowed(std::uint64_t modification_id, bool invites_allowed);
-gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(std::uint64_t modification_id, std::string_view key, std::string_view value, gm_enums::EpicLobbyAttributeVisibility visibility);
+gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(std::uint64_t modification_id, const gm_structs::EpicLobbyModificationAddAttributeOptions& options);
 gm_enums::EpicResult eos_lobby_lobby_modification_remove_attribute(std::uint64_t modification_id, std::string_view key);
-gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(std::uint64_t modification_id, std::string_view key, std::string_view value, gm_enums::EpicLobbyAttributeVisibility visibility);
+gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(std::uint64_t modification_id, const gm_structs::EpicLobbyModificationAddMemberAttributeOptions& options);
 gm_enums::EpicResult eos_lobby_lobby_modification_remove_member_attribute(std::uint64_t modification_id, std::string_view key);
-void eos_lobby_promote_member(std::string_view lobby_id, std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
-void eos_lobby_kick_member(std::string_view lobby_id, std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
+void eos_lobby_promote_member(const gm_structs::EpicLobbyPromoteMemberOptions& options, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_kick_member(const gm_structs::EpicLobbyKickMemberOptions& options, const std::optional<gm::wire::GMFunction>& callback);
 std::uint64_t eos_lobby_create_lobby_search(std::int64_t max_results);
 void eos_lobby_lobby_search_release(std::uint64_t search_id);
 gm_enums::EpicResult eos_lobby_lobby_search_set_lobby_id(std::uint64_t search_id, std::string_view lobby_id);
 gm_enums::EpicResult eos_lobby_lobby_search_set_target_user_id(std::uint64_t search_id, std::string_view target_user_id);
-gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(std::uint64_t search_id, std::string_view key, std::string_view value, gm_enums::EpicComparisonOp comparison_op);
-gm_enums::EpicResult eos_lobby_lobby_search_remove_parameter(std::uint64_t search_id, std::string_view key, gm_enums::EpicComparisonOp comparison_op);
+gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(std::uint64_t search_id, const gm_structs::EpicLobbySearchSetParameterOptions& options);
+gm_enums::EpicResult eos_lobby_lobby_search_remove_parameter(std::uint64_t search_id, const gm_structs::EpicLobbySearchRemoveParameterOptions& options);
 gm_enums::EpicResult eos_lobby_lobby_search_set_max_results(std::uint64_t search_id, std::int64_t max_results);
-void eos_lobby_lobby_search_find(std::uint64_t search_id, std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_lobby_lobby_search_find(std::uint64_t search_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_lobby_lobby_search_get_search_result_count(std::uint64_t search_id);
 std::uint64_t eos_lobby_lobby_search_copy_search_result_by_index(std::uint64_t search_id, std::int64_t index);
 void eos_lobby_details_release(std::uint64_t lobby_details_id);
@@ -7020,17 +7404,17 @@ gm_structs::EpicLobbyDetailsInfo eos_lobby_details_copy_info(std::uint64_t lobby
 std::int64_t eos_lobby_details_get_member_count(std::uint64_t lobby_details_id);
 std::string eos_lobby_details_get_member_by_index(std::uint64_t lobby_details_id, std::int64_t index);
 std::string eos_lobby_details_get_lobby_owner(std::uint64_t lobby_details_id);
-std::uint64_t eos_lobby_add_notify_lobby_update_received(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_lobby_update_received(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_lobby_update_received(std::uint64_t notification_id);
-std::uint64_t eos_lobby_add_notify_lobby_member_update_received(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_lobby_member_update_received(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_lobby_member_update_received(std::uint64_t notification_id);
-std::uint64_t eos_lobby_add_notify_lobby_member_status_received(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_lobby_member_status_received(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_lobby_member_status_received(std::uint64_t notification_id);
-std::uint64_t eos_lobby_add_notify_join_lobby_accepted(const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_join_lobby_accepted(const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_join_lobby_accepted(std::uint64_t notification_id);
-std::uint64_t eos_lobby_add_notify_leave_lobby_requested(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_leave_lobby_requested(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_leave_lobby_requested(std::uint64_t notification_id);
-std::uint64_t eos_lobby_add_notify_send_lobby_native_invite_requested(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_send_lobby_native_invite_requested(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_send_lobby_native_invite_requested(std::uint64_t notification_id);
 std::int64_t eos_lobby_details_get_attribute_count(std::uint64_t lobby_details_id);
 gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_attribute_by_index(std::uint64_t lobby_details_id, std::int64_t index);
@@ -7039,18 +7423,18 @@ std::int64_t eos_lobby_details_get_member_attribute_count(std::uint64_t lobby_de
 gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by_index(std::uint64_t lobby_details_id, std::string_view target_user_id, std::int64_t index);
 gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by_key(std::uint64_t lobby_details_id, std::string_view target_user_id, std::string_view key);
 gm_structs::EpicLobbyDetailsMemberInfo eos_lobby_details_copy_member_info(std::uint64_t lobby_details_id, std::string_view target_user_id);
-void eos_lobby_join_lobby_by_id(std::string_view lobby_id, std::string_view local_user_id, bool presence_enabled, const gm::wire::GMFunction& callback);
-void eos_lobby_hard_mute_member(std::string_view lobby_id, std::string_view local_user_id, std::string_view target_user_id, bool hard_mute, const gm::wire::GMFunction& callback);
-void eos_lobby_send_invite(std::string_view lobby_id, std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
-void eos_lobby_reject_invite(std::string_view invite_id, std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_lobby_query_invites(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_lobby_join_lobby_by_id(const gm_structs::EpicLobbyJoinLobbyByIdOptions& options, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_hard_mute_member(const gm_structs::EpicLobbyHardMuteMemberOptions& options, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_send_invite(const gm_structs::EpicLobbySendInviteOptions& options, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_reject_invite(std::string_view invite_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_lobby_query_invites(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_lobby_get_invite_count(std::string_view local_user_id);
 std::string eos_lobby_get_invite_id_by_index(std::string_view local_user_id, std::int64_t index);
-std::uint64_t eos_lobby_add_notify_lobby_invite_received(const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_lobby_invite_received(const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_lobby_invite_received(std::uint64_t notification_id);
-std::uint64_t eos_lobby_add_notify_lobby_invite_accepted(const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_lobby_invite_accepted(const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_lobby_invite_accepted(std::uint64_t notification_id);
-std::uint64_t eos_lobby_add_notify_lobby_invite_rejected(const gm::wire::GMFunction& callback);
+std::uint64_t eos_lobby_add_notify_lobby_invite_rejected(const std::optional<gm::wire::GMFunction>& callback);
 void eos_lobby_remove_notify_lobby_invite_rejected(std::uint64_t notification_id);
 gm_enums::EpicResult eos_p2p_send_packet(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name, std::int64_t channel, gm::wire::GMBuffer data, std::uint32_t bytes, bool allow_delayed_delivery, gm_enums::EpicPacketReliability reliability, bool disable_auto_accept_connection);
 std::int64_t eos_p2p_get_next_received_packet_size(std::string_view local_user_id, std::int64_t channel);
@@ -7058,7 +7442,7 @@ gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(std::string_view local_
 gm_enums::EpicResult eos_p2p_accept_connection(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name);
 gm_enums::EpicResult eos_p2p_close_connection(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name);
 gm_enums::EpicResult eos_p2p_close_connections(std::string_view local_user_id, std::string_view socket_name);
-void eos_p2p_query_nat_type(const gm::wire::GMFunction& callback);
+void eos_p2p_query_nat_type(const std::optional<gm::wire::GMFunction>& callback);
 gm_enums::EpicNATType eos_p2p_get_nat_type();
 gm_enums::EpicResult eos_p2p_set_relay_control(gm_enums::EpicRelayControl relay_control);
 gm_enums::EpicRelayControl eos_p2p_get_relay_control();
@@ -7067,41 +7451,41 @@ gm_structs::EpicP2PPortRange eos_p2p_get_port_range();
 gm_enums::EpicResult eos_p2p_set_packet_queue_size(std::int64_t incoming_max_bytes, std::int64_t outgoing_max_bytes);
 gm_structs::EpicP2PPacketQueueInfo eos_p2p_get_packet_queue_info();
 gm_enums::EpicResult eos_p2p_clear_packet_queue(std::string_view local_user_id, std::string_view remote_user_id, std::string_view socket_name);
-std::uint64_t eos_p2p_add_notify_peer_connection_request(std::string_view local_user_id, std::string_view socket_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_p2p_add_notify_peer_connection_request(std::string_view local_user_id, std::string_view socket_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_p2p_remove_notify_peer_connection_request(std::uint64_t notification_id);
-std::uint64_t eos_p2p_add_notify_peer_connection_established(std::string_view local_user_id, std::string_view socket_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_p2p_add_notify_peer_connection_established(std::string_view local_user_id, std::string_view socket_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_p2p_remove_notify_peer_connection_established(std::uint64_t notification_id);
-std::uint64_t eos_p2p_add_notify_peer_connection_interrupted(std::string_view local_user_id, std::string_view socket_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_p2p_add_notify_peer_connection_interrupted(std::string_view local_user_id, std::string_view socket_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_p2p_remove_notify_peer_connection_interrupted(std::uint64_t notification_id);
-std::uint64_t eos_p2p_add_notify_peer_connection_closed(std::string_view local_user_id, std::string_view socket_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_p2p_add_notify_peer_connection_closed(std::string_view local_user_id, std::string_view socket_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_p2p_remove_notify_peer_connection_closed(std::uint64_t notification_id);
-std::uint64_t eos_p2p_add_notify_incoming_packet_queue_full(const gm::wire::GMFunction& callback);
+std::uint64_t eos_p2p_add_notify_incoming_packet_queue_full(const std::optional<gm::wire::GMFunction>& callback);
 void eos_p2p_remove_notify_incoming_packet_queue_full(std::uint64_t notification_id);
-void eos_playerdatastorage_query_file(std::string_view local_user_id, std::string_view filename, const gm::wire::GMFunction& callback);
-void eos_playerdatastorage_query_file_list(std::string_view local_user_id, const gm::wire::GMFunction& callback);
+void eos_playerdatastorage_query_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
+void eos_playerdatastorage_query_file_list(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_playerdatastorage_get_file_metadata_count(std::string_view local_user_id);
 gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_metadata_at_index(std::string_view local_user_id, std::int64_t index);
 gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_metadata_by_filename(std::string_view local_user_id, std::string_view filename);
-void eos_playerdatastorage_duplicate_file(std::string_view local_user_id, std::string_view source_filename, std::string_view destination_filename, const gm::wire::GMFunction& callback);
-void eos_playerdatastorage_delete_file(std::string_view local_user_id, std::string_view filename, const gm::wire::GMFunction& callback);
-void eos_playerdatastorage_read_file(std::string_view local_user_id, std::string_view filename, const gm::wire::GMFunction& callback);
-void eos_playerdatastorage_write_file(std::string_view local_user_id, std::string_view filename, std::string_view data_base64, const gm::wire::GMFunction& callback);
-void eos_playerdatastorage_delete_cache(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_titlestorage_query_file(std::string_view local_user_id, std::string_view filename, const gm::wire::GMFunction& callback);
-void eos_titlestorage_query_file_list(std::string_view local_user_id, const std::vector<std::string_view>& tags, const gm::wire::GMFunction& callback);
+void eos_playerdatastorage_duplicate_file(std::string_view local_user_id, std::string_view source_filename, std::string_view destination_filename, const std::optional<gm::wire::GMFunction>& callback);
+void eos_playerdatastorage_delete_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
+void eos_playerdatastorage_read_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
+void eos_playerdatastorage_write_file(std::string_view local_user_id, std::string_view filename, std::string_view data_base64, const std::optional<gm::wire::GMFunction>& callback);
+void eos_playerdatastorage_delete_cache(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_titlestorage_query_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
+void eos_titlestorage_query_file_list(std::string_view local_user_id, const std::vector<std::string_view>& tags, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_titlestorage_get_file_metadata_count(std::string_view local_user_id);
 gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_at_index(std::string_view local_user_id, std::int64_t index);
 gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_by_filename(std::string_view local_user_id, std::string_view filename);
-void eos_titlestorage_read_file(std::string_view local_user_id, std::string_view filename, const gm::wire::GMFunction& callback);
-void eos_titlestorage_delete_cache(std::string_view local_user_id, const gm::wire::GMFunction& callback);
-void eos_ecom_query_ownership(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const gm::wire::GMFunction& callback);
-void eos_ecom_query_ownership_by_sandbox_ids(std::string_view local_user_id, const std::vector<std::string_view>& sandbox_ids, const gm::wire::GMFunction& callback);
-void eos_ecom_query_ownership_token(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const gm::wire::GMFunction& callback);
-void eos_ecom_query_entitlements(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_names, std::int64_t include_redeemed, std::string_view catalog_namespace, const gm::wire::GMFunction& callback);
-void eos_ecom_query_entitlement_token(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_names, const gm::wire::GMFunction& callback);
-void eos_ecom_query_offers(std::string_view local_user_id, std::string_view catalog_namespace, const gm::wire::GMFunction& callback);
-void eos_ecom_checkout(std::string_view local_user_id, const std::vector<std::string_view>& offer_ids, std::string_view catalog_namespace, const gm::wire::GMFunction& callback);
-void eos_ecom_redeem_entitlements(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_ids, const gm::wire::GMFunction& callback);
+void eos_titlestorage_read_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
+void eos_titlestorage_delete_cache(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_query_ownership(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_query_ownership_by_sandbox_ids(std::string_view local_user_id, const std::vector<std::string_view>& sandbox_ids, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_query_ownership_token(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_query_entitlements(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_names, std::int64_t include_redeemed, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_query_entitlement_token(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_names, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_query_offers(std::string_view local_user_id, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_checkout(std::string_view local_user_id, const std::vector<std::string_view>& offer_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_redeem_entitlements(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_ids, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_ecom_get_item_ownership_count(std::string_view local_user_id);
 gm_structs::EpicEcomItemOwnership eos_ecom_copy_item_ownership_at_index(std::string_view local_user_id, std::int64_t index);
 std::int64_t eos_ecom_get_sandbox_ownership_count(std::string_view local_user_id);
@@ -7133,56 +7517,56 @@ std::int64_t eos_ecom_transaction_get_entitlements_count(std::uint64_t tx_handle
 gm_structs::EpicEcomEntitlement eos_ecom_transaction_copy_entitlement_by_index(std::uint64_t tx_handle_id, std::int64_t index);
 void eos_ecom_transaction_release(std::uint64_t tx_handle_id);
 bool eos_custominvites_set_custom_invite(std::string_view local_user_id, std::string_view payload);
-void eos_custominvites_send_custom_invite(std::string_view local_user_id, const std::vector<std::string_view>& target_user_ids, const gm::wire::GMFunction& callback);
+void eos_custominvites_send_custom_invite(std::string_view local_user_id, const std::vector<std::string_view>& target_user_ids, const std::optional<gm::wire::GMFunction>& callback);
 bool eos_custominvites_finalize_invite(std::string_view target_user_id, std::string_view local_user_id, std::string_view custom_invite_id, gm_enums::EpicResult processing_result);
-void eos_custominvites_send_request_to_join(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
-void eos_custominvites_accept_request_to_join(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
-void eos_custominvites_reject_request_to_join(std::string_view local_user_id, std::string_view target_user_id, const gm::wire::GMFunction& callback);
-std::uint64_t eos_custominvites_add_notify_custom_invite_received(const gm::wire::GMFunction& callback);
+void eos_custominvites_send_request_to_join(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_custominvites_accept_request_to_join(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_custominvites_reject_request_to_join(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
+std::uint64_t eos_custominvites_add_notify_custom_invite_received(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_custom_invite_received(std::uint64_t notification_id);
-std::uint64_t eos_custominvites_add_notify_custom_invite_accepted(const gm::wire::GMFunction& callback);
+std::uint64_t eos_custominvites_add_notify_custom_invite_accepted(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_custom_invite_accepted(std::uint64_t notification_id);
-std::uint64_t eos_custominvites_add_notify_custom_invite_rejected(const gm::wire::GMFunction& callback);
+std::uint64_t eos_custominvites_add_notify_custom_invite_rejected(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_custom_invite_rejected(std::uint64_t notification_id);
-std::uint64_t eos_custominvites_add_notify_request_to_join_response_received(const gm::wire::GMFunction& callback);
+std::uint64_t eos_custominvites_add_notify_request_to_join_response_received(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_request_to_join_response_received(std::uint64_t notification_id);
-std::uint64_t eos_custominvites_add_notify_request_to_join_received(const gm::wire::GMFunction& callback);
+std::uint64_t eos_custominvites_add_notify_request_to_join_received(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_request_to_join_received(std::uint64_t notification_id);
-std::uint64_t eos_custominvites_add_notify_send_custom_native_invite_requested(const gm::wire::GMFunction& callback);
+std::uint64_t eos_custominvites_add_notify_send_custom_native_invite_requested(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_send_custom_native_invite_requested(std::uint64_t notification_id);
-std::uint64_t eos_custominvites_add_notify_request_to_join_accepted(const gm::wire::GMFunction& callback);
+std::uint64_t eos_custominvites_add_notify_request_to_join_accepted(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_request_to_join_accepted(std::uint64_t notification_id);
-std::uint64_t eos_custominvites_add_notify_request_to_join_rejected(const gm::wire::GMFunction& callback);
+std::uint64_t eos_custominvites_add_notify_request_to_join_rejected(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_request_to_join_rejected(std::uint64_t notification_id);
-void eos_rtc_join_room(std::string_view local_user_id, std::string_view room_name, std::string_view client_base_url, std::string_view participant_token, const gm::wire::GMFunction& callback);
-void eos_rtc_leave_room(std::string_view local_user_id, std::string_view room_name, const gm::wire::GMFunction& callback);
-void eos_rtc_block_participant(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, bool blocked, const gm::wire::GMFunction& callback);
+void eos_rtc_join_room(std::string_view local_user_id, std::string_view room_name, std::string_view client_base_url, std::string_view participant_token, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_leave_room(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_block_participant(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, bool blocked, const std::optional<gm::wire::GMFunction>& callback);
 bool eos_rtc_set_setting(std::string_view setting_name, std::string_view setting_value);
 bool eos_rtc_set_room_setting(std::string_view local_user_id, std::string_view room_name, std::string_view setting_name, std::string_view setting_value);
-std::uint64_t eos_rtc_add_notify_disconnected(std::string_view local_user_id, std::string_view room_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_rtc_add_notify_disconnected(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_remove_notify_disconnected(std::uint64_t notification_id);
-std::uint64_t eos_rtc_add_notify_participant_status_changed(std::string_view local_user_id, std::string_view room_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_rtc_add_notify_participant_status_changed(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_remove_notify_participant_status_changed(std::uint64_t notification_id);
-std::uint64_t eos_rtc_add_notify_room_statistics_updated(std::string_view local_user_id, std::string_view room_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_rtc_add_notify_room_statistics_updated(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_remove_notify_room_statistics_updated(std::uint64_t notification_id);
-void eos_rtc_audio_update_sending(std::string_view local_user_id, std::string_view room_name, gm_enums::EpicRTCAudioStatus audio_status, const gm::wire::GMFunction& callback);
-void eos_rtc_audio_update_receiving(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, bool audio_enabled, const gm::wire::GMFunction& callback);
-void eos_rtc_audio_update_sending_volume(std::string_view local_user_id, std::string_view room_name, double volume, const gm::wire::GMFunction& callback);
-void eos_rtc_audio_update_receiving_volume(std::string_view local_user_id, std::string_view room_name, double volume, const gm::wire::GMFunction& callback);
-void eos_rtc_audio_update_participant_volume(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, double volume, const gm::wire::GMFunction& callback);
+void eos_rtc_audio_update_sending(std::string_view local_user_id, std::string_view room_name, gm_enums::EpicRTCAudioStatus audio_status, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_update_receiving(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, bool audio_enabled, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_update_sending_volume(std::string_view local_user_id, std::string_view room_name, double volume, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_update_receiving_volume(std::string_view local_user_id, std::string_view room_name, double volume, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_update_participant_volume(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, double volume, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_rtc_audio_get_input_devices_count();
 gm_structs::EpicRTCAudioInputDeviceInfo eos_rtc_audio_copy_input_device_info_by_index(std::int64_t index);
 std::int64_t eos_rtc_audio_get_output_devices_count();
 gm_structs::EpicRTCAudioOutputDeviceInfo eos_rtc_audio_copy_output_device_info_by_index(std::int64_t index);
-void eos_rtc_audio_query_input_devices(const gm::wire::GMFunction& callback);
-void eos_rtc_audio_query_output_devices(const gm::wire::GMFunction& callback);
-void eos_rtc_audio_set_input_device_settings(std::string_view local_user_id, std::string_view real_device_id, bool platform_aec, const gm::wire::GMFunction& callback);
-void eos_rtc_audio_set_output_device_settings(std::string_view local_user_id, std::string_view real_device_id, const gm::wire::GMFunction& callback);
-std::uint64_t eos_rtc_audio_add_notify_participant_updated(std::string_view local_user_id, std::string_view room_name, const gm::wire::GMFunction& callback);
+void eos_rtc_audio_query_input_devices(const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_query_output_devices(const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_set_input_device_settings(std::string_view local_user_id, std::string_view real_device_id, bool platform_aec, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_set_output_device_settings(std::string_view local_user_id, std::string_view real_device_id, const std::optional<gm::wire::GMFunction>& callback);
+std::uint64_t eos_rtc_audio_add_notify_participant_updated(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_remove_notify_participant_updated(std::uint64_t notification_id);
-std::uint64_t eos_rtc_audio_add_notify_audio_devices_changed(const gm::wire::GMFunction& callback);
+std::uint64_t eos_rtc_audio_add_notify_audio_devices_changed(const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_remove_notify_audio_devices_changed(std::uint64_t notification_id);
-std::uint64_t eos_rtc_audio_add_notify_audio_input_state(std::string_view local_user_id, std::string_view room_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_rtc_audio_add_notify_audio_input_state(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_remove_notify_audio_input_state(std::uint64_t notification_id);
-std::uint64_t eos_rtc_audio_add_notify_audio_output_state(std::string_view local_user_id, std::string_view room_name, const gm::wire::GMFunction& callback);
+std::uint64_t eos_rtc_audio_add_notify_audio_output_state(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_remove_notify_audio_output_state(std::uint64_t notification_id);

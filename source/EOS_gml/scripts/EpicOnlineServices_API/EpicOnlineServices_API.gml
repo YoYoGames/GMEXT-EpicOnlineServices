@@ -2304,6 +2304,47 @@ function EpicLobbyLeaveLobbyCallbackInfo() constructor
 }
 
 /**
+ * @returns {Struct.EpicLobbyCreateLobbyOptions} 
+ */
+function EpicLobbyCreateLobbyOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 3546679194;
+
+    self.local_user_id = undefined;
+    self.max_lobby_members = undefined;
+    self.permission_level = undefined;
+    self.presence_enabled = undefined;
+    self.allow_invites = undefined;
+    self.bucket_id = undefined;
+    self.disable_host_migration = undefined;
+    self.enable_rtc_room = undefined;
+    self.enable_join_by_id = undefined;
+    self.rejoin_after_kick_requires_invite = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbyJoinLobbyOptions} 
+ */
+function EpicLobbyJoinLobbyOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 1559969366;
+
+    self.lobby_id = undefined;
+    self.local_user_id = undefined;
+    self.presence_enabled = undefined;
+
+}
+
+/**
  * @returns {Struct.EpicLobbyUpdateLobbyCallbackInfo} 
  */
 function EpicLobbyUpdateLobbyCallbackInfo() constructor
@@ -2352,6 +2393,74 @@ function EpicLobbyKickMemberCallbackInfo() constructor
 }
 
 /**
+ * @returns {Struct.EpicLobbyModificationAddAttributeOptions} 
+ */
+function EpicLobbyModificationAddAttributeOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 3316783229;
+
+    self.key = undefined;
+    self.value = undefined;
+    self.visibility = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbyModificationAddMemberAttributeOptions} 
+ */
+function EpicLobbyModificationAddMemberAttributeOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 1688137915;
+
+    self.key = undefined;
+    self.value = undefined;
+    self.visibility = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbyPromoteMemberOptions} 
+ */
+function EpicLobbyPromoteMemberOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 1038519352;
+
+    self.lobby_id = undefined;
+    self.local_user_id = undefined;
+    self.target_user_id = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbyKickMemberOptions} 
+ */
+function EpicLobbyKickMemberOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 2995558950;
+
+    self.lobby_id = undefined;
+    self.local_user_id = undefined;
+    self.target_user_id = undefined;
+
+}
+
+/**
  * @returns {Struct.EpicLobbySearchFindCallbackInfo} 
  */
 function EpicLobbySearchFindCallbackInfo() constructor
@@ -2363,6 +2472,39 @@ function EpicLobbySearchFindCallbackInfo() constructor
     static __uid = 1995381572;
 
     self.result_code = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbySearchSetParameterOptions} 
+ */
+function EpicLobbySearchSetParameterOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 2399959679;
+
+    self.key = undefined;
+    self.value = undefined;
+    self.comparison_op = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbySearchRemoveParameterOptions} 
+ */
+function EpicLobbySearchRemoveParameterOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 24089831;
+
+    self.key = undefined;
+    self.comparison_op = undefined;
 
 }
 
@@ -2654,6 +2796,58 @@ function EpicLobbyLobbyInviteRejectedCallbackInfo() constructor
     self.local_user_id = undefined;
     self.target_user_id = undefined;
     self.lobby_id = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbyJoinLobbyByIdOptions} 
+ */
+function EpicLobbyJoinLobbyByIdOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 694724702;
+
+    self.lobby_id = undefined;
+    self.local_user_id = undefined;
+    self.presence_enabled = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbyHardMuteMemberOptions} 
+ */
+function EpicLobbyHardMuteMemberOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 1348463136;
+
+    self.lobby_id = undefined;
+    self.local_user_id = undefined;
+    self.target_user_id = undefined;
+    self.hard_mute = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicLobbySendInviteOptions} 
+ */
+function EpicLobbySendInviteOptions() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 3755492107;
+
+    self.lobby_id = undefined;
+    self.local_user_id = undefined;
+    self.target_user_id = undefined;
 
 }
 
@@ -9078,6 +9272,176 @@ function __EpicLobbyLeaveLobbyCallbackInfo_decode(_buffer, _offset)
 }
 
 /**
+ * @func __EpicLobbyCreateLobbyOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyCreateLobbyOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyCreateLobbyOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: max_lobby_members, type: Int64
+        if (!is_numeric(self.max_lobby_members)) show_error($"{_where} :: self.max_lobby_members expected number", true);
+        buffer_write(_buffer, buffer_u64, self.max_lobby_members);
+
+        // field: permission_level, type: enum EpicLobbyPermissionLevel
+
+        if (!is_numeric(self.permission_level)) show_error($"{_where} :: self.permission_level expected number", true);
+        buffer_write(_buffer, buffer_u64, self.permission_level);
+
+        // field: presence_enabled, type: Bool
+        if (!is_bool(self.presence_enabled)) show_error($"{_where} :: self.presence_enabled expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.presence_enabled);
+
+        // field: allow_invites, type: Bool
+        if (!is_bool(self.allow_invites)) show_error($"{_where} :: self.allow_invites expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.allow_invites);
+
+        // field: bucket_id, type: String
+        if (!is_string(self.bucket_id)) show_error($"{_where} :: self.bucket_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.bucket_id));
+        buffer_write(_buffer, buffer_string, self.bucket_id);
+
+        // field: disable_host_migration, type: Bool
+        if (!is_bool(self.disable_host_migration)) show_error($"{_where} :: self.disable_host_migration expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.disable_host_migration);
+
+        // field: enable_rtc_room, type: Bool
+        if (!is_bool(self.enable_rtc_room)) show_error($"{_where} :: self.enable_rtc_room expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.enable_rtc_room);
+
+        // field: enable_join_by_id, type: Bool
+        if (!is_bool(self.enable_join_by_id)) show_error($"{_where} :: self.enable_join_by_id expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.enable_join_by_id);
+
+        // field: rejoin_after_kick_requires_invite, type: Bool
+        if (!is_bool(self.rejoin_after_kick_requires_invite)) show_error($"{_where} :: self.rejoin_after_kick_requires_invite expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.rejoin_after_kick_requires_invite);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyCreateLobbyOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyCreateLobbyOptions} 
+ * @ignore 
+ */
+function __EpicLobbyCreateLobbyOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyCreateLobbyOptions();
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: max_lobby_members, type: Int64
+        self.max_lobby_members = buffer_read(_buffer, buffer_u64);
+
+        // field: permission_level, type: enum EpicLobbyPermissionLevel
+        self.permission_level = buffer_read(_buffer, buffer_u64);
+
+        // field: presence_enabled, type: Bool
+        self.presence_enabled = buffer_read(_buffer, buffer_bool);
+
+        // field: allow_invites, type: Bool
+        self.allow_invites = buffer_read(_buffer, buffer_bool);
+
+        // field: bucket_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.bucket_id = buffer_read(_buffer, buffer_string);
+
+        // field: disable_host_migration, type: Bool
+        self.disable_host_migration = buffer_read(_buffer, buffer_bool);
+
+        // field: enable_rtc_room, type: Bool
+        self.enable_rtc_room = buffer_read(_buffer, buffer_bool);
+
+        // field: enable_join_by_id, type: Bool
+        self.enable_join_by_id = buffer_read(_buffer, buffer_bool);
+
+        // field: rejoin_after_kick_requires_invite, type: Bool
+        self.rejoin_after_kick_requires_invite = buffer_read(_buffer, buffer_bool);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbyJoinLobbyOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyJoinLobbyOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyJoinLobbyOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
+        buffer_write(_buffer, buffer_string, self.lobby_id);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: presence_enabled, type: Bool
+        if (!is_bool(self.presence_enabled)) show_error($"{_where} :: self.presence_enabled expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.presence_enabled);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyJoinLobbyOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyJoinLobbyOptions} 
+ * @ignore 
+ */
+function __EpicLobbyJoinLobbyOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyJoinLobbyOptions();
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.lobby_id = buffer_read(_buffer, buffer_string);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: presence_enabled, type: Bool
+        self.presence_enabled = buffer_read(_buffer, buffer_bool);
+
+    }
+
+    return _inst;
+}
+
+/**
  * @func __EpicLobbyUpdateLobbyCallbackInfo_encode(_inst, _buffer, _offset, _where)
  * @param {Struct.EpicLobbyUpdateLobbyCallbackInfo} _inst
  * @param {Id.Buffer} _buffer
@@ -9234,6 +9598,252 @@ function __EpicLobbyKickMemberCallbackInfo_decode(_buffer, _offset)
 }
 
 /**
+ * @func __EpicLobbyModificationAddAttributeOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyModificationAddAttributeOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyModificationAddAttributeOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: key, type: String
+        if (!is_string(self.key)) show_error($"{_where} :: self.key expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.key));
+        buffer_write(_buffer, buffer_string, self.key);
+
+        // field: value, type: String
+        if (!is_string(self.value)) show_error($"{_where} :: self.value expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.value));
+        buffer_write(_buffer, buffer_string, self.value);
+
+        // field: visibility, type: enum EpicLobbyAttributeVisibility
+
+        if (!is_numeric(self.visibility)) show_error($"{_where} :: self.visibility expected number", true);
+        buffer_write(_buffer, buffer_u64, self.visibility);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyModificationAddAttributeOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyModificationAddAttributeOptions} 
+ * @ignore 
+ */
+function __EpicLobbyModificationAddAttributeOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyModificationAddAttributeOptions();
+    with (_inst)
+    {
+        // field: key, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.key = buffer_read(_buffer, buffer_string);
+
+        // field: value, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.value = buffer_read(_buffer, buffer_string);
+
+        // field: visibility, type: enum EpicLobbyAttributeVisibility
+        self.visibility = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbyModificationAddMemberAttributeOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyModificationAddMemberAttributeOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyModificationAddMemberAttributeOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: key, type: String
+        if (!is_string(self.key)) show_error($"{_where} :: self.key expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.key));
+        buffer_write(_buffer, buffer_string, self.key);
+
+        // field: value, type: String
+        if (!is_string(self.value)) show_error($"{_where} :: self.value expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.value));
+        buffer_write(_buffer, buffer_string, self.value);
+
+        // field: visibility, type: enum EpicLobbyAttributeVisibility
+
+        if (!is_numeric(self.visibility)) show_error($"{_where} :: self.visibility expected number", true);
+        buffer_write(_buffer, buffer_u64, self.visibility);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyModificationAddMemberAttributeOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyModificationAddMemberAttributeOptions} 
+ * @ignore 
+ */
+function __EpicLobbyModificationAddMemberAttributeOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyModificationAddMemberAttributeOptions();
+    with (_inst)
+    {
+        // field: key, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.key = buffer_read(_buffer, buffer_string);
+
+        // field: value, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.value = buffer_read(_buffer, buffer_string);
+
+        // field: visibility, type: enum EpicLobbyAttributeVisibility
+        self.visibility = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbyPromoteMemberOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyPromoteMemberOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyPromoteMemberOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
+        buffer_write(_buffer, buffer_string, self.lobby_id);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: target_user_id, type: String
+        if (!is_string(self.target_user_id)) show_error($"{_where} :: self.target_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.target_user_id));
+        buffer_write(_buffer, buffer_string, self.target_user_id);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyPromoteMemberOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyPromoteMemberOptions} 
+ * @ignore 
+ */
+function __EpicLobbyPromoteMemberOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyPromoteMemberOptions();
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.lobby_id = buffer_read(_buffer, buffer_string);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: target_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.target_user_id = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbyKickMemberOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyKickMemberOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyKickMemberOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
+        buffer_write(_buffer, buffer_string, self.lobby_id);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: target_user_id, type: String
+        if (!is_string(self.target_user_id)) show_error($"{_where} :: self.target_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.target_user_id));
+        buffer_write(_buffer, buffer_string, self.target_user_id);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyKickMemberOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyKickMemberOptions} 
+ * @ignore 
+ */
+function __EpicLobbyKickMemberOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyKickMemberOptions();
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.lobby_id = buffer_read(_buffer, buffer_string);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: target_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.target_user_id = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
  * @func __EpicLobbySearchFindCallbackInfo_encode(_inst, _buffer, _offset, _where)
  * @param {Struct.EpicLobbySearchFindCallbackInfo} _inst
  * @param {Id.Buffer} _buffer
@@ -9270,6 +9880,119 @@ function __EpicLobbySearchFindCallbackInfo_decode(_buffer, _offset)
     {
         // field: result_code, type: enum EpicResult
         self.result_code = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbySearchSetParameterOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbySearchSetParameterOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbySearchSetParameterOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: key, type: String
+        if (!is_string(self.key)) show_error($"{_where} :: self.key expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.key));
+        buffer_write(_buffer, buffer_string, self.key);
+
+        // field: value, type: String
+        if (!is_string(self.value)) show_error($"{_where} :: self.value expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.value));
+        buffer_write(_buffer, buffer_string, self.value);
+
+        // field: comparison_op, type: enum EpicComparisonOp
+
+        if (!is_numeric(self.comparison_op)) show_error($"{_where} :: self.comparison_op expected number", true);
+        buffer_write(_buffer, buffer_u64, self.comparison_op);
+
+    }
+}
+
+/**
+ * @func __EpicLobbySearchSetParameterOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbySearchSetParameterOptions} 
+ * @ignore 
+ */
+function __EpicLobbySearchSetParameterOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbySearchSetParameterOptions();
+    with (_inst)
+    {
+        // field: key, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.key = buffer_read(_buffer, buffer_string);
+
+        // field: value, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.value = buffer_read(_buffer, buffer_string);
+
+        // field: comparison_op, type: enum EpicComparisonOp
+        self.comparison_op = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbySearchRemoveParameterOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbySearchRemoveParameterOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbySearchRemoveParameterOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: key, type: String
+        if (!is_string(self.key)) show_error($"{_where} :: self.key expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.key));
+        buffer_write(_buffer, buffer_string, self.key);
+
+        // field: comparison_op, type: enum EpicComparisonOp
+
+        if (!is_numeric(self.comparison_op)) show_error($"{_where} :: self.comparison_op expected number", true);
+        buffer_write(_buffer, buffer_u64, self.comparison_op);
+
+    }
+}
+
+/**
+ * @func __EpicLobbySearchRemoveParameterOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbySearchRemoveParameterOptions} 
+ * @ignore 
+ */
+function __EpicLobbySearchRemoveParameterOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbySearchRemoveParameterOptions();
+    with (_inst)
+    {
+        // field: key, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.key = buffer_read(_buffer, buffer_string);
+
+        // field: comparison_op, type: enum EpicComparisonOp
+        self.comparison_op = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -10319,6 +11042,197 @@ function __EpicLobbyLobbyInviteRejectedCallbackInfo_decode(_buffer, _offset)
         // field: lobby_id, type: String
         buffer_read(_buffer, buffer_u32);
         self.lobby_id = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbyJoinLobbyByIdOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyJoinLobbyByIdOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyJoinLobbyByIdOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
+        buffer_write(_buffer, buffer_string, self.lobby_id);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: presence_enabled, type: Bool
+        if (!is_bool(self.presence_enabled)) show_error($"{_where} :: self.presence_enabled expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.presence_enabled);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyJoinLobbyByIdOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyJoinLobbyByIdOptions} 
+ * @ignore 
+ */
+function __EpicLobbyJoinLobbyByIdOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyJoinLobbyByIdOptions();
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.lobby_id = buffer_read(_buffer, buffer_string);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: presence_enabled, type: Bool
+        self.presence_enabled = buffer_read(_buffer, buffer_bool);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbyHardMuteMemberOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyHardMuteMemberOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyHardMuteMemberOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
+        buffer_write(_buffer, buffer_string, self.lobby_id);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: target_user_id, type: String
+        if (!is_string(self.target_user_id)) show_error($"{_where} :: self.target_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.target_user_id));
+        buffer_write(_buffer, buffer_string, self.target_user_id);
+
+        // field: hard_mute, type: Bool
+        if (!is_bool(self.hard_mute)) show_error($"{_where} :: self.hard_mute expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.hard_mute);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyHardMuteMemberOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyHardMuteMemberOptions} 
+ * @ignore 
+ */
+function __EpicLobbyHardMuteMemberOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyHardMuteMemberOptions();
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.lobby_id = buffer_read(_buffer, buffer_string);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: target_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.target_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: hard_mute, type: Bool
+        self.hard_mute = buffer_read(_buffer, buffer_bool);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbySendInviteOptions_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbySendInviteOptions} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbySendInviteOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
+        buffer_write(_buffer, buffer_string, self.lobby_id);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: target_user_id, type: String
+        if (!is_string(self.target_user_id)) show_error($"{_where} :: self.target_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.target_user_id));
+        buffer_write(_buffer, buffer_string, self.target_user_id);
+
+    }
+}
+
+/**
+ * @func __EpicLobbySendInviteOptions_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbySendInviteOptions} 
+ * @ignore 
+ */
+function __EpicLobbySendInviteOptions_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbySendInviteOptions();
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.lobby_id = buffer_read(_buffer, buffer_string);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: target_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.target_user_id = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -15046,10 +15960,18 @@ function eos_logging_set_callback(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_logging_set_callback(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15126,10 +16048,18 @@ function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, 
     if (!is_numeric(_scope_flags)) show_error($"{_GMFUNCTION_} :: _scope_flags expected number", true);
     buffer_write(__args_buffer, buffer_u64, _scope_flags);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_auth_login(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15151,10 +16081,18 @@ function eos_auth_logout(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_auth_logout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15182,10 +16120,18 @@ function eos_auth_link_account(_local_user_id, _link_account_flags, _callback)
     if (!is_numeric(_link_account_flags)) show_error($"{_GMFUNCTION_} :: _link_account_flags expected number", true);
     buffer_write(__args_buffer, buffer_u64, _link_account_flags);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_auth_link_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15201,10 +16147,18 @@ function eos_auth_delete_persistent_auth(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_auth_delete_persistent_auth(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15309,10 +16263,18 @@ function eos_auth_query_id_token(_local_user_id, _target_account_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_account_id));
     buffer_write(__args_buffer, buffer_string, _target_account_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_auth_query_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15334,10 +16296,18 @@ function eos_auth_verify_id_token(_json_web_token, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_json_web_token));
     buffer_write(__args_buffer, buffer_string, _json_web_token);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_auth_verify_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15359,10 +16329,18 @@ function eos_auth_verify_user_auth(_access_token, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_access_token));
     buffer_write(__args_buffer, buffer_string, _access_token);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_auth_verify_user_auth(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15379,10 +16357,18 @@ function eos_auth_add_notify_login_status_changed(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -15436,10 +16422,18 @@ function eos_connect_login(_token, _external_credential_type, _display_name, _ca
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_display_name));
     buffer_write(__args_buffer, buffer_string, _display_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_login(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15455,10 +16449,18 @@ function eos_connect_create_user(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_create_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15480,10 +16482,18 @@ function eos_connect_link_account(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_link_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15505,10 +16515,18 @@ function eos_connect_unlink_account(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_unlink_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15530,10 +16548,18 @@ function eos_connect_create_device_id(_device_model, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_device_model));
     buffer_write(__args_buffer, buffer_string, _device_model);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_create_device_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15549,10 +16575,18 @@ function eos_connect_delete_device_id(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_delete_device_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15580,10 +16614,18 @@ function eos_connect_transfer_device_id_account(_primary_local_user_id, _local_d
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_device_user_id));
     buffer_write(__args_buffer, buffer_string, _local_device_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_transfer_device_id_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15605,10 +16647,18 @@ function eos_connect_logout(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_logout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15837,10 +16887,18 @@ function eos_connect_verify_id_token(_json_web_token, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_json_web_token));
     buffer_write(__args_buffer, buffer_string, _json_web_token);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_verify_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15880,10 +16938,18 @@ function eos_connect_query_external_account_mappings(_local_user_id, _account_id
         buffer_write(__args_buffer, buffer_string, _target_external_user_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_query_external_account_mappings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15923,10 +16989,18 @@ function eos_connect_query_product_user_id_mappings(_local_user_id, _account_id_
         buffer_write(__args_buffer, buffer_string, _target_product_user_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_connect_query_product_user_id_mappings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -15943,10 +17017,18 @@ function eos_connect_add_notify_auth_expiration(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -15983,10 +17065,18 @@ function eos_connect_add_notify_login_status_changed(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -16028,10 +17118,18 @@ function eos_friends_query_friends(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_friends_query_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16102,10 +17200,18 @@ function eos_friends_add_notify_friends_update(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -16153,10 +17259,18 @@ function eos_user_info_query_user_info(_local_user_id, _target_user_id, _callbac
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_user_info_query_user_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16329,10 +17443,18 @@ function eos_stats_ingest_stat(_local_user_id, _target_user_id, _stat_name, _ing
     if (!is_numeric(_ingest_amount)) show_error($"{_GMFUNCTION_} :: _ingest_amount expected number", true);
     buffer_write(__args_buffer, buffer_u64, _ingest_amount);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_stats_ingest_stat(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16370,10 +17492,18 @@ function eos_stats_query_stats(_local_user_id, _target_user_id, _start_time, _en
     if (!is_numeric(_end_time)) show_error($"{_GMFUNCTION_} :: _end_time expected number", true);
     buffer_write(__args_buffer, buffer_u64, _end_time);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_stats_query_stats(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16453,10 +17583,18 @@ function eos_ui_show_friends(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ui_show_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16484,10 +17622,18 @@ function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ui_show_native_profile(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16540,10 +17686,18 @@ function eos_ui_add_notify_display_settings_updated(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -16585,10 +17739,18 @@ function eos_ui_hide_friends(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ui_hide_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16654,10 +17816,18 @@ function eos_ui_show_block_player(_local_user_id, _target_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ui_show_block_player(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16685,10 +17855,18 @@ function eos_ui_show_report_player(_local_user_id, _target_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ui_show_report_player(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16870,10 +18048,18 @@ function eos_progression_snapshot_submit_snapshot(_snapshot_id, _callback)
     if (!is_numeric(_snapshot_id)) show_error($"{_GMFUNCTION_} :: _snapshot_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _snapshot_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_progression_snapshot_submit_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16895,10 +18081,18 @@ function eos_progression_snapshot_delete_snapshot(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_progression_snapshot_delete_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16944,10 +18138,18 @@ function eos_reports_send_player_behavior_report(_reporter_user_id, _reported_us
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_context));
     buffer_write(__args_buffer, buffer_string, _context);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_reports_send_player_behavior_report(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -16969,10 +18171,18 @@ function eos_sanctions_query_active_player_sanctions(_target_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sanctions_query_active_player_sanctions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17048,10 +18258,18 @@ function eos_sanctions_create_player_sanction_appeal(_local_user_id, _reference_
     if (!is_numeric(_reason)) show_error($"{_GMFUNCTION_} :: _reason expected number", true);
     buffer_write(__args_buffer, buffer_u64, _reason);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sanctions_create_player_sanction_appeal(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17073,10 +18291,18 @@ function eos_achievements_query_definitions(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_achievements_query_definitions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17104,10 +18330,18 @@ function eos_achievements_query_player_achievements(_local_user_id, _target_user
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_achievements_query_player_achievements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17295,10 +18529,18 @@ function eos_achievements_unlock_achievements(_user_id, _achievement_ids, _callb
         buffer_write(__args_buffer, buffer_string, _achievement_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_achievements_unlock_achievements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17315,10 +18557,18 @@ function eos_achievements_add_notify_achievements_unlocked_v2(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -17370,10 +18620,18 @@ function eos_leaderboards_query_definitions(_local_user_id, _start_time, _end_ti
     if (!is_numeric(_end_time)) show_error($"{_GMFUNCTION_} :: _end_time expected number", true);
     buffer_write(__args_buffer, buffer_u64, _end_time);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_leaderboards_query_definitions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17401,10 +18659,18 @@ function eos_leaderboards_query_ranks(_local_user_id, _leaderboard_id, _callback
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_leaderboard_id));
     buffer_write(__args_buffer, buffer_string, _leaderboard_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_leaderboards_query_ranks(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17432,10 +18698,18 @@ function eos_leaderboards_query_user_scores(_local_user_id, _stat_name, _callbac
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_stat_name));
     buffer_write(__args_buffer, buffer_string, _stat_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_leaderboards_query_user_scores(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17598,10 +18872,18 @@ function eos_presence_query_presence(_local_user_id, _target_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_presence_query_presence(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17792,10 +19074,18 @@ function eos_presence_set_presence(_local_user_id, _modification_id, _callback)
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_presence_set_presence(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -17812,10 +19102,18 @@ function eos_presence_add_notify_on_presence_changed(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -17852,10 +19150,18 @@ function eos_presence_add_notify_join_game_accepted(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -17978,10 +19284,18 @@ function eos_sessions_update_session(_modification_id, _callback)
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_update_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18003,10 +19317,18 @@ function eos_sessions_destroy_session(_session_name, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_session_name));
     buffer_write(__args_buffer, buffer_string, _session_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_destroy_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18028,10 +19350,18 @@ function eos_sessions_start_session(_session_name, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_session_name));
     buffer_write(__args_buffer, buffer_string, _session_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_start_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18053,10 +19383,18 @@ function eos_sessions_end_session(_session_name, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_session_name));
     buffer_write(__args_buffer, buffer_string, _session_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_end_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18084,10 +19422,18 @@ function eos_sessions_join_session(_session_name, _local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_join_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18121,10 +19467,18 @@ function eos_sessions_register_players(_session_name, _target_user_ids, _callbac
         buffer_write(__args_buffer, buffer_string, _target_user_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_register_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18158,10 +19512,18 @@ function eos_sessions_unregister_players(_session_name, _target_user_ids, _callb
         buffer_write(__args_buffer, buffer_string, _target_user_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_unregister_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18279,10 +19641,18 @@ function eos_sessions_session_search_find(_search_id, _local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_session_search_find(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18450,10 +19820,18 @@ function eos_sessions_add_notify_session_invite_received(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -18490,10 +19868,18 @@ function eos_sessions_add_notify_session_invite_accepted(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -18530,10 +19916,18 @@ function eos_sessions_add_notify_join_session_accepted(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -18929,10 +20323,18 @@ function eos_sessions_send_invite(_session_name, _local_user_id, _target_user_id
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_send_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18960,10 +20362,18 @@ function eos_sessions_reject_invite(_local_user_id, _invite_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_invite_id));
     buffer_write(__args_buffer, buffer_string, _invite_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_reject_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -18985,10 +20395,18 @@ function eos_sessions_query_invites(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_sessions_query_invites(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19136,10 +20554,18 @@ function eos_sessions_add_notify_session_invite_rejected(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -19176,10 +20602,18 @@ function eos_sessions_add_notify_leave_session_requested(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -19216,10 +20650,18 @@ function eos_sessions_add_notify_send_session_native_invite_requested(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -19247,51 +20689,31 @@ function eos_sessions_remove_notify_send_session_native_invite_requested(_notifi
 }
 
 /**
- * @param {String} _local_user_id
- * @param {Real} _max_lobby_members
- * @param {Enum.EpicLobbyPermissionLevel} _permission_level
- * @param {Bool} _presence_enabled
- * @param {Bool} _allow_invites
- * @param {String} _bucket_id
+ * @param {Struct.EpicLobbyCreateLobbyOptions} _options
  * @param {Function} _callback
  */
-function eos_lobby_create_lobby(_local_user_id, _max_lobby_members, _permission_level, _presence_enabled, _allow_invites, _bucket_id, _callback)
+function eos_lobby_create_lobby(_options, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer, buffer_string, _local_user_id);
+    // param: _options, type: struct EpicLobbyCreateLobbyOptions
+    if (_options.__uid != 3546679194) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyCreateLobbyOptions", true);
+    __EpicLobbyCreateLobbyOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
-    // param: _max_lobby_members, type: Int64
-    if (!is_numeric(_max_lobby_members)) show_error($"{_GMFUNCTION_} :: _max_lobby_members expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _max_lobby_members);
-
-    // param: _permission_level, type: enum EpicLobbyPermissionLevel
-
-    if (!is_numeric(_permission_level)) show_error($"{_GMFUNCTION_} :: _permission_level expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _permission_level);
-
-    // param: _presence_enabled, type: Bool
-    if (!is_bool(_presence_enabled)) show_error($"{_GMFUNCTION_} :: _presence_enabled expected bool", true);
-    buffer_write(__args_buffer, buffer_bool, _presence_enabled);
-
-    // param: _allow_invites, type: Bool
-    if (!is_bool(_allow_invites)) show_error($"{_GMFUNCTION_} :: _allow_invites expected bool", true);
-    buffer_write(__args_buffer, buffer_bool, _allow_invites);
-
-    // param: _bucket_id, type: String
-    if (!is_string(_bucket_id)) show_error($"{_GMFUNCTION_} :: _bucket_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_bucket_id));
-    buffer_write(__args_buffer, buffer_string, _bucket_id);
-
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_create_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19319,10 +20741,18 @@ function eos_lobby_destroy_lobby(_lobby_id, _local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_destroy_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19330,35 +20760,31 @@ function eos_lobby_destroy_lobby(_lobby_id, _local_user_id, _callback)
 }
 
 /**
- * @param {String} _lobby_id
- * @param {String} _local_user_id
- * @param {Bool} _presence_enabled
+ * @param {Struct.EpicLobbyJoinLobbyOptions} _options
  * @param {Function} _callback
  */
-function eos_lobby_join_lobby(_lobby_id, _local_user_id, _presence_enabled, _callback)
+function eos_lobby_join_lobby(_options, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _lobby_id, type: String
-    if (!is_string(_lobby_id)) show_error($"{_GMFUNCTION_} :: _lobby_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_lobby_id));
-    buffer_write(__args_buffer, buffer_string, _lobby_id);
+    // param: _options, type: struct EpicLobbyJoinLobbyOptions
+    if (_options.__uid != 1559969366) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyJoinLobbyOptions", true);
+    __EpicLobbyJoinLobbyOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer, buffer_string, _local_user_id);
-
-    // param: _presence_enabled, type: Bool
-    if (!is_bool(_presence_enabled)) show_error($"{_GMFUNCTION_} :: _presence_enabled expected bool", true);
-    buffer_write(__args_buffer, buffer_bool, _presence_enabled);
-
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_join_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19386,10 +20812,18 @@ function eos_lobby_leave_lobby(_lobby_id, _local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_leave_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19448,10 +20882,18 @@ function eos_lobby_update_lobby(_lobby_id, _modification_id, _callback)
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_update_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19566,12 +21008,10 @@ function eos_lobby_lobby_modification_set_invites_allowed(_modification_id, _inv
 
 /**
  * @param {Real} _modification_id
- * @param {String} _key
- * @param {String} _value
- * @param {Enum.EpicLobbyAttributeVisibility} _visibility
+ * @param {Struct.EpicLobbyModificationAddAttributeOptions} _options
  * @returns {Enum.EpicResult} 
  */
-function eos_lobby_lobby_modification_add_attribute(_modification_id, _key, _value, _visibility)
+function eos_lobby_lobby_modification_add_attribute(_modification_id, _options)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19579,20 +21019,9 @@ function eos_lobby_lobby_modification_add_attribute(_modification_id, _key, _val
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    // param: _key, type: String
-    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
-    buffer_write(__args_buffer, buffer_string, _key);
-
-    // param: _value, type: String
-    if (!is_string(_value)) show_error($"{_GMFUNCTION_} :: _value expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_value));
-    buffer_write(__args_buffer, buffer_string, _value);
-
-    // param: _visibility, type: enum EpicLobbyAttributeVisibility
-
-    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _visibility);
+    // param: _options, type: struct EpicLobbyModificationAddAttributeOptions
+    if (_options.__uid != 3316783229) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyModificationAddAttributeOptions", true);
+    __EpicLobbyModificationAddAttributeOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -19632,12 +21061,10 @@ function eos_lobby_lobby_modification_remove_attribute(_modification_id, _key)
 
 /**
  * @param {Real} _modification_id
- * @param {String} _key
- * @param {String} _value
- * @param {Enum.EpicLobbyAttributeVisibility} _visibility
+ * @param {Struct.EpicLobbyModificationAddMemberAttributeOptions} _options
  * @returns {Enum.EpicResult} 
  */
-function eos_lobby_lobby_modification_add_member_attribute(_modification_id, _key, _value, _visibility)
+function eos_lobby_lobby_modification_add_member_attribute(_modification_id, _options)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19645,20 +21072,9 @@ function eos_lobby_lobby_modification_add_member_attribute(_modification_id, _ke
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    // param: _key, type: String
-    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
-    buffer_write(__args_buffer, buffer_string, _key);
-
-    // param: _value, type: String
-    if (!is_string(_value)) show_error($"{_GMFUNCTION_} :: _value expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_value));
-    buffer_write(__args_buffer, buffer_string, _value);
-
-    // param: _visibility, type: enum EpicLobbyAttributeVisibility
-
-    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _visibility);
+    // param: _options, type: struct EpicLobbyModificationAddMemberAttributeOptions
+    if (_options.__uid != 1688137915) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyModificationAddMemberAttributeOptions", true);
+    __EpicLobbyModificationAddMemberAttributeOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -19697,36 +21113,31 @@ function eos_lobby_lobby_modification_remove_member_attribute(_modification_id, 
 }
 
 /**
- * @param {String} _lobby_id
- * @param {String} _local_user_id
- * @param {String} _target_user_id
+ * @param {Struct.EpicLobbyPromoteMemberOptions} _options
  * @param {Function} _callback
  */
-function eos_lobby_promote_member(_lobby_id, _local_user_id, _target_user_id, _callback)
+function eos_lobby_promote_member(_options, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _lobby_id, type: String
-    if (!is_string(_lobby_id)) show_error($"{_GMFUNCTION_} :: _lobby_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_lobby_id));
-    buffer_write(__args_buffer, buffer_string, _lobby_id);
+    // param: _options, type: struct EpicLobbyPromoteMemberOptions
+    if (_options.__uid != 1038519352) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyPromoteMemberOptions", true);
+    __EpicLobbyPromoteMemberOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer, buffer_string, _local_user_id);
-
-    // param: _target_user_id, type: String
-    if (!is_string(_target_user_id)) show_error($"{_GMFUNCTION_} :: _target_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
-    buffer_write(__args_buffer, buffer_string, _target_user_id);
-
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_promote_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19734,36 +21145,31 @@ function eos_lobby_promote_member(_lobby_id, _local_user_id, _target_user_id, _c
 }
 
 /**
- * @param {String} _lobby_id
- * @param {String} _local_user_id
- * @param {String} _target_user_id
+ * @param {Struct.EpicLobbyKickMemberOptions} _options
  * @param {Function} _callback
  */
-function eos_lobby_kick_member(_lobby_id, _local_user_id, _target_user_id, _callback)
+function eos_lobby_kick_member(_options, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _lobby_id, type: String
-    if (!is_string(_lobby_id)) show_error($"{_GMFUNCTION_} :: _lobby_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_lobby_id));
-    buffer_write(__args_buffer, buffer_string, _lobby_id);
+    // param: _options, type: struct EpicLobbyKickMemberOptions
+    if (_options.__uid != 2995558950) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyKickMemberOptions", true);
+    __EpicLobbyKickMemberOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer, buffer_string, _local_user_id);
-
-    // param: _target_user_id, type: String
-    if (!is_string(_target_user_id)) show_error($"{_GMFUNCTION_} :: _target_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
-    buffer_write(__args_buffer, buffer_string, _target_user_id);
-
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_kick_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -19863,12 +21269,10 @@ function eos_lobby_lobby_search_set_target_user_id(_search_id, _target_user_id)
 
 /**
  * @param {Real} _search_id
- * @param {String} _key
- * @param {String} _value
- * @param {Enum.EpicComparisonOp} _comparison_op
+ * @param {Struct.EpicLobbySearchSetParameterOptions} _options
  * @returns {Enum.EpicResult} 
  */
-function eos_lobby_lobby_search_set_parameter(_search_id, _key, _value, _comparison_op)
+function eos_lobby_lobby_search_set_parameter(_search_id, _options)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19876,20 +21280,9 @@ function eos_lobby_lobby_search_set_parameter(_search_id, _key, _value, _compari
     if (!is_numeric(_search_id)) show_error($"{_GMFUNCTION_} :: _search_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _search_id);
 
-    // param: _key, type: String
-    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
-    buffer_write(__args_buffer, buffer_string, _key);
-
-    // param: _value, type: String
-    if (!is_string(_value)) show_error($"{_GMFUNCTION_} :: _value expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_value));
-    buffer_write(__args_buffer, buffer_string, _value);
-
-    // param: _comparison_op, type: enum EpicComparisonOp
-
-    if (!is_numeric(_comparison_op)) show_error($"{_GMFUNCTION_} :: _comparison_op expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _comparison_op);
+    // param: _options, type: struct EpicLobbySearchSetParameterOptions
+    if (_options.__uid != 2399959679) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbySearchSetParameterOptions", true);
+    __EpicLobbySearchSetParameterOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -19902,11 +21295,10 @@ function eos_lobby_lobby_search_set_parameter(_search_id, _key, _value, _compari
 
 /**
  * @param {Real} _search_id
- * @param {String} _key
- * @param {Enum.EpicComparisonOp} _comparison_op
+ * @param {Struct.EpicLobbySearchRemoveParameterOptions} _options
  * @returns {Enum.EpicResult} 
  */
-function eos_lobby_lobby_search_remove_parameter(_search_id, _key, _comparison_op)
+function eos_lobby_lobby_search_remove_parameter(_search_id, _options)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19914,15 +21306,9 @@ function eos_lobby_lobby_search_remove_parameter(_search_id, _key, _comparison_o
     if (!is_numeric(_search_id)) show_error($"{_GMFUNCTION_} :: _search_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _search_id);
 
-    // param: _key, type: String
-    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
-    buffer_write(__args_buffer, buffer_string, _key);
-
-    // param: _comparison_op, type: enum EpicComparisonOp
-
-    if (!is_numeric(_comparison_op)) show_error($"{_GMFUNCTION_} :: _comparison_op expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _comparison_op);
+    // param: _options, type: struct EpicLobbySearchRemoveParameterOptions
+    if (_options.__uid != 24089831) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbySearchRemoveParameterOptions", true);
+    __EpicLobbySearchRemoveParameterOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -19979,10 +21365,18 @@ function eos_lobby_lobby_search_find(_search_id, _local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_lobby_search_find(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -20165,10 +21559,18 @@ function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20211,10 +21613,18 @@ function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _call
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20257,10 +21667,18 @@ function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _call
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20297,10 +21715,18 @@ function eos_lobby_add_notify_join_lobby_accepted(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20343,10 +21769,18 @@ function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20389,10 +21823,18 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id,
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20613,35 +22055,31 @@ function eos_lobby_details_copy_member_info(_lobby_details_id, _target_user_id)
 }
 
 /**
- * @param {String} _lobby_id
- * @param {String} _local_user_id
- * @param {Bool} _presence_enabled
+ * @param {Struct.EpicLobbyJoinLobbyByIdOptions} _options
  * @param {Function} _callback
  */
-function eos_lobby_join_lobby_by_id(_lobby_id, _local_user_id, _presence_enabled, _callback)
+function eos_lobby_join_lobby_by_id(_options, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _lobby_id, type: String
-    if (!is_string(_lobby_id)) show_error($"{_GMFUNCTION_} :: _lobby_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_lobby_id));
-    buffer_write(__args_buffer, buffer_string, _lobby_id);
+    // param: _options, type: struct EpicLobbyJoinLobbyByIdOptions
+    if (_options.__uid != 694724702) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyJoinLobbyByIdOptions", true);
+    __EpicLobbyJoinLobbyByIdOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer, buffer_string, _local_user_id);
-
-    // param: _presence_enabled, type: Bool
-    if (!is_bool(_presence_enabled)) show_error($"{_GMFUNCTION_} :: _presence_enabled expected bool", true);
-    buffer_write(__args_buffer, buffer_bool, _presence_enabled);
-
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_join_lobby_by_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -20649,41 +22087,31 @@ function eos_lobby_join_lobby_by_id(_lobby_id, _local_user_id, _presence_enabled
 }
 
 /**
- * @param {String} _lobby_id
- * @param {String} _local_user_id
- * @param {String} _target_user_id
- * @param {Bool} _hard_mute
+ * @param {Struct.EpicLobbyHardMuteMemberOptions} _options
  * @param {Function} _callback
  */
-function eos_lobby_hard_mute_member(_lobby_id, _local_user_id, _target_user_id, _hard_mute, _callback)
+function eos_lobby_hard_mute_member(_options, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _lobby_id, type: String
-    if (!is_string(_lobby_id)) show_error($"{_GMFUNCTION_} :: _lobby_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_lobby_id));
-    buffer_write(__args_buffer, buffer_string, _lobby_id);
+    // param: _options, type: struct EpicLobbyHardMuteMemberOptions
+    if (_options.__uid != 1348463136) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyHardMuteMemberOptions", true);
+    __EpicLobbyHardMuteMemberOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer, buffer_string, _local_user_id);
-
-    // param: _target_user_id, type: String
-    if (!is_string(_target_user_id)) show_error($"{_GMFUNCTION_} :: _target_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
-    buffer_write(__args_buffer, buffer_string, _target_user_id);
-
-    // param: _hard_mute, type: Bool
-    if (!is_bool(_hard_mute)) show_error($"{_GMFUNCTION_} :: _hard_mute expected bool", true);
-    buffer_write(__args_buffer, buffer_bool, _hard_mute);
-
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_hard_mute_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -20691,36 +22119,31 @@ function eos_lobby_hard_mute_member(_lobby_id, _local_user_id, _target_user_id, 
 }
 
 /**
- * @param {String} _lobby_id
- * @param {String} _local_user_id
- * @param {String} _target_user_id
+ * @param {Struct.EpicLobbySendInviteOptions} _options
  * @param {Function} _callback
  */
-function eos_lobby_send_invite(_lobby_id, _local_user_id, _target_user_id, _callback)
+function eos_lobby_send_invite(_options, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _lobby_id, type: String
-    if (!is_string(_lobby_id)) show_error($"{_GMFUNCTION_} :: _lobby_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_lobby_id));
-    buffer_write(__args_buffer, buffer_string, _lobby_id);
+    // param: _options, type: struct EpicLobbySendInviteOptions
+    if (_options.__uid != 3755492107) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbySendInviteOptions", true);
+    __EpicLobbySendInviteOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
 
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer, buffer_string, _local_user_id);
-
-    // param: _target_user_id, type: String
-    if (!is_string(_target_user_id)) show_error($"{_GMFUNCTION_} :: _target_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
-    buffer_write(__args_buffer, buffer_string, _target_user_id);
-
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_send_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -20748,10 +22171,18 @@ function eos_lobby_reject_invite(_invite_id, _local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_reject_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -20773,10 +22204,18 @@ function eos_lobby_query_invites(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_lobby_query_invites(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -20831,10 +22270,18 @@ function eos_lobby_add_notify_lobby_invite_received(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20871,10 +22318,18 @@ function eos_lobby_add_notify_lobby_invite_accepted(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -20911,10 +22366,18 @@ function eos_lobby_add_notify_lobby_invite_rejected(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -21168,10 +22631,18 @@ function eos_p2p_query_nat_type(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_p2p_query_nat_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21364,10 +22835,18 @@ function eos_p2p_add_notify_peer_connection_request(_local_user_id, _socket_name
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_socket_name));
     buffer_write(__args_buffer, buffer_string, _socket_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -21416,10 +22895,18 @@ function eos_p2p_add_notify_peer_connection_established(_local_user_id, _socket_
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_socket_name));
     buffer_write(__args_buffer, buffer_string, _socket_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -21468,10 +22955,18 @@ function eos_p2p_add_notify_peer_connection_interrupted(_local_user_id, _socket_
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_socket_name));
     buffer_write(__args_buffer, buffer_string, _socket_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -21520,10 +23015,18 @@ function eos_p2p_add_notify_peer_connection_closed(_local_user_id, _socket_name,
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_socket_name));
     buffer_write(__args_buffer, buffer_string, _socket_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -21560,10 +23063,18 @@ function eos_p2p_add_notify_incoming_packet_queue_full(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -21611,10 +23122,18 @@ function eos_playerdatastorage_query_file(_local_user_id, _filename, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_playerdatastorage_query_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21636,10 +23155,18 @@ function eos_playerdatastorage_query_file_list(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_playerdatastorage_query_file_list(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21731,10 +23258,18 @@ function eos_playerdatastorage_duplicate_file(_local_user_id, _source_filename, 
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_destination_filename));
     buffer_write(__args_buffer, buffer_string, _destination_filename);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_playerdatastorage_duplicate_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21762,10 +23297,18 @@ function eos_playerdatastorage_delete_file(_local_user_id, _filename, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_playerdatastorage_delete_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21793,10 +23336,18 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_playerdatastorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21830,10 +23381,18 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _data_base6
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_data_base64));
     buffer_write(__args_buffer, buffer_string, _data_base64);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_playerdatastorage_write_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21855,10 +23414,18 @@ function eos_playerdatastorage_delete_cache(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_playerdatastorage_delete_cache(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21886,10 +23453,18 @@ function eos_titlestorage_query_file(_local_user_id, _filename, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_titlestorage_query_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -21923,10 +23498,18 @@ function eos_titlestorage_query_file_list(_local_user_id, _tags, _callback)
         buffer_write(__args_buffer, buffer_string, _tags[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_titlestorage_query_file_list(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22012,10 +23595,18 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_titlestorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22037,10 +23628,18 @@ function eos_titlestorage_delete_cache(_local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_titlestorage_delete_cache(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22080,10 +23679,18 @@ function eos_ecom_query_ownership(_local_user_id, _catalog_item_ids, _catalog_na
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_catalog_namespace));
     buffer_write(__args_buffer, buffer_string, _catalog_namespace);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_query_ownership(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22117,10 +23724,18 @@ function eos_ecom_query_ownership_by_sandbox_ids(_local_user_id, _sandbox_ids, _
         buffer_write(__args_buffer, buffer_string, _sandbox_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_query_ownership_by_sandbox_ids(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22160,10 +23775,18 @@ function eos_ecom_query_ownership_token(_local_user_id, _catalog_item_ids, _cata
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_catalog_namespace));
     buffer_write(__args_buffer, buffer_string, _catalog_namespace);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_query_ownership_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22208,10 +23831,18 @@ function eos_ecom_query_entitlements(_local_user_id, _entitlement_names, _includ
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_catalog_namespace));
     buffer_write(__args_buffer, buffer_string, _catalog_namespace);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_query_entitlements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22245,10 +23876,18 @@ function eos_ecom_query_entitlement_token(_local_user_id, _entitlement_names, _c
         buffer_write(__args_buffer, buffer_string, _entitlement_names[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_query_entitlement_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22276,10 +23915,18 @@ function eos_ecom_query_offers(_local_user_id, _catalog_namespace, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_catalog_namespace));
     buffer_write(__args_buffer, buffer_string, _catalog_namespace);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_query_offers(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22319,10 +23966,18 @@ function eos_ecom_checkout(_local_user_id, _offer_ids, _catalog_namespace, _call
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_catalog_namespace));
     buffer_write(__args_buffer, buffer_string, _catalog_namespace);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_checkout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -22356,10 +24011,18 @@ function eos_ecom_redeem_entitlements(_local_user_id, _entitlement_ids, _callbac
         buffer_write(__args_buffer, buffer_string, _entitlement_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_ecom_redeem_entitlements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23033,10 +24696,18 @@ function eos_custominvites_send_custom_invite(_local_user_id, _target_user_ids, 
         buffer_write(__args_buffer, buffer_string, _target_user_ids[_i]);
     }
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_custominvites_send_custom_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23100,10 +24771,18 @@ function eos_custominvites_send_request_to_join(_local_user_id, _target_user_id,
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_custominvites_send_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23131,10 +24810,18 @@ function eos_custominvites_accept_request_to_join(_local_user_id, _target_user_i
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_custominvites_accept_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23162,10 +24849,18 @@ function eos_custominvites_reject_request_to_join(_local_user_id, _target_user_i
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
     buffer_write(__args_buffer, buffer_string, _target_user_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_custominvites_reject_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23182,10 +24877,18 @@ function eos_custominvites_add_notify_custom_invite_received(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23222,10 +24925,18 @@ function eos_custominvites_add_notify_custom_invite_accepted(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23262,10 +24973,18 @@ function eos_custominvites_add_notify_custom_invite_rejected(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23302,10 +25021,18 @@ function eos_custominvites_add_notify_request_to_join_response_received(_callbac
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23342,10 +25069,18 @@ function eos_custominvites_add_notify_request_to_join_received(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23382,10 +25117,18 @@ function eos_custominvites_add_notify_send_custom_native_invite_requested(_callb
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23422,10 +25165,18 @@ function eos_custominvites_add_notify_request_to_join_accepted(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23462,10 +25213,18 @@ function eos_custominvites_add_notify_request_to_join_rejected(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23525,10 +25284,18 @@ function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _partic
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_participant_token));
     buffer_write(__args_buffer, buffer_string, _participant_token);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_join_room(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23556,10 +25323,18 @@ function eos_rtc_leave_room(_local_user_id, _room_name, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_leave_room(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23598,10 +25373,18 @@ function eos_rtc_block_participant(_local_user_id, _room_name, _participant_id, 
     if (!is_bool(_blocked)) show_error($"{_GMFUNCTION_} :: _blocked expected bool", true);
     buffer_write(__args_buffer, buffer_bool, _blocked);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_block_participant(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23636,10 +25419,18 @@ function eos_rtc_add_notify_disconnected(_local_user_id, _room_name, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23688,10 +25479,18 @@ function eos_rtc_add_notify_participant_status_changed(_local_user_id, _room_nam
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23740,10 +25539,18 @@ function eos_rtc_add_notify_room_statistics_updated(_local_user_id, _room_name, 
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23797,10 +25604,18 @@ function eos_rtc_audio_update_sending(_local_user_id, _room_name, _audio_status,
     if (!is_numeric(_audio_status)) show_error($"{_GMFUNCTION_} :: _audio_status expected number", true);
     buffer_write(__args_buffer, buffer_u64, _audio_status);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_update_sending(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23839,10 +25654,18 @@ function eos_rtc_audio_update_receiving(_local_user_id, _room_name, _participant
     if (!is_bool(_audio_enabled)) show_error($"{_GMFUNCTION_} :: _audio_enabled expected bool", true);
     buffer_write(__args_buffer, buffer_bool, _audio_enabled);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_update_receiving(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23875,10 +25698,18 @@ function eos_rtc_audio_update_sending_volume(_local_user_id, _room_name, _volume
     if (!is_numeric(_volume)) show_error($"{_GMFUNCTION_} :: _volume expected number", true);
     buffer_write(__args_buffer, buffer_f64, _volume);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_update_sending_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23911,10 +25742,18 @@ function eos_rtc_audio_update_receiving_volume(_local_user_id, _room_name, _volu
     if (!is_numeric(_volume)) show_error($"{_GMFUNCTION_} :: _volume expected number", true);
     buffer_write(__args_buffer, buffer_f64, _volume);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_update_receiving_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -23953,10 +25792,18 @@ function eos_rtc_audio_update_participant_volume(_local_user_id, _room_name, _pa
     if (!is_numeric(_volume)) show_error($"{_GMFUNCTION_} :: _volume expected number", true);
     buffer_write(__args_buffer, buffer_f64, _volume);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_update_participant_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -24042,10 +25889,18 @@ function eos_rtc_audio_query_input_devices(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_query_input_devices(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -24061,10 +25916,18 @@ function eos_rtc_audio_query_output_devices(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_query_output_devices(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -24097,10 +25960,18 @@ function eos_rtc_audio_set_input_device_settings(_local_user_id, _real_device_id
     if (!is_bool(_platform_aec)) show_error($"{_GMFUNCTION_} :: _platform_aec expected bool", true);
     buffer_write(__args_buffer, buffer_bool, _platform_aec);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_set_input_device_settings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -24128,10 +25999,18 @@ function eos_rtc_audio_set_output_device_settings(_local_user_id, _real_device_i
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_real_device_id));
     buffer_write(__args_buffer, buffer_string, _real_device_id);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var _return_value = __eos_rtc_audio_set_output_device_settings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
@@ -24160,10 +26039,18 @@ function eos_rtc_audio_add_notify_participant_updated(_local_user_id, _room_name
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -24200,10 +26087,18 @@ function eos_rtc_audio_add_notify_audio_devices_changed(_callback)
 
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -24252,10 +26147,18 @@ function eos_rtc_audio_add_notify_audio_input_state(_local_user_id, _room_name, 
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -24304,10 +26207,18 @@ function eos_rtc_audio_add_notify_audio_output_state(_local_user_id, _room_name,
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
 
-    // param: _callback, type: Function
-    if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
-    buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -24426,10 +26337,18 @@ function __EpicOnlineServices_get_decoders()
         __EpicLobbyDestroyLobbyCallbackInfo_decode,
         __EpicLobbyJoinLobbyCallbackInfo_decode,
         __EpicLobbyLeaveLobbyCallbackInfo_decode,
+        __EpicLobbyCreateLobbyOptions_decode,
+        __EpicLobbyJoinLobbyOptions_decode,
         __EpicLobbyUpdateLobbyCallbackInfo_decode,
         __EpicLobbyPromoteMemberCallbackInfo_decode,
         __EpicLobbyKickMemberCallbackInfo_decode,
+        __EpicLobbyModificationAddAttributeOptions_decode,
+        __EpicLobbyModificationAddMemberAttributeOptions_decode,
+        __EpicLobbyPromoteMemberOptions_decode,
+        __EpicLobbyKickMemberOptions_decode,
         __EpicLobbySearchFindCallbackInfo_decode,
+        __EpicLobbySearchSetParameterOptions_decode,
+        __EpicLobbySearchRemoveParameterOptions_decode,
         __EpicLobbyDetailsInfo_decode,
         __EpicLobbyLobbyUpdateReceivedCallbackInfo_decode,
         __EpicLobbyLobbyMemberUpdateReceivedCallbackInfo_decode,
@@ -24447,6 +26366,9 @@ function __EpicOnlineServices_get_decoders()
         __EpicLobbyLobbyInviteReceivedCallbackInfo_decode,
         __EpicLobbyLobbyInviteAcceptedCallbackInfo_decode,
         __EpicLobbyLobbyInviteRejectedCallbackInfo_decode,
+        __EpicLobbyJoinLobbyByIdOptions_decode,
+        __EpicLobbyHardMuteMemberOptions_decode,
+        __EpicLobbySendInviteOptions_decode,
         __EpicP2PReceivedPacket_decode,
         __EpicP2PQueryNATTypeCallbackInfo_decode,
         __EpicP2PConnectionRequestCallbackInfo_decode,
