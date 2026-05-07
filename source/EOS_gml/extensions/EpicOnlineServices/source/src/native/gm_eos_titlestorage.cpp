@@ -5,6 +5,8 @@
 #include <eos_titlestorage.h>
 
 #include <cstdint>
+#include <fstream>
+#include <ios>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -26,10 +28,20 @@ struct EOSAsyncCallbackContext
 struct EOSTSReadContext
 {
     std::optional<GMFunction> callback;
+    std::optional<GMFunction> progress_callback;
     std::string local_user_id;
     std::string filename;
+    std::string output_path;
     std::vector<uint8_t> data;
 };
+
+static void eos_ts_write_entire_file(const std::string& path, const std::vector<uint8_t>& buf)
+{
+    std::ofstream f(path, std::ios::binary | std::ios::trunc);
+    if (!f.is_open()) return;
+    if (!buf.empty())
+        f.write(reinterpret_cast<const char*>(buf.data()), static_cast<std::streamsize>(buf.size()));
+}
 
 static EOS_HTitleStorage eos_ts_iface()
 {
@@ -52,28 +64,6 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
     if (EOS_ProductUserId_ToString(id, buf, &len) != EOS_EResult::EOS_Success)
         return std::string();
     return std::string(buf);
-}
-
-// ---- Base64 ----
-
-static const char k_b64_chars[] =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-static std::string base64_encode(const void* data, size_t len)
-{
-    const auto* src = static_cast<const uint8_t*>(data);
-    std::string out;
-    out.reserve(((len + 2) / 3) * 4);
-    for (size_t i = 0; i < len; i += 3) {
-        uint32_t b = (uint32_t)src[i] << 16;
-        if (i + 1 < len) b |= (uint32_t)src[i + 1] << 8;
-        if (i + 2 < len) b |= src[i + 2];
-        out += k_b64_chars[(b >> 18) & 0x3f];
-        out += k_b64_chars[(b >> 12) & 0x3f];
-        out += (i + 1 < len) ? k_b64_chars[(b >> 6) & 0x3f] : '=';
-        out += (i + 2 < len) ? k_b64_chars[b & 0x3f] : '=';
-    }
-    return out;
 }
 
 // ---- FileMetadata conversion ----
@@ -153,6 +143,21 @@ static EOS_TitleStorage_EReadResult EOS_CALL eos_ts_read_data_callback(
     return EOS_TitleStorage_EReadResult::EOS_TS_RR_ContinueReading;
 }
 
+static void EOS_CALL eos_ts_read_file_progress_callback_native(
+    const EOS_TitleStorage_FileTransferProgressCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSTSReadContext*>(data->ClientData);
+    if (!ctx || !ctx->progress_callback) return;
+
+    gm_structs::EpicTitleStorageReadFileProgressCallbackInfo out{};
+    out.local_user_id = ctx->local_user_id;
+    out.filename = ctx->filename;
+    out.bytes_transferred = (int64_t)data->BytesTransferred;
+    out.total_file_size_bytes = (int64_t)data->TotalFileSizeBytes;
+    ctx->progress_callback.value().call(out);
+}
+
 static void EOS_CALL eos_ts_read_file_callback_native(
     const EOS_TitleStorage_ReadFileCallbackInfo* data)
 {
@@ -160,12 +165,13 @@ static void EOS_CALL eos_ts_read_file_callback_native(
     auto* ctx = static_cast<EOSTSReadContext*>(data->ClientData);
     if (!ctx) return;
 
+    if (data->ResultCode == EOS_EResult::EOS_Success && !ctx->output_path.empty())
+        eos_ts_write_entire_file(ctx->output_path, ctx->data);
+
     gm_structs::EpicTitleStorageReadFileCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = ctx->local_user_id;
     out.filename = ctx->filename;
-    if (data->ResultCode == EOS_EResult::EOS_Success && !ctx->data.empty())
-        out.data = base64_encode(ctx->data.data(), ctx->data.size());
     if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
@@ -313,7 +319,9 @@ gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_by_
 void eos_titlestorage_read_file(
     std::string_view local_user_id,
     std::string_view filename,
-    const std::optional<gm::wire::GMFunction>& callback)
+    std::string_view output_path,
+    const std::optional<gm::wire::GMFunction>& callback,
+    const std::optional<gm::wire::GMFunction>& progress_callback)
 {
     EOS_GUARD();
 
@@ -329,8 +337,10 @@ void eos_titlestorage_read_file(
 
     auto* ctx = new EOSTSReadContext{};
     ctx->callback = callback;
+    ctx->progress_callback = progress_callback;
     ctx->local_user_id = eos_product_user_id_to_string_internal(local_user);
     ctx->filename = fn;
+    ctx->output_path = std::string(output_path);
 
     EOS_TitleStorage_ReadFileOptions opts{};
     opts.ApiVersion = EOS_TITLESTORAGE_READFILE_API_LATEST;
@@ -338,14 +348,15 @@ void eos_titlestorage_read_file(
     opts.Filename = fn.c_str();
     opts.ReadChunkLengthBytes = 4096;
     opts.ReadFileDataCallback = &eos_ts_read_data_callback;
-    opts.FileTransferProgressCallback = nullptr;
+    opts.FileTransferProgressCallback = progress_callback ? &eos_ts_read_file_progress_callback_native : nullptr;
 
     EOS_HTitleStorageFileTransferRequest req = EOS_TitleStorage_ReadFile(
         ts, &opts, ctx, &eos_ts_read_file_callback_native);
 
     if (!req) {
+        // EOS still queues the completion callback with our ctx even when it returns null,
+        // so we MUST NOT delete ctx here — the callback owns the lifetime.
         eos_set_last_error("EOS_TitleStorage_ReadFile: failed to start transfer.");
-        delete ctx;
     }
 }
 

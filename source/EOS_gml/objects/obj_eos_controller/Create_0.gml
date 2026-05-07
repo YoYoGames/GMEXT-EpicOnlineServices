@@ -167,7 +167,9 @@ var result = eos_platform_create(
 	    "3fefc033b7dc48d68553e095b4f9b58d",
 	    "750a6c35c15a4879baf3c4a2e02ca60d",
 	    "xyza7891r9cqTcARXLV4XC1g4fxJ3yXX",
-	    "+o3AXL60HNu94ERLlyExQKgQtNe6aqMwSXJ50ZYMCLg"
+	    "+o3AXL60HNu94ERLlyExQKgQtNe6aqMwSXJ50ZYMCLg",
+	    "1111111111111111111111111111111111111111111111111111111111111111",
+	    working_directory  // cache directory — required for TitleStorage / PlayerDataStorage
 	)
 
 

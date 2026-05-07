@@ -1,13 +1,7 @@
-	
-eos_lobby_join_lobby_by_id(
-				global.product_user_id,//LocalUserId
-				true,//bCrossplayOptOut
-				true,//,buffer_bool
-				lobby_id,//lobby_id
-				true,//bEnableRTCRoom
-				false,//bLocalAudioDeviceInputStartsMuted
-				false,//bUseManualAudioInput
-				false,//bUseManualAudioOutput
-				0,//Flags
-			)
 
+var _opts = new EpicLobbyJoinLobbyByIdOptions();
+_opts.lobby_id = lobby_id;
+_opts.local_user_id = global.product_user_id;
+_opts.presence_enabled = true;
+
+eos_lobby_join_lobby_by_id(_opts);

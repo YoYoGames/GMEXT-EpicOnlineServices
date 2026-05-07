@@ -26,11 +26,11 @@ switch(async_load[? "type"])
 	case "eos_p2p_add_notify_peer_connection_request":
 		
 		var result = eos_p2p_accept_connection(global.product_user_id,async_load[? "remote_user_id"],"OtherSocket")
-		show_debug_message("eos_p2p_accept_connection: " + EpicResult_to_string(result))
+		show_debug_message("eos_p2p_accept_connection: " + eos_api_result_to_string(result))
 		
 		var buff = buffer_create(256,buffer_fixed,1)
 		buffer_write(buff,buffer_u8,1)
-		eos_p2p_send_packet(buff,buffer_tell(buff),true,false,noone,global.product_user_id,true,async_load[? "remote_user_id"],socketName)
+		eos_p2p_send_packet(global.product_user_id, async_load[? "remote_user_id"], socketName, 0, buff, buffer_tell(buff), true, EpicPacketReliability.ReliableOrdered, false)
 		buffer_delete(buff)
 		
 	break

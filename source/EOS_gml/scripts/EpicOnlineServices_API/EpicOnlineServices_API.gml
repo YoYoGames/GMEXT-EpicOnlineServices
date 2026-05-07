@@ -3110,7 +3110,6 @@ function EpicPlayerDataStorageReadFileCallbackInfo() constructor
     self.result_code = undefined;
     self.local_user_id = undefined;
     self.filename = undefined;
-    self.data = undefined;
 
 }
 
@@ -3128,6 +3127,42 @@ function EpicPlayerDataStorageWriteFileCallbackInfo() constructor
     self.result_code = undefined;
     self.local_user_id = undefined;
     self.filename = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo} 
+ */
+function EpicPlayerDataStorageReadFileProgressCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 4179261232;
+
+    self.local_user_id = undefined;
+    self.filename = undefined;
+    self.bytes_transferred = undefined;
+    self.total_file_size_bytes = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo} 
+ */
+function EpicPlayerDataStorageWriteFileProgressCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 2416113311;
+
+    self.local_user_id = undefined;
+    self.filename = undefined;
+    self.bytes_transferred = undefined;
+    self.total_file_size_bytes = undefined;
 
 }
 
@@ -3212,7 +3247,24 @@ function EpicTitleStorageReadFileCallbackInfo() constructor
     self.result_code = undefined;
     self.local_user_id = undefined;
     self.filename = undefined;
-    self.data = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicTitleStorageReadFileProgressCallbackInfo} 
+ */
+function EpicTitleStorageReadFileProgressCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 845177309;
+
+    self.local_user_id = undefined;
+    self.filename = undefined;
+    self.bytes_transferred = undefined;
+    self.total_file_size_bytes = undefined;
 
 }
 
@@ -12151,11 +12203,6 @@ function __EpicPlayerDataStorageReadFileCallbackInfo_encode(_inst, _buffer, _off
         buffer_write(_buffer, buffer_u32, string_byte_length(self.filename));
         buffer_write(_buffer, buffer_string, self.filename);
 
-        // field: data, type: String
-        if (!is_string(self.data)) show_error($"{_where} :: self.data expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.data));
-        buffer_write(_buffer, buffer_string, self.data);
-
     }
 }
 
@@ -12183,10 +12230,6 @@ function __EpicPlayerDataStorageReadFileCallbackInfo_decode(_buffer, _offset)
         // field: filename, type: String
         buffer_read(_buffer, buffer_u32);
         self.filename = buffer_read(_buffer, buffer_string);
-
-        // field: data, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.data = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -12248,6 +12291,140 @@ function __EpicPlayerDataStorageWriteFileCallbackInfo_decode(_buffer, _offset)
         // field: filename, type: String
         buffer_read(_buffer, buffer_u32);
         self.filename = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicPlayerDataStorageReadFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicPlayerDataStorageReadFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: filename, type: String
+        if (!is_string(self.filename)) show_error($"{_where} :: self.filename expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.filename));
+        buffer_write(_buffer, buffer_string, self.filename);
+
+        // field: bytes_transferred, type: Int64
+        if (!is_numeric(self.bytes_transferred)) show_error($"{_where} :: self.bytes_transferred expected number", true);
+        buffer_write(_buffer, buffer_u64, self.bytes_transferred);
+
+        // field: total_file_size_bytes, type: Int64
+        if (!is_numeric(self.total_file_size_bytes)) show_error($"{_where} :: self.total_file_size_bytes expected number", true);
+        buffer_write(_buffer, buffer_u64, self.total_file_size_bytes);
+
+    }
+}
+
+/**
+ * @func __EpicPlayerDataStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo} 
+ * @ignore 
+ */
+function __EpicPlayerDataStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicPlayerDataStorageReadFileProgressCallbackInfo();
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: filename, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.filename = buffer_read(_buffer, buffer_string);
+
+        // field: bytes_transferred, type: Int64
+        self.bytes_transferred = buffer_read(_buffer, buffer_u64);
+
+        // field: total_file_size_bytes, type: Int64
+        self.total_file_size_bytes = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicPlayerDataStorageWriteFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicPlayerDataStorageWriteFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: filename, type: String
+        if (!is_string(self.filename)) show_error($"{_where} :: self.filename expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.filename));
+        buffer_write(_buffer, buffer_string, self.filename);
+
+        // field: bytes_transferred, type: Int64
+        if (!is_numeric(self.bytes_transferred)) show_error($"{_where} :: self.bytes_transferred expected number", true);
+        buffer_write(_buffer, buffer_u64, self.bytes_transferred);
+
+        // field: total_file_size_bytes, type: Int64
+        if (!is_numeric(self.total_file_size_bytes)) show_error($"{_where} :: self.total_file_size_bytes expected number", true);
+        buffer_write(_buffer, buffer_u64, self.total_file_size_bytes);
+
+    }
+}
+
+/**
+ * @func __EpicPlayerDataStorageWriteFileProgressCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo} 
+ * @ignore 
+ */
+function __EpicPlayerDataStorageWriteFileProgressCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicPlayerDataStorageWriteFileProgressCallbackInfo();
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: filename, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.filename = buffer_read(_buffer, buffer_string);
+
+        // field: bytes_transferred, type: Int64
+        self.bytes_transferred = buffer_read(_buffer, buffer_u64);
+
+        // field: total_file_size_bytes, type: Int64
+        self.total_file_size_bytes = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -12512,11 +12689,6 @@ function __EpicTitleStorageReadFileCallbackInfo_encode(_inst, _buffer, _offset, 
         buffer_write(_buffer, buffer_u32, string_byte_length(self.filename));
         buffer_write(_buffer, buffer_string, self.filename);
 
-        // field: data, type: String
-        if (!is_string(self.data)) show_error($"{_where} :: self.data expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.data));
-        buffer_write(_buffer, buffer_string, self.data);
-
     }
 }
 
@@ -12545,9 +12717,72 @@ function __EpicTitleStorageReadFileCallbackInfo_decode(_buffer, _offset)
         buffer_read(_buffer, buffer_u32);
         self.filename = buffer_read(_buffer, buffer_string);
 
-        // field: data, type: String
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicTitleStorageReadFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicTitleStorageReadFileProgressCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicTitleStorageReadFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: filename, type: String
+        if (!is_string(self.filename)) show_error($"{_where} :: self.filename expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.filename));
+        buffer_write(_buffer, buffer_string, self.filename);
+
+        // field: bytes_transferred, type: Int64
+        if (!is_numeric(self.bytes_transferred)) show_error($"{_where} :: self.bytes_transferred expected number", true);
+        buffer_write(_buffer, buffer_u64, self.bytes_transferred);
+
+        // field: total_file_size_bytes, type: Int64
+        if (!is_numeric(self.total_file_size_bytes)) show_error($"{_where} :: self.total_file_size_bytes expected number", true);
+        buffer_write(_buffer, buffer_u64, self.total_file_size_bytes);
+
+    }
+}
+
+/**
+ * @func __EpicTitleStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicTitleStorageReadFileProgressCallbackInfo} 
+ * @ignore 
+ */
+function __EpicTitleStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicTitleStorageReadFileProgressCallbackInfo();
+    with (_inst)
+    {
+        // field: local_user_id, type: String
         buffer_read(_buffer, buffer_u32);
-        self.data = buffer_read(_buffer, buffer_string);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: filename, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.filename = buffer_read(_buffer, buffer_string);
+
+        // field: bytes_transferred, type: Int64
+        self.bytes_transferred = buffer_read(_buffer, buffer_u64);
+
+        // field: total_file_size_bytes, type: Int64
+        self.total_file_size_bytes = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -15865,9 +16100,11 @@ function eos_api_network_status_to_string(_status)
  * @param {String} _deployment_id
  * @param {String} _client_id
  * @param {String} _client_secret
+ * @param {String} _encryption_key
+ * @param {String} _cache_directory
  * @returns {Enum.EpicResult} 
  */
-function eos_platform_create(_is_server, _product_id, _sandbox_id, _deployment_id, _client_id, _client_secret)
+function eos_platform_create(_is_server, _product_id, _sandbox_id, _deployment_id, _client_id, _client_secret, _encryption_key, _cache_directory)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -15899,6 +16136,16 @@ function eos_platform_create(_is_server, _product_id, _sandbox_id, _deployment_i
     if (!is_string(_client_secret)) show_error($"{_GMFUNCTION_} :: _client_secret expected string", true);
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_client_secret));
     buffer_write(__args_buffer, buffer_string, _client_secret);
+
+    // param: _encryption_key, type: String
+    if (!is_string(_encryption_key)) show_error($"{_GMFUNCTION_} :: _encryption_key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_encryption_key));
+    buffer_write(__args_buffer, buffer_string, _encryption_key);
+
+    // param: _cache_directory, type: String
+    if (!is_string(_cache_directory)) show_error($"{_GMFUNCTION_} :: _cache_directory expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_cache_directory));
+    buffer_write(__args_buffer, buffer_string, _cache_directory);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
@@ -23318,9 +23565,11 @@ function eos_playerdatastorage_delete_file(_local_user_id, _filename, _callback)
 /**
  * @param {String} _local_user_id
  * @param {String} _filename
+ * @param {String} _output_path
  * @param {Function} _callback
+ * @param {Function} _progress_callback
  */
-function eos_playerdatastorage_read_file(_local_user_id, _filename, _callback)
+function eos_playerdatastorage_read_file(_local_user_id, _filename, _output_path, _callback, _progress_callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
@@ -23336,6 +23585,11 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
+    // param: _output_path, type: String
+    if (!is_string(_output_path)) show_error($"{_GMFUNCTION_} :: _output_path expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_output_path));
+    buffer_write(__args_buffer, buffer_string, _output_path);
+
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
     {
@@ -23347,6 +23601,19 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _callback)
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
         var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    // param: _progress_callback, type: optional<Function>
+    if (is_undefined(_progress_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_progress_callback)) show_error($"{_GMFUNCTION_} :: _progress_callback expected callable type", true);
+        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _progress_callback_handle);
     }
 
     var _return_value = __eos_playerdatastorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
@@ -23357,10 +23624,11 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _callback)
 /**
  * @param {String} _local_user_id
  * @param {String} _filename
- * @param {String} _data_base64
+ * @param {String} _input_path
  * @param {Function} _callback
+ * @param {Function} _progress_callback
  */
-function eos_playerdatastorage_write_file(_local_user_id, _filename, _data_base64, _callback)
+function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path, _callback, _progress_callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
@@ -23376,10 +23644,10 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _data_base6
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
-    // param: _data_base64, type: String
-    if (!is_string(_data_base64)) show_error($"{_GMFUNCTION_} :: _data_base64 expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_data_base64));
-    buffer_write(__args_buffer, buffer_string, _data_base64);
+    // param: _input_path, type: String
+    if (!is_string(_input_path)) show_error($"{_GMFUNCTION_} :: _input_path expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_input_path));
+    buffer_write(__args_buffer, buffer_string, _input_path);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -23392,6 +23660,19 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _data_base6
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
         var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    // param: _progress_callback, type: optional<Function>
+    if (is_undefined(_progress_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_progress_callback)) show_error($"{_GMFUNCTION_} :: _progress_callback expected callable type", true);
+        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _progress_callback_handle);
     }
 
     var _return_value = __eos_playerdatastorage_write_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
@@ -23577,9 +23858,11 @@ function eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filena
 /**
  * @param {String} _local_user_id
  * @param {String} _filename
+ * @param {String} _output_path
  * @param {Function} _callback
+ * @param {Function} _progress_callback
  */
-function eos_titlestorage_read_file(_local_user_id, _filename, _callback)
+function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _callback, _progress_callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
@@ -23595,6 +23878,11 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_filename));
     buffer_write(__args_buffer, buffer_string, _filename);
 
+    // param: _output_path, type: String
+    if (!is_string(_output_path)) show_error($"{_GMFUNCTION_} :: _output_path expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_output_path));
+    buffer_write(__args_buffer, buffer_string, _output_path);
+
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
     {
@@ -23606,6 +23894,19 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _callback)
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
         var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    // param: _progress_callback, type: optional<Function>
+    if (is_undefined(_progress_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_progress_callback)) show_error($"{_GMFUNCTION_} :: _progress_callback expected callable type", true);
+        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _progress_callback_handle);
     }
 
     var _return_value = __eos_titlestorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
@@ -26385,11 +26686,14 @@ function __EpicOnlineServices_get_decoders()
         __EpicPlayerDataStorageDeleteFileCallbackInfo_decode,
         __EpicPlayerDataStorageReadFileCallbackInfo_decode,
         __EpicPlayerDataStorageWriteFileCallbackInfo_decode,
+        __EpicPlayerDataStorageReadFileProgressCallbackInfo_decode,
+        __EpicPlayerDataStorageWriteFileProgressCallbackInfo_decode,
         __EpicPlayerDataStorageDeleteCacheCallbackInfo_decode,
         __EpicTitleStorageFileMetadata_decode,
         __EpicTitleStorageQueryFileCallbackInfo_decode,
         __EpicTitleStorageQueryFileListCallbackInfo_decode,
         __EpicTitleStorageReadFileCallbackInfo_decode,
+        __EpicTitleStorageReadFileProgressCallbackInfo_decode,
         __EpicTitleStorageDeleteCacheCallbackInfo_decode,
         __EpicEcomEntitlement_decode,
         __EpicEcomItemOwnership_decode,

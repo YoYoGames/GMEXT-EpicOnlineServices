@@ -164,7 +164,9 @@ gm_enums::EpicResult eos_platform_create(
     std::string_view sandbox_id,
     std::string_view deployment_id,
     std::string_view client_id,
-    std::string_view client_secret)
+    std::string_view client_secret,
+    std::string_view encryption_key,
+    std::string_view cache_directory)
 {
     eos_clear_last_error();
 
@@ -183,6 +185,8 @@ gm_enums::EpicResult eos_platform_create(
     std::string deployment_id_storage(deployment_id);
     std::string client_id_storage(client_id);
     std::string client_secret_storage(client_secret);
+    std::string encryption_key_storage(encryption_key);
+    std::string cache_directory_storage(cache_directory);
 
     if (product_id_storage.empty()) {
         eos_set_last_error("EOS_Platform_Create: product_id is required.");
@@ -217,6 +221,8 @@ gm_enums::EpicResult eos_platform_create(
     opts.DeploymentId = deployment_id_storage.c_str();
     opts.ClientCredentials.ClientId = client_id_storage.c_str();
     opts.ClientCredentials.ClientSecret = client_secret_storage.c_str();
+    opts.EncryptionKey = encryption_key_storage.empty() ? nullptr : encryption_key_storage.c_str();
+    opts.CacheDirectory = cache_directory_storage.empty() ? nullptr : cache_directory_storage.c_str();
 
     EOS_HPlatform platform = EOS_Platform_Create(&opts);
     if (!platform) {

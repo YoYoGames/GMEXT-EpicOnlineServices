@@ -64,7 +64,9 @@ function eos_platform_create(
     sandbox_id: string,
     deployment_id: string,
     client_id: string,
-    client_secret: string
+    client_secret: string,
+    encryption_key: string,
+    cache_directory: string
 ): gmval;
 
 [global, bind = typed_gml]
@@ -3188,9 +3190,6 @@ class `[[EpicPlayerDataStorageReadFileCallbackInfo]]` prototype Object
 
     [field]
     property filename : string { get; set; }
-
-    [field]
-    property data : string { get; set; }
 }
 
 [global]
@@ -3204,6 +3203,38 @@ class `[[EpicPlayerDataStorageWriteFileCallbackInfo]]` prototype Object
 
     [field]
     property filename : string { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageReadFileProgressCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property filename : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property bytes_transferred : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property total_file_size_bytes : gmval { get; set; }
+}
+
+[global]
+class `[[EpicPlayerDataStorageWriteFileProgressCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property filename : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property bytes_transferred : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property total_file_size_bytes : gmval { get; set; }
 }
 
 [global]
@@ -3238,10 +3269,10 @@ function eos_playerdatastorage_duplicate_file(local_user_id: string, source_file
 function eos_playerdatastorage_delete_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_read_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
+function eos_playerdatastorage_read_file(local_user_id: string, filename: string, output_path: string, [type_hint=`func?`] callback: gmval, [type_hint=`func?`] progress_callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_playerdatastorage_write_file(local_user_id: string, filename: string, data_base64: string, [type_hint=`func?`] callback: gmval): unit;
+function eos_playerdatastorage_write_file(local_user_id: string, filename: string, input_path: string, [type_hint=`func?`] callback: gmval, [type_hint=`func?`] progress_callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_playerdatastorage_delete_cache(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
@@ -3305,9 +3336,22 @@ class `[[EpicTitleStorageReadFileCallbackInfo]]` prototype Object
 
     [field]
     property filename : string { get; set; }
+}
+
+[global]
+class `[[EpicTitleStorageReadFileProgressCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
 
     [field]
-    property data : string { get; set; }
+    property filename : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property bytes_transferred : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property total_file_size_bytes : gmval { get; set; }
 }
 
 [global]
@@ -3336,7 +3380,7 @@ function eos_titlestorage_copy_file_metadata_at_index(local_user_id: string, ind
 function eos_titlestorage_copy_file_metadata_by_filename(local_user_id: string, filename: string): gmval;
 
 [global, bind = typed_gml]
-function eos_titlestorage_read_file(local_user_id: string, filename: string, [type_hint=`func?`] callback: gmval): unit;
+function eos_titlestorage_read_file(local_user_id: string, filename: string, output_path: string, [type_hint=`func?`] callback: gmval, [type_hint=`func?`] progress_callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_titlestorage_delete_cache(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;

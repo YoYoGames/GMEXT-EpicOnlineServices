@@ -20,7 +20,31 @@
       "Bash(grep -E \"^\\\\s*\\\\[field\\\\]\\\\s*$\" spec.gmidl -A1)",
       "Bash(git ls-tree *)",
       "Bash(ls \"C:\\\\Users\\\\jzavala\\\\Desktop\" 2>&1 | head -30)",
-      "Read(//c/Users/jzavala/Desktop/**)"
+      "Read(//c/Users/jzavala/Desktop/**)",
+      "Bash(dir /B \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\objects\")"
+    ],
+    "additionalDirectories": [
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_member_kick",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_member_promote",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_member_mute",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_Friend",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_lobby",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_p2p",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_p2p_friend",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_player_data_storage_read",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_player_data_storage_file_download",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_player_data_storage_file_upload",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_player_data_storage_file_download_cancel",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_player_data_storage_file_upload_cancel",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_title_storage_controller",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_title_storage_file",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_title_storage_file_cancel",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_search",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_session",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_create",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_controller"
     ]
   }
 }

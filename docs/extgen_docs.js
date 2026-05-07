@@ -92,6 +92,8 @@
  * @param {String} deployment_id
  * @param {String} client_id
  * @param {String} client_secret
+ * @param {String} encryption_key
+ * @param {String} cache_directory
  * @returns {Enum.EpicResult} 
  * @function_end 
  */
@@ -2190,7 +2192,9 @@
  * @function_partial eos_playerdatastorage_read_file
  * @param {String} local_user_id
  * @param {String} filename
+ * @param {String} output_path
  * @param {Function} [callback]
+ * @param {Function} [progress_callback]
  * @function_end 
  */
 
@@ -2198,8 +2202,9 @@
  * @function_partial eos_playerdatastorage_write_file
  * @param {String} local_user_id
  * @param {String} filename
- * @param {String} data_base64
+ * @param {String} input_path
  * @param {Function} [callback]
+ * @param {Function} [progress_callback]
  * @function_end 
  */
 
@@ -2253,7 +2258,9 @@
  * @function_partial eos_titlestorage_read_file
  * @param {String} local_user_id
  * @param {String} filename
+ * @param {String} output_path
  * @param {Function} [callback]
+ * @param {Function} [progress_callback]
  * @function_end 
  */
 
@@ -4043,7 +4050,6 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} filename
- * @member {String} data
  * @struct_end 
  */
 
@@ -4052,6 +4058,24 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} filename
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicPlayerDataStorageReadFileProgressCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} filename
+ * @member {Real} bytes_transferred
+ * @member {Real} total_file_size_bytes
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicPlayerDataStorageWriteFileProgressCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} filename
+ * @member {Real} bytes_transferred
+ * @member {Real} total_file_size_bytes
  * @struct_end 
  */
 
@@ -4091,7 +4115,15 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} filename
- * @member {String} data
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicTitleStorageReadFileProgressCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} filename
+ * @member {Real} bytes_transferred
+ * @member {Real} total_file_size_bytes
  * @struct_end 
  */
 

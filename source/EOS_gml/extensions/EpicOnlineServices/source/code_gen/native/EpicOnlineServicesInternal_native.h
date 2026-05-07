@@ -969,11 +969,14 @@ namespace gm_structs
     struct EpicPlayerDataStorageDeleteFileCallbackInfo;
     struct EpicPlayerDataStorageReadFileCallbackInfo;
     struct EpicPlayerDataStorageWriteFileCallbackInfo;
+    struct EpicPlayerDataStorageReadFileProgressCallbackInfo;
+    struct EpicPlayerDataStorageWriteFileProgressCallbackInfo;
     struct EpicPlayerDataStorageDeleteCacheCallbackInfo;
     struct EpicTitleStorageFileMetadata;
     struct EpicTitleStorageQueryFileCallbackInfo;
     struct EpicTitleStorageQueryFileListCallbackInfo;
     struct EpicTitleStorageReadFileCallbackInfo;
+    struct EpicTitleStorageReadFileProgressCallbackInfo;
     struct EpicTitleStorageDeleteCacheCallbackInfo;
     struct EpicEcomEntitlement;
     struct EpicEcomItemOwnership;
@@ -1960,7 +1963,6 @@ namespace gm_structs
         gm_enums::EpicResult result_code;
         std::string local_user_id;
         std::string filename;
-        std::string data;
     };
 
     struct EpicPlayerDataStorageWriteFileCallbackInfo
@@ -1968,6 +1970,22 @@ namespace gm_structs
         gm_enums::EpicResult result_code;
         std::string local_user_id;
         std::string filename;
+    };
+
+    struct EpicPlayerDataStorageReadFileProgressCallbackInfo
+    {
+        std::string local_user_id;
+        std::string filename;
+        std::int64_t bytes_transferred;
+        std::int64_t total_file_size_bytes;
+    };
+
+    struct EpicPlayerDataStorageWriteFileProgressCallbackInfo
+    {
+        std::string local_user_id;
+        std::string filename;
+        std::int64_t bytes_transferred;
+        std::int64_t total_file_size_bytes;
     };
 
     struct EpicPlayerDataStorageDeleteCacheCallbackInfo
@@ -2002,7 +2020,14 @@ namespace gm_structs
         gm_enums::EpicResult result_code;
         std::string local_user_id;
         std::string filename;
-        std::string data;
+    };
+
+    struct EpicTitleStorageReadFileProgressCallbackInfo
+    {
+        std::string local_user_id;
+        std::string filename;
+        std::int64_t bytes_transferred;
+        std::int64_t total_file_size_bytes;
     };
 
     struct EpicTitleStorageDeleteCacheCallbackInfo
@@ -4782,7 +4807,6 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.result_code);
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
         gm::wire::codec::writeValue(_buf, obj.filename);
-        gm::wire::codec::writeValue(_buf, obj.data);
     }
 
     template<>
@@ -4792,7 +4816,6 @@ namespace gm::wire::codec
         obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.filename = gm::wire::codec::readValue<std::string>(_buf);
-        obj.data = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
 
@@ -4811,6 +4834,46 @@ namespace gm::wire::codec
         obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.filename = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicPlayerDataStorageReadFileProgressCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicPlayerDataStorageReadFileProgressCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.filename);
+        gm::wire::codec::writeValue(_buf, obj.bytes_transferred);
+        gm::wire::codec::writeValue(_buf, obj.total_file_size_bytes);
+    }
+
+    template<>
+    inline gm_structs::EpicPlayerDataStorageReadFileProgressCallbackInfo readValue<gm_structs::EpicPlayerDataStorageReadFileProgressCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicPlayerDataStorageReadFileProgressCallbackInfo obj;
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.filename = gm::wire::codec::readValue<std::string>(_buf);
+        obj.bytes_transferred = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.total_file_size_bytes = gm::wire::codec::readValue<std::int64_t>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicPlayerDataStorageWriteFileProgressCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicPlayerDataStorageWriteFileProgressCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.filename);
+        gm::wire::codec::writeValue(_buf, obj.bytes_transferred);
+        gm::wire::codec::writeValue(_buf, obj.total_file_size_bytes);
+    }
+
+    template<>
+    inline gm_structs::EpicPlayerDataStorageWriteFileProgressCallbackInfo readValue<gm_structs::EpicPlayerDataStorageWriteFileProgressCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicPlayerDataStorageWriteFileProgressCallbackInfo obj;
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.filename = gm::wire::codec::readValue<std::string>(_buf);
+        obj.bytes_transferred = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.total_file_size_bytes = gm::wire::codec::readValue<std::int64_t>(_buf);
         return obj;
     }
 
@@ -4890,7 +4953,6 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.result_code);
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
         gm::wire::codec::writeValue(_buf, obj.filename);
-        gm::wire::codec::writeValue(_buf, obj.data);
     }
 
     template<>
@@ -4900,7 +4962,26 @@ namespace gm::wire::codec
         obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.filename = gm::wire::codec::readValue<std::string>(_buf);
-        obj.data = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicTitleStorageReadFileProgressCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicTitleStorageReadFileProgressCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.filename);
+        gm::wire::codec::writeValue(_buf, obj.bytes_transferred);
+        gm::wire::codec::writeValue(_buf, obj.total_file_size_bytes);
+    }
+
+    template<>
+    inline gm_structs::EpicTitleStorageReadFileProgressCallbackInfo readValue<gm_structs::EpicTitleStorageReadFileProgressCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicTitleStorageReadFileProgressCallbackInfo obj;
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.filename = gm::wire::codec::readValue<std::string>(_buf);
+        obj.bytes_transferred = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.total_file_size_bytes = gm::wire::codec::readValue<std::int64_t>(_buf);
         return obj;
     }
 
@@ -6795,381 +6876,402 @@ namespace gm::wire::details
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDeleteCacheCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageReadFileProgressCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 136;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageFileMetadata>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageWriteFileProgressCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 137;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicPlayerDataStorageDeleteCacheCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 138;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileListCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageFileMetadata>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 139;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageReadFileCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 140;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicTitleStorageDeleteCacheCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageQueryFileListCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 141;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomEntitlement>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageReadFileCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 142;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomItemOwnership>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageReadFileProgressCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 143;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomSandboxIdItemOwnership>
+    struct gm_struct_traits<gm_structs::EpicTitleStorageDeleteCacheCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 144;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCatalogOffer>
+    struct gm_struct_traits<gm_structs::EpicEcomEntitlement>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 145;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCatalogItem>
+    struct gm_struct_traits<gm_structs::EpicEcomItemOwnership>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 146;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomKeyImageInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomSandboxIdItemOwnership>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 147;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCatalogRelease>
+    struct gm_struct_traits<gm_structs::EpicEcomCatalogOffer>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 148;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomCatalogItem>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 149;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipBySandboxIdsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomKeyImageInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 150;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipTokenCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomCatalogRelease>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 151;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 152;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementTokenCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipBySandboxIdsCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 153;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomQueryOffersCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOwnershipTokenCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 154;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomCheckoutCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementsCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 155;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicEcomRedeemEntitlementsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryEntitlementTokenCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 156;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomInviteCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomQueryOffersCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 157;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomCheckoutCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 158;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteAcceptedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicEcomRedeemEntitlementsCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 159;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteRejectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomInviteCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 160;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendRequestToJoinCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 161;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteAcceptedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 162;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesCustomInviteRejectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 163;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesAcceptRequestToJoinCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendRequestToJoinCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 164;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRejectRequestToJoinCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 165;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 166;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinAcceptedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesAcceptRequestToJoinCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 167;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinRejectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRejectRequestToJoinCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 168;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 169;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCLeaveRoomCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinAcceptedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 170;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCBlockParticipantCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicCustomInvitesRequestToJoinRejectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 171;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCDisconnectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 172;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCLeaveRoomCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 173;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCRoomStatisticsUpdatedInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCBlockParticipantCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 174;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioParticipantUpdatedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCDisconnectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 175;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioDevicesChangedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 176;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioInputStateCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCRoomStatisticsUpdatedInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 177;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputStateCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioParticipantUpdatedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 178;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioDevicesChangedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 179;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioInputStateCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 180;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingVolumeCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputStateCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 181;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingVolumeCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 182;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateParticipantVolumeCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 183;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioInputDeviceInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateSendingVolumeCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 184;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputDeviceInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateReceivingVolumeCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 185;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioSetInputDeviceSettingsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUpdateParticipantVolumeCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 186;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioSetOutputDeviceSettingsCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioInputDeviceInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 187;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryInputDevicesCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioOutputDeviceInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 188;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryOutputDevicesCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioSetInputDeviceSettingsCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 189;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioSetOutputDeviceSettingsCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 190;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryInputDevicesCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 191;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioQueryOutputDevicesCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 192;
     };
 
 }
@@ -7187,7 +7289,7 @@ std::string eos_api_network_status_to_string(gm_enums::EpicNetworkStatus status)
 bool eos_api_epic_account_id_is_valid(std::string_view account_id);
 bool eos_api_product_user_id_is_valid(std::string_view product_user_id);
 bool eos_platform_is_created();
-gm_enums::EpicResult eos_platform_create(bool is_server, std::string_view product_id, std::string_view sandbox_id, std::string_view deployment_id, std::string_view client_id, std::string_view client_secret);
+gm_enums::EpicResult eos_platform_create(bool is_server, std::string_view product_id, std::string_view sandbox_id, std::string_view deployment_id, std::string_view client_id, std::string_view client_secret, std::string_view encryption_key, std::string_view cache_directory);
 void eos_platform_release();
 void eos_platform_tick();
 gm_enums::EpicResult eos_platform_check_for_launcher_and_restart();
@@ -7468,15 +7570,15 @@ gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_me
 gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_metadata_by_filename(std::string_view local_user_id, std::string_view filename);
 void eos_playerdatastorage_duplicate_file(std::string_view local_user_id, std::string_view source_filename, std::string_view destination_filename, const std::optional<gm::wire::GMFunction>& callback);
 void eos_playerdatastorage_delete_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
-void eos_playerdatastorage_read_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
-void eos_playerdatastorage_write_file(std::string_view local_user_id, std::string_view filename, std::string_view data_base64, const std::optional<gm::wire::GMFunction>& callback);
+void eos_playerdatastorage_read_file(std::string_view local_user_id, std::string_view filename, std::string_view output_path, const std::optional<gm::wire::GMFunction>& callback, const std::optional<gm::wire::GMFunction>& progress_callback);
+void eos_playerdatastorage_write_file(std::string_view local_user_id, std::string_view filename, std::string_view input_path, const std::optional<gm::wire::GMFunction>& callback, const std::optional<gm::wire::GMFunction>& progress_callback);
 void eos_playerdatastorage_delete_cache(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_titlestorage_query_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
 void eos_titlestorage_query_file_list(std::string_view local_user_id, const std::vector<std::string_view>& tags, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_titlestorage_get_file_metadata_count(std::string_view local_user_id);
 gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_at_index(std::string_view local_user_id, std::int64_t index);
 gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_by_filename(std::string_view local_user_id, std::string_view filename);
-void eos_titlestorage_read_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
+void eos_titlestorage_read_file(std::string_view local_user_id, std::string_view filename, std::string_view output_path, const std::optional<gm::wire::GMFunction>& callback, const std::optional<gm::wire::GMFunction>& progress_callback);
 void eos_titlestorage_delete_cache(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_ownership(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_ownership_by_sandbox_ids(std::string_view local_user_id, const std::vector<std::string_view>& sandbox_ids, const std::optional<gm::wire::GMFunction>& callback);

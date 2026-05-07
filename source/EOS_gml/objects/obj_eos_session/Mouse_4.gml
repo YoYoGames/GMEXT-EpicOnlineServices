@@ -1,7 +1,6 @@
 
-eos_session_search_copy_search_result_by_index(index)
-var struct = eos_session_details_copy_info()
+var _details_id = eos_sessions_session_search_copy_search_result_by_index(global.session_search_id, index)
+var struct = eos_sessions_session_details_copy_info(_details_id)
 show_debug_message(struct)
-eos_sessions_join_session(true,global.product_user_id,obj_eos_sessions.SessionName)
-eos_session_details_release()
-
+eos_sessions_join_session(obj_eos_sessions.SessionName, global.product_user_id)
+eos_sessions_session_details_release(_details_id)

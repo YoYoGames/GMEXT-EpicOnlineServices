@@ -2,7 +2,7 @@
 switch(async_load[? "type"])
 {
 	case "eos_lobby_create_lobby":
-		show_debug_message("eos_lobby_create_lobby: " + EpicResult_to_string(async_load[? "status"]))
+		show_debug_message("eos_lobby_create_lobby: " + eos_api_result_to_string(async_load[? "status"]))
 		if(async_load[? "status"] == EpicResult.Success)
 		{
 			lobby_id = async_load[? "lobby_id"]
@@ -65,7 +65,7 @@ switch(async_load[? "type"])
 					{
 		                var buff = buffer_create(256,buffer_fixed,1)
 		                buffer_write(buff,buffer_u8,1)
-		                eos_p2p_send_packet(buff,buffer_tell(buff),true,false,noone,global.product_user_id,true,_user_id,obj_eos_lobbies_p2p.socketName)
+		                eos_p2p_send_packet(global.product_user_id, _user_id, obj_eos_lobbies_p2p.socketName, 0, buff, buffer_tell(buff), true, EpicPacketReliability.ReliableOrdered, false)
 		                buffer_delete(buff)
 					}
 	            }
@@ -86,7 +86,14 @@ switch(async_load[? "type"])
 	
 		if(eos_lobby_copy_lobby_details_handle_by_invite_id(async_load[? "invite_id"]) == EpicResult.Success)
 		{
-			eos_lobby_join_lobby(global.product_user_id,true,true,true,false,false,false,0/*EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL or EOS_RTC_JOINROOMFLAGS_ENABLE_ECHO*/)
+			var _info = eos_lobby_details_copy_info()
+
+			var _opts = new EpicLobbyJoinLobbyOptions()
+			_opts.lobby_id = _info.lobby_id
+			_opts.local_user_id = global.product_user_id
+			_opts.presence_enabled = true
+
+			eos_lobby_join_lobby(_opts)
 			eos_lobby_details_release()
 		}
 		

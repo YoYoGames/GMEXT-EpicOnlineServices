@@ -1,6 +1,9 @@
 
-show_debug_message($"eos_lobby_send_invite {data}")
+show_debug_message($"eos_lobby_send_invite {data}");
 
-var result = eos_lobby_send_invite(obj_eos_lobbies.lobby_id,global.product_user_id,data.user_id)
-show_debug_message(result)
+var _opts = new EpicLobbySendInviteOptions();
+_opts.lobby_id = obj_eos_lobbies.lobby_id;
+_opts.local_user_id = global.product_user_id;
+_opts.target_user_id = data.user_id;
 
+eos_lobby_send_invite(_opts);

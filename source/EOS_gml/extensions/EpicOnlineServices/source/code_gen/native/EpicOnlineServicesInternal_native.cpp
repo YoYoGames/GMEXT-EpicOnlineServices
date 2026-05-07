@@ -159,7 +159,13 @@ GMEXPORT double __EXT_NATIVE__eos_platform_create(char* __arg_buffer, double __a
     // field: client_secret, type: String
     std::string_view client_secret = gm::wire::codec::readValue<std::string_view>(__br);
 
-    auto&& __result = eos_platform_create(is_server, product_id, sandbox_id, deployment_id, client_id, client_secret);
+    // field: encryption_key, type: String
+    std::string_view encryption_key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: cache_directory, type: String
+    std::string_view cache_directory = gm::wire::codec::readValue<std::string_view>(__br);
+
+    auto&& __result = eos_platform_create(is_server, product_id, sandbox_id, deployment_id, client_id, client_secret, encryption_key, cache_directory);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -4737,6 +4743,9 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_read_file(char* __arg_buffer
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
+    // field: output_path, type: String
+    std::string_view output_path = gm::wire::codec::readValue<std::string_view>(__br);
+
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -4744,7 +4753,14 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_read_file(char* __arg_buffer
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_playerdatastorage_read_file(local_user_id, filename, callback);
+    // field: progress_callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> progress_callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        progress_callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    eos_playerdatastorage_read_file(local_user_id, filename, output_path, callback, progress_callback);
     return 0;
 }
 
@@ -4758,8 +4774,8 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_write_file(char* __arg_buffe
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: data_base64, type: String
-    std::string_view data_base64 = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: input_path, type: String
+    std::string_view input_path = gm::wire::codec::readValue<std::string_view>(__br);
 
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
@@ -4768,7 +4784,14 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_write_file(char* __arg_buffe
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_playerdatastorage_write_file(local_user_id, filename, data_base64, callback);
+    // field: progress_callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> progress_callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        progress_callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    eos_playerdatastorage_write_file(local_user_id, filename, input_path, callback, progress_callback);
     return 0;
 }
 
@@ -4880,6 +4903,9 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_read_file(char* __arg_buffer, dou
     // field: filename, type: String
     std::string_view filename = gm::wire::codec::readValue<std::string_view>(__br);
 
+    // field: output_path, type: String
+    std::string_view output_path = gm::wire::codec::readValue<std::string_view>(__br);
+
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -4887,7 +4913,14 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_read_file(char* __arg_buffer, dou
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_titlestorage_read_file(local_user_id, filename, callback);
+    // field: progress_callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> progress_callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        progress_callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    eos_titlestorage_read_file(local_user_id, filename, output_path, callback, progress_callback);
     return 0;
 }
 

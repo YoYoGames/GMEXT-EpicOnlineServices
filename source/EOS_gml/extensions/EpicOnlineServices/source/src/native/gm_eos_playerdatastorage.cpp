@@ -5,6 +5,9 @@
 #include <eos_playerdatastorage.h>
 
 #include <cstdint>
+#include <cstring>
+#include <fstream>
+#include <ios>
 #include <mutex>
 #include <optional>
 #include <string>
@@ -28,19 +31,43 @@ struct EOSAsyncCallbackContext
 struct EOSPDSReadContext
 {
     std::optional<GMFunction> callback;
+    std::optional<GMFunction> progress_callback;
     std::string local_user_id;
     std::string filename;
+    std::string output_path;
     std::vector<uint8_t> data;
 };
 
 struct EOSPDSWriteContext
 {
     std::optional<GMFunction> callback;
+    std::optional<GMFunction> progress_callback;
     std::string local_user_id;
     std::string filename;
     std::vector<uint8_t> data;
     size_t write_offset = 0;
 };
+
+static void eos_pds_write_entire_file(const std::string& path, const std::vector<uint8_t>& buf)
+{
+    std::ofstream f(path, std::ios::binary | std::ios::trunc);
+    if (!f.is_open()) return;
+    if (!buf.empty())
+        f.write(reinterpret_cast<const char*>(buf.data()), static_cast<std::streamsize>(buf.size()));
+}
+
+static std::vector<uint8_t> eos_pds_read_entire_file(const std::string& path)
+{
+    std::vector<uint8_t> out;
+    std::ifstream f(path, std::ios::binary | std::ios::ate);
+    if (!f.is_open()) return out;
+    std::streamsize sz = f.tellg();
+    if (sz <= 0) return out;
+    out.resize((size_t)sz);
+    f.seekg(0, std::ios::beg);
+    f.read(reinterpret_cast<char*>(out.data()), sz);
+    return out;
+}
 
 static EOS_HPlayerDataStorage eos_pds_iface()
 {
@@ -63,67 +90,6 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
     if (EOS_ProductUserId_ToString(id, buf, &len) != EOS_EResult::EOS_Success)
         return std::string();
     return std::string(buf);
-}
-
-// ---- Base64 ----
-
-static const char k_b64_chars[] =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-static std::string base64_encode(const void* data, size_t len)
-{
-    const auto* src = static_cast<const uint8_t*>(data);
-    std::string out;
-    out.reserve(((len + 2) / 3) * 4);
-    for (size_t i = 0; i < len; i += 3) {
-        uint32_t b = (uint32_t)src[i] << 16;
-        if (i + 1 < len) b |= (uint32_t)src[i + 1] << 8;
-        if (i + 2 < len) b |= src[i + 2];
-        out += k_b64_chars[(b >> 18) & 0x3f];
-        out += k_b64_chars[(b >> 12) & 0x3f];
-        out += (i + 1 < len) ? k_b64_chars[(b >> 6) & 0x3f] : '=';
-        out += (i + 2 < len) ? k_b64_chars[b & 0x3f] : '=';
-    }
-    return out;
-}
-
-static std::vector<uint8_t> base64_decode(std::string_view encoded)
-{
-    static const int8_t lut[256] = {
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,62,-1,-1,-1,63,
-        52,53,54,55,56,57,58,59,60,61,-1,-1,-1,-1,-1,-1,
-        -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,
-        15,16,17,18,19,20,21,22,23,24,25,-1,-1,-1,-1,-1,
-        -1,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-        41,42,43,44,45,46,47,48,49,50,51,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
-    };
-    std::vector<uint8_t> out;
-    out.reserve((encoded.size() / 4) * 3);
-    uint32_t buf = 0;
-    int bits = 0;
-    for (char c : encoded) {
-        if (c == '=') break;
-        int8_t v = lut[(uint8_t)c];
-        if (v < 0) continue;
-        buf = (buf << 6) | (uint32_t)v;
-        bits += 6;
-        if (bits >= 8) {
-            bits -= 8;
-            out.push_back((uint8_t)(buf >> bits));
-            buf &= (1u << bits) - 1u;
-        }
-    }
-    return out;
 }
 
 // ---- FileMetadata conversion ----
@@ -232,6 +198,21 @@ static EOS_PlayerDataStorage_EReadResult EOS_CALL eos_pds_read_data_callback(
     return EOS_PlayerDataStorage_EReadResult::EOS_RR_ContinueReading;
 }
 
+static void EOS_CALL eos_pds_read_file_progress_callback_native(
+    const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSPDSReadContext*>(data->ClientData);
+    if (!ctx || !ctx->progress_callback) return;
+
+    gm_structs::EpicPlayerDataStorageReadFileProgressCallbackInfo out{};
+    out.local_user_id = ctx->local_user_id;
+    out.filename = ctx->filename;
+    out.bytes_transferred = (int64_t)data->BytesTransferred;
+    out.total_file_size_bytes = (int64_t)data->TotalFileSizeBytes;
+    ctx->progress_callback.value().call(out);
+}
+
 static void EOS_CALL eos_pds_read_file_callback_native(
     const EOS_PlayerDataStorage_ReadFileCallbackInfo* data)
 {
@@ -239,12 +220,13 @@ static void EOS_CALL eos_pds_read_file_callback_native(
     auto* ctx = static_cast<EOSPDSReadContext*>(data->ClientData);
     if (!ctx) return;
 
+    if (data->ResultCode == EOS_EResult::EOS_Success && !ctx->output_path.empty())
+        eos_pds_write_entire_file(ctx->output_path, ctx->data);
+
     gm_structs::EpicPlayerDataStorageReadFileCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = ctx->local_user_id;
     out.filename = ctx->filename;
-    if (data->ResultCode == EOS_EResult::EOS_Success && !ctx->data.empty())
-        out.data = base64_encode(ctx->data.data(), ctx->data.size());
     if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
@@ -276,6 +258,21 @@ static EOS_PlayerDataStorage_EWriteResult EOS_CALL eos_pds_write_data_callback(
     if (ctx->write_offset >= ctx->data.size())
         return EOS_PlayerDataStorage_EWriteResult::EOS_WR_CompleteRequest;
     return EOS_PlayerDataStorage_EWriteResult::EOS_WR_ContinueWriting;
+}
+
+static void EOS_CALL eos_pds_write_file_progress_callback_native(
+    const EOS_PlayerDataStorage_FileTransferProgressCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSPDSWriteContext*>(data->ClientData);
+    if (!ctx || !ctx->progress_callback) return;
+
+    gm_structs::EpicPlayerDataStorageWriteFileProgressCallbackInfo out{};
+    out.local_user_id = ctx->local_user_id;
+    out.filename = ctx->filename;
+    out.bytes_transferred = (int64_t)data->BytesTransferred;
+    out.total_file_size_bytes = (int64_t)data->TotalFileSizeBytes;
+    ctx->progress_callback.value().call(out);
 }
 
 static void EOS_CALL eos_pds_write_file_callback_native(
@@ -501,7 +498,9 @@ void eos_playerdatastorage_delete_file(
 void eos_playerdatastorage_read_file(
     std::string_view local_user_id,
     std::string_view filename,
-    const std::optional<gm::wire::GMFunction>& callback)
+    std::string_view output_path,
+    const std::optional<gm::wire::GMFunction>& callback,
+    const std::optional<gm::wire::GMFunction>& progress_callback)
 {
     EOS_GUARD();
 
@@ -517,8 +516,10 @@ void eos_playerdatastorage_read_file(
 
     auto* ctx = new EOSPDSReadContext{};
     ctx->callback = callback;
+    ctx->progress_callback = progress_callback;
     ctx->local_user_id = eos_product_user_id_to_string_internal(local_user);
     ctx->filename = fn;
+    ctx->output_path = std::string(output_path);
 
     EOS_PlayerDataStorage_ReadFileOptions opts{};
     opts.ApiVersion = EOS_PLAYERDATASTORAGE_READFILE_API_LATEST;
@@ -526,23 +527,24 @@ void eos_playerdatastorage_read_file(
     opts.Filename = fn.c_str();
     opts.ReadChunkLengthBytes = 4096;
     opts.ReadFileDataCallback = &eos_pds_read_data_callback;
-    opts.FileTransferProgressCallback = nullptr;
+    opts.FileTransferProgressCallback = progress_callback ? &eos_pds_read_file_progress_callback_native : nullptr;
 
     EOS_HPlayerDataStorageFileTransferRequest req = EOS_PlayerDataStorage_ReadFile(
         pds, &opts, ctx, &eos_pds_read_file_callback_native);
 
     if (!req) {
+        // EOS still queues the completion callback with our ctx even when it returns null,
+        // so we MUST NOT delete ctx here — the callback owns the lifetime.
         eos_set_last_error("EOS_PlayerDataStorage_ReadFile: failed to start transfer.");
-        delete ctx;
     }
-    // req handle is released automatically by the SDK when the transfer completes
 }
 
 void eos_playerdatastorage_write_file(
     std::string_view local_user_id,
     std::string_view filename,
-    std::string_view data_base64,
-    const std::optional<gm::wire::GMFunction>& callback)
+    std::string_view input_path,
+    const std::optional<gm::wire::GMFunction>& callback,
+    const std::optional<gm::wire::GMFunction>& progress_callback)
 {
     EOS_GUARD();
 
@@ -551,16 +553,24 @@ void eos_playerdatastorage_write_file(
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
     std::string fn(filename);
-    if (!local_user || fn.empty()) {
+    std::string in_path(input_path);
+    if (!local_user || fn.empty() || in_path.empty()) {
         eos_set_last_error("EOS_PlayerDataStorage_WriteFile: invalid parameters.");
         return;
     }
 
     auto* ctx = new EOSPDSWriteContext{};
     ctx->callback = callback;
+    ctx->progress_callback = progress_callback;
     ctx->local_user_id = eos_product_user_id_to_string_internal(local_user);
     ctx->filename = fn;
-    ctx->data = base64_decode(data_base64);
+    ctx->data = eos_pds_read_entire_file(in_path);
+
+    if (ctx->data.empty()) {
+        eos_set_last_error("EOS_PlayerDataStorage_WriteFile: input file is empty or could not be read.");
+        delete ctx;
+        return;
+    }
 
     EOS_PlayerDataStorage_WriteFileOptions opts{};
     opts.ApiVersion = EOS_PLAYERDATASTORAGE_WRITEFILE_API_LATEST;
@@ -568,14 +578,14 @@ void eos_playerdatastorage_write_file(
     opts.Filename = fn.c_str();
     opts.ChunkLengthBytes = 4096;
     opts.WriteFileDataCallback = &eos_pds_write_data_callback;
-    opts.FileTransferProgressCallback = nullptr;
+    opts.FileTransferProgressCallback = progress_callback ? &eos_pds_write_file_progress_callback_native : nullptr;
 
     EOS_HPlayerDataStorageFileTransferRequest req = EOS_PlayerDataStorage_WriteFile(
         pds, &opts, ctx, &eos_pds_write_file_callback_native);
 
     if (!req) {
+        // EOS still queues the completion callback with our ctx even when it returns null.
         eos_set_last_error("EOS_PlayerDataStorage_WriteFile: failed to start transfer.");
-        delete ctx;
     }
 }
 
