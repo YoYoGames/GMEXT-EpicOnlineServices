@@ -937,22 +937,13 @@ std::string eos_connect_get_external_account_mapping(
     opts.ApiVersion = EOS_CONNECT_GETEXTERNALACCOUNTMAPPINGS_API_LATEST;
     opts.LocalUserId = local_user;
     opts.AccountIdType = (EOS_EExternalAccountType)account_id_type;
-    //TODO
-    // opts.TargetExternalUserIds = nullptr;
-    // opts.TargetExternalUserIdsCount = 0;
+    opts.TargetExternalUserId = target_external_user_id_storage.c_str();
 
-    // EOS_GetExternalAccountMapping is indexed through queried mappings; this wrapper
-    // returns the first direct match from a queried single target if your SDK supports it.
-    // If your SDK expects cached query results only, move this to the query-mappings pass.
-    // EOS_ProductUserId id = EOS_Connect_GetExternalAccountMapping(
-    //     connect,
-    //     local_user,
-    //     (EOS_EExternalAccountType)account_id_type,
-    //     target_external_user_id_storage.c_str());
-
-    // return eos_product_user_id_to_string_internal(id);
-
-    return "";
+    // Reads the mapping that was cached by an earlier call to
+    // EOS_Connect_QueryExternalAccountMappings. Returns invalid (-> empty string)
+    // if the mapping isn't cached or the external account isn't linked.
+    EOS_ProductUserId id = EOS_Connect_GetExternalAccountMapping(connect, &opts);
+    return eos_product_user_id_to_string_internal(id);
 }
 
 void eos_connect_verify_id_token(std::string_view json_web_token, const std::optional<gm::wire::GMFunction>& callback)
