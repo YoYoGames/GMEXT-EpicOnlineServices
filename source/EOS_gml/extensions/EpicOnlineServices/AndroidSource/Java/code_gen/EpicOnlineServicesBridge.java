@@ -246,6 +246,8 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_lobby_lobby_search_copy_search_result_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_details_release(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_lobby_copy_lobby_details_handle(String lobby_id, String local_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_copy_lobby_details_handle_by_invite_id(String invite_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_copy_lobby_details_handle_by_ui_event_id(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_details_copy_info(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_details_get_member_count(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native String __EXT_JNI__eos_lobby_details_get_member_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length);

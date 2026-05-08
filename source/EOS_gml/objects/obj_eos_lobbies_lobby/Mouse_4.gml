@@ -4,7 +4,7 @@ _opts.lobby_id         = lobby_id
 _opts.local_user_id    = global.product_user_id
 _opts.presence_enabled = true
 
-eos_lobby_join_lobby_by_id(_opts, method(self, function(_info)
+eos_lobby_join_lobby_by_id(_opts, function(_info)
 {
 	// EpicLobbyJoinLobbyCallbackInfo: .result_code, .lobby_id
 	if(_info.result_code != EpicResult.Success)
@@ -48,4 +48,4 @@ eos_lobby_join_lobby_by_id(_opts, method(self, function(_info)
 			eos_lobby_details_release(_details)
 		}
 	}
-}))
+})

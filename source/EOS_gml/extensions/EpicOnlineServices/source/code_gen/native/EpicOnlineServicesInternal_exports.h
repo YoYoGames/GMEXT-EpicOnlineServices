@@ -236,6 +236,8 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_get_search_result_count(cha
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_copy_search_result_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_details_release(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_copy_lobby_details_handle(char* lobby_id, char* local_user_id, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_invite_id(char* invite_id, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_ui_event_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_info(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_details_get_member_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT char* __EXT_NATIVE__eos_lobby_details_get_member_by_index(char* __arg_buffer, double __arg_buffer_length);

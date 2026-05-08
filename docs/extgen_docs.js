@@ -1680,6 +1680,20 @@
  */
 
 /**
+ * @function_partial eos_lobby_copy_lobby_details_handle_by_invite_id
+ * @param {String} invite_id
+ * @returns {Real} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_lobby_copy_lobby_details_handle_by_ui_event_id
+ * @param {Real} ui_event_id
+ * @returns {Real} 
+ * @function_end 
+ */
+
+/**
  * @function_partial eos_lobby_details_copy_info
  * @param {Real} lobby_details_id
  * @returns {Struct.EpicLobbyDetailsInfo} 

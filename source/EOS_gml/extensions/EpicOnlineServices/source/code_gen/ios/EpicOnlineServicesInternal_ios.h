@@ -230,6 +230,8 @@
 - (double)__EXT_NATIVE__eos_lobby_lobby_search_copy_search_result_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_details_release:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_copy_lobby_details_handle:(char*)lobby_id arg1:(char*)local_user_id arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_invite_id:(char*)invite_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_ui_event_id:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_details_copy_info:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_details_get_member_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (char*)__EXT_NATIVE__eos_lobby_details_get_member_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length;

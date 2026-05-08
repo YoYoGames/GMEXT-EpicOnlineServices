@@ -1509,6 +1509,62 @@ uint64_t eos_lobby_copy_lobby_details_handle(
     return eos_lobby_details_store(details);
 }
 
+uint64_t eos_lobby_copy_lobby_details_handle_by_invite_id(std::string_view invite_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return 0;
+    }
+
+    std::string invite_id_storage(invite_id);
+    if (invite_id_storage.empty()) {
+        eos_set_last_error("EOS_Lobby_CopyLobbyDetailsHandleByInviteId: invite_id is required.");
+        return 0;
+    }
+
+    EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYINVITEID_API_LATEST;
+    opts.InviteId = invite_id_storage.c_str();
+
+    EOS_HLobbyDetails details = nullptr;
+    const EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandleByInviteId(lobby, &opts, &details);
+    if (result != EOS_EResult::EOS_Success || details == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Lobby_CopyLobbyDetailsHandleByInviteId failed.");
+        return 0;
+    }
+
+    return eos_lobby_details_store(details);
+}
+
+uint64_t eos_lobby_copy_lobby_details_handle_by_ui_event_id(uint64_t ui_event_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return 0;
+    }
+
+    EOS_Lobby_CopyLobbyDetailsHandleByUiEventIdOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYUIEVENTID_API_LATEST;
+    opts.UiEventId = (EOS_UI_EventId)ui_event_id;
+
+    EOS_HLobbyDetails details = nullptr;
+    const EOS_EResult result = EOS_Lobby_CopyLobbyDetailsHandleByUiEventId(lobby, &opts, &details);
+    if (result != EOS_EResult::EOS_Success || details == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Lobby_CopyLobbyDetailsHandleByUiEventId failed.");
+        return 0;
+    }
+
+    return eos_lobby_details_store(details);
+}
+
 gm_structs::EpicLobbyDetailsInfo eos_lobby_details_copy_info(uint64_t lobby_details_id)
 {
     eos_clear_last_error();

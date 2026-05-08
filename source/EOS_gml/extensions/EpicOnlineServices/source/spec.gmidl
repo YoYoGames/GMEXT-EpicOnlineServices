@@ -2544,6 +2544,12 @@ class `[[EpicLobbySendLobbyNativeInviteRequestedCallbackInfo]]` prototype Object
 [global, bind = typed_gml, type_hint=`uint64`]
 function eos_lobby_copy_lobby_details_handle(lobby_id: string, local_user_id: string): gmval;
 
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_copy_lobby_details_handle_by_invite_id(invite_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_copy_lobby_details_handle_by_ui_event_id([type_hint=`uint64`] ui_event_id: gmval): gmval;
+
 // [global, bind = typed_gml]
 // function eos_lobby_details_release([type_hint=`uint64`] lobby_details_id: gmval): unit;
 

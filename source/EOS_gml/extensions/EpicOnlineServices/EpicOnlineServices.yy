@@ -4278,6 +4278,45 @@
         },
         {
           "$GMExtensionFunction": "",
+          "%Name": "__eos_lobby_copy_lobby_details_handle_by_invite_id",
+          "argCount": 3,
+          "args": [
+            1,
+            1,
+            2
+          ],
+          "documentation": "@param {String} invite_id\r\n@param {Pointer} _ret_buffer\r\n@param {Real} _ret_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_invite_id",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_lobby_copy_lobby_details_handle_by_invite_id",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
+          "%Name": "__eos_lobby_copy_lobby_details_handle_by_ui_event_id",
+          "argCount": 4,
+          "args": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@param {Pointer} _ret_buffer\r\n@param {Real} _ret_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_ui_event_id",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_lobby_copy_lobby_details_handle_by_ui_event_id",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
           "%Name": "__eos_lobby_details_copy_info",
           "argCount": 4,
           "args": [

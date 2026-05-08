@@ -7539,6 +7539,8 @@ std::int64_t eos_lobby_lobby_search_get_search_result_count(std::uint64_t search
 std::uint64_t eos_lobby_lobby_search_copy_search_result_by_index(std::uint64_t search_id, std::int64_t index);
 void eos_lobby_details_release(std::uint64_t lobby_details_id);
 std::uint64_t eos_lobby_copy_lobby_details_handle(std::string_view lobby_id, std::string_view local_user_id);
+std::uint64_t eos_lobby_copy_lobby_details_handle_by_invite_id(std::string_view invite_id);
+std::uint64_t eos_lobby_copy_lobby_details_handle_by_ui_event_id(std::uint64_t ui_event_id);
 gm_structs::EpicLobbyDetailsInfo eos_lobby_details_copy_info(std::uint64_t lobby_details_id);
 std::int64_t eos_lobby_details_get_member_count(std::uint64_t lobby_details_id);
 std::string eos_lobby_details_get_member_by_index(std::uint64_t lobby_details_id, std::int64_t index);

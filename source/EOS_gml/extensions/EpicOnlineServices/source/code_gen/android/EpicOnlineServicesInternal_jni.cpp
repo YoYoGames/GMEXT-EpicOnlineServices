@@ -3512,6 +3512,39 @@ static jdouble __JNI_WRAPPER__eos_lobby_copy_lobby_details_handle_D304A8B394DD(J
     return static_cast<jdouble>(__ret);
 }
 
+// eos_lobby_copy_lobby_details_handle_by_invite_id JNI wrapper signature: (Ljava/lang/String;Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_copy_lobby_details_handle_by_invite_id_BC05992A19A7(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring invite_id, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    UtfChars __pin_invite_id(env, invite_id);
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_invite_id((char *)__pin_invite_id.c_str(), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_lobby_copy_lobby_details_handle_by_ui_event_id JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_copy_lobby_details_handle_by_ui_event_id_1F6801F496FA(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_ui_event_id((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
 // eos_lobby_details_copy_info JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
 static jdouble __JNI_WRAPPER__eos_lobby_details_copy_info_3367EB3ABA2A(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
@@ -6427,6 +6460,8 @@ extern "C" {
             { "__EXT_JNI__eos_lobby_lobby_search_copy_search_result_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_copy_search_result_by_index_23EC63CD46F4 },
             { "__EXT_JNI__eos_lobby_details_release", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_details_release_0DBC22D84AEA },
             { "__EXT_JNI__eos_lobby_copy_lobby_details_handle", "(Ljava/lang/String;Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_copy_lobby_details_handle_D304A8B394DD },
+            { "__EXT_JNI__eos_lobby_copy_lobby_details_handle_by_invite_id", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_copy_lobby_details_handle_by_invite_id_BC05992A19A7 },
+            { "__EXT_JNI__eos_lobby_copy_lobby_details_handle_by_ui_event_id", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_copy_lobby_details_handle_by_ui_event_id_1F6801F496FA },
             { "__EXT_JNI__eos_lobby_details_copy_info", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_details_copy_info_3367EB3ABA2A },
             { "__EXT_JNI__eos_lobby_details_get_member_count", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_details_get_member_count_0E19BDCBA6A6 },
             { "__EXT_JNI__eos_lobby_details_get_member_by_index", "(Ljava/nio/ByteBuffer;D)Ljava/lang/String;", (void*)__JNI_WRAPPER__eos_lobby_details_get_member_by_index_0E4911B85AC1 },

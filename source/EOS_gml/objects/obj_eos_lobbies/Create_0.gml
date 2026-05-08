@@ -48,50 +48,64 @@ function request_update_members()
 }
 
 // Look up our own display name once at startup.
-eos_connect_query_product_user_id_mappings(global.product_user_id, EpicExternalAccountType.Epic, [global.product_user_id], method(self, function(_info)
+eos_connect_query_product_user_id_mappings(global.product_user_id, EpicExternalAccountType.Epic, [global.product_user_id], function(_info)
 {
 	if(_info.result_code != EpicResult.Success) return
 	var _struct = eos_connect_copy_product_user_external_account_by_index(global.product_user_id, 0)
 	mDisplayName = _struct.display_name
-}))
+})
 
 // ============================================================
 // Persistent notifications — these stay registered until CleanUp.
 // (One-shot results like create/join/leave are wired at the call site.)
 // ============================================================
 
-notifyJoinLobbyAccepted = eos_lobby_add_notify_join_lobby_accepted(method(self, function(_info)
+notifyJoinLobbyAccepted = eos_lobby_add_notify_join_lobby_accepted(function(_info)
 {
 	// EpicLobbyJoinLobbyAcceptedCallbackInfo: .ui_event_id
 	// (No body in the original example.)
-}))
+})
 
-notifyLeaveLobbyRequested = eos_lobby_add_notify_leave_lobby_requested(global.product_user_id, method(self, function(_info)
+notifyLeaveLobbyRequested = eos_lobby_add_notify_leave_lobby_requested(global.product_user_id, function(_info)
 {
 	// EpicLobbyLeaveLobbyRequestedCallbackInfo: .lobby_id, .local_user_id
 	// (No body in the original example.)
-}))
+})
 
-notifyLobbyInviteAccepted = eos_lobby_add_notify_lobby_invite_accepted(method(self, function(_info)
+notifyLobbyInviteAccepted = eos_lobby_add_notify_lobby_invite_accepted(function(_info)
 {
 	// EpicLobbyLobbyInviteAcceptedCallbackInfo: .invite_id, .local_user_id, .target_user_id
-	//TODO: needs eos_lobby_copy_lobby_details_handle_by_invite_id (not yet exposed in new extension)
-	// to pull lobby_id from the invite, then call eos_lobby_join_lobby with EpicLobbyJoinLobbyOptions.
 	show_debug_message($"lobby invite accepted: {_info.invite_id}")
-}))
 
-notifyLobbyInviteReceived = eos_lobby_add_notify_lobby_invite_received(method(self, function(_info)
+	var _details_id = eos_lobby_copy_lobby_details_handle_by_invite_id(_info.invite_id)
+	if(_details_id == 0)
+	{
+		show_debug_message("could not get lobby details from invite")
+		return
+	}
+
+	var _details = eos_lobby_details_copy_info(_details_id)
+	eos_lobby_details_release(_details_id)
+
+	var _opts = new EpicLobbyJoinLobbyOptions()
+	_opts.lobby_id         = _details.lobby_id
+	_opts.local_user_id    = global.product_user_id
+	_opts.presence_enabled = true
+	eos_lobby_join_lobby(_opts)
+})
+
+notifyLobbyInviteReceived = eos_lobby_add_notify_lobby_invite_received(function(_info)
 {
 	// EpicLobbyLobbyInviteReceivedCallbackInfo: .invite_id, .local_user_id, .target_user_id
-}))
+})
 
-notifyLobbyInviteRejected = eos_lobby_add_notify_lobby_invite_rejected(method(self, function(_info)
+notifyLobbyInviteRejected = eos_lobby_add_notify_lobby_invite_rejected(function(_info)
 {
 	// EpicLobbyLobbyInviteRejectedCallbackInfo: .invite_id, .local_user_id, .target_user_id
 	eos_lobby_reject_invite(_info.invite_id, global.product_user_id)
-}))
+})
 
-notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_received(global.product_user_id, method(self, function(_info)
+notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_received(global.product_user_id, function(_info)
 {
 	// EpicLobbyLobbyMemberStatusReceivedCallbackInfo:
 	//   .lobby_id, .target_user_id, .local_user_id, .current_status (EpicLobbyMemberStatus)
@@ -139,25 +153,25 @@ notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_recei
 			break
 		}
 	}
-}))
+})
 
-notifyLobbyMemberUpdateReceived = eos_lobby_add_notify_lobby_member_update_received(global.product_user_id, method(self, function(_info)
+notifyLobbyMemberUpdateReceived = eos_lobby_add_notify_lobby_member_update_received(global.product_user_id, function(_info)
 {
 	// EpicLobbyLobbyMemberUpdateReceivedCallbackInfo: .lobby_id, .target_user_id, .local_user_id
-}))
+})
 
-notifyLobbyUpdateReceived = eos_lobby_add_notify_lobby_update_received(global.product_user_id, method(self, function(_info)
+notifyLobbyUpdateReceived = eos_lobby_add_notify_lobby_update_received(global.product_user_id, function(_info)
 {
 	// EpicLobbyLobbyUpdateReceivedCallbackInfo: .lobby_id, .local_user_id
-}))
+})
 
-notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_invite_requested(global.product_user_id, method(self, function(_info)
+notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_invite_requested(global.product_user_id, function(_info)
 {
 	// EpicLobbySendLobbyNativeInviteRequestedCallbackInfo:
 	//   .lobby_id, .local_user_id, .target_native_account_type, .target_user_native_account_id
-}))
+})
 
-notifyRTCRoomConnectionChanged = eos_lobby_add_notify_rtc_room_connection_changed(method(self, function(_info)
+notifyRTCRoomConnectionChanged = eos_lobby_add_notify_rtc_room_connection_changed(function(_info)
 {
 	// EpicLobbyRTCRoomConnectionChangedCallbackInfo:
 	//   .lobby_id, .local_user_id, .is_connected (bool), .disconnect_reason (EpicResult)
@@ -165,4 +179,4 @@ notifyRTCRoomConnectionChanged = eos_lobby_add_notify_rtc_room_connection_change
 		show_debug_message($"RTC room connected (lobby {_info.lobby_id})")
 	else
 		show_debug_message($"RTC room disconnected (lobby {_info.lobby_id}): {eos_api_result_to_string(_info.disconnect_reason)}")
-}))
+})

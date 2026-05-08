@@ -996,6 +996,14 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_lobby_copy_lobby_details_handle(lobby_id, local_user_id, __ret_buffer, __ret_buffer_length);
 }
+- (double)__EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_invite_id:(char*)invite_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_invite_id(invite_id, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_ui_event_id:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_copy_lobby_details_handle_by_ui_event_id(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
 - (double)__EXT_NATIVE__eos_lobby_details_copy_info:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
     return __EXT_NATIVE__eos_lobby_details_copy_info(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);

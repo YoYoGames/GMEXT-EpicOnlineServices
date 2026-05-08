@@ -21763,6 +21763,42 @@ function eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id)
 }
 
 /**
+ * @param {String} _invite_id
+ * @returns {Real} 
+ */
+function eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id)
+{
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _ui_event_id
+ * @returns {Real} 
+ */
+function eos_lobby_copy_lobby_details_handle_by_ui_event_id(_ui_event_id)
+{
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _ui_event_id, type: UInt64
+    if (!is_numeric(_ui_event_id)) show_error($"{_GMFUNCTION_} :: _ui_event_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _ui_event_id);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_copy_lobby_details_handle_by_ui_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
  * @param {Real} _lobby_details_id
  * @returns {Struct.EpicLobbyDetailsInfo} 
  */

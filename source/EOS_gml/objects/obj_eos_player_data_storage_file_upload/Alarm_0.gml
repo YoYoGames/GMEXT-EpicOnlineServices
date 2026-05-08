@@ -15,7 +15,7 @@ eos_playerdatastorage_write_file(
     global.product_user_id,
     filename,
     working_directory + filename,
-    method(self, function(_info)
+    function(_info)
     {
         // EpicPlayerDataStorageWriteFileCallbackInfo: result_code, local_user_id, filename
         if (_info.result_code == EpicResult.Success)
@@ -28,11 +28,10 @@ eos_playerdatastorage_write_file(
 
         with (ins_cancel)
             instance_destroy()
-    }),
-    method(self, function(_info)
+    },
+    function(_info)
     {
         // EpicPlayerDataStorageWriteFileProgressCallbackInfo: bytes_transferred, total_file_size_bytes
         if (_info.total_file_size_bytes > 0)
             porcent = 100 * _info.bytes_transferred / _info.total_file_size_bytes
     })
-)

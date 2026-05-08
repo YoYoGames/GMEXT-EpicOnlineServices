@@ -8,7 +8,7 @@ eos_playerdatastorage_read_file(
     global.product_user_id,
     filename,
     working_directory + filename,
-    method(self, function(_info)
+    function(_info)
     {
         // EpicPlayerDataStorageReadFileCallbackInfo: result_code, local_user_id, filename
         if (_info.result_code == EpicResult.Success)
@@ -21,11 +21,11 @@ eos_playerdatastorage_read_file(
 
         with (ins_cancel)
             instance_destroy()
-    }),
-    method(self, function(_info)
+    },
+    function(_info)
     {
         // EpicPlayerDataStorageReadFileProgressCallbackInfo: bytes_transferred, total_file_size_bytes
         if (_info.total_file_size_bytes > 0)
             porcent = 100 * _info.bytes_transferred / _info.total_file_size_bytes
     })
-)
+

@@ -5,7 +5,7 @@ show_debug_message("Account: " + global.epic_account_id)
 with(obj_eos_player_data_storage_file_download)
 	instance_destroy()
 
-eos_playerdatastorage_query_file_list(global.product_user_id, method(self, function(_info)
+eos_playerdatastorage_query_file_list(global.product_user_id, function(_info)
 {
 	// _info is an EpicPlayerDataStorageQueryFileListCallbackInfo:
 	//   .result_code (EpicResult)
@@ -26,4 +26,4 @@ eos_playerdatastorage_query_file_list(global.product_user_id, method(self, funct
 		show_debug_message($"{a}: {struct}")
 		instance_create_depth(100, 300 + a * 100, 0, obj_eos_player_data_storage_file_download, struct)
 	}
-}))
+})
