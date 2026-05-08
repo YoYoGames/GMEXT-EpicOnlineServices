@@ -2595,6 +2595,31 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id: 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_send_lobby_native_invite_requested([type_hint=`uint64`] notification_id: gmval): unit;
 
+[global]
+class `[[EpicLobbyRTCRoomConnectionChangedCallbackInfo]]` prototype Object
+{
+    [field]
+    property lobby_id : string { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property is_connected : bool { get; set; }
+
+    [field, type_hint=`EpicResult`]
+    property disconnect_reason : gmval { get; set; }
+}
+
+[global, bind = typed_gml]
+function eos_lobby_get_rtc_room_name(local_user_id: string, lobby_id: string): string;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_lobby_add_notify_rtc_room_connection_changed([type_hint=`func?`] callback: gmval): gmval;
+
+[global, bind = typed_gml]
+function eos_lobby_remove_notify_rtc_room_connection_changed([type_hint=`uint64`] notification_id: gmval): unit;
+
 // ============================================================
 // EOS Lobby (Part N) — LobbyDetails attribute/member accessors, JoinById, HardMute, Invites
 // ============================================================

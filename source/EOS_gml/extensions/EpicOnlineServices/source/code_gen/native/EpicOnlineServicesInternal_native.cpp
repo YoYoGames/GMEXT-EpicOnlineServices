@@ -3819,6 +3819,43 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_remove_notify_send_lobby_native_invite_r
     return 0;
 }
 
+GMEXPORT char* __EXT_NATIVE__eos_lobby_get_rtc_room_name(char* local_user_id, char* lobby_id)
+{
+    static std::string __result;
+    __result = eos_lobby_get_rtc_room_name(local_user_id, lobby_id);
+    return (char*)__result.c_str();
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_rtc_room_connection_changed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    auto&& __result = eos_lobby_add_notify_rtc_room_connection_changed(callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_remove_notify_rtc_room_connection_changed(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_lobby_remove_notify_rtc_room_connection_changed(notification_id);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_lobby_details_get_attribute_count(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};

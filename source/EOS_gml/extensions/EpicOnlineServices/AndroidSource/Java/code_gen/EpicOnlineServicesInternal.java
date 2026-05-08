@@ -984,6 +984,18 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_lobby_remove_notify_send_lobby_native_invite_requested(__arg_buffer, __arg_buffer_length);
     }
+    public String __EXT_NATIVE__eos_lobby_get_rtc_room_name(String local_user_id, String lobby_id)
+    {
+        return __EXT_JNI__eos_lobby_get_rtc_room_name(local_user_id, lobby_id);
+    }
+    public double __EXT_NATIVE__eos_lobby_add_notify_rtc_room_connection_changed(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_add_notify_rtc_room_connection_changed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_lobby_remove_notify_rtc_room_connection_changed(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_remove_notify_rtc_room_connection_changed(__arg_buffer, __arg_buffer_length);
+    }
     public double __EXT_NATIVE__eos_lobby_details_get_attribute_count(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
         return __EXT_JNI__eos_lobby_details_get_attribute_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);

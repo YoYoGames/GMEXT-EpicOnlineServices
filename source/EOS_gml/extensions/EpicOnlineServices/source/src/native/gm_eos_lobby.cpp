@@ -1833,6 +1833,109 @@ void eos_lobby_remove_notify_send_lobby_native_invite_requested(uint64_t notific
 }
 
 // ============================================================
+// EOS Lobby — RTC Room
+// ============================================================
+
+static GMFunction g_cb_lobby_rtc_room_connection_changed = nullptr;
+
+static void EOS_CALL eos_lobby_rtc_room_connection_changed_callback_native(
+    const EOS_Lobby_RTCRoomConnectionChangedCallbackInfo* data)
+{
+    if (!data || !g_cb_lobby_rtc_room_connection_changed)
+        return;
+
+    gm_structs::EpicLobbyRTCRoomConnectionChangedCallbackInfo out{};
+    out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    out.is_connected = (data->bIsConnected != 0);
+    out.disconnect_reason = (gm_enums::EpicResult)data->DisconnectReason;
+
+    g_cb_lobby_rtc_room_connection_changed.call(out);
+}
+
+std::string eos_lobby_get_rtc_room_name(
+    std::string_view local_user_id,
+    std::string_view lobby_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return std::string();
+    }
+
+    std::string lobby_id_storage(lobby_id);
+    if (lobby_id_storage.empty()) {
+        eos_set_last_error("EOS_Lobby_GetRTCRoomName: lobby_id is required.");
+        return std::string();
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Lobby_GetRTCRoomName: invalid local_user_id.");
+        return std::string();
+    }
+
+    EOS_Lobby_GetRTCRoomNameOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_GETRTCROOMNAME_API_LATEST;
+    opts.LobbyId = lobby_id_storage.c_str();
+    opts.LocalUserId = local_user;
+
+    return eos_lobby_copy_string_with_fixed_retry(
+        [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
+        {
+            // GetRTCRoomName uses uint32_t* for length; bridge through int32_t* signature.
+            uint32_t len = (uint32_t)*inout_len;
+            EOS_EResult r = EOS_Lobby_GetRTCRoomName(lobby, &opts, out_buffer, &len);
+            *inout_len = (int32_t)len;
+            return r;
+        });
+}
+
+uint64_t eos_lobby_add_notify_rtc_room_connection_changed(
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return 0;
+    }
+
+    g_cb_lobby_rtc_room_connection_changed = callback.value_or(GMFunction{});
+
+    EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions opts{};
+    opts.ApiVersion = EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST;
+    // LobbyId_DEPRECATED / LocalUserId_DEPRECATED — not used; the callback info itself
+    // carries lobby_id and local_user_id so filtering happens GML-side.
+
+    return (uint64_t)EOS_Lobby_AddNotifyRTCRoomConnectionChanged(
+        lobby,
+        &opts,
+        nullptr,
+        &eos_lobby_rtc_room_connection_changed_callback_native
+    );
+}
+
+void eos_lobby_remove_notify_rtc_room_connection_changed(uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HLobby lobby = eos_lobby_iface();
+    if (!lobby) {
+        eos_set_last_error("EOS Lobby interface unavailable.");
+        return;
+    }
+
+    EOS_Lobby_RemoveNotifyRTCRoomConnectionChanged(
+        lobby,
+        (EOS_NotificationId)notification_id
+    );
+}
+
+// ============================================================
 // EOS Lobby (Part N) — LobbyDetails attribute accessors
 // ============================================================
 

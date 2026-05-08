@@ -19,9 +19,11 @@ eos_lobby_join_lobby_by_id(_opts, method(self, function(_info)
 
 		request_update_members()
 
-		//TODO: needs eos_lobby_get_rtc_room_name (not yet exposed in new extension)
-		//var RTCRoomName = eos_lobby_get_rtc_room_name(global.product_user_id, lobby_id)
-		//instance_create_depth(0, 0, 0, obj_rtc, {RoomName: RTCRoomName})
+		var RTCRoomName = eos_lobby_get_rtc_room_name(global.product_user_id, lobby_id)
+		if(is_string(RTCRoomName) && RTCRoomName != "")
+			instance_create_depth(0, 0, 0, obj_rtc, {RoomName: RTCRoomName})
+		else
+			show_debug_message($"eos_lobby_get_rtc_room_name returned: {RTCRoomName}")
 
 		instance_create_depth(0, 0, 0, obj_eos_lobbies_p2p)
 

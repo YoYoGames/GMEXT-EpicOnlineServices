@@ -1792,6 +1792,27 @@
  */
 
 /**
+ * @function_partial eos_lobby_get_rtc_room_name
+ * @param {String} local_user_id
+ * @param {String} lobby_id
+ * @returns {String} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_lobby_add_notify_rtc_room_connection_changed
+ * @param {Function} [callback]
+ * @returns {Real} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_lobby_remove_notify_rtc_room_connection_changed
+ * @param {Real} notification_id
+ * @function_end 
+ */
+
+/**
  * @function_partial eos_lobby_details_get_attribute_count
  * @param {Real} lobby_details_id
  * @returns {Real} 
@@ -3819,6 +3840,15 @@
  * @member {String} local_user_id
  * @member {String} target_native_account_type
  * @member {String} target_user_native_account_id
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicLobbyRTCRoomConnectionChangedCallbackInfo
+ * @member {String} lobby_id
+ * @member {String} local_user_id
+ * @member {Bool} is_connected
+ * @member {Enum.EpicResult} disconnect_reason
  * @struct_end 
  */
 

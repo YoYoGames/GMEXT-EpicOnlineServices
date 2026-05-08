@@ -246,6 +246,9 @@
 - (double)__EXT_NATIVE__eos_lobby_remove_notify_leave_lobby_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_add_notify_send_lobby_native_invite_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_remove_notify_send_lobby_native_invite_requested:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (char*)__EXT_NATIVE__eos_lobby_get_rtc_room_name:(char*)local_user_id arg1:(char*)lobby_id;
+- (double)__EXT_NATIVE__eos_lobby_add_notify_rtc_room_connection_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_lobby_remove_notify_rtc_room_connection_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_details_get_attribute_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_details_copy_attribute_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_lobby_details_copy_attribute_by_key:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;

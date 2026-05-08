@@ -40,7 +40,7 @@ function request_update_members()
 			{
 				var _struct = eos_connect_copy_product_user_external_account_by_index(members_array[b], c)
 				show_debug_message(_struct)
-				instance_create_depth(300, 220 + b * 100, 0, obj_eos_lobbies_member, _struct)
+				instance_create_depth(300, 220 + b * 100, 0, obj_eos_lobbies_member, {data: _struct})
 				break // only the first account is needed for display
 			}
 		}
@@ -155,4 +155,14 @@ notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_in
 {
 	// EpicLobbySendLobbyNativeInviteRequestedCallbackInfo:
 	//   .lobby_id, .local_user_id, .target_native_account_type, .target_user_native_account_id
+}))
+
+notifyRTCRoomConnectionChanged = eos_lobby_add_notify_rtc_room_connection_changed(method(self, function(_info)
+{
+	// EpicLobbyRTCRoomConnectionChangedCallbackInfo:
+	//   .lobby_id, .local_user_id, .is_connected (bool), .disconnect_reason (EpicResult)
+	if(_info.is_connected)
+		show_debug_message($"RTC room connected (lobby {_info.lobby_id})")
+	else
+		show_debug_message($"RTC room disconnected (lobby {_info.lobby_id}): {eos_api_result_to_string(_info.disconnect_reason)}")
 }))

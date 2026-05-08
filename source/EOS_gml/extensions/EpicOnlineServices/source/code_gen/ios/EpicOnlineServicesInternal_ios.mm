@@ -1060,6 +1060,18 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_lobby_remove_notify_send_lobby_native_invite_requested(__arg_buffer, __arg_buffer_length);
 }
+- (char*)__EXT_NATIVE__eos_lobby_get_rtc_room_name:(char*)local_user_id arg1:(char*)lobby_id
+{
+    return __EXT_NATIVE__eos_lobby_get_rtc_room_name(local_user_id, lobby_id);
+}
+- (double)__EXT_NATIVE__eos_lobby_add_notify_rtc_room_connection_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_add_notify_rtc_room_connection_changed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_remove_notify_rtc_room_connection_changed:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_remove_notify_rtc_room_connection_changed(__arg_buffer, __arg_buffer_length);
+}
 - (double)__EXT_NATIVE__eos_lobby_details_get_attribute_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
     return __EXT_NATIVE__eos_lobby_details_get_attribute_count(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);

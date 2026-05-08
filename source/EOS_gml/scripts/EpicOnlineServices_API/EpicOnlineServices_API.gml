@@ -2631,6 +2631,24 @@ function EpicLobbySendLobbyNativeInviteRequestedCallbackInfo() constructor
 }
 
 /**
+ * @returns {Struct.EpicLobbyRTCRoomConnectionChangedCallbackInfo} 
+ */
+function EpicLobbyRTCRoomConnectionChangedCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 3359698299;
+
+    self.lobby_id = undefined;
+    self.local_user_id = undefined;
+    self.is_connected = undefined;
+    self.disconnect_reason = undefined;
+
+}
+
+/**
  * @returns {Struct.EpicLobbyDetailsAttribute} 
  */
 function EpicLobbyDetailsAttribute() constructor
@@ -10494,6 +10512,74 @@ function __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_decode(_buffer, _
         // field: target_user_native_account_id, type: String
         buffer_read(_buffer, buffer_u32);
         self.target_user_native_account_id = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLobbyRTCRoomConnectionChangedCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLobbyRTCRoomConnectionChangedCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicLobbyRTCRoomConnectionChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
+        buffer_write(_buffer, buffer_string, self.lobby_id);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: is_connected, type: Bool
+        if (!is_bool(self.is_connected)) show_error($"{_where} :: self.is_connected expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.is_connected);
+
+        // field: disconnect_reason, type: enum EpicResult
+
+        if (!is_numeric(self.disconnect_reason)) show_error($"{_where} :: self.disconnect_reason expected number", true);
+        buffer_write(_buffer, buffer_u64, self.disconnect_reason);
+
+    }
+}
+
+/**
+ * @func __EpicLobbyRTCRoomConnectionChangedCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLobbyRTCRoomConnectionChangedCallbackInfo} 
+ * @ignore 
+ */
+function __EpicLobbyRTCRoomConnectionChangedCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLobbyRTCRoomConnectionChangedCallbackInfo();
+    with (_inst)
+    {
+        // field: lobby_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.lobby_id = buffer_read(_buffer, buffer_string);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: is_connected, type: Bool
+        self.is_connected = buffer_read(_buffer, buffer_bool);
+
+        // field: disconnect_reason, type: enum EpicResult
+        self.disconnect_reason = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -22075,6 +22161,57 @@ function eos_lobby_remove_notify_send_lobby_native_invite_requested(_notificatio
     return _return_value;
 }
 
+// Skipping function eos_lobby_get_rtc_room_name (no wrapper is required)
+
+
+/**
+ * @param {Function} _callback
+ * @returns {Real} 
+ */
+function eos_lobby_add_notify_rtc_room_connection_changed(_callback)
+{
+    static __dispatcher = __EpicOnlineServices_get_dispatcher();
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_add_notify_rtc_room_connection_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _notification_id
+ */
+function eos_lobby_remove_notify_rtc_room_connection_changed(_notification_id)
+{
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _notification_id, type: UInt64
+    if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _notification_id);
+
+    var _return_value = __eos_lobby_remove_notify_rtc_room_connection_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
 /**
  * @param {Real} _lobby_details_id
  * @returns {Real} 
@@ -26624,6 +26761,7 @@ function __EpicOnlineServices_get_decoders()
         __EpicLobbyJoinLobbyAcceptedCallbackInfo_decode,
         __EpicLobbyLeaveLobbyRequestedCallbackInfo_decode,
         __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_decode,
+        __EpicLobbyRTCRoomConnectionChangedCallbackInfo_decode,
         __EpicLobbyDetailsAttribute_decode,
         __EpicLobbyDetailsMemberInfo_decode,
         __EpicLobbyJoinLobbyByIdCallbackInfo_decode,

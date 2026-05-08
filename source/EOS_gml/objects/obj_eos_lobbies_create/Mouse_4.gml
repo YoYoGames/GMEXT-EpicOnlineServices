@@ -25,10 +25,12 @@ eos_lobby_create_lobby(_opts, method(self, function(_info)
 
 		request_update_members()
 
-		//TODO: needs eos_lobby_get_rtc_room_name (not yet exposed in new extension)
-		//var RTCRoomName = eos_lobby_get_rtc_room_name(global.product_user_id, lobby_id)
-		//show_debug_message("RTCRoomName: " + RTCRoomName)
-		//instance_create_depth(0, 0, 0, obj_rtc, {RoomName: RTCRoomName})
+		var RTCRoomName = eos_lobby_get_rtc_room_name(global.product_user_id, lobby_id)
+		show_debug_message($"RTCRoomName: {RTCRoomName}")
+		if(is_string(RTCRoomName) && RTCRoomName != "")
+			instance_create_depth(0, 0, 0, obj_rtc, {RoomName: RTCRoomName})
+		else
+			show_debug_message("eos_lobby_get_rtc_room_name returned no room — RTC features will not start")
 
 		instance_create_depth(0, 0, 0, obj_eos_lobbies_p2p)
 

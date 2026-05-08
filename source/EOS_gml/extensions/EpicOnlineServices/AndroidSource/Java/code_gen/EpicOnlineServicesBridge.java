@@ -262,6 +262,9 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_lobby_remove_notify_leave_lobby_requested(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_lobby_add_notify_send_lobby_native_invite_requested(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_remove_notify_send_lobby_native_invite_requested(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native String __EXT_JNI__eos_lobby_get_rtc_room_name(String local_user_id, String lobby_id);
+    public static native double __EXT_JNI__eos_lobby_add_notify_rtc_room_connection_changed(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_remove_notify_rtc_room_connection_changed(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_lobby_details_get_attribute_count(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_details_copy_attribute_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_details_copy_attribute_by_key(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);

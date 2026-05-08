@@ -14,6 +14,6 @@ switch(AudioStatus)
 	case EpicRTCAudioStatus.Unsupported: AudioStatus_txt = "Unsupported" break 
 }
 
-draw_text(x,y,$"{display_name} - Audio {AudioStatus_txt} - {Speaking?"Speaking":"Silence"}")
+draw_text(x,y,$"{data.display_name} - Audio {AudioStatus_txt} - {Speaking?"Speaking":"Silence"}")
 
 
