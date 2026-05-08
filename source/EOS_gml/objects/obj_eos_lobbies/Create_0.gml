@@ -17,7 +17,7 @@ function request_update_members()
 	if(lobby_id == "") return
 
 	var _details = eos_lobby_copy_lobby_details_handle(lobby_id, global.product_user_id)
-	if(!_details) return
+	if(!_details) {return}
 
 	members_array = []
 	var _count = eos_lobby_details_get_member_count(_details)
@@ -32,7 +32,7 @@ function request_update_members()
 		if(_info.result_code != EpicResult.Success)
 		{
 			show_debug_message($"[members] query_product_user_id_mappings failed: {eos_api_result_to_string(_info.result_code)}")
-			return
+			{return}
 		}
 
 		show_debug_message($"[members] rebuild: array={members_array}")
@@ -90,7 +90,7 @@ notifyLobbyInviteAccepted = eos_lobby_add_notify_lobby_invite_accepted(function(
 	if(_details_id == 0)
 	{
 		show_debug_message("could not get lobby details from invite")
-		return
+		{return}
 	}
 
 	var _details = eos_lobby_details_copy_info(_details_id)
