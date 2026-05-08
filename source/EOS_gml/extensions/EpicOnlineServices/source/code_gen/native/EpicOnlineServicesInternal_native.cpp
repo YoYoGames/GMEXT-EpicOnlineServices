@@ -6521,3 +6521,151 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state(cha
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_send_data(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: data, type: Buffer
+    gm::wire::GMBuffer data = __buffer_queue.front();
+    __buffer_queue.pop();
+
+    // field: bytes, type: UInt32
+    std::uint32_t bytes = gm::wire::codec::readValue<std::uint32_t>(__br);
+
+    auto&& __result = eos_rtc_data_send_data(local_user_id, room_name, data, bytes);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_update_sending(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: data_enabled, type: Bool
+    bool data_enabled = gm::wire::codec::readValue<bool>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    eos_rtc_data_update_sending(local_user_id, room_name, data_enabled, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_update_receiving(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: participant_id, type: String
+    std::string_view participant_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: data_enabled, type: Bool
+    bool data_enabled = gm::wire::codec::readValue<bool>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    eos_rtc_data_update_receiving(local_user_id, room_name, participant_id, data_enabled, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_add_notify_data_received(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    auto&& __result = eos_rtc_data_add_notify_data_received(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_remove_notify_data_received(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_data_remove_notify_data_received(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_add_notify_participant_updated(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    auto&& __result = eos_rtc_data_add_notify_participant_updated(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_remove_notify_participant_updated(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_data_remove_notify_participant_updated(notification_id);
+    return 0;
+}
+

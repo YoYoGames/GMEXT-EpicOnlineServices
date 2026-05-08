@@ -4436,6 +4436,125 @@ function eos_rtc_audio_add_notify_audio_output_state(local_user_id: string, room
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_output_state([type_hint=`uint64`] notification_id: gmval): unit;
 
+// ============================================================
+// EOS RTC Data — binary data channel (peer-to-peer messages alongside audio)
+// ============================================================
+
+[global]
+class `[[EpicRTCDataParticipantUpdatedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field, type_hint=`EpicRTCDataStatus`]
+    property data_status : gmval { get; set; }
+}
+
+[global]
+class `[[EpicRTCDataReceivedCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property data_length_bytes : gmval { get; set; }
+
+    [field]
+    property data : string { get; set; }   // base64-encoded raw bytes; use buffer_base64_decode()
+}
+
+[global]
+class `[[EpicRTCDataUpdateSendingCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property data_enabled : bool { get; set; }
+}
+
+[global]
+class `[[EpicRTCDataUpdateReceivingCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field]
+    property data_enabled : bool { get; set; }
+}
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_rtc_data_send_data(
+    local_user_id: string,
+    room_name: string,
+    [type_hint=buffer] data: gmval,
+    bytes: uint32
+): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_data_update_sending(
+    local_user_id: string,
+    room_name: string,
+    data_enabled: bool,
+    [type_hint=`func?`] callback: gmval
+): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_data_update_receiving(
+    local_user_id: string,
+    room_name: string,
+    participant_id: string,    // empty string = global (all participants)
+    data_enabled: bool,
+    [type_hint=`func?`] callback: gmval
+): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_data_add_notify_data_received(
+    local_user_id: string,
+    room_name: string,
+    [type_hint=`func?`] callback: gmval
+): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_data_remove_notify_data_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_data_add_notify_participant_updated(
+    local_user_id: string,
+    room_name: string,
+    [type_hint=`func?`] callback: gmval
+): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_data_remove_notify_participant_updated([type_hint=`uint64`] notification_id: gmval): unit;
+
 }
 
 ///////////////ENUMS/////////////

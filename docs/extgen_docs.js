@@ -3016,6 +3016,65 @@
  */
 
 /**
+ * @function_partial eos_rtc_data_send_data
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @param {Buffer} data
+ * @param {Real} bytes
+ * @returns {Enum.EpicResult} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_rtc_data_update_sending
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @param {Bool} data_enabled
+ * @param {Function} [callback]
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_rtc_data_update_receiving
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @param {String} participant_id
+ * @param {Bool} data_enabled
+ * @param {Function} [callback]
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_rtc_data_add_notify_data_received
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @param {Function} [callback]
+ * @returns {Real} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_rtc_data_remove_notify_data_received
+ * @param {Real} notification_id
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_rtc_data_add_notify_participant_updated
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @param {Function} [callback]
+ * @returns {Real} 
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_rtc_data_remove_notify_participant_updated
+ * @param {Real} notification_id
+ * @function_end 
+ */
+
+/**
  * @struct_partial EpicLoggingMessage
  * @member {Enum.EpicLogCategory} category
  * @member {Enum.EpicLogLevel} level
@@ -4586,6 +4645,44 @@
 /**
  * @struct_partial EpicRTCAudioQueryOutputDevicesCallbackInfo
  * @member {Enum.EpicResult} result_code
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicRTCDataParticipantUpdatedCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @member {String} participant_id
+ * @member {Enum.EpicRTCDataStatus} data_status
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicRTCDataReceivedCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @member {String} participant_id
+ * @member {Real} data_length_bytes
+ * @member {String} data
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicRTCDataUpdateSendingCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @member {Bool} data_enabled
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicRTCDataUpdateReceivingCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @member {String} participant_id
+ * @member {Bool} data_enabled
  * @struct_end 
  */
 

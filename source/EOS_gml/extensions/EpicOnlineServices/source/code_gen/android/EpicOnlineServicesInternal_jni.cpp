@@ -6203,6 +6203,115 @@ static jdouble __JNI_WRAPPER__eos_rtc_audio_remove_notify_audio_output_state_B58
     return static_cast<jdouble>(__ret);
 }
 
+// eos_rtc_data_send_data JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_data_send_data_BF7A8519C604(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_data_send_data((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_rtc_data_update_sending JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_data_update_sending_C09CDEBF43ED(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_data_update_sending((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_rtc_data_update_receiving JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_data_update_receiving_ADF14B06EF3F(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_data_update_receiving((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_rtc_data_add_notify_data_received JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_data_add_notify_data_received_009CE5F0E3E7(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_data_add_notify_data_received((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_rtc_data_remove_notify_data_received JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_data_remove_notify_data_received_6157A31EFCE0(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_data_remove_notify_data_received((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_rtc_data_add_notify_participant_updated JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_data_add_notify_participant_updated_3F327AFE94E9(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_data_add_notify_participant_updated((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_rtc_data_remove_notify_participant_updated JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_data_remove_notify_participant_updated_EDA351650A8B(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_data_remove_notify_participant_updated((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
 // nativeRegister(Class callbackClass): cache callback + register all JNI wrappers
 extern "C" {
     JNIEXPORT void JNICALL Java_com_gamemaker_ExtensionCore_ExtBridge_EpicOnlineServicesBridge_nativeRegister(JNIEnv* env, jclass bridgeClass)
@@ -6635,6 +6744,13 @@ extern "C" {
             { "__EXT_JNI__eos_rtc_audio_remove_notify_audio_input_state", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_remove_notify_audio_input_state_8F1A4A01CA01 },
             { "__EXT_JNI__eos_rtc_audio_add_notify_audio_output_state", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_add_notify_audio_output_state_FA13481BF872 },
             { "__EXT_JNI__eos_rtc_audio_remove_notify_audio_output_state", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_remove_notify_audio_output_state_B58973F5D08C },
+            { "__EXT_JNI__eos_rtc_data_send_data", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_data_send_data_BF7A8519C604 },
+            { "__EXT_JNI__eos_rtc_data_update_sending", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_data_update_sending_C09CDEBF43ED },
+            { "__EXT_JNI__eos_rtc_data_update_receiving", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_data_update_receiving_ADF14B06EF3F },
+            { "__EXT_JNI__eos_rtc_data_add_notify_data_received", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_data_add_notify_data_received_009CE5F0E3E7 },
+            { "__EXT_JNI__eos_rtc_data_remove_notify_data_received", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_data_remove_notify_data_received_6157A31EFCE0 },
+            { "__EXT_JNI__eos_rtc_data_add_notify_participant_updated", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_data_add_notify_participant_updated_3F327AFE94E9 },
+            { "__EXT_JNI__eos_rtc_data_remove_notify_participant_updated", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_data_remove_notify_participant_updated_EDA351650A8B },
         };
 
         env->RegisterNatives(bridgeClass, methods, sizeof(methods)/sizeof(methods[0]));

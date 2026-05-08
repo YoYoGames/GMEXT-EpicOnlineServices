@@ -405,6 +405,13 @@
 - (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_audio_input_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_rtc_audio_add_notify_audio_output_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (double)__EXT_NATIVE__eos_rtc_data_send_data:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_rtc_data_update_sending:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (double)__EXT_NATIVE__eos_rtc_data_update_receiving:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (double)__EXT_NATIVE__eos_rtc_data_add_notify_data_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_rtc_data_remove_notify_data_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (double)__EXT_NATIVE__eos_rtc_data_add_notify_participant_updated:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_rtc_data_remove_notify_participant_updated:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__EpicOnlineServices_invocation_handler:(char*)__ret_buffer arg1:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__EpicOnlineServices_queue_buffer:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 @end

@@ -7594,6 +7594,138 @@
         },
         {
           "$GMExtensionFunction": "",
+          "%Name": "__eos_rtc_data_send_data",
+          "argCount": 4,
+          "args": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@param {Pointer} _ret_buffer\r\n@param {Real} _ret_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_rtc_data_send_data",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_rtc_data_send_data",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
+          "%Name": "__eos_rtc_data_update_sending",
+          "argCount": 2,
+          "args": [
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_rtc_data_update_sending",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_rtc_data_update_sending",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
+          "%Name": "__eos_rtc_data_update_receiving",
+          "argCount": 2,
+          "args": [
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_rtc_data_update_receiving",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_rtc_data_update_receiving",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
+          "%Name": "__eos_rtc_data_add_notify_data_received",
+          "argCount": 4,
+          "args": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@param {Pointer} _ret_buffer\r\n@param {Real} _ret_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_rtc_data_add_notify_data_received",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_rtc_data_add_notify_data_received",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
+          "%Name": "__eos_rtc_data_remove_notify_data_received",
+          "argCount": 2,
+          "args": [
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_rtc_data_remove_notify_data_received",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_rtc_data_remove_notify_data_received",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
+          "%Name": "__eos_rtc_data_add_notify_participant_updated",
+          "argCount": 4,
+          "args": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@param {Pointer} _ret_buffer\r\n@param {Real} _ret_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_rtc_data_add_notify_participant_updated",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_rtc_data_add_notify_participant_updated",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
+          "%Name": "__eos_rtc_data_remove_notify_participant_updated",
+          "argCount": 2,
+          "args": [
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_rtc_data_remove_notify_participant_updated",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_rtc_data_remove_notify_participant_updated",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
           "%Name": "__EpicOnlineServices_invocation_handler",
           "argCount": 2,
           "args": [

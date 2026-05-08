@@ -1620,4 +1620,32 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_rtc_audio_remove_notify_audio_output_state(__arg_buffer, __arg_buffer_length);
     }
+    public double __EXT_NATIVE__eos_rtc_data_send_data(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_send_data(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_data_update_sending(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_update_sending(__arg_buffer, __arg_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_data_update_receiving(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_update_receiving(__arg_buffer, __arg_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_data_add_notify_data_received(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_add_notify_data_received(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_data_remove_notify_data_received(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_remove_notify_data_received(__arg_buffer, __arg_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_data_add_notify_participant_updated(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_add_notify_participant_updated(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_data_remove_notify_participant_updated(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_remove_notify_participant_updated(__arg_buffer, __arg_buffer_length);
+    }
 }
