@@ -1,6 +1,7 @@
 
 Speaking = false
-AudioStatus = EOS_RTC_AUDIO_STATUS.DISABLED
+
+AudioStatus = EpicRTCAudioStatus.AdminDisabled
 
 _struct = {user_id: user_id}
 

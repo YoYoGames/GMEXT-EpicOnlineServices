@@ -15,7 +15,7 @@ switch(async_load[? "type"])
 			instance_create_depth(0,0,0,obj_eos_lobbies_p2p)
 			
 			eos_lobby_update_lobby_modification(lobby_id,global.product_user_id)
-			eos_lobby_modification_add_attribute(EOS_LOBBY_ATTRIBUTE_VISIBILITY.PUBLIC,{key:"lobbyname",value_type: EOS_ATTRIBUTE_TYPE.STRING,value: requestMyName + "'s Lobby"})
+			eos_lobby_modification_add_attribute(EpicLobbyAttributeVisibility.Public,{key:"lobbyname",value_type: EpicAttributeType.String,value: requestMyName + "'s Lobby"})
 			eos_lobby_update_lobby()
 			eos_lobby_modification_release()
 		}
@@ -112,9 +112,9 @@ switch(async_load[? "type"])
 		{
 			switch(async_load[? "current_status"])
 			{
-				case EOS_LOBBY_MEMBER_STATUS.DISCONNECTED:
-				case EOS_LOBBY_MEMBER_STATUS.CLOSED:
-				case EOS_LOBBY_MEMBER_STATUS.LEFT:
+				case EpicLobbyMemberStatus.Disconnected:
+				case EpicLobbyMemberStatus.Closed:
+				case EpicLobbyMemberStatus.Left:
 					show_message_async("DISCONNECTED...")
 					lobby_id = ""
 					with(obj_eos_lobbies_member) instance_destroy()
@@ -122,10 +122,10 @@ switch(async_load[? "type"])
 					with(obj_eos_lobbies_p2p) instance_destroy()
 				break
 				
-				case EOS_LOBBY_MEMBER_STATUS.PROMOTED:
+				case EpicLobbyMemberStatus.Promoted:
 					show_message_async("I was PROMOTED :)")
 				break
-				case EOS_LOBBY_MEMBER_STATUS.KICKED:
+				case EpicLobbyMemberStatus.Kicked:
 					show_message_async("I was KICKED D:")
 					lobby_id = ""
 					with(obj_eos_lobbies_member) instance_destroy()
@@ -138,13 +138,13 @@ switch(async_load[? "type"])
 		{
 			switch(async_load[? "current_status"])
 			{
-				case EOS_LOBBY_MEMBER_STATUS.JOINED:
+				case EpicLobbyMemberStatus.Joined:
 					request_update_members()
 				break
 				
-				case EOS_LOBBY_MEMBER_STATUS.DISCONNECTED:
-				case EOS_LOBBY_MEMBER_STATUS.KICKED:
-				case EOS_LOBBY_MEMBER_STATUS.LEFT:
+				case EpicLobbyMemberStatus.Disconnected:
+				case EpicLobbyMemberStatus.Kicked:
+				case EpicLobbyMemberStatus.Left:
 					request_update_members()//eos_connect_query_product_user_id_mappings
 					obj_eos_p2p.disconnect(async_load[? "target_user_id"])
 				break

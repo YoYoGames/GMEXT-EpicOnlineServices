@@ -7,5 +7,5 @@ show_debug_message($"CreateLobbySearch {eos_api_result_to_string(result)}")
 
 var BucketId = "GameMode:Region:MapName"
 
-eos_lobby_search_set_parameter(EOS_COMPARISON_OP.EQUAL,{key:"bucket",value_type: EOS_ATTRIBUTE_TYPE.STRING,value: BucketId})
+eos_lobby_search_set_parameter(EpicComparisonOp.Equal,{key:"bucket",value_type: EpicAttributeType.String,value: BucketId})
 eos_lobby_search_find(global.product_user_id)
