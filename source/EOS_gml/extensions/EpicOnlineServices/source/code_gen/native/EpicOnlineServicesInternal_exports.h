@@ -57,6 +57,7 @@ GMEXPORT char* __EXT_NATIVE__eos_connect_get_logged_in_user_by_index(char* __arg
 GMEXPORT double __EXT_NATIVE__eos_connect_get_login_status(char* local_user_id, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_connect_copy_id_token(char* local_user_id, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_info(char* target_user_id, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_connect_get_product_user_external_account_count(char* target_user_id, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_account_type(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_account_id(char* target_user_id, char* account_id, char* __ret_buffer, double __ret_buffer_length);

@@ -501,6 +501,9 @@ function eos_connect_copy_id_token(local_user_id: string): gmval;
 [global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
 function eos_connect_copy_product_user_info(target_user_id: string): gmval;
 
+[global, bind = typed_gml]
+function eos_connect_get_product_user_external_account_count(target_user_id: string): int64;
+
 [global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
 function eos_connect_copy_product_user_external_account_by_index(target_user_id: string, index: int64): gmval;
 

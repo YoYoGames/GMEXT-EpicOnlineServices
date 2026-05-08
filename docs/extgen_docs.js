@@ -327,6 +327,13 @@
  */
 
 /**
+ * @function_partial eos_connect_get_product_user_external_account_count
+ * @param {String} target_user_id
+ * @returns {Real} 
+ * @function_end 
+ */
+
+/**
  * @function_partial eos_connect_copy_product_user_external_account_by_index
  * @param {String} target_user_id
  * @param {Real} index

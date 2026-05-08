@@ -752,6 +752,29 @@ gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_info(st
     return out;
 }
 
+int64_t eos_connect_get_product_user_external_account_count(std::string_view target_user_id)
+{
+    eos_clear_last_error();
+
+    EOS_HConnect connect = eos_connect_iface();
+    if (!connect) {
+        eos_set_last_error("EOS Connect interface unavailable.");
+        return 0;
+    }
+
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_Connect_GetProductUserExternalAccountCount: invalid target_user_id.");
+        return 0;
+    }
+
+    EOS_Connect_GetProductUserExternalAccountCountOptions opts{};
+    opts.ApiVersion = EOS_CONNECT_GETPRODUCTUSEREXTERNALACCOUNTCOUNT_API_LATEST;
+    opts.TargetUserId = target_user;
+
+    return (int64_t)EOS_Connect_GetProductUserExternalAccountCount(connect, &opts);
+}
+
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_index(
     std::string_view target_user_id,
     int64_t index)

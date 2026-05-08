@@ -645,6 +645,16 @@ GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_info(char* target_us
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_connect_get_product_user_external_account_count(char* target_user_id, char* __ret_buffer, double __ret_buffer_length)
+{
+    auto&& __result = eos_connect_get_product_user_external_account_count(target_user_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: Int64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};

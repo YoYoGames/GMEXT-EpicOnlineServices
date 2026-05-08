@@ -737,6 +737,20 @@ static jdouble __JNI_WRAPPER__eos_connect_copy_product_user_info_FB6F2447B97E(JN
     return static_cast<jdouble>(__ret);
 }
 
+// eos_connect_get_product_user_external_account_count JNI wrapper signature: (Ljava/lang/String;Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_connect_get_product_user_external_account_count_F91518F3BD67(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring target_user_id, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    UtfChars __pin_target_user_id(env, target_user_id);
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_connect_get_product_user_external_account_count((char *)__pin_target_user_id.c_str(), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
 // eos_connect_copy_product_user_external_account_by_index JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
 static jdouble __JNI_WRAPPER__eos_connect_copy_product_user_external_account_by_index_FF381BC4704E(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
@@ -6192,6 +6206,7 @@ extern "C" {
             { "__EXT_JNI__eos_connect_get_login_status", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_connect_get_login_status_11B9838D970C },
             { "__EXT_JNI__eos_connect_copy_id_token", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_connect_copy_id_token_414A5194E63D },
             { "__EXT_JNI__eos_connect_copy_product_user_info", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_connect_copy_product_user_info_FB6F2447B97E },
+            { "__EXT_JNI__eos_connect_get_product_user_external_account_count", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_connect_get_product_user_external_account_count_F91518F3BD67 },
             { "__EXT_JNI__eos_connect_copy_product_user_external_account_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_connect_copy_product_user_external_account_by_index_FF381BC4704E },
             { "__EXT_JNI__eos_connect_copy_product_user_external_account_by_account_type", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_connect_copy_product_user_external_account_by_account_type_1E54B09F96B8 },
             { "__EXT_JNI__eos_connect_copy_product_user_external_account_by_account_id", "(Ljava/lang/String;Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_connect_copy_product_user_external_account_by_account_id_2D00729736E7 },

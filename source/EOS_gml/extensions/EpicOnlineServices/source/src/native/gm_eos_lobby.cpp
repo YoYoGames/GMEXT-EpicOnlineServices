@@ -203,9 +203,22 @@ void eos_lobby_create_lobby(
     }
 
     std::string bucket_id_storage(options.bucket_id);
+    if (bucket_id_storage.empty()) {
+        eos_set_last_error("EOS_Lobby_CreateLobby: bucket_id is required.");
+        return;
+    }
 
     auto* ctx = new EOSAsyncCallbackContext{};
     ctx->callback = callback;
+
+    // Default RTC options (used when bEnableRTCRoom is true; nullptr is documented as
+    // "use defaults" but some SDK versions reject it -> safer to pass an explicit struct).
+    EOS_Lobby_LocalRTCOptions rtc_opts{};
+    rtc_opts.ApiVersion = EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST;
+    rtc_opts.Flags = 0;
+    rtc_opts.bUseManualAudioInput = EOS_FALSE;
+    rtc_opts.bUseManualAudioOutput = EOS_FALSE;
+    rtc_opts.bLocalAudioDeviceInputStartsMuted = EOS_FALSE;
 
     EOS_Lobby_CreateLobbyOptions opts{};
     opts.ApiVersion = EOS_LOBBY_CREATELOBBY_API_LATEST;
@@ -214,11 +227,17 @@ void eos_lobby_create_lobby(
     opts.PermissionLevel = (EOS_ELobbyPermissionLevel)options.permission_level;
     opts.bPresenceEnabled = options.presence_enabled ? EOS_TRUE : EOS_FALSE;
     opts.bAllowInvites = options.allow_invites ? EOS_TRUE : EOS_FALSE;
-    opts.BucketId = bucket_id_storage.empty() ? nullptr : bucket_id_storage.c_str();
+    opts.BucketId = bucket_id_storage.c_str();
     opts.bDisableHostMigration = options.disable_host_migration ? EOS_TRUE : EOS_FALSE;
     opts.bEnableRTCRoom = options.enable_rtc_room ? EOS_TRUE : EOS_FALSE;
+    opts.LocalRTCOptions = options.enable_rtc_room ? &rtc_opts : nullptr;
+    opts.LobbyId = nullptr; // let backend assign
     opts.bEnableJoinById = options.enable_join_by_id ? EOS_TRUE : EOS_FALSE;
     opts.bRejoinAfterKickRequiresInvite = options.rejoin_after_kick_requires_invite ? EOS_TRUE : EOS_FALSE;
+    opts.AllowedPlatformIds = nullptr;
+    opts.AllowedPlatformIdsCount = 0;
+    opts.bCrossplayOptOut = EOS_FALSE;
+    opts.RTCRoomJoinActionType = EOS_ELobbyRTCRoomJoinActionType::EOS_LRRJAT_AutomaticJoin;
 
     EOS_Lobby_CreateLobby(
         lobby,

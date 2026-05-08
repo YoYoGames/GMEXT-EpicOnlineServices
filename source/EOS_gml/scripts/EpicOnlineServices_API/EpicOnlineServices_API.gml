@@ -16942,6 +16942,21 @@ function eos_connect_copy_product_user_info(_target_user_id)
 
 /**
  * @param {String} _target_user_id
+ * @returns {Real} 
+ */
+function eos_connect_get_product_user_external_account_count(_target_user_id)
+{
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_connect_get_product_user_external_account_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {String} _target_user_id
  * @param {Real} _index
  * @returns {Struct.EpicConnectExternalAccountInfo} 
  */

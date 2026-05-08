@@ -204,6 +204,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_connect_copy_product_user_info(target_user_id, __ret_buffer, __ret_buffer_length);
     }
+    public double __EXT_NATIVE__eos_connect_get_product_user_external_account_count(String target_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_connect_get_product_user_external_account_count(target_user_id, __ret_buffer, __ret_buffer_length);
+    }
     public double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
         return __EXT_JNI__eos_connect_copy_product_user_external_account_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);

@@ -7324,6 +7324,7 @@ std::string eos_connect_get_logged_in_user_by_index(std::int64_t index);
 gm_enums::EpicLoginStatus eos_connect_get_login_status(std::string_view local_user_id);
 gm_structs::EpicConnectIdToken eos_connect_copy_id_token(std::string_view local_user_id);
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_info(std::string_view target_user_id);
+std::int64_t eos_connect_get_product_user_external_account_count(std::string_view target_user_id);
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_index(std::string_view target_user_id, std::int64_t index);
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_account_type(std::string_view target_user_id, gm_enums::EpicExternalAccountType account_id_type);
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_account_id(std::string_view target_user_id, std::string_view account_id);

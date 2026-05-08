@@ -21,7 +21,9 @@
       "Bash(git ls-tree *)",
       "Bash(ls \"C:\\\\Users\\\\jzavala\\\\Desktop\" 2>&1 | head -30)",
       "Read(//c/Users/jzavala/Desktop/**)",
-      "Bash(dir /B \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\objects\")"
+      "Bash(dir /B \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\objects\")",
+      "Bash(for d *)",
+      "Read(//d/Github/GMEXT-EpicOnlineServices/source/EOS_gml/**)"
     ],
     "additionalDirectories": [
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_member_kick",
@@ -44,7 +46,11 @@
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_search",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_session",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_create",
-      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_controller"
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_controller",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_create",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_leave",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_search",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_invitations"
     ]
   }
 }

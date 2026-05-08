@@ -67,6 +67,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_connect_get_login_status(String local_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_connect_copy_id_token(String local_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_connect_copy_product_user_info(String target_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_connect_get_product_user_external_account_count(String target_user_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_connect_copy_product_user_external_account_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_connect_copy_product_user_external_account_by_account_type(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_connect_copy_product_user_external_account_by_account_id(String target_user_id, String account_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
