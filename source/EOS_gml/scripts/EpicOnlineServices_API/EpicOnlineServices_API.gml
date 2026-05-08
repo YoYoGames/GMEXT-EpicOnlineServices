@@ -16094,62 +16094,14 @@ function eos_api_network_status_to_string(_status)
 
 
 /**
- * @param {Bool} _is_server
- * @param {String} _product_id
- * @param {String} _sandbox_id
- * @param {String} _deployment_id
- * @param {String} _client_id
- * @param {String} _client_secret
- * @param {String} _encryption_key
  * @param {String} _cache_directory
  * @returns {Enum.EpicResult} 
  */
-function eos_platform_create(_is_server, _product_id, _sandbox_id, _deployment_id, _client_id, _client_secret, _encryption_key, _cache_directory)
+function eos_platform_create(_cache_directory)
 {
-    var __args_buffer = __ext_core_get_args_buffer();
-
-    // param: _is_server, type: Bool
-    if (!is_bool(_is_server)) show_error($"{_GMFUNCTION_} :: _is_server expected bool", true);
-    buffer_write(__args_buffer, buffer_bool, _is_server);
-
-    // param: _product_id, type: String
-    if (!is_string(_product_id)) show_error($"{_GMFUNCTION_} :: _product_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_product_id));
-    buffer_write(__args_buffer, buffer_string, _product_id);
-
-    // param: _sandbox_id, type: String
-    if (!is_string(_sandbox_id)) show_error($"{_GMFUNCTION_} :: _sandbox_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_sandbox_id));
-    buffer_write(__args_buffer, buffer_string, _sandbox_id);
-
-    // param: _deployment_id, type: String
-    if (!is_string(_deployment_id)) show_error($"{_GMFUNCTION_} :: _deployment_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_deployment_id));
-    buffer_write(__args_buffer, buffer_string, _deployment_id);
-
-    // param: _client_id, type: String
-    if (!is_string(_client_id)) show_error($"{_GMFUNCTION_} :: _client_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_client_id));
-    buffer_write(__args_buffer, buffer_string, _client_id);
-
-    // param: _client_secret, type: String
-    if (!is_string(_client_secret)) show_error($"{_GMFUNCTION_} :: _client_secret expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_client_secret));
-    buffer_write(__args_buffer, buffer_string, _client_secret);
-
-    // param: _encryption_key, type: String
-    if (!is_string(_encryption_key)) show_error($"{_GMFUNCTION_} :: _encryption_key expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_encryption_key));
-    buffer_write(__args_buffer, buffer_string, _encryption_key);
-
-    // param: _cache_directory, type: String
-    if (!is_string(_cache_directory)) show_error($"{_GMFUNCTION_} :: _cache_directory expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_cache_directory));
-    buffer_write(__args_buffer, buffer_string, _cache_directory);
-
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_platform_create(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var _return_value = __eos_platform_create(_cache_directory, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
     _result = buffer_read(__ret_buffer, buffer_u64);

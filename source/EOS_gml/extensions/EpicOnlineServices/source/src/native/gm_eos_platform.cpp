@@ -1,14 +1,36 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "core/GMExtUtils.h"
 
 #include <eos_sdk.h>
 
+#include <algorithm>
+#include <cctype>
 #include <string>
 #include <string_view>
 
 using namespace gm::wire;
 using namespace gm_structs;
 using namespace gm_enums;
+
+// ============================================================
+// Extension options
+// ============================================================
+
+static constexpr const char* k_ext_name = "EpicOnlineServices";
+
+static std::string eos_get_ext_option(const char* key)
+{
+    return gm::ExtUtils::GetExtensionOption(k_ext_name, key);
+}
+
+static bool eos_get_ext_option_bool(const char* key)
+{
+    std::string v = eos_get_ext_option(key);
+    std::transform(v.begin(), v.end(), v.begin(),
+        [](unsigned char c){ return (char)std::tolower(c); });
+    return v == "true" || v == "1" || v == "yes";
+}
 
 // ============================================================
 // Internal helpers
@@ -158,15 +180,7 @@ bool eos_platform_is_created()
     return eos_platform_get() != nullptr;
 }
 
-gm_enums::EpicResult eos_platform_create(
-    bool is_server,
-    std::string_view product_id,
-    std::string_view sandbox_id,
-    std::string_view deployment_id,
-    std::string_view client_id,
-    std::string_view client_secret,
-    std::string_view encryption_key,
-    std::string_view cache_directory)
+gm_enums::EpicResult eos_platform_create(std::string_view cache_directory)
 {
     eos_clear_last_error();
 
@@ -180,36 +194,38 @@ gm_enums::EpicResult eos_platform_create(
         return (gm_enums::EpicResult)EOS_EResult::EOS_AlreadyConfigured;
     }
 
-    std::string product_id_storage(product_id);
-    std::string sandbox_id_storage(sandbox_id);
-    std::string deployment_id_storage(deployment_id);
-    std::string client_id_storage(client_id);
-    std::string client_secret_storage(client_secret);
-    std::string encryption_key_storage(encryption_key);
-    std::string cache_directory_storage(cache_directory);
+    // All credentials come from extension options; only cache_directory is runtime-supplied.
+    const std::string product_id_storage      = eos_get_ext_option("ProductId");
+    const std::string sandbox_id_storage      = eos_get_ext_option("SandboxId");
+    const std::string deployment_id_storage   = eos_get_ext_option("DeploymentId");
+    const std::string client_id_storage       = eos_get_ext_option("ClientCredentialsId");
+    const std::string client_secret_storage   = eos_get_ext_option("ClientCredentialsSecret");
+    const std::string encryption_key_storage  = eos_get_ext_option("EncryptionKey");
+    const std::string cache_directory_storage(cache_directory);
+    const bool        is_server               = eos_get_ext_option_bool("IsServer");
 
     if (product_id_storage.empty()) {
-        eos_set_last_error("EOS_Platform_Create: product_id is required.");
+        eos_set_last_error("EOS_Platform_Create: extension option 'ProductId' is empty.");
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
     if (sandbox_id_storage.empty()) {
-        eos_set_last_error("EOS_Platform_Create: sandbox_id is required.");
+        eos_set_last_error("EOS_Platform_Create: extension option 'SandboxId' is empty.");
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
     if (deployment_id_storage.empty()) {
-        eos_set_last_error("EOS_Platform_Create: deployment_id is required.");
+        eos_set_last_error("EOS_Platform_Create: extension option 'DeploymentId' is empty.");
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
     if (client_id_storage.empty()) {
-        eos_set_last_error("EOS_Platform_Create: client_id is required.");
+        eos_set_last_error("EOS_Platform_Create: extension option 'ClientCredentialsId' is empty.");
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
     if (client_secret_storage.empty()) {
-        eos_set_last_error("EOS_Platform_Create: client_secret is required.");
+        eos_set_last_error("EOS_Platform_Create: extension option 'ClientCredentialsSecret' is empty.");
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 

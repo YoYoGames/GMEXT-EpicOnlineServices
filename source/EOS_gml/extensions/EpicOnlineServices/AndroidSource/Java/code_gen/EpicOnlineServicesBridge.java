@@ -32,7 +32,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_api_epic_account_id_is_valid(String account_id);
     public static native double __EXT_JNI__eos_api_product_user_id_is_valid(String product_user_id);
     public static native double __EXT_JNI__eos_platform_is_created();
-    public static native double __EXT_JNI__eos_platform_create(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_platform_create(String cache_directory, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_platform_release();
     public static native double __EXT_JNI__eos_platform_tick();
     public static native double __EXT_JNI__eos_platform_check_for_launcher_and_restart(ByteBuffer __ret_buffer, double __ret_buffer_length);

@@ -86,13 +86,6 @@
 
 /**
  * @function_partial eos_platform_create
- * @param {Bool} is_server
- * @param {String} product_id
- * @param {String} sandbox_id
- * @param {String} deployment_id
- * @param {String} client_id
- * @param {String} client_secret
- * @param {String} encryption_key
  * @param {String} cache_directory
  * @returns {Enum.EpicResult} 
  * @function_end 

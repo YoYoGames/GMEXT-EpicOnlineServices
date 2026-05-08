@@ -59,13 +59,6 @@ function eos_platform_is_created(): bool;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_platform_create(
-    is_server: bool,
-    product_id: string,
-    sandbox_id: string,
-    deployment_id: string,
-    client_id: string,
-    client_secret: string,
-    encryption_key: string,
     cache_directory: string
 ): gmval;
 

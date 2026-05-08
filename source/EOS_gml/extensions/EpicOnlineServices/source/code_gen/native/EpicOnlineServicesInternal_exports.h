@@ -22,7 +22,7 @@ GMEXPORT char* __EXT_NATIVE__eos_api_network_status_to_string(char* __arg_buffer
 GMEXPORT double __EXT_NATIVE__eos_api_epic_account_id_is_valid(char* account_id);
 GMEXPORT double __EXT_NATIVE__eos_api_product_user_id_is_valid(char* product_user_id);
 GMEXPORT double __EXT_NATIVE__eos_platform_is_created();
-GMEXPORT double __EXT_NATIVE__eos_platform_create(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_platform_create(char* cache_directory, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_platform_release();
 GMEXPORT double __EXT_NATIVE__eos_platform_tick();
 GMEXPORT double __EXT_NATIVE__eos_platform_check_for_launcher_and_restart(char* __ret_buffer, double __ret_buffer_length);

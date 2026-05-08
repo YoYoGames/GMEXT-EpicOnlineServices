@@ -272,22 +272,17 @@ static jdouble __JNI_WRAPPER__eos_platform_is_created_DA641FFCC473(JNIEnv* /* en
     return static_cast<jdouble>(__ret);
 }
 
-// eos_platform_create JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
-static jdouble __JNI_WRAPPER__eos_platform_create_C05DACD2381A(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+// eos_platform_create JNI wrapper signature: (Ljava/lang/String;Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_platform_create_0E39933B270A(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring cache_directory, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
-    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
-    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
-    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
-        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
-        return 0.0;
-    }
+    UtfChars __pin_cache_directory(env, cache_directory);
     void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
     jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
     if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
         throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
         return 0.0;
     }
-    double __ret = __EXT_NATIVE__eos_platform_create((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    double __ret = __EXT_NATIVE__eos_platform_create((char *)__pin_cache_directory.c_str(), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
@@ -6162,7 +6157,7 @@ extern "C" {
             { "__EXT_JNI__eos_api_epic_account_id_is_valid", "(Ljava/lang/String;)D", (void*)__JNI_WRAPPER__eos_api_epic_account_id_is_valid_97FF3BCCBAB9 },
             { "__EXT_JNI__eos_api_product_user_id_is_valid", "(Ljava/lang/String;)D", (void*)__JNI_WRAPPER__eos_api_product_user_id_is_valid_91BAADFC6AC9 },
             { "__EXT_JNI__eos_platform_is_created", "()D", (void*)__JNI_WRAPPER__eos_platform_is_created_DA641FFCC473 },
-            { "__EXT_JNI__eos_platform_create", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_platform_create_C05DACD2381A },
+            { "__EXT_JNI__eos_platform_create", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_platform_create_0E39933B270A },
             { "__EXT_JNI__eos_platform_release", "()D", (void*)__JNI_WRAPPER__eos_platform_release_A92AB71E0441 },
             { "__EXT_JNI__eos_platform_tick", "()D", (void*)__JNI_WRAPPER__eos_platform_tick_AFAC59A43286 },
             { "__EXT_JNI__eos_platform_check_for_launcher_and_restart", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_platform_check_for_launcher_and_restart_4BD10866D616 },

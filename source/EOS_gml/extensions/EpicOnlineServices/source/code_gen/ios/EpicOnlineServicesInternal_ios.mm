@@ -140,9 +140,9 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_platform_is_created();
 }
-- (double)__EXT_NATIVE__eos_platform_create:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+- (double)__EXT_NATIVE__eos_platform_create:(char*)cache_directory arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_platform_create(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    return __EXT_NATIVE__eos_platform_create(cache_directory, __ret_buffer, __ret_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_platform_release
 {

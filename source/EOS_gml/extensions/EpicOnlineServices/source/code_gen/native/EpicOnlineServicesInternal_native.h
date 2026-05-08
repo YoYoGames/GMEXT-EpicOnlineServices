@@ -7289,7 +7289,7 @@ std::string eos_api_network_status_to_string(gm_enums::EpicNetworkStatus status)
 bool eos_api_epic_account_id_is_valid(std::string_view account_id);
 bool eos_api_product_user_id_is_valid(std::string_view product_user_id);
 bool eos_platform_is_created();
-gm_enums::EpicResult eos_platform_create(bool is_server, std::string_view product_id, std::string_view sandbox_id, std::string_view deployment_id, std::string_view client_id, std::string_view client_secret, std::string_view encryption_key, std::string_view cache_directory);
+gm_enums::EpicResult eos_platform_create(std::string_view cache_directory);
 void eos_platform_release();
 void eos_platform_tick();
 gm_enums::EpicResult eos_platform_check_for_launcher_and_restart();

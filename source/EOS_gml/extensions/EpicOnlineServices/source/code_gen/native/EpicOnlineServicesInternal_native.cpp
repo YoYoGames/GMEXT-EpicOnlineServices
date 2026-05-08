@@ -137,35 +137,9 @@ GMEXPORT double __EXT_NATIVE__eos_platform_is_created()
     return static_cast<double>(__result);
 }
 
-GMEXPORT double __EXT_NATIVE__eos_platform_create(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_platform_create(char* cache_directory, char* __ret_buffer, double __ret_buffer_length)
 {
-    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
-
-    // field: is_server, type: Bool
-    bool is_server = gm::wire::codec::readValue<bool>(__br);
-
-    // field: product_id, type: String
-    std::string_view product_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: sandbox_id, type: String
-    std::string_view sandbox_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: deployment_id, type: String
-    std::string_view deployment_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: client_id, type: String
-    std::string_view client_id = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: client_secret, type: String
-    std::string_view client_secret = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: encryption_key, type: String
-    std::string_view encryption_key = gm::wire::codec::readValue<std::string_view>(__br);
-
-    // field: cache_directory, type: String
-    std::string_view cache_directory = gm::wire::codec::readValue<std::string_view>(__br);
-
-    auto&& __result = eos_platform_create(is_server, product_id, sandbox_id, deployment_id, client_id, client_secret, encryption_key, cache_directory);
+    auto&& __result = eos_platform_create(cache_directory);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult

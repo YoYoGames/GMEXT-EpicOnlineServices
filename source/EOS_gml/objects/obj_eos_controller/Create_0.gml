@@ -161,16 +161,10 @@ show_debug_message("EOS initialized: " + eos_api_get_version());
 
 //var result = eos_platform_create(options);
 
-var result = eos_platform_create(
-		false,
-	    "144042169a6940a58e014acaa264cb8a",
-	    "3fefc033b7dc48d68553e095b4f9b58d",
-	    "750a6c35c15a4879baf3c4a2e02ca60d",
-	    "xyza7891r9cqTcARXLV4XC1g4fxJ3yXX",
-	    "+o3AXL60HNu94ERLlyExQKgQtNe6aqMwSXJ50ZYMCLg",
-	    "1111111111111111111111111111111111111111111111111111111111111111",
-	    working_directory  // cache directory — required for TitleStorage / PlayerDataStorage
-	)
+// All credentials (ProductId, SandboxId, DeploymentId, ClientCredentialsId,
+// ClientCredentialsSecret, EncryptionKey, IsServer) come from the extension options
+// configured in the IDE. Only the runtime-determined cache directory is passed in.
+var result = eos_platform_create(working_directory)
 
 
 if (result != EpicResult.Success)
