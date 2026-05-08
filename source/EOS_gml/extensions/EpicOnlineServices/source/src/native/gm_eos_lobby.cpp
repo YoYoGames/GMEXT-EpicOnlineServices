@@ -710,8 +710,7 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(
     attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
     attr.Key = key_storage.c_str();
     attr.Value.AsUtf8 = value_storage.c_str();
-    //TODO
-    // attr.ValueType = EOS_AT_STRING;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_STRING;
 
     EOS_LobbyModification_AddAttributeOptions opts{};
     opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
@@ -786,8 +785,7 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(
     attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
     attr.Key = key_storage.c_str();
     attr.Value.AsUtf8 = value_storage.c_str();
-    //TODO
-    // attr.ValueType = EOS_AT_STRING;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_STRING;
 
     EOS_LobbyModification_AddMemberAttributeOptions opts{};
     opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
@@ -1140,8 +1138,7 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
     attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
     attr.Key = key_storage.c_str();
     attr.Value.AsUtf8 = value_storage.c_str();
-    //TODO
-    // attr.ValueType = EOS_AT_STRING;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_STRING;
 
     EOS_LobbySearch_SetParameterOptions opts{};
     opts.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
