@@ -13,7 +13,7 @@ _opts.enable_rtc_room                   = false
 
 show_debug_message($"_opts: {_opts}")
 
-eos_lobby_create_lobby(_opts, method(self, function(_info)
+eos_lobby_create_lobby(_opts, function(_info)
 {
 	// EpicLobbyCreateLobbyCallbackInfo: .result_code, .lobby_id
 	show_debug_message("eos_lobby_create_lobby: " + eos_api_result_to_string(_info.result_code))
@@ -48,4 +48,4 @@ eos_lobby_create_lobby(_opts, method(self, function(_info)
 			eos_lobby_lobby_modification_release(_mod_id)
 		}
 	}
-}))
+})

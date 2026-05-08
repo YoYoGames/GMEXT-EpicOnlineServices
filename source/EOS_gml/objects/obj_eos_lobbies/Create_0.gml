@@ -25,10 +25,17 @@ function request_update_members()
 		array_push(members_array, eos_lobby_details_get_member_by_index(_details, a))
 	eos_lobby_details_release(_details)
 
-	// Cache the external account info for each member, then rebuild the UI tiles.
-	eos_connect_query_product_user_id_mappings(global.product_user_id, EpicExternalAccountType.Epic, members_array, method(self, function(_info)
+	show_debug_message($"[members] request_update_members: count={_count} array={members_array}")
+
+	eos_connect_query_product_user_id_mappings(global.product_user_id, EpicExternalAccountType.Epic, members_array, function(_info)
 	{
-		if(_info.result_code != EpicResult.Success) return
+		if(_info.result_code != EpicResult.Success)
+		{
+			show_debug_message($"[members] query_product_user_id_mappings failed: {eos_api_result_to_string(_info.result_code)}")
+			return
+		}
+
+		show_debug_message($"[members] rebuild: array={members_array}")
 
 		with(obj_eos_lobbies_member)
 			instance_destroy()
@@ -36,15 +43,17 @@ function request_update_members()
 		for(var b = 0; b < array_length(members_array); b++)
 		{
 			var _account_count = eos_connect_get_product_user_external_account_count(members_array[b])
+			show_debug_message($"[members]  - {members_array[b]} has {_account_count} external accounts")
+
 			for(var c = 0; c < _account_count; c++)
 			{
 				var _struct = eos_connect_copy_product_user_external_account_by_index(members_array[b], c)
-				show_debug_message(_struct)
+				show_debug_message($"[members]    -> {_struct}")
 				instance_create_depth(300, 220 + b * 100, 0, obj_eos_lobbies_member, {data: _struct})
 				break // only the first account is needed for display
 			}
 		}
-	}))
+	})
 }
 
 // Look up our own display name once at startup.
@@ -109,6 +118,8 @@ notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_recei
 {
 	// EpicLobbyLobbyMemberStatusReceivedCallbackInfo:
 	//   .lobby_id, .target_user_id, .local_user_id, .current_status (EpicLobbyMemberStatus)
+	show_debug_message($"[member_status] target={_info.target_user_id} local={global.product_user_id} status={_info.current_status} same={_info.target_user_id == global.product_user_id}")
+
 	if(_info.target_user_id == global.product_user_id)
 	{
 		switch(_info.current_status)
