@@ -51,6 +51,12 @@ notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted(fu
 			return
 		}
 		instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
+
+		// Register ourselves on the session roster so the host's count reflects us.
+		eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
+		{
+			show_debug_message($"register_players (invite-joiner): {eos_api_result_to_string(_reg.result_code)}")
+		})
 	}))
 })
 

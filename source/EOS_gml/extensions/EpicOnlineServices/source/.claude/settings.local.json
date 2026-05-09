@@ -55,7 +55,9 @@
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_destroy",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_start",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_end",
-      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_friend"
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_friend",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_invitations",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_invitation"
     ]
   }
 }

@@ -111,7 +111,10 @@ notifyLobbyInviteReceived = eos_lobby_add_notify_lobby_invite_received(function(
 notifyLobbyInviteRejected = eos_lobby_add_notify_lobby_invite_rejected(function(_info)
 {
 	// EpicLobbyLobbyInviteRejectedCallbackInfo: .invite_id, .local_user_id, .target_user_id
-	eos_lobby_reject_invite(_info.invite_id, global.product_user_id)
+	// This fires AFTER the local user has already rejected an invite — don't call
+	// reject_invite again from here (the rejection already happened, and re-calling
+	// it would fail or re-fire the notification).
+	show_debug_message($"lobby invite {_info.invite_id} rejected by local user")
 })
 
 notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_received(global.product_user_id, function(_info)

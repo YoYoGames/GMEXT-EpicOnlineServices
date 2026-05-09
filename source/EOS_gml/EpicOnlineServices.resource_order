@@ -62,6 +62,8 @@
     {"name":"obj_eos_sessions_end","order":4,"path":"objects/obj_eos_sessions_end/obj_eos_sessions_end.yy",},
     {"name":"obj_eos_sessions_friend","order":5,"path":"objects/obj_eos_sessions_friend/obj_eos_sessions_friend.yy",},
     {"name":"obj_eos_sessions_friends","order":6,"path":"objects/obj_eos_sessions_friends/obj_eos_sessions_friends.yy",},
+    {"name":"obj_eos_sessions_invitation","order":12,"path":"objects/obj_eos_sessions_invitation/obj_eos_sessions_invitation.yy",},
+    {"name":"obj_eos_sessions_invitations","order":11,"path":"objects/obj_eos_sessions_invitations/obj_eos_sessions_invitations.yy",},
     {"name":"obj_eos_sessions_p2p","order":7,"path":"objects/obj_eos_sessions_p2p/obj_eos_sessions_p2p.yy",},
     {"name":"obj_eos_sessions_search","order":8,"path":"objects/obj_eos_sessions_search/obj_eos_sessions_search.yy",},
     {"name":"obj_eos_sessions_start","order":9,"path":"objects/obj_eos_sessions_start/obj_eos_sessions_start.yy",},

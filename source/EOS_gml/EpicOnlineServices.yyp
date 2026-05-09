@@ -94,6 +94,8 @@
     {"id":{"name":"obj_eos_sessions_end","path":"objects/obj_eos_sessions_end/obj_eos_sessions_end.yy",},},
     {"id":{"name":"obj_eos_sessions_friend","path":"objects/obj_eos_sessions_friend/obj_eos_sessions_friend.yy",},},
     {"id":{"name":"obj_eos_sessions_friends","path":"objects/obj_eos_sessions_friends/obj_eos_sessions_friends.yy",},},
+    {"id":{"name":"obj_eos_sessions_invitation","path":"objects/obj_eos_sessions_invitation/obj_eos_sessions_invitation.yy",},},
+    {"id":{"name":"obj_eos_sessions_invitations","path":"objects/obj_eos_sessions_invitations/obj_eos_sessions_invitations.yy",},},
     {"id":{"name":"obj_eos_sessions_p2p","path":"objects/obj_eos_sessions_p2p/obj_eos_sessions_p2p.yy",},},
     {"id":{"name":"obj_eos_sessions_search","path":"objects/obj_eos_sessions_search/obj_eos_sessions_search.yy",},},
     {"id":{"name":"obj_eos_sessions_start","path":"objects/obj_eos_sessions_start/obj_eos_sessions_start.yy",},},

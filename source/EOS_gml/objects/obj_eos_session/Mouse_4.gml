@@ -1,11 +1,28 @@
 
-// Get the session details handle from the search result. We must keep it alive
-// across the eos_sessions_join_session call — the SDK reads from it during join.
-var _details_id = eos_sessions_session_search_copy_search_result_by_index(global.session_search_id, index)
-if(_details_id == 0)
+// This tile is used for both search results AND invitation lists.
+// If `invite_id` is set, we treat it as an invitation; otherwise we use the
+// search-result handle by index. Both paths produce a session_details_id
+// (uint64 handle) that join_session needs.
+
+var _details_id = 0
+
+if(variable_instance_exists(id, "invite_id") && invite_id != "")
 {
-	show_debug_message($"copy_search_result_by_index({index}) returned 0")
-	{return}
+	_details_id = eos_sessions_copy_session_handle_by_invite_id(invite_id)
+	if(_details_id == 0)
+	{
+		show_debug_message($"copy_session_handle_by_invite_id failed for {invite_id}")
+		return
+	}
+}
+else
+{
+	_details_id = eos_sessions_session_search_copy_search_result_by_index(global.session_search_id, index)
+	if(_details_id == 0)
+	{
+		show_debug_message($"copy_search_result_by_index({index}) returned 0")
+		return
+	}
 }
 
 var _struct = eos_sessions_session_details_copy_info(_details_id)
@@ -30,9 +47,18 @@ eos_sessions_join_session(data.session_id, _details_id, global.product_user_id, 
 	// Now safe to release the details handle — the SDK has consumed it.
 	eos_sessions_session_details_release(details_id)
 
-	if(_info.result_code != EpicResult.Success) {return}
+	if(_info.result_code != EpicResult.Success) return
 
 	instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
+
+	// Add ourselves to the session's official roster. Without this,
+	// eos_sessions_active_session_get_registered_player_count() never sees us
+	// from the host's perspective — joining alone does NOT auto-register.
+	eos_sessions_register_players(session_id, [global.product_user_id], function(_reg)
+	{
+		// EpicSessionsRegisterPlayersCallbackInfo: .result_code, .registered_players, .sanctioned_players
+		show_debug_message($"register_players (joiner): {eos_api_result_to_string(_reg.result_code)} registered={_reg.registered_players}")
+	})
 
 	// Send a hello packet to the session host so P2P opens both ways.
 	var _handle = eos_sessions_copy_active_session_handle(session_id)
