@@ -10,10 +10,6 @@ color_current = color_progress
 request = noone
 
 
-// Single call kicks off the full transfer. The C++ side streams the chunks
-// into a buffer and writes the entire file to disk on completion.
-// No alarm loop / repeated calls needed — the callback fires once when done.
-
 ins_cancel = instance_create_depth(x + 600, y, 0, obj_eos_title_storage_file_cancel, {filename: filename})
 
 eos_titlestorage_read_file(
