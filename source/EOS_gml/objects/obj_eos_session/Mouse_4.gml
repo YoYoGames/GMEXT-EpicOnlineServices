@@ -3,7 +3,7 @@ var _details_id = eos_sessions_session_search_copy_search_result_by_index(global
 if(_details_id == 0)
 {
 	show_debug_message($"copy_search_result_by_index({index}) returned 0")
-	return
+	{return}
 }
 
 var _struct = eos_sessions_session_details_copy_info(_details_id)
@@ -14,7 +14,7 @@ eos_sessions_join_session(obj_eos_sessions.SessionName, global.product_user_id, 
 {
 	// EpicSessionsJoinSessionCallbackInfo: .result_code
 	show_debug_message("join_session: " + eos_api_result_to_string(_info.result_code))
-	if(_info.result_code != EpicResult.Success) return
+	if(_info.result_code != EpicResult.Success) {return}
 
 	instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
 

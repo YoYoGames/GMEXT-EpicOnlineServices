@@ -10,7 +10,7 @@ if(variable_global_exists("session_search_id") && global.session_search_id != 0)
 
 global.session_search_id = eos_sessions_create_session_search(10)
 show_debug_message($"CreateSessionSearch id={global.session_search_id}")
-if(global.session_search_id == 0) return
+if(global.session_search_id == 0) {return}
 
 var BucketId = "GameMode:Region:MapName"
 
@@ -20,7 +20,7 @@ eos_sessions_session_search_find(global.session_search_id, global.product_user_i
 {
 	// EpicSessionsFindCallbackInfo: .result_code
 	show_debug_message("session_search_find: " + eos_api_result_to_string(_info.result_code))
-	if(_info.result_code != EpicResult.Success) return
+	if(_info.result_code != EpicResult.Success) {return}
 
 	var _count = eos_sessions_session_search_get_search_result_count(global.session_search_id)
 	show_debug_message($"session search results: {_count}")

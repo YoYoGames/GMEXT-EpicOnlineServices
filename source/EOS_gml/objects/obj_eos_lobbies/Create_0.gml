@@ -14,7 +14,7 @@ members_array = []
 // Replaces the old async dispatch via "eos_connect_query_product_user_id_mappings".
 function request_update_members()
 {
-	if(lobby_id == "") return
+	if(lobby_id == "") {return}
 
 	var _details = eos_lobby_copy_lobby_details_handle(lobby_id, global.product_user_id)
 	if(!_details) {return}

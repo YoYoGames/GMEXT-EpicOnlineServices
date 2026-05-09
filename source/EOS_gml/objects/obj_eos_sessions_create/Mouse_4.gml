@@ -67,7 +67,7 @@ if(modification_id != 0)
 	{
 		// EpicSessionsUpdateSessionCallbackInfo: .result_code, .session_name, .session_id
 		show_debug_message("update_session: " + eos_api_result_to_string(_info.result_code))
-		if(_info.result_code != EpicResult.Success) return
+		if(_info.result_code != EpicResult.Success) {return}
 
 		// Owner side comes online: spawn the P2P relay and announce ourselves
 		// to the active-session player roster.
