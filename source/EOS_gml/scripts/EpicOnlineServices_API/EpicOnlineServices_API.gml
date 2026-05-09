@@ -2072,6 +2072,8 @@ function EpicActiveSessionInfo() constructor
     self.local_user_id = undefined;
     self.session_id = undefined;
     self.bucket_id = undefined;
+    self.owner_user_id = undefined;
+    self.host_address = undefined;
 
 }
 
@@ -8612,6 +8614,16 @@ function __EpicActiveSessionInfo_encode(_inst, _buffer, _offset, _where = _GMFUN
         buffer_write(_buffer, buffer_u32, string_byte_length(self.bucket_id));
         buffer_write(_buffer, buffer_string, self.bucket_id);
 
+        // field: owner_user_id, type: String
+        if (!is_string(self.owner_user_id)) show_error($"{_where} :: self.owner_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.owner_user_id));
+        buffer_write(_buffer, buffer_string, self.owner_user_id);
+
+        // field: host_address, type: String
+        if (!is_string(self.host_address)) show_error($"{_where} :: self.host_address expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.host_address));
+        buffer_write(_buffer, buffer_string, self.host_address);
+
     }
 }
 
@@ -8644,6 +8656,14 @@ function __EpicActiveSessionInfo_decode(_buffer, _offset)
         // field: bucket_id, type: String
         buffer_read(_buffer, buffer_u32);
         self.bucket_id = buffer_read(_buffer, buffer_string);
+
+        // field: owner_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.owner_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: host_address, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.host_address = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -20070,10 +20090,12 @@ function eos_sessions_end_session(_session_name, _callback)
 
 /**
  * @param {String} _session_name
+ * @param {Real} _session_details_id
  * @param {String} _local_user_id
+ * @param {Bool} _presence_enabled
  * @param {Function} _callback
  */
-function eos_sessions_join_session(_session_name, _local_user_id, _callback)
+function eos_sessions_join_session(_session_name, _session_details_id, _local_user_id, _presence_enabled, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
@@ -20084,10 +20106,18 @@ function eos_sessions_join_session(_session_name, _local_user_id, _callback)
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_session_name));
     buffer_write(__args_buffer, buffer_string, _session_name);
 
+    // param: _session_details_id, type: UInt64
+    if (!is_numeric(_session_details_id)) show_error($"{_GMFUNCTION_} :: _session_details_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _session_details_id);
+
     // param: _local_user_id, type: String
     if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
+
+    // param: _presence_enabled, type: Bool
+    if (!is_bool(_presence_enabled)) show_error($"{_GMFUNCTION_} :: _presence_enabled expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _presence_enabled);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))

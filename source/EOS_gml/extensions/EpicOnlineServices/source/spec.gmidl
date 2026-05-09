@@ -1664,8 +1664,10 @@ class `[[EpicSessionsUnregisterPlayersCallbackInfo]]` prototype Object
 
 [global, bind = typed_gml]
 function eos_sessions_join_session(
-    session_name: string,
+    session_name: string,                              // local label for the joined session (must be unique on this client)
+    [type_hint=`uint64`] session_details_id: gmval,    // EOS_HSessionDetails handle from a search result or invite
     local_user_id: string,
+    presence_enabled: bool,
     [type_hint=`func?`] callback: gmval
 ): unit;
 
@@ -1761,6 +1763,12 @@ class `[[EpicActiveSessionInfo]]` prototype Object
 
     [field]
     property bucket_id : string { get; set; }
+
+    [field]
+    property owner_user_id : string { get; set; }   // empty if owned by a server, not a user
+
+    [field]
+    property host_address : string { get; set; }
 }
 
 [global]

@@ -28,25 +28,30 @@ notifySendSessionNativeInviteRequested = eos_sessions_add_notify_send_session_na
 notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted(function(_info)
 {
 	// EpicSessionsSessionInviteAcceptedCallbackInfo: .invite_id, .local_user_id, .target_user_id, .session_id
-	// The invite handle exists momentarily; copy it just to validate, then join.
+	// Copy the session details handle from the invite, then pass it to join_session.
+	// Don't release it until the join callback returns — the SDK reads from it during join.
 	var _details_id = eos_sessions_copy_session_handle_by_invite_id(_info.invite_id)
 	if(_details_id == 0)
 	{
 		show_debug_message("could not copy session handle from invite")
 		return
 	}
-	eos_sessions_session_details_release(_details_id)
 
-	eos_sessions_join_session(obj_eos_sessions.SessionName, global.product_user_id, function(_join_info)
+	// Bound struct carries the handle into the callback (var locals don't close over).
+	var _ctx = { details_id: _details_id }
+
+	eos_sessions_join_session(SessionName, _details_id, global.product_user_id, true, method(_ctx, function(_join_info)
 	{
 		// EpicSessionsJoinSessionCallbackInfo: .result_code
+		eos_sessions_session_details_release(details_id)
+
 		if(_join_info.result_code != EpicResult.Success)
 		{
 			show_debug_message($"join_session failed: {eos_api_result_to_string(_join_info.result_code)}")
 			return
 		}
 		instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
-	})
+	}))
 })
 
 notifySessionInviteReceived = eos_sessions_add_notify_session_invite_received(function(_info)

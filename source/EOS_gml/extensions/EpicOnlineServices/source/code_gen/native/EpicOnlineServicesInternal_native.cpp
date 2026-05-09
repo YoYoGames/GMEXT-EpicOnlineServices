@@ -2273,8 +2273,14 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_join_session(char* __arg_buffer, doub
     // field: session_name, type: String
     std::string_view session_name = gm::wire::codec::readValue<std::string_view>(__br);
 
+    // field: session_details_id, type: UInt64
+    std::uint64_t session_details_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: presence_enabled, type: Bool
+    bool presence_enabled = gm::wire::codec::readValue<bool>(__br);
 
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
@@ -2283,7 +2289,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_join_session(char* __arg_buffer, doub
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_sessions_join_session(session_name, local_user_id, callback);
+    eos_sessions_join_session(session_name, session_details_id, local_user_id, presence_enabled, callback);
     return 0;
 }
 

@@ -34,7 +34,7 @@ eos_sessions_session_search_find(global.session_search_id, global.product_user_i
 		eos_sessions_session_details_release(_details_id)
 		show_debug_message(_struct)
 
-		var _ins = instance_create_depth(x, y + 100 + a * 100, 0, obj_eos_session, _struct)
+		var _ins = instance_create_depth(x, y + 100 + a * 100, 0, obj_eos_session, {data: _struct})
 		_ins.text  = _struct.session_id
 		_ins.index = a
 	}

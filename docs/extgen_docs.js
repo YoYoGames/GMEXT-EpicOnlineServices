@@ -1099,7 +1099,9 @@
 /**
  * @function_partial eos_sessions_join_session
  * @param {String} session_name
+ * @param {Real} session_details_id
  * @param {String} local_user_id
+ * @param {Bool} presence_enabled
  * @param {Function} [callback]
  * @function_end 
  */
@@ -3655,6 +3657,8 @@
  * @member {String} local_user_id
  * @member {String} session_id
  * @member {String} bucket_id
+ * @member {String} owner_user_id
+ * @member {String} host_address
  * @struct_end 
  */
 

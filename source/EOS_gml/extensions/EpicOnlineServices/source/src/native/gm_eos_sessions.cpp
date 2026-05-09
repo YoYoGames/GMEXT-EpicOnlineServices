@@ -243,7 +243,10 @@ std::uint64_t eos_sessions_create_session_modification(std::string_view session_
     opts.bPresenceEnabled = presence_enabled ? EOS_TRUE : EOS_FALSE;
     
     opts.bSanctionsEnabled = sanctions_enabled? EOS_TRUE:EOS_FALSE;
-	opts.SessionId = session_id_storage.c_str();
+	// SessionId must be either nullptr (backend assigns one) or 16-64 chars.
+	// An empty string is invalid and causes EOS_Sessions_CreateSessionModification to fail
+	// synchronously, which would later surface as EOS_NotFound from start/end/update_session.
+	opts.SessionId = session_id_storage.empty() ? nullptr : session_id_storage.c_str();
     const uint32_t* ptr = reinterpret_cast<const uint32_t*>(allowed_platform_ids.data());
 	opts.AllowedPlatformIds = ptr;
 	opts.AllowedPlatformIdsCount = (uint32_t)allowed_platform_ids.size();
@@ -496,9 +499,16 @@ static void EOS_CALL eos_sessions_unregister_players_callback_native(
     delete ctx;
 }
 
+// Forward decl — implementation lives further down with the rest of the
+// session-details handle map helpers. eos_sessions_join_session needs the
+// EOS_HSessionDetails handle here to satisfy opts.SessionHandle.
+static EOS_HSessionDetails eos_sessions_details_get(uint64_t id);
+
 void eos_sessions_join_session(
     std::string_view session_name,
+    std::uint64_t session_details_id,
     std::string_view local_user_id,
+    bool presence_enabled,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -521,14 +531,21 @@ void eos_sessions_join_session(
         return;
     }
 
+    EOS_HSessionDetails session_handle = eos_sessions_details_get(session_details_id);
+    if (!session_handle) {
+        eos_set_last_error("EOS_Sessions_JoinSession: invalid session_details_id (handle not found).");
+        return;
+    }
+
     auto* ctx = new EOSAsyncCallbackContext{};
     ctx->callback = callback;
 
     EOS_Sessions_JoinSessionOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_JOINSESSION_API_LATEST;
     opts.SessionName = session_name_storage.c_str();
+    opts.SessionHandle = session_handle;
     opts.LocalUserId = local_user;
-    opts.bPresenceEnabled = EOS_TRUE;
+    opts.bPresenceEnabled = presence_enabled ? EOS_TRUE : EOS_FALSE;
 
     EOS_Sessions_JoinSession(
         sessions,
@@ -970,10 +987,17 @@ static gm_structs::EpicActiveSessionInfo eos_sessions_active_session_info_from_n
     out.local_user_id = eos_sessions_product_user_id_to_string_internal(p->LocalUserId);
     out.session_id = "";
     out.bucket_id = "";
+    out.owner_user_id = "";
+    out.host_address = "";
 
     if (p->SessionDetails)
     {
         out.session_id = p->SessionDetails->SessionId ? std::string(p->SessionDetails->SessionId) : std::string();
+        out.host_address = p->SessionDetails->HostAddress ? std::string(p->SessionDetails->HostAddress) : std::string();
+        out.owner_user_id = eos_sessions_product_user_id_to_string_internal(p->SessionDetails->OwnerUserId);
+
+        if (p->SessionDetails->Settings && p->SessionDetails->Settings->BucketId)
+            out.bucket_id = std::string(p->SessionDetails->Settings->BucketId);
     }
 
     return out;

@@ -1540,6 +1540,8 @@ namespace gm_structs
         std::string local_user_id;
         std::string session_id;
         std::string bucket_id;
+        std::string owner_user_id;
+        std::string host_address;
     };
 
     struct EpicSessionsSessionInviteReceivedCallbackInfo
@@ -3753,6 +3755,8 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
         gm::wire::codec::writeValue(_buf, obj.session_id);
         gm::wire::codec::writeValue(_buf, obj.bucket_id);
+        gm::wire::codec::writeValue(_buf, obj.owner_user_id);
+        gm::wire::codec::writeValue(_buf, obj.host_address);
     }
 
     template<>
@@ -3763,6 +3767,8 @@ namespace gm::wire::codec
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.session_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.bucket_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.owner_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.host_address = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
 
@@ -7611,7 +7617,7 @@ void eos_sessions_update_session(std::uint64_t modification_id, const std::optio
 void eos_sessions_destroy_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_start_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_end_session(std::string_view session_name, const std::optional<gm::wire::GMFunction>& callback);
-void eos_sessions_join_session(std::string_view session_name, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sessions_join_session(std::string_view session_name, std::uint64_t session_details_id, std::string_view local_user_id, bool presence_enabled, const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_register_players(std::string_view session_name, const std::vector<std::string_view>& target_user_ids, const std::optional<gm::wire::GMFunction>& callback);
 void eos_sessions_unregister_players(std::string_view session_name, const std::vector<std::string_view>& target_user_ids, const std::optional<gm::wire::GMFunction>& callback);
 std::uint64_t eos_sessions_create_session_search(std::int64_t max_search_results);

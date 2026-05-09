@@ -145,7 +145,7 @@ var r = eos_api_initialize("MyGame", "1.0");
 
 if (r != EpicResult.Success)
 {
-    show_debug_message("EOS init failed: " + eos_api_last_error());
+    show_debug_message($"EOS init failed: {eos_api_last_error()}");
     return false;
 }
 
