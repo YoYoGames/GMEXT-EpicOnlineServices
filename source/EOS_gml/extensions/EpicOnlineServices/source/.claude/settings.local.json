@@ -51,7 +51,11 @@
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_leave",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_search",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_invitations",
-      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_rtc"
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_rtc",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_destroy",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_start",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_end",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_friend"
     ]
   }
 }

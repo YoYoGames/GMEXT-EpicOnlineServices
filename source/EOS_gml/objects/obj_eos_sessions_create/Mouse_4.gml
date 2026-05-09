@@ -63,7 +63,22 @@ if(modification_id != 0)
 	result = eos_sessions_session_modification_add_attribute(modification_id, "session_name", "MySessionName :)", EpicSessionAttributeAdvertisementType.Advertise)
 	show_debug_message("add_attribute(session_name): " + eos_api_result_to_string(result))
 
-	eos_sessions_update_session(modification_id)
+	eos_sessions_update_session(modification_id, function(_info)
+	{
+		// EpicSessionsUpdateSessionCallbackInfo: .result_code, .session_name, .session_id
+		show_debug_message("update_session: " + eos_api_result_to_string(_info.result_code))
+		if(_info.result_code != EpicResult.Success) return
+
+		// Owner side comes online: spawn the P2P relay and announce ourselves
+		// to the active-session player roster.
+		instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: true})
+
+		eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
+		{
+			// EpicSessionsRegisterPlayersCallbackInfo: .result_code, .registered_players, .sanctioned_players
+			show_debug_message($"register_players: {eos_api_result_to_string(_reg.result_code)} registered={_reg.registered_players}")
+		})
+	})
 
 	eos_sessions_session_modification_release(modification_id)
 }
