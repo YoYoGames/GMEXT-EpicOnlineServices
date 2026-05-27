@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"InstallSource_README",
+  "name":"InstallSource_README",
+  "parent":{
+    "name":"InstallSource",
+    "path":"folders/InstallSource.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}
