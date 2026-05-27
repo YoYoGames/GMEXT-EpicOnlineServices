@@ -11,7 +11,7 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"EpicOnlineServices",
-  "copyToTargets":-1,
+  "copyToTargets":3035426181059969258,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"0.0.1",
