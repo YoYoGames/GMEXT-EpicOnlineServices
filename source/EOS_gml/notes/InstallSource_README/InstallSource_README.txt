@@ -170,3 +170,4 @@ AndroidOther and IOSOther are valid results. They should not automatically be tr
 The extension uses a callback-based API so GameMaker code can work the same way on Android and iOS.
 
 For local development, android_other and ios_other are expected and usually mean the app was installed through GameMaker, ADB, Android Studio, or Xcode.
+
