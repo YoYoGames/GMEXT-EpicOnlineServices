@@ -1,0 +1,33 @@
+[gml_api]
+module GMInstallSource;
+
+[global, bind = typed_gml]
+enum InstallSource:uint32
+{
+    Unknown,
+    GooglePlay,
+    EpicAndroid,
+    AndroidOther,
+    AndroidSideload,
+
+    IOSAppStore,
+    IOSTestFlight,
+    IOSMarketplace,
+    IOSOther,
+
+    Unsupported,
+    Error
+}
+
+[global, bind = typed_gml]
+function install_source_request(callback: func): unit;
+
+[global, bind = typed_gml,type_hint=`InstallSource`]
+function install_source_get_cached(): gmval;
+
+[global, bind = typed_gml]
+function install_source_get_cached_name(): string;
+
+[global, bind = typed_gml]
+function install_source_get_cached_raw(): string;
+
