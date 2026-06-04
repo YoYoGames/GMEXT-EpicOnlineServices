@@ -3,6 +3,15 @@
 
 #include <eos_sdk.h>
 
+#if defined(__ANDROID__)
+#include <eos_Android.h>
+#include <android/log.h>
+// Diagnostic logging under the "yoyo" tag so it shows up in GameMaker's console.
+#define EOS_ANDROID_LOG(...) __android_log_print(ANDROID_LOG_INFO, "yoyo", __VA_ARGS__)
+#else
+#define EOS_ANDROID_LOG(...) ((void)0)
+#endif
+
 #include <string>
 #include <string_view>
 
@@ -65,7 +74,26 @@ gm_enums::EpicResult eos_api_initialize(std::string_view product_name, std::stri
     opts.ProductName = product_name_storage.c_str();
     opts.ProductVersion = product_version_storage.c_str();
 
+#if defined(__ANDROID__)
+    // Android requires system-specific init options; EOS_Initialize returns
+    // EOS_UnexpectedError if SystemInitializeOptions is null on this platform.
+    // (Must outlive the EOS_Initialize call below.)
+    EOS_Android_InitializeOptions android_init_opts{};
+    android_init_opts.ApiVersion = EOS_ANDROID_INITIALIZEOPTIONS_API_LATEST;
+    android_init_opts.Reserved = nullptr;
+    android_init_opts.OptionalInternalDirectory = nullptr;
+    android_init_opts.OptionalExternalDirectory = nullptr;
+    opts.SystemInitializeOptions = &android_init_opts;
+#endif
+
+    EOS_ANDROID_LOG("[EOS] eos_api_initialize: name='%s' version='%s' SystemInitializeOptions=%p",
+                    product_name_storage.c_str(), product_version_storage.c_str(),
+                    (void*)opts.SystemInitializeOptions);
+
     const EOS_EResult result = EOS_Initialize(&opts);
+
+    EOS_ANDROID_LOG("[EOS] eos_api_initialize: EOS_Initialize returned %d (%s)",
+                    (int)result, eos_result_string(result).c_str());
     if (result != EOS_EResult::EOS_Success) {
         eos_set_last_error(eos_result_string(result));
         eos_set_initialized(false);

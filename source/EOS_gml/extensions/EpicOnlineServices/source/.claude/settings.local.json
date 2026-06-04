@@ -23,7 +23,9 @@
       "Read(//c/Users/jzavala/Desktop/**)",
       "Bash(dir /B \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\objects\")",
       "Bash(for d *)",
-      "Read(//d/Github/GMEXT-EpicOnlineServices/source/EOS_gml/**)"
+      "Read(//d/Github/GMEXT-EpicOnlineServices/source/EOS_gml/**)",
+      "PowerShell($src = \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\extensions\\\\EpicOnlineServices\\\\source\"; Set-Location $src; if \\(Test-Path \"$src\\\\out\\\\build\\\\android-arm64-v8a-release\"\\) { Remove-Item -Recurse -Force \"$src\\\\out\\\\build\\\\android-arm64-v8a-release\" }; cmake --preset android-arm64-v8a-release 2>&1 | Select-Object -Last 3; \"--- BUILD ---\"; cmake --build --preset android-arm64-v8a-release 2>&1 | Select-Object -Last 25)",
+      "PowerShell($src = \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\extensions\\\\EpicOnlineServices\\\\source\"; Set-Location $src; $out = cmake --build --preset android-arm64-v8a-release -- -k 0 2>&1; $out | Select-String -Pattern \"error:\" | ForEach-Object { \\($_ -replace [regex]::Escape\\($src\\),\".\" \\) } | Select-Object -First 60; \"==== total error count ====\"; \\($out | Select-String -Pattern \"error:\"\\).Count)"
     ],
     "additionalDirectories": [
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_member_kick",

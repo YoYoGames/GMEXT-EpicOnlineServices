@@ -164,6 +164,7 @@ show_debug_message("EOS initialized: " + eos_api_get_version());
 // All credentials (ProductId, SandboxId, DeploymentId, ClientCredentialsId,
 // ClientCredentialsSecret, EncryptionKey, IsServer) come from the extension options
 // configured in the IDE. Only the runtime-determined cache directory is passed in.
+show_debug_message($"eos_platform_create({working_directory})")
 var result = eos_platform_create(working_directory)
 
 

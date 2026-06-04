@@ -4,6 +4,7 @@
 #include <eos_sdk.h>
 #include <eos_logging.h>
 
+#include <cstdint>
 #include <optional>
 #include <string>
 
@@ -24,7 +25,13 @@ static inline gm_structs::EpicLoggingMessage logging_from_native(const EOS_LogMe
     if (!p)
         return out;
 
-    out.category = (gm_enums::EpicLogCategory)(int)p->Category;
+    // NOTE: This EOS SDK exposes EOS_LogMessage::Category as a UTF-8 string
+    // (e.g. "LogEOSAuth"), but the generated model types it as the numeric enum
+    // EpicLogCategory. The original cast truncated the pointer to int (a no-op
+    // warning on MSVC, a hard error on clang) and produced a meaningless value.
+    // Cast through intptr_t to preserve the existing cross-platform behavior
+    // without losing bits. TODO: map the category string to EpicLogCategory.
+    out.category = (gm_enums::EpicLogCategory)(std::intptr_t)p->Category;
     out.level = (gm_enums::EpicLogLevel)(int)p->Level;
     out.message = p->Message ? std::string(p->Message) : std::string();
 

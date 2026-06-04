@@ -143,8 +143,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rm_install_source","path":"rooms/rm_install_source/rm_install_source.yy",},},
     {"roomId":{"name":"rm_eos_init","path":"rooms/rm_eos_init/rm_eos_init.yy",},},
+    {"roomId":{"name":"rm_install_source","path":"rooms/rm_install_source/rm_install_source.yy",},},
     {"roomId":{"name":"rm_eos_achievements","path":"rooms/rm_eos_achievements/rm_eos_achievements.yy",},},
     {"roomId":{"name":"rm_eos_ecom","path":"rooms/rm_eos_ecom/rm_eos_ecom.yy",},},
     {"roomId":{"name":"rm_eos_friends","path":"rooms/rm_eos_friends/rm_eos_friends.yy",},},

@@ -13,8 +13,6 @@
 
 #macro EXT_CORE_GM_BUFFER_RETURN_SIZE (8192)
 
-#macro EXT_CORE_DEBUG false
-
 /// @desc Unmarshals a value from a buffer.
 /// @returns {Any}
 /// @ignore
@@ -250,7 +248,7 @@ function __GMNativeFunctionDispatcher(_handler, _decoders) constructor {
 	}, [], -1);
 	
 	/// @func dispatch(_amount)
-	/// @desc Increments the internal reference count and ensures the dispatcher’s time source is running.
+	/// @desc Increments the internal reference count and ensures the dispatcher�s time source is running.
     /// Should be called whenever a new function is registered on the GML side.
     /// @param {Real} [_amount=1] The number of active references to add.
 	static dispatch = function(_amount = 1) {
@@ -320,47 +318,27 @@ function __ext_core_function_dispatch_calls(_handler, _decoders) {
 	var _count = buffer_read(_buf, buffer_u16);
 	var _ref_map = __ext_core_function_map(); // Cache the ref map
 	repeat (_count) {
-	    var _packet_start = buffer_tell(_buf);
-
-	    var _handle = buffer_read(_buf, buffer_u64);
-	    var _command = buffer_read(_buf, buffer_u8);
-
-	    if (EXT_CORE_DEBUG) show_debug_message($"PACKET start={_packet_start} handle={_handle} cmd={_command}");
-
-	    var _ref = ds_map_find_value(_ref_map, _handle);
-	    if (is_undefined(_ref)) {
-	        show_debug_message($"BAD PACKET at pos={_packet_start}, next={buffer_tell(_buf)}");
-	        continue;
-	    }
-
-	    switch (_command) {
-	        case 1:
-	        {
-	            var _args_start = buffer_tell(_buf);
-				
-				var _peek_type = buffer_peek(_buf, buffer_tell(_buf), buffer_u8);
-				if (EXT_CORE_DEBUG) show_debug_message($"Next args type = {_peek_type}");
-				
-	            var _args = __ext_core_buffer_unmarshal_value(_buf, _decoders);
-	            var _args_end = buffer_tell(_buf);
-	            if (EXT_CORE_DEBUG) show_debug_message($"ARGS consumed: {_args_end - _args_start} bytes");
-	            with (_dummy_context) method_call(_ref[0], _args);
-	            break;
-	        }
-
-	        case 2:
-	        {
-	            var _ref_count = --_ref[1];
-	            if (_ref_count <= 0) {
-	                ds_map_delete(_ref_map, _handle);
-	            }
-	            _released++;
-	            break;
-	        }
-
-	        default:
-	            show_debug_message($"INVALID COMMAND {_command} at packet start {_packet_start}");
-	    }
+			
+		var _handle = buffer_read(_buf, buffer_u64); // Decode the map key (ref)
+		var _command = buffer_read(_buf, buffer_u8); // Decode the command (execute|release)
+		
+        var _ref = ds_map_find_value(_ref_map, _handle); // Get the map value
+        if (is_undefined(_ref)) continue; // Continue if there is no func data
+        
+		switch (_command) {
+			case 1: // execute
+				var _args = __ext_core_buffer_unmarshal_value(_buf, _decoders); // Unmarshal the args
+				with (_dummy_context) method_call(_ref[0 /* callable */], _args); // Call the method with argument array
+				break;
+			case 2: // release
+                var _ref_count = --_ref[1 /* ref count */];
+                if (_ref_count <= 0) {
+    				ds_map_delete(_ref_map, _handle); // Remove the entry from the map
+                }
+                _released++;
+				break;
+			
+		}
 	}
 	
 	return _released;

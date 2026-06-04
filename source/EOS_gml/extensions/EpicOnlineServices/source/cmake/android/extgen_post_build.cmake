@@ -22,13 +22,17 @@ add_custom_command(
   COMMENT "Copying Android shared library to ${_ANDROID_ABI_DIR}"
 )
 
-if(DEFINED EXT_TP_ANDROID_AAR AND EXISTS "${EXT_TP_ANDROID_AAR}")
-  set(_ANDROID_AAR_DIR "${_EXT_ANDROID_OUT_DIR}/libs-aar")
+# Third-party Java classes (e.g. EOS SDK classes.jar) -> AndroidSource/libs/,
+# which GameMaker picks up as a jar dependency. Renamed so it does not collide
+# with the runner's own classes.jar.
+if(DEFINED EXT_TP_ANDROID_JAR AND EXISTS "${EXT_TP_ANDROID_JAR}")
+  set(_ANDROID_LIBS_DIR "${_EXT_ANDROID_OUT_DIR}/libs")
   add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${_ANDROID_AAR_DIR}"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${EXT_TP_ANDROID_AAR}" "${_ANDROID_AAR_DIR}/"
-    COMMENT "Copying third-party AAR to ${_ANDROID_AAR_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${_ANDROID_LIBS_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${EXT_TP_ANDROID_JAR}" "${_ANDROID_LIBS_DIR}/EOSSDK.jar"
+    COMMENT "Copying EOS SDK Java classes to ${_ANDROID_LIBS_DIR}/EOSSDK.jar"
   )
 endif()
 
