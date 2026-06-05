@@ -20,8 +20,15 @@ endfunction()
 # =============================================================================
 # Epic Online Services SDK
 # =============================================================================
+# Resolve the SDK location relative to this file so the build is portable across
+# machines/checkouts. From <repo>/source/EOS_gml/extensions/EpicOnlineServices/
+# source/third_party, the SDK lives at <repo>/source/EOS_sdk (five levels up).
+get_filename_component(_EOS_SDK_BASE_DEFAULT
+    "${CMAKE_CURRENT_LIST_DIR}/../../../../../EOS_sdk"
+    ABSOLUTE)
+
 set(EOS_SDK_ROOT
-    "D:/Github/GMEXT-EpicOnlineServices/source/EOS_sdk/c"
+    "${_EOS_SDK_BASE_DEFAULT}/c"
     CACHE PATH "Path to Epic Online Services SDK root" FORCE)
 
 set(_EOS_INCLUDE_DIR "${EOS_SDK_ROOT}/Include")
