@@ -1,0 +1,24 @@
+# =============================================================================
+# EOS SDK third-party binaries
+# -----------------------------------------------------------------------------
+# These are staged from the SDK paths (sdkPath / sdkAndroidPath / sdkIosPath)
+# by pre_build_step / post_build_step at build time, so they are NOT committed.
+#
+# The extension's OWN result binaries (EpicOnlineServices.dll, .dylib, and
+# AndroidSource/libs/<abi>/libEpicOnlineServices.so) ARE committed and must stay
+# tracked -- they are deliberately not matched below.
+# =============================================================================
+
+# Android (EOS SDK)
+/AndroidSource/libs/EOSSDK.jar
+/AndroidSource/libs/*/libEOSSDK.so
+/_eos_aar_tmp/
+
+# Windows / macOS / Linux (EOS C SDK runtime libs)
+/EOSSDK-Win64-Shipping.dll
+/EOSSDK-Win32-Shipping.dll
+/libEOSSDK-Mac-Shipping.dylib
+/libEOSSDK-Linux-Shipping.so
+
+# iOS (EOS framework)
+/iOSSource/EOSSDK.framework/

@@ -10,27 +10,58 @@
 #include <string_view>
 
 #if defined(__ANDROID__)
-#include <android/log.h>
 #include <cstdlib>
-#define EOS_ANDROID_LOG(...) __android_log_print(ANDROID_LOG_INFO, "yoyo", __VA_ARGS__)
+#elif defined(__APPLE__)
+#include <TargetConditionals.h>
+#include <cstdlib>
 #endif
 
 using namespace gm::wire;
 using namespace gm_structs;
 using namespace gm_enums;
 
+// ============================================================
+// Platform cache directory
+// ------------------------------------------------------------
+// EOS_Platform_Create needs a writable absolute CacheDirectory. On desktop the
+// caller-supplied path (GameMaker's working_directory) works, but on mobile that
+// path is not a usable writable filesystem dir, so resolve it natively instead.
+// Each helper returns an empty string when it has nothing to offer (desktop),
+// meaning "keep the caller-supplied value".
+// ============================================================
+
 #if defined(__ANDROID__)
-// On Android, GameMaker's working_directory is "assets/" (read-only APK assets),
-// which EOS_Platform_Create cannot use for its writable cache. The Android
-// runtime sets the TMPDIR environment variable to the app's private cache dir
-// (e.g. /data/user/0/<pkg>/cache), which is writable -- no JNI required.
+// Android's runtime sets TMPDIR to the app's private cache dir
+// (e.g. /data/user/0/<pkg>/cache). GameMaker's working_directory is "assets/"
+// (read-only APK assets), which EOS cannot write to.
 static std::string eos_android_cache_dir()
 {
     if (const char* tmp = std::getenv("TMPDIR"); tmp && *tmp)
         return std::string(tmp);
     return {};
 }
-#endif // __ANDROID__
+#elif defined(__APPLE__) && TARGET_OS_IOS
+// iOS sandboxes the app; TMPDIR points at <app>/tmp, which is writable.
+static std::string eos_ios_cache_dir()
+{
+    if (const char* tmp = std::getenv("TMPDIR"); tmp && *tmp)
+        return std::string(tmp);
+    return {};
+}
+#endif
+
+// Returns the platform-resolved writable cache dir, or empty to keep the
+// caller-supplied value (desktop).
+static std::string eos_platform_cache_dir()
+{
+#if defined(__ANDROID__)
+    return eos_android_cache_dir();
+#elif defined(__APPLE__) && TARGET_OS_IOS
+    return eos_ios_cache_dir();
+#else
+    return {};
+#endif
+}
 
 // ============================================================
 // Extension options
@@ -223,22 +254,10 @@ gm_enums::EpicResult eos_platform_create(std::string_view cache_directory)
     std::string       cache_directory_storage(cache_directory);
     const bool        is_server               = eos_get_ext_option_bool("IsServer");
 
-#if defined(__ANDROID__)
-    // GameMaker's working_directory is the read-only "assets/" path on Android,
-    // which EOS cannot write to. Override with the app's real writable cache dir.
-    {
-        const std::string android_cache = eos_android_cache_dir();
-        if (!android_cache.empty()) {
-            cache_directory_storage = android_cache;
-            EOS_ANDROID_LOG("[EOS] platform CacheDirectory (android) = %s",
-                            cache_directory_storage.c_str());
-        } else {
-            EOS_ANDROID_LOG("[EOS] WARNING: could not resolve Android cache dir; "
-                            "using '%s' (EOS_Platform_Create will likely fail)",
-                            cache_directory_storage.c_str());
-        }
-    }
-#endif
+    // On mobile the caller's path isn't a usable writable dir; use the
+    // platform-resolved cache dir instead (empty on desktop = keep caller value).
+    if (const std::string platform_cache = eos_platform_cache_dir(); !platform_cache.empty())
+        cache_directory_storage = platform_cache;
 
     if (product_id_storage.empty()) {
         eos_set_last_error("EOS_Platform_Create: extension option 'ProductId' is empty.");

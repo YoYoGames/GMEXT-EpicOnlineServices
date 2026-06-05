@@ -5,12 +5,6 @@ import ${YYAndroidPackageName}.GMExtUtils;
 
 public final class EpicOnlineServicesBridge {
     static {
-        // Load the EOS SDK explicitly FIRST. It is a NEEDED dependency of the
-        // extension lib, but Android only runs a library's JNI_OnLoad when it is
-        // loaded via System.loadLibrary -- not when it is pulled in as a
-        // transitive dependency. libEOSSDK.so's JNI_OnLoad is what stores the
-        // JavaVM; without this the native side fails with EOS_Android_JavaVMNotStored.
-        System.loadLibrary("EOSSDK");
         // this is the extension lib name
         System.loadLibrary("EpicOnlineServices");
         nativeRegister();

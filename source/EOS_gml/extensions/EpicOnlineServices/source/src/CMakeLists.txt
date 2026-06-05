@@ -27,30 +27,15 @@ if(WIN32)
 
 elseif(APPLE)
   if(CMAKE_OSX_SYSROOT MATCHES "iphone")
-    # NATIVE flavour: ObjC++ wrapper (src/ios) over the shared, portable C++ EOS
-    # implementation (src/native), matching the code_gen/native sources that
-    # cmake/ios/extgen_post_project.cmake compiles under EXT_APPLE_NATIVE_FRAMEWORK.
-    # STANDARD flavour: platform-native implementation in src/ios only.
     file(GLOB TARGET_SRCS CONFIGURE_DEPENDS "${SRC_DIR}/ios/*.mm" "${SRC_DIR}/ios/*.cpp")
-    if(EXT_APPLE_NATIVE_FRAMEWORK)
-      file(GLOB _SRC_NATIVE CONFIGURE_DEPENDS "${SRC_DIR}/native/*.cpp")
-      list(APPEND TARGET_SRCS ${_SRC_NATIVE})
-    endif()
   elseif(CMAKE_OSX_SYSROOT MATCHES "appletv")
     file(GLOB TARGET_SRCS CONFIGURE_DEPENDS "${SRC_DIR}/tvos/*.mm" "${SRC_DIR}/tvos/*.cpp")
-    if(EXT_APPLE_NATIVE_FRAMEWORK)
-      file(GLOB _SRC_NATIVE CONFIGURE_DEPENDS "${SRC_DIR}/native/*.cpp")
-      list(APPEND TARGET_SRCS ${_SRC_NATIVE})
-    endif()
   else()
     file(GLOB TARGET_SRCS CONFIGURE_DEPENDS "${SRC_DIR}/native/*.cpp" "${SRC_DIR}/native/*.mm")
   endif()
 
 elseif(ANDROID)
-  # Android links the EOS C SDK (same C API as desktop), so it reuses the
-  # portable native implementation. The GML<->C++ JNI bridge lives in
-  # code_gen/android and is added by cmake/android/extgen_post_project.cmake.
-  file(GLOB TARGET_SRCS CONFIGURE_DEPENDS "${SRC_DIR}/native/*.cpp")
+  file(GLOB TARGET_SRCS CONFIGURE_DEPENDS "${SRC_DIR}/android/*.cpp")
 
 elseif(UNIX)
   file(GLOB TARGET_SRCS CONFIGURE_DEPENDS "${SRC_DIR}/native/*.cpp")

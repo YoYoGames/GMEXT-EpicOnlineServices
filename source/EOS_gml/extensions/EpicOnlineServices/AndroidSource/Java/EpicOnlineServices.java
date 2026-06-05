@@ -17,9 +17,6 @@ public final class EpicOnlineServices extends EpicOnlineServicesInternal {
     public void Init() {
         super.Init();
 
-        // Logged under "yoyo" so it appears in the GameMaker console.
-        Log.i("yoyo", "[EOS] EpicOnlineServices.Init() called");
-
         Activity activity = RunnerActivity.CurrentActivity;
         if (activity == null) {
             Log.e("yoyo", "[EOS] EOSSDK.init skipped: RunnerActivity.CurrentActivity is null");
@@ -28,12 +25,12 @@ public final class EpicOnlineServices extends EpicOnlineServicesInternal {
 
         try {
             // EOSSDK.init() logs via the native EOSLogger.Log JNI method, so
-            // libEOSSDK.so must be loaded FIRST. Init() runs at onCreate, before
-            // the Bridge's static loadLibrary, so load it explicitly here.
-            // (loadLibrary is idempotent; the later Bridge load is a no-op.)
+            // libEOSSDK.so must be loaded first. Init() runs at onCreate, before
+            // the Bridge's static loadLibrary, so load it explicitly here. Loading
+            // it via System.loadLibrary also runs its JNI_OnLoad, which stores the
+            // JavaVM that EOS_Initialize needs. (loadLibrary is idempotent.)
             System.loadLibrary("EOSSDK");
             EOSSDK.init(activity);
-            Log.i("yoyo", "[EOS] EOSSDK.init succeeded");
         } catch (Throwable t) {
             Log.e("yoyo", "[EOS] EOSSDK.init FAILED: " + t.toString());
         }
