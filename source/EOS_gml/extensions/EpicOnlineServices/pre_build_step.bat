@@ -79,8 +79,16 @@ exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------
 :setupiOS
-    :: TODO (unverified on a Mac): stage the EOS framework for the iOS build.
-    :: EOS iOS uses an xcframework flow that differs from the desktop/Android
-    :: layout, so wire this once the iOS build path is validated.
-    :: call %Utils% pathResolveExisting "%YYprojectDir%" "%SDK_PATH_IOS%" SDK_PATH
+    :: Stage the EOS SDK's xcframework into iOSSourceFromMac so the GameMaker iOS
+    :: build links it alongside the extension's own packaged xcframework. It is
+    :: git-ignored and re-staged each build.
+    call %Utils% pathResolveExisting "%YYprojectDir%" "%SDK_PATH_IOS%" SDK_PATH
+
+    set "EOS_XCFW=%SDK_PATH%\SDK\Bin\IOS\EOSSDK.xcframework"
+    set "IOS_DIR=%EXTENSION_DIR%iOSSourceFromMac"
+
+    :: Clean any stale staged framework, then copy fresh (rmdir handles directories)
+    if exist "%IOS_DIR%\EOSSDK.xcframework" rmdir /s /q "%IOS_DIR%\EOSSDK.xcframework"
+    echo Staging EOS iOS dependency (EOSSDK.xcframework)
+    call %Utils% itemCopyTo "%EOS_XCFW%" "%IOS_DIR%\EOSSDK.xcframework"
 exit /b 0

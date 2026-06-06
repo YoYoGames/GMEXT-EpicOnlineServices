@@ -20,5 +20,6 @@
 /libEOSSDK-Mac-Shipping.dylib
 /libEOSSDK-Linux-Shipping.so
 
-# iOS (EOS framework)
-/iOSSource/EOSSDK.framework/
+# iOS (EOS framework) — staged into iOSSourceFromMac next to the extension's
+# own packaged EpicOnlineServices.zip (which stays committed).
+/iOSSourceFromMac/EOSSDK.xcframework/
