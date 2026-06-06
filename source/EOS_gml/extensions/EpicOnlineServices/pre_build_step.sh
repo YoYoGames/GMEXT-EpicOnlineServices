@@ -72,10 +72,12 @@ setupiOS() {
     rm -f "$IOS_DIR/EOSSDK.zip"
 
     echo "Staging EOS iOS dependency: $EOS_XCFW -> EOSSDK.zip"
-    # Zip with ditto on macOS so the framework's symlinks and code signature are
-    # preserved (a Linux/Windows zip would break them). --keepParent keeps the
-    # top-level EOSSDK.xcframework folder inside the archive.
-    ditto -c -k --keepParent "$EOS_XCFW" "$IOS_DIR/EOSSDK.zip"
+    # Zip with ditto on macOS so the framework's symlinks + code signature survive
+    # (a Linux/Windows zip would break them). --norsrc/--noextattr drop resource
+    # forks and extended attributes, otherwise they extract as AppleDouble "._"
+    # files inside the xcframework and break ProcessXCFramework/SignatureCollection.
+    # --keepParent keeps the top-level EOSSDK.xcframework folder inside the archive.
+    ditto -c -k --norsrc --noextattr --keepParent "$EOS_XCFW" "$IOS_DIR/EOSSDK.zip"
     if [ $? -ne 0 ]; then
         logError "Failed to zip '$EOS_XCFW' into '$IOS_DIR/EOSSDK.zip'."
     fi
