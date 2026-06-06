@@ -55,18 +55,30 @@ setupAndroid() {
 
 # ----------------------------------------------------------------------------------------------------
 setupiOS() {
-    # Stage the EOS SDK's xcframework into iOSSourceFromMac so the GameMaker iOS
-    # build links it alongside the extension's own packaged xcframework. It is
-    # git-ignored and re-staged each build.
+    # Stage the EOS SDK's xcframework into iOSSourceFromMac as a .zip (alongside
+    # the extension's own packaged EpicOnlineServices.zip) so the GameMaker iOS
+    # build links it. It is git-ignored and re-zipped each build.
     pathResolveExisting "$YYprojectDir" "$SDK_PATH_IOS" SDK_PATH
 
-    EOS_XCFW="$SDK_PATH/SDK/Bin/IOS/EOSSDK.xcframework"
-    IOS_DIR="$EXTENSION_DIR/iOSSourceFromMac"
+    # Locate the xcframework anywhere under the SDK (the folder layout differs
+    # between the raw Epic download and the repo's bundled copy).
+    EOS_XCFW=$(find "$SDK_PATH" -maxdepth 6 -type d -iname "EOSSDK.xcframework" -print -quit)
+    if [ -z "$EOS_XCFW" ]; then
+        logError "EOSSDK.xcframework not found under '$SDK_PATH' (check the sdkIosPath option)."
+    fi
 
-    # Clean any stale staged framework, then copy fresh
-    rm -rf "$IOS_DIR/EOSSDK.xcframework"
-    echo "Staging EOS iOS dependency (EOSSDK.xcframework)"
-    itemCopyTo "$EOS_XCFW" "$IOS_DIR/EOSSDK.xcframework"
+    IOS_DIR="$EXTENSION_DIR/iOSSourceFromMac"
+    mkdir -p "$IOS_DIR"
+    rm -f "$IOS_DIR/EOSSDK.zip"
+
+    echo "Staging EOS iOS dependency: $EOS_XCFW -> EOSSDK.zip"
+    # Zip with ditto on macOS so the framework's symlinks and code signature are
+    # preserved (a Linux/Windows zip would break them). --keepParent keeps the
+    # top-level EOSSDK.xcframework folder inside the archive.
+    ditto -c -k --keepParent "$EOS_XCFW" "$IOS_DIR/EOSSDK.zip"
+    if [ $? -ne 0 ]; then
+        logError "Failed to zip '$EOS_XCFW' into '$IOS_DIR/EOSSDK.zip'."
+    fi
 }
 
 setuptvOS()        { :; }
