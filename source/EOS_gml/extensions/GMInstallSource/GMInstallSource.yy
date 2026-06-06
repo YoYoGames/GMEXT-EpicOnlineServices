@@ -11,7 +11,7 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"GMInstallSource",
-  "copyToTargets":12,
+  "copyToTargets":8,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"0.0.1",
@@ -37,7 +37,9 @@
   "iosdelegatename":"",
   "iosplistinject":null,
   "iosProps":true,
-  "iosSystemFrameworkEntries":[],
+  "iosSystemFrameworkEntries":[
+    {"$GMExtensionFrameworkEntry":"","%Name":"AuthenticationServices.framework","embed":0,"name":"AuthenticationServices.framework","resourceType":"GMExtensionFrameworkEntry","resourceVersion":"2.0","weakReference":false,},
+  ],
   "iosThirdPartyFrameworkEntries":[
     {"$GMExtensionFrameworkEntry":"","%Name":"GMInstallSource.xcframework","embed":0,"name":"GMInstallSource.xcframework","resourceType":"GMExtensionFrameworkEntry","resourceVersion":"2.0","weakReference":false,},
   ],

@@ -31,7 +31,7 @@
   "option_ios_launchscreen_fill":0,
   "option_ios_launchscreen_image":"${base_options_dir}/ios/splash/launchscreen.png",
   "option_ios_launchscreen_image_landscape":"${base_options_dir}/ios/splash/launchscreen-landscape.png",
-  "option_ios_min_version":"10.0",
+  "option_ios_min_version":"18.0",
   "option_ios_orientation_landscape":true,
   "option_ios_orientation_landscape_flipped":true,
   "option_ios_orientation_portrait":true,
