@@ -431,9 +431,11 @@
       ],"init":"","kind":4,"name":"","origname":"","ProxyFiles":[
         {"$GMProxyFile":"","%Name":"EpicOnlineServices.dll","name":"EpicOnlineServices.dll","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":6,},
         {"$GMProxyFile":"","%Name":"libEpicOnlineServices.dylib","name":"libEpicOnlineServices.dylib","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":1,},
+        {"$GMProxyFile":"","%Name":"libEpicOnlineServices.so","name":"libEpicOnlineServices.so","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":7,},
       ],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
-    {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":-1,"filename":"EOSSDK-Win64-Shipping.dll","final":"","functions":[],"init":"","kind":1,"name":"","origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
-    {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":-1,"filename":"libEOSSDK-Mac-Shipping.dylib","final":"","functions":[],"init":"","kind":1,"name":"","origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
+    {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":64,"filename":"EOSSDK-Win64-Shipping.dll","final":"","functions":[],"init":"","kind":1,"name":"","origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
+    {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":2,"filename":"libEOSSDK-Mac-Shipping.dylib","final":"","functions":[],"init":"","kind":1,"name":"","origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
+    {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":-1,"filename":"libEOSSDK-Linux-Shipping.so","final":"","functions":[],"init":"","kind":1,"name":"","origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject":null,
   "hasConvertedCodeInjection":true,
