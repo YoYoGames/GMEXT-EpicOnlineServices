@@ -68,18 +68,36 @@ setupiOS() {
     fi
 
     IOS_DIR="$EXTENSION_DIR/iOSSourceFromMac"
+    TMP_DIR="$EXTENSION_DIR/_eos_xcfw_tmp"
     mkdir -p "$IOS_DIR"
     rm -f "$IOS_DIR/EOSSDK.zip"
+    rm -rf "$TMP_DIR"
+    mkdir -p "$TMP_DIR"
 
-    echo "Staging EOS iOS dependency: $EOS_XCFW -> EOSSDK.zip"
-    # Zip with ditto on macOS so the framework's symlinks + code signature survive
-    # (a Linux/Windows zip would break them). --norsrc/--noextattr drop resource
-    # forks and extended attributes, otherwise they extract as AppleDouble "._"
-    # files inside the xcframework and break ProcessXCFramework/SignatureCollection.
+    # Work on a copy so the SDK is never modified (ditto copies faithfully).
+    ditto "$EOS_XCFW" "$TMP_DIR/EOSSDK.xcframework"
+    XCFW="$TMP_DIR/EOSSDK.xcframework"
+
+    # Strip the vendor (Epic) code signature. Xcode 15+ verifies a bundled
+    # xcframework's signature and fails with "signature cannot be verified" for a
+    # third-party one. The app re-signs embedded frameworks with its own identity
+    # during signing, so removing the vendor signature is the standard fix: drop
+    # every _CodeSignature bundle seal and each framework binary's embedded sig.
+    find "$XCFW" -type d -name "_CodeSignature" -exec rm -rf {} +
+    find "$XCFW" -type d -name "*.framework" | while IFS= read -r fw; do
+        bin="$fw/$(basename "$fw" .framework)"
+        [ -f "$bin" ] && codesign --remove-signature "$bin" >/dev/null 2>&1 || true
+    done
+
+    echo "Staging EOS iOS dependency: $EOS_XCFW -> EOSSDK.zip (signature stripped)"
+    # ditto on macOS preserves the (flat iOS) framework structure; --norsrc/
+    # --noextattr prevent AppleDouble "._" files that break ProcessXCFramework.
     # --keepParent keeps the top-level EOSSDK.xcframework folder inside the archive.
-    ditto -c -k --norsrc --noextattr --keepParent "$EOS_XCFW" "$IOS_DIR/EOSSDK.zip"
-    if [ $? -ne 0 ]; then
-        logError "Failed to zip '$EOS_XCFW' into '$IOS_DIR/EOSSDK.zip'."
+    ditto -c -k --norsrc --noextattr --keepParent "$XCFW" "$IOS_DIR/EOSSDK.zip"
+    rc=$?
+    rm -rf "$TMP_DIR"
+    if [ $rc -ne 0 ]; then
+        logError "Failed to zip EOSSDK.xcframework into '$IOS_DIR/EOSSDK.zip'."
     fi
 }
 
