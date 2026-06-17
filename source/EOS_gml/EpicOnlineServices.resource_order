@@ -59,6 +59,7 @@
     {"name":"obj_eos_player_data_storage_file_upload_cancel","order":3,"path":"objects/obj_eos_player_data_storage_file_upload_cancel/obj_eos_player_data_storage_file_upload_cancel.yy",},
     {"name":"obj_eos_player_data_storage_file_upload","order":2,"path":"objects/obj_eos_player_data_storage_file_upload/obj_eos_player_data_storage_file_upload.yy",},
     {"name":"obj_eos_player_data_storage_read","order":4,"path":"objects/obj_eos_player_data_storage_read/obj_eos_player_data_storage_read.yy",},
+    {"name":"obj_eos_player_data_storage_test_file","order":8,"path":"objects/obj_eos_player_data_storage_test_file/obj_eos_player_data_storage_test_file.yy",},
     {"name":"obj_eos_player_data_storage_write","order":5,"path":"objects/obj_eos_player_data_storage_write/obj_eos_player_data_storage_write.yy",},
     {"name":"obj_eos_sessions_create","order":2,"path":"objects/obj_eos_sessions_create/obj_eos_sessions_create.yy",},
     {"name":"obj_eos_sessions_destroy","order":3,"path":"objects/obj_eos_sessions_destroy/obj_eos_sessions_destroy.yy",},

@@ -26,7 +26,9 @@
       "Read(//d/Github/GMEXT-EpicOnlineServices/source/EOS_gml/**)",
       "PowerShell($src = \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\extensions\\\\EpicOnlineServices\\\\source\"; Set-Location $src; if \\(Test-Path \"$src\\\\out\\\\build\\\\android-arm64-v8a-release\"\\) { Remove-Item -Recurse -Force \"$src\\\\out\\\\build\\\\android-arm64-v8a-release\" }; cmake --preset android-arm64-v8a-release 2>&1 | Select-Object -Last 3; \"--- BUILD ---\"; cmake --build --preset android-arm64-v8a-release 2>&1 | Select-Object -Last 25)",
       "PowerShell($src = \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\extensions\\\\EpicOnlineServices\\\\source\"; Set-Location $src; $out = cmake --build --preset android-arm64-v8a-release -- -k 0 2>&1; $out | Select-String -Pattern \"error:\" | ForEach-Object { \\($_ -replace [regex]::Escape\\($src\\),\".\" \\) } | Select-Object -First 60; \"==== total error count ====\"; \\($out | Select-String -Pattern \"error:\"\\).Count)",
-      "Read(//d/Github/GMEXT-Discord/source/Discord_gml/extensions/Discord/**)"
+      "Read(//d/Github/GMEXT-Discord/source/Discord_gml/extensions/Discord/**)",
+      "Read(//d/Github//**)",
+      "Read(//d/Github/**)"
     ],
     "additionalDirectories": [
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_member_kick",
@@ -61,7 +63,9 @@
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_friend",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_invitations",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_invitation",
-      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\extensions\\EpicOnlineServices"
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\extensions\\EpicOnlineServices",
+      "D:\\Github\\YoYoExtensions\\GMEXT-Photon\\source\\Photon_gml\\extensions\\GMPhoton\\source\\src\\native",
+      "D:\\Github\\YoYoExtensions\\GMEXT-Photon\\source\\Photon_gml\\objects\\obj_photon_matchmaking_default_room"
     ]
   }
 }

@@ -91,6 +91,7 @@
     {"id":{"name":"obj_eos_player_data_storage_file_upload_cancel","path":"objects/obj_eos_player_data_storage_file_upload_cancel/obj_eos_player_data_storage_file_upload_cancel.yy",},},
     {"id":{"name":"obj_eos_player_data_storage_file_upload","path":"objects/obj_eos_player_data_storage_file_upload/obj_eos_player_data_storage_file_upload.yy",},},
     {"id":{"name":"obj_eos_player_data_storage_read","path":"objects/obj_eos_player_data_storage_read/obj_eos_player_data_storage_read.yy",},},
+    {"id":{"name":"obj_eos_player_data_storage_test_file","path":"objects/obj_eos_player_data_storage_test_file/obj_eos_player_data_storage_test_file.yy",},},
     {"id":{"name":"obj_eos_player_data_storage_write","path":"objects/obj_eos_player_data_storage_write/obj_eos_player_data_storage_write.yy",},},
     {"id":{"name":"obj_eos_session","path":"objects/obj_eos_session/obj_eos_session.yy",},},
     {"id":{"name":"obj_eos_sessions_create","path":"objects/obj_eos_sessions_create/obj_eos_sessions_create.yy",},},
