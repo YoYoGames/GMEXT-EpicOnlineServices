@@ -37,6 +37,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_platform_tick();
     public static native double __EXT_JNI__eos_platform_check_for_launcher_and_restart(ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_platform_set_network_status(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native String __EXT_JNI__eos_platform_get_storage_directory();
     public static native double __EXT_JNI__eos_logging_set_callback(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_logging_clear_callback();
     public static native double __EXT_JNI__eos_logging_set_log_level(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);

@@ -74,6 +74,9 @@ function eos_platform_check_for_launcher_and_restart(): gmval;
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_platform_set_network_status([type_hint=`EpicNetworkStatus`] status: gmval): gmval;
 
+[global, bind = typed_gml]
+function eos_platform_get_storage_directory(): string;
+
 }
 
 group

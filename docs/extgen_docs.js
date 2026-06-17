@@ -115,6 +115,12 @@
  */
 
 /**
+ * @function_partial eos_platform_get_storage_directory
+ * @returns {String} 
+ * @function_end 
+ */
+
+/**
  * @function_partial eos_logging_set_callback
  * @param {Function} [callback]
  * @function_end 

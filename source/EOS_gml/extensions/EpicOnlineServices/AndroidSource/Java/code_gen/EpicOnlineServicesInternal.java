@@ -84,6 +84,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_platform_set_network_status(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
+    public String __EXT_NATIVE__eos_platform_get_storage_directory()
+    {
+        return __EXT_JNI__eos_platform_get_storage_directory();
+    }
     public double __EXT_NATIVE__eos_logging_set_callback(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_logging_set_callback(__arg_buffer, __arg_buffer_length);

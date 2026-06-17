@@ -184,6 +184,13 @@ GMEXPORT double __EXT_NATIVE__eos_platform_set_network_status(char* __arg_buffer
     return 0;
 }
 
+GMEXPORT char* __EXT_NATIVE__eos_platform_get_storage_directory()
+{
+    static std::string __result;
+    __result = eos_platform_get_storage_directory();
+    return (char*)__result.c_str();
+}
+
 GMEXPORT double __EXT_NATIVE__eos_logging_set_callback(char* __arg_buffer, double __arg_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};

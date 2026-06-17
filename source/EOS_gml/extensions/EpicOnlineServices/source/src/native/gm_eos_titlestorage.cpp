@@ -35,12 +35,13 @@ struct EOSTSReadContext
     std::vector<uint8_t> data;
 };
 
-static void eos_ts_write_entire_file(const std::string& path, const std::vector<uint8_t>& buf)
+static bool eos_ts_write_entire_file(const std::string& path, const std::vector<uint8_t>& buf)
 {
     std::ofstream f(path, std::ios::binary | std::ios::trunc);
-    if (!f.is_open()) return;
+    if (!f.is_open()) return false;
     if (!buf.empty())
         f.write(reinterpret_cast<const char*>(buf.data()), static_cast<std::streamsize>(buf.size()));
+    return f.good();
 }
 
 static EOS_HTitleStorage eos_ts_iface()
@@ -165,11 +166,20 @@ static void EOS_CALL eos_ts_read_file_callback_native(
     auto* ctx = static_cast<EOSTSReadContext*>(data->ClientData);
     if (!ctx) return;
 
-    if (data->ResultCode == EOS_EResult::EOS_Success && !ctx->output_path.empty())
-        eos_ts_write_entire_file(ctx->output_path, ctx->data);
+    EOS_EResult result_code = data->ResultCode;
+    if (result_code == EOS_EResult::EOS_Success && !ctx->output_path.empty()) {
+        if (!eos_ts_write_entire_file(ctx->output_path, ctx->data)) {
+            // The EOS download succeeded but writing the bytes to disk failed
+            // (e.g. a read-only path like working_directory on Android/iOS).
+            // Surface this as a failure instead of reporting a phantom success.
+            eos_set_last_error("EOS_TitleStorage_ReadFile: failed to write '"
+                + ctx->output_path + "' to disk (is the path writable?).");
+            result_code = EOS_EResult::EOS_UnexpectedError;
+        }
+    }
 
     gm_structs::EpicTitleStorageReadFileCallbackInfo out{};
-    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    out.result_code = (gm_enums::EpicResult)result_code;
     out.local_user_id = ctx->local_user_id;
     out.filename = ctx->filename;
     if (ctx->callback) ctx->callback.value().call(out);

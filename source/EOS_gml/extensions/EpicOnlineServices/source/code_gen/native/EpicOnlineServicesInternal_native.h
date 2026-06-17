@@ -7486,6 +7486,7 @@ void eos_platform_release();
 void eos_platform_tick();
 gm_enums::EpicResult eos_platform_check_for_launcher_and_restart();
 gm_enums::EpicResult eos_platform_set_network_status(gm_enums::EpicNetworkStatus status);
+std::string eos_platform_get_storage_directory();
 void eos_logging_set_callback(const std::optional<gm::wire::GMFunction>& callback);
 void eos_logging_clear_callback();
 gm_enums::EpicResult eos_logging_set_log_level(gm_enums::EpicLogCategory log_category, gm_enums::EpicLogLevel log_level);

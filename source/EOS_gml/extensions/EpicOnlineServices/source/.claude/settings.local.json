@@ -28,7 +28,9 @@
       "PowerShell($src = \"D:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\extensions\\\\EpicOnlineServices\\\\source\"; Set-Location $src; $out = cmake --build --preset android-arm64-v8a-release -- -k 0 2>&1; $out | Select-String -Pattern \"error:\" | ForEach-Object { \\($_ -replace [regex]::Escape\\($src\\),\".\" \\) } | Select-Object -First 60; \"==== total error count ====\"; \\($out | Select-String -Pattern \"error:\"\\).Count)",
       "Read(//d/Github/GMEXT-Discord/source/Discord_gml/extensions/Discord/**)",
       "Read(//d/Github//**)",
-      "Read(//d/Github/**)"
+      "Read(//d/Github/**)",
+      "Bash(command -v extgen npx node)",
+      "Bash(npm ls *)"
     ],
     "additionalDirectories": [
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_lobbies_member_kick",
@@ -65,7 +67,9 @@
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_sessions_invitation",
       "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\extensions\\EpicOnlineServices",
       "D:\\Github\\YoYoExtensions\\GMEXT-Photon\\source\\Photon_gml\\extensions\\GMPhoton\\source\\src\\native",
-      "D:\\Github\\YoYoExtensions\\GMEXT-Photon\\source\\Photon_gml\\objects\\obj_photon_matchmaking_default_room"
+      "D:\\Github\\YoYoExtensions\\GMEXT-Photon\\source\\Photon_gml\\objects\\obj_photon_matchmaking_default_room",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\scripts\\EpicOnlineServices_API",
+      "D:\\Github\\GMEXT-EpicOnlineServices\\source\\EOS_gml\\objects\\obj_eos_player_data_storage_test_file"
     ]
   }
 }

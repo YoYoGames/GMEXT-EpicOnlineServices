@@ -16623,6 +16623,9 @@ function eos_platform_set_network_status(_status)
     return _result;
 }
 
+// Skipping function eos_platform_get_storage_directory (no wrapper is required)
+
+
 /**
  * @param {Function} _callback
  */

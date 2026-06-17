@@ -15,7 +15,7 @@ ins_cancel = instance_create_depth(x + 600, y, 0, obj_eos_title_storage_file_can
 eos_titlestorage_read_file(
     global.product_user_id,
     filename,
-    working_directory + filename,
+    global.eos_storage_dir + filename,
     function(_info)
     {
 		show_debug_message($"eos_titlestorage_read_file: {_info}")

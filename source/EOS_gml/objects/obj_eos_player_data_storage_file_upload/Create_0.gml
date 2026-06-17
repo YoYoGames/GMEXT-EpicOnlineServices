@@ -13,7 +13,7 @@ ins_cancel = noone;
 
 
 
-if (!file_exists(working_directory + filename)) {
+if (!file_exists(global.eos_storage_dir + filename)) {
 	show_debug_message("[NOTE] First go into the Title Storage and download the files");
 	instance_destroy();
 	return;
@@ -25,7 +25,7 @@ ins_cancel = instance_create_depth(x + 600, y, 0, obj_eos_player_data_storage_fi
 eos_playerdatastorage_write_file(
     global.product_user_id,
     filename,
-    working_directory + filename,
+    global.eos_storage_dir + filename,
     function(_info)
     {
         // EpicPlayerDataStorageWriteFileCallbackInfo: result_code, local_user_id, filename

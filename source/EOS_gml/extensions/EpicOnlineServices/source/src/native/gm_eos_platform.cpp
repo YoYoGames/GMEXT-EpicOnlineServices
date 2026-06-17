@@ -361,3 +361,22 @@ gm_enums::EpicResult eos_platform_set_network_status(gm_enums::EpicNetworkStatus
 
     return (gm_enums::EpicResult)result;
 }
+
+// Returns an absolute, writable directory (with a trailing separator) that both
+// the native file-transfer helpers and GameMaker's own file_exists/sprite_add
+// can use for the same path. On desktop the empty string is returned, which
+// tells the GML caller to keep using working_directory (unchanged behaviour).
+// On Android/iOS working_directory is the read-only bundle, so callers MUST use
+// this directory instead or downloaded files silently fail to write.
+std::string eos_platform_get_storage_directory()
+{
+    eos_clear_last_error();
+
+    std::string dir = eos_platform_cache_dir();
+    if (dir.empty())
+        return dir; // desktop: caller falls back to working_directory
+
+    if (dir.back() != '/' && dir.back() != '\\')
+        dir.push_back('/');
+    return dir;
+}

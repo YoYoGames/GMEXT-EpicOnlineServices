@@ -160,6 +160,10 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_platform_set_network_status(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
+- (char*)__EXT_NATIVE__eos_platform_get_storage_directory
+{
+    return __EXT_NATIVE__eos_platform_get_storage_directory();
+}
 - (double)__EXT_NATIVE__eos_logging_set_callback:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_logging_set_callback(__arg_buffer, __arg_buffer_length);

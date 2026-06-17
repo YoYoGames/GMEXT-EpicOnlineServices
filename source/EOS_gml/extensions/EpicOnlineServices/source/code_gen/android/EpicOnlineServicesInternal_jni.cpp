@@ -332,6 +332,14 @@ static jdouble __JNI_WRAPPER__eos_platform_set_network_status_FAFF50FD697C(JNIEn
     return static_cast<jdouble>(__ret);
 }
 
+// eos_platform_get_storage_directory JNI wrapper signature: ()Ljava/lang/String;
+static jstring __JNI_WRAPPER__eos_platform_get_storage_directory_A67B3D51705A(JNIEnv* env, jclass /* EpicOnlineServicesBridge */)
+{
+    const char* __out = __EXT_NATIVE__eos_platform_get_storage_directory();
+    jstring __j = __out ? env->NewStringUTF(__out) : nullptr;
+    return __j;
+}
+
 // eos_logging_set_callback JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
 static jdouble __JNI_WRAPPER__eos_logging_set_callback_2BE2F300C974(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
 {
@@ -6360,6 +6368,7 @@ extern "C" {
             { "__EXT_JNI__eos_platform_tick", "()D", (void*)__JNI_WRAPPER__eos_platform_tick_AFAC59A43286 },
             { "__EXT_JNI__eos_platform_check_for_launcher_and_restart", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_platform_check_for_launcher_and_restart_4BD10866D616 },
             { "__EXT_JNI__eos_platform_set_network_status", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_platform_set_network_status_FAFF50FD697C },
+            { "__EXT_JNI__eos_platform_get_storage_directory", "()Ljava/lang/String;", (void*)__JNI_WRAPPER__eos_platform_get_storage_directory_A67B3D51705A },
             { "__EXT_JNI__eos_logging_set_callback", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_logging_set_callback_2BE2F300C974 },
             { "__EXT_JNI__eos_logging_clear_callback", "()D", (void*)__JNI_WRAPPER__eos_logging_clear_callback_8460FBBB4ED6 },
             { "__EXT_JNI__eos_logging_set_log_level", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_logging_set_log_level_C41369904735 },

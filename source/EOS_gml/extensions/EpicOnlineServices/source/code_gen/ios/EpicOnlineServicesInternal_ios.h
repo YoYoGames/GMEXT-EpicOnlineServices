@@ -21,6 +21,7 @@
 - (double)__EXT_NATIVE__eos_platform_tick;
 - (double)__EXT_NATIVE__eos_platform_check_for_launcher_and_restart:(char*)__ret_buffer arg1:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_platform_set_network_status:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (char*)__EXT_NATIVE__eos_platform_get_storage_directory;
 - (double)__EXT_NATIVE__eos_logging_set_callback:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_logging_clear_callback;
 - (double)__EXT_NATIVE__eos_logging_set_log_level:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
