@@ -63,6 +63,19 @@ static std::string eos_platform_cache_dir()
 #endif
 }
 
+// The actual directory eos_platform_create() ended up using (the caller's
+// cache_directory on desktop, the platform-resolved writable dir on mobile),
+// normalised to end with a separator. Exposed to GML via
+// eos_platform_get_storage_directory() so callers don't have to track it.
+static std::string g_eos_storage_dir;
+
+static std::string eos_platform_with_trailing_sep(std::string dir)
+{
+    if (!dir.empty() && dir.back() != '/' && dir.back() != '\\')
+        dir.push_back('/');
+    return dir;
+}
+
 // ============================================================
 // Extension options
 // ============================================================
@@ -302,6 +315,11 @@ gm_enums::EpicResult eos_platform_create(std::string_view cache_directory)
     }
 
     eos_platform_set(platform);
+
+    // Remember the directory we actually used so GML can read it back via
+    // eos_platform_get_storage_directory() for file_exists/sprite_add/etc.
+    g_eos_storage_dir = eos_platform_with_trailing_sep(cache_directory_storage);
+
     return (gm_enums::EpicResult)EOS_EResult::EOS_Success;
 }
 
@@ -315,6 +333,7 @@ void eos_platform_release()
 
     EOS_Platform_Release(platform);
     eos_platform_set(nullptr);
+    g_eos_storage_dir.clear();
 }
 
 void eos_platform_tick()
@@ -362,21 +381,15 @@ gm_enums::EpicResult eos_platform_set_network_status(gm_enums::EpicNetworkStatus
     return (gm_enums::EpicResult)result;
 }
 
-// Returns an absolute, writable directory (with a trailing separator) that both
-// the native file-transfer helpers and GameMaker's own file_exists/sprite_add
-// can use for the same path. On desktop the empty string is returned, which
-// tells the GML caller to keep using working_directory (unchanged behaviour).
-// On Android/iOS working_directory is the read-only bundle, so callers MUST use
-// this directory instead or downloaded files silently fail to write.
+// Returns the absolute, writable directory (with a trailing separator) that
+// eos_platform_create() used: the caller-supplied cache_directory on desktop,
+// or the platform-resolved writable dir on Android/iOS (where working_directory
+// is the read-only bundle). Both the native file-transfer helpers and
+// GameMaker's own file_exists/sprite_add use this same path, so GML callers can
+// just prepend it to a filename instead of tracking the directory themselves.
+// Returns an empty string if the platform has not been created yet.
 std::string eos_platform_get_storage_directory()
 {
     eos_clear_last_error();
-
-    std::string dir = eos_platform_cache_dir();
-    if (dir.empty())
-        return dir; // desktop: caller falls back to working_directory
-
-    if (dir.back() != '/' && dir.back() != '\\')
-        dir.push_back('/');
-    return dir;
+    return g_eos_storage_dir;
 }

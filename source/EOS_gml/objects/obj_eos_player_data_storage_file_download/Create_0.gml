@@ -16,7 +16,7 @@ ins_cancel = instance_create_depth(x + 600, y, 0, obj_eos_player_data_storage_fi
 eos_playerdatastorage_read_file(
     global.product_user_id,
     filename,
-    global.eos_storage_dir + filename,
+    eos_platform_get_storage_directory() + filename,
     function(_info)
     {
         // EpicPlayerDataStorageReadFileCallbackInfo: result_code, local_user_id, filename

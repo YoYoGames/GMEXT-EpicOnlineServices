@@ -176,16 +176,7 @@ if (result != EpicResult.Success)
 }
 
 show_debug_message("EOS Platform created");
-
-// Resolve the writable directory used for Player Data / Title Storage file
-// transfers. On desktop this is working_directory; on Android/iOS that path is
-// the read-only bundle, so the extension returns a writable location instead.
-// Both the native file writers and GameMaker's file_exists/sprite_add use this
-// same absolute path. See obj_eos_player_data_storage_file_download etc.
-global.eos_storage_dir = eos_platform_get_storage_directory();
-if (global.eos_storage_dir == "")
-    global.eos_storage_dir = working_directory;
-show_debug_message($"EOS storage directory: {global.eos_storage_dir}");
+show_debug_message($"EOS storage directory: {eos_platform_get_storage_directory()}");
 
 eos_login();
 
