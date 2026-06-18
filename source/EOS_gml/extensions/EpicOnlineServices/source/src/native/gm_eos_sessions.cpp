@@ -238,18 +238,16 @@ std::uint64_t eos_sessions_create_session_modification(std::string_view session_
     opts.ApiVersion = EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST;
     opts.SessionName = session_name_storage.c_str();
     opts.BucketId = bucket_id_storage.empty() ? nullptr : bucket_id_storage.c_str();
-    opts.MaxPlayers = (uint32_t)max_players;
+    opts.MaxPlayers = (uint32_t)(max_players < 0 ? 0 : max_players);
     opts.LocalUserId = local_user;
     opts.bPresenceEnabled = presence_enabled ? EOS_TRUE : EOS_FALSE;
-    
-    opts.bSanctionsEnabled = sanctions_enabled? EOS_TRUE:EOS_FALSE;
-	// SessionId must be either nullptr (backend assigns one) or 16-64 chars.
-	// An empty string is invalid and causes EOS_Sessions_CreateSessionModification to fail
-	// synchronously, which would later surface as EOS_NotFound from start/end/update_session.
-	opts.SessionId = session_id_storage.empty() ? nullptr : session_id_storage.c_str();
-    const uint32_t* ptr = reinterpret_cast<const uint32_t*>(allowed_platform_ids.data());
-	opts.AllowedPlatformIds = ptr;
-	opts.AllowedPlatformIdsCount = (uint32_t)allowed_platform_ids.size();
+    opts.bSanctionsEnabled = sanctions_enabled ? EOS_TRUE : EOS_FALSE;
+    // SessionId must be either nullptr (backend assigns one) or 16-64 chars.
+    // An empty string is invalid and causes EOS_Sessions_CreateSessionModification to fail
+    // synchronously, which would later surface as EOS_NotFound from start/end/update_session.
+    opts.SessionId = session_id_storage.empty() ? nullptr : session_id_storage.c_str();
+    opts.AllowedPlatformIds = allowed_platform_ids.empty() ? nullptr : allowed_platform_ids.data();
+    opts.AllowedPlatformIdsCount = (uint32_t)allowed_platform_ids.size();
 
     EOS_HSessionModification mod = nullptr;
     const EOS_EResult result = EOS_Sessions_CreateSessionModification(sessions, &opts, &mod);
@@ -420,12 +418,12 @@ eos_sessions_register_players_info_from_native(const EOS_Sessions_RegisterPlayer
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
     
     out.registered_players = std::vector<std::string>{};
-    for(int i = 0 ; i < p->RegisteredPlayersCount ; i++){
+    for(uint32_t i = 0 ; i < p->RegisteredPlayersCount ; i++){
         out.registered_players.push_back(eos_sessions_product_user_id_to_string_internal(p->RegisteredPlayers[i]));
     }
 
     out.sanctioned_players = std::vector<std::string>{};
-    for(int i = 0 ; i < p->SanctionedPlayersCount ; i++){
+    for(uint32_t i = 0 ; i < p->SanctionedPlayersCount ; i++){
         out.sanctioned_players.push_back(eos_sessions_product_user_id_to_string_internal(p->SanctionedPlayers[i]));
     }
 
@@ -439,12 +437,9 @@ eos_sessions_unregister_players_info_from_native(const EOS_Sessions_UnregisterPl
     if (!p) return out;
 
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
-    
-	EOS_ProductUserId* UnregisteredPlayers;
-	uint32_t UnregisteredPlayersCount;
 
     out.unregistered_players = std::vector<std::string>{};
-    for(int i = 0 ; i < p->UnregisteredPlayersCount ; i++){
+    for(uint32_t i = 0 ; i < p->UnregisteredPlayersCount ; i++){
         out.unregistered_players.push_back(eos_sessions_product_user_id_to_string_internal(p->UnregisteredPlayers[i]));
     }
 
@@ -665,8 +660,6 @@ void eos_sessions_unregister_players(
 // ============================================================
 // EOS Sessions (Part 3)
 // ============================================================
-
-#include <unordered_map>
 
 static std::unordered_map<uint64_t, EOS_HSessionSearch> g_session_searches;
 static uint64_t g_next_session_search_id = 1;
@@ -920,6 +913,10 @@ void eos_sessions_session_details_release(uint64_t session_details_id)
 // EOS Sessions (Part 4)
 // ============================================================
 
+// NOTE: each notification type supports a single active listener. Calling the
+// matching add_notify_* again overwrites the stored GMFunction (the previous EOS
+// registration stays live until its notification_id is explicitly removed). The
+// contract is one listener per event; register once and reuse the returned id.
 static GMFunction g_cb_sessions_invite_received = nullptr;
 static GMFunction g_cb_sessions_invite_accepted = nullptr;
 static GMFunction g_cb_sessions_join_accepted = nullptr;
@@ -970,8 +967,6 @@ static gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_info_from
     //TODO
     // out.settings_count = (int64_t)p->SettingsCount;
     // const EOS_SessionDetails_Settings* Settings;
-
-    const char* OwnerServerClientId = p->OwnerServerClientId;
 
     return out;
 }
@@ -1461,7 +1456,7 @@ gm_enums::EpicResult eos_sessions_session_modification_set_max_players(
 
     EOS_SessionModification_SetMaxPlayersOptions opts{};
     opts.ApiVersion = EOS_SESSIONMODIFICATION_SETMAXPLAYERS_API_LATEST;
-    opts.MaxPlayers = (uint32_t)max_players;
+    opts.MaxPlayers = (uint32_t)(max_players < 0 ? 0 : max_players);
 
     const EOS_EResult result = EOS_SessionModification_SetMaxPlayers(mod, &opts);
     if (result != EOS_EResult::EOS_Success) {
@@ -2022,6 +2017,7 @@ int64_t eos_sessions_session_search_get_search_result_count(uint64_t search_id)
 // EOS Sessions (Part 10) — Additional notifications
 // ============================================================
 
+// Single active listener per event — see note in Part 4.
 static GMFunction g_cb_sessions_invite_rejected = nullptr;
 static GMFunction g_cb_sessions_leave_requested = nullptr;
 static GMFunction g_cb_sessions_native_invite_requested = nullptr;
