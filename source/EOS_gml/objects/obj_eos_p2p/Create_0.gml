@@ -44,7 +44,10 @@ notifyPeerConnectionEstablished = eos_p2p_add_notify_peer_connection_established
 {
 	// EpicP2PConnectionEstablishedCallbackInfo: .local_user_id, .remote_user_id, .socket_name,
 	//                                           .connection_type, .network_type
-	array_push(EstablishedProductIDs, _info.remote_user_id)
+	// Guard against duplicates on reconnect — otherwise we'd send twice and
+	// disconnect() would only remove one copy.
+	if(array_get_index(EstablishedProductIDs, _info.remote_user_id) < 0)
+		array_push(EstablishedProductIDs, _info.remote_user_id)
 })
 
 notifyPeerConnectionInterrupted = eos_p2p_add_notify_peer_connection_interrupted(global.product_user_id, socketName, function(_info)
@@ -56,7 +59,7 @@ notifyPeerConnectionInterrupted = eos_p2p_add_notify_peer_connection_interrupted
 notifyPeerConnectionRequest = eos_p2p_add_notify_peer_connection_request(global.product_user_id, socketName, function(_info)
 {
 	// EpicP2PConnectionRequestCallbackInfo: .local_user_id, .remote_user_id, .socket_name
-	var result = eos_p2p_accept_connection(global.product_user_id, _info.remote_user_id, "OtherSocket")
+	var result = eos_p2p_accept_connection(global.product_user_id, _info.remote_user_id, socketName)
 	show_debug_message("eos_p2p_accept_connection: " + eos_api_result_to_string(result))
 
 	var buff = buffer_create(256, buffer_fixed, 1)

@@ -6,7 +6,9 @@ eos_p2p_remove_notify_peer_connection_interrupted(notifyPeerConnectionInterrupte
 eos_p2p_remove_notify_peer_connection_request(notifyPeerConnectionRequest)
 
 show_debug_message("CLEAN UP")
-for(var a = 0 ; a < array_length(EstablishedProductIDs) ; a++)
+// Iterate backwards: disconnect() does array_delete on EstablishedProductIDs,
+// so going forwards would skip every other peer and leave connections open.
+for(var a = array_length(EstablishedProductIDs) - 1 ; a >= 0 ; a--)
 {
 	disconnect(EstablishedProductIDs[a])
 }
