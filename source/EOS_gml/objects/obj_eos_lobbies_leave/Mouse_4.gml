@@ -21,7 +21,7 @@ eos_lobby_leave_lobby(_lobbies.lobby_id, global.product_user_id, method(_lobbies
 	// EpicLobbyLeaveLobbyCallbackInfo: .result_code, .lobby_id
 	show_debug_message($"[leave] callback fired: {eos_api_result_to_string(_info.result_code)} for lobby {_info.lobby_id}")
 
-	if(_info.result_code != EpicResult.Success) return
+	if(_info.result_code != EpicResult.Success) {return}
 
 	lobby_id = ""
 	with(obj_rtc) instance_destroy()

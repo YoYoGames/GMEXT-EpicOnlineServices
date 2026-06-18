@@ -17,7 +17,7 @@ eos_lobby_create_lobby(_opts, function(_info)
 {
 	// EpicLobbyCreateLobbyCallbackInfo: .result_code, .lobby_id
 	show_debug_message("eos_lobby_create_lobby: " + eos_api_result_to_string(_info.result_code))
-	if(_info.result_code != EpicResult.Success) return
+	if(_info.result_code != EpicResult.Success) {return}
 
 	with(obj_eos_lobbies)
 	{

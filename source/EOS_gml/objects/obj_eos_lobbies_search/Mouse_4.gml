@@ -31,7 +31,7 @@ eos_lobby_lobby_search_find(global.lobby_search_id, global.product_user_id, func
 	// EpicLobbySearchFindCallbackInfo: .result_code
 	show_debug_message($"[search] find callback fired: {eos_api_result_to_string(_info.result_code)}")
 
-	if(_info.result_code != EpicResult.Success) return
+	if(_info.result_code != EpicResult.Success) {return}
 
 	var _count = eos_lobby_lobby_search_get_search_result_count(global.lobby_search_id)
 	show_debug_message($"[search] result count = {_count}")

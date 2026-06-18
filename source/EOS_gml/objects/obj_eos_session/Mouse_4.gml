@@ -47,7 +47,7 @@ eos_sessions_join_session(data.session_id, _details_id, global.product_user_id, 
 	// Now safe to release the details handle — the SDK has consumed it.
 	eos_sessions_session_details_release(details_id)
 
-	if(_info.result_code != EpicResult.Success) return
+	if(_info.result_code != EpicResult.Success) {return}
 
 	instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
 
