@@ -37,9 +37,11 @@ var _ctx = {
 	session_id: data.session_id,
 }
 
-// `data.session_id` is the SERVER-side session id. We use it as the LOCAL
-// session name so it stays unique per joined session.
-eos_sessions_join_session(data.session_id, _details_id, global.product_user_id, true, method(_ctx, function(_info)
+// Join under our single fixed LOCAL name via the helper, which tears down any
+// stale local session first (so leave -> rejoin works) and owns the precondition
+// guard. The local name is independent of the server session_id; using a fixed
+// one is what lets CleanUp's destroy_session(SessionName) tear this join down.
+obj_eos_sessions.join_session_clean(_details_id, method(_ctx, function(_info)
 {
 	// EpicSessionsJoinSessionCallbackInfo: .result_code
 	show_debug_message("join_session: " + eos_api_result_to_string(_info.result_code))
@@ -54,14 +56,14 @@ eos_sessions_join_session(data.session_id, _details_id, global.product_user_id, 
 	// Add ourselves to the session's official roster. Without this,
 	// eos_sessions_active_session_get_registered_player_count() never sees us
 	// from the host's perspective — joining alone does NOT auto-register.
-	eos_sessions_register_players(session_id, [global.product_user_id], function(_reg)
+	eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
 	{
 		// EpicSessionsRegisterPlayersCallbackInfo: .result_code, .registered_players, .sanctioned_players
 		show_debug_message($"register_players (joiner): {eos_api_result_to_string(_reg.result_code)} registered={_reg.registered_players}")
 	})
 
 	// Send a hello packet to the session host so P2P opens both ways.
-	var _handle = eos_sessions_copy_active_session_handle(session_id)
+	var _handle = eos_sessions_copy_active_session_handle(obj_eos_sessions.SessionName)
 	if(_handle != 0)
 	{
 		var _info_struct = eos_sessions_active_session_copy_info(_handle)

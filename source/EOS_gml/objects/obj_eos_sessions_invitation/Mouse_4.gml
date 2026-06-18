@@ -27,8 +27,9 @@ var _ctx = {
 	invite_id:  invite_id,
 }
 
-// Use the server-side session_id as the local SessionName so it's unique.
-eos_sessions_join_session(data.session_id, _details_id, global.product_user_id, true, method(_ctx, function(_info)
+// Join under our single fixed LOCAL name via the helper, which tears down any
+// stale local session first (so leave -> rejoin works) and guards preconditions.
+obj_eos_sessions.join_session_clean(_details_id, method(_ctx, function(_info)
 {
 	// EpicSessionsJoinSessionCallbackInfo: .result_code
 	show_debug_message($"join_session (invite {invite_id}): {eos_api_result_to_string(_info.result_code)}")
@@ -41,13 +42,13 @@ eos_sessions_join_session(data.session_id, _details_id, global.product_user_id, 
 	instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
 
 	// Add ourselves to the session's official roster so the host's count reflects us.
-	eos_sessions_register_players(session_id, [global.product_user_id], function(_reg)
+	eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
 	{
 		show_debug_message($"register_players (invite-joiner): {eos_api_result_to_string(_reg.result_code)} registered={_reg.registered_players}")
 	})
 
 	// Hello packet so P2P opens both ways.
-	var _handle = eos_sessions_copy_active_session_handle(session_id)
+	var _handle = eos_sessions_copy_active_session_handle(obj_eos_sessions.SessionName)
 	if(_handle != 0)
 	{
 		var _info_struct = eos_sessions_active_session_copy_info(_handle)

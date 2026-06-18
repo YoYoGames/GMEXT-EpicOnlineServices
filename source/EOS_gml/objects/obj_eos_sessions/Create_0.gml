@@ -4,6 +4,42 @@ event_inherited()
 text = "Sessions"
 SessionName = "mySession"
 
+/// @desc Join a session under our single fixed LOCAL name (SessionName),
+/// tearing down any stale local session with that name first so a fast
+/// leave -> rejoin can't fail with "session already exists" (the leave's
+/// destroy_session is async and may not have completed yet).
+/// The caller's `_on_joined` callback owns `_details_id` and must release it.
+/// If preconditions fail we release the handle here, because the join
+/// callback (which normally releases it) won't fire.
+function join_session_clean(_details_id, _on_joined)
+{
+	if(_details_id == 0 || !is_string(global.product_user_id) || global.product_user_id == "")
+	{
+		if(_details_id != 0) eos_sessions_session_details_release(_details_id)
+		show_debug_message("join_session_clean: missing details handle or product_user_id")
+		return false
+	}
+
+	var _join = method({ details_id: _details_id, on_joined: _on_joined }, function()
+	{
+		eos_sessions_join_session(obj_eos_sessions.SessionName, details_id, global.product_user_id, true, on_joined)
+	})
+
+	// Stale local session lingering under our name? Destroy it, then join from
+	// the destroy callback. Otherwise join immediately.
+	var _existing = eos_sessions_copy_active_session_handle(SessionName)
+	if(_existing != 0)
+	{
+		eos_sessions_active_session_release(_existing)
+		eos_sessions_destroy_session(SessionName, _join)
+	}
+	else
+	{
+		_join()
+	}
+	return true
+}
+
 // ============================================================
 // Persistent notifications — wired at registration. One-shot
 // results (create/destroy/start/end/join/update/etc.) are wired
@@ -40,7 +76,7 @@ notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted(fu
 	// Bound struct carries the handle into the callback (var locals don't close over).
 	var _ctx = { details_id: _details_id }
 
-	eos_sessions_join_session(SessionName, _details_id, global.product_user_id, true, method(_ctx, function(_join_info)
+	join_session_clean(_details_id, method(_ctx, function(_join_info)
 	{
 		// EpicSessionsJoinSessionCallbackInfo: .result_code
 		eos_sessions_session_details_release(details_id)
