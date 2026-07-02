@@ -146,6 +146,7 @@
  * @param {Enum.EpicLoginCredentialType} credentials_type
  * @param {Enum.EpicExternalCredentialType} external_credential_type
  * @param {Enum.EpicAuthScopeFlags} scope_flags
+ * @param {Enum.EpicLoginFlags} login_flags
  * @param {Function} [callback]
  * @function_end 
  */
@@ -1053,6 +1054,12 @@
 /**
  * @function_partial eos_presence_remove_notify_join_game_accepted
  * @param {Real} notification_id
+ * @function_end 
+ */
+
+/**
+ * @function_partial eos_presence_acknowledge
+ * @param {Real} ui_event_id
  * @function_end 
  */
 
@@ -3246,6 +3253,8 @@
 /**
  * @struct_partial EpicConnectVerifyIdTokenCallbackInfo
  * @member {Enum.EpicResult} result_code
+ * @member {String} product_user_id
+ * @member {Bool} is_valid
  * @struct_end 
  */
 
@@ -3419,6 +3428,7 @@
 /**
  * @struct_partial EpicSanctionsQueryActivePlayerSanctionsCallbackInfo
  * @member {Enum.EpicResult} result_code
+ * @member {String} local_user_id
  * @member {String} target_user_id
  * @struct_end 
  */
@@ -3510,6 +3520,7 @@
 /**
  * @struct_partial EpicLeaderboardsQueryRanksCallbackInfo
  * @member {Enum.EpicResult} result_code
+ * @member {String} leaderboard_id
  * @struct_end 
  */
 
@@ -3592,6 +3603,7 @@
  * @struct_partial EpicSessionsUpdateSessionCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} session_name
+ * @member {Enum.EpicOnlineSessionState} session_state
  * @struct_end 
  */
 
@@ -3870,6 +3882,10 @@
  * @member {Enum.EpicLobbyPermissionLevel} permission_level
  * @member {Bool} allow_invites
  * @member {Bool} presence_enabled
+ * @member {Bool} rtc_room_enabled
+ * @member {Bool} allow_host_migration
+ * @member {Bool} allow_join_by_id
+ * @member {Bool} rejoin_after_kick_requires_invite
  * @struct_end 
  */
 
@@ -3900,6 +3916,7 @@
 /**
  * @struct_partial EpicLobbyJoinLobbyAcceptedCallbackInfo
  * @member {Real} ui_event_id
+ * @member {String} local_user_id
  * @struct_end 
  */
 
@@ -5082,6 +5099,12 @@
  * @member FriendsManagement
  * @member Email
  * @member Country
+ * @enum_end 
+ */
+
+/**
+ * @enum_partial EpicLoginFlags
+ * @member NoFlags
  * @enum_end 
  */
 

@@ -588,6 +588,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_presence_remove_notify_join_game_accepted(__arg_buffer, __arg_buffer_length);
     }
+    public double __EXT_NATIVE__eos_presence_acknowledge(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_presence_acknowledge(__arg_buffer, __arg_buffer_length);
+    }
     public double __EXT_NATIVE__eos_sessions_create_session_modification(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
         return __EXT_JNI__eos_sessions_create_session_modification(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);

@@ -57,6 +57,7 @@ eos_leaderboards_query_ranks_info_from_native(
         return out;
 
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
+    out.leaderboard_id = p->LeaderboardId ? std::string(p->LeaderboardId) : std::string();
     return out;
 }
 

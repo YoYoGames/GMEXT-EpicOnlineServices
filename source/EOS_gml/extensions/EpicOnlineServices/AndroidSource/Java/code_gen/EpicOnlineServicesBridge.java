@@ -163,6 +163,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_presence_remove_notify_on_presence_changed(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_presence_add_notify_join_game_accepted(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_presence_remove_notify_join_game_accepted(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_presence_acknowledge(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_sessions_create_session_modification(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_sessions_session_modification_release(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_sessions_update_session(ByteBuffer __arg_buffer, double __arg_buffer_length);

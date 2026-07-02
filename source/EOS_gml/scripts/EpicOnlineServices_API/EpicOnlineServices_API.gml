@@ -365,6 +365,11 @@ enum EpicAuthScopeFlags
     Country = 32
 }
 
+enum EpicLoginFlags
+{
+    NoFlags = 0
+}
+
 enum EpicLinkAccountFlags
 {
     NoFlags = 0,
@@ -1176,6 +1181,8 @@ function EpicConnectVerifyIdTokenCallbackInfo() constructor
     static __uid = 3320198844;
 
     self.result_code = undefined;
+    self.product_user_id = undefined;
+    self.is_valid = undefined;
 
 }
 
@@ -1556,6 +1563,7 @@ function EpicSanctionsQueryActivePlayerSanctionsCallbackInfo() constructor
     static __uid = 640171590;
 
     self.result_code = undefined;
+    self.local_user_id = undefined;
     self.target_user_id = undefined;
 
 }
@@ -1737,6 +1745,7 @@ function EpicLeaderboardsQueryRanksCallbackInfo() constructor
     static __uid = 430442548;
 
     self.result_code = undefined;
+    self.leaderboard_id = undefined;
 
 }
 
@@ -1909,6 +1918,7 @@ function EpicSessionsUpdateSessionCallbackInfo() constructor
 
     self.result_code = undefined;
     self.session_name = undefined;
+    self.session_state = undefined;
 
 }
 
@@ -2511,6 +2521,10 @@ function EpicLobbyDetailsInfo() constructor
     self.permission_level = undefined;
     self.allow_invites = undefined;
     self.presence_enabled = undefined;
+    self.rtc_room_enabled = undefined;
+    self.allow_host_migration = undefined;
+    self.allow_join_by_id = undefined;
+    self.rejoin_after_kick_requires_invite = undefined;
 
 }
 
@@ -2577,6 +2591,7 @@ function EpicLobbyJoinLobbyAcceptedCallbackInfo() constructor
     static __uid = 2332569210;
 
     self.ui_event_id = undefined;
+    self.local_user_id = undefined;
 
 }
 
@@ -5465,6 +5480,15 @@ function __EpicConnectVerifyIdTokenCallbackInfo_encode(_inst, _buffer, _offset, 
         if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
         buffer_write(_buffer, buffer_u64, self.result_code);
 
+        // field: product_user_id, type: String
+        if (!is_string(self.product_user_id)) show_error($"{_where} :: self.product_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_user_id));
+        buffer_write(_buffer, buffer_string, self.product_user_id);
+
+        // field: is_valid, type: Bool
+        if (!is_bool(self.is_valid)) show_error($"{_where} :: self.is_valid expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.is_valid);
+
     }
 }
 
@@ -5484,6 +5508,13 @@ function __EpicConnectVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
     {
         // field: result_code, type: enum EpicResult
         self.result_code = buffer_read(_buffer, buffer_u64);
+
+        // field: product_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.product_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: is_valid, type: Bool
+        self.is_valid = buffer_read(_buffer, buffer_bool);
 
     }
 
@@ -6758,6 +6789,11 @@ function __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_encode(_inst, _bu
         if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
         buffer_write(_buffer, buffer_u64, self.result_code);
 
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
         // field: target_user_id, type: String
         if (!is_string(self.target_user_id)) show_error($"{_where} :: self.target_user_id expected string", true);
         buffer_write(_buffer, buffer_u32, string_byte_length(self.target_user_id));
@@ -6782,6 +6818,10 @@ function __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_decode(_buffer, _
     {
         // field: result_code, type: enum EpicResult
         self.result_code = buffer_read(_buffer, buffer_u64);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
 
         // field: target_user_id, type: String
         buffer_read(_buffer, buffer_u32);
@@ -7453,6 +7493,11 @@ function __EpicLeaderboardsQueryRanksCallbackInfo_encode(_inst, _buffer, _offset
         if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
         buffer_write(_buffer, buffer_u64, self.result_code);
 
+        // field: leaderboard_id, type: String
+        if (!is_string(self.leaderboard_id)) show_error($"{_where} :: self.leaderboard_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.leaderboard_id));
+        buffer_write(_buffer, buffer_string, self.leaderboard_id);
+
     }
 }
 
@@ -7472,6 +7517,10 @@ function __EpicLeaderboardsQueryRanksCallbackInfo_decode(_buffer, _offset)
     {
         // field: result_code, type: enum EpicResult
         self.result_code = buffer_read(_buffer, buffer_u64);
+
+        // field: leaderboard_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.leaderboard_id = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -8068,6 +8117,11 @@ function __EpicSessionsUpdateSessionCallbackInfo_encode(_inst, _buffer, _offset,
         buffer_write(_buffer, buffer_u32, string_byte_length(self.session_name));
         buffer_write(_buffer, buffer_string, self.session_name);
 
+        // field: session_state, type: enum EpicOnlineSessionState
+
+        if (!is_numeric(self.session_state)) show_error($"{_where} :: self.session_state expected number", true);
+        buffer_write(_buffer, buffer_u64, self.session_state);
+
     }
 }
 
@@ -8091,6 +8145,9 @@ function __EpicSessionsUpdateSessionCallbackInfo_decode(_buffer, _offset)
         // field: session_name, type: String
         buffer_read(_buffer, buffer_u32);
         self.session_name = buffer_read(_buffer, buffer_string);
+
+        // field: session_state, type: enum EpicOnlineSessionState
+        self.session_state = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -10163,6 +10220,22 @@ function __EpicLobbyDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
         if (!is_bool(self.presence_enabled)) show_error($"{_where} :: self.presence_enabled expected bool", true);
         buffer_write(_buffer, buffer_bool, self.presence_enabled);
 
+        // field: rtc_room_enabled, type: Bool
+        if (!is_bool(self.rtc_room_enabled)) show_error($"{_where} :: self.rtc_room_enabled expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.rtc_room_enabled);
+
+        // field: allow_host_migration, type: Bool
+        if (!is_bool(self.allow_host_migration)) show_error($"{_where} :: self.allow_host_migration expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.allow_host_migration);
+
+        // field: allow_join_by_id, type: Bool
+        if (!is_bool(self.allow_join_by_id)) show_error($"{_where} :: self.allow_join_by_id expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.allow_join_by_id);
+
+        // field: rejoin_after_kick_requires_invite, type: Bool
+        if (!is_bool(self.rejoin_after_kick_requires_invite)) show_error($"{_where} :: self.rejoin_after_kick_requires_invite expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.rejoin_after_kick_requires_invite);
+
     }
 }
 
@@ -10206,6 +10279,18 @@ function __EpicLobbyDetailsInfo_decode(_buffer, _offset)
 
         // field: presence_enabled, type: Bool
         self.presence_enabled = buffer_read(_buffer, buffer_bool);
+
+        // field: rtc_room_enabled, type: Bool
+        self.rtc_room_enabled = buffer_read(_buffer, buffer_bool);
+
+        // field: allow_host_migration, type: Bool
+        self.allow_host_migration = buffer_read(_buffer, buffer_bool);
+
+        // field: allow_join_by_id, type: Bool
+        self.allow_join_by_id = buffer_read(_buffer, buffer_bool);
+
+        // field: rejoin_after_kick_requires_invite, type: Bool
+        self.rejoin_after_kick_requires_invite = buffer_read(_buffer, buffer_bool);
 
     }
 
@@ -10414,6 +10499,11 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_encode(_inst, _buffer, _offset
         if (!is_numeric(self.ui_event_id)) show_error($"{_where} :: self.ui_event_id expected number", true);
         buffer_write(_buffer, buffer_u64, self.ui_event_id);
 
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
     }
 }
 
@@ -10433,6 +10523,10 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_decode(_buffer, _offset)
     {
         // field: ui_event_id, type: UInt64
         self.ui_event_id = buffer_read(_buffer, buffer_u64);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -16784,9 +16878,10 @@ function eos_logging_set_log_level(_log_category, _log_level)
  * @param {Enum.EpicLoginCredentialType} _credentials_type
  * @param {Enum.EpicExternalCredentialType} _external_credential_type
  * @param {Enum.EpicAuthScopeFlags} _scope_flags
+ * @param {Enum.EpicLoginFlags} _login_flags
  * @param {Function} _callback
  */
-function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _callback)
+function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _login_flags, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
@@ -16816,6 +16911,11 @@ function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, 
 
     if (!is_numeric(_scope_flags)) show_error($"{_GMFUNCTION_} :: _scope_flags expected number", true);
     buffer_write(__args_buffer, buffer_u64, _scope_flags);
+
+    // param: _login_flags, type: enum EpicLoginFlags
+
+    if (!is_numeric(_login_flags)) show_error($"{_GMFUNCTION_} :: _login_flags expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _login_flags);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -19975,6 +20075,22 @@ function eos_presence_remove_notify_join_game_accepted(_notification_id)
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
     var _return_value = __eos_presence_remove_notify_join_game_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
+/**
+ * @param {Real} _ui_event_id
+ */
+function eos_presence_acknowledge(_ui_event_id)
+{
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _ui_event_id, type: UInt64
+    if (!is_numeric(_ui_event_id)) show_error($"{_GMFUNCTION_} :: _ui_event_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _ui_event_id);
+
+    var _return_value = __eos_presence_acknowledge(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
     return _return_value;
 }

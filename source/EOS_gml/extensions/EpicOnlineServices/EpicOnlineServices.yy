@@ -2685,6 +2685,24 @@
         },
         {
           "$GMExtensionFunction": "",
+          "%Name": "__eos_presence_acknowledge",
+          "argCount": 2,
+          "args": [
+            1,
+            2
+          ],
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}",
+          "externalName": "__EXT_NATIVE__eos_presence_acknowledge",
+          "help": "",
+          "hidden": true,
+          "kind": 4,
+          "name": "__eos_presence_acknowledge",
+          "resourceType": "GMExtensionFunction",
+          "resourceVersion": "2.0",
+          "returnType": 2
+        },
+        {
+          "$GMExtensionFunction": "",
           "%Name": "__eos_sessions_create_session_modification",
           "argCount": 4,
           "args": [

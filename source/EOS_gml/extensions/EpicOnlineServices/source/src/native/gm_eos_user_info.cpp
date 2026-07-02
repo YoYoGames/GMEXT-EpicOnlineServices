@@ -217,42 +217,10 @@ uint64_t eos_user_info_get_local_platform_type()
 }
 
 std::string eos_user_info_copy_best_display_name(
-    std::string_view local_user_id,
-    std::string_view target_user_id)
+    std::string_view,
+    std::string_view)
 {
     return "";
-    //TODO
-    // eos_clear_last_error();
-
-    // EOS_HUserInfo user_info = eos_user_info_iface();
-    // if (!user_info) {
-    //     eos_set_last_error("EOS UserInfo interface unavailable.");
-    //     return std::string();
-    // }
-
-    // EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
-    // EOS_EpicAccountId target_user = eos_epic_account_id_from_string_internal(target_user_id);
-
-    // if (!local_user) {
-    //     eos_set_last_error("EOS_UserInfo_CopyBestDisplayName: invalid local_user_id.");
-    //     return std::string();
-    // }
-
-    // if (!target_user) {
-    //     eos_set_last_error("EOS_UserInfo_CopyBestDisplayName: invalid target_user_id.");
-    //     return std::string();
-    // }
-
-    // EOS_UserInfo_CopyBestDisplayNameOptions opts{};
-    // opts.ApiVersion = EOS_USERINFO_COPYBESTDISPLAYNAME_API_LATEST;
-    // opts.LocalUserId = local_user;
-    // opts.TargetUserId = target_user;
-
-    // return eos_user_info_copy_string_with_fixed_retry(
-    //     [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
-    //     {
-    //         return EOS_UserInfo_CopyBestDisplayName(user_info, &opts, out_buffer, inout_len);
-    //     });
 }
 
 

@@ -92,6 +92,7 @@ eos_sanctions_query_active_player_sanctions_info_from_native(
         return out;
 
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
+    out.local_user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
     out.target_user_id = eos_product_user_id_to_string_internal(p->TargetUserId);
 
     return out;

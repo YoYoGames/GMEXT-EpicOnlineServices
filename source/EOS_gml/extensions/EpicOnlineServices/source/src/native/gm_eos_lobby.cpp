@@ -1317,6 +1317,10 @@ static gm_structs::EpicLobbyDetailsInfo eos_lobby_details_info_from_native(
     out.permission_level = (gm_enums::EpicLobbyPermissionLevel)p->PermissionLevel;
     out.allow_invites = (p->bAllowInvites != 0);
     out.presence_enabled = (p->bPresenceEnabled != 0);
+    out.rtc_room_enabled = (p->bRTCRoomEnabled != 0);
+    out.allow_host_migration = (p->bAllowHostMigration != 0);
+    out.allow_join_by_id = (p->bAllowJoinById != 0);
+    out.rejoin_after_kick_requires_invite = (p->bRejoinAfterKickRequiresInvite != 0);
 
     return out;
 }
@@ -1368,6 +1372,7 @@ static gm_structs::EpicLobbyJoinLobbyAcceptedCallbackInfo eos_lobby_join_accepte
         return out;
 
     out.ui_event_id = (uint64_t)p->UiEventId;
+    out.local_user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
     return out;
 }
 

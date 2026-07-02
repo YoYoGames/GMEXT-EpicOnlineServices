@@ -1094,6 +1094,9 @@ class `[[EpicSanctionsQueryActivePlayerSanctionsCallbackInfo]]` prototype Object
     property result_code : gmval { get; set; }
 
     [field]
+    property local_user_id : string { get; set; }
+
+    [field]
     property target_user_id : string { get; set; }
 }
 
@@ -1330,6 +1333,9 @@ class `[[EpicLeaderboardsQueryRanksCallbackInfo]]` prototype Object
 {
     [field, type_hint=`EpicResult`]
     property result_code : gmval { get; set; }
+
+    [field]
+    property leaderboard_id : string { get; set; }
 }
 
 [global]
