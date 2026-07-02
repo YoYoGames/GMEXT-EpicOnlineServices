@@ -95,6 +95,14 @@ static gm_structs::EpicAuthLoginCallbackInfo eos_auth_login_info_from_native(con
     out.selected_account_id = eos_epic_account_id_to_string_internal(p->SelectedAccountId);
     out.has_continuance_token = (p->ContinuanceToken != nullptr);
 
+    if (p->PinGrantInfo) {
+        out.pin_grant_info = gm_structs::EpicAuthPinGrantInfo{};
+        auto& pin_info = out.pin_grant_info;
+        pin_info.user_code = p->PinGrantInfo->UserCode ? std::string(p->PinGrantInfo->UserCode) : std::string();
+        pin_info.verification_uri = p->PinGrantInfo->VerificationURI ? std::string(p->PinGrantInfo->VerificationURI) : std::string();
+        pin_info.verification_uri_complete = p->PinGrantInfo->VerificationURIComplete ? std::string(p->PinGrantInfo->VerificationURIComplete) : std::string();
+    }
+
     return out;
 }
 
@@ -119,6 +127,14 @@ static gm_structs::EpicAuthLinkAccountCallbackInfo eos_auth_link_account_info_fr
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
     out.local_user_id = eos_epic_account_id_to_string_internal(p->LocalUserId);
     out.selected_account_id = eos_epic_account_id_to_string_internal(p->SelectedAccountId);
+
+    if (p->PinGrantInfo) {
+        out.pin_grant_info = gm_structs::EpicAuthPinGrantInfo{};
+        auto& pin_info = out.pin_grant_info;
+        pin_info.user_code = p->PinGrantInfo->UserCode ? std::string(p->PinGrantInfo->UserCode) : std::string();
+        pin_info.verification_uri = p->PinGrantInfo->VerificationURI ? std::string(p->PinGrantInfo->VerificationURI) : std::string();
+        pin_info.verification_uri_complete = p->PinGrantInfo->VerificationURIComplete ? std::string(p->PinGrantInfo->VerificationURIComplete) : std::string();
+    }
 
     return out;
 }

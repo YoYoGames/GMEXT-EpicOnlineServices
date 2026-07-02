@@ -843,20 +843,19 @@ function EpicLoggingMessage() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthLoginCallbackInfo} 
+ * @returns {Struct.EpicAuthPinGrantInfo} 
  */
-function EpicAuthLoginCallbackInfo() constructor
+function EpicAuthPinGrantInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
      * @ignore 
      */
-    static __uid = 3139004448;
+    static __uid = 2307251061;
 
-    self.result_code = undefined;
-    self.local_user_id = undefined;
-    self.selected_account_id = undefined;
-    self.has_continuance_token = undefined;
+    self.user_code = undefined;
+    self.verification_uri = undefined;
+    self.verification_uri_complete = undefined;
 
 }
 
@@ -873,23 +872,6 @@ function EpicAuthLogoutCallbackInfo() constructor
 
     self.result_code = undefined;
     self.local_user_id = undefined;
-
-}
-
-/**
- * @returns {Struct.EpicAuthLinkAccountCallbackInfo} 
- */
-function EpicAuthLinkAccountCallbackInfo() constructor
-{
-    /**
-     * Internally generated hash for quick validation
-     * @ignore 
-     */
-    static __uid = 1132751930;
-
-    self.result_code = undefined;
-    self.local_user_id = undefined;
-    self.selected_account_id = undefined;
 
 }
 
@@ -4221,6 +4203,43 @@ function EpicRTCDataUpdateReceivingCallbackInfo() constructor
 
 }
 
+/**
+ * @returns {Struct.EpicAuthLoginCallbackInfo} 
+ */
+function EpicAuthLoginCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 3139004448;
+
+    self.result_code = undefined;
+    self.local_user_id = undefined;
+    self.selected_account_id = undefined;
+    self.has_continuance_token = undefined;
+    self.pin_grant_info = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicAuthLinkAccountCallbackInfo} 
+ */
+function EpicAuthLinkAccountCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 1132751930;
+
+    self.result_code = undefined;
+    self.local_user_id = undefined;
+    self.selected_account_id = undefined;
+    self.pin_grant_info = undefined;
+
+}
+
 // #####################################################################
 // # Codecs
 // #####################################################################
@@ -4238,10 +4257,10 @@ function __EpicLoggingMessage_encode(_inst, _buffer, _offset, _where = _GMFUNCTI
     buffer_seek(_buffer, buffer_seek_start, _offset);
     with (_inst)
     {
-        // field: category, type: enum EpicLogCategory
-
-        if (!is_numeric(self.category)) show_error($"{_where} :: self.category expected number", true);
-        buffer_write(_buffer, buffer_u64, self.category);
+        // field: category, type: String
+        if (!is_string(self.category)) show_error($"{_where} :: self.category expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.category));
+        buffer_write(_buffer, buffer_string, self.category);
 
         // field: level, type: enum EpicLogLevel
 
@@ -4270,8 +4289,9 @@ function __EpicLoggingMessage_decode(_buffer, _offset)
     _inst = new EpicLoggingMessage();
     with (_inst)
     {
-        // field: category, type: enum EpicLogCategory
-        self.category = buffer_read(_buffer, buffer_u64);
+        // field: category, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.category = buffer_read(_buffer, buffer_string);
 
         // field: level, type: enum EpicLogLevel
         self.level = buffer_read(_buffer, buffer_u64);
@@ -4286,67 +4306,61 @@ function __EpicLoggingMessage_decode(_buffer, _offset)
 }
 
 /**
- * @func __EpicAuthLoginCallbackInfo_encode(_inst, _buffer, _offset, _where)
- * @param {Struct.EpicAuthLoginCallbackInfo} _inst
+ * @func __EpicAuthPinGrantInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicAuthPinGrantInfo} _inst
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
  * @ignore 
  */
-function __EpicAuthLoginCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+function __EpicAuthPinGrantInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
     buffer_seek(_buffer, buffer_seek_start, _offset);
     with (_inst)
     {
-        // field: result_code, type: enum EpicResult
+        // field: user_code, type: String
+        if (!is_string(self.user_code)) show_error($"{_where} :: self.user_code expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.user_code));
+        buffer_write(_buffer, buffer_string, self.user_code);
 
-        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
-        buffer_write(_buffer, buffer_u64, self.result_code);
+        // field: verification_uri, type: String
+        if (!is_string(self.verification_uri)) show_error($"{_where} :: self.verification_uri expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.verification_uri));
+        buffer_write(_buffer, buffer_string, self.verification_uri);
 
-        // field: local_user_id, type: String
-        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
-        buffer_write(_buffer, buffer_string, self.local_user_id);
-
-        // field: selected_account_id, type: String
-        if (!is_string(self.selected_account_id)) show_error($"{_where} :: self.selected_account_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.selected_account_id));
-        buffer_write(_buffer, buffer_string, self.selected_account_id);
-
-        // field: has_continuance_token, type: Bool
-        if (!is_bool(self.has_continuance_token)) show_error($"{_where} :: self.has_continuance_token expected bool", true);
-        buffer_write(_buffer, buffer_bool, self.has_continuance_token);
+        // field: verification_uri_complete, type: String
+        if (!is_string(self.verification_uri_complete)) show_error($"{_where} :: self.verification_uri_complete expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.verification_uri_complete));
+        buffer_write(_buffer, buffer_string, self.verification_uri_complete);
 
     }
 }
 
 /**
- * @func __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
+ * @func __EpicAuthPinGrantInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthLoginCallbackInfo} 
+ * @returns {Struct.EpicAuthPinGrantInfo} 
  * @ignore 
  */
-function __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
+function __EpicAuthPinGrantInfo_decode(_buffer, _offset)
 {
     buffer_seek(_buffer, buffer_seek_start, _offset);
 
-    _inst = new EpicAuthLoginCallbackInfo();
+    _inst = new EpicAuthPinGrantInfo();
     with (_inst)
     {
-        // field: result_code, type: enum EpicResult
-        self.result_code = buffer_read(_buffer, buffer_u64);
-
-        // field: local_user_id, type: String
+        // field: user_code, type: String
         buffer_read(_buffer, buffer_u32);
-        self.local_user_id = buffer_read(_buffer, buffer_string);
+        self.user_code = buffer_read(_buffer, buffer_string);
 
-        // field: selected_account_id, type: String
+        // field: verification_uri, type: String
         buffer_read(_buffer, buffer_u32);
-        self.selected_account_id = buffer_read(_buffer, buffer_string);
+        self.verification_uri = buffer_read(_buffer, buffer_string);
 
-        // field: has_continuance_token, type: Bool
-        self.has_continuance_token = buffer_read(_buffer, buffer_bool);
+        // field: verification_uri_complete, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.verification_uri_complete = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -4399,67 +4413,6 @@ function __EpicAuthLogoutCallbackInfo_decode(_buffer, _offset)
         // field: local_user_id, type: String
         buffer_read(_buffer, buffer_u32);
         self.local_user_id = buffer_read(_buffer, buffer_string);
-
-    }
-
-    return _inst;
-}
-
-/**
- * @func __EpicAuthLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _where)
- * @param {Struct.EpicAuthLinkAccountCallbackInfo} _inst
- * @param {Id.Buffer} _buffer
- * @param {Real} _offset
- * @param {String} _where
- * @ignore 
- */
-function __EpicAuthLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
-{
-    buffer_seek(_buffer, buffer_seek_start, _offset);
-    with (_inst)
-    {
-        // field: result_code, type: enum EpicResult
-
-        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
-        buffer_write(_buffer, buffer_u64, self.result_code);
-
-        // field: local_user_id, type: String
-        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
-        buffer_write(_buffer, buffer_string, self.local_user_id);
-
-        // field: selected_account_id, type: String
-        if (!is_string(self.selected_account_id)) show_error($"{_where} :: self.selected_account_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.selected_account_id));
-        buffer_write(_buffer, buffer_string, self.selected_account_id);
-
-    }
-}
-
-/**
- * @func __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
- * @param {Id.Buffer} _buffer
- * @param {Real} _offset
- * @returns {Struct.EpicAuthLinkAccountCallbackInfo} 
- * @ignore 
- */
-function __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
-{
-    buffer_seek(_buffer, buffer_seek_start, _offset);
-
-    _inst = new EpicAuthLinkAccountCallbackInfo();
-    with (_inst)
-    {
-        // field: result_code, type: enum EpicResult
-        self.result_code = buffer_read(_buffer, buffer_u64);
-
-        // field: local_user_id, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.local_user_id = buffer_read(_buffer, buffer_string);
-
-        // field: selected_account_id, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.selected_account_id = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -16437,6 +16390,149 @@ function __EpicRTCDataUpdateReceivingCallbackInfo_decode(_buffer, _offset)
     return _inst;
 }
 
+/**
+ * @func __EpicAuthLoginCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicAuthLoginCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicAuthLoginCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+
+        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
+        buffer_write(_buffer, buffer_u64, self.result_code);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: selected_account_id, type: String
+        if (!is_string(self.selected_account_id)) show_error($"{_where} :: self.selected_account_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.selected_account_id));
+        buffer_write(_buffer, buffer_string, self.selected_account_id);
+
+        // field: has_continuance_token, type: Bool
+        if (!is_bool(self.has_continuance_token)) show_error($"{_where} :: self.has_continuance_token expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.has_continuance_token);
+
+        // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
+        if (self.pin_grant_info.__uid != 2307251061) show_error($"{_where} :: self.pin_grant_info expected EpicAuthPinGrantInfo", true);
+        __EpicAuthPinGrantInfo_encode(self.pin_grant_info, _buffer, buffer_tell(_buffer), _where);
+
+    }
+}
+
+/**
+ * @func __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicAuthLoginCallbackInfo} 
+ * @ignore 
+ */
+function __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicAuthLoginCallbackInfo();
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+        self.result_code = buffer_read(_buffer, buffer_u64);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: selected_account_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.selected_account_id = buffer_read(_buffer, buffer_string);
+
+        // field: has_continuance_token, type: Bool
+        self.has_continuance_token = buffer_read(_buffer, buffer_bool);
+
+        // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
+        self.pin_grant_info = __EpicAuthPinGrantInfo_decode(_buffer, buffer_tell(_buffer));
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicAuthLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicAuthLinkAccountCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicAuthLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+
+        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
+        buffer_write(_buffer, buffer_u64, self.result_code);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: selected_account_id, type: String
+        if (!is_string(self.selected_account_id)) show_error($"{_where} :: self.selected_account_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.selected_account_id));
+        buffer_write(_buffer, buffer_string, self.selected_account_id);
+
+        // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
+        if (self.pin_grant_info.__uid != 2307251061) show_error($"{_where} :: self.pin_grant_info expected EpicAuthPinGrantInfo", true);
+        __EpicAuthPinGrantInfo_encode(self.pin_grant_info, _buffer, buffer_tell(_buffer), _where);
+
+    }
+}
+
+/**
+ * @func __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicAuthLinkAccountCallbackInfo} 
+ * @ignore 
+ */
+function __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicAuthLinkAccountCallbackInfo();
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+        self.result_code = buffer_read(_buffer, buffer_u64);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: selected_account_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.selected_account_id = buffer_read(_buffer, buffer_string);
+
+        // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
+        self.pin_grant_info = __EpicAuthPinGrantInfo_decode(_buffer, buffer_tell(_buffer));
+
+    }
+
+    return _inst;
+}
+
 // #####################################################################
 // # Functions
 // #####################################################################
@@ -17646,11 +17742,10 @@ function eos_connect_query_external_account_mappings(_local_user_id, _account_id
 
 /**
  * @param {String} _local_user_id
- * @param {Enum.EpicExternalAccountType} _account_id_type
  * @param {Array[String]} _target_product_user_ids
  * @param {Function} _callback
  */
-function eos_connect_query_product_user_id_mappings(_local_user_id, _account_id_type, _target_product_user_ids, _callback)
+function eos_connect_query_product_user_id_mappings(_local_user_id, _target_product_user_ids, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
@@ -17660,11 +17755,6 @@ function eos_connect_query_product_user_id_mappings(_local_user_id, _account_id_
     if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
-
-    // param: _account_id_type, type: enum EpicExternalAccountType
-
-    if (!is_numeric(_account_id_type)) show_error($"{_GMFUNCTION_} :: _account_id_type expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _account_id_type);
 
     // param: _target_product_user_ids, type: String[]
     if (!is_array(_target_product_user_ids)) show_error($"{_GMFUNCTION_} :: _target_product_user_ids expected array", true);
@@ -17982,7 +18072,7 @@ function eos_user_info_copy_user_info(_local_user_id, _target_user_id)
 }
 
 /**
- * @returns {Enum.EpicExternalAccountType} 
+ * @returns {Real} 
  */
 function eos_user_info_get_local_platform_type()
 {
@@ -18562,26 +18652,32 @@ function eos_ui_show_report_player(_local_user_id, _target_user_id, _callback)
 }
 
 /**
- * @param {String} _product_user_id
+ * @param {String} _account_id
  * @param {Enum.EpicMetricsAccountIdType} _account_id_type
+ * @param {String} _display_name
  * @param {Enum.EpicUserControllerType} _controller_type
  * @param {String} _server_ip
  * @param {String} _game_session_id
  * @returns {Enum.EpicResult} 
  */
-function eos_metrics_begin_player_session(_product_user_id, _account_id_type, _controller_type, _server_ip, _game_session_id)
+function eos_metrics_begin_player_session(_account_id, _account_id_type, _display_name, _controller_type, _server_ip, _game_session_id)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _product_user_id, type: String
-    if (!is_string(_product_user_id)) show_error($"{_GMFUNCTION_} :: _product_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_product_user_id));
-    buffer_write(__args_buffer, buffer_string, _product_user_id);
+    // param: _account_id, type: String
+    if (!is_string(_account_id)) show_error($"{_GMFUNCTION_} :: _account_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_account_id));
+    buffer_write(__args_buffer, buffer_string, _account_id);
 
     // param: _account_id_type, type: enum EpicMetricsAccountIdType
 
     if (!is_numeric(_account_id_type)) show_error($"{_GMFUNCTION_} :: _account_id_type expected number", true);
     buffer_write(__args_buffer, buffer_u64, _account_id_type);
+
+    // param: _display_name, type: String
+    if (!is_string(_display_name)) show_error($"{_GMFUNCTION_} :: _display_name expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_display_name));
+    buffer_write(__args_buffer, buffer_string, _display_name);
 
     // param: _controller_type, type: enum EpicUserControllerType
 
@@ -18608,21 +18704,21 @@ function eos_metrics_begin_player_session(_product_user_id, _account_id_type, _c
 }
 
 /**
- * @param {String} _product_user_id
+ * @param {String} _account_id
  * @param {Enum.EpicMetricsAccountIdType} _account_id_type
  * @param {Enum.EpicUserControllerType} _controller_type
  * @param {String} _server_ip
  * @param {String} _game_session_id
  * @returns {Enum.EpicResult} 
  */
-function eos_metrics_end_player_session(_product_user_id, _account_id_type, _controller_type, _server_ip, _game_session_id)
+function eos_metrics_end_player_session(_account_id, _account_id_type, _controller_type, _server_ip, _game_session_id)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
-    // param: _product_user_id, type: String
-    if (!is_string(_product_user_id)) show_error($"{_GMFUNCTION_} :: _product_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_product_user_id));
-    buffer_write(__args_buffer, buffer_string, _product_user_id);
+    // param: _account_id, type: String
+    if (!is_string(_account_id)) show_error($"{_GMFUNCTION_} :: _account_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_account_id));
+    buffer_write(__args_buffer, buffer_string, _account_id);
 
     // param: _account_id_type, type: enum EpicMetricsAccountIdType
 
@@ -19433,13 +19529,14 @@ function eos_leaderboards_get_record_count()
 }
 
 /**
+ * @param {String} _stat_name
  * @returns {Real} 
  */
-function eos_leaderboards_get_user_score_count()
+function eos_leaderboards_get_user_score_count(_stat_name)
 {
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_get_user_score_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var _return_value = __eos_leaderboards_get_user_score_count(_stat_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
     _result = buffer_read(__ret_buffer, buffer_u64);
@@ -19519,12 +19616,18 @@ function eos_leaderboards_copy_record_by_user_id(_user_id)
 }
 
 /**
+ * @param {String} _stat_name
  * @param {Real} _index
  * @returns {Struct.EpicLeaderboardUserScore} 
  */
-function eos_leaderboards_copy_user_score_by_index(_index)
+function eos_leaderboards_copy_user_score_by_index(_stat_name, _index)
 {
     var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _stat_name, type: String
+    if (!is_string(_stat_name)) show_error($"{_GMFUNCTION_} :: _stat_name expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_stat_name));
+    buffer_write(__args_buffer, buffer_string, _stat_name);
 
     // param: _index, type: Int64
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
@@ -27341,9 +27444,8 @@ function __EpicOnlineServices_get_decoders()
 {
     static __decoders = [
         __EpicLoggingMessage_decode,
-        __EpicAuthLoginCallbackInfo_decode,
+        __EpicAuthPinGrantInfo_decode,
         __EpicAuthLogoutCallbackInfo_decode,
-        __EpicAuthLinkAccountCallbackInfo_decode,
         __EpicAuthDeletePersistentAuthCallbackInfo_decode,
         __EpicAuthIdToken_decode,
         __EpicAuthUserAuthToken_decode,
@@ -27537,7 +27639,9 @@ function __EpicOnlineServices_get_decoders()
         __EpicRTCDataParticipantUpdatedCallbackInfo_decode,
         __EpicRTCDataReceivedCallbackInfo_decode,
         __EpicRTCDataUpdateSendingCallbackInfo_decode,
-        __EpicRTCDataUpdateReceivingCallbackInfo_decode
+        __EpicRTCDataUpdateReceivingCallbackInfo_decode,
+        __EpicAuthLoginCallbackInfo_decode,
+        __EpicAuthLinkAccountCallbackInfo_decode
     ];
     return __decoders;
 }

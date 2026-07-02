@@ -400,7 +400,6 @@
 /**
  * @function_partial eos_connect_query_product_user_id_mappings
  * @param {String} local_user_id
- * @param {Enum.EpicExternalAccountType} account_id_type
  * @param {Array[String]} target_product_user_ids
  * @param {Function} [callback]
  * @function_end 
@@ -493,7 +492,7 @@
 
 /**
  * @function_partial eos_user_info_get_local_platform_type
- * @returns {Enum.EpicExternalAccountType} 
+ * @returns {Real} 
  * @function_end 
  */
 
@@ -684,8 +683,9 @@
 
 /**
  * @function_partial eos_metrics_begin_player_session
- * @param {String} product_user_id
+ * @param {String} account_id
  * @param {Enum.EpicMetricsAccountIdType} account_id_type
+ * @param {String} display_name
  * @param {Enum.EpicUserControllerType} controller_type
  * @param {String} server_ip
  * @param {String} game_session_id
@@ -695,7 +695,7 @@
 
 /**
  * @function_partial eos_metrics_end_player_session
- * @param {String} product_user_id
+ * @param {String} account_id
  * @param {Enum.EpicMetricsAccountIdType} account_id_type
  * @param {Enum.EpicUserControllerType} controller_type
  * @param {String} server_ip
@@ -911,6 +911,7 @@
 
 /**
  * @function_partial eos_leaderboards_get_user_score_count
+ * @param {String} stat_name
  * @returns {Real} 
  * @function_end 
  */
@@ -945,6 +946,7 @@
 
 /**
  * @function_partial eos_leaderboards_copy_user_score_by_index
+ * @param {String} stat_name
  * @param {Real} index
  * @returns {Struct.EpicLeaderboardUserScore} 
  * @function_end 
@@ -3084,18 +3086,17 @@
 
 /**
  * @struct_partial EpicLoggingMessage
- * @member {Enum.EpicLogCategory} category
+ * @member {String} category
  * @member {Enum.EpicLogLevel} level
  * @member {String} message
  * @struct_end 
  */
 
 /**
- * @struct_partial EpicAuthLoginCallbackInfo
- * @member {Enum.EpicResult} result_code
- * @member {String} local_user_id
- * @member {String} selected_account_id
- * @member {Bool} has_continuance_token
+ * @struct_partial EpicAuthPinGrantInfo
+ * @member {String} user_code
+ * @member {String} verification_uri
+ * @member {String} verification_uri_complete
  * @struct_end 
  */
 
@@ -3103,14 +3104,6 @@
  * @struct_partial EpicAuthLogoutCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
- */
-
-/**
- * @struct_partial EpicAuthLinkAccountCallbackInfo
- * @member {Enum.EpicResult} result_code
- * @member {String} local_user_id
- * @member {String} selected_account_id
  * @struct_end 
  */
 
@@ -4693,6 +4686,25 @@
  * @member {String} room_name
  * @member {String} participant_id
  * @member {Bool} data_enabled
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicAuthLoginCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @member {String} local_user_id
+ * @member {String} selected_account_id
+ * @member {Bool} has_continuance_token
+ * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info
+ * @struct_end 
+ */
+
+/**
+ * @struct_partial EpicAuthLinkAccountCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @member {String} local_user_id
+ * @member {String} selected_account_id
+ * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info
  * @struct_end 
  */
 

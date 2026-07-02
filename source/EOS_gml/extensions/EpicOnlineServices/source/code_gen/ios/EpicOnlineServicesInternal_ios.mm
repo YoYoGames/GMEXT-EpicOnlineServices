@@ -584,9 +584,9 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_leaderboards_get_record_count(__ret_buffer, __ret_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_leaderboards_get_user_score_count:(char*)__ret_buffer arg1:(double)__ret_buffer_length
+- (double)__EXT_NATIVE__eos_leaderboards_get_user_score_count:(char*)stat_name arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_leaderboards_get_user_score_count(__ret_buffer, __ret_buffer_length);
+    return __EXT_NATIVE__eos_leaderboards_get_user_score_count(stat_name, __ret_buffer, __ret_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_leaderboards_copy_definition_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {

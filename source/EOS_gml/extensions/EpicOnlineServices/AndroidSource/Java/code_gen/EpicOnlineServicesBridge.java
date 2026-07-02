@@ -143,7 +143,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_leaderboards_query_user_scores(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_leaderboards_get_definition_count(ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_leaderboards_get_record_count(ByteBuffer __ret_buffer, double __ret_buffer_length);
-    public static native double __EXT_JNI__eos_leaderboards_get_user_score_count(ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_leaderboards_get_user_score_count(String stat_name, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_leaderboards_copy_definition_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_leaderboards_copy_definition_by_id(String leaderboard_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_leaderboards_copy_record_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);

@@ -2302,12 +2302,13 @@
         {
           "$GMExtensionFunction": "",
           "%Name": "__eos_leaderboards_get_user_score_count",
-          "argCount": 2,
+          "argCount": 3,
           "args": [
+            1,
             1,
             2
           ],
-          "documentation": "@param {Pointer} _ret_buffer\r\n@param {Real} _ret_buffer_length\r\n@returns {Real}",
+          "documentation": "@param {String} stat_name\r\n@param {Pointer} _ret_buffer\r\n@param {Real} _ret_buffer_length\r\n@returns {Real}",
           "externalName": "__EXT_NATIVE__eos_leaderboards_get_user_score_count",
           "help": "",
           "hidden": true,

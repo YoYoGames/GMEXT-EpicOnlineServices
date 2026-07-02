@@ -96,6 +96,10 @@ gm_enums::EpicResult eos_api_shutdown()
 {
     eos_clear_last_error();
 
+    if (eos_platform_get()) {
+        eos_platform_release();
+    }
+
     const EOS_EResult result = EOS_Shutdown();
     if (result != EOS_EResult::EOS_Success) {
         eos_set_last_error(eos_result_string(result));
@@ -108,9 +112,6 @@ gm_enums::EpicResult eos_api_shutdown()
 
 std::string eos_api_get_version()
 {
-    // Keep stub if EOS_GetVersion is not available in your SDK setup yet.
-    // const char* s = EOS_GetVersion();
-    // return s ? std::string(s) : std::string();
     return "";
 }
 

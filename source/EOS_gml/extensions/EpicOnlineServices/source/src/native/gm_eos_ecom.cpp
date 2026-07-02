@@ -409,7 +409,7 @@ void eos_ecom_query_ownership_by_sandbox_ids(
     EOS_Ecom_QueryOwnershipBySandboxIdsOptions opts{};
     opts.ApiVersion     = EOS_ECOM_QUERYOWNERSHIPBYSANDBOXIDSOPTIONS_API_LATEST;
     opts.LocalUserId    = local_user;
-    opts.SandboxIds     = (EOS_Ecom_SandboxId*)id_ptrs.data();
+    opts.SandboxIds     = (EOS_Ecom_SandboxId*)(id_ptrs.empty() ? nullptr : id_ptrs.data());
     opts.SandboxIdsCount = (uint32_t)id_ptrs.size();
 
     EOS_Ecom_QueryOwnershipBySandboxIds(ecom, &opts, ctx, &eos_ecom_query_ownership_by_sandbox_ids_callback_native);

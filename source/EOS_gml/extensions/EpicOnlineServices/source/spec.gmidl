@@ -89,8 +89,8 @@ group
 [global]
 class `[[EpicLoggingMessage]]` prototype Object
 {
-    [field, type_hint = `EpicLogCategory`]
-    property category : gmval { get; set; }
+    [field]
+    property category : string { get; set; }
 
     [field, type_hint = `EpicLogLevel`]
     property level : gmval { get; set; }
@@ -121,6 +121,19 @@ group
 // ============================================================
 
 [global]
+class `[[EpicAuthPinGrantInfo]]` prototype Object
+{
+    [field]
+    property user_code : string { get; set; }
+
+    [field]
+    property verification_uri : string { get; set; }
+
+    [field]
+    property verification_uri_complete : string { get; set; }
+}
+
+[global]
 class `[[EpicAuthLoginCallbackInfo]]` prototype Object
 {
     [field, type_hint = `EpicResult`]
@@ -134,6 +147,9 @@ class `[[EpicAuthLoginCallbackInfo]]` prototype Object
 
     [field]
     property has_continuance_token : bool { get; set; }
+
+    [field, type_hint=`EpicAuthPinGrantInfo`]
+    property pin_grant_info : gmval { get; set; }
 }
 
 [global]
@@ -157,6 +173,9 @@ class `[[EpicAuthLinkAccountCallbackInfo]]` prototype Object
 
     [field]
     property selected_account_id : string { get; set; }
+
+    [field, type_hint=`EpicAuthPinGrantInfo`]
+    property pin_grant_info : gmval { get; set; }
 }
 
 [global]
@@ -556,7 +575,6 @@ function eos_connect_query_external_account_mappings(
 [global, bind = typed_gml]
 function eos_connect_query_product_user_id_mappings(
     local_user_id: string,
-    [type_hint=`EpicExternalAccountType`] account_id_type: gmval,
     [type_hint=`string[]`] target_product_user_ids: gmval,
     [type_hint=`func?`] callback: gmval
 ): unit;
@@ -694,7 +712,7 @@ function eos_user_info_query_user_info(local_user_id: string, target_user_id: st
 [global, bind = typed_gml, type_hint=`EpicUserInfo`]
 function eos_user_info_copy_user_info(local_user_id: string, target_user_id: string): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicExternalAccountType`]
+[global, bind = typed_gml, type_hint=`uint64`]
 function eos_user_info_get_local_platform_type(): gmval;
 
 [global, bind = typed_gml]
@@ -963,8 +981,9 @@ group
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_metrics_begin_player_session(
-    product_user_id: string,
+    account_id: string,
     [type_hint=`EpicMetricsAccountIdType`] account_id_type: gmval,
+    display_name: string,
     [type_hint=`EpicUserControllerType`] controller_type: gmval,
     server_ip: string,
     game_session_id: string
@@ -972,7 +991,7 @@ function eos_metrics_begin_player_session(
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_metrics_end_player_session(
-    product_user_id: string,
+    account_id: string,
     [type_hint=`EpicMetricsAccountIdType`] account_id_type: gmval,
     [type_hint=`EpicUserControllerType`] controller_type: gmval,
     server_ip: string,
@@ -1349,7 +1368,7 @@ function eos_leaderboards_get_definition_count(): int64;
 function eos_leaderboards_get_record_count(): int64;
 
 [global, bind = typed_gml]
-function eos_leaderboards_get_user_score_count(): int64;
+function eos_leaderboards_get_user_score_count(stat_name: string): int64;
 
 // ============================================================
 // EOS Leaderboards (Part 2)
@@ -1413,7 +1432,7 @@ function eos_leaderboards_copy_record_by_index(index: int64): gmval;
 function eos_leaderboards_copy_record_by_user_id(user_id: string): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicLeaderboardUserScore`]
-function eos_leaderboards_copy_user_score_by_index(index: int64): gmval;
+function eos_leaderboards_copy_user_score_by_index(stat_name: string, index: int64): gmval;
 
 }
 

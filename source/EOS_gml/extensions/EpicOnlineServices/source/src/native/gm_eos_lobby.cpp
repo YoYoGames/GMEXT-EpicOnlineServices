@@ -745,10 +745,6 @@ gm_enums::EpicResult eos_lobby_lobby_modification_remove_attribute(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    EOS_Lobby_AttributeData attr{};
-    attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
-    attr.Key = key_storage.c_str();
-
     EOS_LobbyModification_RemoveAttributeOptions opts{};
     opts.ApiVersion = EOS_LOBBYMODIFICATION_REMOVEATTRIBUTE_API_LATEST;
     opts.Key = key_storage.c_str();

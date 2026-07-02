@@ -880,6 +880,11 @@ uint64_t eos_sessions_session_search_copy_search_result_by_index(
 {
     eos_clear_last_error();
 
+    if (index < 0) {
+        eos_set_last_error("Session index must be non-negative.");
+        return 0;
+    }
+
     EOS_HSessionSearch search = eos_sessions_search_get(search_id);
     if (!search) {
         eos_set_last_error("EOS SessionSearch handle invalid.");

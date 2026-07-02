@@ -200,20 +200,20 @@ gm_structs::EpicUserInfo eos_user_info_copy_user_info(
     return out;
 }
 
-gm_enums::EpicExternalAccountType eos_user_info_get_local_platform_type()
+uint64_t eos_user_info_get_local_platform_type()
 {
     eos_clear_last_error();
 
     EOS_HUserInfo user_info = eos_user_info_iface();
     if (!user_info) {
         eos_set_last_error("EOS UserInfo interface unavailable.");
-        return (gm_enums::EpicExternalAccountType)0;
+        return 0;
     }
 
     EOS_UserInfo_GetLocalPlatformTypeOptions opts{};
     opts.ApiVersion = EOS_USERINFO_GETLOCALPLATFORMTYPE_API_LATEST;
 
-    return (gm_enums::EpicExternalAccountType)EOS_UserInfo_GetLocalPlatformType(user_info, &opts);
+    return (uint64_t)EOS_UserInfo_GetLocalPlatformType(user_info, &opts);
 }
 
 std::string eos_user_info_copy_best_display_name(

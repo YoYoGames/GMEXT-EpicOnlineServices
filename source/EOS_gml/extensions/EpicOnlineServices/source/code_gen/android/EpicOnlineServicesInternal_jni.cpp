@@ -1834,16 +1834,17 @@ static jdouble __JNI_WRAPPER__eos_leaderboards_get_record_count_ABE81EBCE05D(JNI
     return static_cast<jdouble>(__ret);
 }
 
-// eos_leaderboards_get_user_score_count JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
-static jdouble __JNI_WRAPPER__eos_leaderboards_get_user_score_count_01FBAD84C5FD(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __ret_buffer, jdouble __ret_buffer_length)
+// eos_leaderboards_get_user_score_count JNI wrapper signature: (Ljava/lang/String;Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_leaderboards_get_user_score_count_E62C07925FDB(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring stat_name, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
+    UtfChars __pin_stat_name(env, stat_name);
     void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
     jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
     if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
         throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
         return 0.0;
     }
-    double __ret = __EXT_NATIVE__eos_leaderboards_get_user_score_count((char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    double __ret = __EXT_NATIVE__eos_leaderboards_get_user_score_count((char *)__pin_stat_name.c_str(), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
@@ -6474,7 +6475,7 @@ extern "C" {
             { "__EXT_JNI__eos_leaderboards_query_user_scores", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_query_user_scores_3D1F089ECFF0 },
             { "__EXT_JNI__eos_leaderboards_get_definition_count", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_get_definition_count_4CE94C863B32 },
             { "__EXT_JNI__eos_leaderboards_get_record_count", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_get_record_count_ABE81EBCE05D },
-            { "__EXT_JNI__eos_leaderboards_get_user_score_count", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_get_user_score_count_01FBAD84C5FD },
+            { "__EXT_JNI__eos_leaderboards_get_user_score_count", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_get_user_score_count_E62C07925FDB },
             { "__EXT_JNI__eos_leaderboards_copy_definition_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_copy_definition_by_index_5EA472084A1F },
             { "__EXT_JNI__eos_leaderboards_copy_definition_by_id", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_copy_definition_by_id_FF8EFC04381E },
             { "__EXT_JNI__eos_leaderboards_copy_record_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_leaderboards_copy_record_by_index_D0C1448DBDA7 },

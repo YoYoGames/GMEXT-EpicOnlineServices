@@ -793,9 +793,6 @@ GMEXPORT double __EXT_NATIVE__eos_connect_query_product_user_id_mappings(char* _
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: account_id_type, type: enum EpicExternalAccountType
-    gm_enums::EpicExternalAccountType account_id_type = gm::wire::codec::readValue<gm_enums::EpicExternalAccountType>(__br);
-
     // field: target_product_user_ids, type: String[]
     std::vector<std::string_view> target_product_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
 
@@ -806,7 +803,7 @@ GMEXPORT double __EXT_NATIVE__eos_connect_query_product_user_id_mappings(char* _
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_connect_query_product_user_id_mappings(local_user_id, account_id_type, target_product_user_ids, callback);
+    eos_connect_query_product_user_id_mappings(local_user_id, target_product_user_ids, callback);
     return 0;
 }
 
@@ -989,7 +986,7 @@ GMEXPORT double __EXT_NATIVE__eos_user_info_get_local_platform_type(char* __ret_
     auto&& __result = eos_user_info_get_local_platform_type();
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: enum EpicExternalAccountType
+    // return: __result, type: UInt64
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1355,11 +1352,14 @@ GMEXPORT double __EXT_NATIVE__eos_metrics_begin_player_session(char* __arg_buffe
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: product_user_id, type: String
-    std::string_view product_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: account_id, type: String
+    std::string_view account_id = gm::wire::codec::readValue<std::string_view>(__br);
 
     // field: account_id_type, type: enum EpicMetricsAccountIdType
     gm_enums::EpicMetricsAccountIdType account_id_type = gm::wire::codec::readValue<gm_enums::EpicMetricsAccountIdType>(__br);
+
+    // field: display_name, type: String
+    std::string_view display_name = gm::wire::codec::readValue<std::string_view>(__br);
 
     // field: controller_type, type: enum EpicUserControllerType
     gm_enums::EpicUserControllerType controller_type = gm::wire::codec::readValue<gm_enums::EpicUserControllerType>(__br);
@@ -1370,7 +1370,7 @@ GMEXPORT double __EXT_NATIVE__eos_metrics_begin_player_session(char* __arg_buffe
     // field: game_session_id, type: String
     std::string_view game_session_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    auto&& __result = eos_metrics_begin_player_session(product_user_id, account_id_type, controller_type, server_ip, game_session_id);
+    auto&& __result = eos_metrics_begin_player_session(account_id, account_id_type, display_name, controller_type, server_ip, game_session_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -1382,8 +1382,8 @@ GMEXPORT double __EXT_NATIVE__eos_metrics_end_player_session(char* __arg_buffer,
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: product_user_id, type: String
-    std::string_view product_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: account_id, type: String
+    std::string_view account_id = gm::wire::codec::readValue<std::string_view>(__br);
 
     // field: account_id_type, type: enum EpicMetricsAccountIdType
     gm_enums::EpicMetricsAccountIdType account_id_type = gm::wire::codec::readValue<gm_enums::EpicMetricsAccountIdType>(__br);
@@ -1397,7 +1397,7 @@ GMEXPORT double __EXT_NATIVE__eos_metrics_end_player_session(char* __arg_buffer,
     // field: game_session_id, type: String
     std::string_view game_session_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    auto&& __result = eos_metrics_end_player_session(product_user_id, account_id_type, controller_type, server_ip, game_session_id);
+    auto&& __result = eos_metrics_end_player_session(account_id, account_id_type, controller_type, server_ip, game_session_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -1865,9 +1865,9 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_get_record_count(char* __ret_buff
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_leaderboards_get_user_score_count(char* __ret_buffer, double __ret_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_leaderboards_get_user_score_count(char* stat_name, char* __ret_buffer, double __ret_buffer_length)
 {
-    auto&& __result = eos_leaderboards_get_user_score_count();
+    auto&& __result = eos_leaderboards_get_user_score_count(stat_name);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: Int64
@@ -1929,10 +1929,13 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_user_score_by_index(char* __
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
+    // field: stat_name, type: String
+    std::string_view stat_name = gm::wire::codec::readValue<std::string_view>(__br);
+
     // field: index, type: Int64
     std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
 
-    auto&& __result = eos_leaderboards_copy_user_score_by_index(index);
+    auto&& __result = eos_leaderboards_copy_user_score_by_index(stat_name, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: struct EpicLeaderboardUserScore

@@ -133,7 +133,7 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_query_ranks(char* __arg_buffer, d
 GMEXPORT double __EXT_NATIVE__eos_leaderboards_query_user_scores(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_leaderboards_get_definition_count(char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_leaderboards_get_record_count(char* __ret_buffer, double __ret_buffer_length);
-GMEXPORT double __EXT_NATIVE__eos_leaderboards_get_user_score_count(char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_leaderboards_get_user_score_count(char* stat_name, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_definition_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_definition_by_id(char* leaderboard_id, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_record_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);

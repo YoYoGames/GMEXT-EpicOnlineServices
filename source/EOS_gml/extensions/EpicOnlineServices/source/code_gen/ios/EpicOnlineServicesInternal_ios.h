@@ -127,7 +127,7 @@
 - (double)__EXT_NATIVE__eos_leaderboards_query_user_scores:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_leaderboards_get_definition_count:(char*)__ret_buffer arg1:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_leaderboards_get_record_count:(char*)__ret_buffer arg1:(double)__ret_buffer_length;
-- (double)__EXT_NATIVE__eos_leaderboards_get_user_score_count:(char*)__ret_buffer arg1:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_leaderboards_get_user_score_count:(char*)stat_name arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_leaderboards_copy_definition_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_leaderboards_copy_definition_by_id:(char*)leaderboard_id arg1:(char*)__ret_buffer arg2:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_leaderboards_copy_record_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;

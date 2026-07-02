@@ -293,7 +293,7 @@ int64_t eos_leaderboards_get_record_count()
     return (int64_t)EOS_Leaderboards_GetLeaderboardRecordCount(leaderboards, &opts);
 }
 
-int64_t eos_leaderboards_get_user_score_count()
+int64_t eos_leaderboards_get_user_score_count(std::string_view stat_name)
 {
     eos_clear_last_error();
 
@@ -303,8 +303,15 @@ int64_t eos_leaderboards_get_user_score_count()
         return 0;
     }
 
+    std::string stat_name_storage(stat_name);
+    if (stat_name_storage.empty()) {
+        eos_set_last_error("EOS_Leaderboards_GetLeaderboardUserScoreCount: stat_name is required.");
+        return 0;
+    }
+
     EOS_Leaderboards_GetLeaderboardUserScoreCountOptions opts{};
     opts.ApiVersion = EOS_LEADERBOARDS_GETLEADERBOARDUSERSCORECOUNT_API_LATEST;
+    opts.StatName = stat_name_storage.c_str();
 
     return (int64_t)EOS_Leaderboards_GetLeaderboardUserScoreCount(leaderboards, &opts);
 }
@@ -533,7 +540,7 @@ gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_user_id(std::s
     return out;
 }
 
-gm_structs::EpicLeaderboardUserScore eos_leaderboards_copy_user_score_by_index(int64_t index)
+gm_structs::EpicLeaderboardUserScore eos_leaderboards_copy_user_score_by_index(std::string_view stat_name, int64_t index)
 {
     eos_clear_last_error();
 
@@ -545,8 +552,15 @@ gm_structs::EpicLeaderboardUserScore eos_leaderboards_copy_user_score_by_index(i
         return out;
     }
 
+    std::string stat_name_storage(stat_name);
+    if (stat_name_storage.empty()) {
+        eos_set_last_error("EOS_Leaderboards_CopyLeaderboardUserScoreByIndex: stat_name is required.");
+        return out;
+    }
+
     EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions opts{};
     opts.ApiVersion = EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYINDEX_API_LATEST;
+    opts.StatName = stat_name_storage.c_str();
     opts.LeaderboardUserScoreIndex = (uint32_t)index;
 
     EOS_Leaderboards_LeaderboardUserScore* score = nullptr;

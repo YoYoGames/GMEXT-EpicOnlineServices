@@ -1062,7 +1062,6 @@ void eos_connect_query_external_account_mappings(
 
 void eos_connect_query_product_user_id_mappings(
     std::string_view local_user_id,
-    gm_enums::EpicExternalAccountType account_id_type,
     const std::vector<std::string_view>& target_product_user_ids,
     const std::optional<gm::wire::GMFunction>& callback)
 {
