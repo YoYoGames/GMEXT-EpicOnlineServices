@@ -1648,7 +1648,7 @@ namespace gm_structs
 
     struct EpicLobbyJoinLobbyOptions
     {
-        std::string lobby_id;
+        std::uint64_t lobby_details_handle_id;
         std::string local_user_id;
         bool presence_enabled;
     };
@@ -4039,7 +4039,7 @@ namespace gm::wire::codec
     template<>
     inline void writeValue<gm_structs::EpicLobbyJoinLobbyOptions>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyJoinLobbyOptions& obj)
     {
-        gm::wire::codec::writeValue(_buf, obj.lobby_id);
+        gm::wire::codec::writeValue(_buf, obj.lobby_details_handle_id);
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
         gm::wire::codec::writeValue(_buf, obj.presence_enabled);
     }
@@ -4048,7 +4048,7 @@ namespace gm::wire::codec
     inline gm_structs::EpicLobbyJoinLobbyOptions readValue<gm_structs::EpicLobbyJoinLobbyOptions>(gm::byteio::BufferReader& _buf)
     {
         gm_structs::EpicLobbyJoinLobbyOptions obj;
-        obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.lobby_details_handle_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.presence_enabled = gm::wire::codec::readValue<bool>(_buf);
         return obj;
@@ -7521,7 +7521,7 @@ std::int64_t eos_connect_get_product_user_external_account_count(std::string_vie
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_index(std::string_view target_user_id, std::int64_t index);
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_account_type(std::string_view target_user_id, gm_enums::EpicExternalAccountType account_id_type);
 gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_account_id(std::string_view target_user_id, std::string_view account_id);
-std::string eos_connect_get_product_user_id_mapping(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, std::string_view target_external_user_id);
+std::string eos_connect_get_product_user_id_mapping(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, std::string_view target_product_user_id);
 std::string eos_connect_get_external_account_mapping(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, std::string_view target_external_user_id);
 void eos_connect_verify_id_token(std::string_view json_web_token, const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_query_external_account_mappings(std::string_view local_user_id, gm_enums::EpicExternalAccountType account_id_type, const std::vector<std::string_view>& target_external_user_ids, const std::optional<gm::wire::GMFunction>& callback);

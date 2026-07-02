@@ -48,6 +48,8 @@ static std::string eos_lobby_copy_string_with_fixed_retry(Fn&& call_fn, size_t i
     return std::string(buffer.data());
 }
 
+static EOS_HLobbyDetails eos_lobby_details_get(uint64_t id);
+
 static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view product_user_id)
 {
     std::string value(product_user_id);
@@ -300,9 +302,9 @@ void eos_lobby_join_lobby(
         return;
     }
 
-    std::string lobby_id_storage(options.lobby_id);
-    if (lobby_id_storage.empty()) {
-        eos_set_last_error("EOS_Lobby_JoinLobby: lobby_id is required.");
+    EOS_HLobbyDetails details = eos_lobby_details_get(options.lobby_details_handle_id);
+    if (!details) {
+        eos_set_last_error("EOS_Lobby_JoinLobby: invalid lobby_details_handle_id.");
         return;
     }
 
@@ -317,8 +319,7 @@ void eos_lobby_join_lobby(
 
     EOS_Lobby_JoinLobbyOptions opts{};
     opts.ApiVersion = EOS_LOBBY_JOINLOBBY_API_LATEST;
-    //TODO
-    // opts.LobbyId = lobby_id_storage.c_str();
+    opts.LobbyDetailsHandle = details;
     opts.LocalUserId = local_user;
     opts.bPresenceEnabled = options.presence_enabled ? EOS_TRUE : EOS_FALSE;
     opts.bCrossplayOptOut = EOS_FALSE;

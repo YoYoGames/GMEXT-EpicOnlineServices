@@ -272,9 +272,8 @@ static void eos_presence_modification_erase(uint64_t id)
     if (it == g_presence_modifications.end())
         return;
 
-    //TODO
-    // if (it->second)
-    //     EOS_Presence_PresenceModification_Release(it->second);
+    if (it->second)
+        EOS_PresenceModification_Release(it->second);
 
     g_presence_modifications.erase(it);
 }

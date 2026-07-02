@@ -274,17 +274,15 @@ static gm_structs::EpicAchievementsDefinition eos_achievements_definition_from_n
         return out;
 
     out.achievement_id = p->AchievementId ? std::string(p->AchievementId) : std::string();
-
-    out.achievement_id = p->AchievementId;
-    out.display_name = p->DisplayName;
-    out.description = p->Description;
-    out.locked_display_name = p->LockedDisplayName;
-    out.locked_description = p->LockedDescription;
-    out.hidden_description = p->HiddenDescription;
-    out.completion_description = p->CompletionDescription;
+    out.display_name = p->DisplayName ? std::string(p->DisplayName) : std::string();
+    out.description = p->Description ? std::string(p->Description) : std::string();
+    out.locked_display_name = p->LockedDisplayName ? std::string(p->LockedDisplayName) : std::string();
+    out.locked_description = p->LockedDescription ? std::string(p->LockedDescription) : std::string();
+    out.hidden_description = p->HiddenDescription ? std::string(p->HiddenDescription) : std::string();
+    out.completion_description = p->CompletionDescription ? std::string(p->CompletionDescription) : std::string();
     out.is_hidden = (p->bIsHidden != 0);
-    out.unlocked_icon_id = (int64_t)p->UnlockedIconId;
-    out.locked_icon_id = (int64_t)p->LockedIconId;
+    out.unlocked_icon_id = p->UnlockedIconId ? std::string(p->UnlockedIconId) : std::string();
+    out.locked_icon_id = p->LockedIconId ? std::string(p->LockedIconId) : std::string();
 
     out.stat_thresholds_count = (int64_t)p->StatThresholdsCount;
     //TODO

@@ -36,6 +36,7 @@ struct EOSPDSReadContext
     std::string filename;
     std::string output_path;
     std::vector<uint8_t> data;
+    EOS_HPlayerDataStorageFileTransferRequest request = nullptr;
 };
 
 struct EOSPDSWriteContext
@@ -46,6 +47,7 @@ struct EOSPDSWriteContext
     std::string filename;
     std::vector<uint8_t> data;
     size_t write_offset = 0;
+    EOS_HPlayerDataStorageFileTransferRequest request = nullptr;
 };
 
 static bool eos_pds_write_entire_file(const std::string& path, const std::vector<uint8_t>& buf)
@@ -238,6 +240,10 @@ static void EOS_CALL eos_pds_read_file_callback_native(
     out.local_user_id = ctx->local_user_id;
     out.filename = ctx->filename;
     if (ctx->callback) ctx->callback.value().call(out);
+
+    if (ctx->request)
+        EOS_PlayerDataStorageFileTransferRequest_Release(ctx->request);
+
     delete ctx;
 }
 
@@ -297,6 +303,10 @@ static void EOS_CALL eos_pds_write_file_callback_native(
     out.local_user_id = ctx->local_user_id;
     out.filename = ctx->filename;
     if (ctx->callback) ctx->callback.value().call(out);
+
+    if (ctx->request)
+        EOS_PlayerDataStorageFileTransferRequest_Release(ctx->request);
+
     delete ctx;
 }
 
@@ -539,10 +549,10 @@ void eos_playerdatastorage_read_file(
     opts.ReadFileDataCallback = &eos_pds_read_data_callback;
     opts.FileTransferProgressCallback = progress_callback ? &eos_pds_read_file_progress_callback_native : nullptr;
 
-    EOS_HPlayerDataStorageFileTransferRequest req = EOS_PlayerDataStorage_ReadFile(
+    ctx->request = EOS_PlayerDataStorage_ReadFile(
         pds, &opts, ctx, &eos_pds_read_file_callback_native);
 
-    if (!req) {
+    if (!ctx->request) {
         // EOS still queues the completion callback with our ctx even when it returns null,
         // so we MUST NOT delete ctx here — the callback owns the lifetime.
         eos_set_last_error("EOS_PlayerDataStorage_ReadFile: failed to start transfer.");
@@ -590,10 +600,10 @@ void eos_playerdatastorage_write_file(
     opts.WriteFileDataCallback = &eos_pds_write_data_callback;
     opts.FileTransferProgressCallback = progress_callback ? &eos_pds_write_file_progress_callback_native : nullptr;
 
-    EOS_HPlayerDataStorageFileTransferRequest req = EOS_PlayerDataStorage_WriteFile(
+    ctx->request = EOS_PlayerDataStorage_WriteFile(
         pds, &opts, ctx, &eos_pds_write_file_callback_native);
 
-    if (!req) {
+    if (!ctx->request) {
         // EOS still queues the completion callback with our ctx even when it returns null.
         eos_set_last_error("EOS_PlayerDataStorage_WriteFile: failed to start transfer.");
     }

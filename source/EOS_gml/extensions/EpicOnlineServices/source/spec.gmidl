@@ -517,7 +517,7 @@ function eos_connect_copy_product_user_external_account_by_account_type(target_u
 function eos_connect_copy_product_user_external_account_by_account_id(target_user_id: string, account_id: string): gmval;
 
 [global, bind = typed_gml]
-function eos_connect_get_product_user_id_mapping(local_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval, target_external_user_id: string): string;
+function eos_connect_get_product_user_id_mapping(local_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval, target_product_user_id: string): string;
 
 [global, bind = typed_gml]
 function eos_connect_get_external_account_mapping(local_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval, target_external_user_id: string): string;
@@ -2174,8 +2174,8 @@ function eos_lobby_destroy_lobby(
 [global]
 class `[[EpicLobbyJoinLobbyOptions]]` prototype Object
 {
-    [field]
-    property lobby_id : string { get; set; }
+    [field, type_hint=`uint64`]
+    property lobby_details_handle_id : gmval { get; set; }
 
     [field]
     property local_user_id : string { get; set; }

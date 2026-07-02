@@ -5,6 +5,7 @@
 #include <eos_logging.h>
 
 #include <cstdint>
+#include <mutex>
 #include <optional>
 #include <string>
 
@@ -17,6 +18,7 @@ using namespace gm_enums;
 // ============================================================
 
 static gm::wire::GMFunction g_cb_logging = nullptr;
+static std::mutex g_cb_logging_mutex;
 
 static inline gm_structs::EpicLoggingMessage logging_from_native(const EOS_LogMessage* p)
 {
@@ -41,9 +43,15 @@ static inline gm_structs::EpicLoggingMessage logging_from_native(const EOS_LogMe
 static void EOS_CALL eos_logging_message_hook(const EOS_LogMessage* p)
 {
     if (!p) return;
-    if (!g_cb_logging) return;
 
-    g_cb_logging.call(logging_from_native(p));
+    gm::wire::GMFunction callback;
+    {
+        std::lock_guard<std::mutex> lock(g_cb_logging_mutex);
+        callback = g_cb_logging;
+    }
+
+    if (callback)
+        callback.call(logging_from_native(p));
 }
 
 // ============================================================
@@ -54,7 +62,10 @@ void eos_logging_set_callback(const std::optional<gm::wire::GMFunction>& callbac
 {
     eos_clear_last_error();
 
-    g_cb_logging = callback.value_or(GMFunction{});
+    {
+        std::lock_guard<std::mutex> lock(g_cb_logging_mutex);
+        g_cb_logging = callback.value_or(GMFunction{});
+    }
 
     const EOS_EResult result = EOS_Logging_SetCallback(
         g_cb_logging ? &eos_logging_message_hook : nullptr

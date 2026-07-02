@@ -33,6 +33,7 @@ struct EOSTSReadContext
     std::string filename;
     std::string output_path;
     std::vector<uint8_t> data;
+    EOS_HTitleStorageFileTransferRequest request = nullptr;
 };
 
 static bool eos_ts_write_entire_file(const std::string& path, const std::vector<uint8_t>& buf)
@@ -183,6 +184,10 @@ static void EOS_CALL eos_ts_read_file_callback_native(
     out.local_user_id = ctx->local_user_id;
     out.filename = ctx->filename;
     if (ctx->callback) ctx->callback.value().call(out);
+
+    if (ctx->request)
+        EOS_TitleStorageFileTransferRequest_Release(ctx->request);
+
     delete ctx;
 }
 
@@ -229,10 +234,14 @@ void eos_titlestorage_query_file_list(
     auto* ctx = new EOSAsyncCallbackContext{callback};
 
     // Build tag pointer array
+    std::vector<std::string> tag_strings;
     std::vector<const char*> tag_ptrs;
+    tag_strings.reserve(tags.size());
     tag_ptrs.reserve(tags.size());
-    for (const auto& t : tags)
-        tag_ptrs.push_back(t.data());
+    for (const auto& t : tags) {
+        tag_strings.emplace_back(t);
+        tag_ptrs.push_back(tag_strings.back().c_str());
+    }
 
     EOS_TitleStorage_QueryFileListOptions opts{};
     opts.ApiVersion = EOS_TITLESTORAGE_QUERYFILELIST_API_LATEST;
@@ -360,10 +369,10 @@ void eos_titlestorage_read_file(
     opts.ReadFileDataCallback = &eos_ts_read_data_callback;
     opts.FileTransferProgressCallback = progress_callback ? &eos_ts_read_file_progress_callback_native : nullptr;
 
-    EOS_HTitleStorageFileTransferRequest req = EOS_TitleStorage_ReadFile(
+    ctx->request = EOS_TitleStorage_ReadFile(
         ts, &opts, ctx, &eos_ts_read_file_callback_native);
 
-    if (!req) {
+    if (!ctx->request) {
         // EOS still queues the completion callback with our ctx even when it returns null,
         // so we MUST NOT delete ctx here — the callback owns the lifetime.
         eos_set_last_error("EOS_TitleStorage_ReadFile: failed to start transfer.");

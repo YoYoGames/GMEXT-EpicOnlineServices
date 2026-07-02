@@ -225,19 +225,25 @@ static void EOS_CALL eos_connect_unlink_account_callback_native(const EOS_Connec
     delete ctx;
 }
 
+struct EOSConnectCreateDeviceIdContext
+{
+    std::optional<GMFunction> callback;
+    std::string device_model;
+};
+
 static void EOS_CALL eos_connect_create_device_id_callback_native(const EOS_Connect_CreateDeviceIdCallbackInfo* data)
 {
     if (!data)
         return;
 
-        //TODO
-    // auto* ctx = static_cast<EOSConnectCreateDeviceIdContext*>(data->ClientData);
-    // if (!ctx)
-    //     return;
+    auto* ctx = static_cast<EOSConnectCreateDeviceIdContext*>(data->ClientData);
+    if (!ctx)
+        return;
 
-    // ctx->callback.call(eos_connect_create_device_id_info_from_native(data, ctx->device_model));
+    if (ctx->callback)
+        ctx->callback.value().call(eos_connect_create_device_id_info_from_native(data, ctx->device_model));
 
-    // delete ctx;
+    delete ctx;
 }
 
 static void EOS_CALL eos_connect_delete_device_id_callback_native(const EOS_Connect_DeleteDeviceIdCallbackInfo* data)
@@ -424,17 +430,15 @@ void eos_connect_create_device_id(std::string_view device_model, const std::opti
         return;
     }
 
-    g_connect_create_device_model = device_model_storage;
-    //TODO
-    // auto* ctx = new EOSConnectCreateDeviceIdContext{};
-    // ctx->callback = callback;
-    // ctx->device_model = device_model_storage;
+    auto* ctx = new EOSConnectCreateDeviceIdContext{};
+    ctx->callback = callback;
+    ctx->device_model = device_model_storage;
 
-    // EOS_Connect_CreateDeviceIdOptions opts{};
-    // opts.ApiVersion = EOS_CONNECT_CREATEDEVICEID_API_LATEST;
-    // opts.DeviceModel = g_connect_create_device_model.c_str();
+    EOS_Connect_CreateDeviceIdOptions opts{};
+    opts.ApiVersion = EOS_CONNECT_CREATEDEVICEID_API_LATEST;
+    opts.DeviceModel = ctx->device_model.c_str();
 
-    // EOS_Connect_CreateDeviceId(connect, &opts, ctx, &eos_connect_create_device_id_callback_native);
+    EOS_Connect_CreateDeviceId(connect, &opts, ctx, &eos_connect_create_device_id_callback_native);
 }
 
 void eos_connect_delete_device_id(const std::optional<gm::wire::GMFunction>& callback)
@@ -895,7 +899,7 @@ gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_externa
 std::string eos_connect_get_product_user_id_mapping(
     std::string_view local_user_id,
     gm_enums::EpicExternalAccountType account_id_type,
-    std::string_view target_external_user_id)
+    std::string_view target_product_user_id)
 {
     eos_clear_last_error();
 
@@ -911,9 +915,9 @@ std::string eos_connect_get_product_user_id_mapping(
         return std::string();
     }
 
-    std::string target_external_user_id_storage(target_external_user_id);
-    if (target_external_user_id_storage.empty()) {
-        eos_set_last_error("EOS_Connect_GetProductUserIdMapping: target_external_user_id is required.");
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_product_user_id);
+    if (!target_user) {
+        eos_set_last_error("EOS_Connect_GetProductUserIdMapping: invalid target_product_user_id.");
         return std::string();
     }
 
@@ -921,8 +925,7 @@ std::string eos_connect_get_product_user_id_mapping(
     opts.ApiVersion = EOS_CONNECT_GETPRODUCTUSERIDMAPPING_API_LATEST;
     opts.LocalUserId = local_user;
     opts.AccountIdType = (EOS_EExternalAccountType)account_id_type;
-    //TODO
-    // opts.TargetExternalUserId = target_external_user_id_storage.c_str();
+    opts.TargetProductUserId = target_user;
 
     return eos_connect_copy_string_with_fixed_retry(
         [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult

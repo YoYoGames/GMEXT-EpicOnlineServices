@@ -718,11 +718,11 @@ GMEXPORT char* __EXT_NATIVE__eos_connect_get_product_user_id_mapping(char* __arg
     // field: account_id_type, type: enum EpicExternalAccountType
     gm_enums::EpicExternalAccountType account_id_type = gm::wire::codec::readValue<gm_enums::EpicExternalAccountType>(__br);
 
-    // field: target_external_user_id, type: String
-    std::string_view target_external_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: target_product_user_id, type: String
+    std::string_view target_product_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
     static std::string __result;
-    __result = eos_connect_get_product_user_id_mapping(local_user_id, account_id_type, target_external_user_id);
+    __result = eos_connect_get_product_user_id_mapping(local_user_id, account_id_type, target_product_user_id);
     return (char*)__result.c_str();
 }
 

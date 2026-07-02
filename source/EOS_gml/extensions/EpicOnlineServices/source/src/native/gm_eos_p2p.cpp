@@ -197,6 +197,16 @@ gm_enums::EpicResult eos_p2p_send_packet(
     EOS_P2P_SocketId socket_id{};
     eos_p2p_fill_socket_id(socket_id, socket_name);
 
+    if (bytes > EOS_P2P_MAX_PACKET_SIZE) {
+        eos_set_last_error("EOS_P2P_SendPacket: bytes exceeds EOS_P2P_MAX_PACKET_SIZE.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    if (bytes > data.length()) {
+        eos_set_last_error("EOS_P2P_SendPacket: bytes exceeds buffer length.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
     EOS_P2P_SendPacketOptions opts{};
     opts.ApiVersion = EOS_P2P_SENDPACKET_API_LATEST;
     opts.LocalUserId = local_user;
@@ -306,6 +316,12 @@ gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(
     out.peer_id = eos_product_user_id_to_string_internal(peer_id);
     out.socket_name = std::string(socket_id.SocketName);
     out.channel = (int64_t)out_channel;
+
+    if (offset > out_data.length() || out_data.length() - offset < bytes_written) {
+        eos_set_last_error("EOS_P2P_ReceivePacket: out_data buffer too small.");
+        return out;
+    }
+
     auto w = out_data.getWriter();
     w.skip(offset);
     w.writeBytes((const char*)buf.data(), bytes_written);

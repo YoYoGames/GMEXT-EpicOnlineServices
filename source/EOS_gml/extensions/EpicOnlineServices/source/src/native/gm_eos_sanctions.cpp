@@ -76,9 +76,9 @@ static gm_structs::EpicSanctionsPlayerSanction eos_sanctions_player_sanction_fro
         return out;
 
     out.time_placed = p->TimePlaced;
-    out.action = p->Action;
+    out.action = p->Action ? std::string(p->Action) : std::string();
     out.time_expires = p->TimeExpires;
-    out.reference_id = p->ReferenceId;
+    out.reference_id = p->ReferenceId ? std::string(p->ReferenceId) : std::string();
 
     return out;
 }

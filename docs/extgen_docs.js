@@ -367,7 +367,7 @@
  * @function_partial eos_connect_get_product_user_id_mapping
  * @param {String} local_user_id
  * @param {Enum.EpicExternalAccountType} account_id_type
- * @param {String} target_external_user_id
+ * @param {String} target_product_user_id
  * @returns {String} 
  * @function_end 
  */
@@ -3787,7 +3787,7 @@
 
 /**
  * @struct_partial EpicLobbyJoinLobbyOptions
- * @member {String} lobby_id
+ * @member {Real} lobby_details_handle_id
  * @member {String} local_user_id
  * @member {Bool} presence_enabled
  * @struct_end 

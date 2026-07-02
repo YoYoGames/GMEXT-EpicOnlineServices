@@ -2340,7 +2340,7 @@ function EpicLobbyJoinLobbyOptions() constructor
      */
     static __uid = 1559969366;
 
-    self.lobby_id = undefined;
+    self.lobby_details_handle_id = undefined;
     self.local_user_id = undefined;
     self.presence_enabled = undefined;
 
@@ -9558,10 +9558,9 @@ function __EpicLobbyJoinLobbyOptions_encode(_inst, _buffer, _offset, _where = _G
     buffer_seek(_buffer, buffer_seek_start, _offset);
     with (_inst)
     {
-        // field: lobby_id, type: String
-        if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
-        buffer_write(_buffer, buffer_string, self.lobby_id);
+        // field: lobby_details_handle_id, type: UInt64
+        if (!is_numeric(self.lobby_details_handle_id)) show_error($"{_where} :: self.lobby_details_handle_id expected number", true);
+        buffer_write(_buffer, buffer_u64, self.lobby_details_handle_id);
 
         // field: local_user_id, type: String
         if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
@@ -9589,9 +9588,8 @@ function __EpicLobbyJoinLobbyOptions_decode(_buffer, _offset)
     _inst = new EpicLobbyJoinLobbyOptions();
     with (_inst)
     {
-        // field: lobby_id, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.lobby_id = buffer_read(_buffer, buffer_string);
+        // field: lobby_details_handle_id, type: UInt64
+        self.lobby_details_handle_id = buffer_read(_buffer, buffer_u64);
 
         // field: local_user_id, type: String
         buffer_read(_buffer, buffer_u32);
@@ -17505,10 +17503,10 @@ function eos_connect_copy_product_user_external_account_by_account_id(_target_us
 /**
  * @param {String} _local_user_id
  * @param {Enum.EpicExternalAccountType} _account_id_type
- * @param {String} _target_external_user_id
+ * @param {String} _target_product_user_id
  * @returns {String} 
  */
-function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_type, _target_external_user_id)
+function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_type, _target_product_user_id)
 {
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -17522,10 +17520,10 @@ function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_typ
     if (!is_numeric(_account_id_type)) show_error($"{_GMFUNCTION_} :: _account_id_type expected number", true);
     buffer_write(__args_buffer, buffer_u64, _account_id_type);
 
-    // param: _target_external_user_id, type: String
-    if (!is_string(_target_external_user_id)) show_error($"{_GMFUNCTION_} :: _target_external_user_id expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_external_user_id));
-    buffer_write(__args_buffer, buffer_string, _target_external_user_id);
+    // param: _target_product_user_id, type: String
+    if (!is_string(_target_product_user_id)) show_error($"{_GMFUNCTION_} :: _target_product_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_product_user_id));
+    buffer_write(__args_buffer, buffer_string, _target_product_user_id);
 
     var _return_value = __eos_connect_get_product_user_id_mapping(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
