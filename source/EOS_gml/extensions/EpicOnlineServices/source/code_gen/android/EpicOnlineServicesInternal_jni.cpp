@@ -1724,6 +1724,44 @@ static jdouble __JNI_WRAPPER__eos_achievements_copy_player_achievement_by_id_697
     return static_cast<jdouble>(__ret);
 }
 
+// eos_achievements_copy_stat_threshold_by_index JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_achievements_copy_stat_threshold_by_index_4125FAFD7DB2(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_achievements_copy_stat_threshold_by_index((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_achievements_copy_player_stat_info_by_index JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_achievements_copy_player_stat_info_by_index_680B5FED77BA(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_achievements_copy_player_stat_info_by_index((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
 // eos_achievements_unlock_achievements JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
 static jdouble __JNI_WRAPPER__eos_achievements_unlock_achievements_F9BEE05D5693(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
 {
@@ -6467,6 +6505,8 @@ extern "C" {
             { "__EXT_JNI__eos_achievements_copy_achievement_definition_by_id", "(Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_copy_achievement_definition_by_id_F242D47DE76D },
             { "__EXT_JNI__eos_achievements_copy_player_achievement_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_copy_player_achievement_by_index_DA019D7C711A },
             { "__EXT_JNI__eos_achievements_copy_player_achievement_by_id", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_copy_player_achievement_by_id_697E5EB6168D },
+            { "__EXT_JNI__eos_achievements_copy_stat_threshold_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_copy_stat_threshold_by_index_4125FAFD7DB2 },
+            { "__EXT_JNI__eos_achievements_copy_player_stat_info_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_copy_player_stat_info_by_index_680B5FED77BA },
             { "__EXT_JNI__eos_achievements_unlock_achievements", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_unlock_achievements_F9BEE05D5693 },
             { "__EXT_JNI__eos_achievements_add_notify_achievements_unlocked_v2", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_add_notify_achievements_unlocked_v2_985CBF8A9B3B },
             { "__EXT_JNI__eos_achievements_remove_notify_achievements_unlocked", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_achievements_remove_notify_achievements_unlocked_3B7DCFC66C5A },

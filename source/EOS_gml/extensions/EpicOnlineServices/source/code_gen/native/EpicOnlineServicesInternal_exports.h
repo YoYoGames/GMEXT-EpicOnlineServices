@@ -125,6 +125,8 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_achievement_definition_v2_by
 GMEXPORT double __EXT_NATIVE__eos_achievements_copy_achievement_definition_by_id(char* achievement_id, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_achievement_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_achievement_by_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_achievements_copy_stat_threshold_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_stat_info_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_achievements_unlock_achievements(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_achievements_add_notify_achievements_unlocked_v2(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_achievements_remove_notify_achievements_unlocked(char* __arg_buffer, double __arg_buffer_length);

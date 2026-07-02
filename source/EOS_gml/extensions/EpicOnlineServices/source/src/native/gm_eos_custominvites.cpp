@@ -163,6 +163,7 @@ static void EOS_CALL eos_ci_send_custom_invite_callback(
     gm_structs::EpicCustomInvitesSendCustomInviteCallbackInfo out{};
     out.result_code   = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+
     if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }

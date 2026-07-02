@@ -646,6 +646,26 @@ void eos_achievements_unlock_achievements(
     );
 }
 
+gm_structs::EpicStatThreshold eos_achievements_copy_stat_threshold_by_index(
+    std::string_view,
+    int64_t)
+{
+    eos_clear_last_error();
+    eos_set_last_error("EOS_Achievements_CopyStatThreshold not implemented in this SDK version.");
+    return gm_structs::EpicStatThreshold{};
+}
+
+gm_structs::EpicPlayerStatInfo eos_achievements_copy_player_stat_info_by_index(
+    std::string_view,
+    std::string_view,
+    std::string_view,
+    int64_t)
+{
+    eos_clear_last_error();
+    eos_set_last_error("EOS_Achievements_CopyPlayerStatInfo not implemented in this SDK version.");
+    return gm_structs::EpicPlayerStatInfo{};
+}
+
 // ============================================================
 // EOS Achievements Notify
 // ============================================================

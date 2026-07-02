@@ -1173,6 +1173,29 @@ function eos_achievements_get_player_achievement_count(local_user_id: string, ta
 // ============================================================
 
 [global]
+class `[[EpicStatThreshold]]` prototype Object
+{
+    [field]
+    property name : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property threshold : gmval { get; set; }
+}
+
+[global]
+class `[[EpicPlayerStatInfo]]` prototype Object
+{
+    [field]
+    property name : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property current_value : gmval { get; set; }
+
+    [field, type_hint=`int64`]
+    property threshold_value : gmval { get; set; }
+}
+
+[global]
 class `[[EpicAchievementsDefinition]]` prototype Object
 {
     [field]
@@ -1289,6 +1312,12 @@ function eos_achievements_copy_player_achievement_by_index(local_user_id: string
 
 [global, bind = typed_gml, type_hint=`EpicPlayerAchievement`]
 function eos_achievements_copy_player_achievement_by_id(local_user_id: string, target_user_id: string, achievement_id: string): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicStatThreshold`]
+function eos_achievements_copy_stat_threshold_by_index(achievement_id: string, index: int64): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicPlayerStatInfo`]
+function eos_achievements_copy_player_stat_info_by_index(local_user_id: string, target_user_id: string, achievement_id: string, index: int64): gmval;
 
 [global, bind = typed_gml]
 function eos_achievements_unlock_achievements(user_id: string, [type_hint=`string[]`]achievement_ids, [type_hint=`func?`] callback: gmval): unit;
@@ -3860,6 +3889,9 @@ class `[[EpicCustomInvitesSendCustomInviteCallbackInfo]]` prototype Object
 
     [field]
     property local_user_id : string { get; set; }
+
+    [field, type_hint=`string[]`]
+    property target_user_ids : gmval { get; set; }
 }
 
 [global]

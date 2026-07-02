@@ -365,11 +365,6 @@ enum EpicAuthScopeFlags
     Country = 32
 }
 
-enum EpicLoginFlags
-{
-    NoFlags = 0
-}
-
 enum EpicLinkAccountFlags
 {
     NoFlags = 0,
@@ -1181,8 +1176,6 @@ function EpicConnectVerifyIdTokenCallbackInfo() constructor
     static __uid = 3320198844;
 
     self.result_code = undefined;
-    self.product_user_id = undefined;
-    self.is_valid = undefined;
 
 }
 
@@ -1617,6 +1610,39 @@ function EpicAchievementsQueryPlayerAchievementsCallbackInfo() constructor
 }
 
 /**
+ * @returns {Struct.EpicStatThreshold} 
+ */
+function EpicStatThreshold() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 3588597333;
+
+    self.name = undefined;
+    self.threshold = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicPlayerStatInfo} 
+ */
+function EpicPlayerStatInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore 
+     */
+    static __uid = 1608887067;
+
+    self.name = undefined;
+    self.current_value = undefined;
+    self.threshold_value = undefined;
+
+}
+
+/**
  * @returns {Struct.EpicAchievementsDefinition} 
  */
 function EpicAchievementsDefinition() constructor
@@ -1918,7 +1944,6 @@ function EpicSessionsUpdateSessionCallbackInfo() constructor
 
     self.result_code = undefined;
     self.session_name = undefined;
-    self.session_state = undefined;
 
 }
 
@@ -2521,10 +2546,6 @@ function EpicLobbyDetailsInfo() constructor
     self.permission_level = undefined;
     self.allow_invites = undefined;
     self.presence_enabled = undefined;
-    self.rtc_room_enabled = undefined;
-    self.allow_host_migration = undefined;
-    self.allow_join_by_id = undefined;
-    self.rejoin_after_kick_requires_invite = undefined;
 
 }
 
@@ -2591,7 +2612,6 @@ function EpicLobbyJoinLobbyAcceptedCallbackInfo() constructor
     static __uid = 2332569210;
 
     self.ui_event_id = undefined;
-    self.local_user_id = undefined;
 
 }
 
@@ -3590,6 +3610,7 @@ function EpicCustomInvitesSendCustomInviteCallbackInfo() constructor
 
     self.result_code = undefined;
     self.local_user_id = undefined;
+    self.target_user_ids = undefined;
 
 }
 
@@ -5480,15 +5501,6 @@ function __EpicConnectVerifyIdTokenCallbackInfo_encode(_inst, _buffer, _offset, 
         if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
         buffer_write(_buffer, buffer_u64, self.result_code);
 
-        // field: product_user_id, type: String
-        if (!is_string(self.product_user_id)) show_error($"{_where} :: self.product_user_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_user_id));
-        buffer_write(_buffer, buffer_string, self.product_user_id);
-
-        // field: is_valid, type: Bool
-        if (!is_bool(self.is_valid)) show_error($"{_where} :: self.is_valid expected bool", true);
-        buffer_write(_buffer, buffer_bool, self.is_valid);
-
     }
 }
 
@@ -5508,13 +5520,6 @@ function __EpicConnectVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
     {
         // field: result_code, type: enum EpicResult
         self.result_code = buffer_read(_buffer, buffer_u64);
-
-        // field: product_user_id, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.product_user_id = buffer_read(_buffer, buffer_string);
-
-        // field: is_valid, type: Bool
-        self.is_valid = buffer_read(_buffer, buffer_bool);
 
     }
 
@@ -6989,6 +6994,115 @@ function __EpicAchievementsQueryPlayerAchievementsCallbackInfo_decode(_buffer, _
 }
 
 /**
+ * @func __EpicStatThreshold_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicStatThreshold} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicStatThreshold_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: name, type: String
+        if (!is_string(self.name)) show_error($"{_where} :: self.name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.name));
+        buffer_write(_buffer, buffer_string, self.name);
+
+        // field: threshold, type: Int64
+        if (!is_numeric(self.threshold)) show_error($"{_where} :: self.threshold expected number", true);
+        buffer_write(_buffer, buffer_u64, self.threshold);
+
+    }
+}
+
+/**
+ * @func __EpicStatThreshold_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicStatThreshold} 
+ * @ignore 
+ */
+function __EpicStatThreshold_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicStatThreshold();
+    with (_inst)
+    {
+        // field: name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.name = buffer_read(_buffer, buffer_string);
+
+        // field: threshold, type: Int64
+        self.threshold = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicPlayerStatInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicPlayerStatInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore 
+ */
+function __EpicPlayerStatInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: name, type: String
+        if (!is_string(self.name)) show_error($"{_where} :: self.name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.name));
+        buffer_write(_buffer, buffer_string, self.name);
+
+        // field: current_value, type: Int64
+        if (!is_numeric(self.current_value)) show_error($"{_where} :: self.current_value expected number", true);
+        buffer_write(_buffer, buffer_u64, self.current_value);
+
+        // field: threshold_value, type: Int64
+        if (!is_numeric(self.threshold_value)) show_error($"{_where} :: self.threshold_value expected number", true);
+        buffer_write(_buffer, buffer_u64, self.threshold_value);
+
+    }
+}
+
+/**
+ * @func __EpicPlayerStatInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicPlayerStatInfo} 
+ * @ignore 
+ */
+function __EpicPlayerStatInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicPlayerStatInfo();
+    with (_inst)
+    {
+        // field: name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.name = buffer_read(_buffer, buffer_string);
+
+        // field: current_value, type: Int64
+        self.current_value = buffer_read(_buffer, buffer_u64);
+
+        // field: threshold_value, type: Int64
+        self.threshold_value = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
  * @func __EpicAchievementsDefinition_encode(_inst, _buffer, _offset, _where)
  * @param {Struct.EpicAchievementsDefinition} _inst
  * @param {Id.Buffer} _buffer
@@ -8117,11 +8231,6 @@ function __EpicSessionsUpdateSessionCallbackInfo_encode(_inst, _buffer, _offset,
         buffer_write(_buffer, buffer_u32, string_byte_length(self.session_name));
         buffer_write(_buffer, buffer_string, self.session_name);
 
-        // field: session_state, type: enum EpicOnlineSessionState
-
-        if (!is_numeric(self.session_state)) show_error($"{_where} :: self.session_state expected number", true);
-        buffer_write(_buffer, buffer_u64, self.session_state);
-
     }
 }
 
@@ -8145,9 +8254,6 @@ function __EpicSessionsUpdateSessionCallbackInfo_decode(_buffer, _offset)
         // field: session_name, type: String
         buffer_read(_buffer, buffer_u32);
         self.session_name = buffer_read(_buffer, buffer_string);
-
-        // field: session_state, type: enum EpicOnlineSessionState
-        self.session_state = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -10220,22 +10326,6 @@ function __EpicLobbyDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
         if (!is_bool(self.presence_enabled)) show_error($"{_where} :: self.presence_enabled expected bool", true);
         buffer_write(_buffer, buffer_bool, self.presence_enabled);
 
-        // field: rtc_room_enabled, type: Bool
-        if (!is_bool(self.rtc_room_enabled)) show_error($"{_where} :: self.rtc_room_enabled expected bool", true);
-        buffer_write(_buffer, buffer_bool, self.rtc_room_enabled);
-
-        // field: allow_host_migration, type: Bool
-        if (!is_bool(self.allow_host_migration)) show_error($"{_where} :: self.allow_host_migration expected bool", true);
-        buffer_write(_buffer, buffer_bool, self.allow_host_migration);
-
-        // field: allow_join_by_id, type: Bool
-        if (!is_bool(self.allow_join_by_id)) show_error($"{_where} :: self.allow_join_by_id expected bool", true);
-        buffer_write(_buffer, buffer_bool, self.allow_join_by_id);
-
-        // field: rejoin_after_kick_requires_invite, type: Bool
-        if (!is_bool(self.rejoin_after_kick_requires_invite)) show_error($"{_where} :: self.rejoin_after_kick_requires_invite expected bool", true);
-        buffer_write(_buffer, buffer_bool, self.rejoin_after_kick_requires_invite);
-
     }
 }
 
@@ -10279,18 +10369,6 @@ function __EpicLobbyDetailsInfo_decode(_buffer, _offset)
 
         // field: presence_enabled, type: Bool
         self.presence_enabled = buffer_read(_buffer, buffer_bool);
-
-        // field: rtc_room_enabled, type: Bool
-        self.rtc_room_enabled = buffer_read(_buffer, buffer_bool);
-
-        // field: allow_host_migration, type: Bool
-        self.allow_host_migration = buffer_read(_buffer, buffer_bool);
-
-        // field: allow_join_by_id, type: Bool
-        self.allow_join_by_id = buffer_read(_buffer, buffer_bool);
-
-        // field: rejoin_after_kick_requires_invite, type: Bool
-        self.rejoin_after_kick_requires_invite = buffer_read(_buffer, buffer_bool);
 
     }
 
@@ -10499,11 +10577,6 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_encode(_inst, _buffer, _offset
         if (!is_numeric(self.ui_event_id)) show_error($"{_where} :: self.ui_event_id expected number", true);
         buffer_write(_buffer, buffer_u64, self.ui_event_id);
 
-        // field: local_user_id, type: String
-        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
-        buffer_write(_buffer, buffer_string, self.local_user_id);
-
     }
 }
 
@@ -10523,10 +10596,6 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_decode(_buffer, _offset)
     {
         // field: ui_event_id, type: UInt64
         self.ui_event_id = buffer_read(_buffer, buffer_u64);
-
-        // field: local_user_id, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.local_user_id = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -14159,6 +14228,17 @@ function __EpicCustomInvitesSendCustomInviteCallbackInfo_encode(_inst, _buffer, 
         buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
         buffer_write(_buffer, buffer_string, self.local_user_id);
 
+        // field: target_user_ids, type: String[]
+        if (!is_array(self.target_user_ids)) show_error($"{_where} :: self.target_user_ids expected array", true);
+        var _length = array_length(self.target_user_ids);
+        buffer_write(_buffer, buffer_u32, _length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            if (!is_string(self.target_user_ids[_i])) show_error($"{_where} :: self.target_user_ids[_i] expected string", true);
+            buffer_write(_buffer, buffer_u32, string_byte_length(self.target_user_ids[_i]));
+            buffer_write(_buffer, buffer_string, self.target_user_ids[_i]);
+        }
+
     }
 }
 
@@ -14182,6 +14262,15 @@ function __EpicCustomInvitesSendCustomInviteCallbackInfo_decode(_buffer, _offset
         // field: local_user_id, type: String
         buffer_read(_buffer, buffer_u32);
         self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: target_user_ids, type: String[]
+        var _length = buffer_read(_buffer, buffer_u32);
+        self.target_user_ids = array_create(_length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            buffer_read(_buffer, buffer_u32);
+            self.target_user_ids[_i] = buffer_read(_buffer, buffer_string);
+        }
 
     }
 
@@ -16878,10 +16967,9 @@ function eos_logging_set_log_level(_log_category, _log_level)
  * @param {Enum.EpicLoginCredentialType} _credentials_type
  * @param {Enum.EpicExternalCredentialType} _external_credential_type
  * @param {Enum.EpicAuthScopeFlags} _scope_flags
- * @param {Enum.EpicLoginFlags} _login_flags
  * @param {Function} _callback
  */
-function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _login_flags, _callback)
+function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _callback)
 {
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
@@ -16911,11 +16999,6 @@ function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, 
 
     if (!is_numeric(_scope_flags)) show_error($"{_GMFUNCTION_} :: _scope_flags expected number", true);
     buffer_write(__args_buffer, buffer_u64, _scope_flags);
-
-    // param: _login_flags, type: enum EpicLoginFlags
-
-    if (!is_numeric(_login_flags)) show_error($"{_GMFUNCTION_} :: _login_flags expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _login_flags);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -19387,6 +19470,72 @@ function eos_achievements_copy_player_achievement_by_id(_local_user_id, _target_
 }
 
 /**
+ * @param {String} _achievement_id
+ * @param {Real} _index
+ * @returns {Struct.EpicStatThreshold} 
+ */
+function eos_achievements_copy_stat_threshold_by_index(_achievement_id, _index)
+{
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _achievement_id, type: String
+    if (!is_string(_achievement_id)) show_error($"{_GMFUNCTION_} :: _achievement_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_achievement_id));
+    buffer_write(__args_buffer, buffer_string, _achievement_id);
+
+    // param: _index, type: Int64
+    if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _index);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_achievements_copy_stat_threshold_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = __EpicStatThreshold_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    return _result;
+}
+
+/**
+ * @param {String} _local_user_id
+ * @param {String} _target_user_id
+ * @param {String} _achievement_id
+ * @param {Real} _index
+ * @returns {Struct.EpicPlayerStatInfo} 
+ */
+function eos_achievements_copy_player_stat_info_by_index(_local_user_id, _target_user_id, _achievement_id, _index)
+{
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _local_user_id, type: String
+    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
+    buffer_write(__args_buffer, buffer_string, _local_user_id);
+
+    // param: _target_user_id, type: String
+    if (!is_string(_target_user_id)) show_error($"{_GMFUNCTION_} :: _target_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_id));
+    buffer_write(__args_buffer, buffer_string, _target_user_id);
+
+    // param: _achievement_id, type: String
+    if (!is_string(_achievement_id)) show_error($"{_GMFUNCTION_} :: _achievement_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_achievement_id));
+    buffer_write(__args_buffer, buffer_string, _achievement_id);
+
+    // param: _index, type: Int64
+    if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _index);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_achievements_copy_player_stat_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = __EpicPlayerStatInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    return _result;
+}
+
+/**
  * @param {String} _user_id
  * @param {Array[String]} _achievement_ids
  * @param {Function} _callback
@@ -20075,22 +20224,6 @@ function eos_presence_remove_notify_join_game_accepted(_notification_id)
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
     var _return_value = __eos_presence_remove_notify_join_game_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
-
-    return _return_value;
-}
-
-/**
- * @param {Real} _ui_event_id
- */
-function eos_presence_acknowledge(_ui_event_id)
-{
-    var __args_buffer = __ext_core_get_args_buffer();
-
-    // param: _ui_event_id, type: UInt64
-    if (!is_numeric(_ui_event_id)) show_error($"{_GMFUNCTION_} :: _ui_event_id expected number", true);
-    buffer_write(__args_buffer, buffer_u64, _ui_event_id);
-
-    var _return_value = __eos_presence_acknowledge(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
     return _return_value;
 }
@@ -27606,6 +27739,8 @@ function __EpicOnlineServices_get_decoders()
         __EpicSanctionsCreatePlayerSanctionAppealCallbackInfo_decode,
         __EpicAchievementsQueryDefinitionsCallbackInfo_decode,
         __EpicAchievementsQueryPlayerAchievementsCallbackInfo_decode,
+        __EpicStatThreshold_decode,
+        __EpicPlayerStatInfo_decode,
         __EpicAchievementsDefinition_decode,
         __EpicPlayerAchievement_decode,
         __EpicAchievementsUnlockAchievementsCallbackInfo_decode,

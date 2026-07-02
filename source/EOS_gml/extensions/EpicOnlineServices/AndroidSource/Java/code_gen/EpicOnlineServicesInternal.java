@@ -476,6 +476,14 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_achievements_copy_player_achievement_by_id(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
+    public double __EXT_NATIVE__eos_achievements_copy_stat_threshold_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_achievements_copy_stat_threshold_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_achievements_copy_player_stat_info_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_achievements_copy_player_stat_info_by_index(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
     public double __EXT_NATIVE__eos_achievements_unlock_achievements(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_achievements_unlock_achievements(__arg_buffer, __arg_buffer_length);
@@ -587,10 +595,6 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     public double __EXT_NATIVE__eos_presence_remove_notify_join_game_accepted(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_presence_remove_notify_join_game_accepted(__arg_buffer, __arg_buffer_length);
-    }
-    public double __EXT_NATIVE__eos_presence_acknowledge(ByteBuffer __arg_buffer, double __arg_buffer_length)
-    {
-        return __EXT_JNI__eos_presence_acknowledge(__arg_buffer, __arg_buffer_length);
     }
     public double __EXT_NATIVE__eos_sessions_create_session_modification(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {

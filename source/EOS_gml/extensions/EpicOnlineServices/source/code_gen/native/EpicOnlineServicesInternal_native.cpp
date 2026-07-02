@@ -1728,6 +1728,48 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_achievement_by_id(cha
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_achievements_copy_stat_threshold_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: achievement_id, type: String
+    std::string_view achievement_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_achievements_copy_stat_threshold_by_index(achievement_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicStatThreshold
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_stat_info_by_index(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: target_user_id, type: String
+    std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: achievement_id, type: String
+    std::string_view achievement_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: index, type: Int64
+    std::int64_t index = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    auto&& __result = eos_achievements_copy_player_stat_info_by_index(local_user_id, target_user_id, achievement_id, index);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: struct EpicPlayerStatInfo
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_achievements_unlock_achievements(char* __arg_buffer, double __arg_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};

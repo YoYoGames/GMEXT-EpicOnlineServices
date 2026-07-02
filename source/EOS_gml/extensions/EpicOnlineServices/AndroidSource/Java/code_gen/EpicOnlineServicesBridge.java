@@ -135,6 +135,8 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_achievements_copy_achievement_definition_by_id(String achievement_id, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_achievements_copy_player_achievement_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_achievements_copy_player_achievement_by_id(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_achievements_copy_stat_threshold_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_achievements_copy_player_stat_info_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_achievements_unlock_achievements(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_achievements_add_notify_achievements_unlocked_v2(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_achievements_remove_notify_achievements_unlocked(ByteBuffer __arg_buffer, double __arg_buffer_length);
@@ -163,7 +165,6 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_presence_remove_notify_on_presence_changed(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_presence_add_notify_join_game_accepted(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_presence_remove_notify_join_game_accepted(ByteBuffer __arg_buffer, double __arg_buffer_length);
-    public static native double __EXT_JNI__eos_presence_acknowledge(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_sessions_create_session_modification(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_sessions_session_modification_release(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_sessions_update_session(ByteBuffer __arg_buffer, double __arg_buffer_length);
