@@ -27,13 +27,13 @@ using namespace gm_enums;
 // Internal helpers
 // ============================================================
 
-static std::map<uint64_t, EOS_ContinuanceToken> g_eos_auth_continuance_tokens;
-static uint64_t g_eos_auth_continuance_token_counter = 1;
+static std::map<int64_t, EOS_ContinuanceToken> g_eos_auth_continuance_tokens;
+static int64_t g_eos_auth_continuance_token_counter = 1;
 
 struct EOSAsyncCallbackContext
 {
     std::optional<GMFunction> callback;
-    uint64_t continuance_token_id = 0;
+    int64_t continuance_token_id = 0;
 };
 
 static EOS_HAuth eos_auth_iface()
@@ -171,7 +171,7 @@ static void EOS_CALL eos_auth_login_callback_native(const EOS_Auth_LoginCallback
     if (!ctx)
         return;
 
-    uint64_t token_id = 0;
+    int64_t token_id = 0;
     if (data->ContinuanceToken)
     {
         token_id = g_eos_auth_continuance_token_counter++;
@@ -309,7 +309,7 @@ void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wir
 }
 
 void eos_auth_link_account(
-    uint64_t continuance_token_id,
+    int64_t continuance_token_id,
     std::string_view local_user_id,
     gm_enums::EpicLinkAccountFlags link_account_flags,
     const std::optional<gm::wire::GMFunction>& callback)
@@ -699,8 +699,8 @@ struct AuthNotifyContext
     uint64_t notification_id;
 };
 
-static std::map<uint64_t, GMFunction> g_auth_login_status_changed_callbacks;
-static std::map<uint64_t, AuthNotifyContext*> g_auth_login_status_changed_contexts;
+static std::map<int64_t, GMFunction> g_auth_login_status_changed_callbacks;
+static std::map<int64_t, AuthNotifyContext*> g_auth_login_status_changed_contexts;
 
 static gm_structs::EpicAuthLoginStatusChangedCallbackInfo
 eos_auth_login_status_changed_from_native(

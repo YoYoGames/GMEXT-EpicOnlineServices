@@ -22,11 +22,11 @@ using namespace gm_enums;
 struct EOSAsyncCallbackContext
 {
     std::optional<GMFunction> callback;
-    uint64_t continuance_token_id = 0;
+    int64_t continuance_token_id = 0;
 };
 
-static std::map<uint64_t, EOS_ContinuanceToken> g_eos_connect_continuance_tokens;
-static uint64_t g_eos_connect_continuance_token_counter = 1;
+static std::map<int64_t, EOS_ContinuanceToken> g_eos_connect_continuance_tokens;
+static int64_t g_eos_connect_continuance_token_counter = 1;
 
 
 static EOS_HConnect eos_connect_iface()
@@ -182,7 +182,7 @@ static void EOS_CALL eos_connect_login_callback_native(const EOS_Connect_LoginCa
     if (!ctx)
         return;
 
-    uint64_t token_id = 0;
+    int64_t token_id = 0;
     if (data->ContinuanceToken)
     {
         token_id = g_eos_connect_continuance_token_counter++;
@@ -351,7 +351,7 @@ void eos_connect_login(
     EOS_Connect_Login(connect, &opts, ctx, &eos_connect_login_callback_native);
 }
 
-void eos_connect_create_user(uint64_t continuance_token_id, const std::optional<gm::wire::GMFunction>& callback)
+void eos_connect_create_user(int64_t continuance_token_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -378,7 +378,7 @@ void eos_connect_create_user(uint64_t continuance_token_id, const std::optional<
     EOS_Connect_CreateUser(connect, &opts, ctx, &eos_connect_create_user_callback_native);
 }
 
-void eos_connect_link_account(uint64_t continuance_token_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
+void eos_connect_link_account(int64_t continuance_token_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -662,6 +662,17 @@ static gm_structs::EpicConnectVerifyIdTokenCallbackInfo eos_connect_verify_id_to
         return out;
 
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
+    out.product_user_id = eos_product_user_id_to_string_internal(p->ProductUserId);
+    out.is_account_info_present = (p->bIsAccountInfoPresent != 0);
+    out.account_id_type = (gm_enums::EpicExternalAccountType)p->AccountIdType;
+    out.account_id = p->AccountId ? std::string(p->AccountId) : std::string();
+    out.platform = p->Platform ? std::string(p->Platform) : std::string();
+    out.device_type = p->DeviceType ? std::string(p->DeviceType) : std::string();
+    out.client_id = p->ClientId ? std::string(p->ClientId) : std::string();
+    out.product_id = p->ProductId ? std::string(p->ProductId) : std::string();
+    out.sandbox_id = p->SandboxId ? std::string(p->SandboxId) : std::string();
+    out.deployment_id = p->DeploymentId ? std::string(p->DeploymentId) : std::string();
+
     return out;
 }
 
@@ -1151,10 +1162,10 @@ struct ConnectNotifyContext
     uint64_t notification_id;
 };
 
-static std::map<uint64_t, GMFunction> g_connect_auth_expiration_callbacks;
-static std::map<uint64_t, ConnectNotifyContext*> g_connect_auth_expiration_contexts;
-static std::map<uint64_t, GMFunction> g_connect_login_status_changed_callbacks;
-static std::map<uint64_t, ConnectNotifyContext*> g_connect_login_status_changed_contexts;
+static std::map<int64_t, GMFunction> g_connect_auth_expiration_callbacks;
+static std::map<int64_t, ConnectNotifyContext*> g_connect_auth_expiration_contexts;
+static std::map<int64_t, GMFunction> g_connect_login_status_changed_callbacks;
+static std::map<int64_t, ConnectNotifyContext*> g_connect_login_status_changed_contexts;
 
 static gm_structs::EpicConnectAuthExpirationCallbackInfo
 eos_connect_auth_expiration_from_native(

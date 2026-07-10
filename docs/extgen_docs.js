@@ -1,142 +1,142 @@
 /**
  * @function_partial eos_test
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_last_error
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_is_initialized
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_initialize
  * @param {String} product_name
  * @param {String} product_version
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_shutdown
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_get_version
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_result_to_string
  * @param {Enum.EpicResult} result
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_result_is_operation_complete
  * @param {Enum.EpicResult} result
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_application_status_to_string
  * @param {Enum.EpicApplicationStatus} status
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_network_status_to_string
  * @param {Enum.EpicNetworkStatus} status
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_epic_account_id_is_valid
  * @param {String} account_id
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_api_product_user_id_is_valid
  * @param {String} product_user_id
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_platform_is_created
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_platform_create
  * @param {String} cache_directory
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_platform_release
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_platform_tick
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_platform_check_for_launcher_and_restart
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_platform_set_network_status
  * @param {Enum.EpicNetworkStatus} status
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_platform_get_storage_directory
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_logging_set_callback
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_logging_clear_callback
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_logging_set_log_level
  * @param {Enum.EpicLogCategory} log_category
  * @param {Enum.EpicLogLevel} log_level
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -147,63 +147,64 @@
  * @param {Enum.EpicExternalCredentialType} external_credential_type
  * @param {Enum.EpicAuthScopeFlags} scope_flags
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_logout
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_link_account
+ * @param {Real} continuance_token_id
  * @param {String} local_user_id
  * @param {Enum.EpicLinkAccountFlags} link_account_flags
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_delete_persistent_auth
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_get_logged_in_accounts_count
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_get_logged_in_account_by_index
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_get_login_status
  * @param {String} local_user_id
- * @returns {Enum.EpicLoginStatus} 
- * @function_end 
+ * @returns {Enum.EpicLoginStatus}
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_copy_id_token
  * @param {String} local_user_id
  * @param {String} target_account_id
- * @returns {Struct.EpicAuthIdToken} 
- * @function_end 
+ * @returns {Struct.EpicAuthIdToken}
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_copy_user_auth_token
  * @param {String} local_user_id
- * @returns {Struct.EpicAuthUserAuthToken} 
- * @function_end 
+ * @returns {Struct.EpicAuthUserAuthToken}
+ * @function_end
  */
 
 /**
@@ -211,34 +212,34 @@
  * @param {String} local_user_id
  * @param {String} target_account_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_verify_id_token
  * @param {String} json_web_token
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_verify_user_auth
  * @param {String} access_token
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_add_notify_login_status_changed
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_auth_remove_notify_login_status_changed
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -247,40 +248,42 @@
  * @param {Enum.EpicExternalCredentialType} external_credential_type
  * @param {String} display_name
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_create_user
+ * @param {Real} continuance_token_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_link_account
+ * @param {Real} continuance_token_id
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_unlink_account
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_create_device_id
  * @param {String} device_model
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_delete_device_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -288,79 +291,79 @@
  * @param {String} primary_local_user_id
  * @param {String} local_device_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_logout
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_get_logged_in_users_count
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_get_logged_in_user_by_index
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_get_login_status
  * @param {String} local_user_id
- * @returns {Enum.EpicLoginStatus} 
- * @function_end 
+ * @returns {Enum.EpicLoginStatus}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_copy_id_token
  * @param {String} local_user_id
- * @returns {Struct.EpicConnectIdToken} 
- * @function_end 
+ * @returns {Struct.EpicConnectIdToken}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_copy_product_user_info
  * @param {String} target_user_id
- * @returns {Struct.EpicConnectExternalAccountInfo} 
- * @function_end 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_get_product_user_external_account_count
  * @param {String} target_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_copy_product_user_external_account_by_index
  * @param {String} target_user_id
  * @param {Real} index
- * @returns {Struct.EpicConnectExternalAccountInfo} 
- * @function_end 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_copy_product_user_external_account_by_account_type
  * @param {String} target_user_id
  * @param {Enum.EpicExternalAccountType} account_id_type
- * @returns {Struct.EpicConnectExternalAccountInfo} 
- * @function_end 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_copy_product_user_external_account_by_account_id
  * @param {String} target_user_id
  * @param {String} account_id
- * @returns {Struct.EpicConnectExternalAccountInfo} 
- * @function_end 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
+ * @function_end
  */
 
 /**
@@ -368,8 +371,8 @@
  * @param {String} local_user_id
  * @param {Enum.EpicExternalAccountType} account_id_type
  * @param {String} target_product_user_id
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
@@ -377,15 +380,15 @@
  * @param {String} local_user_id
  * @param {Enum.EpicExternalAccountType} account_id_type
  * @param {String} target_external_user_id
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_verify_id_token
  * @param {String} json_web_token
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -394,7 +397,7 @@
  * @param {Enum.EpicExternalAccountType} account_id_type
  * @param {Array[String]} target_external_user_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -402,76 +405,76 @@
  * @param {String} local_user_id
  * @param {Array[String]} target_product_user_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_add_notify_auth_expiration
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_remove_notify_auth_expiration
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_add_notify_login_status_changed
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_connect_remove_notify_login_status_changed
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_friends_query_friends
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_friends_get_friends_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_friends_get_friend_at_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_friends_get_status
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @returns {Enum.EpicFriendsStatus} 
- * @function_end 
+ * @returns {Enum.EpicFriendsStatus}
+ * @function_end
  */
 
 /**
  * @function_partial eos_friends_add_notify_friends_update
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_friends_remove_notify_friends_update
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -479,29 +482,29 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_user_info_copy_user_info
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @returns {Struct.EpicUserInfo} 
- * @function_end 
+ * @returns {Struct.EpicUserInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_user_info_get_local_platform_type
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_user_info_copy_best_display_name
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
@@ -509,8 +512,8 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Real} index
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
- * @function_end 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
+ * @function_end
  */
 
 /**
@@ -518,8 +521,8 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Enum.EpicExternalAccountType} account_type
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
- * @function_end 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
+ * @function_end
  */
 
 /**
@@ -527,8 +530,8 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {String} account_id
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
- * @function_end 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
+ * @function_end
  */
 
 /**
@@ -538,7 +541,7 @@
  * @param {String} stat_name
  * @param {Real} ingest_amount
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -548,37 +551,37 @@
  * @param {Real} start_time
  * @param {Real} end_time
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_stats_get_stats_count
  * @param {String} target_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_stats_copy_stat_by_index
  * @param {String} target_user_id
  * @param {Real} index
- * @returns {Struct.EpicStatsStat} 
- * @function_end 
+ * @returns {Struct.EpicStatsStat}
+ * @function_end
  */
 
 /**
  * @function_partial eos_stats_copy_stat_by_name
  * @param {String} target_user_id
  * @param {String} name
- * @returns {Struct.EpicStatsStat} 
- * @function_end 
+ * @returns {Struct.EpicStatsStat}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_show_friends
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -586,19 +589,19 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_acknowledge_event_id
  * @param {Real} ui_event_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_set_display_preference
  * @param {Enum.EpicUINotificationLocation} notification_location
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -609,60 +612,60 @@
  * @param {Bool} button_right
  * @param {Bool} button_accept
  * @param {Bool} button_cancel
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_add_notify_display_settings_updated
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_remove_notify_display_settings_updated
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_hide_friends
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_get_friends_visible
  * @param {String} local_user_id
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_get_friends_exclusive_input
  * @param {String} local_user_id
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_pause_social_overlay
  * @param {Bool} is_paused
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_is_social_overlay_paused
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ui_get_notification_location_preference
- * @returns {Enum.EpicUINotificationLocation} 
- * @function_end 
+ * @returns {Enum.EpicUINotificationLocation}
+ * @function_end
  */
 
 /**
@@ -670,7 +673,7 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -678,7 +681,7 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -689,8 +692,8 @@
  * @param {Enum.EpicUserControllerType} controller_type
  * @param {String} server_ip
  * @param {String} game_session_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -700,15 +703,15 @@
  * @param {Enum.EpicUserControllerType} controller_type
  * @param {String} server_ip
  * @param {String} game_session_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_progression_snapshot_begin_snapshot
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
@@ -716,29 +719,29 @@
  * @param {Real} snapshot_id
  * @param {String} key
  * @param {String} value
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_progression_snapshot_end_snapshot
  * @param {Real} snapshot_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_progression_snapshot_submit_snapshot
  * @param {Real} snapshot_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_progression_snapshot_delete_snapshot
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -749,29 +752,29 @@
  * @param {String} message
  * @param {String} context
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sanctions_query_active_player_sanctions
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sanctions_get_player_sanction_count
  * @param {String} target_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sanctions_copy_player_sanction_by_index
  * @param {String} target_user_id
  * @param {Real} index
- * @returns {Struct.EpicSanctionsPlayerSanction} 
- * @function_end 
+ * @returns {Struct.EpicSanctionsPlayerSanction}
+ * @function_end
  */
 
 /**
@@ -780,14 +783,14 @@
  * @param {String} reference_id
  * @param {Enum.EpicSanctionAppealReason} reason
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_query_definitions
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -795,42 +798,42 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_get_achievement_definition_count
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_get_player_achievement_count
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_copy_achievement_definition_by_index
  * @param {Real} index
- * @returns {Struct.EpicAchievementsDefinition} 
- * @function_end 
+ * @returns {Struct.EpicAchievementsDefinition}
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_copy_achievement_definition_v2_by_index
  * @param {Real} index
- * @returns {Struct.EpicAchievementsDefinitionV2} 
- * @function_end 
+ * @returns {Struct.EpicAchievementsDefinitionV2}
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_copy_achievement_definition_by_id
  * @param {String} achievement_id
- * @returns {Struct.EpicAchievementsDefinition} 
- * @function_end 
+ * @returns {Struct.EpicAchievementsDefinition}
+ * @function_end
  */
 
 /**
@@ -838,8 +841,8 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Real} index
- * @returns {Struct.EpicPlayerAchievement} 
- * @function_end 
+ * @returns {Struct.EpicPlayerAchievement}
+ * @function_end
  */
 
 /**
@@ -847,16 +850,16 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {String} achievement_id
- * @returns {Struct.EpicPlayerAchievement} 
- * @function_end 
+ * @returns {Struct.EpicPlayerAchievement}
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_copy_stat_threshold_by_index
  * @param {String} achievement_id
  * @param {Real} index
- * @returns {Struct.EpicStatThreshold} 
- * @function_end 
+ * @returns {Struct.EpicStatThreshold}
+ * @function_end
  */
 
 /**
@@ -865,8 +868,8 @@
  * @param {String} target_user_id
  * @param {String} achievement_id
  * @param {Real} index
- * @returns {Struct.EpicPlayerStatInfo} 
- * @function_end 
+ * @returns {Struct.EpicPlayerStatInfo}
+ * @function_end
  */
 
 /**
@@ -874,20 +877,20 @@
  * @param {String} user_id
  * @param {Array[String]} achievement_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_add_notify_achievements_unlocked_v2
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_achievements_remove_notify_achievements_unlocked
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -896,7 +899,7 @@
  * @param {Real} start_time
  * @param {Real} end_time
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -904,7 +907,7 @@
  * @param {String} local_user_id
  * @param {String} leaderboard_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -912,62 +915,62 @@
  * @param {String} local_user_id
  * @param {String} stat_name
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_get_definition_count
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_get_record_count
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_get_user_score_count
  * @param {String} stat_name
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_copy_definition_by_index
  * @param {Real} index
- * @returns {Struct.EpicLeaderboardDefinition} 
- * @function_end 
+ * @returns {Struct.EpicLeaderboardDefinition}
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_copy_definition_by_id
  * @param {String} leaderboard_id
- * @returns {Struct.EpicLeaderboardDefinition} 
- * @function_end 
+ * @returns {Struct.EpicLeaderboardDefinition}
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_copy_record_by_index
  * @param {Real} index
- * @returns {Struct.EpicLeaderboardRecord} 
- * @function_end 
+ * @returns {Struct.EpicLeaderboardRecord}
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_copy_record_by_user_id
  * @param {String} user_id
- * @returns {Struct.EpicLeaderboardRecord} 
- * @function_end 
+ * @returns {Struct.EpicLeaderboardRecord}
+ * @function_end
  */
 
 /**
  * @function_partial eos_leaderboards_copy_user_score_by_index
  * @param {String} stat_name
  * @param {Real} index
- * @returns {Struct.EpicLeaderboardUserScore} 
- * @function_end 
+ * @returns {Struct.EpicLeaderboardUserScore}
+ * @function_end
  */
 
 /**
@@ -975,52 +978,52 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_has_presence
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_copy_presence
  * @param {String} local_user_id
  * @param {String} target_user_id
- * @returns {Struct.EpicPresenceInfo} 
- * @function_end 
+ * @returns {Struct.EpicPresenceInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_create_presence_modification
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_modification_release
  * @param {Real} modification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_modification_set_status
  * @param {Real} modification_id
  * @param {Enum.EpicPresenceStatus} status
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_modification_set_raw_rich_text
  * @param {Real} modification_id
  * @param {String} rich_text
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -1028,16 +1031,16 @@
  * @param {Real} modification_id
  * @param {String} key
  * @param {String} value
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_modification_delete_data
  * @param {Real} modification_id
  * @param {String} key
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -1045,33 +1048,33 @@
  * @param {String} local_user_id
  * @param {Real} modification_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_add_notify_on_presence_changed
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_remove_notify_on_presence_changed
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_add_notify_join_game_accepted
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_presence_remove_notify_join_game_accepted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1084,42 +1087,42 @@
  * @param {Bool} presence_enabled
  * @param {Bool} sanctions_enabled
  * @param {Array[Real]} allowed_platform_ids
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_release
  * @param {Real} modification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_update_session
  * @param {Real} modification_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_destroy_session
  * @param {String} session_name
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_start_session
  * @param {String} session_name
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_end_session
  * @param {String} session_name
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1129,7 +1132,7 @@
  * @param {String} local_user_id
  * @param {Bool} presence_enabled
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1137,7 +1140,7 @@
  * @param {String} session_name
  * @param {Array[String]} target_user_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1145,36 +1148,36 @@
  * @param {String} session_name
  * @param {Array[String]} target_user_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_create_session_search
  * @param {Real} max_search_results
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_search_release
  * @param {Real} search_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_search_set_session_id
  * @param {Real} search_id
  * @param {String} session_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_search_set_target_user_id
  * @param {Real} search_id
  * @param {String} target_user_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -1182,149 +1185,149 @@
  * @param {Real} search_id
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_search_copy_search_result_by_index
  * @param {Real} search_id
  * @param {Real} index
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_details_release
  * @param {Real} session_details_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_copy_active_session_handle
  * @param {String} session_name
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_active_session_release
  * @param {Real} active_session_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_active_session_copy_info
  * @param {Real} active_session_id
- * @returns {Struct.EpicActiveSessionInfo} 
- * @function_end 
+ * @returns {Struct.EpicActiveSessionInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_copy_session_handle_by_invite_id
  * @param {String} invite_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_copy_session_handle_by_ui_event_id
  * @param {Real} ui_event_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_details_copy_info
  * @param {Real} session_details_id
- * @returns {Struct.EpicSessionDetailsInfo} 
- * @function_end 
+ * @returns {Struct.EpicSessionDetailsInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_add_notify_session_invite_received
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_remove_notify_session_invite_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_add_notify_session_invite_accepted
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_remove_notify_session_invite_accepted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_add_notify_join_session_accepted
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_remove_notify_join_session_accepted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_set_bucket_id
  * @param {Real} modification_id
  * @param {String} bucket_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_set_host_address
  * @param {Real} modification_id
  * @param {String} host_address
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_set_permission_level
  * @param {Real} modification_id
  * @param {Enum.EpicOnlineSessionPermissionLevel} permission_level
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_set_join_in_progress_allowed
  * @param {Real} modification_id
  * @param {Bool} allow_join_in_progress
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_set_max_players
  * @param {Real} modification_id
  * @param {Real} max_players
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_set_invites_allowed
  * @param {Real} modification_id
  * @param {Bool} invites_allowed
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -1333,54 +1336,54 @@
  * @param {String} key
  * @param {String} value
  * @param {Enum.EpicSessionAttributeAdvertisementType} advertisement_type
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_modification_remove_attribute
  * @param {Real} modification_id
  * @param {String} key
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_details_get_session_attribute_count
  * @param {Real} session_details_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_details_copy_session_attribute_by_index
  * @param {Real} session_details_id
  * @param {Real} index
- * @returns {Struct.EpicSessionDetailsAttribute} 
- * @function_end 
+ * @returns {Struct.EpicSessionDetailsAttribute}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_details_copy_session_attribute_by_key
  * @param {Real} session_details_id
  * @param {String} key
- * @returns {Struct.EpicSessionDetailsAttribute} 
- * @function_end 
+ * @returns {Struct.EpicSessionDetailsAttribute}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_active_session_get_registered_player_count
  * @param {Real} active_session_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_active_session_get_registered_player_by_index
  * @param {Real} active_session_id
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
@@ -1389,7 +1392,7 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1397,29 +1400,29 @@
  * @param {String} local_user_id
  * @param {String} invite_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_query_invites
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_get_invite_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_get_invite_id_by_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
@@ -1428,8 +1431,8 @@
  * @param {String} key
  * @param {String} value
  * @param {Enum.EpicComparisonOp} comparison_op
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -1437,61 +1440,61 @@
  * @param {Real} search_id
  * @param {String} key
  * @param {Enum.EpicComparisonOp} comparison_op
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_session_search_get_search_result_count
  * @param {Real} search_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_add_notify_session_invite_rejected
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_remove_notify_session_invite_rejected
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_add_notify_leave_session_requested
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_remove_notify_leave_session_requested
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_add_notify_send_session_native_invite_requested
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_sessions_remove_notify_send_session_native_invite_requested
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_create_lobby
  * @param {Struct.EpicLobbyCreateLobbyOptions} options
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1499,14 +1502,14 @@
  * @param {String} lobby_id
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_join_lobby
  * @param {Struct.EpicLobbyJoinLobbyOptions} options
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1514,21 +1517,21 @@
  * @param {String} lobby_id
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_update_lobby_modification
  * @param {String} lobby_id
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_release
  * @param {Real} modification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1536,138 +1539,138 @@
  * @param {String} lobby_id
  * @param {Real} modification_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_set_permission_level
  * @param {Real} modification_id
  * @param {Enum.EpicLobbyPermissionLevel} permission_level
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_set_max_members
  * @param {Real} modification_id
  * @param {Real} max_members
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_set_bucket_id
  * @param {Real} modification_id
  * @param {String} bucket_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_set_invites_allowed
  * @param {Real} modification_id
  * @param {Bool} invites_allowed
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_add_attribute
  * @param {Real} modification_id
  * @param {Struct.EpicLobbyModificationAddAttributeOptions} options
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_remove_attribute
  * @param {Real} modification_id
  * @param {String} key
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_add_member_attribute
  * @param {Real} modification_id
  * @param {Struct.EpicLobbyModificationAddMemberAttributeOptions} options
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_modification_remove_member_attribute
  * @param {Real} modification_id
  * @param {String} key
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_promote_member
  * @param {Struct.EpicLobbyPromoteMemberOptions} options
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_kick_member
  * @param {Struct.EpicLobbyKickMemberOptions} options
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_create_lobby_search
  * @param {Real} max_results
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_release
  * @param {Real} search_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_set_lobby_id
  * @param {Real} search_id
  * @param {String} lobby_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_set_target_user_id
  * @param {Real} search_id
  * @param {String} target_user_id
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_set_parameter
  * @param {Real} search_id
  * @param {Struct.EpicLobbySearchSetParameterOptions} options
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_remove_parameter
  * @param {Real} search_id
  * @param {Struct.EpicLobbySearchRemoveParameterOptions} options
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_set_max_results
  * @param {Real} search_id
  * @param {Real} max_results
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -1675,214 +1678,214 @@
  * @param {Real} search_id
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_get_search_result_count
  * @param {Real} search_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_lobby_search_copy_search_result_by_index
  * @param {Real} search_id
  * @param {Real} index
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_release
  * @param {Real} lobby_details_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_copy_lobby_details_handle
  * @param {String} lobby_id
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_copy_lobby_details_handle_by_invite_id
  * @param {String} invite_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_copy_lobby_details_handle_by_ui_event_id
  * @param {Real} ui_event_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_copy_info
  * @param {Real} lobby_details_id
- * @returns {Struct.EpicLobbyDetailsInfo} 
- * @function_end 
+ * @returns {Struct.EpicLobbyDetailsInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_get_member_count
  * @param {Real} lobby_details_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_get_member_by_index
  * @param {Real} lobby_details_id
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_get_lobby_owner
  * @param {Real} lobby_details_id
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_update_received
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_lobby_update_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_member_update_received
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_lobby_member_update_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_member_status_received
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_lobby_member_status_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_join_lobby_accepted
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_join_lobby_accepted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_leave_lobby_requested
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_leave_lobby_requested
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_send_lobby_native_invite_requested
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_send_lobby_native_invite_requested
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_get_rtc_room_name
  * @param {String} local_user_id
  * @param {String} lobby_id
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_rtc_room_connection_changed
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_rtc_room_connection_changed
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_get_attribute_count
  * @param {Real} lobby_details_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_copy_attribute_by_index
  * @param {Real} lobby_details_id
  * @param {Real} index
- * @returns {Struct.EpicLobbyDetailsAttribute} 
- * @function_end 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_copy_attribute_by_key
  * @param {Real} lobby_details_id
  * @param {String} key
- * @returns {Struct.EpicLobbyDetailsAttribute} 
- * @function_end 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_get_member_attribute_count
  * @param {Real} lobby_details_id
  * @param {String} target_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
@@ -1890,8 +1893,8 @@
  * @param {Real} lobby_details_id
  * @param {String} target_user_id
  * @param {Real} index
- * @returns {Struct.EpicLobbyDetailsAttribute} 
- * @function_end 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
+ * @function_end
  */
 
 /**
@@ -1899,37 +1902,37 @@
  * @param {Real} lobby_details_id
  * @param {String} target_user_id
  * @param {String} key
- * @returns {Struct.EpicLobbyDetailsAttribute} 
- * @function_end 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_details_copy_member_info
  * @param {Real} lobby_details_id
  * @param {String} target_user_id
- * @returns {Struct.EpicLobbyDetailsMemberInfo} 
- * @function_end 
+ * @returns {Struct.EpicLobbyDetailsMemberInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_join_lobby_by_id
  * @param {Struct.EpicLobbyJoinLobbyByIdOptions} options
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_hard_mute_member
  * @param {Struct.EpicLobbyHardMuteMemberOptions} options
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_send_invite
  * @param {Struct.EpicLobbySendInviteOptions} options
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -1937,68 +1940,68 @@
  * @param {String} invite_id
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_query_invites
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_get_invite_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_get_invite_id_by_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_invite_received
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_lobby_invite_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_invite_accepted
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_lobby_invite_accepted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_invite_rejected
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_lobby_remove_notify_lobby_invite_rejected
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2012,16 +2015,16 @@
  * @param {Bool} allow_delayed_delivery
  * @param {Enum.EpicPacketReliability} reliability
  * @param {Bool} disable_auto_accept_connection
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_get_next_received_packet_size
  * @param {String} local_user_id
  * @param {Real} channel
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
@@ -2031,8 +2034,8 @@
  * @param {Real} max_bytes
  * @param {Real} offset
  * @param {Real} channel
- * @returns {Struct.EpicP2PReceivedPacket} 
- * @function_end 
+ * @returns {Struct.EpicP2PReceivedPacket}
+ * @function_end
  */
 
 /**
@@ -2040,8 +2043,8 @@
  * @param {String} local_user_id
  * @param {String} remote_user_id
  * @param {String} socket_name
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -2049,69 +2052,69 @@
  * @param {String} local_user_id
  * @param {String} remote_user_id
  * @param {String} socket_name
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_close_connections
  * @param {String} local_user_id
  * @param {String} socket_name
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_query_nat_type
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_get_nat_type
- * @returns {Enum.EpicNATType} 
- * @function_end 
+ * @returns {Enum.EpicNATType}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_set_relay_control
  * @param {Enum.EpicRelayControl} relay_control
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_get_relay_control
- * @returns {Enum.EpicRelayControl} 
- * @function_end 
+ * @returns {Enum.EpicRelayControl}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_set_port_range
  * @param {Real} port
  * @param {Real} max_additional_ports_to_try
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_get_port_range
- * @returns {Struct.EpicP2PPortRange} 
- * @function_end 
+ * @returns {Struct.EpicP2PPortRange}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_set_packet_queue_size
  * @param {Real} incoming_max_bytes
  * @param {Real} outgoing_max_bytes
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_get_packet_queue_info
- * @returns {Struct.EpicP2PPacketQueueInfo} 
- * @function_end 
+ * @returns {Struct.EpicP2PPacketQueueInfo}
+ * @function_end
  */
 
 /**
@@ -2119,8 +2122,8 @@
  * @param {String} local_user_id
  * @param {String} remote_user_id
  * @param {String} socket_name
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -2128,14 +2131,14 @@
  * @param {String} local_user_id
  * @param {String} socket_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_remove_notify_peer_connection_request
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2143,14 +2146,14 @@
  * @param {String} local_user_id
  * @param {String} socket_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_remove_notify_peer_connection_established
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2158,14 +2161,14 @@
  * @param {String} local_user_id
  * @param {String} socket_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_remove_notify_peer_connection_interrupted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2173,27 +2176,27 @@
  * @param {String} local_user_id
  * @param {String} socket_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_remove_notify_peer_connection_closed
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_add_notify_incoming_packet_queue_full
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_p2p_remove_notify_incoming_packet_queue_full
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2201,37 +2204,37 @@
  * @param {String} local_user_id
  * @param {String} filename
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_playerdatastorage_query_file_list
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_playerdatastorage_get_file_metadata_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_playerdatastorage_copy_file_metadata_at_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {Struct.EpicPlayerDataStorageFileMetadata} 
- * @function_end 
+ * @returns {Struct.EpicPlayerDataStorageFileMetadata}
+ * @function_end
  */
 
 /**
  * @function_partial eos_playerdatastorage_copy_file_metadata_by_filename
  * @param {String} local_user_id
  * @param {String} filename
- * @returns {Struct.EpicPlayerDataStorageFileMetadata} 
- * @function_end 
+ * @returns {Struct.EpicPlayerDataStorageFileMetadata}
+ * @function_end
  */
 
 /**
@@ -2240,7 +2243,7 @@
  * @param {String} source_filename
  * @param {String} destination_filename
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2248,7 +2251,7 @@
  * @param {String} local_user_id
  * @param {String} filename
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2258,7 +2261,7 @@
  * @param {String} output_path
  * @param {Function} [callback]
  * @param {Function} [progress_callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2268,14 +2271,14 @@
  * @param {String} input_path
  * @param {Function} [callback]
  * @param {Function} [progress_callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_playerdatastorage_delete_cache
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2283,7 +2286,7 @@
  * @param {String} local_user_id
  * @param {String} filename
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2291,30 +2294,30 @@
  * @param {String} local_user_id
  * @param {Array[String]} tags
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_titlestorage_get_file_metadata_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_titlestorage_copy_file_metadata_at_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {Struct.EpicTitleStorageFileMetadata} 
- * @function_end 
+ * @returns {Struct.EpicTitleStorageFileMetadata}
+ * @function_end
  */
 
 /**
  * @function_partial eos_titlestorage_copy_file_metadata_by_filename
  * @param {String} local_user_id
  * @param {String} filename
- * @returns {Struct.EpicTitleStorageFileMetadata} 
- * @function_end 
+ * @returns {Struct.EpicTitleStorageFileMetadata}
+ * @function_end
  */
 
 /**
@@ -2324,14 +2327,14 @@
  * @param {String} output_path
  * @param {Function} [callback]
  * @param {Function} [progress_callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_titlestorage_delete_cache
  * @param {String} local_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2340,7 +2343,7 @@
  * @param {Array[String]} catalog_item_ids
  * @param {String} catalog_namespace
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2348,7 +2351,7 @@
  * @param {String} local_user_id
  * @param {Array[String]} sandbox_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2357,7 +2360,7 @@
  * @param {Array[String]} catalog_item_ids
  * @param {String} catalog_namespace
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2367,7 +2370,7 @@
  * @param {Real} include_redeemed
  * @param {String} catalog_namespace
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2375,7 +2378,7 @@
  * @param {String} local_user_id
  * @param {Array[String]} entitlement_names
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2383,7 +2386,7 @@
  * @param {String} local_user_id
  * @param {String} catalog_namespace
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2392,7 +2395,7 @@
  * @param {Array[String]} offer_ids
  * @param {String} catalog_namespace
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2400,60 +2403,60 @@
  * @param {String} local_user_id
  * @param {Array[String]} entitlement_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_item_ownership_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_item_ownership_at_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {Struct.EpicEcomItemOwnership} 
- * @function_end 
+ * @returns {Struct.EpicEcomItemOwnership}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_sandbox_ownership_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_sandbox_ownership_at_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {Struct.EpicEcomSandboxIdItemOwnership} 
- * @function_end 
+ * @returns {Struct.EpicEcomSandboxIdItemOwnership}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_entitlements_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_entitlements_by_name_count
  * @param {String} local_user_id
  * @param {String} entitlement_name
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_entitlement_by_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {Struct.EpicEcomEntitlement} 
- * @function_end 
+ * @returns {Struct.EpicEcomEntitlement}
+ * @function_end
  */
 
 /**
@@ -2461,62 +2464,62 @@
  * @param {String} local_user_id
  * @param {String} entitlement_name
  * @param {Real} index
- * @returns {Struct.EpicEcomEntitlement} 
- * @function_end 
+ * @returns {Struct.EpicEcomEntitlement}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_entitlement_by_id
  * @param {String} local_user_id
  * @param {String} entitlement_id
- * @returns {Struct.EpicEcomEntitlement} 
- * @function_end 
+ * @returns {Struct.EpicEcomEntitlement}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_last_redeemed_entitlements_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_last_redeemed_entitlement_by_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_offer_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_offer_by_index
  * @param {String} local_user_id
  * @param {Real} index
- * @returns {Struct.EpicEcomCatalogOffer} 
- * @function_end 
+ * @returns {Struct.EpicEcomCatalogOffer}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_offer_by_id
  * @param {String} local_user_id
  * @param {String} offer_id
- * @returns {Struct.EpicEcomCatalogOffer} 
- * @function_end 
+ * @returns {Struct.EpicEcomCatalogOffer}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_offer_item_count
  * @param {String} local_user_id
  * @param {String} offer_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
@@ -2524,24 +2527,24 @@
  * @param {String} local_user_id
  * @param {String} offer_id
  * @param {Real} item_index
- * @returns {Struct.EpicEcomCatalogItem} 
- * @function_end 
+ * @returns {Struct.EpicEcomCatalogItem}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_item_by_id
  * @param {String} local_user_id
  * @param {String} item_id
- * @returns {Struct.EpicEcomCatalogItem} 
- * @function_end 
+ * @returns {Struct.EpicEcomCatalogItem}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_offer_image_info_count
  * @param {String} local_user_id
  * @param {String} offer_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
@@ -2549,16 +2552,16 @@
  * @param {String} local_user_id
  * @param {String} offer_id
  * @param {Real} image_info_index
- * @returns {Struct.EpicEcomKeyImageInfo} 
- * @function_end 
+ * @returns {Struct.EpicEcomKeyImageInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_item_image_info_count
  * @param {String} local_user_id
  * @param {String} item_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
@@ -2566,16 +2569,16 @@
  * @param {String} local_user_id
  * @param {String} item_id
  * @param {Real} image_info_index
- * @returns {Struct.EpicEcomKeyImageInfo} 
- * @function_end 
+ * @returns {Struct.EpicEcomKeyImageInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_item_release_count
  * @param {String} local_user_id
  * @param {String} item_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
@@ -2583,67 +2586,67 @@
  * @param {String} local_user_id
  * @param {String} item_id
  * @param {Real} release_index
- * @returns {Struct.EpicEcomCatalogRelease} 
- * @function_end 
+ * @returns {Struct.EpicEcomCatalogRelease}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_get_transaction_count
  * @param {String} local_user_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_transaction_by_index
  * @param {String} local_user_id
  * @param {Real} transaction_index
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_copy_transaction_by_id
  * @param {String} local_user_id
  * @param {String} transaction_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_transaction_get_transaction_id
  * @param {Real} tx_handle_id
- * @returns {String} 
- * @function_end 
+ * @returns {String}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_transaction_get_entitlements_count
  * @param {Real} tx_handle_id
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_transaction_copy_entitlement_by_index
  * @param {Real} tx_handle_id
  * @param {Real} index
- * @returns {Struct.EpicEcomEntitlement} 
- * @function_end 
+ * @returns {Struct.EpicEcomEntitlement}
+ * @function_end
  */
 
 /**
  * @function_partial eos_ecom_transaction_release
  * @param {Real} tx_handle_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_set_custom_invite
  * @param {String} local_user_id
  * @param {String} payload
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
@@ -2651,7 +2654,7 @@
  * @param {String} local_user_id
  * @param {Array[String]} target_user_ids
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2660,8 +2663,8 @@
  * @param {String} local_user_id
  * @param {String} custom_invite_id
  * @param {Enum.EpicResult} processing_result
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
@@ -2669,7 +2672,7 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2677,7 +2680,7 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2685,111 +2688,111 @@
  * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_custom_invite_received
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_custom_invite_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_custom_invite_accepted
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_custom_invite_accepted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_custom_invite_rejected
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_custom_invite_rejected
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_response_received
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_request_to_join_response_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_received
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_request_to_join_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_send_custom_native_invite_requested
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_send_custom_native_invite_requested
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_accepted
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_request_to_join_accepted
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_add_notify_request_to_join_rejected
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_custominvites_remove_notify_request_to_join_rejected
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2799,7 +2802,7 @@
  * @param {String} client_base_url
  * @param {String} participant_token
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2807,7 +2810,7 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2817,15 +2820,15 @@
  * @param {String} participant_id
  * @param {Bool} blocked
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_set_setting
  * @param {String} setting_name
  * @param {String} setting_value
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
@@ -2834,8 +2837,8 @@
  * @param {String} room_name
  * @param {String} setting_name
  * @param {String} setting_value
- * @returns {Bool} 
- * @function_end 
+ * @returns {Bool}
+ * @function_end
  */
 
 /**
@@ -2843,14 +2846,14 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_remove_notify_disconnected
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2858,14 +2861,14 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_remove_notify_participant_status_changed
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2873,14 +2876,14 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_remove_notify_room_statistics_updated
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2889,7 +2892,7 @@
  * @param {String} room_name
  * @param {Enum.EpicRTCAudioStatus} audio_status
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2899,7 +2902,7 @@
  * @param {String} participant_id
  * @param {Bool} audio_enabled
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2908,7 +2911,7 @@
  * @param {String} room_name
  * @param {Real} volume
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2917,7 +2920,7 @@
  * @param {String} room_name
  * @param {Real} volume
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2927,45 +2930,45 @@
  * @param {String} participant_id
  * @param {Real} volume
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_get_input_devices_count
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_copy_input_device_info_by_index
  * @param {Real} index
- * @returns {Struct.EpicRTCAudioInputDeviceInfo} 
- * @function_end 
+ * @returns {Struct.EpicRTCAudioInputDeviceInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_get_output_devices_count
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_copy_output_device_info_by_index
  * @param {Real} index
- * @returns {Struct.EpicRTCAudioOutputDeviceInfo} 
- * @function_end 
+ * @returns {Struct.EpicRTCAudioOutputDeviceInfo}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_query_input_devices
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_query_output_devices
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2974,7 +2977,7 @@
  * @param {String} real_device_id
  * @param {Bool} platform_aec
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2982,7 +2985,7 @@
  * @param {String} local_user_id
  * @param {String} real_device_id
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -2990,27 +2993,27 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_remove_notify_participant_updated
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_add_notify_audio_devices_changed
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_remove_notify_audio_devices_changed
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -3018,14 +3021,14 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_remove_notify_audio_input_state
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -3033,14 +3036,14 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_audio_remove_notify_audio_output_state
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -3049,8 +3052,8 @@
  * @param {String} room_name
  * @param {Buffer} data
  * @param {Real} bytes
- * @returns {Enum.EpicResult} 
- * @function_end 
+ * @returns {Enum.EpicResult}
+ * @function_end
  */
 
 /**
@@ -3059,7 +3062,7 @@
  * @param {String} room_name
  * @param {Bool} data_enabled
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -3069,7 +3072,7 @@
  * @param {String} participant_id
  * @param {Bool} data_enabled
  * @param {Function} [callback]
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -3077,14 +3080,14 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_data_remove_notify_data_received
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -3092,14 +3095,14 @@
  * @param {String} local_user_id
  * @param {String} room_name
  * @param {Function} [callback]
- * @returns {Real} 
- * @function_end 
+ * @returns {Real}
+ * @function_end
  */
 
 /**
  * @function_partial eos_rtc_data_remove_notify_participant_updated
  * @param {Real} notification_id
- * @function_end 
+ * @function_end
  */
 
 /**
@@ -3107,7 +3110,7 @@
  * @member {String} category
  * @member {Enum.EpicLogLevel} level
  * @member {String} message
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3115,27 +3118,27 @@
  * @member {String} user_code
  * @member {String} verification_uri
  * @member {String} verification_uri_complete
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicAuthLogoutCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicAuthDeletePersistentAuthCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicAuthIdToken
  * @member {String} account_id
  * @member {String} json_web_token
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3150,7 +3153,7 @@
  * @member {String} refresh_token
  * @member {Real} refresh_expires_in
  * @member {String} refresh_expires_at
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3158,7 +3161,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_account_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3171,13 +3174,13 @@
  * @member {String} deployment_id
  * @member {String} display_name
  * @member {Bool} is_external_account_info_present
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicAuthVerifyUserAuthCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3185,7 +3188,7 @@
  * @member {String} local_user_id
  * @member {Enum.EpicLoginStatus} previous_status
  * @member {Enum.EpicLoginStatus} current_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3193,62 +3196,63 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {Bool} has_continuance_token
- * @struct_end 
+ * @member {Real} continuance_token_id
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectCreateUserCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectLinkAccountCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectUnlinkAccountCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectCreateDeviceIdCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} device_model
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectDeleteDeviceIdCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectTransferDeviceIdAccountCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectLogoutCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectIdToken
  * @member {String} product_user_id
  * @member {String} json_web_token
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3258,33 +3262,43 @@
  * @member {String} account_id
  * @member {Enum.EpicExternalAccountType} account_id_type
  * @member {Real} last_login_time
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectVerifyIdTokenCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @member {String} product_user_id
+ * @member {Bool} is_account_info_present
+ * @member {Enum.EpicExternalAccountType} account_id_type
+ * @member {String} account_id
+ * @member {String} platform
+ * @member {String} device_type
+ * @member {String} client_id
+ * @member {String} product_id
+ * @member {String} sandbox_id
+ * @member {String} deployment_id
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectQueryExternalAccountMappingsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectQueryProductUserIdMappingsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicConnectAuthExpirationCallbackInfo
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3292,14 +3306,14 @@
  * @member {String} local_user_id
  * @member {Enum.EpicLoginStatus} previous_status
  * @member {Enum.EpicLoginStatus} current_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicFriendsQueryFriendsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3308,7 +3322,7 @@
  * @member {String} target_user_id
  * @member {Enum.EpicFriendsStatus} previous_status
  * @member {Enum.EpicFriendsStatus} current_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3318,7 +3332,7 @@
  * @member {String} display_name
  * @member {String} preferred_language
  * @member {String} nickname
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3326,7 +3340,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3334,7 +3348,7 @@
  * @member {String} account_id
  * @member {Enum.EpicExternalAccountType} account_type
  * @member {String} display_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3343,7 +3357,7 @@
  * @member {Real} start_time
  * @member {Real} end_time
  * @member {Real} value
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3351,7 +3365,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3359,14 +3373,14 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicUIShowFriendsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3374,21 +3388,21 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicUIDisplaySettingsUpdatedCallbackInfo
  * @member {Bool} is_visible
  * @member {Bool} is_exclusive_input
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicUIHideFriendsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3396,7 +3410,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3404,25 +3418,25 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicProgressionSnapshotSubmitSnapshotCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicProgressionSnapshotDeleteSnapshotCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicReportsSendPlayerBehaviorReportCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3431,7 +3445,7 @@
  * @member {String} action
  * @member {Real} time_expires
  * @member {String} reference_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3439,20 +3453,20 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSanctionsCreatePlayerSanctionAppealCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} reference_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicAchievementsQueryDefinitionsCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3460,14 +3474,14 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicStatThreshold
  * @member {String} name
  * @member {Real} threshold
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3475,7 +3489,7 @@
  * @member {String} name
  * @member {Real} current_value
  * @member {Real} threshold_value
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3491,7 +3505,7 @@
  * @member {String} locked_icon_id
  * @member {Bool} is_hidden
  * @member {Real} stat_thresholds_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3500,7 +3514,7 @@
  * @member {Real} progress
  * @member {Real} unlock_time
  * @member {Real} stat_info_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3508,7 +3522,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} user_id
  * @member {Real} achievements_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3524,7 +3538,7 @@
  * @member {String} locked_icon_url
  * @member {Bool} is_hidden
  * @member {Real} stat_thresholds_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3532,26 +3546,26 @@
  * @member {String} user_id
  * @member {String} achievement_id
  * @member {Real} unlock_time
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLeaderboardsQueryDefinitionsCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLeaderboardsQueryRanksCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} leaderboard_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLeaderboardsQueryUserScoresCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3561,7 +3575,7 @@
  * @member {Real} start_time
  * @member {Real} end_time
  * @member {String} aggregation
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3570,14 +3584,14 @@
  * @member {Real} rank
  * @member {Real} score
  * @member {String} user_display_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLeaderboardUserScore
  * @member {String} user_id
  * @member {Real} score
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3589,7 +3603,7 @@
  * @member {String} platform
  * @member {String} rich_text
  * @member {Real} records_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3597,21 +3611,21 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicPresenceSetPresenceCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicPresenceChangedCallbackInfo
  * @member {String} local_user_id
  * @member {String} presence_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3620,38 +3634,38 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {Real} ui_event_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsUpdateSessionCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} session_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsDestroySessionCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsStartSessionCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsEndSessionCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsJoinSessionCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3659,20 +3673,20 @@
  * @member {Enum.EpicResult} result_code
  * @member {Array[String]} registered_players
  * @member {Array[String]} sanctioned_players
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsUnregisterPlayersCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {Array[String]} unregistered_players
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsFindCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3682,7 +3696,7 @@
  * @member {String} owner_user_id
  * @member {Real} num_open_public_connections
  * @member {Real} settings_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3693,7 +3707,7 @@
  * @member {String} bucket_id
  * @member {String} owner_user_id
  * @member {String} host_address
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3701,7 +3715,7 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {String} invite_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3709,13 +3723,13 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {String} invite_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsJoinSessionAcceptedCallbackInfo
  * @member {Real} ui_event_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3724,26 +3738,26 @@
  * @member {String} value
  * @member {Enum.EpicAttributeType} value_type
  * @member {Enum.EpicSessionAttributeAdvertisementType} advertisement_type
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsSendInviteCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsRejectInviteCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsQueryInvitesCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3752,14 +3766,14 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {String} session_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicSessionsLeaveSessionRequestedCallbackInfo
  * @member {String} local_user_id
  * @member {String} session_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3767,35 +3781,35 @@
  * @member {Real} ui_event_id
  * @member {String} local_user_id
  * @member {String} session_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyCreateLobbyCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyDestroyLobbyCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyJoinLobbyCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyLeaveLobbyCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3810,7 +3824,7 @@
  * @member {Bool} enable_rtc_room
  * @member {Bool} enable_join_by_id
  * @member {Bool} rejoin_after_kick_requires_invite
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3818,28 +3832,28 @@
  * @member {Real} lobby_details_handle_id
  * @member {String} local_user_id
  * @member {Bool} presence_enabled
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyUpdateLobbyCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyPromoteMemberCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyKickMemberCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3847,7 +3861,7 @@
  * @member {String} key
  * @member {String} value
  * @member {Enum.EpicLobbyAttributeVisibility} visibility
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3855,7 +3869,7 @@
  * @member {String} key
  * @member {String} value
  * @member {Enum.EpicLobbyAttributeVisibility} visibility
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3863,7 +3877,7 @@
  * @member {String} lobby_id
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3871,13 +3885,13 @@
  * @member {String} lobby_id
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbySearchFindCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3885,14 +3899,14 @@
  * @member {String} key
  * @member {String} value
  * @member {Enum.EpicComparisonOp} comparison_op
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbySearchRemoveParameterOptions
  * @member {String} key
  * @member {Enum.EpicComparisonOp} comparison_op
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3905,14 +3919,18 @@
  * @member {Enum.EpicLobbyPermissionLevel} permission_level
  * @member {Bool} allow_invites
  * @member {Bool} presence_enabled
- * @struct_end 
+ * @member {Bool} rtc_room_enabled
+ * @member {Bool} allow_host_migration
+ * @member {Bool} allow_join_by_id
+ * @member {Bool} rejoin_after_kick_requires_invite
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyLobbyUpdateReceivedCallbackInfo
  * @member {String} lobby_id
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3920,7 +3938,7 @@
  * @member {String} lobby_id
  * @member {String} target_user_id
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3929,20 +3947,21 @@
  * @member {String} target_user_id
  * @member {String} local_user_id
  * @member {Enum.EpicLobbyMemberStatus} current_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyJoinLobbyAcceptedCallbackInfo
  * @member {Real} ui_event_id
- * @struct_end 
+ * @member {String} local_user_id
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyLeaveLobbyRequestedCallbackInfo
  * @member {String} lobby_id
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3951,7 +3970,7 @@
  * @member {String} local_user_id
  * @member {String} target_native_account_type
  * @member {String} target_user_native_account_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3960,7 +3979,7 @@
  * @member {String} local_user_id
  * @member {Bool} is_connected
  * @member {Enum.EpicResult} disconnect_reason
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3969,7 +3988,7 @@
  * @member {String} value
  * @member {Enum.EpicAttributeType} value_type
  * @member {Enum.EpicLobbyAttributeVisibility} visibility
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3977,14 +3996,14 @@
  * @member {String} user_id
  * @member {Real} platform
  * @member {Bool} allows_crossplay
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyJoinLobbyByIdCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -3992,28 +4011,28 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbySendInviteCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyRejectInviteCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} invite_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicLobbyQueryInvitesCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4021,7 +4040,7 @@
  * @member {String} invite_id
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4030,7 +4049,7 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4039,7 +4058,7 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {String} lobby_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4047,7 +4066,7 @@
  * @member {String} lobby_id
  * @member {String} local_user_id
  * @member {Bool} presence_enabled
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4056,7 +4075,7 @@
  * @member {String} local_user_id
  * @member {String} target_user_id
  * @member {Bool} hard_mute
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4064,7 +4083,7 @@
  * @member {String} lobby_id
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4074,14 +4093,14 @@
  * @member {Real} channel
  * @member {Bool} ok
  * @member {Real} bytes_written
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicP2PQueryNATTypeCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {Enum.EpicNATType} nat_type
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4089,7 +4108,7 @@
  * @member {String} local_user_id
  * @member {String} remote_user_id
  * @member {String} socket_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4099,7 +4118,7 @@
  * @member {String} socket_name
  * @member {Enum.EpicConnectionEstablishedType} connection_type
  * @member {Enum.EpicNetworkConnectionType} network_type
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4107,7 +4126,7 @@
  * @member {String} local_user_id
  * @member {String} remote_user_id
  * @member {String} socket_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4116,7 +4135,7 @@
  * @member {String} remote_user_id
  * @member {String} socket_name
  * @member {Enum.EpicConnectionClosedReason} reason
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4127,14 +4146,14 @@
  * @member {Real} outgoing_packet_queue_max_size_bytes
  * @member {Real} outgoing_packet_queue_current_size_bytes
  * @member {Real} outgoing_packet_queue_current_packet_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicP2PPortRange
  * @member {Real} port
  * @member {Real} num_additional_ports_to_try
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4144,7 +4163,7 @@
  * @member {String} overflow_packet_local_user_id
  * @member {Real} overflow_packet_channel
  * @member {Real} overflow_packet_size_bytes
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4154,14 +4173,14 @@
  * @member {String} filename
  * @member {Real} last_modified_time
  * @member {Real} unencrypted_data_size_bytes
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicPlayerDataStorageQueryFileCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4169,21 +4188,21 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {Real} file_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicPlayerDataStorageDuplicateFileCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicPlayerDataStorageDeleteFileCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4191,7 +4210,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} filename
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4199,7 +4218,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} filename
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4208,7 +4227,7 @@
  * @member {String} filename
  * @member {Real} bytes_transferred
  * @member {Real} total_file_size_bytes
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4217,14 +4236,14 @@
  * @member {String} filename
  * @member {Real} bytes_transferred
  * @member {Real} total_file_size_bytes
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicPlayerDataStorageDeleteCacheCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4233,14 +4252,14 @@
  * @member {String} md5_hash
  * @member {String} filename
  * @member {Real} unencrypted_data_size_bytes
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicTitleStorageQueryFileCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4248,7 +4267,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {Real} file_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4256,7 +4275,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} filename
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4265,14 +4284,14 @@
  * @member {String} filename
  * @member {Real} bytes_transferred
  * @member {Real} total_file_size_bytes
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicTitleStorageDeleteCacheCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4283,21 +4302,21 @@
  * @member {Real} server_index
  * @member {Real} redeemed
  * @member {Real} end_timestamp
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicEcomItemOwnership
  * @member {String} id
  * @member {Enum.EpicOwnershipStatus} ownership_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicEcomSandboxIdItemOwnership
  * @member {String} sandbox_id
  * @member {String} owned_catalog_item_ids
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4319,7 +4338,7 @@
  * @member {Real} decimal_point
  * @member {Real} release_date_timestamp
  * @member {Real} effective_date_timestamp
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4334,7 +4353,7 @@
  * @member {String} developer_text
  * @member {Enum.EpicEcomItemType} item_type
  * @member {Real} entitlement_end_timestamp
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4343,7 +4362,7 @@
  * @member {String} url
  * @member {Real} width
  * @member {Real} height
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4351,7 +4370,7 @@
  * @member {String} compatible_app_ids
  * @member {String} compatible_platforms
  * @member {String} release_note
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4359,7 +4378,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {Real} item_ownership_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4367,7 +4386,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {Real} sandbox_ownership_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4375,14 +4394,14 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} ownership_token
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicEcomQueryEntitlementsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4390,14 +4409,14 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} entitlement_token
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicEcomQueryOffersCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4405,7 +4424,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} transaction_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4413,7 +4432,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {Real} redeemed_count
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4421,7 +4440,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {Array[String]} target_user_ids
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4430,7 +4449,7 @@
  * @member {String} local_user_id
  * @member {String} custom_invite_id
  * @member {String} payload
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4439,7 +4458,7 @@
  * @member {String} local_user_id
  * @member {String} custom_invite_id
  * @member {String} payload
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4448,7 +4467,7 @@
  * @member {String} local_user_id
  * @member {String} custom_invite_id
  * @member {String} payload
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4456,7 +4475,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4464,14 +4483,14 @@
  * @member {String} from_user_id
  * @member {String} to_user_id
  * @member {Enum.EpicRequestToJoinResponse} response
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicCustomInvitesRequestToJoinReceivedCallbackInfo
  * @member {String} from_user_id
  * @member {String} to_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4479,7 +4498,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4487,7 +4506,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} target_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4497,21 +4516,21 @@
  * @member {String} target_native_account_type
  * @member {String} target_user_native_account_id
  * @member {String} invite_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicCustomInvitesRequestToJoinAcceptedCallbackInfo
  * @member {String} target_user_id
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicCustomInvitesRequestToJoinRejectedCallbackInfo
  * @member {String} target_user_id
  * @member {String} local_user_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4519,7 +4538,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} room_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4527,7 +4546,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} room_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4537,7 +4556,7 @@
  * @member {String} room_name
  * @member {String} participant_id
  * @member {Bool} blocked
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4545,7 +4564,7 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} room_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4555,7 +4574,7 @@
  * @member {String} participant_id
  * @member {Enum.EpicRTCParticipantStatus} participant_status
  * @member {Bool} participant_in_blocklist
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4563,7 +4582,7 @@
  * @member {String} local_user_id
  * @member {String} room_name
  * @member {String} statistic
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4573,13 +4592,13 @@
  * @member {String} participant_id
  * @member {Bool} speaking
  * @member {Enum.EpicRTCAudioStatus} audio_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicRTCAudioDevicesChangedCallbackInfo
  * @member {Bool} triggered
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4587,7 +4606,7 @@
  * @member {String} local_user_id
  * @member {String} room_name
  * @member {Enum.EpicRTCAudioInputStatus} status
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4595,7 +4614,7 @@
  * @member {String} local_user_id
  * @member {String} room_name
  * @member {Enum.EpicRTCAudioOutputStatus} status
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4604,7 +4623,7 @@
  * @member {String} local_user_id
  * @member {String} room_name
  * @member {Enum.EpicRTCAudioStatus} audio_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4614,7 +4633,7 @@
  * @member {String} room_name
  * @member {String} participant_id
  * @member {Bool} audio_enabled
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4623,7 +4642,7 @@
  * @member {String} local_user_id
  * @member {String} room_name
  * @member {Real} volume
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4632,7 +4651,7 @@
  * @member {String} local_user_id
  * @member {String} room_name
  * @member {Real} volume
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4642,7 +4661,7 @@
  * @member {String} room_name
  * @member {String} participant_id
  * @member {Real} volume
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4650,7 +4669,7 @@
  * @member {Bool} default_device
  * @member {String} device_id
  * @member {String} device_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4658,33 +4677,33 @@
  * @member {Bool} default_device
  * @member {String} device_id
  * @member {String} device_name
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicRTCAudioSetInputDeviceSettingsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} real_device_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicRTCAudioSetOutputDeviceSettingsCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} real_device_id
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicRTCAudioQueryInputDevicesCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
  * @struct_partial EpicRTCAudioQueryOutputDevicesCallbackInfo
  * @member {Enum.EpicResult} result_code
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4693,7 +4712,7 @@
  * @member {String} room_name
  * @member {String} participant_id
  * @member {Enum.EpicRTCDataStatus} data_status
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4703,7 +4722,7 @@
  * @member {String} participant_id
  * @member {Real} data_length_bytes
  * @member {String} data
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4712,7 +4731,7 @@
  * @member {String} local_user_id
  * @member {String} room_name
  * @member {Bool} data_enabled
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4722,7 +4741,7 @@
  * @member {String} room_name
  * @member {String} participant_id
  * @member {Bool} data_enabled
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4731,8 +4750,9 @@
  * @member {String} local_user_id
  * @member {String} selected_account_id
  * @member {Bool} has_continuance_token
+ * @member {Real} continuance_token_id
  * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4741,7 +4761,7 @@
  * @member {String} local_user_id
  * @member {String} selected_account_id
  * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info
- * @struct_end 
+ * @struct_end
  */
 
 /**
@@ -4915,7 +4935,7 @@
  * @member Lobby_VoiceNotEnabled
  * @member Lobby_PlatformNotAllowed
  * @member UnexpectedError
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -4923,7 +4943,7 @@
  * @member Invalid
  * @member ClientServer
  * @member PeerToPeer
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -4944,7 +4964,7 @@
  * @member CorruptedNetworkMessageFlow
  * @member VirtualMachineNotAllowed
  * @member ForbiddenSystemConfiguration
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -4952,7 +4972,7 @@
  * @member ProtectedClient
  * @member UnprotectedClient
  * @member AIBot
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -4966,14 +4986,14 @@
  * @member Nintendo
  * @member IOS
  * @member Android
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicAntiCheatCommonClientAction
  * @member Invalid
  * @member RemovePlayer
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -4989,7 +5009,7 @@
  * @member TemporaryCooldown
  * @member TemporaryBanned
  * @member PermanentBanned
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -4997,13 +5017,13 @@
  * @member Invalid
  * @member LocalAuthComplete
  * @member RemoteAuthComplete
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicAntiCheatCommonClientFlags
  * @member None
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5012,7 +5032,7 @@
  * @member MouseKeyboard
  * @member Gamepad
  * @member TouchInput
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5020,7 +5040,7 @@
  * @member Invalid
  * @member GameEvent
  * @member PlayerEvent
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5035,7 +5055,7 @@
  * @member Vector3f
  * @member Quat
  * @member Float
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5044,7 +5064,7 @@
  * @member Casual
  * @member Ranked
  * @member Competitive
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5057,7 +5077,7 @@
  * @member Falling
  * @member Flying
  * @member OnLadder
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5066,7 +5086,7 @@
  * @member Player
  * @member NonPlayerCharacter
  * @member World
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5075,7 +5095,7 @@
  * @member PointDamage
  * @member RadialDamage
  * @member DamageOverTime
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5086,7 +5106,7 @@
  * @member NormalToDowned
  * @member NormalToEliminated
  * @member DownedToEliminated
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5099,14 +5119,14 @@
  * @member RefreshToken
  * @member AccountPortal
  * @member ExternalAuth
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicAuthTokenType
  * @member Client
  * @member User
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5118,19 +5138,19 @@
  * @member FriendsManagement
  * @member Email
  * @member Country
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicLinkAccountFlags
  * @member NoFlags
  * @member NintendoNsaId
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial Epicname
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5138,7 +5158,7 @@
  * @member NotLoggedIn
  * @member UsingLocalProfile
  * @member LoggedIn
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5147,7 +5167,7 @@
  * @member Int64
  * @member Double
  * @member String
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5164,7 +5184,7 @@
  * @member OneOf
  * @member NotOneOf
  * @member Contains
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5184,7 +5204,7 @@
  * @member ItchIo
  * @member Amazon
  * @member Viveport
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5209,21 +5229,21 @@
  * @member AmazonAccessToken
  * @member SteamSessionTicket
  * @member ViveportUserToken
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicRequestToJoinResponse
  * @member Accepted
  * @member Rejected
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicOwnershipStatus
  * @member NotOwned
  * @member Owned
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5231,7 +5251,7 @@
  * @member Durable
  * @member Consumable
  * @member Other
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5239,7 +5259,7 @@
  * @member Default
  * @member Portrait
  * @member Landscape
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5248,7 +5268,7 @@
  * @member InviteSent
  * @member InviteReceived
  * @member Friends
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5261,14 +5281,14 @@
  * @member PreferEOSIdentity
  * @member PreferIntegratedIdentity
  * @member ApplicationManagedIdentityLogin
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicIntegratedPlatformPreLogoutAction
  * @member ProcessLogoutImmediately
  * @member DeferLogout
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5276,7 +5296,7 @@
  * @member Granted
  * @member Rejected
  * @member Pending
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5285,7 +5305,7 @@
  * @member Max
  * @member Sum
  * @member Latest
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5293,14 +5313,14 @@
  * @member PublicAdvertised
  * @member JoinViaPresence
  * @member InviteOnly
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicLobbyAttributeVisibility
  * @member Public
  * @member Private
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5311,14 +5331,14 @@
  * @member Kicked
  * @member Promoted
  * @member Closed
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicLobbyRTCRoomJoinActionType
  * @member AutomaticJoin
  * @member ManualJoin
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5330,7 +5350,7 @@
  * @member Info
  * @member Verbose
  * @member VeryVerbose
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5368,7 +5388,7 @@
  * @member RTCAdmin
  * @member CustomInvites
  * @member AllCategories
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5377,21 +5397,21 @@
  * @member MouseKeyboard
  * @member GamepadControl
  * @member TouchControl
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicMetricsAccountIdType
  * @member Epic
  * @member External
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicModEnumerationType
  * @member Installed
  * @member AllAvailable
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5400,7 +5420,7 @@
  * @member Open
  * @member Moderate
  * @member Strict
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5408,14 +5428,14 @@
  * @member UnreliableUnordered
  * @member ReliableUnordered
  * @member ReliableOrdered
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicConnectionEstablishedType
  * @member NewConnection
  * @member Reconnection
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5423,7 +5443,7 @@
  * @member NoConnection
  * @member DirectConnection
  * @member RelayedConnection
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5440,7 +5460,7 @@
  * @member NegotiationFailed
  * @member UnexpectedError
  * @member ConnectionIgnored
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5448,7 +5468,7 @@
  * @member NoRelays
  * @member AllowRelays
  * @member ForceRelays
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5456,7 +5476,7 @@
  * @member ContinueReading
  * @member FailRequest
  * @member CancelRequest
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5465,7 +5485,7 @@
  * @member CompleteRequest
  * @member FailRequest
  * @member CancelRequest
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5475,7 +5495,7 @@
  * @member Away
  * @member ExtendedAway
  * @member DoNotDisturb
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5488,7 +5508,7 @@
  * @member Scamming
  * @member Spamming
  * @member Other
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5498,7 +5518,7 @@
  * @member Disabled
  * @member AdminDisabled
  * @member NotListeningDisabled
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5508,7 +5528,7 @@
  * @member RecordingSilent
  * @member RecordingDisconnected
  * @member Failed
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5516,7 +5536,7 @@
  * @member Idle
  * @member Playing
  * @member Failed
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5524,14 +5544,14 @@
  * @member Unsupported
  * @member Enabled
  * @member Disabled
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicRTCParticipantStatus
  * @member Joined
  * @member Left
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5541,7 +5561,7 @@
  * @member CompromisedAccount
  * @member UnfairPunishment
  * @member AppealForForgiveness
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5554,14 +5574,14 @@
  * @member Ending
  * @member Ended
  * @member Destroying
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicSessionAttributeAdvertisementType
  * @member DontAdvertise
  * @member Advertise
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5569,7 +5589,7 @@
  * @member PublicAdvertised
  * @member JoinViaPresence
  * @member InviteOnly
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5577,14 +5597,14 @@
  * @member ContinueReading
  * @member FailRequest
  * @member CancelRequest
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @enum_partial EpicRTCBackgroundMode
  * @member LeaveRooms
  * @member KeepRoomsAlive
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5593,7 +5613,7 @@
  * @member BackgroundUnconstrained
  * @member BackgroundSuspended
  * @member Foreground
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5601,7 +5621,7 @@
  * @member Disabled
  * @member Offline
  * @member Online
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5615,7 +5635,7 @@
  * @member OverlayNotInstalled
  * @member OverlayTrustCheckFailed
  * @member OverlayLoadFailed
- * @enum_end 
+ * @enum_end
  */
 
 /**
@@ -5624,11 +5644,11 @@
  * @member TopRight
  * @member BottomLeft
  * @member BottomRight
- * @enum_end 
+ * @enum_end
  */
 
 /**
  * @const_partial macros
- * @const_end 
+ * @const_end
  */
 

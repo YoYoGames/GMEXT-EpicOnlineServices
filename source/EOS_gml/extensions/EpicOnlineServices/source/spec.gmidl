@@ -148,6 +148,9 @@ class `[[EpicAuthLoginCallbackInfo]]` prototype Object
     [field]
     property has_continuance_token : bool { get; set; }
 
+    [field, type_hint=`uint64`]
+    property continuance_token_id : gmval { get; set; }
+
     [field, type_hint=`EpicAuthPinGrantInfo`]
     property pin_grant_info : gmval { get; set; }
 }
@@ -371,6 +374,9 @@ class `[[EpicConnectLoginCallbackInfo]]` prototype Object
 
     [field]
     property has_continuance_token : bool { get; set; }
+
+    [field, type_hint=`uint64`]
+    property continuance_token_id : gmval { get; set; }
 }
 
 [global]
@@ -516,6 +522,36 @@ class `[[EpicConnectVerifyIdTokenCallbackInfo]]` prototype Object
 {
     [field, type_hint = `EpicResult`]
     property result_code : gmval { get; set; }
+
+    [field]
+    property product_user_id : string { get; set; }
+
+    [field]
+    property is_account_info_present : bool { get; set; }
+
+    [field, type_hint = `EpicExternalAccountType`]
+    property account_id_type : gmval { get; set; }
+
+    [field]
+    property account_id : string { get; set; }
+
+    [field]
+    property platform : string { get; set; }
+
+    [field]
+    property device_type : string { get; set; }
+
+    [field]
+    property client_id : string { get; set; }
+
+    [field]
+    property product_id : string { get; set; }
+
+    [field]
+    property sandbox_id : string { get; set; }
+
+    [field]
+    property deployment_id : string { get; set; }
 }
 
 [global, bind = typed_gml, type_hint=`EpicConnectIdToken`]
@@ -2533,6 +2569,18 @@ class `[[EpicLobbyDetailsInfo]]` prototype Object
 
     [field]
     property presence_enabled : bool { get; set; }
+
+    [field]
+    property rtc_room_enabled : bool { get; set; }
+
+    [field]
+    property allow_host_migration : bool { get; set; }
+
+    [field]
+    property allow_join_by_id : bool { get; set; }
+
+    [field]
+    property rejoin_after_kick_requires_invite : bool { get; set; }
 }
 
 [global]
@@ -2579,6 +2627,9 @@ class `[[EpicLobbyJoinLobbyAcceptedCallbackInfo]]` prototype Object
 {
     [field, type_hint=`uint64`]
     property ui_event_id : gmval { get; set; }
+
+    [field]
+    property local_user_id : string { get; set; }
 }
 
 [global]

@@ -826,13 +826,13 @@ enum EpicUINotificationLocation
 // #####################################################################
 
 /**
- * @returns {Struct.EpicLoggingMessage} 
+ * @returns {Struct.EpicLoggingMessage}
  */
 function EpicLoggingMessage() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2544770280;
 
@@ -843,13 +843,13 @@ function EpicLoggingMessage() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthPinGrantInfo} 
+ * @returns {Struct.EpicAuthPinGrantInfo}
  */
 function EpicAuthPinGrantInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2307251061;
 
@@ -860,13 +860,13 @@ function EpicAuthPinGrantInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthLogoutCallbackInfo} 
+ * @returns {Struct.EpicAuthLogoutCallbackInfo}
  */
 function EpicAuthLogoutCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2665356655;
 
@@ -876,13 +876,13 @@ function EpicAuthLogoutCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthDeletePersistentAuthCallbackInfo} 
+ * @returns {Struct.EpicAuthDeletePersistentAuthCallbackInfo}
  */
 function EpicAuthDeletePersistentAuthCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2046774517;
 
@@ -891,13 +891,13 @@ function EpicAuthDeletePersistentAuthCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthIdToken} 
+ * @returns {Struct.EpicAuthIdToken}
  */
 function EpicAuthIdToken() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1751511736;
 
@@ -907,13 +907,13 @@ function EpicAuthIdToken() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthUserAuthToken} 
+ * @returns {Struct.EpicAuthUserAuthToken}
  */
 function EpicAuthUserAuthToken() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4253044112;
 
@@ -931,13 +931,13 @@ function EpicAuthUserAuthToken() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthQueryIdTokenCallbackInfo} 
+ * @returns {Struct.EpicAuthQueryIdTokenCallbackInfo}
  */
 function EpicAuthQueryIdTokenCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3035104243;
 
@@ -948,13 +948,13 @@ function EpicAuthQueryIdTokenCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthVerifyIdTokenCallbackInfo} 
+ * @returns {Struct.EpicAuthVerifyIdTokenCallbackInfo}
  */
 function EpicAuthVerifyIdTokenCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2714618644;
 
@@ -970,13 +970,13 @@ function EpicAuthVerifyIdTokenCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthVerifyUserAuthCallbackInfo} 
+ * @returns {Struct.EpicAuthVerifyUserAuthCallbackInfo}
  */
 function EpicAuthVerifyUserAuthCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1830036261;
 
@@ -985,13 +985,13 @@ function EpicAuthVerifyUserAuthCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthLoginStatusChangedCallbackInfo} 
+ * @returns {Struct.EpicAuthLoginStatusChangedCallbackInfo}
  */
 function EpicAuthLoginStatusChangedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 643455112;
 
@@ -1002,30 +1002,31 @@ function EpicAuthLoginStatusChangedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectLoginCallbackInfo} 
+ * @returns {Struct.EpicConnectLoginCallbackInfo}
  */
 function EpicConnectLoginCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1293908136;
 
     self.result_code = undefined;
     self.local_user_id = undefined;
     self.has_continuance_token = undefined;
+    self.continuance_token_id = undefined;
 
 }
 
 /**
- * @returns {Struct.EpicConnectCreateUserCallbackInfo} 
+ * @returns {Struct.EpicConnectCreateUserCallbackInfo}
  */
 function EpicConnectCreateUserCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3066830286;
 
@@ -1035,13 +1036,13 @@ function EpicConnectCreateUserCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectLinkAccountCallbackInfo} 
+ * @returns {Struct.EpicConnectLinkAccountCallbackInfo}
  */
 function EpicConnectLinkAccountCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3154103970;
 
@@ -1051,13 +1052,13 @@ function EpicConnectLinkAccountCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectUnlinkAccountCallbackInfo} 
+ * @returns {Struct.EpicConnectUnlinkAccountCallbackInfo}
  */
 function EpicConnectUnlinkAccountCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1969400687;
 
@@ -1067,13 +1068,13 @@ function EpicConnectUnlinkAccountCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectCreateDeviceIdCallbackInfo} 
+ * @returns {Struct.EpicConnectCreateDeviceIdCallbackInfo}
  */
 function EpicConnectCreateDeviceIdCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 71214618;
 
@@ -1083,13 +1084,13 @@ function EpicConnectCreateDeviceIdCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectDeleteDeviceIdCallbackInfo} 
+ * @returns {Struct.EpicConnectDeleteDeviceIdCallbackInfo}
  */
 function EpicConnectDeleteDeviceIdCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1424948765;
 
@@ -1098,13 +1099,13 @@ function EpicConnectDeleteDeviceIdCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectTransferDeviceIdAccountCallbackInfo} 
+ * @returns {Struct.EpicConnectTransferDeviceIdAccountCallbackInfo}
  */
 function EpicConnectTransferDeviceIdAccountCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4022429194;
 
@@ -1114,13 +1115,13 @@ function EpicConnectTransferDeviceIdAccountCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectLogoutCallbackInfo} 
+ * @returns {Struct.EpicConnectLogoutCallbackInfo}
  */
 function EpicConnectLogoutCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4007944407;
 
@@ -1130,13 +1131,13 @@ function EpicConnectLogoutCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectIdToken} 
+ * @returns {Struct.EpicConnectIdToken}
  */
 function EpicConnectIdToken() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2383220416;
 
@@ -1146,13 +1147,13 @@ function EpicConnectIdToken() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectExternalAccountInfo} 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
  */
 function EpicConnectExternalAccountInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 11263560;
 
@@ -1165,28 +1166,38 @@ function EpicConnectExternalAccountInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectVerifyIdTokenCallbackInfo} 
+ * @returns {Struct.EpicConnectVerifyIdTokenCallbackInfo}
  */
 function EpicConnectVerifyIdTokenCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3320198844;
 
     self.result_code = undefined;
+    self.product_user_id = undefined;
+    self.is_account_info_present = undefined;
+    self.account_id_type = undefined;
+    self.account_id = undefined;
+    self.platform = undefined;
+    self.device_type = undefined;
+    self.client_id = undefined;
+    self.product_id = undefined;
+    self.sandbox_id = undefined;
+    self.deployment_id = undefined;
 
 }
 
 /**
- * @returns {Struct.EpicConnectQueryExternalAccountMappingsCallbackInfo} 
+ * @returns {Struct.EpicConnectQueryExternalAccountMappingsCallbackInfo}
  */
 function EpicConnectQueryExternalAccountMappingsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 351749604;
 
@@ -1196,13 +1207,13 @@ function EpicConnectQueryExternalAccountMappingsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectQueryProductUserIdMappingsCallbackInfo} 
+ * @returns {Struct.EpicConnectQueryProductUserIdMappingsCallbackInfo}
  */
 function EpicConnectQueryProductUserIdMappingsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2282420771;
 
@@ -1212,13 +1223,13 @@ function EpicConnectQueryProductUserIdMappingsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectAuthExpirationCallbackInfo} 
+ * @returns {Struct.EpicConnectAuthExpirationCallbackInfo}
  */
 function EpicConnectAuthExpirationCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3341381898;
 
@@ -1227,13 +1238,13 @@ function EpicConnectAuthExpirationCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicConnectLoginStatusChangedCallbackInfo} 
+ * @returns {Struct.EpicConnectLoginStatusChangedCallbackInfo}
  */
 function EpicConnectLoginStatusChangedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1430081632;
 
@@ -1244,13 +1255,13 @@ function EpicConnectLoginStatusChangedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicFriendsQueryFriendsCallbackInfo} 
+ * @returns {Struct.EpicFriendsQueryFriendsCallbackInfo}
  */
 function EpicFriendsQueryFriendsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 350841263;
 
@@ -1260,13 +1271,13 @@ function EpicFriendsQueryFriendsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicFriendsFriendsUpdateCallbackInfo} 
+ * @returns {Struct.EpicFriendsFriendsUpdateCallbackInfo}
  */
 function EpicFriendsFriendsUpdateCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2115382564;
 
@@ -1278,13 +1289,13 @@ function EpicFriendsFriendsUpdateCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUserInfo} 
+ * @returns {Struct.EpicUserInfo}
  */
 function EpicUserInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1683777391;
 
@@ -1297,13 +1308,13 @@ function EpicUserInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUserInfoQueryUserInfoCallbackInfo} 
+ * @returns {Struct.EpicUserInfoQueryUserInfoCallbackInfo}
  */
 function EpicUserInfoQueryUserInfoCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1836305293;
 
@@ -1314,13 +1325,13 @@ function EpicUserInfoQueryUserInfoCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
  */
 function EpicUserInfoExternalUserInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1005653235;
 
@@ -1331,13 +1342,13 @@ function EpicUserInfoExternalUserInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicStatsStat} 
+ * @returns {Struct.EpicStatsStat}
  */
 function EpicStatsStat() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3006552545;
 
@@ -1349,13 +1360,13 @@ function EpicStatsStat() constructor
 }
 
 /**
- * @returns {Struct.EpicStatsIngestStatCallbackInfo} 
+ * @returns {Struct.EpicStatsIngestStatCallbackInfo}
  */
 function EpicStatsIngestStatCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 702629062;
 
@@ -1366,13 +1377,13 @@ function EpicStatsIngestStatCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicStatsQueryStatsCallbackInfo} 
+ * @returns {Struct.EpicStatsQueryStatsCallbackInfo}
  */
 function EpicStatsQueryStatsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1432143255;
 
@@ -1383,13 +1394,13 @@ function EpicStatsQueryStatsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUIShowFriendsCallbackInfo} 
+ * @returns {Struct.EpicUIShowFriendsCallbackInfo}
  */
 function EpicUIShowFriendsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 429504239;
 
@@ -1399,13 +1410,13 @@ function EpicUIShowFriendsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUIShowNativeProfileCallbackInfo} 
+ * @returns {Struct.EpicUIShowNativeProfileCallbackInfo}
  */
 function EpicUIShowNativeProfileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2358945394;
 
@@ -1416,13 +1427,13 @@ function EpicUIShowNativeProfileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUIDisplaySettingsUpdatedCallbackInfo} 
+ * @returns {Struct.EpicUIDisplaySettingsUpdatedCallbackInfo}
  */
 function EpicUIDisplaySettingsUpdatedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1853825207;
 
@@ -1432,13 +1443,13 @@ function EpicUIDisplaySettingsUpdatedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUIHideFriendsCallbackInfo} 
+ * @returns {Struct.EpicUIHideFriendsCallbackInfo}
  */
 function EpicUIHideFriendsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1359275108;
 
@@ -1448,13 +1459,13 @@ function EpicUIHideFriendsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUIShowBlockPlayerCallbackInfo} 
+ * @returns {Struct.EpicUIShowBlockPlayerCallbackInfo}
  */
 function EpicUIShowBlockPlayerCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4213174614;
 
@@ -1465,13 +1476,13 @@ function EpicUIShowBlockPlayerCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicUIShowReportPlayerCallbackInfo} 
+ * @returns {Struct.EpicUIShowReportPlayerCallbackInfo}
  */
 function EpicUIShowReportPlayerCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2093628291;
 
@@ -1482,13 +1493,13 @@ function EpicUIShowReportPlayerCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicProgressionSnapshotSubmitSnapshotCallbackInfo} 
+ * @returns {Struct.EpicProgressionSnapshotSubmitSnapshotCallbackInfo}
  */
 function EpicProgressionSnapshotSubmitSnapshotCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3622848284;
 
@@ -1497,13 +1508,13 @@ function EpicProgressionSnapshotSubmitSnapshotCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicProgressionSnapshotDeleteSnapshotCallbackInfo} 
+ * @returns {Struct.EpicProgressionSnapshotDeleteSnapshotCallbackInfo}
  */
 function EpicProgressionSnapshotDeleteSnapshotCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2290669999;
 
@@ -1512,13 +1523,13 @@ function EpicProgressionSnapshotDeleteSnapshotCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicReportsSendPlayerBehaviorReportCallbackInfo} 
+ * @returns {Struct.EpicReportsSendPlayerBehaviorReportCallbackInfo}
  */
 function EpicReportsSendPlayerBehaviorReportCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4159615247;
 
@@ -1527,13 +1538,13 @@ function EpicReportsSendPlayerBehaviorReportCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSanctionsPlayerSanction} 
+ * @returns {Struct.EpicSanctionsPlayerSanction}
  */
 function EpicSanctionsPlayerSanction() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 960613414;
 
@@ -1545,13 +1556,13 @@ function EpicSanctionsPlayerSanction() constructor
 }
 
 /**
- * @returns {Struct.EpicSanctionsQueryActivePlayerSanctionsCallbackInfo} 
+ * @returns {Struct.EpicSanctionsQueryActivePlayerSanctionsCallbackInfo}
  */
 function EpicSanctionsQueryActivePlayerSanctionsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 640171590;
 
@@ -1562,13 +1573,13 @@ function EpicSanctionsQueryActivePlayerSanctionsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSanctionsCreatePlayerSanctionAppealCallbackInfo} 
+ * @returns {Struct.EpicSanctionsCreatePlayerSanctionAppealCallbackInfo}
  */
 function EpicSanctionsCreatePlayerSanctionAppealCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3457110082;
 
@@ -1578,13 +1589,13 @@ function EpicSanctionsCreatePlayerSanctionAppealCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAchievementsQueryDefinitionsCallbackInfo} 
+ * @returns {Struct.EpicAchievementsQueryDefinitionsCallbackInfo}
  */
 function EpicAchievementsQueryDefinitionsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 963574889;
 
@@ -1593,13 +1604,13 @@ function EpicAchievementsQueryDefinitionsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAchievementsQueryPlayerAchievementsCallbackInfo} 
+ * @returns {Struct.EpicAchievementsQueryPlayerAchievementsCallbackInfo}
  */
 function EpicAchievementsQueryPlayerAchievementsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 202425218;
 
@@ -1610,13 +1621,13 @@ function EpicAchievementsQueryPlayerAchievementsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicStatThreshold} 
+ * @returns {Struct.EpicStatThreshold}
  */
 function EpicStatThreshold() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3588597333;
 
@@ -1626,13 +1637,13 @@ function EpicStatThreshold() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerStatInfo} 
+ * @returns {Struct.EpicPlayerStatInfo}
  */
 function EpicPlayerStatInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1608887067;
 
@@ -1643,13 +1654,13 @@ function EpicPlayerStatInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAchievementsDefinition} 
+ * @returns {Struct.EpicAchievementsDefinition}
  */
 function EpicAchievementsDefinition() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 321906837;
 
@@ -1668,13 +1679,13 @@ function EpicAchievementsDefinition() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerAchievement} 
+ * @returns {Struct.EpicPlayerAchievement}
  */
 function EpicPlayerAchievement() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1273934528;
 
@@ -1686,13 +1697,13 @@ function EpicPlayerAchievement() constructor
 }
 
 /**
- * @returns {Struct.EpicAchievementsUnlockAchievementsCallbackInfo} 
+ * @returns {Struct.EpicAchievementsUnlockAchievementsCallbackInfo}
  */
 function EpicAchievementsUnlockAchievementsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 163643235;
 
@@ -1703,13 +1714,13 @@ function EpicAchievementsUnlockAchievementsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAchievementsDefinitionV2} 
+ * @returns {Struct.EpicAchievementsDefinitionV2}
  */
 function EpicAchievementsDefinitionV2() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1226382737;
 
@@ -1728,13 +1739,13 @@ function EpicAchievementsDefinitionV2() constructor
 }
 
 /**
- * @returns {Struct.EpicAchievementsUnlockedV2CallbackInfo} 
+ * @returns {Struct.EpicAchievementsUnlockedV2CallbackInfo}
  */
 function EpicAchievementsUnlockedV2CallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4019062398;
 
@@ -1745,13 +1756,13 @@ function EpicAchievementsUnlockedV2CallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLeaderboardsQueryDefinitionsCallbackInfo} 
+ * @returns {Struct.EpicLeaderboardsQueryDefinitionsCallbackInfo}
  */
 function EpicLeaderboardsQueryDefinitionsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2321716729;
 
@@ -1760,13 +1771,13 @@ function EpicLeaderboardsQueryDefinitionsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLeaderboardsQueryRanksCallbackInfo} 
+ * @returns {Struct.EpicLeaderboardsQueryRanksCallbackInfo}
  */
 function EpicLeaderboardsQueryRanksCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 430442548;
 
@@ -1776,13 +1787,13 @@ function EpicLeaderboardsQueryRanksCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLeaderboardsQueryUserScoresCallbackInfo} 
+ * @returns {Struct.EpicLeaderboardsQueryUserScoresCallbackInfo}
  */
 function EpicLeaderboardsQueryUserScoresCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 604033539;
 
@@ -1791,13 +1802,13 @@ function EpicLeaderboardsQueryUserScoresCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLeaderboardDefinition} 
+ * @returns {Struct.EpicLeaderboardDefinition}
  */
 function EpicLeaderboardDefinition() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2387405018;
 
@@ -1810,13 +1821,13 @@ function EpicLeaderboardDefinition() constructor
 }
 
 /**
- * @returns {Struct.EpicLeaderboardRecord} 
+ * @returns {Struct.EpicLeaderboardRecord}
  */
 function EpicLeaderboardRecord() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1204262510;
 
@@ -1828,13 +1839,13 @@ function EpicLeaderboardRecord() constructor
 }
 
 /**
- * @returns {Struct.EpicLeaderboardUserScore} 
+ * @returns {Struct.EpicLeaderboardUserScore}
  */
 function EpicLeaderboardUserScore() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2642129982;
 
@@ -1844,13 +1855,13 @@ function EpicLeaderboardUserScore() constructor
 }
 
 /**
- * @returns {Struct.EpicPresenceInfo} 
+ * @returns {Struct.EpicPresenceInfo}
  */
 function EpicPresenceInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3479760485;
 
@@ -1865,13 +1876,13 @@ function EpicPresenceInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPresenceQueryPresenceCallbackInfo} 
+ * @returns {Struct.EpicPresenceQueryPresenceCallbackInfo}
  */
 function EpicPresenceQueryPresenceCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 621721397;
 
@@ -1882,13 +1893,13 @@ function EpicPresenceQueryPresenceCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPresenceSetPresenceCallbackInfo} 
+ * @returns {Struct.EpicPresenceSetPresenceCallbackInfo}
  */
 function EpicPresenceSetPresenceCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1660898965;
 
@@ -1898,13 +1909,13 @@ function EpicPresenceSetPresenceCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPresenceChangedCallbackInfo} 
+ * @returns {Struct.EpicPresenceChangedCallbackInfo}
  */
 function EpicPresenceChangedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1205124856;
 
@@ -1914,13 +1925,13 @@ function EpicPresenceChangedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPresenceJoinGameAcceptedCallbackInfo} 
+ * @returns {Struct.EpicPresenceJoinGameAcceptedCallbackInfo}
  */
 function EpicPresenceJoinGameAcceptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4124063953;
 
@@ -1932,13 +1943,13 @@ function EpicPresenceJoinGameAcceptedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsUpdateSessionCallbackInfo} 
+ * @returns {Struct.EpicSessionsUpdateSessionCallbackInfo}
  */
 function EpicSessionsUpdateSessionCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1754948111;
 
@@ -1948,13 +1959,13 @@ function EpicSessionsUpdateSessionCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsDestroySessionCallbackInfo} 
+ * @returns {Struct.EpicSessionsDestroySessionCallbackInfo}
  */
 function EpicSessionsDestroySessionCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1372850476;
 
@@ -1963,13 +1974,13 @@ function EpicSessionsDestroySessionCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsStartSessionCallbackInfo} 
+ * @returns {Struct.EpicSessionsStartSessionCallbackInfo}
  */
 function EpicSessionsStartSessionCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1019343938;
 
@@ -1978,13 +1989,13 @@ function EpicSessionsStartSessionCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsEndSessionCallbackInfo} 
+ * @returns {Struct.EpicSessionsEndSessionCallbackInfo}
  */
 function EpicSessionsEndSessionCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1091212169;
 
@@ -1993,13 +2004,13 @@ function EpicSessionsEndSessionCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsJoinSessionCallbackInfo} 
+ * @returns {Struct.EpicSessionsJoinSessionCallbackInfo}
  */
 function EpicSessionsJoinSessionCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2120184376;
 
@@ -2008,13 +2019,13 @@ function EpicSessionsJoinSessionCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsRegisterPlayersCallbackInfo} 
+ * @returns {Struct.EpicSessionsRegisterPlayersCallbackInfo}
  */
 function EpicSessionsRegisterPlayersCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3155548645;
 
@@ -2025,13 +2036,13 @@ function EpicSessionsRegisterPlayersCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsUnregisterPlayersCallbackInfo} 
+ * @returns {Struct.EpicSessionsUnregisterPlayersCallbackInfo}
  */
 function EpicSessionsUnregisterPlayersCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2359374832;
 
@@ -2041,13 +2052,13 @@ function EpicSessionsUnregisterPlayersCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsFindCallbackInfo} 
+ * @returns {Struct.EpicSessionsFindCallbackInfo}
  */
 function EpicSessionsFindCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1379390445;
 
@@ -2056,13 +2067,13 @@ function EpicSessionsFindCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionDetailsInfo} 
+ * @returns {Struct.EpicSessionDetailsInfo}
  */
 function EpicSessionDetailsInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2935789082;
 
@@ -2075,13 +2086,13 @@ function EpicSessionDetailsInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicActiveSessionInfo} 
+ * @returns {Struct.EpicActiveSessionInfo}
  */
 function EpicActiveSessionInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 996543382;
 
@@ -2095,13 +2106,13 @@ function EpicActiveSessionInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsSessionInviteReceivedCallbackInfo} 
+ * @returns {Struct.EpicSessionsSessionInviteReceivedCallbackInfo}
  */
 function EpicSessionsSessionInviteReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1505067074;
 
@@ -2112,13 +2123,13 @@ function EpicSessionsSessionInviteReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsSessionInviteAcceptedCallbackInfo} 
+ * @returns {Struct.EpicSessionsSessionInviteAcceptedCallbackInfo}
  */
 function EpicSessionsSessionInviteAcceptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3586805024;
 
@@ -2129,13 +2140,13 @@ function EpicSessionsSessionInviteAcceptedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsJoinSessionAcceptedCallbackInfo} 
+ * @returns {Struct.EpicSessionsJoinSessionAcceptedCallbackInfo}
  */
 function EpicSessionsJoinSessionAcceptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2596263193;
 
@@ -2144,13 +2155,13 @@ function EpicSessionsJoinSessionAcceptedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionDetailsAttribute} 
+ * @returns {Struct.EpicSessionDetailsAttribute}
  */
 function EpicSessionDetailsAttribute() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3704499438;
 
@@ -2162,13 +2173,13 @@ function EpicSessionDetailsAttribute() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsSendInviteCallbackInfo} 
+ * @returns {Struct.EpicSessionsSendInviteCallbackInfo}
  */
 function EpicSessionsSendInviteCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3723527869;
 
@@ -2177,13 +2188,13 @@ function EpicSessionsSendInviteCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsRejectInviteCallbackInfo} 
+ * @returns {Struct.EpicSessionsRejectInviteCallbackInfo}
  */
 function EpicSessionsRejectInviteCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 265667916;
 
@@ -2192,13 +2203,13 @@ function EpicSessionsRejectInviteCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsQueryInvitesCallbackInfo} 
+ * @returns {Struct.EpicSessionsQueryInvitesCallbackInfo}
  */
 function EpicSessionsQueryInvitesCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4176952940;
 
@@ -2208,13 +2219,13 @@ function EpicSessionsQueryInvitesCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsSessionInviteRejectedCallbackInfo} 
+ * @returns {Struct.EpicSessionsSessionInviteRejectedCallbackInfo}
  */
 function EpicSessionsSessionInviteRejectedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1669583951;
 
@@ -2226,13 +2237,13 @@ function EpicSessionsSessionInviteRejectedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsLeaveSessionRequestedCallbackInfo} 
+ * @returns {Struct.EpicSessionsLeaveSessionRequestedCallbackInfo}
  */
 function EpicSessionsLeaveSessionRequestedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3142684947;
 
@@ -2242,13 +2253,13 @@ function EpicSessionsLeaveSessionRequestedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicSessionsSendSessionNativeInviteRequestedCallbackInfo} 
+ * @returns {Struct.EpicSessionsSendSessionNativeInviteRequestedCallbackInfo}
  */
 function EpicSessionsSendSessionNativeInviteRequestedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2565161338;
 
@@ -2259,13 +2270,13 @@ function EpicSessionsSendSessionNativeInviteRequestedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyCreateLobbyCallbackInfo} 
+ * @returns {Struct.EpicLobbyCreateLobbyCallbackInfo}
  */
 function EpicLobbyCreateLobbyCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2224110395;
 
@@ -2275,13 +2286,13 @@ function EpicLobbyCreateLobbyCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyDestroyLobbyCallbackInfo} 
+ * @returns {Struct.EpicLobbyDestroyLobbyCallbackInfo}
  */
 function EpicLobbyDestroyLobbyCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 361601117;
 
@@ -2291,13 +2302,13 @@ function EpicLobbyDestroyLobbyCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyJoinLobbyCallbackInfo} 
+ * @returns {Struct.EpicLobbyJoinLobbyCallbackInfo}
  */
 function EpicLobbyJoinLobbyCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 361541383;
 
@@ -2307,13 +2318,13 @@ function EpicLobbyJoinLobbyCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyLeaveLobbyCallbackInfo} 
+ * @returns {Struct.EpicLobbyLeaveLobbyCallbackInfo}
  */
 function EpicLobbyLeaveLobbyCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3943378766;
 
@@ -2323,13 +2334,13 @@ function EpicLobbyLeaveLobbyCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyCreateLobbyOptions} 
+ * @returns {Struct.EpicLobbyCreateLobbyOptions}
  */
 function EpicLobbyCreateLobbyOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3546679194;
 
@@ -2347,13 +2358,13 @@ function EpicLobbyCreateLobbyOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyJoinLobbyOptions} 
+ * @returns {Struct.EpicLobbyJoinLobbyOptions}
  */
 function EpicLobbyJoinLobbyOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1559969366;
 
@@ -2364,13 +2375,13 @@ function EpicLobbyJoinLobbyOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyUpdateLobbyCallbackInfo} 
+ * @returns {Struct.EpicLobbyUpdateLobbyCallbackInfo}
  */
 function EpicLobbyUpdateLobbyCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3549428012;
 
@@ -2380,13 +2391,13 @@ function EpicLobbyUpdateLobbyCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyPromoteMemberCallbackInfo} 
+ * @returns {Struct.EpicLobbyPromoteMemberCallbackInfo}
  */
 function EpicLobbyPromoteMemberCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 178186193;
 
@@ -2396,13 +2407,13 @@ function EpicLobbyPromoteMemberCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyKickMemberCallbackInfo} 
+ * @returns {Struct.EpicLobbyKickMemberCallbackInfo}
  */
 function EpicLobbyKickMemberCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3733861207;
 
@@ -2412,13 +2423,13 @@ function EpicLobbyKickMemberCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyModificationAddAttributeOptions} 
+ * @returns {Struct.EpicLobbyModificationAddAttributeOptions}
  */
 function EpicLobbyModificationAddAttributeOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3316783229;
 
@@ -2429,13 +2440,13 @@ function EpicLobbyModificationAddAttributeOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyModificationAddMemberAttributeOptions} 
+ * @returns {Struct.EpicLobbyModificationAddMemberAttributeOptions}
  */
 function EpicLobbyModificationAddMemberAttributeOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1688137915;
 
@@ -2446,13 +2457,13 @@ function EpicLobbyModificationAddMemberAttributeOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyPromoteMemberOptions} 
+ * @returns {Struct.EpicLobbyPromoteMemberOptions}
  */
 function EpicLobbyPromoteMemberOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1038519352;
 
@@ -2463,13 +2474,13 @@ function EpicLobbyPromoteMemberOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyKickMemberOptions} 
+ * @returns {Struct.EpicLobbyKickMemberOptions}
  */
 function EpicLobbyKickMemberOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2995558950;
 
@@ -2480,13 +2491,13 @@ function EpicLobbyKickMemberOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbySearchFindCallbackInfo} 
+ * @returns {Struct.EpicLobbySearchFindCallbackInfo}
  */
 function EpicLobbySearchFindCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1995381572;
 
@@ -2495,13 +2506,13 @@ function EpicLobbySearchFindCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbySearchSetParameterOptions} 
+ * @returns {Struct.EpicLobbySearchSetParameterOptions}
  */
 function EpicLobbySearchSetParameterOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2399959679;
 
@@ -2512,13 +2523,13 @@ function EpicLobbySearchSetParameterOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbySearchRemoveParameterOptions} 
+ * @returns {Struct.EpicLobbySearchRemoveParameterOptions}
  */
 function EpicLobbySearchRemoveParameterOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 24089831;
 
@@ -2528,13 +2539,13 @@ function EpicLobbySearchRemoveParameterOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyDetailsInfo} 
+ * @returns {Struct.EpicLobbyDetailsInfo}
  */
 function EpicLobbyDetailsInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2127442566;
 
@@ -2546,17 +2557,21 @@ function EpicLobbyDetailsInfo() constructor
     self.permission_level = undefined;
     self.allow_invites = undefined;
     self.presence_enabled = undefined;
+    self.rtc_room_enabled = undefined;
+    self.allow_host_migration = undefined;
+    self.allow_join_by_id = undefined;
+    self.rejoin_after_kick_requires_invite = undefined;
 
 }
 
 /**
- * @returns {Struct.EpicLobbyLobbyUpdateReceivedCallbackInfo} 
+ * @returns {Struct.EpicLobbyLobbyUpdateReceivedCallbackInfo}
  */
 function EpicLobbyLobbyUpdateReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1115531689;
 
@@ -2566,13 +2581,13 @@ function EpicLobbyLobbyUpdateReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyLobbyMemberUpdateReceivedCallbackInfo} 
+ * @returns {Struct.EpicLobbyLobbyMemberUpdateReceivedCallbackInfo}
  */
 function EpicLobbyLobbyMemberUpdateReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3295821363;
 
@@ -2583,13 +2598,13 @@ function EpicLobbyLobbyMemberUpdateReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyLobbyMemberStatusReceivedCallbackInfo} 
+ * @returns {Struct.EpicLobbyLobbyMemberStatusReceivedCallbackInfo}
  */
 function EpicLobbyLobbyMemberStatusReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3267317324;
 
@@ -2601,28 +2616,29 @@ function EpicLobbyLobbyMemberStatusReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyJoinLobbyAcceptedCallbackInfo} 
+ * @returns {Struct.EpicLobbyJoinLobbyAcceptedCallbackInfo}
  */
 function EpicLobbyJoinLobbyAcceptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2332569210;
 
     self.ui_event_id = undefined;
+    self.local_user_id = undefined;
 
 }
 
 /**
- * @returns {Struct.EpicLobbyLeaveLobbyRequestedCallbackInfo} 
+ * @returns {Struct.EpicLobbyLeaveLobbyRequestedCallbackInfo}
  */
 function EpicLobbyLeaveLobbyRequestedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3837709192;
 
@@ -2632,13 +2648,13 @@ function EpicLobbyLeaveLobbyRequestedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbySendLobbyNativeInviteRequestedCallbackInfo} 
+ * @returns {Struct.EpicLobbySendLobbyNativeInviteRequestedCallbackInfo}
  */
 function EpicLobbySendLobbyNativeInviteRequestedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 193408739;
 
@@ -2650,13 +2666,13 @@ function EpicLobbySendLobbyNativeInviteRequestedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyRTCRoomConnectionChangedCallbackInfo} 
+ * @returns {Struct.EpicLobbyRTCRoomConnectionChangedCallbackInfo}
  */
 function EpicLobbyRTCRoomConnectionChangedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3359698299;
 
@@ -2668,13 +2684,13 @@ function EpicLobbyRTCRoomConnectionChangedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyDetailsAttribute} 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
  */
 function EpicLobbyDetailsAttribute() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1809973890;
 
@@ -2686,13 +2702,13 @@ function EpicLobbyDetailsAttribute() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyDetailsMemberInfo} 
+ * @returns {Struct.EpicLobbyDetailsMemberInfo}
  */
 function EpicLobbyDetailsMemberInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3183190364;
 
@@ -2703,13 +2719,13 @@ function EpicLobbyDetailsMemberInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyJoinLobbyByIdCallbackInfo} 
+ * @returns {Struct.EpicLobbyJoinLobbyByIdCallbackInfo}
  */
 function EpicLobbyJoinLobbyByIdCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3058988255;
 
@@ -2719,13 +2735,13 @@ function EpicLobbyJoinLobbyByIdCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyHardMuteMemberCallbackInfo} 
+ * @returns {Struct.EpicLobbyHardMuteMemberCallbackInfo}
  */
 function EpicLobbyHardMuteMemberCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2134374633;
 
@@ -2736,13 +2752,13 @@ function EpicLobbyHardMuteMemberCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbySendInviteCallbackInfo} 
+ * @returns {Struct.EpicLobbySendInviteCallbackInfo}
  */
 function EpicLobbySendInviteCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 500869572;
 
@@ -2752,13 +2768,13 @@ function EpicLobbySendInviteCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyRejectInviteCallbackInfo} 
+ * @returns {Struct.EpicLobbyRejectInviteCallbackInfo}
  */
 function EpicLobbyRejectInviteCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2826370089;
 
@@ -2768,13 +2784,13 @@ function EpicLobbyRejectInviteCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyQueryInvitesCallbackInfo} 
+ * @returns {Struct.EpicLobbyQueryInvitesCallbackInfo}
  */
 function EpicLobbyQueryInvitesCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4136321661;
 
@@ -2784,13 +2800,13 @@ function EpicLobbyQueryInvitesCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyLobbyInviteReceivedCallbackInfo} 
+ * @returns {Struct.EpicLobbyLobbyInviteReceivedCallbackInfo}
  */
 function EpicLobbyLobbyInviteReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3793731537;
 
@@ -2801,13 +2817,13 @@ function EpicLobbyLobbyInviteReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyLobbyInviteAcceptedCallbackInfo} 
+ * @returns {Struct.EpicLobbyLobbyInviteAcceptedCallbackInfo}
  */
 function EpicLobbyLobbyInviteAcceptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3555384883;
 
@@ -2819,13 +2835,13 @@ function EpicLobbyLobbyInviteAcceptedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyLobbyInviteRejectedCallbackInfo} 
+ * @returns {Struct.EpicLobbyLobbyInviteRejectedCallbackInfo}
  */
 function EpicLobbyLobbyInviteRejectedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 761590952;
 
@@ -2837,13 +2853,13 @@ function EpicLobbyLobbyInviteRejectedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyJoinLobbyByIdOptions} 
+ * @returns {Struct.EpicLobbyJoinLobbyByIdOptions}
  */
 function EpicLobbyJoinLobbyByIdOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 694724702;
 
@@ -2854,13 +2870,13 @@ function EpicLobbyJoinLobbyByIdOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbyHardMuteMemberOptions} 
+ * @returns {Struct.EpicLobbyHardMuteMemberOptions}
  */
 function EpicLobbyHardMuteMemberOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1348463136;
 
@@ -2872,13 +2888,13 @@ function EpicLobbyHardMuteMemberOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicLobbySendInviteOptions} 
+ * @returns {Struct.EpicLobbySendInviteOptions}
  */
 function EpicLobbySendInviteOptions() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3755492107;
 
@@ -2889,13 +2905,13 @@ function EpicLobbySendInviteOptions() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PReceivedPacket} 
+ * @returns {Struct.EpicP2PReceivedPacket}
  */
 function EpicP2PReceivedPacket() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 841337933;
 
@@ -2908,13 +2924,13 @@ function EpicP2PReceivedPacket() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PQueryNATTypeCallbackInfo} 
+ * @returns {Struct.EpicP2PQueryNATTypeCallbackInfo}
  */
 function EpicP2PQueryNATTypeCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 736725286;
 
@@ -2924,13 +2940,13 @@ function EpicP2PQueryNATTypeCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PConnectionRequestCallbackInfo} 
+ * @returns {Struct.EpicP2PConnectionRequestCallbackInfo}
  */
 function EpicP2PConnectionRequestCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 74091728;
 
@@ -2941,13 +2957,13 @@ function EpicP2PConnectionRequestCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PConnectionEstablishedCallbackInfo} 
+ * @returns {Struct.EpicP2PConnectionEstablishedCallbackInfo}
  */
 function EpicP2PConnectionEstablishedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3830260995;
 
@@ -2960,13 +2976,13 @@ function EpicP2PConnectionEstablishedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PConnectionInterruptedCallbackInfo} 
+ * @returns {Struct.EpicP2PConnectionInterruptedCallbackInfo}
  */
 function EpicP2PConnectionInterruptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3290204167;
 
@@ -2977,13 +2993,13 @@ function EpicP2PConnectionInterruptedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PConnectionClosedCallbackInfo} 
+ * @returns {Struct.EpicP2PConnectionClosedCallbackInfo}
  */
 function EpicP2PConnectionClosedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3756570077;
 
@@ -2995,13 +3011,13 @@ function EpicP2PConnectionClosedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PPacketQueueInfo} 
+ * @returns {Struct.EpicP2PPacketQueueInfo}
  */
 function EpicP2PPacketQueueInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1893978565;
 
@@ -3015,13 +3031,13 @@ function EpicP2PPacketQueueInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PPortRange} 
+ * @returns {Struct.EpicP2PPortRange}
  */
 function EpicP2PPortRange() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 846595586;
 
@@ -3031,13 +3047,13 @@ function EpicP2PPortRange() constructor
 }
 
 /**
- * @returns {Struct.EpicP2PIncomingPacketQueueFullCallbackInfo} 
+ * @returns {Struct.EpicP2PIncomingPacketQueueFullCallbackInfo}
  */
 function EpicP2PIncomingPacketQueueFullCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2048630731;
 
@@ -3050,13 +3066,13 @@ function EpicP2PIncomingPacketQueueFullCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageFileMetadata} 
+ * @returns {Struct.EpicPlayerDataStorageFileMetadata}
  */
 function EpicPlayerDataStorageFileMetadata() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3769279245;
 
@@ -3069,13 +3085,13 @@ function EpicPlayerDataStorageFileMetadata() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageQueryFileCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageQueryFileCallbackInfo}
  */
 function EpicPlayerDataStorageQueryFileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3069422523;
 
@@ -3085,13 +3101,13 @@ function EpicPlayerDataStorageQueryFileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageQueryFileListCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageQueryFileListCallbackInfo}
  */
 function EpicPlayerDataStorageQueryFileListCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2164768771;
 
@@ -3102,13 +3118,13 @@ function EpicPlayerDataStorageQueryFileListCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageDuplicateFileCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageDuplicateFileCallbackInfo}
  */
 function EpicPlayerDataStorageDuplicateFileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1895209402;
 
@@ -3118,13 +3134,13 @@ function EpicPlayerDataStorageDuplicateFileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageDeleteFileCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageDeleteFileCallbackInfo}
  */
 function EpicPlayerDataStorageDeleteFileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1067910884;
 
@@ -3134,13 +3150,13 @@ function EpicPlayerDataStorageDeleteFileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageReadFileCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageReadFileCallbackInfo}
  */
 function EpicPlayerDataStorageReadFileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2713402095;
 
@@ -3151,13 +3167,13 @@ function EpicPlayerDataStorageReadFileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageWriteFileCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageWriteFileCallbackInfo}
  */
 function EpicPlayerDataStorageWriteFileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3152494836;
 
@@ -3168,13 +3184,13 @@ function EpicPlayerDataStorageWriteFileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo}
  */
 function EpicPlayerDataStorageReadFileProgressCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4179261232;
 
@@ -3186,13 +3202,13 @@ function EpicPlayerDataStorageReadFileProgressCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo}
  */
 function EpicPlayerDataStorageWriteFileProgressCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2416113311;
 
@@ -3204,13 +3220,13 @@ function EpicPlayerDataStorageWriteFileProgressCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicPlayerDataStorageDeleteCacheCallbackInfo} 
+ * @returns {Struct.EpicPlayerDataStorageDeleteCacheCallbackInfo}
  */
 function EpicPlayerDataStorageDeleteCacheCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3371588018;
 
@@ -3220,13 +3236,13 @@ function EpicPlayerDataStorageDeleteCacheCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicTitleStorageFileMetadata} 
+ * @returns {Struct.EpicTitleStorageFileMetadata}
  */
 function EpicTitleStorageFileMetadata() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1787406992;
 
@@ -3238,13 +3254,13 @@ function EpicTitleStorageFileMetadata() constructor
 }
 
 /**
- * @returns {Struct.EpicTitleStorageQueryFileCallbackInfo} 
+ * @returns {Struct.EpicTitleStorageQueryFileCallbackInfo}
  */
 function EpicTitleStorageQueryFileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2197183396;
 
@@ -3254,13 +3270,13 @@ function EpicTitleStorageQueryFileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicTitleStorageQueryFileListCallbackInfo} 
+ * @returns {Struct.EpicTitleStorageQueryFileListCallbackInfo}
  */
 function EpicTitleStorageQueryFileListCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1249781516;
 
@@ -3271,13 +3287,13 @@ function EpicTitleStorageQueryFileListCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicTitleStorageReadFileCallbackInfo} 
+ * @returns {Struct.EpicTitleStorageReadFileCallbackInfo}
  */
 function EpicTitleStorageReadFileCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3327780090;
 
@@ -3288,13 +3304,13 @@ function EpicTitleStorageReadFileCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicTitleStorageReadFileProgressCallbackInfo} 
+ * @returns {Struct.EpicTitleStorageReadFileProgressCallbackInfo}
  */
 function EpicTitleStorageReadFileProgressCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 845177309;
 
@@ -3306,13 +3322,13 @@ function EpicTitleStorageReadFileProgressCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicTitleStorageDeleteCacheCallbackInfo} 
+ * @returns {Struct.EpicTitleStorageDeleteCacheCallbackInfo}
  */
 function EpicTitleStorageDeleteCacheCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2240720117;
 
@@ -3322,13 +3338,13 @@ function EpicTitleStorageDeleteCacheCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomEntitlement} 
+ * @returns {Struct.EpicEcomEntitlement}
  */
 function EpicEcomEntitlement() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2907203387;
 
@@ -3342,13 +3358,13 @@ function EpicEcomEntitlement() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomItemOwnership} 
+ * @returns {Struct.EpicEcomItemOwnership}
  */
 function EpicEcomItemOwnership() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4197474988;
 
@@ -3358,13 +3374,13 @@ function EpicEcomItemOwnership() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomSandboxIdItemOwnership} 
+ * @returns {Struct.EpicEcomSandboxIdItemOwnership}
  */
 function EpicEcomSandboxIdItemOwnership() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2914791902;
 
@@ -3374,13 +3390,13 @@ function EpicEcomSandboxIdItemOwnership() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomCatalogOffer} 
+ * @returns {Struct.EpicEcomCatalogOffer}
  */
 function EpicEcomCatalogOffer() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3981276519;
 
@@ -3405,13 +3421,13 @@ function EpicEcomCatalogOffer() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomCatalogItem} 
+ * @returns {Struct.EpicEcomCatalogItem}
  */
 function EpicEcomCatalogItem() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3771901908;
 
@@ -3429,13 +3445,13 @@ function EpicEcomCatalogItem() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomKeyImageInfo} 
+ * @returns {Struct.EpicEcomKeyImageInfo}
  */
 function EpicEcomKeyImageInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2878923644;
 
@@ -3447,13 +3463,13 @@ function EpicEcomKeyImageInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomCatalogRelease} 
+ * @returns {Struct.EpicEcomCatalogRelease}
  */
 function EpicEcomCatalogRelease() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2996334144;
 
@@ -3464,13 +3480,13 @@ function EpicEcomCatalogRelease() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomQueryOwnershipCallbackInfo} 
+ * @returns {Struct.EpicEcomQueryOwnershipCallbackInfo}
  */
 function EpicEcomQueryOwnershipCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 316048310;
 
@@ -3481,13 +3497,13 @@ function EpicEcomQueryOwnershipCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomQueryOwnershipBySandboxIdsCallbackInfo} 
+ * @returns {Struct.EpicEcomQueryOwnershipBySandboxIdsCallbackInfo}
  */
 function EpicEcomQueryOwnershipBySandboxIdsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3575803052;
 
@@ -3498,13 +3514,13 @@ function EpicEcomQueryOwnershipBySandboxIdsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomQueryOwnershipTokenCallbackInfo} 
+ * @returns {Struct.EpicEcomQueryOwnershipTokenCallbackInfo}
  */
 function EpicEcomQueryOwnershipTokenCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3534163461;
 
@@ -3515,13 +3531,13 @@ function EpicEcomQueryOwnershipTokenCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomQueryEntitlementsCallbackInfo} 
+ * @returns {Struct.EpicEcomQueryEntitlementsCallbackInfo}
  */
 function EpicEcomQueryEntitlementsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 836545403;
 
@@ -3531,13 +3547,13 @@ function EpicEcomQueryEntitlementsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomQueryEntitlementTokenCallbackInfo} 
+ * @returns {Struct.EpicEcomQueryEntitlementTokenCallbackInfo}
  */
 function EpicEcomQueryEntitlementTokenCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 930792203;
 
@@ -3548,13 +3564,13 @@ function EpicEcomQueryEntitlementTokenCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomQueryOffersCallbackInfo} 
+ * @returns {Struct.EpicEcomQueryOffersCallbackInfo}
  */
 function EpicEcomQueryOffersCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3938233228;
 
@@ -3564,13 +3580,13 @@ function EpicEcomQueryOffersCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomCheckoutCallbackInfo} 
+ * @returns {Struct.EpicEcomCheckoutCallbackInfo}
  */
 function EpicEcomCheckoutCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 696057575;
 
@@ -3581,13 +3597,13 @@ function EpicEcomCheckoutCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicEcomRedeemEntitlementsCallbackInfo} 
+ * @returns {Struct.EpicEcomRedeemEntitlementsCallbackInfo}
  */
 function EpicEcomRedeemEntitlementsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3946410899;
 
@@ -3598,13 +3614,13 @@ function EpicEcomRedeemEntitlementsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesSendCustomInviteCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesSendCustomInviteCallbackInfo}
  */
 function EpicCustomInvitesSendCustomInviteCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3266080184;
 
@@ -3615,13 +3631,13 @@ function EpicCustomInvitesSendCustomInviteCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesCustomInviteReceivedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesCustomInviteReceivedCallbackInfo}
  */
 function EpicCustomInvitesCustomInviteReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2386133421;
 
@@ -3633,13 +3649,13 @@ function EpicCustomInvitesCustomInviteReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesCustomInviteAcceptedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesCustomInviteAcceptedCallbackInfo}
  */
 function EpicCustomInvitesCustomInviteAcceptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2876885559;
 
@@ -3651,13 +3667,13 @@ function EpicCustomInvitesCustomInviteAcceptedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesCustomInviteRejectedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesCustomInviteRejectedCallbackInfo}
  */
 function EpicCustomInvitesCustomInviteRejectedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1336866244;
 
@@ -3669,13 +3685,13 @@ function EpicCustomInvitesCustomInviteRejectedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesSendRequestToJoinCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesSendRequestToJoinCallbackInfo}
  */
 function EpicCustomInvitesSendRequestToJoinCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 396244264;
 
@@ -3686,13 +3702,13 @@ function EpicCustomInvitesSendRequestToJoinCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo}
  */
 function EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3839289070;
 
@@ -3703,13 +3719,13 @@ function EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo() constructo
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesRequestToJoinReceivedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinReceivedCallbackInfo}
  */
 function EpicCustomInvitesRequestToJoinReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4043869029;
 
@@ -3719,13 +3735,13 @@ function EpicCustomInvitesRequestToJoinReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesAcceptRequestToJoinCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesAcceptRequestToJoinCallbackInfo}
  */
 function EpicCustomInvitesAcceptRequestToJoinCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1622043162;
 
@@ -3736,13 +3752,13 @@ function EpicCustomInvitesAcceptRequestToJoinCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesRejectRequestToJoinCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesRejectRequestToJoinCallbackInfo}
  */
 function EpicCustomInvitesRejectRequestToJoinCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 226103779;
 
@@ -3753,13 +3769,13 @@ function EpicCustomInvitesRejectRequestToJoinCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo}
  */
 function EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 358912263;
 
@@ -3772,13 +3788,13 @@ function EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo() construc
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesRequestToJoinAcceptedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinAcceptedCallbackInfo}
  */
 function EpicCustomInvitesRequestToJoinAcceptedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1532611903;
 
@@ -3788,13 +3804,13 @@ function EpicCustomInvitesRequestToJoinAcceptedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicCustomInvitesRequestToJoinRejectedCallbackInfo} 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinRejectedCallbackInfo}
  */
 function EpicCustomInvitesRequestToJoinRejectedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 92768188;
 
@@ -3804,13 +3820,13 @@ function EpicCustomInvitesRequestToJoinRejectedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCJoinRoomCallbackInfo} 
+ * @returns {Struct.EpicRTCJoinRoomCallbackInfo}
  */
 function EpicRTCJoinRoomCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3078703615;
 
@@ -3821,13 +3837,13 @@ function EpicRTCJoinRoomCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCLeaveRoomCallbackInfo} 
+ * @returns {Struct.EpicRTCLeaveRoomCallbackInfo}
  */
 function EpicRTCLeaveRoomCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 130777770;
 
@@ -3838,13 +3854,13 @@ function EpicRTCLeaveRoomCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCBlockParticipantCallbackInfo} 
+ * @returns {Struct.EpicRTCBlockParticipantCallbackInfo}
  */
 function EpicRTCBlockParticipantCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1769492566;
 
@@ -3857,13 +3873,13 @@ function EpicRTCBlockParticipantCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCDisconnectedCallbackInfo} 
+ * @returns {Struct.EpicRTCDisconnectedCallbackInfo}
  */
 function EpicRTCDisconnectedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1856835259;
 
@@ -3874,13 +3890,13 @@ function EpicRTCDisconnectedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo} 
+ * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo}
  */
 function EpicRTCParticipantStatusChangedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1418771849;
 
@@ -3893,13 +3909,13 @@ function EpicRTCParticipantStatusChangedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCRoomStatisticsUpdatedInfo} 
+ * @returns {Struct.EpicRTCRoomStatisticsUpdatedInfo}
  */
 function EpicRTCRoomStatisticsUpdatedInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 745994514;
 
@@ -3910,13 +3926,13 @@ function EpicRTCRoomStatisticsUpdatedInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioParticipantUpdatedCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioParticipantUpdatedCallbackInfo}
  */
 function EpicRTCAudioParticipantUpdatedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3911864832;
 
@@ -3929,13 +3945,13 @@ function EpicRTCAudioParticipantUpdatedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioDevicesChangedCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioDevicesChangedCallbackInfo}
  */
 function EpicRTCAudioDevicesChangedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 351552653;
 
@@ -3944,13 +3960,13 @@ function EpicRTCAudioDevicesChangedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioInputStateCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioInputStateCallbackInfo}
  */
 function EpicRTCAudioInputStateCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 991707653;
 
@@ -3961,13 +3977,13 @@ function EpicRTCAudioInputStateCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioOutputStateCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioOutputStateCallbackInfo}
  */
 function EpicRTCAudioOutputStateCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 267225696;
 
@@ -3978,13 +3994,13 @@ function EpicRTCAudioOutputStateCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioUpdateSendingCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioUpdateSendingCallbackInfo}
  */
 function EpicRTCAudioUpdateSendingCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2520233207;
 
@@ -3996,13 +4012,13 @@ function EpicRTCAudioUpdateSendingCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioUpdateReceivingCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioUpdateReceivingCallbackInfo}
  */
 function EpicRTCAudioUpdateReceivingCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3258613439;
 
@@ -4015,13 +4031,13 @@ function EpicRTCAudioUpdateReceivingCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioUpdateSendingVolumeCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioUpdateSendingVolumeCallbackInfo}
  */
 function EpicRTCAudioUpdateSendingVolumeCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 2886319341;
 
@@ -4033,13 +4049,13 @@ function EpicRTCAudioUpdateSendingVolumeCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioUpdateReceivingVolumeCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioUpdateReceivingVolumeCallbackInfo}
  */
 function EpicRTCAudioUpdateReceivingVolumeCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4138315621;
 
@@ -4051,13 +4067,13 @@ function EpicRTCAudioUpdateReceivingVolumeCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioUpdateParticipantVolumeCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioUpdateParticipantVolumeCallbackInfo}
  */
 function EpicRTCAudioUpdateParticipantVolumeCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3786642474;
 
@@ -4070,13 +4086,13 @@ function EpicRTCAudioUpdateParticipantVolumeCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioInputDeviceInfo} 
+ * @returns {Struct.EpicRTCAudioInputDeviceInfo}
  */
 function EpicRTCAudioInputDeviceInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 855806523;
 
@@ -4087,13 +4103,13 @@ function EpicRTCAudioInputDeviceInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioOutputDeviceInfo} 
+ * @returns {Struct.EpicRTCAudioOutputDeviceInfo}
  */
 function EpicRTCAudioOutputDeviceInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3872725628;
 
@@ -4104,13 +4120,13 @@ function EpicRTCAudioOutputDeviceInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioSetInputDeviceSettingsCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioSetInputDeviceSettingsCallbackInfo}
  */
 function EpicRTCAudioSetInputDeviceSettingsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3854008511;
 
@@ -4120,13 +4136,13 @@ function EpicRTCAudioSetInputDeviceSettingsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioSetOutputDeviceSettingsCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioSetOutputDeviceSettingsCallbackInfo}
  */
 function EpicRTCAudioSetOutputDeviceSettingsCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1151912508;
 
@@ -4136,13 +4152,13 @@ function EpicRTCAudioSetOutputDeviceSettingsCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioQueryInputDevicesCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioQueryInputDevicesCallbackInfo}
  */
 function EpicRTCAudioQueryInputDevicesCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 4148331213;
 
@@ -4151,13 +4167,13 @@ function EpicRTCAudioQueryInputDevicesCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCAudioQueryOutputDevicesCallbackInfo} 
+ * @returns {Struct.EpicRTCAudioQueryOutputDevicesCallbackInfo}
  */
 function EpicRTCAudioQueryOutputDevicesCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3455970768;
 
@@ -4166,13 +4182,13 @@ function EpicRTCAudioQueryOutputDevicesCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCDataParticipantUpdatedCallbackInfo} 
+ * @returns {Struct.EpicRTCDataParticipantUpdatedCallbackInfo}
  */
 function EpicRTCDataParticipantUpdatedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1536679908;
 
@@ -4184,13 +4200,13 @@ function EpicRTCDataParticipantUpdatedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCDataReceivedCallbackInfo} 
+ * @returns {Struct.EpicRTCDataReceivedCallbackInfo}
  */
 function EpicRTCDataReceivedCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 515413135;
 
@@ -4203,13 +4219,13 @@ function EpicRTCDataReceivedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCDataUpdateSendingCallbackInfo} 
+ * @returns {Struct.EpicRTCDataUpdateSendingCallbackInfo}
  */
 function EpicRTCDataUpdateSendingCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1349901819;
 
@@ -4221,13 +4237,13 @@ function EpicRTCDataUpdateSendingCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCDataUpdateReceivingCallbackInfo} 
+ * @returns {Struct.EpicRTCDataUpdateReceivingCallbackInfo}
  */
 function EpicRTCDataUpdateReceivingCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 432526611;
 
@@ -4240,13 +4256,13 @@ function EpicRTCDataUpdateReceivingCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicAuthLoginCallbackInfo} 
+ * @returns {Struct.EpicAuthLoginCallbackInfo}
  */
 function EpicAuthLoginCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 3139004448;
 
@@ -4254,18 +4270,19 @@ function EpicAuthLoginCallbackInfo() constructor
     self.local_user_id = undefined;
     self.selected_account_id = undefined;
     self.has_continuance_token = undefined;
+    self.continuance_token_id = undefined;
     self.pin_grant_info = undefined;
 
 }
 
 /**
- * @returns {Struct.EpicAuthLinkAccountCallbackInfo} 
+ * @returns {Struct.EpicAuthLinkAccountCallbackInfo}
  */
 function EpicAuthLinkAccountCallbackInfo() constructor
 {
     /**
      * Internally generated hash for quick validation
-     * @ignore 
+     * @ignore
      */
     static __uid = 1132751930;
 
@@ -4286,7 +4303,7 @@ function EpicAuthLinkAccountCallbackInfo() constructor
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLoggingMessage_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4315,8 +4332,8 @@ function __EpicLoggingMessage_encode(_inst, _buffer, _offset, _where = _GMFUNCTI
  * @func __EpicLoggingMessage_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLoggingMessage} 
- * @ignore 
+ * @returns {Struct.EpicLoggingMessage}
+ * @ignore
  */
 function __EpicLoggingMessage_decode(_buffer, _offset)
 {
@@ -4347,7 +4364,7 @@ function __EpicLoggingMessage_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthPinGrantInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4376,8 +4393,8 @@ function __EpicAuthPinGrantInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
  * @func __EpicAuthPinGrantInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthPinGrantInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthPinGrantInfo}
+ * @ignore
  */
 function __EpicAuthPinGrantInfo_decode(_buffer, _offset)
 {
@@ -4409,7 +4426,7 @@ function __EpicAuthPinGrantInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthLogoutCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4433,8 +4450,8 @@ function __EpicAuthLogoutCallbackInfo_encode(_inst, _buffer, _offset, _where = _
  * @func __EpicAuthLogoutCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthLogoutCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthLogoutCallbackInfo}
+ * @ignore
  */
 function __EpicAuthLogoutCallbackInfo_decode(_buffer, _offset)
 {
@@ -4461,7 +4478,7 @@ function __EpicAuthLogoutCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthDeletePersistentAuthCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4480,8 +4497,8 @@ function __EpicAuthDeletePersistentAuthCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicAuthDeletePersistentAuthCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthDeletePersistentAuthCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthDeletePersistentAuthCallbackInfo}
+ * @ignore
  */
 function __EpicAuthDeletePersistentAuthCallbackInfo_decode(_buffer, _offset)
 {
@@ -4504,7 +4521,7 @@ function __EpicAuthDeletePersistentAuthCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthIdToken_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4528,8 +4545,8 @@ function __EpicAuthIdToken_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_
  * @func __EpicAuthIdToken_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthIdToken} 
- * @ignore 
+ * @returns {Struct.EpicAuthIdToken}
+ * @ignore
  */
 function __EpicAuthIdToken_decode(_buffer, _offset)
 {
@@ -4557,7 +4574,7 @@ function __EpicAuthIdToken_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthUserAuthToken_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4619,8 +4636,8 @@ function __EpicAuthUserAuthToken_encode(_inst, _buffer, _offset, _where = _GMFUN
  * @func __EpicAuthUserAuthToken_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthUserAuthToken} 
- * @ignore 
+ * @returns {Struct.EpicAuthUserAuthToken}
+ * @ignore
  */
 function __EpicAuthUserAuthToken_decode(_buffer, _offset)
 {
@@ -4677,7 +4694,7 @@ function __EpicAuthUserAuthToken_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthQueryIdTokenCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4706,8 +4723,8 @@ function __EpicAuthQueryIdTokenCallbackInfo_encode(_inst, _buffer, _offset, _whe
  * @func __EpicAuthQueryIdTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthQueryIdTokenCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthQueryIdTokenCallbackInfo}
+ * @ignore
  */
 function __EpicAuthQueryIdTokenCallbackInfo_decode(_buffer, _offset)
 {
@@ -4738,7 +4755,7 @@ function __EpicAuthQueryIdTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthVerifyIdTokenCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4791,8 +4808,8 @@ function __EpicAuthVerifyIdTokenCallbackInfo_encode(_inst, _buffer, _offset, _wh
  * @func __EpicAuthVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthVerifyIdTokenCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthVerifyIdTokenCallbackInfo}
+ * @ignore
  */
 function __EpicAuthVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
 {
@@ -4842,7 +4859,7 @@ function __EpicAuthVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthVerifyUserAuthCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4861,8 +4878,8 @@ function __EpicAuthVerifyUserAuthCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicAuthVerifyUserAuthCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthVerifyUserAuthCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthVerifyUserAuthCallbackInfo}
+ * @ignore
  */
 function __EpicAuthVerifyUserAuthCallbackInfo_decode(_buffer, _offset)
 {
@@ -4885,7 +4902,7 @@ function __EpicAuthVerifyUserAuthCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthLoginStatusChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4914,8 +4931,8 @@ function __EpicAuthLoginStatusChangedCallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicAuthLoginStatusChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthLoginStatusChangedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthLoginStatusChangedCallbackInfo}
+ * @ignore
  */
 function __EpicAuthLoginStatusChangedCallbackInfo_decode(_buffer, _offset)
 {
@@ -4945,7 +4962,7 @@ function __EpicAuthLoginStatusChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectLoginCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -4966,6 +4983,10 @@ function __EpicConnectLoginCallbackInfo_encode(_inst, _buffer, _offset, _where =
         if (!is_bool(self.has_continuance_token)) show_error($"{_where} :: self.has_continuance_token expected bool", true);
         buffer_write(_buffer, buffer_bool, self.has_continuance_token);
 
+        // field: continuance_token_id, type: UInt64
+        if (!is_numeric(self.continuance_token_id)) show_error($"{_where} :: self.continuance_token_id expected number", true);
+        buffer_write(_buffer, buffer_u64, self.continuance_token_id);
+
     }
 }
 
@@ -4973,8 +4994,8 @@ function __EpicConnectLoginCallbackInfo_encode(_inst, _buffer, _offset, _where =
  * @func __EpicConnectLoginCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectLoginCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectLoginCallbackInfo}
+ * @ignore
  */
 function __EpicConnectLoginCallbackInfo_decode(_buffer, _offset)
 {
@@ -4993,6 +5014,9 @@ function __EpicConnectLoginCallbackInfo_decode(_buffer, _offset)
         // field: has_continuance_token, type: Bool
         self.has_continuance_token = buffer_read(_buffer, buffer_bool);
 
+        // field: continuance_token_id, type: UInt64
+        self.continuance_token_id = buffer_read(_buffer, buffer_u64);
+
     }
 
     return _inst;
@@ -5004,7 +5028,7 @@ function __EpicConnectLoginCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectCreateUserCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5028,8 +5052,8 @@ function __EpicConnectCreateUserCallbackInfo_encode(_inst, _buffer, _offset, _wh
  * @func __EpicConnectCreateUserCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectCreateUserCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectCreateUserCallbackInfo}
+ * @ignore
  */
 function __EpicConnectCreateUserCallbackInfo_decode(_buffer, _offset)
 {
@@ -5056,7 +5080,7 @@ function __EpicConnectCreateUserCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5080,8 +5104,8 @@ function __EpicConnectLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicConnectLinkAccountCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectLinkAccountCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectLinkAccountCallbackInfo}
+ * @ignore
  */
 function __EpicConnectLinkAccountCallbackInfo_decode(_buffer, _offset)
 {
@@ -5108,7 +5132,7 @@ function __EpicConnectLinkAccountCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectUnlinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5132,8 +5156,8 @@ function __EpicConnectUnlinkAccountCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicConnectUnlinkAccountCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectUnlinkAccountCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectUnlinkAccountCallbackInfo}
+ * @ignore
  */
 function __EpicConnectUnlinkAccountCallbackInfo_decode(_buffer, _offset)
 {
@@ -5160,7 +5184,7 @@ function __EpicConnectUnlinkAccountCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectCreateDeviceIdCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5184,8 +5208,8 @@ function __EpicConnectCreateDeviceIdCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicConnectCreateDeviceIdCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectCreateDeviceIdCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectCreateDeviceIdCallbackInfo}
+ * @ignore
  */
 function __EpicConnectCreateDeviceIdCallbackInfo_decode(_buffer, _offset)
 {
@@ -5212,7 +5236,7 @@ function __EpicConnectCreateDeviceIdCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectDeleteDeviceIdCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5231,8 +5255,8 @@ function __EpicConnectDeleteDeviceIdCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicConnectDeleteDeviceIdCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectDeleteDeviceIdCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectDeleteDeviceIdCallbackInfo}
+ * @ignore
  */
 function __EpicConnectDeleteDeviceIdCallbackInfo_decode(_buffer, _offset)
 {
@@ -5255,7 +5279,7 @@ function __EpicConnectDeleteDeviceIdCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectTransferDeviceIdAccountCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5279,8 +5303,8 @@ function __EpicConnectTransferDeviceIdAccountCallbackInfo_encode(_inst, _buffer,
  * @func __EpicConnectTransferDeviceIdAccountCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectTransferDeviceIdAccountCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectTransferDeviceIdAccountCallbackInfo}
+ * @ignore
  */
 function __EpicConnectTransferDeviceIdAccountCallbackInfo_decode(_buffer, _offset)
 {
@@ -5307,7 +5331,7 @@ function __EpicConnectTransferDeviceIdAccountCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectLogoutCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5331,8 +5355,8 @@ function __EpicConnectLogoutCallbackInfo_encode(_inst, _buffer, _offset, _where 
  * @func __EpicConnectLogoutCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectLogoutCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectLogoutCallbackInfo}
+ * @ignore
  */
 function __EpicConnectLogoutCallbackInfo_decode(_buffer, _offset)
 {
@@ -5359,7 +5383,7 @@ function __EpicConnectLogoutCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectIdToken_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5383,8 +5407,8 @@ function __EpicConnectIdToken_encode(_inst, _buffer, _offset, _where = _GMFUNCTI
  * @func __EpicConnectIdToken_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectIdToken} 
- * @ignore 
+ * @returns {Struct.EpicConnectIdToken}
+ * @ignore
  */
 function __EpicConnectIdToken_decode(_buffer, _offset)
 {
@@ -5412,7 +5436,7 @@ function __EpicConnectIdToken_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectExternalAccountInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5450,8 +5474,8 @@ function __EpicConnectExternalAccountInfo_encode(_inst, _buffer, _offset, _where
  * @func __EpicConnectExternalAccountInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectExternalAccountInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
+ * @ignore
  */
 function __EpicConnectExternalAccountInfo_decode(_buffer, _offset)
 {
@@ -5489,7 +5513,7 @@ function __EpicConnectExternalAccountInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectVerifyIdTokenCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5501,6 +5525,55 @@ function __EpicConnectVerifyIdTokenCallbackInfo_encode(_inst, _buffer, _offset, 
         if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
         buffer_write(_buffer, buffer_u64, self.result_code);
 
+        // field: product_user_id, type: String
+        if (!is_string(self.product_user_id)) show_error($"{_where} :: self.product_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_user_id));
+        buffer_write(_buffer, buffer_string, self.product_user_id);
+
+        // field: is_account_info_present, type: Bool
+        if (!is_bool(self.is_account_info_present)) show_error($"{_where} :: self.is_account_info_present expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.is_account_info_present);
+
+        // field: account_id_type, type: enum EpicExternalAccountType
+
+        if (!is_numeric(self.account_id_type)) show_error($"{_where} :: self.account_id_type expected number", true);
+        buffer_write(_buffer, buffer_u64, self.account_id_type);
+
+        // field: account_id, type: String
+        if (!is_string(self.account_id)) show_error($"{_where} :: self.account_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.account_id));
+        buffer_write(_buffer, buffer_string, self.account_id);
+
+        // field: platform, type: String
+        if (!is_string(self.platform)) show_error($"{_where} :: self.platform expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.platform));
+        buffer_write(_buffer, buffer_string, self.platform);
+
+        // field: device_type, type: String
+        if (!is_string(self.device_type)) show_error($"{_where} :: self.device_type expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.device_type));
+        buffer_write(_buffer, buffer_string, self.device_type);
+
+        // field: client_id, type: String
+        if (!is_string(self.client_id)) show_error($"{_where} :: self.client_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.client_id));
+        buffer_write(_buffer, buffer_string, self.client_id);
+
+        // field: product_id, type: String
+        if (!is_string(self.product_id)) show_error($"{_where} :: self.product_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_id));
+        buffer_write(_buffer, buffer_string, self.product_id);
+
+        // field: sandbox_id, type: String
+        if (!is_string(self.sandbox_id)) show_error($"{_where} :: self.sandbox_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.sandbox_id));
+        buffer_write(_buffer, buffer_string, self.sandbox_id);
+
+        // field: deployment_id, type: String
+        if (!is_string(self.deployment_id)) show_error($"{_where} :: self.deployment_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.deployment_id));
+        buffer_write(_buffer, buffer_string, self.deployment_id);
+
     }
 }
 
@@ -5508,8 +5581,8 @@ function __EpicConnectVerifyIdTokenCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicConnectVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectVerifyIdTokenCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectVerifyIdTokenCallbackInfo}
+ * @ignore
  */
 function __EpicConnectVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
 {
@@ -5520,6 +5593,44 @@ function __EpicConnectVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
     {
         // field: result_code, type: enum EpicResult
         self.result_code = buffer_read(_buffer, buffer_u64);
+
+        // field: product_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.product_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: is_account_info_present, type: Bool
+        self.is_account_info_present = buffer_read(_buffer, buffer_bool);
+
+        // field: account_id_type, type: enum EpicExternalAccountType
+        self.account_id_type = buffer_read(_buffer, buffer_u64);
+
+        // field: account_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.account_id = buffer_read(_buffer, buffer_string);
+
+        // field: platform, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.platform = buffer_read(_buffer, buffer_string);
+
+        // field: device_type, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.device_type = buffer_read(_buffer, buffer_string);
+
+        // field: client_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.client_id = buffer_read(_buffer, buffer_string);
+
+        // field: product_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.product_id = buffer_read(_buffer, buffer_string);
+
+        // field: sandbox_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.sandbox_id = buffer_read(_buffer, buffer_string);
+
+        // field: deployment_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.deployment_id = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -5532,7 +5643,7 @@ function __EpicConnectVerifyIdTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectQueryExternalAccountMappingsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5556,8 +5667,8 @@ function __EpicConnectQueryExternalAccountMappingsCallbackInfo_encode(_inst, _bu
  * @func __EpicConnectQueryExternalAccountMappingsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectQueryExternalAccountMappingsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectQueryExternalAccountMappingsCallbackInfo}
+ * @ignore
  */
 function __EpicConnectQueryExternalAccountMappingsCallbackInfo_decode(_buffer, _offset)
 {
@@ -5584,7 +5695,7 @@ function __EpicConnectQueryExternalAccountMappingsCallbackInfo_decode(_buffer, _
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectQueryProductUserIdMappingsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5608,8 +5719,8 @@ function __EpicConnectQueryProductUserIdMappingsCallbackInfo_encode(_inst, _buff
  * @func __EpicConnectQueryProductUserIdMappingsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectQueryProductUserIdMappingsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectQueryProductUserIdMappingsCallbackInfo}
+ * @ignore
  */
 function __EpicConnectQueryProductUserIdMappingsCallbackInfo_decode(_buffer, _offset)
 {
@@ -5636,7 +5747,7 @@ function __EpicConnectQueryProductUserIdMappingsCallbackInfo_decode(_buffer, _of
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectAuthExpirationCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5655,8 +5766,8 @@ function __EpicConnectAuthExpirationCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicConnectAuthExpirationCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectAuthExpirationCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectAuthExpirationCallbackInfo}
+ * @ignore
  */
 function __EpicConnectAuthExpirationCallbackInfo_decode(_buffer, _offset)
 {
@@ -5680,7 +5791,7 @@ function __EpicConnectAuthExpirationCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicConnectLoginStatusChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5709,8 +5820,8 @@ function __EpicConnectLoginStatusChangedCallbackInfo_encode(_inst, _buffer, _off
  * @func __EpicConnectLoginStatusChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicConnectLoginStatusChangedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicConnectLoginStatusChangedCallbackInfo}
+ * @ignore
  */
 function __EpicConnectLoginStatusChangedCallbackInfo_decode(_buffer, _offset)
 {
@@ -5740,7 +5851,7 @@ function __EpicConnectLoginStatusChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicFriendsQueryFriendsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5764,8 +5875,8 @@ function __EpicFriendsQueryFriendsCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicFriendsQueryFriendsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicFriendsQueryFriendsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicFriendsQueryFriendsCallbackInfo}
+ * @ignore
  */
 function __EpicFriendsQueryFriendsCallbackInfo_decode(_buffer, _offset)
 {
@@ -5792,7 +5903,7 @@ function __EpicFriendsQueryFriendsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicFriendsFriendsUpdateCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5826,8 +5937,8 @@ function __EpicFriendsFriendsUpdateCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicFriendsFriendsUpdateCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicFriendsFriendsUpdateCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicFriendsFriendsUpdateCallbackInfo}
+ * @ignore
  */
 function __EpicFriendsFriendsUpdateCallbackInfo_decode(_buffer, _offset)
 {
@@ -5861,7 +5972,7 @@ function __EpicFriendsFriendsUpdateCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUserInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5900,8 +6011,8 @@ function __EpicUserInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
  * @func __EpicUserInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUserInfo} 
- * @ignore 
+ * @returns {Struct.EpicUserInfo}
+ * @ignore
  */
 function __EpicUserInfo_decode(_buffer, _offset)
 {
@@ -5941,7 +6052,7 @@ function __EpicUserInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUserInfoQueryUserInfoCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -5970,8 +6081,8 @@ function __EpicUserInfoQueryUserInfoCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicUserInfoQueryUserInfoCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUserInfoQueryUserInfoCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicUserInfoQueryUserInfoCallbackInfo}
+ * @ignore
  */
 function __EpicUserInfoQueryUserInfoCallbackInfo_decode(_buffer, _offset)
 {
@@ -6002,7 +6113,7 @@ function __EpicUserInfoQueryUserInfoCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUserInfoExternalUserInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6031,8 +6142,8 @@ function __EpicUserInfoExternalUserInfo_encode(_inst, _buffer, _offset, _where =
  * @func __EpicUserInfoExternalUserInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
- * @ignore 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
+ * @ignore
  */
 function __EpicUserInfoExternalUserInfo_decode(_buffer, _offset)
 {
@@ -6063,7 +6174,7 @@ function __EpicUserInfoExternalUserInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicStatsStat_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6094,8 +6205,8 @@ function __EpicStatsStat_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
  * @func __EpicStatsStat_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicStatsStat} 
- * @ignore 
+ * @returns {Struct.EpicStatsStat}
+ * @ignore
  */
 function __EpicStatsStat_decode(_buffer, _offset)
 {
@@ -6128,7 +6239,7 @@ function __EpicStatsStat_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicStatsIngestStatCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6157,8 +6268,8 @@ function __EpicStatsIngestStatCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicStatsIngestStatCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicStatsIngestStatCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicStatsIngestStatCallbackInfo}
+ * @ignore
  */
 function __EpicStatsIngestStatCallbackInfo_decode(_buffer, _offset)
 {
@@ -6189,7 +6300,7 @@ function __EpicStatsIngestStatCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicStatsQueryStatsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6218,8 +6329,8 @@ function __EpicStatsQueryStatsCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicStatsQueryStatsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicStatsQueryStatsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicStatsQueryStatsCallbackInfo}
+ * @ignore
  */
 function __EpicStatsQueryStatsCallbackInfo_decode(_buffer, _offset)
 {
@@ -6250,7 +6361,7 @@ function __EpicStatsQueryStatsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUIShowFriendsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6274,8 +6385,8 @@ function __EpicUIShowFriendsCallbackInfo_encode(_inst, _buffer, _offset, _where 
  * @func __EpicUIShowFriendsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUIShowFriendsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicUIShowFriendsCallbackInfo}
+ * @ignore
  */
 function __EpicUIShowFriendsCallbackInfo_decode(_buffer, _offset)
 {
@@ -6302,7 +6413,7 @@ function __EpicUIShowFriendsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUIShowNativeProfileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6331,8 +6442,8 @@ function __EpicUIShowNativeProfileCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicUIShowNativeProfileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUIShowNativeProfileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicUIShowNativeProfileCallbackInfo}
+ * @ignore
  */
 function __EpicUIShowNativeProfileCallbackInfo_decode(_buffer, _offset)
 {
@@ -6363,7 +6474,7 @@ function __EpicUIShowNativeProfileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUIDisplaySettingsUpdatedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6385,8 +6496,8 @@ function __EpicUIDisplaySettingsUpdatedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicUIDisplaySettingsUpdatedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUIDisplaySettingsUpdatedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicUIDisplaySettingsUpdatedCallbackInfo}
+ * @ignore
  */
 function __EpicUIDisplaySettingsUpdatedCallbackInfo_decode(_buffer, _offset)
 {
@@ -6412,7 +6523,7 @@ function __EpicUIDisplaySettingsUpdatedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUIHideFriendsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6436,8 +6547,8 @@ function __EpicUIHideFriendsCallbackInfo_encode(_inst, _buffer, _offset, _where 
  * @func __EpicUIHideFriendsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUIHideFriendsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicUIHideFriendsCallbackInfo}
+ * @ignore
  */
 function __EpicUIHideFriendsCallbackInfo_decode(_buffer, _offset)
 {
@@ -6464,7 +6575,7 @@ function __EpicUIHideFriendsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUIShowBlockPlayerCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6493,8 +6604,8 @@ function __EpicUIShowBlockPlayerCallbackInfo_encode(_inst, _buffer, _offset, _wh
  * @func __EpicUIShowBlockPlayerCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUIShowBlockPlayerCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicUIShowBlockPlayerCallbackInfo}
+ * @ignore
  */
 function __EpicUIShowBlockPlayerCallbackInfo_decode(_buffer, _offset)
 {
@@ -6525,7 +6636,7 @@ function __EpicUIShowBlockPlayerCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicUIShowReportPlayerCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6554,8 +6665,8 @@ function __EpicUIShowReportPlayerCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicUIShowReportPlayerCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicUIShowReportPlayerCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicUIShowReportPlayerCallbackInfo}
+ * @ignore
  */
 function __EpicUIShowReportPlayerCallbackInfo_decode(_buffer, _offset)
 {
@@ -6586,7 +6697,7 @@ function __EpicUIShowReportPlayerCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6605,8 +6716,8 @@ function __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_encode(_inst, _buff
  * @func __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicProgressionSnapshotSubmitSnapshotCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicProgressionSnapshotSubmitSnapshotCallbackInfo}
+ * @ignore
  */
 function __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_decode(_buffer, _offset)
 {
@@ -6629,7 +6740,7 @@ function __EpicProgressionSnapshotSubmitSnapshotCallbackInfo_decode(_buffer, _of
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6648,8 +6759,8 @@ function __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_encode(_inst, _buff
  * @func __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicProgressionSnapshotDeleteSnapshotCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicProgressionSnapshotDeleteSnapshotCallbackInfo}
+ * @ignore
  */
 function __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_decode(_buffer, _offset)
 {
@@ -6672,7 +6783,7 @@ function __EpicProgressionSnapshotDeleteSnapshotCallbackInfo_decode(_buffer, _of
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicReportsSendPlayerBehaviorReportCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6691,8 +6802,8 @@ function __EpicReportsSendPlayerBehaviorReportCallbackInfo_encode(_inst, _buffer
  * @func __EpicReportsSendPlayerBehaviorReportCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicReportsSendPlayerBehaviorReportCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicReportsSendPlayerBehaviorReportCallbackInfo}
+ * @ignore
  */
 function __EpicReportsSendPlayerBehaviorReportCallbackInfo_decode(_buffer, _offset)
 {
@@ -6715,7 +6826,7 @@ function __EpicReportsSendPlayerBehaviorReportCallbackInfo_decode(_buffer, _offs
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSanctionsPlayerSanction_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6747,8 +6858,8 @@ function __EpicSanctionsPlayerSanction_encode(_inst, _buffer, _offset, _where = 
  * @func __EpicSanctionsPlayerSanction_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSanctionsPlayerSanction} 
- * @ignore 
+ * @returns {Struct.EpicSanctionsPlayerSanction}
+ * @ignore
  */
 function __EpicSanctionsPlayerSanction_decode(_buffer, _offset)
 {
@@ -6782,7 +6893,7 @@ function __EpicSanctionsPlayerSanction_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6811,8 +6922,8 @@ function __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_encode(_inst, _bu
  * @func __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSanctionsQueryActivePlayerSanctionsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSanctionsQueryActivePlayerSanctionsCallbackInfo}
+ * @ignore
  */
 function __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_decode(_buffer, _offset)
 {
@@ -6843,7 +6954,7 @@ function __EpicSanctionsQueryActivePlayerSanctionsCallbackInfo_decode(_buffer, _
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSanctionsCreatePlayerSanctionAppealCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6867,8 +6978,8 @@ function __EpicSanctionsCreatePlayerSanctionAppealCallbackInfo_encode(_inst, _bu
  * @func __EpicSanctionsCreatePlayerSanctionAppealCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSanctionsCreatePlayerSanctionAppealCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSanctionsCreatePlayerSanctionAppealCallbackInfo}
+ * @ignore
  */
 function __EpicSanctionsCreatePlayerSanctionAppealCallbackInfo_decode(_buffer, _offset)
 {
@@ -6895,7 +7006,7 @@ function __EpicSanctionsCreatePlayerSanctionAppealCallbackInfo_decode(_buffer, _
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAchievementsQueryDefinitionsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6914,8 +7025,8 @@ function __EpicAchievementsQueryDefinitionsCallbackInfo_encode(_inst, _buffer, _
  * @func __EpicAchievementsQueryDefinitionsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAchievementsQueryDefinitionsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAchievementsQueryDefinitionsCallbackInfo}
+ * @ignore
  */
 function __EpicAchievementsQueryDefinitionsCallbackInfo_decode(_buffer, _offset)
 {
@@ -6938,7 +7049,7 @@ function __EpicAchievementsQueryDefinitionsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAchievementsQueryPlayerAchievementsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -6967,8 +7078,8 @@ function __EpicAchievementsQueryPlayerAchievementsCallbackInfo_encode(_inst, _bu
  * @func __EpicAchievementsQueryPlayerAchievementsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAchievementsQueryPlayerAchievementsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAchievementsQueryPlayerAchievementsCallbackInfo}
+ * @ignore
  */
 function __EpicAchievementsQueryPlayerAchievementsCallbackInfo_decode(_buffer, _offset)
 {
@@ -6999,7 +7110,7 @@ function __EpicAchievementsQueryPlayerAchievementsCallbackInfo_decode(_buffer, _
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicStatThreshold_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7022,8 +7133,8 @@ function __EpicStatThreshold_encode(_inst, _buffer, _offset, _where = _GMFUNCTIO
  * @func __EpicStatThreshold_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicStatThreshold} 
- * @ignore 
+ * @returns {Struct.EpicStatThreshold}
+ * @ignore
  */
 function __EpicStatThreshold_decode(_buffer, _offset)
 {
@@ -7050,7 +7161,7 @@ function __EpicStatThreshold_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerStatInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7077,8 +7188,8 @@ function __EpicPlayerStatInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTI
  * @func __EpicPlayerStatInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerStatInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerStatInfo}
+ * @ignore
  */
 function __EpicPlayerStatInfo_decode(_buffer, _offset)
 {
@@ -7108,7 +7219,7 @@ function __EpicPlayerStatInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAchievementsDefinition_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7175,8 +7286,8 @@ function __EpicAchievementsDefinition_encode(_inst, _buffer, _offset, _where = _
  * @func __EpicAchievementsDefinition_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAchievementsDefinition} 
- * @ignore 
+ * @returns {Struct.EpicAchievementsDefinition}
+ * @ignore
  */
 function __EpicAchievementsDefinition_decode(_buffer, _offset)
 {
@@ -7238,7 +7349,7 @@ function __EpicAchievementsDefinition_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerAchievement_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7269,8 +7380,8 @@ function __EpicPlayerAchievement_encode(_inst, _buffer, _offset, _where = _GMFUN
  * @func __EpicPlayerAchievement_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerAchievement} 
- * @ignore 
+ * @returns {Struct.EpicPlayerAchievement}
+ * @ignore
  */
 function __EpicPlayerAchievement_decode(_buffer, _offset)
 {
@@ -7303,7 +7414,7 @@ function __EpicPlayerAchievement_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAchievementsUnlockAchievementsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7331,8 +7442,8 @@ function __EpicAchievementsUnlockAchievementsCallbackInfo_encode(_inst, _buffer,
  * @func __EpicAchievementsUnlockAchievementsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAchievementsUnlockAchievementsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAchievementsUnlockAchievementsCallbackInfo}
+ * @ignore
  */
 function __EpicAchievementsUnlockAchievementsCallbackInfo_decode(_buffer, _offset)
 {
@@ -7362,7 +7473,7 @@ function __EpicAchievementsUnlockAchievementsCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAchievementsDefinitionV2_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7429,8 +7540,8 @@ function __EpicAchievementsDefinitionV2_encode(_inst, _buffer, _offset, _where =
  * @func __EpicAchievementsDefinitionV2_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAchievementsDefinitionV2} 
- * @ignore 
+ * @returns {Struct.EpicAchievementsDefinitionV2}
+ * @ignore
  */
 function __EpicAchievementsDefinitionV2_decode(_buffer, _offset)
 {
@@ -7492,7 +7603,7 @@ function __EpicAchievementsDefinitionV2_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAchievementsUnlockedV2CallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7520,8 +7631,8 @@ function __EpicAchievementsUnlockedV2CallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicAchievementsUnlockedV2CallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAchievementsUnlockedV2CallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAchievementsUnlockedV2CallbackInfo}
+ * @ignore
  */
 function __EpicAchievementsUnlockedV2CallbackInfo_decode(_buffer, _offset)
 {
@@ -7552,7 +7663,7 @@ function __EpicAchievementsUnlockedV2CallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLeaderboardsQueryDefinitionsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7571,8 +7682,8 @@ function __EpicLeaderboardsQueryDefinitionsCallbackInfo_encode(_inst, _buffer, _
  * @func __EpicLeaderboardsQueryDefinitionsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLeaderboardsQueryDefinitionsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLeaderboardsQueryDefinitionsCallbackInfo}
+ * @ignore
  */
 function __EpicLeaderboardsQueryDefinitionsCallbackInfo_decode(_buffer, _offset)
 {
@@ -7595,7 +7706,7 @@ function __EpicLeaderboardsQueryDefinitionsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLeaderboardsQueryRanksCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7619,8 +7730,8 @@ function __EpicLeaderboardsQueryRanksCallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicLeaderboardsQueryRanksCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLeaderboardsQueryRanksCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLeaderboardsQueryRanksCallbackInfo}
+ * @ignore
  */
 function __EpicLeaderboardsQueryRanksCallbackInfo_decode(_buffer, _offset)
 {
@@ -7647,7 +7758,7 @@ function __EpicLeaderboardsQueryRanksCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLeaderboardsQueryUserScoresCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7666,8 +7777,8 @@ function __EpicLeaderboardsQueryUserScoresCallbackInfo_encode(_inst, _buffer, _o
  * @func __EpicLeaderboardsQueryUserScoresCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLeaderboardsQueryUserScoresCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLeaderboardsQueryUserScoresCallbackInfo}
+ * @ignore
  */
 function __EpicLeaderboardsQueryUserScoresCallbackInfo_decode(_buffer, _offset)
 {
@@ -7690,7 +7801,7 @@ function __EpicLeaderboardsQueryUserScoresCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLeaderboardDefinition_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7727,8 +7838,8 @@ function __EpicLeaderboardDefinition_encode(_inst, _buffer, _offset, _where = _G
  * @func __EpicLeaderboardDefinition_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLeaderboardDefinition} 
- * @ignore 
+ * @returns {Struct.EpicLeaderboardDefinition}
+ * @ignore
  */
 function __EpicLeaderboardDefinition_decode(_buffer, _offset)
 {
@@ -7766,7 +7877,7 @@ function __EpicLeaderboardDefinition_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLeaderboardRecord_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7798,8 +7909,8 @@ function __EpicLeaderboardRecord_encode(_inst, _buffer, _offset, _where = _GMFUN
  * @func __EpicLeaderboardRecord_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLeaderboardRecord} 
- * @ignore 
+ * @returns {Struct.EpicLeaderboardRecord}
+ * @ignore
  */
 function __EpicLeaderboardRecord_decode(_buffer, _offset)
 {
@@ -7833,7 +7944,7 @@ function __EpicLeaderboardRecord_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLeaderboardUserScore_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7856,8 +7967,8 @@ function __EpicLeaderboardUserScore_encode(_inst, _buffer, _offset, _where = _GM
  * @func __EpicLeaderboardUserScore_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLeaderboardUserScore} 
- * @ignore 
+ * @returns {Struct.EpicLeaderboardUserScore}
+ * @ignore
  */
 function __EpicLeaderboardUserScore_decode(_buffer, _offset)
 {
@@ -7884,7 +7995,7 @@ function __EpicLeaderboardUserScore_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPresenceInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -7932,8 +8043,8 @@ function __EpicPresenceInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION
  * @func __EpicPresenceInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPresenceInfo} 
- * @ignore 
+ * @returns {Struct.EpicPresenceInfo}
+ * @ignore
  */
 function __EpicPresenceInfo_decode(_buffer, _offset)
 {
@@ -7979,7 +8090,7 @@ function __EpicPresenceInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPresenceQueryPresenceCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8008,8 +8119,8 @@ function __EpicPresenceQueryPresenceCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicPresenceQueryPresenceCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPresenceQueryPresenceCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPresenceQueryPresenceCallbackInfo}
+ * @ignore
  */
 function __EpicPresenceQueryPresenceCallbackInfo_decode(_buffer, _offset)
 {
@@ -8040,7 +8151,7 @@ function __EpicPresenceQueryPresenceCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPresenceSetPresenceCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8064,8 +8175,8 @@ function __EpicPresenceSetPresenceCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicPresenceSetPresenceCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPresenceSetPresenceCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPresenceSetPresenceCallbackInfo}
+ * @ignore
  */
 function __EpicPresenceSetPresenceCallbackInfo_decode(_buffer, _offset)
 {
@@ -8092,7 +8203,7 @@ function __EpicPresenceSetPresenceCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPresenceChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8116,8 +8227,8 @@ function __EpicPresenceChangedCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicPresenceChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPresenceChangedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPresenceChangedCallbackInfo}
+ * @ignore
  */
 function __EpicPresenceChangedCallbackInfo_decode(_buffer, _offset)
 {
@@ -8145,7 +8256,7 @@ function __EpicPresenceChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPresenceJoinGameAcceptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8178,8 +8289,8 @@ function __EpicPresenceJoinGameAcceptedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicPresenceJoinGameAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPresenceJoinGameAcceptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPresenceJoinGameAcceptedCallbackInfo}
+ * @ignore
  */
 function __EpicPresenceJoinGameAcceptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -8214,7 +8325,7 @@ function __EpicPresenceJoinGameAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsUpdateSessionCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8238,8 +8349,8 @@ function __EpicSessionsUpdateSessionCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicSessionsUpdateSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsUpdateSessionCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsUpdateSessionCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsUpdateSessionCallbackInfo_decode(_buffer, _offset)
 {
@@ -8266,7 +8377,7 @@ function __EpicSessionsUpdateSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsDestroySessionCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8285,8 +8396,8 @@ function __EpicSessionsDestroySessionCallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicSessionsDestroySessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsDestroySessionCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsDestroySessionCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsDestroySessionCallbackInfo_decode(_buffer, _offset)
 {
@@ -8309,7 +8420,7 @@ function __EpicSessionsDestroySessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsStartSessionCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8328,8 +8439,8 @@ function __EpicSessionsStartSessionCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicSessionsStartSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsStartSessionCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsStartSessionCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsStartSessionCallbackInfo_decode(_buffer, _offset)
 {
@@ -8352,7 +8463,7 @@ function __EpicSessionsStartSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsEndSessionCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8371,8 +8482,8 @@ function __EpicSessionsEndSessionCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicSessionsEndSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsEndSessionCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsEndSessionCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsEndSessionCallbackInfo_decode(_buffer, _offset)
 {
@@ -8395,7 +8506,7 @@ function __EpicSessionsEndSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsJoinSessionCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8414,8 +8525,8 @@ function __EpicSessionsJoinSessionCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicSessionsJoinSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsJoinSessionCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsJoinSessionCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsJoinSessionCallbackInfo_decode(_buffer, _offset)
 {
@@ -8438,7 +8549,7 @@ function __EpicSessionsJoinSessionCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsRegisterPlayersCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8479,8 +8590,8 @@ function __EpicSessionsRegisterPlayersCallbackInfo_encode(_inst, _buffer, _offse
  * @func __EpicSessionsRegisterPlayersCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsRegisterPlayersCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsRegisterPlayersCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsRegisterPlayersCallbackInfo_decode(_buffer, _offset)
 {
@@ -8521,7 +8632,7 @@ function __EpicSessionsRegisterPlayersCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsUnregisterPlayersCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8551,8 +8662,8 @@ function __EpicSessionsUnregisterPlayersCallbackInfo_encode(_inst, _buffer, _off
  * @func __EpicSessionsUnregisterPlayersCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsUnregisterPlayersCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsUnregisterPlayersCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsUnregisterPlayersCallbackInfo_decode(_buffer, _offset)
 {
@@ -8584,7 +8695,7 @@ function __EpicSessionsUnregisterPlayersCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsFindCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8603,8 +8714,8 @@ function __EpicSessionsFindCallbackInfo_encode(_inst, _buffer, _offset, _where =
  * @func __EpicSessionsFindCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsFindCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsFindCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsFindCallbackInfo_decode(_buffer, _offset)
 {
@@ -8627,7 +8738,7 @@ function __EpicSessionsFindCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8664,8 +8775,8 @@ function __EpicSessionDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFU
  * @func __EpicSessionDetailsInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionDetailsInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionDetailsInfo}
+ * @ignore
  */
 function __EpicSessionDetailsInfo_decode(_buffer, _offset)
 {
@@ -8703,7 +8814,7 @@ function __EpicSessionDetailsInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicActiveSessionInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8747,8 +8858,8 @@ function __EpicActiveSessionInfo_encode(_inst, _buffer, _offset, _where = _GMFUN
  * @func __EpicActiveSessionInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicActiveSessionInfo} 
- * @ignore 
+ * @returns {Struct.EpicActiveSessionInfo}
+ * @ignore
  */
 function __EpicActiveSessionInfo_decode(_buffer, _offset)
 {
@@ -8792,7 +8903,7 @@ function __EpicActiveSessionInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsSessionInviteReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8821,8 +8932,8 @@ function __EpicSessionsSessionInviteReceivedCallbackInfo_encode(_inst, _buffer, 
  * @func __EpicSessionsSessionInviteReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsSessionInviteReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsSessionInviteReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsSessionInviteReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -8854,7 +8965,7 @@ function __EpicSessionsSessionInviteReceivedCallbackInfo_decode(_buffer, _offset
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsSessionInviteAcceptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8883,8 +8994,8 @@ function __EpicSessionsSessionInviteAcceptedCallbackInfo_encode(_inst, _buffer, 
  * @func __EpicSessionsSessionInviteAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsSessionInviteAcceptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsSessionInviteAcceptedCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsSessionInviteAcceptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -8916,7 +9027,7 @@ function __EpicSessionsSessionInviteAcceptedCallbackInfo_decode(_buffer, _offset
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsJoinSessionAcceptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8934,8 +9045,8 @@ function __EpicSessionsJoinSessionAcceptedCallbackInfo_encode(_inst, _buffer, _o
  * @func __EpicSessionsJoinSessionAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsJoinSessionAcceptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsJoinSessionAcceptedCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsJoinSessionAcceptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -8958,7 +9069,7 @@ function __EpicSessionsJoinSessionAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionDetailsAttribute_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -8992,8 +9103,8 @@ function __EpicSessionDetailsAttribute_encode(_inst, _buffer, _offset, _where = 
  * @func __EpicSessionDetailsAttribute_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionDetailsAttribute} 
- * @ignore 
+ * @returns {Struct.EpicSessionDetailsAttribute}
+ * @ignore
  */
 function __EpicSessionDetailsAttribute_decode(_buffer, _offset)
 {
@@ -9027,7 +9138,7 @@ function __EpicSessionDetailsAttribute_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsSendInviteCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9046,8 +9157,8 @@ function __EpicSessionsSendInviteCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicSessionsSendInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsSendInviteCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsSendInviteCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsSendInviteCallbackInfo_decode(_buffer, _offset)
 {
@@ -9070,7 +9181,7 @@ function __EpicSessionsSendInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsRejectInviteCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9089,8 +9200,8 @@ function __EpicSessionsRejectInviteCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicSessionsRejectInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsRejectInviteCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsRejectInviteCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsRejectInviteCallbackInfo_decode(_buffer, _offset)
 {
@@ -9113,7 +9224,7 @@ function __EpicSessionsRejectInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsQueryInvitesCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9137,8 +9248,8 @@ function __EpicSessionsQueryInvitesCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicSessionsQueryInvitesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsQueryInvitesCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsQueryInvitesCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsQueryInvitesCallbackInfo_decode(_buffer, _offset)
 {
@@ -9165,7 +9276,7 @@ function __EpicSessionsQueryInvitesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsSessionInviteRejectedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9199,8 +9310,8 @@ function __EpicSessionsSessionInviteRejectedCallbackInfo_encode(_inst, _buffer, 
  * @func __EpicSessionsSessionInviteRejectedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsSessionInviteRejectedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsSessionInviteRejectedCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsSessionInviteRejectedCallbackInfo_decode(_buffer, _offset)
 {
@@ -9236,7 +9347,7 @@ function __EpicSessionsSessionInviteRejectedCallbackInfo_decode(_buffer, _offset
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsLeaveSessionRequestedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9260,8 +9371,8 @@ function __EpicSessionsLeaveSessionRequestedCallbackInfo_encode(_inst, _buffer, 
  * @func __EpicSessionsLeaveSessionRequestedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsLeaveSessionRequestedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsLeaveSessionRequestedCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsLeaveSessionRequestedCallbackInfo_decode(_buffer, _offset)
 {
@@ -9289,7 +9400,7 @@ function __EpicSessionsLeaveSessionRequestedCallbackInfo_decode(_buffer, _offset
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicSessionsSendSessionNativeInviteRequestedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9317,8 +9428,8 @@ function __EpicSessionsSendSessionNativeInviteRequestedCallbackInfo_encode(_inst
  * @func __EpicSessionsSendSessionNativeInviteRequestedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicSessionsSendSessionNativeInviteRequestedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicSessionsSendSessionNativeInviteRequestedCallbackInfo}
+ * @ignore
  */
 function __EpicSessionsSendSessionNativeInviteRequestedCallbackInfo_decode(_buffer, _offset)
 {
@@ -9349,7 +9460,7 @@ function __EpicSessionsSendSessionNativeInviteRequestedCallbackInfo_decode(_buff
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyCreateLobbyCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9373,8 +9484,8 @@ function __EpicLobbyCreateLobbyCallbackInfo_encode(_inst, _buffer, _offset, _whe
  * @func __EpicLobbyCreateLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyCreateLobbyCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyCreateLobbyCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyCreateLobbyCallbackInfo_decode(_buffer, _offset)
 {
@@ -9401,7 +9512,7 @@ function __EpicLobbyCreateLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyDestroyLobbyCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9425,8 +9536,8 @@ function __EpicLobbyDestroyLobbyCallbackInfo_encode(_inst, _buffer, _offset, _wh
  * @func __EpicLobbyDestroyLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyDestroyLobbyCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyDestroyLobbyCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyDestroyLobbyCallbackInfo_decode(_buffer, _offset)
 {
@@ -9453,7 +9564,7 @@ function __EpicLobbyDestroyLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyJoinLobbyCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9477,8 +9588,8 @@ function __EpicLobbyJoinLobbyCallbackInfo_encode(_inst, _buffer, _offset, _where
  * @func __EpicLobbyJoinLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyJoinLobbyCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyJoinLobbyCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyJoinLobbyCallbackInfo_decode(_buffer, _offset)
 {
@@ -9505,7 +9616,7 @@ function __EpicLobbyJoinLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLeaveLobbyCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9529,8 +9640,8 @@ function __EpicLobbyLeaveLobbyCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicLobbyLeaveLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLeaveLobbyCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLeaveLobbyCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLeaveLobbyCallbackInfo_decode(_buffer, _offset)
 {
@@ -9557,7 +9668,7 @@ function __EpicLobbyLeaveLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyCreateLobbyOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9614,8 +9725,8 @@ function __EpicLobbyCreateLobbyOptions_encode(_inst, _buffer, _offset, _where = 
  * @func __EpicLobbyCreateLobbyOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyCreateLobbyOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyCreateLobbyOptions}
+ * @ignore
  */
 function __EpicLobbyCreateLobbyOptions_decode(_buffer, _offset)
 {
@@ -9667,7 +9778,7 @@ function __EpicLobbyCreateLobbyOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyJoinLobbyOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9694,8 +9805,8 @@ function __EpicLobbyJoinLobbyOptions_encode(_inst, _buffer, _offset, _where = _G
  * @func __EpicLobbyJoinLobbyOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyJoinLobbyOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyJoinLobbyOptions}
+ * @ignore
  */
 function __EpicLobbyJoinLobbyOptions_decode(_buffer, _offset)
 {
@@ -9725,7 +9836,7 @@ function __EpicLobbyJoinLobbyOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyUpdateLobbyCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9749,8 +9860,8 @@ function __EpicLobbyUpdateLobbyCallbackInfo_encode(_inst, _buffer, _offset, _whe
  * @func __EpicLobbyUpdateLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyUpdateLobbyCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyUpdateLobbyCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyUpdateLobbyCallbackInfo_decode(_buffer, _offset)
 {
@@ -9777,7 +9888,7 @@ function __EpicLobbyUpdateLobbyCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyPromoteMemberCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9801,8 +9912,8 @@ function __EpicLobbyPromoteMemberCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicLobbyPromoteMemberCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyPromoteMemberCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyPromoteMemberCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyPromoteMemberCallbackInfo_decode(_buffer, _offset)
 {
@@ -9829,7 +9940,7 @@ function __EpicLobbyPromoteMemberCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyKickMemberCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9853,8 +9964,8 @@ function __EpicLobbyKickMemberCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicLobbyKickMemberCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyKickMemberCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyKickMemberCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyKickMemberCallbackInfo_decode(_buffer, _offset)
 {
@@ -9881,7 +9992,7 @@ function __EpicLobbyKickMemberCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyModificationAddAttributeOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9910,8 +10021,8 @@ function __EpicLobbyModificationAddAttributeOptions_encode(_inst, _buffer, _offs
  * @func __EpicLobbyModificationAddAttributeOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyModificationAddAttributeOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyModificationAddAttributeOptions}
+ * @ignore
  */
 function __EpicLobbyModificationAddAttributeOptions_decode(_buffer, _offset)
 {
@@ -9942,7 +10053,7 @@ function __EpicLobbyModificationAddAttributeOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyModificationAddMemberAttributeOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -9971,8 +10082,8 @@ function __EpicLobbyModificationAddMemberAttributeOptions_encode(_inst, _buffer,
  * @func __EpicLobbyModificationAddMemberAttributeOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyModificationAddMemberAttributeOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyModificationAddMemberAttributeOptions}
+ * @ignore
  */
 function __EpicLobbyModificationAddMemberAttributeOptions_decode(_buffer, _offset)
 {
@@ -10003,7 +10114,7 @@ function __EpicLobbyModificationAddMemberAttributeOptions_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyPromoteMemberOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10032,8 +10143,8 @@ function __EpicLobbyPromoteMemberOptions_encode(_inst, _buffer, _offset, _where 
  * @func __EpicLobbyPromoteMemberOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyPromoteMemberOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyPromoteMemberOptions}
+ * @ignore
  */
 function __EpicLobbyPromoteMemberOptions_decode(_buffer, _offset)
 {
@@ -10065,7 +10176,7 @@ function __EpicLobbyPromoteMemberOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyKickMemberOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10094,8 +10205,8 @@ function __EpicLobbyKickMemberOptions_encode(_inst, _buffer, _offset, _where = _
  * @func __EpicLobbyKickMemberOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyKickMemberOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyKickMemberOptions}
+ * @ignore
  */
 function __EpicLobbyKickMemberOptions_decode(_buffer, _offset)
 {
@@ -10127,7 +10238,7 @@ function __EpicLobbyKickMemberOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbySearchFindCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10146,8 +10257,8 @@ function __EpicLobbySearchFindCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicLobbySearchFindCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbySearchFindCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbySearchFindCallbackInfo}
+ * @ignore
  */
 function __EpicLobbySearchFindCallbackInfo_decode(_buffer, _offset)
 {
@@ -10170,7 +10281,7 @@ function __EpicLobbySearchFindCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbySearchSetParameterOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10199,8 +10310,8 @@ function __EpicLobbySearchSetParameterOptions_encode(_inst, _buffer, _offset, _w
  * @func __EpicLobbySearchSetParameterOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbySearchSetParameterOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbySearchSetParameterOptions}
+ * @ignore
  */
 function __EpicLobbySearchSetParameterOptions_decode(_buffer, _offset)
 {
@@ -10231,7 +10342,7 @@ function __EpicLobbySearchSetParameterOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbySearchRemoveParameterOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10255,8 +10366,8 @@ function __EpicLobbySearchRemoveParameterOptions_encode(_inst, _buffer, _offset,
  * @func __EpicLobbySearchRemoveParameterOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbySearchRemoveParameterOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbySearchRemoveParameterOptions}
+ * @ignore
  */
 function __EpicLobbySearchRemoveParameterOptions_decode(_buffer, _offset)
 {
@@ -10283,7 +10394,7 @@ function __EpicLobbySearchRemoveParameterOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10326,6 +10437,22 @@ function __EpicLobbyDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
         if (!is_bool(self.presence_enabled)) show_error($"{_where} :: self.presence_enabled expected bool", true);
         buffer_write(_buffer, buffer_bool, self.presence_enabled);
 
+        // field: rtc_room_enabled, type: Bool
+        if (!is_bool(self.rtc_room_enabled)) show_error($"{_where} :: self.rtc_room_enabled expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.rtc_room_enabled);
+
+        // field: allow_host_migration, type: Bool
+        if (!is_bool(self.allow_host_migration)) show_error($"{_where} :: self.allow_host_migration expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.allow_host_migration);
+
+        // field: allow_join_by_id, type: Bool
+        if (!is_bool(self.allow_join_by_id)) show_error($"{_where} :: self.allow_join_by_id expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.allow_join_by_id);
+
+        // field: rejoin_after_kick_requires_invite, type: Bool
+        if (!is_bool(self.rejoin_after_kick_requires_invite)) show_error($"{_where} :: self.rejoin_after_kick_requires_invite expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.rejoin_after_kick_requires_invite);
+
     }
 }
 
@@ -10333,8 +10460,8 @@ function __EpicLobbyDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
  * @func __EpicLobbyDetailsInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyDetailsInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyDetailsInfo}
+ * @ignore
  */
 function __EpicLobbyDetailsInfo_decode(_buffer, _offset)
 {
@@ -10370,6 +10497,18 @@ function __EpicLobbyDetailsInfo_decode(_buffer, _offset)
         // field: presence_enabled, type: Bool
         self.presence_enabled = buffer_read(_buffer, buffer_bool);
 
+        // field: rtc_room_enabled, type: Bool
+        self.rtc_room_enabled = buffer_read(_buffer, buffer_bool);
+
+        // field: allow_host_migration, type: Bool
+        self.allow_host_migration = buffer_read(_buffer, buffer_bool);
+
+        // field: allow_join_by_id, type: Bool
+        self.allow_join_by_id = buffer_read(_buffer, buffer_bool);
+
+        // field: rejoin_after_kick_requires_invite, type: Bool
+        self.rejoin_after_kick_requires_invite = buffer_read(_buffer, buffer_bool);
+
     }
 
     return _inst;
@@ -10381,7 +10520,7 @@ function __EpicLobbyDetailsInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLobbyUpdateReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10405,8 +10544,8 @@ function __EpicLobbyLobbyUpdateReceivedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicLobbyLobbyUpdateReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLobbyUpdateReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLobbyUpdateReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLobbyUpdateReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -10434,7 +10573,7 @@ function __EpicLobbyLobbyUpdateReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLobbyMemberUpdateReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10463,8 +10602,8 @@ function __EpicLobbyLobbyMemberUpdateReceivedCallbackInfo_encode(_inst, _buffer,
  * @func __EpicLobbyLobbyMemberUpdateReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLobbyMemberUpdateReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLobbyMemberUpdateReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLobbyMemberUpdateReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -10496,7 +10635,7 @@ function __EpicLobbyLobbyMemberUpdateReceivedCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLobbyMemberStatusReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10530,8 +10669,8 @@ function __EpicLobbyLobbyMemberStatusReceivedCallbackInfo_encode(_inst, _buffer,
  * @func __EpicLobbyLobbyMemberStatusReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLobbyMemberStatusReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLobbyMemberStatusReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLobbyMemberStatusReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -10566,7 +10705,7 @@ function __EpicLobbyLobbyMemberStatusReceivedCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyJoinLobbyAcceptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10577,6 +10716,11 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_encode(_inst, _buffer, _offset
         if (!is_numeric(self.ui_event_id)) show_error($"{_where} :: self.ui_event_id expected number", true);
         buffer_write(_buffer, buffer_u64, self.ui_event_id);
 
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
     }
 }
 
@@ -10584,8 +10728,8 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicLobbyJoinLobbyAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyJoinLobbyAcceptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyJoinLobbyAcceptedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyJoinLobbyAcceptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -10596,6 +10740,10 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_decode(_buffer, _offset)
     {
         // field: ui_event_id, type: UInt64
         self.ui_event_id = buffer_read(_buffer, buffer_u64);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -10608,7 +10756,7 @@ function __EpicLobbyJoinLobbyAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLeaveLobbyRequestedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10632,8 +10780,8 @@ function __EpicLobbyLeaveLobbyRequestedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicLobbyLeaveLobbyRequestedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLeaveLobbyRequestedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLeaveLobbyRequestedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLeaveLobbyRequestedCallbackInfo_decode(_buffer, _offset)
 {
@@ -10661,7 +10809,7 @@ function __EpicLobbyLeaveLobbyRequestedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10695,8 +10843,8 @@ function __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_encode(_inst, _bu
  * @func __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbySendLobbyNativeInviteRequestedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbySendLobbyNativeInviteRequestedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_decode(_buffer, _offset)
 {
@@ -10732,7 +10880,7 @@ function __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_decode(_buffer, _
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyRTCRoomConnectionChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10765,8 +10913,8 @@ function __EpicLobbyRTCRoomConnectionChangedCallbackInfo_encode(_inst, _buffer, 
  * @func __EpicLobbyRTCRoomConnectionChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyRTCRoomConnectionChangedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyRTCRoomConnectionChangedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyRTCRoomConnectionChangedCallbackInfo_decode(_buffer, _offset)
 {
@@ -10800,7 +10948,7 @@ function __EpicLobbyRTCRoomConnectionChangedCallbackInfo_decode(_buffer, _offset
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyDetailsAttribute_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10834,8 +10982,8 @@ function __EpicLobbyDetailsAttribute_encode(_inst, _buffer, _offset, _where = _G
  * @func __EpicLobbyDetailsAttribute_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyDetailsAttribute} 
- * @ignore 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
+ * @ignore
  */
 function __EpicLobbyDetailsAttribute_decode(_buffer, _offset)
 {
@@ -10869,7 +11017,7 @@ function __EpicLobbyDetailsAttribute_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyDetailsMemberInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10896,8 +11044,8 @@ function __EpicLobbyDetailsMemberInfo_encode(_inst, _buffer, _offset, _where = _
  * @func __EpicLobbyDetailsMemberInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyDetailsMemberInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyDetailsMemberInfo}
+ * @ignore
  */
 function __EpicLobbyDetailsMemberInfo_decode(_buffer, _offset)
 {
@@ -10927,7 +11075,7 @@ function __EpicLobbyDetailsMemberInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyJoinLobbyByIdCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -10951,8 +11099,8 @@ function __EpicLobbyJoinLobbyByIdCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicLobbyJoinLobbyByIdCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyJoinLobbyByIdCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyJoinLobbyByIdCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyJoinLobbyByIdCallbackInfo_decode(_buffer, _offset)
 {
@@ -10979,7 +11127,7 @@ function __EpicLobbyJoinLobbyByIdCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyHardMuteMemberCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11008,8 +11156,8 @@ function __EpicLobbyHardMuteMemberCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicLobbyHardMuteMemberCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyHardMuteMemberCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyHardMuteMemberCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyHardMuteMemberCallbackInfo_decode(_buffer, _offset)
 {
@@ -11040,7 +11188,7 @@ function __EpicLobbyHardMuteMemberCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbySendInviteCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11064,8 +11212,8 @@ function __EpicLobbySendInviteCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicLobbySendInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbySendInviteCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbySendInviteCallbackInfo}
+ * @ignore
  */
 function __EpicLobbySendInviteCallbackInfo_decode(_buffer, _offset)
 {
@@ -11092,7 +11240,7 @@ function __EpicLobbySendInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyRejectInviteCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11116,8 +11264,8 @@ function __EpicLobbyRejectInviteCallbackInfo_encode(_inst, _buffer, _offset, _wh
  * @func __EpicLobbyRejectInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyRejectInviteCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyRejectInviteCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyRejectInviteCallbackInfo_decode(_buffer, _offset)
 {
@@ -11144,7 +11292,7 @@ function __EpicLobbyRejectInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyQueryInvitesCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11168,8 +11316,8 @@ function __EpicLobbyQueryInvitesCallbackInfo_encode(_inst, _buffer, _offset, _wh
  * @func __EpicLobbyQueryInvitesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyQueryInvitesCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyQueryInvitesCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyQueryInvitesCallbackInfo_decode(_buffer, _offset)
 {
@@ -11196,7 +11344,7 @@ function __EpicLobbyQueryInvitesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLobbyInviteReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11225,8 +11373,8 @@ function __EpicLobbyLobbyInviteReceivedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicLobbyLobbyInviteReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLobbyInviteReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLobbyInviteReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLobbyInviteReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -11258,7 +11406,7 @@ function __EpicLobbyLobbyInviteReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLobbyInviteAcceptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11292,8 +11440,8 @@ function __EpicLobbyLobbyInviteAcceptedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicLobbyLobbyInviteAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLobbyInviteAcceptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLobbyInviteAcceptedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLobbyInviteAcceptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -11329,7 +11477,7 @@ function __EpicLobbyLobbyInviteAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyLobbyInviteRejectedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11363,8 +11511,8 @@ function __EpicLobbyLobbyInviteRejectedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicLobbyLobbyInviteRejectedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyLobbyInviteRejectedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicLobbyLobbyInviteRejectedCallbackInfo}
+ * @ignore
  */
 function __EpicLobbyLobbyInviteRejectedCallbackInfo_decode(_buffer, _offset)
 {
@@ -11400,7 +11548,7 @@ function __EpicLobbyLobbyInviteRejectedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyJoinLobbyByIdOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11428,8 +11576,8 @@ function __EpicLobbyJoinLobbyByIdOptions_encode(_inst, _buffer, _offset, _where 
  * @func __EpicLobbyJoinLobbyByIdOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyJoinLobbyByIdOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyJoinLobbyByIdOptions}
+ * @ignore
  */
 function __EpicLobbyJoinLobbyByIdOptions_decode(_buffer, _offset)
 {
@@ -11460,7 +11608,7 @@ function __EpicLobbyJoinLobbyByIdOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbyHardMuteMemberOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11493,8 +11641,8 @@ function __EpicLobbyHardMuteMemberOptions_encode(_inst, _buffer, _offset, _where
  * @func __EpicLobbyHardMuteMemberOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbyHardMuteMemberOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbyHardMuteMemberOptions}
+ * @ignore
  */
 function __EpicLobbyHardMuteMemberOptions_decode(_buffer, _offset)
 {
@@ -11529,7 +11677,7 @@ function __EpicLobbyHardMuteMemberOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicLobbySendInviteOptions_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11558,8 +11706,8 @@ function __EpicLobbySendInviteOptions_encode(_inst, _buffer, _offset, _where = _
  * @func __EpicLobbySendInviteOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicLobbySendInviteOptions} 
- * @ignore 
+ * @returns {Struct.EpicLobbySendInviteOptions}
+ * @ignore
  */
 function __EpicLobbySendInviteOptions_decode(_buffer, _offset)
 {
@@ -11591,7 +11739,7 @@ function __EpicLobbySendInviteOptions_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PReceivedPacket_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11627,8 +11775,8 @@ function __EpicP2PReceivedPacket_encode(_inst, _buffer, _offset, _where = _GMFUN
  * @func __EpicP2PReceivedPacket_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PReceivedPacket} 
- * @ignore 
+ * @returns {Struct.EpicP2PReceivedPacket}
+ * @ignore
  */
 function __EpicP2PReceivedPacket_decode(_buffer, _offset)
 {
@@ -11665,7 +11813,7 @@ function __EpicP2PReceivedPacket_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PQueryNATTypeCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11689,8 +11837,8 @@ function __EpicP2PQueryNATTypeCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicP2PQueryNATTypeCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PQueryNATTypeCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicP2PQueryNATTypeCallbackInfo}
+ * @ignore
  */
 function __EpicP2PQueryNATTypeCallbackInfo_decode(_buffer, _offset)
 {
@@ -11716,7 +11864,7 @@ function __EpicP2PQueryNATTypeCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PConnectionRequestCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11745,8 +11893,8 @@ function __EpicP2PConnectionRequestCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicP2PConnectionRequestCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PConnectionRequestCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicP2PConnectionRequestCallbackInfo}
+ * @ignore
  */
 function __EpicP2PConnectionRequestCallbackInfo_decode(_buffer, _offset)
 {
@@ -11778,7 +11926,7 @@ function __EpicP2PConnectionRequestCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PConnectionEstablishedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11817,8 +11965,8 @@ function __EpicP2PConnectionEstablishedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicP2PConnectionEstablishedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PConnectionEstablishedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicP2PConnectionEstablishedCallbackInfo}
+ * @ignore
  */
 function __EpicP2PConnectionEstablishedCallbackInfo_decode(_buffer, _offset)
 {
@@ -11856,7 +12004,7 @@ function __EpicP2PConnectionEstablishedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PConnectionInterruptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11885,8 +12033,8 @@ function __EpicP2PConnectionInterruptedCallbackInfo_encode(_inst, _buffer, _offs
  * @func __EpicP2PConnectionInterruptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PConnectionInterruptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicP2PConnectionInterruptedCallbackInfo}
+ * @ignore
  */
 function __EpicP2PConnectionInterruptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -11918,7 +12066,7 @@ function __EpicP2PConnectionInterruptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PConnectionClosedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -11952,8 +12100,8 @@ function __EpicP2PConnectionClosedCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicP2PConnectionClosedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PConnectionClosedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicP2PConnectionClosedCallbackInfo}
+ * @ignore
  */
 function __EpicP2PConnectionClosedCallbackInfo_decode(_buffer, _offset)
 {
@@ -11988,7 +12136,7 @@ function __EpicP2PConnectionClosedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PPacketQueueInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12026,8 +12174,8 @@ function __EpicP2PPacketQueueInfo_encode(_inst, _buffer, _offset, _where = _GMFU
  * @func __EpicP2PPacketQueueInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PPacketQueueInfo} 
- * @ignore 
+ * @returns {Struct.EpicP2PPacketQueueInfo}
+ * @ignore
  */
 function __EpicP2PPacketQueueInfo_decode(_buffer, _offset)
 {
@@ -12065,7 +12213,7 @@ function __EpicP2PPacketQueueInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PPortRange_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12087,8 +12235,8 @@ function __EpicP2PPortRange_encode(_inst, _buffer, _offset, _where = _GMFUNCTION
  * @func __EpicP2PPortRange_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PPortRange} 
- * @ignore 
+ * @returns {Struct.EpicP2PPortRange}
+ * @ignore
  */
 function __EpicP2PPortRange_decode(_buffer, _offset)
 {
@@ -12114,7 +12262,7 @@ function __EpicP2PPortRange_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicP2PIncomingPacketQueueFullCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12149,8 +12297,8 @@ function __EpicP2PIncomingPacketQueueFullCallbackInfo_encode(_inst, _buffer, _of
  * @func __EpicP2PIncomingPacketQueueFullCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicP2PIncomingPacketQueueFullCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicP2PIncomingPacketQueueFullCallbackInfo}
+ * @ignore
  */
 function __EpicP2PIncomingPacketQueueFullCallbackInfo_decode(_buffer, _offset)
 {
@@ -12186,7 +12334,7 @@ function __EpicP2PIncomingPacketQueueFullCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageFileMetadata_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12222,8 +12370,8 @@ function __EpicPlayerDataStorageFileMetadata_encode(_inst, _buffer, _offset, _wh
  * @func __EpicPlayerDataStorageFileMetadata_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageFileMetadata} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageFileMetadata}
+ * @ignore
  */
 function __EpicPlayerDataStorageFileMetadata_decode(_buffer, _offset)
 {
@@ -12260,7 +12408,7 @@ function __EpicPlayerDataStorageFileMetadata_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageQueryFileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12284,8 +12432,8 @@ function __EpicPlayerDataStorageQueryFileCallbackInfo_encode(_inst, _buffer, _of
  * @func __EpicPlayerDataStorageQueryFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageQueryFileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageQueryFileCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageQueryFileCallbackInfo_decode(_buffer, _offset)
 {
@@ -12312,7 +12460,7 @@ function __EpicPlayerDataStorageQueryFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageQueryFileListCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12340,8 +12488,8 @@ function __EpicPlayerDataStorageQueryFileListCallbackInfo_encode(_inst, _buffer,
  * @func __EpicPlayerDataStorageQueryFileListCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageQueryFileListCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageQueryFileListCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageQueryFileListCallbackInfo_decode(_buffer, _offset)
 {
@@ -12371,7 +12519,7 @@ function __EpicPlayerDataStorageQueryFileListCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageDuplicateFileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12395,8 +12543,8 @@ function __EpicPlayerDataStorageDuplicateFileCallbackInfo_encode(_inst, _buffer,
  * @func __EpicPlayerDataStorageDuplicateFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageDuplicateFileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageDuplicateFileCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageDuplicateFileCallbackInfo_decode(_buffer, _offset)
 {
@@ -12423,7 +12571,7 @@ function __EpicPlayerDataStorageDuplicateFileCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageDeleteFileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12447,8 +12595,8 @@ function __EpicPlayerDataStorageDeleteFileCallbackInfo_encode(_inst, _buffer, _o
  * @func __EpicPlayerDataStorageDeleteFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageDeleteFileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageDeleteFileCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageDeleteFileCallbackInfo_decode(_buffer, _offset)
 {
@@ -12475,7 +12623,7 @@ function __EpicPlayerDataStorageDeleteFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageReadFileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12504,8 +12652,8 @@ function __EpicPlayerDataStorageReadFileCallbackInfo_encode(_inst, _buffer, _off
  * @func __EpicPlayerDataStorageReadFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageReadFileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageReadFileCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageReadFileCallbackInfo_decode(_buffer, _offset)
 {
@@ -12536,7 +12684,7 @@ function __EpicPlayerDataStorageReadFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageWriteFileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12565,8 +12713,8 @@ function __EpicPlayerDataStorageWriteFileCallbackInfo_encode(_inst, _buffer, _of
  * @func __EpicPlayerDataStorageWriteFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageWriteFileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageWriteFileCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageWriteFileCallbackInfo_decode(_buffer, _offset)
 {
@@ -12597,7 +12745,7 @@ function __EpicPlayerDataStorageWriteFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageReadFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12629,8 +12777,8 @@ function __EpicPlayerDataStorageReadFileProgressCallbackInfo_encode(_inst, _buff
  * @func __EpicPlayerDataStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
 {
@@ -12664,7 +12812,7 @@ function __EpicPlayerDataStorageReadFileProgressCallbackInfo_decode(_buffer, _of
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageWriteFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12696,8 +12844,8 @@ function __EpicPlayerDataStorageWriteFileProgressCallbackInfo_encode(_inst, _buf
  * @func __EpicPlayerDataStorageWriteFileProgressCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageWriteFileProgressCallbackInfo_decode(_buffer, _offset)
 {
@@ -12731,7 +12879,7 @@ function __EpicPlayerDataStorageWriteFileProgressCallbackInfo_decode(_buffer, _o
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicPlayerDataStorageDeleteCacheCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12755,8 +12903,8 @@ function __EpicPlayerDataStorageDeleteCacheCallbackInfo_encode(_inst, _buffer, _
  * @func __EpicPlayerDataStorageDeleteCacheCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPlayerDataStorageDeleteCacheCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicPlayerDataStorageDeleteCacheCallbackInfo}
+ * @ignore
  */
 function __EpicPlayerDataStorageDeleteCacheCallbackInfo_decode(_buffer, _offset)
 {
@@ -12783,7 +12931,7 @@ function __EpicPlayerDataStorageDeleteCacheCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicTitleStorageFileMetadata_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12815,8 +12963,8 @@ function __EpicTitleStorageFileMetadata_encode(_inst, _buffer, _offset, _where =
  * @func __EpicTitleStorageFileMetadata_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicTitleStorageFileMetadata} 
- * @ignore 
+ * @returns {Struct.EpicTitleStorageFileMetadata}
+ * @ignore
  */
 function __EpicTitleStorageFileMetadata_decode(_buffer, _offset)
 {
@@ -12850,7 +12998,7 @@ function __EpicTitleStorageFileMetadata_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicTitleStorageQueryFileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12874,8 +13022,8 @@ function __EpicTitleStorageQueryFileCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicTitleStorageQueryFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicTitleStorageQueryFileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicTitleStorageQueryFileCallbackInfo}
+ * @ignore
  */
 function __EpicTitleStorageQueryFileCallbackInfo_decode(_buffer, _offset)
 {
@@ -12902,7 +13050,7 @@ function __EpicTitleStorageQueryFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicTitleStorageQueryFileListCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12930,8 +13078,8 @@ function __EpicTitleStorageQueryFileListCallbackInfo_encode(_inst, _buffer, _off
  * @func __EpicTitleStorageQueryFileListCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicTitleStorageQueryFileListCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicTitleStorageQueryFileListCallbackInfo}
+ * @ignore
  */
 function __EpicTitleStorageQueryFileListCallbackInfo_decode(_buffer, _offset)
 {
@@ -12961,7 +13109,7 @@ function __EpicTitleStorageQueryFileListCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicTitleStorageReadFileCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -12990,8 +13138,8 @@ function __EpicTitleStorageReadFileCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicTitleStorageReadFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicTitleStorageReadFileCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicTitleStorageReadFileCallbackInfo}
+ * @ignore
  */
 function __EpicTitleStorageReadFileCallbackInfo_decode(_buffer, _offset)
 {
@@ -13022,7 +13170,7 @@ function __EpicTitleStorageReadFileCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicTitleStorageReadFileProgressCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13054,8 +13202,8 @@ function __EpicTitleStorageReadFileProgressCallbackInfo_encode(_inst, _buffer, _
  * @func __EpicTitleStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicTitleStorageReadFileProgressCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicTitleStorageReadFileProgressCallbackInfo}
+ * @ignore
  */
 function __EpicTitleStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
 {
@@ -13089,7 +13237,7 @@ function __EpicTitleStorageReadFileProgressCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicTitleStorageDeleteCacheCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13113,8 +13261,8 @@ function __EpicTitleStorageDeleteCacheCallbackInfo_encode(_inst, _buffer, _offse
  * @func __EpicTitleStorageDeleteCacheCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicTitleStorageDeleteCacheCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicTitleStorageDeleteCacheCallbackInfo}
+ * @ignore
  */
 function __EpicTitleStorageDeleteCacheCallbackInfo_decode(_buffer, _offset)
 {
@@ -13141,7 +13289,7 @@ function __EpicTitleStorageDeleteCacheCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomEntitlement_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13182,8 +13330,8 @@ function __EpicEcomEntitlement_encode(_inst, _buffer, _offset, _where = _GMFUNCT
  * @func __EpicEcomEntitlement_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomEntitlement} 
- * @ignore 
+ * @returns {Struct.EpicEcomEntitlement}
+ * @ignore
  */
 function __EpicEcomEntitlement_decode(_buffer, _offset)
 {
@@ -13224,7 +13372,7 @@ function __EpicEcomEntitlement_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomItemOwnership_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13248,8 +13396,8 @@ function __EpicEcomItemOwnership_encode(_inst, _buffer, _offset, _where = _GMFUN
  * @func __EpicEcomItemOwnership_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomItemOwnership} 
- * @ignore 
+ * @returns {Struct.EpicEcomItemOwnership}
+ * @ignore
  */
 function __EpicEcomItemOwnership_decode(_buffer, _offset)
 {
@@ -13276,7 +13424,7 @@ function __EpicEcomItemOwnership_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomSandboxIdItemOwnership_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13300,8 +13448,8 @@ function __EpicEcomSandboxIdItemOwnership_encode(_inst, _buffer, _offset, _where
  * @func __EpicEcomSandboxIdItemOwnership_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomSandboxIdItemOwnership} 
- * @ignore 
+ * @returns {Struct.EpicEcomSandboxIdItemOwnership}
+ * @ignore
  */
 function __EpicEcomSandboxIdItemOwnership_decode(_buffer, _offset)
 {
@@ -13329,7 +13477,7 @@ function __EpicEcomSandboxIdItemOwnership_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomCatalogOffer_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13418,8 +13566,8 @@ function __EpicEcomCatalogOffer_encode(_inst, _buffer, _offset, _where = _GMFUNC
  * @func __EpicEcomCatalogOffer_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomCatalogOffer} 
- * @ignore 
+ * @returns {Struct.EpicEcomCatalogOffer}
+ * @ignore
  */
 function __EpicEcomCatalogOffer_decode(_buffer, _offset)
 {
@@ -13496,7 +13644,7 @@ function __EpicEcomCatalogOffer_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomCatalogItem_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13559,8 +13707,8 @@ function __EpicEcomCatalogItem_encode(_inst, _buffer, _offset, _where = _GMFUNCT
  * @func __EpicEcomCatalogItem_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomCatalogItem} 
- * @ignore 
+ * @returns {Struct.EpicEcomCatalogItem}
+ * @ignore
  */
 function __EpicEcomCatalogItem_decode(_buffer, _offset)
 {
@@ -13618,7 +13766,7 @@ function __EpicEcomCatalogItem_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomKeyImageInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13650,8 +13798,8 @@ function __EpicEcomKeyImageInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
  * @func __EpicEcomKeyImageInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomKeyImageInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomKeyImageInfo}
+ * @ignore
  */
 function __EpicEcomKeyImageInfo_decode(_buffer, _offset)
 {
@@ -13685,7 +13833,7 @@ function __EpicEcomKeyImageInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomCatalogRelease_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13714,8 +13862,8 @@ function __EpicEcomCatalogRelease_encode(_inst, _buffer, _offset, _where = _GMFU
  * @func __EpicEcomCatalogRelease_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomCatalogRelease} 
- * @ignore 
+ * @returns {Struct.EpicEcomCatalogRelease}
+ * @ignore
  */
 function __EpicEcomCatalogRelease_decode(_buffer, _offset)
 {
@@ -13747,7 +13895,7 @@ function __EpicEcomCatalogRelease_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomQueryOwnershipCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13775,8 +13923,8 @@ function __EpicEcomQueryOwnershipCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicEcomQueryOwnershipCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomQueryOwnershipCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomQueryOwnershipCallbackInfo}
+ * @ignore
  */
 function __EpicEcomQueryOwnershipCallbackInfo_decode(_buffer, _offset)
 {
@@ -13806,7 +13954,7 @@ function __EpicEcomQueryOwnershipCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomQueryOwnershipBySandboxIdsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13834,8 +13982,8 @@ function __EpicEcomQueryOwnershipBySandboxIdsCallbackInfo_encode(_inst, _buffer,
  * @func __EpicEcomQueryOwnershipBySandboxIdsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomQueryOwnershipBySandboxIdsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomQueryOwnershipBySandboxIdsCallbackInfo}
+ * @ignore
  */
 function __EpicEcomQueryOwnershipBySandboxIdsCallbackInfo_decode(_buffer, _offset)
 {
@@ -13865,7 +14013,7 @@ function __EpicEcomQueryOwnershipBySandboxIdsCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomQueryOwnershipTokenCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13894,8 +14042,8 @@ function __EpicEcomQueryOwnershipTokenCallbackInfo_encode(_inst, _buffer, _offse
  * @func __EpicEcomQueryOwnershipTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomQueryOwnershipTokenCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomQueryOwnershipTokenCallbackInfo}
+ * @ignore
  */
 function __EpicEcomQueryOwnershipTokenCallbackInfo_decode(_buffer, _offset)
 {
@@ -13926,7 +14074,7 @@ function __EpicEcomQueryOwnershipTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomQueryEntitlementsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -13950,8 +14098,8 @@ function __EpicEcomQueryEntitlementsCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicEcomQueryEntitlementsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomQueryEntitlementsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomQueryEntitlementsCallbackInfo}
+ * @ignore
  */
 function __EpicEcomQueryEntitlementsCallbackInfo_decode(_buffer, _offset)
 {
@@ -13978,7 +14126,7 @@ function __EpicEcomQueryEntitlementsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomQueryEntitlementTokenCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14007,8 +14155,8 @@ function __EpicEcomQueryEntitlementTokenCallbackInfo_encode(_inst, _buffer, _off
  * @func __EpicEcomQueryEntitlementTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomQueryEntitlementTokenCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomQueryEntitlementTokenCallbackInfo}
+ * @ignore
  */
 function __EpicEcomQueryEntitlementTokenCallbackInfo_decode(_buffer, _offset)
 {
@@ -14039,7 +14187,7 @@ function __EpicEcomQueryEntitlementTokenCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomQueryOffersCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14063,8 +14211,8 @@ function __EpicEcomQueryOffersCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicEcomQueryOffersCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomQueryOffersCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomQueryOffersCallbackInfo}
+ * @ignore
  */
 function __EpicEcomQueryOffersCallbackInfo_decode(_buffer, _offset)
 {
@@ -14091,7 +14239,7 @@ function __EpicEcomQueryOffersCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomCheckoutCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14120,8 +14268,8 @@ function __EpicEcomCheckoutCallbackInfo_encode(_inst, _buffer, _offset, _where =
  * @func __EpicEcomCheckoutCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomCheckoutCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomCheckoutCallbackInfo}
+ * @ignore
  */
 function __EpicEcomCheckoutCallbackInfo_decode(_buffer, _offset)
 {
@@ -14152,7 +14300,7 @@ function __EpicEcomCheckoutCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicEcomRedeemEntitlementsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14180,8 +14328,8 @@ function __EpicEcomRedeemEntitlementsCallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicEcomRedeemEntitlementsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicEcomRedeemEntitlementsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicEcomRedeemEntitlementsCallbackInfo}
+ * @ignore
  */
 function __EpicEcomRedeemEntitlementsCallbackInfo_decode(_buffer, _offset)
 {
@@ -14211,7 +14359,7 @@ function __EpicEcomRedeemEntitlementsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesSendCustomInviteCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14246,8 +14394,8 @@ function __EpicCustomInvitesSendCustomInviteCallbackInfo_encode(_inst, _buffer, 
  * @func __EpicCustomInvitesSendCustomInviteCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesSendCustomInviteCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesSendCustomInviteCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesSendCustomInviteCallbackInfo_decode(_buffer, _offset)
 {
@@ -14283,7 +14431,7 @@ function __EpicCustomInvitesSendCustomInviteCallbackInfo_decode(_buffer, _offset
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesCustomInviteReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14317,8 +14465,8 @@ function __EpicCustomInvitesCustomInviteReceivedCallbackInfo_encode(_inst, _buff
  * @func __EpicCustomInvitesCustomInviteReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesCustomInviteReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesCustomInviteReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesCustomInviteReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14354,7 +14502,7 @@ function __EpicCustomInvitesCustomInviteReceivedCallbackInfo_decode(_buffer, _of
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesCustomInviteAcceptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14388,8 +14536,8 @@ function __EpicCustomInvitesCustomInviteAcceptedCallbackInfo_encode(_inst, _buff
  * @func __EpicCustomInvitesCustomInviteAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesCustomInviteAcceptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesCustomInviteAcceptedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesCustomInviteAcceptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14425,7 +14573,7 @@ function __EpicCustomInvitesCustomInviteAcceptedCallbackInfo_decode(_buffer, _of
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesCustomInviteRejectedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14459,8 +14607,8 @@ function __EpicCustomInvitesCustomInviteRejectedCallbackInfo_encode(_inst, _buff
  * @func __EpicCustomInvitesCustomInviteRejectedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesCustomInviteRejectedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesCustomInviteRejectedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesCustomInviteRejectedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14496,7 +14644,7 @@ function __EpicCustomInvitesCustomInviteRejectedCallbackInfo_decode(_buffer, _of
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesSendRequestToJoinCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14525,8 +14673,8 @@ function __EpicCustomInvitesSendRequestToJoinCallbackInfo_encode(_inst, _buffer,
  * @func __EpicCustomInvitesSendRequestToJoinCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesSendRequestToJoinCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesSendRequestToJoinCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesSendRequestToJoinCallbackInfo_decode(_buffer, _offset)
 {
@@ -14557,7 +14705,7 @@ function __EpicCustomInvitesSendRequestToJoinCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14586,8 +14734,8 @@ function __EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo_encode(_in
  * @func __EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14618,7 +14766,7 @@ function __EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo_decode(_bu
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14642,8 +14790,8 @@ function __EpicCustomInvitesRequestToJoinReceivedCallbackInfo_encode(_inst, _buf
  * @func __EpicCustomInvitesRequestToJoinReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesRequestToJoinReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14671,7 +14819,7 @@ function __EpicCustomInvitesRequestToJoinReceivedCallbackInfo_decode(_buffer, _o
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesAcceptRequestToJoinCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14700,8 +14848,8 @@ function __EpicCustomInvitesAcceptRequestToJoinCallbackInfo_encode(_inst, _buffe
  * @func __EpicCustomInvitesAcceptRequestToJoinCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesAcceptRequestToJoinCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesAcceptRequestToJoinCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesAcceptRequestToJoinCallbackInfo_decode(_buffer, _offset)
 {
@@ -14732,7 +14880,7 @@ function __EpicCustomInvitesAcceptRequestToJoinCallbackInfo_decode(_buffer, _off
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesRejectRequestToJoinCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14761,8 +14909,8 @@ function __EpicCustomInvitesRejectRequestToJoinCallbackInfo_encode(_inst, _buffe
  * @func __EpicCustomInvitesRejectRequestToJoinCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesRejectRequestToJoinCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesRejectRequestToJoinCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesRejectRequestToJoinCallbackInfo_decode(_buffer, _offset)
 {
@@ -14793,7 +14941,7 @@ function __EpicCustomInvitesRejectRequestToJoinCallbackInfo_decode(_buffer, _off
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14831,8 +14979,8 @@ function __EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo_encode(_
  * @func __EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14871,7 +15019,7 @@ function __EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo_decode(_
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinAcceptedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14895,8 +15043,8 @@ function __EpicCustomInvitesRequestToJoinAcceptedCallbackInfo_encode(_inst, _buf
  * @func __EpicCustomInvitesRequestToJoinAcceptedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesRequestToJoinAcceptedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinAcceptedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinAcceptedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14924,7 +15072,7 @@ function __EpicCustomInvitesRequestToJoinAcceptedCallbackInfo_decode(_buffer, _o
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinRejectedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -14948,8 +15096,8 @@ function __EpicCustomInvitesRequestToJoinRejectedCallbackInfo_encode(_inst, _buf
  * @func __EpicCustomInvitesRequestToJoinRejectedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicCustomInvitesRequestToJoinRejectedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicCustomInvitesRequestToJoinRejectedCallbackInfo}
+ * @ignore
  */
 function __EpicCustomInvitesRequestToJoinRejectedCallbackInfo_decode(_buffer, _offset)
 {
@@ -14977,7 +15125,7 @@ function __EpicCustomInvitesRequestToJoinRejectedCallbackInfo_decode(_buffer, _o
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCJoinRoomCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15006,8 +15154,8 @@ function __EpicRTCJoinRoomCallbackInfo_encode(_inst, _buffer, _offset, _where = 
  * @func __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCJoinRoomCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCJoinRoomCallbackInfo}
+ * @ignore
  */
 function __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
 {
@@ -15038,7 +15186,7 @@ function __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCLeaveRoomCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15067,8 +15215,8 @@ function __EpicRTCLeaveRoomCallbackInfo_encode(_inst, _buffer, _offset, _where =
  * @func __EpicRTCLeaveRoomCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCLeaveRoomCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCLeaveRoomCallbackInfo}
+ * @ignore
  */
 function __EpicRTCLeaveRoomCallbackInfo_decode(_buffer, _offset)
 {
@@ -15099,7 +15247,7 @@ function __EpicRTCLeaveRoomCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCBlockParticipantCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15137,8 +15285,8 @@ function __EpicRTCBlockParticipantCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicRTCBlockParticipantCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCBlockParticipantCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCBlockParticipantCallbackInfo}
+ * @ignore
  */
 function __EpicRTCBlockParticipantCallbackInfo_decode(_buffer, _offset)
 {
@@ -15176,7 +15324,7 @@ function __EpicRTCBlockParticipantCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCDisconnectedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15205,8 +15353,8 @@ function __EpicRTCDisconnectedCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicRTCDisconnectedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCDisconnectedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCDisconnectedCallbackInfo}
+ * @ignore
  */
 function __EpicRTCDisconnectedCallbackInfo_decode(_buffer, _offset)
 {
@@ -15237,7 +15385,7 @@ function __EpicRTCDisconnectedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCParticipantStatusChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15275,8 +15423,8 @@ function __EpicRTCParticipantStatusChangedCallbackInfo_encode(_inst, _buffer, _o
  * @func __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo}
+ * @ignore
  */
 function __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
 {
@@ -15314,7 +15462,7 @@ function __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCRoomStatisticsUpdatedInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15343,8 +15491,8 @@ function __EpicRTCRoomStatisticsUpdatedInfo_encode(_inst, _buffer, _offset, _whe
  * @func __EpicRTCRoomStatisticsUpdatedInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCRoomStatisticsUpdatedInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCRoomStatisticsUpdatedInfo}
+ * @ignore
  */
 function __EpicRTCRoomStatisticsUpdatedInfo_decode(_buffer, _offset)
 {
@@ -15376,7 +15524,7 @@ function __EpicRTCRoomStatisticsUpdatedInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioParticipantUpdatedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15414,8 +15562,8 @@ function __EpicRTCAudioParticipantUpdatedCallbackInfo_encode(_inst, _buffer, _of
  * @func __EpicRTCAudioParticipantUpdatedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioParticipantUpdatedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioParticipantUpdatedCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioParticipantUpdatedCallbackInfo_decode(_buffer, _offset)
 {
@@ -15453,7 +15601,7 @@ function __EpicRTCAudioParticipantUpdatedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioDevicesChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15471,8 +15619,8 @@ function __EpicRTCAudioDevicesChangedCallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicRTCAudioDevicesChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioDevicesChangedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioDevicesChangedCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioDevicesChangedCallbackInfo_decode(_buffer, _offset)
 {
@@ -15495,7 +15643,7 @@ function __EpicRTCAudioDevicesChangedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioInputStateCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15524,8 +15672,8 @@ function __EpicRTCAudioInputStateCallbackInfo_encode(_inst, _buffer, _offset, _w
  * @func __EpicRTCAudioInputStateCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioInputStateCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioInputStateCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioInputStateCallbackInfo_decode(_buffer, _offset)
 {
@@ -15556,7 +15704,7 @@ function __EpicRTCAudioInputStateCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioOutputStateCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15585,8 +15733,8 @@ function __EpicRTCAudioOutputStateCallbackInfo_encode(_inst, _buffer, _offset, _
  * @func __EpicRTCAudioOutputStateCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioOutputStateCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioOutputStateCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioOutputStateCallbackInfo_decode(_buffer, _offset)
 {
@@ -15617,7 +15765,7 @@ function __EpicRTCAudioOutputStateCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioUpdateSendingCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15651,8 +15799,8 @@ function __EpicRTCAudioUpdateSendingCallbackInfo_encode(_inst, _buffer, _offset,
  * @func __EpicRTCAudioUpdateSendingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioUpdateSendingCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioUpdateSendingCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioUpdateSendingCallbackInfo_decode(_buffer, _offset)
 {
@@ -15686,7 +15834,7 @@ function __EpicRTCAudioUpdateSendingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioUpdateReceivingCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15724,8 +15872,8 @@ function __EpicRTCAudioUpdateReceivingCallbackInfo_encode(_inst, _buffer, _offse
  * @func __EpicRTCAudioUpdateReceivingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioUpdateReceivingCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioUpdateReceivingCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioUpdateReceivingCallbackInfo_decode(_buffer, _offset)
 {
@@ -15763,7 +15911,7 @@ function __EpicRTCAudioUpdateReceivingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioUpdateSendingVolumeCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15796,8 +15944,8 @@ function __EpicRTCAudioUpdateSendingVolumeCallbackInfo_encode(_inst, _buffer, _o
  * @func __EpicRTCAudioUpdateSendingVolumeCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioUpdateSendingVolumeCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioUpdateSendingVolumeCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioUpdateSendingVolumeCallbackInfo_decode(_buffer, _offset)
 {
@@ -15831,7 +15979,7 @@ function __EpicRTCAudioUpdateSendingVolumeCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioUpdateReceivingVolumeCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15864,8 +16012,8 @@ function __EpicRTCAudioUpdateReceivingVolumeCallbackInfo_encode(_inst, _buffer, 
  * @func __EpicRTCAudioUpdateReceivingVolumeCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioUpdateReceivingVolumeCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioUpdateReceivingVolumeCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioUpdateReceivingVolumeCallbackInfo_decode(_buffer, _offset)
 {
@@ -15899,7 +16047,7 @@ function __EpicRTCAudioUpdateReceivingVolumeCallbackInfo_decode(_buffer, _offset
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioUpdateParticipantVolumeCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -15937,8 +16085,8 @@ function __EpicRTCAudioUpdateParticipantVolumeCallbackInfo_encode(_inst, _buffer
  * @func __EpicRTCAudioUpdateParticipantVolumeCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioUpdateParticipantVolumeCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioUpdateParticipantVolumeCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioUpdateParticipantVolumeCallbackInfo_decode(_buffer, _offset)
 {
@@ -15976,7 +16124,7 @@ function __EpicRTCAudioUpdateParticipantVolumeCallbackInfo_decode(_buffer, _offs
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioInputDeviceInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16004,8 +16152,8 @@ function __EpicRTCAudioInputDeviceInfo_encode(_inst, _buffer, _offset, _where = 
  * @func __EpicRTCAudioInputDeviceInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioInputDeviceInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioInputDeviceInfo}
+ * @ignore
  */
 function __EpicRTCAudioInputDeviceInfo_decode(_buffer, _offset)
 {
@@ -16036,7 +16184,7 @@ function __EpicRTCAudioInputDeviceInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioOutputDeviceInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16064,8 +16212,8 @@ function __EpicRTCAudioOutputDeviceInfo_encode(_inst, _buffer, _offset, _where =
  * @func __EpicRTCAudioOutputDeviceInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioOutputDeviceInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioOutputDeviceInfo}
+ * @ignore
  */
 function __EpicRTCAudioOutputDeviceInfo_decode(_buffer, _offset)
 {
@@ -16096,7 +16244,7 @@ function __EpicRTCAudioOutputDeviceInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioSetInputDeviceSettingsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16120,8 +16268,8 @@ function __EpicRTCAudioSetInputDeviceSettingsCallbackInfo_encode(_inst, _buffer,
  * @func __EpicRTCAudioSetInputDeviceSettingsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioSetInputDeviceSettingsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioSetInputDeviceSettingsCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioSetInputDeviceSettingsCallbackInfo_decode(_buffer, _offset)
 {
@@ -16148,7 +16296,7 @@ function __EpicRTCAudioSetInputDeviceSettingsCallbackInfo_decode(_buffer, _offse
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioSetOutputDeviceSettingsCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16172,8 +16320,8 @@ function __EpicRTCAudioSetOutputDeviceSettingsCallbackInfo_encode(_inst, _buffer
  * @func __EpicRTCAudioSetOutputDeviceSettingsCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioSetOutputDeviceSettingsCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioSetOutputDeviceSettingsCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioSetOutputDeviceSettingsCallbackInfo_decode(_buffer, _offset)
 {
@@ -16200,7 +16348,7 @@ function __EpicRTCAudioSetOutputDeviceSettingsCallbackInfo_decode(_buffer, _offs
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioQueryInputDevicesCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16219,8 +16367,8 @@ function __EpicRTCAudioQueryInputDevicesCallbackInfo_encode(_inst, _buffer, _off
  * @func __EpicRTCAudioQueryInputDevicesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioQueryInputDevicesCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioQueryInputDevicesCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioQueryInputDevicesCallbackInfo_decode(_buffer, _offset)
 {
@@ -16243,7 +16391,7 @@ function __EpicRTCAudioQueryInputDevicesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCAudioQueryOutputDevicesCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16262,8 +16410,8 @@ function __EpicRTCAudioQueryOutputDevicesCallbackInfo_encode(_inst, _buffer, _of
  * @func __EpicRTCAudioQueryOutputDevicesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCAudioQueryOutputDevicesCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCAudioQueryOutputDevicesCallbackInfo}
+ * @ignore
  */
 function __EpicRTCAudioQueryOutputDevicesCallbackInfo_decode(_buffer, _offset)
 {
@@ -16286,7 +16434,7 @@ function __EpicRTCAudioQueryOutputDevicesCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCDataParticipantUpdatedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16320,8 +16468,8 @@ function __EpicRTCDataParticipantUpdatedCallbackInfo_encode(_inst, _buffer, _off
  * @func __EpicRTCDataParticipantUpdatedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCDataParticipantUpdatedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCDataParticipantUpdatedCallbackInfo}
+ * @ignore
  */
 function __EpicRTCDataParticipantUpdatedCallbackInfo_decode(_buffer, _offset)
 {
@@ -16356,7 +16504,7 @@ function __EpicRTCDataParticipantUpdatedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCDataReceivedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16394,8 +16542,8 @@ function __EpicRTCDataReceivedCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicRTCDataReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCDataReceivedCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCDataReceivedCallbackInfo}
+ * @ignore
  */
 function __EpicRTCDataReceivedCallbackInfo_decode(_buffer, _offset)
 {
@@ -16434,7 +16582,7 @@ function __EpicRTCDataReceivedCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCDataUpdateSendingCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16467,8 +16615,8 @@ function __EpicRTCDataUpdateSendingCallbackInfo_encode(_inst, _buffer, _offset, 
  * @func __EpicRTCDataUpdateSendingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCDataUpdateSendingCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCDataUpdateSendingCallbackInfo}
+ * @ignore
  */
 function __EpicRTCDataUpdateSendingCallbackInfo_decode(_buffer, _offset)
 {
@@ -16502,7 +16650,7 @@ function __EpicRTCDataUpdateSendingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicRTCDataUpdateReceivingCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16540,8 +16688,8 @@ function __EpicRTCDataUpdateReceivingCallbackInfo_encode(_inst, _buffer, _offset
  * @func __EpicRTCDataUpdateReceivingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCDataUpdateReceivingCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicRTCDataUpdateReceivingCallbackInfo}
+ * @ignore
  */
 function __EpicRTCDataUpdateReceivingCallbackInfo_decode(_buffer, _offset)
 {
@@ -16579,7 +16727,7 @@ function __EpicRTCDataUpdateReceivingCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthLoginCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16605,6 +16753,10 @@ function __EpicAuthLoginCallbackInfo_encode(_inst, _buffer, _offset, _where = _G
         if (!is_bool(self.has_continuance_token)) show_error($"{_where} :: self.has_continuance_token expected bool", true);
         buffer_write(_buffer, buffer_bool, self.has_continuance_token);
 
+        // field: continuance_token_id, type: UInt64
+        if (!is_numeric(self.continuance_token_id)) show_error($"{_where} :: self.continuance_token_id expected number", true);
+        buffer_write(_buffer, buffer_u64, self.continuance_token_id);
+
         // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
         if (self.pin_grant_info.__uid != 2307251061) show_error($"{_where} :: self.pin_grant_info expected EpicAuthPinGrantInfo", true);
         __EpicAuthPinGrantInfo_encode(self.pin_grant_info, _buffer, buffer_tell(_buffer), _where);
@@ -16616,8 +16768,8 @@ function __EpicAuthLoginCallbackInfo_encode(_inst, _buffer, _offset, _where = _G
  * @func __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthLoginCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthLoginCallbackInfo}
+ * @ignore
  */
 function __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
 {
@@ -16640,6 +16792,9 @@ function __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
         // field: has_continuance_token, type: Bool
         self.has_continuance_token = buffer_read(_buffer, buffer_bool);
 
+        // field: continuance_token_id, type: UInt64
+        self.continuance_token_id = buffer_read(_buffer, buffer_u64);
+
         // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
         self.pin_grant_info = __EpicAuthPinGrantInfo_decode(_buffer, buffer_tell(_buffer));
 
@@ -16654,7 +16809,7 @@ function __EpicAuthLoginCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
- * @ignore 
+ * @ignore
  */
 function __EpicAuthLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
@@ -16687,8 +16842,8 @@ function __EpicAuthLinkAccountCallbackInfo_encode(_inst, _buffer, _offset, _wher
  * @func __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicAuthLinkAccountCallbackInfo} 
- * @ignore 
+ * @returns {Struct.EpicAuthLinkAccountCallbackInfo}
+ * @ignore
  */
 function __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
 {
@@ -16732,10 +16887,13 @@ function __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
 /**
  * @param {String} _product_name
  * @param {String} _product_version
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_api_initialize(_product_name, _product_version)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_api_initialize(_product_name, _product_version, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -16746,10 +16904,13 @@ function eos_api_initialize(_product_name, _product_version)
 }
 
 /**
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_api_shutdown()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_api_shutdown(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -16764,10 +16925,13 @@ function eos_api_shutdown()
 
 /**
  * @param {Enum.EpicResult} _result
- * @returns {String} 
+ * @returns {String}
  */
 function eos_api_result_to_string(_result)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _result, type: enum EpicResult
@@ -16782,10 +16946,13 @@ function eos_api_result_to_string(_result)
 
 /**
  * @param {Enum.EpicResult} _result
- * @returns {Bool} 
+ * @returns {Bool}
  */
 function eos_api_result_is_operation_complete(_result)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _result, type: enum EpicResult
@@ -16800,10 +16967,13 @@ function eos_api_result_is_operation_complete(_result)
 
 /**
  * @param {Enum.EpicApplicationStatus} _status
- * @returns {String} 
+ * @returns {String}
  */
 function eos_api_application_status_to_string(_status)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _status, type: enum EpicApplicationStatus
@@ -16818,10 +16988,13 @@ function eos_api_application_status_to_string(_status)
 
 /**
  * @param {Enum.EpicNetworkStatus} _status
- * @returns {String} 
+ * @returns {String}
  */
 function eos_api_network_status_to_string(_status)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _status, type: enum EpicNetworkStatus
@@ -16845,10 +17018,13 @@ function eos_api_network_status_to_string(_status)
 
 /**
  * @param {String} _cache_directory
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_platform_create(_cache_directory)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_platform_create(_cache_directory, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -16865,10 +17041,13 @@ function eos_platform_create(_cache_directory)
 
 
 /**
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_platform_check_for_launcher_and_restart()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_platform_check_for_launcher_and_restart(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -16880,10 +17059,13 @@ function eos_platform_check_for_launcher_and_restart()
 
 /**
  * @param {Enum.EpicNetworkStatus} _status
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_platform_set_network_status(_status)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _status, type: enum EpicNetworkStatus
@@ -16908,6 +17090,9 @@ function eos_platform_set_network_status(_status)
  */
 function eos_logging_set_callback(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -16936,10 +17121,13 @@ function eos_logging_set_callback(_callback)
 /**
  * @param {Enum.EpicLogCategory} _log_category
  * @param {Enum.EpicLogLevel} _log_level
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_logging_set_log_level(_log_category, _log_level)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _log_category, type: enum EpicLogCategory
@@ -16971,6 +17159,9 @@ function eos_logging_set_log_level(_log_category, _log_level)
  */
 function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17024,6 +17215,9 @@ function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, 
  */
 function eos_auth_logout(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17052,15 +17246,23 @@ function eos_auth_logout(_local_user_id, _callback)
 }
 
 /**
+ * @param {Real} _continuance_token_id
  * @param {String} _local_user_id
  * @param {Enum.EpicLinkAccountFlags} _link_account_flags
  * @param {Function} _callback
  */
-function eos_auth_link_account(_local_user_id, _link_account_flags, _callback)
+function eos_auth_link_account(_continuance_token_id, _local_user_id, _link_account_flags, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _continuance_token_id, type: Int64
+    if (!is_numeric(_continuance_token_id)) show_error($"{_GMFUNCTION_} :: _continuance_token_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _continuance_token_id);
 
     // param: _local_user_id, type: String
     if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
@@ -17095,6 +17297,9 @@ function eos_auth_link_account(_local_user_id, _link_account_flags, _callback)
  */
 function eos_auth_delete_persistent_auth(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17118,10 +17323,13 @@ function eos_auth_delete_persistent_auth(_callback)
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_auth_get_logged_in_accounts_count()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_auth_get_logged_in_accounts_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17133,10 +17341,13 @@ function eos_auth_get_logged_in_accounts_count()
 
 /**
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_auth_get_logged_in_account_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -17150,10 +17361,13 @@ function eos_auth_get_logged_in_account_by_index(_index)
 
 /**
  * @param {String} _local_user_id
- * @returns {Enum.EpicLoginStatus} 
+ * @returns {Enum.EpicLoginStatus}
  */
 function eos_auth_get_login_status(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_auth_get_login_status(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17166,10 +17380,13 @@ function eos_auth_get_login_status(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {String} _target_account_id
- * @returns {Struct.EpicAuthIdToken} 
+ * @returns {Struct.EpicAuthIdToken}
  */
 function eos_auth_copy_id_token(_local_user_id, _target_account_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_auth_copy_id_token(_local_user_id, _target_account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17181,10 +17398,13 @@ function eos_auth_copy_id_token(_local_user_id, _target_account_id)
 
 /**
  * @param {String} _local_user_id
- * @returns {Struct.EpicAuthUserAuthToken} 
+ * @returns {Struct.EpicAuthUserAuthToken}
  */
 function eos_auth_copy_user_auth_token(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_auth_copy_user_auth_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17201,6 +17421,9 @@ function eos_auth_copy_user_auth_token(_local_user_id)
  */
 function eos_auth_query_id_token(_local_user_id, _target_account_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17239,6 +17462,9 @@ function eos_auth_query_id_token(_local_user_id, _target_account_id, _callback)
  */
 function eos_auth_verify_id_token(_json_web_token, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17272,6 +17498,9 @@ function eos_auth_verify_id_token(_json_web_token, _callback)
  */
 function eos_auth_verify_user_auth(_access_token, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17301,10 +17530,13 @@ function eos_auth_verify_user_auth(_access_token, _callback)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_auth_add_notify_login_status_changed(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17336,6 +17568,9 @@ function eos_auth_add_notify_login_status_changed(_callback)
  */
 function eos_auth_remove_notify_login_status_changed(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -17355,6 +17590,9 @@ function eos_auth_remove_notify_login_status_changed(_notification_id)
  */
 function eos_connect_login(_token, _external_credential_type, _display_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17393,13 +17631,21 @@ function eos_connect_login(_token, _external_credential_type, _display_name, _ca
 }
 
 /**
+ * @param {Real} _continuance_token_id
  * @param {Function} _callback
  */
-function eos_connect_create_user(_callback)
+function eos_connect_create_user(_continuance_token_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _continuance_token_id, type: Int64
+    if (!is_numeric(_continuance_token_id)) show_error($"{_GMFUNCTION_} :: _continuance_token_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _continuance_token_id);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -17420,14 +17666,22 @@ function eos_connect_create_user(_callback)
 }
 
 /**
+ * @param {Real} _continuance_token_id
  * @param {String} _local_user_id
  * @param {Function} _callback
  */
-function eos_connect_link_account(_local_user_id, _callback)
+function eos_connect_link_account(_continuance_token_id, _local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _continuance_token_id, type: Int64
+    if (!is_numeric(_continuance_token_id)) show_error($"{_GMFUNCTION_} :: _continuance_token_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _continuance_token_id);
 
     // param: _local_user_id, type: String
     if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
@@ -17458,6 +17712,9 @@ function eos_connect_link_account(_local_user_id, _callback)
  */
 function eos_connect_unlink_account(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17491,6 +17748,9 @@ function eos_connect_unlink_account(_local_user_id, _callback)
  */
 function eos_connect_create_device_id(_device_model, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17523,6 +17783,9 @@ function eos_connect_create_device_id(_device_model, _callback)
  */
 function eos_connect_delete_device_id(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17552,6 +17815,9 @@ function eos_connect_delete_device_id(_callback)
  */
 function eos_connect_transfer_device_id_account(_primary_local_user_id, _local_device_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17590,6 +17856,9 @@ function eos_connect_transfer_device_id_account(_primary_local_user_id, _local_d
  */
 function eos_connect_logout(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17618,10 +17887,13 @@ function eos_connect_logout(_local_user_id, _callback)
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_connect_get_logged_in_users_count()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_connect_get_logged_in_users_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17633,10 +17905,13 @@ function eos_connect_get_logged_in_users_count()
 
 /**
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_connect_get_logged_in_user_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -17650,10 +17925,13 @@ function eos_connect_get_logged_in_user_by_index(_index)
 
 /**
  * @param {String} _local_user_id
- * @returns {Enum.EpicLoginStatus} 
+ * @returns {Enum.EpicLoginStatus}
  */
 function eos_connect_get_login_status(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_connect_get_login_status(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17665,10 +17943,13 @@ function eos_connect_get_login_status(_local_user_id)
 
 /**
  * @param {String} _local_user_id
- * @returns {Struct.EpicConnectIdToken} 
+ * @returns {Struct.EpicConnectIdToken}
  */
 function eos_connect_copy_id_token(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_connect_copy_id_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17680,10 +17961,13 @@ function eos_connect_copy_id_token(_local_user_id)
 
 /**
  * @param {String} _target_user_id
- * @returns {Struct.EpicConnectExternalAccountInfo} 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
  */
 function eos_connect_copy_product_user_info(_target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_connect_copy_product_user_info(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17695,10 +17979,13 @@ function eos_connect_copy_product_user_info(_target_user_id)
 
 /**
  * @param {String} _target_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_connect_get_product_user_external_account_count(_target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_connect_get_product_user_external_account_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17711,10 +17998,13 @@ function eos_connect_get_product_user_external_account_count(_target_user_id)
 /**
  * @param {String} _target_user_id
  * @param {Real} _index
- * @returns {Struct.EpicConnectExternalAccountInfo} 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
  */
 function eos_connect_copy_product_user_external_account_by_index(_target_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _target_user_id, type: String
@@ -17738,10 +18028,13 @@ function eos_connect_copy_product_user_external_account_by_index(_target_user_id
 /**
  * @param {String} _target_user_id
  * @param {Enum.EpicExternalAccountType} _account_id_type
- * @returns {Struct.EpicConnectExternalAccountInfo} 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
  */
 function eos_connect_copy_product_user_external_account_by_account_type(_target_user_id, _account_id_type)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _target_user_id, type: String
@@ -17766,10 +18059,13 @@ function eos_connect_copy_product_user_external_account_by_account_type(_target_
 /**
  * @param {String} _target_user_id
  * @param {String} _account_id
- * @returns {Struct.EpicConnectExternalAccountInfo} 
+ * @returns {Struct.EpicConnectExternalAccountInfo}
  */
 function eos_connect_copy_product_user_external_account_by_account_id(_target_user_id, _account_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_connect_copy_product_user_external_account_by_account_id(_target_user_id, _account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -17783,10 +18079,13 @@ function eos_connect_copy_product_user_external_account_by_account_id(_target_us
  * @param {String} _local_user_id
  * @param {Enum.EpicExternalAccountType} _account_id_type
  * @param {String} _target_product_user_id
- * @returns {String} 
+ * @returns {String}
  */
 function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_type, _target_product_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -17813,10 +18112,13 @@ function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_typ
  * @param {String} _local_user_id
  * @param {Enum.EpicExternalAccountType} _account_id_type
  * @param {String} _target_external_user_id
- * @returns {String} 
+ * @returns {String}
  */
 function eos_connect_get_external_account_mapping(_local_user_id, _account_id_type, _target_external_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -17845,6 +18147,9 @@ function eos_connect_get_external_account_mapping(_local_user_id, _account_id_ty
  */
 function eos_connect_verify_id_token(_json_web_token, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17880,6 +18185,9 @@ function eos_connect_verify_id_token(_json_web_token, _callback)
  */
 function eos_connect_query_external_account_mappings(_local_user_id, _account_id_type, _target_external_user_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17930,6 +18238,9 @@ function eos_connect_query_external_account_mappings(_local_user_id, _account_id
  */
 function eos_connect_query_product_user_id_mappings(_local_user_id, _target_product_user_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -17970,10 +18281,13 @@ function eos_connect_query_product_user_id_mappings(_local_user_id, _target_prod
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_connect_add_notify_auth_expiration(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18005,6 +18319,9 @@ function eos_connect_add_notify_auth_expiration(_callback)
  */
 function eos_connect_remove_notify_auth_expiration(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -18018,10 +18335,13 @@ function eos_connect_remove_notify_auth_expiration(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_connect_add_notify_login_status_changed(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18053,6 +18373,9 @@ function eos_connect_add_notify_login_status_changed(_callback)
  */
 function eos_connect_remove_notify_login_status_changed(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -18070,6 +18393,9 @@ function eos_connect_remove_notify_login_status_changed(_notification_id)
  */
 function eos_friends_query_friends(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18099,10 +18425,13 @@ function eos_friends_query_friends(_local_user_id, _callback)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_friends_get_friends_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_friends_get_friends_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18115,10 +18444,13 @@ function eos_friends_get_friends_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_friends_get_friend_at_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -18138,10 +18470,13 @@ function eos_friends_get_friend_at_index(_local_user_id, _index)
 /**
  * @param {String} _local_user_id
  * @param {String} _target_user_id
- * @returns {Enum.EpicFriendsStatus} 
+ * @returns {Enum.EpicFriendsStatus}
  */
 function eos_friends_get_status(_local_user_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_friends_get_status(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18153,10 +18488,13 @@ function eos_friends_get_status(_local_user_id, _target_user_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_friends_add_notify_friends_update(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18188,6 +18526,9 @@ function eos_friends_add_notify_friends_update(_callback)
  */
 function eos_friends_remove_notify_friends_update(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -18206,6 +18547,9 @@ function eos_friends_remove_notify_friends_update(_notification_id)
  */
 function eos_user_info_query_user_info(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18241,10 +18585,13 @@ function eos_user_info_query_user_info(_local_user_id, _target_user_id, _callbac
 /**
  * @param {String} _local_user_id
  * @param {String} _target_user_id
- * @returns {Struct.EpicUserInfo} 
+ * @returns {Struct.EpicUserInfo}
  */
 function eos_user_info_copy_user_info(_local_user_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_user_info_copy_user_info(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18255,10 +18602,13 @@ function eos_user_info_copy_user_info(_local_user_id, _target_user_id)
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_user_info_get_local_platform_type()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_user_info_get_local_platform_type(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18275,10 +18625,13 @@ function eos_user_info_get_local_platform_type()
  * @param {String} _local_user_id
  * @param {String} _target_user_id
  * @param {Real} _index
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
  */
 function eos_user_info_copy_external_user_info_by_index(_local_user_id, _target_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -18308,10 +18661,13 @@ function eos_user_info_copy_external_user_info_by_index(_local_user_id, _target_
  * @param {String} _local_user_id
  * @param {String} _target_user_id
  * @param {Enum.EpicExternalAccountType} _account_type
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
  */
 function eos_user_info_copy_external_user_info_by_account_type(_local_user_id, _target_user_id, _account_type)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -18342,10 +18698,13 @@ function eos_user_info_copy_external_user_info_by_account_type(_local_user_id, _
  * @param {String} _local_user_id
  * @param {String} _target_user_id
  * @param {String} _account_id
- * @returns {Struct.EpicUserInfoExternalUserInfo} 
+ * @returns {Struct.EpicUserInfoExternalUserInfo}
  */
 function eos_user_info_copy_external_user_info_by_account_id(_local_user_id, _target_user_id, _account_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -18381,6 +18740,9 @@ function eos_user_info_copy_external_user_info_by_account_id(_local_user_id, _ta
  */
 function eos_stats_ingest_stat(_local_user_id, _target_user_id, _stat_name, _ingest_amount, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18431,6 +18793,9 @@ function eos_stats_ingest_stat(_local_user_id, _target_user_id, _stat_name, _ing
  */
 function eos_stats_query_stats(_local_user_id, _target_user_id, _start_time, _end_time, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18473,10 +18838,13 @@ function eos_stats_query_stats(_local_user_id, _target_user_id, _start_time, _en
 
 /**
  * @param {String} _target_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_stats_get_stats_count(_target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_stats_get_stats_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18489,10 +18857,13 @@ function eos_stats_get_stats_count(_target_user_id)
 /**
  * @param {String} _target_user_id
  * @param {Real} _index
- * @returns {Struct.EpicStatsStat} 
+ * @returns {Struct.EpicStatsStat}
  */
 function eos_stats_copy_stat_by_index(_target_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _target_user_id, type: String
@@ -18516,10 +18887,13 @@ function eos_stats_copy_stat_by_index(_target_user_id, _index)
 /**
  * @param {String} _target_user_id
  * @param {String} _name
- * @returns {Struct.EpicStatsStat} 
+ * @returns {Struct.EpicStatsStat}
  */
 function eos_stats_copy_stat_by_name(_target_user_id, _name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_stats_copy_stat_by_name(_target_user_id, _name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18535,6 +18909,9 @@ function eos_stats_copy_stat_by_name(_target_user_id, _name)
  */
 function eos_ui_show_friends(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18569,6 +18946,9 @@ function eos_ui_show_friends(_local_user_id, _callback)
  */
 function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18606,6 +18986,9 @@ function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
  */
 function eos_ui_acknowledge_event_id(_ui_event_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _ui_event_id, type: UInt64
@@ -18622,6 +19005,9 @@ function eos_ui_acknowledge_event_id(_ui_event_id)
  */
 function eos_ui_set_display_preference(_notification_location)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_location, type: enum EpicUINotificationLocation
@@ -18639,10 +19025,13 @@ function eos_ui_set_display_preference(_notification_location)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ui_add_notify_display_settings_updated(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18674,6 +19063,9 @@ function eos_ui_add_notify_display_settings_updated(_callback)
  */
 function eos_ui_remove_notify_display_settings_updated(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -18691,6 +19083,9 @@ function eos_ui_remove_notify_display_settings_updated(_notification_id)
  */
 function eos_ui_hide_friends(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18726,10 +19121,13 @@ function eos_ui_hide_friends(_local_user_id, _callback)
 
 /**
  * @param {Bool} _is_paused
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_ui_pause_social_overlay(_is_paused)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ui_pause_social_overlay(_is_paused, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18743,10 +19141,13 @@ function eos_ui_pause_social_overlay(_is_paused)
 
 
 /**
- * @returns {Enum.EpicUINotificationLocation} 
+ * @returns {Enum.EpicUINotificationLocation}
  */
 function eos_ui_get_notification_location_preference()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ui_get_notification_location_preference(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18763,6 +19164,9 @@ function eos_ui_get_notification_location_preference()
  */
 function eos_ui_show_block_player(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18802,6 +19206,9 @@ function eos_ui_show_block_player(_local_user_id, _target_user_id, _callback)
  */
 function eos_ui_show_report_player(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -18841,10 +19248,13 @@ function eos_ui_show_report_player(_local_user_id, _target_user_id, _callback)
  * @param {Enum.EpicUserControllerType} _controller_type
  * @param {String} _server_ip
  * @param {String} _game_session_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_metrics_begin_player_session(_account_id, _account_id_type, _display_name, _controller_type, _server_ip, _game_session_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _account_id, type: String
@@ -18892,10 +19302,13 @@ function eos_metrics_begin_player_session(_account_id, _account_id_type, _displa
  * @param {Enum.EpicUserControllerType} _controller_type
  * @param {String} _server_ip
  * @param {String} _game_session_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_metrics_end_player_session(_account_id, _account_id_type, _controller_type, _server_ip, _game_session_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _account_id, type: String
@@ -18934,10 +19347,13 @@ function eos_metrics_end_player_session(_account_id, _account_id_type, _controll
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_progression_snapshot_begin_snapshot(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_progression_snapshot_begin_snapshot(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -18951,10 +19367,13 @@ function eos_progression_snapshot_begin_snapshot(_local_user_id)
  * @param {Real} _snapshot_id
  * @param {String} _key
  * @param {String} _value
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_progression_snapshot_add_progression(_snapshot_id, _key, _value)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _snapshot_id, type: Int64
@@ -18982,10 +19401,13 @@ function eos_progression_snapshot_add_progression(_snapshot_id, _key, _value)
 
 /**
  * @param {Real} _snapshot_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_progression_snapshot_end_snapshot(_snapshot_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _snapshot_id, type: Int64
@@ -19007,6 +19429,9 @@ function eos_progression_snapshot_end_snapshot(_snapshot_id)
  */
 function eos_progression_snapshot_submit_snapshot(_snapshot_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19039,6 +19464,9 @@ function eos_progression_snapshot_submit_snapshot(_snapshot_id, _callback)
  */
 function eos_progression_snapshot_delete_snapshot(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19076,6 +19504,9 @@ function eos_progression_snapshot_delete_snapshot(_local_user_id, _callback)
  */
 function eos_reports_send_player_behavior_report(_reporter_user_id, _reported_user_id, _category, _message, _context, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19129,6 +19560,9 @@ function eos_reports_send_player_behavior_report(_reporter_user_id, _reported_us
  */
 function eos_sanctions_query_active_player_sanctions(_target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19158,10 +19592,13 @@ function eos_sanctions_query_active_player_sanctions(_target_user_id, _callback)
 
 /**
  * @param {String} _target_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sanctions_get_player_sanction_count(_target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_sanctions_get_player_sanction_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19174,10 +19611,13 @@ function eos_sanctions_get_player_sanction_count(_target_user_id)
 /**
  * @param {String} _target_user_id
  * @param {Real} _index
- * @returns {Struct.EpicSanctionsPlayerSanction} 
+ * @returns {Struct.EpicSanctionsPlayerSanction}
  */
 function eos_sanctions_copy_player_sanction_by_index(_target_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _target_user_id, type: String
@@ -19206,6 +19646,9 @@ function eos_sanctions_copy_player_sanction_by_index(_target_user_id, _index)
  */
 function eos_sanctions_create_player_sanction_appeal(_local_user_id, _reference_id, _reason, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19249,6 +19692,9 @@ function eos_sanctions_create_player_sanction_appeal(_local_user_id, _reference_
  */
 function eos_achievements_query_definitions(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19283,6 +19729,9 @@ function eos_achievements_query_definitions(_local_user_id, _callback)
  */
 function eos_achievements_query_player_achievements(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19316,10 +19765,13 @@ function eos_achievements_query_player_achievements(_local_user_id, _target_user
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_achievements_get_achievement_definition_count()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_achievements_get_achievement_definition_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19332,10 +19784,13 @@ function eos_achievements_get_achievement_definition_count()
 /**
  * @param {String} _local_user_id
  * @param {String} _target_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_achievements_get_player_achievement_count(_local_user_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_achievements_get_player_achievement_count(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19347,10 +19802,13 @@ function eos_achievements_get_player_achievement_count(_local_user_id, _target_u
 
 /**
  * @param {Real} _index
- * @returns {Struct.EpicAchievementsDefinition} 
+ * @returns {Struct.EpicAchievementsDefinition}
  */
 function eos_achievements_copy_achievement_definition_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -19368,10 +19826,13 @@ function eos_achievements_copy_achievement_definition_by_index(_index)
 
 /**
  * @param {Real} _index
- * @returns {Struct.EpicAchievementsDefinitionV2} 
+ * @returns {Struct.EpicAchievementsDefinitionV2}
  */
 function eos_achievements_copy_achievement_definition_v2_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -19389,10 +19850,13 @@ function eos_achievements_copy_achievement_definition_v2_by_index(_index)
 
 /**
  * @param {String} _achievement_id
- * @returns {Struct.EpicAchievementsDefinition} 
+ * @returns {Struct.EpicAchievementsDefinition}
  */
 function eos_achievements_copy_achievement_definition_by_id(_achievement_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_achievements_copy_achievement_definition_by_id(_achievement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19406,10 +19870,13 @@ function eos_achievements_copy_achievement_definition_by_id(_achievement_id)
  * @param {String} _local_user_id
  * @param {String} _target_user_id
  * @param {Real} _index
- * @returns {Struct.EpicPlayerAchievement} 
+ * @returns {Struct.EpicPlayerAchievement}
  */
 function eos_achievements_copy_player_achievement_by_index(_local_user_id, _target_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -19439,10 +19906,13 @@ function eos_achievements_copy_player_achievement_by_index(_local_user_id, _targ
  * @param {String} _local_user_id
  * @param {String} _target_user_id
  * @param {String} _achievement_id
- * @returns {Struct.EpicPlayerAchievement} 
+ * @returns {Struct.EpicPlayerAchievement}
  */
 function eos_achievements_copy_player_achievement_by_id(_local_user_id, _target_user_id, _achievement_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -19472,10 +19942,13 @@ function eos_achievements_copy_player_achievement_by_id(_local_user_id, _target_
 /**
  * @param {String} _achievement_id
  * @param {Real} _index
- * @returns {Struct.EpicStatThreshold} 
+ * @returns {Struct.EpicStatThreshold}
  */
 function eos_achievements_copy_stat_threshold_by_index(_achievement_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _achievement_id, type: String
@@ -19501,10 +19974,13 @@ function eos_achievements_copy_stat_threshold_by_index(_achievement_id, _index)
  * @param {String} _target_user_id
  * @param {String} _achievement_id
  * @param {Real} _index
- * @returns {Struct.EpicPlayerStatInfo} 
+ * @returns {Struct.EpicPlayerStatInfo}
  */
 function eos_achievements_copy_player_stat_info_by_index(_local_user_id, _target_user_id, _achievement_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -19542,6 +20018,9 @@ function eos_achievements_copy_player_stat_info_by_index(_local_user_id, _target
  */
 function eos_achievements_unlock_achievements(_user_id, _achievement_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19582,10 +20061,13 @@ function eos_achievements_unlock_achievements(_user_id, _achievement_ids, _callb
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_achievements_add_notify_achievements_unlocked_v2(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19617,6 +20099,9 @@ function eos_achievements_add_notify_achievements_unlocked_v2(_callback)
  */
 function eos_achievements_remove_notify_achievements_unlocked(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -19636,6 +20121,9 @@ function eos_achievements_remove_notify_achievements_unlocked(_notification_id)
  */
 function eos_leaderboards_query_definitions(_local_user_id, _start_time, _end_time, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19678,6 +20166,9 @@ function eos_leaderboards_query_definitions(_local_user_id, _start_time, _end_ti
  */
 function eos_leaderboards_query_ranks(_local_user_id, _leaderboard_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19717,6 +20208,9 @@ function eos_leaderboards_query_ranks(_local_user_id, _leaderboard_id, _callback
  */
 function eos_leaderboards_query_user_scores(_local_user_id, _stat_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19750,10 +20244,13 @@ function eos_leaderboards_query_user_scores(_local_user_id, _stat_name, _callbac
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_leaderboards_get_definition_count()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_leaderboards_get_definition_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19764,10 +20261,13 @@ function eos_leaderboards_get_definition_count()
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_leaderboards_get_record_count()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_leaderboards_get_record_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19779,10 +20279,13 @@ function eos_leaderboards_get_record_count()
 
 /**
  * @param {String} _stat_name
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_leaderboards_get_user_score_count(_stat_name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_leaderboards_get_user_score_count(_stat_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19794,10 +20297,13 @@ function eos_leaderboards_get_user_score_count(_stat_name)
 
 /**
  * @param {Real} _index
- * @returns {Struct.EpicLeaderboardDefinition} 
+ * @returns {Struct.EpicLeaderboardDefinition}
  */
 function eos_leaderboards_copy_definition_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -19815,10 +20321,13 @@ function eos_leaderboards_copy_definition_by_index(_index)
 
 /**
  * @param {String} _leaderboard_id
- * @returns {Struct.EpicLeaderboardDefinition} 
+ * @returns {Struct.EpicLeaderboardDefinition}
  */
 function eos_leaderboards_copy_definition_by_id(_leaderboard_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_leaderboards_copy_definition_by_id(_leaderboard_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19830,10 +20339,13 @@ function eos_leaderboards_copy_definition_by_id(_leaderboard_id)
 
 /**
  * @param {Real} _index
- * @returns {Struct.EpicLeaderboardRecord} 
+ * @returns {Struct.EpicLeaderboardRecord}
  */
 function eos_leaderboards_copy_record_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -19851,10 +20363,13 @@ function eos_leaderboards_copy_record_by_index(_index)
 
 /**
  * @param {String} _user_id
- * @returns {Struct.EpicLeaderboardRecord} 
+ * @returns {Struct.EpicLeaderboardRecord}
  */
 function eos_leaderboards_copy_record_by_user_id(_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_leaderboards_copy_record_by_user_id(_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19867,10 +20382,13 @@ function eos_leaderboards_copy_record_by_user_id(_user_id)
 /**
  * @param {String} _stat_name
  * @param {Real} _index
- * @returns {Struct.EpicLeaderboardUserScore} 
+ * @returns {Struct.EpicLeaderboardUserScore}
  */
 function eos_leaderboards_copy_user_score_by_index(_stat_name, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _stat_name, type: String
@@ -19898,6 +20416,9 @@ function eos_leaderboards_copy_user_score_by_index(_stat_name, _index)
  */
 function eos_presence_query_presence(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -19936,10 +20457,13 @@ function eos_presence_query_presence(_local_user_id, _target_user_id, _callback)
 /**
  * @param {String} _local_user_id
  * @param {String} _target_user_id
- * @returns {Struct.EpicPresenceInfo} 
+ * @returns {Struct.EpicPresenceInfo}
  */
 function eos_presence_copy_presence(_local_user_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_presence_copy_presence(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19951,10 +20475,13 @@ function eos_presence_copy_presence(_local_user_id, _target_user_id)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_presence_create_presence_modification(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_presence_create_presence_modification(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -19969,6 +20496,9 @@ function eos_presence_create_presence_modification(_local_user_id)
  */
 function eos_presence_modification_release(_modification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -19983,10 +20513,13 @@ function eos_presence_modification_release(_modification_id)
 /**
  * @param {Real} _modification_id
  * @param {Enum.EpicPresenceStatus} _status
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_presence_modification_set_status(_modification_id, _status)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -20010,10 +20543,13 @@ function eos_presence_modification_set_status(_modification_id, _status)
 /**
  * @param {Real} _modification_id
  * @param {String} _rich_text
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_presence_modification_set_raw_rich_text(_modification_id, _rich_text)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -20038,10 +20574,13 @@ function eos_presence_modification_set_raw_rich_text(_modification_id, _rich_tex
  * @param {Real} _modification_id
  * @param {String} _key
  * @param {String} _value
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_presence_modification_set_data(_modification_id, _key, _value)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -20070,10 +20609,13 @@ function eos_presence_modification_set_data(_modification_id, _key, _value)
 /**
  * @param {Real} _modification_id
  * @param {String} _key
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_presence_modification_delete_data(_modification_id, _key)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -20101,6 +20643,9 @@ function eos_presence_modification_delete_data(_modification_id, _key)
  */
 function eos_presence_set_presence(_local_user_id, _modification_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20134,10 +20679,13 @@ function eos_presence_set_presence(_local_user_id, _modification_id, _callback)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_presence_add_notify_on_presence_changed(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20169,6 +20717,9 @@ function eos_presence_add_notify_on_presence_changed(_callback)
  */
 function eos_presence_remove_notify_on_presence_changed(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -20182,10 +20733,13 @@ function eos_presence_remove_notify_on_presence_changed(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_presence_add_notify_join_game_accepted(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20217,6 +20771,9 @@ function eos_presence_add_notify_join_game_accepted(_callback)
  */
 function eos_presence_remove_notify_join_game_accepted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -20237,10 +20794,13 @@ function eos_presence_remove_notify_join_game_accepted(_notification_id)
  * @param {Bool} _presence_enabled
  * @param {Bool} _sanctions_enabled
  * @param {Array[Real]} _allowed_platform_ids
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_create_session_modification(_session_name, _session_id, _bucket_id, _max_players, _local_user_id, _presence_enabled, _sanctions_enabled, _allowed_platform_ids)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _session_name, type: String
@@ -20299,6 +20859,9 @@ function eos_sessions_create_session_modification(_session_name, _session_id, _b
  */
 function eos_sessions_session_modification_release(_modification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -20316,6 +20879,9 @@ function eos_sessions_session_modification_release(_modification_id)
  */
 function eos_sessions_update_session(_modification_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20348,6 +20914,9 @@ function eos_sessions_update_session(_modification_id, _callback)
  */
 function eos_sessions_destroy_session(_session_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20381,6 +20950,9 @@ function eos_sessions_destroy_session(_session_name, _callback)
  */
 function eos_sessions_start_session(_session_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20414,6 +20986,9 @@ function eos_sessions_start_session(_session_name, _callback)
  */
 function eos_sessions_end_session(_session_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20450,6 +21025,9 @@ function eos_sessions_end_session(_session_name, _callback)
  */
 function eos_sessions_join_session(_session_name, _session_details_id, _local_user_id, _presence_enabled, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20497,6 +21075,9 @@ function eos_sessions_join_session(_session_name, _session_details_id, _local_us
  */
 function eos_sessions_register_players(_session_name, _target_user_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20542,6 +21123,9 @@ function eos_sessions_register_players(_session_name, _target_user_ids, _callbac
  */
 function eos_sessions_unregister_players(_session_name, _target_user_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20582,10 +21166,13 @@ function eos_sessions_unregister_players(_session_name, _target_user_ids, _callb
 
 /**
  * @param {Real} _max_search_results
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_create_session_search(_max_search_results)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _max_search_results, type: Int64
@@ -20606,6 +21193,9 @@ function eos_sessions_create_session_search(_max_search_results)
  */
 function eos_sessions_session_search_release(_search_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -20620,10 +21210,13 @@ function eos_sessions_session_search_release(_search_id)
 /**
  * @param {Real} _search_id
  * @param {String} _session_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_search_set_session_id(_search_id, _session_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -20647,10 +21240,13 @@ function eos_sessions_session_search_set_session_id(_search_id, _session_id)
 /**
  * @param {Real} _search_id
  * @param {String} _target_user_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_search_set_target_user_id(_search_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -20678,6 +21274,9 @@ function eos_sessions_session_search_set_target_user_id(_search_id, _target_user
  */
 function eos_sessions_session_search_find(_search_id, _local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20712,10 +21311,13 @@ function eos_sessions_session_search_find(_search_id, _local_user_id, _callback)
 /**
  * @param {Real} _search_id
  * @param {Real} _index
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_session_search_copy_search_result_by_index(_search_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -20740,6 +21342,9 @@ function eos_sessions_session_search_copy_search_result_by_index(_search_id, _in
  */
 function eos_sessions_session_details_release(_session_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _session_details_id, type: UInt64
@@ -20753,10 +21358,13 @@ function eos_sessions_session_details_release(_session_details_id)
 
 /**
  * @param {String} _session_name
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_copy_active_session_handle(_session_name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_sessions_copy_active_session_handle(_session_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -20771,6 +21379,9 @@ function eos_sessions_copy_active_session_handle(_session_name)
  */
 function eos_sessions_active_session_release(_active_session_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _active_session_id, type: UInt64
@@ -20784,10 +21395,13 @@ function eos_sessions_active_session_release(_active_session_id)
 
 /**
  * @param {Real} _active_session_id
- * @returns {Struct.EpicActiveSessionInfo} 
+ * @returns {Struct.EpicActiveSessionInfo}
  */
 function eos_sessions_active_session_copy_info(_active_session_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _active_session_id, type: UInt64
@@ -20805,10 +21419,13 @@ function eos_sessions_active_session_copy_info(_active_session_id)
 
 /**
  * @param {String} _invite_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_copy_session_handle_by_invite_id(_invite_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_sessions_copy_session_handle_by_invite_id(_invite_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -20820,10 +21437,13 @@ function eos_sessions_copy_session_handle_by_invite_id(_invite_id)
 
 /**
  * @param {Real} _ui_event_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _ui_event_id, type: UInt64
@@ -20841,10 +21461,13 @@ function eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id)
 
 /**
  * @param {Real} _session_details_id
- * @returns {Struct.EpicSessionDetailsInfo} 
+ * @returns {Struct.EpicSessionDetailsInfo}
  */
 function eos_sessions_session_details_copy_info(_session_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _session_details_id, type: UInt64
@@ -20862,10 +21485,13 @@ function eos_sessions_session_details_copy_info(_session_details_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_add_notify_session_invite_received(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20897,6 +21523,9 @@ function eos_sessions_add_notify_session_invite_received(_callback)
  */
 function eos_sessions_remove_notify_session_invite_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -20910,10 +21539,13 @@ function eos_sessions_remove_notify_session_invite_received(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_add_notify_session_invite_accepted(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20945,6 +21577,9 @@ function eos_sessions_add_notify_session_invite_accepted(_callback)
  */
 function eos_sessions_remove_notify_session_invite_accepted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -20958,10 +21593,13 @@ function eos_sessions_remove_notify_session_invite_accepted(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_add_notify_join_session_accepted(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -20993,6 +21631,9 @@ function eos_sessions_add_notify_join_session_accepted(_callback)
  */
 function eos_sessions_remove_notify_join_session_accepted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -21007,10 +21648,13 @@ function eos_sessions_remove_notify_join_session_accepted(_notification_id)
 /**
  * @param {Real} _modification_id
  * @param {String} _bucket_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_set_bucket_id(_modification_id, _bucket_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21034,10 +21678,13 @@ function eos_sessions_session_modification_set_bucket_id(_modification_id, _buck
 /**
  * @param {Real} _modification_id
  * @param {String} _host_address
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_set_host_address(_modification_id, _host_address)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21061,10 +21708,13 @@ function eos_sessions_session_modification_set_host_address(_modification_id, _h
 /**
  * @param {Real} _modification_id
  * @param {Enum.EpicOnlineSessionPermissionLevel} _permission_level
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_set_permission_level(_modification_id, _permission_level)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21088,10 +21738,13 @@ function eos_sessions_session_modification_set_permission_level(_modification_id
 /**
  * @param {Real} _modification_id
  * @param {Bool} _allow_join_in_progress
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_set_join_in_progress_allowed(_modification_id, _allow_join_in_progress)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21114,10 +21767,13 @@ function eos_sessions_session_modification_set_join_in_progress_allowed(_modific
 /**
  * @param {Real} _modification_id
  * @param {Real} _max_players
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_set_max_players(_modification_id, _max_players)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21140,10 +21796,13 @@ function eos_sessions_session_modification_set_max_players(_modification_id, _ma
 /**
  * @param {Real} _modification_id
  * @param {Bool} _invites_allowed
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_set_invites_allowed(_modification_id, _invites_allowed)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21168,10 +21827,13 @@ function eos_sessions_session_modification_set_invites_allowed(_modification_id,
  * @param {String} _key
  * @param {String} _value
  * @param {Enum.EpicSessionAttributeAdvertisementType} _advertisement_type
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_add_attribute(_modification_id, _key, _value, _advertisement_type)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21205,10 +21867,13 @@ function eos_sessions_session_modification_add_attribute(_modification_id, _key,
 /**
  * @param {Real} _modification_id
  * @param {String} _key
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_remove_attribute(_modification_id, _key)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21231,10 +21896,13 @@ function eos_sessions_session_modification_remove_attribute(_modification_id, _k
 
 /**
  * @param {Real} _session_details_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_session_details_get_session_attribute_count(_session_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _session_details_id, type: UInt64
@@ -21253,10 +21921,13 @@ function eos_sessions_session_details_get_session_attribute_count(_session_detai
 /**
  * @param {Real} _session_details_id
  * @param {Real} _index
- * @returns {Struct.EpicSessionDetailsAttribute} 
+ * @returns {Struct.EpicSessionDetailsAttribute}
  */
 function eos_sessions_session_details_copy_session_attribute_by_index(_session_details_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _session_details_id, type: UInt64
@@ -21279,10 +21950,13 @@ function eos_sessions_session_details_copy_session_attribute_by_index(_session_d
 /**
  * @param {Real} _session_details_id
  * @param {String} _key
- * @returns {Struct.EpicSessionDetailsAttribute} 
+ * @returns {Struct.EpicSessionDetailsAttribute}
  */
 function eos_sessions_session_details_copy_session_attribute_by_key(_session_details_id, _key)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _session_details_id, type: UInt64
@@ -21305,10 +21979,13 @@ function eos_sessions_session_details_copy_session_attribute_by_key(_session_det
 
 /**
  * @param {Real} _active_session_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_active_session_get_registered_player_count(_active_session_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _active_session_id, type: UInt64
@@ -21327,10 +22004,13 @@ function eos_sessions_active_session_get_registered_player_count(_active_session
 /**
  * @param {Real} _active_session_id
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_sessions_active_session_get_registered_player_by_index(_active_session_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _active_session_id, type: UInt64
@@ -21354,6 +22034,9 @@ function eos_sessions_active_session_get_registered_player_by_index(_active_sess
  */
 function eos_sessions_send_invite(_session_name, _local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21398,6 +22081,9 @@ function eos_sessions_send_invite(_session_name, _local_user_id, _target_user_id
  */
 function eos_sessions_reject_invite(_local_user_id, _invite_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21436,6 +22122,9 @@ function eos_sessions_reject_invite(_local_user_id, _invite_id, _callback)
  */
 function eos_sessions_query_invites(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21465,10 +22154,13 @@ function eos_sessions_query_invites(_local_user_id, _callback)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_get_invite_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_sessions_get_invite_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -21481,10 +22173,13 @@ function eos_sessions_get_invite_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_sessions_get_invite_id_by_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -21506,10 +22201,13 @@ function eos_sessions_get_invite_id_by_index(_local_user_id, _index)
  * @param {String} _key
  * @param {String} _value
  * @param {Enum.EpicComparisonOp} _comparison_op
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_search_set_parameter(_search_id, _key, _value, _comparison_op)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -21544,10 +22242,13 @@ function eos_sessions_session_search_set_parameter(_search_id, _key, _value, _co
  * @param {Real} _search_id
  * @param {String} _key
  * @param {Enum.EpicComparisonOp} _comparison_op
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_search_remove_parameter(_search_id, _key, _comparison_op)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -21575,10 +22276,13 @@ function eos_sessions_session_search_remove_parameter(_search_id, _key, _compari
 
 /**
  * @param {Real} _search_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_session_search_get_search_result_count(_search_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -21596,10 +22300,13 @@ function eos_sessions_session_search_get_search_result_count(_search_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_add_notify_session_invite_rejected(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21631,6 +22338,9 @@ function eos_sessions_add_notify_session_invite_rejected(_callback)
  */
 function eos_sessions_remove_notify_session_invite_rejected(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -21644,10 +22354,13 @@ function eos_sessions_remove_notify_session_invite_rejected(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_add_notify_leave_session_requested(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21679,6 +22392,9 @@ function eos_sessions_add_notify_leave_session_requested(_callback)
  */
 function eos_sessions_remove_notify_leave_session_requested(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -21692,10 +22408,13 @@ function eos_sessions_remove_notify_leave_session_requested(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_sessions_add_notify_send_session_native_invite_requested(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21727,6 +22446,9 @@ function eos_sessions_add_notify_send_session_native_invite_requested(_callback)
  */
 function eos_sessions_remove_notify_send_session_native_invite_requested(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -21744,6 +22466,9 @@ function eos_sessions_remove_notify_send_session_native_invite_requested(_notifi
  */
 function eos_lobby_create_lobby(_options, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21777,6 +22502,9 @@ function eos_lobby_create_lobby(_options, _callback)
  */
 function eos_lobby_destroy_lobby(_lobby_id, _local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21815,6 +22543,9 @@ function eos_lobby_destroy_lobby(_lobby_id, _local_user_id, _callback)
  */
 function eos_lobby_join_lobby(_options, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21848,6 +22579,9 @@ function eos_lobby_join_lobby(_options, _callback)
  */
 function eos_lobby_leave_lobby(_lobby_id, _local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21883,10 +22617,13 @@ function eos_lobby_leave_lobby(_lobby_id, _local_user_id, _callback)
 /**
  * @param {String} _lobby_id
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_update_lobby_modification(_lobby_id, _local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_lobby_update_lobby_modification(_lobby_id, _local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -21901,6 +22638,9 @@ function eos_lobby_update_lobby_modification(_lobby_id, _local_user_id)
  */
 function eos_lobby_lobby_modification_release(_modification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21919,6 +22659,9 @@ function eos_lobby_lobby_modification_release(_modification_id)
  */
 function eos_lobby_update_lobby(_lobby_id, _modification_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -21953,10 +22696,13 @@ function eos_lobby_update_lobby(_lobby_id, _modification_id, _callback)
 /**
  * @param {Real} _modification_id
  * @param {Enum.EpicLobbyPermissionLevel} _permission_level
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_set_permission_level(_modification_id, _permission_level)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -21980,10 +22726,13 @@ function eos_lobby_lobby_modification_set_permission_level(_modification_id, _pe
 /**
  * @param {Real} _modification_id
  * @param {Real} _max_members
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_set_max_members(_modification_id, _max_members)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -22006,10 +22755,13 @@ function eos_lobby_lobby_modification_set_max_members(_modification_id, _max_mem
 /**
  * @param {Real} _modification_id
  * @param {String} _bucket_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_set_bucket_id(_modification_id, _bucket_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -22033,10 +22785,13 @@ function eos_lobby_lobby_modification_set_bucket_id(_modification_id, _bucket_id
 /**
  * @param {Real} _modification_id
  * @param {Bool} _invites_allowed
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_set_invites_allowed(_modification_id, _invites_allowed)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -22059,10 +22814,13 @@ function eos_lobby_lobby_modification_set_invites_allowed(_modification_id, _inv
 /**
  * @param {Real} _modification_id
  * @param {Struct.EpicLobbyModificationAddAttributeOptions} _options
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_add_attribute(_modification_id, _options)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -22085,10 +22843,13 @@ function eos_lobby_lobby_modification_add_attribute(_modification_id, _options)
 /**
  * @param {Real} _modification_id
  * @param {String} _key
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_remove_attribute(_modification_id, _key)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -22112,10 +22873,13 @@ function eos_lobby_lobby_modification_remove_attribute(_modification_id, _key)
 /**
  * @param {Real} _modification_id
  * @param {Struct.EpicLobbyModificationAddMemberAttributeOptions} _options
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_add_member_attribute(_modification_id, _options)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -22138,10 +22902,13 @@ function eos_lobby_lobby_modification_add_member_attribute(_modification_id, _op
 /**
  * @param {Real} _modification_id
  * @param {String} _key
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_modification_remove_member_attribute(_modification_id, _key)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _modification_id, type: UInt64
@@ -22168,6 +22935,9 @@ function eos_lobby_lobby_modification_remove_member_attribute(_modification_id, 
  */
 function eos_lobby_promote_member(_options, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22200,6 +22970,9 @@ function eos_lobby_promote_member(_options, _callback)
  */
 function eos_lobby_kick_member(_options, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22228,10 +23001,13 @@ function eos_lobby_kick_member(_options, _callback)
 
 /**
  * @param {Real} _max_results
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_create_lobby_search(_max_results)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _max_results, type: Int64
@@ -22252,6 +23028,9 @@ function eos_lobby_create_lobby_search(_max_results)
  */
 function eos_lobby_lobby_search_release(_search_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22266,10 +23045,13 @@ function eos_lobby_lobby_search_release(_search_id)
 /**
  * @param {Real} _search_id
  * @param {String} _lobby_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_search_set_lobby_id(_search_id, _lobby_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22293,10 +23075,13 @@ function eos_lobby_lobby_search_set_lobby_id(_search_id, _lobby_id)
 /**
  * @param {Real} _search_id
  * @param {String} _target_user_id
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_search_set_target_user_id(_search_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22320,10 +23105,13 @@ function eos_lobby_lobby_search_set_target_user_id(_search_id, _target_user_id)
 /**
  * @param {Real} _search_id
  * @param {Struct.EpicLobbySearchSetParameterOptions} _options
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_search_set_parameter(_search_id, _options)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22346,10 +23134,13 @@ function eos_lobby_lobby_search_set_parameter(_search_id, _options)
 /**
  * @param {Real} _search_id
  * @param {Struct.EpicLobbySearchRemoveParameterOptions} _options
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_search_remove_parameter(_search_id, _options)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22372,10 +23163,13 @@ function eos_lobby_lobby_search_remove_parameter(_search_id, _options)
 /**
  * @param {Real} _search_id
  * @param {Real} _max_results
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_lobby_lobby_search_set_max_results(_search_id, _max_results)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22402,6 +23196,9 @@ function eos_lobby_lobby_search_set_max_results(_search_id, _max_results)
  */
 function eos_lobby_lobby_search_find(_search_id, _local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22435,10 +23232,13 @@ function eos_lobby_lobby_search_find(_search_id, _local_user_id, _callback)
 
 /**
  * @param {Real} _search_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_lobby_search_get_search_result_count(_search_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22457,10 +23257,13 @@ function eos_lobby_lobby_search_get_search_result_count(_search_id)
 /**
  * @param {Real} _search_id
  * @param {Real} _index
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_lobby_search_copy_search_result_by_index(_search_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _search_id, type: UInt64
@@ -22485,6 +23288,9 @@ function eos_lobby_lobby_search_copy_search_result_by_index(_search_id, _index)
  */
 function eos_lobby_details_release(_lobby_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -22499,10 +23305,13 @@ function eos_lobby_details_release(_lobby_details_id)
 /**
  * @param {String} _lobby_id
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -22514,10 +23323,13 @@ function eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id)
 
 /**
  * @param {String} _invite_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -22529,10 +23341,13 @@ function eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id)
 
 /**
  * @param {Real} _ui_event_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_copy_lobby_details_handle_by_ui_event_id(_ui_event_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _ui_event_id, type: UInt64
@@ -22550,10 +23365,13 @@ function eos_lobby_copy_lobby_details_handle_by_ui_event_id(_ui_event_id)
 
 /**
  * @param {Real} _lobby_details_id
- * @returns {Struct.EpicLobbyDetailsInfo} 
+ * @returns {Struct.EpicLobbyDetailsInfo}
  */
 function eos_lobby_details_copy_info(_lobby_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -22571,10 +23389,13 @@ function eos_lobby_details_copy_info(_lobby_details_id)
 
 /**
  * @param {Real} _lobby_details_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_details_get_member_count(_lobby_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -22593,10 +23414,13 @@ function eos_lobby_details_get_member_count(_lobby_details_id)
 /**
  * @param {Real} _lobby_details_id
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_lobby_details_get_member_by_index(_lobby_details_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -22614,10 +23438,13 @@ function eos_lobby_details_get_member_by_index(_lobby_details_id, _index)
 
 /**
  * @param {Real} _lobby_details_id
- * @returns {String} 
+ * @returns {String}
  */
 function eos_lobby_details_get_lobby_owner(_lobby_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -22632,10 +23459,13 @@ function eos_lobby_details_get_lobby_owner(_lobby_details_id)
 /**
  * @param {String} _local_user_id
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22672,6 +23502,9 @@ function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
  */
 function eos_lobby_remove_notify_lobby_update_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -22686,10 +23519,13 @@ function eos_lobby_remove_notify_lobby_update_received(_notification_id)
 /**
  * @param {String} _local_user_id
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22726,6 +23562,9 @@ function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _call
  */
 function eos_lobby_remove_notify_lobby_member_update_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -22740,10 +23579,13 @@ function eos_lobby_remove_notify_lobby_member_update_received(_notification_id)
 /**
  * @param {String} _local_user_id
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22780,6 +23622,9 @@ function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _call
  */
 function eos_lobby_remove_notify_lobby_member_status_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -22793,10 +23638,13 @@ function eos_lobby_remove_notify_lobby_member_status_received(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_join_lobby_accepted(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22828,6 +23676,9 @@ function eos_lobby_add_notify_join_lobby_accepted(_callback)
  */
 function eos_lobby_remove_notify_join_lobby_accepted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -22842,10 +23693,13 @@ function eos_lobby_remove_notify_join_lobby_accepted(_notification_id)
 /**
  * @param {String} _local_user_id
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22882,6 +23736,9 @@ function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
  */
 function eos_lobby_remove_notify_leave_lobby_requested(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -22896,10 +23753,13 @@ function eos_lobby_remove_notify_leave_lobby_requested(_notification_id)
 /**
  * @param {String} _local_user_id
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22936,6 +23796,9 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id,
  */
 function eos_lobby_remove_notify_send_lobby_native_invite_requested(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -22952,10 +23815,13 @@ function eos_lobby_remove_notify_send_lobby_native_invite_requested(_notificatio
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_rtc_room_connection_changed(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -22987,6 +23853,9 @@ function eos_lobby_add_notify_rtc_room_connection_changed(_callback)
  */
 function eos_lobby_remove_notify_rtc_room_connection_changed(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -23000,10 +23869,13 @@ function eos_lobby_remove_notify_rtc_room_connection_changed(_notification_id)
 
 /**
  * @param {Real} _lobby_details_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_details_get_attribute_count(_lobby_details_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -23022,10 +23894,13 @@ function eos_lobby_details_get_attribute_count(_lobby_details_id)
 /**
  * @param {Real} _lobby_details_id
  * @param {Real} _index
- * @returns {Struct.EpicLobbyDetailsAttribute} 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
  */
 function eos_lobby_details_copy_attribute_by_index(_lobby_details_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -23048,10 +23923,13 @@ function eos_lobby_details_copy_attribute_by_index(_lobby_details_id, _index)
 /**
  * @param {Real} _lobby_details_id
  * @param {String} _key
- * @returns {Struct.EpicLobbyDetailsAttribute} 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
  */
 function eos_lobby_details_copy_attribute_by_key(_lobby_details_id, _key)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -23075,10 +23953,13 @@ function eos_lobby_details_copy_attribute_by_key(_lobby_details_id, _key)
 /**
  * @param {Real} _lobby_details_id
  * @param {String} _target_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_details_get_member_attribute_count(_lobby_details_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -23103,10 +23984,13 @@ function eos_lobby_details_get_member_attribute_count(_lobby_details_id, _target
  * @param {Real} _lobby_details_id
  * @param {String} _target_user_id
  * @param {Real} _index
- * @returns {Struct.EpicLobbyDetailsAttribute} 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
  */
 function eos_lobby_details_copy_member_attribute_by_index(_lobby_details_id, _target_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -23135,10 +24019,13 @@ function eos_lobby_details_copy_member_attribute_by_index(_lobby_details_id, _ta
  * @param {Real} _lobby_details_id
  * @param {String} _target_user_id
  * @param {String} _key
- * @returns {Struct.EpicLobbyDetailsAttribute} 
+ * @returns {Struct.EpicLobbyDetailsAttribute}
  */
 function eos_lobby_details_copy_member_attribute_by_key(_lobby_details_id, _target_user_id, _key)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -23167,10 +24054,13 @@ function eos_lobby_details_copy_member_attribute_by_key(_lobby_details_id, _targ
 /**
  * @param {Real} _lobby_details_id
  * @param {String} _target_user_id
- * @returns {Struct.EpicLobbyDetailsMemberInfo} 
+ * @returns {Struct.EpicLobbyDetailsMemberInfo}
  */
 function eos_lobby_details_copy_member_info(_lobby_details_id, _target_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _lobby_details_id, type: UInt64
@@ -23197,6 +24087,9 @@ function eos_lobby_details_copy_member_info(_lobby_details_id, _target_user_id)
  */
 function eos_lobby_join_lobby_by_id(_options, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23229,6 +24122,9 @@ function eos_lobby_join_lobby_by_id(_options, _callback)
  */
 function eos_lobby_hard_mute_member(_options, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23261,6 +24157,9 @@ function eos_lobby_hard_mute_member(_options, _callback)
  */
 function eos_lobby_send_invite(_options, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23294,6 +24193,9 @@ function eos_lobby_send_invite(_options, _callback)
  */
 function eos_lobby_reject_invite(_invite_id, _local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23332,6 +24234,9 @@ function eos_lobby_reject_invite(_invite_id, _local_user_id, _callback)
  */
 function eos_lobby_query_invites(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23361,10 +24266,13 @@ function eos_lobby_query_invites(_local_user_id, _callback)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_get_invite_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_lobby_get_invite_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -23377,10 +24285,13 @@ function eos_lobby_get_invite_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_lobby_get_invite_id_by_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -23399,10 +24310,13 @@ function eos_lobby_get_invite_id_by_index(_local_user_id, _index)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_lobby_invite_received(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23434,6 +24348,9 @@ function eos_lobby_add_notify_lobby_invite_received(_callback)
  */
 function eos_lobby_remove_notify_lobby_invite_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -23447,10 +24364,13 @@ function eos_lobby_remove_notify_lobby_invite_received(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_lobby_invite_accepted(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23482,6 +24402,9 @@ function eos_lobby_add_notify_lobby_invite_accepted(_callback)
  */
 function eos_lobby_remove_notify_lobby_invite_accepted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -23495,10 +24418,13 @@ function eos_lobby_remove_notify_lobby_invite_accepted(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_lobby_add_notify_lobby_invite_rejected(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23530,6 +24456,9 @@ function eos_lobby_add_notify_lobby_invite_rejected(_callback)
  */
 function eos_lobby_remove_notify_lobby_invite_rejected(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -23551,10 +24480,13 @@ function eos_lobby_remove_notify_lobby_invite_rejected(_notification_id)
  * @param {Bool} _allow_delayed_delivery
  * @param {Enum.EpicPacketReliability} _reliability
  * @param {Bool} _disable_auto_accept_connection
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _channel, _data, _bytes, _allow_delayed_delivery, _reliability, _disable_auto_accept_connection)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -23609,10 +24541,13 @@ function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _cha
 /**
  * @param {String} _local_user_id
  * @param {Real} _channel
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_p2p_get_next_received_packet_size(_local_user_id, _channel)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -23639,10 +24574,13 @@ function eos_p2p_get_next_received_packet_size(_local_user_id, _channel)
  * @param {Real} _max_bytes
  * @param {Real} _offset
  * @param {Real} _channel
- * @returns {Struct.EpicP2PReceivedPacket} 
+ * @returns {Struct.EpicP2PReceivedPacket}
  */
 function eos_p2p_receive_packet(_local_user_id, _out_data, _max_bytes, _offset, _channel)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -23679,10 +24617,13 @@ function eos_p2p_receive_packet(_local_user_id, _out_data, _max_bytes, _offset, 
  * @param {String} _local_user_id
  * @param {String} _remote_user_id
  * @param {String} _socket_name
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_accept_connection(_local_user_id, _remote_user_id, _socket_name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -23713,10 +24654,13 @@ function eos_p2p_accept_connection(_local_user_id, _remote_user_id, _socket_name
  * @param {String} _local_user_id
  * @param {String} _remote_user_id
  * @param {String} _socket_name
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_close_connection(_local_user_id, _remote_user_id, _socket_name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -23746,10 +24690,13 @@ function eos_p2p_close_connection(_local_user_id, _remote_user_id, _socket_name)
 /**
  * @param {String} _local_user_id
  * @param {String} _socket_name
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_close_connections(_local_user_id, _socket_name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_p2p_close_connections(_local_user_id, _socket_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -23764,6 +24711,9 @@ function eos_p2p_close_connections(_local_user_id, _socket_name)
  */
 function eos_p2p_query_nat_type(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23787,10 +24737,13 @@ function eos_p2p_query_nat_type(_callback)
 }
 
 /**
- * @returns {Enum.EpicNATType} 
+ * @returns {Enum.EpicNATType}
  */
 function eos_p2p_get_nat_type()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_p2p_get_nat_type(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -23802,10 +24755,13 @@ function eos_p2p_get_nat_type()
 
 /**
  * @param {Enum.EpicRelayControl} _relay_control
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_set_relay_control(_relay_control)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _relay_control, type: enum EpicRelayControl
@@ -23823,10 +24779,13 @@ function eos_p2p_set_relay_control(_relay_control)
 }
 
 /**
- * @returns {Enum.EpicRelayControl} 
+ * @returns {Enum.EpicRelayControl}
  */
 function eos_p2p_get_relay_control()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_p2p_get_relay_control(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -23839,10 +24798,13 @@ function eos_p2p_get_relay_control()
 /**
  * @param {Real} _port
  * @param {Real} _max_additional_ports_to_try
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_set_port_range(_port, _max_additional_ports_to_try)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _port, type: Int64
@@ -23863,10 +24825,13 @@ function eos_p2p_set_port_range(_port, _max_additional_ports_to_try)
 }
 
 /**
- * @returns {Struct.EpicP2PPortRange} 
+ * @returns {Struct.EpicP2PPortRange}
  */
 function eos_p2p_get_port_range()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_p2p_get_port_range(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -23879,10 +24844,13 @@ function eos_p2p_get_port_range()
 /**
  * @param {Real} _incoming_max_bytes
  * @param {Real} _outgoing_max_bytes
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_set_packet_queue_size(_incoming_max_bytes, _outgoing_max_bytes)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _incoming_max_bytes, type: Int64
@@ -23903,10 +24871,13 @@ function eos_p2p_set_packet_queue_size(_incoming_max_bytes, _outgoing_max_bytes)
 }
 
 /**
- * @returns {Struct.EpicP2PPacketQueueInfo} 
+ * @returns {Struct.EpicP2PPacketQueueInfo}
  */
 function eos_p2p_get_packet_queue_info()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_p2p_get_packet_queue_info(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -23920,10 +24891,13 @@ function eos_p2p_get_packet_queue_info()
  * @param {String} _local_user_id
  * @param {String} _remote_user_id
  * @param {String} _socket_name
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_p2p_clear_packet_queue(_local_user_id, _remote_user_id, _socket_name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -23954,10 +24928,13 @@ function eos_p2p_clear_packet_queue(_local_user_id, _remote_user_id, _socket_nam
  * @param {String} _local_user_id
  * @param {String} _socket_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_p2p_add_notify_peer_connection_request(_local_user_id, _socket_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -23999,6 +24976,9 @@ function eos_p2p_add_notify_peer_connection_request(_local_user_id, _socket_name
  */
 function eos_p2p_remove_notify_peer_connection_request(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -24014,10 +24994,13 @@ function eos_p2p_remove_notify_peer_connection_request(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _socket_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_p2p_add_notify_peer_connection_established(_local_user_id, _socket_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24059,6 +25042,9 @@ function eos_p2p_add_notify_peer_connection_established(_local_user_id, _socket_
  */
 function eos_p2p_remove_notify_peer_connection_established(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -24074,10 +25060,13 @@ function eos_p2p_remove_notify_peer_connection_established(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _socket_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_p2p_add_notify_peer_connection_interrupted(_local_user_id, _socket_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24119,6 +25108,9 @@ function eos_p2p_add_notify_peer_connection_interrupted(_local_user_id, _socket_
  */
 function eos_p2p_remove_notify_peer_connection_interrupted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -24134,10 +25126,13 @@ function eos_p2p_remove_notify_peer_connection_interrupted(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _socket_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_p2p_add_notify_peer_connection_closed(_local_user_id, _socket_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24179,6 +25174,9 @@ function eos_p2p_add_notify_peer_connection_closed(_local_user_id, _socket_name,
  */
 function eos_p2p_remove_notify_peer_connection_closed(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -24192,10 +25190,13 @@ function eos_p2p_remove_notify_peer_connection_closed(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_p2p_add_notify_incoming_packet_queue_full(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24227,6 +25228,9 @@ function eos_p2p_add_notify_incoming_packet_queue_full(_callback)
  */
 function eos_p2p_remove_notify_incoming_packet_queue_full(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -24245,6 +25249,9 @@ function eos_p2p_remove_notify_incoming_packet_queue_full(_notification_id)
  */
 function eos_playerdatastorage_query_file(_local_user_id, _filename, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24283,6 +25290,9 @@ function eos_playerdatastorage_query_file(_local_user_id, _filename, _callback)
  */
 function eos_playerdatastorage_query_file_list(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24312,10 +25322,13 @@ function eos_playerdatastorage_query_file_list(_local_user_id, _callback)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_playerdatastorage_get_file_metadata_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_playerdatastorage_get_file_metadata_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -24328,10 +25341,13 @@ function eos_playerdatastorage_get_file_metadata_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {Struct.EpicPlayerDataStorageFileMetadata} 
+ * @returns {Struct.EpicPlayerDataStorageFileMetadata}
  */
 function eos_playerdatastorage_copy_file_metadata_at_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -24355,10 +25371,13 @@ function eos_playerdatastorage_copy_file_metadata_at_index(_local_user_id, _inde
 /**
  * @param {String} _local_user_id
  * @param {String} _filename
- * @returns {Struct.EpicPlayerDataStorageFileMetadata} 
+ * @returns {Struct.EpicPlayerDataStorageFileMetadata}
  */
 function eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _filename)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -24376,6 +25395,9 @@ function eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _f
  */
 function eos_playerdatastorage_duplicate_file(_local_user_id, _source_filename, _destination_filename, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24420,6 +25442,9 @@ function eos_playerdatastorage_duplicate_file(_local_user_id, _source_filename, 
  */
 function eos_playerdatastorage_delete_file(_local_user_id, _filename, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24461,6 +25486,9 @@ function eos_playerdatastorage_delete_file(_local_user_id, _filename, _callback)
  */
 function eos_playerdatastorage_read_file(_local_user_id, _filename, _output_path, _callback, _progress_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24520,6 +25548,9 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _output_path
  */
 function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path, _callback, _progress_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24576,6 +25607,9 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path
  */
 function eos_playerdatastorage_delete_cache(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24610,6 +25644,9 @@ function eos_playerdatastorage_delete_cache(_local_user_id, _callback)
  */
 function eos_titlestorage_query_file(_local_user_id, _filename, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24649,6 +25686,9 @@ function eos_titlestorage_query_file(_local_user_id, _filename, _callback)
  */
 function eos_titlestorage_query_file_list(_local_user_id, _tags, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24689,10 +25729,13 @@ function eos_titlestorage_query_file_list(_local_user_id, _tags, _callback)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_titlestorage_get_file_metadata_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_titlestorage_get_file_metadata_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -24705,10 +25748,13 @@ function eos_titlestorage_get_file_metadata_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {Struct.EpicTitleStorageFileMetadata} 
+ * @returns {Struct.EpicTitleStorageFileMetadata}
  */
 function eos_titlestorage_copy_file_metadata_at_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -24732,10 +25778,13 @@ function eos_titlestorage_copy_file_metadata_at_index(_local_user_id, _index)
 /**
  * @param {String} _local_user_id
  * @param {String} _filename
- * @returns {Struct.EpicTitleStorageFileMetadata} 
+ * @returns {Struct.EpicTitleStorageFileMetadata}
  */
 function eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filename)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -24754,6 +25803,9 @@ function eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filena
  */
 function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _callback, _progress_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24810,6 +25862,9 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _ca
  */
 function eos_titlestorage_delete_cache(_local_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24845,6 +25900,9 @@ function eos_titlestorage_delete_cache(_local_user_id, _callback)
  */
 function eos_ecom_query_ownership(_local_user_id, _catalog_item_ids, _catalog_namespace, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24895,6 +25953,9 @@ function eos_ecom_query_ownership(_local_user_id, _catalog_item_ids, _catalog_na
  */
 function eos_ecom_query_ownership_by_sandbox_ids(_local_user_id, _sandbox_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24941,6 +26002,9 @@ function eos_ecom_query_ownership_by_sandbox_ids(_local_user_id, _sandbox_ids, _
  */
 function eos_ecom_query_ownership_token(_local_user_id, _catalog_item_ids, _catalog_namespace, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -24993,6 +26057,9 @@ function eos_ecom_query_ownership_token(_local_user_id, _catalog_item_ids, _cata
  */
 function eos_ecom_query_entitlements(_local_user_id, _entitlement_names, _include_redeemed, _catalog_namespace, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -25047,6 +26114,9 @@ function eos_ecom_query_entitlements(_local_user_id, _entitlement_names, _includ
  */
 function eos_ecom_query_entitlement_token(_local_user_id, _entitlement_names, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -25092,6 +26162,9 @@ function eos_ecom_query_entitlement_token(_local_user_id, _entitlement_names, _c
  */
 function eos_ecom_query_offers(_local_user_id, _catalog_namespace, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -25132,6 +26205,9 @@ function eos_ecom_query_offers(_local_user_id, _catalog_namespace, _callback)
  */
 function eos_ecom_checkout(_local_user_id, _offer_ids, _catalog_namespace, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -25182,6 +26258,9 @@ function eos_ecom_checkout(_local_user_id, _offer_ids, _catalog_namespace, _call
  */
 function eos_ecom_redeem_entitlements(_local_user_id, _entitlement_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -25222,10 +26301,13 @@ function eos_ecom_redeem_entitlements(_local_user_id, _entitlement_ids, _callbac
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_item_ownership_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_item_ownership_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25238,10 +26320,13 @@ function eos_ecom_get_item_ownership_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {Struct.EpicEcomItemOwnership} 
+ * @returns {Struct.EpicEcomItemOwnership}
  */
 function eos_ecom_copy_item_ownership_at_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25264,10 +26349,13 @@ function eos_ecom_copy_item_ownership_at_index(_local_user_id, _index)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_sandbox_ownership_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_sandbox_ownership_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25280,10 +26368,13 @@ function eos_ecom_get_sandbox_ownership_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {Struct.EpicEcomSandboxIdItemOwnership} 
+ * @returns {Struct.EpicEcomSandboxIdItemOwnership}
  */
 function eos_ecom_copy_sandbox_ownership_at_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25306,10 +26397,13 @@ function eos_ecom_copy_sandbox_ownership_at_index(_local_user_id, _index)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_entitlements_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_entitlements_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25322,10 +26416,13 @@ function eos_ecom_get_entitlements_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {String} _entitlement_name
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_entitlements_by_name_count(_local_user_id, _entitlement_name)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_entitlements_by_name_count(_local_user_id, _entitlement_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25338,10 +26435,13 @@ function eos_ecom_get_entitlements_by_name_count(_local_user_id, _entitlement_na
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {Struct.EpicEcomEntitlement} 
+ * @returns {Struct.EpicEcomEntitlement}
  */
 function eos_ecom_copy_entitlement_by_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25366,10 +26466,13 @@ function eos_ecom_copy_entitlement_by_index(_local_user_id, _index)
  * @param {String} _local_user_id
  * @param {String} _entitlement_name
  * @param {Real} _index
- * @returns {Struct.EpicEcomEntitlement} 
+ * @returns {Struct.EpicEcomEntitlement}
  */
 function eos_ecom_copy_entitlement_by_name_and_index(_local_user_id, _entitlement_name, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25398,10 +26501,13 @@ function eos_ecom_copy_entitlement_by_name_and_index(_local_user_id, _entitlemen
 /**
  * @param {String} _local_user_id
  * @param {String} _entitlement_id
- * @returns {Struct.EpicEcomEntitlement} 
+ * @returns {Struct.EpicEcomEntitlement}
  */
 function eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25413,10 +26519,13 @@ function eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id)
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_last_redeemed_entitlements_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_last_redeemed_entitlements_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25429,10 +26538,13 @@ function eos_ecom_get_last_redeemed_entitlements_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {String} 
+ * @returns {String}
  */
 function eos_ecom_copy_last_redeemed_entitlement_by_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25451,10 +26563,13 @@ function eos_ecom_copy_last_redeemed_entitlement_by_index(_local_user_id, _index
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_offer_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_offer_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25467,10 +26582,13 @@ function eos_ecom_get_offer_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _index
- * @returns {Struct.EpicEcomCatalogOffer} 
+ * @returns {Struct.EpicEcomCatalogOffer}
  */
 function eos_ecom_copy_offer_by_index(_local_user_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25494,10 +26612,13 @@ function eos_ecom_copy_offer_by_index(_local_user_id, _index)
 /**
  * @param {String} _local_user_id
  * @param {String} _offer_id
- * @returns {Struct.EpicEcomCatalogOffer} 
+ * @returns {Struct.EpicEcomCatalogOffer}
  */
 function eos_ecom_copy_offer_by_id(_local_user_id, _offer_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_copy_offer_by_id(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25510,10 +26631,13 @@ function eos_ecom_copy_offer_by_id(_local_user_id, _offer_id)
 /**
  * @param {String} _local_user_id
  * @param {String} _offer_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_offer_item_count(_local_user_id, _offer_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_offer_item_count(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25527,10 +26651,13 @@ function eos_ecom_get_offer_item_count(_local_user_id, _offer_id)
  * @param {String} _local_user_id
  * @param {String} _offer_id
  * @param {Real} _item_index
- * @returns {Struct.EpicEcomCatalogItem} 
+ * @returns {Struct.EpicEcomCatalogItem}
  */
 function eos_ecom_copy_offer_item_by_index(_local_user_id, _offer_id, _item_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25559,10 +26686,13 @@ function eos_ecom_copy_offer_item_by_index(_local_user_id, _offer_id, _item_inde
 /**
  * @param {String} _local_user_id
  * @param {String} _item_id
- * @returns {Struct.EpicEcomCatalogItem} 
+ * @returns {Struct.EpicEcomCatalogItem}
  */
 function eos_ecom_copy_item_by_id(_local_user_id, _item_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_copy_item_by_id(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25575,10 +26705,13 @@ function eos_ecom_copy_item_by_id(_local_user_id, _item_id)
 /**
  * @param {String} _local_user_id
  * @param {String} _offer_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_offer_image_info_count(_local_user_id, _offer_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_offer_image_info_count(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25592,10 +26725,13 @@ function eos_ecom_get_offer_image_info_count(_local_user_id, _offer_id)
  * @param {String} _local_user_id
  * @param {String} _offer_id
  * @param {Real} _image_info_index
- * @returns {Struct.EpicEcomKeyImageInfo} 
+ * @returns {Struct.EpicEcomKeyImageInfo}
  */
 function eos_ecom_copy_offer_image_info_by_index(_local_user_id, _offer_id, _image_info_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25624,10 +26760,13 @@ function eos_ecom_copy_offer_image_info_by_index(_local_user_id, _offer_id, _ima
 /**
  * @param {String} _local_user_id
  * @param {String} _item_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_item_image_info_count(_local_user_id, _item_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_item_image_info_count(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25641,10 +26780,13 @@ function eos_ecom_get_item_image_info_count(_local_user_id, _item_id)
  * @param {String} _local_user_id
  * @param {String} _item_id
  * @param {Real} _image_info_index
- * @returns {Struct.EpicEcomKeyImageInfo} 
+ * @returns {Struct.EpicEcomKeyImageInfo}
  */
 function eos_ecom_copy_item_image_info_by_index(_local_user_id, _item_id, _image_info_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25673,10 +26815,13 @@ function eos_ecom_copy_item_image_info_by_index(_local_user_id, _item_id, _image
 /**
  * @param {String} _local_user_id
  * @param {String} _item_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_item_release_count(_local_user_id, _item_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_item_release_count(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25690,10 +26835,13 @@ function eos_ecom_get_item_release_count(_local_user_id, _item_id)
  * @param {String} _local_user_id
  * @param {String} _item_id
  * @param {Real} _release_index
- * @returns {Struct.EpicEcomCatalogRelease} 
+ * @returns {Struct.EpicEcomCatalogRelease}
  */
 function eos_ecom_copy_item_release_by_index(_local_user_id, _item_id, _release_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25721,10 +26869,13 @@ function eos_ecom_copy_item_release_by_index(_local_user_id, _item_id, _release_
 
 /**
  * @param {String} _local_user_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_get_transaction_count(_local_user_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_get_transaction_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25737,10 +26888,13 @@ function eos_ecom_get_transaction_count(_local_user_id)
 /**
  * @param {String} _local_user_id
  * @param {Real} _transaction_index
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_copy_transaction_by_index(_local_user_id, _transaction_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -25764,10 +26918,13 @@ function eos_ecom_copy_transaction_by_index(_local_user_id, _transaction_index)
 /**
  * @param {String} _local_user_id
  * @param {String} _transaction_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_copy_transaction_by_id(_local_user_id, _transaction_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_ecom_copy_transaction_by_id(_local_user_id, _transaction_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -25779,10 +26936,13 @@ function eos_ecom_copy_transaction_by_id(_local_user_id, _transaction_id)
 
 /**
  * @param {Real} _tx_handle_id
- * @returns {String} 
+ * @returns {String}
  */
 function eos_ecom_transaction_get_transaction_id(_tx_handle_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _tx_handle_id, type: UInt64
@@ -25796,10 +26956,13 @@ function eos_ecom_transaction_get_transaction_id(_tx_handle_id)
 
 /**
  * @param {Real} _tx_handle_id
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_ecom_transaction_get_entitlements_count(_tx_handle_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _tx_handle_id, type: UInt64
@@ -25818,10 +26981,13 @@ function eos_ecom_transaction_get_entitlements_count(_tx_handle_id)
 /**
  * @param {Real} _tx_handle_id
  * @param {Real} _index
- * @returns {Struct.EpicEcomEntitlement} 
+ * @returns {Struct.EpicEcomEntitlement}
  */
 function eos_ecom_transaction_copy_entitlement_by_index(_tx_handle_id, _index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _tx_handle_id, type: UInt64
@@ -25846,6 +27012,9 @@ function eos_ecom_transaction_copy_entitlement_by_index(_tx_handle_id, _index)
  */
 function eos_ecom_transaction_release(_tx_handle_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _tx_handle_id, type: UInt64
@@ -25867,6 +27036,9 @@ function eos_ecom_transaction_release(_tx_handle_id)
  */
 function eos_custominvites_send_custom_invite(_local_user_id, _target_user_ids, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -25910,10 +27082,13 @@ function eos_custominvites_send_custom_invite(_local_user_id, _target_user_ids, 
  * @param {String} _local_user_id
  * @param {String} _custom_invite_id
  * @param {Enum.EpicResult} _processing_result
- * @returns {Bool} 
+ * @returns {Bool}
  */
 function eos_custominvites_finalize_invite(_target_user_id, _local_user_id, _custom_invite_id, _processing_result)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _target_user_id, type: String
@@ -25948,6 +27123,9 @@ function eos_custominvites_finalize_invite(_target_user_id, _local_user_id, _cus
  */
 function eos_custominvites_send_request_to_join(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -25987,6 +27165,9 @@ function eos_custominvites_send_request_to_join(_local_user_id, _target_user_id,
  */
 function eos_custominvites_accept_request_to_join(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26026,6 +27207,9 @@ function eos_custominvites_accept_request_to_join(_local_user_id, _target_user_i
  */
 function eos_custominvites_reject_request_to_join(_local_user_id, _target_user_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26060,10 +27244,13 @@ function eos_custominvites_reject_request_to_join(_local_user_id, _target_user_i
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_custom_invite_received(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26095,6 +27282,9 @@ function eos_custominvites_add_notify_custom_invite_received(_callback)
  */
 function eos_custominvites_remove_notify_custom_invite_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26108,10 +27298,13 @@ function eos_custominvites_remove_notify_custom_invite_received(_notification_id
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_custom_invite_accepted(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26143,6 +27336,9 @@ function eos_custominvites_add_notify_custom_invite_accepted(_callback)
  */
 function eos_custominvites_remove_notify_custom_invite_accepted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26156,10 +27352,13 @@ function eos_custominvites_remove_notify_custom_invite_accepted(_notification_id
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_custom_invite_rejected(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26191,6 +27390,9 @@ function eos_custominvites_add_notify_custom_invite_rejected(_callback)
  */
 function eos_custominvites_remove_notify_custom_invite_rejected(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26204,10 +27406,13 @@ function eos_custominvites_remove_notify_custom_invite_rejected(_notification_id
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_request_to_join_response_received(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26239,6 +27444,9 @@ function eos_custominvites_add_notify_request_to_join_response_received(_callbac
  */
 function eos_custominvites_remove_notify_request_to_join_response_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26252,10 +27460,13 @@ function eos_custominvites_remove_notify_request_to_join_response_received(_noti
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_request_to_join_received(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26287,6 +27498,9 @@ function eos_custominvites_add_notify_request_to_join_received(_callback)
  */
 function eos_custominvites_remove_notify_request_to_join_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26300,10 +27514,13 @@ function eos_custominvites_remove_notify_request_to_join_received(_notification_
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_send_custom_native_invite_requested(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26335,6 +27552,9 @@ function eos_custominvites_add_notify_send_custom_native_invite_requested(_callb
  */
 function eos_custominvites_remove_notify_send_custom_native_invite_requested(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26348,10 +27568,13 @@ function eos_custominvites_remove_notify_send_custom_native_invite_requested(_no
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_request_to_join_accepted(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26383,6 +27606,9 @@ function eos_custominvites_add_notify_request_to_join_accepted(_callback)
  */
 function eos_custominvites_remove_notify_request_to_join_accepted(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26396,10 +27622,13 @@ function eos_custominvites_remove_notify_request_to_join_accepted(_notification_
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_custominvites_add_notify_request_to_join_rejected(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26431,6 +27660,9 @@ function eos_custominvites_add_notify_request_to_join_rejected(_callback)
  */
 function eos_custominvites_remove_notify_request_to_join_rejected(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26451,6 +27683,9 @@ function eos_custominvites_remove_notify_request_to_join_rejected(_notification_
  */
 function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _participant_token, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26500,6 +27735,9 @@ function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _partic
  */
 function eos_rtc_leave_room(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26541,6 +27779,9 @@ function eos_rtc_leave_room(_local_user_id, _room_name, _callback)
  */
 function eos_rtc_block_participant(_local_user_id, _room_name, _participant_id, _blocked, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26592,10 +27833,13 @@ function eos_rtc_block_participant(_local_user_id, _room_name, _participant_id, 
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_add_notify_disconnected(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26637,6 +27881,9 @@ function eos_rtc_add_notify_disconnected(_local_user_id, _room_name, _callback)
  */
 function eos_rtc_remove_notify_disconnected(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26652,10 +27899,13 @@ function eos_rtc_remove_notify_disconnected(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_add_notify_participant_status_changed(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26697,6 +27947,9 @@ function eos_rtc_add_notify_participant_status_changed(_local_user_id, _room_nam
  */
 function eos_rtc_remove_notify_participant_status_changed(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26712,10 +27965,13 @@ function eos_rtc_remove_notify_participant_status_changed(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_add_notify_room_statistics_updated(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26757,6 +28013,9 @@ function eos_rtc_add_notify_room_statistics_updated(_local_user_id, _room_name, 
  */
 function eos_rtc_remove_notify_room_statistics_updated(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -26776,6 +28035,9 @@ function eos_rtc_remove_notify_room_statistics_updated(_notification_id)
  */
 function eos_rtc_audio_update_sending(_local_user_id, _room_name, _audio_status, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26822,6 +28084,9 @@ function eos_rtc_audio_update_sending(_local_user_id, _room_name, _audio_status,
  */
 function eos_rtc_audio_update_receiving(_local_user_id, _room_name, _participant_id, _audio_enabled, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26871,6 +28136,9 @@ function eos_rtc_audio_update_receiving(_local_user_id, _room_name, _participant
  */
 function eos_rtc_audio_update_sending_volume(_local_user_id, _room_name, _volume, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26915,6 +28183,9 @@ function eos_rtc_audio_update_sending_volume(_local_user_id, _room_name, _volume
  */
 function eos_rtc_audio_update_receiving_volume(_local_user_id, _room_name, _volume, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -26960,6 +28231,9 @@ function eos_rtc_audio_update_receiving_volume(_local_user_id, _room_name, _volu
  */
 function eos_rtc_audio_update_participant_volume(_local_user_id, _room_name, _participant_id, _volume, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27002,10 +28276,13 @@ function eos_rtc_audio_update_participant_volume(_local_user_id, _room_name, _pa
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_audio_get_input_devices_count()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_rtc_audio_get_input_devices_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -27017,10 +28294,13 @@ function eos_rtc_audio_get_input_devices_count()
 
 /**
  * @param {Real} _index
- * @returns {Struct.EpicRTCAudioInputDeviceInfo} 
+ * @returns {Struct.EpicRTCAudioInputDeviceInfo}
  */
 function eos_rtc_audio_copy_input_device_info_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -27037,10 +28317,13 @@ function eos_rtc_audio_copy_input_device_info_by_index(_index)
 }
 
 /**
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_audio_get_output_devices_count()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __ret_buffer = __ext_core_get_ret_buffer();
 
     var _return_value = __eos_rtc_audio_get_output_devices_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
@@ -27052,10 +28335,13 @@ function eos_rtc_audio_get_output_devices_count()
 
 /**
  * @param {Real} _index
- * @returns {Struct.EpicRTCAudioOutputDeviceInfo} 
+ * @returns {Struct.EpicRTCAudioOutputDeviceInfo}
  */
 function eos_rtc_audio_copy_output_device_info_by_index(_index)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _index, type: Int64
@@ -27076,6 +28362,9 @@ function eos_rtc_audio_copy_output_device_info_by_index(_index)
  */
 function eos_rtc_audio_query_input_devices(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27103,6 +28392,9 @@ function eos_rtc_audio_query_input_devices(_callback)
  */
 function eos_rtc_audio_query_output_devices(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27133,6 +28425,9 @@ function eos_rtc_audio_query_output_devices(_callback)
  */
 function eos_rtc_audio_set_input_device_settings(_local_user_id, _real_device_id, _platform_aec, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27176,6 +28471,9 @@ function eos_rtc_audio_set_input_device_settings(_local_user_id, _real_device_id
  */
 function eos_rtc_audio_set_output_device_settings(_local_user_id, _real_device_id, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27212,10 +28510,13 @@ function eos_rtc_audio_set_output_device_settings(_local_user_id, _real_device_i
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_audio_add_notify_participant_updated(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27257,6 +28558,9 @@ function eos_rtc_audio_add_notify_participant_updated(_local_user_id, _room_name
  */
 function eos_rtc_audio_remove_notify_participant_updated(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -27270,10 +28574,13 @@ function eos_rtc_audio_remove_notify_participant_updated(_notification_id)
 
 /**
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_audio_add_notify_audio_devices_changed(_callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27305,6 +28612,9 @@ function eos_rtc_audio_add_notify_audio_devices_changed(_callback)
  */
 function eos_rtc_audio_remove_notify_audio_devices_changed(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -27320,10 +28630,13 @@ function eos_rtc_audio_remove_notify_audio_devices_changed(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_audio_add_notify_audio_input_state(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27365,6 +28678,9 @@ function eos_rtc_audio_add_notify_audio_input_state(_local_user_id, _room_name, 
  */
 function eos_rtc_audio_remove_notify_audio_input_state(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -27380,10 +28696,13 @@ function eos_rtc_audio_remove_notify_audio_input_state(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_audio_add_notify_audio_output_state(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27425,6 +28744,9 @@ function eos_rtc_audio_add_notify_audio_output_state(_local_user_id, _room_name,
  */
 function eos_rtc_audio_remove_notify_audio_output_state(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -27441,10 +28763,13 @@ function eos_rtc_audio_remove_notify_audio_output_state(_notification_id)
  * @param {String} _room_name
  * @param {Id.Buffer} _data
  * @param {Real} _bytes
- * @returns {Enum.EpicResult} 
+ * @returns {Enum.EpicResult}
  */
 function eos_rtc_data_send_data(_local_user_id, _room_name, _data, _bytes)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _local_user_id, type: String
@@ -27482,6 +28807,9 @@ function eos_rtc_data_send_data(_local_user_id, _room_name, _data, _bytes)
  */
 function eos_rtc_data_update_sending(_local_user_id, _room_name, _data_enabled, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27527,6 +28855,9 @@ function eos_rtc_data_update_sending(_local_user_id, _room_name, _data_enabled, 
  */
 function eos_rtc_data_update_receiving(_local_user_id, _room_name, _participant_id, _data_enabled, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27572,10 +28903,13 @@ function eos_rtc_data_update_receiving(_local_user_id, _room_name, _participant_
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_data_add_notify_data_received(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27617,6 +28951,9 @@ function eos_rtc_data_add_notify_data_received(_local_user_id, _room_name, _call
  */
 function eos_rtc_data_remove_notify_data_received(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -27632,10 +28969,13 @@ function eos_rtc_data_remove_notify_data_received(_notification_id)
  * @param {String} _local_user_id
  * @param {String} _room_name
  * @param {Function} _callback
- * @returns {Real} 
+ * @returns {Real}
  */
 function eos_rtc_data_add_notify_participant_updated(_local_user_id, _room_name, _callback)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
@@ -27677,6 +29017,9 @@ function eos_rtc_data_add_notify_participant_updated(_local_user_id, _room_name,
  */
 function eos_rtc_data_remove_notify_participant_updated(_notification_id)
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _notification_id, type: UInt64
@@ -27899,6 +29242,15 @@ function __EpicOnlineServices_get_decoders()
 /// @ignore
 function __EpicOnlineServices_get_dispatcher()
 {
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
     static __dispatcher = new __GMNativeFunctionDispatcher(__EpicOnlineServices_invocation_handler, __EpicOnlineServices_get_decoders());
     return __dispatcher;
+}
+/// @ignore
+function __EpicOnlineServices_is_available()
+{
+    static __available = extension_exists("EpicOnlineServices");
+    return __available;
 }

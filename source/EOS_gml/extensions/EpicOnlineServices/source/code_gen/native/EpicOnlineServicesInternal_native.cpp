@@ -282,8 +282,8 @@ GMEXPORT double __EXT_NATIVE__eos_auth_link_account(char* __arg_buffer, double _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: continuance_token_id, type: uint64
-    std::uint64_t continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+    // field: continuance_token_id, type: Int64
+    std::int64_t continuance_token_id = gm::wire::codec::readValue<std::int64_t>(__br);
 
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
@@ -484,8 +484,8 @@ GMEXPORT double __EXT_NATIVE__eos_connect_create_user(char* __arg_buffer, double
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: continuance_token_id, type: uint64
-    std::uint64_t continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+    // field: continuance_token_id, type: Int64
+    std::int64_t continuance_token_id = gm::wire::codec::readValue<std::int64_t>(__br);
 
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
@@ -502,8 +502,8 @@ GMEXPORT double __EXT_NATIVE__eos_connect_link_account(char* __arg_buffer, doubl
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: continuance_token_id, type: uint64
-    std::uint64_t continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+    // field: continuance_token_id, type: Int64
+    std::int64_t continuance_token_id = gm::wire::codec::readValue<std::int64_t>(__br);
 
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);

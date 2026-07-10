@@ -1178,6 +1178,16 @@ namespace gm_structs
     struct EpicConnectVerifyIdTokenCallbackInfo
     {
         gm_enums::EpicResult result_code;
+        std::string product_user_id;
+        bool is_account_info_present;
+        gm_enums::EpicExternalAccountType account_id_type;
+        std::string account_id;
+        std::string platform;
+        std::string device_type;
+        std::string client_id;
+        std::string product_id;
+        std::string sandbox_id;
+        std::string deployment_id;
     };
 
     struct EpicConnectQueryExternalAccountMappingsCallbackInfo
@@ -2685,6 +2695,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.result_code);
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
         gm::wire::codec::writeValue(_buf, obj.has_continuance_token);
+        gm::wire::codec::writeValue(_buf, obj.continuance_token_id);
     }
 
     template<>
@@ -2694,6 +2705,7 @@ namespace gm::wire::codec
         obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.has_continuance_token = gm::wire::codec::readValue<bool>(_buf);
+        obj.continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
         return obj;
     }
 
@@ -2849,6 +2861,16 @@ namespace gm::wire::codec
     inline void writeValue<gm_structs::EpicConnectVerifyIdTokenCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicConnectVerifyIdTokenCallbackInfo& obj)
     {
         gm::wire::codec::writeValue(_buf, obj.result_code);
+        gm::wire::codec::writeValue(_buf, obj.product_user_id);
+        gm::wire::codec::writeValue(_buf, obj.is_account_info_present);
+        gm::wire::codec::writeValue(_buf, obj.account_id_type);
+        gm::wire::codec::writeValue(_buf, obj.account_id);
+        gm::wire::codec::writeValue(_buf, obj.platform);
+        gm::wire::codec::writeValue(_buf, obj.device_type);
+        gm::wire::codec::writeValue(_buf, obj.client_id);
+        gm::wire::codec::writeValue(_buf, obj.product_id);
+        gm::wire::codec::writeValue(_buf, obj.sandbox_id);
+        gm::wire::codec::writeValue(_buf, obj.deployment_id);
     }
 
     template<>
@@ -2856,6 +2878,16 @@ namespace gm::wire::codec
     {
         gm_structs::EpicConnectVerifyIdTokenCallbackInfo obj;
         obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
+        obj.product_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.is_account_info_present = gm::wire::codec::readValue<bool>(_buf);
+        obj.account_id_type = gm::wire::codec::readValue<gm_enums::EpicExternalAccountType>(_buf);
+        obj.account_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.platform = gm::wire::codec::readValue<std::string>(_buf);
+        obj.device_type = gm::wire::codec::readValue<std::string>(_buf);
+        obj.client_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.product_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.sandbox_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.deployment_id = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
 
@@ -4286,6 +4318,10 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.permission_level);
         gm::wire::codec::writeValue(_buf, obj.allow_invites);
         gm::wire::codec::writeValue(_buf, obj.presence_enabled);
+        gm::wire::codec::writeValue(_buf, obj.rtc_room_enabled);
+        gm::wire::codec::writeValue(_buf, obj.allow_host_migration);
+        gm::wire::codec::writeValue(_buf, obj.allow_join_by_id);
+        gm::wire::codec::writeValue(_buf, obj.rejoin_after_kick_requires_invite);
     }
 
     template<>
@@ -4300,6 +4336,10 @@ namespace gm::wire::codec
         obj.permission_level = gm::wire::codec::readValue<gm_enums::EpicLobbyPermissionLevel>(_buf);
         obj.allow_invites = gm::wire::codec::readValue<bool>(_buf);
         obj.presence_enabled = gm::wire::codec::readValue<bool>(_buf);
+        obj.rtc_room_enabled = gm::wire::codec::readValue<bool>(_buf);
+        obj.allow_host_migration = gm::wire::codec::readValue<bool>(_buf);
+        obj.allow_join_by_id = gm::wire::codec::readValue<bool>(_buf);
+        obj.rejoin_after_kick_requires_invite = gm::wire::codec::readValue<bool>(_buf);
         return obj;
     }
 
@@ -4361,6 +4401,7 @@ namespace gm::wire::codec
     inline void writeValue<gm_structs::EpicLobbyJoinLobbyAcceptedCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbyJoinLobbyAcceptedCallbackInfo& obj)
     {
         gm::wire::codec::writeValue(_buf, obj.ui_event_id);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
     }
 
     template<>
@@ -4368,6 +4409,7 @@ namespace gm::wire::codec
     {
         gm_structs::EpicLobbyJoinLobbyAcceptedCallbackInfo obj;
         obj.ui_event_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
 
@@ -6138,6 +6180,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
         gm::wire::codec::writeValue(_buf, obj.selected_account_id);
         gm::wire::codec::writeValue(_buf, obj.has_continuance_token);
+        gm::wire::codec::writeValue(_buf, obj.continuance_token_id);
         gm::wire::codec::writeValue(_buf, obj.pin_grant_info);
     }
 
@@ -6149,6 +6192,7 @@ namespace gm::wire::codec
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.selected_account_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.has_continuance_token = gm::wire::codec::readValue<bool>(_buf);
+        obj.continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
         obj.pin_grant_info = gm::wire::codec::readValue<gm_structs::EpicAuthPinGrantInfo>(_buf);
         return obj;
     }
@@ -7610,7 +7654,7 @@ void eos_logging_clear_callback();
 gm_enums::EpicResult eos_logging_set_log_level(gm_enums::EpicLogCategory log_category, gm_enums::EpicLogLevel log_level);
 void eos_auth_login(std::string_view credentials_id, std::string_view credentials_token, gm_enums::EpicLoginCredentialType credentials_type, gm_enums::EpicExternalCredentialType external_credential_type, gm_enums::EpicAuthScopeFlags scope_flags, const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
-void eos_auth_link_account(std::uint64_t continuance_token_id, std::string_view local_user_id, gm_enums::EpicLinkAccountFlags link_account_flags, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_link_account(std::int64_t continuance_token_id, std::string_view local_user_id, gm_enums::EpicLinkAccountFlags link_account_flags, const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_delete_persistent_auth(const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_auth_get_logged_in_accounts_count();
 std::string eos_auth_get_logged_in_account_by_index(std::int64_t index);
@@ -7623,8 +7667,8 @@ void eos_auth_verify_user_auth(std::string_view access_token, const std::optiona
 std::uint64_t eos_auth_add_notify_login_status_changed(const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_remove_notify_login_status_changed(std::uint64_t notification_id);
 void eos_connect_login(std::string_view token, gm_enums::EpicExternalCredentialType external_credential_type, std::string_view display_name, const std::optional<gm::wire::GMFunction>& callback);
-void eos_connect_create_user(std::uint64_t continuance_token_id, const std::optional<gm::wire::GMFunction>& callback);
-void eos_connect_link_account(std::uint64_t continuance_token_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_create_user(std::int64_t continuance_token_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_link_account(std::int64_t continuance_token_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_unlink_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_create_device_id(std::string_view device_model, const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_delete_device_id(const std::optional<gm::wire::GMFunction>& callback);
