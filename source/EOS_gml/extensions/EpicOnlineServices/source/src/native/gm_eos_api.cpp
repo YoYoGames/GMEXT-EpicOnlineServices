@@ -96,6 +96,13 @@ gm_enums::EpicResult eos_api_shutdown()
 {
     eos_clear_last_error();
 
+    // Release outstanding SDK object handles while the interfaces backing
+    // them are still valid, before the platform itself is released.
+    eos_sessions_release_all_handles();
+    eos_lobby_release_all_handles();
+    eos_presence_release_all_handles();
+    eos_ecom_release_all_transactions();
+
     if (eos_platform_get()) {
         eos_platform_release();
     }

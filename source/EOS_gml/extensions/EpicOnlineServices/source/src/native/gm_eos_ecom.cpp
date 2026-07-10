@@ -192,6 +192,14 @@ static void eos_ecom_remove_tx(uint64_t id)
     g_tx_handles.erase(id);
 }
 
+void eos_ecom_release_all_transactions()
+{
+    std::lock_guard<std::mutex> lock(g_tx_mutex);
+    for (auto& [id, tx] : g_tx_handles)
+        if (tx) EOS_Ecom_Transaction_Release(tx);
+    g_tx_handles.clear();
+}
+
 // ============================================================
 // Native callbacks
 // ============================================================

@@ -992,6 +992,21 @@ static void eos_lobby_details_erase(uint64_t id)
     g_lobby_details.erase(it);
 }
 
+void eos_lobby_release_all_handles()
+{
+    for (auto& [id, handle] : g_lobby_modifications)
+        if (handle) EOS_LobbyModification_Release(handle);
+    g_lobby_modifications.clear();
+
+    for (auto& [id, handle] : g_lobby_searches)
+        if (handle) EOS_LobbySearch_Release(handle);
+    g_lobby_searches.clear();
+
+    for (auto& [id, handle] : g_lobby_details)
+        if (handle) EOS_LobbyDetails_Release(handle);
+    g_lobby_details.clear();
+}
+
 static gm_structs::EpicLobbySearchFindCallbackInfo eos_lobby_search_find_info_from_native(
     const EOS_LobbySearch_FindCallbackInfo* p)
 {

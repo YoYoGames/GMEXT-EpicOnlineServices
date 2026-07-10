@@ -286,6 +286,13 @@ static void eos_presence_modification_erase(uint64_t id)
     g_presence_modifications.erase(it);
 }
 
+void eos_presence_release_all_handles()
+{
+    for (auto& [id, handle] : g_presence_modifications)
+        if (handle) EOS_PresenceModification_Release(handle);
+    g_presence_modifications.clear();
+}
+
 static gm_structs::EpicPresenceSetPresenceCallbackInfo eos_presence_set_presence_info_from_native(
     const EOS_Presence_SetPresenceCallbackInfo* p)
 {

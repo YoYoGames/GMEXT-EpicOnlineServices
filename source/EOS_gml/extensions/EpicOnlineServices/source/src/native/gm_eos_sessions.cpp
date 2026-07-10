@@ -972,6 +972,25 @@ static void eos_sessions_active_erase(uint64_t id)
     g_active_sessions.erase(it);
 }
 
+void eos_sessions_release_all_handles()
+{
+    for (auto& [id, handle] : g_session_modifications)
+        if (handle) EOS_SessionModification_Release(handle);
+    g_session_modifications.clear();
+
+    for (auto& [id, handle] : g_session_searches)
+        if (handle) EOS_SessionSearch_Release(handle);
+    g_session_searches.clear();
+
+    for (auto& [id, handle] : g_session_details_handles)
+        if (handle) EOS_SessionDetails_Release(handle);
+    g_session_details_handles.clear();
+
+    for (auto& [id, handle] : g_active_sessions)
+        if (handle) EOS_ActiveSession_Release(handle);
+    g_active_sessions.clear();
+}
+
 
 static gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_info_from_native(
     const EOS_SessionDetails_Info* p)

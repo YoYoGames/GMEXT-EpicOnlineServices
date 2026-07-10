@@ -42,3 +42,11 @@ extern std::atomic<bool> g_eos_initialized;
 
 EOS_HPlatform eos_platform_get();
 void eos_platform_set(EOS_HPlatform handle);
+
+// Release every outstanding SDK object handle cached by each interface's
+// registry. Must be called before EOS_Platform_Release/EOS_Shutdown so the
+// interfaces backing these handles are still valid.
+void eos_sessions_release_all_handles();
+void eos_lobby_release_all_handles();
+void eos_presence_release_all_handles();
+void eos_ecom_release_all_transactions();
