@@ -372,6 +372,12 @@ namespace gm_enums
         Country = 32
     };
 
+    enum class EpicAuthLoginFlags : std::int64_t
+    {
+        NoFlags = 0,
+        NoUserInterface = 1
+    };
+
     enum class EpicLinkAccountFlags : std::int64_t
     {
         NoFlags = 0,
@@ -7652,7 +7658,7 @@ std::string eos_platform_get_storage_directory();
 void eos_logging_set_callback(const std::optional<gm::wire::GMFunction>& callback);
 void eos_logging_clear_callback();
 gm_enums::EpicResult eos_logging_set_log_level(gm_enums::EpicLogCategory log_category, gm_enums::EpicLogLevel log_level);
-void eos_auth_login(std::string_view credentials_id, std::string_view credentials_token, gm_enums::EpicLoginCredentialType credentials_type, gm_enums::EpicExternalCredentialType external_credential_type, gm_enums::EpicAuthScopeFlags scope_flags, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_login(std::string_view credentials_id, std::string_view credentials_token, gm_enums::EpicLoginCredentialType credentials_type, gm_enums::EpicExternalCredentialType external_credential_type, gm_enums::EpicAuthScopeFlags scope_flags, gm_enums::EpicAuthLoginFlags login_flags, const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_link_account(std::int64_t continuance_token_id, std::string_view local_user_id, gm_enums::EpicLinkAccountFlags link_account_flags, const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_delete_persistent_auth(const std::optional<gm::wire::GMFunction>& callback);

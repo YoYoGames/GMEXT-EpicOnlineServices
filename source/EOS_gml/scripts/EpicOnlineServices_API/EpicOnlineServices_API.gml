@@ -365,6 +365,12 @@ enum EpicAuthScopeFlags
     Country = 32
 }
 
+enum EpicAuthLoginFlags
+{
+    NoFlags = 0,
+    NoUserInterface = 1
+}
+
 enum EpicLinkAccountFlags
 {
     NoFlags = 0,
@@ -17155,9 +17161,10 @@ function eos_logging_set_log_level(_log_category, _log_level)
  * @param {Enum.EpicLoginCredentialType} _credentials_type
  * @param {Enum.EpicExternalCredentialType} _external_credential_type
  * @param {Enum.EpicAuthScopeFlags} _scope_flags
+ * @param {Enum.EpicAuthLoginFlags} _login_flags
  * @param {Function} _callback
  */
-function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _callback)
+function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _login_flags, _callback)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -17190,6 +17197,11 @@ function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, 
 
     if (!is_numeric(_scope_flags)) show_error($"{_GMFUNCTION_} :: _scope_flags expected number", true);
     buffer_write(__args_buffer, buffer_u64, _scope_flags);
+
+    // param: _login_flags, type: enum EpicAuthLoginFlags
+
+    if (!is_numeric(_login_flags)) show_error($"{_GMFUNCTION_} :: _login_flags expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _login_flags);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))

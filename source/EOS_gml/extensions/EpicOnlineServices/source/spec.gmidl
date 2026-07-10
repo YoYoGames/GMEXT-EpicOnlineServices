@@ -195,6 +195,7 @@ function eos_auth_login(
     [type_hint=`EpicLoginCredentialType`] credentials_type: gmval,
     [type_hint=`EpicExternalCredentialType`] external_credential_type: gmval,
     [type_hint=`EpicAuthScopeFlags`] scope_flags: gmval,
+    [type_hint=`EpicAuthLoginFlags`] login_flags: gmval,
     [type_hint=`func?`] callback: gmval
 ): unit;
 
@@ -5078,6 +5079,13 @@ enum EpicAuthScopeFlags
     FriendsManagement = 0x8,
     Email = 0x10,
     Country = 0x20,
+}
+
+[global, bind = typed_gml]// eos_auth_types.h
+enum EpicAuthLoginFlags
+{
+    NoFlags = 0x0,
+    NoUserInterface = 0x00001,
 }
 
 [global, bind = typed_gml]// eos_auth_types.h

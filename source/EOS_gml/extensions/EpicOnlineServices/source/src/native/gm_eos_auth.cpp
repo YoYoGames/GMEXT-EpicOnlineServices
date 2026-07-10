@@ -239,6 +239,7 @@ void eos_auth_login(
     gm_enums::EpicLoginCredentialType credentials_type,
     gm_enums::EpicExternalCredentialType external_credential_type,
     gm_enums::EpicAuthScopeFlags scope_flags,
+    gm_enums::EpicAuthLoginFlags login_flags,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -274,6 +275,7 @@ void eos_auth_login(
     opts.ApiVersion = EOS_AUTH_LOGIN_API_LATEST;
     opts.Credentials = &creds;
     opts.ScopeFlags = (EOS_EAuthScopeFlags)scope_flags;
+    opts.LoginFlags = (uint64_t)login_flags;
 
     EOS_Auth_Login(auth, &opts, ctx, &eos_auth_login_callback_native);
 

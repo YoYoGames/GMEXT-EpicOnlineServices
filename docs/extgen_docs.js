@@ -146,6 +146,7 @@
  * @param {Enum.EpicLoginCredentialType} credentials_type
  * @param {Enum.EpicExternalCredentialType} external_credential_type
  * @param {Enum.EpicAuthScopeFlags} scope_flags
+ * @param {Enum.EpicAuthLoginFlags} login_flags
  * @param {Function} [callback]
  * @function_end
  */
@@ -5140,6 +5141,13 @@
  * @member FriendsManagement
  * @member Email
  * @member Country
+ * @enum_end
+ */
+
+/**
+ * @enum_partial EpicAuthLoginFlags
+ * @member NoFlags
+ * @member NoUserInterface
  * @enum_end
  */
 

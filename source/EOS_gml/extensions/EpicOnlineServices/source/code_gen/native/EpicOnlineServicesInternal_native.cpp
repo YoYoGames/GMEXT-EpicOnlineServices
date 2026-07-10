@@ -249,6 +249,9 @@ GMEXPORT double __EXT_NATIVE__eos_auth_login(char* __arg_buffer, double __arg_bu
     // field: scope_flags, type: enum EpicAuthScopeFlags
     gm_enums::EpicAuthScopeFlags scope_flags = gm::wire::codec::readValue<gm_enums::EpicAuthScopeFlags>(__br);
 
+    // field: login_flags, type: enum EpicAuthLoginFlags
+    gm_enums::EpicAuthLoginFlags login_flags = gm::wire::codec::readValue<gm_enums::EpicAuthLoginFlags>(__br);
+
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -256,7 +259,7 @@ GMEXPORT double __EXT_NATIVE__eos_auth_login(char* __arg_buffer, double __arg_bu
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_auth_login(credentials_id, credentials_token, credentials_type, external_credential_type, scope_flags, callback);
+    eos_auth_login(credentials_id, credentials_token, credentials_type, external_credential_type, scope_flags, login_flags, callback);
     return 0;
 }
 
