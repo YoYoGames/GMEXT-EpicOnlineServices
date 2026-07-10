@@ -1795,6 +1795,7 @@ namespace gm_structs
 
     struct EpicLobbySendLobbyNativeInviteRequestedCallbackInfo
     {
+        uint64_t ui_event_id;
         std::string lobby_id;
         std::string local_user_id;
         std::string target_native_account_type;
@@ -4438,6 +4439,7 @@ namespace gm::wire::codec
     template<>
     inline void writeValue<gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo& obj)
     {
+        gm::wire::codec::writeValue(_buf, obj.ui_event_id);
         gm::wire::codec::writeValue(_buf, obj.lobby_id);
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
         gm::wire::codec::writeValue(_buf, obj.target_native_account_type);
@@ -4448,6 +4450,7 @@ namespace gm::wire::codec
     inline gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo readValue<gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo>(gm::byteio::BufferReader& _buf)
     {
         gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo obj;
+        obj.ui_event_id = gm::wire::codec::readValue<uint64_t>(_buf);
         obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.target_native_account_type = gm::wire::codec::readValue<std::string>(_buf);

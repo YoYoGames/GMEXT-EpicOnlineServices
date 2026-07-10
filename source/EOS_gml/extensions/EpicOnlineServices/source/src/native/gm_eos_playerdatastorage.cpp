@@ -35,7 +35,8 @@ struct EOSPDSReadContext
     std::string local_user_id;
     std::string filename;
     std::string output_path;
-    std::vector<uint8_t> data;
+    std::ofstream output_file;
+    bool file_open_failed = false;
     EOS_HPlayerDataStorageFileTransferRequest request = nullptr;
 };
 
@@ -49,15 +50,6 @@ struct EOSPDSWriteContext
     size_t write_offset = 0;
     EOS_HPlayerDataStorageFileTransferRequest request = nullptr;
 };
-
-static bool eos_pds_write_entire_file(const std::string& path, const std::vector<uint8_t>& buf)
-{
-    std::ofstream f(path, std::ios::binary | std::ios::trunc);
-    if (!f.is_open()) return false;
-    if (!buf.empty())
-        f.write(reinterpret_cast<const char*>(buf.data()), static_cast<std::streamsize>(buf.size()));
-    return f.good();
-}
 
 static std::vector<uint8_t> eos_pds_read_entire_file(const std::string& path)
 {
@@ -194,9 +186,25 @@ static EOS_PlayerDataStorage_EReadResult EOS_CALL eos_pds_read_data_callback(
         return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
 
     auto* ctx = static_cast<EOSPDSReadContext*>(data->ClientData);
+    if (ctx->file_open_failed)
+        return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
+
     if (data->DataChunk && data->DataChunkLengthBytes > 0) {
-        const auto* src = static_cast<const uint8_t*>(data->DataChunk);
-        ctx->data.insert(ctx->data.end(), src, src + data->DataChunkLengthBytes);
+        if (!ctx->output_file.is_open() && !ctx->output_path.empty()) {
+            ctx->output_file.open(ctx->output_path, std::ios::binary | std::ios::trunc);
+            if (!ctx->output_file.is_open()) {
+                ctx->file_open_failed = true;
+                return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
+            }
+        }
+        if (ctx->output_file.is_open()) {
+            ctx->output_file.write(reinterpret_cast<const char*>(data->DataChunk),
+                                   static_cast<std::streamsize>(data->DataChunkLengthBytes));
+            if (!ctx->output_file.good()) {
+                ctx->file_open_failed = true;
+                return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
+            }
+        }
     }
     return EOS_PlayerDataStorage_EReadResult::EOS_RR_ContinueReading;
 }
@@ -224,15 +232,13 @@ static void EOS_CALL eos_pds_read_file_callback_native(
     if (!ctx) return;
 
     EOS_EResult result_code = data->ResultCode;
-    if (result_code == EOS_EResult::EOS_Success && !ctx->output_path.empty()) {
-        if (!eos_pds_write_entire_file(ctx->output_path, ctx->data)) {
-            // The EOS download succeeded but writing the bytes to disk failed
-            // (e.g. a read-only path like working_directory on Android/iOS).
-            // Surface this as a failure instead of reporting a phantom success.
-            eos_set_last_error("EOS_PlayerDataStorage_ReadFile: failed to write '"
-                + ctx->output_path + "' to disk (is the path writable?).");
-            result_code = EOS_EResult::EOS_UnexpectedError;
-        }
+    if (ctx->output_file.is_open()) {
+        ctx->output_file.close();
+    }
+    if (ctx->file_open_failed) {
+        result_code = EOS_EResult::EOS_UnexpectedError;
+        eos_set_last_error("EOS_PlayerDataStorage_ReadFile: failed to write '"
+            + ctx->output_path + "' to disk (is the path writable?).");
     }
 
     gm_structs::EpicPlayerDataStorageReadFileCallbackInfo out{};

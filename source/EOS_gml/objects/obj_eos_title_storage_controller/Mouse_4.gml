@@ -11,11 +11,11 @@ eos_titlestorage_query_file_list(global.product_user_id, ["Tag1"], function(_inf
     //   .local_user_id (string)
     //   .file_count (int64)
 
-    if (_info.result_code != EpicResult.Success)
-    {
-        show_debug_message("query_file_list failed: " + eos_api_result_to_string(_info.result_code));
-        return;
-    }
+    //if (_info.result_code != EpicResult.Success)
+    //{
+    //    show_debug_message("query_file_list failed: " + eos_api_result_to_string(_info.result_code));
+    //    return;
+    //}
 
 	show_debug_message($"DOWNLOADING FILES")
     var count = eos_titlestorage_get_file_metadata_count(global.product_user_id);
