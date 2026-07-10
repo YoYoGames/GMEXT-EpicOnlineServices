@@ -906,11 +906,11 @@ function eos_ui_show_friends(local_user_id: string, [type_hint=`func?`] callback
 [global, bind = typed_gml]
 function eos_ui_show_native_profile(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
-[global, bind = typed_gml]
-function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): unit;
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): gmval;
 
-[global, bind = typed_gml]
-function eos_ui_set_display_preference([type_hint=`EpicUINotificationLocation`] notification_location: gmval): unit;
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_ui_set_display_preference([type_hint=`EpicUINotificationLocation`] notification_location: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_ui_report_input_state(button_down: bool, button_up: bool, button_left: bool, button_right: bool, button_accept: bool, button_cancel: bool): unit;

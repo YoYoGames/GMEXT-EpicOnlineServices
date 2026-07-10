@@ -18983,6 +18983,7 @@ function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
 
 /**
  * @param {Real} _ui_event_id
+ * @returns {Enum.EpicResult}
  */
 function eos_ui_acknowledge_event_id(_ui_event_id)
 {
@@ -18995,13 +18996,18 @@ function eos_ui_acknowledge_event_id(_ui_event_id)
     if (!is_numeric(_ui_event_id)) show_error($"{_GMFUNCTION_} :: _ui_event_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _ui_event_id);
 
-    var _return_value = __eos_ui_acknowledge_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __ret_buffer = __ext_core_get_ret_buffer();
 
-    return _return_value;
+    var _return_value = __eos_ui_acknowledge_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
 }
 
 /**
  * @param {Enum.EpicUINotificationLocation} _notification_location
+ * @returns {Enum.EpicResult}
  */
 function eos_ui_set_display_preference(_notification_location)
 {
@@ -19015,9 +19021,13 @@ function eos_ui_set_display_preference(_notification_location)
     if (!is_numeric(_notification_location)) show_error($"{_GMFUNCTION_} :: _notification_location expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_location);
 
-    var _return_value = __eos_ui_set_display_preference(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __ret_buffer = __ext_core_get_ret_buffer();
 
-    return _return_value;
+    var _return_value = __eos_ui_set_display_preference(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
 }
 
 // Skipping function eos_ui_report_input_state (no wrapper is required)

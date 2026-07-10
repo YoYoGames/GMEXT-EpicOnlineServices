@@ -340,13 +340,13 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_ui_show_native_profile(__arg_buffer, __arg_buffer_length);
     }
-    public double __EXT_NATIVE__eos_ui_acknowledge_event_id(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    public double __EXT_NATIVE__eos_ui_acknowledge_event_id(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
-        return __EXT_JNI__eos_ui_acknowledge_event_id(__arg_buffer, __arg_buffer_length);
+        return __EXT_JNI__eos_ui_acknowledge_event_id(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
-    public double __EXT_NATIVE__eos_ui_set_display_preference(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    public double __EXT_NATIVE__eos_ui_set_display_preference(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
-        return __EXT_JNI__eos_ui_set_display_preference(__arg_buffer, __arg_buffer_length);
+        return __EXT_JNI__eos_ui_set_display_preference(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
     public double __EXT_NATIVE__eos_ui_report_input_state(double button_down, double button_up, double button_left, double button_right, double button_accept, double button_cancel)
     {

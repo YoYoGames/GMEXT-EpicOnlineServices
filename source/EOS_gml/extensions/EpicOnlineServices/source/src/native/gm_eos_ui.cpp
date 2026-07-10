@@ -187,38 +187,50 @@ void eos_ui_show_native_profile(
     EOS_UI_ShowNativeProfile(ui, &opts, ctx, &eos_ui_show_native_profile_callback_native);
 }
 
-void eos_ui_acknowledge_event_id(uint64_t ui_event_id)
+gm_enums::EpicResult eos_ui_acknowledge_event_id(uint64_t ui_event_id)
 {
     eos_clear_last_error();
 
     EOS_HUI ui = eos_ui_iface();
     if (!ui) {
         eos_set_last_error("EOS UI interface unavailable.");
-        return;
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
     EOS_UI_AcknowledgeEventIdOptions opts{};
     opts.ApiVersion = EOS_UI_ACKNOWLEDGEEVENTID_API_LATEST;
     opts.UiEventId = (EOS_UI_EventId)ui_event_id;
 
-    EOS_UI_AcknowledgeEventId(ui, &opts);
+    EOS_EResult result = EOS_UI_AcknowledgeEventId(ui, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_UI_AcknowledgeEventId failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
 }
 
-void eos_ui_set_display_preference(gm_enums::EpicUINotificationLocation notification_location)
+gm_enums::EpicResult eos_ui_set_display_preference(gm_enums::EpicUINotificationLocation notification_location)
 {
     eos_clear_last_error();
 
     EOS_HUI ui = eos_ui_iface();
     if (!ui) {
         eos_set_last_error("EOS UI interface unavailable.");
-        return;
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
     EOS_UI_SetDisplayPreferenceOptions opts{};
     opts.ApiVersion = EOS_UI_SETDISPLAYPREFERENCE_API_LATEST;
     opts.NotificationLocation = (EOS_UI_ENotificationLocation)notification_location;
 
-    EOS_UI_SetDisplayPreference(ui, &opts);
+    EOS_EResult result = EOS_UI_SetDisplayPreference(ui, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_UI_SetDisplayPreference failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
 }
 
 void eos_ui_report_input_state(bool button_down, bool button_up, bool button_left, bool button_right, bool button_accept, bool button_cancel)

@@ -91,8 +91,8 @@ GMEXPORT double __EXT_NATIVE__eos_stats_copy_stat_by_index(char* __arg_buffer, d
 GMEXPORT double __EXT_NATIVE__eos_stats_copy_stat_by_name(char* target_user_id, char* name, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_ui_show_friends(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_ui_show_native_profile(char* __arg_buffer, double __arg_buffer_length);
-GMEXPORT double __EXT_NATIVE__eos_ui_acknowledge_event_id(char* __arg_buffer, double __arg_buffer_length);
-GMEXPORT double __EXT_NATIVE__eos_ui_set_display_preference(char* __arg_buffer, double __arg_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_ui_acknowledge_event_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_ui_set_display_preference(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_ui_report_input_state(double button_down, double button_up, double button_left, double button_right, double button_accept, double button_cancel);
 GMEXPORT double __EXT_NATIVE__eos_ui_add_notify_display_settings_updated(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_ui_remove_notify_display_settings_updated(char* __arg_buffer, double __arg_buffer_length);

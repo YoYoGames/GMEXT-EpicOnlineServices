@@ -416,13 +416,13 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_ui_show_native_profile(__arg_buffer, __arg_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_ui_acknowledge_event_id:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+- (double)__EXT_NATIVE__eos_ui_acknowledge_event_id:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_ui_acknowledge_event_id(__arg_buffer, __arg_buffer_length);
+    return __EXT_NATIVE__eos_ui_acknowledge_event_id(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_ui_set_display_preference:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+- (double)__EXT_NATIVE__eos_ui_set_display_preference:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_ui_set_display_preference(__arg_buffer, __arg_buffer_length);
+    return __EXT_NATIVE__eos_ui_set_display_preference(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_ui_report_input_state:(double)button_down arg1:(double)button_up arg2:(double)button_left arg3:(double)button_right arg4:(double)button_accept arg5:(double)button_cancel
 {

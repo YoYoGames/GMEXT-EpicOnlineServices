@@ -1239,8 +1239,8 @@ static jdouble __JNI_WRAPPER__eos_ui_show_native_profile_09F0B6190543(JNIEnv* en
     return static_cast<jdouble>(__ret);
 }
 
-// eos_ui_acknowledge_event_id JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
-static jdouble __JNI_WRAPPER__eos_ui_acknowledge_event_id_67E21E7FBA09(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+// eos_ui_acknowledge_event_id JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_ui_acknowledge_event_id_21C858E71A40(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
     void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
     jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
@@ -1248,12 +1248,18 @@ static jdouble __JNI_WRAPPER__eos_ui_acknowledge_event_id_67E21E7FBA09(JNIEnv* e
         throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
         return 0.0;
     }
-    double __ret = __EXT_NATIVE__eos_ui_acknowledge_event_id((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_ui_acknowledge_event_id((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
-// eos_ui_set_display_preference JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
-static jdouble __JNI_WRAPPER__eos_ui_set_display_preference_B0C0BBE8DBF9(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
+// eos_ui_set_display_preference JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_ui_set_display_preference_9B7D5490676B(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
     void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
     jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
@@ -1261,7 +1267,13 @@ static jdouble __JNI_WRAPPER__eos_ui_set_display_preference_B0C0BBE8DBF9(JNIEnv*
         throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
         return 0.0;
     }
-    double __ret = __EXT_NATIVE__eos_ui_set_display_preference((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_ui_set_display_preference((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
@@ -6471,8 +6483,8 @@ extern "C" {
             { "__EXT_JNI__eos_stats_copy_stat_by_name", "(Ljava/lang/String;Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_stats_copy_stat_by_name_B95CD44E90E6 },
             { "__EXT_JNI__eos_ui_show_friends", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_show_friends_F7FFC7BC0185 },
             { "__EXT_JNI__eos_ui_show_native_profile", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_show_native_profile_09F0B6190543 },
-            { "__EXT_JNI__eos_ui_acknowledge_event_id", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_acknowledge_event_id_67E21E7FBA09 },
-            { "__EXT_JNI__eos_ui_set_display_preference", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_set_display_preference_B0C0BBE8DBF9 },
+            { "__EXT_JNI__eos_ui_acknowledge_event_id", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_acknowledge_event_id_21C858E71A40 },
+            { "__EXT_JNI__eos_ui_set_display_preference", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_set_display_preference_9B7D5490676B },
             { "__EXT_JNI__eos_ui_report_input_state", "(DDDDDD)D", (void*)__JNI_WRAPPER__eos_ui_report_input_state_6F253FCA55AA },
             { "__EXT_JNI__eos_ui_add_notify_display_settings_updated", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_add_notify_display_settings_updated_D1DDDD569B08 },
             { "__EXT_JNI__eos_ui_remove_notify_display_settings_updated", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ui_remove_notify_display_settings_updated_C2C345454131 },

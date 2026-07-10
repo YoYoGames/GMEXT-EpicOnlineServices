@@ -1201,25 +1201,33 @@ GMEXPORT double __EXT_NATIVE__eos_ui_show_native_profile(char* __arg_buffer, dou
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_ui_acknowledge_event_id(char* __arg_buffer, double __arg_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_ui_acknowledge_event_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
     // field: ui_event_id, type: UInt64
     std::uint64_t ui_event_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    eos_ui_acknowledge_event_id(ui_event_id);
+    auto&& __result = eos_ui_acknowledge_event_id(ui_event_id);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_ui_set_display_preference(char* __arg_buffer, double __arg_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_ui_set_display_preference(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
     // field: notification_location, type: enum EpicUINotificationLocation
     gm_enums::EpicUINotificationLocation notification_location = gm::wire::codec::readValue<gm_enums::EpicUINotificationLocation>(__br);
 
-    eos_ui_set_display_preference(notification_location);
+    auto&& __result = eos_ui_set_display_preference(notification_location);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
 

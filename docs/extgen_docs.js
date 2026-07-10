@@ -595,12 +595,14 @@
 /**
  * @function_partial eos_ui_acknowledge_event_id
  * @param {Real} ui_event_id
+ * @returns {Enum.EpicResult}
  * @function_end
  */
 
 /**
  * @function_partial eos_ui_set_display_preference
  * @param {Enum.EpicUINotificationLocation} notification_location
+ * @returns {Enum.EpicResult}
  * @function_end
  */
 
