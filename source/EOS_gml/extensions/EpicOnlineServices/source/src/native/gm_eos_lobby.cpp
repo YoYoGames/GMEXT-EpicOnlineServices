@@ -1407,6 +1407,7 @@ static gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo eos_lobby
     if (!p)
         return out;
 
+    out.ui_event_id = (uint64_t)p->UiEventId;
     out.lobby_id = p->LobbyId ? std::string(p->LobbyId) : std::string();
     out.local_user_id = "";
     out.target_native_account_type = p->TargetNativeAccountType ? std::string(p->TargetNativeAccountType) : std::string();

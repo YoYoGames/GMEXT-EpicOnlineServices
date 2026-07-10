@@ -907,11 +907,14 @@ function eos_ui_show_friends(local_user_id: string, [type_hint=`func?`] callback
 [global, bind = typed_gml]
 function eos_ui_show_native_profile(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
+/// Acknowledges a UI event from social overlay interactions (join game, native invites, etc).
+/// IMPORTANT: When you receive a callback with a ui_event_id (such as JoinGameAccepted, SendNativeInviteRequested),
+/// you MUST call this function to acknowledge the event, otherwise the social overlay UI will hang.
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): gmval;
+function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): EpicResult;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_ui_set_display_preference([type_hint=`EpicUINotificationLocation`] notification_location: gmval): gmval;
+function eos_ui_set_display_preference([type_hint=`EpicUINotificationLocation`] notification_location: gmval): EpicResult;
 
 [global, bind = typed_gml]
 function eos_ui_report_input_state(button_down: bool, button_up: bool, button_left: bool, button_right: bool, button_accept: bool, button_cancel: bool): unit;
@@ -1599,6 +1602,8 @@ class `[[EpicPresenceJoinGameAcceptedCallbackInfo]]` prototype Object
     [field]
     property target_user_id : string { get; set; }
 
+    /// IMPORTANT: When you receive this callback, you MUST call eos_ui_acknowledge_event_id(ui_event_id)
+    /// to acknowledge the social overlay event. Failure to acknowledge will cause the UI to hang.
     [field, type_hint=`uint64`]
     property ui_event_id : gmval { get; set; }
 }
@@ -2011,6 +2016,8 @@ class `[[EpicSessionsLeaveSessionRequestedCallbackInfo]]` prototype Object
 [global]
 class `[[EpicSessionsSendSessionNativeInviteRequestedCallbackInfo]]` prototype Object
 {
+    /// IMPORTANT: When you receive this callback, you MUST call eos_ui_acknowledge_event_id(ui_event_id)
+    /// to acknowledge the social overlay event. Failure to acknowledge will cause the UI to hang.
     [field, type_hint=`uint64`]
     property ui_event_id : gmval { get; set; }
 
@@ -2646,6 +2653,11 @@ class `[[EpicLobbyLeaveLobbyRequestedCallbackInfo]]` prototype Object
 [global]
 class `[[EpicLobbySendLobbyNativeInviteRequestedCallbackInfo]]` prototype Object
 {
+    /// IMPORTANT: When you receive this callback, you MUST call eos_ui_acknowledge_event_id(ui_event_id)
+    /// to acknowledge the social overlay event. Failure to acknowledge will cause the UI to hang.
+    [field, type_hint=`uint64`]
+    property ui_event_id : gmval { get; set; }
+
     [field]
     property lobby_id : string { get; set; }
 
@@ -4060,6 +4072,8 @@ class `[[EpicCustomInvitesRejectRequestToJoinCallbackInfo]]` prototype Object
 [global]
 class `[[EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo]]` prototype Object
 {
+    /// IMPORTANT: When you receive this callback, you MUST call eos_ui_acknowledge_event_id(ui_event_id)
+    /// to acknowledge the social overlay event. Failure to acknowledge will cause the UI to hang.
     [field, type_hint=`int64`]
     property ui_event_id : gmval { get; set; }
 
