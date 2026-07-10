@@ -1116,6 +1116,7 @@ namespace gm_structs
         gm_enums::EpicResult result_code;
         std::string local_user_id;
         bool has_continuance_token;
+        std::uint64_t continuance_token_id;
     };
 
     struct EpicConnectCreateUserCallbackInfo
@@ -2470,6 +2471,7 @@ namespace gm_structs
         std::string local_user_id;
         std::string selected_account_id;
         bool has_continuance_token;
+        std::uint64_t continuance_token_id;
         gm_structs::EpicAuthPinGrantInfo pin_grant_info;
     };
 
@@ -7608,7 +7610,7 @@ void eos_logging_clear_callback();
 gm_enums::EpicResult eos_logging_set_log_level(gm_enums::EpicLogCategory log_category, gm_enums::EpicLogLevel log_level);
 void eos_auth_login(std::string_view credentials_id, std::string_view credentials_token, gm_enums::EpicLoginCredentialType credentials_type, gm_enums::EpicExternalCredentialType external_credential_type, gm_enums::EpicAuthScopeFlags scope_flags, const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
-void eos_auth_link_account(std::string_view local_user_id, gm_enums::EpicLinkAccountFlags link_account_flags, const std::optional<gm::wire::GMFunction>& callback);
+void eos_auth_link_account(std::uint64_t continuance_token_id, std::string_view local_user_id, gm_enums::EpicLinkAccountFlags link_account_flags, const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_delete_persistent_auth(const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_auth_get_logged_in_accounts_count();
 std::string eos_auth_get_logged_in_account_by_index(std::int64_t index);
@@ -7621,8 +7623,8 @@ void eos_auth_verify_user_auth(std::string_view access_token, const std::optiona
 std::uint64_t eos_auth_add_notify_login_status_changed(const std::optional<gm::wire::GMFunction>& callback);
 void eos_auth_remove_notify_login_status_changed(std::uint64_t notification_id);
 void eos_connect_login(std::string_view token, gm_enums::EpicExternalCredentialType external_credential_type, std::string_view display_name, const std::optional<gm::wire::GMFunction>& callback);
-void eos_connect_create_user(const std::optional<gm::wire::GMFunction>& callback);
-void eos_connect_link_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_create_user(std::uint64_t continuance_token_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_connect_link_account(std::uint64_t continuance_token_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_unlink_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_create_device_id(std::string_view device_model, const std::optional<gm::wire::GMFunction>& callback);
 void eos_connect_delete_device_id(const std::optional<gm::wire::GMFunction>& callback);

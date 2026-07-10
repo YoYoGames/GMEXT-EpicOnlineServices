@@ -22,9 +22,11 @@ using namespace gm_enums;
 struct EOSAsyncCallbackContext
 {
     std::optional<GMFunction> callback;
+    uint64_t continuance_token_id = 0;
 };
 
-static EOS_ContinuanceToken g_eos_connect_continuance_token = nullptr;
+static std::map<uint64_t, EOS_ContinuanceToken> g_eos_connect_continuance_tokens;
+static uint64_t g_eos_connect_continuance_token_counter = 1;
 
 
 static EOS_HConnect eos_connect_iface()
@@ -180,8 +182,17 @@ static void EOS_CALL eos_connect_login_callback_native(const EOS_Connect_LoginCa
     if (!ctx)
         return;
 
-    g_eos_connect_continuance_token = data->ContinuanceToken;
-    if (ctx->callback) ctx->callback.value().call(eos_connect_login_info_from_native(data));
+    uint64_t token_id = 0;
+    if (data->ContinuanceToken)
+    {
+        token_id = g_eos_connect_continuance_token_counter++;
+        g_eos_connect_continuance_tokens[token_id] = data->ContinuanceToken;
+    }
+
+    auto info = eos_connect_login_info_from_native(data);
+    info.continuance_token_id = token_id;
+
+    if (ctx->callback) ctx->callback.value().call(info);
     delete ctx;
 }
 
@@ -194,7 +205,11 @@ static void EOS_CALL eos_connect_create_user_callback_native(const EOS_Connect_C
     if (!ctx)
         return;
 
-    g_eos_connect_continuance_token = nullptr;
+    if (ctx->continuance_token_id != 0)
+    {
+        g_eos_connect_continuance_tokens.erase(ctx->continuance_token_id);
+    }
+
     if (ctx->callback) ctx->callback.value().call(eos_connect_create_user_info_from_native(data));
     delete ctx;
 }
@@ -208,7 +223,11 @@ static void EOS_CALL eos_connect_link_account_callback_native(const EOS_Connect_
     if (!ctx)
         return;
 
-    g_eos_connect_continuance_token = nullptr;
+    if (ctx->continuance_token_id != 0)
+    {
+        g_eos_connect_continuance_tokens.erase(ctx->continuance_token_id);
+    }
+
     if (ctx->callback) ctx->callback.value().call(eos_connect_link_account_info_from_native(data));
     delete ctx;
 }
@@ -332,7 +351,7 @@ void eos_connect_login(
     EOS_Connect_Login(connect, &opts, ctx, &eos_connect_login_callback_native);
 }
 
-void eos_connect_create_user(const std::optional<gm::wire::GMFunction>& callback)
+void eos_connect_create_user(uint64_t continuance_token_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -342,22 +361,24 @@ void eos_connect_create_user(const std::optional<gm::wire::GMFunction>& callback
         return;
     }
 
-    if (!g_eos_connect_continuance_token) {
-        eos_set_last_error("EOS_Connect_CreateUser: no stored continuance token.");
+    auto token_it = g_eos_connect_continuance_tokens.find(continuance_token_id);
+    if (token_it == g_eos_connect_continuance_tokens.end()) {
+        eos_set_last_error("EOS_Connect_CreateUser: continuance token not found or already used.");
         return;
     }
 
     auto* ctx = new EOSAsyncCallbackContext{};
     ctx->callback = callback;
+    ctx->continuance_token_id = continuance_token_id;
 
     EOS_Connect_CreateUserOptions opts{};
     opts.ApiVersion = EOS_CONNECT_CREATEUSER_API_LATEST;
-    opts.ContinuanceToken = g_eos_connect_continuance_token;
+    opts.ContinuanceToken = token_it->second;
 
     EOS_Connect_CreateUser(connect, &opts, ctx, &eos_connect_create_user_callback_native);
 }
 
-void eos_connect_link_account(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
+void eos_connect_link_account(uint64_t continuance_token_id, std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
 
@@ -373,18 +394,20 @@ void eos_connect_link_account(std::string_view local_user_id, const std::optiona
         return;
     }
 
-    if (!g_eos_connect_continuance_token) {
-        eos_set_last_error("EOS_Connect_LinkAccount: no stored continuance token.");
+    auto token_it = g_eos_connect_continuance_tokens.find(continuance_token_id);
+    if (token_it == g_eos_connect_continuance_tokens.end()) {
+        eos_set_last_error("EOS_Connect_LinkAccount: continuance token not found or already used.");
         return;
     }
 
     auto* ctx = new EOSAsyncCallbackContext{};
     ctx->callback = callback;
+    ctx->continuance_token_id = continuance_token_id;
 
     EOS_Connect_LinkAccountOptions opts{};
     opts.ApiVersion = EOS_CONNECT_LINKACCOUNT_API_LATEST;
     opts.LocalUserId = local_user;
-    opts.ContinuanceToken = g_eos_connect_continuance_token;
+    opts.ContinuanceToken = token_it->second;
 
     EOS_Connect_LinkAccount(connect, &opts, ctx, &eos_connect_link_account_callback_native);
 }

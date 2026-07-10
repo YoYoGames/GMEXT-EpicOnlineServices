@@ -203,6 +203,7 @@ function eos_auth_logout(
 
 [global, bind = typed_gml]
 function eos_auth_link_account(
+    continuance_token_id: int64,
     local_user_id: string,
     [type_hint=`EpicLinkAccountFlags`] link_account_flags: gmval,
     [type_hint=`func?`] callback: gmval
@@ -448,10 +449,10 @@ function eos_connect_login(
 ): unit;
 
 [global, bind = typed_gml]
-function eos_connect_create_user([type_hint=`func?`] callback: gmval): unit;
+function eos_connect_create_user(continuance_token_id: int64, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_connect_link_account(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
+function eos_connect_link_account(continuance_token_id: int64, local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_connect_unlink_account(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;

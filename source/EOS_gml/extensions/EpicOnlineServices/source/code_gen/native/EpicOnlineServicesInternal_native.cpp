@@ -282,6 +282,9 @@ GMEXPORT double __EXT_NATIVE__eos_auth_link_account(char* __arg_buffer, double _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
+    // field: continuance_token_id, type: uint64
+    std::uint64_t continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
@@ -295,7 +298,7 @@ GMEXPORT double __EXT_NATIVE__eos_auth_link_account(char* __arg_buffer, double _
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_auth_link_account(local_user_id, link_account_flags, callback);
+    eos_auth_link_account(continuance_token_id, local_user_id, link_account_flags, callback);
     return 0;
 }
 
@@ -481,6 +484,9 @@ GMEXPORT double __EXT_NATIVE__eos_connect_create_user(char* __arg_buffer, double
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
+    // field: continuance_token_id, type: uint64
+    std::uint64_t continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -488,13 +494,16 @@ GMEXPORT double __EXT_NATIVE__eos_connect_create_user(char* __arg_buffer, double
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_connect_create_user(callback);
+    eos_connect_create_user(continuance_token_id, callback);
     return 0;
 }
 
 GMEXPORT double __EXT_NATIVE__eos_connect_link_account(char* __arg_buffer, double __arg_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: continuance_token_id, type: uint64
+    std::uint64_t continuance_token_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
@@ -506,7 +515,7 @@ GMEXPORT double __EXT_NATIVE__eos_connect_link_account(char* __arg_buffer, doubl
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_connect_link_account(local_user_id, callback);
+    eos_connect_link_account(continuance_token_id, local_user_id, callback);
     return 0;
 }
 

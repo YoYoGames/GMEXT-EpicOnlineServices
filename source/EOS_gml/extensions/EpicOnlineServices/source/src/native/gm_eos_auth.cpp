@@ -27,11 +27,13 @@ using namespace gm_enums;
 // Internal helpers
 // ============================================================
 
-static EOS_ContinuanceToken g_eos_auth_continuance_token = nullptr;
+static std::map<uint64_t, EOS_ContinuanceToken> g_eos_auth_continuance_tokens;
+static uint64_t g_eos_auth_continuance_token_counter = 1;
 
 struct EOSAsyncCallbackContext
 {
     std::optional<GMFunction> callback;
+    uint64_t continuance_token_id = 0;
 };
 
 static EOS_HAuth eos_auth_iface()
@@ -169,8 +171,17 @@ static void EOS_CALL eos_auth_login_callback_native(const EOS_Auth_LoginCallback
     if (!ctx)
         return;
 
-    g_eos_auth_continuance_token = data->ContinuanceToken;
-    if (ctx->callback) ctx->callback.value().call(eos_auth_login_info_from_native(data));
+    uint64_t token_id = 0;
+    if (data->ContinuanceToken)
+    {
+        token_id = g_eos_auth_continuance_token_counter++;
+        g_eos_auth_continuance_tokens[token_id] = data->ContinuanceToken;
+    }
+
+    auto info = eos_auth_login_info_from_native(data);
+    info.continuance_token_id = token_id;
+
+    if (ctx->callback) ctx->callback.value().call(info);
     delete ctx;
 }
 
@@ -196,7 +207,11 @@ static void EOS_CALL eos_auth_link_account_callback_native(const EOS_Auth_LinkAc
     if (!ctx)
         return;
 
-    g_eos_auth_continuance_token = nullptr;
+    if (ctx->continuance_token_id != 0)
+    {
+        g_eos_auth_continuance_tokens.erase(ctx->continuance_token_id);
+    }
+
     if (ctx->callback) ctx->callback.value().call(eos_auth_link_account_info_from_native(data));
     delete ctx;
 }
@@ -294,6 +309,7 @@ void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wir
 }
 
 void eos_auth_link_account(
+    uint64_t continuance_token_id,
     std::string_view local_user_id,
     gm_enums::EpicLinkAccountFlags link_account_flags,
     const std::optional<gm::wire::GMFunction>& callback)
@@ -312,18 +328,20 @@ void eos_auth_link_account(
         return;
     }
 
-    if (!g_eos_auth_continuance_token) {
-        eos_set_last_error("EOS_Auth_LinkAccount: no stored continuance token.");
+    auto token_it = g_eos_auth_continuance_tokens.find(continuance_token_id);
+    if (token_it == g_eos_auth_continuance_tokens.end()) {
+        eos_set_last_error("EOS_Auth_LinkAccount: continuance token not found or already used.");
         return;
     }
 
     auto* ctx = new EOSAsyncCallbackContext{};
     ctx->callback = callback;
+    ctx->continuance_token_id = continuance_token_id;
 
     EOS_Auth_LinkAccountOptions opts{};
     opts.ApiVersion = EOS_AUTH_LINKACCOUNT_API_LATEST;
     opts.LocalUserId = local_user;
-    opts.ContinuanceToken = g_eos_auth_continuance_token;
+    opts.ContinuanceToken = token_it->second;
     opts.LinkAccountFlags = (EOS_ELinkAccountFlags)link_account_flags;
 
     EOS_Auth_LinkAccount(auth, &opts, ctx, &eos_auth_link_account_callback_native);
