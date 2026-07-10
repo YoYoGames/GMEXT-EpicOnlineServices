@@ -30,6 +30,7 @@ function eos_login_try_persistent_auth()
         EpicAuthScopeFlags.BasicProfile
         | EpicAuthScopeFlags.FriendsList
         | EpicAuthScopeFlags.Presence,
+		EpicAuthLoginFlags.NoFlags,
         function(result)
         {
             if (result.result_code == EpicResult.Success)
@@ -61,6 +62,7 @@ function eos_login_try_account_portal()
         EpicAuthScopeFlags.BasicProfile
         | EpicAuthScopeFlags.FriendsList
         | EpicAuthScopeFlags.Presence,
+		EpicAuthLoginFlags.NoFlags,
         function(result)
         {
             if (result.result_code != EpicResult.Success)

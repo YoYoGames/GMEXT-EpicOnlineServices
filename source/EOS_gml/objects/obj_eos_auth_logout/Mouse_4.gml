@@ -5,6 +5,7 @@ if(global.product_user_id == "")
 	eos_auth_login("", "", EpicLoginCredentialType.AccountPortal,
 	    EpicExternalCredentialType.Epic,
 	    EpicAuthScopeFlags.BasicProfile | EpicAuthScopeFlags.FriendsList | EpicAuthScopeFlags.Presence,
+		EpicAuthLoginFlags.NoFlags,
 	    function(_info) {
 	        if (_info.result_code == EpicResult.Success)
 	            show_debug_message("Logged in: " + _info.local_user_id);
