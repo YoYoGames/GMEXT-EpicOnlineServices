@@ -5,6 +5,7 @@
 #include <eos_lobby.h>
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -1295,12 +1296,23 @@ void eos_lobby_details_release(uint64_t lobby_details_id)
 // EOS Lobby (Part 4)
 // ============================================================
 
-static GMFunction g_cb_lobby_update_received = nullptr;
-static GMFunction g_cb_lobby_member_update_received = nullptr;
-static GMFunction g_cb_lobby_member_status_received = nullptr;
-static GMFunction g_cb_lobby_join_accepted = nullptr;
-static GMFunction g_cb_lobby_leave_requested = nullptr;
-static GMFunction g_cb_lobby_native_invite_requested = nullptr;
+struct LobbyNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_lobby_update_received_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_update_received_contexts;
+static std::map<uint64_t, GMFunction> g_lobby_member_update_received_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_member_update_received_contexts;
+static std::map<uint64_t, GMFunction> g_lobby_member_status_received_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_member_status_received_contexts;
+static std::map<uint64_t, GMFunction> g_lobby_join_accepted_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_join_accepted_contexts;
+static std::map<uint64_t, GMFunction> g_lobby_leave_requested_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_leave_requested_contexts;
+static std::map<uint64_t, GMFunction> g_lobby_native_invite_requested_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_native_invite_requested_contexts;
 
 static gm_structs::EpicLobbyDetailsInfo eos_lobby_details_info_from_native(
     const EOS_LobbyDetails_Info* p)
@@ -1405,67 +1417,109 @@ static gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo eos_lobby
 static void EOS_CALL eos_lobby_update_received_callback_native(
     const EOS_Lobby_LobbyUpdateReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_update_received)
+    if (!data)
         return;
 
-    g_cb_lobby_update_received.call(
-        eos_lobby_update_received_info_from_native(data)
-    );
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_update_received_callbacks.find(notification_id);
+    if (it == g_lobby_update_received_callbacks.end())
+        return;
+
+    it->second.call(eos_lobby_update_received_info_from_native(data));
 }
 
 static void EOS_CALL eos_lobby_member_update_received_callback_native(
     const EOS_Lobby_LobbyMemberUpdateReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_member_update_received)
+    if (!data)
         return;
 
-    g_cb_lobby_member_update_received.call(
-        eos_lobby_member_update_received_info_from_native(data)
-    );
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_member_update_received_callbacks.find(notification_id);
+    if (it == g_lobby_member_update_received_callbacks.end())
+        return;
+
+    it->second.call(eos_lobby_member_update_received_info_from_native(data));
 }
 
 static void EOS_CALL eos_lobby_member_status_received_callback_native(
     const EOS_Lobby_LobbyMemberStatusReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_member_status_received)
+    if (!data)
         return;
 
-    g_cb_lobby_member_status_received.call(
-        eos_lobby_member_status_received_info_from_native(data)
-    );
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_member_status_received_callbacks.find(notification_id);
+    if (it == g_lobby_member_status_received_callbacks.end())
+        return;
+
+    it->second.call(eos_lobby_member_status_received_info_from_native(data));
 }
 
 static void EOS_CALL eos_lobby_join_accepted_callback_native(
     const EOS_Lobby_JoinLobbyAcceptedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_join_accepted)
+    if (!data)
         return;
 
-    g_cb_lobby_join_accepted.call(
-        eos_lobby_join_accepted_info_from_native(data)
-    );
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_join_accepted_callbacks.find(notification_id);
+    if (it == g_lobby_join_accepted_callbacks.end())
+        return;
+
+    it->second.call(eos_lobby_join_accepted_info_from_native(data));
 }
 
 static void EOS_CALL eos_lobby_leave_requested_callback_native(
     const EOS_Lobby_LeaveLobbyRequestedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_leave_requested)
+    if (!data)
         return;
 
-    g_cb_lobby_leave_requested.call(
-        eos_lobby_leave_requested_info_from_native(data)
-    );
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_leave_requested_callbacks.find(notification_id);
+    if (it == g_lobby_leave_requested_callbacks.end())
+        return;
+
+    it->second.call(eos_lobby_leave_requested_info_from_native(data));
 }
 
 static void EOS_CALL eos_lobby_native_invite_requested_callback_native(
     const EOS_Lobby_SendLobbyNativeInviteRequestedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_native_invite_requested)
+    if (!data)
         return;
 
-    g_cb_lobby_native_invite_requested.call(
-        eos_lobby_native_invite_requested_info_from_native(data)
-    );
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_native_invite_requested_callbacks.find(notification_id);
+    if (it == g_lobby_native_invite_requested_callbacks.end())
+        return;
+
+    it->second.call(eos_lobby_native_invite_requested_info_from_native(data));
 }
 
 uint64_t eos_lobby_copy_lobby_details_handle(
@@ -1655,17 +1709,31 @@ uint64_t eos_lobby_add_notify_lobby_update_received(
         return 0;
     }
 
-    g_cb_lobby_update_received = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyLobbyUpdateReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYUPDATERECEIVED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyLobbyUpdateReceived(
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyLobbyUpdateReceived(
         lobby,
         &opts,
-        nullptr,
+        ctx,
         &eos_lobby_update_received_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_update_received_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_update_received_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_lobby_update_received(uint64_t notification_id)
@@ -1682,6 +1750,15 @@ void eos_lobby_remove_notify_lobby_update_received(uint64_t notification_id)
         lobby,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_lobby_update_received_contexts.find(notification_id);
+    if (ctx_it != g_lobby_update_received_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_update_received_contexts.erase(ctx_it);
+    }
+
+    g_lobby_update_received_callbacks.erase(notification_id);
 }
 
 uint64_t eos_lobby_add_notify_lobby_member_update_received(
@@ -1696,17 +1773,31 @@ uint64_t eos_lobby_add_notify_lobby_member_update_received(
         return 0;
     }
 
-    g_cb_lobby_member_update_received = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyLobbyMemberUpdateReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYMEMBERUPDATERECEIVED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyLobbyMemberUpdateReceived(
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyLobbyMemberUpdateReceived(
         lobby,
         &opts,
-        nullptr,
+        ctx,
         &eos_lobby_member_update_received_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_member_update_received_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_member_update_received_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_lobby_member_update_received(uint64_t notification_id)
@@ -1723,6 +1814,15 @@ void eos_lobby_remove_notify_lobby_member_update_received(uint64_t notification_
         lobby,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_lobby_member_update_received_contexts.find(notification_id);
+    if (ctx_it != g_lobby_member_update_received_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_member_update_received_contexts.erase(ctx_it);
+    }
+
+    g_lobby_member_update_received_callbacks.erase(notification_id);
 }
 
 uint64_t eos_lobby_add_notify_lobby_member_status_received(
@@ -1737,17 +1837,31 @@ uint64_t eos_lobby_add_notify_lobby_member_status_received(
         return 0;
     }
 
-    g_cb_lobby_member_status_received = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyLobbyMemberStatusReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYMEMBERSTATUSRECEIVED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyLobbyMemberStatusReceived(
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyLobbyMemberStatusReceived(
         lobby,
         &opts,
-        nullptr,
+        ctx,
         &eos_lobby_member_status_received_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_member_status_received_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_member_status_received_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_lobby_member_status_received(uint64_t notification_id)
@@ -1764,6 +1878,15 @@ void eos_lobby_remove_notify_lobby_member_status_received(uint64_t notification_
         lobby,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_lobby_member_status_received_contexts.find(notification_id);
+    if (ctx_it != g_lobby_member_status_received_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_member_status_received_contexts.erase(ctx_it);
+    }
+
+    g_lobby_member_status_received_callbacks.erase(notification_id);
 }
 
 uint64_t eos_lobby_add_notify_join_lobby_accepted(const std::optional<gm::wire::GMFunction>& callback)
@@ -1776,17 +1899,31 @@ uint64_t eos_lobby_add_notify_join_lobby_accepted(const std::optional<gm::wire::
         return 0;
     }
 
-    g_cb_lobby_join_accepted = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyJoinLobbyAcceptedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYJOINLOBBYACCEPTED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyJoinLobbyAccepted(
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyJoinLobbyAccepted(
         lobby,
         &opts,
-        nullptr,
+        ctx,
         &eos_lobby_join_accepted_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_join_accepted_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_join_accepted_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_join_lobby_accepted(uint64_t notification_id)
@@ -1803,6 +1940,15 @@ void eos_lobby_remove_notify_join_lobby_accepted(uint64_t notification_id)
         lobby,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_lobby_join_accepted_contexts.find(notification_id);
+    if (ctx_it != g_lobby_join_accepted_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_join_accepted_contexts.erase(ctx_it);
+    }
+
+    g_lobby_join_accepted_callbacks.erase(notification_id);
 }
 
 uint64_t eos_lobby_add_notify_leave_lobby_requested(
@@ -1817,17 +1963,31 @@ uint64_t eos_lobby_add_notify_leave_lobby_requested(
         return 0;
     }
 
-    g_cb_lobby_leave_requested = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyLeaveLobbyRequestedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLEAVELOBBYREQUESTED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyLeaveLobbyRequested(
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyLeaveLobbyRequested(
         lobby,
         &opts,
-        nullptr,
+        ctx,
         &eos_lobby_leave_requested_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_leave_requested_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_leave_requested_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_leave_lobby_requested(uint64_t notification_id)
@@ -1844,6 +2004,15 @@ void eos_lobby_remove_notify_leave_lobby_requested(uint64_t notification_id)
         lobby,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_lobby_leave_requested_contexts.find(notification_id);
+    if (ctx_it != g_lobby_leave_requested_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_leave_requested_contexts.erase(ctx_it);
+    }
+
+    g_lobby_leave_requested_callbacks.erase(notification_id);
 }
 
 uint64_t eos_lobby_add_notify_send_lobby_native_invite_requested(
@@ -1858,17 +2027,31 @@ uint64_t eos_lobby_add_notify_send_lobby_native_invite_requested(
         return 0;
     }
 
-    g_cb_lobby_native_invite_requested = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYSENDLOBBYNATIVEINVITEREQUESTED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifySendLobbyNativeInviteRequested(
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifySendLobbyNativeInviteRequested(
         lobby,
         &opts,
-        nullptr,
+        ctx,
         &eos_lobby_native_invite_requested_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_native_invite_requested_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_native_invite_requested_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_send_lobby_native_invite_requested(uint64_t notification_id)
@@ -1885,18 +2068,37 @@ void eos_lobby_remove_notify_send_lobby_native_invite_requested(uint64_t notific
         lobby,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_lobby_native_invite_requested_contexts.find(notification_id);
+    if (ctx_it != g_lobby_native_invite_requested_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_native_invite_requested_contexts.erase(ctx_it);
+    }
+
+    g_lobby_native_invite_requested_callbacks.erase(notification_id);
 }
 
 // ============================================================
 // EOS Lobby — RTC Room
 // ============================================================
 
-static GMFunction g_cb_lobby_rtc_room_connection_changed = nullptr;
+static std::map<uint64_t, GMFunction> g_lobby_rtc_room_connection_changed_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_rtc_room_connection_changed_contexts;
 
 static void EOS_CALL eos_lobby_rtc_room_connection_changed_callback_native(
     const EOS_Lobby_RTCRoomConnectionChangedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_rtc_room_connection_changed)
+    if (!data)
+        return;
+
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_rtc_room_connection_changed_callbacks.find(notification_id);
+    if (it == g_lobby_rtc_room_connection_changed_callbacks.end())
         return;
 
     gm_structs::EpicLobbyRTCRoomConnectionChangedCallbackInfo out{};
@@ -1905,7 +2107,7 @@ static void EOS_CALL eos_lobby_rtc_room_connection_changed_callback_native(
     out.is_connected = (data->bIsConnected != 0);
     out.disconnect_reason = (gm_enums::EpicResult)data->DisconnectReason;
 
-    g_cb_lobby_rtc_room_connection_changed.call(out);
+    it->second.call(out);
 }
 
 std::string eos_lobby_get_rtc_room_name(
@@ -1959,19 +2161,33 @@ uint64_t eos_lobby_add_notify_rtc_room_connection_changed(
         return 0;
     }
 
-    g_cb_lobby_rtc_room_connection_changed = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST;
     // LobbyId_DEPRECATED / LocalUserId_DEPRECATED — not used; the callback info itself
     // carries lobby_id and local_user_id so filtering happens GML-side.
 
-    return (uint64_t)EOS_Lobby_AddNotifyRTCRoomConnectionChanged(
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyRTCRoomConnectionChanged(
         lobby,
         &opts,
-        nullptr,
+        ctx,
         &eos_lobby_rtc_room_connection_changed_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_rtc_room_connection_changed_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_rtc_room_connection_changed_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_rtc_room_connection_changed(uint64_t notification_id)
@@ -1988,6 +2204,15 @@ void eos_lobby_remove_notify_rtc_room_connection_changed(uint64_t notification_i
         lobby,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_lobby_rtc_room_connection_changed_contexts.find(notification_id);
+    if (ctx_it != g_lobby_rtc_room_connection_changed_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_rtc_room_connection_changed_contexts.erase(ctx_it);
+    }
+
+    g_lobby_rtc_room_connection_changed_callbacks.erase(notification_id);
 }
 
 // ============================================================
@@ -2572,46 +2797,70 @@ std::string eos_lobby_get_invite_id_by_index(
 // EOS Lobby (Part N+3) — Invite notifications
 // ============================================================
 
-static GMFunction g_cb_lobby_invite_received = nullptr;
-static GMFunction g_cb_lobby_invite_accepted = nullptr;
-static GMFunction g_cb_lobby_invite_rejected = nullptr;
+static std::map<uint64_t, GMFunction> g_lobby_invite_received_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_invite_received_contexts;
+static std::map<uint64_t, GMFunction> g_lobby_invite_accepted_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_invite_accepted_contexts;
+static std::map<uint64_t, GMFunction> g_lobby_invite_rejected_callbacks;
+static std::map<uint64_t, LobbyNotifyContext*> g_lobby_invite_rejected_contexts;
 
 static void EOS_CALL eos_lobby_invite_received_callback_native(
     const EOS_Lobby_LobbyInviteReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_invite_received) return;
+    if (!data) return;
+
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx) return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_invite_received_callbacks.find(notification_id);
+    if (it == g_lobby_invite_received_callbacks.end()) return;
 
     gm_structs::EpicLobbyLobbyInviteReceivedCallbackInfo out{};
     out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
-    g_cb_lobby_invite_received.call(out);
+    it->second.call(out);
 }
 
 static void EOS_CALL eos_lobby_invite_accepted_callback_native(
     const EOS_Lobby_LobbyInviteAcceptedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_invite_accepted) return;
+    if (!data) return;
+
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx) return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_invite_accepted_callbacks.find(notification_id);
+    if (it == g_lobby_invite_accepted_callbacks.end()) return;
 
     gm_structs::EpicLobbyLobbyInviteAcceptedCallbackInfo out{};
     out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
-    g_cb_lobby_invite_accepted.call(out);
+    it->second.call(out);
 }
 
 static void EOS_CALL eos_lobby_invite_rejected_callback_native(
     const EOS_Lobby_LobbyInviteRejectedCallbackInfo* data)
 {
-    if (!data || !g_cb_lobby_invite_rejected) return;
+    if (!data) return;
+
+    LobbyNotifyContext* ctx = (LobbyNotifyContext*)data->ClientData;
+    if (!ctx) return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_lobby_invite_rejected_callbacks.find(notification_id);
+    if (it == g_lobby_invite_rejected_callbacks.end()) return;
 
     gm_structs::EpicLobbyLobbyInviteRejectedCallbackInfo out{};
     out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.lobby_id = data->LobbyId ? std::string(data->LobbyId) : std::string();
-    g_cb_lobby_invite_rejected.call(out);
+    it->second.call(out);
 }
 
 uint64_t eos_lobby_add_notify_lobby_invite_received(const std::optional<gm::wire::GMFunction>& callback)
@@ -2624,13 +2873,27 @@ uint64_t eos_lobby_add_notify_lobby_invite_received(const std::optional<gm::wire
         return 0;
     }
 
-    g_cb_lobby_invite_received = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyLobbyInviteReceivedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITERECEIVED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyLobbyInviteReceived(
-        lobby, &opts, nullptr, &eos_lobby_invite_received_callback_native);
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyLobbyInviteReceived(
+        lobby, &opts, ctx, &eos_lobby_invite_received_callback_native);
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_invite_received_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_invite_received_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_lobby_invite_received(uint64_t notification_id)
@@ -2644,6 +2907,15 @@ void eos_lobby_remove_notify_lobby_invite_received(uint64_t notification_id)
     }
 
     EOS_Lobby_RemoveNotifyLobbyInviteReceived(lobby, (EOS_NotificationId)notification_id);
+
+    auto ctx_it = g_lobby_invite_received_contexts.find(notification_id);
+    if (ctx_it != g_lobby_invite_received_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_invite_received_contexts.erase(ctx_it);
+    }
+
+    g_lobby_invite_received_callbacks.erase(notification_id);
 }
 
 uint64_t eos_lobby_add_notify_lobby_invite_accepted(const std::optional<gm::wire::GMFunction>& callback)
@@ -2656,13 +2928,27 @@ uint64_t eos_lobby_add_notify_lobby_invite_accepted(const std::optional<gm::wire
         return 0;
     }
 
-    g_cb_lobby_invite_accepted = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEACCEPTED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyLobbyInviteAccepted(
-        lobby, &opts, nullptr, &eos_lobby_invite_accepted_callback_native);
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyLobbyInviteAccepted(
+        lobby, &opts, ctx, &eos_lobby_invite_accepted_callback_native);
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_invite_accepted_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_invite_accepted_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_lobby_invite_accepted(uint64_t notification_id)
@@ -2676,6 +2962,15 @@ void eos_lobby_remove_notify_lobby_invite_accepted(uint64_t notification_id)
     }
 
     EOS_Lobby_RemoveNotifyLobbyInviteAccepted(lobby, (EOS_NotificationId)notification_id);
+
+    auto ctx_it = g_lobby_invite_accepted_contexts.find(notification_id);
+    if (ctx_it != g_lobby_invite_accepted_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_invite_accepted_contexts.erase(ctx_it);
+    }
+
+    g_lobby_invite_accepted_callbacks.erase(notification_id);
 }
 
 uint64_t eos_lobby_add_notify_lobby_invite_rejected(const std::optional<gm::wire::GMFunction>& callback)
@@ -2688,13 +2983,27 @@ uint64_t eos_lobby_add_notify_lobby_invite_rejected(const std::optional<gm::wire
         return 0;
     }
 
-    g_cb_lobby_invite_rejected = callback.value_or(GMFunction{});
+    auto* ctx = new LobbyNotifyContext{};
 
     EOS_Lobby_AddNotifyLobbyInviteRejectedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEREJECTED_API_LATEST;
 
-    return (uint64_t)EOS_Lobby_AddNotifyLobbyInviteRejected(
-        lobby, &opts, nullptr, &eos_lobby_invite_rejected_callback_native);
+    EOS_NotificationId notification_id = EOS_Lobby_AddNotifyLobbyInviteRejected(
+        lobby, &opts, ctx, &eos_lobby_invite_rejected_callback_native);
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_lobby_invite_rejected_callbacks[result] = callback.value_or(GMFunction{});
+        g_lobby_invite_rejected_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_lobby_remove_notify_lobby_invite_rejected(uint64_t notification_id)
@@ -2708,4 +3017,13 @@ void eos_lobby_remove_notify_lobby_invite_rejected(uint64_t notification_id)
     }
 
     EOS_Lobby_RemoveNotifyLobbyInviteRejected(lobby, (EOS_NotificationId)notification_id);
+
+    auto ctx_it = g_lobby_invite_rejected_contexts.find(notification_id);
+    if (ctx_it != g_lobby_invite_rejected_contexts.end())
+    {
+        delete ctx_it->second;
+        g_lobby_invite_rejected_contexts.erase(ctx_it);
+    }
+
+    g_lobby_invite_rejected_callbacks.erase(notification_id);
 }

@@ -1737,6 +1737,10 @@ namespace gm_structs
         gm_enums::EpicLobbyPermissionLevel permission_level;
         bool allow_invites;
         bool presence_enabled;
+        bool rtc_room_enabled;
+        bool allow_host_migration;
+        bool allow_join_by_id;
+        bool rejoin_after_kick_requires_invite;
     };
 
     struct EpicLobbyLobbyUpdateReceivedCallbackInfo
@@ -1763,6 +1767,7 @@ namespace gm_structs
     struct EpicLobbyJoinLobbyAcceptedCallbackInfo
     {
         std::uint64_t ui_event_id;
+        std::string local_user_id;
     };
 
     struct EpicLobbyLeaveLobbyRequestedCallbackInfo

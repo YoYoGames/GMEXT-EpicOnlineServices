@@ -5,6 +5,7 @@
 #include <eos_sessions.h>
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -918,13 +919,28 @@ void eos_sessions_session_details_release(uint64_t session_details_id)
 // EOS Sessions (Part 4)
 // ============================================================
 
-// NOTE: each notification type supports a single active listener. Calling the
-// matching add_notify_* again overwrites the stored GMFunction (the previous EOS
-// registration stays live until its notification_id is explicitly removed). The
-// contract is one listener per event; register once and reuse the returned id.
-static GMFunction g_cb_sessions_invite_received = nullptr;
-static GMFunction g_cb_sessions_invite_accepted = nullptr;
-static GMFunction g_cb_sessions_join_accepted = nullptr;
+struct SessionsNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_sessions_invite_received_callbacks;
+static std::map<uint64_t, SessionsNotifyContext*> g_sessions_invite_received_contexts;
+
+static std::map<uint64_t, GMFunction> g_sessions_invite_accepted_callbacks;
+static std::map<uint64_t, SessionsNotifyContext*> g_sessions_invite_accepted_contexts;
+
+static std::map<uint64_t, GMFunction> g_sessions_join_accepted_callbacks;
+static std::map<uint64_t, SessionsNotifyContext*> g_sessions_join_accepted_contexts;
+
+static std::map<uint64_t, GMFunction> g_sessions_invite_rejected_callbacks;
+static std::map<uint64_t, SessionsNotifyContext*> g_sessions_invite_rejected_contexts;
+
+static std::map<uint64_t, GMFunction> g_sessions_leave_requested_callbacks;
+static std::map<uint64_t, SessionsNotifyContext*> g_sessions_leave_requested_contexts;
+
+static std::map<uint64_t, GMFunction> g_sessions_send_native_invite_requested_callbacks;
+static std::map<uint64_t, SessionsNotifyContext*> g_sessions_send_native_invite_requested_contexts;
 
 static std::unordered_map<uint64_t, EOS_HActiveSession> g_active_sessions;
 static uint64_t g_next_active_session_id = 1;
@@ -1043,34 +1059,55 @@ static gm_structs::EpicSessionsJoinSessionAcceptedCallbackInfo eos_sessions_join
 static void EOS_CALL eos_sessions_invite_received_callback_native(
     const EOS_Sessions_SessionInviteReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_sessions_invite_received)
+    if (!data)
         return;
 
-    g_cb_sessions_invite_received.call(
-        eos_sessions_invite_received_info_from_native(data)
-    );
+    SessionsNotifyContext* ctx = (SessionsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_sessions_invite_received_callbacks.find(notification_id);
+    if (it == g_sessions_invite_received_callbacks.end())
+        return;
+
+    it->second.call(eos_sessions_invite_received_info_from_native(data));
 }
 
 static void EOS_CALL eos_sessions_invite_accepted_callback_native(
     const EOS_Sessions_SessionInviteAcceptedCallbackInfo* data)
 {
-    if (!data || !g_cb_sessions_invite_accepted)
+    if (!data)
         return;
 
-    g_cb_sessions_invite_accepted.call(
-        eos_sessions_invite_accepted_info_from_native(data)
-    );
+    SessionsNotifyContext* ctx = (SessionsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_sessions_invite_accepted_callbacks.find(notification_id);
+    if (it == g_sessions_invite_accepted_callbacks.end())
+        return;
+
+    it->second.call(eos_sessions_invite_accepted_info_from_native(data));
 }
 
 static void EOS_CALL eos_sessions_join_accepted_callback_native(
     const EOS_Sessions_JoinSessionAcceptedCallbackInfo* data)
 {
-    if (!data || !g_cb_sessions_join_accepted)
+    if (!data)
         return;
 
-    g_cb_sessions_join_accepted.call(
-        eos_sessions_join_accepted_info_from_native(data)
-    );
+    SessionsNotifyContext* ctx = (SessionsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_sessions_join_accepted_callbacks.find(notification_id);
+    if (it == g_sessions_join_accepted_callbacks.end())
+        return;
+
+    it->second.call(eos_sessions_join_accepted_info_from_native(data));
 }
 
 uint64_t eos_sessions_copy_active_session_handle(std::string_view session_name)
@@ -1232,17 +1269,31 @@ uint64_t eos_sessions_add_notify_session_invite_received(const std::optional<gm:
         return 0;
     }
 
-    g_cb_sessions_invite_received = callback.value_or(GMFunction{});
+    auto* ctx = new SessionsNotifyContext{};
 
     EOS_Sessions_AddNotifySessionInviteReceivedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITERECEIVED_API_LATEST;
 
-    return (uint64_t)EOS_Sessions_AddNotifySessionInviteReceived(
+    EOS_NotificationId notification_id = EOS_Sessions_AddNotifySessionInviteReceived(
         sessions,
         &opts,
-        nullptr,
+        ctx,
         &eos_sessions_invite_received_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_sessions_invite_received_callbacks[result] = callback.value_or(GMFunction{});
+        g_sessions_invite_received_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_sessions_remove_notify_session_invite_received(uint64_t notification_id)
@@ -1259,6 +1310,15 @@ void eos_sessions_remove_notify_session_invite_received(uint64_t notification_id
         sessions,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_sessions_invite_received_contexts.find(notification_id);
+    if (ctx_it != g_sessions_invite_received_contexts.end())
+    {
+        delete ctx_it->second;
+        g_sessions_invite_received_contexts.erase(ctx_it);
+    }
+
+    g_sessions_invite_received_callbacks.erase(notification_id);
 }
 
 uint64_t eos_sessions_add_notify_session_invite_accepted(const std::optional<gm::wire::GMFunction>& callback)
@@ -1271,17 +1331,31 @@ uint64_t eos_sessions_add_notify_session_invite_accepted(const std::optional<gm:
         return 0;
     }
 
-    g_cb_sessions_invite_accepted = callback.value_or(GMFunction{});
+    auto* ctx = new SessionsNotifyContext{};
 
     EOS_Sessions_AddNotifySessionInviteAcceptedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEACCEPTED_API_LATEST;
 
-    return (uint64_t)EOS_Sessions_AddNotifySessionInviteAccepted(
+    EOS_NotificationId notification_id = EOS_Sessions_AddNotifySessionInviteAccepted(
         sessions,
         &opts,
-        nullptr,
+        ctx,
         &eos_sessions_invite_accepted_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_sessions_invite_accepted_callbacks[result] = callback.value_or(GMFunction{});
+        g_sessions_invite_accepted_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_sessions_remove_notify_session_invite_accepted(uint64_t notification_id)
@@ -1298,6 +1372,15 @@ void eos_sessions_remove_notify_session_invite_accepted(uint64_t notification_id
         sessions,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_sessions_invite_accepted_contexts.find(notification_id);
+    if (ctx_it != g_sessions_invite_accepted_contexts.end())
+    {
+        delete ctx_it->second;
+        g_sessions_invite_accepted_contexts.erase(ctx_it);
+    }
+
+    g_sessions_invite_accepted_callbacks.erase(notification_id);
 }
 
 uint64_t eos_sessions_add_notify_join_session_accepted(const std::optional<gm::wire::GMFunction>& callback)
@@ -1310,17 +1393,31 @@ uint64_t eos_sessions_add_notify_join_session_accepted(const std::optional<gm::w
         return 0;
     }
 
-    g_cb_sessions_join_accepted = callback.value_or(GMFunction{});
+    auto* ctx = new SessionsNotifyContext{};
 
     EOS_Sessions_AddNotifyJoinSessionAcceptedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYJOINSESSIONACCEPTED_API_LATEST;
 
-    return (uint64_t)EOS_Sessions_AddNotifyJoinSessionAccepted(
+    EOS_NotificationId notification_id = EOS_Sessions_AddNotifyJoinSessionAccepted(
         sessions,
         &opts,
-        nullptr,
+        ctx,
         &eos_sessions_join_accepted_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_sessions_join_accepted_callbacks[result] = callback.value_or(GMFunction{});
+        g_sessions_join_accepted_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_sessions_remove_notify_join_session_accepted(uint64_t notification_id)
@@ -1337,6 +1434,15 @@ void eos_sessions_remove_notify_join_session_accepted(uint64_t notification_id)
         sessions,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_sessions_join_accepted_contexts.find(notification_id);
+    if (ctx_it != g_sessions_join_accepted_contexts.end())
+    {
+        delete ctx_it->second;
+        g_sessions_join_accepted_contexts.erase(ctx_it);
+    }
+
+    g_sessions_join_accepted_callbacks.erase(notification_id);
 }
 
 // ============================================================
@@ -2022,45 +2128,70 @@ int64_t eos_sessions_session_search_get_search_result_count(uint64_t search_id)
 // EOS Sessions (Part 10) — Additional notifications
 // ============================================================
 
-// Single active listener per event — see note in Part 4.
-static GMFunction g_cb_sessions_invite_rejected = nullptr;
-static GMFunction g_cb_sessions_leave_requested = nullptr;
-static GMFunction g_cb_sessions_native_invite_requested = nullptr;
-
 static void EOS_CALL eos_sessions_invite_rejected_callback_native(
     const EOS_Sessions_SessionInviteRejectedCallbackInfo* data)
 {
-    if (!data || !g_cb_sessions_invite_rejected) return;
+    if (!data)
+        return;
+
+    SessionsNotifyContext* ctx = (SessionsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_sessions_invite_rejected_callbacks.find(notification_id);
+    if (it == g_sessions_invite_rejected_callbacks.end())
+        return;
 
     gm_structs::EpicSessionsSessionInviteRejectedCallbackInfo out{};
     out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
     out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
     out.target_user_id = eos_sessions_product_user_id_to_string_internal(data->TargetUserId);
     out.session_id = data->SessionId ? std::string(data->SessionId) : std::string();
-    g_cb_sessions_invite_rejected.call(out);
+    it->second.call(out);
 }
 
 static void EOS_CALL eos_sessions_leave_requested_callback_native(
     const EOS_Sessions_LeaveSessionRequestedCallbackInfo* data)
 {
-    if (!data || !g_cb_sessions_leave_requested) return;
+    if (!data)
+        return;
+
+    SessionsNotifyContext* ctx = (SessionsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_sessions_leave_requested_callbacks.find(notification_id);
+    if (it == g_sessions_leave_requested_callbacks.end())
+        return;
 
     gm_structs::EpicSessionsLeaveSessionRequestedCallbackInfo out{};
     out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
     out.session_name = data->SessionName ? std::string(data->SessionName) : std::string();
-    g_cb_sessions_leave_requested.call(out);
+    it->second.call(out);
 }
 
 static void EOS_CALL eos_sessions_native_invite_requested_callback_native(
     const EOS_Sessions_SendSessionNativeInviteRequestedCallbackInfo* data)
 {
-    if (!data || !g_cb_sessions_native_invite_requested) return;
+    if (!data)
+        return;
+
+    SessionsNotifyContext* ctx = (SessionsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_sessions_send_native_invite_requested_callbacks.find(notification_id);
+    if (it == g_sessions_send_native_invite_requested_callbacks.end())
+        return;
 
     gm_structs::EpicSessionsSendSessionNativeInviteRequestedCallbackInfo out{};
     out.ui_event_id = (uint64_t)data->UiEventId;
     out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
     out.session_id = data->SessionId ? std::string(data->SessionId) : std::string();
-    g_cb_sessions_native_invite_requested.call(out);
+    it->second.call(out);
 }
 
 uint64_t eos_sessions_add_notify_session_invite_rejected(const std::optional<gm::wire::GMFunction>& callback)
@@ -2073,13 +2204,27 @@ uint64_t eos_sessions_add_notify_session_invite_rejected(const std::optional<gm:
         return 0;
     }
 
-    g_cb_sessions_invite_rejected = callback.value_or(GMFunction{});
+    auto* ctx = new SessionsNotifyContext{};
 
     EOS_Sessions_AddNotifySessionInviteRejectedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSESSIONINVITEREJECTED_API_LATEST;
 
-    return (uint64_t)EOS_Sessions_AddNotifySessionInviteRejected(
-        sessions, &opts, nullptr, &eos_sessions_invite_rejected_callback_native);
+    EOS_NotificationId notification_id = EOS_Sessions_AddNotifySessionInviteRejected(
+        sessions, &opts, ctx, &eos_sessions_invite_rejected_callback_native);
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_sessions_invite_rejected_callbacks[result] = callback.value_or(GMFunction{});
+        g_sessions_invite_rejected_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_sessions_remove_notify_session_invite_rejected(uint64_t notification_id)
@@ -2093,6 +2238,15 @@ void eos_sessions_remove_notify_session_invite_rejected(uint64_t notification_id
     }
 
     EOS_Sessions_RemoveNotifySessionInviteRejected(sessions, (EOS_NotificationId)notification_id);
+
+    auto ctx_it = g_sessions_invite_rejected_contexts.find(notification_id);
+    if (ctx_it != g_sessions_invite_rejected_contexts.end())
+    {
+        delete ctx_it->second;
+        g_sessions_invite_rejected_contexts.erase(ctx_it);
+    }
+
+    g_sessions_invite_rejected_callbacks.erase(notification_id);
 }
 
 uint64_t eos_sessions_add_notify_leave_session_requested(const std::optional<gm::wire::GMFunction>& callback)
@@ -2105,13 +2259,27 @@ uint64_t eos_sessions_add_notify_leave_session_requested(const std::optional<gm:
         return 0;
     }
 
-    g_cb_sessions_leave_requested = callback.value_or(GMFunction{});
+    auto* ctx = new SessionsNotifyContext{};
 
     EOS_Sessions_AddNotifyLeaveSessionRequestedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYLEAVESESSIONREQUESTED_API_LATEST;
 
-    return (uint64_t)EOS_Sessions_AddNotifyLeaveSessionRequested(
-        sessions, &opts, nullptr, &eos_sessions_leave_requested_callback_native);
+    EOS_NotificationId notification_id = EOS_Sessions_AddNotifyLeaveSessionRequested(
+        sessions, &opts, ctx, &eos_sessions_leave_requested_callback_native);
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_sessions_leave_requested_callbacks[result] = callback.value_or(GMFunction{});
+        g_sessions_leave_requested_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_sessions_remove_notify_leave_session_requested(uint64_t notification_id)
@@ -2125,6 +2293,15 @@ void eos_sessions_remove_notify_leave_session_requested(uint64_t notification_id
     }
 
     EOS_Sessions_RemoveNotifyLeaveSessionRequested(sessions, (EOS_NotificationId)notification_id);
+
+    auto ctx_it = g_sessions_leave_requested_contexts.find(notification_id);
+    if (ctx_it != g_sessions_leave_requested_contexts.end())
+    {
+        delete ctx_it->second;
+        g_sessions_leave_requested_contexts.erase(ctx_it);
+    }
+
+    g_sessions_leave_requested_callbacks.erase(notification_id);
 }
 
 uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const std::optional<gm::wire::GMFunction>& callback)
@@ -2137,13 +2314,27 @@ uint64_t eos_sessions_add_notify_send_session_native_invite_requested(const std:
         return 0;
     }
 
-    g_cb_sessions_native_invite_requested = callback.value_or(GMFunction{});
+    auto* ctx = new SessionsNotifyContext{};
 
     EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions opts{};
     opts.ApiVersion = EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST;
 
-    return (uint64_t)EOS_Sessions_AddNotifySendSessionNativeInviteRequested(
-        sessions, &opts, nullptr, &eos_sessions_native_invite_requested_callback_native);
+    EOS_NotificationId notification_id = EOS_Sessions_AddNotifySendSessionNativeInviteRequested(
+        sessions, &opts, ctx, &eos_sessions_native_invite_requested_callback_native);
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_sessions_send_native_invite_requested_callbacks[result] = callback.value_or(GMFunction{});
+        g_sessions_send_native_invite_requested_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_sessions_remove_notify_send_session_native_invite_requested(uint64_t notification_id)
@@ -2158,4 +2349,13 @@ void eos_sessions_remove_notify_send_session_native_invite_requested(uint64_t no
 
     EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested(
         sessions, (EOS_NotificationId)notification_id);
+
+    auto ctx_it = g_sessions_send_native_invite_requested_contexts.find(notification_id);
+    if (ctx_it != g_sessions_send_native_invite_requested_contexts.end())
+    {
+        delete ctx_it->second;
+        g_sessions_send_native_invite_requested_contexts.erase(ctx_it);
+    }
+
+    g_sessions_send_native_invite_requested_callbacks.erase(notification_id);
 }

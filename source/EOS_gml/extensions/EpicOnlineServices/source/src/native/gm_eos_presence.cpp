@@ -5,6 +5,7 @@
 #include <eos_presence.h>
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -245,8 +246,15 @@ gm_structs::EpicPresenceInfo eos_presence_copy_presence(
 
 #include <unordered_map>
 
-static GMFunction g_cb_presence_changed = nullptr;
-static GMFunction g_cb_presence_join_game_accepted = nullptr;
+struct PresenceNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_presence_changed_callbacks;
+static std::map<uint64_t, PresenceNotifyContext*> g_presence_changed_contexts;
+static std::map<uint64_t, GMFunction> g_presence_join_game_accepted_callbacks;
+static std::map<uint64_t, PresenceNotifyContext*> g_presence_join_game_accepted_contexts;
 
 static std::unordered_map<uint64_t, EOS_HPresenceModification> g_presence_modifications;
 static uint64_t g_next_presence_modification_id = 1;
@@ -335,23 +343,37 @@ static void EOS_CALL eos_presence_set_presence_callback_native(
 static void EOS_CALL eos_presence_changed_callback_native(
     const EOS_Presence_PresenceChangedCallbackInfo* data)
 {
-    if (!data || !g_cb_presence_changed)
+    if (!data)
         return;
 
-    g_cb_presence_changed.call(
-        eos_presence_changed_info_from_native(data)
-    );
+    PresenceNotifyContext* ctx = (PresenceNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_presence_changed_callbacks.find(notification_id);
+    if (it == g_presence_changed_callbacks.end())
+        return;
+
+    it->second.call(eos_presence_changed_info_from_native(data));
 }
 
 static void EOS_CALL eos_presence_join_game_accepted_callback_native(
     const EOS_Presence_JoinGameAcceptedCallbackInfo* data)
 {
-    if (!data || !g_cb_presence_join_game_accepted)
+    if (!data)
         return;
 
-    g_cb_presence_join_game_accepted.call(
-        eos_presence_join_game_accepted_info_from_native(data)
-    );
+    PresenceNotifyContext* ctx = (PresenceNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_presence_join_game_accepted_callbacks.find(notification_id);
+    if (it == g_presence_join_game_accepted_callbacks.end())
+        return;
+
+    it->second.call(eos_presence_join_game_accepted_info_from_native(data));
 }
 
 uint64_t eos_presence_create_presence_modification(std::string_view local_user_id)
@@ -573,17 +595,31 @@ uint64_t eos_presence_add_notify_on_presence_changed(const std::optional<gm::wir
         return 0;
     }
 
-    g_cb_presence_changed = callback.value_or(GMFunction{});
+    auto* ctx = new PresenceNotifyContext{};
 
     EOS_Presence_AddNotifyOnPresenceChangedOptions opts{};
     opts.ApiVersion = EOS_PRESENCE_ADDNOTIFYONPRESENCECHANGED_API_LATEST;
 
-    return (uint64_t)EOS_Presence_AddNotifyOnPresenceChanged(
+    EOS_NotificationId notification_id = EOS_Presence_AddNotifyOnPresenceChanged(
         presence,
         &opts,
-        nullptr,
+        ctx,
         &eos_presence_changed_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_presence_changed_callbacks[result] = callback.value_or(GMFunction{});
+        g_presence_changed_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_presence_remove_notify_on_presence_changed(uint64_t notification_id)
@@ -600,6 +636,15 @@ void eos_presence_remove_notify_on_presence_changed(uint64_t notification_id)
         presence,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_presence_changed_contexts.find(notification_id);
+    if (ctx_it != g_presence_changed_contexts.end())
+    {
+        delete ctx_it->second;
+        g_presence_changed_contexts.erase(ctx_it);
+    }
+
+    g_presence_changed_callbacks.erase(notification_id);
 }
 
 uint64_t eos_presence_add_notify_join_game_accepted(const std::optional<gm::wire::GMFunction>& callback)
@@ -612,17 +657,31 @@ uint64_t eos_presence_add_notify_join_game_accepted(const std::optional<gm::wire
         return 0;
     }
 
-    g_cb_presence_join_game_accepted = callback.value_or(GMFunction{});
+    auto* ctx = new PresenceNotifyContext{};
 
     EOS_Presence_AddNotifyJoinGameAcceptedOptions opts{};
     opts.ApiVersion = EOS_PRESENCE_ADDNOTIFYJOINGAMEACCEPTED_API_LATEST;
 
-    return (uint64_t)EOS_Presence_AddNotifyJoinGameAccepted(
+    EOS_NotificationId notification_id = EOS_Presence_AddNotifyJoinGameAccepted(
         presence,
         &opts,
-        nullptr,
+        ctx,
         &eos_presence_join_game_accepted_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_presence_join_game_accepted_callbacks[result] = callback.value_or(GMFunction{});
+        g_presence_join_game_accepted_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_presence_remove_notify_join_game_accepted(uint64_t notification_id)
@@ -639,4 +698,13 @@ void eos_presence_remove_notify_join_game_accepted(uint64_t notification_id)
         presence,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_presence_join_game_accepted_contexts.find(notification_id);
+    if (ctx_it != g_presence_join_game_accepted_contexts.end())
+    {
+        delete ctx_it->second;
+        g_presence_join_game_accepted_contexts.erase(ctx_it);
+    }
+
+    g_presence_join_game_accepted_callbacks.erase(notification_id);
 }

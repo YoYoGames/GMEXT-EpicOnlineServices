@@ -5,6 +5,7 @@
 #include <eos_ui.h>
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -261,7 +262,13 @@ void eos_ui_report_input_state(bool button_down, bool button_up, bool button_lef
 // EOS UI (Part 2)
 // ============================================================
 
-static GMFunction g_cb_ui_display_settings_updated = nullptr;
+struct UINotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_ui_display_settings_updated_callbacks;
+static std::map<uint64_t, UINotifyContext*> g_ui_display_settings_updated_contexts;
 
 static gm_structs::EpicUIDisplaySettingsUpdatedCallbackInfo eos_ui_display_settings_updated_info_from_native(
     const EOS_UI_OnDisplaySettingsUpdatedCallbackInfo* p)
@@ -278,12 +285,19 @@ static gm_structs::EpicUIDisplaySettingsUpdatedCallbackInfo eos_ui_display_setti
 static void EOS_CALL eos_ui_display_settings_updated_callback_native(
     const EOS_UI_OnDisplaySettingsUpdatedCallbackInfo* data)
 {
-    if (!data || !g_cb_ui_display_settings_updated)
+    if (!data)
         return;
 
-    g_cb_ui_display_settings_updated.call(
-        eos_ui_display_settings_updated_info_from_native(data)
-    );
+    UINotifyContext* ctx = (UINotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_ui_display_settings_updated_callbacks.find(notification_id);
+    if (it == g_ui_display_settings_updated_callbacks.end())
+        return;
+
+    it->second.call(eos_ui_display_settings_updated_info_from_native(data));
 }
 
 uint64_t eos_ui_add_notify_display_settings_updated(const std::optional<gm::wire::GMFunction>& callback)
@@ -296,17 +310,31 @@ uint64_t eos_ui_add_notify_display_settings_updated(const std::optional<gm::wire
         return 0;
     }
 
-    g_cb_ui_display_settings_updated = callback.value_or(GMFunction{});
+    auto* ctx = new UINotifyContext{};
 
     EOS_UI_AddNotifyDisplaySettingsUpdatedOptions opts{};
     opts.ApiVersion = EOS_UI_ADDNOTIFYDISPLAYSETTINGSUPDATED_API_LATEST;
 
-    return (uint64_t)EOS_UI_AddNotifyDisplaySettingsUpdated(
+    EOS_NotificationId notification_id = EOS_UI_AddNotifyDisplaySettingsUpdated(
         ui,
         &opts,
-        nullptr,
+        ctx,
         &eos_ui_display_settings_updated_callback_native
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_ui_display_settings_updated_callbacks[result] = callback.value_or(GMFunction{});
+        g_ui_display_settings_updated_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_ui_remove_notify_display_settings_updated(uint64_t notification_id)
@@ -323,6 +351,15 @@ void eos_ui_remove_notify_display_settings_updated(uint64_t notification_id)
         ui,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_ui_display_settings_updated_contexts.find(notification_id);
+    if (ctx_it != g_ui_display_settings_updated_contexts.end())
+    {
+        delete ctx_it->second;
+        g_ui_display_settings_updated_contexts.erase(ctx_it);
+    }
+
+    g_ui_display_settings_updated_callbacks.erase(notification_id);
 }
 
 // ============================================================

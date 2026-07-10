@@ -13,6 +13,7 @@
 #endif
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -675,7 +676,13 @@ void eos_auth_verify_user_auth(std::string_view access_token, const std::optiona
 // EOS Auth Notify
 // ============================================================
 
-static GMFunction g_cb_auth_login_status_changed = nullptr;
+struct AuthNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_auth_login_status_changed_callbacks;
+static std::map<uint64_t, AuthNotifyContext*> g_auth_login_status_changed_contexts;
 
 static gm_structs::EpicAuthLoginStatusChangedCallbackInfo
 eos_auth_login_status_changed_from_native(
@@ -697,12 +704,19 @@ eos_auth_login_status_changed_from_native(
 static void EOS_CALL eos_auth_login_status_changed_callback(
     const EOS_Auth_LoginStatusChangedCallbackInfo* data)
 {
-    if (!data || !g_cb_auth_login_status_changed)
+    if (!data)
         return;
 
-    g_cb_auth_login_status_changed.call(
-        eos_auth_login_status_changed_from_native(data)
-    );
+    AuthNotifyContext* ctx = (AuthNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_auth_login_status_changed_callbacks.find(notification_id);
+    if (it == g_auth_login_status_changed_callbacks.end())
+        return;
+
+    it->second.call(eos_auth_login_status_changed_from_native(data));
 }
 
 uint64_t eos_auth_add_notify_login_status_changed(
@@ -717,17 +731,31 @@ uint64_t eos_auth_add_notify_login_status_changed(
         return 0;
     }
 
-    g_cb_auth_login_status_changed = callback.value_or(GMFunction{});
+    auto* ctx = new AuthNotifyContext{};
 
     EOS_Auth_AddNotifyLoginStatusChangedOptions opts{};
     opts.ApiVersion = EOS_AUTH_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST;
 
-    return (uint64_t)EOS_Auth_AddNotifyLoginStatusChanged(
+    EOS_NotificationId notification_id = EOS_Auth_AddNotifyLoginStatusChanged(
         auth,
         &opts,
-        nullptr,
+        ctx,
         &eos_auth_login_status_changed_callback
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_auth_login_status_changed_callbacks[result] = callback.value_or(GMFunction{});
+        g_auth_login_status_changed_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_auth_remove_notify_login_status_changed(
@@ -746,4 +774,13 @@ void eos_auth_remove_notify_login_status_changed(
         auth,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_auth_login_status_changed_contexts.find(notification_id);
+    if (ctx_it != g_auth_login_status_changed_contexts.end())
+    {
+        delete ctx_it->second;
+        g_auth_login_status_changed_contexts.erase(ctx_it);
+    }
+
+    g_auth_login_status_changed_callbacks.erase(notification_id);
 }

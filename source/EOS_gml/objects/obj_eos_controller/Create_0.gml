@@ -4,7 +4,8 @@ global.epic_account_id = ""
 global.product_user_id = ""
 
 
-notify_login_status_changed = eos_auth_add_notify_login_status_changed(function(data){show_debug_message(data)})
+notify_login_status_changed = eos_auth_add_notify_login_status_changed(function(data){
+	show_debug_message(data)})
 notify_auth_expiration = eos_connect_add_notify_auth_expiration(function(data){show_debug_message(data)})
 notify_login_status_changed = eos_connect_add_notify_login_status_changed(function(data){show_debug_message(data)})
 notify_friends_update = eos_friends_add_notify_friends_update(function(data){show_debug_message(data)})

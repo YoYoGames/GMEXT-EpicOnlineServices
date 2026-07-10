@@ -5,6 +5,7 @@
 #include <eos_achievements.h>
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -670,7 +671,13 @@ gm_structs::EpicPlayerStatInfo eos_achievements_copy_player_stat_info_by_index(
 // EOS Achievements Notify
 // ============================================================
 
-static GMFunction g_cb_achievements_unlocked_v2 = nullptr;
+struct AchievementsNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_achievements_unlocked_v2_callbacks;
+static std::map<uint64_t, AchievementsNotifyContext*> g_achievements_unlocked_v2_contexts;
 
 static gm_structs::EpicAchievementsUnlockedV2CallbackInfo
 eos_achievements_unlocked_v2_from_native(
@@ -690,12 +697,19 @@ eos_achievements_unlocked_v2_from_native(
 static void EOS_CALL eos_achievements_unlocked_v2_callback(
     const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* data)
 {
-    if (!data || !g_cb_achievements_unlocked_v2)
+    if (!data)
         return;
 
-    g_cb_achievements_unlocked_v2.call(
-        eos_achievements_unlocked_v2_from_native(data)
-    );
+    AchievementsNotifyContext* ctx = (AchievementsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_achievements_unlocked_v2_callbacks.find(notification_id);
+    if (it == g_achievements_unlocked_v2_callbacks.end())
+        return;
+
+    it->second.call(eos_achievements_unlocked_v2_from_native(data));
 }
 
 uint64_t eos_achievements_add_notify_achievements_unlocked_v2(
@@ -710,17 +724,31 @@ uint64_t eos_achievements_add_notify_achievements_unlocked_v2(
         return 0;
     }
 
-    g_cb_achievements_unlocked_v2 = callback.value_or(GMFunction{});
+    auto* ctx = new AchievementsNotifyContext{};
 
     EOS_Achievements_AddNotifyAchievementsUnlockedV2Options opts{};
     opts.ApiVersion = EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST;
 
-    return (uint64_t)EOS_Achievements_AddNotifyAchievementsUnlockedV2(
+    EOS_NotificationId notification_id = EOS_Achievements_AddNotifyAchievementsUnlockedV2(
         achievements,
         &opts,
-        nullptr,
+        ctx,
         &eos_achievements_unlocked_v2_callback
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_achievements_unlocked_v2_callbacks[result] = callback.value_or(GMFunction{});
+        g_achievements_unlocked_v2_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_achievements_remove_notify_achievements_unlocked(
@@ -734,9 +762,19 @@ void eos_achievements_remove_notify_achievements_unlocked(
         eos_set_last_error("EOS Achievements interface unavailable.");
         return;
     }
+
     EOS_Achievements_RemoveNotifyAchievementsUnlocked(
         achievements,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_achievements_unlocked_v2_contexts.find(notification_id);
+    if (ctx_it != g_achievements_unlocked_v2_contexts.end())
+    {
+        delete ctx_it->second;
+        g_achievements_unlocked_v2_contexts.erase(ctx_it);
+    }
+
+    g_achievements_unlocked_v2_callbacks.erase(notification_id);
 }
 

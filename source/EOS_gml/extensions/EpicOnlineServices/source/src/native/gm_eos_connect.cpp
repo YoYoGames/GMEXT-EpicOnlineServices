@@ -5,6 +5,7 @@
 #include <eos_connect.h>
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -1122,8 +1123,15 @@ void eos_connect_query_product_user_id_mappings(
 // EOS Connect Notify
 // ============================================================
 
-static GMFunction g_cb_connect_auth_expiration = nullptr;
-static GMFunction g_cb_connect_login_status_changed = nullptr;
+struct ConnectNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_connect_auth_expiration_callbacks;
+static std::map<uint64_t, ConnectNotifyContext*> g_connect_auth_expiration_contexts;
+static std::map<uint64_t, GMFunction> g_connect_login_status_changed_callbacks;
+static std::map<uint64_t, ConnectNotifyContext*> g_connect_login_status_changed_contexts;
 
 static gm_structs::EpicConnectAuthExpirationCallbackInfo
 eos_connect_auth_expiration_from_native(
@@ -1162,23 +1170,37 @@ eos_connect_login_status_changed_from_native(
 static void EOS_CALL eos_connect_auth_expiration_callback(
     const EOS_Connect_AuthExpirationCallbackInfo* data)
 {
-    if (!data || !g_cb_connect_auth_expiration)
+    if (!data)
         return;
 
-    g_cb_connect_auth_expiration.call(
-        eos_connect_auth_expiration_from_native(data)
-    );
+    ConnectNotifyContext* ctx = (ConnectNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_connect_auth_expiration_callbacks.find(notification_id);
+    if (it == g_connect_auth_expiration_callbacks.end())
+        return;
+
+    it->second.call(eos_connect_auth_expiration_from_native(data));
 }
 
 static void EOS_CALL eos_connect_login_status_changed_callback(
     const EOS_Connect_LoginStatusChangedCallbackInfo* data)
 {
-    if (!data || !g_cb_connect_login_status_changed)
+    if (!data)
         return;
 
-    g_cb_connect_login_status_changed.call(
-        eos_connect_login_status_changed_from_native(data)
-    );
+    ConnectNotifyContext* ctx = (ConnectNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_connect_login_status_changed_callbacks.find(notification_id);
+    if (it == g_connect_login_status_changed_callbacks.end())
+        return;
+
+    it->second.call(eos_connect_login_status_changed_from_native(data));
 }
 
 uint64_t eos_connect_add_notify_auth_expiration(
@@ -1193,17 +1215,31 @@ uint64_t eos_connect_add_notify_auth_expiration(
         return 0;
     }
 
-    g_cb_connect_auth_expiration = callback.value_or(GMFunction{});
+    auto* ctx = new ConnectNotifyContext{};
 
     EOS_Connect_AddNotifyAuthExpirationOptions opts{};
     opts.ApiVersion = EOS_CONNECT_ADDNOTIFYAUTHEXPIRATION_API_LATEST;
 
-    return (uint64_t)EOS_Connect_AddNotifyAuthExpiration(
+    EOS_NotificationId notification_id = EOS_Connect_AddNotifyAuthExpiration(
         connect,
         &opts,
-        nullptr,
+        ctx,
         &eos_connect_auth_expiration_callback
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_connect_auth_expiration_callbacks[result] = callback.value_or(GMFunction{});
+        g_connect_auth_expiration_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_connect_remove_notify_auth_expiration(
@@ -1222,6 +1258,15 @@ void eos_connect_remove_notify_auth_expiration(
         connect,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_connect_auth_expiration_contexts.find(notification_id);
+    if (ctx_it != g_connect_auth_expiration_contexts.end())
+    {
+        delete ctx_it->second;
+        g_connect_auth_expiration_contexts.erase(ctx_it);
+    }
+
+    g_connect_auth_expiration_callbacks.erase(notification_id);
 }
 
 uint64_t eos_connect_add_notify_login_status_changed(
@@ -1236,17 +1281,31 @@ uint64_t eos_connect_add_notify_login_status_changed(
         return 0;
     }
 
-    g_cb_connect_login_status_changed = callback.value_or(GMFunction{});
+    auto* ctx = new ConnectNotifyContext{};
 
     EOS_Connect_AddNotifyLoginStatusChangedOptions opts{};
     opts.ApiVersion = EOS_CONNECT_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST;
 
-    return (uint64_t)EOS_Connect_AddNotifyLoginStatusChanged(
+    EOS_NotificationId notification_id = EOS_Connect_AddNotifyLoginStatusChanged(
         connect,
         &opts,
-        nullptr,
+        ctx,
         &eos_connect_login_status_changed_callback
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_connect_login_status_changed_callbacks[result] = callback.value_or(GMFunction{});
+        g_connect_login_status_changed_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_connect_remove_notify_login_status_changed(
@@ -1265,4 +1324,13 @@ void eos_connect_remove_notify_login_status_changed(
         connect,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_connect_login_status_changed_contexts.find(notification_id);
+    if (ctx_it != g_connect_login_status_changed_contexts.end())
+    {
+        delete ctx_it->second;
+        g_connect_login_status_changed_contexts.erase(ctx_it);
+    }
+
+    g_connect_login_status_changed_callbacks.erase(notification_id);
 }

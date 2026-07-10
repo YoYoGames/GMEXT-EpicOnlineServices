@@ -5,6 +5,7 @@
 #include <eos_friends.h>
 
 #include <cstdint>
+#include <map>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -215,7 +216,13 @@ gm_enums::EpicFriendsStatus eos_friends_get_status(
 // EOS Friends Notify
 // ============================================================
 
-static GMFunction g_cb_friends_update = nullptr;
+struct FriendsNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_friends_update_callbacks;
+static std::map<uint64_t, FriendsNotifyContext*> g_friends_update_contexts;
 
 static gm_structs::EpicFriendsFriendsUpdateCallbackInfo
 eos_friends_update_from_native(
@@ -243,12 +250,19 @@ eos_friends_update_from_native(
 static void EOS_CALL eos_friends_update_callback(
     const EOS_Friends_OnFriendsUpdateInfo* data)
 {
-    if (!data || !g_cb_friends_update)
+    if (!data)
         return;
 
-    g_cb_friends_update.call(
-        eos_friends_update_from_native(data)
-    );
+    FriendsNotifyContext* ctx = (FriendsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_friends_update_callbacks.find(notification_id);
+    if (it == g_friends_update_callbacks.end())
+        return;
+
+    it->second.call(eos_friends_update_from_native(data));
 }
 
 uint64_t eos_friends_add_notify_friends_update(
@@ -263,17 +277,31 @@ uint64_t eos_friends_add_notify_friends_update(
         return 0;
     }
 
-    g_cb_friends_update = callback.value_or(GMFunction{});
+    auto* ctx = new FriendsNotifyContext{};
 
     EOS_Friends_AddNotifyFriendsUpdateOptions opts{};
     opts.ApiVersion = EOS_FRIENDS_ADDNOTIFYFRIENDSUPDATE_API_LATEST;
 
-    return (uint64_t)EOS_Friends_AddNotifyFriendsUpdate(
+    EOS_NotificationId notification_id = EOS_Friends_AddNotifyFriendsUpdate(
         friends,
         &opts,
-        nullptr,
+        ctx,
         &eos_friends_update_callback
     );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_friends_update_callbacks[result] = callback.value_or(GMFunction{});
+        g_friends_update_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
 }
 
 void eos_friends_remove_notify_friends_update(
@@ -292,4 +320,13 @@ void eos_friends_remove_notify_friends_update(
         friends,
         (EOS_NotificationId)notification_id
     );
+
+    auto ctx_it = g_friends_update_contexts.find(notification_id);
+    if (ctx_it != g_friends_update_contexts.end())
+    {
+        delete ctx_it->second;
+        g_friends_update_contexts.erase(ctx_it);
+    }
+
+    g_friends_update_callbacks.erase(notification_id);
 }

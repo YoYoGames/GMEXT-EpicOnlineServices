@@ -65,9 +65,10 @@ if(modification_id != 0)
 
 	eos_sessions_update_session(modification_id, function(_info)
 	{
+
 		// EpicSessionsUpdateSessionCallbackInfo: .result_code, .session_name, .session_id
-		show_debug_message("update_session: " + eos_api_result_to_string(_info.result_code))
-		if(_info.result_code != EpicResult.Success) {return}
+		//show_debug_message("update_session: " + eos_api_result_to_string(_info.result_code))
+		//if(_info.result_code != EpicResult.Success) {return}
 
 		// Owner side comes online: spawn the P2P relay and announce ourselves
 		// to the active-session player roster.
@@ -76,7 +77,7 @@ if(modification_id != 0)
 		eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
 		{
 			// EpicSessionsRegisterPlayersCallbackInfo: .result_code, .registered_players, .sanctioned_players
-			show_debug_message($"register_players: {eos_api_result_to_string(_reg.result_code)} registered={_reg.registered_players}")
+			show_debug_message(_reg)
 		})
 	})
 
