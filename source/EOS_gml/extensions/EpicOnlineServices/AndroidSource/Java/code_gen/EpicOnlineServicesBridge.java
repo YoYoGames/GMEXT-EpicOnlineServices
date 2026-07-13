@@ -200,6 +200,8 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_sessions_session_modification_set_max_players(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_sessions_session_modification_set_invites_allowed(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_sessions_session_modification_add_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_sessions_session_modification_add_attribute_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_sessions_session_modification_add_attribute_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_sessions_session_modification_remove_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_sessions_session_details_get_session_attribute_count(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_sessions_session_details_copy_session_attribute_by_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
@@ -324,6 +326,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_playerdatastorage_delete_file(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_playerdatastorage_read_file(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_playerdatastorage_write_file(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_playerdatastorage_file_transfer_request_cancel_request(String filename);
     public static native double __EXT_JNI__eos_playerdatastorage_delete_cache(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_titlestorage_query_file(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_titlestorage_query_file_list(ByteBuffer __arg_buffer, double __arg_buffer_length);
@@ -331,6 +334,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_titlestorage_copy_file_metadata_at_index(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_titlestorage_copy_file_metadata_by_filename(String local_user_id, String filename, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_titlestorage_read_file(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_titlestorage_file_transfer_request_cancel_request(String filename);
     public static native double __EXT_JNI__eos_titlestorage_delete_cache(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_ecom_query_ownership(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_ecom_query_ownership_by_sandbox_ids(ByteBuffer __arg_buffer, double __arg_buffer_length);

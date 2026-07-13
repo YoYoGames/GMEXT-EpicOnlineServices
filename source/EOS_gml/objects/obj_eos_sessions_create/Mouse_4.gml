@@ -56,7 +56,6 @@ if(modification_id != 0)
 	result = eos_sessions_session_modification_set_invites_allowed(modification_id, true)
 	show_debug_message("set_invites_allowed: " + eos_api_result_to_string(result))
 
-	//TODO: new add_attribute only accepts string values; bool/double attributes need a different API
 	result = eos_sessions_session_modification_add_attribute(modification_id, "bucket", BucketId, EpicSessionAttributeAdvertisementType.Advertise)
 	show_debug_message("add_attribute(bucket): " + eos_api_result_to_string(result))
 

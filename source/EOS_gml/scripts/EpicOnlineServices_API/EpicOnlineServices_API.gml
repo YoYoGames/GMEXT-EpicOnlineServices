@@ -22422,6 +22422,88 @@ function eos_sessions_session_modification_add_attribute(_modification_id, _key,
 /**
  * @param {Real} _modification_id
  * @param {String} _key
+ * @param {Bool} _value
+ * @param {Enum.EpicSessionAttributeAdvertisementType} _advertisement_type
+ * @returns {Enum.EpicResult}
+ */
+function eos_sessions_session_modification_add_attribute_bool(_modification_id, _key, _value, _advertisement_type)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _modification_id, type: UInt64
+    if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _modification_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Bool
+    if (!is_bool(_value)) show_error($"{_GMFUNCTION_} :: _value expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _value);
+
+    // param: _advertisement_type, type: enum EpicSessionAttributeAdvertisementType
+
+    if (!is_numeric(_advertisement_type)) show_error($"{_GMFUNCTION_} :: _advertisement_type expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _advertisement_type);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_sessions_session_modification_add_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _modification_id
+ * @param {String} _key
+ * @param {Real} _value
+ * @param {Enum.EpicSessionAttributeAdvertisementType} _advertisement_type
+ * @returns {Enum.EpicResult}
+ */
+function eos_sessions_session_modification_add_attribute_double(_modification_id, _key, _value, _advertisement_type)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _modification_id, type: UInt64
+    if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _modification_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Float64
+    if (!is_numeric(_value)) show_error($"{_GMFUNCTION_} :: _value expected number", true);
+    buffer_write(__args_buffer, buffer_f64, _value);
+
+    // param: _advertisement_type, type: enum EpicSessionAttributeAdvertisementType
+
+    if (!is_numeric(_advertisement_type)) show_error($"{_GMFUNCTION_} :: _advertisement_type expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _advertisement_type);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_sessions_session_modification_add_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _modification_id
+ * @param {String} _key
  * @returns {Enum.EpicResult}
  */
 function eos_sessions_session_modification_remove_attribute(_modification_id, _key)
@@ -26156,6 +26238,9 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path
     return _return_value;
 }
 
+// Skipping function eos_playerdatastorage_file_transfer_request_cancel_request (no wrapper is required)
+
+
 /**
  * @param {String} _local_user_id
  * @param {Function} _callback
@@ -26410,6 +26495,9 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _ca
 
     return _return_value;
 }
+
+// Skipping function eos_titlestorage_file_transfer_request_cancel_request (no wrapper is required)
+
 
 /**
  * @param {String} _local_user_id

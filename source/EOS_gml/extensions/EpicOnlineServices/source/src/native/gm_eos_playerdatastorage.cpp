@@ -70,6 +70,9 @@ static EOS_HPlayerDataStorage eos_pds_iface()
     return p ? EOS_Platform_GetPlayerDataStorageInterface(p) : nullptr;
 }
 
+static std::unordered_map<std::string, EOS_HPlayerDataStorageFileTransferRequest> eos_pds_active_transfers;
+static std::mutex eos_pds_transfers_mutex;
+
 static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view id)
 {
     std::string v(id);
@@ -641,5 +644,34 @@ void eos_playerdatastorage_delete_cache(
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_PlayerDataStorage_DeleteCache failed.");
         delete ctx;
+    }
+}
+
+void eos_playerdatastorage_file_transfer_request_cancel_request(std::string_view filename)
+{
+    eos_clear_last_error();
+
+    std::string filename_str(filename);
+    if (filename_str.empty()) {
+        eos_set_last_error("EOS_PlayerDataStorage_CancelRequest: filename is required.");
+        return;
+    }
+
+    {
+        std::lock_guard<std::mutex> lock(eos_pds_transfers_mutex);
+        auto it = eos_pds_active_transfers.find(filename_str);
+        if (it == eos_pds_active_transfers.end()) {
+            eos_set_last_error("EOS_PlayerDataStorage_CancelRequest: no active transfer for this filename.");
+            return;
+        }
+
+        EOS_HPlayerDataStorageFileTransferRequest request = it->second;
+        EOS_EResult result = EOS_PlayerDataStorageFileTransferRequest_CancelRequest(request);
+        if (result != EOS_EResult::EOS_Success) {
+            const char* err = EOS_EResult_ToString(result);
+            eos_set_last_error(err ? err : "EOS_PlayerDataStorageFileTransferRequest_CancelRequest failed.");
+        }
+
+        eos_pds_active_transfers.erase(it);
     }
 }

@@ -8030,6 +8030,8 @@ gm_enums::EpicResult eos_sessions_session_modification_set_join_in_progress_allo
 gm_enums::EpicResult eos_sessions_session_modification_set_max_players(std::uint64_t modification_id, std::int64_t max_players);
 gm_enums::EpicResult eos_sessions_session_modification_set_invites_allowed(std::uint64_t modification_id, bool invites_allowed);
 gm_enums::EpicResult eos_sessions_session_modification_add_attribute(std::uint64_t modification_id, std::string_view key, std::string_view value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
+gm_enums::EpicResult eos_sessions_session_modification_add_attribute_bool(std::uint64_t modification_id, std::string_view key, bool value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
+gm_enums::EpicResult eos_sessions_session_modification_add_attribute_double(std::uint64_t modification_id, std::string_view key, double value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
 gm_enums::EpicResult eos_sessions_session_modification_remove_attribute(std::uint64_t modification_id, std::string_view key);
 std::int64_t eos_sessions_session_details_get_session_attribute_count(std::uint64_t session_details_id);
 gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_index(std::uint64_t session_details_id, std::int64_t index);
@@ -8154,6 +8156,7 @@ void eos_playerdatastorage_duplicate_file(std::string_view local_user_id, std::s
 void eos_playerdatastorage_delete_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
 void eos_playerdatastorage_read_file(std::string_view local_user_id, std::string_view filename, std::string_view output_path, const std::optional<gm::wire::GMFunction>& callback, const std::optional<gm::wire::GMFunction>& progress_callback);
 void eos_playerdatastorage_write_file(std::string_view local_user_id, std::string_view filename, std::string_view input_path, const std::optional<gm::wire::GMFunction>& callback, const std::optional<gm::wire::GMFunction>& progress_callback);
+void eos_playerdatastorage_file_transfer_request_cancel_request(std::string_view filename);
 void eos_playerdatastorage_delete_cache(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_titlestorage_query_file(std::string_view local_user_id, std::string_view filename, const std::optional<gm::wire::GMFunction>& callback);
 void eos_titlestorage_query_file_list(std::string_view local_user_id, const std::vector<std::string_view>& tags, const std::optional<gm::wire::GMFunction>& callback);
@@ -8161,6 +8164,7 @@ std::int64_t eos_titlestorage_get_file_metadata_count(std::string_view local_use
 gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_at_index(std::string_view local_user_id, std::int64_t index);
 gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_by_filename(std::string_view local_user_id, std::string_view filename);
 void eos_titlestorage_read_file(std::string_view local_user_id, std::string_view filename, std::string_view output_path, const std::optional<gm::wire::GMFunction>& callback, const std::optional<gm::wire::GMFunction>& progress_callback);
+void eos_titlestorage_file_transfer_request_cancel_request(std::string_view filename);
 void eos_titlestorage_delete_cache(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_ownership(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_ownership_by_sandbox_ids(std::string_view local_user_id, const std::vector<std::string_view>& sandbox_ids, const std::optional<gm::wire::GMFunction>& callback);

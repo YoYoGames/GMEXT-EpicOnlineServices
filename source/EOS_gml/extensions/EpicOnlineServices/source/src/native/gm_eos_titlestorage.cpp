@@ -7,9 +7,11 @@
 #include <cstdint>
 #include <fstream>
 #include <ios>
+#include <mutex>
 #include <optional>
 #include <string>
 #include <string_view>
+#include <unordered_map>
 #include <vector>
 
 using namespace gm::wire;
@@ -42,6 +44,9 @@ static EOS_HTitleStorage eos_ts_iface()
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetTitleStorageInterface(p) : nullptr;
 }
+
+static std::unordered_map<std::string, EOS_HTitleStorageFileTransferRequest> eos_ts_active_transfers;
+static std::mutex eos_ts_transfers_mutex;
 
 static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view id)
 {
@@ -407,5 +412,34 @@ void eos_titlestorage_delete_cache(
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_TitleStorage_DeleteCache failed.");
         delete ctx;
+    }
+}
+
+void eos_titlestorage_file_transfer_request_cancel_request(std::string_view filename)
+{
+    eos_clear_last_error();
+
+    std::string filename_str(filename);
+    if (filename_str.empty()) {
+        eos_set_last_error("EOS_TitleStorage_CancelRequest: filename is required.");
+        return;
+    }
+
+    {
+        std::lock_guard<std::mutex> lock(eos_ts_transfers_mutex);
+        auto it = eos_ts_active_transfers.find(filename_str);
+        if (it == eos_ts_active_transfers.end()) {
+            eos_set_last_error("EOS_TitleStorage_CancelRequest: no active transfer for this filename.");
+            return;
+        }
+
+        EOS_HTitleStorageFileTransferRequest request = it->second;
+        EOS_EResult result = EOS_TitleStorageFileTransferRequest_CancelRequest(request);
+        if (result != EOS_EResult::EOS_Success) {
+            const char* err = EOS_EResult_ToString(result);
+            eos_set_last_error(err ? err : "EOS_TitleStorageFileTransferRequest_CancelRequest failed.");
+        }
+
+        eos_ts_active_transfers.erase(it);
     }
 }

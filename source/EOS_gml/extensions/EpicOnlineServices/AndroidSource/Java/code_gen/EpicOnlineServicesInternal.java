@@ -736,6 +736,14 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_sessions_session_modification_add_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
+    public double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_sessions_session_modification_add_attribute_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_sessions_session_modification_add_attribute_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
     public double __EXT_NATIVE__eos_sessions_session_modification_remove_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
         return __EXT_JNI__eos_sessions_session_modification_remove_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
@@ -1232,6 +1240,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_playerdatastorage_write_file(__arg_buffer, __arg_buffer_length);
     }
+    public double __EXT_NATIVE__eos_playerdatastorage_file_transfer_request_cancel_request(String filename)
+    {
+        return __EXT_JNI__eos_playerdatastorage_file_transfer_request_cancel_request(filename);
+    }
     public double __EXT_NATIVE__eos_playerdatastorage_delete_cache(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_playerdatastorage_delete_cache(__arg_buffer, __arg_buffer_length);
@@ -1259,6 +1271,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     public double __EXT_NATIVE__eos_titlestorage_read_file(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_titlestorage_read_file(__arg_buffer, __arg_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_titlestorage_file_transfer_request_cancel_request(String filename)
+    {
+        return __EXT_JNI__eos_titlestorage_file_transfer_request_cancel_request(filename);
     }
     public double __EXT_NATIVE__eos_titlestorage_delete_cache(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {

@@ -2086,6 +2086,22 @@ function eos_sessions_session_modification_add_attribute(
 ): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_add_attribute_bool(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: bool,
+    [type_hint=`EpicSessionAttributeAdvertisementType`] advertisement_type: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_sessions_session_modification_add_attribute_double(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: real,
+    [type_hint=`EpicSessionAttributeAdvertisementType`] advertisement_type: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
 function eos_sessions_session_modification_remove_attribute(
     [type_hint=`uint64`] modification_id: gmval,
     key: string
@@ -3445,6 +3461,9 @@ function eos_playerdatastorage_read_file(local_user_id: string, filename: string
 function eos_playerdatastorage_write_file(local_user_id: string, filename: string, input_path: string, [type_hint=`func?`] callback: gmval, [type_hint=`func?`] progress_callback: gmval): unit;
 
 [global, bind = typed_gml]
+function eos_playerdatastorage_file_transfer_request_cancel_request(filename: string): unit;
+
+[global, bind = typed_gml]
 function eos_playerdatastorage_delete_cache(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 }
@@ -3551,6 +3570,9 @@ function eos_titlestorage_copy_file_metadata_by_filename(local_user_id: string, 
 
 [global, bind = typed_gml]
 function eos_titlestorage_read_file(local_user_id: string, filename: string, output_path: string, [type_hint=`func?`] callback: gmval, [type_hint=`func?`] progress_callback: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_titlestorage_file_transfer_request_cancel_request(filename: string): unit;
 
 [global, bind = typed_gml]
 function eos_titlestorage_delete_cache(local_user_id: string, [type_hint=`func?`] callback: gmval): unit;

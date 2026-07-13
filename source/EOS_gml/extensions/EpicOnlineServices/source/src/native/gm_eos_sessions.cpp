@@ -1661,6 +1661,86 @@ gm_enums::EpicResult eos_sessions_session_modification_add_attribute(
     return (gm_enums::EpicResult)result;
 }
 
+gm_enums::EpicResult eos_sessions_session_modification_add_attribute_bool(
+    uint64_t modification_id,
+    std::string_view key,
+    bool value,
+    gm_enums::EpicSessionAttributeAdvertisementType advertisement_type)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_SessionModification_AddAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Sessions_AttributeData attr{};
+    attr.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsBool = value;
+    attr.ValueType = EOS_ESessionAttributeType::EOS_AT_BOOLEAN;
+
+    EOS_SessionModification_AddAttributeOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST;
+    opts.SessionAttribute = &attr;
+    opts.AdvertisementType = (EOS_ESessionAttributeAdvertisementType)advertisement_type;
+
+    const EOS_EResult result = EOS_SessionModification_AddAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_AddAttribute failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_sessions_session_modification_add_attribute_double(
+    uint64_t modification_id,
+    std::string_view key,
+    double value,
+    gm_enums::EpicSessionAttributeAdvertisementType advertisement_type)
+{
+    eos_clear_last_error();
+
+    EOS_HSessionModification mod = eos_sessions_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS SessionModification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_SessionModification_AddAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Sessions_AttributeData attr{};
+    attr.ApiVersion = EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsDouble = value;
+    attr.ValueType = EOS_ESessionAttributeType::EOS_AT_DOUBLE;
+
+    EOS_SessionModification_AddAttributeOptions opts{};
+    opts.ApiVersion = EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST;
+    opts.SessionAttribute = &attr;
+    opts.AdvertisementType = (EOS_ESessionAttributeAdvertisementType)advertisement_type;
+
+    const EOS_EResult result = EOS_SessionModification_AddAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_SessionModification_AddAttribute failed.");
+    }
+    return (gm_enums::EpicResult)result;
+}
+
 gm_enums::EpicResult eos_sessions_session_modification_remove_attribute(
     uint64_t modification_id,
     std::string_view key)

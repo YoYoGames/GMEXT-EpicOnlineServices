@@ -1347,6 +1347,26 @@
  */
 
 /**
+ * @function_partial eos_sessions_session_modification_add_attribute_bool
+ * @param {Real} modification_id
+ * @param {String} key
+ * @param {Bool} value
+ * @param {Enum.EpicSessionAttributeAdvertisementType} advertisement_type
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_sessions_session_modification_add_attribute_double
+ * @param {Real} modification_id
+ * @param {String} key
+ * @param {Real} value
+ * @param {Enum.EpicSessionAttributeAdvertisementType} advertisement_type
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
  * @function_partial eos_sessions_session_modification_remove_attribute
  * @param {Real} modification_id
  * @param {String} key
@@ -2281,6 +2301,12 @@
  */
 
 /**
+ * @function_partial eos_playerdatastorage_file_transfer_request_cancel_request
+ * @param {String} filename
+ * @function_end
+ */
+
+/**
  * @function_partial eos_playerdatastorage_delete_cache
  * @param {String} local_user_id
  * @param {Function} [callback]
@@ -2333,6 +2359,12 @@
  * @param {String} output_path
  * @param {Function} [callback]
  * @param {Function} [progress_callback]
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_titlestorage_file_transfer_request_cancel_request
+ * @param {String} filename
  * @function_end
  */
 

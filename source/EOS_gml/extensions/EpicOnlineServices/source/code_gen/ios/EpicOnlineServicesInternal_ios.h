@@ -184,6 +184,8 @@
 - (double)__EXT_NATIVE__eos_sessions_session_modification_set_max_players:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_sessions_session_modification_set_invites_allowed:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
+- (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute_double:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_sessions_session_modification_remove_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_sessions_session_details_get_session_attribute_count:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_sessions_session_details_copy_session_attribute_by_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
@@ -308,6 +310,7 @@
 - (double)__EXT_NATIVE__eos_playerdatastorage_delete_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_playerdatastorage_read_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_playerdatastorage_write_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (double)__EXT_NATIVE__eos_playerdatastorage_file_transfer_request_cancel_request:(char*)filename;
 - (double)__EXT_NATIVE__eos_playerdatastorage_delete_cache:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_titlestorage_query_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_titlestorage_query_file_list:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
@@ -315,6 +318,7 @@
 - (double)__EXT_NATIVE__eos_titlestorage_copy_file_metadata_at_index:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_titlestorage_copy_file_metadata_by_filename:(char*)local_user_id arg1:(char*)filename arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length;
 - (double)__EXT_NATIVE__eos_titlestorage_read_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
+- (double)__EXT_NATIVE__eos_titlestorage_file_transfer_request_cancel_request:(char*)filename;
 - (double)__EXT_NATIVE__eos_titlestorage_delete_cache:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_ecom_query_ownership:(char*)__arg_buffer arg1:(double)__arg_buffer_length;
 - (double)__EXT_NATIVE__eos_ecom_query_ownership_by_sandbox_ids:(char*)__arg_buffer arg1:(double)__arg_buffer_length;

@@ -2765,6 +2765,44 @@ static jdouble __JNI_WRAPPER__eos_sessions_session_modification_add_attribute_97
     return static_cast<jdouble>(__ret);
 }
 
+// eos_sessions_session_modification_add_attribute_bool JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_sessions_session_modification_add_attribute_bool_2F64CA5A5CD9(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_sessions_session_modification_add_attribute_double JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_sessions_session_modification_add_attribute_double_36CEC612AAA6(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_sessions_session_modification_add_attribute_double((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
 // eos_sessions_session_modification_remove_attribute JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
 static jdouble __JNI_WRAPPER__eos_sessions_session_modification_remove_attribute_D269F050EB26(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
@@ -4763,6 +4801,14 @@ static jdouble __JNI_WRAPPER__eos_playerdatastorage_write_file_BF4F27C3EBE6(JNIE
     return static_cast<jdouble>(__ret);
 }
 
+// eos_playerdatastorage_file_transfer_request_cancel_request JNI wrapper signature: (Ljava/lang/String;)D
+static jdouble __JNI_WRAPPER__eos_playerdatastorage_file_transfer_request_cancel_request_3EAE52106DBD(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring filename)
+{
+    UtfChars __pin_filename(env, filename);
+    double __ret = __EXT_NATIVE__eos_playerdatastorage_file_transfer_request_cancel_request((char *)__pin_filename.c_str());
+    return static_cast<jdouble>(__ret);
+}
+
 // eos_playerdatastorage_delete_cache JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
 static jdouble __JNI_WRAPPER__eos_playerdatastorage_delete_cache_F64F06D476C7(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
 {
@@ -4860,6 +4906,14 @@ static jdouble __JNI_WRAPPER__eos_titlestorage_read_file_A0C816CB2029(JNIEnv* en
         return 0.0;
     }
     double __ret = __EXT_NATIVE__eos_titlestorage_read_file((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_titlestorage_file_transfer_request_cancel_request JNI wrapper signature: (Ljava/lang/String;)D
+static jdouble __JNI_WRAPPER__eos_titlestorage_file_transfer_request_cancel_request_F4440583D43C(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring filename)
+{
+    UtfChars __pin_filename(env, filename);
+    double __ret = __EXT_NATIVE__eos_titlestorage_file_transfer_request_cancel_request((char *)__pin_filename.c_str());
     return static_cast<jdouble>(__ret);
 }
 
@@ -6681,6 +6735,8 @@ extern "C" {
             { "__EXT_JNI__eos_sessions_session_modification_set_max_players", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_modification_set_max_players_978C4274B957 },
             { "__EXT_JNI__eos_sessions_session_modification_set_invites_allowed", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_modification_set_invites_allowed_CA20E5BD4755 },
             { "__EXT_JNI__eos_sessions_session_modification_add_attribute", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_modification_add_attribute_979588E23049 },
+            { "__EXT_JNI__eos_sessions_session_modification_add_attribute_bool", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_modification_add_attribute_bool_2F64CA5A5CD9 },
+            { "__EXT_JNI__eos_sessions_session_modification_add_attribute_double", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_modification_add_attribute_double_36CEC612AAA6 },
             { "__EXT_JNI__eos_sessions_session_modification_remove_attribute", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_modification_remove_attribute_D269F050EB26 },
             { "__EXT_JNI__eos_sessions_session_details_get_session_attribute_count", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_details_get_session_attribute_count_51B97DA164E9 },
             { "__EXT_JNI__eos_sessions_session_details_copy_session_attribute_by_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_sessions_session_details_copy_session_attribute_by_index_31BD128A4E2D },
@@ -6805,6 +6861,7 @@ extern "C" {
             { "__EXT_JNI__eos_playerdatastorage_delete_file", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_playerdatastorage_delete_file_84CA42B05852 },
             { "__EXT_JNI__eos_playerdatastorage_read_file", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_playerdatastorage_read_file_FB2B7CE0CC8A },
             { "__EXT_JNI__eos_playerdatastorage_write_file", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_playerdatastorage_write_file_BF4F27C3EBE6 },
+            { "__EXT_JNI__eos_playerdatastorage_file_transfer_request_cancel_request", "(Ljava/lang/String;)D", (void*)__JNI_WRAPPER__eos_playerdatastorage_file_transfer_request_cancel_request_3EAE52106DBD },
             { "__EXT_JNI__eos_playerdatastorage_delete_cache", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_playerdatastorage_delete_cache_F64F06D476C7 },
             { "__EXT_JNI__eos_titlestorage_query_file", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_titlestorage_query_file_CA061FA9EAB0 },
             { "__EXT_JNI__eos_titlestorage_query_file_list", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_titlestorage_query_file_list_7D24D889F419 },
@@ -6812,6 +6869,7 @@ extern "C" {
             { "__EXT_JNI__eos_titlestorage_copy_file_metadata_at_index", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_titlestorage_copy_file_metadata_at_index_59EF0F707F0A },
             { "__EXT_JNI__eos_titlestorage_copy_file_metadata_by_filename", "(Ljava/lang/String;Ljava/lang/String;Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_titlestorage_copy_file_metadata_by_filename_740726A0FC8E },
             { "__EXT_JNI__eos_titlestorage_read_file", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_titlestorage_read_file_A0C816CB2029 },
+            { "__EXT_JNI__eos_titlestorage_file_transfer_request_cancel_request", "(Ljava/lang/String;)D", (void*)__JNI_WRAPPER__eos_titlestorage_file_transfer_request_cancel_request_F4440583D43C },
             { "__EXT_JNI__eos_titlestorage_delete_cache", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_titlestorage_delete_cache_12904E2D7247 },
             { "__EXT_JNI__eos_ecom_query_ownership", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ecom_query_ownership_15AD3C4C0566 },
             { "__EXT_JNI__eos_ecom_query_ownership_by_sandbox_ids", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_ecom_query_ownership_by_sandbox_ids_C09C9A0BD122 },

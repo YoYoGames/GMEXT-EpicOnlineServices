@@ -2826,6 +2826,54 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute(ch
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Bool
+    bool value = gm::wire::codec::readValue<bool>(__br);
+
+    // field: advertisement_type, type: enum EpicSessionAttributeAdvertisementType
+    gm_enums::EpicSessionAttributeAdvertisementType advertisement_type = gm::wire::codec::readValue<gm_enums::EpicSessionAttributeAdvertisementType>(__br);
+
+    auto&& __result = eos_sessions_session_modification_add_attribute_bool(modification_id, key, value, advertisement_type);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Float64
+    double value = gm::wire::codec::readValue<double>(__br);
+
+    // field: advertisement_type, type: enum EpicSessionAttributeAdvertisementType
+    gm_enums::EpicSessionAttributeAdvertisementType advertisement_type = gm::wire::codec::readValue<gm_enums::EpicSessionAttributeAdvertisementType>(__br);
+
+    auto&& __result = eos_sessions_session_modification_add_attribute_double(modification_id, key, value, advertisement_type);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_remove_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
@@ -4928,6 +4976,12 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_write_file(char* __arg_buffe
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_file_transfer_request_cancel_request(char* filename)
+{
+    eos_playerdatastorage_file_transfer_request_cancel_request(filename);
+    return 0;
+}
+
 GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_delete_cache(char* __arg_buffer, double __arg_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
@@ -5054,6 +5108,12 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_read_file(char* __arg_buffer, dou
     }
 
     eos_titlestorage_read_file(local_user_id, filename, output_path, callback, progress_callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_titlestorage_file_transfer_request_cancel_request(char* filename)
+{
+    eos_titlestorage_file_transfer_request_cancel_request(filename);
     return 0;
 }
 

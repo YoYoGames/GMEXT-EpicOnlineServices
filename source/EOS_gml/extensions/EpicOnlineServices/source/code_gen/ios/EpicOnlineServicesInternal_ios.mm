@@ -812,6 +812,14 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_sessions_session_modification_add_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
+- (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute_double:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_sessions_session_modification_add_attribute_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
 - (double)__EXT_NATIVE__eos_sessions_session_modification_remove_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
     return __EXT_NATIVE__eos_sessions_session_modification_remove_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
@@ -1308,6 +1316,10 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_playerdatastorage_write_file(__arg_buffer, __arg_buffer_length);
 }
+- (double)__EXT_NATIVE__eos_playerdatastorage_file_transfer_request_cancel_request:(char*)filename
+{
+    return __EXT_NATIVE__eos_playerdatastorage_file_transfer_request_cancel_request(filename);
+}
 - (double)__EXT_NATIVE__eos_playerdatastorage_delete_cache:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_playerdatastorage_delete_cache(__arg_buffer, __arg_buffer_length);
@@ -1335,6 +1347,10 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 - (double)__EXT_NATIVE__eos_titlestorage_read_file:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_titlestorage_read_file(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_titlestorage_file_transfer_request_cancel_request:(char*)filename
+{
+    return __EXT_NATIVE__eos_titlestorage_file_transfer_request_cancel_request(filename);
 }
 - (double)__EXT_NATIVE__eos_titlestorage_delete_cache:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
