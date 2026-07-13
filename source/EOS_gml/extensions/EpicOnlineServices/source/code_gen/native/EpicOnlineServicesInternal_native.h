@@ -1013,11 +1013,11 @@ namespace gm_structs
     struct EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo;
     struct EpicCustomInvitesRequestToJoinAcceptedCallbackInfo;
     struct EpicCustomInvitesRequestToJoinRejectedCallbackInfo;
-    struct EpicRTCJoinRoomCallbackInfo;
+    struct EpicRTCOption;
+    struct EpicRTCParticipantMetadata;
     struct EpicRTCLeaveRoomCallbackInfo;
     struct EpicRTCBlockParticipantCallbackInfo;
     struct EpicRTCDisconnectedCallbackInfo;
-    struct EpicRTCParticipantStatusChangedCallbackInfo;
     struct EpicRTCRoomStatisticsUpdatedInfo;
     struct EpicRTCAudioParticipantUpdatedCallbackInfo;
     struct EpicRTCAudioDevicesChangedCallbackInfo;
@@ -1034,12 +1034,18 @@ namespace gm_structs
     struct EpicRTCAudioSetOutputDeviceSettingsCallbackInfo;
     struct EpicRTCAudioQueryInputDevicesCallbackInfo;
     struct EpicRTCAudioQueryOutputDevicesCallbackInfo;
+    struct EpicRTCAudioBeforeSendCallbackInfo;
+    struct EpicRTCAudioBeforeRenderCallbackInfo;
+    struct EpicRTCAudioRegisterPlatformUserCallbackInfo;
+    struct EpicRTCAudioUnregisterPlatformUserCallbackInfo;
     struct EpicRTCDataParticipantUpdatedCallbackInfo;
     struct EpicRTCDataReceivedCallbackInfo;
     struct EpicRTCDataUpdateSendingCallbackInfo;
     struct EpicRTCDataUpdateReceivingCallbackInfo;
     struct EpicAuthLoginCallbackInfo;
     struct EpicAuthLinkAccountCallbackInfo;
+    struct EpicRTCJoinRoomCallbackInfo;
+    struct EpicRTCParticipantStatusChangedCallbackInfo;
 
     struct EpicLoggingMessage
     {
@@ -1795,7 +1801,7 @@ namespace gm_structs
 
     struct EpicLobbySendLobbyNativeInviteRequestedCallbackInfo
     {
-        uint64_t ui_event_id;
+        std::uint64_t ui_event_id;
         std::string lobby_id;
         std::string local_user_id;
         std::string target_native_account_type;
@@ -2296,11 +2302,16 @@ namespace gm_structs
         std::string local_user_id;
     };
 
-    struct EpicRTCJoinRoomCallbackInfo
+    struct EpicRTCOption
     {
-        gm_enums::EpicResult result_code;
-        std::string local_user_id;
-        std::string room_name;
+        std::string key;
+        std::string value;
+    };
+
+    struct EpicRTCParticipantMetadata
+    {
+        std::string key;
+        std::string value;
     };
 
     struct EpicRTCLeaveRoomCallbackInfo
@@ -2324,15 +2335,6 @@ namespace gm_structs
         gm_enums::EpicResult result_code;
         std::string local_user_id;
         std::string room_name;
-    };
-
-    struct EpicRTCParticipantStatusChangedCallbackInfo
-    {
-        std::string local_user_id;
-        std::string room_name;
-        std::string participant_id;
-        gm_enums::EpicRTCParticipantStatus participant_status;
-        bool participant_in_blocklist;
     };
 
     struct EpicRTCRoomStatisticsUpdatedInfo
@@ -2448,6 +2450,28 @@ namespace gm_structs
         gm_enums::EpicResult result_code;
     };
 
+    struct EpicRTCAudioBeforeSendCallbackInfo
+    {
+        std::string local_user_id;
+        std::string room_name;
+    };
+
+    struct EpicRTCAudioBeforeRenderCallbackInfo
+    {
+        std::string local_user_id;
+        std::string room_name;
+    };
+
+    struct EpicRTCAudioRegisterPlatformUserCallbackInfo
+    {
+        gm_enums::EpicResult result_code;
+    };
+
+    struct EpicRTCAudioUnregisterPlatformUserCallbackInfo
+    {
+        gm_enums::EpicResult result_code;
+    };
+
     struct EpicRTCDataParticipantUpdatedCallbackInfo
     {
         std::string local_user_id;
@@ -2498,6 +2522,24 @@ namespace gm_structs
         std::string local_user_id;
         std::string selected_account_id;
         gm_structs::EpicAuthPinGrantInfo pin_grant_info;
+    };
+
+    struct EpicRTCJoinRoomCallbackInfo
+    {
+        gm_enums::EpicResult result_code;
+        std::string local_user_id;
+        std::string room_name;
+        std::vector<gm_structs::EpicRTCOption> room_options;
+    };
+
+    struct EpicRTCParticipantStatusChangedCallbackInfo
+    {
+        std::string local_user_id;
+        std::string room_name;
+        std::string participant_id;
+        gm_enums::EpicRTCParticipantStatus participant_status;
+        bool participant_in_blocklist;
+        std::vector<gm_structs::EpicRTCParticipantMetadata> participant_metadata;
     };
 
 }
@@ -4450,7 +4492,7 @@ namespace gm::wire::codec
     inline gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo readValue<gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo>(gm::byteio::BufferReader& _buf)
     {
         gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo obj;
-        obj.ui_event_id = gm::wire::codec::readValue<uint64_t>(_buf);
+        obj.ui_event_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
         obj.lobby_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.target_native_account_type = gm::wire::codec::readValue<std::string>(_buf);
@@ -5711,20 +5753,34 @@ namespace gm::wire::codec
     }
 
     template<>
-    inline void writeValue<gm_structs::EpicRTCJoinRoomCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCJoinRoomCallbackInfo& obj)
+    inline void writeValue<gm_structs::EpicRTCOption>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCOption& obj)
     {
-        gm::wire::codec::writeValue(_buf, obj.result_code);
-        gm::wire::codec::writeValue(_buf, obj.local_user_id);
-        gm::wire::codec::writeValue(_buf, obj.room_name);
+        gm::wire::codec::writeValue(_buf, obj.key);
+        gm::wire::codec::writeValue(_buf, obj.value);
     }
 
     template<>
-    inline gm_structs::EpicRTCJoinRoomCallbackInfo readValue<gm_structs::EpicRTCJoinRoomCallbackInfo>(gm::byteio::BufferReader& _buf)
+    inline gm_structs::EpicRTCOption readValue<gm_structs::EpicRTCOption>(gm::byteio::BufferReader& _buf)
     {
-        gm_structs::EpicRTCJoinRoomCallbackInfo obj;
-        obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
-        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
-        obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
+        gm_structs::EpicRTCOption obj;
+        obj.key = gm::wire::codec::readValue<std::string>(_buf);
+        obj.value = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicRTCParticipantMetadata>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCParticipantMetadata& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.key);
+        gm::wire::codec::writeValue(_buf, obj.value);
+    }
+
+    template<>
+    inline gm_structs::EpicRTCParticipantMetadata readValue<gm_structs::EpicRTCParticipantMetadata>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicRTCParticipantMetadata obj;
+        obj.key = gm::wire::codec::readValue<std::string>(_buf);
+        obj.value = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
 
@@ -5783,28 +5839,6 @@ namespace gm::wire::codec
         obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
-        return obj;
-    }
-
-    template<>
-    inline void writeValue<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCParticipantStatusChangedCallbackInfo& obj)
-    {
-        gm::wire::codec::writeValue(_buf, obj.local_user_id);
-        gm::wire::codec::writeValue(_buf, obj.room_name);
-        gm::wire::codec::writeValue(_buf, obj.participant_id);
-        gm::wire::codec::writeValue(_buf, obj.participant_status);
-        gm::wire::codec::writeValue(_buf, obj.participant_in_blocklist);
-    }
-
-    template<>
-    inline gm_structs::EpicRTCParticipantStatusChangedCallbackInfo readValue<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>(gm::byteio::BufferReader& _buf)
-    {
-        gm_structs::EpicRTCParticipantStatusChangedCallbackInfo obj;
-        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
-        obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
-        obj.participant_id = gm::wire::codec::readValue<std::string>(_buf);
-        obj.participant_status = gm::wire::codec::readValue<gm_enums::EpicRTCParticipantStatus>(_buf);
-        obj.participant_in_blocklist = gm::wire::codec::readValue<bool>(_buf);
         return obj;
     }
 
@@ -6099,6 +6133,66 @@ namespace gm::wire::codec
     }
 
     template<>
+    inline void writeValue<gm_structs::EpicRTCAudioBeforeSendCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCAudioBeforeSendCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.room_name);
+    }
+
+    template<>
+    inline gm_structs::EpicRTCAudioBeforeSendCallbackInfo readValue<gm_structs::EpicRTCAudioBeforeSendCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicRTCAudioBeforeSendCallbackInfo obj;
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicRTCAudioBeforeRenderCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCAudioBeforeRenderCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.room_name);
+    }
+
+    template<>
+    inline gm_structs::EpicRTCAudioBeforeRenderCallbackInfo readValue<gm_structs::EpicRTCAudioBeforeRenderCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicRTCAudioBeforeRenderCallbackInfo obj;
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicRTCAudioRegisterPlatformUserCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCAudioRegisterPlatformUserCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.result_code);
+    }
+
+    template<>
+    inline gm_structs::EpicRTCAudioRegisterPlatformUserCallbackInfo readValue<gm_structs::EpicRTCAudioRegisterPlatformUserCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicRTCAudioRegisterPlatformUserCallbackInfo obj;
+        obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicRTCAudioUnregisterPlatformUserCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCAudioUnregisterPlatformUserCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.result_code);
+    }
+
+    template<>
+    inline gm_structs::EpicRTCAudioUnregisterPlatformUserCallbackInfo readValue<gm_structs::EpicRTCAudioUnregisterPlatformUserCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicRTCAudioUnregisterPlatformUserCallbackInfo obj;
+        obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
+        return obj;
+    }
+
+    template<>
     inline void writeValue<gm_structs::EpicRTCDataParticipantUpdatedCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCDataParticipantUpdatedCallbackInfo& obj)
     {
         gm::wire::codec::writeValue(_buf, obj.local_user_id);
@@ -6223,6 +6317,50 @@ namespace gm::wire::codec
         obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.selected_account_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.pin_grant_info = gm::wire::codec::readValue<gm_structs::EpicAuthPinGrantInfo>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicRTCJoinRoomCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCJoinRoomCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.result_code);
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.room_name);
+        gm::wire::codec::writeValue(_buf, obj.room_options);
+    }
+
+    template<>
+    inline gm_structs::EpicRTCJoinRoomCallbackInfo readValue<gm_structs::EpicRTCJoinRoomCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicRTCJoinRoomCallbackInfo obj;
+        obj.result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(_buf);
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
+        obj.room_options = gm::wire::codec::readVector<gm_structs::EpicRTCOption>(_buf);
+        return obj;
+    }
+
+    template<>
+    inline void writeValue<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCParticipantStatusChangedCallbackInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.local_user_id);
+        gm::wire::codec::writeValue(_buf, obj.room_name);
+        gm::wire::codec::writeValue(_buf, obj.participant_id);
+        gm::wire::codec::writeValue(_buf, obj.participant_status);
+        gm::wire::codec::writeValue(_buf, obj.participant_in_blocklist);
+        gm::wire::codec::writeValue(_buf, obj.participant_metadata);
+    }
+
+    template<>
+    inline gm_structs::EpicRTCParticipantStatusChangedCallbackInfo readValue<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicRTCParticipantStatusChangedCallbackInfo obj;
+        obj.local_user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
+        obj.participant_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.participant_status = gm::wire::codec::readValue<gm_enums::EpicRTCParticipantStatus>(_buf);
+        obj.participant_in_blocklist = gm::wire::codec::readValue<bool>(_buf);
+        obj.participant_metadata = gm::wire::codec::readVector<gm_structs::EpicRTCParticipantMetadata>(_buf);
         return obj;
     }
 
@@ -7449,35 +7587,35 @@ namespace gm::wire::details
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCOption>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 174;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCLeaveRoomCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCParticipantMetadata>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 175;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCBlockParticipantCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCLeaveRoomCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 176;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCDisconnectedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCBlockParticipantCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 177;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCDisconnectedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 178;
@@ -7596,45 +7734,87 @@ namespace gm::wire::details
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCDataParticipantUpdatedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioBeforeSendCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 195;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCDataReceivedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioBeforeRenderCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 196;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCDataUpdateSendingCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioRegisterPlatformUserCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 197;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCDataUpdateReceivingCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCAudioUnregisterPlatformUserCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 198;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicAuthLoginCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCDataParticipantUpdatedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 199;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicAuthLinkAccountCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCDataReceivedCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 200;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCDataUpdateSendingCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 201;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCDataUpdateReceivingCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 202;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicAuthLoginCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 203;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicAuthLinkAccountCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 204;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 205;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 206;
     };
 
 }
@@ -8012,7 +8192,7 @@ std::uint64_t eos_custominvites_add_notify_request_to_join_accepted(const std::o
 void eos_custominvites_remove_notify_request_to_join_accepted(std::uint64_t notification_id);
 std::uint64_t eos_custominvites_add_notify_request_to_join_rejected(const std::optional<gm::wire::GMFunction>& callback);
 void eos_custominvites_remove_notify_request_to_join_rejected(std::uint64_t notification_id);
-void eos_rtc_join_room(std::string_view local_user_id, std::string_view room_name, std::string_view client_base_url, std::string_view participant_token, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_join_room(std::string_view local_user_id, std::string_view room_name, std::string_view client_base_url, std::string_view participant_token, bool manual_audio_input, bool manual_audio_output, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_leave_room(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_block_participant(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, bool blocked, const std::optional<gm::wire::GMFunction>& callback);
 bool eos_rtc_set_setting(std::string_view setting_name, std::string_view setting_value);
@@ -8044,6 +8224,13 @@ std::uint64_t eos_rtc_audio_add_notify_audio_input_state(std::string_view local_
 void eos_rtc_audio_remove_notify_audio_input_state(std::uint64_t notification_id);
 std::uint64_t eos_rtc_audio_add_notify_audio_output_state(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_remove_notify_audio_output_state(std::uint64_t notification_id);
+bool eos_rtc_audio_send_audio(std::string_view local_user_id, std::string_view room_name);
+std::uint64_t eos_rtc_audio_add_notify_audio_before_send(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_remove_notify_audio_before_send(std::uint64_t notification_id);
+std::uint64_t eos_rtc_audio_add_notify_audio_before_render(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_remove_notify_audio_before_render(std::uint64_t notification_id);
+void eos_rtc_audio_register_platform_user(std::string_view rtc_platform_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_rtc_audio_unregister_platform_user(std::string_view rtc_platform_user_id, const std::optional<gm::wire::GMFunction>& callback);
 gm_enums::EpicResult eos_rtc_data_send_data(std::string_view local_user_id, std::string_view room_name, gm::wire::GMBuffer data, std::uint32_t bytes);
 void eos_rtc_data_update_sending(std::string_view local_user_id, std::string_view room_name, bool data_enabled, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_data_update_receiving(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, bool data_enabled, const std::optional<gm::wire::GMFunction>& callback);

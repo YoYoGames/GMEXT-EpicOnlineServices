@@ -2804,6 +2804,8 @@
  * @param {String} room_name
  * @param {String} client_base_url
  * @param {String} participant_token
+ * @param {Bool} manual_audio_input
+ * @param {Bool} manual_audio_output
  * @param {Function} [callback]
  * @function_end
  */
@@ -3046,6 +3048,58 @@
 /**
  * @function_partial eos_rtc_audio_remove_notify_audio_output_state
  * @param {Real} notification_id
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_send_audio
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @returns {Bool}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_add_notify_audio_before_send
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @param {Function} [callback]
+ * @returns {Real}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_remove_notify_audio_before_send
+ * @param {Real} notification_id
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_add_notify_audio_before_render
+ * @param {String} local_user_id
+ * @param {String} room_name
+ * @param {Function} [callback]
+ * @returns {Real}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_remove_notify_audio_before_render
+ * @param {Real} notification_id
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_register_platform_user
+ * @param {String} rtc_platform_user_id
+ * @param {Function} [callback]
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_unregister_platform_user
+ * @param {String} rtc_platform_user_id
+ * @param {Function} [callback]
  * @function_end
  */
 
@@ -3969,6 +4023,7 @@
 
 /**
  * @struct_partial EpicLobbySendLobbyNativeInviteRequestedCallbackInfo
+ * @member {Real} ui_event_id
  * @member {String} lobby_id
  * @member {String} local_user_id
  * @member {String} target_native_account_type
@@ -4537,10 +4592,16 @@
  */
 
 /**
- * @struct_partial EpicRTCJoinRoomCallbackInfo
- * @member {Enum.EpicResult} result_code
- * @member {String} local_user_id
- * @member {String} room_name
+ * @struct_partial EpicRTCOption
+ * @member {String} key
+ * @member {String} value
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicRTCParticipantMetadata
+ * @member {String} key
+ * @member {String} value
  * @struct_end
  */
 
@@ -4567,16 +4628,6 @@
  * @member {Enum.EpicResult} result_code
  * @member {String} local_user_id
  * @member {String} room_name
- * @struct_end
- */
-
-/**
- * @struct_partial EpicRTCParticipantStatusChangedCallbackInfo
- * @member {String} local_user_id
- * @member {String} room_name
- * @member {String} participant_id
- * @member {Enum.EpicRTCParticipantStatus} participant_status
- * @member {Bool} participant_in_blocklist
  * @struct_end
  */
 
@@ -4710,6 +4761,32 @@
  */
 
 /**
+ * @struct_partial EpicRTCAudioBeforeSendCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicRTCAudioBeforeRenderCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicRTCAudioRegisterPlatformUserCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicRTCAudioUnregisterPlatformUserCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
  * @struct_partial EpicRTCDataParticipantUpdatedCallbackInfo
  * @member {String} local_user_id
  * @member {String} room_name
@@ -4764,6 +4841,26 @@
  * @member {String} local_user_id
  * @member {String} selected_account_id
  * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicRTCJoinRoomCallbackInfo
+ * @member {Enum.EpicResult} result_code
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @member {Array[Struct.EpicRTCOption]} room_options
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicRTCParticipantStatusChangedCallbackInfo
+ * @member {String} local_user_id
+ * @member {String} room_name
+ * @member {String} participant_id
+ * @member {Enum.EpicRTCParticipantStatus} participant_status
+ * @member {Bool} participant_in_blocklist
+ * @member {Array[Struct.EpicRTCParticipantMetadata]} participant_metadata
  * @struct_end
  */
 

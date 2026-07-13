@@ -2664,6 +2664,7 @@ function EpicLobbySendLobbyNativeInviteRequestedCallbackInfo() constructor
      */
     static __uid = 193408739;
 
+    self.ui_event_id = undefined;
     self.lobby_id = undefined;
     self.local_user_id = undefined;
     self.target_native_account_type = undefined;
@@ -3826,19 +3827,34 @@ function EpicCustomInvitesRequestToJoinRejectedCallbackInfo() constructor
 }
 
 /**
- * @returns {Struct.EpicRTCJoinRoomCallbackInfo}
+ * @returns {Struct.EpicRTCOption}
  */
-function EpicRTCJoinRoomCallbackInfo() constructor
+function EpicRTCOption() constructor
 {
     /**
      * Internally generated hash for quick validation
      * @ignore
      */
-    static __uid = 3078703615;
+    static __uid = 3205112450;
 
-    self.result_code = undefined;
-    self.local_user_id = undefined;
-    self.room_name = undefined;
+    self.key = undefined;
+    self.value = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicRTCParticipantMetadata}
+ */
+function EpicRTCParticipantMetadata() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 2057960445;
+
+    self.key = undefined;
+    self.value = undefined;
 
 }
 
@@ -3892,25 +3908,6 @@ function EpicRTCDisconnectedCallbackInfo() constructor
     self.result_code = undefined;
     self.local_user_id = undefined;
     self.room_name = undefined;
-
-}
-
-/**
- * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo}
- */
-function EpicRTCParticipantStatusChangedCallbackInfo() constructor
-{
-    /**
-     * Internally generated hash for quick validation
-     * @ignore
-     */
-    static __uid = 1418771849;
-
-    self.local_user_id = undefined;
-    self.room_name = undefined;
-    self.participant_id = undefined;
-    self.participant_status = undefined;
-    self.participant_in_blocklist = undefined;
 
 }
 
@@ -4188,6 +4185,68 @@ function EpicRTCAudioQueryOutputDevicesCallbackInfo() constructor
 }
 
 /**
+ * @returns {Struct.EpicRTCAudioBeforeSendCallbackInfo}
+ */
+function EpicRTCAudioBeforeSendCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 911010197;
+
+    self.local_user_id = undefined;
+    self.room_name = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicRTCAudioBeforeRenderCallbackInfo}
+ */
+function EpicRTCAudioBeforeRenderCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 2235990691;
+
+    self.local_user_id = undefined;
+    self.room_name = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicRTCAudioRegisterPlatformUserCallbackInfo}
+ */
+function EpicRTCAudioRegisterPlatformUserCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 1714651605;
+
+    self.result_code = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicRTCAudioUnregisterPlatformUserCallbackInfo}
+ */
+function EpicRTCAudioUnregisterPlatformUserCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 1098299262;
+
+    self.result_code = undefined;
+
+}
+
+/**
  * @returns {Struct.EpicRTCDataParticipantUpdatedCallbackInfo}
  */
 function EpicRTCDataParticipantUpdatedCallbackInfo() constructor
@@ -4296,6 +4355,44 @@ function EpicAuthLinkAccountCallbackInfo() constructor
     self.local_user_id = undefined;
     self.selected_account_id = undefined;
     self.pin_grant_info = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicRTCJoinRoomCallbackInfo}
+ */
+function EpicRTCJoinRoomCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 3078703615;
+
+    self.result_code = undefined;
+    self.local_user_id = undefined;
+    self.room_name = undefined;
+    self.room_options = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo}
+ */
+function EpicRTCParticipantStatusChangedCallbackInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 1418771849;
+
+    self.local_user_id = undefined;
+    self.room_name = undefined;
+    self.participant_id = undefined;
+    self.participant_status = undefined;
+    self.participant_in_blocklist = undefined;
+    self.participant_metadata = undefined;
 
 }
 
@@ -10822,6 +10919,10 @@ function __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_encode(_inst, _bu
     buffer_seek(_buffer, buffer_seek_start, _offset);
     with (_inst)
     {
+        // field: ui_event_id, type: UInt64
+        if (!is_numeric(self.ui_event_id)) show_error($"{_where} :: self.ui_event_id expected number", true);
+        buffer_write(_buffer, buffer_u64, self.ui_event_id);
+
         // field: lobby_id, type: String
         if (!is_string(self.lobby_id)) show_error($"{_where} :: self.lobby_id expected string", true);
         buffer_write(_buffer, buffer_u32, string_byte_length(self.lobby_id));
@@ -10859,6 +10960,9 @@ function __EpicLobbySendLobbyNativeInviteRequestedCallbackInfo_decode(_buffer, _
     _inst = new EpicLobbySendLobbyNativeInviteRequestedCallbackInfo();
     with (_inst)
     {
+        // field: ui_event_id, type: UInt64
+        self.ui_event_id = buffer_read(_buffer, buffer_u64);
+
         // field: lobby_id, type: String
         buffer_read(_buffer, buffer_u32);
         self.lobby_id = buffer_read(_buffer, buffer_string);
@@ -15126,60 +15230,105 @@ function __EpicCustomInvitesRequestToJoinRejectedCallbackInfo_decode(_buffer, _o
 }
 
 /**
- * @func __EpicRTCJoinRoomCallbackInfo_encode(_inst, _buffer, _offset, _where)
- * @param {Struct.EpicRTCJoinRoomCallbackInfo} _inst
+ * @func __EpicRTCOption_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCOption} _inst
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
  * @ignore
  */
-function __EpicRTCJoinRoomCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+function __EpicRTCOption_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
     buffer_seek(_buffer, buffer_seek_start, _offset);
     with (_inst)
     {
-        // field: result_code, type: enum EpicResult
+        // field: key, type: String
+        if (!is_string(self.key)) show_error($"{_where} :: self.key expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.key));
+        buffer_write(_buffer, buffer_string, self.key);
 
-        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
-        buffer_write(_buffer, buffer_u64, self.result_code);
-
-        // field: local_user_id, type: String
-        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
-        buffer_write(_buffer, buffer_string, self.local_user_id);
-
-        // field: room_name, type: String
-        if (!is_string(self.room_name)) show_error($"{_where} :: self.room_name expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
-        buffer_write(_buffer, buffer_string, self.room_name);
+        // field: value, type: String
+        if (!is_string(self.value)) show_error($"{_where} :: self.value expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.value));
+        buffer_write(_buffer, buffer_string, self.value);
 
     }
 }
 
 /**
- * @func __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
+ * @func __EpicRTCOption_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicRTCJoinRoomCallbackInfo}
+ * @returns {Struct.EpicRTCOption}
  * @ignore
  */
-function __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
+function __EpicRTCOption_decode(_buffer, _offset)
 {
     buffer_seek(_buffer, buffer_seek_start, _offset);
 
-    _inst = new EpicRTCJoinRoomCallbackInfo();
+    _inst = new EpicRTCOption();
     with (_inst)
     {
-        // field: result_code, type: enum EpicResult
-        self.result_code = buffer_read(_buffer, buffer_u64);
-
-        // field: local_user_id, type: String
+        // field: key, type: String
         buffer_read(_buffer, buffer_u32);
-        self.local_user_id = buffer_read(_buffer, buffer_string);
+        self.key = buffer_read(_buffer, buffer_string);
 
-        // field: room_name, type: String
+        // field: value, type: String
         buffer_read(_buffer, buffer_u32);
-        self.room_name = buffer_read(_buffer, buffer_string);
+        self.value = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicRTCParticipantMetadata_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCParticipantMetadata} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicRTCParticipantMetadata_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: key, type: String
+        if (!is_string(self.key)) show_error($"{_where} :: self.key expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.key));
+        buffer_write(_buffer, buffer_string, self.key);
+
+        // field: value, type: String
+        if (!is_string(self.value)) show_error($"{_where} :: self.value expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.value));
+        buffer_write(_buffer, buffer_string, self.value);
+
+    }
+}
+
+/**
+ * @func __EpicRTCParticipantMetadata_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicRTCParticipantMetadata}
+ * @ignore
+ */
+function __EpicRTCParticipantMetadata_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicRTCParticipantMetadata();
+    with (_inst)
+    {
+        // field: key, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.key = buffer_read(_buffer, buffer_string);
+
+        // field: value, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.value = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -15379,83 +15528,6 @@ function __EpicRTCDisconnectedCallbackInfo_decode(_buffer, _offset)
         // field: room_name, type: String
         buffer_read(_buffer, buffer_u32);
         self.room_name = buffer_read(_buffer, buffer_string);
-
-    }
-
-    return _inst;
-}
-
-/**
- * @func __EpicRTCParticipantStatusChangedCallbackInfo_encode(_inst, _buffer, _offset, _where)
- * @param {Struct.EpicRTCParticipantStatusChangedCallbackInfo} _inst
- * @param {Id.Buffer} _buffer
- * @param {Real} _offset
- * @param {String} _where
- * @ignore
- */
-function __EpicRTCParticipantStatusChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
-{
-    buffer_seek(_buffer, buffer_seek_start, _offset);
-    with (_inst)
-    {
-        // field: local_user_id, type: String
-        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
-        buffer_write(_buffer, buffer_string, self.local_user_id);
-
-        // field: room_name, type: String
-        if (!is_string(self.room_name)) show_error($"{_where} :: self.room_name expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
-        buffer_write(_buffer, buffer_string, self.room_name);
-
-        // field: participant_id, type: String
-        if (!is_string(self.participant_id)) show_error($"{_where} :: self.participant_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.participant_id));
-        buffer_write(_buffer, buffer_string, self.participant_id);
-
-        // field: participant_status, type: enum EpicRTCParticipantStatus
-
-        if (!is_numeric(self.participant_status)) show_error($"{_where} :: self.participant_status expected number", true);
-        buffer_write(_buffer, buffer_u64, self.participant_status);
-
-        // field: participant_in_blocklist, type: Bool
-        if (!is_bool(self.participant_in_blocklist)) show_error($"{_where} :: self.participant_in_blocklist expected bool", true);
-        buffer_write(_buffer, buffer_bool, self.participant_in_blocklist);
-
-    }
-}
-
-/**
- * @func __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
- * @param {Id.Buffer} _buffer
- * @param {Real} _offset
- * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo}
- * @ignore
- */
-function __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
-{
-    buffer_seek(_buffer, buffer_seek_start, _offset);
-
-    _inst = new EpicRTCParticipantStatusChangedCallbackInfo();
-    with (_inst)
-    {
-        // field: local_user_id, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.local_user_id = buffer_read(_buffer, buffer_string);
-
-        // field: room_name, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.room_name = buffer_read(_buffer, buffer_string);
-
-        // field: participant_id, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.participant_id = buffer_read(_buffer, buffer_string);
-
-        // field: participant_status, type: enum EpicRTCParticipantStatus
-        self.participant_status = buffer_read(_buffer, buffer_u64);
-
-        // field: participant_in_blocklist, type: Bool
-        self.participant_in_blocklist = buffer_read(_buffer, buffer_bool);
 
     }
 
@@ -16435,6 +16507,198 @@ function __EpicRTCAudioQueryOutputDevicesCallbackInfo_decode(_buffer, _offset)
 }
 
 /**
+ * @func __EpicRTCAudioBeforeSendCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCAudioBeforeSendCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicRTCAudioBeforeSendCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: room_name, type: String
+        if (!is_string(self.room_name)) show_error($"{_where} :: self.room_name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
+        buffer_write(_buffer, buffer_string, self.room_name);
+
+    }
+}
+
+/**
+ * @func __EpicRTCAudioBeforeSendCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicRTCAudioBeforeSendCallbackInfo}
+ * @ignore
+ */
+function __EpicRTCAudioBeforeSendCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicRTCAudioBeforeSendCallbackInfo();
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: room_name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.room_name = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicRTCAudioBeforeRenderCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCAudioBeforeRenderCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicRTCAudioBeforeRenderCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: room_name, type: String
+        if (!is_string(self.room_name)) show_error($"{_where} :: self.room_name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
+        buffer_write(_buffer, buffer_string, self.room_name);
+
+    }
+}
+
+/**
+ * @func __EpicRTCAudioBeforeRenderCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicRTCAudioBeforeRenderCallbackInfo}
+ * @ignore
+ */
+function __EpicRTCAudioBeforeRenderCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicRTCAudioBeforeRenderCallbackInfo();
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: room_name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.room_name = buffer_read(_buffer, buffer_string);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicRTCAudioRegisterPlatformUserCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCAudioRegisterPlatformUserCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicRTCAudioRegisterPlatformUserCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+
+        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
+        buffer_write(_buffer, buffer_u64, self.result_code);
+
+    }
+}
+
+/**
+ * @func __EpicRTCAudioRegisterPlatformUserCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicRTCAudioRegisterPlatformUserCallbackInfo}
+ * @ignore
+ */
+function __EpicRTCAudioRegisterPlatformUserCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicRTCAudioRegisterPlatformUserCallbackInfo();
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+        self.result_code = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicRTCAudioUnregisterPlatformUserCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCAudioUnregisterPlatformUserCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicRTCAudioUnregisterPlatformUserCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+
+        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
+        buffer_write(_buffer, buffer_u64, self.result_code);
+
+    }
+}
+
+/**
+ * @func __EpicRTCAudioUnregisterPlatformUserCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicRTCAudioUnregisterPlatformUserCallbackInfo}
+ * @ignore
+ */
+function __EpicRTCAudioUnregisterPlatformUserCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicRTCAudioUnregisterPlatformUserCallbackInfo();
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+        self.result_code = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
  * @func __EpicRTCDataParticipantUpdatedCallbackInfo_encode(_inst, _buffer, _offset, _where)
  * @param {Struct.EpicRTCDataParticipantUpdatedCallbackInfo} _inst
  * @param {Id.Buffer} _buffer
@@ -16871,6 +17135,180 @@ function __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
 
         // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
         self.pin_grant_info = __EpicAuthPinGrantInfo_decode(_buffer, buffer_tell(_buffer));
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicRTCJoinRoomCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCJoinRoomCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicRTCJoinRoomCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+
+        if (!is_numeric(self.result_code)) show_error($"{_where} :: self.result_code expected number", true);
+        buffer_write(_buffer, buffer_u64, self.result_code);
+
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: room_name, type: String
+        if (!is_string(self.room_name)) show_error($"{_where} :: self.room_name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
+        buffer_write(_buffer, buffer_string, self.room_name);
+
+        // field: room_options, type: struct EpicRTCOption[]
+        if (!is_array(self.room_options)) show_error($"{_where} :: self.room_options expected array", true);
+        var _length = array_length(self.room_options);
+        buffer_write(_buffer, buffer_u32, _length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            if (self.room_options[_i].__uid != 3205112450) show_error($"{_where} :: self.room_options[_i] expected EpicRTCOption", true);
+            __EpicRTCOption_encode(self.room_options[_i], _buffer, buffer_tell(_buffer), _where);
+        }
+
+    }
+}
+
+/**
+ * @func __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicRTCJoinRoomCallbackInfo}
+ * @ignore
+ */
+function __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicRTCJoinRoomCallbackInfo();
+    with (_inst)
+    {
+        // field: result_code, type: enum EpicResult
+        self.result_code = buffer_read(_buffer, buffer_u64);
+
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: room_name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.room_name = buffer_read(_buffer, buffer_string);
+
+        // field: room_options, type: struct EpicRTCOption[]
+        var _length = buffer_read(_buffer, buffer_u32);
+        self.room_options = array_create(_length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            self.room_options[_i] = __EpicRTCOption_decode(_buffer, buffer_tell(_buffer));
+        }
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicRTCParticipantStatusChangedCallbackInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicRTCParticipantStatusChangedCallbackInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicRTCParticipantStatusChangedCallbackInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        if (!is_string(self.local_user_id)) show_error($"{_where} :: self.local_user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.local_user_id));
+        buffer_write(_buffer, buffer_string, self.local_user_id);
+
+        // field: room_name, type: String
+        if (!is_string(self.room_name)) show_error($"{_where} :: self.room_name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
+        buffer_write(_buffer, buffer_string, self.room_name);
+
+        // field: participant_id, type: String
+        if (!is_string(self.participant_id)) show_error($"{_where} :: self.participant_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.participant_id));
+        buffer_write(_buffer, buffer_string, self.participant_id);
+
+        // field: participant_status, type: enum EpicRTCParticipantStatus
+
+        if (!is_numeric(self.participant_status)) show_error($"{_where} :: self.participant_status expected number", true);
+        buffer_write(_buffer, buffer_u64, self.participant_status);
+
+        // field: participant_in_blocklist, type: Bool
+        if (!is_bool(self.participant_in_blocklist)) show_error($"{_where} :: self.participant_in_blocklist expected bool", true);
+        buffer_write(_buffer, buffer_bool, self.participant_in_blocklist);
+
+        // field: participant_metadata, type: struct EpicRTCParticipantMetadata[]
+        if (!is_array(self.participant_metadata)) show_error($"{_where} :: self.participant_metadata expected array", true);
+        var _length = array_length(self.participant_metadata);
+        buffer_write(_buffer, buffer_u32, _length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            if (self.participant_metadata[_i].__uid != 2057960445) show_error($"{_where} :: self.participant_metadata[_i] expected EpicRTCParticipantMetadata", true);
+            __EpicRTCParticipantMetadata_encode(self.participant_metadata[_i], _buffer, buffer_tell(_buffer), _where);
+        }
+
+    }
+}
+
+/**
+ * @func __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicRTCParticipantStatusChangedCallbackInfo}
+ * @ignore
+ */
+function __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicRTCParticipantStatusChangedCallbackInfo();
+    with (_inst)
+    {
+        // field: local_user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.local_user_id = buffer_read(_buffer, buffer_string);
+
+        // field: room_name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.room_name = buffer_read(_buffer, buffer_string);
+
+        // field: participant_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.participant_id = buffer_read(_buffer, buffer_string);
+
+        // field: participant_status, type: enum EpicRTCParticipantStatus
+        self.participant_status = buffer_read(_buffer, buffer_u64);
+
+        // field: participant_in_blocklist, type: Bool
+        self.participant_in_blocklist = buffer_read(_buffer, buffer_bool);
+
+        // field: participant_metadata, type: struct EpicRTCParticipantMetadata[]
+        var _length = buffer_read(_buffer, buffer_u32);
+        self.participant_metadata = array_create(_length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            self.participant_metadata[_i] = __EpicRTCParticipantMetadata_decode(_buffer, buffer_tell(_buffer));
+        }
 
     }
 
@@ -27701,9 +28139,11 @@ function eos_custominvites_remove_notify_request_to_join_rejected(_notification_
  * @param {String} _room_name
  * @param {String} _client_base_url
  * @param {String} _participant_token
+ * @param {Bool} _manual_audio_input
+ * @param {Bool} _manual_audio_output
  * @param {Function} _callback
  */
-function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _participant_token, _callback)
+function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _participant_token, _manual_audio_input, _manual_audio_output, _callback)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -27731,6 +28171,14 @@ function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _partic
     if (!is_string(_participant_token)) show_error($"{_GMFUNCTION_} :: _participant_token expected string", true);
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_participant_token));
     buffer_write(__args_buffer, buffer_string, _participant_token);
+
+    // param: _manual_audio_input, type: Bool
+    if (!is_bool(_manual_audio_input)) show_error($"{_GMFUNCTION_} :: _manual_audio_input expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _manual_audio_input);
+
+    // param: _manual_audio_output, type: Bool
+    if (!is_bool(_manual_audio_output)) show_error($"{_GMFUNCTION_} :: _manual_audio_output expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _manual_audio_output);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -28780,6 +29228,213 @@ function eos_rtc_audio_remove_notify_audio_output_state(_notification_id)
     return _return_value;
 }
 
+// Skipping function eos_rtc_audio_send_audio (no wrapper is required)
+
+
+/**
+ * @param {String} _local_user_id
+ * @param {String} _room_name
+ * @param {Function} _callback
+ * @returns {Real}
+ */
+function eos_rtc_audio_add_notify_audio_before_send(_local_user_id, _room_name, _callback)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    static __dispatcher = __EpicOnlineServices_get_dispatcher();
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _local_user_id, type: String
+    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
+    buffer_write(__args_buffer, buffer_string, _local_user_id);
+
+    // param: _room_name, type: String
+    if (!is_string(_room_name)) show_error($"{_GMFUNCTION_} :: _room_name expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
+    buffer_write(__args_buffer, buffer_string, _room_name);
+
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_rtc_audio_add_notify_audio_before_send(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _notification_id
+ */
+function eos_rtc_audio_remove_notify_audio_before_send(_notification_id)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _notification_id, type: UInt64
+    if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _notification_id);
+
+    var _return_value = __eos_rtc_audio_remove_notify_audio_before_send(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
+/**
+ * @param {String} _local_user_id
+ * @param {String} _room_name
+ * @param {Function} _callback
+ * @returns {Real}
+ */
+function eos_rtc_audio_add_notify_audio_before_render(_local_user_id, _room_name, _callback)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    static __dispatcher = __EpicOnlineServices_get_dispatcher();
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _local_user_id, type: String
+    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
+    buffer_write(__args_buffer, buffer_string, _local_user_id);
+
+    // param: _room_name, type: String
+    if (!is_string(_room_name)) show_error($"{_GMFUNCTION_} :: _room_name expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
+    buffer_write(__args_buffer, buffer_string, _room_name);
+
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_rtc_audio_add_notify_audio_before_render(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _notification_id
+ */
+function eos_rtc_audio_remove_notify_audio_before_render(_notification_id)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _notification_id, type: UInt64
+    if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _notification_id);
+
+    var _return_value = __eos_rtc_audio_remove_notify_audio_before_render(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
+/**
+ * @param {String} _rtc_platform_user_id
+ * @param {Function} _callback
+ */
+function eos_rtc_audio_register_platform_user(_rtc_platform_user_id, _callback)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    static __dispatcher = __EpicOnlineServices_get_dispatcher();
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _rtc_platform_user_id, type: String
+    if (!is_string(_rtc_platform_user_id)) show_error($"{_GMFUNCTION_} :: _rtc_platform_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_rtc_platform_user_id));
+    buffer_write(__args_buffer, buffer_string, _rtc_platform_user_id);
+
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    var _return_value = __eos_rtc_audio_register_platform_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
+/**
+ * @param {String} _rtc_platform_user_id
+ * @param {Function} _callback
+ */
+function eos_rtc_audio_unregister_platform_user(_rtc_platform_user_id, _callback)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    static __dispatcher = __EpicOnlineServices_get_dispatcher();
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _rtc_platform_user_id, type: String
+    if (!is_string(_rtc_platform_user_id)) show_error($"{_GMFUNCTION_} :: _rtc_platform_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_rtc_platform_user_id));
+    buffer_write(__args_buffer, buffer_string, _rtc_platform_user_id);
+
+    // param: _callback, type: optional<Function>
+    if (is_undefined(_callback))
+    {
+        buffer_write(__args_buffer, buffer_bool, false);
+    }
+    else
+    {
+        buffer_write(__args_buffer, buffer_bool, true);
+        if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        buffer_write(__args_buffer, buffer_u64, _callback_handle);
+    }
+
+    var _return_value = __eos_rtc_audio_unregister_platform_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
+
 /**
  * @param {String} _local_user_id
  * @param {String} _room_name
@@ -29231,11 +29886,11 @@ function __EpicOnlineServices_get_decoders()
         __EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo_decode,
         __EpicCustomInvitesRequestToJoinAcceptedCallbackInfo_decode,
         __EpicCustomInvitesRequestToJoinRejectedCallbackInfo_decode,
-        __EpicRTCJoinRoomCallbackInfo_decode,
+        __EpicRTCOption_decode,
+        __EpicRTCParticipantMetadata_decode,
         __EpicRTCLeaveRoomCallbackInfo_decode,
         __EpicRTCBlockParticipantCallbackInfo_decode,
         __EpicRTCDisconnectedCallbackInfo_decode,
-        __EpicRTCParticipantStatusChangedCallbackInfo_decode,
         __EpicRTCRoomStatisticsUpdatedInfo_decode,
         __EpicRTCAudioParticipantUpdatedCallbackInfo_decode,
         __EpicRTCAudioDevicesChangedCallbackInfo_decode,
@@ -29252,12 +29907,18 @@ function __EpicOnlineServices_get_decoders()
         __EpicRTCAudioSetOutputDeviceSettingsCallbackInfo_decode,
         __EpicRTCAudioQueryInputDevicesCallbackInfo_decode,
         __EpicRTCAudioQueryOutputDevicesCallbackInfo_decode,
+        __EpicRTCAudioBeforeSendCallbackInfo_decode,
+        __EpicRTCAudioBeforeRenderCallbackInfo_decode,
+        __EpicRTCAudioRegisterPlatformUserCallbackInfo_decode,
+        __EpicRTCAudioUnregisterPlatformUserCallbackInfo_decode,
         __EpicRTCDataParticipantUpdatedCallbackInfo_decode,
         __EpicRTCDataReceivedCallbackInfo_decode,
         __EpicRTCDataUpdateSendingCallbackInfo_decode,
         __EpicRTCDataUpdateReceivingCallbackInfo_decode,
         __EpicAuthLoginCallbackInfo_decode,
-        __EpicAuthLinkAccountCallbackInfo_decode
+        __EpicAuthLinkAccountCallbackInfo_decode,
+        __EpicRTCJoinRoomCallbackInfo_decode,
+        __EpicRTCParticipantStatusChangedCallbackInfo_decode
     ];
     return __decoders;
 }

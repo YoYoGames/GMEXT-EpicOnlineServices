@@ -911,10 +911,10 @@ function eos_ui_show_native_profile(local_user_id: string, target_user_id: strin
 /// IMPORTANT: When you receive a callback with a ui_event_id (such as JoinGameAccepted, SendNativeInviteRequested),
 /// you MUST call this function to acknowledge the event, otherwise the social overlay UI will hang.
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): EpicResult;
+function eos_ui_acknowledge_event_id([type_hint=`uint64`] ui_event_id: gmval): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_ui_set_display_preference([type_hint=`EpicUINotificationLocation`] notification_location: gmval): EpicResult;
+function eos_ui_set_display_preference([type_hint=`EpicUINotificationLocation`] notification_location: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_ui_report_input_state(button_down: bool, button_up: bool, button_left: bool, button_right: bool, button_accept: bool, button_cancel: bool): unit;
@@ -4186,6 +4186,26 @@ group
 // ============================================================
 
 [global]
+class `[[EpicRTCOption]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCParticipantMetadata]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+}
+
+[global]
 class `[[EpicRTCJoinRoomCallbackInfo]]` prototype Object
 {
     [field, type_hint=`EpicResult`]
@@ -4196,6 +4216,9 @@ class `[[EpicRTCJoinRoomCallbackInfo]]` prototype Object
 
     [field]
     property room_name : string { get; set; }
+
+    [field, type_hint=`EpicRTCOption[]`]
+    property room_options : gmval { get; set; }
 }
 
 [global]
@@ -4260,6 +4283,9 @@ class `[[EpicRTCParticipantStatusChangedCallbackInfo]]` prototype Object
 
     [field]
     property participant_in_blocklist : bool { get; set; }
+
+    [field, type_hint=`EpicRTCParticipantMetadata[]`]
+    property participant_metadata : gmval { get; set; }
 }
 
 [global]
@@ -4473,8 +4499,42 @@ class `[[EpicRTCAudioQueryOutputDevicesCallbackInfo]]` prototype Object
     property result_code : gmval { get; set; }
 }
 
+[global]
+class `[[EpicRTCAudioBeforeSendCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioBeforeRenderCallbackInfo]]` prototype Object
+{
+    [field]
+    property local_user_id : string { get; set; }
+
+    [field]
+    property room_name : string { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioRegisterPlatformUserCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
+[global]
+class `[[EpicRTCAudioUnregisterPlatformUserCallbackInfo]]` prototype Object
+{
+    [field, type_hint=`EpicResult`]
+    property result_code : gmval { get; set; }
+}
+
 [global, bind = typed_gml]
-function eos_rtc_join_room(local_user_id: string, room_name: string, client_base_url: string, participant_token: string, [type_hint=`func?`] callback: gmval): unit;
+function eos_rtc_join_room(local_user_id: string, room_name: string, client_base_url: string, participant_token: string, manual_audio_input: bool, manual_audio_output: bool, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_rtc_leave_room(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): unit;
@@ -4570,6 +4630,27 @@ function eos_rtc_audio_add_notify_audio_output_state(local_user_id: string, room
 
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_output_state([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_send_audio(local_user_id: string, room_name: string): bool;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_audio_add_notify_audio_before_send(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_remove_notify_audio_before_send([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml, type_hint=`uint64`]
+function eos_rtc_audio_add_notify_audio_before_render(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_remove_notify_audio_before_render([type_hint=`uint64`] notification_id: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_register_platform_user(rtc_platform_user_id: string, [type_hint=`func?`] callback: gmval): unit;
+
+[global, bind = typed_gml]
+function eos_rtc_audio_unregister_platform_user(rtc_platform_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 // ============================================================
 // EOS RTC Data — binary data channel (peer-to-peer messages alongside audio)

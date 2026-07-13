@@ -424,6 +424,13 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_rtc_audio_remove_notify_audio_input_state(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_add_notify_audio_output_state(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_remove_notify_audio_output_state(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_send_audio(String local_user_id, String room_name);
+    public static native double __EXT_JNI__eos_rtc_audio_add_notify_audio_before_send(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_remove_notify_audio_before_send(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_add_notify_audio_before_render(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_remove_notify_audio_before_render(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_register_platform_user(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_unregister_platform_user(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_send_data(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_update_sending(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_update_receiving(ByteBuffer __arg_buffer, double __arg_buffer_length);

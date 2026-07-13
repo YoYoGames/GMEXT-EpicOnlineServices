@@ -64,6 +64,8 @@ static GMFunction g_cb_rtc_audio_participant_updated;
 static GMFunction g_cb_rtc_audio_devices_changed;
 static GMFunction g_cb_rtc_audio_input_state;
 static GMFunction g_cb_rtc_audio_output_state;
+static GMFunction g_cb_rtc_audio_before_send;
+static GMFunction g_cb_rtc_audio_before_render;
 
 // ============================================================
 // RTC core notify callbacks
@@ -90,6 +92,16 @@ static void EOS_CALL eos_rtc_participant_status_changed_callback(
     out.participant_id         = eos_product_user_id_to_string_internal(data->ParticipantId);
     out.participant_status     = (gm_enums::EpicRTCParticipantStatus)data->ParticipantStatus;
     out.participant_in_blocklist = (bool)data->bParticipantInBlocklist;
+
+    std::vector<gm_structs::EpicRTCParticipantMetadata> participant_metadata;
+    for (uint32_t i = 0; i < data->ParticipantMetadataCount; ++i) {
+        gm_structs::EpicRTCParticipantMetadata meta{};
+        meta.key   = data->ParticipantMetadata[i].Key ? std::string(data->ParticipantMetadata[i].Key) : std::string();
+        meta.value = data->ParticipantMetadata[i].Value ? std::string(data->ParticipantMetadata[i].Value) : std::string();
+        participant_metadata.push_back(meta);
+    }
+    out.participant_metadata = participant_metadata;
+
     g_cb_rtc_participant_status_changed.call(out);
 }
 
@@ -118,6 +130,16 @@ static void EOS_CALL eos_rtc_join_room_callback(
     out.result_code   = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
+
+    std::vector<gm_structs::EpicRTCOption> room_options;
+    for (uint32_t i = 0; i < data->RoomOptionsCount; ++i) {
+        gm_structs::EpicRTCOption opt{};
+        opt.key   = data->RoomOptions[i].Key ? std::string(data->RoomOptions[i].Key) : std::string();
+        opt.value = data->RoomOptions[i].Value ? std::string(data->RoomOptions[i].Value) : std::string();
+        room_options.push_back(opt);
+    }
+    out.room_options = room_options;
+
     if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
@@ -198,6 +220,26 @@ static void EOS_CALL eos_rtc_audio_output_state_callback(
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
     out.status        = (gm_enums::EpicRTCAudioOutputStatus)data->Status;
     g_cb_rtc_audio_output_state.call(out);
+}
+
+static void EOS_CALL eos_rtc_audio_before_send_callback(
+    const EOS_RTCAudio_AudioBeforeSendCallbackInfo* data)
+{
+    if (!data || !g_cb_rtc_audio_before_send) return;
+    gm_structs::EpicRTCAudioBeforeSendCallbackInfo out{};
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
+    g_cb_rtc_audio_before_send.call(out);
+}
+
+static void EOS_CALL eos_rtc_audio_before_render_callback(
+    const EOS_RTCAudio_AudioBeforeRenderCallbackInfo* data)
+{
+    if (!data || !g_cb_rtc_audio_before_render) return;
+    gm_structs::EpicRTCAudioBeforeRenderCallbackInfo out{};
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
+    g_cb_rtc_audio_before_render.call(out);
 }
 
 // ============================================================
@@ -331,6 +373,30 @@ static void EOS_CALL eos_rtc_audio_set_output_device_settings_callback(
     delete ctx;
 }
 
+static void EOS_CALL eos_rtc_audio_register_platform_user_callback(
+    const EOS_RTCAudio_OnRegisterPlatformUserCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+    gm_structs::EpicRTCAudioRegisterPlatformUserCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    if (ctx->callback) ctx->callback.value().call(out);
+    delete ctx;
+}
+
+static void EOS_CALL eos_rtc_audio_unregister_platform_user_callback(
+    const EOS_RTCAudio_OnUnregisterPlatformUserCallbackInfo* data)
+{
+    if (!data) return;
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+    gm_structs::EpicRTCAudioUnregisterPlatformUserCallbackInfo out{};
+    out.result_code = (gm_enums::EpicResult)data->ResultCode;
+    if (ctx->callback) ctx->callback.value().call(out);
+    delete ctx;
+}
+
 // ============================================================
 // EOS RTC core — Functions
 // ============================================================
@@ -340,6 +406,8 @@ void eos_rtc_join_room(
     std::string_view room_name,
     std::string_view client_base_url,
     std::string_view participant_token,
+    bool manual_audio_input,
+    bool manual_audio_output,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     EOS_GUARD();
@@ -361,8 +429,8 @@ void eos_rtc_join_room(
     opts.ParticipantToken        = pt.c_str();
     opts.ParticipantId           = nullptr;
     opts.Flags                   = 0;
-    opts.bManualAudioInputEnabled  = EOS_FALSE;
-    opts.bManualAudioOutputEnabled = EOS_FALSE;
+    opts.bManualAudioInputEnabled  = manual_audio_input ? EOS_TRUE : EOS_FALSE;
+    opts.bManualAudioOutputEnabled = manual_audio_output ? EOS_TRUE : EOS_FALSE;
 
     EOS_RTC_JoinRoom(rtc, &opts, ctx, &eos_rtc_join_room_callback);
 }
@@ -828,6 +896,63 @@ void eos_rtc_audio_set_output_device_settings(
     EOS_RTCAudio_SetOutputDeviceSettings(audio, &opts, ctx, &eos_rtc_audio_set_output_device_settings_callback);
 }
 
+bool eos_rtc_audio_send_audio(
+    std::string_view local_user_id,
+    std::string_view room_name)
+{
+    EOS_GUARD_RET(false);
+
+    EOS_HRTCAudio audio = eos_rtc_audio_iface();
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return false; }
+
+    std::string rn(room_name);
+
+    EOS_RTCAudio_SendAudioOptions opts{};
+    opts.ApiVersion  = EOS_RTCAUDIO_SENDAUDIO_API_LATEST;
+    opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
+    opts.RoomName    = rn.c_str();
+
+    return EOS_RTCAudio_SendAudio(audio, &opts) == EOS_EResult::EOS_Success;
+}
+
+void eos_rtc_audio_register_platform_user(
+    std::string_view rtc_platform_user_id,
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    EOS_GUARD();
+
+    EOS_HRTCAudio audio = eos_rtc_audio_iface();
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
+
+    std::string uid(rtc_platform_user_id);
+    auto* ctx = new EOSAsyncCallbackContext{callback};
+
+    EOS_RTCAudio_RegisterPlatformUserOptions opts{};
+    opts.ApiVersion         = EOS_RTCAUDIO_REGISTERPLATFORMUSER_API_LATEST;
+    opts.PlatformUserId     = uid.c_str();
+
+    EOS_RTCAudio_RegisterPlatformUser(audio, &opts, ctx, &eos_rtc_audio_register_platform_user_callback);
+}
+
+void eos_rtc_audio_unregister_platform_user(
+    std::string_view rtc_platform_user_id,
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    EOS_GUARD();
+
+    EOS_HRTCAudio audio = eos_rtc_audio_iface();
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
+
+    std::string uid(rtc_platform_user_id);
+    auto* ctx = new EOSAsyncCallbackContext{callback};
+
+    EOS_RTCAudio_UnregisterPlatformUserOptions opts{};
+    opts.ApiVersion         = EOS_RTCAUDIO_UNREGISTERPLATFORMUSER_API_LATEST;
+    opts.PlatformUserId     = uid.c_str();
+
+    EOS_RTCAudio_UnregisterPlatformUser(audio, &opts, ctx, &eos_rtc_audio_unregister_platform_user_callback);
+}
+
 // ============================================================
 // EOS RTC Audio — Notify add/remove
 // ============================================================
@@ -940,4 +1065,62 @@ void eos_rtc_audio_remove_notify_audio_output_state(std::uint64_t notification_i
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
     EOS_RTCAudio_RemoveNotifyAudioOutputState(audio, (EOS_NotificationId)notification_id);
+}
+
+std::uint64_t eos_rtc_audio_add_notify_audio_before_send(
+    std::string_view local_user_id,
+    std::string_view room_name,
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    eos_clear_last_error();
+    EOS_HRTCAudio audio = eos_rtc_audio_iface();
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
+
+    std::string rn(room_name);
+    g_cb_rtc_audio_before_send = callback.value_or(GMFunction{});
+
+    EOS_RTCAudio_AddNotifyAudioBeforeSendOptions opts{};
+    opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORESEND_API_LATEST;
+    opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
+    opts.RoomName    = rn.c_str();
+
+    return (std::uint64_t)EOS_RTCAudio_AddNotifyAudioBeforeSend(
+        audio, &opts, nullptr, &eos_rtc_audio_before_send_callback);
+}
+
+void eos_rtc_audio_remove_notify_audio_before_send(std::uint64_t notification_id)
+{
+    eos_clear_last_error();
+    EOS_HRTCAudio audio = eos_rtc_audio_iface();
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
+    EOS_RTCAudio_RemoveNotifyAudioBeforeSend(audio, (EOS_NotificationId)notification_id);
+}
+
+std::uint64_t eos_rtc_audio_add_notify_audio_before_render(
+    std::string_view local_user_id,
+    std::string_view room_name,
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    eos_clear_last_error();
+    EOS_HRTCAudio audio = eos_rtc_audio_iface();
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
+
+    std::string rn(room_name);
+    g_cb_rtc_audio_before_render = callback.value_or(GMFunction{});
+
+    EOS_RTCAudio_AddNotifyAudioBeforeRenderOptions opts{};
+    opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORERENDER_API_LATEST;
+    opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
+    opts.RoomName    = rn.c_str();
+
+    return (std::uint64_t)EOS_RTCAudio_AddNotifyAudioBeforeRender(
+        audio, &opts, nullptr, &eos_rtc_audio_before_render_callback);
+}
+
+void eos_rtc_audio_remove_notify_audio_before_render(std::uint64_t notification_id)
+{
+    eos_clear_last_error();
+    EOS_HRTCAudio audio = eos_rtc_audio_iface();
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
+    EOS_RTCAudio_RemoveNotifyAudioBeforeRender(audio, (EOS_NotificationId)notification_id);
 }

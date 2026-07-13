@@ -6031,6 +6031,12 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_join_room(char* __arg_buffer, double __arg
     // field: participant_token, type: String
     std::string_view participant_token = gm::wire::codec::readValue<std::string_view>(__br);
 
+    // field: manual_audio_input, type: Bool
+    bool manual_audio_input = gm::wire::codec::readValue<bool>(__br);
+
+    // field: manual_audio_output, type: Bool
+    bool manual_audio_output = gm::wire::codec::readValue<bool>(__br);
+
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -6038,7 +6044,7 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_join_room(char* __arg_buffer, double __arg
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_rtc_join_room(local_user_id, room_name, client_base_url, participant_token, callback);
+    eos_rtc_join_room(local_user_id, room_name, client_base_url, participant_token, manual_audio_input, manual_audio_output, callback);
     return 0;
 }
 
@@ -6596,6 +6602,120 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state(cha
     std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
     eos_rtc_audio_remove_notify_audio_output_state(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_send_audio(char* local_user_id, char* room_name)
+{
+    auto&& __result = eos_rtc_audio_send_audio(local_user_id, room_name);
+    return static_cast<double>(__result);
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_send(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    auto&& __result = eos_rtc_audio_add_notify_audio_before_send(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_send(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_audio_remove_notify_audio_before_send(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    auto&& __result = eos_rtc_audio_add_notify_audio_before_render(local_user_id, room_name, callback);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: UInt64
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_render(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: notification_id, type: UInt64
+    std::uint64_t notification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    eos_rtc_audio_remove_notify_audio_before_render(notification_id);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_register_platform_user(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: rtc_platform_user_id, type: String
+    std::string_view rtc_platform_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    eos_rtc_audio_register_platform_user(rtc_platform_user_id, callback);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_unregister_platform_user(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: rtc_platform_user_id, type: String
+    std::string_view rtc_platform_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: callback, type: optional<Function>
+    std::optional<gm::wire::GMFunction> callback = std::nullopt;
+    if (gm::wire::codec::readValue<bool>(__br))
+    {
+        callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
+    }
+
+    eos_rtc_audio_unregister_platform_user(rtc_platform_user_id, callback);
     return 0;
 }
 

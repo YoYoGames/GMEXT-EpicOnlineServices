@@ -414,6 +414,13 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_input_state(char* _
 GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_input_state(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_output_state(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state(char* __arg_buffer, double __arg_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_send_audio(char* local_user_id, char* room_name);
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_send(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_send(char* __arg_buffer, double __arg_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_render(char* __arg_buffer, double __arg_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_register_platform_user(char* __arg_buffer, double __arg_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_unregister_platform_user(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_rtc_data_send_data(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_rtc_data_update_sending(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_rtc_data_update_receiving(char* __arg_buffer, double __arg_buffer_length);
