@@ -2,6 +2,8 @@
 #include "GMEpicGames.h"
 
 #include <eos_sdk.h>
+#include <eos_version.h>
+
 
 #if defined(__ANDROID__)
 #include <eos_Android.h>
@@ -117,9 +119,10 @@ gm_enums::EpicResult eos_api_shutdown()
     return (gm_enums::EpicResult)result;
 }
 
+
 std::string eos_api_get_version()
 {
-    return "";
+    return EOS_GetVersion();
 }
 
 std::string eos_api_result_to_string(gm_enums::EpicResult result)
