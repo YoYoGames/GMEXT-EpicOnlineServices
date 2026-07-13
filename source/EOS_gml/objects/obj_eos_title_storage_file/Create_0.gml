@@ -40,14 +40,14 @@ eos_titlestorage_read_file(
     {
 		show_debug_message($"eos_titlestorage_read_file: {_info}")
 		
-        // Progress — fires once per chunk while the transfer is running.
-        // _info is an EpicTitleStorageReadFileProgressCallbackInfo:
-        //   .local_user_id (string)
-        //   .filename (string)
-        //   .bytes_transferred (int64)
-        //   .total_file_size_bytes (int64)
+         //Progress — fires once per chunk while the transfer is running.
+         //_info is an EpicTitleStorageReadFileProgressCallbackInfo:
+           //.local_user_id (string)
+           //.filename (string)
+           //.bytes_transferred (int64)
+           //.total_file_size_bytes (int64)
 		
-        //if (_info.total_file_size_bytes > 0)
-        //    porcent = 100 * _info.bytes_transferred / _info.total_file_size_bytes
+        if (_info.total_file_size_bytes > 0)
+            porcent = 100 * _info.bytes_transferred / _info.total_file_size_bytes
     }
 )
