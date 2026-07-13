@@ -27,7 +27,7 @@ function request_update_members()
 
 	show_debug_message($"[members] request_update_members: count={_count} array={members_array}")
 
-	eos_connect_query_product_user_id_mappings(global.product_user_id, EpicExternalAccountType.Epic, members_array, function(_info)
+	eos_connect_query_product_user_id_mappings(global.product_user_id, members_array, function(_info)
 	{
 		if(_info.result_code != EpicResult.Success)
 		{
@@ -57,7 +57,7 @@ function request_update_members()
 }
 
 // Look up our own display name once at startup.
-eos_connect_query_product_user_id_mappings(global.product_user_id, EpicExternalAccountType.Epic, [global.product_user_id], function(_info)
+eos_connect_query_product_user_id_mappings(global.product_user_id, [global.product_user_id], function(_info)
 {
 	if(_info.result_code != EpicResult.Success) {return}
 	var _struct = eos_connect_copy_product_user_external_account_by_index(global.product_user_id, 0)

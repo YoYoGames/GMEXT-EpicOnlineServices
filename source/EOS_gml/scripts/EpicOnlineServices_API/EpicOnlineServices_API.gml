@@ -1762,6 +1762,22 @@ function EpicAchievementsUnlockedV2CallbackInfo() constructor
 }
 
 /**
+ * @returns {Struct.EpicLeaderboardStatQuery}
+ */
+function EpicLeaderboardStatQuery() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 3405040155;
+
+    self.stat_name = undefined;
+    self.aggregation = undefined;
+
+}
+
+/**
  * @returns {Struct.EpicLeaderboardsQueryDefinitionsCallbackInfo}
  */
 function EpicLeaderboardsQueryDefinitionsCallbackInfo() constructor
@@ -7754,6 +7770,58 @@ function __EpicAchievementsUnlockedV2CallbackInfo_decode(_buffer, _offset)
 
         // field: unlock_time, type: Int64
         self.unlock_time = buffer_read(_buffer, buffer_u64);
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicLeaderboardStatQuery_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicLeaderboardStatQuery} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicLeaderboardStatQuery_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: stat_name, type: String
+        if (!is_string(self.stat_name)) show_error($"{_where} :: self.stat_name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.stat_name));
+        buffer_write(_buffer, buffer_string, self.stat_name);
+
+        // field: aggregation, type: enum EpicLeaderboardAggregation
+
+        if (!is_numeric(self.aggregation)) show_error($"{_where} :: self.aggregation expected number", true);
+        buffer_write(_buffer, buffer_u64, self.aggregation);
+
+    }
+}
+
+/**
+ * @func __EpicLeaderboardStatQuery_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicLeaderboardStatQuery}
+ * @ignore
+ */
+function __EpicLeaderboardStatQuery_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicLeaderboardStatQuery();
+    with (_inst)
+    {
+        // field: stat_name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.stat_name = buffer_read(_buffer, buffer_string);
+
+        // field: aggregation, type: enum EpicLeaderboardAggregation
+        self.aggregation = buffer_read(_buffer, buffer_u64);
 
     }
 
@@ -20663,10 +20731,13 @@ function eos_leaderboards_query_ranks(_local_user_id, _leaderboard_id, _callback
 
 /**
  * @param {String} _local_user_id
- * @param {String} _stat_name
+ * @param {Array[String]} _target_user_ids
+ * @param {Array[Struct.EpicLeaderboardStatQuery]} _stat_queries
+ * @param {Real} _start_time
+ * @param {Real} _end_time
  * @param {Function} _callback
  */
-function eos_leaderboards_query_user_scores(_local_user_id, _stat_name, _callback)
+function eos_leaderboards_query_user_scores(_local_user_id, _target_user_ids, _stat_queries, _start_time, _end_time, _callback)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -20680,10 +20751,34 @@ function eos_leaderboards_query_user_scores(_local_user_id, _stat_name, _callbac
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
     buffer_write(__args_buffer, buffer_string, _local_user_id);
 
-    // param: _stat_name, type: String
-    if (!is_string(_stat_name)) show_error($"{_GMFUNCTION_} :: _stat_name expected string", true);
-    buffer_write(__args_buffer, buffer_u32, string_byte_length(_stat_name));
-    buffer_write(__args_buffer, buffer_string, _stat_name);
+    // param: _target_user_ids, type: String[]
+    if (!is_array(_target_user_ids)) show_error($"{_GMFUNCTION_} :: _target_user_ids expected array", true);
+    var _length = array_length(_target_user_ids);
+    buffer_write(__args_buffer, buffer_u32, _length);
+    for (var _i = 0; _i < _length; ++_i)
+    {
+        if (!is_string(_target_user_ids[_i])) show_error($"{_GMFUNCTION_} :: _target_user_ids[_i] expected string", true);
+        buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_ids[_i]));
+        buffer_write(__args_buffer, buffer_string, _target_user_ids[_i]);
+    }
+
+    // param: _stat_queries, type: struct EpicLeaderboardStatQuery[]
+    if (!is_array(_stat_queries)) show_error($"{_GMFUNCTION_} :: _stat_queries expected array", true);
+    var _length = array_length(_stat_queries);
+    buffer_write(__args_buffer, buffer_u32, _length);
+    for (var _i = 0; _i < _length; ++_i)
+    {
+        if (_stat_queries[_i].__uid != 3405040155) show_error($"{_GMFUNCTION_} :: _stat_queries[_i] expected EpicLeaderboardStatQuery", true);
+        __EpicLeaderboardStatQuery_encode(_stat_queries[_i], __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
+    }
+
+    // param: _start_time, type: Int64
+    if (!is_numeric(_start_time)) show_error($"{_GMFUNCTION_} :: _start_time expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _start_time);
+
+    // param: _end_time, type: Int64
+    if (!is_numeric(_end_time)) show_error($"{_GMFUNCTION_} :: _end_time expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _end_time);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -29766,6 +29861,7 @@ function __EpicOnlineServices_get_decoders()
         __EpicAchievementsUnlockAchievementsCallbackInfo_decode,
         __EpicAchievementsDefinitionV2_decode,
         __EpicAchievementsUnlockedV2CallbackInfo_decode,
+        __EpicLeaderboardStatQuery_decode,
         __EpicLeaderboardsQueryDefinitionsCallbackInfo_decode,
         __EpicLeaderboardsQueryRanksCallbackInfo_decode,
         __EpicLeaderboardsQueryUserScoresCallbackInfo_decode,

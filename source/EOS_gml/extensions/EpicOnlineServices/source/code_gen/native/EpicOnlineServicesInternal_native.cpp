@@ -1893,8 +1893,17 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_query_user_scores(char* __arg_buf
     // field: local_user_id, type: String
     std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
-    // field: stat_name, type: String
-    std::string_view stat_name = gm::wire::codec::readValue<std::string_view>(__br);
+    // field: target_user_ids, type: String[]
+    std::vector<std::string_view> target_user_ids = gm::wire::codec::readVector<std::string_view>(__br);
+
+    // field: stat_queries, type: struct EpicLeaderboardStatQuery[]
+    std::vector<gm_structs::EpicLeaderboardStatQuery> stat_queries = gm::wire::codec::readVector<gm_structs::EpicLeaderboardStatQuery>(__br);
+
+    // field: start_time, type: Int64
+    std::int64_t start_time = gm::wire::codec::readValue<std::int64_t>(__br);
+
+    // field: end_time, type: Int64
+    std::int64_t end_time = gm::wire::codec::readValue<std::int64_t>(__br);
 
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
@@ -1903,7 +1912,7 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_query_user_scores(char* __arg_buf
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_leaderboards_query_user_scores(local_user_id, stat_name, callback);
+    eos_leaderboards_query_user_scores(local_user_id, target_user_ids, stat_queries, start_time, end_time, callback);
     return 0;
 }
 

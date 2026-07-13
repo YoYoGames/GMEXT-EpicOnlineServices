@@ -916,7 +916,10 @@
 /**
  * @function_partial eos_leaderboards_query_user_scores
  * @param {String} local_user_id
- * @param {String} stat_name
+ * @param {Array[String]} target_user_ids
+ * @param {Array[Struct.EpicLeaderboardStatQuery]} stat_queries
+ * @param {Real} start_time
+ * @param {Real} end_time
  * @param {Function} [callback]
  * @function_end
  */
@@ -3603,6 +3606,13 @@
  * @member {String} user_id
  * @member {String} achievement_id
  * @member {Real} unlock_time
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicLeaderboardStatQuery
+ * @member {String} stat_name
+ * @member {Enum.EpicLeaderboardAggregation} aggregation
  * @struct_end
  */
 

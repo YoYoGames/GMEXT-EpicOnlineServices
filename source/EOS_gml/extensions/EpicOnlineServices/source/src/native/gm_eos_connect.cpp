@@ -1140,7 +1140,6 @@ void eos_connect_query_product_user_id_mappings(
     EOS_Connect_QueryProductUserIdMappingsOptions opts{};
     opts.ApiVersion = EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST;
     opts.LocalUserId = local_user;
-    // opts.AccountIdType = (EOS_EExternalAccountType)account_id_type;
     opts.ProductUserIds = ids.data();
     opts.ProductUserIdCount = (uint32_t)ids.size();
 

@@ -1392,6 +1392,16 @@ group
 // ============================================================
 
 [global]
+class `[[EpicLeaderboardStatQuery]]` prototype Object
+{
+    [field]
+    property stat_name : string { get; set; }
+
+    [field, type_hint=`EpicLeaderboardAggregation`]
+    property aggregation : gmval { get; set; }
+}
+
+[global]
 class `[[EpicLeaderboardsQueryDefinitionsCallbackInfo]]` prototype Object
 {
     [field, type_hint=`EpicResult`]
@@ -1433,7 +1443,10 @@ function eos_leaderboards_query_ranks(
 [global, bind = typed_gml]
 function eos_leaderboards_query_user_scores(
     local_user_id: string,
-    stat_name: string,
+    [type_hint=`string[]`] target_user_ids: gmval,
+    [type_hint=`EpicLeaderboardStatQuery[]`] stat_queries: gmval,
+    start_time: int64,
+    end_time: int64,
     [type_hint=`func?`] callback: gmval
 ): unit;
 

@@ -10,7 +10,10 @@
       "Bash(grep -n \"AddNotifyAudioBeforeSend\\\\|BeforeRender\\\\|SendAudio\\\\|RegisterPlatformUser\" \"d:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_sdk\\\\c\\\\Include\\\\eos_rtc_audio.h\" | head -20)",
       "Bash(grep -n \"EOS_RTCAudio_OnQueryInputDevicesInformationCallback\\\\|EOS_RTCAudio_OnQueryOutputDevicesInformationCallback\" \"d:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_sdk\\\\c\\\\Include\\\\eos_rtc_audio_types.h\" -A 20 | head -60)",
       "Bash(grep -n \"EOS_RTCAudio_UnregisterPlatformUser\" \"d:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_sdk\\\\c\\\\Include\\\\eos_rtc_audio.h\" -A 5 -B 2)",
-      "Bash(grep -n \"EOS_RTCAudio_OnUnregisterPlatformUserCallback\\\\|EOS_RTCAudio_OnUnregisterPlatformUser\" \"d:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_sdk\\\\c\\\\Include\\\\eos_rtc_audio_types.h\" -A 5 -B 2 | head -40)"
+      "Bash(grep -n \"EOS_RTCAudio_OnUnregisterPlatformUserCallback\\\\|EOS_RTCAudio_OnUnregisterPlatformUser\" \"d:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_sdk\\\\c\\\\Include\\\\eos_rtc_audio_types.h\" -A 5 -B 2 | head -40)",
+      "Read(//d/Github/GMEXT-EpicOnlineServices/source/EOS_gml/extensions/EpicOnlineServices/**)",
+      "Bash(ls -la \"d:\\\\Github\\\\GMEXT-EpicOnlineServices\\\\source\\\\EOS_gml\\\\objects\\\\obj_eos_leaderboard_friends\\\\\")",
+      "Read(//d/Github/GMEXT-EpicOnlineServices/source/EOS_gml/objects/**)"
     ]
   }
 }

@@ -20,6 +20,16 @@ using namespace gm_enums;
 struct EOSAsyncCallbackContext
 {
     std::optional<GMFunction> callback;
+    std::vector<EOS_ProductUserId>* user_ids = nullptr;
+    std::vector<EOS_Leaderboards_UserScoresQueryStatInfo>* stat_info = nullptr;
+    std::vector<std::string>* stat_names = nullptr;
+
+    ~EOSAsyncCallbackContext()
+    {
+        delete user_ids;
+        delete stat_info;
+        delete stat_names;
+    }
 };
 
 static EOS_HLeaderboards eos_leaderboards_iface()
@@ -205,7 +215,10 @@ void eos_leaderboards_query_ranks(
 
 void eos_leaderboards_query_user_scores(
     std::string_view local_user_id,
-    std::string_view stat_name,
+    const std::vector<std::string_view>& target_user_ids,
+    const std::vector<gm_structs::EpicLeaderboardStatQuery>& stat_queries,
+    std::int64_t start_time,
+    std::int64_t end_time,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -222,37 +235,56 @@ void eos_leaderboards_query_user_scores(
         return;
     }
 
-    std::string stat_name_storage(stat_name);
-    if (stat_name_storage.empty()) {
-        eos_set_last_error("EOS_Leaderboards_QueryLeaderboardUserScores: stat_name is required.");
+    if (stat_queries.empty()) {
+        eos_set_last_error("EOS_Leaderboards_QueryLeaderboardUserScores: at least one stat query is required.");
         return;
     }
 
     auto* ctx = new EOSAsyncCallbackContext{};
     ctx->callback = callback;
 
-    const char* stat_names[1];
-    stat_names[0] = stat_name_storage.c_str();
+    // Convert target user IDs from strings to EOS_ProductUserId
+    ctx->user_ids = new std::vector<EOS_ProductUserId>();
+    for (const auto& user_id : target_user_ids) {
+        EOS_ProductUserId native_user_id = eos_product_user_id_from_string_internal(user_id);
+        if (native_user_id) {
+            ctx->user_ids->push_back(native_user_id);
+        }
+    }
+
+    // Convert stat queries to native EOS format
+    ctx->stat_names = new std::vector<std::string>();
+    ctx->stat_info = new std::vector<EOS_Leaderboards_UserScoresQueryStatInfo>();
+
+    for (const auto& query : stat_queries) {
+        std::string stat_name(query.stat_name);
+        if (stat_name.empty()) {
+            eos_set_last_error("EOS_Leaderboards_QueryLeaderboardUserScores: stat_name cannot be empty.");
+            delete ctx;
+            return;
+        }
+
+        EOS_ELeaderboardAggregation aggregation = (EOS_ELeaderboardAggregation)(int32_t)query.aggregation;
+
+        ctx->stat_names->push_back(stat_name);
+
+        EOS_Leaderboards_UserScoresQueryStatInfo stat_info{};
+        stat_info.ApiVersion = EOS_LEADERBOARDS_USERSCORESQUERYSTATINFO_API_LATEST;
+        stat_info.StatName = ctx->stat_names->back().c_str();
+        stat_info.Aggregation = aggregation;
+
+        ctx->stat_info->push_back(stat_info);
+    }
 
     EOS_Leaderboards_QueryLeaderboardUserScoresOptions opts{};
     opts.ApiVersion = EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST;
     opts.LocalUserId = local_user;
-    opts.UserIds = nullptr;
-    opts.UserIdsCount = 0;
-    opts.StatInfo = nullptr;
-    opts.StatInfoCount = 0;
-    opts.StartTime = EOS_LEADERBOARDS_TIME_UNDEFINED;
-    opts.EndTime = EOS_LEADERBOARDS_TIME_UNDEFINED;
-
-    // If your SDK revision uses a stat-info array rather than raw names,
-    // this is the one block to adapt.
-    EOS_Leaderboards_UserScoresQueryStatInfo stat_info{};
-    stat_info.ApiVersion = EOS_LEADERBOARDS_USERSCORESQUERYSTATINFO_API_LATEST;
-    stat_info.StatName = stat_names[0];
-    stat_info.Aggregation = EOS_ELeaderboardAggregation::EOS_LA_Latest;
-
-    opts.StatInfo = &stat_info;
-    opts.StatInfoCount = 1;
+    opts.UserIds = ctx->user_ids->empty() ? nullptr : ctx->user_ids->data();
+    opts.UserIdsCount = (uint32_t)ctx->user_ids->size();
+    opts.StatInfo = ctx->stat_info->data();
+    opts.StatInfoCount = (uint32_t)ctx->stat_info->size();
+    opts.StartTime = (uint64_t)start_time;
+    opts.EndTime = (uint64_t)end_time;
 
     EOS_Leaderboards_QueryLeaderboardUserScores(
         leaderboards,
