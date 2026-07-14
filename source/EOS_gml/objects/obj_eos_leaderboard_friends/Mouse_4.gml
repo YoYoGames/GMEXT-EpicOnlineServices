@@ -48,88 +48,86 @@ eos_friends_query_friends(global.epic_account_id,function(data){
 				//Ok, let's request!
 				var friends_account_ids = struct_get_names(friends)
 				eos_connect_query_external_account_mappings(global.product_user_id,0,friends_account_ids,function(data){
-						
+
 					if(data.result_code != EpicResult.Success)
 						return 0
-						
+
 					var friends_account_ids = struct_get_names(friends)
-		
+
+					//Map by ProductUserId (what leaderboard scores are keyed by) without
+					//losing the display-name info struct we already fetched per friend.
+					friends_by_puid = {}
+					friends_user_ids = []
 					for(var c = 0 ; c < array_length(friends_account_ids) ; c++)
 					{
 						var user_id = eos_connect_get_external_account_mapping(global.product_user_id,0,friends_account_ids[c])
-						struct_set(struct_get(friends,friends_account_ids[c]),"user_id",user_id)
+						var friend_struct = struct_get(friends,friends_account_ids[c])
+						struct_set(friend_struct,"user_id",user_id)
+						struct_set(friends_by_puid,user_id,friend_struct)
+						friends_user_ids[c] = user_id
 					}
-					
-					var friends_account_ids = struct_get_names(friends)
-					var friends_user_ids = []
-					for(var a = 0 ; a < array_length(friends_account_ids) ; a++)
-					{
-						var user_id = eos_connect_get_external_account_mapping(global.product_user_id, 0, friends_account_ids[a])
-						struct_set(friends,friends_account_ids[a],user_id)
-						friends_user_ids[a] = user_id
-					}
-		
-					//add me :)
-					struct_set(friends,global.epic_account_id,global.product_user_id)
-					array_push(friends_user_ids,global.product_user_id)
-		
-					show_debug_message($"friends: {friends}")
 
-					var stat_query = new EpicLeaderboardStatQuery()
-					stat_query.stat_name = stat_selected
-					stat_query.aggregation = agregation_seleted
+					//add me :) - need to fetch my own display name too, since
+					//EpicLeaderboardUserScore only contains user_id/score, no name.
+					eos_user_info_query_user_info(global.epic_account_id,global.epic_account_id,function(_self_data){
+						if(_self_data.result_code != EpicResult.Success)
+							return 0
+
+						var my_struct = eos_user_info_copy_user_info(global.epic_account_id,global.epic_account_id)
+						struct_set(my_struct,"user_id",global.product_user_id)
+						struct_set(friends_by_puid,global.product_user_id,my_struct)
+						array_push(friends_user_ids,global.product_user_id)
+
+						show_debug_message($"friends_by_puid: {friends_by_puid}")
+
+						var stat_query = new EpicLeaderboardStatQuery()
+						stat_query.stat_name = stat_selected
+						stat_query.aggregation = agregation_seleted
 show_debug_message("eos_leaderboards_query_user_scores")
 show_debug_message(friends_user_ids)
 show_debug_message(stat_query)
 
-					eos_leaderboards_query_user_scores(
-						global.product_user_id,
-						friends_user_ids,
-						[stat_query],
-						0,
-						0,
-						//function(data){
-						//	show_debug_message("Callback")
-						//	show_debug_message(data)
-						//	show_message_async(data)
-						//	if(data.result_code != EpicResult.Success)
-						//		return 0
-						//	// Leaderboard scores queried successfully
-						//}
-						function(data){
-						    if(data.result_code != EpicResult.Success)
-						        return 0
+						eos_leaderboards_query_user_scores(
+							global.product_user_id,
+							friends_user_ids,
+							[stat_query],
+							EOS_LEADERBOARDS_TIME_UNDEFINED,
+							EOS_LEADERBOARDS_TIME_UNDEFINED,
+							function(data){
+							    if(data.result_code != EpicResult.Success)
+							        return 0
 
-						    // Get the count of cached scores
-						    var score_count = eos_leaderboards_get_user_score_count(stat_selected)
-						    show_debug_message($"Total scores cached: {score_count}")
+							    // Get the count of cached scores
+							    var score_count = eos_leaderboards_get_user_score_count(stat_selected)
+							    show_debug_message($"Total scores cached: {score_count}")
 
-						    // Retrieve each score
-						    for(var i = 0; i < score_count; i++)
-						    {
-						        var user_score = eos_leaderboards_copy_user_score_by_index(stat_selected, i)
-						        var friend_info = struct_get(friends, user_score.user_id)
-        
-						        show_debug_message($"Score {i}: User={user_score.user_id}, Score={user_score.score}")
-        
-						        // Create UI elements for each friend's score
-						        if(friend_info != undefined)
-						        {
-						            var friend_ins = instance_create_depth(
-						                x, 
-						                y + 100 + friend_counter_index * 80, 
-						                0, 
-						                friend_object, 
-						                {
-						                    data: friend_info,
-						                    score: user_score.score
-						                }
-						            )
-						            friend_counter_index++
-						        }
-						    }
-						}
-					)
+							    // Retrieve each score
+							    for(var i = 0; i < score_count; i++)
+							    {
+							        var user_score = eos_leaderboards_copy_user_score_by_index(stat_selected, i)
+							        var friend_info = struct_get(friends_by_puid, user_score.user_id)
+
+							        show_debug_message($"Score {i}: User={user_score.user_id}, Score={user_score.score}")
+
+							        // Create UI elements for each friend's score
+							        if(friend_info != undefined)
+							        {
+							            var friend_ins = instance_create_depth(
+							                x,
+							                y + 100 + friend_counter_index * 80,
+							                0,
+							                friend_object,
+							                {
+							                    data: friend_info,
+							                    score: user_score.score
+							                }
+							            )
+							            friend_counter_index++
+							        }
+							    }
+							}
+						)
+					})
 				})
 			})
 				

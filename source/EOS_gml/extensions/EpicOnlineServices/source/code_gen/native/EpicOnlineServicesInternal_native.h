@@ -10,6 +10,7 @@
 
 namespace gm_consts
 {
+    inline constexpr std::int32_t EOS_LEADERBOARDS_TIME_UNDEFINED = -1;
 }
 
 

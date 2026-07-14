@@ -5864,6 +5864,7 @@
 
 /**
  * @const_partial macros
+ * @member {Real} EOS_LEADERBOARDS_TIME_UNDEFINED (value: '-1')
  * @const_end
  */
 

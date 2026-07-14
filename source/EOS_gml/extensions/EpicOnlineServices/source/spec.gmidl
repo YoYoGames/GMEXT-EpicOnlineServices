@@ -5439,6 +5439,8 @@ enum EpicLeaderboardAggregation
     Latest = 3,
 }
 
+const EOS_LEADERBOARDS_TIME_UNDEFINED : int32 = -1;
+
 [global, bind = typed_gml]// eos_lobby_types.h
 enum EpicLobbyPermissionLevel
 {
