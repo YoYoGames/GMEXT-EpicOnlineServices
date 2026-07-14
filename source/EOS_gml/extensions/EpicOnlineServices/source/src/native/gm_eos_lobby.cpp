@@ -688,9 +688,11 @@ gm_enums::EpicResult eos_lobby_lobby_modification_set_invites_allowed(
     return (gm_enums::EpicResult)result;
 }
 
-gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(
+gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute_string(
     uint64_t modification_id,
-    const gm_structs::EpicLobbyModificationAddAttributeOptions& options)
+    std::string_view key,
+    std::string_view value,
+    gm_enums::EpicLobbyAttributeVisibility visibility)
 {
     eos_clear_last_error();
 
@@ -700,8 +702,8 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::string key_storage(options.key);
-    std::string value_storage(options.value);
+    std::string key_storage(key);
+    std::string value_storage(value);
 
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbyModification_AddAttribute: key is required.");
@@ -717,7 +719,89 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute(
     EOS_LobbyModification_AddAttributeOptions opts{};
     opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
     opts.Attribute = &attr;
-    opts.Visibility = (EOS_ELobbyAttributeVisibility)options.visibility;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
+
+    const EOS_EResult result = EOS_LobbyModification_AddAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyModification_AddAttribute failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute_bool(
+    uint64_t modification_id,
+    std::string_view key,
+    bool value,
+    gm_enums::EpicLobbyAttributeVisibility visibility)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbyModification mod = eos_lobby_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS Lobby modification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbyModification_AddAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Lobby_AttributeData attr{};
+    attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsBool = value;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_BOOLEAN;
+
+    EOS_LobbyModification_AddAttributeOptions opts{};
+    opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
+    opts.Attribute = &attr;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
+
+    const EOS_EResult result = EOS_LobbyModification_AddAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyModification_AddAttribute failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_lobby_lobby_modification_add_attribute_double(
+    uint64_t modification_id,
+    std::string_view key,
+    double value,
+    gm_enums::EpicLobbyAttributeVisibility visibility)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbyModification mod = eos_lobby_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS Lobby modification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbyModification_AddAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Lobby_AttributeData attr{};
+    attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsDouble = value;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_DOUBLE;
+
+    EOS_LobbyModification_AddAttributeOptions opts{};
+    opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST;
+    opts.Attribute = &attr;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
 
     const EOS_EResult result = EOS_LobbyModification_AddAttribute(mod, &opts);
     if (result != EOS_EResult::EOS_Success) {
@@ -759,9 +843,11 @@ gm_enums::EpicResult eos_lobby_lobby_modification_remove_attribute(
     return (gm_enums::EpicResult)result;
 }
 
-gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(
+gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute_string(
     uint64_t modification_id,
-    const gm_structs::EpicLobbyModificationAddMemberAttributeOptions& options)
+    std::string_view key,
+    std::string_view value,
+    gm_enums::EpicLobbyAttributeVisibility visibility)
 {
     eos_clear_last_error();
 
@@ -771,8 +857,8 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::string key_storage(options.key);
-    std::string value_storage(options.value);
+    std::string key_storage(key);
+    std::string value_storage(value);
 
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbyModification_AddMemberAttribute: key is required.");
@@ -788,7 +874,89 @@ gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute(
     EOS_LobbyModification_AddMemberAttributeOptions opts{};
     opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
     opts.Attribute = &attr;
-    opts.Visibility = (EOS_ELobbyAttributeVisibility)options.visibility;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
+
+    const EOS_EResult result = EOS_LobbyModification_AddMemberAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyModification_AddMemberAttribute failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute_bool(
+    uint64_t modification_id,
+    std::string_view key,
+    bool value,
+    gm_enums::EpicLobbyAttributeVisibility visibility)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbyModification mod = eos_lobby_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS Lobby modification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbyModification_AddMemberAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Lobby_AttributeData attr{};
+    attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsBool = value;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_BOOLEAN;
+
+    EOS_LobbyModification_AddMemberAttributeOptions opts{};
+    opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
+    opts.Attribute = &attr;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
+
+    const EOS_EResult result = EOS_LobbyModification_AddMemberAttribute(mod, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbyModification_AddMemberAttribute failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_lobby_lobby_modification_add_member_attribute_double(
+    uint64_t modification_id,
+    std::string_view key,
+    double value,
+    gm_enums::EpicLobbyAttributeVisibility visibility)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbyModification mod = eos_lobby_modification_get(modification_id);
+    if (!mod) {
+        eos_set_last_error("EOS Lobby modification handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbyModification_AddMemberAttribute: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Lobby_AttributeData attr{};
+    attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsDouble = value;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_DOUBLE;
+
+    EOS_LobbyModification_AddMemberAttributeOptions opts{};
+    opts.ApiVersion = EOS_LOBBYMODIFICATION_ADDMEMBERATTRIBUTE_API_LATEST;
+    opts.Attribute = &attr;
+    opts.Visibility = (EOS_ELobbyAttributeVisibility)visibility;
 
     const EOS_EResult result = EOS_LobbyModification_AddMemberAttribute(mod, &opts);
     if (result != EOS_EResult::EOS_Success) {
@@ -1127,9 +1295,11 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_target_user_id(
     return (gm_enums::EpicResult)result;
 }
 
-gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
+gm_enums::EpicResult eos_lobby_lobby_search_set_parameter_string(
     uint64_t search_id,
-    const gm_structs::EpicLobbySearchSetParameterOptions& options)
+    std::string_view key,
+    std::string_view value,
+    gm_enums::EpicComparisonOp comparison_op)
 {
     eos_clear_last_error();
 
@@ -1139,8 +1309,8 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
         return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
     }
 
-    std::string key_storage(options.key);
-    std::string value_storage(options.value);
+    std::string key_storage(key);
+    std::string value_storage(value);
 
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbySearch_SetParameter: key is required.");
@@ -1156,7 +1326,89 @@ gm_enums::EpicResult eos_lobby_lobby_search_set_parameter(
     EOS_LobbySearch_SetParameterOptions opts{};
     opts.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
     opts.Parameter = &attr;
-    opts.ComparisonOp = (EOS_EComparisonOp)options.comparison_op;
+    opts.ComparisonOp = (EOS_EComparisonOp)comparison_op;
+
+    const EOS_EResult result = EOS_LobbySearch_SetParameter(search, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbySearch_SetParameter failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_lobby_lobby_search_set_parameter_bool(
+    uint64_t search_id,
+    std::string_view key,
+    bool value,
+    gm_enums::EpicComparisonOp comparison_op)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbySearch search = eos_lobby_search_get(search_id);
+    if (!search) {
+        eos_set_last_error("EOS LobbySearch handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbySearch_SetParameter: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Lobby_AttributeData attr{};
+    attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsBool = value;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_BOOLEAN;
+
+    EOS_LobbySearch_SetParameterOptions opts{};
+    opts.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
+    opts.Parameter = &attr;
+    opts.ComparisonOp = (EOS_EComparisonOp)comparison_op;
+
+    const EOS_EResult result = EOS_LobbySearch_SetParameter(search, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_LobbySearch_SetParameter failed.");
+    }
+
+    return (gm_enums::EpicResult)result;
+}
+
+gm_enums::EpicResult eos_lobby_lobby_search_set_parameter_double(
+    uint64_t search_id,
+    std::string_view key,
+    double value,
+    gm_enums::EpicComparisonOp comparison_op)
+{
+    eos_clear_last_error();
+
+    EOS_HLobbySearch search = eos_lobby_search_get(search_id);
+    if (!search) {
+        eos_set_last_error("EOS LobbySearch handle invalid.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    std::string key_storage(key);
+
+    if (key_storage.empty()) {
+        eos_set_last_error("EOS_LobbySearch_SetParameter: key is required.");
+        return (gm_enums::EpicResult)EOS_EResult::EOS_InvalidParameters;
+    }
+
+    EOS_Lobby_AttributeData attr{};
+    attr.ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;
+    attr.Key = key_storage.c_str();
+    attr.Value.AsDouble = value;
+    attr.ValueType = EOS_ELobbyAttributeType::EOS_AT_DOUBLE;
+
+    EOS_LobbySearch_SetParameterOptions opts{};
+    opts.ApiVersion = EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST;
+    opts.Parameter = &attr;
+    opts.ComparisonOp = (EOS_EComparisonOp)comparison_op;
 
     const EOS_EResult result = EOS_LobbySearch_SetParameter(search, &opts);
     if (result != EOS_EResult::EOS_Success) {

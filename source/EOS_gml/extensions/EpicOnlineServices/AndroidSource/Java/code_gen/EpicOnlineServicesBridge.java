@@ -233,9 +233,13 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_lobby_lobby_modification_set_max_members(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_modification_set_bucket_id(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_modification_set_invites_allowed(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
-    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_attribute_string(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_attribute_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_attribute_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_modification_remove_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
-    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_string(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_modification_remove_member_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_promote_member(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_lobby_kick_member(ByteBuffer __arg_buffer, double __arg_buffer_length);
@@ -243,7 +247,9 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_lobby_lobby_search_release(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_search_set_lobby_id(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_search_set_target_user_id(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
-    public static native double __EXT_JNI__eos_lobby_lobby_search_set_parameter(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_search_set_parameter_string(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_search_set_parameter_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
+    public static native double __EXT_JNI__eos_lobby_lobby_search_set_parameter_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_search_remove_parameter(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_search_set_max_results(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_lobby_lobby_search_find(ByteBuffer __arg_buffer, double __arg_buffer_length);

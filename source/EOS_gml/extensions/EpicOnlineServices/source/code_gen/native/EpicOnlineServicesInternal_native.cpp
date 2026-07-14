@@ -3403,17 +3403,71 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_set_invites_allowed(c
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
     // field: modification_id, type: UInt64
     std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: options, type: struct EpicLobbyModificationAddAttributeOptions
-    gm_structs::EpicLobbyModificationAddAttributeOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyModificationAddAttributeOptions>(__br);
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
 
-    auto&& __result = eos_lobby_lobby_modification_add_attribute(modification_id, options);
+    // field: value, type: String
+    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: visibility, type: enum EpicLobbyAttributeVisibility
+    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
+
+    auto&& __result = eos_lobby_lobby_modification_add_attribute_string(modification_id, key, value, visibility);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Bool
+    bool value = gm::wire::codec::readValue<bool>(__br);
+
+    // field: visibility, type: enum EpicLobbyAttributeVisibility
+    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
+
+    auto&& __result = eos_lobby_lobby_modification_add_attribute_bool(modification_id, key, value, visibility);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Float64
+    double value = gm::wire::codec::readValue<double>(__br);
+
+    // field: visibility, type: enum EpicLobbyAttributeVisibility
+    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
+
+    auto&& __result = eos_lobby_lobby_modification_add_attribute_double(modification_id, key, value, visibility);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -3439,17 +3493,71 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_remove_attribute(char
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
     // field: modification_id, type: UInt64
     std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: options, type: struct EpicLobbyModificationAddMemberAttributeOptions
-    gm_structs::EpicLobbyModificationAddMemberAttributeOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbyModificationAddMemberAttributeOptions>(__br);
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
 
-    auto&& __result = eos_lobby_lobby_modification_add_member_attribute(modification_id, options);
+    // field: value, type: String
+    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: visibility, type: enum EpicLobbyAttributeVisibility
+    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
+
+    auto&& __result = eos_lobby_lobby_modification_add_member_attribute_string(modification_id, key, value, visibility);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Bool
+    bool value = gm::wire::codec::readValue<bool>(__br);
+
+    // field: visibility, type: enum EpicLobbyAttributeVisibility
+    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
+
+    auto&& __result = eos_lobby_lobby_modification_add_member_attribute_bool(modification_id, key, value, visibility);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: modification_id, type: UInt64
+    std::uint64_t modification_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Float64
+    double value = gm::wire::codec::readValue<double>(__br);
+
+    // field: visibility, type: enum EpicLobbyAttributeVisibility
+    gm_enums::EpicLobbyAttributeVisibility visibility = gm::wire::codec::readValue<gm_enums::EpicLobbyAttributeVisibility>(__br);
+
+    auto&& __result = eos_lobby_lobby_modification_add_member_attribute_double(modification_id, key, value, visibility);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult
@@ -3573,17 +3681,71 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_target_user_id(char* __
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
     // field: search_id, type: UInt64
     std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    // field: options, type: struct EpicLobbySearchSetParameterOptions
-    gm_structs::EpicLobbySearchSetParameterOptions options = gm::wire::codec::readValue<gm_structs::EpicLobbySearchSetParameterOptions>(__br);
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
 
-    auto&& __result = eos_lobby_lobby_search_set_parameter(search_id, options);
+    // field: value, type: String
+    std::string_view value = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: comparison_op, type: enum EpicComparisonOp
+    gm_enums::EpicComparisonOp comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(__br);
+
+    auto&& __result = eos_lobby_lobby_search_set_parameter_string(search_id, key, value, comparison_op);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: search_id, type: UInt64
+    std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Bool
+    bool value = gm::wire::codec::readValue<bool>(__br);
+
+    // field: comparison_op, type: enum EpicComparisonOp
+    gm_enums::EpicComparisonOp comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(__br);
+
+    auto&& __result = eos_lobby_lobby_search_set_parameter_bool(search_id, key, value, comparison_op);
+    gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
+
+    // return: __result, type: enum EpicResult
+    gm::wire::codec::writeValue(__bw, __result);
+    return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: search_id, type: UInt64
+    std::uint64_t search_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: key, type: String
+    std::string_view key = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: value, type: Float64
+    double value = gm::wire::codec::readValue<double>(__br);
+
+    // field: comparison_op, type: enum EpicComparisonOp
+    gm_enums::EpicComparisonOp comparison_op = gm::wire::codec::readValue<gm_enums::EpicComparisonOp>(__br);
+
+    auto&& __result = eos_lobby_lobby_search_set_parameter_double(search_id, key, value, comparison_op);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult

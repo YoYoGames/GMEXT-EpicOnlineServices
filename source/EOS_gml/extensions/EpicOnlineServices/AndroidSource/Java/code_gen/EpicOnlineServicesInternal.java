@@ -868,17 +868,33 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_lobby_lobby_modification_set_invites_allowed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
-    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_string(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
-        return __EXT_JNI__eos_lobby_lobby_modification_add_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+        return __EXT_JNI__eos_lobby_lobby_modification_add_attribute_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_lobby_modification_add_attribute_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_lobby_modification_add_attribute_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
     public double __EXT_NATIVE__eos_lobby_lobby_modification_remove_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
         return __EXT_JNI__eos_lobby_lobby_modification_remove_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
-    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_string(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
-        return __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+        return __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
     public double __EXT_NATIVE__eos_lobby_lobby_modification_remove_member_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
@@ -908,9 +924,17 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_lobby_lobby_search_set_target_user_id(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
-    public double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    public double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_string(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
-        return __EXT_JNI__eos_lobby_lobby_search_set_parameter(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+        return __EXT_JNI__eos_lobby_lobby_search_set_parameter_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_lobby_search_set_parameter_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_double(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    {
+        return __EXT_JNI__eos_lobby_lobby_search_set_parameter_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
     public double __EXT_NATIVE__eos_lobby_lobby_search_remove_parameter(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {

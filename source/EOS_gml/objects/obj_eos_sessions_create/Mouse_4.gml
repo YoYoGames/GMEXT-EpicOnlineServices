@@ -56,10 +56,10 @@ if(modification_id != 0)
 	result = eos_sessions_session_modification_set_invites_allowed(modification_id, true)
 	show_debug_message("set_invites_allowed: " + eos_api_result_to_string(result))
 
-	result = eos_sessions_session_modification_add_attribute(modification_id, "bucket", BucketId, EpicSessionAttributeAdvertisementType.Advertise)
+	result = eos_sessions_session_modification_add_attribute_string(modification_id, "bucket", BucketId, EpicSessionAttributeAdvertisementType.Advertise)
 	show_debug_message("add_attribute(bucket): " + eos_api_result_to_string(result))
 
-	result = eos_sessions_session_modification_add_attribute(modification_id, "session_name", "MySessionName :)", EpicSessionAttributeAdvertisementType.Advertise)
+	result = eos_sessions_session_modification_add_attribute_string(modification_id, "session_name", "MySessionName :)", EpicSessionAttributeAdvertisementType.Advertise)
 	show_debug_message("add_attribute(session_name): " + eos_api_result_to_string(result))
 
 	eos_sessions_update_session(modification_id, function(_info)

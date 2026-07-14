@@ -223,9 +223,13 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_set_permission_level(
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_set_max_members(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_set_bucket_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_set_invites_allowed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
-GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_remove_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
-GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_modification_remove_member_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_promote_member(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_kick_member(char* __arg_buffer, double __arg_buffer_length);
@@ -233,7 +237,9 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_create_lobby_search(char* __arg_buffer, 
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_release(char* __arg_buffer, double __arg_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_lobby_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_target_user_id(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
-GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_remove_parameter(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_set_max_results(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_lobby_lobby_search_find(char* __arg_buffer, double __arg_buffer_length);

@@ -19,11 +19,12 @@ if(global.lobby_search_id == 0)
 	return
 }
 
-var _param = new EpicLobbySearchSetParameterOptions()
-_param.key           = "bucket"
-_param.value         = "GameMode:Region:MapName"
-_param.comparison_op = EpicComparisonOp.Equal
-var _set_result = eos_lobby_lobby_search_set_parameter(global.lobby_search_id, _param)
+var _set_result = eos_lobby_lobby_search_set_parameter_string(
+	global.lobby_search_id,
+	"bucket",
+	"GameMode:Region:MapName",
+	EpicComparisonOp.Equal
+)
 show_debug_message($"[search] set_parameter result: {eos_api_result_to_string(_set_result)}")
 
 eos_lobby_lobby_search_find(global.lobby_search_id, global.product_user_id, function(_info)

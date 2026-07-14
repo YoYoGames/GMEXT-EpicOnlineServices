@@ -1601,9 +1601,31 @@
  */
 
 /**
- * @function_partial eos_lobby_lobby_modification_add_attribute
+ * @function_partial eos_lobby_lobby_modification_add_attribute_string
  * @param {Real} modification_id
- * @param {Struct.EpicLobbyModificationAddAttributeOptions} options
+ * @param {String} key
+ * @param {String} value
+ * @param {Enum.EpicLobbyAttributeVisibility} visibility
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_lobby_lobby_modification_add_attribute_bool
+ * @param {Real} modification_id
+ * @param {String} key
+ * @param {Bool} value
+ * @param {Enum.EpicLobbyAttributeVisibility} visibility
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_lobby_lobby_modification_add_attribute_double
+ * @param {Real} modification_id
+ * @param {String} key
+ * @param {Real} value
+ * @param {Enum.EpicLobbyAttributeVisibility} visibility
  * @returns {Enum.EpicResult}
  * @function_end
  */
@@ -1617,9 +1639,31 @@
  */
 
 /**
- * @function_partial eos_lobby_lobby_modification_add_member_attribute
+ * @function_partial eos_lobby_lobby_modification_add_member_attribute_string
  * @param {Real} modification_id
- * @param {Struct.EpicLobbyModificationAddMemberAttributeOptions} options
+ * @param {String} key
+ * @param {String} value
+ * @param {Enum.EpicLobbyAttributeVisibility} visibility
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_lobby_lobby_modification_add_member_attribute_bool
+ * @param {Real} modification_id
+ * @param {String} key
+ * @param {Bool} value
+ * @param {Enum.EpicLobbyAttributeVisibility} visibility
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_lobby_lobby_modification_add_member_attribute_double
+ * @param {Real} modification_id
+ * @param {String} key
+ * @param {Real} value
+ * @param {Enum.EpicLobbyAttributeVisibility} visibility
  * @returns {Enum.EpicResult}
  * @function_end
  */
@@ -1676,9 +1720,31 @@
  */
 
 /**
- * @function_partial eos_lobby_lobby_search_set_parameter
+ * @function_partial eos_lobby_lobby_search_set_parameter_string
  * @param {Real} search_id
- * @param {Struct.EpicLobbySearchSetParameterOptions} options
+ * @param {String} key
+ * @param {String} value
+ * @param {Enum.EpicComparisonOp} comparison_op
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_lobby_lobby_search_set_parameter_bool
+ * @param {Real} search_id
+ * @param {String} key
+ * @param {Bool} value
+ * @param {Enum.EpicComparisonOp} comparison_op
+ * @returns {Enum.EpicResult}
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_lobby_lobby_search_set_parameter_double
+ * @param {Real} search_id
+ * @param {String} key
+ * @param {Real} value
+ * @param {Enum.EpicComparisonOp} comparison_op
  * @returns {Enum.EpicResult}
  * @function_end
  */

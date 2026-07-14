@@ -38,11 +38,12 @@ eos_lobby_create_lobby(_opts, function(_info)
 		var _mod_id = eos_lobby_update_lobby_modification(lobby_id, global.product_user_id)
 		if(_mod_id != 0)
 		{
-			var _attr = new EpicLobbyModificationAddAttributeOptions()
-			_attr.key        = "lobbyname"
-			_attr.value      = mDisplayName + "'s Lobby"
-			_attr.visibility = EpicLobbyAttributeVisibility.Public
-			eos_lobby_lobby_modification_add_attribute(_mod_id, _attr)
+			eos_lobby_lobby_modification_add_attribute_string(
+				_mod_id,
+				"lobbyname",
+				mDisplayName + "'s Lobby",
+				EpicLobbyAttributeVisibility.Public
+			)
 
 			eos_lobby_update_lobby(lobby_id, _mod_id)
 			eos_lobby_lobby_modification_release(_mod_id)

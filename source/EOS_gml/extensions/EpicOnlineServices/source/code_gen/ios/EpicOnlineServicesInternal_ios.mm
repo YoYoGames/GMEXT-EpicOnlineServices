@@ -944,17 +944,33 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_lobby_lobby_modification_set_invites_allowed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_string:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    return __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_bool:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_double:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_lobby_lobby_modification_remove_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
     return __EXT_NATIVE__eos_lobby_lobby_modification_remove_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_string:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    return __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_bool:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_double:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_lobby_lobby_modification_remove_member_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
@@ -984,9 +1000,17 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_lobby_lobby_search_set_target_user_id(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_lobby_lobby_search_set_parameter:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+- (double)__EXT_NATIVE__eos_lobby_lobby_search_set_parameter_string:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_lobby_lobby_search_set_parameter(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    return __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_lobby_search_set_parameter_bool:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_bool(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_lobby_lobby_search_set_parameter_double:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+{
+    return __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_double(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_lobby_lobby_search_remove_parameter:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {

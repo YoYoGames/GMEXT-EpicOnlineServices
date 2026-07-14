@@ -23450,10 +23450,12 @@ function eos_lobby_lobby_modification_set_invites_allowed(_modification_id, _inv
 
 /**
  * @param {Real} _modification_id
- * @param {Struct.EpicLobbyModificationAddAttributeOptions} _options
+ * @param {String} _key
+ * @param {String} _value
+ * @param {Enum.EpicLobbyAttributeVisibility} _visibility
  * @returns {Enum.EpicResult}
  */
-function eos_lobby_lobby_modification_add_attribute(_modification_id, _options)
+function eos_lobby_lobby_modification_add_attribute_string(_modification_id, _key, _value, _visibility)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -23464,13 +23466,106 @@ function eos_lobby_lobby_modification_add_attribute(_modification_id, _options)
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    // param: _options, type: struct EpicLobbyModificationAddAttributeOptions
-    if (_options.__uid != 3316783229) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyModificationAddAttributeOptions", true);
-    __EpicLobbyModificationAddAttributeOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: String
+    if (!is_string(_value)) show_error($"{_GMFUNCTION_} :: _value expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_value));
+    buffer_write(__args_buffer, buffer_string, _value);
+
+    // param: _visibility, type: enum EpicLobbyAttributeVisibility
+
+    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _visibility);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var _return_value = __eos_lobby_lobby_modification_add_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _modification_id
+ * @param {String} _key
+ * @param {Bool} _value
+ * @param {Enum.EpicLobbyAttributeVisibility} _visibility
+ * @returns {Enum.EpicResult}
+ */
+function eos_lobby_lobby_modification_add_attribute_bool(_modification_id, _key, _value, _visibility)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _modification_id, type: UInt64
+    if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _modification_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Bool
+    if (!is_bool(_value)) show_error($"{_GMFUNCTION_} :: _value expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _value);
+
+    // param: _visibility, type: enum EpicLobbyAttributeVisibility
+
+    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _visibility);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_lobby_modification_add_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _modification_id
+ * @param {String} _key
+ * @param {Real} _value
+ * @param {Enum.EpicLobbyAttributeVisibility} _visibility
+ * @returns {Enum.EpicResult}
+ */
+function eos_lobby_lobby_modification_add_attribute_double(_modification_id, _key, _value, _visibility)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _modification_id, type: UInt64
+    if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _modification_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Float64
+    if (!is_numeric(_value)) show_error($"{_GMFUNCTION_} :: _value expected number", true);
+    buffer_write(__args_buffer, buffer_f64, _value);
+
+    // param: _visibility, type: enum EpicLobbyAttributeVisibility
+
+    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _visibility);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_lobby_modification_add_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
     _result = buffer_read(__ret_buffer, buffer_u64);
@@ -23509,10 +23604,12 @@ function eos_lobby_lobby_modification_remove_attribute(_modification_id, _key)
 
 /**
  * @param {Real} _modification_id
- * @param {Struct.EpicLobbyModificationAddMemberAttributeOptions} _options
+ * @param {String} _key
+ * @param {String} _value
+ * @param {Enum.EpicLobbyAttributeVisibility} _visibility
  * @returns {Enum.EpicResult}
  */
-function eos_lobby_lobby_modification_add_member_attribute(_modification_id, _options)
+function eos_lobby_lobby_modification_add_member_attribute_string(_modification_id, _key, _value, _visibility)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -23523,13 +23620,106 @@ function eos_lobby_lobby_modification_add_member_attribute(_modification_id, _op
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    // param: _options, type: struct EpicLobbyModificationAddMemberAttributeOptions
-    if (_options.__uid != 1688137915) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbyModificationAddMemberAttributeOptions", true);
-    __EpicLobbyModificationAddMemberAttributeOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: String
+    if (!is_string(_value)) show_error($"{_GMFUNCTION_} :: _value expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_value));
+    buffer_write(__args_buffer, buffer_string, _value);
+
+    // param: _visibility, type: enum EpicLobbyAttributeVisibility
+
+    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _visibility);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_member_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var _return_value = __eos_lobby_lobby_modification_add_member_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _modification_id
+ * @param {String} _key
+ * @param {Bool} _value
+ * @param {Enum.EpicLobbyAttributeVisibility} _visibility
+ * @returns {Enum.EpicResult}
+ */
+function eos_lobby_lobby_modification_add_member_attribute_bool(_modification_id, _key, _value, _visibility)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _modification_id, type: UInt64
+    if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _modification_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Bool
+    if (!is_bool(_value)) show_error($"{_GMFUNCTION_} :: _value expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _value);
+
+    // param: _visibility, type: enum EpicLobbyAttributeVisibility
+
+    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _visibility);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_lobby_modification_add_member_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _modification_id
+ * @param {String} _key
+ * @param {Real} _value
+ * @param {Enum.EpicLobbyAttributeVisibility} _visibility
+ * @returns {Enum.EpicResult}
+ */
+function eos_lobby_lobby_modification_add_member_attribute_double(_modification_id, _key, _value, _visibility)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _modification_id, type: UInt64
+    if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _modification_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Float64
+    if (!is_numeric(_value)) show_error($"{_GMFUNCTION_} :: _value expected number", true);
+    buffer_write(__args_buffer, buffer_f64, _value);
+
+    // param: _visibility, type: enum EpicLobbyAttributeVisibility
+
+    if (!is_numeric(_visibility)) show_error($"{_GMFUNCTION_} :: _visibility expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _visibility);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_lobby_modification_add_member_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
     _result = buffer_read(__ret_buffer, buffer_u64);
@@ -23741,10 +23931,12 @@ function eos_lobby_lobby_search_set_target_user_id(_search_id, _target_user_id)
 
 /**
  * @param {Real} _search_id
- * @param {Struct.EpicLobbySearchSetParameterOptions} _options
+ * @param {String} _key
+ * @param {String} _value
+ * @param {Enum.EpicComparisonOp} _comparison_op
  * @returns {Enum.EpicResult}
  */
-function eos_lobby_lobby_search_set_parameter(_search_id, _options)
+function eos_lobby_lobby_search_set_parameter_string(_search_id, _key, _value, _comparison_op)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -23755,13 +23947,106 @@ function eos_lobby_lobby_search_set_parameter(_search_id, _options)
     if (!is_numeric(_search_id)) show_error($"{_GMFUNCTION_} :: _search_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _search_id);
 
-    // param: _options, type: struct EpicLobbySearchSetParameterOptions
-    if (_options.__uid != 2399959679) show_error($"{_GMFUNCTION_} :: _options expected EpicLobbySearchSetParameterOptions", true);
-    __EpicLobbySearchSetParameterOptions_encode(_options, __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: String
+    if (!is_string(_value)) show_error($"{_GMFUNCTION_} :: _value expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_value));
+    buffer_write(__args_buffer, buffer_string, _value);
+
+    // param: _comparison_op, type: enum EpicComparisonOp
+
+    if (!is_numeric(_comparison_op)) show_error($"{_GMFUNCTION_} :: _comparison_op expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _comparison_op);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_set_parameter(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var _return_value = __eos_lobby_lobby_search_set_parameter_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _search_id
+ * @param {String} _key
+ * @param {Bool} _value
+ * @param {Enum.EpicComparisonOp} _comparison_op
+ * @returns {Enum.EpicResult}
+ */
+function eos_lobby_lobby_search_set_parameter_bool(_search_id, _key, _value, _comparison_op)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _search_id, type: UInt64
+    if (!is_numeric(_search_id)) show_error($"{_GMFUNCTION_} :: _search_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _search_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Bool
+    if (!is_bool(_value)) show_error($"{_GMFUNCTION_} :: _value expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _value);
+
+    // param: _comparison_op, type: enum EpicComparisonOp
+
+    if (!is_numeric(_comparison_op)) show_error($"{_GMFUNCTION_} :: _comparison_op expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _comparison_op);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_lobby_search_set_parameter_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+
+    var _result = undefined;
+    _result = buffer_read(__ret_buffer, buffer_u64);
+    return _result;
+}
+
+/**
+ * @param {Real} _search_id
+ * @param {String} _key
+ * @param {Real} _value
+ * @param {Enum.EpicComparisonOp} _comparison_op
+ * @returns {Enum.EpicResult}
+ */
+function eos_lobby_lobby_search_set_parameter_double(_search_id, _key, _value, _comparison_op)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
+
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _search_id, type: UInt64
+    if (!is_numeric(_search_id)) show_error($"{_GMFUNCTION_} :: _search_id expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _search_id);
+
+    // param: _key, type: String
+    if (!is_string(_key)) show_error($"{_GMFUNCTION_} :: _key expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_key));
+    buffer_write(__args_buffer, buffer_string, _key);
+
+    // param: _value, type: Float64
+    if (!is_numeric(_value)) show_error($"{_GMFUNCTION_} :: _value expected number", true);
+    buffer_write(__args_buffer, buffer_f64, _value);
+
+    // param: _comparison_op, type: enum EpicComparisonOp
+
+    if (!is_numeric(_comparison_op)) show_error($"{_GMFUNCTION_} :: _comparison_op expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _comparison_op);
+
+    var __ret_buffer = __ext_core_get_ret_buffer();
+
+    var _return_value = __eos_lobby_lobby_search_set_parameter_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
     _result = buffer_read(__ret_buffer, buffer_u64);

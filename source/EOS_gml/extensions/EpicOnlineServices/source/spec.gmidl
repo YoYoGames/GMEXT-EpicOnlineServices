@@ -2413,9 +2413,27 @@ class `[[EpicLobbyModificationAddAttributeOptions]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_lobby_lobby_modification_add_attribute(
+function eos_lobby_lobby_modification_add_attribute_string(
     [type_hint=`uint64`] modification_id: gmval,
-    [type_hint=`EpicLobbyModificationAddAttributeOptions`] options: gmval
+    key: string,
+    value: string,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_add_attribute_bool(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: bool,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_add_attribute_double(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: real,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
 ): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
@@ -2438,9 +2456,27 @@ class `[[EpicLobbyModificationAddMemberAttributeOptions]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_lobby_lobby_modification_add_member_attribute(
+function eos_lobby_lobby_modification_add_member_attribute_string(
     [type_hint=`uint64`] modification_id: gmval,
-    [type_hint=`EpicLobbyModificationAddMemberAttributeOptions`] options: gmval
+    key: string,
+    value: string,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_add_member_attribute_bool(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: bool,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_modification_add_member_attribute_double(
+    [type_hint=`uint64`] modification_id: gmval,
+    key: string,
+    value: real,
+    [type_hint=`EpicLobbyAttributeVisibility`] visibility: gmval
 ): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
@@ -2530,9 +2566,27 @@ class `[[EpicLobbySearchSetParameterOptions]]` prototype Object
 }
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_lobby_lobby_search_set_parameter(
+function eos_lobby_lobby_search_set_parameter_string(
     [type_hint=`uint64`] search_id: gmval,
-    [type_hint=`EpicLobbySearchSetParameterOptions`] options: gmval
+    key: string,
+    value: string,
+    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_search_set_parameter_bool(
+    [type_hint=`uint64`] search_id: gmval,
+    key: string,
+    value: bool,
+    [type_hint=`EpicComparisonOp`] comparison_op: gmval
+): gmval;
+
+[global, bind = typed_gml, type_hint=`EpicResult`]
+function eos_lobby_lobby_search_set_parameter_double(
+    [type_hint=`uint64`] search_id: gmval,
+    key: string,
+    value: real,
+    [type_hint=`EpicComparisonOp`] comparison_op: gmval
 ): gmval;
 
 [global]

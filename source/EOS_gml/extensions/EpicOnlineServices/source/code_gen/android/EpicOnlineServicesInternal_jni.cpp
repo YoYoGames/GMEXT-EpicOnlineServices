@@ -3301,8 +3301,8 @@ static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_set_invites_allowed_3
     return static_cast<jdouble>(__ret);
 }
 
-// eos_lobby_lobby_modification_add_attribute JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
-static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_1DD925AF0EAC(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+// eos_lobby_lobby_modification_add_attribute_string JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_string_40CF2260E68E(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
     void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
     jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
@@ -3316,7 +3316,45 @@ static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_1DD925A
         throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
         return 0.0;
     }
-    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_string((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_lobby_lobby_modification_add_attribute_bool JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_bool_D2AA8B82F996(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_bool((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_lobby_lobby_modification_add_attribute_double JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_double_BD87A5024DDE(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_attribute_double((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
@@ -3339,8 +3377,8 @@ static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_remove_attribute_B002
     return static_cast<jdouble>(__ret);
 }
 
-// eos_lobby_lobby_modification_add_member_attribute JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
-static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_F01BF6B1A505(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+// eos_lobby_lobby_modification_add_member_attribute_string JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_string_21C8E33C60C8(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
     void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
     jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
@@ -3354,7 +3392,45 @@ static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_
         throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
         return 0.0;
     }
-    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_string((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_lobby_lobby_modification_add_member_attribute_bool JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_bool_4B53282527A1(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_bool((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_lobby_lobby_modification_add_member_attribute_double JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_double_9495DBB3FAB2(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_modification_add_member_attribute_double((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
@@ -3473,8 +3549,8 @@ static jdouble __JNI_WRAPPER__eos_lobby_lobby_search_set_target_user_id_982824B5
     return static_cast<jdouble>(__ret);
 }
 
-// eos_lobby_lobby_search_set_parameter JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
-static jdouble __JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_16F2402AC0BE(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+// eos_lobby_lobby_search_set_parameter_string JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_string_AE2B55F0E78D(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
 {
     void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
     jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
@@ -3488,7 +3564,45 @@ static jdouble __JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_16F2402AC0BE(
         throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
         return 0.0;
     }
-    double __ret = __EXT_NATIVE__eos_lobby_lobby_search_set_parameter((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_string((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_lobby_lobby_search_set_parameter_bool JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_bool_D6BBE66DE6A3(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_bool((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
+    return static_cast<jdouble>(__ret);
+}
+
+// eos_lobby_lobby_search_set_parameter_double JNI wrapper signature: (Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_double_51662E18E62D(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length, jobject __ret_buffer, jdouble __ret_buffer_length)
+{
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    void* __ret_buffer_ptr = env->GetDirectBufferAddress(__ret_buffer);
+    jlong __ret_buffer_cap = env->GetDirectBufferCapacity(__ret_buffer);
+    if (!__ret_buffer_ptr || __ret_buffer_cap <= 0) {
+        throwIAE(env, "__ret_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_lobby_lobby_search_set_parameter_double((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length), (char *)__ret_buffer_ptr, static_cast<double>(__ret_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
@@ -6768,9 +6882,13 @@ extern "C" {
             { "__EXT_JNI__eos_lobby_lobby_modification_set_max_members", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_set_max_members_220C374D38E4 },
             { "__EXT_JNI__eos_lobby_lobby_modification_set_bucket_id", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_set_bucket_id_4060C4B24401 },
             { "__EXT_JNI__eos_lobby_lobby_modification_set_invites_allowed", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_set_invites_allowed_379F08BBA5B1 },
-            { "__EXT_JNI__eos_lobby_lobby_modification_add_attribute", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_1DD925AF0EAC },
+            { "__EXT_JNI__eos_lobby_lobby_modification_add_attribute_string", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_string_40CF2260E68E },
+            { "__EXT_JNI__eos_lobby_lobby_modification_add_attribute_bool", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_bool_D2AA8B82F996 },
+            { "__EXT_JNI__eos_lobby_lobby_modification_add_attribute_double", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_attribute_double_BD87A5024DDE },
             { "__EXT_JNI__eos_lobby_lobby_modification_remove_attribute", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_remove_attribute_B0027AF3628E },
-            { "__EXT_JNI__eos_lobby_lobby_modification_add_member_attribute", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_F01BF6B1A505 },
+            { "__EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_string", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_string_21C8E33C60C8 },
+            { "__EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_bool", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_bool_4B53282527A1 },
+            { "__EXT_JNI__eos_lobby_lobby_modification_add_member_attribute_double", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_add_member_attribute_double_9495DBB3FAB2 },
             { "__EXT_JNI__eos_lobby_lobby_modification_remove_member_attribute", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_modification_remove_member_attribute_E20C039E3A22 },
             { "__EXT_JNI__eos_lobby_promote_member", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_promote_member_178A974042AC },
             { "__EXT_JNI__eos_lobby_kick_member", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_kick_member_24E242666788 },
@@ -6778,7 +6896,9 @@ extern "C" {
             { "__EXT_JNI__eos_lobby_lobby_search_release", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_release_250861F9847C },
             { "__EXT_JNI__eos_lobby_lobby_search_set_lobby_id", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_set_lobby_id_524E3FDD6AD6 },
             { "__EXT_JNI__eos_lobby_lobby_search_set_target_user_id", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_set_target_user_id_982824B5C533 },
-            { "__EXT_JNI__eos_lobby_lobby_search_set_parameter", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_16F2402AC0BE },
+            { "__EXT_JNI__eos_lobby_lobby_search_set_parameter_string", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_string_AE2B55F0E78D },
+            { "__EXT_JNI__eos_lobby_lobby_search_set_parameter_bool", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_bool_D6BBE66DE6A3 },
+            { "__EXT_JNI__eos_lobby_lobby_search_set_parameter_double", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_set_parameter_double_51662E18E62D },
             { "__EXT_JNI__eos_lobby_lobby_search_remove_parameter", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_remove_parameter_714ABA620784 },
             { "__EXT_JNI__eos_lobby_lobby_search_set_max_results", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_set_max_results_C3C1DAE6246C },
             { "__EXT_JNI__eos_lobby_lobby_search_find", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_lobby_lobby_search_find_58C054861AA2 },
