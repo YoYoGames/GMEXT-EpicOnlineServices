@@ -58,12 +58,28 @@ notifyPeerConnectionInterrupted = eos_p2p_add_notify_peer_connection_interrupted
 
 notifyPeerConnectionRequest = eos_p2p_add_notify_peer_connection_request(global.product_user_id, socketName, function(_info)
 {
-	// EpicP2PConnectionRequestCallbackInfo: .local_user_id, .remote_user_id, .socket_name
-	var result = eos_p2p_accept_connection(global.product_user_id, _info.remote_user_id, socketName)
-	show_debug_message("eos_p2p_accept_connection: " + eos_api_result_to_string(result))
-
+	show_debug_message("P2P CONNECTION REQUEST RECEIVED!")
+	show_debug_message("Remote user: " + _info.remote_user_id)
+	show_debug_message("Socket: " + _info.socket_name)
+	
+	if (is_undefined(_info)) {
+		show_debug_message("ERROR: _info is undefined")
+		return
+	}
+	
+	show_debug_message("_info struct: " + string(_info))
+	show_debug_message("_info type: " + typeof(_info))
+	show_debug_message("Fields: local_user_id=" + string(variable_struct_exists(_info, "local_user_id")))
+	show_debug_message("Fields: remote_user_id=" + string(variable_struct_exists(_info, "remote_user_id")))
+	show_debug_message("Fields: socket_name=" + string(variable_struct_exists(_info, "socket_name")))
+	
+	// Now try to access safely
+	var remote_id = _info.remote_user_id
+	show_debug_message("remote_user_id: " + string(remote_id))
+	
 	var buff = buffer_create(256, buffer_fixed, 1)
 	buffer_write(buff, buffer_u8, 1)
 	eos_p2p_send_packet(global.product_user_id, _info.remote_user_id, socketName, 0, buff, buffer_tell(buff), true, EpicPacketReliability.ReliableOrdered, false)
 	buffer_delete(buff)
 })
+
