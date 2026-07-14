@@ -49,6 +49,7 @@ function join_session_clean(_details_id, _on_joined)
 notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(function(_info)
 {
 	// EpicSessionsJoinSessionAcceptedCallbackInfo: .ui_event_id
+	show_debug_message("notifyJoinSessionAccepted fired")
 })
 
 notifyLeaveSessionRequested = eos_sessions_add_notify_leave_session_requested(function(_info)
@@ -93,6 +94,19 @@ notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted(fu
 		{
 			show_debug_message($"register_players (invite-joiner): {eos_api_result_to_string(_reg.result_code)}")
 		})
+
+		// Hello packet so P2P opens both ways.
+		var _handle = eos_sessions_copy_active_session_handle(obj_eos_sessions.SessionName)
+		if(_handle != 0)
+		{
+			var _info_struct = eos_sessions_active_session_copy_info(_handle)
+			eos_sessions_active_session_release(_handle)
+
+			var _buff = buffer_create(256, buffer_fixed, 1)
+			buffer_write(_buff, buffer_u8, 1)
+			eos_p2p_send_packet(global.product_user_id, _info_struct.owner_user_id, obj_eos_sessions_p2p.socketName, 0, _buff, buffer_tell(_buff), true, EpicPacketReliability.ReliableOrdered, false)
+			buffer_delete(_buff)
+		}
 	}))
 })
 
