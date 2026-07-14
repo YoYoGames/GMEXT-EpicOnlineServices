@@ -8029,7 +8029,7 @@ gm_enums::EpicResult eos_sessions_session_modification_set_permission_level(std:
 gm_enums::EpicResult eos_sessions_session_modification_set_join_in_progress_allowed(std::uint64_t modification_id, bool allow_join_in_progress);
 gm_enums::EpicResult eos_sessions_session_modification_set_max_players(std::uint64_t modification_id, std::int64_t max_players);
 gm_enums::EpicResult eos_sessions_session_modification_set_invites_allowed(std::uint64_t modification_id, bool invites_allowed);
-gm_enums::EpicResult eos_sessions_session_modification_add_attribute(std::uint64_t modification_id, std::string_view key, std::string_view value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
+gm_enums::EpicResult eos_sessions_session_modification_add_attribute_string(std::uint64_t modification_id, std::string_view key, std::string_view value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
 gm_enums::EpicResult eos_sessions_session_modification_add_attribute_bool(std::uint64_t modification_id, std::string_view key, bool value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
 gm_enums::EpicResult eos_sessions_session_modification_add_attribute_double(std::uint64_t modification_id, std::string_view key, double value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
 gm_enums::EpicResult eos_sessions_session_modification_remove_attribute(std::uint64_t modification_id, std::string_view key);

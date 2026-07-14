@@ -2078,7 +2078,7 @@ function eos_sessions_session_modification_set_invites_allowed(
 ): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
-function eos_sessions_session_modification_add_attribute(
+function eos_sessions_session_modification_add_attribute_string(
     [type_hint=`uint64`] modification_id: gmval,
     key: string,
     value: string,

@@ -1337,7 +1337,7 @@
  */
 
 /**
- * @function_partial eos_sessions_session_modification_add_attribute
+ * @function_partial eos_sessions_session_modification_add_attribute_string
  * @param {Real} modification_id
  * @param {String} key
  * @param {String} value

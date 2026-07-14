@@ -808,9 +808,9 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_sessions_session_modification_set_invites_allowed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
+- (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute_string:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
-    return __EXT_NATIVE__eos_sessions_session_modification_add_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+    return __EXT_NATIVE__eos_sessions_session_modification_add_attribute_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {

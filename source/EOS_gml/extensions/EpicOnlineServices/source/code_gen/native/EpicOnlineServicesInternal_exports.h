@@ -189,7 +189,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_permission_l
 GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_join_in_progress_allowed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_max_players(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_invites_allowed(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
-GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_double(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);
 GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_remove_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length);

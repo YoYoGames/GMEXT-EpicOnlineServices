@@ -22384,7 +22384,7 @@ function eos_sessions_session_modification_set_invites_allowed(_modification_id,
  * @param {Enum.EpicSessionAttributeAdvertisementType} _advertisement_type
  * @returns {Enum.EpicResult}
  */
-function eos_sessions_session_modification_add_attribute(_modification_id, _key, _value, _advertisement_type)
+function eos_sessions_session_modification_add_attribute_string(_modification_id, _key, _value, _advertisement_type)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -22412,7 +22412,7 @@ function eos_sessions_session_modification_add_attribute(_modification_id, _key,
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_add_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var _return_value = __eos_sessions_session_modification_add_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
     _result = buffer_read(__ret_buffer, buffer_u64);

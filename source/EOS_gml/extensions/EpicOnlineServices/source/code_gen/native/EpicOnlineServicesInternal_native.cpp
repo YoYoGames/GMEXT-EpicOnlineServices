@@ -2802,7 +2802,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_set_invites_allo
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
+GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_string(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
@@ -2818,7 +2818,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_modification_add_attribute(ch
     // field: advertisement_type, type: enum EpicSessionAttributeAdvertisementType
     gm_enums::EpicSessionAttributeAdvertisementType advertisement_type = gm::wire::codec::readValue<gm_enums::EpicSessionAttributeAdvertisementType>(__br);
 
-    auto&& __result = eos_sessions_session_modification_add_attribute(modification_id, key, value, advertisement_type);
+    auto&& __result = eos_sessions_session_modification_add_attribute_string(modification_id, key, value, advertisement_type);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult

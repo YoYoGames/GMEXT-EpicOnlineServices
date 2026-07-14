@@ -732,9 +732,9 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_sessions_session_modification_set_invites_allowed(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
-    public double __EXT_NATIVE__eos_sessions_session_modification_add_attribute(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
+    public double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_string(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
-        return __EXT_JNI__eos_sessions_session_modification_add_attribute(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
+        return __EXT_JNI__eos_sessions_session_modification_add_attribute_string(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
     }
     public double __EXT_NATIVE__eos_sessions_session_modification_add_attribute_bool(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {

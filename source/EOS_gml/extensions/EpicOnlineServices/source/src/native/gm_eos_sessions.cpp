@@ -1620,7 +1620,7 @@ gm_enums::EpicResult eos_sessions_session_modification_set_invites_allowed(
     return (gm_enums::EpicResult)result;
 }
 
-gm_enums::EpicResult eos_sessions_session_modification_add_attribute(
+gm_enums::EpicResult eos_sessions_session_modification_add_attribute_string(
     uint64_t modification_id,
     std::string_view key,
     std::string_view value,
