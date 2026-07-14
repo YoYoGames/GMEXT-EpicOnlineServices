@@ -4,16 +4,11 @@ selected = false
 image_xscale = 0.2
 image_yscale = 0.2
 
-//show_debug_message("Count: " + string(eos_ecom_get_offer_image_info_count(global.epic_account_id,Id)))
-
-for(var  j = 0 ; j < eos_ecom_get_offer_image_info_count(global.epic_account_id,offer_id) ; j++)
+for(var j = 0; j < eos_ecom_get_offer_image_info_count(global.epic_account_id, id); j++)
 {
-	var struct = eos_ecom_copy_offer_image_info_by_index(global.epic_account_id,offer_id,j)
-	if(struct.Type == "thumbnail")
+	var img_info = eos_ecom_copy_offer_image_info_by_index(global.epic_account_id, id, j)
+	if(img_info.type == "thumbnail")
 	{
-		sprite_index = sprite_add(struct.url,0,0,0,struct.width/2,0)
+		sprite_index = sprite_add(img_info.url, 0, 0, 0, img_info.width/2, 0)
 	}
-
 }
-
-//show_debug_message("Count: " + string(eos_ecom_get_item_image_info_count(global.epic_account_id,offer.offer_id)))
