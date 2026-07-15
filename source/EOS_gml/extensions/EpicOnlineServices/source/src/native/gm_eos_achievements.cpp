@@ -437,6 +437,7 @@ gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_in
 
     EOS_Achievements_CopyPlayerAchievementByIndexOptions opts{};
     opts.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYINDEX_API_LATEST;
+    opts.LocalUserId = local_user;
     opts.TargetUserId = target_user;
     opts.AchievementIndex = (uint32_t)index;
 
@@ -568,6 +569,7 @@ gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_id
 
     EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions opts{};
     opts.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST;
+    opts.LocalUserId = local_user;
     opts.TargetUserId = target_user;
     opts.AchievementId = achievement_id_storage.c_str();
 

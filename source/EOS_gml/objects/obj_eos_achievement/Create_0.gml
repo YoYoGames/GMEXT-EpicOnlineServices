@@ -18,5 +18,5 @@ if (struct_exists(data, "unlocked_icon_url")){
 }
 
 if (struct_exists(data, "locked_icon_url")){
-	spr_locked = sprite_add(data.unlocked_icon_url,0,0,0,0,0)
+	spr_locked = sprite_add(data.locked_icon_url,0,0,0,0,0)
 }
