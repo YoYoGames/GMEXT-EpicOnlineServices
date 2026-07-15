@@ -7,3 +7,4 @@ friends = {}
 
 stat_selected = ""
 agregation_seleted = noone
+

@@ -107,19 +107,33 @@ show_debug_message(stat_query)
 							        var user_score = eos_leaderboards_copy_user_score_by_index(stat_selected, i)
 							        var friend_info = struct_get(friends_by_puid, user_score.user_id)
 
-							        show_debug_message($"Score {i}: User={user_score.user_id}, Score={user_score.score}")
+							        show_debug_message($"Score {i}: User={user_score.user_id}, Score={user_score.score}")//Score 2: User=0002aaccc4764605a9e585fda4b11c78, Score=30293
+									show_debug_message(friend_info)//{ preferred_language : "en", nickname : "Paola", display_name : "JAZN93", user_id : "0002aaccc4764605a9e585fda4b11c78", country : "" }
+									
 
 							        // Create UI elements for each friend's score
 							        if(friend_info != undefined)
 							        {
+										show_debug_message($"Friend Score: {{
+													user_id: user_score.user_id,
+													rank: 0,
+													score: user_score.score,
+													user_display_name: friend_info.display_name
+												}}")
+										
+										
 							            var friend_ins = instance_create_depth(
-							                x,
-							                y + 100 + friend_counter_index * 80,
+							                500,
+							                200 + friend_counter_index * 80,
 							                0,
-							                friend_object,
+							                obj_eos_leaderboard_rank,//friend_object,
 							                {
-							                    data: friend_info,
-							                    score: user_score.score
+												data:{
+													user_id: user_score.user_id,
+													rank: 0,
+													score: user_score.score,
+													user_display_name: friend_info.display_name
+												}
 							                }
 							            )
 							            friend_counter_index++
