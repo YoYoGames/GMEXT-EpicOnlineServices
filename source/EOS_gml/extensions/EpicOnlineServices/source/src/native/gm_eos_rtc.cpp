@@ -8,6 +8,8 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <unordered_map>
+#include <mutex>
 
 using namespace gm::wire;
 using namespace gm_structs;
@@ -20,6 +22,11 @@ using namespace gm_enums;
 struct EOSAsyncCallbackContext
 {
     std::optional<GMFunction> callback;
+};
+
+struct EOSNotifyCallbackContext
+{
+    GMFunction callback;
 };
 
 static EOS_HRTC eos_rtc_iface()
@@ -52,20 +59,27 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
 }
 
 // ============================================================
-// Notify globals — RTC core
+// Notify callback storage — id-keyed, one heap ctx per registration
+// (see gm_eos_p2p.cpp for the reference pattern this follows)
 // ============================================================
 
-static GMFunction g_cb_rtc_disconnected;
-static GMFunction g_cb_rtc_participant_status_changed;
-static GMFunction g_cb_rtc_room_statistics_updated;
+static std::mutex g_notify_mutex;
 
-// Notify globals — RTC audio
-static GMFunction g_cb_rtc_audio_participant_updated;
-static GMFunction g_cb_rtc_audio_devices_changed;
-static GMFunction g_cb_rtc_audio_input_state;
-static GMFunction g_cb_rtc_audio_output_state;
-static GMFunction g_cb_rtc_audio_before_send;
-static GMFunction g_cb_rtc_audio_before_render;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_disconnected_callbacks;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_participant_status_changed_callbacks;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_room_statistics_updated_callbacks;
+
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_participant_updated_callbacks;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_devices_changed_callbacks;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_input_state_callbacks;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_output_state_callbacks;
+
+// AudioBeforeSend/AudioBeforeRender may fire off the main thread (eos_rtc_audio.h:211,239) — the
+// only two callbacks in this file where that's true. g_notify_mutex additionally guards reading
+// ctx->callback inside those two callbacks (not just add/remove), so the read can't race a
+// concurrent remove_notify's delete.
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_before_send_callbacks;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_before_render_callbacks;
 
 // ============================================================
 // RTC core notify callbacks
@@ -74,18 +88,22 @@ static GMFunction g_cb_rtc_audio_before_render;
 static void EOS_CALL eos_rtc_disconnected_callback(
     const EOS_RTC_DisconnectedCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_disconnected) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
     gm_structs::EpicRTCDisconnectedCallbackInfo out{};
     out.result_code   = (gm_enums::EpicResult)data->ResultCode;
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
-    g_cb_rtc_disconnected.call(out);
+    ctx->callback.call(out);
 }
 
 static void EOS_CALL eos_rtc_participant_status_changed_callback(
     const EOS_RTC_ParticipantStatusChangedCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_participant_status_changed) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
     gm_structs::EpicRTCParticipantStatusChangedCallbackInfo out{};
     out.local_user_id          = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name              = data->RoomName ? std::string(data->RoomName) : std::string();
@@ -102,18 +120,20 @@ static void EOS_CALL eos_rtc_participant_status_changed_callback(
     }
     out.participant_metadata = participant_metadata;
 
-    g_cb_rtc_participant_status_changed.call(out);
+    ctx->callback.call(out);
 }
 
 static void EOS_CALL eos_rtc_room_statistics_updated_callback(
     const EOS_RTC_RoomStatisticsUpdatedInfo* data)
 {
-    if (!data || !g_cb_rtc_room_statistics_updated) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
     gm_structs::EpicRTCRoomStatisticsUpdatedInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
     out.statistic     = data->Statistic ? std::string(data->Statistic) : std::string();
-    g_cb_rtc_room_statistics_updated.call(out);
+    ctx->callback.call(out);
 }
 
 // ============================================================
@@ -181,65 +201,96 @@ static void EOS_CALL eos_rtc_block_participant_callback(
 static void EOS_CALL eos_rtc_audio_participant_updated_callback(
     const EOS_RTCAudio_ParticipantUpdatedCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_audio_participant_updated) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
     gm_structs::EpicRTCAudioParticipantUpdatedCallbackInfo out{};
     out.local_user_id  = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name      = data->RoomName ? std::string(data->RoomName) : std::string();
     out.participant_id = eos_product_user_id_to_string_internal(data->ParticipantId);
     out.speaking       = (bool)data->bSpeaking;
     out.audio_status   = (gm_enums::EpicRTCAudioStatus)data->AudioStatus;
-    g_cb_rtc_audio_participant_updated.call(out);
+    ctx->callback.call(out);
 }
 
 static void EOS_CALL eos_rtc_audio_devices_changed_callback(
     const EOS_RTCAudio_AudioDevicesChangedCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_audio_devices_changed) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
     gm_structs::EpicRTCAudioDevicesChangedCallbackInfo out{};
     out.triggered = true;
-    g_cb_rtc_audio_devices_changed.call(out);
+    ctx->callback.call(out);
 }
 
 static void EOS_CALL eos_rtc_audio_input_state_callback(
     const EOS_RTCAudio_AudioInputStateCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_audio_input_state) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
     gm_structs::EpicRTCAudioInputStateCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
     out.status        = (gm_enums::EpicRTCAudioInputStatus)data->Status;
-    g_cb_rtc_audio_input_state.call(out);
+    ctx->callback.call(out);
 }
 
 static void EOS_CALL eos_rtc_audio_output_state_callback(
     const EOS_RTCAudio_AudioOutputStateCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_audio_output_state) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
     gm_structs::EpicRTCAudioOutputStateCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
     out.status        = (gm_enums::EpicRTCAudioOutputStatus)data->Status;
-    g_cb_rtc_audio_output_state.call(out);
+    ctx->callback.call(out);
 }
 
 static void EOS_CALL eos_rtc_audio_before_send_callback(
     const EOS_RTCAudio_AudioBeforeSendCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_audio_before_send) return;
+    if (!data) return;
+
+    // May run on an SDK-owned thread (eos_rtc_audio.h:211). Copy the callback out under the lock
+    // so this can't race remove_notify's delete of ctx, then call GML outside the lock so a
+    // reentrant call back into this extension can't deadlock on g_notify_mutex.
+    GMFunction cb;
+    {
+        std::lock_guard<std::mutex> lock(g_notify_mutex);
+        auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+        if (!ctx) return;
+        cb = ctx->callback;
+    }
+    if (!cb) return;
+
     gm_structs::EpicRTCAudioBeforeSendCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
-    g_cb_rtc_audio_before_send.call(out);
+    cb.call(out);
 }
 
 static void EOS_CALL eos_rtc_audio_before_render_callback(
     const EOS_RTCAudio_AudioBeforeRenderCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_audio_before_render) return;
+    if (!data) return;
+
+    GMFunction cb;
+    {
+        std::lock_guard<std::mutex> lock(g_notify_mutex);
+        auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+        if (!ctx) return;
+        cb = ctx->callback;
+    }
+    if (!cb) return;
+
     gm_structs::EpicRTCAudioBeforeRenderCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
-    g_cb_rtc_audio_before_render.call(out);
+    cb.call(out);
 }
 
 // ============================================================
@@ -542,23 +593,39 @@ std::uint64_t eos_rtc_add_notify_disconnected(
     if (!rtc) { eos_set_last_error("EOS RTC interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_disconnected = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTC_AddNotifyDisconnectedOptions opts{};
     opts.ApiVersion  = EOS_RTC_ADDNOTIFYDISCONNECTED_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTC_AddNotifyDisconnected(
-        rtc, &opts, nullptr, &eos_rtc_disconnected_callback);
+    EOS_NotificationId id = EOS_RTC_AddNotifyDisconnected(
+        rtc, &opts, ctx, &eos_rtc_disconnected_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTC_AddNotifyDisconnected returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_disconnected_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_remove_notify_disconnected(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTC rtc = eos_rtc_iface();
-    if (!rtc) { eos_set_last_error("EOS RTC interface unavailable."); return; }
-    EOS_RTC_RemoveNotifyDisconnected(rtc, (EOS_NotificationId)notification_id);
+    if (rtc) EOS_RTC_RemoveNotifyDisconnected(rtc, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_disconnected_callbacks.find(notification_id);
+    if (it != g_rtc_disconnected_callbacks.end()) {
+        delete it->second;
+        g_rtc_disconnected_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_rtc_add_notify_participant_status_changed(
@@ -571,23 +638,39 @@ std::uint64_t eos_rtc_add_notify_participant_status_changed(
     if (!rtc) { eos_set_last_error("EOS RTC interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_participant_status_changed = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTC_AddNotifyParticipantStatusChangedOptions opts{};
     opts.ApiVersion  = EOS_RTC_ADDNOTIFYPARTICIPANTSTATUSCHANGED_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTC_AddNotifyParticipantStatusChanged(
-        rtc, &opts, nullptr, &eos_rtc_participant_status_changed_callback);
+    EOS_NotificationId id = EOS_RTC_AddNotifyParticipantStatusChanged(
+        rtc, &opts, ctx, &eos_rtc_participant_status_changed_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTC_AddNotifyParticipantStatusChanged returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_participant_status_changed_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_remove_notify_participant_status_changed(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTC rtc = eos_rtc_iface();
-    if (!rtc) { eos_set_last_error("EOS RTC interface unavailable."); return; }
-    EOS_RTC_RemoveNotifyParticipantStatusChanged(rtc, (EOS_NotificationId)notification_id);
+    if (rtc) EOS_RTC_RemoveNotifyParticipantStatusChanged(rtc, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_participant_status_changed_callbacks.find(notification_id);
+    if (it != g_rtc_participant_status_changed_callbacks.end()) {
+        delete it->second;
+        g_rtc_participant_status_changed_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_rtc_add_notify_room_statistics_updated(
@@ -600,23 +683,39 @@ std::uint64_t eos_rtc_add_notify_room_statistics_updated(
     if (!rtc) { eos_set_last_error("EOS RTC interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_room_statistics_updated = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTC_AddNotifyRoomStatisticsUpdatedOptions opts{};
     opts.ApiVersion  = EOS_RTC_ADDNOTIFYROOMSTATISTICSUPDATED_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTC_AddNotifyRoomStatisticsUpdated(
-        rtc, &opts, nullptr, &eos_rtc_room_statistics_updated_callback);
+    EOS_NotificationId id = EOS_RTC_AddNotifyRoomStatisticsUpdated(
+        rtc, &opts, ctx, &eos_rtc_room_statistics_updated_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTC_AddNotifyRoomStatisticsUpdated returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_room_statistics_updated_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_remove_notify_room_statistics_updated(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTC rtc = eos_rtc_iface();
-    if (!rtc) { eos_set_last_error("EOS RTC interface unavailable."); return; }
-    EOS_RTC_RemoveNotifyRoomStatisticsUpdated(rtc, (EOS_NotificationId)notification_id);
+    if (rtc) EOS_RTC_RemoveNotifyRoomStatisticsUpdated(rtc, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_room_statistics_updated_callbacks.find(notification_id);
+    if (it != g_rtc_room_statistics_updated_callbacks.end()) {
+        delete it->second;
+        g_rtc_room_statistics_updated_callbacks.erase(it);
+    }
 }
 
 // ============================================================
@@ -967,23 +1066,39 @@ std::uint64_t eos_rtc_audio_add_notify_participant_updated(
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_audio_participant_updated = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTCAudio_AddNotifyParticipantUpdatedOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYPARTICIPANTUPDATED_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTCAudio_AddNotifyParticipantUpdated(
-        audio, &opts, nullptr, &eos_rtc_audio_participant_updated_callback);
+    EOS_NotificationId id = EOS_RTCAudio_AddNotifyParticipantUpdated(
+        audio, &opts, ctx, &eos_rtc_audio_participant_updated_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCAudio_AddNotifyParticipantUpdated returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_audio_participant_updated_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_audio_remove_notify_participant_updated(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
-    EOS_RTCAudio_RemoveNotifyParticipantUpdated(audio, (EOS_NotificationId)notification_id);
+    if (audio) EOS_RTCAudio_RemoveNotifyParticipantUpdated(audio, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_audio_participant_updated_callbacks.find(notification_id);
+    if (it != g_rtc_audio_participant_updated_callbacks.end()) {
+        delete it->second;
+        g_rtc_audio_participant_updated_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_rtc_audio_add_notify_audio_devices_changed(const std::optional<gm::wire::GMFunction>& callback)
@@ -992,21 +1107,37 @@ std::uint64_t eos_rtc_audio_add_notify_audio_devices_changed(const std::optional
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
-    g_cb_rtc_audio_devices_changed = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions opts{};
     opts.ApiVersion = EOS_RTCAUDIO_ADDNOTIFYAUDIODEVICESCHANGED_API_LATEST;
 
-    return (std::uint64_t)EOS_RTCAudio_AddNotifyAudioDevicesChanged(
-        audio, &opts, nullptr, &eos_rtc_audio_devices_changed_callback);
+    EOS_NotificationId id = EOS_RTCAudio_AddNotifyAudioDevicesChanged(
+        audio, &opts, ctx, &eos_rtc_audio_devices_changed_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCAudio_AddNotifyAudioDevicesChanged returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_audio_devices_changed_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_audio_remove_notify_audio_devices_changed(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
-    EOS_RTCAudio_RemoveNotifyAudioDevicesChanged(audio, (EOS_NotificationId)notification_id);
+    if (audio) EOS_RTCAudio_RemoveNotifyAudioDevicesChanged(audio, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_audio_devices_changed_callbacks.find(notification_id);
+    if (it != g_rtc_audio_devices_changed_callbacks.end()) {
+        delete it->second;
+        g_rtc_audio_devices_changed_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_rtc_audio_add_notify_audio_input_state(
@@ -1019,23 +1150,39 @@ std::uint64_t eos_rtc_audio_add_notify_audio_input_state(
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_audio_input_state = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTCAudio_AddNotifyAudioInputStateOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOINPUTSTATE_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTCAudio_AddNotifyAudioInputState(
-        audio, &opts, nullptr, &eos_rtc_audio_input_state_callback);
+    EOS_NotificationId id = EOS_RTCAudio_AddNotifyAudioInputState(
+        audio, &opts, ctx, &eos_rtc_audio_input_state_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCAudio_AddNotifyAudioInputState returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_audio_input_state_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_audio_remove_notify_audio_input_state(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
-    EOS_RTCAudio_RemoveNotifyAudioInputState(audio, (EOS_NotificationId)notification_id);
+    if (audio) EOS_RTCAudio_RemoveNotifyAudioInputState(audio, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_audio_input_state_callbacks.find(notification_id);
+    if (it != g_rtc_audio_input_state_callbacks.end()) {
+        delete it->second;
+        g_rtc_audio_input_state_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_rtc_audio_add_notify_audio_output_state(
@@ -1048,23 +1195,39 @@ std::uint64_t eos_rtc_audio_add_notify_audio_output_state(
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_audio_output_state = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTCAudio_AddNotifyAudioOutputStateOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOOUTPUTSTATE_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTCAudio_AddNotifyAudioOutputState(
-        audio, &opts, nullptr, &eos_rtc_audio_output_state_callback);
+    EOS_NotificationId id = EOS_RTCAudio_AddNotifyAudioOutputState(
+        audio, &opts, ctx, &eos_rtc_audio_output_state_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCAudio_AddNotifyAudioOutputState returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_audio_output_state_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_audio_remove_notify_audio_output_state(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
-    EOS_RTCAudio_RemoveNotifyAudioOutputState(audio, (EOS_NotificationId)notification_id);
+    if (audio) EOS_RTCAudio_RemoveNotifyAudioOutputState(audio, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_audio_output_state_callbacks.find(notification_id);
+    if (it != g_rtc_audio_output_state_callbacks.end()) {
+        delete it->second;
+        g_rtc_audio_output_state_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_rtc_audio_add_notify_audio_before_send(
@@ -1077,23 +1240,41 @@ std::uint64_t eos_rtc_audio_add_notify_audio_before_send(
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_audio_before_send = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTCAudio_AddNotifyAudioBeforeSendOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORESEND_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTCAudio_AddNotifyAudioBeforeSend(
-        audio, &opts, nullptr, &eos_rtc_audio_before_send_callback);
+    EOS_NotificationId id = EOS_RTCAudio_AddNotifyAudioBeforeSend(
+        audio, &opts, ctx, &eos_rtc_audio_before_send_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCAudio_AddNotifyAudioBeforeSend returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_audio_before_send_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_audio_remove_notify_audio_before_send(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
-    EOS_RTCAudio_RemoveNotifyAudioBeforeSend(audio, (EOS_NotificationId)notification_id);
+    if (audio) EOS_RTCAudio_RemoveNotifyAudioBeforeSend(audio, (EOS_NotificationId)notification_id);
+
+    // Locked so this can't delete ctx while eos_rtc_audio_before_send_callback (possibly running
+    // on an SDK thread right now) is mid-copy of ctx->callback.
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_audio_before_send_callbacks.find(notification_id);
+    if (it != g_rtc_audio_before_send_callbacks.end()) {
+        delete it->second;
+        g_rtc_audio_before_send_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_rtc_audio_add_notify_audio_before_render(
@@ -1106,21 +1287,39 @@ std::uint64_t eos_rtc_audio_add_notify_audio_before_render(
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    g_cb_rtc_audio_before_render = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTCAudio_AddNotifyAudioBeforeRenderOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORERENDER_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
 
-    return (std::uint64_t)EOS_RTCAudio_AddNotifyAudioBeforeRender(
-        audio, &opts, nullptr, &eos_rtc_audio_before_render_callback);
+    EOS_NotificationId id = EOS_RTCAudio_AddNotifyAudioBeforeRender(
+        audio, &opts, ctx, &eos_rtc_audio_before_render_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCAudio_AddNotifyAudioBeforeRender returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_audio_before_render_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_audio_remove_notify_audio_before_render(std::uint64_t notification_id)
 {
     eos_clear_last_error();
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return; }
-    EOS_RTCAudio_RemoveNotifyAudioBeforeRender(audio, (EOS_NotificationId)notification_id);
+    if (audio) EOS_RTCAudio_RemoveNotifyAudioBeforeRender(audio, (EOS_NotificationId)notification_id);
+
+    // Same reasoning as remove_notify_audio_before_send: locked so this can't delete ctx while
+    // the callback (possibly on an SDK thread) is mid-copy of ctx->callback.
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_audio_before_render_callbacks.find(notification_id);
+    if (it != g_rtc_audio_before_render_callbacks.end()) {
+        delete it->second;
+        g_rtc_audio_before_render_callbacks.erase(it);
+    }
 }

@@ -5,6 +5,7 @@
 #include <eos_playerdatastorage.h>
 
 #include <cstdint>
+#include <cstdio>
 #include <cstring>
 #include <fstream>
 #include <ios>
@@ -37,6 +38,7 @@ struct EOSPDSReadContext
     std::string output_path;
     std::ofstream output_file;
     bool file_open_failed = false;
+    bool output_file_opened = false;
     EOS_HPlayerDataStorageFileTransferRequest request = nullptr;
 };
 
@@ -199,6 +201,7 @@ static EOS_PlayerDataStorage_EReadResult EOS_CALL eos_pds_read_data_callback(
                 ctx->file_open_failed = true;
                 return EOS_PlayerDataStorage_EReadResult::EOS_RR_FailRequest;
             }
+            ctx->output_file_opened = true;
         }
         if (ctx->output_file.is_open()) {
             ctx->output_file.write(reinterpret_cast<const char*>(data->DataChunk),
@@ -242,6 +245,18 @@ static void EOS_CALL eos_pds_read_file_callback_native(
         result_code = EOS_EResult::EOS_UnexpectedError;
         eos_set_last_error("EOS_PlayerDataStorage_ReadFile: failed to write '"
             + ctx->output_path + "' to disk (is the path writable?).");
+    }
+
+    // If we truncated output_path to start streaming but didn't finish successfully (failure or
+    // cancellation), remove the partial fragment rather than leaving it in place — otherwise a
+    // previously-good cached file silently ends up replaced by a corrupt, incomplete one.
+    if (ctx->output_file_opened && result_code != EOS_EResult::EOS_Success) {
+        std::remove(ctx->output_path.c_str());
+    }
+
+    {
+        std::lock_guard<std::mutex> lock(eos_pds_transfers_mutex);
+        eos_pds_active_transfers.erase(ctx->filename);
     }
 
     gm_structs::EpicPlayerDataStorageReadFileCallbackInfo out{};
@@ -306,6 +321,11 @@ static void EOS_CALL eos_pds_write_file_callback_native(
     if (!data) return;
     auto* ctx = static_cast<EOSPDSWriteContext*>(data->ClientData);
     if (!ctx) return;
+
+    {
+        std::lock_guard<std::mutex> lock(eos_pds_transfers_mutex);
+        eos_pds_active_transfers.erase(ctx->filename);
+    }
 
     gm_structs::EpicPlayerDataStorageWriteFileCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
@@ -565,7 +585,11 @@ void eos_playerdatastorage_read_file(
         // EOS still queues the completion callback with our ctx even when it returns null,
         // so we MUST NOT delete ctx here — the callback owns the lifetime.
         eos_set_last_error("EOS_PlayerDataStorage_ReadFile: failed to start transfer.");
+        return;
     }
+
+    std::lock_guard<std::mutex> lock(eos_pds_transfers_mutex);
+    eos_pds_active_transfers[fn] = ctx->request;
 }
 
 void eos_playerdatastorage_write_file(
@@ -615,7 +639,11 @@ void eos_playerdatastorage_write_file(
     if (!ctx->request) {
         // EOS still queues the completion callback with our ctx even when it returns null.
         eos_set_last_error("EOS_PlayerDataStorage_WriteFile: failed to start transfer.");
+        return;
     }
+
+    std::lock_guard<std::mutex> lock(eos_pds_transfers_mutex);
+    eos_pds_active_transfers[fn] = ctx->request;
 }
 
 void eos_playerdatastorage_delete_cache(

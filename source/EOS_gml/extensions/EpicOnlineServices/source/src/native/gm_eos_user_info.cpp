@@ -217,10 +217,46 @@ uint64_t eos_user_info_get_local_platform_type()
 }
 
 std::string eos_user_info_copy_best_display_name(
-    std::string_view,
-    std::string_view)
+    std::string_view local_user_id,
+    std::string_view target_user_id)
 {
-    return "";
+    eos_clear_last_error();
+
+    EOS_HUserInfo user_info = eos_user_info_iface();
+    if (!user_info) {
+        eos_set_last_error("EOS UserInfo interface unavailable.");
+        return "";
+    }
+
+    EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
+    EOS_EpicAccountId target_user = eos_epic_account_id_from_string_internal(target_user_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_UserInfo_CopyBestDisplayName: invalid local_user_id.");
+        return "";
+    }
+
+    if (!target_user) {
+        eos_set_last_error("EOS_UserInfo_CopyBestDisplayName: invalid target_user_id.");
+        return "";
+    }
+
+    EOS_UserInfo_CopyBestDisplayNameOptions opts{};
+    opts.ApiVersion = EOS_USERINFO_COPYBESTDISPLAYNAME_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+
+    EOS_UserInfo_BestDisplayName* best = nullptr;
+    const EOS_EResult result = EOS_UserInfo_CopyBestDisplayName(user_info, &opts, &best);
+    if (result != EOS_EResult::EOS_Success || best == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_UserInfo_CopyBestDisplayName failed.");
+        return "";
+    }
+
+    std::string out = best->DisplayName ? std::string(best->DisplayName) : std::string();
+    EOS_UserInfo_BestDisplayName_Release(best);
+    return out;
 }
 
 

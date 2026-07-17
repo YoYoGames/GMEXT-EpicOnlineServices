@@ -449,7 +449,7 @@ void eos_ecom_query_ownership_token(
     EOS_Ecom_QueryOwnershipTokenOptions opts{};
     opts.ApiVersion         = EOS_ECOM_QUERYOWNERSHIPTOKEN_API_LATEST;
     opts.LocalUserId        = local_user;
-    opts.CatalogItemIds     = (EOS_Ecom_CatalogItemId*)id_ptrs.data();
+    opts.CatalogItemIds     = (EOS_Ecom_CatalogItemId*)(id_ptrs.empty() ? nullptr : id_ptrs.data());
     opts.CatalogItemIdCount = (uint32_t)id_ptrs.size();
     opts.CatalogNamespace   = ns.empty() ? nullptr : ns.c_str();
 

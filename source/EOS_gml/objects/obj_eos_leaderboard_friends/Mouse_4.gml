@@ -101,43 +101,49 @@ show_debug_message(stat_query)
 							    var score_count = eos_leaderboards_get_user_score_count(stat_selected)
 							    show_debug_message($"Total scores cached: {score_count}")
 
-							    // Retrieve each score
+							    // Collect first, since this queries specific friends' scores (not the
+							    // global leaderboard) -- the SDK doesn't hand back a rank here, and the
+							    // results aren't guaranteed sorted, so rank has to be computed locally
+							    // by sorting the collected scores before creating any UI.
+							    var _entries = []
 							    for(var i = 0; i < score_count; i++)
 							    {
 							        var user_score = eos_leaderboards_copy_user_score_by_index(stat_selected, i)
 							        var friend_info = struct_get(friends_by_puid, user_score.user_id)
 
-							        show_debug_message($"Score {i}: User={user_score.user_id}, Score={user_score.score}")//Score 2: User=0002aaccc4764605a9e585fda4b11c78, Score=30293
-									show_debug_message(friend_info)//{ preferred_language : "en", nickname : "Paola", display_name : "JAZN93", user_id : "0002aaccc4764605a9e585fda4b11c78", country : "" }
-									
-
-							        // Create UI elements for each friend's score
 							        if(friend_info != undefined)
 							        {
-										show_debug_message($"Friend Score: {{
-													user_id: user_score.user_id,
-													rank: 0,
-													score: user_score.score,
-													user_display_name: friend_info.display_name
-												}}")
-										
-										
-							            var friend_ins = instance_create_depth(
-							                500,
-							                200 + friend_counter_index * 80,
-							                0,
-							                obj_eos_leaderboard_rank,//friend_object,
-							                {
-												data:{
-													user_id: user_score.user_id,
-													rank: 0,
-													score: user_score.score,
-													user_display_name: friend_info.display_name
-												}
-							                }
-							            )
-							            friend_counter_index++
+							            array_push(_entries, {
+							                user_id: user_score.user_id,
+							                score: user_score.score,
+							                user_display_name: friend_info.display_name
+							            })
 							        }
+							    }
+
+							    // Higher score = better rank.
+							    array_sort(_entries, function(_a, _b) { return _b.score - _a.score })
+
+							    for(var i = 0; i < array_length(_entries); i++)
+							    {
+							        var _entry = _entries[i]
+							        show_debug_message($"Friend rank {i + 1}: {_entry.user_display_name} score={_entry.score}")
+
+							        var friend_ins = instance_create_depth(
+							            500,
+							            200 + friend_counter_index * 80,
+							            0,
+							            obj_eos_leaderboard_rank,//friend_object,
+							            {
+							                data: {
+							                    user_id: _entry.user_id,
+							                    rank: i + 1,
+							                    score: _entry.score,
+							                    user_display_name: _entry.user_display_name
+							                }
+							            }
+							        )
+							        friend_counter_index++
 							    }
 							}
 						)

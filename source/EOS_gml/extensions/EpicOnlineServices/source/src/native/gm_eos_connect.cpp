@@ -25,8 +25,12 @@ struct EOSAsyncCallbackContext
     int64_t continuance_token_id = 0;
 };
 
+// Even ids only — gm_eos_auth.cpp's counter uses odd ids — so a continuance_token_id obtained
+// from one interface's flow can never collide with a live key in the other interface's map if
+// passed into the wrong create/link function; the lookup misses cleanly instead of silently
+// resolving against an unrelated pending token.
 static std::map<int64_t, EOS_ContinuanceToken> g_eos_connect_continuance_tokens;
-static int64_t g_eos_connect_continuance_token_counter = 1;
+static int64_t g_eos_connect_continuance_token_counter = 2;
 
 
 static EOS_HConnect eos_connect_iface()
@@ -185,7 +189,8 @@ static void EOS_CALL eos_connect_login_callback_native(const EOS_Connect_LoginCa
     int64_t token_id = 0;
     if (data->ContinuanceToken)
     {
-        token_id = g_eos_connect_continuance_token_counter++;
+        token_id = g_eos_connect_continuance_token_counter;
+        g_eos_connect_continuance_token_counter += 2;
         g_eos_connect_continuance_tokens[token_id] = data->ContinuanceToken;
     }
 
@@ -664,10 +669,14 @@ static gm_structs::EpicConnectVerifyIdTokenCallbackInfo eos_connect_verify_id_to
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
     out.product_user_id = eos_product_user_id_to_string_internal(p->ProductUserId);
     out.is_account_info_present = (p->bIsAccountInfoPresent != 0);
-    out.account_id_type = (gm_enums::EpicExternalAccountType)p->AccountIdType;
-    out.account_id = p->AccountId ? std::string(p->AccountId) : std::string();
-    out.platform = p->Platform ? std::string(p->Platform) : std::string();
-    out.device_type = p->DeviceType ? std::string(p->DeviceType) : std::string();
+    // AccountIdType/AccountId/Platform/DeviceType are only valid when bIsAccountInfoPresent is
+    // set (eos_connect_types.h) — always false for Device-ID-authenticated users.
+    if (out.is_account_info_present) {
+        out.account_id_type = (gm_enums::EpicExternalAccountType)p->AccountIdType;
+        out.account_id = p->AccountId ? std::string(p->AccountId) : std::string();
+        out.platform = p->Platform ? std::string(p->Platform) : std::string();
+        out.device_type = p->DeviceType ? std::string(p->DeviceType) : std::string();
+    }
     out.client_id = p->ClientId ? std::string(p->ClientId) : std::string();
     out.product_id = p->ProductId ? std::string(p->ProductId) : std::string();
     out.sandbox_id = p->SandboxId ? std::string(p->SandboxId) : std::string();

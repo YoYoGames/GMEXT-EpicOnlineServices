@@ -4,15 +4,6 @@ global.epic_account_id = ""
 global.product_user_id = ""
 
 
-notify_login_status_changed = eos_auth_add_notify_login_status_changed(function(data){
-	show_debug_message(data)})
-notify_auth_expiration = eos_connect_add_notify_auth_expiration(function(data){show_debug_message(data)})
-notify_login_status_changed = eos_connect_add_notify_login_status_changed(function(data){show_debug_message(data)})
-notify_friends_update = eos_friends_add_notify_friends_update(function(data){show_debug_message(data)})
-notify_achievements_unlocked_v2 = eos_achievements_add_notify_achievements_unlocked_v2(function(data){show_debug_message(data)})
-notify_display_settings_updated = eos_ui_add_notify_display_settings_updated(function(data){show_debug_message(data)})
-
-
 function eos_login()
 {
     eos_login_try_persistent_auth();
@@ -108,7 +99,7 @@ function eos_connect_login_after_auth()
             {
                 show_debug_message("EOS: Connect continuance token found, creating user...");
 
-                eos_connect_create_user(function(r)
+                eos_connect_create_user(result.continuance_token_id, function(r)
                 {
                     if (r.result_code == EpicResult.Success)
                     {
@@ -180,6 +171,32 @@ if (result != EpicResult.Success)
 
 show_debug_message("EOS Platform created");
 show_debug_message($"EOS storage directory: {eos_platform_get_storage_directory()}");
+
+// Persistent notifications — must be registered after the platform exists: each
+// add_notify_* call needs a live interface, which eos_platform_get() doesn't have
+// until eos_platform_create succeeds above (registering them any earlier is a silent
+// no-op — every add_notify_* call returns 0 with the interface-unavailable error).
+notify_auth_login_status_changed = eos_auth_add_notify_login_status_changed(function(data){
+	show_debug_message(data)})
+notify_auth_expiration = eos_connect_add_notify_auth_expiration(function(data){show_debug_message(data)})
+notify_connect_login_status_changed = eos_connect_add_notify_login_status_changed(function(data){show_debug_message(data)})
+notify_friends_update = eos_friends_add_notify_friends_update(function(data){show_debug_message(data)})
+notify_achievements_unlocked_v2 = eos_achievements_add_notify_achievements_unlocked_v2(function(data){show_debug_message(data)})
+notify_display_settings_updated = eos_ui_add_notify_display_settings_updated(function(data){show_debug_message(data)})
+notify_presence_join_game_accepted = eos_presence_add_notify_join_game_accepted(function(_info)
+{
+	// EpicPresenceJoinGameAcceptedCallbackInfo: .join_info, .local_user_id, .target_user_id, .ui_event_id
+	// MUST acknowledge or the social overlay UI hangs.
+	eos_ui_acknowledge_event_id(_info.ui_event_id)
+	show_debug_message($"presence join game accepted: {_info.join_info}")
+})
+notify_custominvites_send_native_invite_requested = eos_custominvites_add_notify_send_custom_native_invite_requested(function(_info)
+{
+	// EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo:
+	//   .ui_event_id, .local_user_id, .target_native_account_type, .target_user_native_account_id, .invite_id
+	// MUST acknowledge or the social overlay UI hangs.
+	eos_ui_acknowledge_event_id(_info.ui_event_id)
+})
 
 eos_login();
 

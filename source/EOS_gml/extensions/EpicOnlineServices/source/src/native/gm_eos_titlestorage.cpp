@@ -5,6 +5,7 @@
 #include <eos_titlestorage.h>
 
 #include <cstdint>
+#include <cstdio>
 #include <fstream>
 #include <ios>
 #include <mutex>
@@ -36,6 +37,7 @@ struct EOSTSReadContext
     std::string output_path;
     std::ofstream output_file;
     bool file_open_failed = false;
+    bool output_file_opened = false;
     EOS_HTitleStorageFileTransferRequest request = nullptr;
 };
 
@@ -145,6 +147,7 @@ static EOS_TitleStorage_EReadResult EOS_CALL eos_ts_read_data_callback(
                 ctx->file_open_failed = true;
                 return EOS_TitleStorage_EReadResult::EOS_TS_RR_FailRequest;
             }
+            ctx->output_file_opened = true;
         }
         if (ctx->output_file.is_open()) {
             ctx->output_file.write(reinterpret_cast<const char*>(data->DataChunk),
@@ -188,6 +191,18 @@ static void EOS_CALL eos_ts_read_file_callback_native(
         result_code = EOS_EResult::EOS_UnexpectedError;
         eos_set_last_error("EOS_TitleStorage_ReadFile: failed to write '"
             + ctx->output_path + "' to disk (is the path writable?).");
+    }
+
+    // If we truncated output_path to start streaming but didn't finish successfully (failure or
+    // cancellation), remove the partial fragment rather than leaving it in place — otherwise a
+    // previously-good cached file silently ends up replaced by a corrupt, incomplete one.
+    if (ctx->output_file_opened && result_code != EOS_EResult::EOS_Success) {
+        std::remove(ctx->output_path.c_str());
+    }
+
+    {
+        std::lock_guard<std::mutex> lock(eos_ts_transfers_mutex);
+        eos_ts_active_transfers.erase(ctx->filename);
     }
 
     gm_structs::EpicTitleStorageReadFileCallbackInfo out{};
@@ -387,7 +402,11 @@ void eos_titlestorage_read_file(
         // EOS still queues the completion callback with our ctx even when it returns null,
         // so we MUST NOT delete ctx here — the callback owns the lifetime.
         eos_set_last_error("EOS_TitleStorage_ReadFile: failed to start transfer.");
+        return;
     }
+
+    std::lock_guard<std::mutex> lock(eos_ts_transfers_mutex);
+    eos_ts_active_transfers[fn] = ctx->request;
 }
 
 void eos_titlestorage_delete_cache(

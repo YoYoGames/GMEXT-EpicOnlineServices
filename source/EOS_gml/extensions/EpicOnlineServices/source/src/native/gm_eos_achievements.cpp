@@ -650,23 +650,121 @@ void eos_achievements_unlock_achievements(
 }
 
 gm_structs::EpicStatThreshold eos_achievements_copy_stat_threshold_by_index(
-    std::string_view,
-    int64_t)
+    std::string_view achievement_id,
+    int64_t index)
 {
     eos_clear_last_error();
-    eos_set_last_error("EOS_Achievements_CopyStatThreshold not implemented in this SDK version.");
-    return gm_structs::EpicStatThreshold{};
+
+    gm_structs::EpicStatThreshold out{};
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return out;
+    }
+
+    std::string achievement_id_storage(achievement_id);
+    if (achievement_id_storage.empty()) {
+        eos_set_last_error("EOS_Achievements_CopyStatThresholdByIndex: achievement_id is required.");
+        return out;
+    }
+
+    // StatThresholds lives on the achievement definition, not a standalone SDK call — fetch the
+    // (non-deprecated V2) definition and index into its embedded array.
+    EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYACHIEVEMENTID_API_LATEST;
+    opts.AchievementId = achievement_id_storage.c_str();
+
+    EOS_Achievements_DefinitionV2* def = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(
+        achievements, &opts, &def);
+
+    if (result != EOS_EResult::EOS_Success || def == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId failed.");
+        return out;
+    }
+
+    if (index < 0 || (uint32_t)index >= def->StatThresholdsCount) {
+        eos_set_last_error("EOS_Achievements_CopyStatThresholdByIndex: index out of range.");
+        EOS_Achievements_DefinitionV2_Release(def);
+        return out;
+    }
+
+    const EOS_Achievements_StatThresholds& threshold = def->StatThresholds[index];
+    out.name = threshold.Name ? std::string(threshold.Name) : std::string();
+    out.threshold = (int64_t)threshold.Threshold;
+
+    EOS_Achievements_DefinitionV2_Release(def);
+    return out;
 }
 
 gm_structs::EpicPlayerStatInfo eos_achievements_copy_player_stat_info_by_index(
-    std::string_view,
-    std::string_view,
-    std::string_view,
-    int64_t)
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    std::string_view achievement_id,
+    int64_t index)
 {
     eos_clear_last_error();
-    eos_set_last_error("EOS_Achievements_CopyPlayerStatInfo not implemented in this SDK version.");
-    return gm_structs::EpicPlayerStatInfo{};
+
+    gm_structs::EpicPlayerStatInfo out{};
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return out;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    std::string achievement_id_storage(achievement_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: invalid local_user_id.");
+        return out;
+    }
+
+    if (!target_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: invalid target_user_id.");
+        return out;
+    }
+
+    if (achievement_id_storage.empty()) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: achievement_id is required.");
+        return out;
+    }
+
+    // StatInfo lives on the player achievement, not a standalone SDK call — fetch it and index
+    // into its embedded array.
+    EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+    opts.AchievementId = achievement_id_storage.c_str();
+
+    EOS_Achievements_PlayerAchievement* achievement = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyPlayerAchievementByAchievementId(
+        achievements, &opts, &achievement);
+
+    if (result != EOS_EResult::EOS_Success || achievement == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyPlayerAchievementByAchievementId failed.");
+        return out;
+    }
+
+    if (index < 0 || (uint32_t)index >= (uint32_t)achievement->StatInfoCount) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: index out of range.");
+        EOS_Achievements_PlayerAchievement_Release(achievement);
+        return out;
+    }
+
+    const EOS_Achievements_PlayerStatInfo& stat_info = achievement->StatInfo[index];
+    out.name = stat_info.Name ? std::string(stat_info.Name) : std::string();
+    out.current_value = (int64_t)stat_info.CurrentValue;
+    out.threshold_value = (int64_t)stat_info.ThresholdValue;
+
+    EOS_Achievements_PlayerAchievement_Release(achievement);
+    return out;
 }
 
 // ============================================================

@@ -223,14 +223,26 @@ bool eos_custominvites_set_custom_invite(
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return false; }
 
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_CustomInvites_SetCustomInvite: invalid local_user_id.");
+        return false;
+    }
+
     std::string pay(payload);
 
     EOS_CustomInvites_SetCustomInviteOptions opts{};
     opts.ApiVersion  = EOS_CUSTOMINVITES_SETCUSTOMINVITE_API_LATEST;
-    opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
+    opts.LocalUserId = local_user;
     opts.Payload     = pay.c_str();
 
-    return EOS_CustomInvites_SetCustomInvite(ci, &opts) == EOS_EResult::EOS_Success;
+    const EOS_EResult result = EOS_CustomInvites_SetCustomInvite(ci, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_CustomInvites_SetCustomInvite failed.");
+        return false;
+    }
+    return true;
 }
 
 void eos_custominvites_send_custom_invite(
@@ -270,16 +282,37 @@ bool eos_custominvites_finalize_invite(
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return false; }
 
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
     std::string invite_id(custom_invite_id);
+
+    if (!target_user) {
+        eos_set_last_error("EOS_CustomInvites_FinalizeInvite: invalid target_user_id.");
+        return false;
+    }
+    if (!local_user) {
+        eos_set_last_error("EOS_CustomInvites_FinalizeInvite: invalid local_user_id.");
+        return false;
+    }
+    if (invite_id.empty()) {
+        eos_set_last_error("EOS_CustomInvites_FinalizeInvite: custom_invite_id is required.");
+        return false;
+    }
 
     EOS_CustomInvites_FinalizeInviteOptions opts{};
     opts.ApiVersion       = EOS_CUSTOMINVITES_FINALIZEINVITE_API_LATEST;
-    opts.TargetUserId     = eos_product_user_id_from_string_internal(target_user_id);
-    opts.LocalUserId      = eos_product_user_id_from_string_internal(local_user_id);
+    opts.TargetUserId     = target_user;
+    opts.LocalUserId      = local_user;
     opts.CustomInviteId   = invite_id.c_str();
     opts.ProcessingResult = (EOS_EResult)(std::int64_t)processing_result;
 
-    return EOS_CustomInvites_FinalizeInvite(ci, &opts) == EOS_EResult::EOS_Success;
+    const EOS_EResult result = EOS_CustomInvites_FinalizeInvite(ci, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_CustomInvites_FinalizeInvite failed.");
+        return false;
+    }
+    return true;
 }
 
 void eos_custominvites_send_request_to_join(

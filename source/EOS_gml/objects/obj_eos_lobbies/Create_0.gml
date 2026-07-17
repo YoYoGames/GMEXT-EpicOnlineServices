@@ -229,7 +229,9 @@ notifyLobbyUpdateReceived = eos_lobby_add_notify_lobby_update_received(global.pr
 notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_invite_requested(global.product_user_id, function(_info)
 {
 	// EpicLobbySendLobbyNativeInviteRequestedCallbackInfo:
-	//   .lobby_id, .local_user_id, .target_native_account_type, .target_user_native_account_id
+	//   .ui_event_id, .lobby_id, .local_user_id, .target_native_account_type, .target_user_native_account_id
+	// MUST acknowledge or the social overlay UI hangs.
+	eos_ui_acknowledge_event_id(_info.ui_event_id)
 })
 
 notifyRTCRoomConnectionChanged = eos_lobby_add_notify_rtc_room_connection_changed(function(_info)

@@ -69,6 +69,7 @@ void eos_logging_set_callback(const std::optional<gm::wire::GMFunction>& callbac
     {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Logging_SetCallback failed.");
+        std::lock_guard<std::mutex> lock(g_cb_logging_mutex);
         g_cb_logging = nullptr;
     }
 }
@@ -77,7 +78,10 @@ void eos_logging_clear_callback()
 {
     eos_clear_last_error();
 
-    g_cb_logging = nullptr;
+    {
+        std::lock_guard<std::mutex> lock(g_cb_logging_mutex);
+        g_cb_logging = nullptr;
+    }
 
     const EOS_EResult result = EOS_Logging_SetCallback(nullptr);
     if (result != EOS_EResult::EOS_Success)

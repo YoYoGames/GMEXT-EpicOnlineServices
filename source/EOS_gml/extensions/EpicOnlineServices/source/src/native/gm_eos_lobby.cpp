@@ -1663,7 +1663,7 @@ static gm_structs::EpicLobbyLeaveLobbyRequestedCallbackInfo eos_lobby_leave_requ
         return out;
 
     out.lobby_id = p->LobbyId ? std::string(p->LobbyId) : std::string();
-    out.local_user_id = "";
+    out.local_user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
     return out;
 }
 
@@ -1676,7 +1676,7 @@ static gm_structs::EpicLobbySendLobbyNativeInviteRequestedCallbackInfo eos_lobby
 
     out.ui_event_id = (uint64_t)p->UiEventId;
     out.lobby_id = p->LobbyId ? std::string(p->LobbyId) : std::string();
-    out.local_user_id = "";
+    out.local_user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
     out.target_native_account_type = p->TargetNativeAccountType ? std::string(p->TargetNativeAccountType) : std::string();
     out.target_user_native_account_id = p->TargetUserNativeAccountId ? std::string(p->TargetUserNativeAccountId) : std::string();
     return out;

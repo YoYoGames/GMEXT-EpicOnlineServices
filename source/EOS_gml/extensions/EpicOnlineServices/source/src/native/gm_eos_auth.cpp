@@ -27,6 +27,10 @@ using namespace gm_enums;
 // Internal helpers
 // ============================================================
 
+// Odd ids only — gm_eos_connect.cpp's counter uses even ids — so a continuance_token_id obtained
+// from one interface's flow can never collide with a live key in the other interface's map if
+// passed into the wrong create/link function; the lookup misses cleanly instead of silently
+// resolving against an unrelated pending token.
 static std::map<int64_t, EOS_ContinuanceToken> g_eos_auth_continuance_tokens;
 static int64_t g_eos_auth_continuance_token_counter = 1;
 
@@ -174,7 +178,8 @@ static void EOS_CALL eos_auth_login_callback_native(const EOS_Auth_LoginCallback
     int64_t token_id = 0;
     if (data->ContinuanceToken)
     {
-        token_id = g_eos_auth_continuance_token_counter++;
+        token_id = g_eos_auth_continuance_token_counter;
+        g_eos_auth_continuance_token_counter += 2;
         g_eos_auth_continuance_tokens[token_id] = data->ContinuanceToken;
     }
 

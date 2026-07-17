@@ -50,6 +50,53 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 {
 	// EpicSessionsJoinSessionAcceptedCallbackInfo: .ui_event_id
 	show_debug_message("notifyJoinSessionAccepted fired")
+
+	// MUST acknowledge or the social overlay UI hangs.
+	eos_ui_acknowledge_event_id(_info.ui_event_id)
+
+	// Copy the session details handle from the overlay event, then join_session — same
+	// pattern as notifySessionInviteAccepted below, just a different handle source.
+	// Don't release it until the join callback returns — the SDK reads from it during join.
+	var _details_id = eos_sessions_copy_session_handle_by_ui_event_id(_info.ui_event_id)
+	if(_details_id == 0)
+	{
+		show_debug_message("could not copy session handle from ui_event_id")
+		return
+	}
+
+	var _ctx = { details_id: _details_id }
+
+	join_session_clean(_details_id, method(_ctx, function(_join_info)
+	{
+		// EpicSessionsJoinSessionCallbackInfo: .result_code
+		eos_sessions_session_details_release(details_id)
+
+		if(_join_info.result_code != EpicResult.Success)
+		{
+			show_debug_message($"join_session failed: {eos_api_result_to_string(_join_info.result_code)}")
+			return
+		}
+		instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
+
+		// Register ourselves on the session roster so the host's count reflects us.
+		eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
+		{
+			show_debug_message($"register_players (overlay-joiner): {eos_api_result_to_string(_reg.result_code)}")
+		})
+
+		// Hello packet so P2P opens both ways.
+		var _handle = eos_sessions_copy_active_session_handle(obj_eos_sessions.SessionName)
+		if(_handle != 0)
+		{
+			var _info_struct = eos_sessions_active_session_copy_info(_handle)
+			eos_sessions_active_session_release(_handle)
+
+			var _buff = buffer_create(256, buffer_fixed, 1)
+			buffer_write(_buff, buffer_u8, 1)
+			eos_p2p_send_packet(global.product_user_id, _info_struct.owner_user_id, obj_eos_sessions_p2p.socketName, 0, _buff, buffer_tell(_buff), true, EpicPacketReliability.ReliableOrdered, false)
+			buffer_delete(_buff)
+		}
+	}))
 })
 
 notifyLeaveSessionRequested = eos_sessions_add_notify_leave_session_requested(function(_info)
@@ -60,6 +107,8 @@ notifyLeaveSessionRequested = eos_sessions_add_notify_leave_session_requested(fu
 notifySendSessionNativeInviteRequested = eos_sessions_add_notify_send_session_native_invite_requested(function(_info)
 {
 	// EpicSessionsSendSessionNativeInviteRequestedCallbackInfo: .session_name, .ui_event_id, ...
+	// MUST acknowledge or the social overlay UI hangs.
+	eos_ui_acknowledge_event_id(_info.ui_event_id)
 })
 
 notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted(function(_info)

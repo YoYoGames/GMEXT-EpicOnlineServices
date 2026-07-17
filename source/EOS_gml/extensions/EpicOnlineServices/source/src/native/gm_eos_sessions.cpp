@@ -752,6 +752,11 @@ uint64_t eos_sessions_create_session_search(int64_t max_search_results)
 {
     eos_clear_last_error();
 
+    if (max_search_results < 0) {
+        eos_set_last_error("max_search_results must be non-negative.");
+        return 0;
+    }
+
     EOS_HSessions sessions = eos_sessions_iface();
     if (!sessions) {
         eos_set_last_error("EOS Sessions interface unavailable.");
@@ -1824,6 +1829,11 @@ gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_sessio
     eos_clear_last_error();
     gm_structs::EpicSessionDetailsAttribute out{};
 
+    if (index < 0) {
+        eos_set_last_error("Session attribute index must be non-negative.");
+        return out;
+    }
+
     EOS_HSessionDetails details = eos_sessions_details_get(session_details_id);
     if (!details) {
         eos_set_last_error("EOS SessionDetails handle invalid.");
@@ -1907,6 +1917,11 @@ std::string eos_sessions_active_session_get_registered_player_by_index(
     int64_t index)
 {
     eos_clear_last_error();
+
+    if (index < 0) {
+        eos_set_last_error("Registered player index must be non-negative.");
+        return std::string();
+    }
 
     EOS_HActiveSession active = eos_sessions_active_get(active_session_id);
     if (!active) {
@@ -2102,6 +2117,11 @@ std::string eos_sessions_get_invite_id_by_index(
     int64_t index)
 {
     eos_clear_last_error();
+
+    if (index < 0) {
+        eos_set_last_error("Invite index must be non-negative.");
+        return std::string();
+    }
 
     EOS_HSessions sessions = eos_sessions_iface();
     if (!sessions) {

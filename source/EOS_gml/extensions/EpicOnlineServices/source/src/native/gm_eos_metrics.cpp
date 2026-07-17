@@ -21,14 +21,6 @@ static EOS_HMetrics eos_metrics_iface()
     return p ? EOS_Platform_GetMetricsInterface(p) : nullptr;
 }
 
-static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view product_user_id)
-{
-    std::string value(product_user_id);
-    if (value.empty())
-        return nullptr;
-    return EOS_ProductUserId_FromString(value.c_str());
-}
-
 // ============================================================
 // EOS Metrics
 // ============================================================

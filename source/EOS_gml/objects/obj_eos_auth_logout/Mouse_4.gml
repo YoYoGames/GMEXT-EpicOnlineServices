@@ -43,10 +43,17 @@ if(global.product_user_id == "")
 else
 {
     // LOGOUT FLOW
+    if (logout_done)
+    {
+        show_debug_message("Logout already in progress, ignoring click.");
+        return;
+    }
+
     show_debug_message("Starting logout...");
-    
+
+    logout_done = true;
     logout_count = 0;
-    
+
     // Delete persistent auth first
     eos_auth_delete_persistent_auth(function(_info) {
         logout_count++;
@@ -54,10 +61,11 @@ else
         if (logout_count == 3) {
             global.epic_account_id = "";
             global.product_user_id = "";
+            logout_done = false;
             show_debug_message("Fully logged out!");
         }
     });
-    
+
     // Logout from auth
     eos_auth_logout(global.epic_account_id, function(_info) {
         logout_count++;
@@ -65,10 +73,11 @@ else
         if (logout_count == 3) {
             global.epic_account_id = "";
             global.product_user_id = "";
+            logout_done = false;
             show_debug_message("Fully logged out!");
         }
     });
-    
+
     // Logout from connect
     eos_connect_logout(global.product_user_id, function(_info) {
         logout_count++;
@@ -76,6 +85,7 @@ else
         if (logout_count == 3) {
             global.epic_account_id = "";
             global.product_user_id = "";
+            logout_done = false;
             show_debug_message("Fully logged out!");
         }
     });
