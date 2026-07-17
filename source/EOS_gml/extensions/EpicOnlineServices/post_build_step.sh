@@ -16,17 +16,74 @@ _eos_stage_macos() {
     pathResolveExisting "$YYprojectDir" "$SDK_PATH_C" SDK_PATH
     SDK_SOURCE="$SDK_PATH/Bin/libEOSSDK-Mac-Shipping.dylib"
 
+    # Strip macOS quarantine flag if present (Gatekeeper would otherwise block the dylib)
+    if xattr -p com.apple.quarantine "$SDK_SOURCE" >/dev/null 2>&1; then
+        logWarning "'$(basename "$SDK_SOURCE")' is quarantined. Removing com.apple.quarantine…"
+        if xattr -d com.apple.quarantine "$SDK_SOURCE" >/dev/null 2>&1; then
+            logInformation "Removed quarantine from '$SDK_SOURCE'"
+        else
+            logError "Failed to remove quarantine from '$SDK_SOURCE' (permissions/path?)."
+        fi
+    fi
+
     # When running from CI 'YYprojectName' is not set; derive it from the path.
     if [ -z "$YYprojectName" ]; then
         YYprojectName=$(basename "${YYprojectPath%.*}")
     fi
     YYfixedProjectName="${YYprojectName// /_}"
 
+    SUPPORTING_FILES="${YYfixedProjectName}/${YYfixedProjectName}/Supporting Files"
+
     echo "Staging EOS macOS dependency (libEOSSDK-Mac-Shipping.dylib)"
-    itemCopyTo "$SDK_SOURCE" "${YYfixedProjectName}/${YYfixedProjectName}/Supporting Files/libEOSSDK-Mac-Shipping.dylib"
+    itemCopyTo "$SDK_SOURCE" "${SUPPORTING_FILES}/libEOSSDK-Mac-Shipping.dylib"
+
+    # Explicitly code sign the dependency (and the extension binary) with the
+    # hardened runtime so YYC exports pass notarization. Only sign when an
+    # identity is provided so unsigned local builds still succeed.
+    if [ -n "${YYPLATFORM_option_mac_signing_identity}" ]; then
+        assertXcodeToolsInstalled
+        codesign -s "${YYPLATFORM_option_mac_signing_identity}" -f --timestamp --options runtime "${SUPPORTING_FILES}/libEOSSDK-Mac-Shipping.dylib"
+        if [ -f "${SUPPORTING_FILES}/libEpicOnlineServices.dylib" ]; then
+            codesign -s "${YYPLATFORM_option_mac_signing_identity}" -f --timestamp --options runtime "${SUPPORTING_FILES}/libEpicOnlineServices.dylib"
+        fi
+    else
+        logWarning "No mac signing identity set; skipping explicit dylib signing (GameMaker will sign the bundle)."
+    fi
 }
 setupmacOS() { _eos_stage_macos; }
-setupMac()   { _eos_stage_macos; }
+
+# GMRT (the new runner) variant of the macOS setup.
+# Under GMRT the platform name is 'Mac' (this dispatches here) and the
+# dependency must live inside the output 'build/assets' folder.
+setupMac() {
+    pathResolveExisting "$YYprojectDir" "$SDK_PATH_C" SDK_PATH
+    SDK_SOURCE="$SDK_PATH/Bin/libEOSSDK-Mac-Shipping.dylib"
+
+    if xattr -p com.apple.quarantine "$SDK_SOURCE" >/dev/null 2>&1; then
+        logWarning "'$(basename "$SDK_SOURCE")' is quarantined. Removing com.apple.quarantine…"
+        if xattr -d com.apple.quarantine "$SDK_SOURCE" >/dev/null 2>&1; then
+            logInformation "Removed quarantine from '$SDK_SOURCE'"
+        else
+            logError "Failed to remove quarantine from '$SDK_SOURCE' (permissions/path?)."
+        fi
+    fi
+
+    echo "Staging EOS macOS dependency (libEOSSDK-Mac-Shipping.dylib) (GMRT)"
+
+    # GMRT expects the dependency inside the 'build/assets' folder
+    pushd "./build/assets/" >/dev/null
+
+    itemCopyTo "$SDK_SOURCE" "./libEOSSDK-Mac-Shipping.dylib"
+
+    if [ -n "${YYPLATFORM_option_mac_signing_identity}" ]; then
+        assertXcodeToolsInstalled
+        codesign -s "${YYPLATFORM_option_mac_signing_identity}" -f --timestamp --options runtime "./libEOSSDK-Mac-Shipping.dylib"
+    else
+        logWarning "No mac signing identity set; skipping explicit dylib signing (GameMaker will sign the bundle)."
+    fi
+
+    popd >/dev/null
+}
 
 # ----------------------------------------------------------------------------------------------------
 setupLinux() {
@@ -47,10 +104,18 @@ setupLinux() {
 
 # ----------------------------------------------------------------------------------------------------
 setupAndroid() {
-    # Do NOT delete the staged AndroidSource/libs binaries here -- GameMaker's
-    # Gradle packaging runs AFTER post_build_step, so they must still exist.
-    # pre_build_step removes stale copies at the start of the next build.
-    :
+    # Stage the EOS SDK's Android AAR as a whole into AndroidSource/libs-aar/ so
+    # GameMaker's Gradle build consumes it directly (classes.jar + per-ABI
+    # libEOSSDK.so extracted automatically) via the "implementation files(...)"
+    # dependency declared in EpicOnlineServices.yy. Git-ignored; mirrors
+    # GMEXT-Discord's post_build_step.sh pattern.
+    pathResolveExisting "$YYprojectDir" "$SDK_PATH_ANDROID" SDK_PATH
+
+    EOS_AAR="$SDK_PATH/SDK/Bin/Android/static-stdc++/aar/eossdk-StaticSTDC-release.aar"
+
+    echo "Staging EOS Android dependency (eossdk-StaticSTDC-release.aar)"
+    mkdir -p "$EXTENSION_DIR/AndroidSource/libs-aar"
+    itemCopyTo "$EOS_AAR" "$EXTENSION_DIR/AndroidSource/libs-aar/eossdk-StaticSTDC-release.aar"
 }
 
 setupiOS()         { :; }

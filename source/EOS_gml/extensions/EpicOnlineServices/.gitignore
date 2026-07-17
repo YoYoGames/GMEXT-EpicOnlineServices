@@ -9,10 +9,8 @@
 # tracked -- they are deliberately not matched below.
 # =============================================================================
 
-# Android (EOS SDK)
-/AndroidSource/libs/EOSSDK.jar
-/AndroidSource/libs/*/libEOSSDK.so
-/_eos_aar_tmp/
+# Android (EOS SDK) -- staged as a whole AAR, consumed directly by Gradle
+/AndroidSource/libs-aar/*.aar
 
 # iOS staging temp (EOS xcframework, signature-stripped before zipping)
 /_eos_xcfw_tmp/

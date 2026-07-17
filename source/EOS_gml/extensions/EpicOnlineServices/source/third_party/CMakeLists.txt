@@ -132,8 +132,10 @@ if(WIN32)
   # Link ONLY the import library (.lib). Do NOT link the DLL.
   target_link_libraries(ext_third_party INTERFACE "${_EOS_LIB}")
 
-  # Package the runtime DLL next to the runner/game (do not link it)
-  _ext_tp_append_runtime("${_EOS_DLL}")
+  # NOTE: the EOS runtime DLL is intentionally NOT registered for copying. It
+  # is deployed at the game's build time by the extension post-build step
+  # (post_build_step.bat/.sh), which copies it from the extension's sdkPath
+  # option (same pattern as GMEXT-Steamworks' third_party/CMakeLists.txt).
 endif()
 
 # =============================================================================
@@ -234,8 +236,10 @@ if(APPLE)
 
     target_link_libraries(ext_third_party INTERFACE EOS::EOSSDK)
 
-    # Register runtime dylib for packaging/staging
-    _ext_tp_append_runtime("${_EOS_DYLIB}")
+    # NOTE: the EOS runtime dylib is intentionally NOT registered for
+    # copying. It is deployed (and code-signed) at the game's build time by
+    # the extension post-build step (post_build_step.sh), which copies it
+    # from the extension's sdkPath option.
   endif()
 
   if(_IS_IOS)
@@ -274,8 +278,10 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
 
   target_link_libraries(ext_third_party INTERFACE EOS::EOSSDK)
 
-  # Register runtime .so for packaging/staging
-  _ext_tp_append_runtime("${_EOS_SO}")
+  # NOTE: the EOS runtime .so is intentionally NOT registered for copying. It
+  # is deployed at the game's build time by the extension post-build step
+  # (post_build_step.sh), which injects it into the game archive from the
+  # extension's sdkPath option.
 endif()
 
 # Export to parent
