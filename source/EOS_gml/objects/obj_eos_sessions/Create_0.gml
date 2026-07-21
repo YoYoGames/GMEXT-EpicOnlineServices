@@ -52,7 +52,7 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 	show_debug_message("notifyJoinSessionAccepted fired")
 
 	// MUST acknowledge or the social overlay UI hangs.
-	eos_ui_acknowledge_event_id(_info.ui_event_id)
+	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.Success)
 
 	// Copy the session details handle from the overlay event, then join_session — same
 	// pattern as notifySessionInviteAccepted below, just a different handle source.
@@ -108,7 +108,7 @@ notifySendSessionNativeInviteRequested = eos_sessions_add_notify_send_session_na
 {
 	// EpicSessionsSendSessionNativeInviteRequestedCallbackInfo: .session_name, .ui_event_id, ...
 	// MUST acknowledge or the social overlay UI hangs.
-	eos_ui_acknowledge_event_id(_info.ui_event_id)
+	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.Success)
 })
 
 notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted(function(_info)

@@ -1211,7 +1211,10 @@ GMEXPORT double __EXT_NATIVE__eos_ui_acknowledge_event_id(char* __arg_buffer, do
     // field: ui_event_id, type: UInt64
     std::uint64_t ui_event_id = gm::wire::codec::readValue<std::uint64_t>(__br);
 
-    auto&& __result = eos_ui_acknowledge_event_id(ui_event_id);
+    // field: result_code, type: enum EpicResult
+    gm_enums::EpicResult result_code = gm::wire::codec::readValue<gm_enums::EpicResult>(__br);
+
+    auto&& __result = eos_ui_acknowledge_event_id(ui_event_id, result_code);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: enum EpicResult

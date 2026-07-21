@@ -596,6 +596,7 @@
 /**
  * @function_partial eos_ui_acknowledge_event_id
  * @param {Real} ui_event_id
+ * @param {Enum.EpicResult} result_code
  * @returns {Enum.EpicResult}
  * @function_end
  */

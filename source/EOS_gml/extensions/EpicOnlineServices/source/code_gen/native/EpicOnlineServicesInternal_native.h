@@ -7932,7 +7932,7 @@ gm_structs::EpicStatsStat eos_stats_copy_stat_by_index(std::string_view target_u
 gm_structs::EpicStatsStat eos_stats_copy_stat_by_name(std::string_view target_user_id, std::string_view name);
 void eos_ui_show_friends(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ui_show_native_profile(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
-gm_enums::EpicResult eos_ui_acknowledge_event_id(std::uint64_t ui_event_id);
+gm_enums::EpicResult eos_ui_acknowledge_event_id(std::uint64_t ui_event_id, gm_enums::EpicResult result_code);
 gm_enums::EpicResult eos_ui_set_display_preference(gm_enums::EpicUINotificationLocation notification_location);
 void eos_ui_report_input_state(bool button_down, bool button_up, bool button_left, bool button_right, bool button_accept, bool button_cancel);
 std::uint64_t eos_ui_add_notify_display_settings_updated(const std::optional<gm::wire::GMFunction>& callback);

@@ -187,7 +187,7 @@ notify_presence_join_game_accepted = eos_presence_add_notify_join_game_accepted(
 {
 	// EpicPresenceJoinGameAcceptedCallbackInfo: .join_info, .local_user_id, .target_user_id, .ui_event_id
 	// MUST acknowledge or the social overlay UI hangs.
-	eos_ui_acknowledge_event_id(_info.ui_event_id)
+	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.Success)
 	show_debug_message($"presence join game accepted: {_info.join_info}")
 })
 notify_custominvites_send_native_invite_requested = eos_custominvites_add_notify_send_custom_native_invite_requested(function(_info)
@@ -195,7 +195,7 @@ notify_custominvites_send_native_invite_requested = eos_custominvites_add_notify
 	// EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo:
 	//   .ui_event_id, .local_user_id, .target_native_account_type, .target_user_native_account_id, .invite_id
 	// MUST acknowledge or the social overlay UI hangs.
-	eos_ui_acknowledge_event_id(_info.ui_event_id)
+	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.Success)
 })
 
 eos_login();

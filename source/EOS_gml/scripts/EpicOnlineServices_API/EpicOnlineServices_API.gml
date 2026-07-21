@@ -19503,9 +19503,10 @@ function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
 
 /**
  * @param {Real} _ui_event_id
+ * @param {Enum.EpicResult} _result_code
  * @returns {Enum.EpicResult}
  */
-function eos_ui_acknowledge_event_id(_ui_event_id)
+function eos_ui_acknowledge_event_id(_ui_event_id, _result_code)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -19515,6 +19516,11 @@ function eos_ui_acknowledge_event_id(_ui_event_id)
     // param: _ui_event_id, type: UInt64
     if (!is_numeric(_ui_event_id)) show_error($"{_GMFUNCTION_} :: _ui_event_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _ui_event_id);
+
+    // param: _result_code, type: enum EpicResult
+
+    if (!is_numeric(_result_code)) show_error($"{_GMFUNCTION_} :: _result_code expected number", true);
+    buffer_write(__args_buffer, buffer_u64, _result_code);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 

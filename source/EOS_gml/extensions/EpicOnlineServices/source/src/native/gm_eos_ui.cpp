@@ -187,7 +187,7 @@ void eos_ui_show_native_profile(
     EOS_UI_ShowNativeProfile(ui, &opts, ctx, &eos_ui_show_native_profile_callback_native);
 }
 
-gm_enums::EpicResult eos_ui_acknowledge_event_id(uint64_t ui_event_id)
+gm_enums::EpicResult eos_ui_acknowledge_event_id(std::uint64_t ui_event_id, gm_enums::EpicResult result_code)
 {
     eos_clear_last_error();
 
@@ -200,6 +200,7 @@ gm_enums::EpicResult eos_ui_acknowledge_event_id(uint64_t ui_event_id)
     EOS_UI_AcknowledgeEventIdOptions opts{};
     opts.ApiVersion = EOS_UI_ACKNOWLEDGEEVENTID_API_LATEST;
     opts.UiEventId = (EOS_UI_EventId)ui_event_id;
+    opts.Result = (EOS_EResult)result_code;
 
     EOS_EResult result = EOS_UI_AcknowledgeEventId(ui, &opts);
     if (result != EOS_EResult::EOS_Success) {

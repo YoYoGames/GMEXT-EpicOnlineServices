@@ -231,7 +231,7 @@ notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_in
 	// EpicLobbySendLobbyNativeInviteRequestedCallbackInfo:
 	//   .ui_event_id, .lobby_id, .local_user_id, .target_native_account_type, .target_user_native_account_id
 	// MUST acknowledge or the social overlay UI hangs.
-	eos_ui_acknowledge_event_id(_info.ui_event_id)
+	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.Success)
 })
 
 notifyRTCRoomConnectionChanged = eos_lobby_add_notify_rtc_room_connection_changed(function(_info)
