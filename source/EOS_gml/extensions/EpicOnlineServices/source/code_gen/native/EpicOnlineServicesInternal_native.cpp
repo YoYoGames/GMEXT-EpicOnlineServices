@@ -1544,6 +1544,9 @@ GMEXPORT double __EXT_NATIVE__eos_sanctions_query_active_player_sanctions(char* 
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
     // field: target_user_id, type: String
     std::string_view target_user_id = gm::wire::codec::readValue<std::string_view>(__br);
 
@@ -1554,7 +1557,7 @@ GMEXPORT double __EXT_NATIVE__eos_sanctions_query_active_player_sanctions(char* 
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    eos_sanctions_query_active_player_sanctions(target_user_id, callback);
+    eos_sanctions_query_active_player_sanctions(local_user_id, target_user_id, callback);
     return 0;
 }
 

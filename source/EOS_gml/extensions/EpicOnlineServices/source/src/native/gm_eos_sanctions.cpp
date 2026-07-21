@@ -149,6 +149,7 @@ static void EOS_CALL eos_sanctions_create_player_sanction_appeal_callback_native
 // ============================================================
 
 void eos_sanctions_query_active_player_sanctions(
+    std::string_view local_user_id,
     std::string_view target_user_id,
     const std::optional<gm::wire::GMFunction>& callback)
 {
@@ -157,6 +158,12 @@ void eos_sanctions_query_active_player_sanctions(
     EOS_HSanctions sanctions = eos_sanctions_iface();
     if (!sanctions) {
         eos_set_last_error("EOS Sanctions interface unavailable.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Sanctions_QueryActivePlayerSanctions: invalid local_user_id.");
         return;
     }
 
@@ -171,6 +178,7 @@ void eos_sanctions_query_active_player_sanctions(
 
     EOS_Sanctions_QueryActivePlayerSanctionsOptions opts{};
     opts.ApiVersion = EOS_SANCTIONS_QUERYACTIVEPLAYERSANCTIONS_API_LATEST;
+    opts.LocalUserId = local_user;
     opts.TargetUserId = target_user;
 
     EOS_Sanctions_QueryActivePlayerSanctions(

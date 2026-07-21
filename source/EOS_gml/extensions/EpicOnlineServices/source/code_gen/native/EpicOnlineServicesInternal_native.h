@@ -7992,7 +7992,7 @@ gm_enums::EpicResult eos_progression_snapshot_end_snapshot(std::int64_t snapshot
 void eos_progression_snapshot_submit_snapshot(std::int64_t snapshot_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_progression_snapshot_delete_snapshot(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_reports_send_player_behavior_report(std::string_view reporter_user_id, std::string_view reported_user_id, gm_enums::EpicPlayerReportsCategory category, std::string_view message, std::string_view context, const std::optional<gm::wire::GMFunction>& callback);
-void eos_sanctions_query_active_player_sanctions(std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
+void eos_sanctions_query_active_player_sanctions(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 std::int64_t eos_sanctions_get_player_sanction_count(std::string_view target_user_id);
 gm_structs::EpicSanctionsPlayerSanction eos_sanctions_copy_player_sanction_by_index(std::string_view target_user_id, std::int64_t index);
 void eos_sanctions_create_player_sanction_appeal(std::string_view local_user_id, std::string_view reference_id, gm_enums::EpicSanctionAppealReason reason, const std::optional<gm::wire::GMFunction>& callback);

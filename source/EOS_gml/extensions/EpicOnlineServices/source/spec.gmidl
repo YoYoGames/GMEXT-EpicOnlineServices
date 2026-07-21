@@ -1152,7 +1152,7 @@ class `[[EpicSanctionsCreatePlayerSanctionAppealCallbackInfo]]` prototype Object
 }
 
 [global, bind = typed_gml]
-function eos_sanctions_query_active_player_sanctions(target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
+function eos_sanctions_query_active_player_sanctions(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_sanctions_get_player_sanction_count(target_user_id: string): int64;

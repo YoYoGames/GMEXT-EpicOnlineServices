@@ -20199,10 +20199,11 @@ function eos_reports_send_player_behavior_report(_reporter_user_id, _reported_us
 }
 
 /**
+ * @param {String} _local_user_id
  * @param {String} _target_user_id
  * @param {Function} _callback
  */
-function eos_sanctions_query_active_player_sanctions(_target_user_id, _callback)
+function eos_sanctions_query_active_player_sanctions(_local_user_id, _target_user_id, _callback)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -20210,6 +20211,11 @@ function eos_sanctions_query_active_player_sanctions(_target_user_id, _callback)
     static __dispatcher = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _local_user_id, type: String
+    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
+    buffer_write(__args_buffer, buffer_string, _local_user_id);
 
     // param: _target_user_id, type: String
     if (!is_string(_target_user_id)) show_error($"{_GMFUNCTION_} :: _target_user_id expected string", true);

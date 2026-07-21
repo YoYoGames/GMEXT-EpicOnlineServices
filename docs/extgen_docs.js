@@ -761,6 +761,7 @@
 
 /**
  * @function_partial eos_sanctions_query_active_player_sanctions
+ * @param {String} local_user_id
  * @param {String} target_user_id
  * @param {Function} [callback]
  * @function_end
