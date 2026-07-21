@@ -8023,7 +8023,7 @@ gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_user_id(std::s
 gm_structs::EpicLeaderboardUserScore eos_leaderboards_copy_user_score_by_index(std::string_view stat_name, std::int64_t index);
 void eos_presence_query_presence(std::string_view local_user_id, std::string_view target_user_id, const std::optional<gm::wire::GMFunction>& callback);
 bool eos_presence_has_presence(std::string_view local_user_id, std::string_view target_user_id);
-gm_structs::EpicPresenceInfo eos_presence_copy_presence(std::string_view local_user_id, std::string_view target_user_id);
+std::optional<gm_structs::EpicPresenceInfo> eos_presence_copy_presence(std::string_view local_user_id, std::string_view target_user_id);
 std::uint64_t eos_presence_create_presence_modification(std::string_view local_user_id);
 void eos_presence_modification_release(std::uint64_t modification_id);
 gm_enums::EpicResult eos_presence_modification_set_status(std::uint64_t modification_id, gm_enums::EpicPresenceStatus status);
@@ -8074,7 +8074,7 @@ gm_enums::EpicResult eos_sessions_session_modification_add_attribute_bool(std::u
 gm_enums::EpicResult eos_sessions_session_modification_add_attribute_double(std::uint64_t modification_id, std::string_view key, double value, gm_enums::EpicSessionAttributeAdvertisementType advertisement_type);
 gm_enums::EpicResult eos_sessions_session_modification_remove_attribute(std::uint64_t modification_id, std::string_view key);
 std::int64_t eos_sessions_session_details_get_session_attribute_count(std::uint64_t session_details_id);
-gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_index(std::uint64_t session_details_id, std::int64_t index);
+std::optional<gm_structs::EpicSessionDetailsAttribute> eos_sessions_session_details_copy_session_attribute_by_index(std::uint64_t session_details_id, std::int64_t index);
 gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_key(std::uint64_t session_details_id, std::string_view key);
 std::int64_t eos_sessions_active_session_get_registered_player_count(std::uint64_t active_session_id);
 std::string eos_sessions_active_session_get_registered_player_by_index(std::uint64_t active_session_id, std::int64_t index);

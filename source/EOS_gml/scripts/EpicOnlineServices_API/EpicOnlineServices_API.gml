@@ -21160,7 +21160,14 @@ function eos_presence_copy_presence(_local_user_id, _target_user_id)
     var _return_value = __eos_presence_copy_presence(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicPresenceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicPresenceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -22716,7 +22723,14 @@ function eos_sessions_session_details_copy_session_attribute_by_index(_session_d
     var _return_value = __eos_sessions_session_details_copy_session_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 

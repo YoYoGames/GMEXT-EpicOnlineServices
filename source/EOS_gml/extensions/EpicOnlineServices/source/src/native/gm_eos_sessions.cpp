@@ -1822,22 +1822,19 @@ int64_t eos_sessions_session_details_get_session_attribute_count(uint64_t sessio
     return (int64_t)EOS_SessionDetails_GetSessionAttributeCount(details, &opts);
 }
 
-gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_index(
-    uint64_t session_details_id,
-    int64_t index)
+std::optional<gm_structs::EpicSessionDetailsAttribute> eos_sessions_session_details_copy_session_attribute_by_index(std::uint64_t session_details_id, std::int64_t index)
 {
     eos_clear_last_error();
-    gm_structs::EpicSessionDetailsAttribute out{};
 
     if (index < 0) {
         eos_set_last_error("Session attribute index must be non-negative.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_HSessionDetails details = eos_sessions_details_get(session_details_id);
     if (!details) {
         eos_set_last_error("EOS SessionDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_SessionDetails_CopySessionAttributeByIndexOptions opts{};
@@ -1849,10 +1846,10 @@ gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_sessio
     if (result != EOS_EResult::EOS_Success || !attr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_SessionDetails_CopySessionAttributeByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_sessions_attribute_from_native(attr);
+    gm_structs::EpicSessionDetailsAttribute out = eos_sessions_attribute_from_native(attr);
     EOS_SessionDetails_Attribute_Release(attr);
     return out;
 }

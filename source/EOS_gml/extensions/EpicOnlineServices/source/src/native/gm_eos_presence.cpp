@@ -84,7 +84,7 @@ static gm_structs::EpicPresenceInfo eos_presence_info_from_native(const EOS_Pres
     out.integrated_platform = p->IntegratedPlatform ? std::string(p->IntegratedPlatform) : std::string();
     out.rich_text = p->RichText ? std::string(p->RichText) : std::string();
     out.records_count = (int64_t)p->RecordsCount;
-    
+
     // Copy data records if present
     if (p->Records && p->RecordsCount > 0)
     {
@@ -211,18 +211,14 @@ bool eos_presence_has_presence(
     return EOS_Presence_HasPresence(presence, &opts) != 0;
 }
 
-gm_structs::EpicPresenceInfo eos_presence_copy_presence(
-    std::string_view local_user_id,
-    std::string_view target_user_id)
+std::optional<gm_structs::EpicPresenceInfo> eos_presence_copy_presence(std::string_view local_user_id, std::string_view target_user_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicPresenceInfo out{};
 
     EOS_HPresence presence = eos_presence_iface();
     if (!presence) {
         eos_set_last_error("EOS Presence interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
@@ -230,12 +226,12 @@ gm_structs::EpicPresenceInfo eos_presence_copy_presence(
 
     if (!local_user) {
         eos_set_last_error("EOS_Presence_CopyPresence: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_Presence_CopyPresence: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Presence_CopyPresenceOptions opts{};
@@ -248,10 +244,10 @@ gm_structs::EpicPresenceInfo eos_presence_copy_presence(
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Presence_CopyPresence failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_presence_info_from_native(info);
+    gm_structs::EpicPresenceInfo out = eos_presence_info_from_native(info);
     EOS_Presence_Info_Release(info);
     return out;
 }

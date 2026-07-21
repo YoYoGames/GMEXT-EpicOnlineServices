@@ -2052,7 +2052,7 @@ GMEXPORT double __EXT_NATIVE__eos_presence_copy_presence(char* local_user_id, ch
     auto&& __result = eos_presence_copy_presence(local_user_id, target_user_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicPresenceInfo
+    // return: __result, type: optional<struct EpicPresenceInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -2926,7 +2926,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_details_copy_session_attribut
     auto&& __result = eos_sessions_session_details_copy_session_attribute_by_index(session_details_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicSessionDetailsAttribute
+    // return: __result, type: optional<struct EpicSessionDetailsAttribute>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }

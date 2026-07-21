@@ -1595,7 +1595,7 @@ function eos_presence_query_presence(local_user_id: string, target_user_id: stri
 [global, bind = typed_gml]
 function eos_presence_has_presence(local_user_id: string, target_user_id: string): bool;
 
-[global, bind = typed_gml, type_hint=`EpicPresenceInfo`]
+[global, bind = typed_gml, type_hint=`EpicPresenceInfo?`]
 function eos_presence_copy_presence(local_user_id: string, target_user_id: string): gmval;
 
 // ============================================================
@@ -2131,7 +2131,7 @@ function eos_sessions_session_details_get_session_attribute_count(
     [type_hint=`uint64`] session_details_id: gmval
 ): int64;
 
-[global, bind = typed_gml, type_hint=`EpicSessionDetailsAttribute`]
+[global, bind = typed_gml, type_hint=`EpicSessionDetailsAttribute?`]
 function eos_sessions_session_details_copy_session_attribute_by_index(
     [type_hint=`uint64`] session_details_id: gmval,
     index: int64
