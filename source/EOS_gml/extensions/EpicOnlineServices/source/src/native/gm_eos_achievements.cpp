@@ -369,16 +369,14 @@ static void EOS_CALL eos_achievements_unlock_achievements_callback_native(
     delete ctx;
 }
 
-gm_structs::EpicAchievementsDefinition eos_achievements_copy_achievement_definition_by_index(int64_t index)
+std::optional<gm_structs::EpicAchievementsDefinition> eos_achievements_copy_achievement_definition_by_index(int64_t index)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicAchievementsDefinition out{};
 
     EOS_HAchievements achievements = eos_achievements_iface();
     if (!achievements) {
         eos_set_last_error("EOS Achievements interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Achievements_CopyAchievementDefinitionByIndexOptions opts{};
@@ -392,31 +390,29 @@ gm_structs::EpicAchievementsDefinition eos_achievements_copy_achievement_definit
     if (result != EOS_EResult::EOS_Success || def == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Achievements_CopyAchievementDefinitionByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_achievements_definition_from_native(def);
+    gm_structs::EpicAchievementsDefinition out = eos_achievements_definition_from_native(def);
     EOS_Achievements_Definition_Release(def);
     return out;
 }
 
-gm_structs::EpicAchievementsDefinition eos_achievements_copy_achievement_definition_by_id(
+std::optional<gm_structs::EpicAchievementsDefinition> eos_achievements_copy_achievement_definition_by_id(
     std::string_view achievement_id)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicAchievementsDefinition out{};
-
     EOS_HAchievements achievements = eos_achievements_iface();
     if (!achievements) {
         eos_set_last_error("EOS Achievements interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     std::string achievement_id_storage(achievement_id);
     if (achievement_id_storage.empty()) {
         eos_set_last_error("EOS_Achievements_CopyAchievementDefinitionByAchievementId: achievement_id is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Achievements_CopyAchievementDefinitionByAchievementIdOptions opts{};
@@ -430,27 +426,25 @@ gm_structs::EpicAchievementsDefinition eos_achievements_copy_achievement_definit
     if (result != EOS_EResult::EOS_Success || def == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Achievements_CopyAchievementDefinitionByAchievementId failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_achievements_definition_from_native(def);
+    gm_structs::EpicAchievementsDefinition out = eos_achievements_definition_from_native(def);
     EOS_Achievements_Definition_Release(def);
     return out;
 }
 
-gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_index(
+std::optional<gm_structs::EpicPlayerAchievement> eos_achievements_copy_player_achievement_by_index(
     std::string_view local_user_id,
     std::string_view target_user_id,
     int64_t index)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicPlayerAchievement out{};
-
     EOS_HAchievements achievements = eos_achievements_iface();
     if (!achievements) {
         eos_set_last_error("EOS Achievements interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
@@ -458,12 +452,12 @@ gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_in
 
     if (!local_user) {
         eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByIndex: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByIndex: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Achievements_CopyPlayerAchievementByIndexOptions opts{};
@@ -479,10 +473,10 @@ gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_in
     if (result != EOS_EResult::EOS_Success || achievement == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Achievements_CopyPlayerAchievementByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_achievements_player_achievement_from_native(achievement);
+    gm_structs::EpicPlayerAchievement out = eos_achievements_player_achievement_from_native(achievement);
     EOS_Achievements_PlayerAchievement_Release(achievement);
     return out;
 }
@@ -527,16 +521,14 @@ static gm_structs::EpicAchievementsDefinitionV2 eos_achievements_definition_v2_f
     return out;
 }
 
-gm_structs::EpicAchievementsDefinitionV2 eos_achievements_copy_achievement_definition_v2_by_index(int64_t index)
+std::optional<gm_structs::EpicAchievementsDefinitionV2> eos_achievements_copy_achievement_definition_v2_by_index(int64_t index)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicAchievementsDefinitionV2 out{};
 
     EOS_HAchievements achievements = eos_achievements_iface();
     if (!achievements) {
         eos_set_last_error("EOS Achievements interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions opts{};
@@ -556,27 +548,25 @@ gm_structs::EpicAchievementsDefinitionV2 eos_achievements_copy_achievement_defin
         eos_set_last_error(
             err ? err : "EOS_Achievements_CopyAchievementDefinitionV2ByIndex failed."
         );
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_achievements_definition_v2_from_native(def);
+    gm_structs::EpicAchievementsDefinitionV2 out = eos_achievements_definition_v2_from_native(def);
     EOS_Achievements_DefinitionV2_Release(def);
     return out;
 }
 
-gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_id(
+std::optional<gm_structs::EpicPlayerAchievement> eos_achievements_copy_player_achievement_by_id(
     std::string_view local_user_id,
     std::string_view target_user_id,
     std::string_view achievement_id)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicPlayerAchievement out{};
-
     EOS_HAchievements achievements = eos_achievements_iface();
     if (!achievements) {
         eos_set_last_error("EOS Achievements interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
@@ -585,17 +575,17 @@ gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_id
 
     if (!local_user) {
         eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByAchievementId: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByAchievementId: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (achievement_id_storage.empty()) {
         eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByAchievementId: achievement_id is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions opts{};
@@ -611,10 +601,10 @@ gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_id
     if (result != EOS_EResult::EOS_Success || achievement == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Achievements_CopyPlayerAchievementByAchievementId failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_achievements_player_achievement_from_native(achievement);
+    gm_structs::EpicPlayerAchievement out = eos_achievements_player_achievement_from_native(achievement);
     EOS_Achievements_PlayerAchievement_Release(achievement);
     return out;
 }

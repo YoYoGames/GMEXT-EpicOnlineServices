@@ -1345,7 +1345,7 @@ class `[[EpicAchievementsUnlockAchievementsCallbackInfo]]` prototype Object
     property achievements_count : gmval { get; set; }
 }
 
-[global, bind = typed_gml, type_hint=`EpicAchievementsDefinition`]
+[global, bind = typed_gml, type_hint=`EpicAchievementsDefinition?`]
 function eos_achievements_copy_achievement_definition_by_index(index: int64): gmval;
 
 [global]
@@ -1385,16 +1385,16 @@ class `[[EpicAchievementsDefinitionV2]]` prototype Object
     property stat_thresholds_count : gmval { get; set; }
 }
 
-[global, bind = typed_gml, type_hint=`EpicAchievementsDefinitionV2`]
+[global, bind = typed_gml, type_hint=`EpicAchievementsDefinitionV2?`]
 function eos_achievements_copy_achievement_definition_v2_by_index(index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicAchievementsDefinition`]
+[global, bind = typed_gml, type_hint=`EpicAchievementsDefinition?`]
 function eos_achievements_copy_achievement_definition_by_id(achievement_id: string): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicPlayerAchievement`]
+[global, bind = typed_gml, type_hint=`EpicPlayerAchievement?`]
 function eos_achievements_copy_player_achievement_by_index(local_user_id: string, target_user_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicPlayerAchievement`]
+[global, bind = typed_gml, type_hint=`EpicPlayerAchievement?`]
 function eos_achievements_copy_player_achievement_by_id(local_user_id: string, target_user_id: string, achievement_id: string): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicStatThreshold?`]

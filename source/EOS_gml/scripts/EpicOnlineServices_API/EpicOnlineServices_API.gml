@@ -20807,7 +20807,14 @@ function eos_achievements_copy_achievement_definition_by_index(_index)
     var _return_value = __eos_achievements_copy_achievement_definition_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -20831,7 +20838,14 @@ function eos_achievements_copy_achievement_definition_v2_by_index(_index)
     var _return_value = __eos_achievements_copy_achievement_definition_v2_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicAchievementsDefinitionV2_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicAchievementsDefinitionV2_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -20849,7 +20863,14 @@ function eos_achievements_copy_achievement_definition_by_id(_achievement_id)
     var _return_value = __eos_achievements_copy_achievement_definition_by_id(_achievement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -20885,7 +20906,14 @@ function eos_achievements_copy_player_achievement_by_index(_local_user_id, _targ
     var _return_value = __eos_achievements_copy_player_achievement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -20922,7 +20950,14 @@ function eos_achievements_copy_player_achievement_by_id(_local_user_id, _target_
     var _return_value = __eos_achievements_copy_player_achievement_by_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 

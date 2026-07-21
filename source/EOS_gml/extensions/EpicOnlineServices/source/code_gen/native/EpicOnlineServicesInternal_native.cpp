@@ -1682,7 +1682,7 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_achievement_definition_by_in
     auto&& __result = eos_achievements_copy_achievement_definition_by_index(index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicAchievementsDefinition
+    // return: __result, type: optional<struct EpicAchievementsDefinition>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1697,7 +1697,7 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_achievement_definition_v2_by
     auto&& __result = eos_achievements_copy_achievement_definition_v2_by_index(index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicAchievementsDefinitionV2
+    // return: __result, type: optional<struct EpicAchievementsDefinitionV2>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1707,7 +1707,7 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_achievement_definition_by_id
     auto&& __result = eos_achievements_copy_achievement_definition_by_id(achievement_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicAchievementsDefinition
+    // return: __result, type: optional<struct EpicAchievementsDefinition>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1728,7 +1728,7 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_achievement_by_index(
     auto&& __result = eos_achievements_copy_player_achievement_by_index(local_user_id, target_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicPlayerAchievement
+    // return: __result, type: optional<struct EpicPlayerAchievement>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1749,7 +1749,7 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_achievement_by_id(cha
     auto&& __result = eos_achievements_copy_player_achievement_by_id(local_user_id, target_user_id, achievement_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicPlayerAchievement
+    // return: __result, type: optional<struct EpicPlayerAchievement>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
