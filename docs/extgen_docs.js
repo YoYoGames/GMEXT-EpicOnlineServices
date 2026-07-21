@@ -3158,6 +3158,10 @@
  * @function_partial eos_rtc_audio_send_audio
  * @param {String} local_user_id
  * @param {String} room_name
+ * @param {Real} sample_rate
+ * @param {Real} channels
+ * @param {Real} frames_count
+ * @param {Buffer} frames
  * @returns {Bool}
  * @function_end
  */
@@ -3181,6 +3185,7 @@
  * @function_partial eos_rtc_audio_add_notify_audio_before_render
  * @param {String} local_user_id
  * @param {String} room_name
+ * @param {Bool} unmixed_audio
  * @param {Function} [callback]
  * @returns {Real}
  * @function_end
@@ -4860,6 +4865,10 @@
  * @struct_partial EpicRTCAudioBeforeSendCallbackInfo
  * @member {String} local_user_id
  * @member {String} room_name
+ * @member {Real} sample_rate
+ * @member {Real} channels
+ * @member {Real} frames_count
+ * @member {String} data
  * @struct_end
  */
 
@@ -4867,6 +4876,11 @@
  * @struct_partial EpicRTCAudioBeforeRenderCallbackInfo
  * @member {String} local_user_id
  * @member {String} room_name
+ * @member {String} participant_id
+ * @member {Real} sample_rate
+ * @member {Real} channels
+ * @member {Real} frames_count
+ * @member {String} data
  * @struct_end
  */
 

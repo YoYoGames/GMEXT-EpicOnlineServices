@@ -7848,18 +7848,18 @@
         },
         {
           "$GMExtensionFunction": "",
-          "%Name": "eos_rtc_audio_send_audio",
+          "%Name": "__eos_rtc_audio_send_audio",
           "argCount": 2,
           "args": [
             1,
-            1
+            2
           ],
-          "documentation": "@param {String} local_user_id\r\n@param {String} room_name\r\n@returns {Real}",
+          "documentation": "@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}",
           "externalName": "__EXT_NATIVE__eos_rtc_audio_send_audio",
           "help": "",
-          "hidden": false,
+          "hidden": true,
           "kind": 4,
-          "name": "eos_rtc_audio_send_audio",
+          "name": "__eos_rtc_audio_send_audio",
           "resourceType": "GMExtensionFunction",
           "resourceVersion": "2.0",
           "returnType": 2

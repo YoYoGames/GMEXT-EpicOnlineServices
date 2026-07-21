@@ -6430,12 +6430,16 @@ static jdouble __JNI_WRAPPER__eos_rtc_audio_remove_notify_audio_output_state_B58
     return static_cast<jdouble>(__ret);
 }
 
-// eos_rtc_audio_send_audio JNI wrapper signature: (Ljava/lang/String;Ljava/lang/String;)D
-static jdouble __JNI_WRAPPER__eos_rtc_audio_send_audio_5E7E02443798(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jstring local_user_id, jstring room_name)
+// eos_rtc_audio_send_audio JNI wrapper signature: (Ljava/nio/ByteBuffer;D)D
+static jdouble __JNI_WRAPPER__eos_rtc_audio_send_audio_4D03448104A1(JNIEnv* env, jclass /* EpicOnlineServicesBridge */, jobject __arg_buffer, jdouble __arg_buffer_length)
 {
-    UtfChars __pin_local_user_id(env, local_user_id);
-    UtfChars __pin_room_name(env, room_name);
-    double __ret = __EXT_NATIVE__eos_rtc_audio_send_audio((char *)__pin_local_user_id.c_str(), (char *)__pin_room_name.c_str());
+    void* __arg_buffer_ptr = env->GetDirectBufferAddress(__arg_buffer);
+    jlong __arg_buffer_cap = env->GetDirectBufferCapacity(__arg_buffer);
+    if (!__arg_buffer_ptr || __arg_buffer_cap <= 0) {
+        throwIAE(env, "__arg_buffer must be a DIRECT ByteBuffer");
+        return 0.0;
+    }
+    double __ret = __EXT_NATIVE__eos_rtc_audio_send_audio((char *)__arg_buffer_ptr, static_cast<double>(__arg_buffer_length));
     return static_cast<jdouble>(__ret);
 }
 
@@ -7083,7 +7087,7 @@ extern "C" {
             { "__EXT_JNI__eos_rtc_audio_remove_notify_audio_input_state", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_remove_notify_audio_input_state_8F1A4A01CA01 },
             { "__EXT_JNI__eos_rtc_audio_add_notify_audio_output_state", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_add_notify_audio_output_state_FA13481BF872 },
             { "__EXT_JNI__eos_rtc_audio_remove_notify_audio_output_state", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_remove_notify_audio_output_state_B58973F5D08C },
-            { "__EXT_JNI__eos_rtc_audio_send_audio", "(Ljava/lang/String;Ljava/lang/String;)D", (void*)__JNI_WRAPPER__eos_rtc_audio_send_audio_5E7E02443798 },
+            { "__EXT_JNI__eos_rtc_audio_send_audio", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_send_audio_4D03448104A1 },
             { "__EXT_JNI__eos_rtc_audio_add_notify_audio_before_send", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_add_notify_audio_before_send_CE7613D702B4 },
             { "__EXT_JNI__eos_rtc_audio_remove_notify_audio_before_send", "(Ljava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_remove_notify_audio_before_send_51E197F9EEA2 },
             { "__EXT_JNI__eos_rtc_audio_add_notify_audio_before_render", "(Ljava/nio/ByteBuffer;DLjava/nio/ByteBuffer;D)D", (void*)__JNI_WRAPPER__eos_rtc_audio_add_notify_audio_before_render_F80C5FFD20B4 },

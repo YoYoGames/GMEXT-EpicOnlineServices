@@ -1672,9 +1672,9 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_rtc_audio_remove_notify_audio_output_state(__arg_buffer, __arg_buffer_length);
     }
-    public double __EXT_NATIVE__eos_rtc_audio_send_audio(String local_user_id, String room_name)
+    public double __EXT_NATIVE__eos_rtc_audio_send_audio(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
-        return __EXT_JNI__eos_rtc_audio_send_audio(local_user_id, room_name);
+        return __EXT_JNI__eos_rtc_audio_send_audio(__arg_buffer, __arg_buffer_length);
     }
     public double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_send(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {

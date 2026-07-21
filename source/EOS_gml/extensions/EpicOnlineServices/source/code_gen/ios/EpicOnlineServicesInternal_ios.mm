@@ -1748,9 +1748,9 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state(__arg_buffer, __arg_buffer_length);
 }
-- (double)__EXT_NATIVE__eos_rtc_audio_send_audio:(char*)local_user_id arg1:(char*)room_name
+- (double)__EXT_NATIVE__eos_rtc_audio_send_audio:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
-    return __EXT_NATIVE__eos_rtc_audio_send_audio(local_user_id, room_name);
+    return __EXT_NATIVE__eos_rtc_audio_send_audio(__arg_buffer, __arg_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_send:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {

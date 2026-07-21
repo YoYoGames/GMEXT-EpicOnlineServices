@@ -4192,6 +4192,10 @@ function EpicRTCAudioBeforeSendCallbackInfo() constructor
 
     self.local_user_id = undefined;
     self.room_name = undefined;
+    self.sample_rate = undefined;
+    self.channels = undefined;
+    self.frames_count = undefined;
+    self.data = undefined;
 
 }
 
@@ -4208,6 +4212,11 @@ function EpicRTCAudioBeforeRenderCallbackInfo() constructor
 
     self.local_user_id = undefined;
     self.room_name = undefined;
+    self.participant_id = undefined;
+    self.sample_rate = undefined;
+    self.channels = undefined;
+    self.frames_count = undefined;
+    self.data = undefined;
 
 }
 
@@ -16548,6 +16557,23 @@ function __EpicRTCAudioBeforeSendCallbackInfo_encode(_inst, _buffer, _offset, _w
         buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
         buffer_write(_buffer, buffer_string, self.room_name);
 
+        // field: sample_rate, type: UInt32
+        if (!is_numeric(self.sample_rate)) show_error($"{_where} :: self.sample_rate expected number", true);
+        buffer_write(_buffer, buffer_u32, self.sample_rate);
+
+        // field: channels, type: UInt32
+        if (!is_numeric(self.channels)) show_error($"{_where} :: self.channels expected number", true);
+        buffer_write(_buffer, buffer_u32, self.channels);
+
+        // field: frames_count, type: UInt32
+        if (!is_numeric(self.frames_count)) show_error($"{_where} :: self.frames_count expected number", true);
+        buffer_write(_buffer, buffer_u32, self.frames_count);
+
+        // field: data, type: String
+        if (!is_string(self.data)) show_error($"{_where} :: self.data expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.data));
+        buffer_write(_buffer, buffer_string, self.data);
+
     }
 }
 
@@ -16572,6 +16598,19 @@ function __EpicRTCAudioBeforeSendCallbackInfo_decode(_buffer, _offset)
         // field: room_name, type: String
         buffer_read(_buffer, buffer_u32);
         self.room_name = buffer_read(_buffer, buffer_string);
+
+        // field: sample_rate, type: UInt32
+        self.sample_rate = buffer_read(_buffer, buffer_u32);
+
+        // field: channels, type: UInt32
+        self.channels = buffer_read(_buffer, buffer_u32);
+
+        // field: frames_count, type: UInt32
+        self.frames_count = buffer_read(_buffer, buffer_u32);
+
+        // field: data, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.data = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -16601,6 +16640,28 @@ function __EpicRTCAudioBeforeRenderCallbackInfo_encode(_inst, _buffer, _offset, 
         buffer_write(_buffer, buffer_u32, string_byte_length(self.room_name));
         buffer_write(_buffer, buffer_string, self.room_name);
 
+        // field: participant_id, type: String
+        if (!is_string(self.participant_id)) show_error($"{_where} :: self.participant_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.participant_id));
+        buffer_write(_buffer, buffer_string, self.participant_id);
+
+        // field: sample_rate, type: UInt32
+        if (!is_numeric(self.sample_rate)) show_error($"{_where} :: self.sample_rate expected number", true);
+        buffer_write(_buffer, buffer_u32, self.sample_rate);
+
+        // field: channels, type: UInt32
+        if (!is_numeric(self.channels)) show_error($"{_where} :: self.channels expected number", true);
+        buffer_write(_buffer, buffer_u32, self.channels);
+
+        // field: frames_count, type: UInt32
+        if (!is_numeric(self.frames_count)) show_error($"{_where} :: self.frames_count expected number", true);
+        buffer_write(_buffer, buffer_u32, self.frames_count);
+
+        // field: data, type: String
+        if (!is_string(self.data)) show_error($"{_where} :: self.data expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.data));
+        buffer_write(_buffer, buffer_string, self.data);
+
     }
 }
 
@@ -16625,6 +16686,23 @@ function __EpicRTCAudioBeforeRenderCallbackInfo_decode(_buffer, _offset)
         // field: room_name, type: String
         buffer_read(_buffer, buffer_u32);
         self.room_name = buffer_read(_buffer, buffer_string);
+
+        // field: participant_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.participant_id = buffer_read(_buffer, buffer_string);
+
+        // field: sample_rate, type: UInt32
+        self.sample_rate = buffer_read(_buffer, buffer_u32);
+
+        // field: channels, type: UInt32
+        self.channels = buffer_read(_buffer, buffer_u32);
+
+        // field: frames_count, type: UInt32
+        self.frames_count = buffer_read(_buffer, buffer_u32);
+
+        // field: data, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.data = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -30456,8 +30534,52 @@ function eos_rtc_audio_remove_notify_audio_output_state(_notification_id)
     return _return_value;
 }
 
-// Skipping function eos_rtc_audio_send_audio (no wrapper is required)
+/**
+ * @param {String} _local_user_id
+ * @param {String} _room_name
+ * @param {Real} _sample_rate
+ * @param {Real} _channels
+ * @param {Real} _frames_count
+ * @param {Id.Buffer} _frames
+ * @returns {Bool}
+ */
+function eos_rtc_audio_send_audio(_local_user_id, _room_name, _sample_rate, _channels, _frames_count, _frames)
+{
+    static __available = __EpicOnlineServices_is_available();
+    if (!__available) return;
 
+    var __args_buffer = __ext_core_get_args_buffer();
+
+    // param: _local_user_id, type: String
+    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_local_user_id));
+    buffer_write(__args_buffer, buffer_string, _local_user_id);
+
+    // param: _room_name, type: String
+    if (!is_string(_room_name)) show_error($"{_GMFUNCTION_} :: _room_name expected string", true);
+    buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
+    buffer_write(__args_buffer, buffer_string, _room_name);
+
+    // param: _sample_rate, type: UInt32
+    if (!is_numeric(_sample_rate)) show_error($"{_GMFUNCTION_} :: _sample_rate expected number", true);
+    buffer_write(__args_buffer, buffer_u32, _sample_rate);
+
+    // param: _channels, type: UInt32
+    if (!is_numeric(_channels)) show_error($"{_GMFUNCTION_} :: _channels expected number", true);
+    buffer_write(__args_buffer, buffer_u32, _channels);
+
+    // param: _frames_count, type: UInt32
+    if (!is_numeric(_frames_count)) show_error($"{_GMFUNCTION_} :: _frames_count expected number", true);
+    buffer_write(__args_buffer, buffer_u32, _frames_count);
+
+    // param: _frames, type: Buffer
+    if (!buffer_exists(_frames)) show_error($"{_GMFUNCTION_} :: _frames expected Id.Buffer", true);
+    __EpicOnlineServices_queue_buffer(buffer_get_address(_frames), buffer_get_size(_frames));
+
+    var _return_value = __eos_rtc_audio_send_audio(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+
+    return _return_value;
+}
 
 /**
  * @param {String} _local_user_id
@@ -30528,10 +30650,11 @@ function eos_rtc_audio_remove_notify_audio_before_send(_notification_id)
 /**
  * @param {String} _local_user_id
  * @param {String} _room_name
+ * @param {Bool} _unmixed_audio
  * @param {Function} _callback
  * @returns {Real}
  */
-function eos_rtc_audio_add_notify_audio_before_render(_local_user_id, _room_name, _callback)
+function eos_rtc_audio_add_notify_audio_before_render(_local_user_id, _room_name, _unmixed_audio, _callback)
 {
     static __available = __EpicOnlineServices_is_available();
     if (!__available) return;
@@ -30549,6 +30672,10 @@ function eos_rtc_audio_add_notify_audio_before_render(_local_user_id, _room_name
     if (!is_string(_room_name)) show_error($"{_GMFUNCTION_} :: _room_name expected string", true);
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_room_name));
     buffer_write(__args_buffer, buffer_string, _room_name);
+
+    // param: _unmixed_audio, type: Bool
+    if (!is_bool(_unmixed_audio)) show_error($"{_GMFUNCTION_} :: _unmixed_audio expected bool", true);
+    buffer_write(__args_buffer, buffer_bool, _unmixed_audio);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))

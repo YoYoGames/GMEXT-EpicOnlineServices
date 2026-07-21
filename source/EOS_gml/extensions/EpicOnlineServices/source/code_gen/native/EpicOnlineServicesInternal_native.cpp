@@ -6842,9 +6842,30 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_output_state(cha
     return 0;
 }
 
-GMEXPORT double __EXT_NATIVE__eos_rtc_audio_send_audio(char* local_user_id, char* room_name)
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_send_audio(char* __arg_buffer, double __arg_buffer_length)
 {
-    auto&& __result = eos_rtc_audio_send_audio(local_user_id, room_name);
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: local_user_id, type: String
+    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: room_name, type: String
+    std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
+
+    // field: sample_rate, type: UInt32
+    std::uint32_t sample_rate = gm::wire::codec::readValue<std::uint32_t>(__br);
+
+    // field: channels, type: UInt32
+    std::uint32_t channels = gm::wire::codec::readValue<std::uint32_t>(__br);
+
+    // field: frames_count, type: UInt32
+    std::uint32_t frames_count = gm::wire::codec::readValue<std::uint32_t>(__br);
+
+    // field: frames, type: Buffer
+    gm::wire::GMBuffer frames = __buffer_queue.front();
+    __buffer_queue.pop();
+
+    auto&& __result = eos_rtc_audio_send_audio(local_user_id, room_name, sample_rate, channels, frames_count, frames);
     return static_cast<double>(__result);
 }
 
@@ -6894,6 +6915,9 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render(char*
     // field: room_name, type: String
     std::string_view room_name = gm::wire::codec::readValue<std::string_view>(__br);
 
+    // field: unmixed_audio, type: Bool
+    bool unmixed_audio = gm::wire::codec::readValue<bool>(__br);
+
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -6901,7 +6925,7 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render(char*
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    auto&& __result = eos_rtc_audio_add_notify_audio_before_render(local_user_id, room_name, callback);
+    auto&& __result = eos_rtc_audio_add_notify_audio_before_render(local_user_id, room_name, unmixed_audio, callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: UInt64

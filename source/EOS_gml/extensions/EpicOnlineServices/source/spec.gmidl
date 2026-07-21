@@ -4670,6 +4670,18 @@ class `[[EpicRTCAudioBeforeSendCallbackInfo]]` prototype Object
 
     [field]
     property room_name : string { get; set; }
+
+    [field]
+    property sample_rate : uint32 { get; set; }
+
+    [field]
+    property channels : uint32 { get; set; }
+
+    [field]
+    property frames_count : uint32 { get; set; }
+
+    [field]
+    property data : string { get; set; }
 }
 
 [global]
@@ -4680,6 +4692,21 @@ class `[[EpicRTCAudioBeforeRenderCallbackInfo]]` prototype Object
 
     [field]
     property room_name : string { get; set; }
+
+    [field]
+    property participant_id : string { get; set; }
+
+    [field]
+    property sample_rate : uint32 { get; set; }
+
+    [field]
+    property channels : uint32 { get; set; }
+
+    [field]
+    property frames_count : uint32 { get; set; }
+
+    [field]
+    property data : string { get; set; }
 }
 
 [global]
@@ -4795,7 +4822,14 @@ function eos_rtc_audio_add_notify_audio_output_state(local_user_id: string, room
 function eos_rtc_audio_remove_notify_audio_output_state([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_rtc_audio_send_audio(local_user_id: string, room_name: string): bool;
+function eos_rtc_audio_send_audio(
+    local_user_id: string,
+    room_name: string,
+    sample_rate: uint32,
+    channels: uint32,
+    frames_count: uint32,
+    [type_hint=buffer] frames: gmval
+): bool;
 
 [global, bind = typed_gml, type_hint=`uint64`]
 function eos_rtc_audio_add_notify_audio_before_send(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
@@ -4804,7 +4838,7 @@ function eos_rtc_audio_add_notify_audio_before_send(local_user_id: string, room_
 function eos_rtc_audio_remove_notify_audio_before_send([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_rtc_audio_add_notify_audio_before_render(local_user_id: string, room_name: string, [type_hint=`func?`] callback: gmval): gmval;
+function eos_rtc_audio_add_notify_audio_before_render(local_user_id: string, room_name: string, unmixed_audio: bool, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_before_render([type_hint=`uint64`] notification_id: gmval): unit;

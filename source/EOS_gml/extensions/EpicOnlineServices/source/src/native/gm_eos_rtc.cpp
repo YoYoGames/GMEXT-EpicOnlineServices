@@ -58,6 +58,26 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
     return std::string(buf);
 }
 
+static const char k_b64_chars[] =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+static std::string eos_rtc_audio_base64_encode(const void* data, size_t len)
+{
+    const auto* src = static_cast<const uint8_t*>(data);
+    std::string out;
+    out.reserve(((len + 2) / 3) * 4);
+    for (size_t i = 0; i < len; i += 3) {
+        uint32_t b = (uint32_t)src[i] << 16;
+        if (i + 1 < len) b |= (uint32_t)src[i + 1] << 8;
+        if (i + 2 < len) b |= src[i + 2];
+        out += k_b64_chars[(b >> 18) & 0x3f];
+        out += k_b64_chars[(b >> 12) & 0x3f];
+        out += (i + 1 < len) ? k_b64_chars[(b >> 6) & 0x3f] : '=';
+        out += (i + 2 < len) ? k_b64_chars[b & 0x3f] : '=';
+    }
+    return out;
+}
+
 // ============================================================
 // Notify callback storage — id-keyed, one heap ctx per registration
 // (see gm_eos_p2p.cpp for the reference pattern this follows)
@@ -270,6 +290,17 @@ static void EOS_CALL eos_rtc_audio_before_send_callback(
     gm_structs::EpicRTCAudioBeforeSendCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
+
+    if (data->Buffer) {
+        out.sample_rate = data->Buffer->SampleRate;
+        out.channels = data->Buffer->Channels;
+        out.frames_count = data->Buffer->FramesCount;
+        if (data->Buffer->Frames && data->Buffer->FramesCount > 0 && data->Buffer->Channels > 0) {
+            size_t byte_count = (size_t)data->Buffer->FramesCount * (size_t)data->Buffer->Channels * sizeof(int16_t);
+            out.data = eos_rtc_audio_base64_encode(data->Buffer->Frames, byte_count);
+        }
+    }
+
     cb.call(out);
 }
 
@@ -290,6 +321,18 @@ static void EOS_CALL eos_rtc_audio_before_render_callback(
     gm_structs::EpicRTCAudioBeforeRenderCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name     = data->RoomName ? std::string(data->RoomName) : std::string();
+    out.participant_id = eos_product_user_id_to_string_internal(data->ParticipantId);
+
+    if (data->Buffer) {
+        out.sample_rate = data->Buffer->SampleRate;
+        out.channels = data->Buffer->Channels;
+        out.frames_count = data->Buffer->FramesCount;
+        if (data->Buffer->Frames && data->Buffer->FramesCount > 0 && data->Buffer->Channels > 0) {
+            size_t byte_count = (size_t)data->Buffer->FramesCount * (size_t)data->Buffer->Channels * sizeof(int16_t);
+            out.data = eos_rtc_audio_base64_encode(data->Buffer->Frames, byte_count);
+        }
+    }
+
     cb.call(out);
 }
 
@@ -997,7 +1040,11 @@ void eos_rtc_audio_set_output_device_settings(
 
 bool eos_rtc_audio_send_audio(
     std::string_view local_user_id,
-    std::string_view room_name)
+    std::string_view room_name,
+    std::uint32_t sample_rate,
+    std::uint32_t channels,
+    std::uint32_t frames_count,
+    gm::wire::GMBuffer frames)
 {
     EOS_GUARD_RET(false);
 
@@ -1006,12 +1053,36 @@ bool eos_rtc_audio_send_audio(
 
     std::string rn(room_name);
 
+    if (channels == 0 || frames_count == 0) {
+        eos_set_last_error("EOS_RTCAudio_SendAudio: channels and frames_count must be greater than 0.");
+        return false;
+    }
+
+    size_t required_bytes = (size_t)frames_count * (size_t)channels * sizeof(int16_t);
+    if (frames.length() < required_bytes) {
+        eos_set_last_error("EOS_RTCAudio_SendAudio: frames buffer is too small for the specified frames_count and channels.");
+        return false;
+    }
+
+    EOS_RTCAudio_AudioBuffer audio_buffer{};
+    audio_buffer.ApiVersion = EOS_RTCAUDIO_AUDIOBUFFER_API_LATEST;
+    audio_buffer.Frames = (int16_t*)frames.data();
+    audio_buffer.FramesCount = frames_count;
+    audio_buffer.SampleRate = sample_rate;
+    audio_buffer.Channels = channels;
+
     EOS_RTCAudio_SendAudioOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_SENDAUDIO_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
+    opts.Buffer      = &audio_buffer;
 
-    return EOS_RTCAudio_SendAudio(audio, &opts) == EOS_EResult::EOS_Success;
+    EOS_EResult result = EOS_RTCAudio_SendAudio(audio, &opts);
+    if (result != EOS_EResult::EOS_Success) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_RTCAudio_SendAudio failed.");
+    }
+    return result == EOS_EResult::EOS_Success;
 }
 
 void eos_rtc_audio_register_platform_user(
@@ -1280,6 +1351,7 @@ void eos_rtc_audio_remove_notify_audio_before_send(std::uint64_t notification_id
 std::uint64_t eos_rtc_audio_add_notify_audio_before_render(
     std::string_view local_user_id,
     std::string_view room_name,
+    bool unmixed_audio,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -1293,6 +1365,7 @@ std::uint64_t eos_rtc_audio_add_notify_audio_before_render(
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORERENDER_API_LATEST;
     opts.LocalUserId = eos_product_user_id_from_string_internal(local_user_id);
     opts.RoomName    = rn.c_str();
+    opts.bUnmixedAudio = unmixed_audio ? EOS_TRUE : EOS_FALSE;
 
     EOS_NotificationId id = EOS_RTCAudio_AddNotifyAudioBeforeRender(
         audio, &opts, ctx, &eos_rtc_audio_before_render_callback);
