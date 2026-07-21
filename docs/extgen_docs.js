@@ -3278,6 +3278,7 @@
  * @member {String} user_code
  * @member {String} verification_uri
  * @member {String} verification_uri_complete
+ * @member {Real} expires_in
  * @struct_end
  */
 

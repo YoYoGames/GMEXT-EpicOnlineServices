@@ -131,6 +131,9 @@ class `[[EpicAuthPinGrantInfo]]` prototype Object
 
     [field]
     property verification_uri_complete : string { get; set; }
+
+    [field]
+    property expires_in : uint32 { get; set; }
 }
 
 [global]

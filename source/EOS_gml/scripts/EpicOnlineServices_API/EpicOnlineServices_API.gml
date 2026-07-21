@@ -864,6 +864,7 @@ function EpicAuthPinGrantInfo() constructor
     self.user_code = undefined;
     self.verification_uri = undefined;
     self.verification_uri_complete = undefined;
+    self.expires_in = undefined;
 
 }
 
@@ -4526,6 +4527,10 @@ function __EpicAuthPinGrantInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
         buffer_write(_buffer, buffer_u32, string_byte_length(self.verification_uri_complete));
         buffer_write(_buffer, buffer_string, self.verification_uri_complete);
 
+        // field: expires_in, type: UInt32
+        if (!is_numeric(self.expires_in)) show_error($"{_where} :: self.expires_in expected number", true);
+        buffer_write(_buffer, buffer_u32, self.expires_in);
+
     }
 }
 
@@ -4554,6 +4559,9 @@ function __EpicAuthPinGrantInfo_decode(_buffer, _offset)
         // field: verification_uri_complete, type: String
         buffer_read(_buffer, buffer_u32);
         self.verification_uri_complete = buffer_read(_buffer, buffer_string);
+
+        // field: expires_in, type: UInt32
+        self.expires_in = buffer_read(_buffer, buffer_u32);
 
     }
 

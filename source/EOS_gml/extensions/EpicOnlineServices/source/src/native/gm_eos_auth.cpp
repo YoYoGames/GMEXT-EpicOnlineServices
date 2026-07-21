@@ -108,6 +108,7 @@ static gm_structs::EpicAuthLoginCallbackInfo eos_auth_login_info_from_native(con
         pin_info.user_code = p->PinGrantInfo->UserCode ? std::string(p->PinGrantInfo->UserCode) : std::string();
         pin_info.verification_uri = p->PinGrantInfo->VerificationURI ? std::string(p->PinGrantInfo->VerificationURI) : std::string();
         pin_info.verification_uri_complete = p->PinGrantInfo->VerificationURIComplete ? std::string(p->PinGrantInfo->VerificationURIComplete) : std::string();
+        pin_info.expires_in = p->PinGrantInfo->ExpiresIn;
     }
 
     return out;
@@ -141,6 +142,7 @@ static gm_structs::EpicAuthLinkAccountCallbackInfo eos_auth_link_account_info_fr
         pin_info.user_code = p->PinGrantInfo->UserCode ? std::string(p->PinGrantInfo->UserCode) : std::string();
         pin_info.verification_uri = p->PinGrantInfo->VerificationURI ? std::string(p->PinGrantInfo->VerificationURI) : std::string();
         pin_info.verification_uri_complete = p->PinGrantInfo->VerificationURIComplete ? std::string(p->PinGrantInfo->VerificationURIComplete) : std::string();
+        pin_info.expires_in = p->PinGrantInfo->ExpiresIn;
     }
 
     return out;

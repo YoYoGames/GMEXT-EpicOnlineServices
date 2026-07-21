@@ -1062,6 +1062,7 @@ namespace gm_structs
         std::string user_code;
         std::string verification_uri;
         std::string verification_uri_complete;
+        std::uint32_t expires_in;
     };
 
     struct EpicAuthLogoutCallbackInfo
@@ -2588,6 +2589,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.user_code);
         gm::wire::codec::writeValue(_buf, obj.verification_uri);
         gm::wire::codec::writeValue(_buf, obj.verification_uri_complete);
+        gm::wire::codec::writeValue(_buf, obj.expires_in);
     }
 
     template<>
@@ -2597,6 +2599,7 @@ namespace gm::wire::codec
         obj.user_code = gm::wire::codec::readValue<std::string>(_buf);
         obj.verification_uri = gm::wire::codec::readValue<std::string>(_buf);
         obj.verification_uri_complete = gm::wire::codec::readValue<std::string>(_buf);
+        obj.expires_in = gm::wire::codec::readValue<std::uint32_t>(_buf);
         return obj;
     }
 
