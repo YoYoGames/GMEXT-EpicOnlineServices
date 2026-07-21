@@ -490,22 +490,20 @@ static gm_structs::EpicAuthVerifyIdTokenCallbackInfo eos_auth_verify_id_token_in
     return out;
 }
 
-gm_structs::EpicAuthUserAuthToken eos_auth_copy_user_auth_token(std::string_view local_user_id)
+std::optional<gm_structs::EpicAuthUserAuthToken> eos_auth_copy_user_auth_token(std::string_view local_user_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicAuthUserAuthToken out{};
 
     EOS_HAuth auth = eos_auth_iface();
     if (!auth) {
         eos_set_last_error("EOS Auth interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_Auth_CopyUserAuthToken: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Auth_CopyUserAuthTokenOptions opts{};
@@ -515,10 +513,10 @@ gm_structs::EpicAuthUserAuthToken eos_auth_copy_user_auth_token(std::string_view
     const EOS_EResult result = EOS_Auth_CopyUserAuthToken(auth, &opts, local_user, &token);
     if (result != EOS_EResult::EOS_Success || token == nullptr) {
         eos_set_last_error(eos_auth_result_string(result));
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_auth_user_auth_token_from_native(token);
+    gm_structs::EpicAuthUserAuthToken out = eos_auth_user_auth_token_from_native(token);
     EOS_Auth_Token_Release(token);
     return out;
 }
@@ -562,16 +560,14 @@ static void EOS_CALL eos_auth_verify_user_auth_callback_native(const EOS_Auth_Ve
     delete ctx;
 }
 
-gm_structs::EpicAuthIdToken eos_auth_copy_id_token(std::string_view local_user_id, std::string_view target_account_id)
+std::optional<gm_structs::EpicAuthIdToken> eos_auth_copy_id_token(std::string_view local_user_id, std::string_view target_account_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicAuthIdToken out{};
 
     EOS_HAuth auth = eos_auth_iface();
     if (!auth) {
         eos_set_last_error("EOS Auth interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
@@ -579,12 +575,12 @@ gm_structs::EpicAuthIdToken eos_auth_copy_id_token(std::string_view local_user_i
 
     if (!local_user) {
         eos_set_last_error("EOS_Auth_CopyIdToken: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_Auth_CopyIdToken: invalid target_account_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Auth_CopyIdTokenOptions opts{};
@@ -595,10 +591,10 @@ gm_structs::EpicAuthIdToken eos_auth_copy_id_token(std::string_view local_user_i
     const EOS_EResult result = EOS_Auth_CopyIdToken(auth, &opts, &token);
     if (result != EOS_EResult::EOS_Success || token == nullptr) {
         eos_set_last_error(eos_auth_result_string(result));
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_auth_id_token_from_native(token);
+    gm_structs::EpicAuthIdToken out = eos_auth_id_token_from_native(token);
     EOS_Auth_IdToken_Release(token);
     return out;
 }

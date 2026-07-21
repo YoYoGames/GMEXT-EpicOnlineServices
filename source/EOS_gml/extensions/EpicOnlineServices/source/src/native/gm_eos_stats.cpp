@@ -265,25 +265,23 @@ int64_t eos_stats_get_stats_count(std::string_view target_user_id)
     return (int64_t)EOS_Stats_GetStatsCount(stats, &opts);
 }
 
-gm_structs::EpicStatsStat eos_stats_copy_stat_by_index(
+std::optional<gm_structs::EpicStatsStat> eos_stats_copy_stat_by_index(
     std::string_view target_user_id,
     int64_t index)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicStatsStat out{};
-
     EOS_HStats stats = eos_stats_iface();
     if (!stats) {
         eos_set_last_error("EOS Stats interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
 
     if (!target_user) {
         eos_set_last_error("EOS_Stats_CopyStatByIndex: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Stats_CopyStatByIndexOptions opts{};
@@ -296,26 +294,24 @@ gm_structs::EpicStatsStat eos_stats_copy_stat_by_index(
     if (result != EOS_EResult::EOS_Success || stat == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Stats_CopyStatByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_stats_stat_from_native(stat);
+    gm_structs::EpicStatsStat out = eos_stats_stat_from_native(stat);
     EOS_Stats_Stat_Release(stat);
     return out;
 }
 
-gm_structs::EpicStatsStat eos_stats_copy_stat_by_name(
+std::optional<gm_structs::EpicStatsStat> eos_stats_copy_stat_by_name(
     std::string_view target_user_id,
     std::string_view name)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicStatsStat out{};
-
     EOS_HStats stats = eos_stats_iface();
     if (!stats) {
         eos_set_last_error("EOS Stats interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
@@ -323,12 +319,12 @@ gm_structs::EpicStatsStat eos_stats_copy_stat_by_name(
 
     if (!target_user) {
         eos_set_last_error("EOS_Stats_CopyStatByName: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (name_storage.empty()) {
         eos_set_last_error("EOS_Stats_CopyStatByName: name is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Stats_CopyStatByNameOptions opts{};
@@ -341,10 +337,10 @@ gm_structs::EpicStatsStat eos_stats_copy_stat_by_name(
     if (result != EOS_EResult::EOS_Success || stat == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Stats_CopyStatByName failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_stats_stat_from_native(stat);
+    gm_structs::EpicStatsStat out = eos_stats_stat_from_native(stat);
     EOS_Stats_Stat_Release(stat);
     return out;
 }

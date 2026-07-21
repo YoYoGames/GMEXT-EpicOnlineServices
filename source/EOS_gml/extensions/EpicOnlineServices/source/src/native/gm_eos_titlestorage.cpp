@@ -294,15 +294,17 @@ int64_t eos_titlestorage_get_file_metadata_count(std::string_view local_user_id)
     return (int64_t)EOS_TitleStorage_GetFileMetadataCount(ts, &opts);
 }
 
-gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_at_index(
+std::optional<gm_structs::EpicTitleStorageFileMetadata> eos_titlestorage_copy_file_metadata_at_index(
     std::string_view local_user_id,
     int64_t index)
 {
-    gm_structs::EpicTitleStorageFileMetadata out{};
-    EOS_GUARD_RET(out);
+    eos_clear_last_error();
 
     EOS_HTitleStorage ts = eos_ts_iface();
-    if (!ts) { eos_set_last_error("EOS TitleStorage interface unavailable."); return out; }
+    if (!ts) {
+        eos_set_last_error("EOS TitleStorage interface unavailable.");
+        return std::nullopt;
+    }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
 
@@ -316,28 +318,31 @@ gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_at_
     if (result != EOS_EResult::EOS_Success || !meta) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_TitleStorage_CopyFileMetadataAtIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ts_metadata_from_native(meta);
+
+    gm_structs::EpicTitleStorageFileMetadata out = eos_ts_metadata_from_native(meta);
     EOS_TitleStorage_FileMetadata_Release(meta);
     return out;
 }
 
-gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_by_filename(
+std::optional<gm_structs::EpicTitleStorageFileMetadata> eos_titlestorage_copy_file_metadata_by_filename(
     std::string_view local_user_id,
     std::string_view filename)
 {
-    gm_structs::EpicTitleStorageFileMetadata out{};
-    EOS_GUARD_RET(out);
+    eos_clear_last_error();
 
     EOS_HTitleStorage ts = eos_ts_iface();
-    if (!ts) { eos_set_last_error("EOS TitleStorage interface unavailable."); return out; }
+    if (!ts) {
+        eos_set_last_error("EOS TitleStorage interface unavailable.");
+        return std::nullopt;
+    }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
     std::string fn(filename);
     if (fn.empty()) {
         eos_set_last_error("EOS_TitleStorage_CopyFileMetadataByFilename: filename required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_TitleStorage_CopyFileMetadataByFilenameOptions opts{};
@@ -350,9 +355,10 @@ gm_structs::EpicTitleStorageFileMetadata eos_titlestorage_copy_file_metadata_by_
     if (result != EOS_EResult::EOS_Success || !meta) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_TitleStorage_CopyFileMetadataByFilename failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ts_metadata_from_native(meta);
+
+    gm_structs::EpicTitleStorageFileMetadata out = eos_ts_metadata_from_native(meta);
     EOS_TitleStorage_FileMetadata_Release(meta);
     return out;
 }

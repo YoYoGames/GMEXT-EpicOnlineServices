@@ -155,18 +155,16 @@ void eos_user_info_query_user_info(
         &eos_user_info_query_user_info_callback_native);
 }
 
-gm_structs::EpicUserInfo eos_user_info_copy_user_info(
+std::optional<gm_structs::EpicUserInfo> eos_user_info_copy_user_info(
     std::string_view local_user_id,
     std::string_view target_user_id)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicUserInfo out{};
-
     EOS_HUserInfo user_info = eos_user_info_iface();
     if (!user_info) {
         eos_set_last_error("EOS UserInfo interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
@@ -174,12 +172,12 @@ gm_structs::EpicUserInfo eos_user_info_copy_user_info(
 
     if (!local_user) {
         eos_set_last_error("EOS_UserInfo_CopyUserInfo: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_UserInfo_CopyUserInfo: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_UserInfo_CopyUserInfoOptions opts{};
@@ -192,10 +190,10 @@ gm_structs::EpicUserInfo eos_user_info_copy_user_info(
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_UserInfo_CopyUserInfo failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_user_info_from_native(info);
+    gm_structs::EpicUserInfo out = eos_user_info_from_native(info);
     EOS_UserInfo_Release(info);
     return out;
 }
@@ -278,19 +276,17 @@ static gm_structs::EpicUserInfoExternalUserInfo eos_user_info_external_user_info
     return out;
 }
 
-gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_by_index(
+std::optional<gm_structs::EpicUserInfoExternalUserInfo> eos_user_info_copy_external_user_info_by_index(
     std::string_view local_user_id,
     std::string_view target_user_id,
     int64_t index)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicUserInfoExternalUserInfo out{};
-
     EOS_HUserInfo user_info = eos_user_info_iface();
     if (!user_info) {
         eos_set_last_error("EOS UserInfo interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
@@ -298,12 +294,12 @@ gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_b
 
     if (!local_user) {
         eos_set_last_error("EOS_UserInfo_CopyExternalUserInfoByIndex: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_UserInfo_CopyExternalUserInfoByIndex: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_UserInfo_CopyExternalUserInfoByIndexOptions opts{};
@@ -317,27 +313,25 @@ gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_b
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_UserInfo_CopyExternalUserInfoByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_user_info_external_user_info_from_native(info);
+    gm_structs::EpicUserInfoExternalUserInfo out = eos_user_info_external_user_info_from_native(info);
     EOS_UserInfo_ExternalUserInfo_Release(info);
     return out;
 }
 
-gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_by_account_type(
+std::optional<gm_structs::EpicUserInfoExternalUserInfo> eos_user_info_copy_external_user_info_by_account_type(
     std::string_view local_user_id,
     std::string_view target_user_id,
     gm_enums::EpicExternalAccountType account_type)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicUserInfoExternalUserInfo out{};
-
     EOS_HUserInfo user_info = eos_user_info_iface();
     if (!user_info) {
         eos_set_last_error("EOS UserInfo interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
@@ -345,12 +339,12 @@ gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_b
 
     if (!local_user) {
         eos_set_last_error("EOS_UserInfo_CopyExternalUserInfoByAccountType: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_UserInfo_CopyExternalUserInfoByAccountType: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_UserInfo_CopyExternalUserInfoByAccountTypeOptions opts{};
@@ -364,27 +358,25 @@ gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_b
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_UserInfo_CopyExternalUserInfoByAccountType failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_user_info_external_user_info_from_native(info);
+    gm_structs::EpicUserInfoExternalUserInfo out = eos_user_info_external_user_info_from_native(info);
     EOS_UserInfo_ExternalUserInfo_Release(info);
     return out;
 }
 
-gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_by_account_id(
+std::optional<gm_structs::EpicUserInfoExternalUserInfo> eos_user_info_copy_external_user_info_by_account_id(
     std::string_view local_user_id,
     std::string_view target_user_id,
     std::string_view account_id)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicUserInfoExternalUserInfo out{};
-
     EOS_HUserInfo user_info = eos_user_info_iface();
     if (!user_info) {
         eos_set_last_error("EOS UserInfo interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
@@ -393,17 +385,17 @@ gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_b
 
     if (!local_user) {
         eos_set_last_error("EOS_UserInfo_CopyExternalUserInfoByAccountId: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (!target_user) {
         eos_set_last_error("EOS_UserInfo_CopyExternalUserInfoByAccountId: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     if (account_id_storage.empty()) {
         eos_set_last_error("EOS_UserInfo_CopyExternalUserInfoByAccountId: account_id is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_UserInfo_CopyExternalUserInfoByAccountIdOptions opts{};
@@ -417,10 +409,10 @@ gm_structs::EpicUserInfoExternalUserInfo eos_user_info_copy_external_user_info_b
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_UserInfo_CopyExternalUserInfoByAccountId failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_user_info_external_user_info_from_native(info);
+    gm_structs::EpicUserInfoExternalUserInfo out = eos_user_info_external_user_info_from_native(info);
     EOS_UserInfo_ExternalUserInfo_Release(info);
     return out;
 }

@@ -1171,16 +1171,14 @@ void eos_sessions_active_session_release(uint64_t active_session_id)
     eos_sessions_active_erase(active_session_id);
 }
 
-gm_structs::EpicActiveSessionInfo eos_sessions_active_session_copy_info(uint64_t active_session_id)
+std::optional<gm_structs::EpicActiveSessionInfo> eos_sessions_active_session_copy_info(uint64_t active_session_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicActiveSessionInfo out{};
 
     EOS_HActiveSession active = eos_sessions_active_get(active_session_id);
     if (!active) {
         eos_set_last_error("EOS ActiveSession handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ActiveSession_CopyInfoOptions opts{};
@@ -1191,10 +1189,10 @@ gm_structs::EpicActiveSessionInfo eos_sessions_active_session_copy_info(uint64_t
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_ActiveSession_CopyInfo failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_sessions_active_session_info_from_native(info);
+    gm_structs::EpicActiveSessionInfo out = eos_sessions_active_session_info_from_native(info);
     EOS_ActiveSession_Info_Release(info);
     return out;
 }
@@ -1255,16 +1253,14 @@ uint64_t eos_sessions_copy_session_handle_by_ui_event_id(uint64_t ui_event_id)
     return eos_sessions_details_store(details);
 }
 
-gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_copy_info(uint64_t session_details_id)
+std::optional<gm_structs::EpicSessionDetailsInfo> eos_sessions_session_details_copy_info(uint64_t session_details_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicSessionDetailsInfo out{};
 
     EOS_HSessionDetails details = eos_sessions_details_get(session_details_id);
     if (!details) {
         eos_set_last_error("EOS SessionDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_SessionDetails_CopyInfoOptions opts{};
@@ -1275,10 +1271,10 @@ gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_copy_info(uint64
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_SessionDetails_CopyInfo failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_sessions_session_details_info_from_native(info);
+    gm_structs::EpicSessionDetailsInfo out = eos_sessions_session_details_info_from_native(info);
     EOS_SessionDetails_Info_Release(info);
     return out;
 }
@@ -1854,23 +1850,22 @@ std::optional<gm_structs::EpicSessionDetailsAttribute> eos_sessions_session_deta
     return out;
 }
 
-gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_session_attribute_by_key(
+std::optional<gm_structs::EpicSessionDetailsAttribute> eos_sessions_session_details_copy_session_attribute_by_key(
     uint64_t session_details_id,
     std::string_view key)
 {
     eos_clear_last_error();
-    gm_structs::EpicSessionDetailsAttribute out{};
 
     EOS_HSessionDetails details = eos_sessions_details_get(session_details_id);
     if (!details) {
         eos_set_last_error("EOS SessionDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     std::string key_storage(key);
     if (key_storage.empty()) {
         eos_set_last_error("EOS_SessionDetails_CopySessionAttributeByKey: key is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_SessionDetails_CopySessionAttributeByKeyOptions opts{};
@@ -1882,10 +1877,10 @@ gm_structs::EpicSessionDetailsAttribute eos_sessions_session_details_copy_sessio
     if (result != EOS_EResult::EOS_Success || !attr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_SessionDetails_CopySessionAttributeByKey failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_sessions_attribute_from_native(attr);
+    gm_structs::EpicSessionDetailsAttribute out = eos_sessions_attribute_from_native(attr);
     EOS_SessionDetails_Attribute_Release(attr);
     return out;
 }

@@ -357,7 +357,7 @@ GMEXPORT double __EXT_NATIVE__eos_auth_copy_id_token(char* local_user_id, char* 
     auto&& __result = eos_auth_copy_id_token(local_user_id, target_account_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicAuthIdToken
+    // return: __result, type: optional<struct EpicAuthIdToken>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -367,7 +367,7 @@ GMEXPORT double __EXT_NATIVE__eos_auth_copy_user_auth_token(char* local_user_id,
     auto&& __result = eos_auth_copy_user_auth_token(local_user_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicAuthUserAuthToken
+    // return: __result, type: optional<struct EpicAuthUserAuthToken>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -649,7 +649,7 @@ GMEXPORT double __EXT_NATIVE__eos_connect_copy_id_token(char* local_user_id, cha
     auto&& __result = eos_connect_copy_id_token(local_user_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicConnectIdToken
+    // return: __result, type: optional<struct EpicConnectIdToken>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -659,7 +659,7 @@ GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_info(char* target_us
     auto&& __result = eos_connect_copy_product_user_info(target_user_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicConnectExternalAccountInfo
+    // return: __result, type: optional<struct EpicConnectExternalAccountInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -687,7 +687,7 @@ GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_
     auto&& __result = eos_connect_copy_product_user_external_account_by_index(target_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicConnectExternalAccountInfo
+    // return: __result, type: optional<struct EpicConnectExternalAccountInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -705,7 +705,7 @@ GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_
     auto&& __result = eos_connect_copy_product_user_external_account_by_account_type(target_user_id, account_id_type);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicConnectExternalAccountInfo
+    // return: __result, type: optional<struct EpicConnectExternalAccountInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -715,7 +715,7 @@ GMEXPORT double __EXT_NATIVE__eos_connect_copy_product_user_external_account_by_
     auto&& __result = eos_connect_copy_product_user_external_account_by_account_id(target_user_id, account_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicConnectExternalAccountInfo
+    // return: __result, type: optional<struct EpicConnectExternalAccountInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -988,7 +988,7 @@ GMEXPORT double __EXT_NATIVE__eos_user_info_copy_user_info(char* local_user_id, 
     auto&& __result = eos_user_info_copy_user_info(local_user_id, target_user_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicUserInfo
+    // return: __result, type: optional<struct EpicUserInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1026,7 +1026,7 @@ GMEXPORT double __EXT_NATIVE__eos_user_info_copy_external_user_info_by_index(cha
     auto&& __result = eos_user_info_copy_external_user_info_by_index(local_user_id, target_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicUserInfoExternalUserInfo
+    // return: __result, type: optional<struct EpicUserInfoExternalUserInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1047,7 +1047,7 @@ GMEXPORT double __EXT_NATIVE__eos_user_info_copy_external_user_info_by_account_t
     auto&& __result = eos_user_info_copy_external_user_info_by_account_type(local_user_id, target_user_id, account_type);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicUserInfoExternalUserInfo
+    // return: __result, type: optional<struct EpicUserInfoExternalUserInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1068,7 +1068,7 @@ GMEXPORT double __EXT_NATIVE__eos_user_info_copy_external_user_info_by_account_i
     auto&& __result = eos_user_info_copy_external_user_info_by_account_id(local_user_id, target_user_id, account_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicUserInfoExternalUserInfo
+    // return: __result, type: optional<struct EpicUserInfoExternalUserInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1150,7 +1150,7 @@ GMEXPORT double __EXT_NATIVE__eos_stats_copy_stat_by_index(char* __arg_buffer, d
     auto&& __result = eos_stats_copy_stat_by_index(target_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicStatsStat
+    // return: __result, type: optional<struct EpicStatsStat>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1160,7 +1160,7 @@ GMEXPORT double __EXT_NATIVE__eos_stats_copy_stat_by_name(char* target_user_id, 
     auto&& __result = eos_stats_copy_stat_by_name(target_user_id, name);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicStatsStat
+    // return: __result, type: optional<struct EpicStatsStat>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1584,7 +1584,7 @@ GMEXPORT double __EXT_NATIVE__eos_sanctions_copy_player_sanction_by_index(char* 
     auto&& __result = eos_sanctions_copy_player_sanction_by_index(target_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicSanctionsPlayerSanction
+    // return: __result, type: optional<struct EpicSanctionsPlayerSanction>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1962,7 +1962,7 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_definition_by_index(char* __
     auto&& __result = eos_leaderboards_copy_definition_by_index(index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLeaderboardDefinition
+    // return: __result, type: optional<struct EpicLeaderboardDefinition>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1972,7 +1972,7 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_definition_by_id(char* leade
     auto&& __result = eos_leaderboards_copy_definition_by_id(leaderboard_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLeaderboardDefinition
+    // return: __result, type: optional<struct EpicLeaderboardDefinition>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1987,7 +1987,7 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_record_by_index(char* __arg_
     auto&& __result = eos_leaderboards_copy_record_by_index(index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLeaderboardRecord
+    // return: __result, type: optional<struct EpicLeaderboardRecord>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1997,7 +1997,7 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_record_by_user_id(char* user
     auto&& __result = eos_leaderboards_copy_record_by_user_id(user_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLeaderboardRecord
+    // return: __result, type: optional<struct EpicLeaderboardRecord>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -2015,7 +2015,7 @@ GMEXPORT double __EXT_NATIVE__eos_leaderboards_copy_user_score_by_index(char* __
     auto&& __result = eos_leaderboards_copy_user_score_by_index(stat_name, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLeaderboardUserScore
+    // return: __result, type: optional<struct EpicLeaderboardUserScore>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -2565,7 +2565,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_active_session_copy_info(char* __arg_
     auto&& __result = eos_sessions_active_session_copy_info(active_session_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicActiveSessionInfo
+    // return: __result, type: optional<struct EpicActiveSessionInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -2605,7 +2605,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_details_copy_info(char* __arg
     auto&& __result = eos_sessions_session_details_copy_info(session_details_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicSessionDetailsInfo
+    // return: __result, type: optional<struct EpicSessionDetailsInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -2944,7 +2944,7 @@ GMEXPORT double __EXT_NATIVE__eos_sessions_session_details_copy_session_attribut
     auto&& __result = eos_sessions_session_details_copy_session_attribute_by_key(session_details_id, key);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicSessionDetailsAttribute
+    // return: __result, type: optional<struct EpicSessionDetailsAttribute>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -3905,7 +3905,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_info(char* __arg_buffer, do
     auto&& __result = eos_lobby_details_copy_info(lobby_details_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLobbyDetailsInfo
+    // return: __result, type: optional<struct EpicLobbyDetailsInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -4212,7 +4212,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_attribute_by_index(char* __
     auto&& __result = eos_lobby_details_copy_attribute_by_index(lobby_details_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLobbyDetailsAttribute
+    // return: __result, type: optional<struct EpicLobbyDetailsAttribute>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -4230,7 +4230,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_attribute_by_key(char* __ar
     auto&& __result = eos_lobby_details_copy_attribute_by_key(lobby_details_id, key);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLobbyDetailsAttribute
+    // return: __result, type: optional<struct EpicLobbyDetailsAttribute>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -4269,7 +4269,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_index(c
     auto&& __result = eos_lobby_details_copy_member_attribute_by_index(lobby_details_id, target_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLobbyDetailsAttribute
+    // return: __result, type: optional<struct EpicLobbyDetailsAttribute>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -4290,7 +4290,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_member_attribute_by_key(cha
     auto&& __result = eos_lobby_details_copy_member_attribute_by_key(lobby_details_id, target_user_id, key);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLobbyDetailsAttribute
+    // return: __result, type: optional<struct EpicLobbyDetailsAttribute>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -4308,7 +4308,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_details_copy_member_info(char* __arg_buf
     auto&& __result = eos_lobby_details_copy_member_info(lobby_details_id, target_user_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicLobbyDetailsMemberInfo
+    // return: __result, type: optional<struct EpicLobbyDetailsMemberInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -4602,7 +4602,7 @@ GMEXPORT double __EXT_NATIVE__eos_p2p_receive_packet(char* __arg_buffer, double 
     auto&& __result = eos_p2p_receive_packet(local_user_id, out_data, max_bytes, offset, channel);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicP2PReceivedPacket
+    // return: __result, type: optional<struct EpicP2PReceivedPacket>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5022,7 +5022,7 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_at_index(
     auto&& __result = eos_playerdatastorage_copy_file_metadata_at_index(local_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicPlayerDataStorageFileMetadata
+    // return: __result, type: optional<struct EpicPlayerDataStorageFileMetadata>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5032,7 +5032,7 @@ GMEXPORT double __EXT_NATIVE__eos_playerdatastorage_copy_file_metadata_by_filena
     auto&& __result = eos_playerdatastorage_copy_file_metadata_by_filename(local_user_id, filename);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicPlayerDataStorageFileMetadata
+    // return: __result, type: optional<struct EpicPlayerDataStorageFileMetadata>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5233,7 +5233,7 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_copy_file_metadata_at_index(char*
     auto&& __result = eos_titlestorage_copy_file_metadata_at_index(local_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicTitleStorageFileMetadata
+    // return: __result, type: optional<struct EpicTitleStorageFileMetadata>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5243,7 +5243,7 @@ GMEXPORT double __EXT_NATIVE__eos_titlestorage_copy_file_metadata_by_filename(ch
     auto&& __result = eos_titlestorage_copy_file_metadata_by_filename(local_user_id, filename);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicTitleStorageFileMetadata
+    // return: __result, type: optional<struct EpicTitleStorageFileMetadata>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5509,7 +5509,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_ownership_at_index(char* __arg_
     auto&& __result = eos_ecom_copy_item_ownership_at_index(local_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomItemOwnership
+    // return: __result, type: optional<struct EpicEcomItemOwnership>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5537,7 +5537,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_sandbox_ownership_at_index(char* __a
     auto&& __result = eos_ecom_copy_sandbox_ownership_at_index(local_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomSandboxIdItemOwnership
+    // return: __result, type: optional<struct EpicEcomSandboxIdItemOwnership>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5575,7 +5575,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_entitlement_by_index(char* __arg_buf
     auto&& __result = eos_ecom_copy_entitlement_by_index(local_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomEntitlement
+    // return: __result, type: optional<struct EpicEcomEntitlement>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5596,7 +5596,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_entitlement_by_name_and_index(char* 
     auto&& __result = eos_ecom_copy_entitlement_by_name_and_index(local_user_id, entitlement_name, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomEntitlement
+    // return: __result, type: optional<struct EpicEcomEntitlement>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5606,7 +5606,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_entitlement_by_id(char* local_user_i
     auto&& __result = eos_ecom_copy_entitlement_by_id(local_user_id, entitlement_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomEntitlement
+    // return: __result, type: optional<struct EpicEcomEntitlement>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5659,7 +5659,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_by_index(char* __arg_buffer, d
     auto&& __result = eos_ecom_copy_offer_by_index(local_user_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomCatalogOffer
+    // return: __result, type: optional<struct EpicEcomCatalogOffer>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5669,7 +5669,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_by_id(char* local_user_id, cha
     auto&& __result = eos_ecom_copy_offer_by_id(local_user_id, offer_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomCatalogOffer
+    // return: __result, type: optional<struct EpicEcomCatalogOffer>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5700,7 +5700,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_item_by_index(char* __arg_buff
     auto&& __result = eos_ecom_copy_offer_item_by_index(local_user_id, offer_id, item_index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomCatalogItem
+    // return: __result, type: optional<struct EpicEcomCatalogItem>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5710,7 +5710,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_by_id(char* local_user_id, char
     auto&& __result = eos_ecom_copy_item_by_id(local_user_id, item_id);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomCatalogItem
+    // return: __result, type: optional<struct EpicEcomCatalogItem>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5741,7 +5741,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_offer_image_info_by_index(char* __ar
     auto&& __result = eos_ecom_copy_offer_image_info_by_index(local_user_id, offer_id, image_info_index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomKeyImageInfo
+    // return: __result, type: optional<struct EpicEcomKeyImageInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5772,7 +5772,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_image_info_by_index(char* __arg
     auto&& __result = eos_ecom_copy_item_image_info_by_index(local_user_id, item_id, image_info_index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomKeyImageInfo
+    // return: __result, type: optional<struct EpicEcomKeyImageInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5803,7 +5803,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_copy_item_release_by_index(char* __arg_bu
     auto&& __result = eos_ecom_copy_item_release_by_index(local_user_id, item_id, release_index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomCatalogRelease
+    // return: __result, type: optional<struct EpicEcomCatalogRelease>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -5886,7 +5886,7 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_transaction_copy_entitlement_by_index(cha
     auto&& __result = eos_ecom_transaction_copy_entitlement_by_index(tx_handle_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicEcomEntitlement
+    // return: __result, type: optional<struct EpicEcomEntitlement>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -6599,7 +6599,7 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_copy_input_device_info_by_index(char
     auto&& __result = eos_rtc_audio_copy_input_device_info_by_index(index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicRTCAudioInputDeviceInfo
+    // return: __result, type: optional<struct EpicRTCAudioInputDeviceInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -6624,7 +6624,7 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_copy_output_device_info_by_index(cha
     auto&& __result = eos_rtc_audio_copy_output_device_info_by_index(index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicRTCAudioOutputDeviceInfo
+    // return: __result, type: optional<struct EpicRTCAudioOutputDeviceInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }

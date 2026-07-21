@@ -321,10 +321,10 @@ class `[[EpicAuthVerifyUserAuthCallbackInfo]]` prototype Object
     property result_code : gmval { get; set; }
 }
 
-[global, bind = typed_gml, type_hint=`EpicAuthIdToken`]
+[global, bind = typed_gml, type_hint=`EpicAuthIdToken?`]
 function eos_auth_copy_id_token(local_user_id: string, target_account_id: string): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicAuthUserAuthToken`]
+[global, bind = typed_gml, type_hint=`EpicAuthUserAuthToken?`]
 function eos_auth_copy_user_auth_token(local_user_id: string): gmval;
 
 [global, bind = typed_gml]
@@ -555,22 +555,22 @@ class `[[EpicConnectVerifyIdTokenCallbackInfo]]` prototype Object
     property deployment_id : string { get; set; }
 }
 
-[global, bind = typed_gml, type_hint=`EpicConnectIdToken`]
+[global, bind = typed_gml, type_hint=`EpicConnectIdToken?`]
 function eos_connect_copy_id_token(local_user_id: string): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo?`]
 function eos_connect_copy_product_user_info(target_user_id: string): gmval;
 
 [global, bind = typed_gml]
 function eos_connect_get_product_user_external_account_count(target_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo?`]
 function eos_connect_copy_product_user_external_account_by_index(target_user_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo?`]
 function eos_connect_copy_product_user_external_account_by_account_type(target_user_id: string, [type_hint=`EpicExternalAccountType`] account_id_type: gmval): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo`]
+[global, bind = typed_gml, type_hint=`EpicConnectExternalAccountInfo?`]
 function eos_connect_copy_product_user_external_account_by_account_id(target_user_id: string, account_id: string): gmval;
 
 [global, bind = typed_gml]
@@ -747,7 +747,7 @@ class `[[EpicUserInfoQueryUserInfoCallbackInfo]]` prototype Object
 [global, bind = typed_gml]
 function eos_user_info_query_user_info(local_user_id: string, target_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
-[global, bind = typed_gml, type_hint=`EpicUserInfo`]
+[global, bind = typed_gml, type_hint=`EpicUserInfo?`]
 function eos_user_info_copy_user_info(local_user_id: string, target_user_id: string): gmval;
 
 [global, bind = typed_gml, type_hint=`uint64`]
@@ -773,21 +773,21 @@ class `[[EpicUserInfoExternalUserInfo]]` prototype Object
     property display_name : string { get; set; }
 }
 
-[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo`]
+[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo?`]
 function eos_user_info_copy_external_user_info_by_index(
     local_user_id: string,
     target_user_id: string,
     index: int64
 ): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo`]
+[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo?`]
 function eos_user_info_copy_external_user_info_by_account_type(
     local_user_id: string,
     target_user_id: string,
     [type_hint=`EpicExternalAccountType`] account_type: gmval
 ): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo`]
+[global, bind = typed_gml, type_hint=`EpicUserInfoExternalUserInfo?`]
 function eos_user_info_copy_external_user_info_by_account_id(
     local_user_id: string,
     target_user_id: string,
@@ -863,10 +863,10 @@ function eos_stats_query_stats(
 [global, bind = typed_gml]
 function eos_stats_get_stats_count(target_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicStatsStat`]
+[global, bind = typed_gml, type_hint=`EpicStatsStat?`]
 function eos_stats_copy_stat_by_index(target_user_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicStatsStat`]
+[global, bind = typed_gml, type_hint=`EpicStatsStat?`]
 function eos_stats_copy_stat_by_name(target_user_id: string, name: string): gmval;
 
 }
@@ -1157,7 +1157,7 @@ function eos_sanctions_query_active_player_sanctions(local_user_id: string, targ
 [global, bind = typed_gml]
 function eos_sanctions_get_player_sanction_count(target_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicSanctionsPlayerSanction`]
+[global, bind = typed_gml, type_hint=`EpicSanctionsPlayerSanction?`]
 function eos_sanctions_copy_player_sanction_by_index(target_user_id: string, index: int64): gmval;
 
 [global, bind = typed_gml]
@@ -1508,19 +1508,19 @@ class `[[EpicLeaderboardUserScore]]` prototype Object
     property score : gmval { get; set; }
 }
 
-[global, bind = typed_gml, type_hint=`EpicLeaderboardDefinition`]
+[global, bind = typed_gml, type_hint=`EpicLeaderboardDefinition?`]
 function eos_leaderboards_copy_definition_by_index(index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicLeaderboardDefinition`]
+[global, bind = typed_gml, type_hint=`EpicLeaderboardDefinition?`]
 function eos_leaderboards_copy_definition_by_id(leaderboard_id: string): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicLeaderboardRecord`]
+[global, bind = typed_gml, type_hint=`EpicLeaderboardRecord?`]
 function eos_leaderboards_copy_record_by_index(index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicLeaderboardRecord`]
+[global, bind = typed_gml, type_hint=`EpicLeaderboardRecord?`]
 function eos_leaderboards_copy_record_by_user_id(user_id: string): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicLeaderboardUserScore`]
+[global, bind = typed_gml, type_hint=`EpicLeaderboardUserScore?`]
 function eos_leaderboards_copy_user_score_by_index(stat_name: string, index: int64): gmval;
 
 }
@@ -1942,7 +1942,7 @@ function eos_sessions_copy_active_session_handle(session_name: string): gmval;
 [global, bind = typed_gml]
 function eos_sessions_active_session_release([type_hint=`uint64`] active_session_id: gmval): unit;
 
-[global, bind = typed_gml, type_hint=`EpicActiveSessionInfo`]
+[global, bind = typed_gml, type_hint=`EpicActiveSessionInfo?`]
 function eos_sessions_active_session_copy_info([type_hint=`uint64`] active_session_id: gmval): gmval;
 
 [global, bind = typed_gml, type_hint=`uint64`]
@@ -1954,7 +1954,7 @@ function eos_sessions_copy_session_handle_by_ui_event_id([type_hint=`uint64`] ui
 // [global, bind = typed_gml]
 // function eos_sessions_session_details_release([type_hint=`uint64`] session_details_id: gmval): unit;
 
-[global, bind = typed_gml, type_hint=`EpicSessionDetailsInfo`]
+[global, bind = typed_gml, type_hint=`EpicSessionDetailsInfo?`]
 function eos_sessions_session_details_copy_info([type_hint=`uint64`] session_details_id: gmval): gmval;
 
 [global, bind = typed_gml, type_hint=`uint64`]
@@ -2137,7 +2137,7 @@ function eos_sessions_session_details_copy_session_attribute_by_index(
     index: int64
 ): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicSessionDetailsAttribute`]
+[global, bind = typed_gml, type_hint=`EpicSessionDetailsAttribute?`]
 function eos_sessions_session_details_copy_session_attribute_by_key(
     [type_hint=`uint64`] session_details_id: gmval,
     key: string
@@ -2785,7 +2785,7 @@ function eos_lobby_copy_lobby_details_handle_by_ui_event_id([type_hint=`uint64`]
 // [global, bind = typed_gml]
 // function eos_lobby_details_release([type_hint=`uint64`] lobby_details_id: gmval): unit;
 
-[global, bind = typed_gml, type_hint=`EpicLobbyDetailsInfo`]
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsInfo?`]
 function eos_lobby_details_copy_info([type_hint=`uint64`] lobby_details_id: gmval): gmval;
 
 [global, bind = typed_gml]
@@ -2994,13 +2994,13 @@ function eos_lobby_details_get_attribute_count(
     [type_hint=`uint64`] lobby_details_id: gmval
 ): int64;
 
-[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute?`]
 function eos_lobby_details_copy_attribute_by_index(
     [type_hint=`uint64`] lobby_details_id: gmval,
     index: int64
 ): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute?`]
 function eos_lobby_details_copy_attribute_by_key(
     [type_hint=`uint64`] lobby_details_id: gmval,
     key: string
@@ -3012,21 +3012,21 @@ function eos_lobby_details_get_member_attribute_count(
     target_user_id: string
 ): int64;
 
-[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute?`]
 function eos_lobby_details_copy_member_attribute_by_index(
     [type_hint=`uint64`] lobby_details_id: gmval,
     target_user_id: string,
     index: int64
 ): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute`]
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsAttribute?`]
 function eos_lobby_details_copy_member_attribute_by_key(
     [type_hint=`uint64`] lobby_details_id: gmval,
     target_user_id: string,
     key: string
 ): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicLobbyDetailsMemberInfo`]
+[global, bind = typed_gml, type_hint=`EpicLobbyDetailsMemberInfo?`]
 function eos_lobby_details_copy_member_info(
     [type_hint=`uint64`] lobby_details_id: gmval,
     target_user_id: string
@@ -3298,7 +3298,7 @@ function eos_p2p_send_packet(
 [global, bind = typed_gml]
 function eos_p2p_get_next_received_packet_size(local_user_id: string, channel: int64): int64;
 
-[global, bind = typed_gml, type_hint=`EpicP2PReceivedPacket`]
+[global, bind = typed_gml, type_hint=`EpicP2PReceivedPacket?`]
 function eos_p2p_receive_packet(local_user_id: string, [type_hint=buffer] out_data: gmval, max_bytes: uint32, offset: uint32, channel: int64): gmval;
 
 [global, bind = typed_gml, type_hint=`EpicResult`]
@@ -3515,10 +3515,10 @@ function eos_playerdatastorage_query_file_list(local_user_id: string, [type_hint
 [global, bind = typed_gml]
 function eos_playerdatastorage_get_file_metadata_count(local_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicPlayerDataStorageFileMetadata`]
+[global, bind = typed_gml, type_hint=`EpicPlayerDataStorageFileMetadata?`]
 function eos_playerdatastorage_copy_file_metadata_at_index(local_user_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicPlayerDataStorageFileMetadata`]
+[global, bind = typed_gml, type_hint=`EpicPlayerDataStorageFileMetadata?`]
 function eos_playerdatastorage_copy_file_metadata_by_filename(local_user_id: string, filename: string): gmval;
 
 [global, bind = typed_gml]
@@ -3635,10 +3635,10 @@ function eos_titlestorage_query_file_list(local_user_id: string, [type_hint=`str
 [global, bind = typed_gml]
 function eos_titlestorage_get_file_metadata_count(local_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicTitleStorageFileMetadata`]
+[global, bind = typed_gml, type_hint=`EpicTitleStorageFileMetadata?`]
 function eos_titlestorage_copy_file_metadata_at_index(local_user_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicTitleStorageFileMetadata`]
+[global, bind = typed_gml, type_hint=`EpicTitleStorageFileMetadata?`]
 function eos_titlestorage_copy_file_metadata_by_filename(local_user_id: string, filename: string): gmval;
 
 [global, bind = typed_gml]
@@ -3948,13 +3948,13 @@ function eos_ecom_redeem_entitlements(local_user_id: string, [type_hint=`string[
 [global, bind = typed_gml]
 function eos_ecom_get_item_ownership_count(local_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomItemOwnership`]
+[global, bind = typed_gml, type_hint=`EpicEcomItemOwnership?`]
 function eos_ecom_copy_item_ownership_at_index(local_user_id: string, index: int64): gmval;
 
 [global, bind = typed_gml]
 function eos_ecom_get_sandbox_ownership_count(local_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomSandboxIdItemOwnership`]
+[global, bind = typed_gml, type_hint=`EpicEcomSandboxIdItemOwnership?`]
 function eos_ecom_copy_sandbox_ownership_at_index(local_user_id: string, index: int64): gmval;
 
 // Entitlement accessors
@@ -3965,13 +3965,13 @@ function eos_ecom_get_entitlements_count(local_user_id: string): int64;
 [global, bind = typed_gml]
 function eos_ecom_get_entitlements_by_name_count(local_user_id: string, entitlement_name: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement?`]
 function eos_ecom_copy_entitlement_by_index(local_user_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement?`]
 function eos_ecom_copy_entitlement_by_name_and_index(local_user_id: string, entitlement_name: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement?`]
 function eos_ecom_copy_entitlement_by_id(local_user_id: string, entitlement_id: string): gmval;
 
 [global, bind = typed_gml]
@@ -3985,19 +3985,19 @@ function eos_ecom_copy_last_redeemed_entitlement_by_index(local_user_id: string,
 [global, bind = typed_gml]
 function eos_ecom_get_offer_count(local_user_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomCatalogOffer`]
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogOffer?`]
 function eos_ecom_copy_offer_by_index(local_user_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicEcomCatalogOffer`]
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogOffer?`]
 function eos_ecom_copy_offer_by_id(local_user_id: string, offer_id: string): gmval;
 
 [global, bind = typed_gml]
 function eos_ecom_get_offer_item_count(local_user_id: string, offer_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomCatalogItem`]
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogItem?`]
 function eos_ecom_copy_offer_item_by_index(local_user_id: string, offer_id: string, item_index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicEcomCatalogItem`]
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogItem?`]
 function eos_ecom_copy_item_by_id(local_user_id: string, item_id: string): gmval;
 
 // Image info accessors
@@ -4005,13 +4005,13 @@ function eos_ecom_copy_item_by_id(local_user_id: string, item_id: string): gmval
 [global, bind = typed_gml]
 function eos_ecom_get_offer_image_info_count(local_user_id: string, offer_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomKeyImageInfo`]
+[global, bind = typed_gml, type_hint=`EpicEcomKeyImageInfo?`]
 function eos_ecom_copy_offer_image_info_by_index(local_user_id: string, offer_id: string, image_info_index: int64): gmval;
 
 [global, bind = typed_gml]
 function eos_ecom_get_item_image_info_count(local_user_id: string, item_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomKeyImageInfo`]
+[global, bind = typed_gml, type_hint=`EpicEcomKeyImageInfo?`]
 function eos_ecom_copy_item_image_info_by_index(local_user_id: string, item_id: string, image_info_index: int64): gmval;
 
 // Release accessors
@@ -4019,7 +4019,7 @@ function eos_ecom_copy_item_image_info_by_index(local_user_id: string, item_id: 
 [global, bind = typed_gml]
 function eos_ecom_get_item_release_count(local_user_id: string, item_id: string): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomCatalogRelease`]
+[global, bind = typed_gml, type_hint=`EpicEcomCatalogRelease?`]
 function eos_ecom_copy_item_release_by_index(local_user_id: string, item_id: string, release_index: int64): gmval;
 
 // Transaction accessors
@@ -4039,7 +4039,7 @@ function eos_ecom_transaction_get_transaction_id([type_hint=`uint64`] tx_handle_
 [global, bind = typed_gml]
 function eos_ecom_transaction_get_entitlements_count([type_hint=`uint64`] tx_handle_id: gmval): int64;
 
-[global, bind = typed_gml, type_hint=`EpicEcomEntitlement`]
+[global, bind = typed_gml, type_hint=`EpicEcomEntitlement?`]
 function eos_ecom_transaction_copy_entitlement_by_index([type_hint=`uint64`] tx_handle_id: gmval, index: int64): gmval;
 
 [global, bind = typed_gml]
@@ -4694,13 +4694,13 @@ function eos_rtc_audio_update_participant_volume(local_user_id: string, room_nam
 [global, bind = typed_gml]
 function eos_rtc_audio_get_input_devices_count(): int64;
 
-[global, bind = typed_gml, type_hint=`EpicRTCAudioInputDeviceInfo`]
+[global, bind = typed_gml, type_hint=`EpicRTCAudioInputDeviceInfo?`]
 function eos_rtc_audio_copy_input_device_info_by_index(index: int64): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_get_output_devices_count(): int64;
 
-[global, bind = typed_gml, type_hint=`EpicRTCAudioOutputDeviceInfo`]
+[global, bind = typed_gml, type_hint=`EpicRTCAudioOutputDeviceInfo?`]
 function eos_rtc_audio_copy_output_device_info_by_index(index: int64): gmval;
 
 [global, bind = typed_gml]

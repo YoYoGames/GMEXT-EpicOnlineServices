@@ -212,24 +212,22 @@ int64_t eos_sanctions_get_player_sanction_count(std::string_view target_user_id)
     return (int64_t)EOS_Sanctions_GetPlayerSanctionCount(sanctions, &opts);
 }
 
-gm_structs::EpicSanctionsPlayerSanction eos_sanctions_copy_player_sanction_by_index(
+std::optional<gm_structs::EpicSanctionsPlayerSanction> eos_sanctions_copy_player_sanction_by_index(
     std::string_view target_user_id,
     int64_t index)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicSanctionsPlayerSanction out{};
-
     EOS_HSanctions sanctions = eos_sanctions_iface();
     if (!sanctions) {
         eos_set_last_error("EOS Sanctions interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_Sanctions_CopyPlayerSanctionByIndex: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Sanctions_CopyPlayerSanctionByIndexOptions opts{};
@@ -242,10 +240,10 @@ gm_structs::EpicSanctionsPlayerSanction eos_sanctions_copy_player_sanction_by_in
     if (result != EOS_EResult::EOS_Success || sanction == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Sanctions_CopyPlayerSanctionByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_sanctions_player_sanction_from_native(sanction);
+    gm_structs::EpicSanctionsPlayerSanction out = eos_sanctions_player_sanction_from_native(sanction);
     EOS_Sanctions_PlayerSanction_Release(sanction);
     return out;
 }

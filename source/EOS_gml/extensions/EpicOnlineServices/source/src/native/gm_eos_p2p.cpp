@@ -263,26 +263,25 @@ int64_t eos_p2p_get_next_received_packet_size(std::string_view local_user_id, in
     return (int64_t)out_size;
 }
 
-gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(
+std::optional<gm_structs::EpicP2PReceivedPacket> eos_p2p_receive_packet(
     std::string_view local_user_id,
     gm::wire::GMBuffer out_data,
     std::uint32_t max_bytes,
     std::uint32_t offset,
     int64_t channel)
 {
-    gm_structs::EpicP2PReceivedPacket out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HP2P p2p = eos_p2p_iface();
     if (!p2p) {
         eos_set_last_error("EOS P2P interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_P2P_ReceivePacket: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     uint8_t channel_val = (uint8_t)(channel & 0xFF);
@@ -306,20 +305,21 @@ gm_structs::EpicP2PReceivedPacket eos_p2p_receive_packet(
 
     EOS_EResult result = EOS_P2P_ReceivePacket(p2p, &opts, &peer_id, &socket_id, &out_channel, buf.data(), &bytes_written);
     if (result == EOS_EResult::EOS_NotFound)
-        return out;
+        return std::nullopt;
     if (result != EOS_EResult::EOS_Success) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_P2P_ReceivePacket failed.");
-        return out;
+        return std::nullopt;
     }
 
+    gm_structs::EpicP2PReceivedPacket out{};
     out.peer_id = eos_product_user_id_to_string_internal(peer_id);
     out.socket_name = std::string(socket_id.SocketName);
     out.channel = (int64_t)out_channel;
 
     if (offset > out_data.length() || out_data.length() - offset < bytes_written) {
         eos_set_last_error("EOS_P2P_ReceivePacket: out_data buffer too small.");
-        return out;
+        return std::nullopt;
     }
 
     auto w = out_data.getWriter();

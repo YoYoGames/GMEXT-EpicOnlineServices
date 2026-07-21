@@ -437,16 +437,14 @@ static gm_structs::EpicLeaderboardUserScore eos_leaderboards_user_score_from_nat
     return out;
 }
 
-gm_structs::EpicLeaderboardDefinition eos_leaderboards_copy_definition_by_index(int64_t index)
+std::optional<gm_structs::EpicLeaderboardDefinition> eos_leaderboards_copy_definition_by_index(int64_t index)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicLeaderboardDefinition out{};
 
     EOS_HLeaderboards leaderboards = eos_leaderboards_iface();
     if (!leaderboards) {
         eos_set_last_error("EOS Leaderboards interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions opts{};
@@ -460,30 +458,28 @@ gm_structs::EpicLeaderboardDefinition eos_leaderboards_copy_definition_by_index(
     if (result != EOS_EResult::EOS_Success || def == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Leaderboards_CopyLeaderboardDefinitionByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_leaderboards_definition_from_native(def);
+    gm_structs::EpicLeaderboardDefinition out = eos_leaderboards_definition_from_native(def);
     EOS_Leaderboards_Definition_Release(def);
     return out;
 }
 
-gm_structs::EpicLeaderboardDefinition eos_leaderboards_copy_definition_by_id(std::string_view leaderboard_id)
+std::optional<gm_structs::EpicLeaderboardDefinition> eos_leaderboards_copy_definition_by_id(std::string_view leaderboard_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicLeaderboardDefinition out{};
 
     EOS_HLeaderboards leaderboards = eos_leaderboards_iface();
     if (!leaderboards) {
         eos_set_last_error("EOS Leaderboards interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     std::string leaderboard_id_storage(leaderboard_id);
     if (leaderboard_id_storage.empty()) {
         eos_set_last_error("EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId: leaderboard_id is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions opts{};
@@ -497,24 +493,22 @@ gm_structs::EpicLeaderboardDefinition eos_leaderboards_copy_definition_by_id(std
     if (result != EOS_EResult::EOS_Success || def == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_leaderboards_definition_from_native(def);
+    gm_structs::EpicLeaderboardDefinition out = eos_leaderboards_definition_from_native(def);
     EOS_Leaderboards_Definition_Release(def);
     return out;
 }
 
-gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_index(int64_t index)
+std::optional<gm_structs::EpicLeaderboardRecord> eos_leaderboards_copy_record_by_index(int64_t index)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicLeaderboardRecord out{};
 
     EOS_HLeaderboards leaderboards = eos_leaderboards_iface();
     if (!leaderboards) {
         eos_set_last_error("EOS Leaderboards interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions opts{};
@@ -528,30 +522,28 @@ gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_index(int64_t 
     if (result != EOS_EResult::EOS_Success || record == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Leaderboards_CopyLeaderboardRecordByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_leaderboards_record_from_native(record);
+    gm_structs::EpicLeaderboardRecord out = eos_leaderboards_record_from_native(record);
     EOS_Leaderboards_LeaderboardRecord_Release(record);
     return out;
 }
 
-gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_user_id(std::string_view user_id)
+std::optional<gm_structs::EpicLeaderboardRecord> eos_leaderboards_copy_record_by_user_id(std::string_view user_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicLeaderboardRecord out{};
 
     EOS_HLeaderboards leaderboards = eos_leaderboards_iface();
     if (!leaderboards) {
         eos_set_last_error("EOS Leaderboards interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId user = eos_product_user_id_from_string_internal(user_id);
     if (!user) {
         eos_set_last_error("EOS_Leaderboards_CopyLeaderboardRecordByUserId: invalid user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions opts{};
@@ -565,30 +557,28 @@ gm_structs::EpicLeaderboardRecord eos_leaderboards_copy_record_by_user_id(std::s
     if (result != EOS_EResult::EOS_Success || record == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Leaderboards_CopyLeaderboardRecordByUserId failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_leaderboards_record_from_native(record);
+    gm_structs::EpicLeaderboardRecord out = eos_leaderboards_record_from_native(record);
     EOS_Leaderboards_LeaderboardRecord_Release(record);
     return out;
 }
 
-gm_structs::EpicLeaderboardUserScore eos_leaderboards_copy_user_score_by_index(std::string_view stat_name, int64_t index)
+std::optional<gm_structs::EpicLeaderboardUserScore> eos_leaderboards_copy_user_score_by_index(std::string_view stat_name, int64_t index)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicLeaderboardUserScore out{};
 
     EOS_HLeaderboards leaderboards = eos_leaderboards_iface();
     if (!leaderboards) {
         eos_set_last_error("EOS Leaderboards interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     std::string stat_name_storage(stat_name);
     if (stat_name_storage.empty()) {
         eos_set_last_error("EOS_Leaderboards_CopyLeaderboardUserScoreByIndex: stat_name is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions opts{};
@@ -603,10 +593,10 @@ gm_structs::EpicLeaderboardUserScore eos_leaderboards_copy_user_score_by_index(s
     if (result != EOS_EResult::EOS_Success || score == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Leaderboards_CopyLeaderboardUserScoreByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_leaderboards_user_score_from_native(score);
+    gm_structs::EpicLeaderboardUserScore out = eos_leaderboards_user_score_from_native(score);
     EOS_Leaderboards_LeaderboardUserScore_Release(score);
     return out;
 }

@@ -624,18 +624,18 @@ int64_t eos_ecom_get_item_ownership_count(std::string_view local_user_id)
     return (it != g_item_ownership_cache.end()) ? (int64_t)it->second.size() : 0;
 }
 
-gm_structs::EpicEcomItemOwnership eos_ecom_copy_item_ownership_at_index(
+std::optional<gm_structs::EpicEcomItemOwnership> eos_ecom_copy_item_ownership_at_index(
     std::string_view local_user_id,
     int64_t index)
 {
-    gm_structs::EpicEcomItemOwnership out{};
     std::string uid(local_user_id);
     std::lock_guard<std::mutex> lock(g_ecom_cache_mutex);
     auto it = g_item_ownership_cache.find(uid);
     if (it == g_item_ownership_cache.end() || index < 0 || (size_t)index >= it->second.size()) {
         eos_set_last_error("eos_ecom_copy_item_ownership_at_index: index out of range.");
-        return out;
+        return std::nullopt;
     }
+    gm_structs::EpicEcomItemOwnership out{};
     const auto& e = it->second[(size_t)index];
     out.id               = e.id;
     out.ownership_status = (gm_enums::EpicOwnershipStatus)e.status;
@@ -650,18 +650,18 @@ int64_t eos_ecom_get_sandbox_ownership_count(std::string_view local_user_id)
     return (it != g_sandbox_ownership_cache.end()) ? (int64_t)it->second.size() : 0;
 }
 
-gm_structs::EpicEcomSandboxIdItemOwnership eos_ecom_copy_sandbox_ownership_at_index(
+std::optional<gm_structs::EpicEcomSandboxIdItemOwnership> eos_ecom_copy_sandbox_ownership_at_index(
     std::string_view local_user_id,
     int64_t index)
 {
-    gm_structs::EpicEcomSandboxIdItemOwnership out{};
     std::string uid(local_user_id);
     std::lock_guard<std::mutex> lock(g_ecom_cache_mutex);
     auto it = g_sandbox_ownership_cache.find(uid);
     if (it == g_sandbox_ownership_cache.end() || index < 0 || (size_t)index >= it->second.size()) {
         eos_set_last_error("eos_ecom_copy_sandbox_ownership_at_index: index out of range.");
-        return out;
+        return std::nullopt;
     }
+    gm_structs::EpicEcomSandboxIdItemOwnership out{};
     const auto& e = it->second[(size_t)index];
     out.sandbox_id = e.sandbox_id;
     // join owned item IDs with pipe delimiter
@@ -712,15 +712,14 @@ int64_t eos_ecom_get_entitlements_by_name_count(
     return (int64_t)EOS_Ecom_GetEntitlementsByNameCount(ecom, &opts);
 }
 
-gm_structs::EpicEcomEntitlement eos_ecom_copy_entitlement_by_index(
+std::optional<gm_structs::EpicEcomEntitlement> eos_ecom_copy_entitlement_by_index(
     std::string_view local_user_id,
     int64_t index)
 {
-    gm_structs::EpicEcomEntitlement out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
 
@@ -734,23 +733,22 @@ gm_structs::EpicEcomEntitlement eos_ecom_copy_entitlement_by_index(
     if (result != EOS_EResult::EOS_Success || !ent) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyEntitlementByIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_entitlement_from_native(ent);
+    gm_structs::EpicEcomEntitlement out = eos_ecom_entitlement_from_native(ent);
     EOS_Ecom_Entitlement_Release(ent);
     return out;
 }
 
-gm_structs::EpicEcomEntitlement eos_ecom_copy_entitlement_by_name_and_index(
+std::optional<gm_structs::EpicEcomEntitlement> eos_ecom_copy_entitlement_by_name_and_index(
     std::string_view local_user_id,
     std::string_view entitlement_name,
     int64_t index)
 {
-    gm_structs::EpicEcomEntitlement out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string name(entitlement_name);
@@ -766,22 +764,21 @@ gm_structs::EpicEcomEntitlement eos_ecom_copy_entitlement_by_name_and_index(
     if (result != EOS_EResult::EOS_Success || !ent) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyEntitlementByNameAndIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_entitlement_from_native(ent);
+    gm_structs::EpicEcomEntitlement out = eos_ecom_entitlement_from_native(ent);
     EOS_Ecom_Entitlement_Release(ent);
     return out;
 }
 
-gm_structs::EpicEcomEntitlement eos_ecom_copy_entitlement_by_id(
+std::optional<gm_structs::EpicEcomEntitlement> eos_ecom_copy_entitlement_by_id(
     std::string_view local_user_id,
     std::string_view entitlement_id)
 {
-    gm_structs::EpicEcomEntitlement out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string eid(entitlement_id);
@@ -796,9 +793,9 @@ gm_structs::EpicEcomEntitlement eos_ecom_copy_entitlement_by_id(
     if (result != EOS_EResult::EOS_Success || !ent) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyEntitlementById failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_entitlement_from_native(ent);
+    gm_structs::EpicEcomEntitlement out = eos_ecom_entitlement_from_native(ent);
     EOS_Ecom_Entitlement_Release(ent);
     return out;
 }
@@ -866,15 +863,14 @@ int64_t eos_ecom_get_offer_count(std::string_view local_user_id)
     return (int64_t)EOS_Ecom_GetOfferCount(ecom, &opts);
 }
 
-gm_structs::EpicEcomCatalogOffer eos_ecom_copy_offer_by_index(
+std::optional<gm_structs::EpicEcomCatalogOffer> eos_ecom_copy_offer_by_index(
     std::string_view local_user_id,
     int64_t index)
 {
-    gm_structs::EpicEcomCatalogOffer out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
 
@@ -888,22 +884,21 @@ gm_structs::EpicEcomCatalogOffer eos_ecom_copy_offer_by_index(
     if (result != EOS_EResult::EOS_Success || !offer) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyOfferByIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_offer_from_native(offer);
+    gm_structs::EpicEcomCatalogOffer out = eos_ecom_offer_from_native(offer);
     EOS_Ecom_CatalogOffer_Release(offer);
     return out;
 }
 
-gm_structs::EpicEcomCatalogOffer eos_ecom_copy_offer_by_id(
+std::optional<gm_structs::EpicEcomCatalogOffer> eos_ecom_copy_offer_by_id(
     std::string_view local_user_id,
     std::string_view offer_id)
 {
-    gm_structs::EpicEcomCatalogOffer out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string oid(offer_id);
@@ -918,9 +913,9 @@ gm_structs::EpicEcomCatalogOffer eos_ecom_copy_offer_by_id(
     if (result != EOS_EResult::EOS_Success || !offer) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyOfferById failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_offer_from_native(offer);
+    gm_structs::EpicEcomCatalogOffer out = eos_ecom_offer_from_native(offer);
     EOS_Ecom_CatalogOffer_Release(offer);
     return out;
 }
@@ -945,16 +940,15 @@ int64_t eos_ecom_get_offer_item_count(
     return (int64_t)EOS_Ecom_GetOfferItemCount(ecom, &opts);
 }
 
-gm_structs::EpicEcomCatalogItem eos_ecom_copy_offer_item_by_index(
+std::optional<gm_structs::EpicEcomCatalogItem> eos_ecom_copy_offer_item_by_index(
     std::string_view local_user_id,
     std::string_view offer_id,
     int64_t item_index)
 {
-    gm_structs::EpicEcomCatalogItem out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string oid(offer_id);
@@ -970,22 +964,21 @@ gm_structs::EpicEcomCatalogItem eos_ecom_copy_offer_item_by_index(
     if (result != EOS_EResult::EOS_Success || !item) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyOfferItemByIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_item_from_native(item);
+    gm_structs::EpicEcomCatalogItem out = eos_ecom_item_from_native(item);
     EOS_Ecom_CatalogItem_Release(item);
     return out;
 }
 
-gm_structs::EpicEcomCatalogItem eos_ecom_copy_item_by_id(
+std::optional<gm_structs::EpicEcomCatalogItem> eos_ecom_copy_item_by_id(
     std::string_view local_user_id,
     std::string_view item_id)
 {
-    gm_structs::EpicEcomCatalogItem out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string iid(item_id);
@@ -1000,9 +993,9 @@ gm_structs::EpicEcomCatalogItem eos_ecom_copy_item_by_id(
     if (result != EOS_EResult::EOS_Success || !item) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyItemById failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_item_from_native(item);
+    gm_structs::EpicEcomCatalogItem out = eos_ecom_item_from_native(item);
     EOS_Ecom_CatalogItem_Release(item);
     return out;
 }
@@ -1031,16 +1024,15 @@ int64_t eos_ecom_get_offer_image_info_count(
     return (int64_t)EOS_Ecom_GetOfferImageInfoCount(ecom, &opts);
 }
 
-gm_structs::EpicEcomKeyImageInfo eos_ecom_copy_offer_image_info_by_index(
+std::optional<gm_structs::EpicEcomKeyImageInfo> eos_ecom_copy_offer_image_info_by_index(
     std::string_view local_user_id,
     std::string_view offer_id,
     int64_t image_info_index)
 {
-    gm_structs::EpicEcomKeyImageInfo out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string oid(offer_id);
@@ -1056,9 +1048,9 @@ gm_structs::EpicEcomKeyImageInfo eos_ecom_copy_offer_image_info_by_index(
     if (result != EOS_EResult::EOS_Success || !img) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyOfferImageInfoByIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_image_info_from_native(img);
+    gm_structs::EpicEcomKeyImageInfo out = eos_ecom_image_info_from_native(img);
     EOS_Ecom_KeyImageInfo_Release(img);
     return out;
 }
@@ -1083,16 +1075,15 @@ int64_t eos_ecom_get_item_image_info_count(
     return (int64_t)EOS_Ecom_GetItemImageInfoCount(ecom, &opts);
 }
 
-gm_structs::EpicEcomKeyImageInfo eos_ecom_copy_item_image_info_by_index(
+std::optional<gm_structs::EpicEcomKeyImageInfo> eos_ecom_copy_item_image_info_by_index(
     std::string_view local_user_id,
     std::string_view item_id,
     int64_t image_info_index)
 {
-    gm_structs::EpicEcomKeyImageInfo out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string iid(item_id);
@@ -1108,9 +1099,9 @@ gm_structs::EpicEcomKeyImageInfo eos_ecom_copy_item_image_info_by_index(
     if (result != EOS_EResult::EOS_Success || !img) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyItemImageInfoByIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_image_info_from_native(img);
+    gm_structs::EpicEcomKeyImageInfo out = eos_ecom_image_info_from_native(img);
     EOS_Ecom_KeyImageInfo_Release(img);
     return out;
 }
@@ -1139,16 +1130,15 @@ int64_t eos_ecom_get_item_release_count(
     return (int64_t)EOS_Ecom_GetItemReleaseCount(ecom, &opts);
 }
 
-gm_structs::EpicEcomCatalogRelease eos_ecom_copy_item_release_by_index(
+std::optional<gm_structs::EpicEcomCatalogRelease> eos_ecom_copy_item_release_by_index(
     std::string_view local_user_id,
     std::string_view item_id,
     int64_t release_index)
 {
-    gm_structs::EpicEcomCatalogRelease out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HEcom ecom = eos_ecom_iface();
-    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return out; }
+    if (!ecom) { eos_set_last_error("EOS Ecom interface unavailable."); return std::nullopt; }
 
     EOS_EpicAccountId local_user = eos_epic_account_id_from_string_internal(local_user_id);
     std::string iid(item_id);
@@ -1164,9 +1154,9 @@ gm_structs::EpicEcomCatalogRelease eos_ecom_copy_item_release_by_index(
     if (result != EOS_EResult::EOS_Success || !rel) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_CopyItemReleaseByIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_release_from_native(rel);
+    gm_structs::EpicEcomCatalogRelease out = eos_ecom_release_from_native(rel);
     EOS_Ecom_CatalogRelease_Release(rel);
     return out;
 }
@@ -1275,15 +1265,14 @@ int64_t eos_ecom_transaction_get_entitlements_count(uint64_t tx_handle_id)
     return (int64_t)EOS_Ecom_Transaction_GetEntitlementsCount(tx, &opts);
 }
 
-gm_structs::EpicEcomEntitlement eos_ecom_transaction_copy_entitlement_by_index(
+std::optional<gm_structs::EpicEcomEntitlement> eos_ecom_transaction_copy_entitlement_by_index(
     uint64_t tx_handle_id,
     int64_t index)
 {
-    gm_structs::EpicEcomEntitlement out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_Ecom_HTransaction tx = eos_ecom_get_tx(tx_handle_id);
-    if (!tx) { eos_set_last_error("eos_ecom_transaction_copy_entitlement_by_index: invalid handle."); return out; }
+    if (!tx) { eos_set_last_error("eos_ecom_transaction_copy_entitlement_by_index: invalid handle."); return std::nullopt; }
 
     EOS_Ecom_Transaction_CopyEntitlementByIndexOptions opts{};
     opts.ApiVersion       = EOS_ECOM_TRANSACTION_COPYENTITLEMENTBYINDEX_API_LATEST;
@@ -1294,9 +1283,9 @@ gm_structs::EpicEcomEntitlement eos_ecom_transaction_copy_entitlement_by_index(
     if (result != EOS_EResult::EOS_Success || !ent) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_Ecom_Transaction_CopyEntitlementByIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_ecom_entitlement_from_native(ent);
+    gm_structs::EpicEcomEntitlement out = eos_ecom_entitlement_from_native(ent);
     EOS_Ecom_Entitlement_Release(ent);
     return out;
 }

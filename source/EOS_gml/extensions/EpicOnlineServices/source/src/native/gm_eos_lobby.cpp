@@ -1886,16 +1886,14 @@ uint64_t eos_lobby_copy_lobby_details_handle_by_ui_event_id(uint64_t ui_event_id
     return eos_lobby_details_store(details);
 }
 
-gm_structs::EpicLobbyDetailsInfo eos_lobby_details_copy_info(uint64_t lobby_details_id)
+std::optional<gm_structs::EpicLobbyDetailsInfo> eos_lobby_details_copy_info(uint64_t lobby_details_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicLobbyDetailsInfo out{};
 
     EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
     if (!details) {
         eos_set_last_error("EOS LobbyDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_LobbyDetails_CopyInfoOptions opts{};
@@ -1906,10 +1904,10 @@ gm_structs::EpicLobbyDetailsInfo eos_lobby_details_copy_info(uint64_t lobby_deta
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyInfo failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_lobby_details_info_from_native(info);
+    gm_structs::EpicLobbyDetailsInfo out = eos_lobby_details_info_from_native(info);
     EOS_LobbyDetails_Info_Release(info);
     return out;
 }
@@ -2529,17 +2527,16 @@ int64_t eos_lobby_details_get_attribute_count(uint64_t lobby_details_id)
     return (int64_t)EOS_LobbyDetails_GetAttributeCount(details, &opts);
 }
 
-gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_attribute_by_index(
+std::optional<gm_structs::EpicLobbyDetailsAttribute> eos_lobby_details_copy_attribute_by_index(
     uint64_t lobby_details_id,
     int64_t index)
 {
     eos_clear_last_error();
-    gm_structs::EpicLobbyDetailsAttribute out{};
 
     EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
     if (!details) {
         eos_set_last_error("EOS LobbyDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_LobbyDetails_CopyAttributeByIndexOptions opts{};
@@ -2551,31 +2548,30 @@ gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_attribute_by_index(
     if (result != EOS_EResult::EOS_Success || !attr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyAttributeByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_lobby_attribute_from_native(attr);
+    gm_structs::EpicLobbyDetailsAttribute out = eos_lobby_attribute_from_native(attr);
     EOS_Lobby_Attribute_Release(attr);
     return out;
 }
 
-gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_attribute_by_key(
+std::optional<gm_structs::EpicLobbyDetailsAttribute> eos_lobby_details_copy_attribute_by_key(
     uint64_t lobby_details_id,
     std::string_view key)
 {
     eos_clear_last_error();
-    gm_structs::EpicLobbyDetailsAttribute out{};
 
     EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
     if (!details) {
         eos_set_last_error("EOS LobbyDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     std::string key_storage(key);
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbyDetails_CopyAttributeByKey: key is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_LobbyDetails_CopyAttributeByKeyOptions opts{};
@@ -2587,10 +2583,10 @@ gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_attribute_by_key(
     if (result != EOS_EResult::EOS_Success || !attr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyAttributeByKey failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_lobby_attribute_from_native(attr);
+    gm_structs::EpicLobbyDetailsAttribute out = eos_lobby_attribute_from_native(attr);
     EOS_Lobby_Attribute_Release(attr);
     return out;
 }
@@ -2619,24 +2615,23 @@ int64_t eos_lobby_details_get_member_attribute_count(
     return (int64_t)EOS_LobbyDetails_GetMemberAttributeCount(details, &opts);
 }
 
-gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by_index(
+std::optional<gm_structs::EpicLobbyDetailsAttribute> eos_lobby_details_copy_member_attribute_by_index(
     uint64_t lobby_details_id,
     std::string_view target_user_id,
     int64_t index)
 {
     eos_clear_last_error();
-    gm_structs::EpicLobbyDetailsAttribute out{};
 
     EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
     if (!details) {
         eos_set_last_error("EOS LobbyDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_LobbyDetails_CopyMemberAttributeByIndex: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_LobbyDetails_CopyMemberAttributeByIndexOptions opts{};
@@ -2649,38 +2644,37 @@ gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by
     if (result != EOS_EResult::EOS_Success || !attr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyMemberAttributeByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_lobby_attribute_from_native(attr);
+    gm_structs::EpicLobbyDetailsAttribute out = eos_lobby_attribute_from_native(attr);
     EOS_Lobby_Attribute_Release(attr);
     return out;
 }
 
-gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by_key(
+std::optional<gm_structs::EpicLobbyDetailsAttribute> eos_lobby_details_copy_member_attribute_by_key(
     uint64_t lobby_details_id,
     std::string_view target_user_id,
     std::string_view key)
 {
     eos_clear_last_error();
-    gm_structs::EpicLobbyDetailsAttribute out{};
 
     EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
     if (!details) {
         eos_set_last_error("EOS LobbyDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_LobbyDetails_CopyMemberAttributeByKey: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     std::string key_storage(key);
     if (key_storage.empty()) {
         eos_set_last_error("EOS_LobbyDetails_CopyMemberAttributeByKey: key is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_LobbyDetails_CopyMemberAttributeByKeyOptions opts{};
@@ -2693,31 +2687,30 @@ gm_structs::EpicLobbyDetailsAttribute eos_lobby_details_copy_member_attribute_by
     if (result != EOS_EResult::EOS_Success || !attr) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyMemberAttributeByKey failed.");
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_lobby_attribute_from_native(attr);
+    gm_structs::EpicLobbyDetailsAttribute out = eos_lobby_attribute_from_native(attr);
     EOS_Lobby_Attribute_Release(attr);
     return out;
 }
 
-gm_structs::EpicLobbyDetailsMemberInfo eos_lobby_details_copy_member_info(
+std::optional<gm_structs::EpicLobbyDetailsMemberInfo> eos_lobby_details_copy_member_info(
     uint64_t lobby_details_id,
     std::string_view target_user_id)
 {
     eos_clear_last_error();
-    gm_structs::EpicLobbyDetailsMemberInfo out{};
 
     EOS_HLobbyDetails details = eos_lobby_details_get(lobby_details_id);
     if (!details) {
         eos_set_last_error("EOS LobbyDetails handle invalid.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_LobbyDetails_CopyMemberInfo: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_LobbyDetails_CopyMemberInfoOptions opts{};
@@ -2729,9 +2722,10 @@ gm_structs::EpicLobbyDetailsMemberInfo eos_lobby_details_copy_member_info(
     if (result != EOS_EResult::EOS_Success || !info) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_LobbyDetails_CopyMemberInfo failed.");
-        return out;
+        return std::nullopt;
     }
 
+    gm_structs::EpicLobbyDetailsMemberInfo out{};
     out.user_id = eos_product_user_id_to_string_internal(info->UserId);
     out.platform = (int64_t)info->Platform;
     out.allows_crossplay = info->bAllowsCrossplay == EOS_TRUE;

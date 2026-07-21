@@ -731,22 +731,20 @@ static void EOS_CALL eos_connect_verify_id_token_callback_native(const EOS_Conne
     delete ctx;
 }
 
-gm_structs::EpicConnectIdToken eos_connect_copy_id_token(std::string_view local_user_id)
+std::optional<gm_structs::EpicConnectIdToken> eos_connect_copy_id_token(std::string_view local_user_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicConnectIdToken out{};
 
     EOS_HConnect connect = eos_connect_iface();
     if (!connect) {
         eos_set_last_error("EOS Connect interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_Connect_CopyIdToken: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Connect_CopyIdTokenOptions opts{};
@@ -757,31 +755,29 @@ gm_structs::EpicConnectIdToken eos_connect_copy_id_token(std::string_view local_
     const EOS_EResult result = EOS_Connect_CopyIdToken(connect, &opts, &token);
     if (result != EOS_EResult::EOS_Success || token == nullptr) {
         eos_set_last_error(eos_connect_result_string(result));
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_connect_id_token_from_native(token);
+    gm_structs::EpicConnectIdToken out = eos_connect_id_token_from_native(token);
     EOS_Connect_IdToken_Release(token);
     return out;
 }
 
-gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_info(std::string_view target_user_id)
+std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_product_user_info(std::string_view target_user_id)
 {
     eos_clear_last_error();
-
-    gm_structs::EpicConnectExternalAccountInfo out{};
 
     EOS_HConnect connect = eos_connect_iface();
     if (!connect) {
         eos_set_last_error("EOS Connect interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
 
     if (!target_user) {
         eos_set_last_error("EOS_Connect_CopyProductUserInfo: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Connect_CopyProductUserInfoOptions opts{};
@@ -792,10 +788,10 @@ gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_info(st
     const EOS_EResult result = EOS_Connect_CopyProductUserInfo(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         eos_set_last_error(eos_connect_result_string(result));
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_connect_external_account_info_from_native(info);
+    gm_structs::EpicConnectExternalAccountInfo out = eos_connect_external_account_info_from_native(info);
     EOS_Connect_ExternalAccountInfo_Release(info);
     return out;
 }
@@ -823,24 +819,22 @@ int64_t eos_connect_get_product_user_external_account_count(std::string_view tar
     return (int64_t)EOS_Connect_GetProductUserExternalAccountCount(connect, &opts);
 }
 
-gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_index(
+std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_product_user_external_account_by_index(
     std::string_view target_user_id,
     int64_t index)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicConnectExternalAccountInfo out{};
-
     EOS_HConnect connect = eos_connect_iface();
     if (!connect) {
         eos_set_last_error("EOS Connect interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_Connect_CopyProductUserExternalAccountByIndex: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Connect_CopyProductUserExternalAccountByIndexOptions opts{};
@@ -852,32 +846,30 @@ gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_externa
     const EOS_EResult result = EOS_Connect_CopyProductUserExternalAccountByIndex(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         eos_set_last_error(eos_connect_result_string(result));
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_connect_external_account_info_from_native(info);
+    gm_structs::EpicConnectExternalAccountInfo out = eos_connect_external_account_info_from_native(info);
     EOS_Connect_ExternalAccountInfo_Release(info);
     return out;
 }
 
-gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_account_type(
+std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_product_user_external_account_by_account_type(
     std::string_view target_user_id,
     gm_enums::EpicExternalAccountType account_id_type)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicConnectExternalAccountInfo out{};
-
     EOS_HConnect connect = eos_connect_iface();
     if (!connect) {
         eos_set_last_error("EOS Connect interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_Connect_CopyProductUserExternalAccountByAccountType: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions opts{};
@@ -889,38 +881,36 @@ gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_externa
     const EOS_EResult result = EOS_Connect_CopyProductUserExternalAccountByAccountType(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         eos_set_last_error(eos_connect_result_string(result));
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_connect_external_account_info_from_native(info);
+    gm_structs::EpicConnectExternalAccountInfo out = eos_connect_external_account_info_from_native(info);
     EOS_Connect_ExternalAccountInfo_Release(info);
     return out;
 }
 
-gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_external_account_by_account_id(
+std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_product_user_external_account_by_account_id(
     std::string_view target_user_id,
     std::string_view account_id)
 {
     eos_clear_last_error();
 
-    gm_structs::EpicConnectExternalAccountInfo out{};
-
     EOS_HConnect connect = eos_connect_iface();
     if (!connect) {
         eos_set_last_error("EOS Connect interface unavailable.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
     if (!target_user) {
         eos_set_last_error("EOS_Connect_CopyProductUserExternalAccountByAccountId: invalid target_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     std::string account_id_storage(account_id);
     if (account_id_storage.empty()) {
         eos_set_last_error("EOS_Connect_CopyProductUserExternalAccountByAccountId: account_id is required.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions opts{};
@@ -932,10 +922,10 @@ gm_structs::EpicConnectExternalAccountInfo eos_connect_copy_product_user_externa
     const EOS_EResult result = EOS_Connect_CopyProductUserExternalAccountByAccountId(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
         eos_set_last_error(eos_connect_result_string(result));
-        return out;
+        return std::nullopt;
     }
 
-    out = eos_connect_external_account_info_from_native(info);
+    gm_structs::EpicConnectExternalAccountInfo out = eos_connect_external_account_info_from_native(info);
     EOS_Connect_ExternalAccountInfo_Release(info);
     return out;
 }

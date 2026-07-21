@@ -18020,7 +18020,14 @@ function eos_auth_copy_id_token(_local_user_id, _target_account_id)
     var _return_value = __eos_auth_copy_id_token(_local_user_id, _target_account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicAuthIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicAuthIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -18038,7 +18045,14 @@ function eos_auth_copy_user_auth_token(_local_user_id)
     var _return_value = __eos_auth_copy_user_auth_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicAuthUserAuthToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicAuthUserAuthToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -18583,7 +18597,14 @@ function eos_connect_copy_id_token(_local_user_id)
     var _return_value = __eos_connect_copy_id_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicConnectIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicConnectIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -18601,7 +18622,14 @@ function eos_connect_copy_product_user_info(_target_user_id)
     var _return_value = __eos_connect_copy_product_user_info(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -18649,7 +18677,14 @@ function eos_connect_copy_product_user_external_account_by_index(_target_user_id
     var _return_value = __eos_connect_copy_product_user_external_account_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -18680,7 +18715,14 @@ function eos_connect_copy_product_user_external_account_by_account_type(_target_
     var _return_value = __eos_connect_copy_product_user_external_account_by_account_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -18699,7 +18741,14 @@ function eos_connect_copy_product_user_external_account_by_account_id(_target_us
     var _return_value = __eos_connect_copy_product_user_external_account_by_account_id(_target_user_id, _account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -19225,7 +19274,14 @@ function eos_user_info_copy_user_info(_local_user_id, _target_user_id)
     var _return_value = __eos_user_info_copy_user_info(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -19281,7 +19337,14 @@ function eos_user_info_copy_external_user_info_by_index(_local_user_id, _target_
     var _return_value = __eos_user_info_copy_external_user_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -19318,7 +19381,14 @@ function eos_user_info_copy_external_user_info_by_account_type(_local_user_id, _
     var _return_value = __eos_user_info_copy_external_user_info_by_account_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -19355,7 +19425,14 @@ function eos_user_info_copy_external_user_info_by_account_id(_local_user_id, _ta
     var _return_value = __eos_user_info_copy_external_user_info_by_account_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -19508,7 +19585,14 @@ function eos_stats_copy_stat_by_index(_target_user_id, _index)
     var _return_value = __eos_stats_copy_stat_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -19527,7 +19611,14 @@ function eos_stats_copy_stat_by_name(_target_user_id, _name)
     var _return_value = __eos_stats_copy_stat_by_name(_target_user_id, _name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -20284,7 +20375,14 @@ function eos_sanctions_copy_player_sanction_by_index(_target_user_id, _index)
     var _return_value = __eos_sanctions_copy_player_sanction_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicSanctionsPlayerSanction_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicSanctionsPlayerSanction_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -21006,7 +21104,14 @@ function eos_leaderboards_copy_definition_by_index(_index)
     var _return_value = __eos_leaderboards_copy_definition_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -21024,7 +21129,14 @@ function eos_leaderboards_copy_definition_by_id(_leaderboard_id)
     var _return_value = __eos_leaderboards_copy_definition_by_id(_leaderboard_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -21048,7 +21160,14 @@ function eos_leaderboards_copy_record_by_index(_index)
     var _return_value = __eos_leaderboards_copy_record_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -21066,7 +21185,14 @@ function eos_leaderboards_copy_record_by_user_id(_user_id)
     var _return_value = __eos_leaderboards_copy_record_by_user_id(_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -21096,7 +21222,14 @@ function eos_leaderboards_copy_user_score_by_index(_stat_name, _index)
     var _return_value = __eos_leaderboards_copy_user_score_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLeaderboardUserScore_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLeaderboardUserScore_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -22111,7 +22244,14 @@ function eos_sessions_active_session_copy_info(_active_session_id)
     var _return_value = __eos_sessions_active_session_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicActiveSessionInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicActiveSessionInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -22177,7 +22317,14 @@ function eos_sessions_session_details_copy_info(_session_details_id)
     var _return_value = __eos_sessions_session_details_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicSessionDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicSessionDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -22760,7 +22907,14 @@ function eos_sessions_session_details_copy_session_attribute_by_key(_session_det
     var _return_value = __eos_sessions_session_details_copy_session_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -24455,7 +24609,14 @@ function eos_lobby_details_copy_info(_lobby_details_id)
     var _return_value = __eos_lobby_details_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLobbyDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLobbyDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -24988,7 +25149,14 @@ function eos_lobby_details_copy_attribute_by_index(_lobby_details_id, _index)
     var _return_value = __eos_lobby_details_copy_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -25018,7 +25186,14 @@ function eos_lobby_details_copy_attribute_by_key(_lobby_details_id, _key)
     var _return_value = __eos_lobby_details_copy_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -25083,7 +25258,14 @@ function eos_lobby_details_copy_member_attribute_by_index(_lobby_details_id, _ta
     var _return_value = __eos_lobby_details_copy_member_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -25119,7 +25301,14 @@ function eos_lobby_details_copy_member_attribute_by_key(_lobby_details_id, _targ
     var _return_value = __eos_lobby_details_copy_member_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -25149,7 +25338,14 @@ function eos_lobby_details_copy_member_info(_lobby_details_id, _target_user_id)
     var _return_value = __eos_lobby_details_copy_member_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicLobbyDetailsMemberInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicLobbyDetailsMemberInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -25681,7 +25877,14 @@ function eos_p2p_receive_packet(_local_user_id, _out_data, _max_bytes, _offset, 
     var _return_value = __eos_p2p_receive_packet(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicP2PReceivedPacket_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicP2PReceivedPacket_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -26436,7 +26639,14 @@ function eos_playerdatastorage_copy_file_metadata_at_index(_local_user_id, _inde
     var _return_value = __eos_playerdatastorage_copy_file_metadata_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -26455,7 +26665,14 @@ function eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _f
     var _return_value = __eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -26846,7 +27063,14 @@ function eos_titlestorage_copy_file_metadata_at_index(_local_user_id, _index)
     var _return_value = __eos_titlestorage_copy_file_metadata_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -26865,7 +27089,14 @@ function eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filena
     var _return_value = __eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27421,7 +27652,14 @@ function eos_ecom_copy_item_ownership_at_index(_local_user_id, _index)
     var _return_value = __eos_ecom_copy_item_ownership_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27469,7 +27707,14 @@ function eos_ecom_copy_sandbox_ownership_at_index(_local_user_id, _index)
     var _return_value = __eos_ecom_copy_sandbox_ownership_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomSandboxIdItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomSandboxIdItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27536,7 +27781,14 @@ function eos_ecom_copy_entitlement_by_index(_local_user_id, _index)
     var _return_value = __eos_ecom_copy_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27572,7 +27824,14 @@ function eos_ecom_copy_entitlement_by_name_and_index(_local_user_id, _entitlemen
     var _return_value = __eos_ecom_copy_entitlement_by_name_and_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27591,7 +27850,14 @@ function eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id)
     var _return_value = __eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27683,7 +27949,14 @@ function eos_ecom_copy_offer_by_index(_local_user_id, _index)
     var _return_value = __eos_ecom_copy_offer_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27702,7 +27975,14 @@ function eos_ecom_copy_offer_by_id(_local_user_id, _offer_id)
     var _return_value = __eos_ecom_copy_offer_by_id(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27757,7 +28037,14 @@ function eos_ecom_copy_offer_item_by_index(_local_user_id, _offer_id, _item_inde
     var _return_value = __eos_ecom_copy_offer_item_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27776,7 +28063,14 @@ function eos_ecom_copy_item_by_id(_local_user_id, _item_id)
     var _return_value = __eos_ecom_copy_item_by_id(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27831,7 +28125,14 @@ function eos_ecom_copy_offer_image_info_by_index(_local_user_id, _offer_id, _ima
     var _return_value = __eos_ecom_copy_offer_image_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27886,7 +28187,14 @@ function eos_ecom_copy_item_image_info_by_index(_local_user_id, _item_id, _image
     var _return_value = __eos_ecom_copy_item_image_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -27941,7 +28249,14 @@ function eos_ecom_copy_item_release_by_index(_local_user_id, _item_id, _release_
     var _return_value = __eos_ecom_copy_item_release_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomCatalogRelease_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomCatalogRelease_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -28081,7 +28396,14 @@ function eos_ecom_transaction_copy_entitlement_by_index(_tx_handle_id, _index)
     var _return_value = __eos_ecom_transaction_copy_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -29400,7 +29722,14 @@ function eos_rtc_audio_copy_input_device_info_by_index(_index)
     var _return_value = __eos_rtc_audio_copy_input_device_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicRTCAudioInputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicRTCAudioInputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -29441,7 +29770,14 @@ function eos_rtc_audio_copy_output_device_info_by_index(_index)
     var _return_value = __eos_rtc_audio_copy_output_device_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicRTCAudioOutputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicRTCAudioOutputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 

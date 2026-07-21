@@ -417,20 +417,22 @@ int64_t eos_playerdatastorage_get_file_metadata_count(std::string_view local_use
     return (int64_t)count;
 }
 
-gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_metadata_at_index(
+std::optional<gm_structs::EpicPlayerDataStorageFileMetadata> eos_playerdatastorage_copy_file_metadata_at_index(
     std::string_view local_user_id,
     int64_t index)
 {
-    gm_structs::EpicPlayerDataStorageFileMetadata out{};
-    EOS_GUARD_RET(out);
+    eos_clear_last_error();
 
     EOS_HPlayerDataStorage pds = eos_pds_iface();
-    if (!pds) { eos_set_last_error("EOS PlayerDataStorage interface unavailable."); return out; }
+    if (!pds) {
+        eos_set_last_error("EOS PlayerDataStorage interface unavailable.");
+        return std::nullopt;
+    }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
     if (!local_user) {
         eos_set_last_error("EOS_PlayerDataStorage_CopyFileMetadataAtIndex: invalid local_user_id.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions opts{};
@@ -443,28 +445,31 @@ gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_me
     if (result != EOS_EResult::EOS_Success || !meta) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_PlayerDataStorage_CopyFileMetadataAtIndex failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_pds_metadata_from_native(meta);
+
+    gm_structs::EpicPlayerDataStorageFileMetadata out = eos_pds_metadata_from_native(meta);
     EOS_PlayerDataStorage_FileMetadata_Release(meta);
     return out;
 }
 
-gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_metadata_by_filename(
+std::optional<gm_structs::EpicPlayerDataStorageFileMetadata> eos_playerdatastorage_copy_file_metadata_by_filename(
     std::string_view local_user_id,
     std::string_view filename)
 {
-    gm_structs::EpicPlayerDataStorageFileMetadata out{};
-    EOS_GUARD_RET(out);
+    eos_clear_last_error();
 
     EOS_HPlayerDataStorage pds = eos_pds_iface();
-    if (!pds) { eos_set_last_error("EOS PlayerDataStorage interface unavailable."); return out; }
+    if (!pds) {
+        eos_set_last_error("EOS PlayerDataStorage interface unavailable.");
+        return std::nullopt;
+    }
 
     EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
     std::string fn(filename);
     if (!local_user || fn.empty()) {
         eos_set_last_error("EOS_PlayerDataStorage_CopyFileMetadataByFilename: invalid parameters.");
-        return out;
+        return std::nullopt;
     }
 
     EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions opts{};
@@ -477,9 +482,10 @@ gm_structs::EpicPlayerDataStorageFileMetadata eos_playerdatastorage_copy_file_me
     if (result != EOS_EResult::EOS_Success || !meta) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_PlayerDataStorage_CopyFileMetadataByFilename failed.");
-        return out;
+        return std::nullopt;
     }
-    out = eos_pds_metadata_from_native(meta);
+
+    gm_structs::EpicPlayerDataStorageFileMetadata out = eos_pds_metadata_from_native(meta);
     EOS_PlayerDataStorage_FileMetadata_Release(meta);
     return out;
 }

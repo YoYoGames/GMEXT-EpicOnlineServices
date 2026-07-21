@@ -854,13 +854,12 @@ std::int64_t eos_rtc_audio_get_input_devices_count()
     return (std::int64_t)EOS_RTCAudio_GetInputDevicesCount(audio, &opts);
 }
 
-gm_structs::EpicRTCAudioInputDeviceInfo eos_rtc_audio_copy_input_device_info_by_index(std::int64_t index)
+std::optional<gm_structs::EpicRTCAudioInputDeviceInfo> eos_rtc_audio_copy_input_device_info_by_index(std::int64_t index)
 {
-    gm_structs::EpicRTCAudioInputDeviceInfo out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return out; }
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return std::nullopt; }
 
     EOS_RTCAudio_CopyInputDeviceInformationByIndexOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_COPYINPUTDEVICEINFORMATIONBYINDEX_API_LATEST;
@@ -871,9 +870,10 @@ gm_structs::EpicRTCAudioInputDeviceInfo eos_rtc_audio_copy_input_device_info_by_
     if (result != EOS_EResult::EOS_Success || !info) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_RTCAudio_CopyInputDeviceInformationByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
+    gm_structs::EpicRTCAudioInputDeviceInfo out{};
     out.default_device = (bool)info->bDefaultDevice;
     out.device_id      = info->DeviceId   ? std::string(info->DeviceId)   : std::string();
     out.device_name    = info->DeviceName ? std::string(info->DeviceName) : std::string();
@@ -894,13 +894,12 @@ std::int64_t eos_rtc_audio_get_output_devices_count()
     return (std::int64_t)EOS_RTCAudio_GetOutputDevicesCount(audio, &opts);
 }
 
-gm_structs::EpicRTCAudioOutputDeviceInfo eos_rtc_audio_copy_output_device_info_by_index(std::int64_t index)
+std::optional<gm_structs::EpicRTCAudioOutputDeviceInfo> eos_rtc_audio_copy_output_device_info_by_index(std::int64_t index)
 {
-    gm_structs::EpicRTCAudioOutputDeviceInfo out{};
-    EOS_GUARD_RET(out);
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HRTCAudio audio = eos_rtc_audio_iface();
-    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return out; }
+    if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return std::nullopt; }
 
     EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_COPYOUTPUTDEVICEINFORMATIONBYINDEX_API_LATEST;
@@ -911,9 +910,10 @@ gm_structs::EpicRTCAudioOutputDeviceInfo eos_rtc_audio_copy_output_device_info_b
     if (result != EOS_EResult::EOS_Success || !info) {
         const char* err = EOS_EResult_ToString(result);
         eos_set_last_error(err ? err : "EOS_RTCAudio_CopyOutputDeviceInformationByIndex failed.");
-        return out;
+        return std::nullopt;
     }
 
+    gm_structs::EpicRTCAudioOutputDeviceInfo out{};
     out.default_device = (bool)info->bDefaultDevice;
     out.device_id      = info->DeviceId   ? std::string(info->DeviceId)   : std::string();
     out.device_name    = info->DeviceName ? std::string(info->DeviceName) : std::string();
