@@ -1767,7 +1767,7 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_stat_threshold_by_index(char
     auto&& __result = eos_achievements_copy_stat_threshold_by_index(achievement_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicStatThreshold
+    // return: __result, type: optional<struct EpicStatThreshold>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }
@@ -1791,7 +1791,7 @@ GMEXPORT double __EXT_NATIVE__eos_achievements_copy_player_stat_info_by_index(ch
     auto&& __result = eos_achievements_copy_player_stat_info_by_index(local_user_id, target_user_id, achievement_id, index);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
-    // return: __result, type: struct EpicPlayerStatInfo
+    // return: __result, type: optional<struct EpicPlayerStatInfo>
     gm::wire::codec::writeValue(__bw, __result);
     return 0;
 }

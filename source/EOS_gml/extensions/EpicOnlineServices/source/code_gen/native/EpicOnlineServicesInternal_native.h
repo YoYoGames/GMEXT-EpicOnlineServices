@@ -8005,8 +8005,8 @@ gm_structs::EpicAchievementsDefinitionV2 eos_achievements_copy_achievement_defin
 gm_structs::EpicAchievementsDefinition eos_achievements_copy_achievement_definition_by_id(std::string_view achievement_id);
 gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_index(std::string_view local_user_id, std::string_view target_user_id, std::int64_t index);
 gm_structs::EpicPlayerAchievement eos_achievements_copy_player_achievement_by_id(std::string_view local_user_id, std::string_view target_user_id, std::string_view achievement_id);
-gm_structs::EpicStatThreshold eos_achievements_copy_stat_threshold_by_index(std::string_view achievement_id, std::int64_t index);
-gm_structs::EpicPlayerStatInfo eos_achievements_copy_player_stat_info_by_index(std::string_view local_user_id, std::string_view target_user_id, std::string_view achievement_id, std::int64_t index);
+std::optional<gm_structs::EpicStatThreshold> eos_achievements_copy_stat_threshold_by_index(std::string_view achievement_id, std::int64_t index);
+std::optional<gm_structs::EpicPlayerStatInfo> eos_achievements_copy_player_stat_info_by_index(std::string_view local_user_id, std::string_view target_user_id, std::string_view achievement_id, std::int64_t index);
 void eos_achievements_unlock_achievements(std::string_view user_id, const std::vector<std::string_view>& achievement_ids, const std::optional<gm::wire::GMFunction>& callback);
 std::uint64_t eos_achievements_add_notify_achievements_unlocked_v2(const std::optional<gm::wire::GMFunction>& callback);
 void eos_achievements_remove_notify_achievements_unlocked(std::uint64_t notification_id);

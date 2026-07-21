@@ -1354,10 +1354,10 @@ function eos_achievements_copy_player_achievement_by_index(local_user_id: string
 [global, bind = typed_gml, type_hint=`EpicPlayerAchievement`]
 function eos_achievements_copy_player_achievement_by_id(local_user_id: string, target_user_id: string, achievement_id: string): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicStatThreshold`]
+[global, bind = typed_gml, type_hint=`EpicStatThreshold?`]
 function eos_achievements_copy_stat_threshold_by_index(achievement_id: string, index: int64): gmval;
 
-[global, bind = typed_gml, type_hint=`EpicPlayerStatInfo`]
+[global, bind = typed_gml, type_hint=`EpicPlayerStatInfo?`]
 function eos_achievements_copy_player_stat_info_by_index(local_user_id: string, target_user_id: string, achievement_id: string, index: int64): gmval;
 
 [global, bind = typed_gml]

@@ -20615,7 +20615,14 @@ function eos_achievements_copy_stat_threshold_by_index(_achievement_id, _index)
     var _return_value = __eos_achievements_copy_stat_threshold_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicStatThreshold_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicStatThreshold_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
@@ -20657,7 +20664,14 @@ function eos_achievements_copy_player_stat_info_by_index(_local_user_id, _target
     var _return_value = __eos_achievements_copy_player_stat_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
     var _result = undefined;
-    _result = __EpicPlayerStatInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    if (buffer_read(__ret_buffer, buffer_bool))
+    {
+        _result = __EpicPlayerStatInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    }
+    else
+    {
+        _result = undefined;
+    }
     return _result;
 }
 
