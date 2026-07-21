@@ -315,6 +315,18 @@ class `[[EpicAuthVerifyIdTokenCallbackInfo]]` prototype Object
 
     [field]
     property is_external_account_info_present : bool { get; set; }
+
+    [field, type_hint=`EpicExternalAccountType`]
+    property external_account_id_type : gmval { get; set; }
+
+    [field]
+    property external_account_id : string { get; set; }
+
+    [field]
+    property external_account_display_name : string { get; set; }
+
+    [field]
+    property platform : string { get; set; }
 }
 
 [global]
@@ -1240,6 +1252,16 @@ class `[[EpicPlayerStatInfo]]` prototype Object
 }
 
 [global]
+class `[[EpicAchievementsStatThresholds]]` prototype Object
+{
+    [field]
+    property name : string { get; set; }
+
+    [field, type_hint=`int32`]
+    property threshold : gmval { get; set; }
+}
+
+[global]
 class `[[EpicAchievementsDefinition]]` prototype Object
 {
     [field]
@@ -1274,6 +1296,9 @@ class `[[EpicAchievementsDefinition]]` prototype Object
 
     [field, type_hint=`int64`]
     property stat_thresholds_count : gmval { get; set; }
+
+    [field, type_hint=`EpicAchievementsStatThresholds[]`]
+    property stat_thresholds : gmval { get; set; }
 }
 
 [global]
@@ -1290,6 +1315,21 @@ class `[[EpicPlayerAchievement]]` prototype Object
 
     [field]
     property stat_info_count : int64 { get; set; }
+
+    [field, type_hint=`EpicPlayerStatInfo[]`]
+    property stat_info : gmval { get; set; }
+
+    [field]
+    property display_name : string { get; set; }
+
+    [field]
+    property description : string { get; set; }
+
+    [field]
+    property icon_url : string { get; set; }
+
+    [field]
+    property flavor_text : string { get; set; }
 }
 
 [global]
@@ -1710,6 +1750,9 @@ class `[[EpicSessionsUpdateSessionCallbackInfo]]` prototype Object
 
     [field]
     property session_name : string { get; set; }
+
+    [field]
+    property session_id : string { get; set; }
 }
 
 [global]
@@ -1882,6 +1925,9 @@ class `[[EpicSessionDetailsInfo]]` prototype Object
 
     [field, type_hint=`int64`]
     property settings_count : gmval { get; set; }
+
+    [field]
+    property owner_server_client_id : string { get; set; }
 }
 
 [global]
@@ -2694,6 +2740,12 @@ class `[[EpicLobbyDetailsInfo]]` prototype Object
 
     [field]
     property rejoin_after_kick_requires_invite : bool { get; set; }
+
+    [field, type_hint=`int64`]
+    property allowed_platform_ids_count : gmval { get; set; }
+
+    [field, type_hint=`uint32[]`]
+    property allowed_platform_ids : gmval { get; set; }
 }
 
 [global]

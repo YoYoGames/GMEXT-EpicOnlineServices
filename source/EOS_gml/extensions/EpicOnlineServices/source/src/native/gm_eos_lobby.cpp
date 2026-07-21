@@ -1601,6 +1601,14 @@ static gm_structs::EpicLobbyDetailsInfo eos_lobby_details_info_from_native(
     out.allow_join_by_id = (p->bAllowJoinById != 0);
     out.rejoin_after_kick_requires_invite = (p->bRejoinAfterKickRequiresInvite != 0);
 
+    out.allowed_platform_ids_count = (int64_t)p->AllowedPlatformIdsCount;
+    if (p->AllowedPlatformIds && p->AllowedPlatformIdsCount > 0) {
+        out.allowed_platform_ids.resize(p->AllowedPlatformIdsCount);
+        for (uint32_t i = 0; i < p->AllowedPlatformIdsCount; ++i) {
+            out.allowed_platform_ids[i] = p->AllowedPlatformIds[i];
+        }
+    }
+
     return out;
 }
 

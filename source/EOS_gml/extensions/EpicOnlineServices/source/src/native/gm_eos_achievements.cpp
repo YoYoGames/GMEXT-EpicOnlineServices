@@ -267,6 +267,19 @@ int64_t eos_achievements_get_player_achievement_count(
 // ============================================================
 
 
+static gm_structs::EpicAchievementsStatThresholds eos_achievements_stat_thresholds_from_native(
+    const EOS_Achievements_StatThresholds* p)
+{
+    gm_structs::EpicAchievementsStatThresholds out{};
+    if (!p)
+        return out;
+
+    out.name = p->Name ? std::string(p->Name) : std::string();
+    out.threshold = (int32_t)p->Threshold;
+
+    return out;
+}
+
 static gm_structs::EpicAchievementsDefinition eos_achievements_definition_from_native(
     const EOS_Achievements_Definition* p)
 {
@@ -286,8 +299,12 @@ static gm_structs::EpicAchievementsDefinition eos_achievements_definition_from_n
     out.locked_icon_id = p->LockedIconId ? std::string(p->LockedIconId) : std::string();
 
     out.stat_thresholds_count = (int64_t)p->StatThresholdsCount;
-    //TODO
-    //const EOS_Achievements_StatThresholds* StatThresholds;
+    if (p->StatThresholds && p->StatThresholdsCount > 0) {
+        out.stat_thresholds.resize(p->StatThresholdsCount);
+        for (uint32_t i = 0; i < p->StatThresholdsCount; ++i) {
+            out.stat_thresholds[i] = eos_achievements_stat_thresholds_from_native(&p->StatThresholds[i]);
+        }
+    }
 
     return out;
 }
@@ -303,6 +320,20 @@ static gm_structs::EpicPlayerAchievement eos_achievements_player_achievement_fro
     out.progress = (double)p->Progress;
     out.unlock_time = p->UnlockTime;
     out.stat_info_count = (int64_t)p->StatInfoCount;
+
+    if (p->StatInfo && p->StatInfoCount > 0) {
+        out.stat_info.resize(p->StatInfoCount);
+        for (uint32_t i = 0; i < p->StatInfoCount; ++i) {
+            out.stat_info[i].name = p->StatInfo[i].Name ? std::string(p->StatInfo[i].Name) : std::string();
+            out.stat_info[i].current_value = (int64_t)p->StatInfo[i].CurrentValue;
+            out.stat_info[i].threshold_value = (int64_t)p->StatInfo[i].ThresholdValue;
+        }
+    }
+
+    out.display_name = p->DisplayName ? std::string(p->DisplayName) : std::string();
+    out.description = p->Description ? std::string(p->Description) : std::string();
+    out.icon_url = p->IconURL ? std::string(p->IconURL) : std::string();
+    out.flavor_text = p->FlavorText ? std::string(p->FlavorText) : std::string();
 
     return out;
 }

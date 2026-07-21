@@ -3335,6 +3335,10 @@
  * @member {String} deployment_id
  * @member {String} display_name
  * @member {Bool} is_external_account_info_present
+ * @member {Enum.EpicExternalAccountType} external_account_id_type
+ * @member {String} external_account_id
+ * @member {String} external_account_display_name
+ * @member {String} platform
  * @struct_end
  */
 
@@ -3654,27 +3658,9 @@
  */
 
 /**
- * @struct_partial EpicAchievementsDefinition
- * @member {String} achievement_id
- * @member {String} display_name
- * @member {String} description
- * @member {String} locked_display_name
- * @member {String} locked_description
- * @member {String} hidden_description
- * @member {String} completion_description
- * @member {String} unlocked_icon_id
- * @member {String} locked_icon_id
- * @member {Bool} is_hidden
- * @member {Real} stat_thresholds_count
- * @struct_end
- */
-
-/**
- * @struct_partial EpicPlayerAchievement
- * @member {String} achievement_id
- * @member {Real} progress
- * @member {Real} unlock_time
- * @member {Real} stat_info_count
+ * @struct_partial EpicAchievementsStatThresholds
+ * @member {String} name
+ * @member {Real} threshold
  * @struct_end
  */
 
@@ -3804,6 +3790,7 @@
  * @struct_partial EpicSessionsUpdateSessionCallbackInfo
  * @member {Enum.EpicResult} result_code
  * @member {String} session_name
+ * @member {String} session_id
  * @struct_end
  */
 
@@ -3859,6 +3846,7 @@
  * @member {String} owner_user_id
  * @member {Real} num_open_public_connections
  * @member {Real} settings_count
+ * @member {String} owner_server_client_id
  * @struct_end
  */
 
@@ -4086,6 +4074,8 @@
  * @member {Bool} allow_host_migration
  * @member {Bool} allow_join_by_id
  * @member {Bool} rejoin_after_kick_requires_invite
+ * @member {Real} allowed_platform_ids_count
+ * @member {Array[Real]} allowed_platform_ids
  * @struct_end
  */
 
@@ -4947,6 +4937,37 @@
  * @member {String} local_user_id
  * @member {String} selected_account_id
  * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicPlayerAchievement
+ * @member {String} achievement_id
+ * @member {Real} progress
+ * @member {Real} unlock_time
+ * @member {Real} stat_info_count
+ * @member {Array[Struct.EpicPlayerStatInfo]} stat_info
+ * @member {String} display_name
+ * @member {String} description
+ * @member {String} icon_url
+ * @member {String} flavor_text
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicAchievementsDefinition
+ * @member {String} achievement_id
+ * @member {String} display_name
+ * @member {String} description
+ * @member {String} locked_display_name
+ * @member {String} locked_description
+ * @member {String} hidden_description
+ * @member {String} completion_description
+ * @member {String} unlocked_icon_id
+ * @member {String} locked_icon_id
+ * @member {Bool} is_hidden
+ * @member {Real} stat_thresholds_count
+ * @member {Array[Struct.EpicAchievementsStatThresholds]} stat_thresholds
  * @struct_end
  */
 

@@ -108,6 +108,7 @@ eos_sessions_update_session_info_from_native(const EOS_Sessions_UpdateSessionCal
 
     out.result_code = (gm_enums::EpicResult)p->ResultCode;
     out.session_name = p->SessionName ? std::string(p->SessionName) : std::string();
+    out.session_id = p->SessionId ? std::string(p->SessionId) : std::string();
     return out;
 }
 
@@ -1008,7 +1009,8 @@ static gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_info_from
     out.host_address = p->HostAddress ? std::string(p->HostAddress) : std::string();
     out.owner_user_id = eos_sessions_product_user_id_to_string_internal(p->OwnerUserId);
     out.num_open_public_connections = (int64_t)p->NumOpenPublicConnections;
-    
+    out.owner_server_client_id = p->OwnerServerClientId ? std::string(p->OwnerServerClientId) : std::string();
+
     //TODO
     // out.settings_count = (int64_t)p->SettingsCount;
     // const EOS_SessionDetails_Settings* Settings;
