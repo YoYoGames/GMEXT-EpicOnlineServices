@@ -901,7 +901,7 @@ namespace gm_structs
     struct EpicLeaderboardDefinition;
     struct EpicLeaderboardRecord;
     struct EpicLeaderboardUserScore;
-    struct EpicPresenceInfo;
+    struct EpicPresenceDataRecord;
     struct EpicPresenceQueryPresenceCallbackInfo;
     struct EpicPresenceSetPresenceCallbackInfo;
     struct EpicPresenceChangedCallbackInfo;
@@ -1046,6 +1046,7 @@ namespace gm_structs
     struct EpicRTCDataUpdateReceivingCallbackInfo;
     struct EpicAuthLoginCallbackInfo;
     struct EpicAuthLinkAccountCallbackInfo;
+    struct EpicPresenceInfo;
     struct EpicRTCJoinRoomCallbackInfo;
     struct EpicRTCParticipantStatusChangedCallbackInfo;
 
@@ -1484,15 +1485,10 @@ namespace gm_structs
         std::int64_t score;
     };
 
-    struct EpicPresenceInfo
+    struct EpicPresenceDataRecord
     {
-        std::string user_id;
-        gm_enums::EpicPresenceStatus status;
-        std::string product_id;
-        std::string product_version;
-        std::string platform;
-        std::string rich_text;
-        std::int64_t records_count;
+        std::string key;
+        std::string value;
     };
 
     struct EpicPresenceQueryPresenceCallbackInfo
@@ -2530,6 +2526,20 @@ namespace gm_structs
         std::string local_user_id;
         std::string selected_account_id;
         gm_structs::EpicAuthPinGrantInfo pin_grant_info;
+    };
+
+    struct EpicPresenceInfo
+    {
+        std::string user_id;
+        gm_enums::EpicPresenceStatus status;
+        std::string product_id;
+        std::string product_version;
+        std::string platform;
+        std::string product_name;
+        std::string integrated_platform;
+        std::string rich_text;
+        std::int64_t records_count;
+        std::vector<gm_structs::EpicPresenceDataRecord> records;
     };
 
     struct EpicRTCJoinRoomCallbackInfo
@@ -3669,28 +3679,18 @@ namespace gm::wire::codec
     }
 
     template<>
-    inline void writeValue<gm_structs::EpicPresenceInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicPresenceInfo& obj)
+    inline void writeValue<gm_structs::EpicPresenceDataRecord>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicPresenceDataRecord& obj)
     {
-        gm::wire::codec::writeValue(_buf, obj.user_id);
-        gm::wire::codec::writeValue(_buf, obj.status);
-        gm::wire::codec::writeValue(_buf, obj.product_id);
-        gm::wire::codec::writeValue(_buf, obj.product_version);
-        gm::wire::codec::writeValue(_buf, obj.platform);
-        gm::wire::codec::writeValue(_buf, obj.rich_text);
-        gm::wire::codec::writeValue(_buf, obj.records_count);
+        gm::wire::codec::writeValue(_buf, obj.key);
+        gm::wire::codec::writeValue(_buf, obj.value);
     }
 
     template<>
-    inline gm_structs::EpicPresenceInfo readValue<gm_structs::EpicPresenceInfo>(gm::byteio::BufferReader& _buf)
+    inline gm_structs::EpicPresenceDataRecord readValue<gm_structs::EpicPresenceDataRecord>(gm::byteio::BufferReader& _buf)
     {
-        gm_structs::EpicPresenceInfo obj;
-        obj.user_id = gm::wire::codec::readValue<std::string>(_buf);
-        obj.status = gm::wire::codec::readValue<gm_enums::EpicPresenceStatus>(_buf);
-        obj.product_id = gm::wire::codec::readValue<std::string>(_buf);
-        obj.product_version = gm::wire::codec::readValue<std::string>(_buf);
-        obj.platform = gm::wire::codec::readValue<std::string>(_buf);
-        obj.rich_text = gm::wire::codec::readValue<std::string>(_buf);
-        obj.records_count = gm::wire::codec::readValue<std::int64_t>(_buf);
+        gm_structs::EpicPresenceDataRecord obj;
+        obj.key = gm::wire::codec::readValue<std::string>(_buf);
+        obj.value = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
 
@@ -6345,6 +6345,38 @@ namespace gm::wire::codec
     }
 
     template<>
+    inline void writeValue<gm_structs::EpicPresenceInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicPresenceInfo& obj)
+    {
+        gm::wire::codec::writeValue(_buf, obj.user_id);
+        gm::wire::codec::writeValue(_buf, obj.status);
+        gm::wire::codec::writeValue(_buf, obj.product_id);
+        gm::wire::codec::writeValue(_buf, obj.product_version);
+        gm::wire::codec::writeValue(_buf, obj.platform);
+        gm::wire::codec::writeValue(_buf, obj.product_name);
+        gm::wire::codec::writeValue(_buf, obj.integrated_platform);
+        gm::wire::codec::writeValue(_buf, obj.rich_text);
+        gm::wire::codec::writeValue(_buf, obj.records_count);
+        gm::wire::codec::writeValue(_buf, obj.records);
+    }
+
+    template<>
+    inline gm_structs::EpicPresenceInfo readValue<gm_structs::EpicPresenceInfo>(gm::byteio::BufferReader& _buf)
+    {
+        gm_structs::EpicPresenceInfo obj;
+        obj.user_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.status = gm::wire::codec::readValue<gm_enums::EpicPresenceStatus>(_buf);
+        obj.product_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.product_version = gm::wire::codec::readValue<std::string>(_buf);
+        obj.platform = gm::wire::codec::readValue<std::string>(_buf);
+        obj.product_name = gm::wire::codec::readValue<std::string>(_buf);
+        obj.integrated_platform = gm::wire::codec::readValue<std::string>(_buf);
+        obj.rich_text = gm::wire::codec::readValue<std::string>(_buf);
+        obj.records_count = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.records = gm::wire::codec::readVector<gm_structs::EpicPresenceDataRecord>(_buf);
+        return obj;
+    }
+
+    template<>
     inline void writeValue<gm_structs::EpicRTCJoinRoomCallbackInfo>(gm::byteio::IByteWriter& _buf, const gm_structs::EpicRTCJoinRoomCallbackInfo& obj)
     {
         gm::wire::codec::writeValue(_buf, obj.result_code);
@@ -6820,7 +6852,7 @@ namespace gm::wire::details
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicPresenceInfo>
+    struct gm_struct_traits<gm_structs::EpicPresenceDataRecord>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 61;
@@ -7835,17 +7867,24 @@ namespace gm::wire::details
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicPresenceInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 206;
     };
 
     template<>
-    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
+    struct gm_struct_traits<gm_structs::EpicRTCJoinRoomCallbackInfo>
     {
         static constexpr bool is_gm_struct = true;
         static constexpr std::uint32_t codec_id = 207;
+    };
+
+    template<>
+    struct gm_struct_traits<gm_structs::EpicRTCParticipantStatusChangedCallbackInfo>
+    {
+        static constexpr bool is_gm_struct = true;
+        static constexpr std::uint32_t codec_id = 208;
     };
 
 }

@@ -1533,6 +1533,16 @@ group
 // ============================================================
 
 [global]
+class `[[EpicPresenceDataRecord]]` prototype Object
+{
+    [field]
+    property key : string { get; set; }
+
+    [field]
+    property value : string { get; set; }
+}
+
+[global]
 class `[[EpicPresenceInfo]]` prototype Object
 {
     [field]
@@ -1551,10 +1561,19 @@ class `[[EpicPresenceInfo]]` prototype Object
     property platform : string { get; set; }
 
     [field]
+    property product_name : string { get; set; }
+
+    [field]
+    property integrated_platform : string { get; set; }
+
+    [field]
     property rich_text : string { get; set; }
 
     [field]
     property records_count : int64 { get; set; }
+
+    [field, type_hint=`EpicPresenceDataRecord[]`]
+    property records : gmval { get; set; }
 }
 
 [global]

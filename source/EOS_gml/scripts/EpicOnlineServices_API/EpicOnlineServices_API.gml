@@ -1879,23 +1879,18 @@ function EpicLeaderboardUserScore() constructor
 }
 
 /**
- * @returns {Struct.EpicPresenceInfo}
+ * @returns {Struct.EpicPresenceDataRecord}
  */
-function EpicPresenceInfo() constructor
+function EpicPresenceDataRecord() constructor
 {
     /**
      * Internally generated hash for quick validation
      * @ignore
      */
-    static __uid = 3479760485;
+    static __uid = 1881475628;
 
-    self.user_id = undefined;
-    self.status = undefined;
-    self.product_id = undefined;
-    self.product_version = undefined;
-    self.platform = undefined;
-    self.rich_text = undefined;
-    self.records_count = undefined;
+    self.key = undefined;
+    self.value = undefined;
 
 }
 
@@ -4373,6 +4368,30 @@ function EpicAuthLinkAccountCallbackInfo() constructor
     self.local_user_id = undefined;
     self.selected_account_id = undefined;
     self.pin_grant_info = undefined;
+
+}
+
+/**
+ * @returns {Struct.EpicPresenceInfo}
+ */
+function EpicPresenceInfo() constructor
+{
+    /**
+     * Internally generated hash for quick validation
+     * @ignore
+     */
+    static __uid = 3479760485;
+
+    self.user_id = undefined;
+    self.status = undefined;
+    self.product_id = undefined;
+    self.product_version = undefined;
+    self.platform = undefined;
+    self.product_name = undefined;
+    self.integrated_platform = undefined;
+    self.rich_text = undefined;
+    self.records_count = undefined;
+    self.records = undefined;
 
 }
 
@@ -8163,94 +8182,52 @@ function __EpicLeaderboardUserScore_decode(_buffer, _offset)
 }
 
 /**
- * @func __EpicPresenceInfo_encode(_inst, _buffer, _offset, _where)
- * @param {Struct.EpicPresenceInfo} _inst
+ * @func __EpicPresenceDataRecord_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicPresenceDataRecord} _inst
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
  * @param {String} _where
  * @ignore
  */
-function __EpicPresenceInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+function __EpicPresenceDataRecord_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
 {
     buffer_seek(_buffer, buffer_seek_start, _offset);
     with (_inst)
     {
-        // field: user_id, type: String
-        if (!is_string(self.user_id)) show_error($"{_where} :: self.user_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.user_id));
-        buffer_write(_buffer, buffer_string, self.user_id);
+        // field: key, type: String
+        if (!is_string(self.key)) show_error($"{_where} :: self.key expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.key));
+        buffer_write(_buffer, buffer_string, self.key);
 
-        // field: status, type: enum EpicPresenceStatus
-
-        if (!is_numeric(self.status)) show_error($"{_where} :: self.status expected number", true);
-        buffer_write(_buffer, buffer_u64, self.status);
-
-        // field: product_id, type: String
-        if (!is_string(self.product_id)) show_error($"{_where} :: self.product_id expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_id));
-        buffer_write(_buffer, buffer_string, self.product_id);
-
-        // field: product_version, type: String
-        if (!is_string(self.product_version)) show_error($"{_where} :: self.product_version expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_version));
-        buffer_write(_buffer, buffer_string, self.product_version);
-
-        // field: platform, type: String
-        if (!is_string(self.platform)) show_error($"{_where} :: self.platform expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.platform));
-        buffer_write(_buffer, buffer_string, self.platform);
-
-        // field: rich_text, type: String
-        if (!is_string(self.rich_text)) show_error($"{_where} :: self.rich_text expected string", true);
-        buffer_write(_buffer, buffer_u32, string_byte_length(self.rich_text));
-        buffer_write(_buffer, buffer_string, self.rich_text);
-
-        // field: records_count, type: Int64
-        if (!is_numeric(self.records_count)) show_error($"{_where} :: self.records_count expected number", true);
-        buffer_write(_buffer, buffer_u64, self.records_count);
+        // field: value, type: String
+        if (!is_string(self.value)) show_error($"{_where} :: self.value expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.value));
+        buffer_write(_buffer, buffer_string, self.value);
 
     }
 }
 
 /**
- * @func __EpicPresenceInfo_decode(_buffer, _offset)
+ * @func __EpicPresenceDataRecord_decode(_buffer, _offset)
  * @param {Id.Buffer} _buffer
  * @param {Real} _offset
- * @returns {Struct.EpicPresenceInfo}
+ * @returns {Struct.EpicPresenceDataRecord}
  * @ignore
  */
-function __EpicPresenceInfo_decode(_buffer, _offset)
+function __EpicPresenceDataRecord_decode(_buffer, _offset)
 {
     buffer_seek(_buffer, buffer_seek_start, _offset);
 
-    _inst = new EpicPresenceInfo();
+    _inst = new EpicPresenceDataRecord();
     with (_inst)
     {
-        // field: user_id, type: String
+        // field: key, type: String
         buffer_read(_buffer, buffer_u32);
-        self.user_id = buffer_read(_buffer, buffer_string);
+        self.key = buffer_read(_buffer, buffer_string);
 
-        // field: status, type: enum EpicPresenceStatus
-        self.status = buffer_read(_buffer, buffer_u64);
-
-        // field: product_id, type: String
+        // field: value, type: String
         buffer_read(_buffer, buffer_u32);
-        self.product_id = buffer_read(_buffer, buffer_string);
-
-        // field: product_version, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.product_version = buffer_read(_buffer, buffer_string);
-
-        // field: platform, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.platform = buffer_read(_buffer, buffer_string);
-
-        // field: rich_text, type: String
-        buffer_read(_buffer, buffer_u32);
-        self.rich_text = buffer_read(_buffer, buffer_string);
-
-        // field: records_count, type: Int64
-        self.records_count = buffer_read(_buffer, buffer_u64);
+        self.value = buffer_read(_buffer, buffer_string);
 
     }
 
@@ -17205,6 +17182,137 @@ function __EpicAuthLinkAccountCallbackInfo_decode(_buffer, _offset)
 
         // field: pin_grant_info, type: struct EpicAuthPinGrantInfo
         self.pin_grant_info = __EpicAuthPinGrantInfo_decode(_buffer, buffer_tell(_buffer));
+
+    }
+
+    return _inst;
+}
+
+/**
+ * @func __EpicPresenceInfo_encode(_inst, _buffer, _offset, _where)
+ * @param {Struct.EpicPresenceInfo} _inst
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @param {String} _where
+ * @ignore
+ */
+function __EpicPresenceInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION_)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+    with (_inst)
+    {
+        // field: user_id, type: String
+        if (!is_string(self.user_id)) show_error($"{_where} :: self.user_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.user_id));
+        buffer_write(_buffer, buffer_string, self.user_id);
+
+        // field: status, type: enum EpicPresenceStatus
+
+        if (!is_numeric(self.status)) show_error($"{_where} :: self.status expected number", true);
+        buffer_write(_buffer, buffer_u64, self.status);
+
+        // field: product_id, type: String
+        if (!is_string(self.product_id)) show_error($"{_where} :: self.product_id expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_id));
+        buffer_write(_buffer, buffer_string, self.product_id);
+
+        // field: product_version, type: String
+        if (!is_string(self.product_version)) show_error($"{_where} :: self.product_version expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_version));
+        buffer_write(_buffer, buffer_string, self.product_version);
+
+        // field: platform, type: String
+        if (!is_string(self.platform)) show_error($"{_where} :: self.platform expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.platform));
+        buffer_write(_buffer, buffer_string, self.platform);
+
+        // field: product_name, type: String
+        if (!is_string(self.product_name)) show_error($"{_where} :: self.product_name expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.product_name));
+        buffer_write(_buffer, buffer_string, self.product_name);
+
+        // field: integrated_platform, type: String
+        if (!is_string(self.integrated_platform)) show_error($"{_where} :: self.integrated_platform expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.integrated_platform));
+        buffer_write(_buffer, buffer_string, self.integrated_platform);
+
+        // field: rich_text, type: String
+        if (!is_string(self.rich_text)) show_error($"{_where} :: self.rich_text expected string", true);
+        buffer_write(_buffer, buffer_u32, string_byte_length(self.rich_text));
+        buffer_write(_buffer, buffer_string, self.rich_text);
+
+        // field: records_count, type: Int64
+        if (!is_numeric(self.records_count)) show_error($"{_where} :: self.records_count expected number", true);
+        buffer_write(_buffer, buffer_u64, self.records_count);
+
+        // field: records, type: struct EpicPresenceDataRecord[]
+        if (!is_array(self.records)) show_error($"{_where} :: self.records expected array", true);
+        var _length = array_length(self.records);
+        buffer_write(_buffer, buffer_u32, _length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            if (self.records[_i].__uid != 1881475628) show_error($"{_where} :: self.records[_i] expected EpicPresenceDataRecord", true);
+            __EpicPresenceDataRecord_encode(self.records[_i], _buffer, buffer_tell(_buffer), _where);
+        }
+
+    }
+}
+
+/**
+ * @func __EpicPresenceInfo_decode(_buffer, _offset)
+ * @param {Id.Buffer} _buffer
+ * @param {Real} _offset
+ * @returns {Struct.EpicPresenceInfo}
+ * @ignore
+ */
+function __EpicPresenceInfo_decode(_buffer, _offset)
+{
+    buffer_seek(_buffer, buffer_seek_start, _offset);
+
+    _inst = new EpicPresenceInfo();
+    with (_inst)
+    {
+        // field: user_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.user_id = buffer_read(_buffer, buffer_string);
+
+        // field: status, type: enum EpicPresenceStatus
+        self.status = buffer_read(_buffer, buffer_u64);
+
+        // field: product_id, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.product_id = buffer_read(_buffer, buffer_string);
+
+        // field: product_version, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.product_version = buffer_read(_buffer, buffer_string);
+
+        // field: platform, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.platform = buffer_read(_buffer, buffer_string);
+
+        // field: product_name, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.product_name = buffer_read(_buffer, buffer_string);
+
+        // field: integrated_platform, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.integrated_platform = buffer_read(_buffer, buffer_string);
+
+        // field: rich_text, type: String
+        buffer_read(_buffer, buffer_u32);
+        self.rich_text = buffer_read(_buffer, buffer_string);
+
+        // field: records_count, type: Int64
+        self.records_count = buffer_read(_buffer, buffer_u64);
+
+        // field: records, type: struct EpicPresenceDataRecord[]
+        var _length = buffer_read(_buffer, buffer_u32);
+        self.records = array_create(_length);
+        for (var _i = 0; _i < _length; ++_i)
+        {
+            self.records[_i] = __EpicPresenceDataRecord_decode(_buffer, buffer_tell(_buffer));
+        }
 
     }
 
@@ -30249,7 +30357,7 @@ function __EpicOnlineServices_get_decoders()
         __EpicLeaderboardDefinition_decode,
         __EpicLeaderboardRecord_decode,
         __EpicLeaderboardUserScore_decode,
-        __EpicPresenceInfo_decode,
+        __EpicPresenceDataRecord_decode,
         __EpicPresenceQueryPresenceCallbackInfo_decode,
         __EpicPresenceSetPresenceCallbackInfo_decode,
         __EpicPresenceChangedCallbackInfo_decode,
@@ -30394,6 +30502,7 @@ function __EpicOnlineServices_get_decoders()
         __EpicRTCDataUpdateReceivingCallbackInfo_decode,
         __EpicAuthLoginCallbackInfo_decode,
         __EpicAuthLinkAccountCallbackInfo_decode,
+        __EpicPresenceInfo_decode,
         __EpicRTCJoinRoomCallbackInfo_decode,
         __EpicRTCParticipantStatusChangedCallbackInfo_decode
     ];

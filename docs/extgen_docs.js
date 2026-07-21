@@ -3761,14 +3761,9 @@
  */
 
 /**
- * @struct_partial EpicPresenceInfo
- * @member {String} user_id
- * @member {Enum.EpicPresenceStatus} status
- * @member {String} product_id
- * @member {String} product_version
- * @member {String} platform
- * @member {String} rich_text
- * @member {Real} records_count
+ * @struct_partial EpicPresenceDataRecord
+ * @member {String} key
+ * @member {String} value
  * @struct_end
  */
 
@@ -4950,6 +4945,21 @@
  * @member {String} local_user_id
  * @member {String} selected_account_id
  * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info
+ * @struct_end
+ */
+
+/**
+ * @struct_partial EpicPresenceInfo
+ * @member {String} user_id
+ * @member {Enum.EpicPresenceStatus} status
+ * @member {String} product_id
+ * @member {String} product_version
+ * @member {String} platform
+ * @member {String} product_name
+ * @member {String} integrated_platform
+ * @member {String} rich_text
+ * @member {Real} records_count
+ * @member {Array[Struct.EpicPresenceDataRecord]} records
  * @struct_end
  */
 

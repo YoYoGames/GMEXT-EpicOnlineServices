@@ -80,8 +80,24 @@ static gm_structs::EpicPresenceInfo eos_presence_info_from_native(const EOS_Pres
     out.product_id = p->ProductId ? std::string(p->ProductId) : std::string();
     out.product_version = p->ProductVersion ? std::string(p->ProductVersion) : std::string();
     out.platform = p->Platform ? std::string(p->Platform) : std::string();
+    out.product_name = p->ProductName ? std::string(p->ProductName) : std::string();
+    out.integrated_platform = p->IntegratedPlatform ? std::string(p->IntegratedPlatform) : std::string();
     out.rich_text = p->RichText ? std::string(p->RichText) : std::string();
     out.records_count = (int64_t)p->RecordsCount;
+    
+    // Copy data records if present
+    if (p->Records && p->RecordsCount > 0)
+    {
+        std::vector<gm_structs::EpicPresenceDataRecord> records;
+        for (uint32_t i = 0; i < p->RecordsCount; ++i)
+        {
+            gm_structs::EpicPresenceDataRecord record{};
+            record.key = p->Records[i].Key ? std::string(p->Records[i].Key) : std::string();
+            record.value = p->Records[i].Value ? std::string(p->Records[i].Value) : std::string();
+            records.push_back(record);
+        }
+        out.records = records;
+    }
 
     return out;
 }
