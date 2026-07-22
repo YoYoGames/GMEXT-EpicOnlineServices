@@ -1,463 +1,478 @@
 // Functions
 
 /**
- * @function eos_achievements_add_notify_achievements_unlocked_v2
- * @desc **Epic Online Services Function:** [EOS_Achievements_AddNotifyAchievementsUnlockedV2](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_AddNotifyAchievementsUnlockedV2/index.html)
- * 
- * This function registers to receive achievement unlocked notifications.
- * 
- * @event social
- * 
- * @member {string} type `"eos_achievements_add_notify_achievements_unlocked_v2"`
- * @member {int64} unlock_time POSIX timestamp when the achievement was unlocked
- * @member {string} achievement_id The achievement ID for the achievement that was unlocked. Pass this to ${function.eos_achievements_copy_player_achievement_by_achievement_id} to get the full achievement information.
- * @member {string} user_id The Product User ID for the user who received the unlocked achievements notification
- * 
- * @event_end
- * 
- * @returns {int64}
- * 
- * @example
- * 
- * ```gml
- * identifier = eos_achievements_add_notify_achievements_unlocked_v2();
- * ```
- * The code sample above saves the identifier that can be used inside a ${event.social}.
- * 
- * ```gml
- * if (async_load[? "type"] == "eos_achievements_add_notify_achievements_unlocked_v2")
- * if(async_load[? "identifier"] == identifier)
- * {
- *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
- *     {
- *         show_debug_message(async_load[? "type"] + " succeeded!");
- *     }
- *     else
- *     {
- *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
- *     }
- * }
- * ```
- * The code above matches the response against the correct event **type** and logs the success of the task.
- * @function_end
- */
-
-/**
- * @function eos_achievements_copy_achievement_definition_v2_by_achievement_id
- * @desc **Epic Online Services Function:** [EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyAchievementDefinitionV2ByAchi/index.html)
- * 
- * This function fetches an ${struct.AchievementDefinition} from a given achievement ID.
- * 
- * [[Note: Requires a previous call to ${function.eos_achievements_query_definitions} to store values in cache.]]
- * 
- * @param {string} achievement_id Achievement ID to look for when copying the definition from the cache
- *
- * @returns {struct.AchievementDefinition}
- * 
- * @example
- * 
- * ```gml
- * var _struct = eos_achievements_copy_achievement_definition_v2_by_achievement_id("MyAchievement1");
- * if(_struct.status == EOS_RESULT.SUCCESS)
- * {
- *     var _achievement_id = _struct.achievement_id;
- * }
- * ```
- * The above code will show an example of how the function should be used. The achievement definition data is returned providing an achievement ID.
- * @function_end
- */
-
-/**
- * @function eos_achievements_copy_achievement_definition_v2_by_index
- * @desc **Epic Online Services Function:** [EOS_Achievements_CopyAchievementDefinitionV2ByIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyAchievementDefinitionV2ByIndex/index.html)
- * 
- * This function fetches an ${struct.AchievementDefinition} from a given index.
- * 
- * [[Note: Requires a previous call to ${function.eos_achievements_query_definitions} to store values in cache.]]
- * 
- * @param {real} index Index of the achievement definition to retrieve from the cache
- * 
- * @returns {struct.AchievementDefinition}
- * 
- * @example
- * ```gml
- * for(var i = 0 ; i < eos_achievements_get_achievement_definition_count() ; i ++)
- * {
- *     var _struct = eos_achievements_copy_achievement_definition_v2_by_index(i);
- *     if(_struct.status == EOS_RESULT.SUCCESS)
- *     {
- *         var _achievement_id = _struct.achievement_id;
- *     }
- * }
- * ```
- * The above code shows an example of how the function should be used. The achievement definition data is returned providing an achievement index.
- * @function_end
- */
-
-/**
- * @function eos_achievements_copy_player_achievement_by_achievement_id
- * @desc **Epic Online Services Function:** [EOS_Achievements_CopyPlayerAchievementByAchievementId](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyPlayerAchievementByAchievemen/index.html)
- * 
- * This function fetches a player achievement from a given achievement ID.
- * 
- * [[Note: Requires a previous call to ${function.eos_achievements_query_player_achievements} to store values in cache.]]
- * 
- * @param {string} user_id The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this value will not be present in the struct.
- * @param {string} user_id_target The Product User ID for the user whose achievement is to be retrieved
- * @param {string} achievement_id Achievement ID to search for when retrieving player achievement data from the cache
- * 
- * @returns {struct.PlayerAchievement}
- * 
- * @example
- * ```gml
- * var _struct = eos_achievements_copy_player_achievement_by_achievement_id(user_id, user_id_target, achievement_id);
- * if(_struct.status == EOS_RESULT.SUCCESS)
- * {
- *     var _achievement_id = _struct.achievement_id;
- * }
- * ```
- * The above code will show an example of how the function should be used. The player achievement data is returned providing an achievement ID.
- * @function_end
- */
-
-/**
- * @function eos_achievements_copy_player_achievement_by_index
- * @desc **Epic Online Services Function:** [EOS_Achievements_CopyPlayerAchievementByIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_CopyPlayerAchievementByAchievemen/index.html)
- * 
- * This function fetches a player achievement from a given index.
- * 
- * [[Note: Requires a previous call to ${function.eos_achievements_query_player_achievements} to store values in cache.]]
- * 
- * @param {string} user_id The Product User ID for the user who is querying for a player achievement. For a Dedicated Server this value will not be present in the struct.
- * @param {string} user_id_target The Product User ID for the user whose achievement is to be retrieved
- * @param {real} index The index of the player achievement data to retrieve from the cache
- * 
- * @returns {struct.PlayerAchievement}
- * 
- * @example
- * ```gml
- * for(var i = 0 ; i < eos_achievements_get_player_achievement_count(userID) ; i ++)
- * {
- *     var _struct = eos_achievements_copy_player_achievement_by_index(i);
- *     if(_struct.status == EOS_RESULT.SUCCESS)
- *     {
- *         var _achievement_id = _struct.achievement_id;
- *     }
- * }
- * ```
- * The above code will show an example of how the function should be used. The player achievement data is returned providing an achievement index.
- * @function_end
- */
-
-/**
- * @function eos_achievements_get_achievement_definition_count
- * @desc **Epic Online Services Function:** [EOS_Achievements_GetAchievementDefinitionCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_GetAchievementDefinitionCount/index.html)
- * 
- * This function fetches the number of achievement definitions that are cached locally.
- * 
- * [[Note: Requires a previous call to ${function.eos_achievements_query_definitions} to store values in cache.]]
- * 
- * @returns {real}
- * 
- * @example
- * ```gml
- * for(var i = 0 ; i < eos_achievements_get_achievement_definition_count() ; i ++)
- * {
- *     var _struct = eos_achievements_copy_achievement_definition_v2_by_index(i);
- *     if(_struct.status == EOS_RESULT.SUCCESS)
- *     {
- *         var _achievement_id = _struct.achievement_id;
- *     }
- * }
- * ```
- * The above code will show an example of how the function should be used. After a successful call to ${function.eos_achievements_query_definitions}, the function ${function.eos_achievements_get_achievement_definition_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_achievements_copy_achievement_definition_v2_by_index} function.
- * @function_end
- */
-
-/**
- * @function eos_achievements_get_player_achievement_count
- * @desc **Epic Online Services Function:** [EOS_Achievements_GetPlayerAchievementCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_GetPlayerAchievementCount/index.html)
- * 
- * This function fetches the number of player achievements that are cached locally.
- * 
- * [[Note: Requires a previous call to ${function.eos_achievements_query_player_achievements} to store values in cache.]]
- * 
- * @param {string} user_id The Product User ID for the user whose achievement count is being retrieved
- * 
- * @returns {real}
- * 
- * @example
- * ```gml
- * for(var i = 0 ; i < eos_achievements_get_player_achievement_count(userID) ; i ++)
- * {
- *     var _struct = eos_achievements_copy_player_achievement_by_index(i);
- *     if(_struct.status == EOS_RESULT.SUCCESS)
- *     {
- *         var _achievement_id = _struct.achievement_id;
- *     }
- * }
- * ```
- * The above code will show an example of how the function should be used. After a successful call to ${function.eos_achievements_query_player_achievements}, the function ${function.eos_achievements_get_player_achievement_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_achievements_copy_player_achievement_by_index} function.
- * @function_end
- */
-
-/**
  * @function eos_achievements_query_definitions
- * @desc **Epic Online Services Function:** [EOS_Achievements_QueryDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryDefinitions/index.html)
- * 
- * This function queries for a list of definitions for all existing achievements, including localized text, icon IDs and whether an achievement is hidden.
- * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
- * 
- * * ${function.eos_achievements_copy_achievement_definition_v2_by_achievement_id}
- * * ${function.eos_achievements_copy_achievement_definition_v2_by_index}
- * * ${function.eos_achievements_get_achievement_definition_count}
- * 
- * @param {string} user_id Product User ID for user who is querying definitions.
- * 
- * @event social
- * @member {string} type `"eos_achievements_query_definitions"`
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID
+ * @desc **Epic Online Services Function:** [EOS_Achievements_QueryDefinitions](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-query-definitions)
+ *
+ * Queries the list of achievement definitions for the running application, optionally including localized text
+ * for the locale configured for `local_user_id`. Call this once at startup (or whenever you need fresh
+ * definitions) before using ${function.eos_achievements_get_achievement_definition_count},
+ * ${function.eos_achievements_copy_achievement_definition_by_index}, ${function.eos_achievements_copy_achievement_definition_by_id}
+ * or ${function.eos_achievements_copy_achievement_definition_v2_by_index} — those accessors read from the
+ * results of the most recent successful query.
+ *
+ * @param {String} local_user_id The Product User ID of the user querying the definitions.
+ * @param {Function} [callback] Function invoked when the query completes.
+ *
+ * @event callback
+ * @desc Called once when the definitions query completes.
+ * @member {Struct.EpicAchievementsQueryDefinitionsCallbackInfo} result The result of the query.
  * @event_end
- * 
- * @returns {real}
- * 
+ *
  * @example
- * 
  * ```gml
- * identifier = eos_achievements_query_definitions(user_id);
- * ```
- * The code sample above saves the identifier that can be used inside a ${event.social}.
- * 
- * ```gml
- * if (async_load[? "type"] == "eos_achievements_query_definitions")
- * if (async_load[? "identifier"] == identifier)
+ * eos_achievements_query_definitions(local_user_id, function(_result)
  * {
- *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
+ *     if (_result.result_code == EpicResult.Success)
  *     {
- *         show_debug_message(async_load[? "type"] + " succeeded!");
+ *         var _count = eos_achievements_get_achievement_definition_count();
+ *         show_debug_message($"Loaded {_count} achievement definitions");
  *     }
- *     else
- *     {
- *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
- *     }
- * }
+ * });
  * ```
- * The code above matches the response against the correct event **type** and logs the success of the task.
+ * The above code queries the achievement definitions and reports how many were loaded once the query succeeds.
  * @function_end
  */
 
 /**
  * @function eos_achievements_query_player_achievements
- * @desc **Epic Online Services Function:** [EOS_Achievements_QueryPlayerAchievements](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_QueryPlayerAchievements/index.html)
- * 
- * This function queries for a list of achievements for a specific player, including progress towards completion for each achievement.
- * 
- * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
- * 
- * * ${function.eos_achievements_copy_player_achievement_by_achievement_id}
- * * ${function.eos_achievements_copy_player_achievement_by_index}
- * * ${function.eos_achievements_get_player_achievement_count}
- * 
- * @param {string} user_id The Product User ID for the user who is querying for player achievements. For a Dedicated Server this value will not be present in the struct.
- * @param {string} user_id_target The Product User ID for the user whose achievements are to be retrieved
- * 
- * @returns {real}
- * 
- * @event social
- * @member {string} type `"eos_achievements_query_player_achievements"`
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID
- * 
+ * @desc **Epic Online Services Function:** [EOS_Achievements_QueryPlayerAchievements](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-query-player-achievements)
+ *
+ * Queries a player's achievement progress. `target_user_id` doesn't need to be the same as `local_user_id` —
+ * you can query another player's progress as long as `local_user_id` has permission to see it. Call this
+ * before using ${function.eos_achievements_get_player_achievement_count}, ${function.eos_achievements_copy_player_achievement_by_index}
+ * or ${function.eos_achievements_copy_player_achievement_by_id} for that `target_user_id`.
+ *
+ * @param {String} local_user_id The Product User ID of the user performing the query.
+ * @param {String} target_user_id The Product User ID of the player whose achievements to query.
+ * @param {Function} [callback] Function invoked when the query completes.
+ *
+ * @event callback
+ * @desc Called once when the query completes.
+ * @member {Struct.EpicAchievementsQueryPlayerAchievementsCallbackInfo} result The result of the query.
  * @event_end
- * 
+ *
  * @example
  * ```gml
- * identifier = eos_achievements_query_player_achievements(user_id, user_id);
- * ```
- * The code sample above saves the identifier that can be used inside a ${event.social}.
- * 
- * ```gml
- * if (async_load[? "type"] == "eos_achievements_query_player_achievements")
- * if (async_load[? "identifier"] == identifier)
+ * eos_achievements_query_player_achievements(local_user_id, local_user_id, function(_result)
  * {
- *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
+ *     if (_result.result_code == EpicResult.Success)
  *     {
- *         show_debug_message(async_load[? "type"] + " succeeded!");
+ *         show_debug_message($"Loaded {eos_achievements_get_player_achievement_count(_result.user_id, _result.target_user_id)} achievements for {_result.target_user_id}");
  *     }
- *     else
- *     {
- *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
- *     }
- * }
+ * });
  * ```
- * The code above matches the response against the correct event **type** and logs the success of the task.
+ * The above code queries the local player's own achievement progress.
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_get_achievement_definition_count
+ * @desc **Epic Online Services Function:** [EOS_Achievements_GetAchievementDefinitionCount](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-get-achievement-definition-count)
+ *
+ * Returns the number of achievement definitions available, from the last successful call to
+ * ${function.eos_achievements_query_definitions}.
+ *
+ * @returns {Real}
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_get_player_achievement_count
+ * @desc **Epic Online Services Function:** [EOS_Achievements_GetPlayerAchievementCount](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-get-player-achievement-count)
+ *
+ * Returns the number of achievements associated with `target_user_id`, from the last successful call to
+ * ${function.eos_achievements_query_player_achievements} for that user.
+ *
+ * @param {String} local_user_id The Product User ID of the user making the request.
+ * @param {String} target_user_id The Product User ID of the player whose achievement count to fetch.
+ *
+ * @returns {Real}
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_copy_achievement_definition_by_index
+ * @desc **Epic Online Services Function:** [EOS_Achievements_CopyAchievementDefinitionByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-by-index)
+ *
+ * Fetches an achievement definition by index from the cached data populated by ${function.eos_achievements_query_definitions}.
+ *
+ * [[Note: This is the deprecated (V1) definition shape — prefer ${function.eos_achievements_copy_achievement_definition_v2_by_index} for new code, which reports separate unlocked/locked display text instead of a single ambiguous pair.]]
+ *
+ * @param {Real} index Index of the definition, between 0 and ${function.eos_achievements_get_achievement_definition_count} - 1.
+ *
+ * @returns {Struct.EpicAchievementsDefinition}
+ *
+ * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet — check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_copy_achievement_definition_v2_by_index
+ * @desc **Epic Online Services Function:** [EOS_Achievements_CopyAchievementDefinitionV2ByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-v2-by-index)
+ *
+ * Fetches an achievement definition (V2 shape, with separate unlocked/locked display text) by index from the
+ * cached data populated by ${function.eos_achievements_query_definitions}.
+ *
+ * @param {Real} index Index of the definition, between 0 and ${function.eos_achievements_get_achievement_definition_count} - 1.
+ *
+ * @returns {Struct.EpicAchievementsDefinitionV2}
+ *
+ * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet — check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_copy_achievement_definition_by_id
+ * @desc **Epic Online Services Function:** [EOS_Achievements_CopyAchievementDefinitionByAchievementId](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-by-achievement-id)
+ *
+ * Fetches an achievement definition (V1 shape) by its achievement ID, from the cached data populated by
+ * ${function.eos_achievements_query_definitions}.
+ *
+ * @param {String} achievement_id ID of the achievement definition to fetch.
+ *
+ * @returns {Struct.EpicAchievementsDefinition}
+ *
+ * [[Warning: Returns `undefined` if `achievement_id` doesn't match any queried definition — check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_copy_player_achievement_by_index
+ * @desc **Epic Online Services Function:** [EOS_Achievements_CopyPlayerAchievementByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-player-achievement-by-index)
+ *
+ * Fetches a player's achievement progress by index, from the cached data populated by
+ * ${function.eos_achievements_query_player_achievements}.
+ *
+ * @param {String} local_user_id The Product User ID of the user making the request.
+ * @param {String} target_user_id The Product User ID of the player whose achievement to fetch.
+ * @param {Real} index Index of the achievement, between 0 and ${function.eos_achievements_get_player_achievement_count} - 1.
+ *
+ * @returns {Struct.EpicPlayerAchievement}
+ *
+ * [[Warning: Returns `undefined` if `index` is out of range or the ids are invalid — check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_copy_player_achievement_by_id
+ * @desc **Epic Online Services Function:** [EOS_Achievements_CopyPlayerAchievementByAchievementId](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-player-achievement-by-achievement-id)
+ *
+ * Fetches a player's achievement progress by achievement ID, from the cached data populated by
+ * ${function.eos_achievements_query_player_achievements}.
+ *
+ * @param {String} local_user_id The Product User ID of the user making the request.
+ * @param {String} target_user_id The Product User ID of the player whose achievement to fetch.
+ * @param {String} achievement_id ID of the achievement to fetch.
+ *
+ * @returns {Struct.EpicPlayerAchievement}
+ *
+ * [[Warning: Returns `undefined` if `achievement_id` doesn't match a queried achievement or the ids are invalid — check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_copy_stat_threshold_by_index
+ * @desc **Epic Online Services Function:** [EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-v2-by-achievement-id)
+ *
+ * Fetches one stat threshold entry (a stat name and the value it must reach) from the given achievement's
+ * definition, by index. Internally this fetches the achievement's V2 definition and indexes into its embedded
+ * threshold list — it does not require you to have called ${function.eos_achievements_query_definitions}
+ * again beforehand, but the achievement itself must exist on the backend.
+ *
+ * @param {String} achievement_id ID of the achievement whose thresholds to read.
+ * @param {Real} index Index of the threshold entry, between 0 and the achievement's `stat_thresholds_count`.
+ *
+ * @returns {Struct.EpicStatThreshold}
+ *
+ * [[Warning: Returns `undefined` if `achievement_id` is invalid or `index` is out of range — check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_copy_player_stat_info_by_index
+ * @desc **Epic Online Services Function:** [EOS_Achievements_CopyPlayerAchievementByAchievementId](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-player-achievement-by-achievement-id)
+ *
+ * Fetches one stat progress entry (current value vs. threshold) from a player's achievement progress, by
+ * index. Requires ${function.eos_achievements_query_player_achievements} to have completed for `target_user_id`.
+ *
+ * @param {String} local_user_id The Product User ID of the user making the request.
+ * @param {String} target_user_id The Product User ID of the player whose stat info to read.
+ * @param {String} achievement_id ID of the achievement whose stat info to read.
+ * @param {Real} index Index of the stat info entry, between 0 and the achievement's `stat_info_count`.
+ *
+ * @returns {Struct.EpicPlayerStatInfo}
+ *
+ * [[Warning: Returns `undefined` if the ids are invalid or `index` is out of range — check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_unlock_achievements
+ * @desc **Epic Online Services Function:** [EOS_Achievements_UnlockAchievements](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-unlock-achievements)
+ *
+ * Directly unlocks one or more achievements for a player. Most games instead unlock achievements
+ * automatically on the backend once the underlying stats reach their thresholds — use this for achievements
+ * that aren't stat-driven.
+ *
+ * @param {String} user_id The Product User ID of the player to unlock achievements for.
+ * @param {Array[String]} achievement_ids The IDs of the achievements to unlock.
+ * @param {Function} [callback] Function invoked when the request completes.
+ *
+ * @event callback
+ * @desc Called once when the unlock request completes.
+ * @member {Struct.EpicAchievementsUnlockAchievementsCallbackInfo} result The result of the request.
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_achievements_unlock_achievements(user_id, ["ach_first_win", "ach_no_deaths"], function(_result)
+ * {
+ *     if (_result.result_code == EpicResult.Success)
+ *     {
+ *         show_debug_message($"Unlocked {_result.achievements_count} achievement(s)");
+ *     }
+ * });
+ * ```
+ * The above code unlocks two achievements directly for the given player.
+ * @function_end
+ */
+
+/**
+ * @function eos_achievements_add_notify_achievements_unlocked_v2
+ * @desc **Epic Online Services Function:** [EOS_Achievements_AddNotifyAchievementsUnlockedV2](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-add-notify-achievements-unlocked-v2)
+ *
+ * Registers to be notified whenever an achievement is unlocked for any locally logged-in user, however it
+ * was unlocked (through ${function.eos_achievements_unlock_achievements} or automatically via stats). If the
+ * returned notification ID is valid, call ${function.eos_achievements_remove_notify_achievements_unlocked}
+ * when you no longer need it (e.g. on room/game end).
+ *
+ * @param {Function} [callback] Function invoked every time an achievement unlocks.
+ *
+ * @returns {Real} A notification ID, or `0` if registration failed.
+ *
+ * @event callback
+ * @desc Called once per achievement unlock.
+ * @member {Struct.EpicAchievementsUnlockedV2CallbackInfo} result Details of the unlocked achievement.
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * global.achievement_notify_id = eos_achievements_add_notify_achievements_unlocked_v2(function(_result)
+ * {
+ *     show_debug_message($"Achievement unlocked: {_result.achievement_id}");
+ * });
+ * ```
+ * The above code registers a persistent listener for achievement unlocks.
  * @function_end
  */
 
 /**
  * @function eos_achievements_remove_notify_achievements_unlocked
- * @desc **Epic Online Services Function:** [EOS_Achievements_RemoveNotifyAchievementsUnlocked](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_RemoveNotifyAchievementsUnlocked/index.html)
- * 
- * This function unregisters from receiving achievement unlocked notifications, should be passed the identifier returned from the function:
- * 
- * * ${function.eos_achievements_add_notify_achievements_unlocked_v2}
- * 
- * @param {real} id The notification registration handle (returned by ${function.eos_achievements_add_notify_achievements_unlocked_v2})
- * 
- * @example
- * ```gml
- * handle = eos_achievements_add_notify_achievements_unlocked_v2();
- * //...
- * //later...
- * //...
- * eos_achievements_remove_notify_achievements_unlocked(handle);
- * ```
- * The code sample above enables the achievement unlock notifications (${function.eos_achievements_add_notify_achievements_unlocked_v2}) and later disables them by referring to the previously generated handle.
+ * @desc **Epic Online Services Function:** [EOS_Achievements_RemoveNotifyAchievementsUnlocked](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-remove-notify-achievements-unlocked)
+ *
+ * Unregisters a notification previously registered with ${function.eos_achievements_add_notify_achievements_unlocked_v2}.
+ *
+ * @param {Real} notification_id The notification ID returned by ${function.eos_achievements_add_notify_achievements_unlocked_v2}.
+ *
  * @function_end
  */
-
-/**
- * @function eos_achievements_unlock_achievement
- * @desc **Epic Online Services Function:** [EOS_Achievements_UnlockAchievements](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Achievements/EOS_Achievements_UnlockAchievements/index.html)
- * 
- * This function unlocks an achievement for a specific player.
- * 
- * @param {string} user_id The Product User ID for the user whose achievements we want to unlock
- * @param {string} achievement_id Achievement ID to unlock
- * 
- * @returns {real}
- * 
- * @event social
- * @member {string} type The string `"eos_achievements_unlock_achievement"`
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID
- * @event_end
- * 
- * @example
- * 
- * 
- * ```gml
- * identifier = eos_achievements_unlock_achievement();
- * ```
- * The code sample above saves the identifier that can be used inside a ${event.social}.
- * 
- * ```gml
- * if (async_load[? "type"] == "eos_achievements_unlock_achievement")
- * if (async_load[? "identifier"] == identifier)
- * {
- *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
- *     {
- *         show_debug_message(async_load[? "type"] + " succeeded!");
- *     }
- *     else
- *     {
- *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
- *     }
- * }
- * ```
- * The code above matches the response against the correct event **type** and logs the success of the task.
- * @function_end
- */
-
 
 // Structs
 
 /**
- * @struct PlayerAchievement
- * @desc A player achievement is represented by a struct and contains information about a single player achievement.
- * 
- * The status member present in the struct can be represented by one of the following values:
- * 
- * * `EOS_RESULT.SUCCESS` if the information is available and was correctly returned;
- * * `EOS_RESULT.INVALID_PARAMETERS` (extension internal error, should never be returned);
- * * `EOS_RESULT.NOT_FOUND` if the achievement definition is not found;
- * * `EOS_RESULT.INVALID_PRODUCT_USER_ID` if you pass an invalid user ID;
- * 
- * @member {constant.EOS_RESULT} status The result value of the task
- * @member {string} status_message Text representation of the status code
- * @member {string} achievement_id This achievement's unique identifier
- * @member {real} progress Progress towards completing this achievement (as a percentage)
- * @member {string} unlock_time The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be `EOS_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED`.
- * @member {string} stat_info_count The number of player stat info entries associated with this achievement.
- * @member {array[struct.PlayerStatInfo]} stat_info Array of ${struct.PlayerStatInfo} structures containing information about stat thresholds used to unlock the achievement and the player's current values for those stats
- * @member {string} display_name Localized display name for the achievement based on this specific player's current progress on the achievement
- * @member {string} description Localized description for the achievement based on this specific player's current progress on the achievement
- * @member {string} icon_url URL of an icon to display for the achievement based on this specific player's current progress on the achievement. This value may not be present in the struct if there is no data configured in the developer portal
- * @member {string} flavor_text Localized flavor text that can be used by the game in an arbitrary manner. This value may not be present in the struct if there is no data configured in the developer portal
+ * @struct EpicAchievementsQueryDefinitionsCallbackInfo
+ * @desc The result of ${function.eos_achievements_query_definitions}.
+ *
+ * @member {Constant.EpicResult} result_code `EpicResult.Success` if the definitions were queried successfully.
+ *
  * @struct_end
  */
 
 /**
- * @struct PlayerStatInfo
- * @desc **Epic Online Services Struct:** (EOS_Achievements_StatThresholds)[https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-achievements-stat-thresholds]
- * 
- * This struct contains information about a collection of stat threshold data.
- * 
- * @member {string} name The name of the stat.
- * @member {real} api_version The API version.
- * @member {real} current_value The current value of the stat.
- * @member {real} threshold_value The value that the stat must surpass to satisfy the requirement for unlocking an achievement.
+ * @struct EpicAchievementsQueryPlayerAchievementsCallbackInfo
+ * @desc The result of ${function.eos_achievements_query_player_achievements}.
+ *
+ * @member {Constant.EpicResult} result_code `EpicResult.Success` if the player's achievements were queried successfully.
+ * @member {String} user_id The Product User ID that made the request.
+ * @member {String} target_user_id The Product User ID whose achievements were queried.
+ *
  * @struct_end
  */
 
 /**
- * @struct AchievementDefinition
- * @desc An achievement definition is represented by a struct and contains information about a single achievement definition with localised text.
- * 
- *   The status member present in the struct can be represented by one of the following values:
- *   
- * * `EOS_RESULT.SUCCESS` if the information is available and was correctly returned;
- * * `EOS_RESULT.INVALID_PARAMETERS` (extension internal error, should never be returned);
- * * `EOS_RESULT.NOT_FOUND` if the achievement definition is not found;
- * * `EOS_RESULT.INVALID_PRODUCT_USER_ID` if any of the user_id options are incorrect;
- * 
- * @member {constant.EOS_RESULT} status The result value of the task
- * @member {string} status_message Text representation of the status code
- * @member {string} achievement_id Achievement ID that can be used to uniquely identify the achievement
- * @member {string} unlocked_display_name Localized display name for the achievement when it has been unlocked
- * @member {string} unlocked_description Localized description for the achievement when it has been unlocked
- * @member {string} locked_display_name Localized display name for the achievement when it is locked or hidden
- * @member {string} locked_description Localized description for the achievement when it is locked or hidden
- * @member {string} flavor_text Localized flavor text that can be used by the game in an arbitrary manner. This value may not be present in the struct if there is no data configured in the development portal
- * @member {string} unlocked_icon_url URL of an icon to display for the achievement when it is unlocked. This value may not be present in the struct if there is no data configured in the development portal
- * @member {string} locked_icon_url URL of an icon to display for the achievement when it is locked or hidden. This value may not be present in the struct if there is no data configured in the development portal
- * @member {bool} is_hidden `true` if the achievement is hidden; `false` otherwise
+ * @struct EpicStatThreshold
+ * @desc One stat name/threshold pair required for an achievement to unlock, as returned by
+ * ${function.eos_achievements_copy_stat_threshold_by_index}.
+ *
+ * @member {String} name The name of the stat.
+ * @member {Real} threshold The value the stat must reach to satisfy this part of the achievement.
+ *
  * @struct_end
  */
 
+/**
+ * @struct EpicPlayerStatInfo
+ * @desc A player's current progress towards one of an achievement's stat thresholds, as returned by
+ * ${function.eos_achievements_copy_player_stat_info_by_index}.
+ *
+ * @member {String} name The name of the stat.
+ * @member {Real} current_value The player's current value for this stat.
+ * @member {Real} threshold_value The value the stat must reach for this part of the achievement.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicAchievementsStatThresholds
+ * @desc One stat threshold entry embedded in a ${struct.EpicAchievementsDefinition}'s `stat_thresholds` array.
+ *
+ * @member {String} name The name of the stat.
+ * @member {Real} threshold The value the stat must reach to satisfy this part of the achievement.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicAchievementsUnlockAchievementsCallbackInfo
+ * @desc The result of ${function.eos_achievements_unlock_achievements}.
+ *
+ * @member {Constant.EpicResult} result_code `EpicResult.Success` if the achievements were unlocked successfully.
+ * @member {String} user_id The Product User ID the achievements were unlocked for.
+ * @member {Real} achievements_count The number of achievements that were unlocked by this call.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicAchievementsDefinition
+ * @desc The deprecated (V1) achievement definition shape, as returned by
+ * ${function.eos_achievements_copy_achievement_definition_by_index}/${function.eos_achievements_copy_achievement_definition_by_id}.
+ * Prefer ${struct.EpicAchievementsDefinitionV2} for new code.
+ *
+ * @member {String} achievement_id The ID of the achievement.
+ * @member {String} display_name The unlocked display name.
+ * @member {String} description The unlocked description.
+ * @member {String} locked_display_name The locked display name.
+ * @member {String} locked_description The locked description.
+ * @member {String} hidden_description The description shown for a hidden achievement before it's unlocked.
+ * @member {String} completion_description Flavor text shown once the achievement completes.
+ * @member {String} unlocked_icon_id ID of the icon shown when unlocked.
+ * @member {String} locked_icon_id ID of the icon shown when locked.
+ * @member {Bool} is_hidden Whether the achievement is hidden until unlocked.
+ * @member {Real} stat_thresholds_count Number of entries in `stat_thresholds`.
+ * @member {Array[Struct.EpicAchievementsStatThresholds]} stat_thresholds The stat name/threshold pairs required to unlock this achievement.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicAchievementsDefinitionV2
+ * @desc The current achievement definition shape, as returned by
+ * ${function.eos_achievements_copy_achievement_definition_v2_by_index}. Unlike ${struct.EpicAchievementsDefinition}
+ * this reports separate display text for the unlocked and locked states rather than one ambiguous pair.
+ *
+ * @member {String} achievement_id The ID of the achievement.
+ * @member {String} unlocked_display_name The display name shown once unlocked.
+ * @member {String} unlocked_description The description shown once unlocked.
+ * @member {String} locked_display_name The display name shown while locked.
+ * @member {String} locked_description The description shown while locked.
+ * @member {String} flavor_text Flavor text for the achievement.
+ * @member {String} completion_description Description shown when the achievement is completed.
+ * @member {String} unlocked_icon_url URL of the icon shown when unlocked.
+ * @member {String} locked_icon_url URL of the icon shown when locked.
+ * @member {Bool} is_hidden Whether the achievement is hidden until unlocked.
+ * @member {Real} stat_thresholds_count Number of stat thresholds behind this achievement (fetch them individually with ${function.eos_achievements_copy_stat_threshold_by_index}).
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicPlayerAchievement
+ * @desc A player's progress towards a single achievement, as returned by
+ * ${function.eos_achievements_copy_player_achievement_by_index}/${function.eos_achievements_copy_player_achievement_by_id}.
+ *
+ * @member {String} achievement_id The ID of the achievement.
+ * @member {Real} progress Progress towards completion, from `0` to `1`.
+ * @member {Real} unlock_time Unix timestamp the achievement was unlocked at, or `-1` if not yet unlocked.
+ * @member {Real} stat_info_count Number of entries in `stat_info`.
+ * @member {Array[Struct.EpicPlayerStatInfo]} stat_info Per-stat progress towards this achievement's thresholds.
+ * @member {String} display_name The display name for the achievement's current state (locked/unlocked).
+ * @member {String} description The description for the achievement's current state (locked/unlocked).
+ * @member {String} icon_url URL of the icon for the achievement's current state (locked/unlocked).
+ * @member {String} flavor_text Flavor text for the achievement.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicAchievementsUnlockedV2CallbackInfo
+ * @desc Reported to a listener registered with ${function.eos_achievements_add_notify_achievements_unlocked_v2}
+ * whenever an achievement unlocks.
+ *
+ * @member {String} user_id The Product User ID the achievement was unlocked for.
+ * @member {String} achievement_id The ID of the achievement that was unlocked.
+ * @member {Real} unlock_time Unix timestamp the achievement was unlocked at.
+ *
+ * @struct_end
+ */
 
 /**
  * @module achievements
  * @title Achievements
- * @desc **Epic Online Services Interface:** [Achievements Interface](https://dev.epicgames.com/docs/game-services/achievements)
- * 
- * The **[Achievements Interface](https://dev.epicgames.com/docs/game-services/achievements)** provides a way for developers to retrieve data about a player's Epic Online Services achievements, unlock achievements for that player, and retrieve data about all of the Epic Online Services achievements belonging to an application.
- * 
+ * @desc **Epic Online Services Interface:** [Achievements Interface](https://dev.epicgames.com/docs/game-services/eos-achievements-interface)
+ *
+ * The Achievements Interface lets you query achievement definitions and player progress, unlock achievements
+ * directly, and listen for unlocks that happen automatically as stats cross their thresholds.
+ *
+ * [[Note: Query the achievement definitions with ${function.eos_achievements_query_definitions} and a player's
+ * progress with ${function.eos_achievements_query_player_achievements} before reading either — the accessor
+ * functions below read from the most recently cached query result.]]
+ *
  * @section_func
- * @desc These functions are provided for handling achievements:
- * @ref eos_achievements_add_notify_achievements_unlocked_v2
- * @ref eos_achievements_copy_achievement_definition_v2_by_achievement_id
- * @ref eos_achievements_copy_achievement_definition_v2_by_index
- * @ref eos_achievements_copy_player_achievement_by_achievement_id
- * @ref eos_achievements_copy_player_achievement_by_index
- * @ref eos_achievements_get_achievement_definition_count
- * @ref eos_achievements_get_player_achievement_count
+ * @desc Provided functions:
+ *
  * @ref eos_achievements_query_definitions
  * @ref eos_achievements_query_player_achievements
+ * @ref eos_achievements_get_achievement_definition_count
+ * @ref eos_achievements_get_player_achievement_count
+ * @ref eos_achievements_copy_achievement_definition_by_index
+ * @ref eos_achievements_copy_achievement_definition_v2_by_index
+ * @ref eos_achievements_copy_achievement_definition_by_id
+ * @ref eos_achievements_copy_player_achievement_by_index
+ * @ref eos_achievements_copy_player_achievement_by_id
+ * @ref eos_achievements_copy_stat_threshold_by_index
+ * @ref eos_achievements_copy_player_stat_info_by_index
+ * @ref eos_achievements_unlock_achievements
+ * @ref eos_achievements_add_notify_achievements_unlocked_v2
  * @ref eos_achievements_remove_notify_achievements_unlocked
- * @ref eos_achievements_unlock_achievement
+ *
  * @section_end
- * 
+ *
  * @section_struct
- * @desc These are the structures used by this API:
- * @ref AchievementDefinition
- * @ref PlayerAchievement
- * @ref PlayerStatInfo
+ * @desc These are the structs used by this module:
+ *
+ * @ref EpicAchievementsQueryDefinitionsCallbackInfo
+ * @ref EpicAchievementsQueryPlayerAchievementsCallbackInfo
+ * @ref EpicStatThreshold
+ * @ref EpicPlayerStatInfo
+ * @ref EpicAchievementsStatThresholds
+ * @ref EpicAchievementsUnlockAchievementsCallbackInfo
+ * @ref EpicAchievementsDefinition
+ * @ref EpicAchievementsDefinitionV2
+ * @ref EpicPlayerAchievement
+ * @ref EpicAchievementsUnlockedV2CallbackInfo
+ *
  * @section_end
- * 
+ *
  * @module_end
  */
