@@ -1684,6 +1684,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     {
         return __EXT_JNI__eos_rtc_audio_remove_notify_audio_before_send(__arg_buffer, __arg_buffer_length);
     }
+    public double __EXT_NATIVE__eos_rtc_audio_before_send_data_fetch(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_audio_before_send_data_fetch(__arg_buffer, __arg_buffer_length);
+    }
     public double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {
         return __EXT_JNI__eos_rtc_audio_add_notify_audio_before_render(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
@@ -1691,6 +1695,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     public double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_render(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_rtc_audio_remove_notify_audio_before_render(__arg_buffer, __arg_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_audio_before_render_data_fetch(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_audio_before_render_data_fetch(__arg_buffer, __arg_buffer_length);
     }
     public double __EXT_NATIVE__eos_rtc_audio_register_platform_user(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
@@ -1719,6 +1727,10 @@ public class EpicOnlineServicesInternal extends RunnerSocial {
     public double __EXT_NATIVE__eos_rtc_data_remove_notify_data_received(ByteBuffer __arg_buffer, double __arg_buffer_length)
     {
         return __EXT_JNI__eos_rtc_data_remove_notify_data_received(__arg_buffer, __arg_buffer_length);
+    }
+    public double __EXT_NATIVE__eos_rtc_data_received_data_fetch(ByteBuffer __arg_buffer, double __arg_buffer_length)
+    {
+        return __EXT_JNI__eos_rtc_data_received_data_fetch(__arg_buffer, __arg_buffer_length);
     }
     public double __EXT_NATIVE__eos_rtc_data_add_notify_participant_updated(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length)
     {

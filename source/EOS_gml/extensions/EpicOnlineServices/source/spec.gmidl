@@ -4680,8 +4680,12 @@ class `[[EpicRTCAudioBeforeSendCallbackInfo]]` prototype Object
     [field]
     property frames_count : uint32 { get; set; }
 
-    [field]
-    property data : string { get; set; }
+    // Metadata only — the PCM frames are held natively keyed by this handle. Call
+    // eos_rtc_audio_before_send_data_fetch(handle_id, buffer) to copy them out (sized
+    // frames_count * channels * 2 bytes); a handle is valid until fetched or superseded by
+    // this same registration's next firing, whichever comes first.
+    [field, type_hint=`uint64`]
+    property handle_id : gmval { get; set; }
 }
 
 [global]
@@ -4705,8 +4709,10 @@ class `[[EpicRTCAudioBeforeRenderCallbackInfo]]` prototype Object
     [field]
     property frames_count : uint32 { get; set; }
 
-    [field]
-    property data : string { get; set; }
+    // Metadata only — see EpicRTCAudioBeforeSendCallbackInfo.handle_id. Fetch with
+    // eos_rtc_audio_before_render_data_fetch(handle_id, buffer).
+    [field, type_hint=`uint64`]
+    property handle_id : gmval { get; set; }
 }
 
 [global]
@@ -4837,11 +4843,23 @@ function eos_rtc_audio_add_notify_audio_before_send(local_user_id: string, room_
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_before_send([type_hint=`uint64`] notification_id: gmval): unit;
 
+/// Copies the PCM frames held for a EpicRTCAudioBeforeSendCallbackInfo.handle_id into out_buffer
+/// (must be at least frames_count * channels * 2 bytes) and releases the held data. Returns false
+/// if the handle is unknown, already fetched, or out_buffer is too small.
+[global, bind = typed_gml]
+function eos_rtc_audio_before_send_data_fetch([type_hint=`uint64`] handle_id: gmval, [type_hint=buffer] out_buffer: gmval): bool;
+
 [global, bind = typed_gml, type_hint=`uint64`]
 function eos_rtc_audio_add_notify_audio_before_render(local_user_id: string, room_name: string, unmixed_audio: bool, [type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_remove_notify_audio_before_render([type_hint=`uint64`] notification_id: gmval): unit;
+
+/// Copies the PCM frames held for a EpicRTCAudioBeforeRenderCallbackInfo.handle_id into out_buffer
+/// (must be at least frames_count * channels * 2 bytes) and releases the held data. Returns false
+/// if the handle is unknown, already fetched, or out_buffer is too small.
+[global, bind = typed_gml]
+function eos_rtc_audio_before_render_data_fetch([type_hint=`uint64`] handle_id: gmval, [type_hint=buffer] out_buffer: gmval): bool;
 
 [global, bind = typed_gml]
 function eos_rtc_audio_register_platform_user(rtc_platform_user_id: string, [type_hint=`func?`] callback: gmval): unit;
@@ -4884,8 +4902,12 @@ class `[[EpicRTCDataReceivedCallbackInfo]]` prototype Object
     [field, type_hint=`int64`]
     property data_length_bytes : gmval { get; set; }
 
-    [field]
-    property data : string { get; set; }   // base64-encoded raw bytes; use buffer_base64_decode()
+    // Metadata only — the raw bytes are held natively keyed by this handle. Call
+    // eos_rtc_data_received_data_fetch(handle_id, buffer) to copy them out (sized
+    // data_length_bytes); a handle is valid until fetched or superseded by this same
+    // registration's next firing, whichever comes first.
+    [field, type_hint=`uint64`]
+    property handle_id : gmval { get; set; }
 }
 
 [global]
@@ -4957,6 +4979,12 @@ function eos_rtc_data_add_notify_data_received(
 
 [global, bind = typed_gml]
 function eos_rtc_data_remove_notify_data_received([type_hint=`uint64`] notification_id: gmval): unit;
+
+/// Copies the raw bytes held for a EpicRTCDataReceivedCallbackInfo.handle_id into out_buffer
+/// (must be at least data_length_bytes) and releases the held data. Returns false if the
+/// handle is unknown, already fetched, or out_buffer is too small.
+[global, bind = typed_gml]
+function eos_rtc_data_received_data_fetch([type_hint=`uint64`] handle_id: gmval, [type_hint=buffer] out_buffer: gmval): bool;
 
 [global, bind = typed_gml, type_hint=`uint64`]
 function eos_rtc_data_add_notify_participant_updated(

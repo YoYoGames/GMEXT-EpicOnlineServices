@@ -6905,6 +6905,21 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_send(char
     return 0;
 }
 
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_before_send_data_fetch(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: handle_id, type: UInt64
+    std::uint64_t handle_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: out_buffer, type: Buffer
+    gm::wire::GMBuffer out_buffer = __buffer_queue.front();
+    __buffer_queue.pop();
+
+    auto&& __result = eos_rtc_audio_before_send_data_fetch(handle_id, out_buffer);
+    return static_cast<double>(__result);
+}
+
 GMEXPORT double __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
@@ -6942,6 +6957,21 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_render(ch
 
     eos_rtc_audio_remove_notify_audio_before_render(notification_id);
     return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_audio_before_render_data_fetch(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: handle_id, type: UInt64
+    std::uint64_t handle_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: out_buffer, type: Buffer
+    gm::wire::GMBuffer out_buffer = __buffer_queue.front();
+    __buffer_queue.pop();
+
+    auto&& __result = eos_rtc_audio_before_render_data_fetch(handle_id, out_buffer);
+    return static_cast<double>(__result);
 }
 
 GMEXPORT double __EXT_NATIVE__eos_rtc_audio_register_platform_user(char* __arg_buffer, double __arg_buffer_length)
@@ -7090,6 +7120,21 @@ GMEXPORT double __EXT_NATIVE__eos_rtc_data_remove_notify_data_received(char* __a
 
     eos_rtc_data_remove_notify_data_received(notification_id);
     return 0;
+}
+
+GMEXPORT double __EXT_NATIVE__eos_rtc_data_received_data_fetch(char* __arg_buffer, double __arg_buffer_length)
+{
+    gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
+
+    // field: handle_id, type: UInt64
+    std::uint64_t handle_id = gm::wire::codec::readValue<std::uint64_t>(__br);
+
+    // field: out_buffer, type: Buffer
+    gm::wire::GMBuffer out_buffer = __buffer_queue.front();
+    __buffer_queue.pop();
+
+    auto&& __result = eos_rtc_data_received_data_fetch(handle_id, out_buffer);
+    return static_cast<double>(__result);
 }
 
 GMEXPORT double __EXT_NATIVE__eos_rtc_data_add_notify_participant_updated(char* __arg_buffer, double __arg_buffer_length, char* __ret_buffer, double __ret_buffer_length)

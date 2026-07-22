@@ -298,7 +298,7 @@ std::optional<gm_structs::EpicTitleStorageFileMetadata> eos_titlestorage_copy_fi
     std::string_view local_user_id,
     int64_t index)
 {
-    eos_clear_last_error();
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HTitleStorage ts = eos_ts_iface();
     if (!ts) {
@@ -330,7 +330,7 @@ std::optional<gm_structs::EpicTitleStorageFileMetadata> eos_titlestorage_copy_fi
     std::string_view local_user_id,
     std::string_view filename)
 {
-    eos_clear_last_error();
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HTitleStorage ts = eos_ts_iface();
     if (!ts) {

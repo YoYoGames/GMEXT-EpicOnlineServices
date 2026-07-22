@@ -421,7 +421,7 @@ std::optional<gm_structs::EpicPlayerDataStorageFileMetadata> eos_playerdatastora
     std::string_view local_user_id,
     int64_t index)
 {
-    eos_clear_last_error();
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HPlayerDataStorage pds = eos_pds_iface();
     if (!pds) {
@@ -457,7 +457,7 @@ std::optional<gm_structs::EpicPlayerDataStorageFileMetadata> eos_playerdatastora
     std::string_view local_user_id,
     std::string_view filename)
 {
-    eos_clear_last_error();
+    EOS_GUARD_RET(std::nullopt);
 
     EOS_HPlayerDataStorage pds = eos_pds_iface();
     if (!pds) {

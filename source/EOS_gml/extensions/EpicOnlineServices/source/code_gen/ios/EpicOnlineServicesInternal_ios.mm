@@ -1760,6 +1760,10 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 {
     return __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_send(__arg_buffer, __arg_buffer_length);
 }
+- (double)__EXT_NATIVE__eos_rtc_audio_before_send_data_fetch:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_before_send_data_fetch(__arg_buffer, __arg_buffer_length);
+}
 - (double)__EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {
     return __EXT_NATIVE__eos_rtc_audio_add_notify_audio_before_render(__arg_buffer, __arg_buffer_length, __ret_buffer, __ret_buffer_length);
@@ -1767,6 +1771,10 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 - (double)__EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_render:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_rtc_audio_remove_notify_audio_before_render(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_audio_before_render_data_fetch:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_audio_before_render_data_fetch(__arg_buffer, __arg_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_rtc_audio_register_platform_user:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
@@ -1795,6 +1803,10 @@ static void GMInjectSelectorsIntoSubclass(Class subclass, Class base)
 - (double)__EXT_NATIVE__eos_rtc_data_remove_notify_data_received:(char*)__arg_buffer arg1:(double)__arg_buffer_length
 {
     return __EXT_NATIVE__eos_rtc_data_remove_notify_data_received(__arg_buffer, __arg_buffer_length);
+}
+- (double)__EXT_NATIVE__eos_rtc_data_received_data_fetch:(char*)__arg_buffer arg1:(double)__arg_buffer_length
+{
+    return __EXT_NATIVE__eos_rtc_data_received_data_fetch(__arg_buffer, __arg_buffer_length);
 }
 - (double)__EXT_NATIVE__eos_rtc_data_add_notify_participant_updated:(char*)__arg_buffer arg1:(double)__arg_buffer_length arg2:(char*)__ret_buffer arg3:(double)__ret_buffer_length
 {

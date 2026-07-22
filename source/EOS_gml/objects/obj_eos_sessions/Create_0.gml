@@ -51,9 +51,6 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 	// EpicSessionsJoinSessionAcceptedCallbackInfo: .ui_event_id
 	show_debug_message("notifyJoinSessionAccepted fired")
 
-	// MUST acknowledge or the social overlay UI hangs.
-	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.Success)
-
 	// Copy the session details handle from the overlay event, then join_session — same
 	// pattern as notifySessionInviteAccepted below, just a different handle source.
 	// Don't release it until the join callback returns — the SDK reads from it during join.
@@ -61,15 +58,21 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 	if(_details_id == 0)
 	{
 		show_debug_message("could not copy session handle from ui_event_id")
+		// MUST acknowledge or the social overlay UI hangs.
+		eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.InvalidParameters)
 		return
 	}
 
-	var _ctx = { details_id: _details_id }
+	var _ctx = { details_id: _details_id, ui_event_id: _info.ui_event_id }
 
-	join_session_clean(_details_id, method(_ctx, function(_join_info)
+	var _started = join_session_clean(_details_id, method(_ctx, function(_join_info)
 	{
 		// EpicSessionsJoinSessionCallbackInfo: .result_code
 		eos_sessions_session_details_release(details_id)
+
+		// MUST acknowledge or the social overlay UI hangs — report the real outcome now
+		// that we know it, instead of before the join even started.
+		eos_ui_acknowledge_event_id(ui_event_id, _join_info.result_code)
 
 		if(_join_info.result_code != EpicResult.Success)
 		{
@@ -97,6 +100,13 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 			buffer_delete(_buff)
 		}
 	}))
+
+	if(!_started)
+	{
+		// join_session_clean's own precondition failed synchronously — its callback never
+		// fires, so acknowledge here or the overlay UI hangs forever.
+		eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.InvalidParameters)
+	}
 })
 
 notifyLeaveSessionRequested = eos_sessions_add_notify_leave_session_requested(function(_info)

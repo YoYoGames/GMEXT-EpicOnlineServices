@@ -2454,7 +2454,7 @@ namespace gm_structs
         std::uint32_t sample_rate;
         std::uint32_t channels;
         std::uint32_t frames_count;
-        std::string data;
+        std::uint64_t handle_id;
     };
 
     struct EpicRTCAudioBeforeRenderCallbackInfo
@@ -2465,7 +2465,7 @@ namespace gm_structs
         std::uint32_t sample_rate;
         std::uint32_t channels;
         std::uint32_t frames_count;
-        std::string data;
+        std::uint64_t handle_id;
     };
 
     struct EpicRTCAudioRegisterPlatformUserCallbackInfo
@@ -2492,7 +2492,7 @@ namespace gm_structs
         std::string room_name;
         std::string participant_id;
         std::int64_t data_length_bytes;
-        std::string data;
+        std::uint64_t handle_id;
     };
 
     struct EpicRTCDataUpdateSendingCallbackInfo
@@ -6175,7 +6175,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.sample_rate);
         gm::wire::codec::writeValue(_buf, obj.channels);
         gm::wire::codec::writeValue(_buf, obj.frames_count);
-        gm::wire::codec::writeValue(_buf, obj.data);
+        gm::wire::codec::writeValue(_buf, obj.handle_id);
     }
 
     template<>
@@ -6187,7 +6187,7 @@ namespace gm::wire::codec
         obj.sample_rate = gm::wire::codec::readValue<std::uint32_t>(_buf);
         obj.channels = gm::wire::codec::readValue<std::uint32_t>(_buf);
         obj.frames_count = gm::wire::codec::readValue<std::uint32_t>(_buf);
-        obj.data = gm::wire::codec::readValue<std::string>(_buf);
+        obj.handle_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
         return obj;
     }
 
@@ -6200,7 +6200,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.sample_rate);
         gm::wire::codec::writeValue(_buf, obj.channels);
         gm::wire::codec::writeValue(_buf, obj.frames_count);
-        gm::wire::codec::writeValue(_buf, obj.data);
+        gm::wire::codec::writeValue(_buf, obj.handle_id);
     }
 
     template<>
@@ -6213,7 +6213,7 @@ namespace gm::wire::codec
         obj.sample_rate = gm::wire::codec::readValue<std::uint32_t>(_buf);
         obj.channels = gm::wire::codec::readValue<std::uint32_t>(_buf);
         obj.frames_count = gm::wire::codec::readValue<std::uint32_t>(_buf);
-        obj.data = gm::wire::codec::readValue<std::string>(_buf);
+        obj.handle_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
         return obj;
     }
 
@@ -6272,7 +6272,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.room_name);
         gm::wire::codec::writeValue(_buf, obj.participant_id);
         gm::wire::codec::writeValue(_buf, obj.data_length_bytes);
-        gm::wire::codec::writeValue(_buf, obj.data);
+        gm::wire::codec::writeValue(_buf, obj.handle_id);
     }
 
     template<>
@@ -6283,7 +6283,7 @@ namespace gm::wire::codec
         obj.room_name = gm::wire::codec::readValue<std::string>(_buf);
         obj.participant_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.data_length_bytes = gm::wire::codec::readValue<std::int64_t>(_buf);
-        obj.data = gm::wire::codec::readValue<std::string>(_buf);
+        obj.handle_id = gm::wire::codec::readValue<std::uint64_t>(_buf);
         return obj;
     }
 
@@ -8409,8 +8409,10 @@ void eos_rtc_audio_remove_notify_audio_output_state(std::uint64_t notification_i
 bool eos_rtc_audio_send_audio(std::string_view local_user_id, std::string_view room_name, std::uint32_t sample_rate, std::uint32_t channels, std::uint32_t frames_count, gm::wire::GMBuffer frames);
 std::uint64_t eos_rtc_audio_add_notify_audio_before_send(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_remove_notify_audio_before_send(std::uint64_t notification_id);
+bool eos_rtc_audio_before_send_data_fetch(std::uint64_t handle_id, gm::wire::GMBuffer out_buffer);
 std::uint64_t eos_rtc_audio_add_notify_audio_before_render(std::string_view local_user_id, std::string_view room_name, bool unmixed_audio, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_remove_notify_audio_before_render(std::uint64_t notification_id);
+bool eos_rtc_audio_before_render_data_fetch(std::uint64_t handle_id, gm::wire::GMBuffer out_buffer);
 void eos_rtc_audio_register_platform_user(std::string_view rtc_platform_user_id, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_audio_unregister_platform_user(std::string_view rtc_platform_user_id, const std::optional<gm::wire::GMFunction>& callback);
 gm_enums::EpicResult eos_rtc_data_send_data(std::string_view local_user_id, std::string_view room_name, gm::wire::GMBuffer data, std::uint32_t bytes);
@@ -8418,5 +8420,6 @@ void eos_rtc_data_update_sending(std::string_view local_user_id, std::string_vie
 void eos_rtc_data_update_receiving(std::string_view local_user_id, std::string_view room_name, std::string_view participant_id, bool data_enabled, const std::optional<gm::wire::GMFunction>& callback);
 std::uint64_t eos_rtc_data_add_notify_data_received(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_data_remove_notify_data_received(std::uint64_t notification_id);
+bool eos_rtc_data_received_data_fetch(std::uint64_t handle_id, gm::wire::GMBuffer out_buffer);
 std::uint64_t eos_rtc_data_add_notify_participant_updated(std::string_view local_user_id, std::string_view room_name, const std::optional<gm::wire::GMFunction>& callback);
 void eos_rtc_data_remove_notify_participant_updated(std::uint64_t notification_id);

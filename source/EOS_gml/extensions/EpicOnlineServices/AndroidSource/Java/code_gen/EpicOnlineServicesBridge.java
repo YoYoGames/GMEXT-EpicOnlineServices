@@ -437,8 +437,10 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_rtc_audio_send_audio(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_add_notify_audio_before_send(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_remove_notify_audio_before_send(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_before_send_data_fetch(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_add_notify_audio_before_render(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_remove_notify_audio_before_render(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_audio_before_render_data_fetch(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_register_platform_user(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_audio_unregister_platform_user(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_send_data(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
@@ -446,6 +448,7 @@ public final class EpicOnlineServicesBridge {
     public static native double __EXT_JNI__eos_rtc_data_update_receiving(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_add_notify_data_received(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_remove_notify_data_received(ByteBuffer __arg_buffer, double __arg_buffer_length);
+    public static native double __EXT_JNI__eos_rtc_data_received_data_fetch(ByteBuffer __arg_buffer, double __arg_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_add_notify_participant_updated(ByteBuffer __arg_buffer, double __arg_buffer_length, ByteBuffer __ret_buffer, double __ret_buffer_length);
     public static native double __EXT_JNI__eos_rtc_data_remove_notify_participant_updated(ByteBuffer __arg_buffer, double __arg_buffer_length);
 }

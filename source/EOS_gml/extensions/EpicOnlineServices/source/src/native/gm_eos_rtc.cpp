@@ -5,11 +5,14 @@
 #include <eos_rtc.h>
 #include <eos_rtc_audio.h>
 
+#include <atomic>
+#include <cstring>
 #include <optional>
 #include <string>
 #include <string_view>
 #include <unordered_map>
 #include <mutex>
+#include <vector>
 
 using namespace gm::wire;
 using namespace gm_structs;
@@ -27,6 +30,19 @@ struct EOSAsyncCallbackContext
 struct EOSNotifyCallbackContext
 {
     GMFunction callback;
+};
+
+// AudioBeforeSend/AudioBeforeRender also hold the most recent unfetched PCM frames for their
+// registration, keyed by a fresh handle issued on every firing (not the registration's
+// notification_id — before_render in particular can deliver different participants back-to-back,
+// so reusing notification_id as the fetch key could let a fetch silently return a different
+// participant's frames than the metadata it was paired with). A new firing supersedes any
+// previous unfetched frames for the same registration.
+struct EOSAudioBufferNotifyContext
+{
+    GMFunction callback;
+    uint64_t pending_handle = 0;
+    std::vector<int16_t> pending_frames;
 };
 
 static EOS_HRTC eos_rtc_iface()
@@ -58,26 +74,6 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
     return std::string(buf);
 }
 
-static const char k_b64_chars[] =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-static std::string eos_rtc_audio_base64_encode(const void* data, size_t len)
-{
-    const auto* src = static_cast<const uint8_t*>(data);
-    std::string out;
-    out.reserve(((len + 2) / 3) * 4);
-    for (size_t i = 0; i < len; i += 3) {
-        uint32_t b = (uint32_t)src[i] << 16;
-        if (i + 1 < len) b |= (uint32_t)src[i + 1] << 8;
-        if (i + 2 < len) b |= src[i + 2];
-        out += k_b64_chars[(b >> 18) & 0x3f];
-        out += k_b64_chars[(b >> 12) & 0x3f];
-        out += (i + 1 < len) ? k_b64_chars[(b >> 6) & 0x3f] : '=';
-        out += (i + 2 < len) ? k_b64_chars[b & 0x3f] : '=';
-    }
-    return out;
-}
-
 // ============================================================
 // Notify callback storage — id-keyed, one heap ctx per registration
 // (see gm_eos_p2p.cpp for the reference pattern this follows)
@@ -96,10 +92,11 @@ static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_outpu
 
 // AudioBeforeSend/AudioBeforeRender may fire off the main thread (eos_rtc_audio.h:211,239) — the
 // only two callbacks in this file where that's true. g_notify_mutex additionally guards reading
-// ctx->callback inside those two callbacks (not just add/remove), so the read can't race a
-// concurrent remove_notify's delete.
-static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_before_send_callbacks;
-static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_before_render_callbacks;
+// ctx->callback (and the pending-frames fields below) inside those two callbacks (not just
+// add/remove), so neither can race a concurrent remove_notify's delete or fetch's read.
+static std::unordered_map<uint64_t, EOSAudioBufferNotifyContext*> g_rtc_audio_before_send_callbacks;
+static std::unordered_map<uint64_t, EOSAudioBufferNotifyContext*> g_rtc_audio_before_render_callbacks;
+static std::atomic<uint64_t> g_rtc_audio_buffer_handle_counter{1};
 
 // ============================================================
 // RTC core notify callbacks
@@ -275,17 +272,29 @@ static void EOS_CALL eos_rtc_audio_before_send_callback(
 {
     if (!data) return;
 
-    // May run on an SDK-owned thread (eos_rtc_audio.h:211). Copy the callback out under the lock
-    // so this can't race remove_notify's delete of ctx, then call GML outside the lock so a
-    // reentrant call back into this extension can't deadlock on g_notify_mutex.
+    // May run on an SDK-owned thread (eos_rtc_audio.h:211). Copy the callback out and stash the
+    // frames under the lock so this can't race remove_notify's delete of ctx or a concurrent
+    // fetch's read, then call GML outside the lock so a reentrant call back into this extension
+    // can't deadlock on g_notify_mutex.
     GMFunction cb;
+    uint64_t handle = 0;
     {
         std::lock_guard<std::mutex> lock(g_notify_mutex);
-        auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
-        if (!ctx) return;
+        auto* ctx = static_cast<EOSAudioBufferNotifyContext*>(data->ClientData);
+        if (!ctx || !ctx->callback) return;
         cb = ctx->callback;
+
+        // Supersede any previous unfetched frames for this registration.
+        if (data->Buffer && data->Buffer->Frames && data->Buffer->FramesCount > 0 && data->Buffer->Channels > 0) {
+            size_t sample_count = (size_t)data->Buffer->FramesCount * (size_t)data->Buffer->Channels;
+            ctx->pending_frames.assign(data->Buffer->Frames, data->Buffer->Frames + sample_count);
+            handle = g_rtc_audio_buffer_handle_counter.fetch_add(1, std::memory_order_relaxed);
+            ctx->pending_handle = handle;
+        } else {
+            ctx->pending_frames.clear();
+            ctx->pending_handle = 0;
+        }
     }
-    if (!cb) return;
 
     gm_structs::EpicRTCAudioBeforeSendCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
@@ -295,11 +304,8 @@ static void EOS_CALL eos_rtc_audio_before_send_callback(
         out.sample_rate = data->Buffer->SampleRate;
         out.channels = data->Buffer->Channels;
         out.frames_count = data->Buffer->FramesCount;
-        if (data->Buffer->Frames && data->Buffer->FramesCount > 0 && data->Buffer->Channels > 0) {
-            size_t byte_count = (size_t)data->Buffer->FramesCount * (size_t)data->Buffer->Channels * sizeof(int16_t);
-            out.data = eos_rtc_audio_base64_encode(data->Buffer->Frames, byte_count);
-        }
     }
+    out.handle_id = handle;
 
     cb.call(out);
 }
@@ -310,13 +316,23 @@ static void EOS_CALL eos_rtc_audio_before_render_callback(
     if (!data) return;
 
     GMFunction cb;
+    uint64_t handle = 0;
     {
         std::lock_guard<std::mutex> lock(g_notify_mutex);
-        auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
-        if (!ctx) return;
+        auto* ctx = static_cast<EOSAudioBufferNotifyContext*>(data->ClientData);
+        if (!ctx || !ctx->callback) return;
         cb = ctx->callback;
+
+        if (data->Buffer && data->Buffer->Frames && data->Buffer->FramesCount > 0 && data->Buffer->Channels > 0) {
+            size_t sample_count = (size_t)data->Buffer->FramesCount * (size_t)data->Buffer->Channels;
+            ctx->pending_frames.assign(data->Buffer->Frames, data->Buffer->Frames + sample_count);
+            handle = g_rtc_audio_buffer_handle_counter.fetch_add(1, std::memory_order_relaxed);
+            ctx->pending_handle = handle;
+        } else {
+            ctx->pending_frames.clear();
+            ctx->pending_handle = 0;
+        }
     }
-    if (!cb) return;
 
     gm_structs::EpicRTCAudioBeforeRenderCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
@@ -327,11 +343,8 @@ static void EOS_CALL eos_rtc_audio_before_render_callback(
         out.sample_rate = data->Buffer->SampleRate;
         out.channels = data->Buffer->Channels;
         out.frames_count = data->Buffer->FramesCount;
-        if (data->Buffer->Frames && data->Buffer->FramesCount > 0 && data->Buffer->Channels > 0) {
-            size_t byte_count = (size_t)data->Buffer->FramesCount * (size_t)data->Buffer->Channels * sizeof(int16_t);
-            out.data = eos_rtc_audio_base64_encode(data->Buffer->Frames, byte_count);
-        }
     }
+    out.handle_id = handle;
 
     cb.call(out);
 }
@@ -1311,7 +1324,8 @@ std::uint64_t eos_rtc_audio_add_notify_audio_before_send(
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
+    auto* ctx = new EOSAudioBufferNotifyContext();
+    ctx->callback = callback.value_or(GMFunction{});
 
     EOS_RTCAudio_AddNotifyAudioBeforeSendOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORESEND_API_LATEST;
@@ -1348,6 +1362,34 @@ void eos_rtc_audio_remove_notify_audio_before_send(std::uint64_t notification_id
     }
 }
 
+bool eos_rtc_audio_before_send_data_fetch(std::uint64_t handle_id, gm::wire::GMBuffer out_buffer)
+{
+    eos_clear_last_error();
+    if (handle_id == 0) {
+        eos_set_last_error("EOS_RTCAudio_BeforeSendDataFetch: invalid handle_id.");
+        return false;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    for (auto& [id, ctx] : g_rtc_audio_before_send_callbacks) {
+        if (ctx->pending_handle != handle_id) continue;
+
+        size_t byte_count = ctx->pending_frames.size() * sizeof(int16_t);
+        if (out_buffer.length() < byte_count) {
+            eos_set_last_error("EOS_RTCAudio_BeforeSendDataFetch: out_buffer is too small.");
+            return false;
+        }
+        if (byte_count > 0)
+            std::memcpy(out_buffer.data(), ctx->pending_frames.data(), byte_count);
+        ctx->pending_frames.clear();
+        ctx->pending_handle = 0;
+        return true;
+    }
+
+    eos_set_last_error("EOS_RTCAudio_BeforeSendDataFetch: handle not found or already fetched.");
+    return false;
+}
+
 std::uint64_t eos_rtc_audio_add_notify_audio_before_render(
     std::string_view local_user_id,
     std::string_view room_name,
@@ -1359,7 +1401,8 @@ std::uint64_t eos_rtc_audio_add_notify_audio_before_render(
     if (!audio) { eos_set_last_error("EOS RTCAudio interface unavailable."); return 0; }
 
     std::string rn(room_name);
-    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
+    auto* ctx = new EOSAudioBufferNotifyContext();
+    ctx->callback = callback.value_or(GMFunction{});
 
     EOS_RTCAudio_AddNotifyAudioBeforeRenderOptions opts{};
     opts.ApiVersion  = EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORERENDER_API_LATEST;
@@ -1395,4 +1438,32 @@ void eos_rtc_audio_remove_notify_audio_before_render(std::uint64_t notification_
         delete it->second;
         g_rtc_audio_before_render_callbacks.erase(it);
     }
+}
+
+bool eos_rtc_audio_before_render_data_fetch(std::uint64_t handle_id, gm::wire::GMBuffer out_buffer)
+{
+    eos_clear_last_error();
+    if (handle_id == 0) {
+        eos_set_last_error("EOS_RTCAudio_BeforeRenderDataFetch: invalid handle_id.");
+        return false;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    for (auto& [id, ctx] : g_rtc_audio_before_render_callbacks) {
+        if (ctx->pending_handle != handle_id) continue;
+
+        size_t byte_count = ctx->pending_frames.size() * sizeof(int16_t);
+        if (out_buffer.length() < byte_count) {
+            eos_set_last_error("EOS_RTCAudio_BeforeRenderDataFetch: out_buffer is too small.");
+            return false;
+        }
+        if (byte_count > 0)
+            std::memcpy(out_buffer.data(), ctx->pending_frames.data(), byte_count);
+        ctx->pending_frames.clear();
+        ctx->pending_handle = 0;
+        return true;
+    }
+
+    eos_set_last_error("EOS_RTCAudio_BeforeRenderDataFetch: handle not found or already fetched.");
+    return false;
 }

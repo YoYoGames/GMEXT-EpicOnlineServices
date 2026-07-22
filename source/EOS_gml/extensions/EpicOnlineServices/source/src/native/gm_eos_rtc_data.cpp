@@ -5,10 +5,14 @@
 #include <eos_rtc.h>
 #include <eos_rtc_data.h>
 
+#include <atomic>
 #include <cstdint>
+#include <cstring>
+#include <mutex>
 #include <optional>
 #include <string>
 #include <string_view>
+#include <unordered_map>
 #include <vector>
 
 using namespace gm::wire;
@@ -53,34 +57,33 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
     return std::string(buf);
 }
 
-// ---- Base64 encode (for binary data delivered via callback) ----
+// ============================================================
+// Notify callback storage — id-keyed, one heap ctx per registration
+// (see gm_eos_p2p.cpp for the reference pattern this follows)
+// ============================================================
 
-static const char k_b64_chars[] =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-static std::string base64_encode(const void* data, size_t len)
+struct EOSNotifyCallbackContext
 {
-    const auto* src = static_cast<const uint8_t*>(data);
-    std::string out;
-    out.reserve(((len + 2) / 3) * 4);
-    for (size_t i = 0; i < len; i += 3) {
-        uint32_t b = (uint32_t)src[i] << 16;
-        if (i + 1 < len) b |= (uint32_t)src[i + 1] << 8;
-        if (i + 2 < len) b |= src[i + 2];
-        out += k_b64_chars[(b >> 18) & 0x3f];
-        out += k_b64_chars[(b >> 12) & 0x3f];
-        out += (i + 1 < len) ? k_b64_chars[(b >> 6) & 0x3f] : '=';
-        out += (i + 2 < len) ? k_b64_chars[b & 0x3f] : '=';
-    }
-    return out;
-}
+    GMFunction callback;
+};
 
-// ============================================================
-// Notify globals — RTC data
-// ============================================================
+// DataReceived also holds the most recent unfetched packet for its registration, keyed by a
+// fresh handle issued on every firing (not the registration's notification_id — a registration
+// can deliver different participants back-to-back, so reusing notification_id as the fetch key
+// could let a fetch silently return a different participant's bytes than the metadata it was
+// paired with). A new firing supersedes any previous unfetched packet for the same registration.
+struct EOSDataBufferNotifyContext
+{
+    GMFunction callback;
+    uint64_t pending_handle = 0;
+    std::vector<uint8_t> pending_data;
+};
 
-static GMFunction g_cb_rtc_data_received;
-static GMFunction g_cb_rtc_data_participant_updated;
+static std::mutex g_notify_mutex;
+static std::atomic<uint64_t> g_rtc_data_received_handle_counter{1};
+
+static std::unordered_map<uint64_t, EOSDataBufferNotifyContext*> g_rtc_data_received_callbacks;
+static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_data_participant_updated_callbacks;
 
 // ============================================================
 // Native callbacks
@@ -89,23 +92,44 @@ static GMFunction g_cb_rtc_data_participant_updated;
 static void EOS_CALL eos_rtc_data_received_callback_native(
     const EOS_RTCData_DataReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_data_received) return;
+    if (!data) return;
+
+    GMFunction cb;
+    uint64_t handle = 0;
+    {
+        std::lock_guard<std::mutex> lock(g_notify_mutex);
+        auto* ctx = static_cast<EOSDataBufferNotifyContext*>(data->ClientData);
+        if (!ctx || !ctx->callback) return;
+        cb = ctx->callback;
+
+        // Supersede any previous unfetched packet for this registration.
+        if (data->Data && data->DataLengthBytes > 0) {
+            const auto* bytes = static_cast<const uint8_t*>(data->Data);
+            ctx->pending_data.assign(bytes, bytes + data->DataLengthBytes);
+            handle = g_rtc_data_received_handle_counter.fetch_add(1, std::memory_order_relaxed);
+            ctx->pending_handle = handle;
+        } else {
+            ctx->pending_data.clear();
+            ctx->pending_handle = 0;
+        }
+    }
 
     gm_structs::EpicRTCDataReceivedCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.room_name = data->RoomName ? std::string(data->RoomName) : std::string();
     out.participant_id = eos_product_user_id_to_string_internal(data->ParticipantId);
     out.data_length_bytes = (int64_t)data->DataLengthBytes;
-    if (data->Data && data->DataLengthBytes > 0)
-        out.data = base64_encode(data->Data, (size_t)data->DataLengthBytes);
+    out.handle_id = handle;
 
-    g_cb_rtc_data_received.call(out);
+    cb.call(out);
 }
 
 static void EOS_CALL eos_rtc_data_participant_updated_callback_native(
     const EOS_RTCData_ParticipantUpdatedCallbackInfo* data)
 {
-    if (!data || !g_cb_rtc_data_participant_updated) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx || !ctx->callback) return;
 
     gm_structs::EpicRTCDataParticipantUpdatedCallbackInfo out{};
     out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
@@ -113,7 +137,7 @@ static void EOS_CALL eos_rtc_data_participant_updated_callback_native(
     out.participant_id = eos_product_user_id_to_string_internal(data->ParticipantId);
     out.data_status = (gm_enums::EpicRTCDataStatus)data->DataStatus;
 
-    g_cb_rtc_data_participant_updated.call(out);
+    ctx->callback.call(out);
 }
 
 static void EOS_CALL eos_rtc_data_update_sending_callback_native(
@@ -274,29 +298,69 @@ std::uint64_t eos_rtc_data_add_notify_data_received(
         return 0;
     }
 
-    g_cb_rtc_data_received = callback.value_or(GMFunction{});
+    auto* ctx = new EOSDataBufferNotifyContext();
+    ctx->callback = callback.value_or(GMFunction{});
 
     EOS_RTCData_AddNotifyDataReceivedOptions opts{};
     opts.ApiVersion = EOS_RTCDATA_ADDNOTIFYDATARECEIVED_API_LATEST;
     opts.LocalUserId = local_user;
     opts.RoomName = room_name_storage.c_str();
 
-    return (uint64_t)EOS_RTCData_AddNotifyDataReceived(
-        rtc_data,
-        &opts,
-        nullptr,
-        &eos_rtc_data_received_callback_native
-    );
+    EOS_NotificationId id = EOS_RTCData_AddNotifyDataReceived(
+        rtc_data, &opts, ctx, &eos_rtc_data_received_callback_native);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCData_AddNotifyDataReceived returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_data_received_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_data_remove_notify_data_received(std::uint64_t notification_id)
 {
-    EOS_GUARD();
+    eos_clear_last_error();
 
     EOS_HRTCData rtc_data = eos_rtc_data_iface();
-    if (!rtc_data) { eos_set_last_error("EOS RTCData interface unavailable."); return; }
+    if (rtc_data) EOS_RTCData_RemoveNotifyDataReceived(rtc_data, (EOS_NotificationId)notification_id);
 
-    EOS_RTCData_RemoveNotifyDataReceived(rtc_data, (EOS_NotificationId)notification_id);
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_data_received_callbacks.find(notification_id);
+    if (it != g_rtc_data_received_callbacks.end()) {
+        delete it->second;
+        g_rtc_data_received_callbacks.erase(it);
+    }
+}
+
+bool eos_rtc_data_received_data_fetch(std::uint64_t handle_id, gm::wire::GMBuffer out_buffer)
+{
+    eos_clear_last_error();
+    if (handle_id == 0) {
+        eos_set_last_error("EOS_RTCData_ReceivedDataFetch: invalid handle_id.");
+        return false;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    for (auto& [id, ctx] : g_rtc_data_received_callbacks) {
+        if (ctx->pending_handle != handle_id) continue;
+
+        size_t byte_count = ctx->pending_data.size();
+        if (out_buffer.length() < byte_count) {
+            eos_set_last_error("EOS_RTCData_ReceivedDataFetch: out_buffer is too small.");
+            return false;
+        }
+        if (byte_count > 0)
+            std::memcpy(out_buffer.data(), ctx->pending_data.data(), byte_count);
+        ctx->pending_data.clear();
+        ctx->pending_handle = 0;
+        return true;
+    }
+
+    eos_set_last_error("EOS_RTCData_ReceivedDataFetch: handle not found or already fetched.");
+    return false;
 }
 
 std::uint64_t eos_rtc_data_add_notify_participant_updated(
@@ -316,27 +380,38 @@ std::uint64_t eos_rtc_data_add_notify_participant_updated(
         return 0;
     }
 
-    g_cb_rtc_data_participant_updated = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback.value_or(GMFunction{})};
 
     EOS_RTCData_AddNotifyParticipantUpdatedOptions opts{};
     opts.ApiVersion = EOS_RTCDATA_ADDNOTIFYPARTICIPANTUPDATED_API_LATEST;
     opts.LocalUserId = local_user;
     opts.RoomName = room_name_storage.c_str();
 
-    return (uint64_t)EOS_RTCData_AddNotifyParticipantUpdated(
-        rtc_data,
-        &opts,
-        nullptr,
-        &eos_rtc_data_participant_updated_callback_native
-    );
+    EOS_NotificationId id = EOS_RTCData_AddNotifyParticipantUpdated(
+        rtc_data, &opts, ctx, &eos_rtc_data_participant_updated_callback_native);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_RTCData_AddNotifyParticipantUpdated returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_rtc_data_participant_updated_callbacks[(uint64_t)id] = ctx;
+    return (uint64_t)id;
 }
 
 void eos_rtc_data_remove_notify_participant_updated(std::uint64_t notification_id)
 {
-    EOS_GUARD();
+    eos_clear_last_error();
 
     EOS_HRTCData rtc_data = eos_rtc_data_iface();
-    if (!rtc_data) { eos_set_last_error("EOS RTCData interface unavailable."); return; }
+    if (rtc_data) EOS_RTCData_RemoveNotifyParticipantUpdated(rtc_data, (EOS_NotificationId)notification_id);
 
-    EOS_RTCData_RemoveNotifyParticipantUpdated(rtc_data, (EOS_NotificationId)notification_id);
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_rtc_data_participant_updated_callbacks.find(notification_id);
+    if (it != g_rtc_data_participant_updated_callbacks.end()) {
+        delete it->second;
+        g_rtc_data_participant_updated_callbacks.erase(it);
+    }
 }

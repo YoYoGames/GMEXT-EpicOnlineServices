@@ -489,12 +489,14 @@ static gm_structs::EpicAuthVerifyIdTokenCallbackInfo eos_auth_verify_id_token_in
     out.display_name = p->DisplayName ? std::string(p->DisplayName) : std::string();
     out.is_external_account_info_present = (p->bIsExternalAccountInfoPresent != 0);
 
+    // ExternalAccountIdType/ExternalAccountId/ExternalAccountDisplayName/Platform are only valid
+    // when bIsExternalAccountInfoPresent is set (eos_auth_types.h).
     if (p->bIsExternalAccountInfoPresent) {
         out.external_account_id_type = (gm_enums::EpicExternalAccountType)p->ExternalAccountIdType;
+        out.external_account_id = p->ExternalAccountId ? std::string(p->ExternalAccountId) : std::string();
+        out.external_account_display_name = p->ExternalAccountDisplayName ? std::string(p->ExternalAccountDisplayName) : std::string();
+        out.platform = p->Platform ? std::string(p->Platform) : std::string();
     }
-    out.external_account_id = p->ExternalAccountId ? std::string(p->ExternalAccountId) : std::string();
-    out.external_account_display_name = p->ExternalAccountDisplayName ? std::string(p->ExternalAccountDisplayName) : std::string();
-    out.platform = p->Platform ? std::string(p->Platform) : std::string();
 
     return out;
 }
