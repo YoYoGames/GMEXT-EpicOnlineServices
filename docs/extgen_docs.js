@@ -3182,6 +3182,14 @@
  */
 
 /**
+ * @function_partial eos_rtc_audio_before_send_data_fetch
+ * @param {Real} handle_id
+ * @param {Buffer} out_buffer
+ * @returns {Bool}
+ * @function_end
+ */
+
+/**
  * @function_partial eos_rtc_audio_add_notify_audio_before_render
  * @param {String} local_user_id
  * @param {String} room_name
@@ -3194,6 +3202,14 @@
 /**
  * @function_partial eos_rtc_audio_remove_notify_audio_before_render
  * @param {Real} notification_id
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_audio_before_render_data_fetch
+ * @param {Real} handle_id
+ * @param {Buffer} out_buffer
+ * @returns {Bool}
  * @function_end
  */
 
@@ -3252,6 +3268,14 @@
 /**
  * @function_partial eos_rtc_data_remove_notify_data_received
  * @param {Real} notification_id
+ * @function_end
+ */
+
+/**
+ * @function_partial eos_rtc_data_received_data_fetch
+ * @param {Real} handle_id
+ * @param {Buffer} out_buffer
+ * @returns {Bool}
  * @function_end
  */
 
@@ -4868,7 +4892,7 @@
  * @member {Real} sample_rate
  * @member {Real} channels
  * @member {Real} frames_count
- * @member {String} data
+ * @member {Real} handle_id
  * @struct_end
  */
 
@@ -4880,7 +4904,7 @@
  * @member {Real} sample_rate
  * @member {Real} channels
  * @member {Real} frames_count
- * @member {String} data
+ * @member {Real} handle_id
  * @struct_end
  */
 
@@ -4911,7 +4935,7 @@
  * @member {String} room_name
  * @member {String} participant_id
  * @member {Real} data_length_bytes
- * @member {String} data
+ * @member {Real} handle_id
  * @struct_end
  */
 
@@ -5912,7 +5936,7 @@
 
 /**
  * @const_partial macros
- * @member {Real} EOS_LEADERBOARDS_TIME_UNDEFINED (value: '-1')
+ * @member EOS_LEADERBOARDS_TIME_UNDEFINED (value: '-1')
  * @const_end
  */
 
