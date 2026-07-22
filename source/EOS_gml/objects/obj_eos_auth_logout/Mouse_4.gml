@@ -16,25 +16,27 @@ if(global.product_user_id == "")
                 
                 // Step 2: Get access token and connect
                 var auth_token = eos_auth_copy_user_auth_token(global.epic_account_id);
+				
+				if (is_undefined(token) || token.access_token == "")
+				{
+				    show_debug_message("EOS: failed to copy auth token");
+				    show_debug_message("EOS last error: " + eos_api_last_error());
+				    return;
+				}
                 
-                if (auth_token != "")
-                {
-                    eos_connect_login(auth_token, 
-                        EpicExternalCredentialType.Epic, 
-                        "player",
-                        function(_connect_info) {
-                            if (_connect_info.result_code == EpicResult.Success)
-                            {
-                                global.product_user_id = _connect_info.local_user_id;
-                                show_debug_message("Connect login success: " + global.product_user_id);
-                                show_debug_message("User is now logged in!");
-                            }
-                            else
-                                show_debug_message("Connect login failed: " + string(_connect_info.result_code));
-                        });
-                }
-                else
-                    show_debug_message("Failed to get auth token");
+                eos_connect_login(auth_token, 
+                    EpicExternalCredentialType.Epic, 
+                    "player",
+                    function(_connect_info) {
+                        if (_connect_info.result_code == EpicResult.Success)
+                        {
+                            global.product_user_id = _connect_info.local_user_id;
+                            show_debug_message("Connect login success: " + global.product_user_id);
+                            show_debug_message("User is now logged in!");
+                        }
+                        else
+                            show_debug_message("Connect login failed: " + string(_connect_info.result_code));
+                    });
             }
             else
                 show_debug_message("Auth login failed: " + string(_auth_info.result_code));

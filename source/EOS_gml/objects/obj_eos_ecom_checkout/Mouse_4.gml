@@ -4,7 +4,7 @@ var _array = []
 with(obj_eos_ecom_offer)
 {
 	if(selected)
-		array_push(_array, id)
+		array_push(_array, data.id)
 }
 
 if(array_length(_array) == 0)
@@ -13,6 +13,8 @@ if(array_length(_array) == 0)
 	return
 }
 
+show_debug_message("eos_ecom_checkout")
+show_debug_message({_array})
 eos_ecom_checkout(global.epic_account_id, _array, "", function(_checkout_data)
 {
 	if(_checkout_data.result_code != EpicResult.Success)
@@ -45,7 +47,7 @@ eos_ecom_checkout(global.epic_account_id, _array, "", function(_checkout_data)
 	{
 		if(selected)
 		{
-			show_message_async(title_text + " Purchased!")
+			show_message_async(data.title_text + " Purchased!")
 			selected = false
 		}
 	}

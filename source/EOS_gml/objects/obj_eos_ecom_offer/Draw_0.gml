@@ -1,17 +1,10 @@
 
-if(selected)
-{
-	draw_set_color(c_gray)
-	image_alpha = 0.5
-}
-else
-{
-	draw_set_color(c_white)
-	image_alpha = 1.0
-}
+draw_text(x,y+65,data.title_text)// + string(available_for_purchase))
+draw_text(x,y+95,string(data.current_price64/power(10,data.decimal_point)) + data.currency_code)
 
-draw_text(x,bbox_top-30,title_text)// + string(available_for_purchase))
-draw_text(x,bbox_bottom+30,string(current_price64/power(10,decimal_point)) + currency_code)
-
-if(sprite_exists(sprite_index))
-	draw_self()
+if(sprite_exists(spr))
+{
+	draw_set_alpha(selected?1.0:0.5)
+	draw_sprite_stretched(spr,0,x-50,y-50,100,100)
+	draw_set_alpha(1.0)
+}
