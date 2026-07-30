@@ -8660,9 +8660,9 @@ function __EpicSessionsRegisterPlayersCallbackInfo_encode(_inst, _buffer, _offse
 
         // field: registered_players, type: String[]
         if (!is_array(self.registered_players)) show_error($"{_where} :: self.registered_players expected array", true);
-        var _length = array_length(self.registered_players);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.registered_players);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.registered_players[_i])) show_error($"{_where} :: self.registered_players[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.registered_players[_i]));
@@ -8671,9 +8671,9 @@ function __EpicSessionsRegisterPlayersCallbackInfo_encode(_inst, _buffer, _offse
 
         // field: sanctioned_players, type: String[]
         if (!is_array(self.sanctioned_players)) show_error($"{_where} :: self.sanctioned_players expected array", true);
-        var _length = array_length(self.sanctioned_players);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.sanctioned_players);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.sanctioned_players[_i])) show_error($"{_where} :: self.sanctioned_players[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.sanctioned_players[_i]));
@@ -8701,18 +8701,18 @@ function __EpicSessionsRegisterPlayersCallbackInfo_decode(_buffer, _offset)
         self.result_code = buffer_read(_buffer, buffer_u64);
 
         // field: registered_players, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.registered_players = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.registered_players = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.registered_players[_i] = buffer_read(_buffer, buffer_string);
         }
 
         // field: sanctioned_players, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.sanctioned_players = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.sanctioned_players = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.sanctioned_players[_i] = buffer_read(_buffer, buffer_string);
@@ -8743,9 +8743,9 @@ function __EpicSessionsUnregisterPlayersCallbackInfo_encode(_inst, _buffer, _off
 
         // field: unregistered_players, type: String[]
         if (!is_array(self.unregistered_players)) show_error($"{_where} :: self.unregistered_players expected array", true);
-        var _length = array_length(self.unregistered_players);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.unregistered_players);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.unregistered_players[_i])) show_error($"{_where} :: self.unregistered_players[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.unregistered_players[_i]));
@@ -8773,9 +8773,9 @@ function __EpicSessionsUnregisterPlayersCallbackInfo_decode(_buffer, _offset)
         self.result_code = buffer_read(_buffer, buffer_u64);
 
         // field: unregistered_players, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.unregistered_players = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.unregistered_players = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.unregistered_players[_i] = buffer_read(_buffer, buffer_string);
@@ -10565,9 +10565,9 @@ function __EpicLobbyDetailsInfo_encode(_inst, _buffer, _offset, _where = _GMFUNC
 
         // field: allowed_platform_ids, type: UInt32[]
         if (!is_array(self.allowed_platform_ids)) show_error($"{_where} :: self.allowed_platform_ids expected array", true);
-        var _length = array_length(self.allowed_platform_ids);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.allowed_platform_ids);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_numeric(self.allowed_platform_ids[_i])) show_error($"{_where} :: self.allowed_platform_ids[_i] expected number", true);
             buffer_write(_buffer, buffer_u32, self.allowed_platform_ids[_i]);
@@ -10633,9 +10633,9 @@ function __EpicLobbyDetailsInfo_decode(_buffer, _offset)
         self.allowed_platform_ids_count = buffer_read(_buffer, buffer_u64);
 
         // field: allowed_platform_ids, type: UInt32[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.allowed_platform_ids = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.allowed_platform_ids = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.allowed_platform_ids[_i] = buffer_read(_buffer, buffer_u32);
         }
@@ -14516,9 +14516,9 @@ function __EpicCustomInvitesSendCustomInviteCallbackInfo_encode(_inst, _buffer, 
 
         // field: target_user_ids, type: String[]
         if (!is_array(self.target_user_ids)) show_error($"{_where} :: self.target_user_ids expected array", true);
-        var _length = array_length(self.target_user_ids);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.target_user_ids);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.target_user_ids[_i])) show_error($"{_where} :: self.target_user_ids[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.target_user_ids[_i]));
@@ -14550,9 +14550,9 @@ function __EpicCustomInvitesSendCustomInviteCallbackInfo_decode(_buffer, _offset
         self.local_user_id = buffer_read(_buffer, buffer_string);
 
         // field: target_user_ids, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.target_user_ids = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.target_user_ids = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.target_user_ids[_i] = buffer_read(_buffer, buffer_string);
@@ -17264,9 +17264,9 @@ function __EpicPlayerAchievement_encode(_inst, _buffer, _offset, _where = _GMFUN
 
         // field: stat_info, type: struct EpicPlayerStatInfo[]
         if (!is_array(self.stat_info)) show_error($"{_where} :: self.stat_info expected array", true);
-        var _length = array_length(self.stat_info);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.stat_info);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.stat_info[_i].__uid != 1608887067) show_error($"{_where} :: self.stat_info[_i] expected EpicPlayerStatInfo", true);
             __EpicPlayerStatInfo_encode(self.stat_info[_i], _buffer, buffer_tell(_buffer), _where);
@@ -17323,9 +17323,9 @@ function __EpicPlayerAchievement_decode(_buffer, _offset)
         self.stat_info_count = buffer_read(_buffer, buffer_u64);
 
         // field: stat_info, type: struct EpicPlayerStatInfo[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.stat_info = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.stat_info = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.stat_info[_i] = __EpicPlayerStatInfo_decode(_buffer, buffer_tell(_buffer));
         }
@@ -17419,9 +17419,9 @@ function __EpicAchievementsDefinition_encode(_inst, _buffer, _offset, _where = _
 
         // field: stat_thresholds, type: struct EpicAchievementsStatThresholds[]
         if (!is_array(self.stat_thresholds)) show_error($"{_where} :: self.stat_thresholds expected array", true);
-        var _length = array_length(self.stat_thresholds);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.stat_thresholds);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.stat_thresholds[_i].__uid != 1112571070) show_error($"{_where} :: self.stat_thresholds[_i] expected EpicAchievementsStatThresholds", true);
             __EpicAchievementsStatThresholds_encode(self.stat_thresholds[_i], _buffer, buffer_tell(_buffer), _where);
@@ -17487,9 +17487,9 @@ function __EpicAchievementsDefinition_decode(_buffer, _offset)
         self.stat_thresholds_count = buffer_read(_buffer, buffer_u64);
 
         // field: stat_thresholds, type: struct EpicAchievementsStatThresholds[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.stat_thresholds = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.stat_thresholds = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.stat_thresholds[_i] = __EpicAchievementsStatThresholds_decode(_buffer, buffer_tell(_buffer));
         }
@@ -17558,9 +17558,9 @@ function __EpicPresenceInfo_encode(_inst, _buffer, _offset, _where = _GMFUNCTION
 
         // field: records, type: struct EpicPresenceDataRecord[]
         if (!is_array(self.records)) show_error($"{_where} :: self.records expected array", true);
-        var _length = array_length(self.records);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.records);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.records[_i].__uid != 1881475628) show_error($"{_where} :: self.records[_i] expected EpicPresenceDataRecord", true);
             __EpicPresenceDataRecord_encode(self.records[_i], _buffer, buffer_tell(_buffer), _where);
@@ -17618,9 +17618,9 @@ function __EpicPresenceInfo_decode(_buffer, _offset)
         self.records_count = buffer_read(_buffer, buffer_u64);
 
         // field: records, type: struct EpicPresenceDataRecord[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.records = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.records = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.records[_i] = __EpicPresenceDataRecord_decode(_buffer, buffer_tell(_buffer));
         }
@@ -17660,9 +17660,9 @@ function __EpicRTCJoinRoomCallbackInfo_encode(_inst, _buffer, _offset, _where = 
 
         // field: room_options, type: struct EpicRTCOption[]
         if (!is_array(self.room_options)) show_error($"{_where} :: self.room_options expected array", true);
-        var _length = array_length(self.room_options);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.room_options);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.room_options[_i].__uid != 3205112450) show_error($"{_where} :: self.room_options[_i] expected EpicRTCOption", true);
             __EpicRTCOption_encode(self.room_options[_i], _buffer, buffer_tell(_buffer), _where);
@@ -17697,9 +17697,9 @@ function __EpicRTCJoinRoomCallbackInfo_decode(_buffer, _offset)
         self.room_name = buffer_read(_buffer, buffer_string);
 
         // field: room_options, type: struct EpicRTCOption[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.room_options = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.room_options = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.room_options[_i] = __EpicRTCOption_decode(_buffer, buffer_tell(_buffer));
         }
@@ -17748,9 +17748,9 @@ function __EpicRTCParticipantStatusChangedCallbackInfo_encode(_inst, _buffer, _o
 
         // field: participant_metadata, type: struct EpicRTCParticipantMetadata[]
         if (!is_array(self.participant_metadata)) show_error($"{_where} :: self.participant_metadata expected array", true);
-        var _length = array_length(self.participant_metadata);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.participant_metadata);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.participant_metadata[_i].__uid != 2057960445) show_error($"{_where} :: self.participant_metadata[_i] expected EpicRTCParticipantMetadata", true);
             __EpicRTCParticipantMetadata_encode(self.participant_metadata[_i], _buffer, buffer_tell(_buffer), _where);
@@ -17792,9 +17792,9 @@ function __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
         self.participant_in_blocklist = buffer_read(_buffer, buffer_bool);
 
         // field: participant_metadata, type: struct EpicRTCParticipantMetadata[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.participant_metadata = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.participant_metadata = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.participant_metadata[_i] = __EpicRTCParticipantMetadata_decode(_buffer, buffer_tell(_buffer));
         }
@@ -17824,16 +17824,16 @@ function __EpicRTCParticipantStatusChangedCallbackInfo_decode(_buffer, _offset)
  */
 function eos_api_initialize(_product_name, _product_version)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_api_initialize(_product_name, _product_version, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_api_initialize(_product_name, _product_version, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -17841,16 +17841,16 @@ function eos_api_initialize(_product_name, _product_version)
  */
 function eos_api_shutdown()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_api_shutdown(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_api_shutdown(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 // Skipping function eos_api_get_version (no wrapper is required)
@@ -17862,8 +17862,8 @@ function eos_api_shutdown()
  */
 function eos_api_result_to_string(_result)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -17872,9 +17872,9 @@ function eos_api_result_to_string(_result)
     if (!is_numeric(_result)) show_error($"{_GMFUNCTION_} :: _result expected number", true);
     buffer_write(__args_buffer, buffer_u64, _result);
 
-    var _return_value = __eos_api_result_to_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_api_result_to_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -17883,8 +17883,8 @@ function eos_api_result_to_string(_result)
  */
 function eos_api_result_is_operation_complete(_result)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -17893,9 +17893,9 @@ function eos_api_result_is_operation_complete(_result)
     if (!is_numeric(_result)) show_error($"{_GMFUNCTION_} :: _result expected number", true);
     buffer_write(__args_buffer, buffer_u64, _result);
 
-    var _return_value = __eos_api_result_is_operation_complete(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_api_result_is_operation_complete(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -17904,8 +17904,8 @@ function eos_api_result_is_operation_complete(_result)
  */
 function eos_api_application_status_to_string(_status)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -17914,9 +17914,9 @@ function eos_api_application_status_to_string(_status)
     if (!is_numeric(_status)) show_error($"{_GMFUNCTION_} :: _status expected number", true);
     buffer_write(__args_buffer, buffer_u64, _status);
 
-    var _return_value = __eos_api_application_status_to_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_api_application_status_to_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -17925,8 +17925,8 @@ function eos_api_application_status_to_string(_status)
  */
 function eos_api_network_status_to_string(_status)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -17935,9 +17935,9 @@ function eos_api_network_status_to_string(_status)
     if (!is_numeric(_status)) show_error($"{_GMFUNCTION_} :: _status expected number", true);
     buffer_write(__args_buffer, buffer_u64, _status);
 
-    var _return_value = __eos_api_network_status_to_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_api_network_status_to_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_api_epic_account_id_is_valid (no wrapper is required)
@@ -17955,16 +17955,16 @@ function eos_api_network_status_to_string(_status)
  */
 function eos_platform_create(_cache_directory)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_platform_create(_cache_directory, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_platform_create(_cache_directory, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 // Skipping function eos_platform_release (no wrapper is required)
@@ -17978,16 +17978,16 @@ function eos_platform_create(_cache_directory)
  */
 function eos_platform_check_for_launcher_and_restart()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_platform_check_for_launcher_and_restart(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_platform_check_for_launcher_and_restart(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -17996,8 +17996,8 @@ function eos_platform_check_for_launcher_and_restart()
  */
 function eos_platform_set_network_status(_status)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18008,11 +18008,11 @@ function eos_platform_set_network_status(_status)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_platform_set_network_status(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_platform_set_network_status(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 // Skipping function eos_platform_get_storage_directory (no wrapper is required)
@@ -18023,10 +18023,10 @@ function eos_platform_set_network_status(_status)
  */
 function eos_logging_set_callback(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18039,13 +18039,13 @@ function eos_logging_set_callback(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_logging_set_callback(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_logging_set_callback(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_logging_clear_callback (no wrapper is required)
@@ -18058,8 +18058,8 @@ function eos_logging_set_callback(_callback)
  */
 function eos_logging_set_log_level(_log_category, _log_level)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18075,11 +18075,11 @@ function eos_logging_set_log_level(_log_category, _log_level)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_logging_set_log_level(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_logging_set_log_level(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -18093,10 +18093,10 @@ function eos_logging_set_log_level(_log_category, _log_level)
  */
 function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, _external_credential_type, _scope_flags, _login_flags, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18139,13 +18139,13 @@ function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_auth_login(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_login(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18154,10 +18154,10 @@ function eos_auth_login(_credentials_id, _credentials_token, _credentials_type, 
  */
 function eos_auth_logout(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18175,13 +18175,13 @@ function eos_auth_logout(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_auth_logout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_logout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18192,10 +18192,10 @@ function eos_auth_logout(_local_user_id, _callback)
  */
 function eos_auth_link_account(_continuance_token_id, _local_user_id, _link_account_flags, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18222,13 +18222,13 @@ function eos_auth_link_account(_continuance_token_id, _local_user_id, _link_acco
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_auth_link_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_link_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18236,10 +18236,10 @@ function eos_auth_link_account(_continuance_token_id, _local_user_id, _link_acco
  */
 function eos_auth_delete_persistent_auth(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18252,13 +18252,13 @@ function eos_auth_delete_persistent_auth(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_auth_delete_persistent_auth(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_delete_persistent_auth(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18266,16 +18266,16 @@ function eos_auth_delete_persistent_auth(_callback)
  */
 function eos_auth_get_logged_in_accounts_count()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_auth_get_logged_in_accounts_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_auth_get_logged_in_accounts_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -18284,8 +18284,8 @@ function eos_auth_get_logged_in_accounts_count()
  */
 function eos_auth_get_logged_in_account_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18293,9 +18293,9 @@ function eos_auth_get_logged_in_account_by_index(_index)
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_auth_get_logged_in_account_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_get_logged_in_account_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18304,16 +18304,16 @@ function eos_auth_get_logged_in_account_by_index(_index)
  */
 function eos_auth_get_login_status(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_auth_get_login_status(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_auth_get_login_status(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -18323,23 +18323,23 @@ function eos_auth_get_login_status(_local_user_id)
  */
 function eos_auth_copy_id_token(_local_user_id, _target_account_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_auth_copy_id_token(_local_user_id, _target_account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_auth_copy_id_token(_local_user_id, _target_account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicAuthIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicAuthIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -18348,23 +18348,23 @@ function eos_auth_copy_id_token(_local_user_id, _target_account_id)
  */
 function eos_auth_copy_user_auth_token(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_auth_copy_user_auth_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_auth_copy_user_auth_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicAuthUserAuthToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicAuthUserAuthToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -18374,10 +18374,10 @@ function eos_auth_copy_user_auth_token(_local_user_id)
  */
 function eos_auth_query_id_token(_local_user_id, _target_account_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18400,13 +18400,13 @@ function eos_auth_query_id_token(_local_user_id, _target_account_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_auth_query_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_query_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18415,10 +18415,10 @@ function eos_auth_query_id_token(_local_user_id, _target_account_id, _callback)
  */
 function eos_auth_verify_id_token(_json_web_token, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18436,13 +18436,13 @@ function eos_auth_verify_id_token(_json_web_token, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_auth_verify_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_verify_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18451,10 +18451,10 @@ function eos_auth_verify_id_token(_json_web_token, _callback)
  */
 function eos_auth_verify_user_auth(_access_token, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18472,13 +18472,13 @@ function eos_auth_verify_user_auth(_access_token, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_auth_verify_user_auth(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_verify_user_auth(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18487,10 +18487,10 @@ function eos_auth_verify_user_auth(_access_token, _callback)
  */
 function eos_auth_add_notify_login_status_changed(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18503,17 +18503,17 @@ function eos_auth_add_notify_login_status_changed(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_auth_add_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_auth_add_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -18521,8 +18521,8 @@ function eos_auth_add_notify_login_status_changed(_callback)
  */
 function eos_auth_remove_notify_login_status_changed(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18530,9 +18530,9 @@ function eos_auth_remove_notify_login_status_changed(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_auth_remove_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_auth_remove_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18543,10 +18543,10 @@ function eos_auth_remove_notify_login_status_changed(_notification_id)
  */
 function eos_connect_login(_token, _external_credential_type, _display_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18574,13 +18574,13 @@ function eos_connect_login(_token, _external_credential_type, _display_name, _ca
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_login(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_login(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18589,10 +18589,10 @@ function eos_connect_login(_token, _external_credential_type, _display_name, _ca
  */
 function eos_connect_create_user(_continuance_token_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18609,13 +18609,13 @@ function eos_connect_create_user(_continuance_token_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_create_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_create_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18625,10 +18625,10 @@ function eos_connect_create_user(_continuance_token_id, _callback)
  */
 function eos_connect_link_account(_continuance_token_id, _local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18650,13 +18650,13 @@ function eos_connect_link_account(_continuance_token_id, _local_user_id, _callba
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_link_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_link_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18665,10 +18665,10 @@ function eos_connect_link_account(_continuance_token_id, _local_user_id, _callba
  */
 function eos_connect_unlink_account(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18686,13 +18686,13 @@ function eos_connect_unlink_account(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_unlink_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_unlink_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18701,10 +18701,10 @@ function eos_connect_unlink_account(_local_user_id, _callback)
  */
 function eos_connect_create_device_id(_device_model, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18722,13 +18722,13 @@ function eos_connect_create_device_id(_device_model, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_create_device_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_create_device_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18736,10 +18736,10 @@ function eos_connect_create_device_id(_device_model, _callback)
  */
 function eos_connect_delete_device_id(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18752,13 +18752,13 @@ function eos_connect_delete_device_id(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_delete_device_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_delete_device_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18768,10 +18768,10 @@ function eos_connect_delete_device_id(_callback)
  */
 function eos_connect_transfer_device_id_account(_primary_local_user_id, _local_device_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18794,13 +18794,13 @@ function eos_connect_transfer_device_id_account(_primary_local_user_id, _local_d
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_transfer_device_id_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_transfer_device_id_account(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18809,10 +18809,10 @@ function eos_connect_transfer_device_id_account(_primary_local_user_id, _local_d
  */
 function eos_connect_logout(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18830,13 +18830,13 @@ function eos_connect_logout(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_logout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_logout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18844,16 +18844,16 @@ function eos_connect_logout(_local_user_id, _callback)
  */
 function eos_connect_get_logged_in_users_count()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_get_logged_in_users_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_get_logged_in_users_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -18862,8 +18862,8 @@ function eos_connect_get_logged_in_users_count()
  */
 function eos_connect_get_logged_in_user_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18871,9 +18871,9 @@ function eos_connect_get_logged_in_user_by_index(_index)
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_connect_get_logged_in_user_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_get_logged_in_user_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -18882,16 +18882,16 @@ function eos_connect_get_logged_in_user_by_index(_index)
  */
 function eos_connect_get_login_status(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_get_login_status(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_get_login_status(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -18900,23 +18900,23 @@ function eos_connect_get_login_status(_local_user_id)
  */
 function eos_connect_copy_id_token(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_copy_id_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_copy_id_token(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicConnectIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicConnectIdToken_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -18925,23 +18925,23 @@ function eos_connect_copy_id_token(_local_user_id)
  */
 function eos_connect_copy_product_user_info(_target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_copy_product_user_info(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_copy_product_user_info(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -18950,16 +18950,16 @@ function eos_connect_copy_product_user_info(_target_user_id)
  */
 function eos_connect_get_product_user_external_account_count(_target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_get_product_user_external_account_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_get_product_user_external_account_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -18969,8 +18969,8 @@ function eos_connect_get_product_user_external_account_count(_target_user_id)
  */
 function eos_connect_copy_product_user_external_account_by_index(_target_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -18985,18 +18985,18 @@ function eos_connect_copy_product_user_external_account_by_index(_target_user_id
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_copy_product_user_external_account_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_copy_product_user_external_account_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19006,8 +19006,8 @@ function eos_connect_copy_product_user_external_account_by_index(_target_user_id
  */
 function eos_connect_copy_product_user_external_account_by_account_type(_target_user_id, _account_id_type)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19023,18 +19023,18 @@ function eos_connect_copy_product_user_external_account_by_account_type(_target_
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_copy_product_user_external_account_by_account_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_copy_product_user_external_account_by_account_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19044,23 +19044,23 @@ function eos_connect_copy_product_user_external_account_by_account_type(_target_
  */
 function eos_connect_copy_product_user_external_account_by_account_id(_target_user_id, _account_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_copy_product_user_external_account_by_account_id(_target_user_id, _account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_copy_product_user_external_account_by_account_id(_target_user_id, _account_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicConnectExternalAccountInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19071,8 +19071,8 @@ function eos_connect_copy_product_user_external_account_by_account_id(_target_us
  */
 function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_type, _target_product_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19091,9 +19091,9 @@ function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_typ
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_product_user_id));
     buffer_write(__args_buffer, buffer_string, _target_product_user_id);
 
-    var _return_value = __eos_connect_get_product_user_id_mapping(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_get_product_user_id_mapping(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19104,8 +19104,8 @@ function eos_connect_get_product_user_id_mapping(_local_user_id, _account_id_typ
  */
 function eos_connect_get_external_account_mapping(_local_user_id, _account_id_type, _target_external_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19124,9 +19124,9 @@ function eos_connect_get_external_account_mapping(_local_user_id, _account_id_ty
     buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_external_user_id));
     buffer_write(__args_buffer, buffer_string, _target_external_user_id);
 
-    var _return_value = __eos_connect_get_external_account_mapping(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_get_external_account_mapping(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19135,10 +19135,10 @@ function eos_connect_get_external_account_mapping(_local_user_id, _account_id_ty
  */
 function eos_connect_verify_id_token(_json_web_token, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19156,13 +19156,13 @@ function eos_connect_verify_id_token(_json_web_token, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_verify_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_verify_id_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19173,10 +19173,10 @@ function eos_connect_verify_id_token(_json_web_token, _callback)
  */
 function eos_connect_query_external_account_mappings(_local_user_id, _account_id_type, _target_external_user_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19192,9 +19192,9 @@ function eos_connect_query_external_account_mappings(_local_user_id, _account_id
 
     // param: _target_external_user_ids, type: String[]
     if (!is_array(_target_external_user_ids)) show_error($"{_GMFUNCTION_} :: _target_external_user_ids expected array", true);
-    var _length = array_length(_target_external_user_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_target_external_user_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_target_external_user_ids[_i])) show_error($"{_GMFUNCTION_} :: _target_external_user_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_external_user_ids[_i]));
@@ -19210,13 +19210,13 @@ function eos_connect_query_external_account_mappings(_local_user_id, _account_id
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_query_external_account_mappings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_query_external_account_mappings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19226,10 +19226,10 @@ function eos_connect_query_external_account_mappings(_local_user_id, _account_id
  */
 function eos_connect_query_product_user_id_mappings(_local_user_id, _target_product_user_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19240,9 +19240,9 @@ function eos_connect_query_product_user_id_mappings(_local_user_id, _target_prod
 
     // param: _target_product_user_ids, type: String[]
     if (!is_array(_target_product_user_ids)) show_error($"{_GMFUNCTION_} :: _target_product_user_ids expected array", true);
-    var _length = array_length(_target_product_user_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_target_product_user_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_target_product_user_ids[_i])) show_error($"{_GMFUNCTION_} :: _target_product_user_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_product_user_ids[_i]));
@@ -19258,13 +19258,13 @@ function eos_connect_query_product_user_id_mappings(_local_user_id, _target_prod
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_connect_query_product_user_id_mappings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_query_product_user_id_mappings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19273,10 +19273,10 @@ function eos_connect_query_product_user_id_mappings(_local_user_id, _target_prod
  */
 function eos_connect_add_notify_auth_expiration(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19289,17 +19289,17 @@ function eos_connect_add_notify_auth_expiration(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_add_notify_auth_expiration(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_add_notify_auth_expiration(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -19307,8 +19307,8 @@ function eos_connect_add_notify_auth_expiration(_callback)
  */
 function eos_connect_remove_notify_auth_expiration(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19316,9 +19316,9 @@ function eos_connect_remove_notify_auth_expiration(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_connect_remove_notify_auth_expiration(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_remove_notify_auth_expiration(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19327,10 +19327,10 @@ function eos_connect_remove_notify_auth_expiration(_notification_id)
  */
 function eos_connect_add_notify_login_status_changed(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19343,17 +19343,17 @@ function eos_connect_add_notify_login_status_changed(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_connect_add_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_connect_add_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -19361,8 +19361,8 @@ function eos_connect_add_notify_login_status_changed(_callback)
  */
 function eos_connect_remove_notify_login_status_changed(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19370,9 +19370,9 @@ function eos_connect_remove_notify_login_status_changed(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_connect_remove_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_connect_remove_notify_login_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19381,10 +19381,10 @@ function eos_connect_remove_notify_login_status_changed(_notification_id)
  */
 function eos_friends_query_friends(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19402,13 +19402,13 @@ function eos_friends_query_friends(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_friends_query_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_friends_query_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19417,16 +19417,16 @@ function eos_friends_query_friends(_local_user_id, _callback)
  */
 function eos_friends_get_friends_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_friends_get_friends_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_friends_get_friends_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -19436,8 +19436,8 @@ function eos_friends_get_friends_count(_local_user_id)
  */
 function eos_friends_get_friend_at_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19450,9 +19450,9 @@ function eos_friends_get_friend_at_index(_local_user_id, _index)
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_friends_get_friend_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_friends_get_friend_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19462,16 +19462,16 @@ function eos_friends_get_friend_at_index(_local_user_id, _index)
  */
 function eos_friends_get_status(_local_user_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_friends_get_status(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_friends_get_status(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -19480,10 +19480,10 @@ function eos_friends_get_status(_local_user_id, _target_user_id)
  */
 function eos_friends_add_notify_friends_update(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19496,17 +19496,17 @@ function eos_friends_add_notify_friends_update(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_friends_add_notify_friends_update(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_friends_add_notify_friends_update(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -19514,8 +19514,8 @@ function eos_friends_add_notify_friends_update(_callback)
  */
 function eos_friends_remove_notify_friends_update(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19523,9 +19523,9 @@ function eos_friends_remove_notify_friends_update(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_friends_remove_notify_friends_update(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_friends_remove_notify_friends_update(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19535,10 +19535,10 @@ function eos_friends_remove_notify_friends_update(_notification_id)
  */
 function eos_user_info_query_user_info(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19561,13 +19561,13 @@ function eos_user_info_query_user_info(_local_user_id, _target_user_id, _callbac
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_user_info_query_user_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_user_info_query_user_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19577,23 +19577,23 @@ function eos_user_info_query_user_info(_local_user_id, _target_user_id, _callbac
  */
 function eos_user_info_copy_user_info(_local_user_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_user_info_copy_user_info(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_user_info_copy_user_info(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19601,16 +19601,16 @@ function eos_user_info_copy_user_info(_local_user_id, _target_user_id)
  */
 function eos_user_info_get_local_platform_type()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_user_info_get_local_platform_type(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_user_info_get_local_platform_type(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 // Skipping function eos_user_info_copy_best_display_name (no wrapper is required)
@@ -19624,8 +19624,8 @@ function eos_user_info_get_local_platform_type()
  */
 function eos_user_info_copy_external_user_info_by_index(_local_user_id, _target_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19645,18 +19645,18 @@ function eos_user_info_copy_external_user_info_by_index(_local_user_id, _target_
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_user_info_copy_external_user_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_user_info_copy_external_user_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19667,8 +19667,8 @@ function eos_user_info_copy_external_user_info_by_index(_local_user_id, _target_
  */
 function eos_user_info_copy_external_user_info_by_account_type(_local_user_id, _target_user_id, _account_type)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19689,18 +19689,18 @@ function eos_user_info_copy_external_user_info_by_account_type(_local_user_id, _
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_user_info_copy_external_user_info_by_account_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_user_info_copy_external_user_info_by_account_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19711,8 +19711,8 @@ function eos_user_info_copy_external_user_info_by_account_type(_local_user_id, _
  */
 function eos_user_info_copy_external_user_info_by_account_id(_local_user_id, _target_user_id, _account_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19733,18 +19733,18 @@ function eos_user_info_copy_external_user_info_by_account_id(_local_user_id, _ta
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_user_info_copy_external_user_info_by_account_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_user_info_copy_external_user_info_by_account_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicUserInfoExternalUserInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19756,10 +19756,10 @@ function eos_user_info_copy_external_user_info_by_account_id(_local_user_id, _ta
  */
 function eos_stats_ingest_stat(_local_user_id, _target_user_id, _stat_name, _ingest_amount, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19791,13 +19791,13 @@ function eos_stats_ingest_stat(_local_user_id, _target_user_id, _stat_name, _ing
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_stats_ingest_stat(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_stats_ingest_stat(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19809,10 +19809,10 @@ function eos_stats_ingest_stat(_local_user_id, _target_user_id, _stat_name, _ing
  */
 function eos_stats_query_stats(_local_user_id, _target_user_id, _start_time, _end_time, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19843,13 +19843,13 @@ function eos_stats_query_stats(_local_user_id, _target_user_id, _start_time, _en
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_stats_query_stats(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_stats_query_stats(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19858,16 +19858,16 @@ function eos_stats_query_stats(_local_user_id, _target_user_id, _start_time, _en
  */
 function eos_stats_get_stats_count(_target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_stats_get_stats_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_stats_get_stats_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -19877,8 +19877,8 @@ function eos_stats_get_stats_count(_target_user_id)
  */
 function eos_stats_copy_stat_by_index(_target_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19893,18 +19893,18 @@ function eos_stats_copy_stat_by_index(_target_user_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_stats_copy_stat_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_stats_copy_stat_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19914,23 +19914,23 @@ function eos_stats_copy_stat_by_index(_target_user_id, _index)
  */
 function eos_stats_copy_stat_by_name(_target_user_id, _name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_stats_copy_stat_by_name(_target_user_id, _name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_stats_copy_stat_by_name(_target_user_id, _name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicStatsStat_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -19939,10 +19939,10 @@ function eos_stats_copy_stat_by_name(_target_user_id, _name)
  */
 function eos_ui_show_friends(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -19960,13 +19960,13 @@ function eos_ui_show_friends(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ui_show_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ui_show_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -19976,10 +19976,10 @@ function eos_ui_show_friends(_local_user_id, _callback)
  */
 function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20002,13 +20002,13 @@ function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ui_show_native_profile(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ui_show_native_profile(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20018,8 +20018,8 @@ function eos_ui_show_native_profile(_local_user_id, _target_user_id, _callback)
  */
 function eos_ui_acknowledge_event_id(_ui_event_id, _result_code)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20034,11 +20034,11 @@ function eos_ui_acknowledge_event_id(_ui_event_id, _result_code)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ui_acknowledge_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ui_acknowledge_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20047,8 +20047,8 @@ function eos_ui_acknowledge_event_id(_ui_event_id, _result_code)
  */
 function eos_ui_set_display_preference(_notification_location)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20059,11 +20059,11 @@ function eos_ui_set_display_preference(_notification_location)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ui_set_display_preference(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ui_set_display_preference(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 // Skipping function eos_ui_report_input_state (no wrapper is required)
@@ -20075,10 +20075,10 @@ function eos_ui_set_display_preference(_notification_location)
  */
 function eos_ui_add_notify_display_settings_updated(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20091,17 +20091,17 @@ function eos_ui_add_notify_display_settings_updated(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ui_add_notify_display_settings_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ui_add_notify_display_settings_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20109,8 +20109,8 @@ function eos_ui_add_notify_display_settings_updated(_callback)
  */
 function eos_ui_remove_notify_display_settings_updated(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20118,9 +20118,9 @@ function eos_ui_remove_notify_display_settings_updated(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_ui_remove_notify_display_settings_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ui_remove_notify_display_settings_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20129,10 +20129,10 @@ function eos_ui_remove_notify_display_settings_updated(_notification_id)
  */
 function eos_ui_hide_friends(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20150,13 +20150,13 @@ function eos_ui_hide_friends(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ui_hide_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ui_hide_friends(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_ui_get_friends_visible (no wrapper is required)
@@ -20171,16 +20171,16 @@ function eos_ui_hide_friends(_local_user_id, _callback)
  */
 function eos_ui_pause_social_overlay(_is_paused)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ui_pause_social_overlay(_is_paused, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ui_pause_social_overlay(_is_paused, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 // Skipping function eos_ui_is_social_overlay_paused (no wrapper is required)
@@ -20191,16 +20191,16 @@ function eos_ui_pause_social_overlay(_is_paused)
  */
 function eos_ui_get_notification_location_preference()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ui_get_notification_location_preference(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ui_get_notification_location_preference(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20210,10 +20210,10 @@ function eos_ui_get_notification_location_preference()
  */
 function eos_ui_show_block_player(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20236,13 +20236,13 @@ function eos_ui_show_block_player(_local_user_id, _target_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ui_show_block_player(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ui_show_block_player(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20252,10 +20252,10 @@ function eos_ui_show_block_player(_local_user_id, _target_user_id, _callback)
  */
 function eos_ui_show_report_player(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20278,13 +20278,13 @@ function eos_ui_show_report_player(_local_user_id, _target_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ui_show_report_player(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ui_show_report_player(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20298,8 +20298,8 @@ function eos_ui_show_report_player(_local_user_id, _target_user_id, _callback)
  */
 function eos_metrics_begin_player_session(_account_id, _account_id_type, _display_name, _controller_type, _server_ip, _game_session_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20335,11 +20335,11 @@ function eos_metrics_begin_player_session(_account_id, _account_id_type, _displa
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_metrics_begin_player_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_metrics_begin_player_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20352,8 +20352,8 @@ function eos_metrics_begin_player_session(_account_id, _account_id_type, _displa
  */
 function eos_metrics_end_player_session(_account_id, _account_id_type, _controller_type, _server_ip, _game_session_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20384,11 +20384,11 @@ function eos_metrics_end_player_session(_account_id, _account_id_type, _controll
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_metrics_end_player_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_metrics_end_player_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20397,16 +20397,16 @@ function eos_metrics_end_player_session(_account_id, _account_id_type, _controll
  */
 function eos_progression_snapshot_begin_snapshot(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_progression_snapshot_begin_snapshot(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_progression_snapshot_begin_snapshot(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20417,8 +20417,8 @@ function eos_progression_snapshot_begin_snapshot(_local_user_id)
  */
 function eos_progression_snapshot_add_progression(_snapshot_id, _key, _value)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20438,11 +20438,11 @@ function eos_progression_snapshot_add_progression(_snapshot_id, _key, _value)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_progression_snapshot_add_progression(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_progression_snapshot_add_progression(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20451,8 +20451,8 @@ function eos_progression_snapshot_add_progression(_snapshot_id, _key, _value)
  */
 function eos_progression_snapshot_end_snapshot(_snapshot_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20462,11 +20462,11 @@ function eos_progression_snapshot_end_snapshot(_snapshot_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_progression_snapshot_end_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_progression_snapshot_end_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20475,10 +20475,10 @@ function eos_progression_snapshot_end_snapshot(_snapshot_id)
  */
 function eos_progression_snapshot_submit_snapshot(_snapshot_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20495,13 +20495,13 @@ function eos_progression_snapshot_submit_snapshot(_snapshot_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_progression_snapshot_submit_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_progression_snapshot_submit_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20510,10 +20510,10 @@ function eos_progression_snapshot_submit_snapshot(_snapshot_id, _callback)
  */
 function eos_progression_snapshot_delete_snapshot(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20531,13 +20531,13 @@ function eos_progression_snapshot_delete_snapshot(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_progression_snapshot_delete_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_progression_snapshot_delete_snapshot(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20550,10 +20550,10 @@ function eos_progression_snapshot_delete_snapshot(_local_user_id, _callback)
  */
 function eos_reports_send_player_behavior_report(_reporter_user_id, _reported_user_id, _category, _message, _context, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20591,13 +20591,13 @@ function eos_reports_send_player_behavior_report(_reporter_user_id, _reported_us
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_reports_send_player_behavior_report(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_reports_send_player_behavior_report(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20607,10 +20607,10 @@ function eos_reports_send_player_behavior_report(_reporter_user_id, _reported_us
  */
 function eos_sanctions_query_active_player_sanctions(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20633,13 +20633,13 @@ function eos_sanctions_query_active_player_sanctions(_local_user_id, _target_use
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sanctions_query_active_player_sanctions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sanctions_query_active_player_sanctions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20648,16 +20648,16 @@ function eos_sanctions_query_active_player_sanctions(_local_user_id, _target_use
  */
 function eos_sanctions_get_player_sanction_count(_target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sanctions_get_player_sanction_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sanctions_get_player_sanction_count(_target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20667,8 +20667,8 @@ function eos_sanctions_get_player_sanction_count(_target_user_id)
  */
 function eos_sanctions_copy_player_sanction_by_index(_target_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20683,18 +20683,18 @@ function eos_sanctions_copy_player_sanction_by_index(_target_user_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sanctions_copy_player_sanction_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sanctions_copy_player_sanction_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicSanctionsPlayerSanction_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicSanctionsPlayerSanction_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -20705,10 +20705,10 @@ function eos_sanctions_copy_player_sanction_by_index(_target_user_id, _index)
  */
 function eos_sanctions_create_player_sanction_appeal(_local_user_id, _reference_id, _reason, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20736,13 +20736,13 @@ function eos_sanctions_create_player_sanction_appeal(_local_user_id, _reference_
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sanctions_create_player_sanction_appeal(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sanctions_create_player_sanction_appeal(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20751,10 +20751,10 @@ function eos_sanctions_create_player_sanction_appeal(_local_user_id, _reference_
  */
 function eos_achievements_query_definitions(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20772,13 +20772,13 @@ function eos_achievements_query_definitions(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_achievements_query_definitions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_achievements_query_definitions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20788,10 +20788,10 @@ function eos_achievements_query_definitions(_local_user_id, _callback)
  */
 function eos_achievements_query_player_achievements(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20814,13 +20814,13 @@ function eos_achievements_query_player_achievements(_local_user_id, _target_user
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_achievements_query_player_achievements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_achievements_query_player_achievements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -20828,16 +20828,16 @@ function eos_achievements_query_player_achievements(_local_user_id, _target_user
  */
 function eos_achievements_get_achievement_definition_count()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_get_achievement_definition_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_get_achievement_definition_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20847,16 +20847,16 @@ function eos_achievements_get_achievement_definition_count()
  */
 function eos_achievements_get_player_achievement_count(_local_user_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_get_player_achievement_count(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_get_player_achievement_count(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -20865,8 +20865,8 @@ function eos_achievements_get_player_achievement_count(_local_user_id, _target_u
  */
 function eos_achievements_copy_achievement_definition_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20876,18 +20876,18 @@ function eos_achievements_copy_achievement_definition_by_index(_index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_copy_achievement_definition_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_copy_achievement_definition_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -20896,8 +20896,8 @@ function eos_achievements_copy_achievement_definition_by_index(_index)
  */
 function eos_achievements_copy_achievement_definition_v2_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20907,18 +20907,18 @@ function eos_achievements_copy_achievement_definition_v2_by_index(_index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_copy_achievement_definition_v2_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_copy_achievement_definition_v2_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicAchievementsDefinitionV2_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicAchievementsDefinitionV2_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -20927,23 +20927,23 @@ function eos_achievements_copy_achievement_definition_v2_by_index(_index)
  */
 function eos_achievements_copy_achievement_definition_by_id(_achievement_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_copy_achievement_definition_by_id(_achievement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_copy_achievement_definition_by_id(_achievement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicAchievementsDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -20954,8 +20954,8 @@ function eos_achievements_copy_achievement_definition_by_id(_achievement_id)
  */
 function eos_achievements_copy_player_achievement_by_index(_local_user_id, _target_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -20975,18 +20975,18 @@ function eos_achievements_copy_player_achievement_by_index(_local_user_id, _targ
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_copy_player_achievement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_copy_player_achievement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -20997,8 +20997,8 @@ function eos_achievements_copy_player_achievement_by_index(_local_user_id, _targ
  */
 function eos_achievements_copy_player_achievement_by_id(_local_user_id, _target_user_id, _achievement_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21019,18 +21019,18 @@ function eos_achievements_copy_player_achievement_by_id(_local_user_id, _target_
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_copy_player_achievement_by_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_copy_player_achievement_by_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicPlayerAchievement_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21040,8 +21040,8 @@ function eos_achievements_copy_player_achievement_by_id(_local_user_id, _target_
  */
 function eos_achievements_copy_stat_threshold_by_index(_achievement_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21056,18 +21056,18 @@ function eos_achievements_copy_stat_threshold_by_index(_achievement_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_copy_stat_threshold_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_copy_stat_threshold_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicStatThreshold_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicStatThreshold_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21079,8 +21079,8 @@ function eos_achievements_copy_stat_threshold_by_index(_achievement_id, _index)
  */
 function eos_achievements_copy_player_stat_info_by_index(_local_user_id, _target_user_id, _achievement_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21105,18 +21105,18 @@ function eos_achievements_copy_player_stat_info_by_index(_local_user_id, _target
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_copy_player_stat_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_copy_player_stat_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicPlayerStatInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicPlayerStatInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21126,10 +21126,10 @@ function eos_achievements_copy_player_stat_info_by_index(_local_user_id, _target
  */
 function eos_achievements_unlock_achievements(_user_id, _achievement_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21140,9 +21140,9 @@ function eos_achievements_unlock_achievements(_user_id, _achievement_ids, _callb
 
     // param: _achievement_ids, type: String[]
     if (!is_array(_achievement_ids)) show_error($"{_GMFUNCTION_} :: _achievement_ids expected array", true);
-    var _length = array_length(_achievement_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_achievement_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_achievement_ids[_i])) show_error($"{_GMFUNCTION_} :: _achievement_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_achievement_ids[_i]));
@@ -21158,13 +21158,13 @@ function eos_achievements_unlock_achievements(_user_id, _achievement_ids, _callb
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_achievements_unlock_achievements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_achievements_unlock_achievements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21173,10 +21173,10 @@ function eos_achievements_unlock_achievements(_user_id, _achievement_ids, _callb
  */
 function eos_achievements_add_notify_achievements_unlocked_v2(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21189,17 +21189,17 @@ function eos_achievements_add_notify_achievements_unlocked_v2(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_achievements_add_notify_achievements_unlocked_v2(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_achievements_add_notify_achievements_unlocked_v2(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21207,8 +21207,8 @@ function eos_achievements_add_notify_achievements_unlocked_v2(_callback)
  */
 function eos_achievements_remove_notify_achievements_unlocked(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21216,9 +21216,9 @@ function eos_achievements_remove_notify_achievements_unlocked(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_achievements_remove_notify_achievements_unlocked(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_achievements_remove_notify_achievements_unlocked(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21229,10 +21229,10 @@ function eos_achievements_remove_notify_achievements_unlocked(_notification_id)
  */
 function eos_leaderboards_query_definitions(_local_user_id, _start_time, _end_time, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21258,13 +21258,13 @@ function eos_leaderboards_query_definitions(_local_user_id, _start_time, _end_ti
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_leaderboards_query_definitions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_leaderboards_query_definitions(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21274,10 +21274,10 @@ function eos_leaderboards_query_definitions(_local_user_id, _start_time, _end_ti
  */
 function eos_leaderboards_query_ranks(_local_user_id, _leaderboard_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21300,13 +21300,13 @@ function eos_leaderboards_query_ranks(_local_user_id, _leaderboard_id, _callback
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_leaderboards_query_ranks(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_leaderboards_query_ranks(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21319,10 +21319,10 @@ function eos_leaderboards_query_ranks(_local_user_id, _leaderboard_id, _callback
  */
 function eos_leaderboards_query_user_scores(_local_user_id, _target_user_ids, _stat_queries, _start_time, _end_time, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21333,9 +21333,9 @@ function eos_leaderboards_query_user_scores(_local_user_id, _target_user_ids, _s
 
     // param: _target_user_ids, type: String[]
     if (!is_array(_target_user_ids)) show_error($"{_GMFUNCTION_} :: _target_user_ids expected array", true);
-    var _length = array_length(_target_user_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_target_user_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_target_user_ids[_i])) show_error($"{_GMFUNCTION_} :: _target_user_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_ids[_i]));
@@ -21344,9 +21344,9 @@ function eos_leaderboards_query_user_scores(_local_user_id, _target_user_ids, _s
 
     // param: _stat_queries, type: struct EpicLeaderboardStatQuery[]
     if (!is_array(_stat_queries)) show_error($"{_GMFUNCTION_} :: _stat_queries expected array", true);
-    var _length = array_length(_stat_queries);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_stat_queries);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (_stat_queries[_i].__uid != 3405040155) show_error($"{_GMFUNCTION_} :: _stat_queries[_i] expected EpicLeaderboardStatQuery", true);
         __EpicLeaderboardStatQuery_encode(_stat_queries[_i], __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
@@ -21369,13 +21369,13 @@ function eos_leaderboards_query_user_scores(_local_user_id, _target_user_ids, _s
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_leaderboards_query_user_scores(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_leaderboards_query_user_scores(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21383,16 +21383,16 @@ function eos_leaderboards_query_user_scores(_local_user_id, _target_user_ids, _s
  */
 function eos_leaderboards_get_definition_count()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_get_definition_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_get_definition_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21400,16 +21400,16 @@ function eos_leaderboards_get_definition_count()
  */
 function eos_leaderboards_get_record_count()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_get_record_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_get_record_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21418,16 +21418,16 @@ function eos_leaderboards_get_record_count()
  */
 function eos_leaderboards_get_user_score_count(_stat_name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_get_user_score_count(_stat_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_get_user_score_count(_stat_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21436,8 +21436,8 @@ function eos_leaderboards_get_user_score_count(_stat_name)
  */
 function eos_leaderboards_copy_definition_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21447,18 +21447,18 @@ function eos_leaderboards_copy_definition_by_index(_index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_copy_definition_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_copy_definition_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21467,23 +21467,23 @@ function eos_leaderboards_copy_definition_by_index(_index)
  */
 function eos_leaderboards_copy_definition_by_id(_leaderboard_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_copy_definition_by_id(_leaderboard_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_copy_definition_by_id(_leaderboard_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLeaderboardDefinition_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21492,8 +21492,8 @@ function eos_leaderboards_copy_definition_by_id(_leaderboard_id)
  */
 function eos_leaderboards_copy_record_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21503,18 +21503,18 @@ function eos_leaderboards_copy_record_by_index(_index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_copy_record_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_copy_record_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21523,23 +21523,23 @@ function eos_leaderboards_copy_record_by_index(_index)
  */
 function eos_leaderboards_copy_record_by_user_id(_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_copy_record_by_user_id(_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_copy_record_by_user_id(_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLeaderboardRecord_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21549,8 +21549,8 @@ function eos_leaderboards_copy_record_by_user_id(_user_id)
  */
 function eos_leaderboards_copy_user_score_by_index(_stat_name, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21565,18 +21565,18 @@ function eos_leaderboards_copy_user_score_by_index(_stat_name, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_leaderboards_copy_user_score_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_leaderboards_copy_user_score_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLeaderboardUserScore_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLeaderboardUserScore_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21586,10 +21586,10 @@ function eos_leaderboards_copy_user_score_by_index(_stat_name, _index)
  */
 function eos_presence_query_presence(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21612,13 +21612,13 @@ function eos_presence_query_presence(_local_user_id, _target_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_presence_query_presence(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_presence_query_presence(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_presence_has_presence (no wrapper is required)
@@ -21631,23 +21631,23 @@ function eos_presence_query_presence(_local_user_id, _target_user_id, _callback)
  */
 function eos_presence_copy_presence(_local_user_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_copy_presence(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_copy_presence(_local_user_id, _target_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicPresenceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicPresenceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -21656,16 +21656,16 @@ function eos_presence_copy_presence(_local_user_id, _target_user_id)
  */
 function eos_presence_create_presence_modification(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_create_presence_modification(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_create_presence_modification(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21673,8 +21673,8 @@ function eos_presence_create_presence_modification(_local_user_id)
  */
 function eos_presence_modification_release(_modification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21682,9 +21682,9 @@ function eos_presence_modification_release(_modification_id)
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    var _return_value = __eos_presence_modification_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_presence_modification_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21694,8 +21694,8 @@ function eos_presence_modification_release(_modification_id)
  */
 function eos_presence_modification_set_status(_modification_id, _status)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21710,11 +21710,11 @@ function eos_presence_modification_set_status(_modification_id, _status)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_modification_set_status(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_modification_set_status(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21724,8 +21724,8 @@ function eos_presence_modification_set_status(_modification_id, _status)
  */
 function eos_presence_modification_set_raw_rich_text(_modification_id, _rich_text)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21740,11 +21740,11 @@ function eos_presence_modification_set_raw_rich_text(_modification_id, _rich_tex
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_modification_set_raw_rich_text(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_modification_set_raw_rich_text(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21755,8 +21755,8 @@ function eos_presence_modification_set_raw_rich_text(_modification_id, _rich_tex
  */
 function eos_presence_modification_set_data(_modification_id, _key, _value)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21776,11 +21776,11 @@ function eos_presence_modification_set_data(_modification_id, _key, _value)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_modification_set_data(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_modification_set_data(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21790,8 +21790,8 @@ function eos_presence_modification_set_data(_modification_id, _key, _value)
  */
 function eos_presence_modification_delete_data(_modification_id, _key)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21806,11 +21806,11 @@ function eos_presence_modification_delete_data(_modification_id, _key)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_modification_delete_data(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_modification_delete_data(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21820,10 +21820,10 @@ function eos_presence_modification_delete_data(_modification_id, _key)
  */
 function eos_presence_set_presence(_local_user_id, _modification_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21845,13 +21845,13 @@ function eos_presence_set_presence(_local_user_id, _modification_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_presence_set_presence(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_presence_set_presence(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21860,10 +21860,10 @@ function eos_presence_set_presence(_local_user_id, _modification_id, _callback)
  */
 function eos_presence_add_notify_on_presence_changed(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21876,17 +21876,17 @@ function eos_presence_add_notify_on_presence_changed(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_add_notify_on_presence_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_add_notify_on_presence_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21894,8 +21894,8 @@ function eos_presence_add_notify_on_presence_changed(_callback)
  */
 function eos_presence_remove_notify_on_presence_changed(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21903,9 +21903,9 @@ function eos_presence_remove_notify_on_presence_changed(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_presence_remove_notify_on_presence_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_presence_remove_notify_on_presence_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21914,10 +21914,10 @@ function eos_presence_remove_notify_on_presence_changed(_notification_id)
  */
 function eos_presence_add_notify_join_game_accepted(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21930,17 +21930,17 @@ function eos_presence_add_notify_join_game_accepted(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_presence_add_notify_join_game_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_presence_add_notify_join_game_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -21948,8 +21948,8 @@ function eos_presence_add_notify_join_game_accepted(_callback)
  */
 function eos_presence_remove_notify_join_game_accepted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -21957,9 +21957,9 @@ function eos_presence_remove_notify_join_game_accepted(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_presence_remove_notify_join_game_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_presence_remove_notify_join_game_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -21975,8 +21975,8 @@ function eos_presence_remove_notify_join_game_accepted(_notification_id)
  */
 function eos_sessions_create_session_modification(_session_name, _session_id, _bucket_id, _max_players, _local_user_id, _presence_enabled, _sanctions_enabled, _allowed_platform_ids)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22014,9 +22014,9 @@ function eos_sessions_create_session_modification(_session_name, _session_id, _b
 
     // param: _allowed_platform_ids, type: UInt32[]
     if (!is_array(_allowed_platform_ids)) show_error($"{_GMFUNCTION_} :: _allowed_platform_ids expected array", true);
-    var _length = array_length(_allowed_platform_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_allowed_platform_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_numeric(_allowed_platform_ids[_i])) show_error($"{_GMFUNCTION_} :: _allowed_platform_ids[_i] expected number", true);
         buffer_write(__args_buffer, buffer_u32, _allowed_platform_ids[_i]);
@@ -22024,11 +22024,11 @@ function eos_sessions_create_session_modification(_session_name, _session_id, _b
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_create_session_modification(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_create_session_modification(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22036,8 +22036,8 @@ function eos_sessions_create_session_modification(_session_name, _session_id, _b
  */
 function eos_sessions_session_modification_release(_modification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22045,9 +22045,9 @@ function eos_sessions_session_modification_release(_modification_id)
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    var _return_value = __eos_sessions_session_modification_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_session_modification_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22056,10 +22056,10 @@ function eos_sessions_session_modification_release(_modification_id)
  */
 function eos_sessions_update_session(_modification_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22076,13 +22076,13 @@ function eos_sessions_update_session(_modification_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_update_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_update_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22091,10 +22091,10 @@ function eos_sessions_update_session(_modification_id, _callback)
  */
 function eos_sessions_destroy_session(_session_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22112,13 +22112,13 @@ function eos_sessions_destroy_session(_session_name, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_destroy_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_destroy_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22127,10 +22127,10 @@ function eos_sessions_destroy_session(_session_name, _callback)
  */
 function eos_sessions_start_session(_session_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22148,13 +22148,13 @@ function eos_sessions_start_session(_session_name, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_start_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_start_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22163,10 +22163,10 @@ function eos_sessions_start_session(_session_name, _callback)
  */
 function eos_sessions_end_session(_session_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22184,13 +22184,13 @@ function eos_sessions_end_session(_session_name, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_end_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_end_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22202,10 +22202,10 @@ function eos_sessions_end_session(_session_name, _callback)
  */
 function eos_sessions_join_session(_session_name, _session_details_id, _local_user_id, _presence_enabled, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22236,13 +22236,13 @@ function eos_sessions_join_session(_session_name, _session_details_id, _local_us
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_join_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_join_session(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22252,10 +22252,10 @@ function eos_sessions_join_session(_session_name, _session_details_id, _local_us
  */
 function eos_sessions_register_players(_session_name, _target_user_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22266,9 +22266,9 @@ function eos_sessions_register_players(_session_name, _target_user_ids, _callbac
 
     // param: _target_user_ids, type: String[]
     if (!is_array(_target_user_ids)) show_error($"{_GMFUNCTION_} :: _target_user_ids expected array", true);
-    var _length = array_length(_target_user_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_target_user_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_target_user_ids[_i])) show_error($"{_GMFUNCTION_} :: _target_user_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_ids[_i]));
@@ -22284,13 +22284,13 @@ function eos_sessions_register_players(_session_name, _target_user_ids, _callbac
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_register_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_register_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22300,10 +22300,10 @@ function eos_sessions_register_players(_session_name, _target_user_ids, _callbac
  */
 function eos_sessions_unregister_players(_session_name, _target_user_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22314,9 +22314,9 @@ function eos_sessions_unregister_players(_session_name, _target_user_ids, _callb
 
     // param: _target_user_ids, type: String[]
     if (!is_array(_target_user_ids)) show_error($"{_GMFUNCTION_} :: _target_user_ids expected array", true);
-    var _length = array_length(_target_user_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_target_user_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_target_user_ids[_i])) show_error($"{_GMFUNCTION_} :: _target_user_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_ids[_i]));
@@ -22332,13 +22332,13 @@ function eos_sessions_unregister_players(_session_name, _target_user_ids, _callb
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_unregister_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_unregister_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22347,8 +22347,8 @@ function eos_sessions_unregister_players(_session_name, _target_user_ids, _callb
  */
 function eos_sessions_create_session_search(_max_search_results)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22358,11 +22358,11 @@ function eos_sessions_create_session_search(_max_search_results)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_create_session_search(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_create_session_search(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22370,8 +22370,8 @@ function eos_sessions_create_session_search(_max_search_results)
  */
 function eos_sessions_session_search_release(_search_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22379,9 +22379,9 @@ function eos_sessions_session_search_release(_search_id)
     if (!is_numeric(_search_id)) show_error($"{_GMFUNCTION_} :: _search_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _search_id);
 
-    var _return_value = __eos_sessions_session_search_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_session_search_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22391,8 +22391,8 @@ function eos_sessions_session_search_release(_search_id)
  */
 function eos_sessions_session_search_set_session_id(_search_id, _session_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22407,11 +22407,11 @@ function eos_sessions_session_search_set_session_id(_search_id, _session_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_search_set_session_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_search_set_session_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22421,8 +22421,8 @@ function eos_sessions_session_search_set_session_id(_search_id, _session_id)
  */
 function eos_sessions_session_search_set_target_user_id(_search_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22437,11 +22437,11 @@ function eos_sessions_session_search_set_target_user_id(_search_id, _target_user
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_search_set_target_user_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_search_set_target_user_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22451,10 +22451,10 @@ function eos_sessions_session_search_set_target_user_id(_search_id, _target_user
  */
 function eos_sessions_session_search_find(_search_id, _local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22476,13 +22476,13 @@ function eos_sessions_session_search_find(_search_id, _local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_session_search_find(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_session_search_find(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22492,8 +22492,8 @@ function eos_sessions_session_search_find(_search_id, _local_user_id, _callback)
  */
 function eos_sessions_session_search_copy_search_result_by_index(_search_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22507,11 +22507,11 @@ function eos_sessions_session_search_copy_search_result_by_index(_search_id, _in
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_search_copy_search_result_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_search_copy_search_result_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22519,8 +22519,8 @@ function eos_sessions_session_search_copy_search_result_by_index(_search_id, _in
  */
 function eos_sessions_session_details_release(_session_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22528,9 +22528,9 @@ function eos_sessions_session_details_release(_session_details_id)
     if (!is_numeric(_session_details_id)) show_error($"{_GMFUNCTION_} :: _session_details_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _session_details_id);
 
-    var _return_value = __eos_sessions_session_details_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_session_details_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22539,16 +22539,16 @@ function eos_sessions_session_details_release(_session_details_id)
  */
 function eos_sessions_copy_active_session_handle(_session_name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_copy_active_session_handle(_session_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_copy_active_session_handle(_session_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22556,8 +22556,8 @@ function eos_sessions_copy_active_session_handle(_session_name)
  */
 function eos_sessions_active_session_release(_active_session_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22565,9 +22565,9 @@ function eos_sessions_active_session_release(_active_session_id)
     if (!is_numeric(_active_session_id)) show_error($"{_GMFUNCTION_} :: _active_session_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _active_session_id);
 
-    var _return_value = __eos_sessions_active_session_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_active_session_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22576,8 +22576,8 @@ function eos_sessions_active_session_release(_active_session_id)
  */
 function eos_sessions_active_session_copy_info(_active_session_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22587,18 +22587,18 @@ function eos_sessions_active_session_copy_info(_active_session_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_active_session_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_active_session_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicActiveSessionInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicActiveSessionInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -22607,16 +22607,16 @@ function eos_sessions_active_session_copy_info(_active_session_id)
  */
 function eos_sessions_copy_session_handle_by_invite_id(_invite_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_copy_session_handle_by_invite_id(_invite_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_copy_session_handle_by_invite_id(_invite_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22625,8 +22625,8 @@ function eos_sessions_copy_session_handle_by_invite_id(_invite_id)
  */
 function eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22636,11 +22636,11 @@ function eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_copy_session_handle_by_ui_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_copy_session_handle_by_ui_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22649,8 +22649,8 @@ function eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id)
  */
 function eos_sessions_session_details_copy_info(_session_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22660,18 +22660,18 @@ function eos_sessions_session_details_copy_info(_session_details_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_details_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_details_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicSessionDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicSessionDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -22680,10 +22680,10 @@ function eos_sessions_session_details_copy_info(_session_details_id)
  */
 function eos_sessions_add_notify_session_invite_received(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22696,17 +22696,17 @@ function eos_sessions_add_notify_session_invite_received(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_add_notify_session_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_add_notify_session_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22714,8 +22714,8 @@ function eos_sessions_add_notify_session_invite_received(_callback)
  */
 function eos_sessions_remove_notify_session_invite_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22723,9 +22723,9 @@ function eos_sessions_remove_notify_session_invite_received(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_sessions_remove_notify_session_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_remove_notify_session_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22734,10 +22734,10 @@ function eos_sessions_remove_notify_session_invite_received(_notification_id)
  */
 function eos_sessions_add_notify_session_invite_accepted(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22750,17 +22750,17 @@ function eos_sessions_add_notify_session_invite_accepted(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_add_notify_session_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_add_notify_session_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22768,8 +22768,8 @@ function eos_sessions_add_notify_session_invite_accepted(_callback)
  */
 function eos_sessions_remove_notify_session_invite_accepted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22777,9 +22777,9 @@ function eos_sessions_remove_notify_session_invite_accepted(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_sessions_remove_notify_session_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_remove_notify_session_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22788,10 +22788,10 @@ function eos_sessions_remove_notify_session_invite_accepted(_notification_id)
  */
 function eos_sessions_add_notify_join_session_accepted(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22804,17 +22804,17 @@ function eos_sessions_add_notify_join_session_accepted(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_add_notify_join_session_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_add_notify_join_session_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22822,8 +22822,8 @@ function eos_sessions_add_notify_join_session_accepted(_callback)
  */
 function eos_sessions_remove_notify_join_session_accepted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22831,9 +22831,9 @@ function eos_sessions_remove_notify_join_session_accepted(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_sessions_remove_notify_join_session_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_remove_notify_join_session_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -22843,8 +22843,8 @@ function eos_sessions_remove_notify_join_session_accepted(_notification_id)
  */
 function eos_sessions_session_modification_set_bucket_id(_modification_id, _bucket_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22859,11 +22859,11 @@ function eos_sessions_session_modification_set_bucket_id(_modification_id, _buck
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_set_bucket_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_set_bucket_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22873,8 +22873,8 @@ function eos_sessions_session_modification_set_bucket_id(_modification_id, _buck
  */
 function eos_sessions_session_modification_set_host_address(_modification_id, _host_address)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22889,11 +22889,11 @@ function eos_sessions_session_modification_set_host_address(_modification_id, _h
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_set_host_address(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_set_host_address(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22903,8 +22903,8 @@ function eos_sessions_session_modification_set_host_address(_modification_id, _h
  */
 function eos_sessions_session_modification_set_permission_level(_modification_id, _permission_level)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22919,11 +22919,11 @@ function eos_sessions_session_modification_set_permission_level(_modification_id
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_set_permission_level(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_set_permission_level(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22933,8 +22933,8 @@ function eos_sessions_session_modification_set_permission_level(_modification_id
  */
 function eos_sessions_session_modification_set_join_in_progress_allowed(_modification_id, _allow_join_in_progress)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22948,11 +22948,11 @@ function eos_sessions_session_modification_set_join_in_progress_allowed(_modific
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_set_join_in_progress_allowed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_set_join_in_progress_allowed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22962,8 +22962,8 @@ function eos_sessions_session_modification_set_join_in_progress_allowed(_modific
  */
 function eos_sessions_session_modification_set_max_players(_modification_id, _max_players)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -22977,11 +22977,11 @@ function eos_sessions_session_modification_set_max_players(_modification_id, _ma
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_set_max_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_set_max_players(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -22991,8 +22991,8 @@ function eos_sessions_session_modification_set_max_players(_modification_id, _ma
  */
 function eos_sessions_session_modification_set_invites_allowed(_modification_id, _invites_allowed)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23006,11 +23006,11 @@ function eos_sessions_session_modification_set_invites_allowed(_modification_id,
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_set_invites_allowed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_set_invites_allowed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23022,8 +23022,8 @@ function eos_sessions_session_modification_set_invites_allowed(_modification_id,
  */
 function eos_sessions_session_modification_add_attribute_string(_modification_id, _key, _value, _advertisement_type)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23048,11 +23048,11 @@ function eos_sessions_session_modification_add_attribute_string(_modification_id
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_add_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_add_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23064,8 +23064,8 @@ function eos_sessions_session_modification_add_attribute_string(_modification_id
  */
 function eos_sessions_session_modification_add_attribute_bool(_modification_id, _key, _value, _advertisement_type)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23089,11 +23089,11 @@ function eos_sessions_session_modification_add_attribute_bool(_modification_id, 
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_add_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_add_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23105,8 +23105,8 @@ function eos_sessions_session_modification_add_attribute_bool(_modification_id, 
  */
 function eos_sessions_session_modification_add_attribute_double(_modification_id, _key, _value, _advertisement_type)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23130,11 +23130,11 @@ function eos_sessions_session_modification_add_attribute_double(_modification_id
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_add_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_add_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23144,8 +23144,8 @@ function eos_sessions_session_modification_add_attribute_double(_modification_id
  */
 function eos_sessions_session_modification_remove_attribute(_modification_id, _key)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23160,11 +23160,11 @@ function eos_sessions_session_modification_remove_attribute(_modification_id, _k
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_modification_remove_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_modification_remove_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23173,8 +23173,8 @@ function eos_sessions_session_modification_remove_attribute(_modification_id, _k
  */
 function eos_sessions_session_details_get_session_attribute_count(_session_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23184,11 +23184,11 @@ function eos_sessions_session_details_get_session_attribute_count(_session_detai
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_details_get_session_attribute_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_details_get_session_attribute_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23198,8 +23198,8 @@ function eos_sessions_session_details_get_session_attribute_count(_session_detai
  */
 function eos_sessions_session_details_copy_session_attribute_by_index(_session_details_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23213,18 +23213,18 @@ function eos_sessions_session_details_copy_session_attribute_by_index(_session_d
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_details_copy_session_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_details_copy_session_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -23234,8 +23234,8 @@ function eos_sessions_session_details_copy_session_attribute_by_index(_session_d
  */
 function eos_sessions_session_details_copy_session_attribute_by_key(_session_details_id, _key)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23250,18 +23250,18 @@ function eos_sessions_session_details_copy_session_attribute_by_key(_session_det
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_details_copy_session_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_details_copy_session_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicSessionDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -23270,8 +23270,8 @@ function eos_sessions_session_details_copy_session_attribute_by_key(_session_det
  */
 function eos_sessions_active_session_get_registered_player_count(_active_session_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23281,11 +23281,11 @@ function eos_sessions_active_session_get_registered_player_count(_active_session
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_active_session_get_registered_player_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_active_session_get_registered_player_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23295,8 +23295,8 @@ function eos_sessions_active_session_get_registered_player_count(_active_session
  */
 function eos_sessions_active_session_get_registered_player_by_index(_active_session_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23308,9 +23308,9 @@ function eos_sessions_active_session_get_registered_player_by_index(_active_sess
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_sessions_active_session_get_registered_player_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_active_session_get_registered_player_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23321,10 +23321,10 @@ function eos_sessions_active_session_get_registered_player_by_index(_active_sess
  */
 function eos_sessions_send_invite(_session_name, _local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23352,13 +23352,13 @@ function eos_sessions_send_invite(_session_name, _local_user_id, _target_user_id
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_send_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_send_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23368,10 +23368,10 @@ function eos_sessions_send_invite(_session_name, _local_user_id, _target_user_id
  */
 function eos_sessions_reject_invite(_local_user_id, _invite_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23394,13 +23394,13 @@ function eos_sessions_reject_invite(_local_user_id, _invite_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_reject_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_reject_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23409,10 +23409,10 @@ function eos_sessions_reject_invite(_local_user_id, _invite_id, _callback)
  */
 function eos_sessions_query_invites(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23430,13 +23430,13 @@ function eos_sessions_query_invites(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_sessions_query_invites(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_query_invites(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23445,16 +23445,16 @@ function eos_sessions_query_invites(_local_user_id, _callback)
  */
 function eos_sessions_get_invite_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_get_invite_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_get_invite_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23464,8 +23464,8 @@ function eos_sessions_get_invite_count(_local_user_id)
  */
 function eos_sessions_get_invite_id_by_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23478,9 +23478,9 @@ function eos_sessions_get_invite_id_by_index(_local_user_id, _index)
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_sessions_get_invite_id_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_get_invite_id_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23492,8 +23492,8 @@ function eos_sessions_get_invite_id_by_index(_local_user_id, _index)
  */
 function eos_sessions_session_search_set_parameter(_search_id, _key, _value, _comparison_op)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23518,11 +23518,11 @@ function eos_sessions_session_search_set_parameter(_search_id, _key, _value, _co
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_search_set_parameter(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_search_set_parameter(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23533,8 +23533,8 @@ function eos_sessions_session_search_set_parameter(_search_id, _key, _value, _co
  */
 function eos_sessions_session_search_remove_parameter(_search_id, _key, _comparison_op)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23554,11 +23554,11 @@ function eos_sessions_session_search_remove_parameter(_search_id, _key, _compari
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_search_remove_parameter(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_search_remove_parameter(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23567,8 +23567,8 @@ function eos_sessions_session_search_remove_parameter(_search_id, _key, _compari
  */
 function eos_sessions_session_search_get_search_result_count(_search_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23578,11 +23578,11 @@ function eos_sessions_session_search_get_search_result_count(_search_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_session_search_get_search_result_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_session_search_get_search_result_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23591,10 +23591,10 @@ function eos_sessions_session_search_get_search_result_count(_search_id)
  */
 function eos_sessions_add_notify_session_invite_rejected(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23607,17 +23607,17 @@ function eos_sessions_add_notify_session_invite_rejected(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_add_notify_session_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_add_notify_session_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23625,8 +23625,8 @@ function eos_sessions_add_notify_session_invite_rejected(_callback)
  */
 function eos_sessions_remove_notify_session_invite_rejected(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23634,9 +23634,9 @@ function eos_sessions_remove_notify_session_invite_rejected(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_sessions_remove_notify_session_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_remove_notify_session_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23645,10 +23645,10 @@ function eos_sessions_remove_notify_session_invite_rejected(_notification_id)
  */
 function eos_sessions_add_notify_leave_session_requested(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23661,17 +23661,17 @@ function eos_sessions_add_notify_leave_session_requested(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_add_notify_leave_session_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_add_notify_leave_session_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23679,8 +23679,8 @@ function eos_sessions_add_notify_leave_session_requested(_callback)
  */
 function eos_sessions_remove_notify_leave_session_requested(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23688,9 +23688,9 @@ function eos_sessions_remove_notify_leave_session_requested(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_sessions_remove_notify_leave_session_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_remove_notify_leave_session_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23699,10 +23699,10 @@ function eos_sessions_remove_notify_leave_session_requested(_notification_id)
  */
 function eos_sessions_add_notify_send_session_native_invite_requested(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23715,17 +23715,17 @@ function eos_sessions_add_notify_send_session_native_invite_requested(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_sessions_add_notify_send_session_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_sessions_add_notify_send_session_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23733,8 +23733,8 @@ function eos_sessions_add_notify_send_session_native_invite_requested(_callback)
  */
 function eos_sessions_remove_notify_send_session_native_invite_requested(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23742,9 +23742,9 @@ function eos_sessions_remove_notify_send_session_native_invite_requested(_notifi
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_sessions_remove_notify_send_session_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_sessions_remove_notify_send_session_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23753,10 +23753,10 @@ function eos_sessions_remove_notify_send_session_native_invite_requested(_notifi
  */
 function eos_lobby_create_lobby(_options, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23773,13 +23773,13 @@ function eos_lobby_create_lobby(_options, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_create_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_create_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23789,10 +23789,10 @@ function eos_lobby_create_lobby(_options, _callback)
  */
 function eos_lobby_destroy_lobby(_lobby_id, _local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23815,13 +23815,13 @@ function eos_lobby_destroy_lobby(_lobby_id, _local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_destroy_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_destroy_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23830,10 +23830,10 @@ function eos_lobby_destroy_lobby(_lobby_id, _local_user_id, _callback)
  */
 function eos_lobby_join_lobby(_options, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23850,13 +23850,13 @@ function eos_lobby_join_lobby(_options, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_join_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_join_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23866,10 +23866,10 @@ function eos_lobby_join_lobby(_options, _callback)
  */
 function eos_lobby_leave_lobby(_lobby_id, _local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23892,13 +23892,13 @@ function eos_lobby_leave_lobby(_lobby_id, _local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_leave_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_leave_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23908,16 +23908,16 @@ function eos_lobby_leave_lobby(_lobby_id, _local_user_id, _callback)
  */
 function eos_lobby_update_lobby_modification(_lobby_id, _local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_update_lobby_modification(_lobby_id, _local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_update_lobby_modification(_lobby_id, _local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -23925,8 +23925,8 @@ function eos_lobby_update_lobby_modification(_lobby_id, _local_user_id)
  */
 function eos_lobby_lobby_modification_release(_modification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23934,9 +23934,9 @@ function eos_lobby_lobby_modification_release(_modification_id)
     if (!is_numeric(_modification_id)) show_error($"{_GMFUNCTION_} :: _modification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _modification_id);
 
-    var _return_value = __eos_lobby_lobby_modification_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23946,10 +23946,10 @@ function eos_lobby_lobby_modification_release(_modification_id)
  */
 function eos_lobby_update_lobby(_lobby_id, _modification_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -23971,13 +23971,13 @@ function eos_lobby_update_lobby(_lobby_id, _modification_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_update_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_update_lobby(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -23987,8 +23987,8 @@ function eos_lobby_update_lobby(_lobby_id, _modification_id, _callback)
  */
 function eos_lobby_lobby_modification_set_permission_level(_modification_id, _permission_level)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24003,11 +24003,11 @@ function eos_lobby_lobby_modification_set_permission_level(_modification_id, _pe
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_set_permission_level(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_set_permission_level(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24017,8 +24017,8 @@ function eos_lobby_lobby_modification_set_permission_level(_modification_id, _pe
  */
 function eos_lobby_lobby_modification_set_max_members(_modification_id, _max_members)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24032,11 +24032,11 @@ function eos_lobby_lobby_modification_set_max_members(_modification_id, _max_mem
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_set_max_members(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_set_max_members(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24046,8 +24046,8 @@ function eos_lobby_lobby_modification_set_max_members(_modification_id, _max_mem
  */
 function eos_lobby_lobby_modification_set_bucket_id(_modification_id, _bucket_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24062,11 +24062,11 @@ function eos_lobby_lobby_modification_set_bucket_id(_modification_id, _bucket_id
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_set_bucket_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_set_bucket_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24076,8 +24076,8 @@ function eos_lobby_lobby_modification_set_bucket_id(_modification_id, _bucket_id
  */
 function eos_lobby_lobby_modification_set_invites_allowed(_modification_id, _invites_allowed)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24091,11 +24091,11 @@ function eos_lobby_lobby_modification_set_invites_allowed(_modification_id, _inv
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_set_invites_allowed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_set_invites_allowed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24107,8 +24107,8 @@ function eos_lobby_lobby_modification_set_invites_allowed(_modification_id, _inv
  */
 function eos_lobby_lobby_modification_add_attribute_string(_modification_id, _key, _value, _visibility)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24133,11 +24133,11 @@ function eos_lobby_lobby_modification_add_attribute_string(_modification_id, _ke
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_add_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24149,8 +24149,8 @@ function eos_lobby_lobby_modification_add_attribute_string(_modification_id, _ke
  */
 function eos_lobby_lobby_modification_add_attribute_bool(_modification_id, _key, _value, _visibility)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24174,11 +24174,11 @@ function eos_lobby_lobby_modification_add_attribute_bool(_modification_id, _key,
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_add_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24190,8 +24190,8 @@ function eos_lobby_lobby_modification_add_attribute_bool(_modification_id, _key,
  */
 function eos_lobby_lobby_modification_add_attribute_double(_modification_id, _key, _value, _visibility)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24215,11 +24215,11 @@ function eos_lobby_lobby_modification_add_attribute_double(_modification_id, _ke
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_add_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24229,8 +24229,8 @@ function eos_lobby_lobby_modification_add_attribute_double(_modification_id, _ke
  */
 function eos_lobby_lobby_modification_remove_attribute(_modification_id, _key)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24245,11 +24245,11 @@ function eos_lobby_lobby_modification_remove_attribute(_modification_id, _key)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_remove_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_remove_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24261,8 +24261,8 @@ function eos_lobby_lobby_modification_remove_attribute(_modification_id, _key)
  */
 function eos_lobby_lobby_modification_add_member_attribute_string(_modification_id, _key, _value, _visibility)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24287,11 +24287,11 @@ function eos_lobby_lobby_modification_add_member_attribute_string(_modification_
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_member_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_add_member_attribute_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24303,8 +24303,8 @@ function eos_lobby_lobby_modification_add_member_attribute_string(_modification_
  */
 function eos_lobby_lobby_modification_add_member_attribute_bool(_modification_id, _key, _value, _visibility)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24328,11 +24328,11 @@ function eos_lobby_lobby_modification_add_member_attribute_bool(_modification_id
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_member_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_add_member_attribute_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24344,8 +24344,8 @@ function eos_lobby_lobby_modification_add_member_attribute_bool(_modification_id
  */
 function eos_lobby_lobby_modification_add_member_attribute_double(_modification_id, _key, _value, _visibility)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24369,11 +24369,11 @@ function eos_lobby_lobby_modification_add_member_attribute_double(_modification_
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_add_member_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_add_member_attribute_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24383,8 +24383,8 @@ function eos_lobby_lobby_modification_add_member_attribute_double(_modification_
  */
 function eos_lobby_lobby_modification_remove_member_attribute(_modification_id, _key)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24399,11 +24399,11 @@ function eos_lobby_lobby_modification_remove_member_attribute(_modification_id, 
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_modification_remove_member_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_modification_remove_member_attribute(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24412,10 +24412,10 @@ function eos_lobby_lobby_modification_remove_member_attribute(_modification_id, 
  */
 function eos_lobby_promote_member(_options, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24432,13 +24432,13 @@ function eos_lobby_promote_member(_options, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_promote_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_promote_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -24447,10 +24447,10 @@ function eos_lobby_promote_member(_options, _callback)
  */
 function eos_lobby_kick_member(_options, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24467,13 +24467,13 @@ function eos_lobby_kick_member(_options, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_kick_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_kick_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -24482,8 +24482,8 @@ function eos_lobby_kick_member(_options, _callback)
  */
 function eos_lobby_create_lobby_search(_max_results)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24493,11 +24493,11 @@ function eos_lobby_create_lobby_search(_max_results)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_create_lobby_search(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_create_lobby_search(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24505,8 +24505,8 @@ function eos_lobby_create_lobby_search(_max_results)
  */
 function eos_lobby_lobby_search_release(_search_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24514,9 +24514,9 @@ function eos_lobby_lobby_search_release(_search_id)
     if (!is_numeric(_search_id)) show_error($"{_GMFUNCTION_} :: _search_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _search_id);
 
-    var _return_value = __eos_lobby_lobby_search_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -24526,8 +24526,8 @@ function eos_lobby_lobby_search_release(_search_id)
  */
 function eos_lobby_lobby_search_set_lobby_id(_search_id, _lobby_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24542,11 +24542,11 @@ function eos_lobby_lobby_search_set_lobby_id(_search_id, _lobby_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_set_lobby_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_set_lobby_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24556,8 +24556,8 @@ function eos_lobby_lobby_search_set_lobby_id(_search_id, _lobby_id)
  */
 function eos_lobby_lobby_search_set_target_user_id(_search_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24572,11 +24572,11 @@ function eos_lobby_lobby_search_set_target_user_id(_search_id, _target_user_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_set_target_user_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_set_target_user_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24588,8 +24588,8 @@ function eos_lobby_lobby_search_set_target_user_id(_search_id, _target_user_id)
  */
 function eos_lobby_lobby_search_set_parameter_string(_search_id, _key, _value, _comparison_op)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24614,11 +24614,11 @@ function eos_lobby_lobby_search_set_parameter_string(_search_id, _key, _value, _
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_set_parameter_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_set_parameter_string(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24630,8 +24630,8 @@ function eos_lobby_lobby_search_set_parameter_string(_search_id, _key, _value, _
  */
 function eos_lobby_lobby_search_set_parameter_bool(_search_id, _key, _value, _comparison_op)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24655,11 +24655,11 @@ function eos_lobby_lobby_search_set_parameter_bool(_search_id, _key, _value, _co
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_set_parameter_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_set_parameter_bool(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24671,8 +24671,8 @@ function eos_lobby_lobby_search_set_parameter_bool(_search_id, _key, _value, _co
  */
 function eos_lobby_lobby_search_set_parameter_double(_search_id, _key, _value, _comparison_op)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24696,11 +24696,11 @@ function eos_lobby_lobby_search_set_parameter_double(_search_id, _key, _value, _
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_set_parameter_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_set_parameter_double(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24710,8 +24710,8 @@ function eos_lobby_lobby_search_set_parameter_double(_search_id, _key, _value, _
  */
 function eos_lobby_lobby_search_remove_parameter(_search_id, _options)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24725,11 +24725,11 @@ function eos_lobby_lobby_search_remove_parameter(_search_id, _options)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_remove_parameter(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_remove_parameter(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24739,8 +24739,8 @@ function eos_lobby_lobby_search_remove_parameter(_search_id, _options)
  */
 function eos_lobby_lobby_search_set_max_results(_search_id, _max_results)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24754,11 +24754,11 @@ function eos_lobby_lobby_search_set_max_results(_search_id, _max_results)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_set_max_results(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_set_max_results(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24768,10 +24768,10 @@ function eos_lobby_lobby_search_set_max_results(_search_id, _max_results)
  */
 function eos_lobby_lobby_search_find(_search_id, _local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24793,13 +24793,13 @@ function eos_lobby_lobby_search_find(_search_id, _local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_lobby_search_find(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_find(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -24808,8 +24808,8 @@ function eos_lobby_lobby_search_find(_search_id, _local_user_id, _callback)
  */
 function eos_lobby_lobby_search_get_search_result_count(_search_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24819,11 +24819,11 @@ function eos_lobby_lobby_search_get_search_result_count(_search_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_get_search_result_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_get_search_result_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24833,8 +24833,8 @@ function eos_lobby_lobby_search_get_search_result_count(_search_id)
  */
 function eos_lobby_lobby_search_copy_search_result_by_index(_search_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24848,11 +24848,11 @@ function eos_lobby_lobby_search_copy_search_result_by_index(_search_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_lobby_search_copy_search_result_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_lobby_search_copy_search_result_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24860,8 +24860,8 @@ function eos_lobby_lobby_search_copy_search_result_by_index(_search_id, _index)
  */
 function eos_lobby_details_release(_lobby_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24869,9 +24869,9 @@ function eos_lobby_details_release(_lobby_details_id)
     if (!is_numeric(_lobby_details_id)) show_error($"{_GMFUNCTION_} :: _lobby_details_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _lobby_details_id);
 
-    var _return_value = __eos_lobby_details_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_details_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -24881,16 +24881,16 @@ function eos_lobby_details_release(_lobby_details_id)
  */
 function eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24899,16 +24899,16 @@ function eos_lobby_copy_lobby_details_handle(_lobby_id, _local_user_id)
  */
 function eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24917,8 +24917,8 @@ function eos_lobby_copy_lobby_details_handle_by_invite_id(_invite_id)
  */
 function eos_lobby_copy_lobby_details_handle_by_ui_event_id(_ui_event_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24928,11 +24928,11 @@ function eos_lobby_copy_lobby_details_handle_by_ui_event_id(_ui_event_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_copy_lobby_details_handle_by_ui_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_copy_lobby_details_handle_by_ui_event_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24941,8 +24941,8 @@ function eos_lobby_copy_lobby_details_handle_by_ui_event_id(_ui_event_id)
  */
 function eos_lobby_details_copy_info(_lobby_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24952,18 +24952,18 @@ function eos_lobby_details_copy_info(_lobby_details_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_copy_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLobbyDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLobbyDetailsInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -24972,8 +24972,8 @@ function eos_lobby_details_copy_info(_lobby_details_id)
  */
 function eos_lobby_details_get_member_count(_lobby_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -24983,11 +24983,11 @@ function eos_lobby_details_get_member_count(_lobby_details_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_get_member_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_get_member_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -24997,8 +24997,8 @@ function eos_lobby_details_get_member_count(_lobby_details_id)
  */
 function eos_lobby_details_get_member_by_index(_lobby_details_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25010,9 +25010,9 @@ function eos_lobby_details_get_member_by_index(_lobby_details_id, _index)
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_lobby_details_get_member_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_details_get_member_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25021,8 +25021,8 @@ function eos_lobby_details_get_member_by_index(_lobby_details_id, _index)
  */
 function eos_lobby_details_get_lobby_owner(_lobby_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25030,9 +25030,9 @@ function eos_lobby_details_get_lobby_owner(_lobby_details_id)
     if (!is_numeric(_lobby_details_id)) show_error($"{_GMFUNCTION_} :: _lobby_details_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _lobby_details_id);
 
-    var _return_value = __eos_lobby_details_get_lobby_owner(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_details_get_lobby_owner(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25042,10 +25042,10 @@ function eos_lobby_details_get_lobby_owner(_lobby_details_id)
  */
 function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25063,17 +25063,17 @@ function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_lobby_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_lobby_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25081,8 +25081,8 @@ function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
  */
 function eos_lobby_remove_notify_lobby_update_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25090,9 +25090,9 @@ function eos_lobby_remove_notify_lobby_update_received(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_lobby_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_lobby_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25102,10 +25102,10 @@ function eos_lobby_remove_notify_lobby_update_received(_notification_id)
  */
 function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25123,17 +25123,17 @@ function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _call
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_lobby_member_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_lobby_member_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25141,8 +25141,8 @@ function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _call
  */
 function eos_lobby_remove_notify_lobby_member_update_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25150,9 +25150,9 @@ function eos_lobby_remove_notify_lobby_member_update_received(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_lobby_member_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_lobby_member_update_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25162,10 +25162,10 @@ function eos_lobby_remove_notify_lobby_member_update_received(_notification_id)
  */
 function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25183,17 +25183,17 @@ function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _call
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_lobby_member_status_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_lobby_member_status_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25201,8 +25201,8 @@ function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _call
  */
 function eos_lobby_remove_notify_lobby_member_status_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25210,9 +25210,9 @@ function eos_lobby_remove_notify_lobby_member_status_received(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_lobby_member_status_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_lobby_member_status_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25221,10 +25221,10 @@ function eos_lobby_remove_notify_lobby_member_status_received(_notification_id)
  */
 function eos_lobby_add_notify_join_lobby_accepted(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25237,17 +25237,17 @@ function eos_lobby_add_notify_join_lobby_accepted(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_join_lobby_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_join_lobby_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25255,8 +25255,8 @@ function eos_lobby_add_notify_join_lobby_accepted(_callback)
  */
 function eos_lobby_remove_notify_join_lobby_accepted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25264,9 +25264,9 @@ function eos_lobby_remove_notify_join_lobby_accepted(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_join_lobby_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_join_lobby_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25276,10 +25276,10 @@ function eos_lobby_remove_notify_join_lobby_accepted(_notification_id)
  */
 function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25297,17 +25297,17 @@ function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_leave_lobby_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_leave_lobby_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25315,8 +25315,8 @@ function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
  */
 function eos_lobby_remove_notify_leave_lobby_requested(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25324,9 +25324,9 @@ function eos_lobby_remove_notify_leave_lobby_requested(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_leave_lobby_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_leave_lobby_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25336,10 +25336,10 @@ function eos_lobby_remove_notify_leave_lobby_requested(_notification_id)
  */
 function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25357,17 +25357,17 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id,
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_send_lobby_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_send_lobby_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25375,8 +25375,8 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id,
  */
 function eos_lobby_remove_notify_send_lobby_native_invite_requested(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25384,9 +25384,9 @@ function eos_lobby_remove_notify_send_lobby_native_invite_requested(_notificatio
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_send_lobby_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_send_lobby_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_lobby_get_rtc_room_name (no wrapper is required)
@@ -25398,10 +25398,10 @@ function eos_lobby_remove_notify_send_lobby_native_invite_requested(_notificatio
  */
 function eos_lobby_add_notify_rtc_room_connection_changed(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25414,17 +25414,17 @@ function eos_lobby_add_notify_rtc_room_connection_changed(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_rtc_room_connection_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_rtc_room_connection_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25432,8 +25432,8 @@ function eos_lobby_add_notify_rtc_room_connection_changed(_callback)
  */
 function eos_lobby_remove_notify_rtc_room_connection_changed(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25441,9 +25441,9 @@ function eos_lobby_remove_notify_rtc_room_connection_changed(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_rtc_room_connection_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_rtc_room_connection_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25452,8 +25452,8 @@ function eos_lobby_remove_notify_rtc_room_connection_changed(_notification_id)
  */
 function eos_lobby_details_get_attribute_count(_lobby_details_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25463,11 +25463,11 @@ function eos_lobby_details_get_attribute_count(_lobby_details_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_get_attribute_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_get_attribute_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25477,8 +25477,8 @@ function eos_lobby_details_get_attribute_count(_lobby_details_id)
  */
 function eos_lobby_details_copy_attribute_by_index(_lobby_details_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25492,18 +25492,18 @@ function eos_lobby_details_copy_attribute_by_index(_lobby_details_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_copy_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_copy_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -25513,8 +25513,8 @@ function eos_lobby_details_copy_attribute_by_index(_lobby_details_id, _index)
  */
 function eos_lobby_details_copy_attribute_by_key(_lobby_details_id, _key)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25529,18 +25529,18 @@ function eos_lobby_details_copy_attribute_by_key(_lobby_details_id, _key)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_copy_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_copy_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -25550,8 +25550,8 @@ function eos_lobby_details_copy_attribute_by_key(_lobby_details_id, _key)
  */
 function eos_lobby_details_get_member_attribute_count(_lobby_details_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25566,11 +25566,11 @@ function eos_lobby_details_get_member_attribute_count(_lobby_details_id, _target
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_get_member_attribute_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_get_member_attribute_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25581,8 +25581,8 @@ function eos_lobby_details_get_member_attribute_count(_lobby_details_id, _target
  */
 function eos_lobby_details_copy_member_attribute_by_index(_lobby_details_id, _target_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25601,18 +25601,18 @@ function eos_lobby_details_copy_member_attribute_by_index(_lobby_details_id, _ta
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_copy_member_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_copy_member_attribute_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -25623,8 +25623,8 @@ function eos_lobby_details_copy_member_attribute_by_index(_lobby_details_id, _ta
  */
 function eos_lobby_details_copy_member_attribute_by_key(_lobby_details_id, _target_user_id, _key)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25644,18 +25644,18 @@ function eos_lobby_details_copy_member_attribute_by_key(_lobby_details_id, _targ
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_copy_member_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_copy_member_attribute_by_key(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLobbyDetailsAttribute_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -25665,8 +25665,8 @@ function eos_lobby_details_copy_member_attribute_by_key(_lobby_details_id, _targ
  */
 function eos_lobby_details_copy_member_info(_lobby_details_id, _target_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25681,18 +25681,18 @@ function eos_lobby_details_copy_member_info(_lobby_details_id, _target_user_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_details_copy_member_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_details_copy_member_info(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicLobbyDetailsMemberInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicLobbyDetailsMemberInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -25701,10 +25701,10 @@ function eos_lobby_details_copy_member_info(_lobby_details_id, _target_user_id)
  */
 function eos_lobby_join_lobby_by_id(_options, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25721,13 +25721,13 @@ function eos_lobby_join_lobby_by_id(_options, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_join_lobby_by_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_join_lobby_by_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25736,10 +25736,10 @@ function eos_lobby_join_lobby_by_id(_options, _callback)
  */
 function eos_lobby_hard_mute_member(_options, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25756,13 +25756,13 @@ function eos_lobby_hard_mute_member(_options, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_hard_mute_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_hard_mute_member(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25771,10 +25771,10 @@ function eos_lobby_hard_mute_member(_options, _callback)
  */
 function eos_lobby_send_invite(_options, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25791,13 +25791,13 @@ function eos_lobby_send_invite(_options, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_send_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_send_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25807,10 +25807,10 @@ function eos_lobby_send_invite(_options, _callback)
  */
 function eos_lobby_reject_invite(_invite_id, _local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25833,13 +25833,13 @@ function eos_lobby_reject_invite(_invite_id, _local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_reject_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_reject_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25848,10 +25848,10 @@ function eos_lobby_reject_invite(_invite_id, _local_user_id, _callback)
  */
 function eos_lobby_query_invites(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25869,13 +25869,13 @@ function eos_lobby_query_invites(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_lobby_query_invites(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_query_invites(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25884,16 +25884,16 @@ function eos_lobby_query_invites(_local_user_id, _callback)
  */
 function eos_lobby_get_invite_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_get_invite_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_get_invite_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25903,8 +25903,8 @@ function eos_lobby_get_invite_count(_local_user_id)
  */
 function eos_lobby_get_invite_id_by_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25917,9 +25917,9 @@ function eos_lobby_get_invite_id_by_index(_local_user_id, _index)
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_lobby_get_invite_id_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_get_invite_id_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25928,10 +25928,10 @@ function eos_lobby_get_invite_id_by_index(_local_user_id, _index)
  */
 function eos_lobby_add_notify_lobby_invite_received(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25944,17 +25944,17 @@ function eos_lobby_add_notify_lobby_invite_received(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_lobby_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_lobby_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -25962,8 +25962,8 @@ function eos_lobby_add_notify_lobby_invite_received(_callback)
  */
 function eos_lobby_remove_notify_lobby_invite_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25971,9 +25971,9 @@ function eos_lobby_remove_notify_lobby_invite_received(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_lobby_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_lobby_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -25982,10 +25982,10 @@ function eos_lobby_remove_notify_lobby_invite_received(_notification_id)
  */
 function eos_lobby_add_notify_lobby_invite_accepted(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -25998,17 +25998,17 @@ function eos_lobby_add_notify_lobby_invite_accepted(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_lobby_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_lobby_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26016,8 +26016,8 @@ function eos_lobby_add_notify_lobby_invite_accepted(_callback)
  */
 function eos_lobby_remove_notify_lobby_invite_accepted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26025,9 +26025,9 @@ function eos_lobby_remove_notify_lobby_invite_accepted(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_lobby_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_lobby_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26036,10 +26036,10 @@ function eos_lobby_remove_notify_lobby_invite_accepted(_notification_id)
  */
 function eos_lobby_add_notify_lobby_invite_rejected(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26052,17 +26052,17 @@ function eos_lobby_add_notify_lobby_invite_rejected(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_lobby_add_notify_lobby_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_lobby_add_notify_lobby_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26070,8 +26070,8 @@ function eos_lobby_add_notify_lobby_invite_rejected(_callback)
  */
 function eos_lobby_remove_notify_lobby_invite_rejected(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26079,9 +26079,9 @@ function eos_lobby_remove_notify_lobby_invite_rejected(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_lobby_remove_notify_lobby_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_lobby_remove_notify_lobby_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26098,8 +26098,8 @@ function eos_lobby_remove_notify_lobby_invite_rejected(_notification_id)
  */
 function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _channel, _data, _bytes, _allow_delayed_delivery, _reliability, _disable_auto_accept_connection)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26145,11 +26145,11 @@ function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _cha
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_send_packet(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_send_packet(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26159,8 +26159,8 @@ function eos_p2p_send_packet(_local_user_id, _remote_user_id, _socket_name, _cha
  */
 function eos_p2p_get_next_received_packet_size(_local_user_id, _channel)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26175,11 +26175,11 @@ function eos_p2p_get_next_received_packet_size(_local_user_id, _channel)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_get_next_received_packet_size(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_get_next_received_packet_size(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26192,8 +26192,8 @@ function eos_p2p_get_next_received_packet_size(_local_user_id, _channel)
  */
 function eos_p2p_receive_packet(_local_user_id, _out_data, _max_bytes, _offset, _channel)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26220,18 +26220,18 @@ function eos_p2p_receive_packet(_local_user_id, _out_data, _max_bytes, _offset, 
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_receive_packet(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_receive_packet(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicP2PReceivedPacket_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicP2PReceivedPacket_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -26242,8 +26242,8 @@ function eos_p2p_receive_packet(_local_user_id, _out_data, _max_bytes, _offset, 
  */
 function eos_p2p_accept_connection(_local_user_id, _remote_user_id, _socket_name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26264,11 +26264,11 @@ function eos_p2p_accept_connection(_local_user_id, _remote_user_id, _socket_name
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_accept_connection(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_accept_connection(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26279,8 +26279,8 @@ function eos_p2p_accept_connection(_local_user_id, _remote_user_id, _socket_name
  */
 function eos_p2p_close_connection(_local_user_id, _remote_user_id, _socket_name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26301,11 +26301,11 @@ function eos_p2p_close_connection(_local_user_id, _remote_user_id, _socket_name)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_close_connection(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_close_connection(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26315,16 +26315,16 @@ function eos_p2p_close_connection(_local_user_id, _remote_user_id, _socket_name)
  */
 function eos_p2p_close_connections(_local_user_id, _socket_name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_close_connections(_local_user_id, _socket_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_close_connections(_local_user_id, _socket_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26332,10 +26332,10 @@ function eos_p2p_close_connections(_local_user_id, _socket_name)
  */
 function eos_p2p_query_nat_type(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26348,13 +26348,13 @@ function eos_p2p_query_nat_type(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_p2p_query_nat_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_p2p_query_nat_type(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26362,16 +26362,16 @@ function eos_p2p_query_nat_type(_callback)
  */
 function eos_p2p_get_nat_type()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_get_nat_type(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_get_nat_type(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26380,8 +26380,8 @@ function eos_p2p_get_nat_type()
  */
 function eos_p2p_set_relay_control(_relay_control)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26392,11 +26392,11 @@ function eos_p2p_set_relay_control(_relay_control)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_set_relay_control(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_set_relay_control(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26404,16 +26404,16 @@ function eos_p2p_set_relay_control(_relay_control)
  */
 function eos_p2p_get_relay_control()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_get_relay_control(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_get_relay_control(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26423,8 +26423,8 @@ function eos_p2p_get_relay_control()
  */
 function eos_p2p_set_port_range(_port, _max_additional_ports_to_try)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26438,11 +26438,11 @@ function eos_p2p_set_port_range(_port, _max_additional_ports_to_try)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_set_port_range(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_set_port_range(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26450,16 +26450,16 @@ function eos_p2p_set_port_range(_port, _max_additional_ports_to_try)
  */
 function eos_p2p_get_port_range()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_get_port_range(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_get_port_range(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = __EpicP2PPortRange_decode(__ret_buffer, buffer_tell(__ret_buffer));
-    return _result;
+    var __result__ = undefined;
+    __result__ = __EpicP2PPortRange_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    return __result__;
 }
 
 /**
@@ -26469,8 +26469,8 @@ function eos_p2p_get_port_range()
  */
 function eos_p2p_set_packet_queue_size(_incoming_max_bytes, _outgoing_max_bytes)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26484,11 +26484,11 @@ function eos_p2p_set_packet_queue_size(_incoming_max_bytes, _outgoing_max_bytes)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_set_packet_queue_size(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_set_packet_queue_size(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26496,16 +26496,16 @@ function eos_p2p_set_packet_queue_size(_incoming_max_bytes, _outgoing_max_bytes)
  */
 function eos_p2p_get_packet_queue_info()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_get_packet_queue_info(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_get_packet_queue_info(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = __EpicP2PPacketQueueInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
-    return _result;
+    var __result__ = undefined;
+    __result__ = __EpicP2PPacketQueueInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    return __result__;
 }
 
 /**
@@ -26516,8 +26516,8 @@ function eos_p2p_get_packet_queue_info()
  */
 function eos_p2p_clear_packet_queue(_local_user_id, _remote_user_id, _socket_name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26538,11 +26538,11 @@ function eos_p2p_clear_packet_queue(_local_user_id, _remote_user_id, _socket_nam
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_clear_packet_queue(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_clear_packet_queue(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26553,10 +26553,10 @@ function eos_p2p_clear_packet_queue(_local_user_id, _remote_user_id, _socket_nam
  */
 function eos_p2p_add_notify_peer_connection_request(_local_user_id, _socket_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26579,17 +26579,17 @@ function eos_p2p_add_notify_peer_connection_request(_local_user_id, _socket_name
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_add_notify_peer_connection_request(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_add_notify_peer_connection_request(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26597,8 +26597,8 @@ function eos_p2p_add_notify_peer_connection_request(_local_user_id, _socket_name
  */
 function eos_p2p_remove_notify_peer_connection_request(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26606,9 +26606,9 @@ function eos_p2p_remove_notify_peer_connection_request(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_p2p_remove_notify_peer_connection_request(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_p2p_remove_notify_peer_connection_request(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26619,10 +26619,10 @@ function eos_p2p_remove_notify_peer_connection_request(_notification_id)
  */
 function eos_p2p_add_notify_peer_connection_established(_local_user_id, _socket_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26645,17 +26645,17 @@ function eos_p2p_add_notify_peer_connection_established(_local_user_id, _socket_
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_add_notify_peer_connection_established(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_add_notify_peer_connection_established(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26663,8 +26663,8 @@ function eos_p2p_add_notify_peer_connection_established(_local_user_id, _socket_
  */
 function eos_p2p_remove_notify_peer_connection_established(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26672,9 +26672,9 @@ function eos_p2p_remove_notify_peer_connection_established(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_p2p_remove_notify_peer_connection_established(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_p2p_remove_notify_peer_connection_established(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26685,10 +26685,10 @@ function eos_p2p_remove_notify_peer_connection_established(_notification_id)
  */
 function eos_p2p_add_notify_peer_connection_interrupted(_local_user_id, _socket_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26711,17 +26711,17 @@ function eos_p2p_add_notify_peer_connection_interrupted(_local_user_id, _socket_
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_add_notify_peer_connection_interrupted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_add_notify_peer_connection_interrupted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26729,8 +26729,8 @@ function eos_p2p_add_notify_peer_connection_interrupted(_local_user_id, _socket_
  */
 function eos_p2p_remove_notify_peer_connection_interrupted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26738,9 +26738,9 @@ function eos_p2p_remove_notify_peer_connection_interrupted(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_p2p_remove_notify_peer_connection_interrupted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_p2p_remove_notify_peer_connection_interrupted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26751,10 +26751,10 @@ function eos_p2p_remove_notify_peer_connection_interrupted(_notification_id)
  */
 function eos_p2p_add_notify_peer_connection_closed(_local_user_id, _socket_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26777,17 +26777,17 @@ function eos_p2p_add_notify_peer_connection_closed(_local_user_id, _socket_name,
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_add_notify_peer_connection_closed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_add_notify_peer_connection_closed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26795,8 +26795,8 @@ function eos_p2p_add_notify_peer_connection_closed(_local_user_id, _socket_name,
  */
 function eos_p2p_remove_notify_peer_connection_closed(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26804,9 +26804,9 @@ function eos_p2p_remove_notify_peer_connection_closed(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_p2p_remove_notify_peer_connection_closed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_p2p_remove_notify_peer_connection_closed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26815,10 +26815,10 @@ function eos_p2p_remove_notify_peer_connection_closed(_notification_id)
  */
 function eos_p2p_add_notify_incoming_packet_queue_full(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26831,17 +26831,17 @@ function eos_p2p_add_notify_incoming_packet_queue_full(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_p2p_add_notify_incoming_packet_queue_full(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_p2p_add_notify_incoming_packet_queue_full(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26849,8 +26849,8 @@ function eos_p2p_add_notify_incoming_packet_queue_full(_callback)
  */
 function eos_p2p_remove_notify_incoming_packet_queue_full(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26858,9 +26858,9 @@ function eos_p2p_remove_notify_incoming_packet_queue_full(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_p2p_remove_notify_incoming_packet_queue_full(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_p2p_remove_notify_incoming_packet_queue_full(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26870,10 +26870,10 @@ function eos_p2p_remove_notify_incoming_packet_queue_full(_notification_id)
  */
 function eos_playerdatastorage_query_file(_local_user_id, _filename, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26896,13 +26896,13 @@ function eos_playerdatastorage_query_file(_local_user_id, _filename, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_playerdatastorage_query_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_playerdatastorage_query_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26911,10 +26911,10 @@ function eos_playerdatastorage_query_file(_local_user_id, _filename, _callback)
  */
 function eos_playerdatastorage_query_file_list(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26932,13 +26932,13 @@ function eos_playerdatastorage_query_file_list(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_playerdatastorage_query_file_list(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_playerdatastorage_query_file_list(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -26947,16 +26947,16 @@ function eos_playerdatastorage_query_file_list(_local_user_id, _callback)
  */
 function eos_playerdatastorage_get_file_metadata_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_playerdatastorage_get_file_metadata_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_playerdatastorage_get_file_metadata_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -26966,8 +26966,8 @@ function eos_playerdatastorage_get_file_metadata_count(_local_user_id)
  */
 function eos_playerdatastorage_copy_file_metadata_at_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -26982,18 +26982,18 @@ function eos_playerdatastorage_copy_file_metadata_at_index(_local_user_id, _inde
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_playerdatastorage_copy_file_metadata_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_playerdatastorage_copy_file_metadata_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -27003,23 +27003,23 @@ function eos_playerdatastorage_copy_file_metadata_at_index(_local_user_id, _inde
  */
 function eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _filename)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicPlayerDataStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -27030,10 +27030,10 @@ function eos_playerdatastorage_copy_file_metadata_by_filename(_local_user_id, _f
  */
 function eos_playerdatastorage_duplicate_file(_local_user_id, _source_filename, _destination_filename, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27061,13 +27061,13 @@ function eos_playerdatastorage_duplicate_file(_local_user_id, _source_filename, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_playerdatastorage_duplicate_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_playerdatastorage_duplicate_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27077,10 +27077,10 @@ function eos_playerdatastorage_duplicate_file(_local_user_id, _source_filename, 
  */
 function eos_playerdatastorage_delete_file(_local_user_id, _filename, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27103,13 +27103,13 @@ function eos_playerdatastorage_delete_file(_local_user_id, _filename, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_playerdatastorage_delete_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_playerdatastorage_delete_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27121,10 +27121,10 @@ function eos_playerdatastorage_delete_file(_local_user_id, _filename, _callback)
  */
 function eos_playerdatastorage_read_file(_local_user_id, _filename, _output_path, _callback, _progress_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27152,7 +27152,7 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _output_path
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
@@ -27165,13 +27165,13 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _output_path
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_progress_callback)) show_error($"{_GMFUNCTION_} :: _progress_callback expected callable type", true);
-        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher);
+        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _progress_callback_handle);
     }
 
-    var _return_value = __eos_playerdatastorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_playerdatastorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27183,10 +27183,10 @@ function eos_playerdatastorage_read_file(_local_user_id, _filename, _output_path
  */
 function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path, _callback, _progress_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27214,7 +27214,7 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
@@ -27227,13 +27227,13 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_progress_callback)) show_error($"{_GMFUNCTION_} :: _progress_callback expected callable type", true);
-        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher);
+        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _progress_callback_handle);
     }
 
-    var _return_value = __eos_playerdatastorage_write_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_playerdatastorage_write_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_playerdatastorage_file_transfer_request_cancel_request (no wrapper is required)
@@ -27245,10 +27245,10 @@ function eos_playerdatastorage_write_file(_local_user_id, _filename, _input_path
  */
 function eos_playerdatastorage_delete_cache(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27266,13 +27266,13 @@ function eos_playerdatastorage_delete_cache(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_playerdatastorage_delete_cache(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_playerdatastorage_delete_cache(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27282,10 +27282,10 @@ function eos_playerdatastorage_delete_cache(_local_user_id, _callback)
  */
 function eos_titlestorage_query_file(_local_user_id, _filename, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27308,13 +27308,13 @@ function eos_titlestorage_query_file(_local_user_id, _filename, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_titlestorage_query_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_titlestorage_query_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27324,10 +27324,10 @@ function eos_titlestorage_query_file(_local_user_id, _filename, _callback)
  */
 function eos_titlestorage_query_file_list(_local_user_id, _tags, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27338,9 +27338,9 @@ function eos_titlestorage_query_file_list(_local_user_id, _tags, _callback)
 
     // param: _tags, type: String[]
     if (!is_array(_tags)) show_error($"{_GMFUNCTION_} :: _tags expected array", true);
-    var _length = array_length(_tags);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_tags);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_tags[_i])) show_error($"{_GMFUNCTION_} :: _tags[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_tags[_i]));
@@ -27356,13 +27356,13 @@ function eos_titlestorage_query_file_list(_local_user_id, _tags, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_titlestorage_query_file_list(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_titlestorage_query_file_list(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27371,16 +27371,16 @@ function eos_titlestorage_query_file_list(_local_user_id, _tags, _callback)
  */
 function eos_titlestorage_get_file_metadata_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_titlestorage_get_file_metadata_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_titlestorage_get_file_metadata_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -27390,8 +27390,8 @@ function eos_titlestorage_get_file_metadata_count(_local_user_id)
  */
 function eos_titlestorage_copy_file_metadata_at_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27406,18 +27406,18 @@ function eos_titlestorage_copy_file_metadata_at_index(_local_user_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_titlestorage_copy_file_metadata_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_titlestorage_copy_file_metadata_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -27427,23 +27427,23 @@ function eos_titlestorage_copy_file_metadata_at_index(_local_user_id, _index)
  */
 function eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filename)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filename, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicTitleStorageFileMetadata_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -27455,10 +27455,10 @@ function eos_titlestorage_copy_file_metadata_by_filename(_local_user_id, _filena
  */
 function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _callback, _progress_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27486,7 +27486,7 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _ca
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
@@ -27499,13 +27499,13 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _ca
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_progress_callback)) show_error($"{_GMFUNCTION_} :: _progress_callback expected callable type", true);
-        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher);
+        var _progress_callback_handle = __ext_core_function_register(_progress_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _progress_callback_handle);
     }
 
-    var _return_value = __eos_titlestorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_titlestorage_read_file(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_titlestorage_file_transfer_request_cancel_request (no wrapper is required)
@@ -27517,10 +27517,10 @@ function eos_titlestorage_read_file(_local_user_id, _filename, _output_path, _ca
  */
 function eos_titlestorage_delete_cache(_local_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27538,13 +27538,13 @@ function eos_titlestorage_delete_cache(_local_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_titlestorage_delete_cache(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_titlestorage_delete_cache(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27555,10 +27555,10 @@ function eos_titlestorage_delete_cache(_local_user_id, _callback)
  */
 function eos_ecom_query_ownership(_local_user_id, _catalog_item_ids, _catalog_namespace, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27569,9 +27569,9 @@ function eos_ecom_query_ownership(_local_user_id, _catalog_item_ids, _catalog_na
 
     // param: _catalog_item_ids, type: String[]
     if (!is_array(_catalog_item_ids)) show_error($"{_GMFUNCTION_} :: _catalog_item_ids expected array", true);
-    var _length = array_length(_catalog_item_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_catalog_item_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_catalog_item_ids[_i])) show_error($"{_GMFUNCTION_} :: _catalog_item_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_catalog_item_ids[_i]));
@@ -27592,13 +27592,13 @@ function eos_ecom_query_ownership(_local_user_id, _catalog_item_ids, _catalog_na
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_query_ownership(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_query_ownership(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27608,10 +27608,10 @@ function eos_ecom_query_ownership(_local_user_id, _catalog_item_ids, _catalog_na
  */
 function eos_ecom_query_ownership_by_sandbox_ids(_local_user_id, _sandbox_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27622,9 +27622,9 @@ function eos_ecom_query_ownership_by_sandbox_ids(_local_user_id, _sandbox_ids, _
 
     // param: _sandbox_ids, type: String[]
     if (!is_array(_sandbox_ids)) show_error($"{_GMFUNCTION_} :: _sandbox_ids expected array", true);
-    var _length = array_length(_sandbox_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_sandbox_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_sandbox_ids[_i])) show_error($"{_GMFUNCTION_} :: _sandbox_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_sandbox_ids[_i]));
@@ -27640,13 +27640,13 @@ function eos_ecom_query_ownership_by_sandbox_ids(_local_user_id, _sandbox_ids, _
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_query_ownership_by_sandbox_ids(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_query_ownership_by_sandbox_ids(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27657,10 +27657,10 @@ function eos_ecom_query_ownership_by_sandbox_ids(_local_user_id, _sandbox_ids, _
  */
 function eos_ecom_query_ownership_token(_local_user_id, _catalog_item_ids, _catalog_namespace, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27671,9 +27671,9 @@ function eos_ecom_query_ownership_token(_local_user_id, _catalog_item_ids, _cata
 
     // param: _catalog_item_ids, type: String[]
     if (!is_array(_catalog_item_ids)) show_error($"{_GMFUNCTION_} :: _catalog_item_ids expected array", true);
-    var _length = array_length(_catalog_item_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_catalog_item_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_catalog_item_ids[_i])) show_error($"{_GMFUNCTION_} :: _catalog_item_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_catalog_item_ids[_i]));
@@ -27694,13 +27694,13 @@ function eos_ecom_query_ownership_token(_local_user_id, _catalog_item_ids, _cata
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_query_ownership_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_query_ownership_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27712,10 +27712,10 @@ function eos_ecom_query_ownership_token(_local_user_id, _catalog_item_ids, _cata
  */
 function eos_ecom_query_entitlements(_local_user_id, _entitlement_names, _include_redeemed, _catalog_namespace, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27726,9 +27726,9 @@ function eos_ecom_query_entitlements(_local_user_id, _entitlement_names, _includ
 
     // param: _entitlement_names, type: String[]
     if (!is_array(_entitlement_names)) show_error($"{_GMFUNCTION_} :: _entitlement_names expected array", true);
-    var _length = array_length(_entitlement_names);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_entitlement_names);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_entitlement_names[_i])) show_error($"{_GMFUNCTION_} :: _entitlement_names[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_entitlement_names[_i]));
@@ -27753,13 +27753,13 @@ function eos_ecom_query_entitlements(_local_user_id, _entitlement_names, _includ
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_query_entitlements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_query_entitlements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27769,10 +27769,10 @@ function eos_ecom_query_entitlements(_local_user_id, _entitlement_names, _includ
  */
 function eos_ecom_query_entitlement_token(_local_user_id, _entitlement_names, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27783,9 +27783,9 @@ function eos_ecom_query_entitlement_token(_local_user_id, _entitlement_names, _c
 
     // param: _entitlement_names, type: String[]
     if (!is_array(_entitlement_names)) show_error($"{_GMFUNCTION_} :: _entitlement_names expected array", true);
-    var _length = array_length(_entitlement_names);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_entitlement_names);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_entitlement_names[_i])) show_error($"{_GMFUNCTION_} :: _entitlement_names[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_entitlement_names[_i]));
@@ -27801,13 +27801,13 @@ function eos_ecom_query_entitlement_token(_local_user_id, _entitlement_names, _c
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_query_entitlement_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_query_entitlement_token(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27817,10 +27817,10 @@ function eos_ecom_query_entitlement_token(_local_user_id, _entitlement_names, _c
  */
 function eos_ecom_query_offers(_local_user_id, _catalog_namespace, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27843,13 +27843,13 @@ function eos_ecom_query_offers(_local_user_id, _catalog_namespace, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_query_offers(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_query_offers(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27860,10 +27860,10 @@ function eos_ecom_query_offers(_local_user_id, _catalog_namespace, _callback)
  */
 function eos_ecom_checkout(_local_user_id, _offer_ids, _catalog_namespace, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27874,9 +27874,9 @@ function eos_ecom_checkout(_local_user_id, _offer_ids, _catalog_namespace, _call
 
     // param: _offer_ids, type: String[]
     if (!is_array(_offer_ids)) show_error($"{_GMFUNCTION_} :: _offer_ids expected array", true);
-    var _length = array_length(_offer_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_offer_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_offer_ids[_i])) show_error($"{_GMFUNCTION_} :: _offer_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_offer_ids[_i]));
@@ -27897,13 +27897,13 @@ function eos_ecom_checkout(_local_user_id, _offer_ids, _catalog_namespace, _call
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_checkout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_checkout(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27913,10 +27913,10 @@ function eos_ecom_checkout(_local_user_id, _offer_ids, _catalog_namespace, _call
  */
 function eos_ecom_redeem_entitlements(_local_user_id, _entitlement_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27927,9 +27927,9 @@ function eos_ecom_redeem_entitlements(_local_user_id, _entitlement_ids, _callbac
 
     // param: _entitlement_ids, type: String[]
     if (!is_array(_entitlement_ids)) show_error($"{_GMFUNCTION_} :: _entitlement_ids expected array", true);
-    var _length = array_length(_entitlement_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_entitlement_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_entitlement_ids[_i])) show_error($"{_GMFUNCTION_} :: _entitlement_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_entitlement_ids[_i]));
@@ -27945,13 +27945,13 @@ function eos_ecom_redeem_entitlements(_local_user_id, _entitlement_ids, _callbac
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_ecom_redeem_entitlements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_redeem_entitlements(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -27960,16 +27960,16 @@ function eos_ecom_redeem_entitlements(_local_user_id, _entitlement_ids, _callbac
  */
 function eos_ecom_get_item_ownership_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_item_ownership_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_item_ownership_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -27979,8 +27979,8 @@ function eos_ecom_get_item_ownership_count(_local_user_id)
  */
 function eos_ecom_copy_item_ownership_at_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -27995,18 +27995,18 @@ function eos_ecom_copy_item_ownership_at_index(_local_user_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_item_ownership_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_item_ownership_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28015,16 +28015,16 @@ function eos_ecom_copy_item_ownership_at_index(_local_user_id, _index)
  */
 function eos_ecom_get_sandbox_ownership_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_sandbox_ownership_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_sandbox_ownership_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28034,8 +28034,8 @@ function eos_ecom_get_sandbox_ownership_count(_local_user_id)
  */
 function eos_ecom_copy_sandbox_ownership_at_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28050,18 +28050,18 @@ function eos_ecom_copy_sandbox_ownership_at_index(_local_user_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_sandbox_ownership_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_sandbox_ownership_at_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomSandboxIdItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomSandboxIdItemOwnership_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28070,16 +28070,16 @@ function eos_ecom_copy_sandbox_ownership_at_index(_local_user_id, _index)
  */
 function eos_ecom_get_entitlements_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_entitlements_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_entitlements_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28089,16 +28089,16 @@ function eos_ecom_get_entitlements_count(_local_user_id)
  */
 function eos_ecom_get_entitlements_by_name_count(_local_user_id, _entitlement_name)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_entitlements_by_name_count(_local_user_id, _entitlement_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_entitlements_by_name_count(_local_user_id, _entitlement_name, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28108,8 +28108,8 @@ function eos_ecom_get_entitlements_by_name_count(_local_user_id, _entitlement_na
  */
 function eos_ecom_copy_entitlement_by_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28124,18 +28124,18 @@ function eos_ecom_copy_entitlement_by_index(_local_user_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28146,8 +28146,8 @@ function eos_ecom_copy_entitlement_by_index(_local_user_id, _index)
  */
 function eos_ecom_copy_entitlement_by_name_and_index(_local_user_id, _entitlement_name, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28167,18 +28167,18 @@ function eos_ecom_copy_entitlement_by_name_and_index(_local_user_id, _entitlemen
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_entitlement_by_name_and_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_entitlement_by_name_and_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28188,23 +28188,23 @@ function eos_ecom_copy_entitlement_by_name_and_index(_local_user_id, _entitlemen
  */
 function eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28213,16 +28213,16 @@ function eos_ecom_copy_entitlement_by_id(_local_user_id, _entitlement_id)
  */
 function eos_ecom_get_last_redeemed_entitlements_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_last_redeemed_entitlements_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_last_redeemed_entitlements_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28232,8 +28232,8 @@ function eos_ecom_get_last_redeemed_entitlements_count(_local_user_id)
  */
 function eos_ecom_copy_last_redeemed_entitlement_by_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28246,9 +28246,9 @@ function eos_ecom_copy_last_redeemed_entitlement_by_index(_local_user_id, _index
     if (!is_numeric(_index)) show_error($"{_GMFUNCTION_} :: _index expected number", true);
     buffer_write(__args_buffer, buffer_u64, _index);
 
-    var _return_value = __eos_ecom_copy_last_redeemed_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_copy_last_redeemed_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -28257,16 +28257,16 @@ function eos_ecom_copy_last_redeemed_entitlement_by_index(_local_user_id, _index
  */
 function eos_ecom_get_offer_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_offer_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_offer_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28276,8 +28276,8 @@ function eos_ecom_get_offer_count(_local_user_id)
  */
 function eos_ecom_copy_offer_by_index(_local_user_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28292,18 +28292,18 @@ function eos_ecom_copy_offer_by_index(_local_user_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_offer_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_offer_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28313,23 +28313,23 @@ function eos_ecom_copy_offer_by_index(_local_user_id, _index)
  */
 function eos_ecom_copy_offer_by_id(_local_user_id, _offer_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_offer_by_id(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_offer_by_id(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomCatalogOffer_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28339,16 +28339,16 @@ function eos_ecom_copy_offer_by_id(_local_user_id, _offer_id)
  */
 function eos_ecom_get_offer_item_count(_local_user_id, _offer_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_offer_item_count(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_offer_item_count(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28359,8 +28359,8 @@ function eos_ecom_get_offer_item_count(_local_user_id, _offer_id)
  */
 function eos_ecom_copy_offer_item_by_index(_local_user_id, _offer_id, _item_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28380,18 +28380,18 @@ function eos_ecom_copy_offer_item_by_index(_local_user_id, _offer_id, _item_inde
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_offer_item_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_offer_item_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28401,23 +28401,23 @@ function eos_ecom_copy_offer_item_by_index(_local_user_id, _offer_id, _item_inde
  */
 function eos_ecom_copy_item_by_id(_local_user_id, _item_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_item_by_id(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_item_by_id(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomCatalogItem_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28427,16 +28427,16 @@ function eos_ecom_copy_item_by_id(_local_user_id, _item_id)
  */
 function eos_ecom_get_offer_image_info_count(_local_user_id, _offer_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_offer_image_info_count(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_offer_image_info_count(_local_user_id, _offer_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28447,8 +28447,8 @@ function eos_ecom_get_offer_image_info_count(_local_user_id, _offer_id)
  */
 function eos_ecom_copy_offer_image_info_by_index(_local_user_id, _offer_id, _image_info_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28468,18 +28468,18 @@ function eos_ecom_copy_offer_image_info_by_index(_local_user_id, _offer_id, _ima
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_offer_image_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_offer_image_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28489,16 +28489,16 @@ function eos_ecom_copy_offer_image_info_by_index(_local_user_id, _offer_id, _ima
  */
 function eos_ecom_get_item_image_info_count(_local_user_id, _item_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_item_image_info_count(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_item_image_info_count(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28509,8 +28509,8 @@ function eos_ecom_get_item_image_info_count(_local_user_id, _item_id)
  */
 function eos_ecom_copy_item_image_info_by_index(_local_user_id, _item_id, _image_info_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28530,18 +28530,18 @@ function eos_ecom_copy_item_image_info_by_index(_local_user_id, _item_id, _image
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_item_image_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_item_image_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomKeyImageInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28551,16 +28551,16 @@ function eos_ecom_copy_item_image_info_by_index(_local_user_id, _item_id, _image
  */
 function eos_ecom_get_item_release_count(_local_user_id, _item_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_item_release_count(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_item_release_count(_local_user_id, _item_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28571,8 +28571,8 @@ function eos_ecom_get_item_release_count(_local_user_id, _item_id)
  */
 function eos_ecom_copy_item_release_by_index(_local_user_id, _item_id, _release_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28592,18 +28592,18 @@ function eos_ecom_copy_item_release_by_index(_local_user_id, _item_id, _release_
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_item_release_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_item_release_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomCatalogRelease_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomCatalogRelease_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28612,16 +28612,16 @@ function eos_ecom_copy_item_release_by_index(_local_user_id, _item_id, _release_
  */
 function eos_ecom_get_transaction_count(_local_user_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_get_transaction_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_get_transaction_count(_local_user_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28631,8 +28631,8 @@ function eos_ecom_get_transaction_count(_local_user_id)
  */
 function eos_ecom_copy_transaction_by_index(_local_user_id, _transaction_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28647,11 +28647,11 @@ function eos_ecom_copy_transaction_by_index(_local_user_id, _transaction_index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_transaction_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_transaction_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28661,16 +28661,16 @@ function eos_ecom_copy_transaction_by_index(_local_user_id, _transaction_index)
  */
 function eos_ecom_copy_transaction_by_id(_local_user_id, _transaction_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_copy_transaction_by_id(_local_user_id, _transaction_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_copy_transaction_by_id(_local_user_id, _transaction_id, buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28679,8 +28679,8 @@ function eos_ecom_copy_transaction_by_id(_local_user_id, _transaction_id)
  */
 function eos_ecom_transaction_get_transaction_id(_tx_handle_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28688,9 +28688,9 @@ function eos_ecom_transaction_get_transaction_id(_tx_handle_id)
     if (!is_numeric(_tx_handle_id)) show_error($"{_GMFUNCTION_} :: _tx_handle_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _tx_handle_id);
 
-    var _return_value = __eos_ecom_transaction_get_transaction_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_transaction_get_transaction_id(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -28699,8 +28699,8 @@ function eos_ecom_transaction_get_transaction_id(_tx_handle_id)
  */
 function eos_ecom_transaction_get_entitlements_count(_tx_handle_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28710,11 +28710,11 @@ function eos_ecom_transaction_get_entitlements_count(_tx_handle_id)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_transaction_get_entitlements_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_transaction_get_entitlements_count(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -28724,8 +28724,8 @@ function eos_ecom_transaction_get_entitlements_count(_tx_handle_id)
  */
 function eos_ecom_transaction_copy_entitlement_by_index(_tx_handle_id, _index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28739,18 +28739,18 @@ function eos_ecom_transaction_copy_entitlement_by_index(_tx_handle_id, _index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_ecom_transaction_copy_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_ecom_transaction_copy_entitlement_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicEcomEntitlement_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -28758,8 +28758,8 @@ function eos_ecom_transaction_copy_entitlement_by_index(_tx_handle_id, _index)
  */
 function eos_ecom_transaction_release(_tx_handle_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28767,9 +28767,9 @@ function eos_ecom_transaction_release(_tx_handle_id)
     if (!is_numeric(_tx_handle_id)) show_error($"{_GMFUNCTION_} :: _tx_handle_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _tx_handle_id);
 
-    var _return_value = __eos_ecom_transaction_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_ecom_transaction_release(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_custominvites_set_custom_invite (no wrapper is required)
@@ -28782,10 +28782,10 @@ function eos_ecom_transaction_release(_tx_handle_id)
  */
 function eos_custominvites_send_custom_invite(_local_user_id, _target_user_ids, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28796,9 +28796,9 @@ function eos_custominvites_send_custom_invite(_local_user_id, _target_user_ids, 
 
     // param: _target_user_ids, type: String[]
     if (!is_array(_target_user_ids)) show_error($"{_GMFUNCTION_} :: _target_user_ids expected array", true);
-    var _length = array_length(_target_user_ids);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_target_user_ids);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (!is_string(_target_user_ids[_i])) show_error($"{_GMFUNCTION_} :: _target_user_ids[_i] expected string", true);
         buffer_write(__args_buffer, buffer_u32, string_byte_length(_target_user_ids[_i]));
@@ -28814,13 +28814,13 @@ function eos_custominvites_send_custom_invite(_local_user_id, _target_user_ids, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_custominvites_send_custom_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_send_custom_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -28832,8 +28832,8 @@ function eos_custominvites_send_custom_invite(_local_user_id, _target_user_ids, 
  */
 function eos_custominvites_finalize_invite(_target_user_id, _local_user_id, _custom_invite_id, _processing_result)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28857,9 +28857,9 @@ function eos_custominvites_finalize_invite(_target_user_id, _local_user_id, _cus
     if (!is_numeric(_processing_result)) show_error($"{_GMFUNCTION_} :: _processing_result expected number", true);
     buffer_write(__args_buffer, buffer_u64, _processing_result);
 
-    var _return_value = __eos_custominvites_finalize_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_finalize_invite(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -28869,10 +28869,10 @@ function eos_custominvites_finalize_invite(_target_user_id, _local_user_id, _cus
  */
 function eos_custominvites_send_request_to_join(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28895,13 +28895,13 @@ function eos_custominvites_send_request_to_join(_local_user_id, _target_user_id,
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_custominvites_send_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_send_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -28911,10 +28911,10 @@ function eos_custominvites_send_request_to_join(_local_user_id, _target_user_id,
  */
 function eos_custominvites_accept_request_to_join(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28937,13 +28937,13 @@ function eos_custominvites_accept_request_to_join(_local_user_id, _target_user_i
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_custominvites_accept_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_accept_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -28953,10 +28953,10 @@ function eos_custominvites_accept_request_to_join(_local_user_id, _target_user_i
  */
 function eos_custominvites_reject_request_to_join(_local_user_id, _target_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -28979,13 +28979,13 @@ function eos_custominvites_reject_request_to_join(_local_user_id, _target_user_i
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_custominvites_reject_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_reject_request_to_join(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -28994,10 +28994,10 @@ function eos_custominvites_reject_request_to_join(_local_user_id, _target_user_i
  */
 function eos_custominvites_add_notify_custom_invite_received(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29010,17 +29010,17 @@ function eos_custominvites_add_notify_custom_invite_received(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_custom_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_custom_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29028,8 +29028,8 @@ function eos_custominvites_add_notify_custom_invite_received(_callback)
  */
 function eos_custominvites_remove_notify_custom_invite_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29037,9 +29037,9 @@ function eos_custominvites_remove_notify_custom_invite_received(_notification_id
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_custom_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_custom_invite_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29048,10 +29048,10 @@ function eos_custominvites_remove_notify_custom_invite_received(_notification_id
  */
 function eos_custominvites_add_notify_custom_invite_accepted(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29064,17 +29064,17 @@ function eos_custominvites_add_notify_custom_invite_accepted(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_custom_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_custom_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29082,8 +29082,8 @@ function eos_custominvites_add_notify_custom_invite_accepted(_callback)
  */
 function eos_custominvites_remove_notify_custom_invite_accepted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29091,9 +29091,9 @@ function eos_custominvites_remove_notify_custom_invite_accepted(_notification_id
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_custom_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_custom_invite_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29102,10 +29102,10 @@ function eos_custominvites_remove_notify_custom_invite_accepted(_notification_id
  */
 function eos_custominvites_add_notify_custom_invite_rejected(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29118,17 +29118,17 @@ function eos_custominvites_add_notify_custom_invite_rejected(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_custom_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_custom_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29136,8 +29136,8 @@ function eos_custominvites_add_notify_custom_invite_rejected(_callback)
  */
 function eos_custominvites_remove_notify_custom_invite_rejected(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29145,9 +29145,9 @@ function eos_custominvites_remove_notify_custom_invite_rejected(_notification_id
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_custom_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_custom_invite_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29156,10 +29156,10 @@ function eos_custominvites_remove_notify_custom_invite_rejected(_notification_id
  */
 function eos_custominvites_add_notify_request_to_join_response_received(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29172,17 +29172,17 @@ function eos_custominvites_add_notify_request_to_join_response_received(_callbac
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_request_to_join_response_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_request_to_join_response_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29190,8 +29190,8 @@ function eos_custominvites_add_notify_request_to_join_response_received(_callbac
  */
 function eos_custominvites_remove_notify_request_to_join_response_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29199,9 +29199,9 @@ function eos_custominvites_remove_notify_request_to_join_response_received(_noti
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_request_to_join_response_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_request_to_join_response_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29210,10 +29210,10 @@ function eos_custominvites_remove_notify_request_to_join_response_received(_noti
  */
 function eos_custominvites_add_notify_request_to_join_received(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29226,17 +29226,17 @@ function eos_custominvites_add_notify_request_to_join_received(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_request_to_join_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_request_to_join_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29244,8 +29244,8 @@ function eos_custominvites_add_notify_request_to_join_received(_callback)
  */
 function eos_custominvites_remove_notify_request_to_join_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29253,9 +29253,9 @@ function eos_custominvites_remove_notify_request_to_join_received(_notification_
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_request_to_join_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_request_to_join_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29264,10 +29264,10 @@ function eos_custominvites_remove_notify_request_to_join_received(_notification_
  */
 function eos_custominvites_add_notify_send_custom_native_invite_requested(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29280,17 +29280,17 @@ function eos_custominvites_add_notify_send_custom_native_invite_requested(_callb
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_send_custom_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_send_custom_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29298,8 +29298,8 @@ function eos_custominvites_add_notify_send_custom_native_invite_requested(_callb
  */
 function eos_custominvites_remove_notify_send_custom_native_invite_requested(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29307,9 +29307,9 @@ function eos_custominvites_remove_notify_send_custom_native_invite_requested(_no
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_send_custom_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_send_custom_native_invite_requested(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29318,10 +29318,10 @@ function eos_custominvites_remove_notify_send_custom_native_invite_requested(_no
  */
 function eos_custominvites_add_notify_request_to_join_accepted(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29334,17 +29334,17 @@ function eos_custominvites_add_notify_request_to_join_accepted(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_request_to_join_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_request_to_join_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29352,8 +29352,8 @@ function eos_custominvites_add_notify_request_to_join_accepted(_callback)
  */
 function eos_custominvites_remove_notify_request_to_join_accepted(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29361,9 +29361,9 @@ function eos_custominvites_remove_notify_request_to_join_accepted(_notification_
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_request_to_join_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_request_to_join_accepted(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29372,10 +29372,10 @@ function eos_custominvites_remove_notify_request_to_join_accepted(_notification_
  */
 function eos_custominvites_add_notify_request_to_join_rejected(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29388,17 +29388,17 @@ function eos_custominvites_add_notify_request_to_join_rejected(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_custominvites_add_notify_request_to_join_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_custominvites_add_notify_request_to_join_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29406,8 +29406,8 @@ function eos_custominvites_add_notify_request_to_join_rejected(_callback)
  */
 function eos_custominvites_remove_notify_request_to_join_rejected(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29415,9 +29415,9 @@ function eos_custominvites_remove_notify_request_to_join_rejected(_notification_
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_custominvites_remove_notify_request_to_join_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_custominvites_remove_notify_request_to_join_rejected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29431,10 +29431,10 @@ function eos_custominvites_remove_notify_request_to_join_rejected(_notification_
  */
 function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _participant_token, _manual_audio_input, _manual_audio_output, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29475,13 +29475,13 @@ function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _partic
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_join_room(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_join_room(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29491,10 +29491,10 @@ function eos_rtc_join_room(_local_user_id, _room_name, _client_base_url, _partic
  */
 function eos_rtc_leave_room(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29517,13 +29517,13 @@ function eos_rtc_leave_room(_local_user_id, _room_name, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_leave_room(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_leave_room(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29535,10 +29535,10 @@ function eos_rtc_leave_room(_local_user_id, _room_name, _callback)
  */
 function eos_rtc_block_participant(_local_user_id, _room_name, _participant_id, _blocked, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29570,13 +29570,13 @@ function eos_rtc_block_participant(_local_user_id, _room_name, _participant_id, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_block_participant(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_block_participant(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function eos_rtc_set_setting (no wrapper is required)
@@ -29593,10 +29593,10 @@ function eos_rtc_block_participant(_local_user_id, _room_name, _participant_id, 
  */
 function eos_rtc_add_notify_disconnected(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29619,17 +29619,17 @@ function eos_rtc_add_notify_disconnected(_local_user_id, _room_name, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_add_notify_disconnected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_add_notify_disconnected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29637,8 +29637,8 @@ function eos_rtc_add_notify_disconnected(_local_user_id, _room_name, _callback)
  */
 function eos_rtc_remove_notify_disconnected(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29646,9 +29646,9 @@ function eos_rtc_remove_notify_disconnected(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_remove_notify_disconnected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_remove_notify_disconnected(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29659,10 +29659,10 @@ function eos_rtc_remove_notify_disconnected(_notification_id)
  */
 function eos_rtc_add_notify_participant_status_changed(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29685,17 +29685,17 @@ function eos_rtc_add_notify_participant_status_changed(_local_user_id, _room_nam
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_add_notify_participant_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_add_notify_participant_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29703,8 +29703,8 @@ function eos_rtc_add_notify_participant_status_changed(_local_user_id, _room_nam
  */
 function eos_rtc_remove_notify_participant_status_changed(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29712,9 +29712,9 @@ function eos_rtc_remove_notify_participant_status_changed(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_remove_notify_participant_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_remove_notify_participant_status_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29725,10 +29725,10 @@ function eos_rtc_remove_notify_participant_status_changed(_notification_id)
  */
 function eos_rtc_add_notify_room_statistics_updated(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29751,17 +29751,17 @@ function eos_rtc_add_notify_room_statistics_updated(_local_user_id, _room_name, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_add_notify_room_statistics_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_add_notify_room_statistics_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -29769,8 +29769,8 @@ function eos_rtc_add_notify_room_statistics_updated(_local_user_id, _room_name, 
  */
 function eos_rtc_remove_notify_room_statistics_updated(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29778,9 +29778,9 @@ function eos_rtc_remove_notify_room_statistics_updated(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_remove_notify_room_statistics_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_remove_notify_room_statistics_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29791,10 +29791,10 @@ function eos_rtc_remove_notify_room_statistics_updated(_notification_id)
  */
 function eos_rtc_audio_update_sending(_local_user_id, _room_name, _audio_status, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29822,13 +29822,13 @@ function eos_rtc_audio_update_sending(_local_user_id, _room_name, _audio_status,
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_update_sending(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_update_sending(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29840,10 +29840,10 @@ function eos_rtc_audio_update_sending(_local_user_id, _room_name, _audio_status,
  */
 function eos_rtc_audio_update_receiving(_local_user_id, _room_name, _participant_id, _audio_enabled, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29875,13 +29875,13 @@ function eos_rtc_audio_update_receiving(_local_user_id, _room_name, _participant
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_update_receiving(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_update_receiving(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29892,10 +29892,10 @@ function eos_rtc_audio_update_receiving(_local_user_id, _room_name, _participant
  */
 function eos_rtc_audio_update_sending_volume(_local_user_id, _room_name, _volume, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29922,13 +29922,13 @@ function eos_rtc_audio_update_sending_volume(_local_user_id, _room_name, _volume
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_update_sending_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_update_sending_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29939,10 +29939,10 @@ function eos_rtc_audio_update_sending_volume(_local_user_id, _room_name, _volume
  */
 function eos_rtc_audio_update_receiving_volume(_local_user_id, _room_name, _volume, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -29969,13 +29969,13 @@ function eos_rtc_audio_update_receiving_volume(_local_user_id, _room_name, _volu
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_update_receiving_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_update_receiving_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -29987,10 +29987,10 @@ function eos_rtc_audio_update_receiving_volume(_local_user_id, _room_name, _volu
  */
 function eos_rtc_audio_update_participant_volume(_local_user_id, _room_name, _participant_id, _volume, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30022,13 +30022,13 @@ function eos_rtc_audio_update_participant_volume(_local_user_id, _room_name, _pa
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_update_participant_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_update_participant_volume(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30036,16 +30036,16 @@ function eos_rtc_audio_update_participant_volume(_local_user_id, _room_name, _pa
  */
 function eos_rtc_audio_get_input_devices_count()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_get_input_devices_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_get_input_devices_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30054,8 +30054,8 @@ function eos_rtc_audio_get_input_devices_count()
  */
 function eos_rtc_audio_copy_input_device_info_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30065,18 +30065,18 @@ function eos_rtc_audio_copy_input_device_info_by_index(_index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_copy_input_device_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_copy_input_device_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicRTCAudioInputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicRTCAudioInputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -30084,16 +30084,16 @@ function eos_rtc_audio_copy_input_device_info_by_index(_index)
  */
 function eos_rtc_audio_get_output_devices_count()
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_get_output_devices_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_get_output_devices_count(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30102,8 +30102,8 @@ function eos_rtc_audio_get_output_devices_count()
  */
 function eos_rtc_audio_copy_output_device_info_by_index(_index)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30113,18 +30113,18 @@ function eos_rtc_audio_copy_output_device_info_by_index(_index)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_copy_output_device_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_copy_output_device_info_by_index(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
+    var __result__ = undefined;
     if (buffer_read(__ret_buffer, buffer_bool))
     {
-        _result = __EpicRTCAudioOutputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
+        __result__ = __EpicRTCAudioOutputDeviceInfo_decode(__ret_buffer, buffer_tell(__ret_buffer));
     }
     else
     {
-        _result = undefined;
+        __result__ = undefined;
     }
-    return _result;
+    return __result__;
 }
 
 /**
@@ -30132,10 +30132,10 @@ function eos_rtc_audio_copy_output_device_info_by_index(_index)
  */
 function eos_rtc_audio_query_input_devices(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30148,13 +30148,13 @@ function eos_rtc_audio_query_input_devices(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_query_input_devices(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_query_input_devices(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30162,10 +30162,10 @@ function eos_rtc_audio_query_input_devices(_callback)
  */
 function eos_rtc_audio_query_output_devices(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30178,13 +30178,13 @@ function eos_rtc_audio_query_output_devices(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_query_output_devices(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_query_output_devices(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30195,10 +30195,10 @@ function eos_rtc_audio_query_output_devices(_callback)
  */
 function eos_rtc_audio_set_input_device_settings(_local_user_id, _real_device_id, _platform_aec, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30225,13 +30225,13 @@ function eos_rtc_audio_set_input_device_settings(_local_user_id, _real_device_id
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_set_input_device_settings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_set_input_device_settings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30241,10 +30241,10 @@ function eos_rtc_audio_set_input_device_settings(_local_user_id, _real_device_id
  */
 function eos_rtc_audio_set_output_device_settings(_local_user_id, _real_device_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30267,13 +30267,13 @@ function eos_rtc_audio_set_output_device_settings(_local_user_id, _real_device_i
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_set_output_device_settings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_set_output_device_settings(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30284,10 +30284,10 @@ function eos_rtc_audio_set_output_device_settings(_local_user_id, _real_device_i
  */
 function eos_rtc_audio_add_notify_participant_updated(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30310,17 +30310,17 @@ function eos_rtc_audio_add_notify_participant_updated(_local_user_id, _room_name
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_add_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_add_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30328,8 +30328,8 @@ function eos_rtc_audio_add_notify_participant_updated(_local_user_id, _room_name
  */
 function eos_rtc_audio_remove_notify_participant_updated(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30337,9 +30337,9 @@ function eos_rtc_audio_remove_notify_participant_updated(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_audio_remove_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_remove_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30348,10 +30348,10 @@ function eos_rtc_audio_remove_notify_participant_updated(_notification_id)
  */
 function eos_rtc_audio_add_notify_audio_devices_changed(_callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30364,17 +30364,17 @@ function eos_rtc_audio_add_notify_audio_devices_changed(_callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_add_notify_audio_devices_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_add_notify_audio_devices_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30382,8 +30382,8 @@ function eos_rtc_audio_add_notify_audio_devices_changed(_callback)
  */
 function eos_rtc_audio_remove_notify_audio_devices_changed(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30391,9 +30391,9 @@ function eos_rtc_audio_remove_notify_audio_devices_changed(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_audio_remove_notify_audio_devices_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_remove_notify_audio_devices_changed(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30404,10 +30404,10 @@ function eos_rtc_audio_remove_notify_audio_devices_changed(_notification_id)
  */
 function eos_rtc_audio_add_notify_audio_input_state(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30430,17 +30430,17 @@ function eos_rtc_audio_add_notify_audio_input_state(_local_user_id, _room_name, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_add_notify_audio_input_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_add_notify_audio_input_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30448,8 +30448,8 @@ function eos_rtc_audio_add_notify_audio_input_state(_local_user_id, _room_name, 
  */
 function eos_rtc_audio_remove_notify_audio_input_state(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30457,9 +30457,9 @@ function eos_rtc_audio_remove_notify_audio_input_state(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_audio_remove_notify_audio_input_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_remove_notify_audio_input_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30470,10 +30470,10 @@ function eos_rtc_audio_remove_notify_audio_input_state(_notification_id)
  */
 function eos_rtc_audio_add_notify_audio_output_state(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30496,17 +30496,17 @@ function eos_rtc_audio_add_notify_audio_output_state(_local_user_id, _room_name,
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_add_notify_audio_output_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_add_notify_audio_output_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30514,8 +30514,8 @@ function eos_rtc_audio_add_notify_audio_output_state(_local_user_id, _room_name,
  */
 function eos_rtc_audio_remove_notify_audio_output_state(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30523,9 +30523,9 @@ function eos_rtc_audio_remove_notify_audio_output_state(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_audio_remove_notify_audio_output_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_remove_notify_audio_output_state(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30539,8 +30539,8 @@ function eos_rtc_audio_remove_notify_audio_output_state(_notification_id)
  */
 function eos_rtc_audio_send_audio(_local_user_id, _room_name, _sample_rate, _channels, _frames_count, _frames)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30570,9 +30570,9 @@ function eos_rtc_audio_send_audio(_local_user_id, _room_name, _sample_rate, _cha
     if (!buffer_exists(_frames)) show_error($"{_GMFUNCTION_} :: _frames expected Id.Buffer", true);
     __EpicOnlineServices_queue_buffer(buffer_get_address(_frames), buffer_get_size(_frames));
 
-    var _return_value = __eos_rtc_audio_send_audio(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_send_audio(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30583,10 +30583,10 @@ function eos_rtc_audio_send_audio(_local_user_id, _room_name, _sample_rate, _cha
  */
 function eos_rtc_audio_add_notify_audio_before_send(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30609,17 +30609,17 @@ function eos_rtc_audio_add_notify_audio_before_send(_local_user_id, _room_name, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_add_notify_audio_before_send(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_add_notify_audio_before_send(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30627,8 +30627,8 @@ function eos_rtc_audio_add_notify_audio_before_send(_local_user_id, _room_name, 
  */
 function eos_rtc_audio_remove_notify_audio_before_send(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30636,9 +30636,9 @@ function eos_rtc_audio_remove_notify_audio_before_send(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_audio_remove_notify_audio_before_send(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_remove_notify_audio_before_send(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30648,8 +30648,8 @@ function eos_rtc_audio_remove_notify_audio_before_send(_notification_id)
  */
 function eos_rtc_audio_before_send_data_fetch(_handle_id, _out_buffer)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30661,9 +30661,9 @@ function eos_rtc_audio_before_send_data_fetch(_handle_id, _out_buffer)
     if (!buffer_exists(_out_buffer)) show_error($"{_GMFUNCTION_} :: _out_buffer expected Id.Buffer", true);
     __EpicOnlineServices_queue_buffer(buffer_get_address(_out_buffer), buffer_get_size(_out_buffer));
 
-    var _return_value = __eos_rtc_audio_before_send_data_fetch(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_before_send_data_fetch(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30675,10 +30675,10 @@ function eos_rtc_audio_before_send_data_fetch(_handle_id, _out_buffer)
  */
 function eos_rtc_audio_add_notify_audio_before_render(_local_user_id, _room_name, _unmixed_audio, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30705,17 +30705,17 @@ function eos_rtc_audio_add_notify_audio_before_render(_local_user_id, _room_name
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_audio_add_notify_audio_before_render(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_audio_add_notify_audio_before_render(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30723,8 +30723,8 @@ function eos_rtc_audio_add_notify_audio_before_render(_local_user_id, _room_name
  */
 function eos_rtc_audio_remove_notify_audio_before_render(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30732,9 +30732,9 @@ function eos_rtc_audio_remove_notify_audio_before_render(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_audio_remove_notify_audio_before_render(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_remove_notify_audio_before_render(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30744,8 +30744,8 @@ function eos_rtc_audio_remove_notify_audio_before_render(_notification_id)
  */
 function eos_rtc_audio_before_render_data_fetch(_handle_id, _out_buffer)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30757,9 +30757,9 @@ function eos_rtc_audio_before_render_data_fetch(_handle_id, _out_buffer)
     if (!buffer_exists(_out_buffer)) show_error($"{_GMFUNCTION_} :: _out_buffer expected Id.Buffer", true);
     __EpicOnlineServices_queue_buffer(buffer_get_address(_out_buffer), buffer_get_size(_out_buffer));
 
-    var _return_value = __eos_rtc_audio_before_render_data_fetch(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_before_render_data_fetch(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30768,10 +30768,10 @@ function eos_rtc_audio_before_render_data_fetch(_handle_id, _out_buffer)
  */
 function eos_rtc_audio_register_platform_user(_rtc_platform_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30789,13 +30789,13 @@ function eos_rtc_audio_register_platform_user(_rtc_platform_user_id, _callback)
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_register_platform_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_register_platform_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30804,10 +30804,10 @@ function eos_rtc_audio_register_platform_user(_rtc_platform_user_id, _callback)
  */
 function eos_rtc_audio_unregister_platform_user(_rtc_platform_user_id, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30825,13 +30825,13 @@ function eos_rtc_audio_unregister_platform_user(_rtc_platform_user_id, _callback
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_audio_unregister_platform_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_audio_unregister_platform_user(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30843,8 +30843,8 @@ function eos_rtc_audio_unregister_platform_user(_rtc_platform_user_id, _callback
  */
 function eos_rtc_data_send_data(_local_user_id, _room_name, _data, _bytes)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30868,11 +30868,11 @@ function eos_rtc_data_send_data(_local_user_id, _room_name, _data, _bytes)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_data_send_data(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_data_send_data(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -30883,10 +30883,10 @@ function eos_rtc_data_send_data(_local_user_id, _room_name, _data, _bytes)
  */
 function eos_rtc_data_update_sending(_local_user_id, _room_name, _data_enabled, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30913,13 +30913,13 @@ function eos_rtc_data_update_sending(_local_user_id, _room_name, _data_enabled, 
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_data_update_sending(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_data_update_sending(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30931,10 +30931,10 @@ function eos_rtc_data_update_sending(_local_user_id, _room_name, _data_enabled, 
  */
 function eos_rtc_data_update_receiving(_local_user_id, _room_name, _participant_id, _data_enabled, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -30966,13 +30966,13 @@ function eos_rtc_data_update_receiving(_local_user_id, _room_name, _participant_
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
-    var _return_value = __eos_rtc_data_update_receiving(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_data_update_receiving(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -30983,10 +30983,10 @@ function eos_rtc_data_update_receiving(_local_user_id, _room_name, _participant_
  */
 function eos_rtc_data_add_notify_data_received(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -31009,17 +31009,17 @@ function eos_rtc_data_add_notify_data_received(_local_user_id, _room_name, _call
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_data_add_notify_data_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_data_add_notify_data_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -31027,8 +31027,8 @@ function eos_rtc_data_add_notify_data_received(_local_user_id, _room_name, _call
  */
 function eos_rtc_data_remove_notify_data_received(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -31036,9 +31036,9 @@ function eos_rtc_data_remove_notify_data_received(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_data_remove_notify_data_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_data_remove_notify_data_received(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -31048,8 +31048,8 @@ function eos_rtc_data_remove_notify_data_received(_notification_id)
  */
 function eos_rtc_data_received_data_fetch(_handle_id, _out_buffer)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -31061,9 +31061,9 @@ function eos_rtc_data_received_data_fetch(_handle_id, _out_buffer)
     if (!buffer_exists(_out_buffer)) show_error($"{_GMFUNCTION_} :: _out_buffer expected Id.Buffer", true);
     __EpicOnlineServices_queue_buffer(buffer_get_address(_out_buffer), buffer_get_size(_out_buffer));
 
-    var _return_value = __eos_rtc_data_received_data_fetch(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_data_received_data_fetch(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -31074,10 +31074,10 @@ function eos_rtc_data_received_data_fetch(_handle_id, _out_buffer)
  */
 function eos_rtc_data_add_notify_participant_updated(_local_user_id, _room_name, _callback)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __EpicOnlineServices_get_dispatcher();
+    var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -31100,17 +31100,17 @@ function eos_rtc_data_add_notify_participant_updated(_local_user_id, _room_name,
     {
         buffer_write(__args_buffer, buffer_bool, true);
         if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-        var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+        var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
         buffer_write(__args_buffer, buffer_u64, _callback_handle);
     }
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __eos_rtc_data_add_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __eos_rtc_data_add_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_u64);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_u64);
+    return __result__;
 }
 
 /**
@@ -31118,8 +31118,8 @@ function eos_rtc_data_add_notify_participant_updated(_local_user_id, _room_name,
  */
 function eos_rtc_data_remove_notify_participant_updated(_notification_id)
 {
-    var __available = __EpicOnlineServices_is_available();
-    if (!__available) return;
+    var __available__ = __EpicOnlineServices_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -31127,15 +31127,15 @@ function eos_rtc_data_remove_notify_participant_updated(_notification_id)
     if (!is_numeric(_notification_id)) show_error($"{_GMFUNCTION_} :: _notification_id expected number", true);
     buffer_write(__args_buffer, buffer_u64, _notification_id);
 
-    var _return_value = __eos_rtc_data_remove_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __eos_rtc_data_remove_notify_participant_updated(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /// @ignore
 function __EpicOnlineServices_get_decoders()
 {
-    static __decoders = [
+    static __decoders__ = [
         __EpicLoggingMessage_decode,
         __EpicAuthPinGrantInfo_decode,
         __EpicAuthLogoutCallbackInfo_decode,
@@ -31347,17 +31347,17 @@ function __EpicOnlineServices_get_decoders()
         __EpicRTCJoinRoomCallbackInfo_decode,
         __EpicRTCParticipantStatusChangedCallbackInfo_decode
     ];
-    return __decoders;
+    return __decoders__;
 }
 /// @ignore
 function __EpicOnlineServices_get_dispatcher()
 {
-    static __dispatcher = new __GMNativeFunctionDispatcher(__EpicOnlineServices_invocation_handler, __EpicOnlineServices_get_decoders());
-    return __dispatcher;
+    static __dispatcher__ = new __GMNativeFunctionDispatcher(__EpicOnlineServices_invocation_handler, __EpicOnlineServices_get_decoders());
+    return __dispatcher__;
 }
 /// @ignore
 function __EpicOnlineServices_is_available()
 {
-    static __available = extension_exists("EpicOnlineServices");
-    return __available;
+    static __available__ = extension_exists("EpicOnlineServices");
+    return __available__;
 }
