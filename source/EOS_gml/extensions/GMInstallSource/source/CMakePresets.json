@@ -40,7 +40,7 @@
     {
       "name": "win-x64-debug",
       "displayName": "Windows x64 Debug",
-      "hidden": false,
+      "hidden": true,
       "inherits": "base-vs",
       "cacheVariables": {
         "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDebugDLL",
@@ -50,7 +50,7 @@
     {
       "name": "win-x64-release",
       "displayName": "Windows x64 Release",
-      "hidden": false,
+      "hidden": true,
       "inherits": "base-vs",
       "cacheVariables": {
         "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDLL",
@@ -62,7 +62,7 @@
     {
       "name": "macos-debug",
       "displayName": "macOS Debug",
-      "hidden": false,
+      "hidden": true,
       "inherits": "base-ninja",
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" },
       "cacheVariables": {
@@ -75,7 +75,7 @@
     {
       "name": "macos-release",
       "displayName": "macOS Release",
-      "hidden": false,
+      "hidden": true,
       "inherits": "base-ninja",
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" },
       "cacheVariables": {
@@ -229,7 +229,7 @@
     {
       "name": "linux-clang-x64-debug",
       "displayName": "Linux x64 Debug (clang)",
-      "hidden": false,
+      "hidden": true,
       "inherits": "base-ninja",
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" },
       "environment": { "CC": "clang", "CXX": "clang++" },
@@ -241,7 +241,7 @@
     {
       "name": "linux-clang-x64-release",
       "displayName": "Linux x64 Release (clang)",
-      "hidden": false,
+      "hidden": true,
       "inherits": "base-ninja",
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" },
       "environment": { "CC": "clang", "CXX": "clang++" },

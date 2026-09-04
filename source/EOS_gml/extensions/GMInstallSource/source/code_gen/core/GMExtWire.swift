@@ -270,6 +270,53 @@ public extension IByteWriter {
             try write(type(of: s).codecID.littleEndian)
             try s.encode(&self)
 
+        // A `gmval` return or field hands back a GMValue, so it has to encode as well as decode.
+        // The cases below are the whole value space: readGMValue rejects pointer/buffer and the
+        // typed kinds, so nothing else can ever be inside one. `.null` is GML's undefined —
+        // tag only, no payload, the same encoding the empty-optional branch above produces.
+        case let v as GMValue:
+            switch v {
+            case .null:           try write(GMKind.undefined.rawValue)
+            case .bool(let x):    try write(GMKind.bool.rawValue);    try write(UInt8(x ? 1 : 0))
+            case .uInt8(let x):   try write(GMKind.uInt8.rawValue);   try write(x)
+            case .int8(let x):    try write(GMKind.int8.rawValue);    try write(x.littleEndian)
+            case .uInt16(let x):  try write(GMKind.uInt16.rawValue);  try write(x.littleEndian)
+            case .int16(let x):   try write(GMKind.int16.rawValue);   try write(x.littleEndian)
+            case .uInt32(let x):  try write(GMKind.uInt32.rawValue);  try write(x.littleEndian)
+            case .int32(let x):   try write(GMKind.int32.rawValue);   try write(x.littleEndian)
+            case .uInt64(let x):  try write(GMKind.uInt64.rawValue);  try write(x.littleEndian)
+            case .float16(let x): try write(GMKind.float16.rawValue); try write(x.littleEndian)
+            case .float32(let x): try write(GMKind.float32.rawValue); try write(x.bitPattern.littleEndian)
+            case .float64(let x): try write(GMKind.float64.rawValue); try write(x.bitPattern.littleEndian)
+            case .string(let s):  try write(GMKind.string.rawValue);  try writeStringPayload(s)
+            case .text(let s):    try write(GMKind.text.rawValue);    try writeStringPayload(s)
+
+            case .array(let xs):
+                try write(GMKind.array.rawValue)
+                try write(UInt16(xs.count).littleEndian)
+                for e in xs { try writeGMValue(e) }
+
+            case .object(let m):
+                try write(GMKind.object.rawValue)
+                try write(UInt16(m.count).littleEndian)
+                for (k, val) in m {
+                    try write(GMKind.string.rawValue)
+                    try writeStringPayload(k)
+                    try writeGMValue(val)
+                }
+            }
+
+        // An `object` field decodes to [(String, GMValue)], which Mirror reports as a plain
+        // collection — without this it would go out as an array of tuples instead of an object.
+        case let pairs as [(String, GMValue)]:
+            try write(GMKind.object.rawValue)
+            try write(UInt16(pairs.count).littleEndian)
+            for (k, val) in pairs {
+                try write(GMKind.string.rawValue)
+                try writeStringPayload(k)
+                try writeGMValue(val)
+            }
+
         default:
             if mirror.displayStyle == .collection {
                 let elems = mirror.children.map { $0.value }

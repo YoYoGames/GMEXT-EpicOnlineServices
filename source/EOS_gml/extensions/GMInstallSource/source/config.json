@@ -13,19 +13,11 @@
     "injectors": { }
   },
   "targets": {
-    "windows":{},
-    "macos":{},
-    "linux":{},
     "android":{
       "mode": "java"
     },
     "ios":{
       "mode": "swift"
-    }
-  },
-  "extras": {
-    "docs": { 
-      "outputFile": "../../../../../docs/extgen_docs.js"
     }
   }
 }
