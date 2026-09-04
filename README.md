@@ -5,6 +5,11 @@ This repository was created with the intent of presenting users with the latest 
 
 This extension works on Windows, macOS, Linux, Android and iOS.
 
+> [!NOTE]
+> On Android only the **arm64-v8a** and **x86_64** ABIs are supported. Epic does not ship a 32-bit
+> ARM build of the EOS SDK, so **armeabi-v7a is not available** - remove it from your project's
+> Android target ABIs, or the game will build and then fail to load the native library at runtime.
+
 The API surface is declared in a single GMIDL spec and the platform bindings are generated from it,
 so the layout is by role rather than by IDE project:
 
@@ -42,6 +47,7 @@ In order to compile you are required to download the [Epic Online Services SDK 1
 > Latest version 3.0.0 is a major release:
 >
 > * You will need to make sure the SDK is updated to version 1.19.1.2
+> * Android builds must target arm64-v8a and/or x86_64 only (see the note above)
 
 ---
 

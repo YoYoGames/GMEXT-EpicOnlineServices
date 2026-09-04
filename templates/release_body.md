@@ -4,6 +4,8 @@
 - This extension is to be used with GM 2023.1 and future releases.
 - Requires EOS SDK version 1.19.1.2
 - Works with **Windows**, **macOS**, **Linux**, **Android** and **iOS**.
+- Android supports **arm64-v8a** and **x86_64** only - Epic ships no 32-bit ARM EOS SDK, so
+  **armeabi-v7a is not available** and must be removed from the project's Android target ABIs.
 - Linux is still experimental (there is no official Epic launcher for it)
 
 ## CHANGES SINCE ${releaseOldVersion}
