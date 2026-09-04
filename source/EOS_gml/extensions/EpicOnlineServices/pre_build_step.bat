@@ -17,11 +17,19 @@ call %Utils% optionGetValue "sdkIosPath"     SDK_PATH_IOS
 pushd "%YYoutputFolder%"
 
 :: Call setup method depending on the platform
+:: NOTE: the setup method can be (:setupWindows, :setupMacOS, :setupMac [GMRT], :setupLinux,
+:: :setupAndroid or :setupiOS). Every label the .sh counterpart defines exists here too, even
+:: when the body is empty - cmd treats a missing :setup<platform> as non-fatal, so a gap in the
+:: label set turns into a confusing "cannot find the batch label" instead of a clean no-op.
 call :setup%YYPLATFORM_name%
+
+:: Capture the dispatch result before anything else can reset it, so whatever is added between
+:: here and the exit below cannot mask it.
+set "SETUP_RESULT=%ERRORLEVEL%"
 
 popd
 
-exit %ERRORLEVEL%
+exit %SETUP_RESULT%
 
 :: ----------------------------------------------------------------------------------------------------
 :setupWindows
@@ -103,4 +111,30 @@ exit /b 0
     call %Utils% itemCopyTo "%EOS_XCFW%" "%IOS_TEMP%\EOSSDK.xcframework"
     call %Utils% folderCompress "%IOS_TEMP%" "%IOS_ZIP%"
     if exist "%IOS_TEMP%" rmdir /s /q "%IOS_TEMP%"
+exit /b 0
+
+:: ----------------------------------------------------------------------------------------------------
+:setupMac
+    :: GMRT platform name for macOS. Nothing to stage from a pre_build_step - the desktop runtime
+    :: lib goes into the output, which is post_build_step's job.
+exit /b 0
+
+:: ----------------------------------------------------------------------------------------------------
+:setuptvOS
+    :: No tvOS EOS SDK is vendored, so there is nothing to stage.
+exit /b 0
+
+:: ----------------------------------------------------------------------------------------------------
+:setupXbox
+    :: No console EOS SDK is vendored, so there is nothing to stage.
+exit /b 0
+
+:: ----------------------------------------------------------------------------------------------------
+:setupPlaystation
+    :: No console EOS SDK is vendored, so there is nothing to stage.
+exit /b 0
+
+:: ----------------------------------------------------------------------------------------------------
+:setupSwitch
+    :: No console EOS SDK is vendored, so there is nothing to stage.
 exit /b 0

@@ -101,9 +101,12 @@ optionGetValue "sdkIosPath"     SDK_PATH_IOS
 # Ensure we are on the output path
 pushd "$YYoutputFolder" >/dev/null
 
-# Call setup method depending on the platform
+# Call setup method depending on the platform. Every platform the .bat counterpart declares a label
+# for has a function here too - bash reports an undefined one as "command not found" (127), which the
+# capture below turns into a failed build instead of a silent no-op.
 setup$YYPLATFORM_name
+SETUP_RESULT=$?
 
 popd >/dev/null
 
-exit 0
+exit $SETUP_RESULT
