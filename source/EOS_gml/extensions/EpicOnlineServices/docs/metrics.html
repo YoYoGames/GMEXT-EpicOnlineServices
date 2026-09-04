@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Metrics - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Metrics";
+        var mkdocs_page_input_path = "metrics.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Metrics</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Metrics</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/metrics.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="metrics"><strong>Metrics</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-metrics-interface">Metrics Interface</a></p>
+<p>The <a href="https://dev.epicgames.com/docs/game-services/eos-metrics-interface">Metrics Interface</a> reports your game's play-session activity to the <strong>Game Analytics</strong> dashboard in the Developer Portal, tracking active client/server instances and past local-player sessions.</p>
+<h2 id="functions">Functions</h2>
+<p>These functions are provided for handling metrics:</p>
+<ul>
+<li><a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a></li>
+<li><a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used by this module:</p>
+<ul>
+<li><a href="metrics.html#epicmetricsaccountidtype">EpicMetricsAccountIdType</a></li>
+<li><a href="metrics.html#epicusercontrollertype">EpicUserControllerType</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_metrics_begin_player_session">eos_metrics_begin_player_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Metrics/EOS_Metrics_BeginPlayerSession/index.html">EOS_Metrics_BeginPlayerSession</a></p>
+<p>This function logs the start of a new game session for a local player. Call it whenever the game client joins a new multiplayer, peer-to-peer, or single-player session. Each call must be matched with a corresponding call to <a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_metrics_begin_player_session(account_id, account_id_type, display_name, controller_type, server_ip, game_session_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An Epic Account ID or an external service account ID, depending on <code>account_id_type</code>.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="metrics.html#epicmetricsaccountidtype">EpicMetricsAccountIdType</a></td>
+<td>Whether <code>account_id</code> is an Epic Account ID or an external account ID.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The in-game display name for the user.</td>
+</tr>
+<tr>
+<td>controller_type</td>
+<td><a href="metrics.html#epicusercontrollertype">EpicUserControllerType</a></td>
+<td>The user's game controller type.</td>
+</tr>
+<tr>
+<td>server_ip</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>IP address of the game server hosting the session. Pass an empty string for a local/host session.</td>
+</tr>
+<tr>
+<td>game_session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Application-defined match/session identifier shown in the Played Sessions listing on the user's profile dashboard. Pass an empty string if unused.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>var _result = eos_metrics_begin_player_session(
+    account_id,
+    EpicMetricsAccountIdType.Epic,
+    &quot;PlayerOne&quot;,
+    EpicUserControllerType.MouseKeyboard,
+    &quot;&quot;,
+    &quot;&quot;);
+
+if (_result != EpicResult.Success)
+{
+    show_debug_message(&quot;eos_metrics_begin_player_session failed&quot;);
+}
+</code></pre></div>
+The above code begins a metrics session for the local Epic account, playing with mouse and keyboard on a local session.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_metrics_end_player_session">eos_metrics_end_player_session</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Metrics/EOS_Metrics_EndPlayerSession/index.html">EOS_Metrics_EndPlayerSession</a></p>
+<p>This function logs the end of a game session for a local player. Call once when the game client leaves the session started by <a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_metrics_end_player_session(account_id, account_id_type, controller_type, server_ip, game_session_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The same account identifier passed to <a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a> for this session.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="metrics.html#epicmetricsaccountidtype">EpicMetricsAccountIdType</a></td>
+<td>Whether <code>account_id</code> is an Epic Account ID or an external account ID. Must match what was passed to <a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a>.</td>
+</tr>
+<tr>
+<td>controller_type</td>
+<td><a href="metrics.html#epicusercontrollertype">EpicUserControllerType</a></td>
+<td>The user's game controller type.</td>
+</tr>
+<tr>
+<td>server_ip</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>IP address of the game server hosting the session.</td>
+</tr>
+<tr>
+<td>game_session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Application-defined match/session identifier.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SDK's End Player Session call only requires the account and its type; <code>controller_type</code>/<code>server_ip</code>/<code>game_session_id</code> are accepted by this function for symmetry with <a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a> but are not sent as part of the end-session request.</p>
+</div>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>var _result = eos_metrics_end_player_session(
+    account_id,
+    EpicMetricsAccountIdType.Epic,
+    EpicUserControllerType.MouseKeyboard,
+    &quot;&quot;,
+    &quot;&quot;);
+
+show_debug_message(&quot;eos_metrics_end_player_session: &quot; + string(_result));
+</code></pre></div>
+The above code ends the metrics session started earlier for the local Epic account.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicusercontrollertype">EpicUserControllerType</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-user-controller-type">EOS_EUserControllerType</a></p>
+<p>Describes the type of controller in use during the player session.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a></li>
+<li><a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Unknown</code></td>
+<td>The controller type is unknown.</td>
+</tr>
+<tr>
+<td><code>MouseKeyboard</code></td>
+<td>Mouse and keyboard.</td>
+</tr>
+<tr>
+<td><code>GamepadControl</code></td>
+<td>Gamepad.</td>
+</tr>
+<tr>
+<td><code>TouchControl</code></td>
+<td>Touch controls.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicmetricsaccountidtype">EpicMetricsAccountIdType</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-metrics-account-id-type">EOS_EMetricsAccountIdType</a></p>
+<p>Describes which kind of account identifier is being passed to <a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a>/<a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a>.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="metrics.html#eos_metrics_begin_player_session">eos_metrics_begin_player_session</a></li>
+<li><a href="metrics.html#eos_metrics_end_player_session">eos_metrics_end_player_session</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Epic</code></td>
+<td>An Epic Account ID.</td>
+</tr>
+<tr>
+<td><code>External</code></td>
+<td>An external service account ID.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="logging.html" class="btn btn-neutral float-left" title="Logging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="p2p.html" class="btn btn-neutral float-right" title="P2P">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="logging.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="p2p.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

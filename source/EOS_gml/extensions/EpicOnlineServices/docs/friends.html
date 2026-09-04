@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Friends - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Friends";
+        var mkdocs_page_input_path = "friends.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Friends</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Friends</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/friends.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="friends"><strong>Friends</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-friends-interface">Friends Interface</a></p>
+<p>The <a href="https://dev.epicgames.com/docs/game-services/eos-friends-interface">Friends Interface</a> exposes the local user's Epic friends list - its own social graph, independent from any platform-native friends list. This only covers Epic Account friendships; for the platform-native friends UI overlay see <a href="user_interface.html">User Interface</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must call <a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a> at least once before the cached accessor functions below return anything useful.</p>
+</div>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a></li>
+<li><a href="friends.html#eos_friends_get_friends_count">eos_friends_get_friends_count</a></li>
+<li><a href="friends.html#eos_friends_get_friend_at_index">eos_friends_get_friend_at_index</a></li>
+<li><a href="friends.html#eos_friends_get_status">eos_friends_get_status</a></li>
+<li><a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a></li>
+<li><a href="friends.html#eos_friends_remove_notify_friends_update">eos_friends_remove_notify_friends_update</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this API:</p>
+<ul>
+<li><a href="friends.html#epicfriendsqueryfriendscallbackinfo">EpicFriendsQueryFriendsCallbackInfo</a></li>
+<li><a href="friends.html#epicfriendsfriendsupdatecallbackinfo">EpicFriendsFriendsUpdateCallbackInfo</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used by this API:</p>
+<ul>
+<li><a href="friends.html#epicfriendsstatus">EpicFriendsStatus</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_friends_query_friends">eos_friends_query_friends</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-friends-query-friends">EOS_Friends_QueryFriends</a></p>
+<p>Starts an asynchronous task that reads the local user's friends list from the backend and caches it
+locally. You must call this at least once for a given <code>local_user_id</code> before <a href="friends.html#eos_friends_get_friends_count">eos_friends_get_friends_count</a>/<a href="friends.html#eos_friends_get_friend_at_index">eos_friends_get_friend_at_index</a>/<a href="friends.html#eos_friends_get_status">eos_friends_get_status</a> return anything meaningful for that user.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_friends_query_friends(local_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user whose friends list is being queried.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result. See the <code>callback</code> event below.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once, after the friends list has been retrieved (or the query has failed).</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="friends.html#epicfriendsqueryfriendscallbackinfo">EpicFriendsQueryFriendsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_friends_query_friends(local_user_id, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        var _count = eos_friends_get_friends_count(_result.local_user_id);
+        show_debug_message($&quot;Friend count: {_count}&quot;);
+    }
+});
+</code></pre></div>
+The above code queries the local user's friends list, then reads the cached friend count once the query completes.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_friends_get_friends_count">eos_friends_get_friends_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-friends-get-friends-count">EOS_Friends_GetFriendsCount</a></p>
+<p>Returns the number of friends cached for the given local user, from the last successful <a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_friends_get_friends_count(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_friends_get_friend_at_index">eos_friends_get_friend_at_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-friends-get-friend-at-index">EOS_Friends_GetFriendAtIndex</a></p>
+<p>Returns the Epic Account ID of the cached friend at the given index. Use <a href="friends.html#eos_friends_get_friends_count">eos_friends_get_friends_count</a> to get the valid index range.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_friends_get_friend_at_index(local_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the cached friends list, in the range <code>[0, [eos_friends_get_friends_count](friends.md#eos_friends_get_friends_count) - 1]</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns an empty string if the index is out of range.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_friends_get_status">eos_friends_get_status</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-friends-get-status">EOS_Friends_GetStatus</a></p>
+<p>Returns the cached friendship status between a local user and a target user.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_friends_get_status(local_user_id, target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user to check the friendship status of.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="friends.html#epicfriendsstatus">EpicFriendsStatus</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>if (eos_friends_get_status(local_user_id, target_user_id) == EpicFriendsStatus.Friends)
+{
+    show_debug_message(&quot;Already friends!&quot;);
+}
+</code></pre></div>
+The above code checks whether the local user and a target user are already friends.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-friends-add-notify-friends-update">EOS_Friends_AddNotifyFriendsUpdate</a></p>
+<p>Registers to be notified whenever a friend is added, removed, or has an invite sent/received/accepted between local users of this client and any other user. If the returned notification ID is valid, you must call <a href="friends.html#eos_friends_remove_notify_friends_update">eos_friends_remove_notify_friends_update</a> with it once you no longer need the notification (e.g. on logout).</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_friends_add_notify_friends_update(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called every time a friend status change is received. See the <code>callback</code> event below.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>A notification ID, or <code>0</code> if registration failed.</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires every time a friendship status changes for any local user tracked by this client.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="friends.html#epicfriendsfriendsupdatecallbackinfo">EpicFriendsFriendsUpdateCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_friends_remove_notify_friends_update">eos_friends_remove_notify_friends_update</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-friends-remove-notify-friends-update">EOS_Friends_RemoveNotifyFriendsUpdate</a></p>
+<p>Unregisters a notification previously registered with <a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_friends_remove_notify_friends_update(notification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID returned by <a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicfriendsstatus">EpicFriendsStatus</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-friends-status">EOS_EFriendsStatus</a></p>
+<p>The relationship between the local user and another user.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="friends.html#eos_friends_get_status">eos_friends_get_status</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="friends.html#epicfriendsfriendsupdatecallbackinfo">EpicFriendsFriendsUpdateCallbackInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NotFriends</code></td>
+<td>The users are not friends and there is no pending invite.</td>
+</tr>
+<tr>
+<td><code>InviteSent</code></td>
+<td>The local user has sent an invite to the other user, awaiting response.</td>
+</tr>
+<tr>
+<td><code>InviteReceived</code></td>
+<td>The local user has received an invite from the other user, awaiting response.</td>
+</tr>
+<tr>
+<td><code>Friends</code></td>
+<td>The users are friends.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicfriendsqueryfriendscallbackinfo">EpicFriendsQueryFriendsCallbackInfo</h1>
+<p>The result of an <a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a> call.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="friends.html#eos_friends_query_friends">eos_friends_query_friends</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the friends list was fetched; an error code otherwise.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user the query was for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicfriendsfriendsupdatecallbackinfo">EpicFriendsFriendsUpdateCallbackInfo</h1>
+<p>Delivered by the <a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a> callback whenever a friendship status changes.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="friends.html#eos_friends_add_notify_friends_update">eos_friends_add_notify_friends_update</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this change applies to.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the other user whose relationship with <code>local_user_id</code> changed.</td>
+</tr>
+<tr>
+<td>previous_status</td>
+<td><a href="friends.html#epicfriendsstatus">EpicFriendsStatus</a></td>
+<td>The friendship status before this change.</td>
+</tr>
+<tr>
+<td>current_status</td>
+<td><a href="friends.html#epicfriendsstatus">EpicFriendsStatus</a></td>
+<td>The friendship status after this change.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="ecom.html" class="btn btn-neutral float-left" title="Ecom"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="leaderboards.html" class="btn btn-neutral float-right" title="Leaderboards">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="ecom.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="leaderboards.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

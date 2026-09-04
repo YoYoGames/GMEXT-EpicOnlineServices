@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Leaderboards - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Leaderboards";
+        var mkdocs_page_input_path = "leaderboards.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Leaderboards</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Leaderboards</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/leaderboards.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="leaderboards"><strong>Leaderboards</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-leaderboards-interface">Leaderboards Interface</a></p>
+<p>The Leaderboards Interface lets you query leaderboard definitions, top ranks, and specific users' scores.
+Leaderboards are driven by stats - see <a href="stats.html">Stats</a> for ingesting the values leaderboards rank.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Query before you read: <a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a> populates the definition
+accessors, <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a> populates the record accessors, and
+<a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a> populates the user-score accessors.</p>
+</div>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_get_definition_count">eos_leaderboards_get_definition_count</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_get_record_count">eos_leaderboards_get_record_count</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_get_user_score_count">eos_leaderboards_get_user_score_count</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this module:</p>
+<ul>
+<li><a href="leaderboards.html#epicleaderboardstatquery">EpicLeaderboardStatQuery</a></li>
+<li><a href="leaderboards.html#epicleaderboardsquerydefinitionscallbackinfo">EpicLeaderboardsQueryDefinitionsCallbackInfo</a></li>
+<li><a href="leaderboards.html#epicleaderboardsqueryrankscallbackinfo">EpicLeaderboardsQueryRanksCallbackInfo</a></li>
+<li><a href="leaderboards.html#epicleaderboardsqueryuserscorescallbackinfo">EpicLeaderboardsQueryUserScoresCallbackInfo</a></li>
+<li><a href="leaderboards.html#epicleaderboarddefinition">EpicLeaderboardDefinition</a></li>
+<li><a href="leaderboards.html#epicleaderboardrecord">EpicLeaderboardRecord</a></li>
+<li><a href="leaderboards.html#epicleaderboarduserscore">EpicLeaderboardUserScore</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used by this module:</p>
+<ul>
+<li><a href="leaderboards.html#epicleaderboardaggregation">EpicLeaderboardAggregation</a></li>
+<li><a href="leaderboards.html#macros">macros</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-definitions">EOS_Leaderboards_QueryLeaderboardDefinitions</a></p>
+<p>Queries the list of leaderboard definitions for the running application. Call this before using
+<a href="leaderboards.html#eos_leaderboards_get_definition_count">eos_leaderboards_get_definition_count</a>, <a href="leaderboards.html#eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</a>
+or <a href="leaderboards.html#eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_query_definitions(local_user_id, start_time, end_time, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user querying the definitions.</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp to restrict the query to, or <a href="leaderboards.html#macros">macros</a>'s <code>EOS_LEADERBOARDS_TIME_UNDEFINED</code> for no lower bound.</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp to restrict the query to, or <a href="leaderboards.html#macros">macros</a>'s <code>EOS_LEADERBOARDS_TIME_UNDEFINED</code> for no upper bound.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Function invoked when the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once when the definitions query completes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="leaderboards.html#epicleaderboardsquerydefinitionscallbackinfo">EpicLeaderboardsQueryDefinitionsCallbackInfo</a></td>
+<td>The result of the query.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_leaderboards_query_definitions(local_user_id, EOS_LEADERBOARDS_TIME_UNDEFINED, EOS_LEADERBOARDS_TIME_UNDEFINED, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        show_debug_message($&quot;Loaded {eos_leaderboards_get_definition_count()} leaderboard definitions&quot;);
+    }
+});
+</code></pre></div>
+The above code queries every leaderboard definition, with no time restriction.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-ranks">EOS_Leaderboards_QueryLeaderboardRanks</a></p>
+<p>Queries the top-ranked entries (records) for a single leaderboard. Call this before using
+<a href="leaderboards.html#eos_leaderboards_get_record_count">eos_leaderboards_get_record_count</a>, <a href="leaderboards.html#eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</a> or
+<a href="leaderboards.html#eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_query_ranks(local_user_id, leaderboard_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user querying the ranks.</td>
+</tr>
+<tr>
+<td>leaderboard_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the leaderboard to query, as returned by <a href="leaderboards.html#epicleaderboarddefinition">EpicLeaderboardDefinition</a>'s <code>leaderboard_id</code>.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Function invoked when the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once when the ranks query completes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="leaderboards.html#epicleaderboardsqueryrankscallbackinfo">EpicLeaderboardsQueryRanksCallbackInfo</a></td>
+<td>The result of the query.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_leaderboards_query_ranks(local_user_id, &quot;high_score&quot;, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        show_debug_message($&quot;Loaded {eos_leaderboards_get_record_count()} records for {_result.leaderboard_id}&quot;);
+    }
+});
+</code></pre></div>
+The above code queries the top records for the <code>"high_score"</code> leaderboard.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-user-scores">EOS_Leaderboards_QueryLeaderboardUserScores</a></p>
+<p>Queries scores for a specific set of users across one or more stats, regardless of where those users rank.
+Use this instead of <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a> when you want specific players' scores (e.g.
+a friends list) rather than the overall top ranks. Call this before using
+<a href="leaderboards.html#eos_leaderboards_get_user_score_count">eos_leaderboards_get_user_score_count</a> and <a href="leaderboards.html#eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_query_user_scores(local_user_id, target_user_ids, stat_queries, start_time, end_time, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user querying the scores.</td>
+</tr>
+<tr>
+<td>target_user_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User IDs to fetch scores for.</td>
+</tr>
+<tr>
+<td>stat_queries</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="leaderboards.html#epicleaderboardstatquery">EpicLeaderboardStatQuery</a></td>
+<td>The stats to query scores for, and how to aggregate them.</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp to restrict the query to, or <a href="leaderboards.html#macros">macros</a>'s <code>EOS_LEADERBOARDS_TIME_UNDEFINED</code> for no lower bound.</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp to restrict the query to, or <a href="leaderboards.html#macros">macros</a>'s <code>EOS_LEADERBOARDS_TIME_UNDEFINED</code> for no upper bound.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Function invoked when the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once when the user-scores query completes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="leaderboards.html#epicleaderboardsqueryuserscorescallbackinfo">EpicLeaderboardsQueryUserScoresCallbackInfo</a></td>
+<td>The result of the query.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Results for every queried stat are read back together with <a href="leaderboards.html#eos_leaderboards_get_user_score_count">eos_leaderboards_get_user_score_count</a>/<a href="leaderboards.html#eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</a>, keyed by <code>stat_name</code> - call the accessor once per stat you queried.</p>
+</div>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>var _stat_queries = [{ stat_name: &quot;high_score&quot;, aggregation: EpicLeaderboardAggregation.Max }];
+
+eos_leaderboards_query_user_scores(local_user_id, [friend_a_id, friend_b_id], _stat_queries, EOS_LEADERBOARDS_TIME_UNDEFINED, EOS_LEADERBOARDS_TIME_UNDEFINED, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        var _count = eos_leaderboards_get_user_score_count(&quot;high_score&quot;);
+        for (var i = 0; i &lt; _count; i++)
+        {
+            var _score = eos_leaderboards_copy_user_score_by_index(&quot;high_score&quot;, i);
+            show_debug_message($&quot;{_score.user_id}: {_score.score}&quot;);
+        }
+    }
+});
+</code></pre></div>
+The above code queries two friends' high scores.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_get_definition_count">eos_leaderboards_get_definition_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-definition-count">EOS_Leaderboards_GetLeaderboardDefinitionCount</a></p>
+<p>Returns the number of leaderboard definitions available, from the last successful call to
+<a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_get_definition_count()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_get_record_count">eos_leaderboards_get_record_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-record-count">EOS_Leaderboards_GetLeaderboardRecordCount</a></p>
+<p>Returns the number of records available, from the last successful call to <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_get_record_count()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_get_user_score_count">eos_leaderboards_get_user_score_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-user-score-count">EOS_Leaderboards_GetLeaderboardUserScoreCount</a></p>
+<p>Returns the number of user scores available for <code>stat_name</code>, from the last successful call to
+<a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_get_user_score_count(stat_name)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Name of the stat to count scores for, matching one of the <code>stat_name</code>s passed to <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-definition-by-index">EOS_Leaderboards_CopyLeaderboardDefinitionByIndex</a></p>
+<p>Fetches a leaderboard definition by index, from the cached data populated by <a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_definition_by_index(index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the definition, between 0 and <a href="leaderboards.html#eos_leaderboards_get_definition_count">eos_leaderboards_get_definition_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="leaderboards.html#epicleaderboarddefinition">EpicLeaderboardDefinition</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range or no definitions have been queried yet - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-definition-by-leaderboard-id">EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId</a></p>
+<p>Fetches a leaderboard definition by its leaderboard ID, from the cached data populated by
+<a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_definition_by_id(leaderboard_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>leaderboard_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the leaderboard definition to fetch.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="leaderboards.html#epicleaderboarddefinition">EpicLeaderboardDefinition</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>leaderboard_id</code> doesn't match any queried definition - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-record-by-index">EOS_Leaderboards_CopyLeaderboardRecordByIndex</a></p>
+<p>Fetches a leaderboard record (rank entry) by index, from the cached data populated by
+<a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_record_by_index(index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the record, between 0 and <a href="leaderboards.html#eos_leaderboards_get_record_count">eos_leaderboards_get_record_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="leaderboards.html#epicleaderboardrecord">EpicLeaderboardRecord</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range or no ranks have been queried yet - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-record-by-user-id">EOS_Leaderboards_CopyLeaderboardRecordByUserId</a></p>
+<p>Fetches a specific user's leaderboard record (rank entry), from the cached data populated by
+<a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_record_by_user_id(user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID whose record to fetch.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="leaderboards.html#epicleaderboardrecord">EpicLeaderboardRecord</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>user_id</code> isn't part of the queried ranks - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-user-score-by-index">EOS_Leaderboards_CopyLeaderboardUserScoreByIndex</a></p>
+<p>Fetches one user score by index for <code>stat_name</code>, from the cached data populated by
+<a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_user_score_by_index(stat_name, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Name of the stat to read a score for, matching one of the <code>stat_name</code>s passed to <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the score, between 0 and <a href="leaderboards.html#eos_leaderboards_get_user_score_count">eos_leaderboards_get_user_score_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="leaderboards.html#epicleaderboarduserscore">EpicLeaderboardUserScore</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>stat_name</code> wasn't queried or <code>index</code> is out of range - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboardaggregation">EpicLeaderboardAggregation</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-leaderboard-aggregation">EOS_ELeaderboardAggregation</a></p>
+<p>How a leaderboard or a user-scores query combines multiple stat ingests into a single score.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="leaderboards.html#epicleaderboardstatquery">EpicLeaderboardStatQuery</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Min</code></td>
+<td>The lowest ingested value.</td>
+</tr>
+<tr>
+<td><code>Max</code></td>
+<td>The highest ingested value.</td>
+</tr>
+<tr>
+<td><code>Sum</code></td>
+<td>The sum of all ingested values.</td>
+</tr>
+<tr>
+<td><code>Latest</code></td>
+<td>The most recently ingested value.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="macros">macros</h1>
+<p>Standalone constants used by this module.</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EOS_LEADERBOARDS_TIME_UNDEFINED</code></td>
+<td>(value: '-1')</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboardstatquery">EpicLeaderboardStatQuery</h1>
+<p>One stat to query in <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>, and how to aggregate multiple
+entries for that stat into a single score.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Name of the stat to query.</td>
+</tr>
+<tr>
+<td>aggregation</td>
+<td><a href="leaderboards.html#epicleaderboardaggregation">EpicLeaderboardAggregation</a></td>
+<td>How to aggregate the stat's values into a score.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboardsquerydefinitionscallbackinfo">EpicLeaderboardsQueryDefinitionsCallbackInfo</h1>
+<p>The result of <a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the definitions were queried successfully.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboardsqueryrankscallbackinfo">EpicLeaderboardsQueryRanksCallbackInfo</h1>
+<p>The result of <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the ranks were queried successfully.</td>
+</tr>
+<tr>
+<td>leaderboard_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the leaderboard that was queried.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboardsqueryuserscorescallbackinfo">EpicLeaderboardsQueryUserScoresCallbackInfo</h1>
+<p>The result of <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the user scores were queried successfully.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboarddefinition">EpicLeaderboardDefinition</h1>
+<p>A leaderboard definition, as returned by <a href="leaderboards.html#eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</a>/
+<a href="leaderboards.html#eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>leaderboard_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the leaderboard.</td>
+</tr>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The stat this leaderboard ranks.</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp the leaderboard's tracked period starts at.</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp the leaderboard's tracked period ends at.</td>
+</tr>
+<tr>
+<td>aggregation</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>How scores are aggregated for this leaderboard, as one of <a href="leaderboards.html#epicleaderboardaggregation">EpicLeaderboardAggregation</a>'s member names (<code>"Min"</code>/<code>"Max"</code>/<code>"Sum"</code>/<code>"Latest"</code>).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboardrecord">EpicLeaderboardRecord</h1>
+<p>A single ranked entry on a leaderboard, as returned by <a href="leaderboards.html#eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</a>/
+<a href="leaderboards.html#eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</a></li>
+<li><a href="leaderboards.html#eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID that holds this record.</td>
+</tr>
+<tr>
+<td>rank</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The record's rank on the leaderboard (1-based).</td>
+</tr>
+<tr>
+<td>score</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The record's score.</td>
+</tr>
+<tr>
+<td>user_display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Display name of the user, when available.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicleaderboarduserscore">EpicLeaderboardUserScore</h1>
+<p>A single user's score for a queried stat, as returned by <a href="leaderboards.html#eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="leaderboards.html#eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID the score belongs to.</td>
+</tr>
+<tr>
+<td>score</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The user's aggregated score.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="friends.html" class="btn btn-neutral float-left" title="Friends"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="lobbies.html" class="btn btn-neutral float-right" title="Lobbies">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="friends.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="lobbies.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

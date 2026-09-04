@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Extension Options - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Extension Options";
+        var mkdocs_page_input_path = "extension_options.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Extension Options</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#build-options">Build Options</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#app-options">App Options</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extra-options">Extra Options</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#android">Android</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Extension Options</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/extension_options.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="extension-options">Extension Options</h1>
+<p>To configure the Epic Online Services extension, double click on the <strong>EpicOnlineServices</strong> extension in
+your Asset Browser in the IDE. All options below live at the bottom of the extension window.</p>
+<h2 id="build-options">Build Options</h2>
+<p>These paths control where the extension's build step pulls the vendored Epic Online Services SDK from
+(relative to the extension folder). See <a href="getting_started.html">Getting Started</a> for how to obtain the SDK.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EOS SDK Path</strong></td>
+<td>Path</td>
+<td><code>../EOS_sdk/c/</code></td>
+<td>Folder containing the desktop (Windows/macOS/Linux) SDK.</td>
+</tr>
+<tr>
+<td><strong>EOS Android SDK Path</strong></td>
+<td>Path</td>
+<td><code>../EOS_sdk/android/</code></td>
+<td>Folder containing the Android SDK.</td>
+</tr>
+<tr>
+<td><strong>EOS iOS SDK Path</strong></td>
+<td>Path</td>
+<td><code>../EOS_sdk/ios/</code></td>
+<td>Folder containing the iOS SDK.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-options">App Options</h2>
+<p>These identify your application to Epic's backend. <strong>Product ID</strong>, <strong>Sandbox ID</strong>, and <strong>Deployment ID</strong>
+are required and are found on the <a href="https://dev.epicgames.com/portal/en-US/">Epic Games Dev Portal</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Is Server</strong></td>
+<td>Bool</td>
+<td>No</td>
+<td>Set to <code>true</code> when this build is a dedicated game server rather than a client.</td>
+</tr>
+<tr>
+<td><strong>Product ID</strong></td>
+<td>String</td>
+<td>Yes</td>
+<td>The product ID for the running application.</td>
+</tr>
+<tr>
+<td><strong>Sandbox ID</strong></td>
+<td>String</td>
+<td>Yes</td>
+<td>The sandbox ID for the running application.</td>
+</tr>
+<tr>
+<td><strong>Deployment ID</strong></td>
+<td>String</td>
+<td>Yes</td>
+<td>The deployment ID for the running application.</td>
+</tr>
+<tr>
+<td><strong>Client Credentials ID</strong></td>
+<td>String</td>
+<td>No</td>
+<td>Client ID of the service permissions entry. Leave empty if no service permissions are used.</td>
+</tr>
+<tr>
+<td><strong>Client Credentials Secret</strong></td>
+<td>String</td>
+<td>No</td>
+<td>Client secret matching <strong>Client Credentials ID</strong>. Leave empty if no service permissions are used.</td>
+</tr>
+<tr>
+<td><strong>Encryption Key</strong></td>
+<td>String</td>
+<td>No</td>
+<td>256-bit key (64 hex characters) used to encrypt files written via <a href="player_data_storage.html">Player Data Storage</a>/<a href="title_storage.html">Title Storage</a>. Leave empty if you don't use those modules.</td>
+</tr>
+<tr>
+<td><strong>Product Name</strong></td>
+<td>String</td>
+<td>Yes</td>
+<td>Name of the product, non-empty, max 64 characters. Allowed characters: <code>A-Z a-z 0-9 . _ space ! ? &amp; - ( ) + :</code>.</td>
+</tr>
+<tr>
+<td><strong>Product Version</strong></td>
+<td>String</td>
+<td>Yes</td>
+<td>Version of the running application, same character restrictions as <strong>Product Name</strong>. Defaults to <code>1.0</code>.</td>
+</tr>
+<tr>
+<td><strong>Debug Mode</strong></td>
+<td>Dropdown (<code>Auto</code>/<code>Enabled</code>)</td>
+<td>No</td>
+<td><code>Auto</code> (default) enables debug mode only when running from the IDE. <code>Enabled</code> forces it on for every build.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>Enabled</code> should only be used to hand a standalone debug build to someone for testing. Never ship a store build with <strong>Debug Mode</strong> set to <code>Enabled</code> - see <a href="getting_started.html">Getting Started</a> for what debug mode changes (skips the launcher relaunch check performed by <a href="platform.html#eos_platform_check_for_launcher_and_restart">eos_platform_check_for_launcher_and_restart</a>).</p>
+</div>
+<h2 id="extra-options">Extra Options</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Log Level</strong></td>
+<td>Dropdown (<code>0</code>/<code>1</code>/<code>2</code>)</td>
+<td><code>1</code></td>
+<td>Verbosity of the extension's own startup/diagnostic logging, separate from <a href="logging.html#eos_logging_set_callback">eos_logging_set_callback</a>'s per-category SDK logging (see <a href="logging.html">Logging</a>).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="android">Android</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scheme</strong></td>
+<td>String</td>
+<td><code>eos.&lt;lowercase Client Credentials ID&gt;</code></td>
+<td>The custom URI scheme Android registers for the Epic account-portal login redirect. Must stay in sync with <strong>Client Credentials ID</strong> above - if you change one, update the other.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The remaining options under <strong>Extra Options</strong> (SDK version/hash pins) are internal build plumbing used to fetch the correct redistributable SDK version and are not meant to be edited by hand.</p>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="logging_in.html" class="btn btn-neutral float-left" title="Logging In"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="achievements.html" class="btn btn-neutral float-right" title="Achievements">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="logging_in.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="achievements.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Achievements - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Achievements";
+        var mkdocs_page_input_path = "achievements.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Achievements</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Achievements</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/achievements.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="achievements"><strong>Achievements</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-achievements-interface">Achievements Interface</a></p>
+<p>The Achievements Interface lets you query achievement definitions and player progress, unlock achievements
+directly, and listen for unlocks that happen automatically as stats cross their thresholds.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Query the achievement definitions with <a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a> and a player's
+progress with <a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a> before reading either - the accessor
+functions below read from the most recently cached query result.</p>
+</div>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a></li>
+<li><a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a></li>
+<li><a href="achievements.html#eos_achievements_get_achievement_definition_count">eos_achievements_get_achievement_definition_count</a></li>
+<li><a href="achievements.html#eos_achievements_get_player_achievement_count">eos_achievements_get_player_achievement_count</a></li>
+<li><a href="achievements.html#eos_achievements_copy_achievement_definition_by_index">eos_achievements_copy_achievement_definition_by_index</a></li>
+<li><a href="achievements.html#eos_achievements_copy_achievement_definition_v2_by_index">eos_achievements_copy_achievement_definition_v2_by_index</a></li>
+<li><a href="achievements.html#eos_achievements_copy_achievement_definition_by_id">eos_achievements_copy_achievement_definition_by_id</a></li>
+<li><a href="achievements.html#eos_achievements_copy_player_achievement_by_index">eos_achievements_copy_player_achievement_by_index</a></li>
+<li><a href="achievements.html#eos_achievements_copy_player_achievement_by_id">eos_achievements_copy_player_achievement_by_id</a></li>
+<li><a href="achievements.html#eos_achievements_copy_stat_threshold_by_index">eos_achievements_copy_stat_threshold_by_index</a></li>
+<li><a href="achievements.html#eos_achievements_copy_player_stat_info_by_index">eos_achievements_copy_player_stat_info_by_index</a></li>
+<li><a href="achievements.html#eos_achievements_unlock_achievements">eos_achievements_unlock_achievements</a></li>
+<li><a href="achievements.html#eos_achievements_add_notify_achievements_unlocked_v2">eos_achievements_add_notify_achievements_unlocked_v2</a></li>
+<li><a href="achievements.html#eos_achievements_remove_notify_achievements_unlocked">eos_achievements_remove_notify_achievements_unlocked</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this module:</p>
+<ul>
+<li><a href="achievements.html#epicachievementsquerydefinitionscallbackinfo">EpicAchievementsQueryDefinitionsCallbackInfo</a></li>
+<li><a href="achievements.html#epicachievementsqueryplayerachievementscallbackinfo">EpicAchievementsQueryPlayerAchievementsCallbackInfo</a></li>
+<li><a href="achievements.html#epicstatthreshold">EpicStatThreshold</a></li>
+<li><a href="achievements.html#epicplayerstatinfo">EpicPlayerStatInfo</a></li>
+<li><a href="achievements.html#epicachievementsstatthresholds">EpicAchievementsStatThresholds</a></li>
+<li><a href="achievements.html#epicachievementsunlockachievementscallbackinfo">EpicAchievementsUnlockAchievementsCallbackInfo</a></li>
+<li><a href="achievements.html#epicachievementsdefinition">EpicAchievementsDefinition</a></li>
+<li><a href="achievements.html#epicachievementsdefinitionv2">EpicAchievementsDefinitionV2</a></li>
+<li><a href="achievements.html#epicplayerachievement">EpicPlayerAchievement</a></li>
+<li><a href="achievements.html#epicachievementsunlockedv2callbackinfo">EpicAchievementsUnlockedV2CallbackInfo</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_query_definitions">eos_achievements_query_definitions</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-query-definitions">EOS_Achievements_QueryDefinitions</a></p>
+<p>Queries the list of achievement definitions for the running application, optionally including localized text
+for the locale configured for <code>local_user_id</code>. Call this once at startup (or whenever you need fresh
+definitions) before using <a href="achievements.html#eos_achievements_get_achievement_definition_count">eos_achievements_get_achievement_definition_count</a>,
+<a href="achievements.html#eos_achievements_copy_achievement_definition_by_index">eos_achievements_copy_achievement_definition_by_index</a>, <a href="achievements.html#eos_achievements_copy_achievement_definition_by_id">eos_achievements_copy_achievement_definition_by_id</a>
+or <a href="achievements.html#eos_achievements_copy_achievement_definition_v2_by_index">eos_achievements_copy_achievement_definition_v2_by_index</a> - those accessors read from the
+results of the most recent successful query.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_query_definitions(local_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user querying the definitions.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Function invoked when the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once when the definitions query completes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="achievements.html#epicachievementsquerydefinitionscallbackinfo">EpicAchievementsQueryDefinitionsCallbackInfo</a></td>
+<td>The result of the query.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_achievements_query_definitions(local_user_id, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        var _count = eos_achievements_get_achievement_definition_count();
+        show_debug_message($&quot;Loaded {_count} achievement definitions&quot;);
+    }
+});
+</code></pre></div>
+The above code queries the achievement definitions and reports how many were loaded once the query succeeds.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-query-player-achievements">EOS_Achievements_QueryPlayerAchievements</a></p>
+<p>Queries a player's achievement progress. <code>target_user_id</code> doesn't need to be the same as <code>local_user_id</code> -
+you can query another player's progress as long as <code>local_user_id</code> has permission to see it. Call this
+before using <a href="achievements.html#eos_achievements_get_player_achievement_count">eos_achievements_get_player_achievement_count</a>, <a href="achievements.html#eos_achievements_copy_player_achievement_by_index">eos_achievements_copy_player_achievement_by_index</a>
+or <a href="achievements.html#eos_achievements_copy_player_achievement_by_id">eos_achievements_copy_player_achievement_by_id</a> for that <code>target_user_id</code>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_query_player_achievements(local_user_id, target_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user performing the query.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player whose achievements to query.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Function invoked when the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once when the query completes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="achievements.html#epicachievementsqueryplayerachievementscallbackinfo">EpicAchievementsQueryPlayerAchievementsCallbackInfo</a></td>
+<td>The result of the query.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_achievements_query_player_achievements(local_user_id, local_user_id, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        show_debug_message($&quot;Loaded {eos_achievements_get_player_achievement_count(_result.user_id, _result.target_user_id)} achievements for {_result.target_user_id}&quot;);
+    }
+});
+</code></pre></div>
+The above code queries the local player's own achievement progress.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_get_achievement_definition_count">eos_achievements_get_achievement_definition_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-get-achievement-definition-count">EOS_Achievements_GetAchievementDefinitionCount</a></p>
+<p>Returns the number of achievement definitions available, from the last successful call to
+<a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_get_achievement_definition_count()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_get_player_achievement_count">eos_achievements_get_player_achievement_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-get-player-achievement-count">EOS_Achievements_GetPlayerAchievementCount</a></p>
+<p>Returns the number of achievements associated with <code>target_user_id</code>, from the last successful call to
+<a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a> for that user.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_get_player_achievement_count(local_user_id, target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player whose achievement count to fetch.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_copy_achievement_definition_by_index">eos_achievements_copy_achievement_definition_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-by-index">EOS_Achievements_CopyAchievementDefinitionByIndex</a></p>
+<p>Fetches an achievement definition by index from the cached data populated by <a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the deprecated (V1) definition shape - prefer <a href="achievements.html#eos_achievements_copy_achievement_definition_v2_by_index">eos_achievements_copy_achievement_definition_v2_by_index</a> for new code, which reports separate unlocked/locked display text instead of a single ambiguous pair.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_copy_achievement_definition_by_index(index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the definition, between 0 and <a href="achievements.html#eos_achievements_get_achievement_definition_count">eos_achievements_get_achievement_definition_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#epicachievementsdefinition">EpicAchievementsDefinition</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range or no definitions have been queried yet - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_copy_achievement_definition_v2_by_index">eos_achievements_copy_achievement_definition_v2_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-v2-by-index">EOS_Achievements_CopyAchievementDefinitionV2ByIndex</a></p>
+<p>Fetches an achievement definition (V2 shape, with separate unlocked/locked display text) by index from the
+cached data populated by <a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_copy_achievement_definition_v2_by_index(index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the definition, between 0 and <a href="achievements.html#eos_achievements_get_achievement_definition_count">eos_achievements_get_achievement_definition_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#epicachievementsdefinitionv2">EpicAchievementsDefinitionV2</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range or no definitions have been queried yet - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_copy_achievement_definition_by_id">eos_achievements_copy_achievement_definition_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-by-achievement-id">EOS_Achievements_CopyAchievementDefinitionByAchievementId</a></p>
+<p>Fetches an achievement definition (V1 shape) by its achievement ID, from the cached data populated by
+<a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_copy_achievement_definition_by_id(achievement_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the achievement definition to fetch.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#epicachievementsdefinition">EpicAchievementsDefinition</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>achievement_id</code> doesn't match any queried definition - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_copy_player_achievement_by_index">eos_achievements_copy_player_achievement_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-player-achievement-by-index">EOS_Achievements_CopyPlayerAchievementByIndex</a></p>
+<p>Fetches a player's achievement progress by index, from the cached data populated by
+<a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_copy_player_achievement_by_index(local_user_id, target_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player whose achievement to fetch.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the achievement, between 0 and <a href="achievements.html#eos_achievements_get_player_achievement_count">eos_achievements_get_player_achievement_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#epicplayerachievement">EpicPlayerAchievement</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range or the ids are invalid - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_copy_player_achievement_by_id">eos_achievements_copy_player_achievement_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-player-achievement-by-achievement-id">EOS_Achievements_CopyPlayerAchievementByAchievementId</a></p>
+<p>Fetches a player's achievement progress by achievement ID, from the cached data populated by
+<a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_copy_player_achievement_by_id(local_user_id, target_user_id, achievement_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player whose achievement to fetch.</td>
+</tr>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the achievement to fetch.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#epicplayerachievement">EpicPlayerAchievement</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>achievement_id</code> doesn't match a queried achievement or the ids are invalid - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_copy_stat_threshold_by_index">eos_achievements_copy_stat_threshold_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-achievement-definition-v2-by-achievement-id">EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId</a></p>
+<p>Fetches one stat threshold entry (a stat name and the value it must reach) from the given achievement's
+definition, by index. Internally this fetches the achievement's V2 definition and indexes into its embedded
+threshold list - it does not require you to have called <a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a>
+again beforehand, but the achievement itself must exist on the backend.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_copy_stat_threshold_by_index(achievement_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the achievement whose thresholds to read.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the threshold entry, between 0 and the achievement's <code>stat_thresholds_count</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#epicstatthreshold">EpicStatThreshold</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if <code>achievement_id</code> is invalid or <code>index</code> is out of range - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_copy_player_stat_info_by_index">eos_achievements_copy_player_stat_info_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-copy-player-achievement-by-achievement-id">EOS_Achievements_CopyPlayerAchievementByAchievementId</a></p>
+<p>Fetches one stat progress entry (current value vs. threshold) from a player's achievement progress, by
+index. Requires <a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a> to have completed for <code>target_user_id</code>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_copy_player_stat_info_by_index(local_user_id, target_user_id, achievement_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player whose stat info to read.</td>
+</tr>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the achievement whose stat info to read.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of the stat info entry, between 0 and the achievement's <code>stat_info_count</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="achievements.html#epicplayerstatinfo">EpicPlayerStatInfo</a></p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Returns <code>undefined</code> if the ids are invalid or <code>index</code> is out of range - check <a href="general.html#eos_api_last_error">eos_api_last_error</a> for the reason.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_unlock_achievements">eos_achievements_unlock_achievements</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-unlock-achievements">EOS_Achievements_UnlockAchievements</a></p>
+<p>Directly unlocks one or more achievements for a player. Most games instead unlock achievements
+automatically on the backend once the underlying stats reach their thresholds - use this for achievements
+that aren't stat-driven.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_unlock_achievements(user_id, achievement_ids, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player to unlock achievements for.</td>
+</tr>
+<tr>
+<td>achievement_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The IDs of the achievements to unlock.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Function invoked when the request completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once when the unlock request completes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="achievements.html#epicachievementsunlockachievementscallbackinfo">EpicAchievementsUnlockAchievementsCallbackInfo</a></td>
+<td>The result of the request.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_achievements_unlock_achievements(user_id, [&quot;ach_first_win&quot;, &quot;ach_no_deaths&quot;], function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        show_debug_message($&quot;Unlocked {_result.achievements_count} achievement(s)&quot;);
+    }
+});
+</code></pre></div>
+The above code unlocks two achievements directly for the given player.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_add_notify_achievements_unlocked_v2">eos_achievements_add_notify_achievements_unlocked_v2</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-add-notify-achievements-unlocked-v2">EOS_Achievements_AddNotifyAchievementsUnlockedV2</a></p>
+<p>Registers to be notified whenever an achievement is unlocked for any locally logged-in user, however it
+was unlocked (through <a href="achievements.html#eos_achievements_unlock_achievements">eos_achievements_unlock_achievements</a> or automatically via stats). If the
+returned notification ID is valid, call <a href="achievements.html#eos_achievements_remove_notify_achievements_unlocked">eos_achievements_remove_notify_achievements_unlocked</a>
+when you no longer need it (e.g. on room/game end).</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_add_notify_achievements_unlocked_v2(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Function invoked every time an achievement unlocks.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>A notification ID, or <code>0</code> if registration failed.</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once per achievement unlock.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="achievements.html#epicachievementsunlockedv2callbackinfo">EpicAchievementsUnlockedV2CallbackInfo</a></td>
+<td>Details of the unlocked achievement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>global.achievement_notify_id = eos_achievements_add_notify_achievements_unlocked_v2(function(_result)
+{
+    show_debug_message($&quot;Achievement unlocked: {_result.achievement_id}&quot;);
+});
+</code></pre></div>
+The above code registers a persistent listener for achievement unlocks.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_achievements_remove_notify_achievements_unlocked">eos_achievements_remove_notify_achievements_unlocked</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-remove-notify-achievements-unlocked">EOS_Achievements_RemoveNotifyAchievementsUnlocked</a></p>
+<p>Unregisters a notification previously registered with <a href="achievements.html#eos_achievements_add_notify_achievements_unlocked_v2">eos_achievements_add_notify_achievements_unlocked_v2</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_achievements_remove_notify_achievements_unlocked(notification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID returned by <a href="achievements.html#eos_achievements_add_notify_achievements_unlocked_v2">eos_achievements_add_notify_achievements_unlocked_v2</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicachievementsquerydefinitionscallbackinfo">EpicAchievementsQueryDefinitionsCallbackInfo</h1>
+<p>The result of <a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_query_definitions">eos_achievements_query_definitions</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the definitions were queried successfully.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicachievementsqueryplayerachievementscallbackinfo">EpicAchievementsQueryPlayerAchievementsCallbackInfo</h1>
+<p>The result of <a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_query_player_achievements">eos_achievements_query_player_achievements</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the player's achievements were queried successfully.</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID that made the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID whose achievements were queried.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicstatthreshold">EpicStatThreshold</h1>
+<p>One stat name/threshold pair required for an achievement to unlock, as returned by
+<a href="achievements.html#eos_achievements_copy_stat_threshold_by_index">eos_achievements_copy_stat_threshold_by_index</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_copy_stat_threshold_by_index">eos_achievements_copy_stat_threshold_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the stat.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The value the stat must reach to satisfy this part of the achievement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicplayerstatinfo">EpicPlayerStatInfo</h1>
+<p>A player's current progress towards one of an achievement's stat thresholds, as returned by
+<a href="achievements.html#eos_achievements_copy_player_stat_info_by_index">eos_achievements_copy_player_stat_info_by_index</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_copy_player_stat_info_by_index">eos_achievements_copy_player_stat_info_by_index</a></li>
+</ul>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="achievements.html#epicplayerachievement">EpicPlayerAchievement</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the stat.</td>
+</tr>
+<tr>
+<td>current_value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The player's current value for this stat.</td>
+</tr>
+<tr>
+<td>threshold_value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The value the stat must reach for this part of the achievement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicachievementsstatthresholds">EpicAchievementsStatThresholds</h1>
+<p>One stat threshold entry embedded in a <a href="achievements.html#epicachievementsdefinition">EpicAchievementsDefinition</a>'s <code>stat_thresholds</code> array.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="achievements.html#epicachievementsdefinition">EpicAchievementsDefinition</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the stat.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The value the stat must reach to satisfy this part of the achievement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicachievementsunlockachievementscallbackinfo">EpicAchievementsUnlockAchievementsCallbackInfo</h1>
+<p>The result of <a href="achievements.html#eos_achievements_unlock_achievements">eos_achievements_unlock_achievements</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_unlock_achievements">eos_achievements_unlock_achievements</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the achievements were unlocked successfully.</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID the achievements were unlocked for.</td>
+</tr>
+<tr>
+<td>achievements_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of achievements that were unlocked by this call.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicachievementsdefinition">EpicAchievementsDefinition</h1>
+<p>The deprecated (V1) achievement definition shape, as returned by
+<a href="achievements.html#eos_achievements_copy_achievement_definition_by_index">eos_achievements_copy_achievement_definition_by_index</a>/<a href="achievements.html#eos_achievements_copy_achievement_definition_by_id">eos_achievements_copy_achievement_definition_by_id</a>.
+Prefer <a href="achievements.html#epicachievementsdefinitionv2">EpicAchievementsDefinitionV2</a> for new code.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_copy_achievement_definition_by_index">eos_achievements_copy_achievement_definition_by_index</a></li>
+<li><a href="achievements.html#eos_achievements_copy_achievement_definition_by_id">eos_achievements_copy_achievement_definition_by_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the achievement.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unlocked display name.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unlocked description.</td>
+</tr>
+<tr>
+<td>locked_display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The locked display name.</td>
+</tr>
+<tr>
+<td>locked_description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The locked description.</td>
+</tr>
+<tr>
+<td>hidden_description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The description shown for a hidden achievement before it's unlocked.</td>
+</tr>
+<tr>
+<td>completion_description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Flavor text shown once the achievement completes.</td>
+</tr>
+<tr>
+<td>unlocked_icon_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the icon shown when unlocked.</td>
+</tr>
+<tr>
+<td>locked_icon_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>ID of the icon shown when locked.</td>
+</tr>
+<tr>
+<td>is_hidden</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the achievement is hidden until unlocked.</td>
+</tr>
+<tr>
+<td>stat_thresholds_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Number of entries in <code>stat_thresholds</code>.</td>
+</tr>
+<tr>
+<td>stat_thresholds</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="achievements.html#epicachievementsstatthresholds">EpicAchievementsStatThresholds</a></td>
+<td>The stat name/threshold pairs required to unlock this achievement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicachievementsdefinitionv2">EpicAchievementsDefinitionV2</h1>
+<p>The current achievement definition shape, as returned by
+<a href="achievements.html#eos_achievements_copy_achievement_definition_v2_by_index">eos_achievements_copy_achievement_definition_v2_by_index</a>. Unlike <a href="achievements.html#epicachievementsdefinition">EpicAchievementsDefinition</a>
+this reports separate display text for the unlocked and locked states rather than one ambiguous pair.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_copy_achievement_definition_v2_by_index">eos_achievements_copy_achievement_definition_v2_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the achievement.</td>
+</tr>
+<tr>
+<td>unlocked_display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The display name shown once unlocked.</td>
+</tr>
+<tr>
+<td>unlocked_description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The description shown once unlocked.</td>
+</tr>
+<tr>
+<td>locked_display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The display name shown while locked.</td>
+</tr>
+<tr>
+<td>locked_description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The description shown while locked.</td>
+</tr>
+<tr>
+<td>flavor_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Flavor text for the achievement.</td>
+</tr>
+<tr>
+<td>unlocked_icon_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>URL of the icon shown when unlocked.</td>
+</tr>
+<tr>
+<td>locked_icon_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>URL of the icon shown when locked.</td>
+</tr>
+<tr>
+<td>is_hidden</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the achievement is hidden until unlocked.</td>
+</tr>
+<tr>
+<td>stat_thresholds_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Number of stat thresholds behind this achievement (fetch them individually with <a href="achievements.html#eos_achievements_copy_stat_threshold_by_index">eos_achievements_copy_stat_threshold_by_index</a>).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicplayerachievement">EpicPlayerAchievement</h1>
+<p>A player's progress towards a single achievement, as returned by
+<a href="achievements.html#eos_achievements_copy_player_achievement_by_index">eos_achievements_copy_player_achievement_by_index</a>/<a href="achievements.html#eos_achievements_copy_player_achievement_by_id">eos_achievements_copy_player_achievement_by_id</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_copy_player_achievement_by_index">eos_achievements_copy_player_achievement_by_index</a></li>
+<li><a href="achievements.html#eos_achievements_copy_player_achievement_by_id">eos_achievements_copy_player_achievement_by_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the achievement.</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Progress towards completion, from <code>0</code> to <code>1</code>.</td>
+</tr>
+<tr>
+<td>unlock_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp the achievement was unlocked at, or <code>-1</code> if not yet unlocked.</td>
+</tr>
+<tr>
+<td>stat_info_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Number of entries in <code>stat_info</code>.</td>
+</tr>
+<tr>
+<td>stat_info</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="achievements.html#epicplayerstatinfo">EpicPlayerStatInfo</a></td>
+<td>Per-stat progress towards this achievement's thresholds.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The display name for the achievement's current state (locked/unlocked).</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The description for the achievement's current state (locked/unlocked).</td>
+</tr>
+<tr>
+<td>icon_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>URL of the icon for the achievement's current state (locked/unlocked).</td>
+</tr>
+<tr>
+<td>flavor_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Flavor text for the achievement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicachievementsunlockedv2callbackinfo">EpicAchievementsUnlockedV2CallbackInfo</h1>
+<p>Reported to a listener registered with <a href="achievements.html#eos_achievements_add_notify_achievements_unlocked_v2">eos_achievements_add_notify_achievements_unlocked_v2</a>
+whenever an achievement unlocks.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="achievements.html#eos_achievements_add_notify_achievements_unlocked_v2">eos_achievements_add_notify_achievements_unlocked_v2</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID the achievement was unlocked for.</td>
+</tr>
+<tr>
+<td>achievement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the achievement that was unlocked.</td>
+</tr>
+<tr>
+<td>unlock_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp the achievement was unlocked at.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="extension_options.html" class="btn btn-neutral float-left" title="Extension Options"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="auth.html" class="btn btn-neutral float-right" title="Auth">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="extension_options.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="auth.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

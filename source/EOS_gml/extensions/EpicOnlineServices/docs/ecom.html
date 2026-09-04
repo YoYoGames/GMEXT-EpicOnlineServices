@@ -1,0 +1,2870 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Ecom - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ecom";
+        var mkdocs_page_input_path = "ecom.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Ecom</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Ecom</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/ecom.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="ecom"><strong>Ecom</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-ecom-interface">Ecom Interface</a></p>
+<p>The Ecom (E-Commerce) Interface lets you query and sell your game's catalog items, manage entitlements,
+and check ownership - covering the full loop from browsing offers to completing a purchase through the
+Epic Overlay.</p>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a></li>
+<li><a href="ecom.html#eos_ecom_query_ownership_by_sandbox_ids">eos_ecom_query_ownership_by_sandbox_ids</a></li>
+<li><a href="ecom.html#eos_ecom_query_ownership_token">eos_ecom_query_ownership_token</a></li>
+<li><a href="ecom.html#eos_ecom_query_entitlements">eos_ecom_query_entitlements</a></li>
+<li><a href="ecom.html#eos_ecom_query_entitlement_token">eos_ecom_query_entitlement_token</a></li>
+<li><a href="ecom.html#eos_ecom_query_offers">eos_ecom_query_offers</a></li>
+<li><a href="ecom.html#eos_ecom_checkout">eos_ecom_checkout</a></li>
+<li><a href="ecom.html#eos_ecom_redeem_entitlements">eos_ecom_redeem_entitlements</a></li>
+<li><a href="ecom.html#eos_ecom_get_item_ownership_count">eos_ecom_get_item_ownership_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_item_ownership_at_index">eos_ecom_copy_item_ownership_at_index</a></li>
+<li><a href="ecom.html#eos_ecom_get_sandbox_ownership_count">eos_ecom_get_sandbox_ownership_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_sandbox_ownership_at_index">eos_ecom_copy_sandbox_ownership_at_index</a></li>
+<li><a href="ecom.html#eos_ecom_get_entitlements_count">eos_ecom_get_entitlements_count</a></li>
+<li><a href="ecom.html#eos_ecom_get_entitlements_by_name_count">eos_ecom_get_entitlements_by_name_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_entitlement_by_index">eos_ecom_copy_entitlement_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_entitlement_by_name_and_index">eos_ecom_copy_entitlement_by_name_and_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_entitlement_by_id">eos_ecom_copy_entitlement_by_id</a></li>
+<li><a href="ecom.html#eos_ecom_get_last_redeemed_entitlements_count">eos_ecom_get_last_redeemed_entitlements_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_last_redeemed_entitlement_by_index">eos_ecom_copy_last_redeemed_entitlement_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_get_offer_count">eos_ecom_get_offer_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_offer_by_index">eos_ecom_copy_offer_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_offer_by_id">eos_ecom_copy_offer_by_id</a></li>
+<li><a href="ecom.html#eos_ecom_get_offer_item_count">eos_ecom_get_offer_item_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_offer_item_by_index">eos_ecom_copy_offer_item_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_item_by_id">eos_ecom_copy_item_by_id</a></li>
+<li><a href="ecom.html#eos_ecom_get_offer_image_info_count">eos_ecom_get_offer_image_info_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_offer_image_info_by_index">eos_ecom_copy_offer_image_info_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_get_item_image_info_count">eos_ecom_get_item_image_info_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_item_image_info_by_index">eos_ecom_copy_item_image_info_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_get_item_release_count">eos_ecom_get_item_release_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_item_release_by_index">eos_ecom_copy_item_release_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_get_transaction_count">eos_ecom_get_transaction_count</a></li>
+<li><a href="ecom.html#eos_ecom_copy_transaction_by_index">eos_ecom_copy_transaction_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_transaction_by_id">eos_ecom_copy_transaction_by_id</a></li>
+<li><a href="ecom.html#eos_ecom_transaction_get_transaction_id">eos_ecom_transaction_get_transaction_id</a></li>
+<li><a href="ecom.html#eos_ecom_transaction_get_entitlements_count">eos_ecom_transaction_get_entitlements_count</a></li>
+<li><a href="ecom.html#eos_ecom_transaction_copy_entitlement_by_index">eos_ecom_transaction_copy_entitlement_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_transaction_release">eos_ecom_transaction_release</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this API:</p>
+<ul>
+<li><a href="ecom.html#epicecomentitlement">EpicEcomEntitlement</a></li>
+<li><a href="ecom.html#epicecomitemownership">EpicEcomItemOwnership</a></li>
+<li><a href="ecom.html#epicecomsandboxiditemownership">EpicEcomSandboxIdItemOwnership</a></li>
+<li><a href="ecom.html#epicecomcatalogoffer">EpicEcomCatalogOffer</a></li>
+<li><a href="ecom.html#epicecomcatalogitem">EpicEcomCatalogItem</a></li>
+<li><a href="ecom.html#epicecomkeyimageinfo">EpicEcomKeyImageInfo</a></li>
+<li><a href="ecom.html#epicecomcatalogrelease">EpicEcomCatalogRelease</a></li>
+<li><a href="ecom.html#epicecomqueryownershipcallbackinfo">EpicEcomQueryOwnershipCallbackInfo</a></li>
+<li><a href="ecom.html#epicecomqueryownershipbysandboxidscallbackinfo">EpicEcomQueryOwnershipBySandboxIdsCallbackInfo</a></li>
+<li><a href="ecom.html#epicecomqueryownershiptokencallbackinfo">EpicEcomQueryOwnershipTokenCallbackInfo</a></li>
+<li><a href="ecom.html#epicecomqueryentitlementscallbackinfo">EpicEcomQueryEntitlementsCallbackInfo</a></li>
+<li><a href="ecom.html#epicecomqueryentitlementtokencallbackinfo">EpicEcomQueryEntitlementTokenCallbackInfo</a></li>
+<li><a href="ecom.html#epicecomqueryofferscallbackinfo">EpicEcomQueryOffersCallbackInfo</a></li>
+<li><a href="ecom.html#epicecomcheckoutcallbackinfo">EpicEcomCheckoutCallbackInfo</a></li>
+<li><a href="ecom.html#epicecomredeementitlementscallbackinfo">EpicEcomRedeemEntitlementsCallbackInfo</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used by this API:</p>
+<ul>
+<li><a href="ecom.html#epicownershipstatus">EpicOwnershipStatus</a></li>
+<li><a href="ecom.html#epicecomitemtype">EpicEcomItemType</a></li>
+<li><a href="ecom.html#epiccheckoutorientation">EpicCheckoutOrientation</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_query_ownership">eos_ecom_query_ownership</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-ownership">EOS_Ecom_QueryOwnership</a></p>
+<p>Queries the ownership status for a list of catalog item IDs defined with Epic Online Services. The
+result is cached locally - read it back with <a href="ecom.html#eos_ecom_get_item_ownership_count">eos_ecom_get_item_ownership_count</a> and
+<a href="ecom.html#eos_ecom_copy_item_ownership_at_index">eos_ecom_copy_item_ownership_at_index</a> once the callback fires with success. A fresh call
+to this function replaces the previously cached result for <code>local_user_id</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You should only use this function for startup checks - use Auth or Connect events to more
+reliably determine when to query for ownership changes.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_query_ownership(local_user_id, catalog_item_ids, catalog_namespace, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user whose ownership is being queried.</td>
+</tr>
+<tr>
+<td>catalog_item_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item IDs to query.</td>
+</tr>
+<tr>
+<td>catalog_namespace</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product namespace to use, or an empty string <code>""</code> to use the<br>configured default namespace.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the query result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomqueryownershipcallbackinfo">EpicEcomQueryOwnershipCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_ecom_query_ownership(local_user_id, [&quot;catalog_item_1&quot;, &quot;catalog_item_2&quot;], &quot;&quot;, function(_result)
+{
+    if (_result.status == EpicResult.Success)
+    {
+        var _count = eos_ecom_get_item_ownership_count(local_user_id);
+        for (var i = 0; i &lt; _count; i++)
+        {
+            var _entry = eos_ecom_copy_item_ownership_at_index(local_user_id, i);
+            show_debug_message($&quot;{_entry.id}: {_entry.ownership_status}&quot;);
+        }
+    }
+});
+</code></pre></div>
+The above code queries ownership for two catalog items and lists the cached result once resolved.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_query_ownership_by_sandbox_ids">eos_ecom_query_ownership_by_sandbox_ids</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-ownership-by-sandbox-ids">EOS_Ecom_QueryOwnershipBySandboxIds</a></p>
+<p>Queries the ownership status of catalog items across a set of sandboxes, for the currently logged in
+user. Unlike <a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a>, this can be queried using an <a href="connect.html#eos_connect_login">eos_connect_login</a>
+logged in user, and does not require an Epic Account. The result is cached locally - read it back with
+<a href="ecom.html#eos_ecom_get_sandbox_ownership_count">eos_ecom_get_sandbox_ownership_count</a> and <a href="ecom.html#eos_ecom_copy_sandbox_ownership_at_index">eos_ecom_copy_sandbox_ownership_at_index</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_query_ownership_by_sandbox_ids(local_user_id, sandbox_ids, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user whose ownership is being queried.</td>
+</tr>
+<tr>
+<td>sandbox_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The sandbox IDs to query ownership within.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the query result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomqueryownershipbysandboxidscallbackinfo">EpicEcomQueryOwnershipBySandboxIdsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_query_ownership_token">eos_ecom_query_ownership_token</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-ownership-token">EOS_Ecom_QueryOwnershipToken</a></p>
+<p>Retrieves an ownership proof token for a list of catalog item IDs. This token can be verified by an
+external service (such as a backend server) to confirm ownership without trusting the client.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_query_ownership_token(local_user_id, catalog_item_ids, catalog_namespace, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user whose ownership token is being retrieved.</td>
+</tr>
+<tr>
+<td>catalog_item_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item IDs to include in the token.</td>
+</tr>
+<tr>
+<td>catalog_namespace</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product namespace to use, or an empty string <code>""</code> to use the<br>configured default namespace.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the request completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the request result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomqueryownershiptokencallbackinfo">EpicEcomQueryOwnershipTokenCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_query_entitlements">eos_ecom_query_entitlements</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-entitlements">EOS_Ecom_QueryEntitlements</a></p>
+<p>Queries the backend for the local user's entitlements. Any Epic Games-based entitlements can only be
+queried from the running application defined by the Product ID configured with
+<a href="extension_options.html">Extension Options</a>. The result is cached in the SDK's own entitlement cache - read it back with
+<a href="ecom.html#eos_ecom_get_entitlements_count">eos_ecom_get_entitlements_count</a>/<a href="ecom.html#eos_ecom_get_entitlements_by_name_count">eos_ecom_get_entitlements_by_name_count</a> and
+the matching <code>eos_ecom_copy_entitlement_*</code> accessors.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_query_entitlements(local_user_id, entitlement_names, include_redeemed, catalog_namespace, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user whose entitlements are being queried.</td>
+</tr>
+<tr>
+<td>entitlement_names</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Optional list of entitlement names to query. Pass an empty<br>array to query all entitlements for the product.</td>
+</tr>
+<tr>
+<td>include_redeemed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether to include already-redeemed entitlements in the result.</td>
+</tr>
+<tr>
+<td>catalog_namespace</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product namespace to use, or an empty string <code>""</code> to use the<br>configured default namespace.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the query result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomqueryentitlementscallbackinfo">EpicEcomQueryEntitlementsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_query_entitlement_token">eos_ecom_query_entitlement_token</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-entitlement-token">EOS_Ecom_QueryEntitlementToken</a></p>
+<p>Retrieves an entitlement proof token for a list of entitlement names, which an external service can
+verify without trusting the client.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_query_entitlement_token(local_user_id, entitlement_names, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user whose entitlement token is being retrieved.</td>
+</tr>
+<tr>
+<td>entitlement_names</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The entitlement names to include in the token.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the request completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the request result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomqueryentitlementtokencallbackinfo">EpicEcomQueryEntitlementTokenCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_query_offers">eos_ecom_query_offers</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-offers">EOS_Ecom_QueryOffers</a></p>
+<p>Queries the backend catalog for the store offers available to the local user. The result is cached in
+the SDK's own offer cache - read it back with <a href="ecom.html#eos_ecom_get_offer_count">eos_ecom_get_offer_count</a> and
+<a href="ecom.html#eos_ecom_copy_offer_by_index">eos_ecom_copy_offer_by_index</a>/<a href="ecom.html#eos_ecom_copy_offer_by_id">eos_ecom_copy_offer_by_id</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_query_offers(local_user_id, catalog_namespace, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user whose offers are being queried.</td>
+</tr>
+<tr>
+<td>catalog_namespace</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product namespace to use, or an empty string <code>""</code> to use the<br>configured default namespace.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the query completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the query result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomqueryofferscallbackinfo">EpicEcomQueryOffersCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_checkout">eos_ecom_checkout</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-checkout">EOS_Ecom_Checkout</a></p>
+<p>Starts a checkout for one or more offers. This opens the Epic Overlay's purchase flow; the callback
+fires once the player finishes, cancels, or the purchase flow otherwise closes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>EpicResult.EcomPurchaseProcessing</code> can be returned in the callback if the player closed the
+purchase flow overlay after clicking the purchase button - the purchase may still be processing, so
+re-query entitlements shortly afterward rather than treating this as a hard failure.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_checkout(local_user_id, offer_ids, catalog_namespace, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user starting the checkout.</td>
+</tr>
+<tr>
+<td>offer_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer IDs to purchase.</td>
+</tr>
+<tr>
+<td>catalog_namespace</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product namespace to use, or an empty string <code>""</code> to use the<br>configured default namespace.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the checkout flow completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the checkout result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomcheckoutcallbackinfo">EpicEcomCheckoutCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_redeem_entitlements">eos_ecom_redeem_entitlements</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-redeem-entitlements">EOS_Ecom_RedeemEntitlements</a></p>
+<p>Redeems one or more consumable entitlements, decrementing their available uses. Once redeemed, the
+redeemed entitlements can be read back with <a href="ecom.html#eos_ecom_get_last_redeemed_entitlements_count">eos_ecom_get_last_redeemed_entitlements_count</a>
+and <a href="ecom.html#eos_ecom_copy_last_redeemed_entitlement_by_index">eos_ecom_copy_last_redeemed_entitlement_by_index</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_redeem_entitlements(local_user_id, entitlement_ids, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user redeeming entitlements.</td>
+</tr>
+<tr>
+<td>entitlement_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The entitlement IDs to redeem.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the redemption completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once with the redemption result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="ecom.html#epicecomredeementitlementscallbackinfo">EpicEcomRedeemEntitlementsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_item_ownership_count">eos_ecom_get_item_ownership_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-item-ownership-count">EOS_Ecom_GetItemOwnershipCount</a></p>
+<p>Returns the number of item ownership records cached locally for <code>local_user_id</code> by the last successful
+<a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a> call. Returns <code>0</code> if no query has completed yet.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_item_ownership_count(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_item_ownership_at_index">eos_ecom_copy_item_ownership_at_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-item-ownership-by-index">EOS_Ecom_CopyItemOwnershipByIndex</a></p>
+<p>Fetches an item ownership record from the local ownership cache by index, populated by
+<a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_item_ownership_at_index(local_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the ownership cache, between 0 and <a href="ecom.html#eos_ecom_get_item_ownership_count">eos_ecom_get_item_ownership_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomitemownership">EpicEcomItemOwnership</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_sandbox_ownership_count">eos_ecom_get_sandbox_ownership_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-sandbox-ownership-count">EOS_Ecom_GetSandboxOwnershipCount</a></p>
+<p>Returns the number of sandbox ownership records cached locally for <code>local_user_id</code> by the last
+successful <a href="ecom.html#eos_ecom_query_ownership_by_sandbox_ids">eos_ecom_query_ownership_by_sandbox_ids</a> call. Returns <code>0</code> if no query has
+completed yet.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_sandbox_ownership_count(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_sandbox_ownership_at_index">eos_ecom_copy_sandbox_ownership_at_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-sandbox-ownership-by-index">EOS_Ecom_CopySandboxOwnershipByIndex</a></p>
+<p>Fetches a sandbox ownership record from the local cache by index, populated by
+<a href="ecom.html#eos_ecom_query_ownership_by_sandbox_ids">eos_ecom_query_ownership_by_sandbox_ids</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_sandbox_ownership_at_index(local_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the sandbox ownership cache, between 0 and <a href="ecom.html#eos_ecom_get_sandbox_ownership_count">eos_ecom_get_sandbox_ownership_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomsandboxiditemownership">EpicEcomSandboxIdItemOwnership</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_entitlements_count">eos_ecom_get_entitlements_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-entitlements-count">EOS_Ecom_GetEntitlementsCount</a></p>
+<p>Returns the total number of entitlements cached for <code>local_user_id</code> by the last successful
+<a href="ecom.html#eos_ecom_query_entitlements">eos_ecom_query_entitlements</a> call.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_entitlements_count(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_entitlements_by_name_count">eos_ecom_get_entitlements_by_name_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-entitlements-by-name-count">EOS_Ecom_GetEntitlementsByNameCount</a></p>
+<p>Returns the number of cached entitlements matching <code>entitlement_name</code>. There can be more than one
+instance of a given entitlement for players who own multiple copies (e.g. gifted or repurchased).</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_entitlements_by_name_count(local_user_id, entitlement_name)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>entitlement_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The entitlement name to count.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_entitlement_by_index">eos_ecom_copy_entitlement_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-entitlement-by-index">EOS_Ecom_CopyEntitlementByIndex</a></p>
+<p>Fetches a cached entitlement by index, populated by <a href="ecom.html#eos_ecom_query_entitlements">eos_ecom_query_entitlements</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_entitlement_by_index(local_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the entitlement cache, between 0 and <a href="ecom.html#eos_ecom_get_entitlements_count">eos_ecom_get_entitlements_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomentitlement">EpicEcomEntitlement</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_entitlement_by_name_and_index">eos_ecom_copy_entitlement_by_name_and_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-entitlement-by-name-and-index">EOS_Ecom_CopyEntitlementByNameAndIndex</a></p>
+<p>Fetches a cached entitlement matching <code>entitlement_name</code> by index within that name's own count, as
+returned by <a href="ecom.html#eos_ecom_get_entitlements_by_name_count">eos_ecom_get_entitlements_by_name_count</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_entitlement_by_name_and_index(local_user_id, entitlement_name, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>entitlement_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The entitlement name to look up.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index within the matching entitlements for <code>entitlement_name</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomentitlement">EpicEcomEntitlement</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_entitlement_by_id">eos_ecom_copy_entitlement_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-entitlement-by-id">EOS_Ecom_CopyEntitlementById</a></p>
+<p>Fetches a cached entitlement by its unique entitlement ID.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_entitlement_by_id(local_user_id, entitlement_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>entitlement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The entitlement ID to look up.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomentitlement">EpicEcomEntitlement</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if the entitlement isn't cached.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_last_redeemed_entitlements_count">eos_ecom_get_last_redeemed_entitlements_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-last-redeemed-entitlements-count">EOS_Ecom_GetLastRedeemedEntitlementsCount</a></p>
+<p>Returns the number of entitlement IDs redeemed by the last successful
+<a href="ecom.html#eos_ecom_redeem_entitlements">eos_ecom_redeem_entitlements</a> call.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_last_redeemed_entitlements_count(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_last_redeemed_entitlement_by_index">eos_ecom_copy_last_redeemed_entitlement_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-last-redeemed-entitlement-by-index">EOS_Ecom_CopyLastRedeemedEntitlementByIndex</a></p>
+<p>Fetches an entitlement ID redeemed by the last successful <a href="ecom.html#eos_ecom_redeem_entitlements">eos_ecom_redeem_entitlements</a> call.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_last_redeemed_entitlement_by_index(local_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the redeemed entitlements list, between 0 and <a href="ecom.html#eos_ecom_get_last_redeemed_entitlements_count">eos_ecom_get_last_redeemed_entitlements_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p>Returns an empty string <code>""</code> if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_offer_count">eos_ecom_get_offer_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-offer-count">EOS_Ecom_GetOfferCount</a></p>
+<p>Returns the number of offers cached for <code>local_user_id</code> by the last successful
+<a href="ecom.html#eos_ecom_query_offers">eos_ecom_query_offers</a> call.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_offer_count(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_offer_by_index">eos_ecom_copy_offer_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-offer-by-index">EOS_Ecom_CopyOfferByIndex</a></p>
+<p>Fetches a cached catalog offer by index, populated by <a href="ecom.html#eos_ecom_query_offers">eos_ecom_query_offers</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_offer_by_index(local_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the offer cache, between 0 and <a href="ecom.html#eos_ecom_get_offer_count">eos_ecom_get_offer_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomcatalogoffer">EpicEcomCatalogOffer</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_offer_by_id">eos_ecom_copy_offer_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-offer-by-id">EOS_Ecom_CopyOfferById</a></p>
+<p>Fetches a cached catalog offer by its offer ID.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_offer_by_id(local_user_id, offer_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>offer_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer ID to look up.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomcatalogoffer">EpicEcomCatalogOffer</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if the offer isn't cached.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_offer_item_count">eos_ecom_get_offer_item_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-offer-item-count">EOS_Ecom_GetOfferItemCount</a></p>
+<p>Returns the number of catalog items included in the given offer.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_offer_item_count(local_user_id, offer_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>offer_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer ID to inspect.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_offer_item_by_index">eos_ecom_copy_offer_item_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-offer-item-by-index">EOS_Ecom_CopyOfferItemByIndex</a></p>
+<p>Fetches a catalog item included in <code>offer_id</code> by index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_offer_item_by_index(local_user_id, offer_id, item_index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>offer_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer ID to look up items from.</td>
+</tr>
+<tr>
+<td>item_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the offer's item list, between 0 and <a href="ecom.html#eos_ecom_get_offer_item_count">eos_ecom_get_offer_item_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomcatalogitem">EpicEcomCatalogItem</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>item_index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_item_by_id">eos_ecom_copy_item_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-item-by-id">EOS_Ecom_CopyItemById</a></p>
+<p>Fetches a cached catalog item by its item ID.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_item_by_id(local_user_id, item_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item ID to look up.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomcatalogitem">EpicEcomCatalogItem</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if the item isn't cached.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_offer_image_info_count">eos_ecom_get_offer_image_info_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-offer-image-info-count">EOS_Ecom_GetOfferImageInfoCount</a></p>
+<p>Returns the number of key images available for the given offer.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_offer_image_info_count(local_user_id, offer_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>offer_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer ID to inspect.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_offer_image_info_by_index">eos_ecom_copy_offer_image_info_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-offer-image-info-by-index">EOS_Ecom_CopyOfferImageInfoByIndex</a></p>
+<p>Fetches a key image for the given offer by index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_offer_image_info_by_index(local_user_id, offer_id, image_info_index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>offer_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer ID to look up images from.</td>
+</tr>
+<tr>
+<td>image_info_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the offer's image list, between 0 and <a href="ecom.html#eos_ecom_get_offer_image_info_count">eos_ecom_get_offer_image_info_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomkeyimageinfo">EpicEcomKeyImageInfo</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>image_info_index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_item_image_info_count">eos_ecom_get_item_image_info_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-item-image-info-count">EOS_Ecom_GetItemImageInfoCount</a></p>
+<p>Returns the number of key images available for the given catalog item.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_item_image_info_count(local_user_id, item_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item ID to inspect.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_item_image_info_by_index">eos_ecom_copy_item_image_info_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-item-image-info-by-index">EOS_Ecom_CopyItemImageInfoByIndex</a></p>
+<p>Fetches a key image for the given catalog item by index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_item_image_info_by_index(local_user_id, item_id, image_info_index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item ID to look up images from.</td>
+</tr>
+<tr>
+<td>image_info_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the item's image list, between 0 and <a href="ecom.html#eos_ecom_get_item_image_info_count">eos_ecom_get_item_image_info_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomkeyimageinfo">EpicEcomKeyImageInfo</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>image_info_index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_item_release_count">eos_ecom_get_item_release_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-item-release-count">EOS_Ecom_GetItemReleaseCount</a></p>
+<p>Returns the number of release records available for the given catalog item.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_item_release_count(local_user_id, item_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item ID to inspect.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_item_release_by_index">eos_ecom_copy_item_release_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-item-release-by-index">EOS_Ecom_CopyItemReleaseByIndex</a></p>
+<p>Fetches a release record for the given catalog item by index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_item_release_by_index(local_user_id, item_id, release_index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item ID to look up releases from.</td>
+</tr>
+<tr>
+<td>release_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the item's release list, between 0 and <a href="ecom.html#eos_ecom_get_item_release_count">eos_ecom_get_item_release_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomcatalogrelease">EpicEcomCatalogRelease</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>release_index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_get_transaction_count">eos_ecom_get_transaction_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-get-transaction-count">EOS_Ecom_GetTransactionCount</a></p>
+<p>Returns the number of successful transactions the SDK is currently caching for <code>local_user_id</code>
+(accumulates across every checkout since the platform was created).</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_get_transaction_count(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_transaction_by_index">eos_ecom_copy_transaction_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-transaction-by-index">EOS_Ecom_CopyTransactionByIndex</a></p>
+<p>Retrieves a transaction handle by index. The handle is registered locally the first time it's copied
+- release it with <a href="ecom.html#eos_ecom_transaction_release">eos_ecom_transaction_release</a> once you're done with it.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_transaction_by_index(local_user_id, transaction_index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>transaction_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the transaction list, between 0 and <a href="ecom.html#eos_ecom_get_transaction_count">eos_ecom_get_transaction_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>An opaque transaction handle, or <code>0</code> if the copy failed.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_copy_transaction_by_id">eos_ecom_copy_transaction_by_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-transaction-by-id">EOS_Ecom_CopyTransactionById</a></p>
+<p>Retrieves a transaction handle by its transaction ID (as reported in
+<a href="ecom.html#epicecomcheckoutcallbackinfo">EpicEcomCheckoutCallbackInfo</a>'s <code>transaction_id</code>). Release it with
+<a href="ecom.html#eos_ecom_transaction_release">eos_ecom_transaction_release</a> once you're done with it.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_copy_transaction_by_id(local_user_id, transaction_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user.</td>
+</tr>
+<tr>
+<td>transaction_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The transaction ID to look up.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>An opaque transaction handle, or <code>0</code> if the copy failed.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_transaction_get_transaction_id">eos_ecom_transaction_get_transaction_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-transaction-get-transaction-id">EOS_Ecom_Transaction_GetTransactionId</a></p>
+<p>Returns the transaction ID of the given transaction handle.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_transaction_get_transaction_id(tx_handle_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tx_handle_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A transaction handle from <a href="ecom.html#eos_ecom_copy_transaction_by_index">eos_ecom_copy_transaction_by_index</a> or <a href="ecom.html#eos_ecom_copy_transaction_by_id">eos_ecom_copy_transaction_by_id</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p>Returns an empty string <code>""</code> if <code>tx_handle_id</code> is invalid.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_transaction_get_entitlements_count">eos_ecom_transaction_get_entitlements_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-transaction-get-entitlements-count">EOS_Ecom_Transaction_GetEntitlementsCount</a></p>
+<p>Returns the number of entitlements granted by the given transaction.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_transaction_get_entitlements_count(tx_handle_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tx_handle_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A transaction handle from <a href="ecom.html#eos_ecom_copy_transaction_by_index">eos_ecom_copy_transaction_by_index</a> or <a href="ecom.html#eos_ecom_copy_transaction_by_id">eos_ecom_copy_transaction_by_id</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>Returns <code>0</code> if <code>tx_handle_id</code> is invalid.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_transaction_copy_entitlement_by_index">eos_ecom_transaction_copy_entitlement_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-transaction-copy-entitlement-by-index">EOS_Ecom_Transaction_CopyEntitlementByIndex</a></p>
+<p>Fetches an entitlement granted by the given transaction, by index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_transaction_copy_entitlement_by_index(tx_handle_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tx_handle_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A transaction handle from <a href="ecom.html#eos_ecom_copy_transaction_by_index">eos_ecom_copy_transaction_by_index</a> or <a href="ecom.html#eos_ecom_copy_transaction_by_id">eos_ecom_copy_transaction_by_id</a>.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the transaction's entitlement list, between 0 and <a href="ecom.html#eos_ecom_transaction_get_entitlements_count">eos_ecom_transaction_get_entitlements_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="ecom.html#epicecomentitlement">EpicEcomEntitlement</a></p>
+</blockquote>
+<p>Returns <code>undefined</code> if <code>tx_handle_id</code> is invalid or <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ecom_transaction_release">eos_ecom_transaction_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-transaction-release">EOS_Ecom_Transaction_Release</a></p>
+<p>Releases a transaction handle obtained from <a href="ecom.html#eos_ecom_copy_transaction_by_index">eos_ecom_copy_transaction_by_index</a> or
+<a href="ecom.html#eos_ecom_copy_transaction_by_id">eos_ecom_copy_transaction_by_id</a>. Using the handle after release is invalid.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any transaction handles still outstanding when the platform shuts down are released automatically.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ecom_transaction_release(tx_handle_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tx_handle_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The transaction handle to release.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicownershipstatus">EpicOwnershipStatus</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-ownership-status">EOS_EOwnershipStatus</a></p>
+<p>Whether a catalog item is owned by the local user, as reported by <a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a>.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="ecom.html#epicecomitemownership">EpicEcomItemOwnership</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NotOwned</code></td>
+<td>The catalog item is not owned by the local user.</td>
+</tr>
+<tr>
+<td><code>Owned</code></td>
+<td>The catalog item is owned by the local user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomitemtype">EpicEcomItemType</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-ecom-item-type">EOS_EEcomItemType</a></p>
+<p>The kind of a <a href="ecom.html#epicecomcatalogitem">EpicEcomCatalogItem</a>.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="ecom.html#epicecomcatalogitem">EpicEcomCatalogItem</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Durable</code></td>
+<td>A durable item, owned permanently once purchased.</td>
+</tr>
+<tr>
+<td><code>Consumable</code></td>
+<td>A consumable item, whose entitlement can be redeemed/decremented via <a href="ecom.html#eos_ecom_redeem_entitlements">eos_ecom_redeem_entitlements</a>.</td>
+</tr>
+<tr>
+<td><code>Other</code></td>
+<td>An item that isn't a durable or consumable (e.g. a subscription).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epiccheckoutorientation">EpicCheckoutOrientation</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-ecom-e-checkout-orientation">EOS_Ecom_ECheckoutOrientation</a></p>
+<p>The preferred screen orientation for the checkout overlay.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This extension always requests <code>Default</code> - there is currently no way to override it from GML.</p>
+</div>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Default</code></td>
+<td>Use the platform's default orientation.</td>
+</tr>
+<tr>
+<td><code>Portrait</code></td>
+<td>Prefer portrait orientation.</td>
+</tr>
+<tr>
+<td><code>Landscape</code></td>
+<td>Prefer landscape orientation.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomentitlement">EpicEcomEntitlement</h1>
+<p>A single entitlement owned by the local user.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_copy_entitlement_by_index">eos_ecom_copy_entitlement_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_entitlement_by_name_and_index">eos_ecom_copy_entitlement_by_name_and_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_entitlement_by_id">eos_ecom_copy_entitlement_by_id</a></li>
+<li><a href="ecom.html#eos_ecom_transaction_copy_entitlement_by_index">eos_ecom_transaction_copy_entitlement_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entitlement_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the entitlement.</td>
+</tr>
+<tr>
+<td>entitlement_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unique ID of this specific entitlement instance.</td>
+</tr>
+<tr>
+<td>catalog_item_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item ID this entitlement is associated with.</td>
+</tr>
+<tr>
+<td>server_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of this entitlement on the server, used with the transaction API.</td>
+</tr>
+<tr>
+<td>redeemed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether this entitlement has already been redeemed.</td>
+</tr>
+<tr>
+<td>end_timestamp</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>POSIX timestamp the entitlement expires at, or <code>-1</code> if it doesn't expire.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomitemownership">EpicEcomItemOwnership</h1>
+<p>A single catalog item's ownership status, as returned by <a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_copy_item_ownership_at_index">eos_ecom_copy_item_ownership_at_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item ID.</td>
+</tr>
+<tr>
+<td>ownership_status</td>
+<td><a href="ecom.html#epicownershipstatus">EpicOwnershipStatus</a></td>
+<td>Whether the local user owns this item.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomsandboxiditemownership">EpicEcomSandboxIdItemOwnership</h1>
+<p>A single sandbox's ownership result, as returned by <a href="ecom.html#eos_ecom_query_ownership_by_sandbox_ids">eos_ecom_query_ownership_by_sandbox_ids</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_copy_sandbox_ownership_at_index">eos_ecom_copy_sandbox_ownership_at_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sandbox_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The sandbox ID this result is for.</td>
+</tr>
+<tr>
+<td>owned_catalog_item_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item IDs owned by the local user within<br>this sandbox. An empty array if none are owned.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomcatalogoffer">EpicEcomCatalogOffer</h1>
+<p>A single purchasable offer from the catalog.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_copy_offer_by_index">eos_ecom_copy_offer_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_offer_by_id">eos_ecom_copy_offer_by_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server_index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index of this offer on the server.</td>
+</tr>
+<tr>
+<td>catalog_namespace</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product namespace this offer belongs to.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer's unique ID.</td>
+</tr>
+<tr>
+<td>title_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized title of the offer.</td>
+</tr>
+<tr>
+<td>description_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized short description of the offer.</td>
+</tr>
+<tr>
+<td>long_description_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized long description of the offer.</td>
+</tr>
+<tr>
+<td>currency_code</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The 3-letter ISO 4217 currency code for the offer's price.</td>
+</tr>
+<tr>
+<td>price_result</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>Whether pricing information is available for this offer.</td>
+</tr>
+<tr>
+<td>discount_percentage</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The discount percentage currently applied, <code>0</code>-<code>100</code>.</td>
+</tr>
+<tr>
+<td>expiration_timestamp</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>POSIX timestamp the offer expires at, or <code>-1</code> if it doesn't expire.</td>
+</tr>
+<tr>
+<td>purchase_limit</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum number of times this offer can be purchased, or <code>-1</code> if unlimited.</td>
+</tr>
+<tr>
+<td>available_for_purchase</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Whether the offer is currently purchasable, as <code>1</code>/<code>0</code>.</td>
+</tr>
+<tr>
+<td>original_price64</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The pre-discount price, in the smallest currency unit (e.g. cents), as<br>a fixed-point value using <code>decimal_point</code>.</td>
+</tr>
+<tr>
+<td>current_price64</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The current (possibly discounted) price, same units as <code>original_price64</code>.</td>
+</tr>
+<tr>
+<td>decimal_point</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of decimal digits <code>original_price64</code>/<code>current_price64</code> are scaled by.</td>
+</tr>
+<tr>
+<td>release_date_timestamp</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>POSIX timestamp the offer's item releases, or <code>-1</code> if not applicable.</td>
+</tr>
+<tr>
+<td>effective_date_timestamp</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>POSIX timestamp the offer's price became effective, or <code>-1</code> if not applicable.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomcatalogitem">EpicEcomCatalogItem</h1>
+<p>A single catalog item included in an offer.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_copy_offer_item_by_index">eos_ecom_copy_offer_item_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_item_by_id">eos_ecom_copy_item_by_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>catalog_namespace</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product namespace this item belongs to.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The catalog item's unique ID.</td>
+</tr>
+<tr>
+<td>entitlement_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The entitlement name granted when this item is owned.</td>
+</tr>
+<tr>
+<td>title_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized title of the item.</td>
+</tr>
+<tr>
+<td>description_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized short description of the item.</td>
+</tr>
+<tr>
+<td>long_description_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized long description of the item.</td>
+</tr>
+<tr>
+<td>technical_details_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized technical details of the item.</td>
+</tr>
+<tr>
+<td>developer_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized name of the item's developer.</td>
+</tr>
+<tr>
+<td>item_type</td>
+<td><a href="ecom.html#epicecomitemtype">EpicEcomItemType</a></td>
+<td>The kind of item this is.</td>
+</tr>
+<tr>
+<td>entitlement_end_timestamp</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>POSIX timestamp the granted entitlement expires at, or <code>-1</code> if it doesn't expire.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomkeyimageinfo">EpicEcomKeyImageInfo</h1>
+<p>A single key image (artwork) associated with an offer or catalog item.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_copy_offer_image_info_by_index">eos_ecom_copy_offer_image_info_by_index</a></li>
+<li><a href="ecom.html#eos_ecom_copy_item_image_info_by_index">eos_ecom_copy_item_image_info_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The image's type/slot name (e.g. <code>"Thumbnail"</code>).</td>
+</tr>
+<tr>
+<td>url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The URL the image can be downloaded from.</td>
+</tr>
+<tr>
+<td>width</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The image width, in pixels.</td>
+</tr>
+<tr>
+<td>height</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The image height, in pixels.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomcatalogrelease">EpicEcomCatalogRelease</h1>
+<p>A single release record for a catalog item, describing which app builds/platforms it's compatible with.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_copy_item_release_by_index">eos_ecom_copy_item_release_by_index</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compatible_app_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The compatible application IDs.</td>
+</tr>
+<tr>
+<td>compatible_platforms</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The compatible platform names.</td>
+</tr>
+<tr>
+<td>release_note</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Localized release note text for this release.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomqueryownershipcallbackinfo">EpicEcomQueryOwnershipCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_query_ownership">eos_ecom_query_ownership</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the operation.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this result is for.</td>
+</tr>
+<tr>
+<td>item_ownership_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of ownership records now cached - see <a href="ecom.html#eos_ecom_get_item_ownership_count">eos_ecom_get_item_ownership_count</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomqueryownershipbysandboxidscallbackinfo">EpicEcomQueryOwnershipBySandboxIdsCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_query_ownership_by_sandbox_ids">eos_ecom_query_ownership_by_sandbox_ids</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_query_ownership_by_sandbox_ids">eos_ecom_query_ownership_by_sandbox_ids</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the operation.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local user this result is for.</td>
+</tr>
+<tr>
+<td>sandbox_ownership_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of sandbox ownership records now cached - see <a href="ecom.html#eos_ecom_get_sandbox_ownership_count">eos_ecom_get_sandbox_ownership_count</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomqueryownershiptokencallbackinfo">EpicEcomQueryOwnershipTokenCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_query_ownership_token">eos_ecom_query_ownership_token</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_query_ownership_token">eos_ecom_query_ownership_token</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the operation.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this result is for.</td>
+</tr>
+<tr>
+<td>ownership_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ownership proof token. Empty on failure.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomqueryentitlementscallbackinfo">EpicEcomQueryEntitlementsCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_query_entitlements">eos_ecom_query_entitlements</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_query_entitlements">eos_ecom_query_entitlements</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the operation.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this result is for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomqueryentitlementtokencallbackinfo">EpicEcomQueryEntitlementTokenCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_query_entitlement_token">eos_ecom_query_entitlement_token</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_query_entitlement_token">eos_ecom_query_entitlement_token</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the operation.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this result is for.</td>
+</tr>
+<tr>
+<td>entitlement_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The entitlement proof token. Empty on failure.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomqueryofferscallbackinfo">EpicEcomQueryOffersCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_query_offers">eos_ecom_query_offers</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_query_offers">eos_ecom_query_offers</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the operation.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this result is for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomcheckoutcallbackinfo">EpicEcomCheckoutCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_checkout">eos_ecom_checkout</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_checkout">eos_ecom_checkout</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the checkout flow.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this result is for.</td>
+</tr>
+<tr>
+<td>transaction_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The resulting transaction ID on success. Pass this to<br><a href="ecom.html#eos_ecom_copy_transaction_by_id">eos_ecom_copy_transaction_by_id</a> to inspect the granted entitlements.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicecomredeementitlementscallbackinfo">EpicEcomRedeemEntitlementsCallbackInfo</h1>
+<p>Result of <a href="ecom.html#eos_ecom_redeem_entitlements">eos_ecom_redeem_entitlements</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="ecom.html#eos_ecom_redeem_entitlements">eos_ecom_redeem_entitlements</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the operation.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user this result is for.</td>
+</tr>
+<tr>
+<td>redeemed_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of entitlements redeemed - see <a href="ecom.html#eos_ecom_get_last_redeemed_entitlements_count">eos_ecom_get_last_redeemed_entitlements_count</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="custom_invites.html" class="btn btn-neutral float-left" title="Custom Invites"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="friends.html" class="btn btn-neutral float-right" title="Friends">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="custom_invites.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="friends.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

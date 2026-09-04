@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>User Info - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "User Info";
+        var mkdocs_page_input_path = "user_info.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">User Info</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">User Info</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/user_info.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="user-info"><strong>User Info</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-user-info-interface">UserInfo Interface</a></p>
+<p>The <a href="https://dev.epicgames.com/docs/game-services/eos-user-info-interface">UserInfo Interface</a> retrieves public account information - display name, country, linked external accounts - for any Epic user, not just friends. See <a href="friends.html">Friends</a> for the local user's own friends list, and <a href="connect.html">Connect</a> for <code>EpicExternalAccountType</code>/linking a user's own external accounts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must call <a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a> for a given target user before the cached accessor functions below return anything for them.</p>
+</div>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a></li>
+<li><a href="user_info.html#eos_user_info_copy_user_info">eos_user_info_copy_user_info</a></li>
+<li><a href="user_info.html#eos_user_info_get_local_platform_type">eos_user_info_get_local_platform_type</a></li>
+<li><a href="user_info.html#eos_user_info_copy_best_display_name">eos_user_info_copy_best_display_name</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_id">eos_user_info_copy_external_user_info_by_account_id</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this API:</p>
+<ul>
+<li><a href="user_info.html#epicuserinfo">EpicUserInfo</a></li>
+<li><a href="user_info.html#epicuserinfoqueryuserinfocallbackinfo">EpicUserInfoQueryUserInfoCallbackInfo</a></li>
+<li><a href="user_info.html#epicuserinfoexternaluserinfo">EpicUserInfoExternalUserInfo</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_user_info_query_user_info">eos_user_info_query_user_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-query-user-info">EOS_UserInfo_QueryUserInfo</a></p>
+<p>Starts an asynchronous task that fetches a target user's basic info (display name, country, preferred
+language, nickname) from the backend and caches it locally. You must call this before
+<a href="user_info.html#eos_user_info_copy_user_info">eos_user_info_copy_user_info</a> returns anything for that pair of users.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_user_info_query_user_info(local_user_id, target_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user to query info for.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result. See the <code>callback</code> event below.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once, after the query completes (or fails).</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="user_info.html#epicuserinfoqueryuserinfocallbackinfo">EpicUserInfoQueryUserInfoCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_user_info_query_user_info(local_user_id, target_user_id, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        var _info = eos_user_info_copy_user_info(_result.local_user_id, _result.target_user_id);
+        show_debug_message($&quot;Display name: {_info.display_name}&quot;);
+    }
+});
+</code></pre></div>
+The above code queries a target user's info, then reads the cached display name once the query completes.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_user_info_copy_user_info">eos_user_info_copy_user_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-copy-user-info">EOS_UserInfo_CopyUserInfo</a></p>
+<p>Returns the cached info for a target user, from the last successful <a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_user_info_copy_user_info(local_user_id, target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user whose cached info to copy.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="user_info.html#epicuserinfo">EpicUserInfo</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>undefined</code> if no info is cached for this pair of users - call <a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a> first.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_user_info_get_local_platform_type">eos_user_info_get_local_platform_type</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-get-local-platform-type">EOS_UserInfo_GetLocalPlatformType</a></p>
+<p>Returns the online platform type of the current running instance of the game.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SDK exposes this as a set of loose integer constants rather than a real enum, so this function returns a plain real value. Known values: <code>0</code> Unknown, <code>100</code> Epic, <code>1000</code> PSN, <code>2000</code> Nintendo, <code>3000</code> Xbox Live.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_user_info_get_local_platform_type()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_user_info_copy_best_display_name">eos_user_info_copy_best_display_name</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-copy-best-display-name">EOS_UserInfo_CopyBestDisplayName</a></p>
+<p>Returns the best available display name string for a target user - the SDK internally picks the most
+appropriate display name source (Epic display name, platform display name, etc.) for the pair of users
+involved, which can differ from the raw <code>display_name</code> field on <a href="user_info.html#epicuserinfo">EpicUserInfo</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_user_info_copy_best_display_name(local_user_id, target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user to get the best display name for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns an empty string if a best display name could not be determined for this pair of users.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-copy-external-user-info-by-index">EOS_UserInfo_CopyExternalUserInfoByIndex</a></p>
+<p>Returns a target user's cached linked external account info (e.g. a linked Steam or PSN account) at the given index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_user_info_copy_external_user_info_by_index(local_user_id, target_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user to look up external account info for.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index into the cached external account list.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="user_info.html#epicuserinfoexternaluserinfo">EpicUserInfoExternalUserInfo</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>undefined</code> if the index is out of range.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-copy-external-user-info-by-account-type">EOS_UserInfo_CopyExternalUserInfoByAccountType</a></p>
+<p>Returns a target user's cached linked external account info for a specific platform, e.g. their linked Steam account.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_user_info_copy_external_user_info_by_account_type(local_user_id, target_user_id, account_type)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user to look up external account info for.</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td>The external platform to look up.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="user_info.html#epicuserinfoexternaluserinfo">EpicUserInfoExternalUserInfo</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>undefined</code> if the target user has no linked account of this type.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_user_info_copy_external_user_info_by_account_id">eos_user_info_copy_external_user_info_by_account_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-copy-external-user-info-by-account-id">EOS_UserInfo_CopyExternalUserInfoByAccountId</a></p>
+<p>Returns a target user's cached linked external account info matching a specific external account ID.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_user_info_copy_external_user_info_by_account_id(local_user_id, target_user_id, account_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local, logged-in user.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user to look up external account info for.</td>
+</tr>
+<tr>
+<td>account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The external platform's account ID to look up.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="user_info.html#epicuserinfoexternaluserinfo">EpicUserInfoExternalUserInfo</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>undefined</code> if no cached linked account matches this ID.</p>
+</div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuserinfo">EpicUserInfo</h1>
+<p>A user's basic public info, as cached by <a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_info.html#eos_user_info_copy_user_info">eos_user_info_copy_user_info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID this info is for.</td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's country, as an ISO 3166 country code, if available.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's raw Epic display name.</td>
+</tr>
+<tr>
+<td>preferred_language</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's preferred language, as an ISO 639 language code, if available.</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A per-relationship nickname (e.g. a friend nickname) the local user has set for this user, if any.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuserinfoqueryuserinfocallbackinfo">EpicUserInfoQueryUserInfoCallbackInfo</h1>
+<p>The result of an <a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a> call.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_info.html#eos_user_info_query_user_info">eos_user_info_query_user_info</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the info was fetched; an error code otherwise.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the local user the query was made for.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user the query was for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuserinfoexternaluserinfo">EpicUserInfoExternalUserInfo</h1>
+<p>A single external (non-Epic) account linked to a user, as returned by the <code>copy_external_user_info_by_*</code> functions.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_index">eos_user_info_copy_external_user_info_by_index</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_id">eos_user_info_copy_external_user_info_by_account_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The external account's ID on its own platform.</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td>The external platform this account belongs to.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The external account's display name.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="user_interface.html" class="btn btn-neutral float-left" title="User Interface"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="general.html" class="btn btn-neutral float-right" title="General">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="user_interface.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="general.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

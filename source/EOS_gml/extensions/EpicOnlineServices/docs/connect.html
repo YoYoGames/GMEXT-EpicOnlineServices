@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Connect - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Connect";
+        var mkdocs_page_input_path = "connect.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Connect</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Connect</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/connect.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="connect"><strong>Connect</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-connect-interface">Connect Interface</a></p>
+<p>The <a href="https://dev.epicgames.com/docs/game-services/eos-connect-interface">Connect Interface</a> links
+external accounts (Steam, PSN, Xbox Live, a local device ID, ...) to an Epic Online Services Product
+User ID, independently of the Epic Account Service. Most cross-platform games authenticate through
+this module rather than <a href="auth.html">Auth</a> directly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a href="logging_in.html">Logging In</a> for a full walkthrough of the login flow, including how to handle the continuance-token case.</p>
+</div>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_login">eos_connect_login</a></li>
+<li><a href="connect.html#eos_connect_create_user">eos_connect_create_user</a></li>
+<li><a href="connect.html#eos_connect_link_account">eos_connect_link_account</a></li>
+<li><a href="connect.html#eos_connect_unlink_account">eos_connect_unlink_account</a></li>
+<li><a href="connect.html#eos_connect_create_device_id">eos_connect_create_device_id</a></li>
+<li><a href="connect.html#eos_connect_delete_device_id">eos_connect_delete_device_id</a></li>
+<li><a href="connect.html#eos_connect_transfer_device_id_account">eos_connect_transfer_device_id_account</a></li>
+<li><a href="connect.html#eos_connect_logout">eos_connect_logout</a></li>
+<li><a href="connect.html#eos_connect_get_logged_in_users_count">eos_connect_get_logged_in_users_count</a></li>
+<li><a href="connect.html#eos_connect_get_logged_in_user_by_index">eos_connect_get_logged_in_user_by_index</a></li>
+<li><a href="connect.html#eos_connect_get_login_status">eos_connect_get_login_status</a></li>
+<li><a href="connect.html#eos_connect_copy_id_token">eos_connect_copy_id_token</a></li>
+<li><a href="connect.html#eos_connect_copy_product_user_info">eos_connect_copy_product_user_info</a></li>
+<li><a href="connect.html#eos_connect_get_product_user_external_account_count">eos_connect_get_product_user_external_account_count</a></li>
+<li><a href="connect.html#eos_connect_copy_product_user_external_account_by_index">eos_connect_copy_product_user_external_account_by_index</a></li>
+<li><a href="connect.html#eos_connect_copy_product_user_external_account_by_account_type">eos_connect_copy_product_user_external_account_by_account_type</a></li>
+<li><a href="connect.html#eos_connect_copy_product_user_external_account_by_account_id">eos_connect_copy_product_user_external_account_by_account_id</a></li>
+<li><a href="connect.html#eos_connect_get_product_user_id_mapping">eos_connect_get_product_user_id_mapping</a></li>
+<li><a href="connect.html#eos_connect_get_external_account_mapping">eos_connect_get_external_account_mapping</a></li>
+<li><a href="connect.html#eos_connect_verify_id_token">eos_connect_verify_id_token</a></li>
+<li><a href="connect.html#eos_connect_query_external_account_mappings">eos_connect_query_external_account_mappings</a></li>
+<li><a href="connect.html#eos_connect_query_product_user_id_mappings">eos_connect_query_product_user_id_mappings</a></li>
+<li><a href="connect.html#eos_connect_add_notify_auth_expiration">eos_connect_add_notify_auth_expiration</a></li>
+<li><a href="connect.html#eos_connect_remove_notify_auth_expiration">eos_connect_remove_notify_auth_expiration</a></li>
+<li><a href="connect.html#eos_connect_add_notify_login_status_changed">eos_connect_add_notify_login_status_changed</a></li>
+<li><a href="connect.html#eos_connect_remove_notify_login_status_changed">eos_connect_remove_notify_login_status_changed</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>Structs used by this module:</p>
+<ul>
+<li><a href="connect.html#epicconnectlogincallbackinfo">EpicConnectLoginCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectcreateusercallbackinfo">EpicConnectCreateUserCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectlinkaccountcallbackinfo">EpicConnectLinkAccountCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectunlinkaccountcallbackinfo">EpicConnectUnlinkAccountCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectcreatedeviceidcallbackinfo">EpicConnectCreateDeviceIdCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectdeletedeviceidcallbackinfo">EpicConnectDeleteDeviceIdCallbackInfo</a></li>
+<li><a href="connect.html#epicconnecttransferdeviceidaccountcallbackinfo">EpicConnectTransferDeviceIdAccountCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectlogoutcallbackinfo">EpicConnectLogoutCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectidtoken">EpicConnectIdToken</a></li>
+<li><a href="connect.html#epicconnectexternalaccountinfo">EpicConnectExternalAccountInfo</a></li>
+<li><a href="connect.html#epicconnectverifyidtokencallbackinfo">EpicConnectVerifyIdTokenCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectqueryexternalaccountmappingscallbackinfo">EpicConnectQueryExternalAccountMappingsCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectqueryproductuseridmappingscallbackinfo">EpicConnectQueryProductUserIdMappingsCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectauthexpirationcallbackinfo">EpicConnectAuthExpirationCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectloginstatuschangedcallbackinfo">EpicConnectLoginStatusChangedCallbackInfo</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>Constants used by this module:</p>
+<ul>
+<li><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></li>
+<li><a href="connect.html#epicexternalcredentialtype">EpicExternalCredentialType</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_login">eos_connect_login</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-login">EOS_Connect_Login</a></p>
+<p>Logs a local user into the Connect interface using an external account credential (Steam, PSN, a
+device ID, ...) rather than an Epic account. This is the entry point for cross-platform players who
+don't sign in with an Epic account directly. On success the callback's <code>local_user_id</code> is the Product
+User ID you pass to every other module in this extension.</p>
+<p>If the external account isn't yet linked to any Epic Product User ID, the callback fires with
+<code>result_code</code> set to <code>EpicResult.InvalidUser</code> and <code>has_continuance_token</code> set to <code>true</code>. Pass
+<code>continuance_token_id</code> to either <a href="connect.html#eos_connect_create_user">eos_connect_create_user</a> (create a brand-new
+headless/device account) or <a href="connect.html#eos_connect_link_account">eos_connect_link_account</a> (link to an existing Epic account) to
+complete the flow.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The continuance token is single-use - it's consumed the moment <a href="connect.html#eos_connect_create_user">eos_connect_create_user</a>/<a href="connect.html#eos_connect_link_account">eos_connect_link_account</a> completes (whether that call succeeds or fails). Call <a href="connect.html#eos_connect_login">eos_connect_login</a> again to get a fresh one.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_login(token, external_credential_type, display_name, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The external credential token (e.g. a Steam session ticket, or an arbitrary device identifier for <code>DeviceIdAccessToken</code>).</td>
+</tr>
+<tr>
+<td>external_credential_type</td>
+<td><a href="connect.html#epicexternalcredentialtype">EpicExternalCredentialType</a></td>
+<td>The type of the external credential in <code>token</code>. See <a href="connect.html#epicexternalcredentialtype">EpicExternalCredentialType</a>.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The display name to associate with the user. Only used the first time a Product User ID is created for this external account; ignored on subsequent logins. Pass <code>""</code> if you don't need to set one.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the login result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectlogincallbackinfo">EpicConnectLoginCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_connect_login(_steam_session_ticket, EpicExternalCredentialType.SteamSessionTicket, &quot;&quot;, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        global.product_user_id = _result.local_user_id;
+    }
+    else if (_result.result_code == EpicResult.InvalidUser &amp;&amp; _result.has_continuance_token)
+    {
+        eos_connect_create_user(_result.continuance_token_id, callback_create_user);
+    }
+});
+</code></pre></div>
+The above code logs a user in with a Steam session ticket, and creates a brand-new account for them if none exists yet.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_create_user">eos_connect_create_user</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-create-user">EOS_Connect_CreateUser</a></p>
+<p>Creates a brand-new Product User ID for the external account represented by a continuance token from a
+failed <a href="connect.html#eos_connect_login">eos_connect_login</a> call.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_create_user(continuance_token_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>continuance_token_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The <code>continuance_token_id</code> from an <a href="connect.html#eos_connect_login">eos_connect_login</a> callback whose <code>result_code</code> was <code>EpicResult.InvalidUser</code>.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the creation result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectcreateusercallbackinfo">EpicConnectCreateUserCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_link_account">eos_connect_link_account</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-link-account">EOS_Connect_LinkAccount</a></p>
+<p>Links the external account represented by a continuance token from a failed <a href="connect.html#eos_connect_login">eos_connect_login</a>
+call to an existing, already-logged-in local user (obtained via a <em>different</em> external credential, or via
+<a href="auth.html#eos_auth_login">eos_auth_login</a>).</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_link_account(continuance_token_id, local_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>continuance_token_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The <code>continuance_token_id</code> from an <a href="connect.html#eos_connect_login">eos_connect_login</a> callback whose <code>result_code</code> was <code>EpicResult.InvalidUser</code>.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to link the external account to.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the link result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectlinkaccountcallbackinfo">EpicConnectLinkAccountCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_unlink_account">eos_connect_unlink_account</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-unlink-account">EOS_Connect_UnlinkAccount</a></p>
+<p>Unlinks a previously-linked Epic account from the local device/headless Product User ID (the reverse of
+a Device ID login that was later linked to a full Epic account).</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_unlink_account(local_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to unlink.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the unlink result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectunlinkaccountcallbackinfo">EpicConnectUnlinkAccountCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_create_device_id">eos_connect_create_device_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-create-device-id">EOS_Connect_CreateDeviceId</a></p>
+<p>Creates a new local Device ID for this device, letting a player start playing without linking any
+external account. Combine with <a href="connect.html#epicexternalcredentialtype">EpicExternalCredentialType</a>'s <code>DeviceIdAccessToken</code> and
+<a href="connect.html#eos_connect_login">eos_connect_login</a> to log in with it afterwards.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_create_device_id(device_model, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_model</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A short human-readable identifier for the local device (e.g. <code>"Windows"</code>, <code>"iPhone14,2"</code>). Not validated by the SDK; used for your own diagnostics.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the creation result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectcreatedeviceidcallbackinfo">EpicConnectCreateDeviceIdCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_delete_device_id">eos_connect_delete_device_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-delete-device-id">EOS_Connect_DeleteDeviceId</a></p>
+<p>Deletes the Device ID previously created on this device with <a href="connect.html#eos_connect_create_device_id">eos_connect_create_device_id</a>.
+Any Product User ID that was only reachable through this Device ID becomes permanently unreachable once
+deleted (unless it was also linked to another external account).</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_delete_device_id(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the deletion result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectdeletedeviceidcallbackinfo">EpicConnectDeleteDeviceIdCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_transfer_device_id_account">eos_connect_transfer_device_id_account</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-transfer-device-id-account">EOS_Connect_TransferDeviceIdAccount</a></p>
+<p>Transfers the Device-ID-based Product User ID of the local device to another, already-logged-in local
+user on the same device. Useful for local multiplayer / shared-device scenarios where a Device ID
+account was created before a second local player signed in properly.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_transfer_device_id_account(primary_local_user_id, local_device_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>primary_local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to transfer the Device ID association to.</td>
+</tr>
+<tr>
+<td>local_device_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Device-ID-based Product User ID currently associated with this device.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the transfer result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnecttransferdeviceidaccountcallbackinfo">EpicConnectTransferDeviceIdAccountCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_logout">eos_connect_logout</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-logout">EOS_Connect_Logout</a></p>
+<p>Logs out a local user previously logged in via <a href="connect.html#eos_connect_login">eos_connect_login</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_logout(local_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to log out.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the logout result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectlogoutcallbackinfo">EpicConnectLogoutCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_get_logged_in_users_count">eos_connect_get_logged_in_users_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-get-logged-in-users-count">EOS_Connect_GetLoggedInUsersCount</a></p>
+<p>Returns the number of locally logged-in users tracked by the Connect interface.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_get_logged_in_users_count()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_get_logged_in_user_by_index">eos_connect_get_logged_in_user_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-get-logged-in-user-by-index">EOS_Connect_GetLoggedInUserByIndex</a></p>
+<p>Returns the Product User ID of the locally logged-in user at the given index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_get_logged_in_user_by_index(index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index between 0 and <a href="connect.html#eos_connect_get_logged_in_users_count">eos_connect_get_logged_in_users_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p>The Product User ID, or an empty string if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_get_login_status">eos_connect_get_login_status</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-get-login-status">EOS_Connect_GetLoginStatus</a></p>
+<p>Returns the Connect login status of the given Product User ID.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_get_login_status(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to query.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="auth.html#epicloginstatus">EpicLoginStatus</a></p>
+</blockquote>
+<p>See <a href="auth.html#epicloginstatus">EpicLoginStatus</a>.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_copy_id_token">eos_connect_copy_id_token</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-copy-id-token">EOS_Connect_CopyIdToken</a></p>
+<p>Fetches the locally-cached Connect ID token for a logged-in Product User ID. This token is what you
+pass to your own game backend to have it verify the player's identity server-side (via a matching call
+to <a href="connect.html#eos_connect_verify_id_token">eos_connect_verify_id_token</a>, or Epic's server-side SDK).</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_copy_id_token(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to get the ID token of.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connect.html#epicconnectidtoken">EpicConnectIdToken</a></p>
+</blockquote>
+<p><code>undefined</code> if <code>local_user_id</code> isn't logged in or the token isn't available.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_copy_product_user_info">eos_connect_copy_product_user_info</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-copy-product-user-info">EOS_Connect_CopyProductUserInfo</a></p>
+<p>Fetches the locally-cached primary external account info for a Product User ID.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This only returns data that has already been cached locally by a prior login or query. It does not make a network request.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_copy_product_user_info(target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to get the external account info of.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connect.html#epicconnectexternalaccountinfo">EpicConnectExternalAccountInfo</a></p>
+</blockquote>
+<p><code>undefined</code> if no cached info is available for <code>target_user_id</code>.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_get_product_user_external_account_count">eos_connect_get_product_user_external_account_count</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-get-product-user-external-account-count">EOS_Connect_GetProductUserExternalAccountCount</a></p>
+<p>Returns the number of locally-cached external accounts linked to a Product User ID.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_get_product_user_external_account_count(target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to query.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_copy_product_user_external_account_by_index">eos_connect_copy_product_user_external_account_by_index</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-copy-product-user-external-account-by-index">EOS_Connect_CopyProductUserExternalAccountByIndex</a></p>
+<p>Fetches a locally-cached linked external account by index.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_copy_product_user_external_account_by_index(target_user_id, index)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to query.</td>
+</tr>
+<tr>
+<td>index</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Index between 0 and <a href="connect.html#eos_connect_get_product_user_external_account_count">eos_connect_get_product_user_external_account_count</a> - 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connect.html#epicconnectexternalaccountinfo">EpicConnectExternalAccountInfo</a></p>
+</blockquote>
+<p><code>undefined</code> if <code>index</code> is out of range.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_copy_product_user_external_account_by_account_type">eos_connect_copy_product_user_external_account_by_account_type</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-copy-product-user-external-account-by-account-type">EOS_Connect_CopyProductUserExternalAccountByAccountType</a></p>
+<p>Fetches a locally-cached linked external account of a specific type.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_copy_product_user_external_account_by_account_type(target_user_id, account_id_type)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to query.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td>The external account type to look for. See <a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connect.html#epicconnectexternalaccountinfo">EpicConnectExternalAccountInfo</a></p>
+</blockquote>
+<p><code>undefined</code> if no linked account of that type is cached.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_copy_product_user_external_account_by_account_id">eos_connect_copy_product_user_external_account_by_account_id</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-copy-product-user-external-account-by-account-id">EOS_Connect_CopyProductUserExternalAccountByAccountId</a></p>
+<p>Fetches a locally-cached linked external account by its raw account ID string.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_copy_product_user_external_account_by_account_id(target_user_id, account_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to query.</td>
+</tr>
+<tr>
+<td>account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The raw external account ID to look for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connect.html#epicconnectexternalaccountinfo">EpicConnectExternalAccountInfo</a></p>
+</blockquote>
+<p><code>undefined</code> if no matching linked account is cached.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_get_product_user_id_mapping">eos_connect_get_product_user_id_mapping</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-get-product-user-id-mapping">EOS_Connect_GetProductUserIdMapping</a></p>
+<p>Reads the locally-cached external account ID that a target Product User ID maps to, for a given
+external account type. The mapping must already be cached by an earlier
+<a href="connect.html#eos_connect_query_external_account_mappings">eos_connect_query_external_account_mappings</a> call.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_get_product_user_id_mapping(local_user_id, account_id_type, target_product_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID performing the lookup.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td>The external account type to resolve to. See <a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a>.</td>
+</tr>
+<tr>
+<td>target_product_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID to resolve.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p>The external account ID, or an empty string if there's no cached mapping.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_get_external_account_mapping">eos_connect_get_external_account_mapping</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-get-external-account-mapping">EOS_Connect_GetExternalAccountMapping</a></p>
+<p>Reads the locally-cached Product User ID that a target external account ID maps to. The mapping must
+already be cached by an earlier <a href="connect.html#eos_connect_query_product_user_id_mappings">eos_connect_query_product_user_id_mappings</a> call.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_get_external_account_mapping(local_user_id, account_id_type, target_external_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID performing the lookup.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td>The external account type of <code>target_external_user_id</code>. See <a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a>.</td>
+</tr>
+<tr>
+<td>target_external_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The external account ID to resolve.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p>The Product User ID, or an empty string if there's no cached mapping or the external account isn't linked to any Product User ID.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_verify_id_token">eos_connect_verify_id_token</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-verify-id-token">EOS_Connect_VerifyIdToken</a></p>
+<p>Verifies a Connect ID token (from <a href="connect.html#eos_connect_copy_id_token">eos_connect_copy_id_token</a>). Intended for a dedicated
+game server verifying a connecting client's identity.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>account_id_type</code>/<code>account_id</code>/<code>platform</code>/<code>device_type</code> on the result are only meaningful when <code>is_account_info_present</code> is <code>true</code> - this is <code>false</code> for tokens belonging to a Device-ID-only (headless) account.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_verify_id_token(json_web_token, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json_web_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID token JSON Web Token string to verify.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the verification result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectverifyidtokencallbackinfo">EpicConnectVerifyIdTokenCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_query_external_account_mappings">eos_connect_query_external_account_mappings</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-query-external-account-mappings">EOS_Connect_QueryExternalAccountMappings</a></p>
+<p>Queries the backend to resolve a batch of external account IDs (of a single account type) to their
+Product User IDs, caching the results locally for later lookup via
+<a href="connect.html#eos_connect_get_product_user_id_mapping">eos_connect_get_product_user_id_mapping</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_query_external_account_mappings(local_user_id, account_id_type, target_external_user_ids, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID performing the query.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td>The external account type all IDs in <code>target_external_user_ids</code> belong to. See <a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a>.</td>
+</tr>
+<tr>
+<td>target_external_user_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The external account IDs to resolve.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the query result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectqueryexternalaccountmappingscallbackinfo">EpicConnectQueryExternalAccountMappingsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_query_product_user_id_mappings">eos_connect_query_product_user_id_mappings</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-query-product-user-id-mappings">EOS_Connect_QueryProductUserIdMappings</a></p>
+<p>Queries the backend to resolve a batch of Product User IDs to their external account IDs (across every
+linked external account type), caching the results locally for later lookup via
+<a href="connect.html#eos_connect_get_external_account_mapping">eos_connect_get_external_account_mapping</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_query_product_user_id_mappings(local_user_id, target_product_user_ids, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID performing the query.</td>
+</tr>
+<tr>
+<td>target_product_user_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User IDs to resolve.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once with the query result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectqueryproductuseridmappingscallbackinfo">EpicConnectQueryProductUserIdMappingsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_add_notify_auth_expiration">eos_connect_add_notify_auth_expiration</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-add-notify-auth-expiration">EOS_Connect_AddNotifyAuthExpiration</a></p>
+<p>Registers to be notified when a local user's Connect authentication is about to expire, so you can
+refresh their external credential and call <a href="connect.html#eos_connect_login">eos_connect_login</a> again before they're logged
+out. Call <a href="connect.html#eos_connect_remove_notify_auth_expiration">eos_connect_remove_notify_auth_expiration</a> with the returned ID when you no longer
+need the notification.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_add_notify_auth_expiration(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called every time a local user's Connect authentication is about to expire.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>A notification ID, or <code>0</code> if registration failed.</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once per local user shortly before their Connect authentication expires.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectauthexpirationcallbackinfo">EpicConnectAuthExpirationCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_remove_notify_auth_expiration">eos_connect_remove_notify_auth_expiration</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-remove-notify-auth-expiration">EOS_Connect_RemoveNotifyAuthExpiration</a></p>
+<p>Unregisters a notification handler previously registered with <a href="connect.html#eos_connect_add_notify_auth_expiration">eos_connect_add_notify_auth_expiration</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_remove_notify_auth_expiration(notification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID returned by <a href="connect.html#eos_connect_add_notify_auth_expiration">eos_connect_add_notify_auth_expiration</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_add_notify_login_status_changed">eos_connect_add_notify_login_status_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-add-notify-login-status-changed">EOS_Connect_AddNotifyLoginStatusChanged</a></p>
+<p>Registers to be notified whenever a local user's Connect login status changes. Call
+<a href="connect.html#eos_connect_remove_notify_login_status_changed">eos_connect_remove_notify_login_status_changed</a> with the returned ID when you no longer need
+the notification.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_add_notify_login_status_changed(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called every time a local user's Connect login status changes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>A notification ID, or <code>0</code> if registration failed.</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires whenever a local user's login status changes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="connect.html#epicconnectloginstatuschangedcallbackinfo">EpicConnectLoginStatusChangedCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_connect_remove_notify_login_status_changed">eos_connect_remove_notify_login_status_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-connect-remove-notify-login-status-changed">EOS_Connect_RemoveNotifyLoginStatusChanged</a></p>
+<p>Unregisters a notification handler previously registered with <a href="connect.html#eos_connect_add_notify_login_status_changed">eos_connect_add_notify_login_status_changed</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_connect_remove_notify_login_status_changed(notification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID returned by <a href="connect.html#eos_connect_add_notify_login_status_changed">eos_connect_add_notify_login_status_changed</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicexternalaccounttype">EpicExternalAccountType</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-external-account-type">EOS_EExternalAccountType</a></p>
+<p>The external platform an external account ID belongs to.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_copy_product_user_external_account_by_account_type">eos_connect_copy_product_user_external_account_by_account_type</a></li>
+<li><a href="connect.html#eos_connect_get_product_user_id_mapping">eos_connect_get_product_user_id_mapping</a></li>
+<li><a href="connect.html#eos_connect_get_external_account_mapping">eos_connect_get_external_account_mapping</a></li>
+<li><a href="connect.html#eos_connect_query_external_account_mappings">eos_connect_query_external_account_mappings</a></li>
+<li><a href="user_info.html#eos_user_info_copy_external_user_info_by_account_type">eos_user_info_copy_external_user_info_by_account_type</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="auth.html#epicauthverifyidtokencallbackinfo">EpicAuthVerifyIdTokenCallbackInfo</a></li>
+<li><a href="connect.html#epicconnectexternalaccountinfo">EpicConnectExternalAccountInfo</a></li>
+<li><a href="connect.html#epicconnectverifyidtokencallbackinfo">EpicConnectVerifyIdTokenCallbackInfo</a></li>
+<li><a href="user_info.html#epicuserinfoexternaluserinfo">EpicUserInfoExternalUserInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Epic</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Steam</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Psn</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Xbl</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Discord</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Gog</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Nintendo</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Uplay</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>OpenId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Apple</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Google</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Oculus</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ItchIo</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Amazon</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Viveport</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicexternalcredentialtype">EpicExternalCredentialType</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-external-credential-type">EOS_EExternalCredentialType</a></p>
+<p>The type of external credential passed to <a href="connect.html#eos_connect_login">eos_connect_login</a> (and to
+<a href="auth.html#eos_auth_login">eos_auth_login</a> for external-account Epic Account Service logins).</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="auth.html#eos_auth_login">eos_auth_login</a></li>
+<li><a href="connect.html#eos_connect_login">eos_connect_login</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Epic</code></td>
+<td>Epic Account Services token. Using an ID token (<a href="auth.html#eos_auth_copy_id_token">eos_auth_copy_id_token</a>) is<br>preferred; an auth token (<a href="auth.html#eos_auth_copy_user_auth_token">eos_auth_copy_user_auth_token</a>) is supported for backwards<br>compatibility.</td>
+</tr>
+<tr>
+<td><code>SteamAppTicket</code></td>
+<td>Steam Encrypted App Ticket, generated with Steamworks SDK's<br><code>RequestEncryptedAppTicket</code>.</td>
+</tr>
+<tr>
+<td><code>PsnIdToken</code></td>
+<td>PlayStation Network ID Token, retrieved from the PlayStation SDK.</td>
+</tr>
+<tr>
+<td><code>XblXstsToken</code></td>
+<td>Xbox Live XSTS Token, retrieved from the GDK/XDK.</td>
+</tr>
+<tr>
+<td><code>DiscordAccessToken</code></td>
+<td>Discord Access Token, retrieved with Discord SDK's <code>GetOAuth2Token</code>.</td>
+</tr>
+<tr>
+<td><code>GogSessionTicket</code></td>
+<td>GOG Galaxy Encrypted App Ticket, generated with GOG Galaxy SDK's<br><code>RequestEncryptedAppTicket</code>.</td>
+</tr>
+<tr>
+<td><code>NintendoIdToken</code></td>
+<td>Nintendo Account ID Token, acquired through web-flow authentication with the<br>user's email/sign-in ID and password (the common cross-device Nintendo account).</td>
+</tr>
+<tr>
+<td><code>NintendoNsaIdToken</code></td>
+<td>Nintendo Service Account ID (NSA ID) Token, identifying the local Nintendo<br>Switch device without explicit user credentials. Not exposed to the user; link a Nintendo Account or<br>other external account to preserve progression across devices/platforms.</td>
+</tr>
+<tr>
+<td><code>UplayAccessToken</code></td>
+<td>Uplay Access Token.</td>
+</tr>
+<tr>
+<td><code>OpenIdAccessToken</code></td>
+<td>Generic OpenID Provider Access Token.</td>
+</tr>
+<tr>
+<td><code>DeviceIdAccessToken</code></td>
+<td>Local Device ID token from <a href="connect.html#eos_connect_create_device_id">eos_connect_create_device_id</a>,<br>identifying the current OS user profile on this device rather than any real external account - lets a<br>player start playing without logging into anything, with the option to link a real account later onto<br>the same Product User ID.</td>
+</tr>
+<tr>
+<td><code>AppleIdToken</code></td>
+<td>Apple ID Token.</td>
+</tr>
+<tr>
+<td><code>GoogleIdToken</code></td>
+<td>Google ID Token.</td>
+</tr>
+<tr>
+<td><code>OculusUseridNonce</code></td>
+<td>Oculus User ID + Nonce (from <code>ovr_User_GetUserProof</code>), passed as a<br><code>"{UserID}{Nonce}"</code> formatted string. Requires the User ID feature enabled for your app in the Oculus<br>Developer Dashboard.</td>
+</tr>
+<tr>
+<td><code>ItchIoJwt</code></td>
+<td>itch.io JWT Access Token, obtained via the itch.io app manifest's<br><code>ITCHIO_API_KEY</code> environment variable. Valid for 7 days; the game needs restarting after expiry to<br>refresh the EOS Connect session.</td>
+</tr>
+<tr>
+<td><code>ItchIoKey</code></td>
+<td>itch.io Key Access Token, retrieved through itch.io's OAuth 2.0 flow.</td>
+</tr>
+<tr>
+<td><code>EpicIdToken</code></td>
+<td>Epic Games ID Token, acquired with <a href="auth.html#eos_auth_copy_id_token">eos_auth_copy_id_token</a>.</td>
+</tr>
+<tr>
+<td><code>AmazonAccessToken</code></td>
+<td>Amazon Access Token.</td>
+</tr>
+<tr>
+<td><code>SteamSessionTicket</code></td>
+<td>Steam Auth Session Ticket, generated with Steamworks SDK's<br><code>ISteamUser::GetAuthTicketForWebApi</code>.</td>
+</tr>
+<tr>
+<td><code>ViveportUserToken</code></td>
+<td>VIVEPORT User Session Token.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectlogincallbackinfo">EpicConnectLoginCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_login">eos_connect_login</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_login">eos_connect_login</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Empty unless <code>result_code</code> is <code>EpicResult.Success</code>.</td>
+</tr>
+<tr>
+<td>has_continuance_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> if <code>result_code</code> is <code>EpicResult.InvalidUser</code> and this login can be continued via <a href="connect.html#eos_connect_create_user">eos_connect_create_user</a>/<a href="connect.html#eos_connect_link_account">eos_connect_link_account</a>.</td>
+</tr>
+<tr>
+<td>continuance_token_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Only meaningful when <code>has_continuance_token</code> is <code>true</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectcreateusercallbackinfo">EpicConnectCreateUserCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_create_user">eos_connect_create_user</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_create_user">eos_connect_create_user</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The newly created Product User ID. Empty on failure.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectlinkaccountcallbackinfo">EpicConnectLinkAccountCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_link_account">eos_connect_link_account</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_link_account">eos_connect_link_account</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectunlinkaccountcallbackinfo">EpicConnectUnlinkAccountCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_unlink_account">eos_connect_unlink_account</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_unlink_account">eos_connect_unlink_account</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectcreatedeviceidcallbackinfo">EpicConnectCreateDeviceIdCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_create_device_id">eos_connect_create_device_id</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_create_device_id">eos_connect_create_device_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>device_model</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Echoes the <code>device_model</code> you passed in.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectdeletedeviceidcallbackinfo">EpicConnectDeleteDeviceIdCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_delete_device_id">eos_connect_delete_device_id</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_delete_device_id">eos_connect_delete_device_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnecttransferdeviceidaccountcallbackinfo">EpicConnectTransferDeviceIdAccountCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_transfer_device_id_account">eos_connect_transfer_device_id_account</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_transfer_device_id_account">eos_connect_transfer_device_id_account</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectlogoutcallbackinfo">EpicConnectLogoutCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_logout">eos_connect_logout</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_logout">eos_connect_logout</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectidtoken">EpicConnectIdToken</h1>
+<p>A Connect ID token, as returned by <a href="connect.html#eos_connect_copy_id_token">eos_connect_copy_id_token</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_copy_id_token">eos_connect_copy_id_token</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>json_web_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The signed JSON Web Token string. Pass this to your backend, or to <a href="connect.html#eos_connect_verify_id_token">eos_connect_verify_id_token</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectexternalaccountinfo">EpicConnectExternalAccountInfo</h1>
+<p>Info about one external account linked to a Product User ID.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_copy_product_user_info">eos_connect_copy_product_user_info</a></li>
+<li><a href="connect.html#eos_connect_copy_product_user_external_account_by_index">eos_connect_copy_product_user_external_account_by_index</a></li>
+<li><a href="connect.html#eos_connect_copy_product_user_external_account_by_account_type">eos_connect_copy_product_user_external_account_by_account_type</a></li>
+<li><a href="connect.html#eos_connect_copy_product_user_external_account_by_account_id">eos_connect_copy_product_user_external_account_by_account_id</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The display name on the external platform. May be empty if the platform didn't provide one.</td>
+</tr>
+<tr>
+<td>account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The raw external account ID.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td></td>
+</tr>
+<tr>
+<td>last_login_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Unix timestamp of the last time this external account was used to log in, or <code>-1</code> if unknown.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectverifyidtokencallbackinfo">EpicConnectVerifyIdTokenCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_verify_id_token">eos_connect_verify_id_token</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_verify_id_token">eos_connect_verify_id_token</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>product_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>is_account_info_present</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>When <code>false</code>, this token belongs to a Device-ID-only account and <code>account_id_type</code>/<code>account_id</code>/<code>platform</code>/<code>device_type</code> below are empty - do not treat them as real values in that case.</td>
+</tr>
+<tr>
+<td>account_id_type</td>
+<td><a href="connect.html#epicexternalaccounttype">EpicExternalAccountType</a></td>
+<td>Only valid when <code>is_account_info_present</code> is <code>true</code>.</td>
+</tr>
+<tr>
+<td>account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Only valid when <code>is_account_info_present</code> is <code>true</code>.</td>
+</tr>
+<tr>
+<td>platform</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Only valid when <code>is_account_info_present</code> is <code>true</code>.</td>
+</tr>
+<tr>
+<td>device_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Only valid when <code>is_account_info_present</code> is <code>true</code>.</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The client ID that requested this token.</td>
+</tr>
+<tr>
+<td>product_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>sandbox_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>deployment_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectqueryexternalaccountmappingscallbackinfo">EpicConnectQueryExternalAccountMappingsCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_query_external_account_mappings">eos_connect_query_external_account_mappings</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_query_external_account_mappings">eos_connect_query_external_account_mappings</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectqueryproductuseridmappingscallbackinfo">EpicConnectQueryProductUserIdMappingsCallbackInfo</h1>
+<p>Result of <a href="connect.html#eos_connect_query_product_user_id_mappings">eos_connect_query_product_user_id_mappings</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_query_product_user_id_mappings">eos_connect_query_product_user_id_mappings</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectauthexpirationcallbackinfo">EpicConnectAuthExpirationCallbackInfo</h1>
+<p>Payload of the <a href="connect.html#eos_connect_add_notify_auth_expiration">eos_connect_add_notify_auth_expiration</a> notification.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_add_notify_auth_expiration">eos_connect_add_notify_auth_expiration</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID whose authentication is about to expire.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicconnectloginstatuschangedcallbackinfo">EpicConnectLoginStatusChangedCallbackInfo</h1>
+<p>Payload of the <a href="connect.html#eos_connect_add_notify_login_status_changed">eos_connect_add_notify_login_status_changed</a> notification.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connect.html#eos_connect_add_notify_login_status_changed">eos_connect_add_notify_login_status_changed</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>previous_status</td>
+<td><a href="auth.html#epicloginstatus">EpicLoginStatus</a></td>
+<td></td>
+</tr>
+<tr>
+<td>current_status</td>
+<td><a href="auth.html#epicloginstatus">EpicLoginStatus</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="auth.html" class="btn btn-neutral float-left" title="Auth"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="custom_invites.html" class="btn btn-neutral float-right" title="Custom Invites">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="auth.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="custom_invites.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
