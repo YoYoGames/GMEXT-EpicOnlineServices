@@ -1,6 +1,7 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
 #include "gm_eos_common.h"
+#include "gm_eos_platform_hooks.h"
 #include "core/GMExtUtils.h"
 
 #include <eos_sdk.h>
@@ -9,13 +10,6 @@
 #include <cctype>
 #include <string>
 #include <string_view>
-
-#if defined(__ANDROID__)
-#include <cstdlib>
-#elif defined(__APPLE__)
-#include <TargetConditionals.h>
-#include <cstdlib>
-#endif
 
 using namespace gm::wire;
 using namespace gm_structs;
@@ -26,43 +20,11 @@ using namespace gm_enums;
 // ------------------------------------------------------------
 // EOS_Platform_Create needs a writable absolute CacheDirectory. On desktop the
 // caller-supplied path (GameMaker's working_directory) works, but on mobile that
-// path is not a usable writable filesystem dir, so resolve it natively instead.
-// Each helper returns an empty string when it has nothing to offer (desktop),
-// meaning "keep the caller-supplied value".
+// path is not a usable writable filesystem dir, so eos_platform_cache_dir()
+// resolves it per target - see native/gm_eos_platform_hooks.h. It returns an
+// empty string when the platform has nothing to offer, meaning "keep the
+// caller-supplied value".
 // ============================================================
-
-#if defined(__ANDROID__)
-// Android's runtime sets TMPDIR to the app's private cache dir
-// (e.g. /data/user/0/<pkg>/cache). GameMaker's working_directory is "assets/"
-// (read-only APK assets), which EOS cannot write to.
-static std::string eos_android_cache_dir()
-{
-    if (const char* tmp = std::getenv("TMPDIR"); tmp && *tmp)
-        return std::string(tmp);
-    return {};
-}
-#elif defined(__APPLE__) && TARGET_OS_IOS
-// iOS sandboxes the app; TMPDIR points at <app>/tmp, which is writable.
-static std::string eos_ios_cache_dir()
-{
-    if (const char* tmp = std::getenv("TMPDIR"); tmp && *tmp)
-        return std::string(tmp);
-    return {};
-}
-#endif
-
-// Returns the platform-resolved writable cache dir, or empty to keep the
-// caller-supplied value (desktop).
-static std::string eos_platform_cache_dir()
-{
-#if defined(__ANDROID__)
-    return eos_android_cache_dir();
-#elif defined(__APPLE__) && TARGET_OS_IOS
-    return eos_ios_cache_dir();
-#else
-    return {};
-#endif
-}
 
 // The actual directory eos_platform_create() ended up using (the caller's
 // cache_directory on desktop, the platform-resolved writable dir on mobile),

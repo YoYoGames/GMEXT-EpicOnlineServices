@@ -111,6 +111,18 @@ if(ANDROID OR (_EOS_IS_IOS AND EXT_APPLE_NATIVE_FRAMEWORK))
   endif()
 endif()
 
+# Exactly one implementation of native/gm_eos_platform_hooks.h is compiled.
+# src/android and src/ios are already covered by the generated src/CMakeLists.txt's
+# own per-platform globs; src/desktop is a folder it does not know about, so add it
+# here for everything that is neither mobile target.
+if(NOT _EOS_IS_ANDROID AND NOT _EOS_IS_IOS)
+  file(GLOB _EOS_SRC_DESKTOP CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/../src/desktop/*.cpp")
+  if(_EOS_SRC_DESKTOP)
+    target_sources(${EXT_MAIN_TARGET} PRIVATE ${_EOS_SRC_DESKTOP})
+  endif()
+endif()
+
 # =============================================================================
 # Windows
 # =============================================================================

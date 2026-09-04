@@ -1,17 +1,10 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
 #include "gm_eos_common.h"
+#include "gm_eos_platform_hooks.h"
 
 #include <eos_sdk.h>
 #include <eos_auth.h>
-
-#if defined(__APPLE__)
-#include <TargetConditionals.h>
-#endif
-#if defined(__APPLE__) && TARGET_OS_IOS
-// iOS Account Portal login needs a presentation context (ObjC++ helper).
-#include "ios/eos_ios_auth.h"
-#endif
 
 #include <cstdint>
 #include <map>
@@ -226,13 +219,10 @@ void eos_auth_login(
     creds.Type = (EOS_ELoginCredentialType)credentials_type;
     creds.ExternalType = (EOS_EExternalCredentialType)external_credential_type;
 
-#if defined(__APPLE__) && TARGET_OS_IOS
-    // Required for Account Portal login on iOS 13+; harmless for other login
-    // types. EOS copies the options during EOS_Auth_Login, so the struct is
-    // freed right after the call (EOS owns/releases the presentation object).
-    void* ios_auth_options = eos_ios_auth_credentials_options_create();
-    creds.SystemAuthCredentialsOptions = ios_auth_options;
-#endif
+    // Null except where the platform needs one (iOS Account Portal). EOS copies
+    // the options during EOS_Auth_Login, so it is freed right after the call.
+    void* system_auth_options = eos_platform_auth_credentials_options_create();
+    creds.SystemAuthCredentialsOptions = system_auth_options;
 
     EOS_Auth_LoginOptions opts{};
     opts.ApiVersion = EOS_AUTH_LOGIN_API_LATEST;
@@ -242,9 +232,7 @@ void eos_auth_login(
 
     EOS_Auth_Login(auth, &opts, ctx, &eos_auth_login_callback_native);
 
-#if defined(__APPLE__) && TARGET_OS_IOS
-    eos_ios_auth_credentials_options_free(ios_auth_options);
-#endif
+    eos_platform_auth_credentials_options_free(system_auth_options);
 }
 
 void eos_auth_logout(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)

@@ -1,14 +1,10 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
 #include "gm_eos_common.h"
+#include "gm_eos_platform_hooks.h"
 
 #include <eos_sdk.h>
 #include <eos_version.h>
-
-
-#if defined(__ANDROID__)
-#include <eos_Android.h>
-#endif
 
 #include <string>
 #include <string_view>
@@ -46,19 +42,12 @@ gm_enums::EpicResult eos_api_initialize(std::string_view product_name, std::stri
     opts.ProductName = product_name_storage.c_str();
     opts.ProductVersion = product_version_storage.c_str();
 
-#if defined(__ANDROID__)
-    // Android requires system-specific init options; EOS_Initialize returns
-    // EOS_UnexpectedError if SystemInitializeOptions is null on this platform.
-    // (Must outlive the EOS_Initialize call below.)
-    EOS_Android_InitializeOptions android_init_opts{};
-    android_init_opts.ApiVersion = EOS_ANDROID_INITIALIZEOPTIONS_API_LATEST;
-    android_init_opts.Reserved = nullptr;
-    android_init_opts.OptionalInternalDirectory = nullptr;
-    android_init_opts.OptionalExternalDirectory = nullptr;
-    opts.SystemInitializeOptions = &android_init_opts;
-#endif
+    // Null where the platform needs no system options. Where it does, the
+    // returned owner must outlive EOS_Initialize, which copies it.
+    void* system_init_options = eos_platform_initialize_options_create(opts);
 
     const EOS_EResult result = EOS_Initialize(&opts);
+    eos_platform_initialize_options_free(system_init_options);
     if (result != EOS_EResult::EOS_Success) {
         eos_set_last_error(eos_result_string(result));
         eos_set_initialized(false);
