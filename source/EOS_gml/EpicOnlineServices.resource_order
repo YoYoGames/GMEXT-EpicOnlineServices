@@ -26,7 +26,6 @@
     {"name":"EpicOnlineServices","order":1,"path":"extensions/EpicOnlineServices/EpicOnlineServices.yy",},
     {"name":"Font_YoYo_20","order":1,"path":"fonts/Font_YoYo_20/Font_YoYo_20.yy",},
     {"name":"Font_YoYo_30","order":2,"path":"fonts/Font_YoYo_30/Font_YoYo_30.yy",},
-    {"name":"InstallSource_README","order":2,"path":"notes/InstallSource_README/InstallSource_README.yy",},
     {"name":"obj_eos_achievements_controller","order":1,"path":"objects/obj_eos_achievements_controller/obj_eos_achievements_controller.yy",},
     {"name":"obj_eos_auth_logout","order":1,"path":"objects/obj_eos_auth_logout/obj_eos_auth_logout.yy",},
     {"name":"obj_eos_ecom_checkout","order":1,"path":"objects/obj_eos_ecom_checkout/obj_eos_ecom_checkout.yy",},

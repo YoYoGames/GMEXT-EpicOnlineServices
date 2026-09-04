@@ -49,7 +49,6 @@
     {"id":{"name":"Font_YoYo_15","path":"fonts/Font_YoYo_15/Font_YoYo_15.yy",},},
     {"id":{"name":"Font_YoYo_20","path":"fonts/Font_YoYo_20/Font_YoYo_20.yy",},},
     {"id":{"name":"Font_YoYo_30","path":"fonts/Font_YoYo_30/Font_YoYo_30.yy",},},
-    {"id":{"name":"InstallSource_README","path":"notes/InstallSource_README/InstallSource_README.yy",},},
     {"id":{"name":"obj_button_goto","path":"objects/obj_button_goto/obj_button_goto.yy",},},
     {"id":{"name":"obj_eos_achievement","path":"objects/obj_eos_achievement/obj_eos_achievement.yy",},},
     {"id":{"name":"obj_eos_achievements_controller","path":"objects/obj_eos_achievements_controller/obj_eos_achievements_controller.yy",},},
