@@ -49,12 +49,12 @@ static std::string eos_epic_account_id_to_string_internal(EOS_EpicAccountId id)
     return std::string(buf);
 }
 
-static std::string join_cstring_array(const char* const* arr, uint32_t count, char delim = '|')
+static std::vector<std::string> to_string_vector(const char* const* arr, uint32_t count)
 {
-    std::string out;
+    std::vector<std::string> out;
+    out.reserve(count);
     for (uint32_t i = 0; i < count; ++i) {
-        if (i > 0) out += delim;
-        if (arr[i]) out += arr[i];
+        out.push_back(arr[i] ? std::string(arr[i]) : std::string());
     }
     return out;
 }
@@ -70,7 +70,7 @@ static gm_structs::EpicEcomEntitlement eos_ecom_entitlement_from_native(
     out.entitlement_id   = e->EntitlementId   ? std::string(e->EntitlementId)   : std::string();
     out.catalog_item_id  = e->CatalogItemId   ? std::string(e->CatalogItemId)   : std::string();
     out.server_index     = (int64_t)e->ServerIndex;
-    out.redeemed         = (int64_t)(e->bRedeemed ? 1 : 0);
+    out.redeemed         = (e->bRedeemed != 0);
     out.end_timestamp    = e->EndTimestamp;
     return out;
 }
@@ -143,8 +143,8 @@ static gm_structs::EpicEcomCatalogRelease eos_ecom_release_from_native(
 {
     gm_structs::EpicEcomCatalogRelease out{};
     if (!rel) return out;
-    out.compatible_app_ids  = join_cstring_array(rel->CompatibleAppIds,   rel->CompatibleAppIdCount);
-    out.compatible_platforms = join_cstring_array(rel->CompatiblePlatforms, rel->CompatiblePlatformCount);
+    out.compatible_app_ids   = to_string_vector(rel->CompatibleAppIds,    rel->CompatibleAppIdCount);
+    out.compatible_platforms = to_string_vector(rel->CompatiblePlatforms, rel->CompatiblePlatformCount);
     out.release_note        = rel->ReleaseNote ? std::string(rel->ReleaseNote) : std::string();
     return out;
 }
@@ -358,7 +358,7 @@ static void EOS_CALL eos_ecom_redeem_entitlements_callback_native(
 }
 
 // ============================================================
-// EOS Ecom — Async queries
+// EOS Ecom - Async queries
 // ============================================================
 
 void eos_ecom_query_ownership(
@@ -459,7 +459,7 @@ void eos_ecom_query_ownership_token(
 void eos_ecom_query_entitlements(
     std::string_view local_user_id,
     const std::vector<std::string_view>& entitlement_names,
-    int64_t include_redeemed,
+    bool include_redeemed,
     std::string_view catalog_namespace,
     const std::optional<gm::wire::GMFunction>& callback)
 {
@@ -485,7 +485,7 @@ void eos_ecom_query_entitlements(
     opts.LocalUserId                = local_user;
     opts.EntitlementNames           = (EOS_Ecom_EntitlementName*)(name_ptrs.empty() ? nullptr : name_ptrs.data());
     opts.EntitlementNameCount       = (uint32_t)name_ptrs.size();
-    opts.bIncludeRedeemed           = (EOS_Bool)(include_redeemed != 0 ? EOS_TRUE : EOS_FALSE);
+    opts.bIncludeRedeemed           = include_redeemed ? EOS_TRUE : EOS_FALSE;
     opts.OverrideCatalogNamespace   = ns.empty() ? nullptr : ns.c_str();
 
     EOS_Ecom_QueryEntitlements(ecom, &opts, ctx, &eos_ecom_query_entitlements_callback_native);
@@ -613,7 +613,7 @@ void eos_ecom_redeem_entitlements(
 }
 
 // ============================================================
-// EOS Ecom — Ownership cache accessors
+// EOS Ecom - Ownership cache accessors
 // ============================================================
 
 int64_t eos_ecom_get_item_ownership_count(std::string_view local_user_id)
@@ -664,16 +664,12 @@ std::optional<gm_structs::EpicEcomSandboxIdItemOwnership> eos_ecom_copy_sandbox_
     gm_structs::EpicEcomSandboxIdItemOwnership out{};
     const auto& e = it->second[(size_t)index];
     out.sandbox_id = e.sandbox_id;
-    // join owned item IDs with pipe delimiter
-    for (size_t i = 0; i < e.owned_item_ids.size(); ++i) {
-        if (i > 0) out.owned_catalog_item_ids += '|';
-        out.owned_catalog_item_ids += e.owned_item_ids[i];
-    }
+    out.owned_catalog_item_ids = e.owned_item_ids;
     return out;
 }
 
 // ============================================================
-// EOS Ecom — Entitlement accessors
+// EOS Ecom - Entitlement accessors
 // ============================================================
 
 int64_t eos_ecom_get_entitlements_count(std::string_view local_user_id)
@@ -844,7 +840,7 @@ std::string eos_ecom_copy_last_redeemed_entitlement_by_index(
 }
 
 // ============================================================
-// EOS Ecom — Offer accessors
+// EOS Ecom - Offer accessors
 // ============================================================
 
 int64_t eos_ecom_get_offer_count(std::string_view local_user_id)
@@ -1001,7 +997,7 @@ std::optional<gm_structs::EpicEcomCatalogItem> eos_ecom_copy_item_by_id(
 }
 
 // ============================================================
-// EOS Ecom — Image info accessors
+// EOS Ecom - Image info accessors
 // ============================================================
 
 int64_t eos_ecom_get_offer_image_info_count(
@@ -1107,7 +1103,7 @@ std::optional<gm_structs::EpicEcomKeyImageInfo> eos_ecom_copy_item_image_info_by
 }
 
 // ============================================================
-// EOS Ecom — Release accessors
+// EOS Ecom - Release accessors
 // ============================================================
 
 int64_t eos_ecom_get_item_release_count(
@@ -1162,7 +1158,7 @@ std::optional<gm_structs::EpicEcomCatalogRelease> eos_ecom_copy_item_release_by_
 }
 
 // ============================================================
-// EOS Ecom — Transaction accessors
+// EOS Ecom - Transaction accessors
 // ============================================================
 
 int64_t eos_ecom_get_transaction_count(std::string_view local_user_id)

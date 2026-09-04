@@ -496,7 +496,7 @@ static void EOS_CALL eos_sessions_unregister_players_callback_native(
     delete ctx;
 }
 
-// Forward decl — implementation lives further down with the rest of the
+// Forward decl - implementation lives further down with the rest of the
 // session-details handle map helpers. eos_sessions_join_session needs the
 // EOS_HSessionDetails handle here to satisfy opts.SessionHandle.
 static EOS_HSessionDetails eos_sessions_details_get(uint64_t id);
@@ -1011,9 +1011,25 @@ static gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_info_from
     out.num_open_public_connections = (int64_t)p->NumOpenPublicConnections;
     out.owner_server_client_id = p->OwnerServerClientId ? std::string(p->OwnerServerClientId) : std::string();
 
-    //TODO
-    // out.settings_count = (int64_t)p->SettingsCount;
-    // const EOS_SessionDetails_Settings* Settings;
+    if (p->Settings)
+    {
+        const EOS_SessionDetails_Settings* s = p->Settings;
+
+        out.bucket_id = s->BucketId ? std::string(s->BucketId) : std::string();
+        out.num_public_connections = (int64_t)s->NumPublicConnections;
+        out.allow_join_in_progress = (s->bAllowJoinInProgress != 0);
+        out.permission_level = (gm_enums::EpicOnlineSessionPermissionLevel)s->PermissionLevel;
+        out.invites_allowed = (s->bInvitesAllowed != 0);
+        out.sanctions_enabled = (s->bSanctionsEnabled != 0);
+
+        out.allowed_platform_ids_count = (int64_t)s->AllowedPlatformIdsCount;
+        if (s->AllowedPlatformIds && s->AllowedPlatformIdsCount > 0) {
+            out.allowed_platform_ids.resize(s->AllowedPlatformIdsCount);
+            for (uint32_t i = 0; i < s->AllowedPlatformIdsCount; ++i) {
+                out.allowed_platform_ids[i] = s->AllowedPlatformIds[i];
+            }
+        }
+    }
 
     return out;
 }
@@ -1027,6 +1043,7 @@ static gm_structs::EpicActiveSessionInfo eos_sessions_active_session_info_from_n
 
     out.session_name = p->SessionName ? std::string(p->SessionName) : std::string();
     out.local_user_id = eos_sessions_product_user_id_to_string_internal(p->LocalUserId);
+    out.state = (gm_enums::EpicOnlineSessionState)p->State;
     out.session_id = "";
     out.bucket_id = "";
     out.owner_user_id = "";
@@ -1468,7 +1485,7 @@ void eos_sessions_remove_notify_join_session_accepted(uint64_t notification_id)
 }
 
 // ============================================================
-// EOS Sessions (Part 5) — SessionModification setters
+// EOS Sessions (Part 5) - SessionModification setters
 // ============================================================
 
 gm_enums::EpicResult eos_sessions_session_modification_set_bucket_id(
@@ -1775,7 +1792,7 @@ gm_enums::EpicResult eos_sessions_session_modification_remove_attribute(
 }
 
 // ============================================================
-// EOS Sessions (Part 6) — SessionDetails attribute accessors
+// EOS Sessions (Part 6) - SessionDetails attribute accessors
 // ============================================================
 
 static gm_structs::EpicSessionDetailsAttribute eos_sessions_attribute_from_native(
@@ -1888,7 +1905,7 @@ std::optional<gm_structs::EpicSessionDetailsAttribute> eos_sessions_session_deta
 }
 
 // ============================================================
-// EOS Sessions (Part 7) — ActiveSession player accessors
+// EOS Sessions (Part 7) - ActiveSession player accessors
 // ============================================================
 
 int64_t eos_sessions_active_session_get_registered_player_count(uint64_t active_session_id)
@@ -1932,7 +1949,7 @@ std::string eos_sessions_active_session_get_registered_player_by_index(
 }
 
 // ============================================================
-// EOS Sessions (Part 8) — Invite flow
+// EOS Sessions (Part 8) - Invite flow
 // ============================================================
 
 static void EOS_CALL eos_sessions_send_invite_callback_native(
@@ -2146,7 +2163,7 @@ std::string eos_sessions_get_invite_id_by_index(
 }
 
 // ============================================================
-// EOS Sessions (Part 9) — SessionSearch parameter functions
+// EOS Sessions (Part 9) - SessionSearch parameter functions
 // ============================================================
 
 gm_enums::EpicResult eos_sessions_session_search_set_parameter(
@@ -2238,7 +2255,7 @@ int64_t eos_sessions_session_search_get_search_result_count(uint64_t search_id)
 }
 
 // ============================================================
-// EOS Sessions (Part 10) — Additional notifications
+// EOS Sessions (Part 10) - Additional notifications
 // ============================================================
 
 static void EOS_CALL eos_sessions_invite_rejected_callback_native(

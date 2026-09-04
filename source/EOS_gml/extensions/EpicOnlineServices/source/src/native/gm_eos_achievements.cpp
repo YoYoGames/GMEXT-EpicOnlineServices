@@ -506,9 +506,6 @@ static gm_structs::EpicAchievementsDefinitionV2 eos_achievements_definition_v2_f
     out.flavor_text =
         p->FlavorText ? std::string(p->FlavorText) : std::string();
 
-    // out.completion_description =
-    //     p->CompletionDescription ? std::string(p->CompletionDescription) : std::string();
-
     out.unlocked_icon_url =
         p->UnlockedIconURL ? std::string(p->UnlockedIconURL) : std::string();
 
@@ -686,7 +683,7 @@ std::optional<gm_structs::EpicStatThreshold> eos_achievements_copy_stat_threshol
         return std::nullopt;
     }
 
-    // StatThresholds lives on the achievement definition, not a standalone SDK call — fetch the
+    // StatThresholds lives on the achievement definition, not a standalone SDK call - fetch the
     // (non-deprecated V2) definition and index into its embedded array.
     EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions opts{};
     opts.ApiVersion = EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYACHIEVEMENTID_API_LATEST;
@@ -746,7 +743,7 @@ std::optional<gm_structs::EpicPlayerStatInfo> eos_achievements_copy_player_stat_
         return std::nullopt;
     }
 
-    // StatInfo lives on the player achievement, not a standalone SDK call — fetch it and index
+    // StatInfo lives on the player achievement, not a standalone SDK call - fetch it and index
     // into its embedded array.
     EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions opts{};
     opts.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST;
