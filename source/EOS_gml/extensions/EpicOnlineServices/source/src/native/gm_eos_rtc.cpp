@@ -34,7 +34,7 @@ struct EOSNotifyCallbackContext
 
 // AudioBeforeSend/AudioBeforeRender also hold the most recent unfetched PCM frames for their
 // registration, keyed by a fresh handle issued on every firing (not the registration's
-// notification_id — before_render in particular can deliver different participants back-to-back,
+// notification_id - before_render in particular can deliver different participants back-to-back,
 // so reusing notification_id as the fetch key could let a fetch silently return a different
 // participant's frames than the metadata it was paired with). A new firing supersedes any
 // previous unfetched frames for the same registration.
@@ -75,7 +75,7 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
 }
 
 // ============================================================
-// Notify callback storage — id-keyed, one heap ctx per registration
+// Notify callback storage - id-keyed, one heap ctx per registration
 // (see gm_eos_p2p.cpp for the reference pattern this follows)
 // ============================================================
 
@@ -90,7 +90,7 @@ static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_devic
 static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_input_state_callbacks;
 static std::unordered_map<uint64_t, EOSNotifyCallbackContext*> g_rtc_audio_output_state_callbacks;
 
-// AudioBeforeSend/AudioBeforeRender may fire off the main thread (eos_rtc_audio.h:211,239) — the
+// AudioBeforeSend/AudioBeforeRender may fire off the main thread (eos_rtc_audio.h:211,239) - the
 // only two callbacks in this file where that's true. g_notify_mutex additionally guards reading
 // ctx->callback (and the pending-frames fields below) inside those two callbacks (not just
 // add/remove), so neither can race a concurrent remove_notify's delete or fetch's read.
@@ -505,7 +505,7 @@ static void EOS_CALL eos_rtc_audio_unregister_platform_user_callback(
 }
 
 // ============================================================
-// EOS RTC core — Functions
+// EOS RTC core - Functions
 // ============================================================
 
 void eos_rtc_join_room(
@@ -636,7 +636,7 @@ bool eos_rtc_set_room_setting(
 }
 
 // ============================================================
-// EOS RTC core — Notify add/remove
+// EOS RTC core - Notify add/remove
 // ============================================================
 
 std::uint64_t eos_rtc_add_notify_disconnected(
@@ -775,7 +775,7 @@ void eos_rtc_remove_notify_room_statistics_updated(std::uint64_t notification_id
 }
 
 // ============================================================
-// EOS RTC Audio — Functions
+// EOS RTC Audio - Functions
 // ============================================================
 
 void eos_rtc_audio_update_sending(
@@ -1137,7 +1137,7 @@ void eos_rtc_audio_unregister_platform_user(
 }
 
 // ============================================================
-// EOS RTC Audio — Notify add/remove
+// EOS RTC Audio - Notify add/remove
 // ============================================================
 
 std::uint64_t eos_rtc_audio_add_notify_participant_updated(

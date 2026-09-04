@@ -376,7 +376,7 @@ void eos_ui_remove_notify_display_settings_updated(uint64_t notification_id)
 }
 
 // ============================================================
-// EOS UI (Part 3) — Additional functions
+// EOS UI (Part 3) - Additional functions
 // ============================================================
 
 static void EOS_CALL eos_ui_hide_friends_callback_native(const EOS_UI_HideFriendsCallbackInfo* data)

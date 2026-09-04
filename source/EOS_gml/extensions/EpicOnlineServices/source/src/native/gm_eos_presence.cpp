@@ -656,7 +656,7 @@ void eos_presence_remove_notify_on_presence_changed(uint64_t notification_id)
     }
 
     // Local ctx/map cleanup must happen regardless of interface availability (e.g. after
-    // eos_api_shutdown) — this is our own memory, not something the SDK owns.
+    // eos_api_shutdown) - this is our own memory, not something the SDK owns.
     auto ctx_it = g_presence_changed_contexts.find(notification_id);
     if (ctx_it != g_presence_changed_contexts.end())
     {
@@ -719,7 +719,7 @@ void eos_presence_remove_notify_join_game_accepted(uint64_t notification_id)
     }
 
     // Local ctx/map cleanup must happen regardless of interface availability (e.g. after
-    // eos_api_shutdown) — this is our own memory, not something the SDK owns.
+    // eos_api_shutdown) - this is our own memory, not something the SDK owns.
     auto ctx_it = g_presence_join_game_accepted_contexts.find(notification_id);
     if (ctx_it != g_presence_join_game_accepted_contexts.end())
     {

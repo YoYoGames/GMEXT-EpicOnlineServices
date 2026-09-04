@@ -27,7 +27,7 @@ using namespace gm_enums;
 // Internal helpers
 // ============================================================
 
-// Odd ids only — gm_eos_connect.cpp's counter uses even ids — so a continuance_token_id obtained
+// Odd ids only - gm_eos_connect.cpp's counter uses even ids - so a continuance_token_id obtained
 // from one interface's flow can never collide with a live key in the other interface's map if
 // passed into the wrong create/link function; the lookup misses cleanly instead of silently
 // resolving against an unrelated pending token.

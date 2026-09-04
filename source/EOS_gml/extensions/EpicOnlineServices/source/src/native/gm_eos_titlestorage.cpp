@@ -194,7 +194,7 @@ static void EOS_CALL eos_ts_read_file_callback_native(
     }
 
     // If we truncated output_path to start streaming but didn't finish successfully (failure or
-    // cancellation), remove the partial fragment rather than leaving it in place — otherwise a
+    // cancellation), remove the partial fragment rather than leaving it in place - otherwise a
     // previously-good cached file silently ends up replaced by a corrupt, incomplete one.
     if (ctx->output_file_opened && result_code != EOS_EResult::EOS_Success) {
         std::remove(ctx->output_path.c_str());
@@ -218,7 +218,7 @@ static void EOS_CALL eos_ts_read_file_callback_native(
 }
 
 // ============================================================
-// EOS Title Storage — Metadata queries
+// EOS Title Storage - Metadata queries
 // ============================================================
 
 void eos_titlestorage_query_file(
@@ -239,7 +239,7 @@ void eos_titlestorage_query_file(
 
     EOS_TitleStorage_QueryFileOptions opts{};
     opts.ApiVersion = EOS_TITLESTORAGE_QUERYFILE_API_LATEST;
-    opts.LocalUserId = local_user; // optional — may be null
+    opts.LocalUserId = local_user; // optional - may be null
     opts.Filename = fn.c_str();
 
     EOS_TitleStorage_QueryFile(ts, &opts, ctx, &eos_ts_query_file_callback_native);
@@ -364,7 +364,7 @@ std::optional<gm_structs::EpicTitleStorageFileMetadata> eos_titlestorage_copy_fi
 }
 
 // ============================================================
-// EOS Title Storage — File read & cache
+// EOS Title Storage - File read & cache
 // ============================================================
 
 void eos_titlestorage_read_file(
@@ -406,7 +406,7 @@ void eos_titlestorage_read_file(
 
     if (!ctx->request) {
         // EOS still queues the completion callback with our ctx even when it returns null,
-        // so we MUST NOT delete ctx here — the callback owns the lifetime.
+        // so we MUST NOT delete ctx here - the callback owns the lifetime.
         eos_set_last_error("EOS_TitleStorage_ReadFile: failed to start transfer.");
         return;
     }

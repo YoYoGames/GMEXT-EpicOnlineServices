@@ -164,7 +164,7 @@ static void EOS_CALL eos_p2p_packet_queue_full_callback_native(const EOS_P2P_OnI
 }
 
 // ============================================================
-// EOS P2P — Packet send/receive
+// EOS P2P - Packet send/receive
 // ============================================================
 
 gm_enums::EpicResult eos_p2p_send_packet(
@@ -331,7 +331,7 @@ std::optional<gm_structs::EpicP2PReceivedPacket> eos_p2p_receive_packet(
 }
 
 // ============================================================
-// EOS P2P — Connection management
+// EOS P2P - Connection management
 // ============================================================
 
 gm_enums::EpicResult eos_p2p_accept_connection(
@@ -478,7 +478,7 @@ gm_enums::EpicResult eos_p2p_clear_packet_queue(
 }
 
 // ============================================================
-// EOS P2P — NAT type
+// EOS P2P - NAT type
 // ============================================================
 
 void eos_p2p_query_nat_type(const std::optional<gm::wire::GMFunction>& callback)
@@ -523,7 +523,7 @@ gm_enums::EpicNATType eos_p2p_get_nat_type()
 }
 
 // ============================================================
-// EOS P2P — Relay control
+// EOS P2P - Relay control
 // ============================================================
 
 gm_enums::EpicResult eos_p2p_set_relay_control(gm_enums::EpicRelayControl relay_control)
@@ -571,7 +571,7 @@ gm_enums::EpicRelayControl eos_p2p_get_relay_control()
 }
 
 // ============================================================
-// EOS P2P — Port range
+// EOS P2P - Port range
 // ============================================================
 
 gm_enums::EpicResult eos_p2p_set_port_range(int64_t port, int64_t max_additional_ports_to_try)
@@ -625,7 +625,7 @@ gm_structs::EpicP2PPortRange eos_p2p_get_port_range()
 }
 
 // ============================================================
-// EOS P2P — Packet queue size
+// EOS P2P - Packet queue size
 // ============================================================
 
 gm_enums::EpicResult eos_p2p_set_packet_queue_size(int64_t incoming_max_bytes, int64_t outgoing_max_bytes)
@@ -682,7 +682,7 @@ gm_structs::EpicP2PPacketQueueInfo eos_p2p_get_packet_queue_info()
 }
 
 // ============================================================
-// EOS P2P — Notifications
+// EOS P2P - Notifications
 // ============================================================
 
 uint64_t eos_p2p_add_notify_peer_connection_request(

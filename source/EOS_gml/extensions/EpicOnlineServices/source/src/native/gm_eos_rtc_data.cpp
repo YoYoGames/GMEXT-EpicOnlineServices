@@ -58,7 +58,7 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
 }
 
 // ============================================================
-// Notify callback storage — id-keyed, one heap ctx per registration
+// Notify callback storage - id-keyed, one heap ctx per registration
 // (see gm_eos_p2p.cpp for the reference pattern this follows)
 // ============================================================
 
@@ -68,7 +68,7 @@ struct EOSNotifyCallbackContext
 };
 
 // DataReceived also holds the most recent unfetched packet for its registration, keyed by a
-// fresh handle issued on every firing (not the registration's notification_id — a registration
+// fresh handle issued on every firing (not the registration's notification_id - a registration
 // can deliver different participants back-to-back, so reusing notification_id as the fetch key
 // could let a fetch silently return a different participant's bytes than the metadata it was
 // paired with). A new firing supersedes any previous unfetched packet for the same registration.
@@ -266,7 +266,7 @@ void eos_rtc_data_update_receiving(
         return;
     }
 
-    // Empty participant_id means "global" — pass nullptr per SDK contract.
+    // Empty participant_id means "global" - pass nullptr per SDK contract.
     EOS_ProductUserId participant = eos_product_user_id_from_string_internal(participant_id);
 
     auto* ctx = new EOSAsyncCallbackContext{callback};

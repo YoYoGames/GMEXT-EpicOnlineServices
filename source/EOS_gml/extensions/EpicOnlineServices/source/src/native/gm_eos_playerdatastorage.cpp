@@ -248,7 +248,7 @@ static void EOS_CALL eos_pds_read_file_callback_native(
     }
 
     // If we truncated output_path to start streaming but didn't finish successfully (failure or
-    // cancellation), remove the partial fragment rather than leaving it in place — otherwise a
+    // cancellation), remove the partial fragment rather than leaving it in place - otherwise a
     // previously-good cached file silently ends up replaced by a corrupt, incomplete one.
     if (ctx->output_file_opened && result_code != EOS_EResult::EOS_Success) {
         std::remove(ctx->output_path.c_str());
@@ -340,7 +340,7 @@ static void EOS_CALL eos_pds_write_file_callback_native(
 }
 
 // ============================================================
-// EOS Player Data Storage — Metadata queries
+// EOS Player Data Storage - Metadata queries
 // ============================================================
 
 void eos_playerdatastorage_query_file(
@@ -491,7 +491,7 @@ std::optional<gm_structs::EpicPlayerDataStorageFileMetadata> eos_playerdatastora
 }
 
 // ============================================================
-// EOS Player Data Storage — File operations
+// EOS Player Data Storage - File operations
 // ============================================================
 
 void eos_playerdatastorage_duplicate_file(
@@ -589,7 +589,7 @@ void eos_playerdatastorage_read_file(
 
     if (!ctx->request) {
         // EOS still queues the completion callback with our ctx even when it returns null,
-        // so we MUST NOT delete ctx here — the callback owns the lifetime.
+        // so we MUST NOT delete ctx here - the callback owns the lifetime.
         eos_set_last_error("EOS_PlayerDataStorage_ReadFile: failed to start transfer.");
         return;
     }

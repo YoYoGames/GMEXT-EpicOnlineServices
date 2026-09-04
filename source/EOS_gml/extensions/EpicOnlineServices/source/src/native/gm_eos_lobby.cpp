@@ -2354,7 +2354,7 @@ void eos_lobby_remove_notify_send_lobby_native_invite_requested(uint64_t notific
 }
 
 // ============================================================
-// EOS Lobby — RTC Room
+// EOS Lobby - RTC Room
 // ============================================================
 
 static std::map<uint64_t, GMFunction> g_lobby_rtc_room_connection_changed_callbacks;
@@ -2439,7 +2439,7 @@ uint64_t eos_lobby_add_notify_rtc_room_connection_changed(
 
     EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions opts{};
     opts.ApiVersion = EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST;
-    // LobbyId_DEPRECATED / LocalUserId_DEPRECATED — not used; the callback info itself
+    // LobbyId_DEPRECATED / LocalUserId_DEPRECATED - not used; the callback info itself
     // carries lobby_id and local_user_id so filtering happens GML-side.
 
     EOS_NotificationId notification_id = EOS_Lobby_AddNotifyRTCRoomConnectionChanged(
@@ -2490,7 +2490,7 @@ void eos_lobby_remove_notify_rtc_room_connection_changed(uint64_t notification_i
 }
 
 // ============================================================
-// EOS Lobby (Part N) — LobbyDetails attribute accessors
+// EOS Lobby (Part N) - LobbyDetails attribute accessors
 // ============================================================
 
 static gm_structs::EpicLobbyDetailsAttribute eos_lobby_attribute_from_native(
@@ -2742,7 +2742,7 @@ std::optional<gm_structs::EpicLobbyDetailsMemberInfo> eos_lobby_details_copy_mem
 }
 
 // ============================================================
-// EOS Lobby (Part N+1) — JoinLobbyById, HardMuteMember
+// EOS Lobby (Part N+1) - JoinLobbyById, HardMuteMember
 // ============================================================
 
 static void EOS_CALL eos_lobby_join_by_id_callback_native(
@@ -2856,7 +2856,7 @@ void eos_lobby_hard_mute_member(
 }
 
 // ============================================================
-// EOS Lobby (Part N+2) — Invite flow
+// EOS Lobby (Part N+2) - Invite flow
 // ============================================================
 
 static void EOS_CALL eos_lobby_send_invite_callback_native(
@@ -3064,7 +3064,7 @@ std::string eos_lobby_get_invite_id_by_index(
 }
 
 // ============================================================
-// EOS Lobby (Part N+3) — Invite notifications
+// EOS Lobby (Part N+3) - Invite notifications
 // ============================================================
 
 static std::map<uint64_t, GMFunction> g_lobby_invite_received_callbacks;

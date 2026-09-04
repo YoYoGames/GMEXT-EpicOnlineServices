@@ -25,7 +25,7 @@ struct EOSAsyncCallbackContext
     int64_t continuance_token_id = 0;
 };
 
-// Even ids only — gm_eos_auth.cpp's counter uses odd ids — so a continuance_token_id obtained
+// Even ids only - gm_eos_auth.cpp's counter uses odd ids - so a continuance_token_id obtained
 // from one interface's flow can never collide with a live key in the other interface's map if
 // passed into the wrong create/link function; the lookup misses cleanly instead of silently
 // resolving against an unrelated pending token.
@@ -670,7 +670,7 @@ static gm_structs::EpicConnectVerifyIdTokenCallbackInfo eos_connect_verify_id_to
     out.product_user_id = eos_product_user_id_to_string_internal(p->ProductUserId);
     out.is_account_info_present = (p->bIsAccountInfoPresent != 0);
     // AccountIdType/AccountId/Platform/DeviceType are only valid when bIsAccountInfoPresent is
-    // set (eos_connect_types.h) — always false for Device-ID-authenticated users.
+    // set (eos_connect_types.h) - always false for Device-ID-authenticated users.
     if (out.is_account_info_present) {
         out.account_id_type = (gm_enums::EpicExternalAccountType)p->AccountIdType;
         out.account_id = p->AccountId ? std::string(p->AccountId) : std::string();
