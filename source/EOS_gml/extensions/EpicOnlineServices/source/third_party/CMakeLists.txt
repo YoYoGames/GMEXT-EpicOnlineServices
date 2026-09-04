@@ -253,8 +253,8 @@ if(APPLE)
     # Header-only for the iOS build: the extension is archived into a static lib
     # (and then an xcframework), so it never links its dependencies itself.
     # EOSSDK.framework is linked into the final app by GameMaker's Xcode project.
-    # The shipped EOS xcframework also has a device (arm64) slice only — no
-    # simulator — so deliberately do NOT add it to the link line here.
+    # The shipped EOS xcframework also has a device (arm64) slice only - no
+    # simulator - so deliberately do NOT add it to the link line here.
     target_include_directories(ext_third_party INTERFACE "${_EOS_IOS_HEADERS}")
   endif()
 endif()
