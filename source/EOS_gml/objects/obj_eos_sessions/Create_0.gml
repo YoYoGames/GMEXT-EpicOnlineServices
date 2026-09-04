@@ -41,7 +41,7 @@ function join_session_clean(_details_id, _on_joined)
 }
 
 // ============================================================
-// Persistent notifications — wired at registration. One-shot
+// Persistent notifications - wired at registration. One-shot
 // results (create/destroy/start/end/join/update/etc.) are wired
 // at their call sites in obj_eos_sessions_* / obj_eos_session.
 // ============================================================
@@ -51,9 +51,9 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 	// EpicSessionsJoinSessionAcceptedCallbackInfo: .ui_event_id
 	show_debug_message("notifyJoinSessionAccepted fired")
 
-	// Copy the session details handle from the overlay event, then join_session — same
+	// Copy the session details handle from the overlay event, then join_session - same
 	// pattern as notifySessionInviteAccepted below, just a different handle source.
-	// Don't release it until the join callback returns — the SDK reads from it during join.
+	// Don't release it until the join callback returns - the SDK reads from it during join.
 	var _details_id = eos_sessions_copy_session_handle_by_ui_event_id(_info.ui_event_id)
 	if(_details_id == 0)
 	{
@@ -70,7 +70,7 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 		// EpicSessionsJoinSessionCallbackInfo: .result_code
 		eos_sessions_session_details_release(details_id)
 
-		// MUST acknowledge or the social overlay UI hangs — report the real outcome now
+		// MUST acknowledge or the social overlay UI hangs - report the real outcome now
 		// that we know it, instead of before the join even started.
 		eos_ui_acknowledge_event_id(ui_event_id, _join_info.result_code)
 
@@ -103,7 +103,7 @@ notifyJoinSessionAccepted = eos_sessions_add_notify_join_session_accepted(functi
 
 	if(!_started)
 	{
-		// join_session_clean's own precondition failed synchronously — its callback never
+		// join_session_clean's own precondition failed synchronously - its callback never
 		// fires, so acknowledge here or the overlay UI hangs forever.
 		eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.InvalidParameters)
 	}
@@ -118,14 +118,17 @@ notifySendSessionNativeInviteRequested = eos_sessions_add_notify_send_session_na
 {
 	// EpicSessionsSendSessionNativeInviteRequestedCallbackInfo: .session_name, .ui_event_id, ...
 	// MUST acknowledge or the social overlay UI hangs.
-	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.Success)
+	// Report what actually happened: a real game sends its own invite here (custom invites,
+	// a platform invite, ...) and passes that operation's result. This demo does not send
+	// anything, so acknowledging Success would tell the overlay a lie.
+	eos_ui_acknowledge_event_id(_info.ui_event_id, EpicResult.NotImplemented)
 })
 
 notifySessionInviteAccepted = eos_sessions_add_notify_session_invite_accepted(function(_info)
 {
 	// EpicSessionsSessionInviteAcceptedCallbackInfo: .invite_id, .local_user_id, .target_user_id, .session_id
 	// Copy the session details handle from the invite, then pass it to join_session.
-	// Don't release it until the join callback returns — the SDK reads from it during join.
+	// Don't release it until the join callback returns - the SDK reads from it during join.
 	var _details_id = eos_sessions_copy_session_handle_by_invite_id(_info.invite_id)
 	if(_details_id == 0)
 	{
