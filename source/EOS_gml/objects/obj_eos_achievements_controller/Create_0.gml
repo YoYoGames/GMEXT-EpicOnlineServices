@@ -32,7 +32,7 @@ eos_achievements_query_definitions(global.product_user_id, function(data) {
 
 		if(data.result_code != EpicResult.Success) {
 			show_debug_message("Player achievements query FAILED: " + string(data.result_code))
-			show_debug_message("Last error: " + eos_get_last_error())
+			show_debug_message("Last error: " + eos_api_last_error())
 			exit
 		}
 
