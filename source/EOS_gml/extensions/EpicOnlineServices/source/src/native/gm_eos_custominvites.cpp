@@ -4,9 +4,11 @@
 #include <eos_sdk.h>
 #include <eos_custominvites.h>
 
+#include <mutex>
 #include <optional>
 #include <string>
 #include <string_view>
+#include <unordered_map>
 #include <vector>
 
 using namespace gm::wire;
@@ -18,6 +20,11 @@ using namespace gm_enums;
 // ============================================================
 
 struct EOSAsyncCallbackContext
+{
+    std::optional<GMFunction> callback;
+};
+
+struct EOSNotifyCallbackContext
 {
     std::optional<GMFunction> callback;
 };
@@ -46,17 +53,18 @@ static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
 }
 
 // ============================================================
-// Notify globals
+// Notify callback storage
 // ============================================================
 
-static GMFunction g_cb_ci_custom_invite_received;
-static GMFunction g_cb_ci_custom_invite_accepted;
-static GMFunction g_cb_ci_custom_invite_rejected;
-static GMFunction g_cb_ci_request_to_join_response_received;
-static GMFunction g_cb_ci_request_to_join_received;
-static GMFunction g_cb_ci_send_custom_native_invite_requested;
-static GMFunction g_cb_ci_request_to_join_accepted;
-static GMFunction g_cb_ci_request_to_join_rejected;
+static std::mutex g_notify_mutex;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_custom_invite_received_callbacks;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_custom_invite_accepted_callbacks;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_custom_invite_rejected_callbacks;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_request_to_join_response_received_callbacks;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_request_to_join_received_callbacks;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_send_custom_native_invite_requested_callbacks;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_request_to_join_accepted_callbacks;
+static std::unordered_map<std::uint64_t, EOSNotifyCallbackContext*> g_ci_request_to_join_rejected_callbacks;
 
 // ============================================================
 // Notify callbacks
@@ -65,91 +73,115 @@ static GMFunction g_cb_ci_request_to_join_rejected;
 static void EOS_CALL eos_ci_custom_invite_received_callback(
     const EOS_CustomInvites_OnCustomInviteReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_custom_invite_received) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesCustomInviteReceivedCallbackInfo out{};
     out.target_user_id   = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.local_user_id    = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.custom_invite_id = data->CustomInviteId ? std::string(data->CustomInviteId) : std::string();
     out.payload          = data->Payload ? std::string(data->Payload) : std::string();
-    g_cb_ci_custom_invite_received.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_ci_custom_invite_accepted_callback(
     const EOS_CustomInvites_OnCustomInviteAcceptedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_custom_invite_accepted) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesCustomInviteAcceptedCallbackInfo out{};
     out.target_user_id   = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.local_user_id    = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.custom_invite_id = data->CustomInviteId ? std::string(data->CustomInviteId) : std::string();
     out.payload          = data->Payload ? std::string(data->Payload) : std::string();
-    g_cb_ci_custom_invite_accepted.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_ci_custom_invite_rejected_callback(
     const EOS_CustomInvites_CustomInviteRejectedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_custom_invite_rejected) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesCustomInviteRejectedCallbackInfo out{};
     out.target_user_id   = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.local_user_id    = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.custom_invite_id = data->CustomInviteId ? std::string(data->CustomInviteId) : std::string();
     out.payload          = data->Payload ? std::string(data->Payload) : std::string();
-    g_cb_ci_custom_invite_rejected.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_ci_request_to_join_response_received_callback(
     const EOS_CustomInvites_RequestToJoinResponseReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_request_to_join_response_received) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesRequestToJoinResponseReceivedCallbackInfo out{};
     out.from_user_id = eos_product_user_id_to_string_internal(data->FromUserId);
     out.to_user_id   = eos_product_user_id_to_string_internal(data->ToUserId);
     out.response     = (gm_enums::EpicRequestToJoinResponse)data->Response;
-    g_cb_ci_request_to_join_response_received.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_ci_request_to_join_received_callback(
     const EOS_CustomInvites_RequestToJoinReceivedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_request_to_join_received) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesRequestToJoinReceivedCallbackInfo out{};
     out.from_user_id = eos_product_user_id_to_string_internal(data->FromUserId);
     out.to_user_id   = eos_product_user_id_to_string_internal(data->ToUserId);
-    g_cb_ci_request_to_join_received.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_ci_send_custom_native_invite_requested_callback(
     const EOS_CustomInvites_SendCustomNativeInviteRequestedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_send_custom_native_invite_requested) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesSendCustomNativeInviteRequestedCallbackInfo out{};
     out.ui_event_id                   = (std::int64_t)data->UiEventId;
     out.local_user_id                 = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.target_native_account_type    = data->TargetNativeAccountType ? std::string(data->TargetNativeAccountType) : std::string();
     out.target_user_native_account_id = data->TargetUserNativeAccountId ? std::string(data->TargetUserNativeAccountId) : std::string();
     out.invite_id                     = data->InviteId ? std::string(data->InviteId) : std::string();
-    g_cb_ci_send_custom_native_invite_requested.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_ci_request_to_join_accepted_callback(
     const EOS_CustomInvites_OnRequestToJoinAcceptedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_request_to_join_accepted) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesRequestToJoinAcceptedCallbackInfo out{};
     out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.local_user_id  = eos_product_user_id_to_string_internal(data->LocalUserId);
-    g_cb_ci_request_to_join_accepted.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 static void EOS_CALL eos_ci_request_to_join_rejected_callback(
     const EOS_CustomInvites_OnRequestToJoinRejectedCallbackInfo* data)
 {
-    if (!data || !g_cb_ci_request_to_join_rejected) return;
+    if (!data) return;
+    auto* ctx = static_cast<EOSNotifyCallbackContext*>(data->ClientData);
+    if (!ctx) return;
+
     gm_structs::EpicCustomInvitesRequestToJoinRejectedCallbackInfo out{};
     out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.local_user_id  = eos_product_user_id_to_string_internal(data->LocalUserId);
-    g_cb_ci_request_to_join_rejected.call(out);
+    if (ctx->callback) ctx->callback.value().call(out);
 }
 
 // Async callbacks
@@ -211,7 +243,7 @@ static void EOS_CALL eos_ci_reject_request_to_join_callback(
 }
 
 // ============================================================
-// EOS Custom Invites — Core functions
+// EOS Custom Invites - Core functions
 // ============================================================
 
 bool eos_custominvites_set_custom_invite(
@@ -376,7 +408,7 @@ void eos_custominvites_reject_request_to_join(
 }
 
 // ============================================================
-// EOS Custom Invites — Notify add/remove
+// EOS Custom Invites - Notify add/remove
 // ============================================================
 
 std::uint64_t eos_custominvites_add_notify_custom_invite_received(const std::optional<gm::wire::GMFunction>& callback)
@@ -384,11 +416,21 @@ std::uint64_t eos_custominvites_add_notify_custom_invite_received(const std::opt
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_custom_invite_received = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifyCustomInviteReceivedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYCUSTOMINVITERECEIVED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifyCustomInviteReceived(
-        ci, &opts, nullptr, &eos_ci_custom_invite_received_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifyCustomInviteReceived(
+        ci, &opts, ctx, &eos_ci_custom_invite_received_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifyCustomInviteReceived returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_custom_invite_received_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_custom_invite_received(std::uint64_t notification_id)
@@ -397,6 +439,13 @@ void eos_custominvites_remove_notify_custom_invite_received(std::uint64_t notifi
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifyCustomInviteReceived(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_custom_invite_received_callbacks.find(notification_id);
+    if (it != g_ci_custom_invite_received_callbacks.end()) {
+        delete it->second;
+        g_ci_custom_invite_received_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_custominvites_add_notify_custom_invite_accepted(const std::optional<gm::wire::GMFunction>& callback)
@@ -404,11 +453,21 @@ std::uint64_t eos_custominvites_add_notify_custom_invite_accepted(const std::opt
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_custom_invite_accepted = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifyCustomInviteAcceptedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYCUSTOMINVITEACCEPTED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifyCustomInviteAccepted(
-        ci, &opts, nullptr, &eos_ci_custom_invite_accepted_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifyCustomInviteAccepted(
+        ci, &opts, ctx, &eos_ci_custom_invite_accepted_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifyCustomInviteAccepted returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_custom_invite_accepted_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_custom_invite_accepted(std::uint64_t notification_id)
@@ -417,6 +476,13 @@ void eos_custominvites_remove_notify_custom_invite_accepted(std::uint64_t notifi
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifyCustomInviteAccepted(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_custom_invite_accepted_callbacks.find(notification_id);
+    if (it != g_ci_custom_invite_accepted_callbacks.end()) {
+        delete it->second;
+        g_ci_custom_invite_accepted_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_custominvites_add_notify_custom_invite_rejected(const std::optional<gm::wire::GMFunction>& callback)
@@ -424,11 +490,21 @@ std::uint64_t eos_custominvites_add_notify_custom_invite_rejected(const std::opt
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_custom_invite_rejected = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifyCustomInviteRejectedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYCUSTOMINVITEREJECTED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifyCustomInviteRejected(
-        ci, &opts, nullptr, &eos_ci_custom_invite_rejected_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifyCustomInviteRejected(
+        ci, &opts, ctx, &eos_ci_custom_invite_rejected_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifyCustomInviteRejected returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_custom_invite_rejected_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_custom_invite_rejected(std::uint64_t notification_id)
@@ -437,6 +513,13 @@ void eos_custominvites_remove_notify_custom_invite_rejected(std::uint64_t notifi
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifyCustomInviteRejected(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_custom_invite_rejected_callbacks.find(notification_id);
+    if (it != g_ci_custom_invite_rejected_callbacks.end()) {
+        delete it->second;
+        g_ci_custom_invite_rejected_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_custominvites_add_notify_request_to_join_response_received(const std::optional<gm::wire::GMFunction>& callback)
@@ -444,11 +527,21 @@ std::uint64_t eos_custominvites_add_notify_request_to_join_response_received(con
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_request_to_join_response_received = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifyRequestToJoinResponseReceivedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINRESPONSERECEIVED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifyRequestToJoinResponseReceived(
-        ci, &opts, nullptr, &eos_ci_request_to_join_response_received_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifyRequestToJoinResponseReceived(
+        ci, &opts, ctx, &eos_ci_request_to_join_response_received_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifyRequestToJoinResponseReceived returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_request_to_join_response_received_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_request_to_join_response_received(std::uint64_t notification_id)
@@ -457,6 +550,13 @@ void eos_custominvites_remove_notify_request_to_join_response_received(std::uint
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifyRequestToJoinResponseReceived(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_request_to_join_response_received_callbacks.find(notification_id);
+    if (it != g_ci_request_to_join_response_received_callbacks.end()) {
+        delete it->second;
+        g_ci_request_to_join_response_received_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_custominvites_add_notify_request_to_join_received(const std::optional<gm::wire::GMFunction>& callback)
@@ -464,11 +564,21 @@ std::uint64_t eos_custominvites_add_notify_request_to_join_received(const std::o
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_request_to_join_received = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifyRequestToJoinReceivedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINRECEIVED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifyRequestToJoinReceived(
-        ci, &opts, nullptr, &eos_ci_request_to_join_received_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifyRequestToJoinReceived(
+        ci, &opts, ctx, &eos_ci_request_to_join_received_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifyRequestToJoinReceived returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_request_to_join_received_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_request_to_join_received(std::uint64_t notification_id)
@@ -477,6 +587,13 @@ void eos_custominvites_remove_notify_request_to_join_received(std::uint64_t noti
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifyRequestToJoinReceived(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_request_to_join_received_callbacks.find(notification_id);
+    if (it != g_ci_request_to_join_received_callbacks.end()) {
+        delete it->second;
+        g_ci_request_to_join_received_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_custominvites_add_notify_send_custom_native_invite_requested(const std::optional<gm::wire::GMFunction>& callback)
@@ -484,11 +601,21 @@ std::uint64_t eos_custominvites_add_notify_send_custom_native_invite_requested(c
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_send_custom_native_invite_requested = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifySendCustomNativeInviteRequestedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYSENDCUSTOMNATIVEINVITEREQUESTED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifySendCustomNativeInviteRequested(
-        ci, &opts, nullptr, &eos_ci_send_custom_native_invite_requested_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifySendCustomNativeInviteRequested(
+        ci, &opts, ctx, &eos_ci_send_custom_native_invite_requested_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifySendCustomNativeInviteRequested returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_send_custom_native_invite_requested_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_send_custom_native_invite_requested(std::uint64_t notification_id)
@@ -497,6 +624,13 @@ void eos_custominvites_remove_notify_send_custom_native_invite_requested(std::ui
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifySendCustomNativeInviteRequested(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_send_custom_native_invite_requested_callbacks.find(notification_id);
+    if (it != g_ci_send_custom_native_invite_requested_callbacks.end()) {
+        delete it->second;
+        g_ci_send_custom_native_invite_requested_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_custominvites_add_notify_request_to_join_accepted(const std::optional<gm::wire::GMFunction>& callback)
@@ -504,11 +638,21 @@ std::uint64_t eos_custominvites_add_notify_request_to_join_accepted(const std::o
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_request_to_join_accepted = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifyRequestToJoinAcceptedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINACCEPTED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifyRequestToJoinAccepted(
-        ci, &opts, nullptr, &eos_ci_request_to_join_accepted_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifyRequestToJoinAccepted(
+        ci, &opts, ctx, &eos_ci_request_to_join_accepted_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifyRequestToJoinAccepted returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_request_to_join_accepted_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_request_to_join_accepted(std::uint64_t notification_id)
@@ -517,6 +661,13 @@ void eos_custominvites_remove_notify_request_to_join_accepted(std::uint64_t noti
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifyRequestToJoinAccepted(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_request_to_join_accepted_callbacks.find(notification_id);
+    if (it != g_ci_request_to_join_accepted_callbacks.end()) {
+        delete it->second;
+        g_ci_request_to_join_accepted_callbacks.erase(it);
+    }
 }
 
 std::uint64_t eos_custominvites_add_notify_request_to_join_rejected(const std::optional<gm::wire::GMFunction>& callback)
@@ -524,11 +675,21 @@ std::uint64_t eos_custominvites_add_notify_request_to_join_rejected(const std::o
     eos_clear_last_error();
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return 0; }
-    g_cb_ci_request_to_join_rejected = callback.value_or(GMFunction{});
+    auto* ctx = new EOSNotifyCallbackContext{callback};
     EOS_CustomInvites_AddNotifyRequestToJoinRejectedOptions opts{};
     opts.ApiVersion = EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINREJECTED_API_LATEST;
-    return (std::uint64_t)EOS_CustomInvites_AddNotifyRequestToJoinRejected(
-        ci, &opts, nullptr, &eos_ci_request_to_join_rejected_callback);
+    EOS_NotificationId id = EOS_CustomInvites_AddNotifyRequestToJoinRejected(
+        ci, &opts, ctx, &eos_ci_request_to_join_rejected_callback);
+
+    if (id == EOS_INVALID_NOTIFICATIONID) {
+        delete ctx;
+        eos_set_last_error("EOS_CustomInvites_AddNotifyRequestToJoinRejected returned invalid ID.");
+        return 0;
+    }
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    g_ci_request_to_join_rejected_callbacks[(std::uint64_t)id] = ctx;
+    return (std::uint64_t)id;
 }
 
 void eos_custominvites_remove_notify_request_to_join_rejected(std::uint64_t notification_id)
@@ -537,4 +698,11 @@ void eos_custominvites_remove_notify_request_to_join_rejected(std::uint64_t noti
     EOS_HCustomInvites ci = eos_ci_iface();
     if (!ci) { eos_set_last_error("EOS CustomInvites interface unavailable."); return; }
     EOS_CustomInvites_RemoveNotifyRequestToJoinRejected(ci, (EOS_NotificationId)notification_id);
+
+    std::lock_guard<std::mutex> lock(g_notify_mutex);
+    auto it = g_ci_request_to_join_rejected_callbacks.find(notification_id);
+    if (it != g_ci_request_to_join_rejected_callbacks.end()) {
+        delete it->second;
+        g_ci_request_to_join_rejected_callbacks.erase(it);
+    }
 }
