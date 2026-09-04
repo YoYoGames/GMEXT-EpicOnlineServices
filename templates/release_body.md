@@ -2,9 +2,9 @@
 
 - This extension version will be compatible with the GM 2022.0.1 LTSr1 (upon release)
 - This extension is to be used with GM 2023.1 and future releases.
-- Requires EOS SDK version 1.16.3 (or recent)
-- Works with **Windows** and **macOS** (YYC only).
-- Linux (VM and YYC) is still experimental (there is no official launcher)
+- Requires EOS SDK version 1.19.1.2
+- Works with **Windows**, **macOS**, **Linux**, **Android** and **iOS**.
+- Linux is still experimental (there is no official Epic launcher for it)
 
 ## CHANGES SINCE ${releaseOldVersion}
 
@@ -19,13 +19,23 @@ Epic Online Services is a set of tools and services that help game developers an
 - Achievements API
 - Auth API
 - Connect API
+- Custom Invites API
+- Ecom API
 - Friends API
 - Leaderboards API
+- Lobbies API
+- Logging API
 - Metrics API
+- P2P API
 - Platform API
 - Player Data Storage API
+- Presence API
 - Progression Snapshot API
+- Reports API
+- RTC API
+- RTC Data API
 - Sanctions API
+- Sessions API
 - Stats API
 - Title Storage API
 - UI API
