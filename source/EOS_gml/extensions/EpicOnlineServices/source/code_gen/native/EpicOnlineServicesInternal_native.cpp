@@ -5382,8 +5382,8 @@ GMEXPORT double __EXT_NATIVE__eos_ecom_query_entitlements(char* __arg_buffer, do
     // field: entitlement_names, type: String[]
     std::vector<std::string_view> entitlement_names = gm::wire::codec::readVector<std::string_view>(__br);
 
-    // field: include_redeemed, type: Int64
-    std::int64_t include_redeemed = gm::wire::codec::readValue<std::int64_t>(__br);
+    // field: include_redeemed, type: Bool
+    bool include_redeemed = gm::wire::codec::readValue<bool>(__br);
 
     // field: catalog_namespace, type: String
     std::string_view catalog_namespace = gm::wire::codec::readValue<std::string_view>(__br);

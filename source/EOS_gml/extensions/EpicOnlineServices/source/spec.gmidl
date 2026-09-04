@@ -955,7 +955,7 @@ function eos_ui_add_notify_display_settings_updated([type_hint=`func?`] callback
 function eos_ui_remove_notify_display_settings_updated([type_hint=`uint64`] notification_id: gmval): unit;
 
 // ============================================================
-// EOS UI (Part 3) — Additional functions
+// EOS UI (Part 3) - Additional functions
 // ============================================================
 
 [global]
@@ -1368,9 +1368,6 @@ class `[[EpicAchievementsDefinitionV2]]` prototype Object
 
     [field]
     property flavor_text : string { get; set; }
-
-    [field]
-    property completion_description : string { get; set; }
 
     [field]
     property unlocked_icon_url : string { get; set; }
@@ -1923,11 +1920,32 @@ class `[[EpicSessionDetailsInfo]]` prototype Object
     [field, type_hint=`int64`]
     property num_open_public_connections : gmval { get; set; }
 
-    [field, type_hint=`int64`]
-    property settings_count : gmval { get; set; }
-
     [field]
     property owner_server_client_id : string { get; set; }
+
+    [field]
+    property bucket_id : string { get; set; }
+
+    [field, type_hint=`int64`]
+    property num_public_connections : gmval { get; set; }
+
+    [field]
+    property allow_join_in_progress : bool { get; set; }
+
+    [field, type_hint=`EpicOnlineSessionPermissionLevel`]
+    property permission_level : gmval { get; set; }
+
+    [field]
+    property invites_allowed : bool { get; set; }
+
+    [field]
+    property sanctions_enabled : bool { get; set; }
+
+    [field, type_hint=`int64`]
+    property allowed_platform_ids_count : gmval { get; set; }
+
+    [field, type_hint=`uint32[]`]
+    property allowed_platform_ids : gmval { get; set; }
 }
 
 [global]
@@ -1950,6 +1968,9 @@ class `[[EpicActiveSessionInfo]]` prototype Object
 
     [field]
     property host_address : string { get; set; }
+
+    [field, type_hint=`EpicOnlineSessionState`]
+    property state : gmval { get; set; }
 }
 
 [global]
@@ -2025,7 +2046,7 @@ function eos_sessions_add_notify_join_session_accepted([type_hint=`func?`] callb
 function eos_sessions_remove_notify_join_session_accepted([type_hint=`uint64`] notification_id: gmval): unit;
 
 // ============================================================
-// EOS Sessions (Part 5) — SessionModification setters
+// EOS Sessions (Part 5) - SessionModification setters
 // ============================================================
 
 [global]
@@ -2914,7 +2935,7 @@ function eos_lobby_add_notify_rtc_room_connection_changed([type_hint=`func?`] ca
 function eos_lobby_remove_notify_rtc_room_connection_changed([type_hint=`uint64`] notification_id: gmval): unit;
 
 // ============================================================
-// EOS Lobby (Part N) — LobbyDetails attribute/member accessors, JoinById, HardMute, Invites
+// EOS Lobby (Part N) - LobbyDetails attribute/member accessors, JoinById, HardMute, Invites
 // ============================================================
 
 [global]
@@ -3729,8 +3750,8 @@ class `[[EpicEcomEntitlement]]` prototype Object
     [field, type_hint=`int64`]
     property server_index : gmval { get; set; }
 
-    [field, type_hint=`int64`]
-    property redeemed : gmval { get; set; }
+    [field]
+    property redeemed : bool { get; set; }
 
     [field, type_hint=`int64`]
     property end_timestamp : gmval { get; set; }
@@ -3752,8 +3773,8 @@ class `[[EpicEcomSandboxIdItemOwnership]]` prototype Object
     [field]
     property sandbox_id : string { get; set; }
 
-    [field]
-    property owned_catalog_item_ids : string { get; set; }
+    [field, type_hint=`string[]`]
+    property owned_catalog_item_ids : gmval { get; set; }
 }
 
 [global]
@@ -3864,11 +3885,11 @@ class `[[EpicEcomKeyImageInfo]]` prototype Object
 [global]
 class `[[EpicEcomCatalogRelease]]` prototype Object
 {
-    [field]
-    property compatible_app_ids : string { get; set; }
+    [field, type_hint=`string[]`]
+    property compatible_app_ids : gmval { get; set; }
 
-    [field]
-    property compatible_platforms : string { get; set; }
+    [field, type_hint=`string[]`]
+    property compatible_platforms : gmval { get; set; }
 
     [field]
     property release_note : string { get; set; }
@@ -3984,7 +4005,7 @@ function eos_ecom_query_ownership_by_sandbox_ids(local_user_id: string, [type_hi
 function eos_ecom_query_ownership_token(local_user_id: string, [type_hint=`string[]`] catalog_item_ids: gmval, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
-function eos_ecom_query_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, include_redeemed: int64, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
+function eos_ecom_query_entitlements(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, include_redeemed: bool, catalog_namespace: string, [type_hint=`func?`] callback: gmval): unit;
 
 [global, bind = typed_gml]
 function eos_ecom_query_entitlement_token(local_user_id: string, [type_hint=`string[]`] entitlement_names: gmval, [type_hint=`func?`] callback: gmval): unit;
@@ -4680,7 +4701,7 @@ class `[[EpicRTCAudioBeforeSendCallbackInfo]]` prototype Object
     [field]
     property frames_count : uint32 { get; set; }
 
-    // Metadata only — the PCM frames are held natively keyed by this handle. Call
+    // Metadata only - the PCM frames are held natively keyed by this handle. Call
     // eos_rtc_audio_before_send_data_fetch(handle_id, buffer) to copy them out (sized
     // frames_count * channels * 2 bytes); a handle is valid until fetched or superseded by
     // this same registration's next firing, whichever comes first.
@@ -4709,7 +4730,7 @@ class `[[EpicRTCAudioBeforeRenderCallbackInfo]]` prototype Object
     [field]
     property frames_count : uint32 { get; set; }
 
-    // Metadata only — see EpicRTCAudioBeforeSendCallbackInfo.handle_id. Fetch with
+    // Metadata only - see EpicRTCAudioBeforeSendCallbackInfo.handle_id. Fetch with
     // eos_rtc_audio_before_render_data_fetch(handle_id, buffer).
     [field, type_hint=`uint64`]
     property handle_id : gmval { get; set; }
@@ -4868,7 +4889,7 @@ function eos_rtc_audio_register_platform_user(rtc_platform_user_id: string, [typ
 function eos_rtc_audio_unregister_platform_user(rtc_platform_user_id: string, [type_hint=`func?`] callback: gmval): unit;
 
 // ============================================================
-// EOS RTC Data — binary data channel (peer-to-peer messages alongside audio)
+// EOS RTC Data - binary data channel (peer-to-peer messages alongside audio)
 // ============================================================
 
 [global]
@@ -4902,7 +4923,7 @@ class `[[EpicRTCDataReceivedCallbackInfo]]` prototype Object
     [field, type_hint=`int64`]
     property data_length_bytes : gmval { get; set; }
 
-    // Metadata only — the raw bytes are held natively keyed by this handle. Call
+    // Metadata only - the raw bytes are held natively keyed by this handle. Call
     // eos_rtc_data_received_data_fetch(handle_id, buffer) to copy them out (sized
     // data_length_bytes); a handle is valid until fetched or superseded by this same
     // registration's next firing, whichever comes first.
@@ -5049,6 +5070,8 @@ enum EpicResult
     RequestInProgress = 39,
     ApplicationSuspended = 40,
     NetworkDisconnected = 41,
+    InsufficientOutputBuffer = 42,
+    ClientPolicyMissingAction = 43,
 
     // Auth
     Auth_AccountLocked = 1001,
@@ -5108,6 +5131,16 @@ enum EpicResult
     Presence_RichTextInvalid = 3006,
     Presence_RichTextLengthInvalid = 3007,
     Presence_StatusInvalid = 3008,
+    Presence_RichTextNotSupported = 3009,
+    Presence_TemplateNotSupported = 3010,
+    Presence_TemplateIdInvalid = 3011,
+    Presence_TemplateTypeInvalid = 3012,
+    Presence_TemplateKeyInvalid = 3013,
+    Presence_TemplateValueInvalid = 3014,
+    Presence_TemplateNotFound = 3015,
+    Presence_TemplateInvalidVariableInput = 3016,
+    Presence_TemplateLocalizationServerError = 3017,
+    Presence_TemplateUnknownError = 3018,
 
     // Ecom
     Ecom_EntitlementStale = 4000,
@@ -5116,6 +5149,7 @@ enum EpicResult
     Ecom_CatalogOfferPriceInvalid = 4003,
     Ecom_CheckoutLoadError = 4004,
     Ecom_PurchaseProcessing = 4005,
+    Ecom_CatalogOfferInvalid = 4006,
 
     // Sessions
     Sessions_SessionInProgress = 5000,
@@ -5193,6 +5227,62 @@ enum EpicResult
     Lobby_PresenceLobbyExists = 9018,
     Lobby_VoiceNotEnabled = 9019,
     Lobby_PlatformNotAllowed = 9020,
+
+    // TitleStorage
+    TitleStorage_UserErrorFromDataCallback = 10000,
+    TitleStorage_EncryptionKeyNotSet = 10001,
+    TitleStorage_FileCorrupted = 10002,
+    TitleStorage_FileHeaderHasNewerVersion = 10003,
+
+    // RTC
+    RTC_TooManyParticipants = 13000,
+    RTC_RoomAlreadyExists = 13001,
+    RTC_UserKicked = 13002,
+    RTC_UserBanned = 13003,
+    RTC_RoomWasLeft = 13004,
+    RTC_ReconnectionTimegateExpired = 13005,
+    RTC_ShutdownInvoked = 13006,
+    RTC_UserIsInBlocklist = 13007,
+    RTC_AllocationFailed = 13009,
+    RTC_VoiceModerationModeMismatch = 13010,
+    RTC_EmptyRecord = 13011,
+    RTC_RoomOptionsMismatch = 13012,
+
+    // ProgressionSnapshot
+    ProgressionSnapshot_SnapshotIdUnavailable = 14000,
+
+    // Android
+    Android_JavaVMNotStored = 17000,
+    Android_ReservedMustReferenceLocalVM = 17001,
+    Android_ReservedMustBeNull = 17002,
+
+    // Permission
+    Permission_RequiredPatchAvailable = 18000,
+    Permission_RequiredSystemUpdate = 18001,
+    Permission_AgeRestrictionFailure = 18002,
+    Permission_AccountTypeFailure = 18003,
+    Permission_ChatRestriction = 18004,
+    Permission_UGCRestriction = 18005,
+    Permission_OnlinePlayRestricted = 18006,
+
+    // DesktopCrossplay
+    DesktopCrossplay_ApplicationNotBootstrapped = 19000,
+    DesktopCrossplay_ServiceNotInstalled = 19001,
+    DesktopCrossplay_ServiceStartFailed = 19002,
+    DesktopCrossplay_ServiceNotRunning = 19003,
+
+    // CustomInvites
+    CustomInvites_InviteFailed = 20000,
+
+    // UserInfo
+    UserInfo_BestDisplayNameIndeterminate = 22000,
+
+    // ConsoleInit
+    ConsoleInit_OnNetworkRequestedDeprecatedCallbackNotSet = 23000,
+    ConsoleInit_CacheStorage_SizeKBNotMultipleOf16 = 23001,
+    ConsoleInit_CacheStorage_SizeKBBelowMinimumSize = 23002,
+    ConsoleInit_CacheStorage_SizeKBExceedsMaximumSize = 23003,
+    ConsoleInit_CacheStorage_IndexOutOfRangeRange = 23004,
 
     UnexpectedError = 0x7FFFFFFF
 }
@@ -5415,10 +5505,6 @@ enum EpicLinkAccountFlags
     NintendoNsaId = 0x1,
 }
 
-[global, bind = typed_gml]// eos_base.h
-enum Epicname
-{
-}
 
 [global, bind = typed_gml]// eos_common.h
 enum EpicLoginStatus

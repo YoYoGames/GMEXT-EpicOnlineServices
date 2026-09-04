@@ -60,6 +60,8 @@ namespace gm_enums
         RequestInProgress = 39,
         ApplicationSuspended = 40,
         NetworkDisconnected = 41,
+        InsufficientOutputBuffer = 42,
+        ClientPolicyMissingAction = 43,
         Auth_AccountLocked = 1001,
         Auth_AccountLockedForUpdate = 1002,
         Auth_InvalidRefreshToken = 1003,
@@ -113,12 +115,23 @@ namespace gm_enums
         Presence_RichTextInvalid = 3006,
         Presence_RichTextLengthInvalid = 3007,
         Presence_StatusInvalid = 3008,
+        Presence_RichTextNotSupported = 3009,
+        Presence_TemplateNotSupported = 3010,
+        Presence_TemplateIdInvalid = 3011,
+        Presence_TemplateTypeInvalid = 3012,
+        Presence_TemplateKeyInvalid = 3013,
+        Presence_TemplateValueInvalid = 3014,
+        Presence_TemplateNotFound = 3015,
+        Presence_TemplateInvalidVariableInput = 3016,
+        Presence_TemplateLocalizationServerError = 3017,
+        Presence_TemplateUnknownError = 3018,
         Ecom_EntitlementStale = 4000,
         Ecom_CatalogOfferStale = 4001,
         Ecom_CatalogItemStale = 4002,
         Ecom_CatalogOfferPriceInvalid = 4003,
         Ecom_CheckoutLoadError = 4004,
         Ecom_PurchaseProcessing = 4005,
+        Ecom_CatalogOfferInvalid = 4006,
         Sessions_SessionInProgress = 5000,
         Sessions_TooManyPlayers = 5001,
         Sessions_NoPermission = 5002,
@@ -186,6 +199,44 @@ namespace gm_enums
         Lobby_PresenceLobbyExists = 9018,
         Lobby_VoiceNotEnabled = 9019,
         Lobby_PlatformNotAllowed = 9020,
+        TitleStorage_UserErrorFromDataCallback = 10000,
+        TitleStorage_EncryptionKeyNotSet = 10001,
+        TitleStorage_FileCorrupted = 10002,
+        TitleStorage_FileHeaderHasNewerVersion = 10003,
+        RTC_TooManyParticipants = 13000,
+        RTC_RoomAlreadyExists = 13001,
+        RTC_UserKicked = 13002,
+        RTC_UserBanned = 13003,
+        RTC_RoomWasLeft = 13004,
+        RTC_ReconnectionTimegateExpired = 13005,
+        RTC_ShutdownInvoked = 13006,
+        RTC_UserIsInBlocklist = 13007,
+        RTC_AllocationFailed = 13009,
+        RTC_VoiceModerationModeMismatch = 13010,
+        RTC_EmptyRecord = 13011,
+        RTC_RoomOptionsMismatch = 13012,
+        ProgressionSnapshot_SnapshotIdUnavailable = 14000,
+        Android_JavaVMNotStored = 17000,
+        Android_ReservedMustReferenceLocalVM = 17001,
+        Android_ReservedMustBeNull = 17002,
+        Permission_RequiredPatchAvailable = 18000,
+        Permission_RequiredSystemUpdate = 18001,
+        Permission_AgeRestrictionFailure = 18002,
+        Permission_AccountTypeFailure = 18003,
+        Permission_ChatRestriction = 18004,
+        Permission_UGCRestriction = 18005,
+        Permission_OnlinePlayRestricted = 18006,
+        DesktopCrossplay_ApplicationNotBootstrapped = 19000,
+        DesktopCrossplay_ServiceNotInstalled = 19001,
+        DesktopCrossplay_ServiceStartFailed = 19002,
+        DesktopCrossplay_ServiceNotRunning = 19003,
+        CustomInvites_InviteFailed = 20000,
+        UserInfo_BestDisplayNameIndeterminate = 22000,
+        ConsoleInit_OnNetworkRequestedDeprecatedCallbackNotSet = 23000,
+        ConsoleInit_CacheStorage_SizeKBNotMultipleOf16 = 23001,
+        ConsoleInit_CacheStorage_SizeKBBelowMinimumSize = 23002,
+        ConsoleInit_CacheStorage_SizeKBExceedsMaximumSize = 23003,
+        ConsoleInit_CacheStorage_IndexOutOfRangeRange = 23004,
         UnexpectedError = 2147483647
     };
 
@@ -383,10 +434,6 @@ namespace gm_enums
     {
         NoFlags = 0,
         NintendoNsaId = 1
-    };
-
-    enum class Epicname : std::int64_t
-    {
     };
 
     enum class EpicLoginStatus : std::int64_t
@@ -1415,7 +1462,6 @@ namespace gm_structs
         std::string locked_display_name;
         std::string locked_description;
         std::string flavor_text;
-        std::string completion_description;
         std::string unlocked_icon_url;
         std::string locked_icon_url;
         bool is_hidden;
@@ -1558,8 +1604,15 @@ namespace gm_structs
         std::string host_address;
         std::string owner_user_id;
         std::int64_t num_open_public_connections;
-        std::int64_t settings_count;
         std::string owner_server_client_id;
+        std::string bucket_id;
+        std::int64_t num_public_connections;
+        bool allow_join_in_progress;
+        gm_enums::EpicOnlineSessionPermissionLevel permission_level;
+        bool invites_allowed;
+        bool sanctions_enabled;
+        std::int64_t allowed_platform_ids_count;
+        std::vector<std::uint32_t> allowed_platform_ids;
     };
 
     struct EpicActiveSessionInfo
@@ -1570,6 +1623,7 @@ namespace gm_structs
         std::string bucket_id;
         std::string owner_user_id;
         std::string host_address;
+        gm_enums::EpicOnlineSessionState state;
     };
 
     struct EpicSessionsSessionInviteReceivedCallbackInfo
@@ -2093,7 +2147,7 @@ namespace gm_structs
         std::string entitlement_id;
         std::string catalog_item_id;
         std::int64_t server_index;
-        std::int64_t redeemed;
+        bool redeemed;
         std::int64_t end_timestamp;
     };
 
@@ -2106,7 +2160,7 @@ namespace gm_structs
     struct EpicEcomSandboxIdItemOwnership
     {
         std::string sandbox_id;
-        std::string owned_catalog_item_ids;
+        std::vector<std::string> owned_catalog_item_ids;
     };
 
     struct EpicEcomCatalogOffer
@@ -2154,8 +2208,8 @@ namespace gm_structs
 
     struct EpicEcomCatalogRelease
     {
-        std::string compatible_app_ids;
-        std::string compatible_platforms;
+        std::vector<std::string> compatible_app_ids;
+        std::vector<std::string> compatible_platforms;
         std::string release_note;
     };
 
@@ -3520,7 +3574,6 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.locked_display_name);
         gm::wire::codec::writeValue(_buf, obj.locked_description);
         gm::wire::codec::writeValue(_buf, obj.flavor_text);
-        gm::wire::codec::writeValue(_buf, obj.completion_description);
         gm::wire::codec::writeValue(_buf, obj.unlocked_icon_url);
         gm::wire::codec::writeValue(_buf, obj.locked_icon_url);
         gm::wire::codec::writeValue(_buf, obj.is_hidden);
@@ -3537,7 +3590,6 @@ namespace gm::wire::codec
         obj.locked_display_name = gm::wire::codec::readValue<std::string>(_buf);
         obj.locked_description = gm::wire::codec::readValue<std::string>(_buf);
         obj.flavor_text = gm::wire::codec::readValue<std::string>(_buf);
-        obj.completion_description = gm::wire::codec::readValue<std::string>(_buf);
         obj.unlocked_icon_url = gm::wire::codec::readValue<std::string>(_buf);
         obj.locked_icon_url = gm::wire::codec::readValue<std::string>(_buf);
         obj.is_hidden = gm::wire::codec::readValue<bool>(_buf);
@@ -3896,8 +3948,15 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.host_address);
         gm::wire::codec::writeValue(_buf, obj.owner_user_id);
         gm::wire::codec::writeValue(_buf, obj.num_open_public_connections);
-        gm::wire::codec::writeValue(_buf, obj.settings_count);
         gm::wire::codec::writeValue(_buf, obj.owner_server_client_id);
+        gm::wire::codec::writeValue(_buf, obj.bucket_id);
+        gm::wire::codec::writeValue(_buf, obj.num_public_connections);
+        gm::wire::codec::writeValue(_buf, obj.allow_join_in_progress);
+        gm::wire::codec::writeValue(_buf, obj.permission_level);
+        gm::wire::codec::writeValue(_buf, obj.invites_allowed);
+        gm::wire::codec::writeValue(_buf, obj.sanctions_enabled);
+        gm::wire::codec::writeValue(_buf, obj.allowed_platform_ids_count);
+        gm::wire::codec::writeValue(_buf, obj.allowed_platform_ids);
     }
 
     template<>
@@ -3908,8 +3967,15 @@ namespace gm::wire::codec
         obj.host_address = gm::wire::codec::readValue<std::string>(_buf);
         obj.owner_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.num_open_public_connections = gm::wire::codec::readValue<std::int64_t>(_buf);
-        obj.settings_count = gm::wire::codec::readValue<std::int64_t>(_buf);
         obj.owner_server_client_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.bucket_id = gm::wire::codec::readValue<std::string>(_buf);
+        obj.num_public_connections = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.allow_join_in_progress = gm::wire::codec::readValue<bool>(_buf);
+        obj.permission_level = gm::wire::codec::readValue<gm_enums::EpicOnlineSessionPermissionLevel>(_buf);
+        obj.invites_allowed = gm::wire::codec::readValue<bool>(_buf);
+        obj.sanctions_enabled = gm::wire::codec::readValue<bool>(_buf);
+        obj.allowed_platform_ids_count = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.allowed_platform_ids = gm::wire::codec::readVector<std::uint32_t>(_buf);
         return obj;
     }
 
@@ -3922,6 +3988,7 @@ namespace gm::wire::codec
         gm::wire::codec::writeValue(_buf, obj.bucket_id);
         gm::wire::codec::writeValue(_buf, obj.owner_user_id);
         gm::wire::codec::writeValue(_buf, obj.host_address);
+        gm::wire::codec::writeValue(_buf, obj.state);
     }
 
     template<>
@@ -3934,6 +4001,7 @@ namespace gm::wire::codec
         obj.bucket_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.owner_user_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.host_address = gm::wire::codec::readValue<std::string>(_buf);
+        obj.state = gm::wire::codec::readValue<gm_enums::EpicOnlineSessionState>(_buf);
         return obj;
     }
 
@@ -5274,7 +5342,7 @@ namespace gm::wire::codec
         obj.entitlement_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.catalog_item_id = gm::wire::codec::readValue<std::string>(_buf);
         obj.server_index = gm::wire::codec::readValue<std::int64_t>(_buf);
-        obj.redeemed = gm::wire::codec::readValue<std::int64_t>(_buf);
+        obj.redeemed = gm::wire::codec::readValue<bool>(_buf);
         obj.end_timestamp = gm::wire::codec::readValue<std::int64_t>(_buf);
         return obj;
     }
@@ -5307,7 +5375,7 @@ namespace gm::wire::codec
     {
         gm_structs::EpicEcomSandboxIdItemOwnership obj;
         obj.sandbox_id = gm::wire::codec::readValue<std::string>(_buf);
-        obj.owned_catalog_item_ids = gm::wire::codec::readValue<std::string>(_buf);
+        obj.owned_catalog_item_ids = gm::wire::codec::readVector<std::string>(_buf);
         return obj;
     }
 
@@ -5421,8 +5489,8 @@ namespace gm::wire::codec
     inline gm_structs::EpicEcomCatalogRelease readValue<gm_structs::EpicEcomCatalogRelease>(gm::byteio::BufferReader& _buf)
     {
         gm_structs::EpicEcomCatalogRelease obj;
-        obj.compatible_app_ids = gm::wire::codec::readValue<std::string>(_buf);
-        obj.compatible_platforms = gm::wire::codec::readValue<std::string>(_buf);
+        obj.compatible_app_ids = gm::wire::codec::readVector<std::string>(_buf);
+        obj.compatible_platforms = gm::wire::codec::readVector<std::string>(_buf);
         obj.release_note = gm::wire::codec::readValue<std::string>(_buf);
         return obj;
     }
@@ -8317,7 +8385,7 @@ void eos_titlestorage_delete_cache(std::string_view local_user_id, const std::op
 void eos_ecom_query_ownership(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_ownership_by_sandbox_ids(std::string_view local_user_id, const std::vector<std::string_view>& sandbox_ids, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_ownership_token(std::string_view local_user_id, const std::vector<std::string_view>& catalog_item_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
-void eos_ecom_query_entitlements(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_names, std::int64_t include_redeemed, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
+void eos_ecom_query_entitlements(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_names, bool include_redeemed, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_entitlement_token(std::string_view local_user_id, const std::vector<std::string_view>& entitlement_names, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_query_offers(std::string_view local_user_id, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);
 void eos_ecom_checkout(std::string_view local_user_id, const std::vector<std::string_view>& offer_ids, std::string_view catalog_namespace, const std::optional<gm::wire::GMFunction>& callback);

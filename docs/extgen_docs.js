@@ -2473,7 +2473,7 @@
  * @function_partial eos_ecom_query_entitlements
  * @param {String} local_user_id
  * @param {Array[String]} entitlement_names
- * @param {Real} include_redeemed
+ * @param {Bool} include_redeemed
  * @param {String} catalog_namespace
  * @param {Function} [callback]
  * @function_end
@@ -3709,7 +3709,6 @@
  * @member {String} locked_display_name
  * @member {String} locked_description
  * @member {String} flavor_text
- * @member {String} completion_description
  * @member {String} unlocked_icon_url
  * @member {String} locked_icon_url
  * @member {Bool} is_hidden
@@ -3874,8 +3873,15 @@
  * @member {String} host_address
  * @member {String} owner_user_id
  * @member {Real} num_open_public_connections
- * @member {Real} settings_count
  * @member {String} owner_server_client_id
+ * @member {String} bucket_id
+ * @member {Real} num_public_connections
+ * @member {Bool} allow_join_in_progress
+ * @member {Enum.EpicOnlineSessionPermissionLevel} permission_level
+ * @member {Bool} invites_allowed
+ * @member {Bool} sanctions_enabled
+ * @member {Real} allowed_platform_ids_count
+ * @member {Array[Real]} allowed_platform_ids
  * @struct_end
  */
 
@@ -3887,6 +3893,7 @@
  * @member {String} bucket_id
  * @member {String} owner_user_id
  * @member {String} host_address
+ * @member {Enum.EpicOnlineSessionState} state
  * @struct_end
  */
 
@@ -4483,7 +4490,7 @@
  * @member {String} entitlement_id
  * @member {String} catalog_item_id
  * @member {Real} server_index
- * @member {Real} redeemed
+ * @member {Bool} redeemed
  * @member {Real} end_timestamp
  * @struct_end
  */
@@ -4498,7 +4505,7 @@
 /**
  * @struct_partial EpicEcomSandboxIdItemOwnership
  * @member {String} sandbox_id
- * @member {String} owned_catalog_item_ids
+ * @member {Array[String]} owned_catalog_item_ids
  * @struct_end
  */
 
@@ -4550,8 +4557,8 @@
 
 /**
  * @struct_partial EpicEcomCatalogRelease
- * @member {String} compatible_app_ids
- * @member {String} compatible_platforms
+ * @member {Array[String]} compatible_app_ids
+ * @member {Array[String]} compatible_platforms
  * @member {String} release_note
  * @struct_end
  */
@@ -5088,6 +5095,8 @@
  * @member RequestInProgress
  * @member ApplicationSuspended
  * @member NetworkDisconnected
+ * @member InsufficientOutputBuffer
+ * @member ClientPolicyMissingAction
  * @member Auth_AccountLocked
  * @member Auth_AccountLockedForUpdate
  * @member Auth_InvalidRefreshToken
@@ -5141,12 +5150,23 @@
  * @member Presence_RichTextInvalid
  * @member Presence_RichTextLengthInvalid
  * @member Presence_StatusInvalid
+ * @member Presence_RichTextNotSupported
+ * @member Presence_TemplateNotSupported
+ * @member Presence_TemplateIdInvalid
+ * @member Presence_TemplateTypeInvalid
+ * @member Presence_TemplateKeyInvalid
+ * @member Presence_TemplateValueInvalid
+ * @member Presence_TemplateNotFound
+ * @member Presence_TemplateInvalidVariableInput
+ * @member Presence_TemplateLocalizationServerError
+ * @member Presence_TemplateUnknownError
  * @member Ecom_EntitlementStale
  * @member Ecom_CatalogOfferStale
  * @member Ecom_CatalogItemStale
  * @member Ecom_CatalogOfferPriceInvalid
  * @member Ecom_CheckoutLoadError
  * @member Ecom_PurchaseProcessing
+ * @member Ecom_CatalogOfferInvalid
  * @member Sessions_SessionInProgress
  * @member Sessions_TooManyPlayers
  * @member Sessions_NoPermission
@@ -5214,6 +5234,44 @@
  * @member Lobby_PresenceLobbyExists
  * @member Lobby_VoiceNotEnabled
  * @member Lobby_PlatformNotAllowed
+ * @member TitleStorage_UserErrorFromDataCallback
+ * @member TitleStorage_EncryptionKeyNotSet
+ * @member TitleStorage_FileCorrupted
+ * @member TitleStorage_FileHeaderHasNewerVersion
+ * @member RTC_TooManyParticipants
+ * @member RTC_RoomAlreadyExists
+ * @member RTC_UserKicked
+ * @member RTC_UserBanned
+ * @member RTC_RoomWasLeft
+ * @member RTC_ReconnectionTimegateExpired
+ * @member RTC_ShutdownInvoked
+ * @member RTC_UserIsInBlocklist
+ * @member RTC_AllocationFailed
+ * @member RTC_VoiceModerationModeMismatch
+ * @member RTC_EmptyRecord
+ * @member RTC_RoomOptionsMismatch
+ * @member ProgressionSnapshot_SnapshotIdUnavailable
+ * @member Android_JavaVMNotStored
+ * @member Android_ReservedMustReferenceLocalVM
+ * @member Android_ReservedMustBeNull
+ * @member Permission_RequiredPatchAvailable
+ * @member Permission_RequiredSystemUpdate
+ * @member Permission_AgeRestrictionFailure
+ * @member Permission_AccountTypeFailure
+ * @member Permission_ChatRestriction
+ * @member Permission_UGCRestriction
+ * @member Permission_OnlinePlayRestricted
+ * @member DesktopCrossplay_ApplicationNotBootstrapped
+ * @member DesktopCrossplay_ServiceNotInstalled
+ * @member DesktopCrossplay_ServiceStartFailed
+ * @member DesktopCrossplay_ServiceNotRunning
+ * @member CustomInvites_InviteFailed
+ * @member UserInfo_BestDisplayNameIndeterminate
+ * @member ConsoleInit_OnNetworkRequestedDeprecatedCallbackNotSet
+ * @member ConsoleInit_CacheStorage_SizeKBNotMultipleOf16
+ * @member ConsoleInit_CacheStorage_SizeKBBelowMinimumSize
+ * @member ConsoleInit_CacheStorage_SizeKBExceedsMaximumSize
+ * @member ConsoleInit_CacheStorage_IndexOutOfRangeRange
  * @member UnexpectedError
  * @enum_end
  */
@@ -5432,11 +5490,6 @@
  * @enum_partial EpicLinkAccountFlags
  * @member NoFlags
  * @member NintendoNsaId
- * @enum_end
- */
-
-/**
- * @enum_partial Epicname
  * @enum_end
  */
 
