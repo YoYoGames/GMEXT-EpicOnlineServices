@@ -57,7 +57,7 @@
  * Acknowledges a UI event raised by the social overlay (e.g. a join-game or native-invite request that
  * came in with a `ui_event_id`).
  *
- * [[Important: Whenever a callback/notification hands you a `ui_event_id` (join-game-accepted, native-invite-requested, and similar overlay-driven events across ${module.sessions}/${module.lobbies}/${module.custom_invites}), you MUST call this function with that ID once you're done handling it, passing the real outcome as `result_code`. Skipping this — or acknowledging with a hardcoded ${constant.EpicResult} instead of the actual outcome — leaves the social overlay UI hanging or reports a false result to Epic's backend.]]
+ * [[Important: Whenever a callback/notification hands you a `ui_event_id` (join-game-accepted, native-invite-requested, and similar overlay-driven events across ${module.sessions}/${module.lobbies}/${module.custom_invites}), you MUST call this function with that ID once you're done handling it, passing the real outcome as `result_code`. Skipping this - or acknowledging with a hardcoded ${constant.EpicResult} instead of the actual outcome - leaves the social overlay UI hanging or reports a false result to Epic's backend.]]
  *
  * @param {Real} ui_event_id The ID of the UI event to acknowledge, taken from the triggering callback/notification struct.
  * @param {Enum.EpicResult} result_code The real outcome of handling the event (e.g. `EpicResult.Success` once a join has actually completed, or an error code if it failed).
@@ -89,7 +89,7 @@
  * be driven with a controller instead of a mouse/keyboard. Call this every frame the overlay is visible
  * (e.g. from the Step event) with the current button states.
  *
- * [[Note: This only reports the 4 D-Pad directions plus an accept/cancel pair — it is not a full input passthrough. Mouse and analog-stick state are not exposed by this function.]]
+ * [[Note: This only reports the 4 D-Pad directions plus an accept/cancel pair - it is not a full input passthrough. Mouse and analog-stick state are not exposed by this function.]]
  *
  * @param {Bool} button_down `true` while the D-Pad down button is held.
  * @param {Bool} button_up `true` while the D-Pad up button is held.
@@ -349,7 +349,7 @@
  *
  * The [UI Interface](https://dev.epicgames.com/docs/game-services/eos-ui-interface) controls Epic's built-in social overlay: the Friends list, native platform profile cards, block/report player dialogs, and controller-driven overlay navigation.
  *
- * [[Important: Any callback/notification elsewhere in this extension that hands you a `ui_event_id` must be acknowledged via ${function.eos_ui_acknowledge_event_id} — see that function's description.]]
+ * [[Important: Any callback/notification elsewhere in this extension that hands you a `ui_event_id` must be acknowledged via ${function.eos_ui_acknowledge_event_id} - see that function's description.]]
  *
  * @section_func
  * @desc These functions are provided for controlling the social overlay:

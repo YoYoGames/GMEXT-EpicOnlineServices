@@ -84,7 +84,7 @@
  * @member {Struct.EpicLeaderboardsQueryUserScoresCallbackInfo} result The result of the query.
  * @event_end
  *
- * [[Note: Results for every queried stat are read back together with ${function.eos_leaderboards_get_user_score_count}/${function.eos_leaderboards_copy_user_score_by_index}, keyed by `stat_name` — call the accessor once per stat you queried.]]
+ * [[Note: Results for every queried stat are read back together with ${function.eos_leaderboards_get_user_score_count}/${function.eos_leaderboards_copy_user_score_by_index}, keyed by `stat_name` - call the accessor once per stat you queried.]]
  *
  * @example
  * ```gml
@@ -154,7 +154,7 @@
  *
  * @returns {Struct.EpicLeaderboardDefinition}
  *
- * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -170,7 +170,7 @@
  *
  * @returns {Struct.EpicLeaderboardDefinition}
  *
- * [[Warning: Returns `undefined` if `leaderboard_id` doesn't match any queried definition — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `leaderboard_id` doesn't match any queried definition - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -186,7 +186,7 @@
  *
  * @returns {Struct.EpicLeaderboardRecord}
  *
- * [[Warning: Returns `undefined` if `index` is out of range or no ranks have been queried yet — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `index` is out of range or no ranks have been queried yet - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -202,7 +202,7 @@
  *
  * @returns {Struct.EpicLeaderboardRecord}
  *
- * [[Warning: Returns `undefined` if `user_id` isn't part of the queried ranks — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `user_id` isn't part of the queried ranks - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -219,7 +219,7 @@
  *
  * @returns {Struct.EpicLeaderboardUserScore}
  *
- * [[Warning: Returns `undefined` if `stat_name` wasn't queried or `index` is out of range — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `stat_name` wasn't queried or `index` is out of range - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -322,7 +322,7 @@
  * @const macros
  * @desc Standalone constants used by this module.
  *
- * @member EOS_LEADERBOARDS_TIME_UNDEFINED Pass this for `start_time`/`end_time` in ${Function.eos_leaderboards_query_definitions}/${function.eos_leaderboards_query_user_scores} to leave that bound unrestricted. Value: `-1`.
+ * @member EOS_LEADERBOARDS_TIME_UNDEFINED Pass this for `start_time`/`end_time` in ${function.eos_leaderboards_query_definitions}/${function.eos_leaderboards_query_user_scores} to leave that bound unrestricted. Value: `-1`.
  *
  * @const_end
  */
@@ -333,7 +333,7 @@
  * @desc **Epic Online Services Interface:** [Leaderboards Interface](https://dev.epicgames.com/docs/game-services/eos-leaderboards-interface)
  *
  * The Leaderboards Interface lets you query leaderboard definitions, top ranks, and specific users' scores.
- * Leaderboards are driven by stats — see ${module.stats} for ingesting the values leaderboards rank.
+ * Leaderboards are driven by stats - see ${module.stats} for ingesting the values leaderboards rank.
  *
  * [[Note: Query before you read: ${function.eos_leaderboards_query_definitions} populates the definition
  * accessors, ${function.eos_leaderboards_query_ranks} populates the record accessors, and

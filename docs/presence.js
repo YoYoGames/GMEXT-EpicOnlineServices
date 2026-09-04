@@ -123,7 +123,7 @@
  *
  * Reads the locally cached presence info for a user, previously fetched with ${function.eos_presence_query_presence}.
  *
- * [[Note: Returns `undefined` if no presence info is cached yet for `target_user_id` — call ${function.eos_presence_query_presence} first.]]
+ * [[Note: Returns `undefined` if no presence info is cached yet for `target_user_id` - call ${function.eos_presence_query_presence} first.]]
  *
  * @param {String} local_user_id The Epic Account ID of the user making the request.
  * @param {String} target_user_id The Epic Account ID whose cached presence should be read.
@@ -154,7 +154,7 @@
  *
  * Releases a presence modification handle created by ${function.eos_presence_create_presence_modification}. Call this if you decide not to apply the modification.
  *
- * [[Note: You do NOT need to call this after a successful ${function.eos_presence_set_presence} — the handle is released automatically once the presence update has been submitted.]]
+ * [[Note: You do NOT need to call this after a successful ${function.eos_presence_set_presence} - the handle is released automatically once the presence update has been submitted.]]
  *
  * @param {Real} modification_id The handle returned by ${function.eos_presence_create_presence_modification}.
  *
@@ -224,7 +224,7 @@
  *
  * Submits a presence modification built with `eos_presence_modification_*` functions.
  *
- * [[Warning: `modification_id` is released internally as soon as this call is made, whether or not it eventually succeeds — don't call ${function.eos_presence_modification_release} on it afterward, and don't reuse the handle.]]
+ * [[Warning: `modification_id` is released internally as soon as this call is made, whether or not it eventually succeeds - don't call ${function.eos_presence_modification_release} on it afterward, and don't reuse the handle.]]
  *
  * @param {String} local_user_id The Epic Account ID whose presence is being updated.
  * @param {Real} modification_id The handle returned by ${function.eos_presence_create_presence_modification}, after being built up with `eos_presence_modification_*` calls.
@@ -275,7 +275,7 @@
  *
  * Registers to be notified when the local user accepts a "Join Game" prompt from the social overlay (e.g. from a friend's rich presence). Call ${function.eos_presence_remove_notify_join_game_accepted} with the returned ID when you no longer need it.
  *
- * [[Important: Register this as soon as possible after login — a join accepted before this notification is registered is missed entirely.]]
+ * [[Important: Register this as soon as possible after login - a join accepted before this notification is registered is missed entirely.]]
  *
  * [[Note: Returns `0` if registration failed.]]
  *

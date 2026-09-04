@@ -1,17 +1,17 @@
-// Functions — RTC Core
+// Functions - RTC Core
 
 /**
  * @function eos_rtc_join_room
  * @desc **Epic Online Services Function:** [EOS_RTC_JoinRoom](https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-join-room)
  *
  * Joins (or creates, if it doesn't exist yet) an RTC room. A room is a voice/data space shared by
- * every participant who joins it with the same `room_name` — rooms are commonly created implicitly by
+ * every participant who joins it with the same `room_name` - rooms are commonly created implicitly by
  * ${function.eos_lobby_create_lobby}/${function.eos_lobby_join_lobby} (a Lobby-managed RTC room, see
  * ${function.eos_lobby_get_rtc_room_name}) or ${function.eos_sessions_join_session}, but can also be
  * joined directly for a standalone voice/data room.
  *
  * `manual_audio_input`/`manual_audio_output` opt this local user out of the SDK's default
- * capture/playback device handling — set either to `true` if your game supplies its own microphone
+ * capture/playback device handling - set either to `true` if your game supplies its own microphone
  * capture (via ${function.eos_rtc_audio_send_audio}) or does its own audio rendering (via the
  * `${event.callback}` on ${function.eos_rtc_audio_add_notify_audio_before_render}) instead of letting
  * the SDK open the platform's default input/output device.
@@ -103,7 +103,7 @@
  *
  * Sets a global (not room-specific) RTC setting by name. See ${function.eos_rtc_set_room_setting} for
  * the per-room equivalent. Refer to Epic's RTC Interface documentation for the current list of
- * recognized setting names/values — this is a free-form string key/value pair, not a fixed enum.
+ * recognized setting names/values - this is a free-form string key/value pair, not a fixed enum.
  *
  * @param {String} setting_name The setting to change.
  * @param {String} setting_value The new value for the setting.
@@ -136,7 +136,7 @@
  * Registers to be notified when the local user is disconnected from a room. Call
  * ${function.eos_rtc_remove_notify_disconnected} with the returned ID when you no longer need it.
  *
- * [[Note: This always returns an invalid notification ID when used with a Lobby-managed RTC room — use
+ * [[Note: This always returns an invalid notification ID when used with a Lobby-managed RTC room - use
  * ${function.eos_lobby_add_notify_rtc_room_connection_changed} instead for those.]]
  *
  * @param {String} local_user_id The Product User ID to listen for on this room.
@@ -176,7 +176,7 @@
  * member already present when you join, so you know who's already there.
  *
  * [[Note: For a Lobby-managed RTC room, register this during the ${function.eos_lobby_create_lobby}/
- * ${function.eos_lobby_join_lobby} completion callback (once `result_code` is `EpicResult.Success`) —
+ * ${function.eos_lobby_join_lobby} completion callback (once `result_code` is `EpicResult.Success`) -
  * registering later can miss notifications for members who joined the room in between.]]
  *
  * @param {String} local_user_id The Product User ID to listen for on this room.
@@ -193,7 +193,7 @@
  * @member {String} participant_id The Product User ID of the affected participant.
  * @member {Constant.EpicRTCParticipantStatus} participant_status Whether the participant joined or left.
  * @member {Bool} participant_in_blocklist `true` while the SDK is still resolving whether this
- * participant is on an applicable block list — a second notification with this set to `false` follows
+ * participant is on an applicable block list - a second notification with this set to `false` follows
  * once resolved, if they aren't blocked.
  * @member {Array[Struct.EpicRTCParticipantMetadata]} participant_metadata Metadata attached to the
  * participant by the RTC backend.
@@ -250,7 +250,7 @@
  * @function_end
  */
 
-// Functions — RTC Audio
+// Functions - RTC Audio
 
 /**
  * @function eos_rtc_audio_update_sending
@@ -260,7 +260,7 @@
  *
  * @param {String} local_user_id The Product User ID sending audio.
  * @param {String} room_name The room to update.
- * @param {Constant.EpicRTCAudioStatus} audio_status The new sending status to request — typically
+ * @param {Constant.EpicRTCAudioStatus} audio_status The new sending status to request - typically
  * `EpicRTCAudioStatus.Enabled` or `EpicRTCAudioStatus.Disabled`.
  * @param {Function} [callback] Called once the update completes.
  *
@@ -545,7 +545,7 @@
  *
  * @event callback
  * @desc Fires each time the available audio devices change.
- * @member {Bool} triggered Always `true` — this notification carries no further payload, treat its
+ * @member {Bool} triggered Always `true` - this notification carries no further payload, treat its
  * firing as a signal to re-query devices via ${function.eos_rtc_audio_query_input_devices}/
  * ${function.eos_rtc_audio_query_output_devices}.
  * @event_end
@@ -641,7 +641,7 @@
  * @desc **Epic Online Services Function:** [EOS_RTCAudio_SendAudio](https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-audio-send-audio)
  *
  * Sends manually-captured PCM audio into the room. Only meaningful for a room joined with
- * `manual_audio_input` set to `true` on ${function.eos_rtc_join_room} — otherwise the SDK is already
+ * `manual_audio_input` set to `true` on ${function.eos_rtc_join_room} - otherwise the SDK is already
  * capturing from the platform's default input device and this call has nothing to contribute.
  *
  * @param {String} local_user_id The Product User ID sending audio.
@@ -673,22 +673,22 @@
  *
  * Registers to observe the local user's outgoing audio right before it's sent, e.g. for a mic-activity
  * meter or your own recording. The callback only carries metadata (sample rate/channels/frame count and
- * a `handle_id`) — call ${function.eos_rtc_audio_before_send_data_fetch} with that `handle_id` to copy
+ * a `handle_id`) - call ${function.eos_rtc_audio_before_send_data_fetch} with that `handle_id` to copy
  * out the actual PCM frames.
  *
  * [[Warning: Fetch the data synchronously inside your callback, on the same frame it fires.
  * `handle_id` is only valid until fetched **or until this same registration fires again**, whichever
- * happens first — deferring the fetch risks the frames already being gone.]]
+ * happens first - deferring the fetch risks the frames already being gone.]]
  *
  * [[Warning: The underlying EOS SDK documents this hook as a **synchronous, in-place modification
- * point** — natively, you could edit `EOS_RTCAudio_AudioBuffer` in place to apply a custom filter/effect
+ * point** - natively, you could edit `EOS_RTCAudio_AudioBuffer` in place to apply a custom filter/effect
  * before the SDK sends it. This extension's `GMFunction` callback model always runs your GML on the next
- * frame, so that in-place modification is **not achievable through this binding** — you can only observe
+ * frame, so that in-place modification is **not achievable through this binding** - you can only observe
  * a copy of the frames after the fact, not alter what actually gets sent. If you need real-time audio
  * processing, do it before calling ${function.eos_rtc_audio_send_audio} in manual-audio-input mode.]]
  *
  * [[Note: This callback can fire from an internal SDK thread, not just the main thread during
- * ${function.eos_platform_tick} — the same caveat as ${function.eos_logging_set_callback} (see
+ * ${function.eos_platform_tick} - the same caveat as ${function.eos_logging_set_callback} (see
  * ${module.logging}). Firing the `GMFunction` itself is still safe from any thread; this only matters if
  * your handler code assumes it's always running in step with your own game logic.]]
  *
@@ -746,22 +746,22 @@
  *
  * Registers to observe a participant's incoming audio right before it's rendered (played back), e.g.
  * for a per-participant activity meter or your own custom playback. As with
- * ${function.eos_rtc_audio_add_notify_audio_before_send}, the callback only carries metadata — call
+ * ${function.eos_rtc_audio_add_notify_audio_before_send}, the callback only carries metadata - call
  * ${function.eos_rtc_audio_before_render_data_fetch} with the given `handle_id` to copy out the PCM
  * frames.
  *
  * [[Warning: Fetch the data synchronously inside your callback, on the same frame it fires.
  * `handle_id` is only valid until fetched **or until this same registration fires again**, whichever
- * happens first — this notification can deliver different participants back-to-back, so a deferred
+ * happens first - this notification can deliver different participants back-to-back, so a deferred
  * fetch risks reading a different participant's frames than the metadata you received.]]
  *
  * [[Warning: Like ${function.eos_rtc_audio_add_notify_audio_before_send}, the EOS SDK documents this as
  * a synchronous in-place modification point (for custom mixing/effects), which this extension's
- * next-frame `GMFunction` callback model cannot provide — you can only observe a copy of the frames
+ * next-frame `GMFunction` callback model cannot provide - you can only observe a copy of the frames
  * after they've already been (or are about to be) rendered, not alter the actual playback.]]
  *
  * [[Note: Like ${function.eos_rtc_audio_add_notify_audio_before_send}, this callback can fire from an
- * internal SDK thread rather than the main thread — see ${module.logging}'s
+ * internal SDK thread rather than the main thread - see ${module.logging}'s
  * ${function.eos_logging_set_callback} note for the same caveat.]]
  *
  * @param {String} local_user_id The Product User ID to listen for.
@@ -852,7 +852,7 @@
  * @function_end
  */
 
-// Functions — RTC Data (binary data channel, alongside audio in the same room)
+// Functions - RTC Data (binary data channel, alongside audio in the same room)
 
 /**
  * @function eos_rtc_data_send_data
@@ -861,7 +861,7 @@
  * Sends a data message to every other participant in the room over the RTC data channel. Sending must
  * first be enabled with ${function.eos_rtc_data_update_sending}.
  *
- * [[Note: The RTC data channel restricts how much data a player can send — see the
+ * [[Note: The RTC data channel restricts how much data a player can send - see the
  * [RTC Data Interface](https://dev.epicgames.com/docs/game-services/real-time-communication-interface/rtc-data-interface#rtc-data-service-limits)
  * documentation for the current limits.]]
  *
@@ -928,11 +928,11 @@
  *
  * Registers to be notified when a data message is received from another participant. As with the audio
  * before-send/before-render hooks, the callback only carries metadata (`data_length_bytes` and a
- * `handle_id`) — call ${function.eos_rtc_data_received_data_fetch} with that `handle_id` to copy out the
+ * `handle_id`) - call ${function.eos_rtc_data_received_data_fetch} with that `handle_id` to copy out the
  * actual bytes.
  *
  * [[Warning: Fetch the data synchronously inside your callback, on the same frame it fires. `handle_id`
- * is only valid until fetched **or until this same registration fires again**, whichever happens first —
+ * is only valid until fetched **or until this same registration fires again**, whichever happens first -
  * this notification can deliver different participants back-to-back, so a deferred fetch risks reading a
  * different participant's bytes than the metadata you received.]]
  *
@@ -1282,7 +1282,7 @@
 /**
  * @struct EpicRTCAudioBeforeSendCallbackInfo
  * @desc Payload of ${function.eos_rtc_audio_add_notify_audio_before_send}'s ${event.callback}. Metadata
- * only — fetch the actual PCM bytes with ${function.eos_rtc_audio_before_send_data_fetch}.
+ * only - fetch the actual PCM bytes with ${function.eos_rtc_audio_before_send_data_fetch}.
  *
  * @member {String} local_user_id
  * @member {String} room_name
@@ -1297,7 +1297,7 @@
 /**
  * @struct EpicRTCAudioBeforeRenderCallbackInfo
  * @desc Payload of ${function.eos_rtc_audio_add_notify_audio_before_render}'s ${event.callback}.
- * Metadata only — fetch the actual PCM bytes with ${function.eos_rtc_audio_before_render_data_fetch}.
+ * Metadata only - fetch the actual PCM bytes with ${function.eos_rtc_audio_before_render_data_fetch}.
  *
  * @member {String} local_user_id
  * @member {String} room_name
@@ -1343,7 +1343,7 @@
 /**
  * @struct EpicRTCDataReceivedCallbackInfo
  * @desc Payload of ${function.eos_rtc_data_add_notify_data_received}'s ${event.callback}. Metadata
- * only — fetch the actual bytes with ${function.eos_rtc_data_received_data_fetch}.
+ * only - fetch the actual bytes with ${function.eos_rtc_data_received_data_fetch}.
  *
  * @member {String} local_user_id
  * @member {String} room_name
@@ -1446,7 +1446,7 @@
 /**
  * @const EpicRTCBackgroundMode
  * @desc How the RTC system should behave when the application goes to the background. This is a
- * platform-level `EOS_Platform_RTCOptions` setting configured when the SDK platform handle is created —
+ * platform-level `EOS_Platform_RTCOptions` setting configured when the SDK platform handle is created -
  * this extension's ${function.eos_platform_create} binding does not currently expose it, so this enum's
  * values aren't reachable from any function in this module today. Documented here for completeness
  * since it's part of the generated API surface.
@@ -1462,16 +1462,16 @@
  * @title RTC
  * @desc **Epic Online Services Interface:** [RTC Interface](https://dev.epicgames.com/docs/api-ref/interfaces/rtc)
  *
- * Real-time voice and peer-to-peer data messaging for a room of participants — typically the members of
+ * Real-time voice and peer-to-peer data messaging for a room of participants - typically the members of
  * a ${module.lobbies}/${module.sessions} room, though a room can also be joined directly. Covers three
  * related areas: joining/leaving rooms and tracking participants (RTC core), microphone/speaker control
  * (RTC Audio), and a binary data channel alongside the audio (RTC Data).
  *
- * [[Note: The extension initialises the RTC interface automatically along with everything else — see
+ * [[Note: The extension initialises the RTC interface automatically along with everything else - see
  * ${module.platform}.]]
  *
  * @section_func
- * @desc RTC core — rooms and participants:
+ * @desc RTC core - rooms and participants:
  * @ref eos_rtc_join_room
  * @ref eos_rtc_leave_room
  * @ref eos_rtc_block_participant
@@ -1484,7 +1484,7 @@
  * @ref eos_rtc_add_notify_room_statistics_updated
  * @ref eos_rtc_remove_notify_room_statistics_updated
  *
- * @desc RTC Audio — microphone/speaker control:
+ * @desc RTC Audio - microphone/speaker control:
  * @ref eos_rtc_audio_update_sending
  * @ref eos_rtc_audio_update_receiving
  * @ref eos_rtc_audio_update_sending_volume
@@ -1516,7 +1516,7 @@
  * @ref eos_rtc_audio_register_platform_user
  * @ref eos_rtc_audio_unregister_platform_user
  *
- * @desc RTC Data — binary data channel:
+ * @desc RTC Data - binary data channel:
  * @ref eos_rtc_data_send_data
  * @ref eos_rtc_data_update_sending
  * @ref eos_rtc_data_update_receiving

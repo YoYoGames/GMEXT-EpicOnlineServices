@@ -51,7 +51,7 @@
  * @desc **Epic Online Services Function:** [EOS_Initialize](https://dev.epicgames.com/docs/api-ref/functions/eos-initialize)
  *
  * Initializes the Epic Online Services SDK. This must be the first call you make into this extension,
- * and must only be called once — call ${function.eos_api_is_initialized} first if you're not sure
+ * and must only be called once - call ${function.eos_api_is_initialized} first if you're not sure
  * whether it has already run. Once this succeeds, create the platform handle with
  * ${function.eos_platform_create}.
  *
@@ -126,7 +126,7 @@
  * @desc **Epic Online Services Function:** [EOS_EResult_IsOperationComplete](https://dev.epicgames.com/docs/api-ref/functions/eos-eresult-is-operation-complete)
  *
  * Returns whether a ${constant.EpicResult} value represents a finished operation. Most codes are
- * terminal (`true`); `EpicResult.OperationWillRetry` is the one common case that is not (`false`) — the
+ * terminal (`true`); `EpicResult.OperationWillRetry` is the one common case that is not (`false`) - the
  * SDK will call your callback again later with a further result.
  *
  * @param {Constant.EpicResult} result The result code to check.
@@ -166,7 +166,7 @@
  * @function eos_api_epic_account_id_is_valid
  * @desc **Epic Online Services Function:** [EOS_EpicAccountId_IsValid](https://dev.epicgames.com/docs/api-ref/functions/eos-epic-account-id-is-valid)
  *
- * Returns whether a string is a well-formed Epic Account ID. This only checks the string's shape — it
+ * Returns whether a string is a well-formed Epic Account ID. This only checks the string's shape - it
  * does not confirm the account actually exists or is logged in.
  *
  * @param {String} account_id The Epic Account ID string to validate.
@@ -180,7 +180,7 @@
  * @function eos_api_product_user_id_is_valid
  * @desc **Epic Online Services Function:** [EOS_ProductUserId_IsValid](https://dev.epicgames.com/docs/api-ref/functions/eos-product-user-id-is-valid)
  *
- * Returns whether a string is a well-formed Product User ID. This only checks the string's shape — it
+ * Returns whether a string is a well-formed Product User ID. This only checks the string's shape - it
  * does not confirm the account actually exists or is logged in.
  *
  * @param {String} product_user_id The Product User ID string to validate.
@@ -201,15 +201,11 @@
  * in-progress/retry state. Use ${function.eos_api_result_to_string} to get human-readable text for any
  * value.
  *
- * [[Warning: This enum only lists the result families used by the interfaces this extension currently
- * wraps (general/auth/friends/presence/ecom/sessions/lobby/player data storage/connect/UI). The real EOS
- * SDK's `EOS_EResult` also defines RTC, Mods, Anti-Cheat, Permission, Desktop Crossplay, Progression
- * Snapshot, Custom Invites, User Info, and Console result families that this extension's `spec.gmidl`
- * does not declare as `EpicResult` members yet — even though modules like RTC, Progression Snapshot, and
- * Custom Invites are wrapped and can have the native SDK hand back one of those codes. A native callback
- * that receives one of those codes will still cast it into this enum type, but GML code won't have a
- * named constant to compare it against. This is a real gap worth enriching `spec.gmidl` for, not
- * something the docs can paper over.]]
+ * [[Warning: This enum does not list the `AntiCheat_*`, `Mods_*` and `KWS_*` result families. Those
+ * three EOS interfaces are not wrapped by this extension, so nothing here can return one of their
+ * codes. Every other family the SDK defines is declared. If you ever receive a value with no matching
+ * constant, pass it to ${function.eos_api_result_to_string}, which round-trips through the SDK and
+ * names any code it knows.]]
  *
  * @member Success Successful result. No further error processing needed.
  * @member NoConnection Failed due to no connection.
@@ -231,13 +227,12 @@
  * @member Canceled Operation was canceled (likely by user).
  * @member NotFound The requested information was not found.
  * @member OperationWillRetry An error occurred during an asynchronous operation, and it will be retried.
- * Callbacks receiving this result will be called again in the future.
  * @member NoChange The request had no effect.
  * @member VersionMismatch The request attempted to use multiple or inconsistent API versions.
  * @member LimitExceeded A maximum limit was exceeded on the client, different from `TooManyRequests`.
  * @member Disabled Feature or client ID performing the operation has been disabled.
  * @member DuplicateNotAllowed Duplicate entry not allowed.
- * @member MissingParameters_DEPRECATED Deprecated — no longer returned by the SDK.
+ * @member MissingParameters_DEPRECATED Deprecated - no longer returned by the SDK.
  * @member InvalidSandboxId Sandbox ID is invalid.
  * @member TimedOut Request timed out.
  * @member PartialResult A query returned some but not all of the requested results.
@@ -254,6 +249,8 @@
  * @member RequestInProgress Request is in progress.
  * @member ApplicationSuspended Application is suspended.
  * @member NetworkDisconnected Network is disconnected.
+ * @member InsufficientOutputBuffer Given output buffer is insufficient to complete the operation.
+ * @member ClientPolicyMissingAction The associated feature or action is not enabled in the client policy.
  * @member Auth_AccountLocked Account locked due to login failures.
  * @member Auth_AccountLockedForUpdate Account locked by update operation.
  * @member Auth_InvalidRefreshToken Refresh token used was invalid.
@@ -307,12 +304,23 @@
  * @member Presence_RichTextInvalid Request contained an invalid rich text string.
  * @member Presence_RichTextLengthInvalid Request contained a rich text string that was too long.
  * @member Presence_StatusInvalid Request contained an invalid status state.
+ * @member Presence_RichTextNotSupported Request created with a template - rich text is not supported.
+ * @member Presence_TemplateNotSupported Request not created with a template - rich text expected.
+ * @member Presence_TemplateIdInvalid Invalid Rich Presence Template ID.
+ * @member Presence_TemplateTypeInvalid Template type value is not supported.
+ * @member Presence_TemplateKeyInvalid Template key is null or not supplied.
+ * @member Presence_TemplateValueInvalid Template value, if type is a string, is null or not supplie.
+ * @member Presence_TemplateNotFound Template id was not found for the product or deployment.
+ * @member Presence_TemplateInvalidVariableInput Failed to format template with given vairable data.
+ * @member Presence_TemplateLocalizationServerError Localization server failed to format template.
+ * @member Presence_TemplateUnknownError Unknown error formatting template.
  * @member Ecom_EntitlementStale The entitlement retrieved is stale, re-query for updated information.
  * @member Ecom_CatalogOfferStale The offer retrieved is stale, re-query for updated information.
  * @member Ecom_CatalogItemStale The item or associated structure retrieved is stale, re-query for updated information.
  * @member Ecom_CatalogOfferPriceInvalid One or more offers has an invalid price. This may be caused by the price setup.
  * @member Ecom_CheckoutLoadError The checkout page failed to load.
- * @member Ecom_PurchaseProcessing The player closed the purchase flow overlay after clicking the purchase button. The purchase may still go through — the game needs to query unredeemed entitlements for a short time.
+ * @member Ecom_PurchaseProcessing The player closed the purchase flow overlay after clicking the purchase button. The purchase may still go through - the game needs to query unredeemed entitlements for a short time.
+ * @member Ecom_CatalogOfferInvalid The offer is not valid in the catalog for the current sandbox.
  * @member Sessions_SessionInProgress Session is already in progress.
  * @member Sessions_TooManyPlayers Too many players to register with this session.
  * @member Sessions_NoPermission Client has no permissions to access this session.
@@ -344,7 +352,7 @@
  * @member PlayerDataStorage_StartIndexInvalid Request start index was invalid.
  * @member PlayerDataStorage_RequestInProgress Request is in progress.
  * @member PlayerDataStorage_UserThrottled User is marked as throttled, so some operations can't be performed because limits are exceeded.
- * @member PlayerDataStorage_EncryptionKeyNotSet Encryption key is not set during SDK init — see the **Encryption Key** extension option.
+ * @member PlayerDataStorage_EncryptionKeyNotSet Encryption key is not set during SDK init - see the **Encryption Key** extension option.
  * @member PlayerDataStorage_UserErrorFromDataCallback User data callback returned an error.
  * @member PlayerDataStorage_FileHeaderHasNewerVersion The file has a header from a newer SDK version than this client.
  * @member PlayerDataStorage_FileCorrupted The file is corrupted. In some cases retrying can fix the issue.
@@ -356,7 +364,7 @@
  * @member Connect_LinkAccountFailed EOS Auth account link failure.
  * @member Connect_ExternalServiceUnavailable EOS Auth external service for validation was unavailable.
  * @member Connect_ExternalServiceConfigurationFailure EOS Auth external service configuration failure with Dev Portal.
- * @member Connect_LinkAccountFailedMissingNintendoIdAccount_DEPRECATED Deprecated — no longer returned by the SDK.
+ * @member Connect_LinkAccountFailedMissingNintendoIdAccount_DEPRECATED Deprecated - no longer returned by the SDK.
  * @member UI_SocialOverlayLoadError The social overlay page failed to load.
  * @member UI_InconsistentVirtualMemoryFunctions Virtual memory functions are an inconsistent mix of functions and nullptrs.
  * @member Lobby_NotOwner Client has no permissions to modify this lobby.
@@ -380,6 +388,44 @@
  * @member Lobby_PresenceLobbyExists Presence lobby already exists for the client.
  * @member Lobby_VoiceNotEnabled Operation requires a lobby with voice enabled.
  * @member Lobby_PlatformNotAllowed The client platform does not match the allowed platform list for the lobby.
+ * @member TitleStorage_UserErrorFromDataCallback User callback that receives data from storage returned error.
+ * @member TitleStorage_EncryptionKeyNotSet User forgot to set Encryption key during platform init. Title Storage can't work without it.
+ * @member TitleStorage_FileCorrupted Downloaded file is corrupted.
+ * @member TitleStorage_FileHeaderHasNewerVersion Downloaded file's format is newer than client SDK version.
+ * @member RTC_TooManyParticipants EOS RTC room cannot accept more participants.
+ * @member RTC_RoomAlreadyExists EOS RTC room already exists.
+ * @member RTC_UserKicked The user kicked out from the room.
+ * @member RTC_UserBanned The user is banned.
+ * @member RTC_RoomWasLeft EOS RTC room was left successfully.
+ * @member RTC_ReconnectionTimegateExpired Connection dropped due to long timeout.
+ * @member RTC_ShutdownInvoked EOS RTC room was left due to platform release.
+ * @member RTC_UserIsInBlocklist EOS RTC operation failed because the user is in the local user's block list.
+ * @member RTC_AllocationFailed Failed to allocate resources.
+ * @member RTC_VoiceModerationModeMismatch Failed to join room due to voice moderation mode mismatch.
+ * @member RTC_EmptyRecord EOS RTC record buffer was empty.
+ * @member RTC_RoomOptionsMismatch Failed to join room due to room options mismatch.
+ * @member ProgressionSnapshot_SnapshotIdUnavailable The number of available Snapshot IDs have all been exhausted.
+ * @member Android_JavaVMNotStored EOS Android VM not stored.
+ * @member Android_ReservedMustReferenceLocalVM EOS Android if Reserved is set it must reference stored VM.
+ * @member Android_ReservedMustBeNull EOS Android Reserved must not be provided.
+ * @member Permission_RequiredPatchAvailable Patch required before the user can use the privilege.
+ * @member Permission_RequiredSystemUpdate System update required before the user can use the privilege.
+ * @member Permission_AgeRestrictionFailure Parental control failure usually.
+ * @member Permission_AccountTypeFailure Premium Account Subscription required but not available.
+ * @member Permission_ChatRestriction User restricted from chat.
+ * @member Permission_UGCRestriction User restricted from User Generated Content.
+ * @member Permission_OnlinePlayRestricted Online play is restricted.
+ * @member DesktopCrossplay_ApplicationNotBootstrapped The application was not launched through the Bootstrapper. Desktop crossplay functionality is unavailable.
+ * @member DesktopCrossplay_ServiceNotInstalled The redistributable service is not installed.
+ * @member DesktopCrossplay_ServiceStartFailed The desktop crossplay service failed to start.
+ * @member DesktopCrossplay_ServiceNotRunning The desktop crossplay service is no longer running for an unknown reason.
+ * @member CustomInvites_InviteFailed When sending the custom invite failed.
+ * @member UserInfo_BestDisplayNameIndeterminate The best display name could not be safely determined.
+ * @member ConsoleInit_OnNetworkRequestedDeprecatedCallbackNotSet OnNetworkRequested_DEPRECATED callback not set when initializing platform.
+ * @member ConsoleInit_CacheStorage_SizeKBNotMultipleOf16 CacheStorageSizeKB must be a multiple of 16.
+ * @member ConsoleInit_CacheStorage_SizeKBBelowMinimumSize CacheStorageSizeKB is less than the minimum allowed.
+ * @member ConsoleInit_CacheStorage_SizeKBExceedsMaximumSize CacheStorageSizeKB is greater than the maximum allowed (4000 MB).
+ * @member ConsoleInit_CacheStorage_IndexOutOfRangeRange CacheStorageIndex is out of its allowed range.
  * @member UnexpectedError An unexpected error that we cannot identify has occurred.
  * @const_end
  */
@@ -435,7 +481,7 @@
  * @desc **Epic Online Services Enum:** [EOS_EComparisonOp](https://dev.epicgames.com/docs/api-ref/enums/eos-e-comparison-op)
  *
  * Shared comparison operator used when adding a search parameter to a ${module.sessions} or
- * ${module.lobbies} search — how the search value should be compared against the value stored on the
+ * ${module.lobbies} search - how the search value should be compared against the value stored on the
  * session/lobby.
  *
  * @member Equal Value must equal the one stored on the lobby/session.
@@ -709,8 +755,8 @@
  * function in this extension consumes this type yet.]]
  *
  * @member None No result.
- * @member DownedDeprecated Deprecated — player was downed.
- * @member EliminatedDeprecated Deprecated — player was eliminated.
+ * @member DownedDeprecated Deprecated - player was downed.
+ * @member EliminatedDeprecated Deprecated - player was eliminated.
  * @member NormalToDowned Player transitioned from normal to downed.
  * @member NormalToEliminated Player transitioned from normal to eliminated.
  * @member DownedToEliminated Player transitioned from downed to eliminated.
@@ -775,8 +821,8 @@
 /**
  * @module general
  * @title General
- * @desc This module covers the extension's top-level, no-interface functions — initialization,
- * shutdown, version/ID helpers — plus the shared constants used across every other module
+ * @desc This module covers the extension's top-level, no-interface functions - initialization,
+ * shutdown, version/ID helpers - plus the shared constants used across every other module
  * (${constant.EpicResult}, comparison/attribute types for session/lobby search, and a handful of enums
  * reserved for EOS interfaces this extension doesn't wrap yet).
  *

@@ -5,7 +5,7 @@
  * @function eos_playerdatastorage_query_file
  * @desc **Epic Online Services Function:** [EOS_PlayerDataStorage_QueryFile](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-player-data-storage-query-file)
  *
- * Requests the metadata for a specific file in the requesting user's player data storage, updating the local metadata cache with the results. This does not download the file's contents — call ${function.eos_playerdatastorage_read_file} for that once you know the file exists via ${function.eos_playerdatastorage_copy_file_metadata_by_filename}.
+ * Requests the metadata for a specific file in the requesting user's player data storage, updating the local metadata cache with the results. This does not download the file's contents - call ${function.eos_playerdatastorage_read_file} for that once you know the file exists via ${function.eos_playerdatastorage_copy_file_metadata_by_filename}.
  *
  * @param {String} local_user_id The Product User ID of the user who owns the file to query.
  * @param {String} filename The name of the file to query.
@@ -67,14 +67,14 @@
  *
  * Fetches a locally cached metadata struct for a file, by index. `index` must be less than the value returned by ${function.eos_playerdatastorage_get_file_metadata_count}.
  *
- * [[Note: This reads from the local cache populated by the last query call — it does not talk to the backend.]]
+ * [[Note: This reads from the local cache populated by the last query call - it does not talk to the backend.]]
  *
  * @param {String} local_user_id The Product User ID of the user who owns the cached file list.
  * @param {Real} index Index into the cached file list, from `0` to ${function.eos_playerdatastorage_get_file_metadata_count} - 1.
  *
  * @returns {Struct.EpicPlayerDataStorageFileMetadata}
  *
- * [[Note: Returns `undefined` if `index` is out of range or the underlying SDK call fails — check ${function.eos_api_last_error} for details.]]
+ * [[Note: Returns `undefined` if `index` is out of range or the underlying SDK call fails - check ${function.eos_api_last_error} for details.]]
  *
  * @function_end
  */
@@ -85,14 +85,14 @@
  *
  * Fetches a locally cached metadata struct for a file, by filename.
  *
- * [[Note: This reads from the local cache populated by the last query call — it does not talk to the backend.]]
+ * [[Note: This reads from the local cache populated by the last query call - it does not talk to the backend.]]
  *
  * @param {String} local_user_id The Product User ID of the user who owns the cached file.
  * @param {String} filename The name of the file to look up.
  *
  * @returns {Struct.EpicPlayerDataStorageFileMetadata}
  *
- * [[Note: Returns `undefined` if this filename has no cached metadata (nothing has been queried for it yet) — check ${function.eos_api_last_error} for details.]]
+ * [[Note: Returns `undefined` if this filename has no cached metadata (nothing has been queried for it yet) - check ${function.eos_api_last_error} for details.]]
  *
  * @function_end
  */
@@ -140,9 +140,9 @@
  *
  * Downloads a file from player data storage straight to a local path on disk, streaming it in chunks rather than buffering the whole thing in memory.
  *
- * [[Note: `output_path` is a real filesystem path, not a GML buffer — the extension writes the downloaded bytes to disk itself. Load the file back into your game with GML's own file functions once the `callback` fires with `EpicResult.Success`.]]
+ * [[Note: `output_path` is a real filesystem path, not a GML buffer - the extension writes the downloaded bytes to disk itself. Load the file back into your game with GML's own file functions once the `callback` fires with `EpicResult.Success`.]]
  *
- * [[Warning: If the transfer fails or is cancelled part-way through, the extension removes the partially-written file at `output_path` rather than leaving a corrupt fragment behind — it will never silently replace a previously-good file at that path with a broken one.]]
+ * [[Warning: If the transfer fails or is cancelled part-way through, the extension removes the partially-written file at `output_path` rather than leaving a corrupt fragment behind - it will never silently replace a previously-good file at that path with a broken one.]]
  *
  * @param {String} local_user_id The Product User ID of the user who owns the file.
  * @param {String} filename The name of the file to read.
@@ -185,7 +185,7 @@
  *
  * Uploads a local file on disk to player data storage, streaming it in chunks.
  *
- * [[Note: `input_path` is a real filesystem path, not a GML buffer — the extension reads the file itself before uploading. An empty or unreadable `input_path` fails immediately (${function.eos_api_last_error} is set) without starting a transfer or firing `callback`.]]
+ * [[Note: `input_path` is a real filesystem path, not a GML buffer - the extension reads the file itself before uploading. An empty or unreadable `input_path` fails immediately (${function.eos_api_last_error} is set) without starting a transfer or firing `callback`.]]
  *
  * @param {String} local_user_id The Product User ID of the user who will own the file.
  * @param {String} filename The name to give the file in player data storage.
@@ -352,9 +352,9 @@
 
 /**
  * @const EpicPlayerDataStorageReadResult
- * @desc **Epic Online Services Enum:** [EOS_PlayerDataStorage_EReadResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-player-data-storage-e-read-result) — describes how a single chunk of a file read completed, at the SDK level.
+ * @desc **Epic Online Services Enum:** [EOS_PlayerDataStorage_EReadResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-player-data-storage-e-read-result) - describes how a single chunk of a file read completed, at the SDK level.
  *
- * [[Note: This extension handles read-chunk streaming to disk internally (see ${function.eos_playerdatastorage_read_file}) — this constant isn't currently surfaced through any GML function or callback parameter, it's documented here for completeness against the generated API surface.]]
+ * [[Note: This extension handles read-chunk streaming to disk internally (see ${function.eos_playerdatastorage_read_file}) - this constant isn't currently surfaced through any GML function or callback parameter, it's documented here for completeness against the generated API surface.]]
  *
  * @member ContinueReading The read operation should continue.
  * @member FailRequest The read operation should terminate in failure.
@@ -365,9 +365,9 @@
 
 /**
  * @const EpicPlayerDataStorageWriteResult
- * @desc **Epic Online Services Enum:** [EOS_PlayerDataStorage_EWriteResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-player-data-storage-e-write-result) — describes how a single chunk of a file write completed, at the SDK level.
+ * @desc **Epic Online Services Enum:** [EOS_PlayerDataStorage_EWriteResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-player-data-storage-e-write-result) - describes how a single chunk of a file write completed, at the SDK level.
  *
- * [[Note: This extension handles write-chunk streaming from disk internally (see ${function.eos_playerdatastorage_write_file}) — this constant isn't currently surfaced through any GML function or callback parameter, it's documented here for completeness against the generated API surface.]]
+ * [[Note: This extension handles write-chunk streaming from disk internally (see ${function.eos_playerdatastorage_write_file}) - this constant isn't currently surfaced through any GML function or callback parameter, it's documented here for completeness against the generated API surface.]]
  *
  * @member ContinueWriting The write operation should continue.
  * @member CompleteRequest The write operation should terminate, complete.
@@ -383,7 +383,7 @@
  * @title Player Data Storage
  * @desc **Epic Online Services Interface:** [Player Data Storage Interface](https://dev.epicgames.com/docs/game-services/eos-player-data-storage-interface)
  *
- * The Player Data Storage Interface lets you store and retrieve per-player binary files in the cloud, so a player's save data and settings follow them between devices. Files are read from and written to a local path on disk — the extension streams the transfer itself, so you never handle the raw bytes directly in GML.
+ * The Player Data Storage Interface lets you store and retrieve per-player binary files in the cloud, so a player's save data and settings follow them between devices. Files are read from and written to a local path on disk - the extension streams the transfer itself, so you never handle the raw bytes directly in GML.
  *
  * [[Note: Reading/writing files requires an **Encryption Key** to be configured in the extension's Extension Options. See ${page.extension_options}.]]
  *

@@ -20,7 +20,7 @@ When you log into Epic Online Services using the extension, a straightforward wa
 -AUTH_LOGIN=unused -AUTH_PASSWORD=<password> -AUTH_TYPE=exchangecode -epicapp=<appid> -epicenv=Prod -EpicPortal  -epicusername=<username> -epicuserid=<userid> -epiclocale=en-US -epicsandboxid=<sandboxid> -epicdeploymentid=<deploymentid>
 ```
 
-The `AUTH_PASSWORD` parameter value contains the token that you should pass into ${function.eos_auth_login} as `credentials_token`. This function should then be called with a `credentials_type` of `EpicLoginCredentialType.ExchangeCode`. The `credentials_id` parameter can be left blank (an empty string `""`), as this login method does not require an ID. `external_credential_type` is ignored for this login type, but a value must still be passed — `EpicExternalCredentialType.Epic` is a safe default.
+The `AUTH_PASSWORD` parameter value contains the token that you should pass into ${function.eos_auth_login} as `credentials_token`. This function should then be called with a `credentials_type` of `EpicLoginCredentialType.ExchangeCode`. The `credentials_id` parameter can be left blank (an empty string `""`), as this login method does not require an ID. `external_credential_type` is ignored for this login type, but a value must still be passed - `EpicExternalCredentialType.Epic` is a safe default.
 
 ```gml
 // Retrieve the AUTH_PASSWORD command-line parameter

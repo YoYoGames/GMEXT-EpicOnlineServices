@@ -43,7 +43,7 @@
  *
  * @returns {Struct.EpicUserInfo}
  *
- * [[Note: Returns `undefined` if no info is cached for this pair of users — call ${function.eos_user_info_query_user_info} first.]]
+ * [[Note: Returns `undefined` if no info is cached for this pair of users - call ${function.eos_user_info_query_user_info} first.]]
  *
  * @function_end
  */
@@ -65,7 +65,7 @@
  * @function eos_user_info_copy_best_display_name
  * @desc **Epic Online Services Function:** [EOS_UserInfo_CopyBestDisplayName](https://dev.epicgames.com/docs/api-ref/functions/eos-user-info-copy-best-display-name)
  *
- * Returns the best available display name string for a target user — the SDK internally picks the most
+ * Returns the best available display name string for a target user - the SDK internally picks the most
  * appropriate display name source (Epic display name, platform display name, etc.) for the pair of users
  * involved, which can differ from the raw `display_name` field on ${struct.EpicUserInfo}.
  *
@@ -172,7 +172,7 @@
  * @title User Info
  * @desc **Epic Online Services Interface:** [UserInfo Interface](https://dev.epicgames.com/docs/game-services/eos-user-info-interface)
  *
- * The [UserInfo Interface](https://dev.epicgames.com/docs/game-services/eos-user-info-interface) retrieves public account information — display name, country, linked external accounts — for any Epic user, not just friends. See ${module.friends} for the local user's own friends list, and ${module.connect} for `EpicExternalAccountType`/linking a user's own external accounts.
+ * The [UserInfo Interface](https://dev.epicgames.com/docs/game-services/eos-user-info-interface) retrieves public account information - display name, country, linked external accounts - for any Epic user, not just friends. See ${module.friends} for the local user's own friends list, and ${module.connect} for `EpicExternalAccountType`/linking a user's own external accounts.
  *
  * [[Note: You must call ${function.eos_user_info_query_user_info} for a given target user before the cached accessor functions below return anything for them.]]
  *

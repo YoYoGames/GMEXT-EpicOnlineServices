@@ -8,7 +8,7 @@
  * for the locale configured for `local_user_id`. Call this once at startup (or whenever you need fresh
  * definitions) before using ${function.eos_achievements_get_achievement_definition_count},
  * ${function.eos_achievements_copy_achievement_definition_by_index}, ${function.eos_achievements_copy_achievement_definition_by_id}
- * or ${function.eos_achievements_copy_achievement_definition_v2_by_index} — those accessors read from the
+ * or ${function.eos_achievements_copy_achievement_definition_v2_by_index} - those accessors read from the
  * results of the most recent successful query.
  *
  * @param {String} local_user_id The Product User ID of the user querying the definitions.
@@ -38,7 +38,7 @@
  * @function eos_achievements_query_player_achievements
  * @desc **Epic Online Services Function:** [EOS_Achievements_QueryPlayerAchievements](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-query-player-achievements)
  *
- * Queries a player's achievement progress. `target_user_id` doesn't need to be the same as `local_user_id` —
+ * Queries a player's achievement progress. `target_user_id` doesn't need to be the same as `local_user_id` -
  * you can query another player's progress as long as `local_user_id` has permission to see it. Call this
  * before using ${function.eos_achievements_get_player_achievement_count}, ${function.eos_achievements_copy_player_achievement_by_index}
  * or ${function.eos_achievements_copy_player_achievement_by_id} for that `target_user_id`.
@@ -99,13 +99,13 @@
  *
  * Fetches an achievement definition by index from the cached data populated by ${function.eos_achievements_query_definitions}.
  *
- * [[Note: This is the deprecated (V1) definition shape — prefer ${function.eos_achievements_copy_achievement_definition_v2_by_index} for new code, which reports separate unlocked/locked display text instead of a single ambiguous pair.]]
+ * [[Note: This is the deprecated (V1) definition shape - prefer ${function.eos_achievements_copy_achievement_definition_v2_by_index} for new code, which reports separate unlocked/locked display text instead of a single ambiguous pair.]]
  *
  * @param {Real} index Index of the definition, between 0 and ${function.eos_achievements_get_achievement_definition_count} - 1.
  *
  * @returns {Struct.EpicAchievementsDefinition}
  *
- * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -121,7 +121,7 @@
  *
  * @returns {Struct.EpicAchievementsDefinitionV2}
  *
- * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -137,7 +137,7 @@
  *
  * @returns {Struct.EpicAchievementsDefinition}
  *
- * [[Warning: Returns `undefined` if `achievement_id` doesn't match any queried definition — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `achievement_id` doesn't match any queried definition - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -155,7 +155,7 @@
  *
  * @returns {Struct.EpicPlayerAchievement}
  *
- * [[Warning: Returns `undefined` if `index` is out of range or the ids are invalid — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `index` is out of range or the ids are invalid - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -173,7 +173,7 @@
  *
  * @returns {Struct.EpicPlayerAchievement}
  *
- * [[Warning: Returns `undefined` if `achievement_id` doesn't match a queried achievement or the ids are invalid — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `achievement_id` doesn't match a queried achievement or the ids are invalid - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -184,7 +184,7 @@
  *
  * Fetches one stat threshold entry (a stat name and the value it must reach) from the given achievement's
  * definition, by index. Internally this fetches the achievement's V2 definition and indexes into its embedded
- * threshold list — it does not require you to have called ${function.eos_achievements_query_definitions}
+ * threshold list - it does not require you to have called ${function.eos_achievements_query_definitions}
  * again beforehand, but the achievement itself must exist on the backend.
  *
  * @param {String} achievement_id ID of the achievement whose thresholds to read.
@@ -192,7 +192,7 @@
  *
  * @returns {Struct.EpicStatThreshold}
  *
- * [[Warning: Returns `undefined` if `achievement_id` is invalid or `index` is out of range — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if `achievement_id` is invalid or `index` is out of range - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -211,7 +211,7 @@
  *
  * @returns {Struct.EpicPlayerStatInfo}
  *
- * [[Warning: Returns `undefined` if the ids are invalid or `index` is out of range — check ${function.eos_api_last_error} for the reason.]]
+ * [[Warning: Returns `undefined` if the ids are invalid or `index` is out of range - check ${function.eos_api_last_error} for the reason.]]
  *
  * @function_end
  */
@@ -221,7 +221,7 @@
  * @desc **Epic Online Services Function:** [EOS_Achievements_UnlockAchievements](https://dev.epicgames.com/docs/api-ref/functions/eos-achievements-unlock-achievements)
  *
  * Directly unlocks one or more achievements for a player. Most games instead unlock achievements
- * automatically on the backend once the underlying stats reach their thresholds — use this for achievements
+ * automatically on the backend once the underlying stats reach their thresholds - use this for achievements
  * that aren't stat-driven.
  *
  * @param {String} user_id The Product User ID of the player to unlock achievements for.
@@ -387,7 +387,6 @@
  * @member {String} locked_display_name The display name shown while locked.
  * @member {String} locked_description The description shown while locked.
  * @member {String} flavor_text Flavor text for the achievement.
- * @member {String} completion_description Description shown when the achievement is completed.
  * @member {String} unlocked_icon_url URL of the icon shown when unlocked.
  * @member {String} locked_icon_url URL of the icon shown when locked.
  * @member {Bool} is_hidden Whether the achievement is hidden until unlocked.
@@ -435,7 +434,7 @@
  * directly, and listen for unlocks that happen automatically as stats cross their thresholds.
  *
  * [[Note: Query the achievement definitions with ${function.eos_achievements_query_definitions} and a player's
- * progress with ${function.eos_achievements_query_player_achievements} before reading either — the accessor
+ * progress with ${function.eos_achievements_query_player_achievements} before reading either - the accessor
  * functions below read from the most recently cached query result.]]
  *
  * @section_func

@@ -25,7 +25,7 @@ To use the Epic Online Services extension, follow these steps:
 
 [[Note: If you set **Debug Mode** to `Enabled`, your app will never be relaunched through the Epic
 Launcher by ${function.eos_platform_check_for_launcher_and_restart}. Only use this to hand a standalone
-build to someone for testing — never ship a store build with it `Enabled`.]]
+build to someone for testing - never ship a store build with it `Enabled`.]]
 
 # Initializing
 
@@ -53,7 +53,7 @@ if (_platform != EpicResult.Success)
 ${function.eos_api_initialize} starts the SDK itself; ${function.eos_platform_create} then creates the
 platform handle every other module needs, reading your **Product ID**/**Sandbox ID**/**Deployment
 ID**/**Client Credentials ID**/**Client Credentials Secret** straight from the extension options you set
-above — you don't pass them in code. Check ${function.eos_api_last_error} whenever either call doesn't
+above - you don't pass them in code. Check ${function.eos_api_last_error} whenever either call doesn't
 return `EpicResult.Success`.
 
 [[Warning: Register any persistent `add_notify_*` callback (${module.auth}, ${module.connect},
@@ -62,7 +62,7 @@ registration silently no-ops (returns an invalid notification ID) until the plat
 
 # Ticking and shutting down
 
-${function.eos_platform_tick} drives the SDK — call it every step, or nothing will ever complete or fire
+${function.eos_platform_tick} drives the SDK - call it every step, or nothing will ever complete or fire
 a callback:
 
 ```gml
@@ -70,7 +70,7 @@ a callback:
 eos_platform_tick();
 ```
 
-Call ${function.eos_api_shutdown} once, when your game closes — it releases the platform handle for you:
+Call ${function.eos_api_shutdown} once, when your game closes - it releases the platform handle for you:
 
 ```gml
 /// Game End Event / Clean Up Event

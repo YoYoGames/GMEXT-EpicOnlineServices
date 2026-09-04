@@ -5,11 +5,11 @@
  * @function eos_lobby_create_lobby
  * @desc **Epic Online Services Function:** [EOS_Lobby_CreateLobby](https://dev.epicgames.com/docs/api-ref/functions/eos-lobby-create-lobby)
  *
- * Creates a new lobby owned by the calling local user, with settings taken from `options`. The lobby is created empty (only the local user is a member) — invite or have other players join it via ${function.eos_lobby_join_lobby}/${function.eos_lobby_join_lobby_by_id}.
+ * Creates a new lobby owned by the calling local user, with settings taken from `options`. The lobby is created empty (only the local user is a member) - invite or have other players join it via ${function.eos_lobby_join_lobby}/${function.eos_lobby_join_lobby_by_id}.
  *
  * [[Note: `bucket_id` is required. It's an arbitrary string used to group/filter lobbies, e.g. `"<region>:<mode>"`.]]
  *
- * [[Note: When `enable_rtc_room` is `true`, the SDK also creates a managed voice room for the lobby — see ${function.eos_lobby_get_rtc_room_name} and ${module.rtc}.]]
+ * [[Note: When `enable_rtc_room` is `true`, the SDK also creates a managed voice room for the lobby - see ${function.eos_lobby_get_rtc_room_name} and ${module.rtc}.]]
  *
  * @param {Struct.EpicLobbyCreateLobbyOptions} options Settings for the new lobby.
  * @param {Function} [callback] Called once with the result.
@@ -635,7 +635,7 @@
  * @param {String} local_user_id
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID, used to unregister later. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, used to unregister later, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time a subscribed lobby's settings change (not just once).
@@ -663,7 +663,7 @@
  * @param {String} local_user_id
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time a member's attributes change (not just once).
@@ -691,7 +691,7 @@
  * @param {String} local_user_id
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time a member's status changes (not just once).
@@ -720,7 +720,7 @@
  *
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time the user accepts an overlay join-lobby invite (not just once).
@@ -748,7 +748,7 @@
  * @param {String} local_user_id
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time a leave is requested (not just once).
@@ -778,7 +778,7 @@
  * @param {String} local_user_id
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time a native invite is requested (not just once).
@@ -815,11 +815,11 @@
  * @function eos_lobby_add_notify_rtc_room_connection_changed
  * @desc **Epic Online Services Function:** [EOS_Lobby_AddNotifyRTCRoomConnectionChanged](https://dev.epicgames.com/docs/api-ref/functions/eos-lobby-add-notify-rtc-room-connection-changed)
  *
- * Registers to be notified when the local user's connection state to a lobby-managed RTC room changes. This is the correct way to track RTC connection status for a lobby room — ${function.eos_rtc_add_notify_disconnected} always reports ${constant.EOS_INVALID_NOTIFICATIONID} for lobby-managed rooms.
+ * Registers to be notified when the local user's connection state to a lobby-managed RTC room changes. This is the correct way to track RTC connection status for a lobby room - ${function.eos_rtc_add_notify_disconnected} always reports `0` for lobby-managed rooms.
  *
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time the RTC room connection state changes (not just once).
@@ -1038,7 +1038,7 @@
  *
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time an invite is received (not just once).
@@ -1061,11 +1061,11 @@
  * @function eos_lobby_add_notify_lobby_invite_accepted
  * @desc **Epic Online Services Function:** [EOS_Lobby_AddNotifyLobbyInviteAccepted](https://dev.epicgames.com/docs/api-ref/functions/eos-lobby-add-notify-lobby-invite-accepted)
  *
- * Registers to be notified when the local user accepts one of their own sent invites' recipient response — i.e. fires for the *inviter* when the invitee accepts via the overlay.
+ * Registers to be notified when the local user accepts one of their own sent invites' recipient response - i.e. fires for the *inviter* when the invitee accepts via the overlay.
  *
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time a sent invite is accepted (not just once).
@@ -1092,7 +1092,7 @@
  *
  * @param {Function} [callback]
  *
- * @returns {Real} A notification ID. ${constant.EOS_INVALID_NOTIFICATIONID} on failure.
+ * @returns {Real} A notification ID, or `0` if registration failed.
  *
  * @event callback
  * @desc Fires every time a sent invite is rejected (not just once).
@@ -1152,7 +1152,7 @@
  * @const EpicLobbyRTCRoomJoinActionType
  * @desc **Epic Online Services Enum:** [EOS_ELobbyRTCRoomJoinActionType](https://dev.epicgames.com/docs/api-ref/enums/eos-e-lobby-rtc-room-join-action-type)
  *
- * [[Note: Currently fixed to `AutomaticJoin` by this extension's native implementation — the SDK's manual-join mode isn't exposed via `spec.gmidl` yet.]]
+ * [[Note: Currently fixed to `AutomaticJoin` by this extension's native implementation - the SDK's manual-join mode isn't exposed via `spec.gmidl` yet.]]
  *
  * @member AutomaticJoin The RTC room is joined automatically as soon as the lobby's RTC room is created/joined.
  * @member ManualJoin The RTC room must be joined manually by the application.
@@ -1173,7 +1173,7 @@
  * @member {Bool} allow_invites Whether members are allowed to send invites to this lobby.
  * @member {String} bucket_id Arbitrary grouping/filter string, required.
  * @member {Bool} disable_host_migration If `true`, the lobby is destroyed instead of migrating ownership when the owner leaves.
- * @member {Bool} enable_rtc_room If `true`, a managed voice room is created for this lobby — see ${function.eos_lobby_get_rtc_room_name}.
+ * @member {Bool} enable_rtc_room If `true`, a managed voice room is created for this lobby - see ${function.eos_lobby_get_rtc_room_name}.
  * @member {Bool} enable_join_by_id If `true`, the lobby can be joined directly via ${function.eos_lobby_join_lobby_by_id}.
  * @member {Bool} rejoin_after_kick_requires_invite If `true`, a kicked member needs a fresh invite to rejoin.
  * @struct_end
@@ -1274,7 +1274,7 @@
 
 /**
  * @struct EpicLobbyModificationAddAttributeOptions
- * @desc Shape of a lobby attribute (key/value/visibility). Declared in `spec.gmidl` alongside ${function.eos_lobby_lobby_modification_add_attribute_string}, but that function (and its `_bool`/`_double` siblings) currently takes `key`/`value`/`visibility` as flat parameters rather than this struct — it isn't reachable from any function today.
+ * @desc Shape of a lobby attribute (key/value/visibility). Declared in `spec.gmidl` alongside ${function.eos_lobby_lobby_modification_add_attribute_string}, but that function (and its `_bool`/`_double` siblings) currently takes `key`/`value`/`visibility` as flat parameters rather than this struct - it isn't reachable from any function today.
  *
  * @member {String} key
  * @member {String} value
@@ -1284,7 +1284,7 @@
 
 /**
  * @struct EpicLobbyModificationAddMemberAttributeOptions
- * @desc Shape of a lobby member attribute (key/value/visibility). Declared in `spec.gmidl` alongside ${function.eos_lobby_lobby_modification_add_member_attribute_string}, but that function (and its `_bool`/`_double` siblings) currently takes `key`/`value`/`visibility` as flat parameters rather than this struct — it isn't reachable from any function today.
+ * @desc Shape of a lobby member attribute (key/value/visibility). Declared in `spec.gmidl` alongside ${function.eos_lobby_lobby_modification_add_member_attribute_string}, but that function (and its `_bool`/`_double` siblings) currently takes `key`/`value`/`visibility` as flat parameters rather than this struct - it isn't reachable from any function today.
  *
  * @member {String} key
  * @member {String} value
@@ -1302,7 +1302,7 @@
 
 /**
  * @struct EpicLobbySearchSetParameterOptions
- * @desc Shape of a lobby search parameter (key/value/comparison). Declared in `spec.gmidl` alongside ${function.eos_lobby_lobby_search_set_parameter_string}, but that function (and its `_bool`/`_double` siblings) currently takes `key`/`value`/`comparison_op` as flat parameters rather than this struct — it isn't reachable from any function today.
+ * @desc Shape of a lobby search parameter (key/value/comparison). Declared in `spec.gmidl` alongside ${function.eos_lobby_lobby_search_set_parameter_string}, but that function (and its `_bool`/`_double` siblings) currently takes `key`/`value`/`comparison_op` as flat parameters rather than this struct - it isn't reachable from any function today.
  *
  * @member {String} key
  * @member {String} value
@@ -1548,7 +1548,7 @@
  * @desc **Epic Online Services Interface:** [Lobby Interface](https://dev.epicgames.com/docs/game-services/eos-lobby-interface)
  *
  * A lobby is a small, mutable group of players (with attributes, per-member attributes, invites, and an
- * optional managed ${module.rtc} voice room) that exists before or alongside actual gameplay — e.g. a
+ * optional managed ${module.rtc} voice room) that exists before or alongside actual gameplay - e.g. a
  * party/pre-game staging area. For matchmaking large numbers of dedicated-server-backed players, see
  * ${module.sessions} instead.
  *

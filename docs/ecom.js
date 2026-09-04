@@ -5,11 +5,11 @@
  * @desc **Epic Online Services Function:** [EOS_Ecom_QueryOwnership](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-ownership)
  *
  * Queries the ownership status for a list of catalog item IDs defined with Epic Online Services. The
- * result is cached locally — read it back with ${function.eos_ecom_get_item_ownership_count} and
+ * result is cached locally - read it back with ${function.eos_ecom_get_item_ownership_count} and
  * ${function.eos_ecom_copy_item_ownership_at_index} once the callback fires with success. A fresh call
  * to this function replaces the previously cached result for `local_user_id`.
  *
- * [[Warning: You should only use this function for startup checks — use Auth or Connect events to more
+ * [[Warning: You should only use this function for startup checks - use Auth or Connect events to more
  * reliably determine when to query for ownership changes.]]
  *
  * @param {String} local_user_id The Epic Account ID of the local user whose ownership is being queried.
@@ -48,7 +48,7 @@
  *
  * Queries the ownership status of catalog items across a set of sandboxes, for the currently logged in
  * user. Unlike ${function.eos_ecom_query_ownership}, this can be queried using an ${function.eos_connect_login}
- * logged in user, and does not require an Epic Account. The result is cached locally — read it back with
+ * logged in user, and does not require an Epic Account. The result is cached locally - read it back with
  * ${function.eos_ecom_get_sandbox_ownership_count} and ${function.eos_ecom_copy_sandbox_ownership_at_index}.
  *
  * @param {String} local_user_id The Product User ID of the local user whose ownership is being queried.
@@ -90,7 +90,7 @@
  *
  * Queries the backend for the local user's entitlements. Any Epic Games-based entitlements can only be
  * queried from the running application defined by the Product ID configured with
- * ${page.extension_options}. The result is cached in the SDK's own entitlement cache — read it back with
+ * ${page.extension_options}. The result is cached in the SDK's own entitlement cache - read it back with
  * ${function.eos_ecom_get_entitlements_count}/${function.eos_ecom_get_entitlements_by_name_count} and
  * the matching `eos_ecom_copy_entitlement_*` accessors.
  *
@@ -134,7 +134,7 @@
  * @desc **Epic Online Services Function:** [EOS_Ecom_QueryOffers](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-query-offers)
  *
  * Queries the backend catalog for the store offers available to the local user. The result is cached in
- * the SDK's own offer cache — read it back with ${function.eos_ecom_get_offer_count} and
+ * the SDK's own offer cache - read it back with ${function.eos_ecom_get_offer_count} and
  * ${function.eos_ecom_copy_offer_by_index}/${function.eos_ecom_copy_offer_by_id}.
  *
  * @param {String} local_user_id The Epic Account ID of the local user whose offers are being queried.
@@ -158,7 +158,7 @@
  * fires once the player finishes, cancels, or the purchase flow otherwise closes.
  *
  * [[Note: `EpicResult.EcomPurchaseProcessing` can be returned in the callback if the player closed the
- * purchase flow overlay after clicking the purchase button — the purchase may still be processing, so
+ * purchase flow overlay after clicking the purchase button - the purchase may still be processing, so
  * re-query entitlements shortly afterward rather than treating this as a hard failure.]]
  *
  * @param {String} local_user_id The Epic Account ID of the local user starting the checkout.
@@ -546,7 +546,7 @@
  * @desc **Epic Online Services Function:** [EOS_Ecom_CopyTransactionByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-ecom-copy-transaction-by-index)
  *
  * Retrieves a transaction handle by index. The handle is registered locally the first time it's copied
- * — release it with ${function.eos_ecom_transaction_release} once you're done with it.
+ * - release it with ${function.eos_ecom_transaction_release} once you're done with it.
  *
  * @param {String} local_user_id The Epic Account ID of the local user.
  * @param {Real} transaction_index Index into the transaction list, between 0 and ${function.eos_ecom_get_transaction_count} - 1.
@@ -657,8 +657,8 @@
  * @desc A single sandbox's ownership result, as returned by ${function.eos_ecom_query_ownership_by_sandbox_ids}.
  *
  * @member {String} sandbox_id The sandbox ID this result is for.
- * @member {String} owned_catalog_item_ids The catalog item IDs owned by the local user within this
- * sandbox, joined with `|`. Split on `|` to get the individual IDs; empty if none are owned.
+ * @member {Array[String]} owned_catalog_item_ids The catalog item IDs owned by the local user within
+ * this sandbox. An empty array if none are owned.
  *
  * @struct_end
  */
@@ -723,8 +723,8 @@
  * @struct EpicEcomCatalogRelease
  * @desc A single release record for a catalog item, describing which app builds/platforms it's compatible with.
  *
- * @member {String} compatible_app_ids The compatible application IDs, joined with `|`.
- * @member {String} compatible_platforms The compatible platform names, joined with `|`.
+ * @member {Array[String]} compatible_app_ids The compatible application IDs.
+ * @member {Array[String]} compatible_platforms The compatible platform names.
  * @member {String} release_note Localized release note text for this release.
  *
  * @struct_end
@@ -736,7 +736,7 @@
  *
  * @member {Constant.EpicResult} result_code The result of the operation.
  * @member {String} local_user_id The Epic Account ID of the local user this result is for.
- * @member {Real} item_ownership_count The number of ownership records now cached — see ${function.eos_ecom_get_item_ownership_count}.
+ * @member {Real} item_ownership_count The number of ownership records now cached - see ${function.eos_ecom_get_item_ownership_count}.
  *
  * @struct_end
  */
@@ -747,7 +747,7 @@
  *
  * @member {Constant.EpicResult} result_code The result of the operation.
  * @member {String} local_user_id The Product User ID of the local user this result is for.
- * @member {Real} sandbox_ownership_count The number of sandbox ownership records now cached — see ${function.eos_ecom_get_sandbox_ownership_count}.
+ * @member {Real} sandbox_ownership_count The number of sandbox ownership records now cached - see ${function.eos_ecom_get_sandbox_ownership_count}.
  *
  * @struct_end
  */
@@ -812,7 +812,7 @@
  *
  * @member {Constant.EpicResult} result_code The result of the operation.
  * @member {String} local_user_id The Epic Account ID of the local user this result is for.
- * @member {Real} redeemed_count The number of entitlements redeemed — see ${function.eos_ecom_get_last_redeemed_entitlements_count}.
+ * @member {Real} redeemed_count The number of entitlements redeemed - see ${function.eos_ecom_get_last_redeemed_entitlements_count}.
  *
  * @struct_end
  */
@@ -838,7 +838,7 @@
  * The kind of a ${struct.EpicEcomCatalogItem}.
  *
  * @member Durable A durable item, owned permanently once purchased.
- * @member Consumable A consumable item, whose entitlement can be redeemed/decremented via ${Function.eos_ecom_redeem_entitlements}.
+ * @member Consumable A consumable item, whose entitlement can be redeemed/decremented via ${function.eos_ecom_redeem_entitlements}.
  * @member Other An item that isn't a durable or consumable (e.g. a subscription).
  *
  * @const_end
@@ -850,7 +850,7 @@
  *
  * The preferred screen orientation for the checkout overlay.
  *
- * [[Note: This extension always requests `Default` — there is currently no way to override it from GML.]]
+ * [[Note: This extension always requests `Default` - there is currently no way to override it from GML.]]
  *
  * @member Default Use the platform's default orientation.
  * @member Portrait Prefer portrait orientation.
@@ -865,7 +865,7 @@
  * @desc **Epic Online Services Interface:** [Ecom Interface](https://dev.epicgames.com/docs/game-services/eos-ecom-interface)
  *
  * The Ecom (E-Commerce) Interface lets you query and sell your game's catalog items, manage entitlements,
- * and check ownership — covering the full loop from browsing offers to completing a purchase through the
+ * and check ownership - covering the full loop from browsing offers to completing a purchase through the
  * Epic Overlay.
  *
  * @section_func

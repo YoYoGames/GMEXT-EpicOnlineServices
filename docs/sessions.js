@@ -39,9 +39,9 @@
  * @desc **Epic Online Services Function:** [EOS_SessionModificationHandle_Release](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-handle-release)
  *
  * Releases a session modification handle without publishing it. Call this if you decide not to commit
- * changes built up with ${function.eos_sessions_create_session_modification} or ${function.eos_sessions_update_lobby_modification}.
+ * changes built up with ${function.eos_sessions_create_session_modification}.
  *
- * [[Note: You do NOT need to call this after ${function.eos_sessions_update_session} — that function releases the handle internally once it hands the modification off to the SDK.]]
+ * [[Note: You do NOT need to call this after ${function.eos_sessions_update_session} - that function releases the handle internally once it hands the modification off to the SDK.]]
  *
  * @param {Real} modification_id A session modification handle.
  *
@@ -57,7 +57,7 @@
  * @desc **Epic Online Services Function:** [EOS_Sessions_UpdateSession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-update-session)
  *
  * Publishes a session modification, creating the session on the first call or applying changes on later
- * calls. This function consumes and releases `modification_id` — don't call ${function.eos_sessions_session_modification_release} on it afterward.
+ * calls. This function consumes and releases `modification_id` - don't call ${function.eos_sessions_session_modification_release} on it afterward.
  *
  * @param {Real} modification_id A session modification handle from ${function.eos_sessions_create_session_modification}.
  * @param {Function} [callback] Called once with the result.
@@ -254,7 +254,7 @@
  *
  * Releases a session search handle and every search result it produced. Session details handles copied
  * out via ${function.eos_sessions_session_search_copy_search_result_by_index} remain valid after this
- * call — release them separately with ${function.eos_sessions_session_details_release}.
+ * call - release them separately with ${function.eos_sessions_session_details_release}.
  *
  * @param {Real} search_id A session search handle.
  *
@@ -630,7 +630,7 @@
  * @desc **Epic Online Services Function:** [EOS_SessionModification_SetHostAddress](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-host-address)
  *
  * @param {Real} modification_id A session modification handle.
- * @param {String} host_address Free-form connect address for players to use after joining (your own format — EOS doesn't interpret it). Pass an empty string to clear it.
+ * @param {String} host_address Free-form connect address for players to use after joining (your own format - EOS doesn't interpret it). Pass an empty string to clear it.
  *
  * @returns {Constant.EpicResult}
  *
@@ -1154,8 +1154,15 @@
  * @member {String} host_address
  * @member {String} owner_user_id
  * @member {Real} num_open_public_connections
- * @member {Real} settings_count
  * @member {String} owner_server_client_id
+ * @member {String} bucket_id The main indexed parameter for this session, e.g. `"Region:GameMode"`.
+ * @member {Real} num_public_connections Total number of players allowed in the session.
+ * @member {Bool} allow_join_in_progress Whether players may join while the session is in progress.
+ * @member {Constant.EpicOnlineSessionPermissionLevel} permission_level Who is allowed to find and join the session.
+ * @member {Bool} invites_allowed Whether players are allowed to send invites for the session.
+ * @member {Bool} sanctions_enabled Whether sanctioned players are rejected when they try to join.
+ * @member {Real} allowed_platform_ids_count Number of entries in `allowed_platform_ids`.
+ * @member {Array[Real]} allowed_platform_ids Platform IDs allowed to register with the session. Empty means unrestricted.
  * @struct_end
  */
 
@@ -1168,6 +1175,7 @@
  * @member {String} bucket_id
  * @member {String} owner_user_id Empty if the session is owned by a dedicated server rather than a user.
  * @member {String} host_address
+ * @member {Constant.EpicOnlineSessionState} state Current state of the session.
  * @struct_end
  */
 
@@ -1301,7 +1309,7 @@
  * @desc **Epic Online Services Interface:** [Sessions Interface](https://dev.epicgames.com/docs/game-services/eos-sessions-interface)
  *
  * The [Sessions Interface](https://dev.epicgames.com/docs/game-services/eos-sessions-interface) lets
- * players create, search for, join, and leave online game sessions — the general-purpose matchmaking
+ * players create, search for, join, and leave online game sessions - the general-purpose matchmaking
  * building block for match-based games. If you need a persistent group of players who stick together
  * across matches, see ${module.lobbies} instead.
  *

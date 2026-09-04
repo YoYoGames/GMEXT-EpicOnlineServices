@@ -5,9 +5,9 @@
  * @function eos_titlestorage_query_file
  * @desc **Epic Online Services Function:** [EOS_TitleStorage_QueryFile](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-title-storage-query-file)
  *
- * Requests the metadata for a specific file in title storage, updating the local metadata cache with the results. This does not download the file's contents — call ${function.eos_titlestorage_read_file} for that.
+ * Requests the metadata for a specific file in title storage, updating the local metadata cache with the results. This does not download the file's contents - call ${function.eos_titlestorage_read_file} for that.
  *
- * @param {String} local_user_id The Product User ID of the user making the request. May be `""` — see the `local_user_id` note on ${module.title_storage}.
+ * @param {String} local_user_id The Product User ID of the user making the request. May be `""` - see the `local_user_id` note on ${module.title_storage}.
  * @param {String} filename The name of the file to query.
  * @param {Function} [callback] A function to call once the request completes. See the `callback` event below.
  *
@@ -25,7 +25,7 @@
  *
  * Requests the metadata for every file in title storage tagged with any of the given tags, updating the local metadata cache. Use ${function.eos_titlestorage_get_file_metadata_count} and ${function.eos_titlestorage_copy_file_metadata_at_index} to read the results once the callback fires.
  *
- * @param {String} local_user_id The Product User ID of the user making the request. May be `""` — see the `local_user_id` note on ${module.title_storage}.
+ * @param {String} local_user_id The Product User ID of the user making the request. May be `""` - see the `local_user_id` note on ${module.title_storage}.
  * @param {Array[String]} tags Tags previously assigned to files in the Dev Portal, used to filter which files are returned. Pass an empty array to match every file.
  * @param {Function} [callback] A function to call once the request completes. See the `callback` event below.
  *
@@ -54,7 +54,7 @@
  *
  * Gets the number of files with cached metadata, following the most recent ${function.eos_titlestorage_query_file}/${function.eos_titlestorage_query_file_list} call. Returns `0` if nothing has been queried yet.
  *
- * @param {String} local_user_id The Product User ID of the user making the request. May be `""` — see the `local_user_id` note on ${module.title_storage}.
+ * @param {String} local_user_id The Product User ID of the user making the request. May be `""` - see the `local_user_id` note on ${module.title_storage}.
  *
  * @returns {Real}
  *
@@ -67,14 +67,14 @@
  *
  * Fetches a locally cached metadata struct for a file, by index. `index` must be less than the value returned by ${function.eos_titlestorage_get_file_metadata_count}.
  *
- * [[Note: This reads from the local cache populated by the last query call — it does not talk to the backend.]]
+ * [[Note: This reads from the local cache populated by the last query call - it does not talk to the backend.]]
  *
- * @param {String} local_user_id The Product User ID of the user making the request. May be `""` — see the `local_user_id` note on ${module.title_storage}.
+ * @param {String} local_user_id The Product User ID of the user making the request. May be `""` - see the `local_user_id` note on ${module.title_storage}.
  * @param {Real} index Index into the cached file list, from `0` to ${function.eos_titlestorage_get_file_metadata_count} - 1.
  *
  * @returns {Struct.EpicTitleStorageFileMetadata}
  *
- * [[Note: Returns `undefined` if `index` is out of range or the underlying SDK call fails — check ${function.eos_api_last_error} for details.]]
+ * [[Note: Returns `undefined` if `index` is out of range or the underlying SDK call fails - check ${function.eos_api_last_error} for details.]]
  *
  * @function_end
  */
@@ -85,14 +85,14 @@
  *
  * Fetches a locally cached metadata struct for a file, by filename.
  *
- * [[Note: This reads from the local cache populated by the last query call — it does not talk to the backend.]]
+ * [[Note: This reads from the local cache populated by the last query call - it does not talk to the backend.]]
  *
- * @param {String} local_user_id The Product User ID of the user making the request. May be `""` — see the `local_user_id` note on ${module.title_storage}.
+ * @param {String} local_user_id The Product User ID of the user making the request. May be `""` - see the `local_user_id` note on ${module.title_storage}.
  * @param {String} filename The name of the file to look up.
  *
  * @returns {Struct.EpicTitleStorageFileMetadata}
  *
- * [[Note: Returns `undefined` if this filename has no cached metadata (nothing has been queried for it yet) — check ${function.eos_api_last_error} for details.]]
+ * [[Note: Returns `undefined` if this filename has no cached metadata (nothing has been queried for it yet) - check ${function.eos_api_last_error} for details.]]
  *
  * @function_end
  */
@@ -103,11 +103,11 @@
  *
  * Downloads a file from title storage straight to a local path on disk, streaming it in chunks rather than buffering the whole thing in memory.
  *
- * [[Note: `output_path` is a real filesystem path, not a GML buffer — the extension writes the downloaded bytes to disk itself. Load the file back into your game with GML's own file functions once the `callback` fires with `EpicResult.Success`.]]
+ * [[Note: `output_path` is a real filesystem path, not a GML buffer - the extension writes the downloaded bytes to disk itself. Load the file back into your game with GML's own file functions once the `callback` fires with `EpicResult.Success`.]]
  *
- * [[Warning: If the transfer fails or is cancelled part-way through, the extension removes the partially-written file at `output_path` rather than leaving a corrupt fragment behind — it will never silently replace a previously-good file at that path with a broken one.]]
+ * [[Warning: If the transfer fails or is cancelled part-way through, the extension removes the partially-written file at `output_path` rather than leaving a corrupt fragment behind - it will never silently replace a previously-good file at that path with a broken one.]]
  *
- * @param {String} local_user_id The Product User ID of the user making the request. May be `""` — see the `local_user_id` note on ${module.title_storage}.
+ * @param {String} local_user_id The Product User ID of the user making the request. May be `""` - see the `local_user_id` note on ${module.title_storage}.
  * @param {String} filename The name of the file to read.
  * @param {String} output_path Local filesystem path the downloaded file is written to.
  * @param {Function} [callback] A function to call once the download completes (success or failure). See the `callback` event below.
@@ -145,7 +145,7 @@
  *
  * Removes previously cached data for a given user from the local filesystem cache used internally by the SDK. This does not touch the copies stored on Epic's backend.
  *
- * @param {String} local_user_id The Product User ID of the user making the request. May be `""` — see the `local_user_id` note on ${module.title_storage}.
+ * @param {String} local_user_id The Product User ID of the user making the request. May be `""` - see the `local_user_id` note on ${module.title_storage}.
  * @param {Function} [callback] A function to call once the request completes. See the `callback` event below.
  *
  * @event callback
@@ -228,9 +228,9 @@
 
 /**
  * @const EpicTitleStorageReadResult
- * @desc **Epic Online Services Enum:** [EOS_TitleStorage_EReadResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-title-storage-e-read-result) — describes how a single chunk of a file read completed, at the SDK level.
+ * @desc **Epic Online Services Enum:** [EOS_TitleStorage_EReadResult](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-title-storage-e-read-result) - describes how a single chunk of a file read completed, at the SDK level.
  *
- * [[Note: This extension handles read-chunk streaming to disk internally (see ${function.eos_titlestorage_read_file}) — this constant isn't currently surfaced through any GML function or callback parameter, it's documented here for completeness against the generated API surface.]]
+ * [[Note: This extension handles read-chunk streaming to disk internally (see ${function.eos_titlestorage_read_file}) - this constant isn't currently surfaced through any GML function or callback parameter, it's documented here for completeness against the generated API surface.]]
  *
  * @member ContinueReading The read operation should continue.
  * @member FailRequest The read operation should terminate in failure.
@@ -245,9 +245,9 @@
  * @title Title Storage
  * @desc **Epic Online Services Interface:** [Title Storage Interface](https://dev.epicgames.com/docs/game-services/eos-title-storage-interface)
  *
- * The Title Storage Interface lets you download developer-managed files (patch notes, remote config, DLC manifests, and similar title-wide content) that you upload through the Dev Portal. Unlike ${module.player_data_storage}, this storage is read-only from the game's side and isn't tied to a specific player. Files are downloaded straight to a local path on disk — the extension streams the transfer itself, so you never handle the raw bytes directly in GML.
+ * The Title Storage Interface lets you download developer-managed files (patch notes, remote config, DLC manifests, and similar title-wide content) that you upload through the Dev Portal. Unlike ${module.player_data_storage}, this storage is read-only from the game's side and isn't tied to a specific player. Files are downloaded straight to a local path on disk - the extension streams the transfer itself, so you never handle the raw bytes directly in GML.
  *
- * [[Note: `local_user_id` may be passed as an empty string `""` on every function in this module — Title Storage content isn't per-player. Supplying a real Product User ID lets the SDK apply any per-user entitlement checks configured for tagged premium content; leave it empty otherwise.]]
+ * [[Note: `local_user_id` may be passed as an empty string `""` on every function in this module - Title Storage content isn't per-player. Supplying a real Product User ID lets the SDK apply any per-user entitlement checks configured for tagged premium content; leave it empty otherwise.]]
  *
  * [[Note: Reading files requires an **Encryption Key** to be configured in the extension's Extension Options. See ${page.extension_options}.]]
  *

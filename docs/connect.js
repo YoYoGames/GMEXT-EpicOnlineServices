@@ -15,7 +15,7 @@
  * headless/device account) or ${function.eos_connect_link_account} (link to an existing Epic account) to
  * complete the flow.
  *
- * [[Note: The continuance token is single-use — it's consumed the moment ${function.eos_connect_create_user}/${function.eos_connect_link_account} completes (whether that call succeeds or fails). Call ${function.eos_connect_login} again to get a fresh one.]]
+ * [[Note: The continuance token is single-use - it's consumed the moment ${function.eos_connect_create_user}/${function.eos_connect_link_account} completes (whether that call succeeds or fails). Call ${function.eos_connect_login} again to get a fresh one.]]
  *
  * @param {String} token The external credential token (e.g. a Steam session ticket, or an arbitrary device identifier for `DeviceIdAccessToken`).
  * @param {Enum.EpicExternalCredentialType} external_credential_type The type of the external credential in `token`. See ${constant.EpicExternalCredentialType}.
@@ -337,7 +337,7 @@
  * Verifies a Connect ID token (from ${function.eos_connect_copy_id_token}). Intended for a dedicated
  * game server verifying a connecting client's identity.
  *
- * [[Note: `account_id_type`/`account_id`/`platform`/`device_type` on the result are only meaningful when `is_account_info_present` is `true` — this is `false` for tokens belonging to a Device-ID-only (headless) account.]]
+ * [[Note: `account_id_type`/`account_id`/`platform`/`device_type` on the result are only meaningful when `is_account_info_present` is `true` - this is `false` for tokens belonging to a Device-ID-only (headless) account.]]
  *
  * @param {String} json_web_token The ID token JSON Web Token string to verify.
  * @param {Function} [callback] Called once with the result.
@@ -566,7 +566,7 @@
  *
  * @member {Constant.EpicResult} result_code
  * @member {String} product_user_id
- * @member {Bool} is_account_info_present When `false`, this token belongs to a Device-ID-only account and `account_id_type`/`account_id`/`platform`/`device_type` below are empty — do not treat them as real values in that case.
+ * @member {Bool} is_account_info_present When `false`, this token belongs to a Device-ID-only account and `account_id_type`/`account_id`/`platform`/`device_type` below are empty - do not treat them as real values in that case.
  * @member {Constant.EpicExternalAccountType} account_id_type Only valid when `is_account_info_present` is `true`.
  * @member {String} account_id Only valid when `is_account_info_present` is `true`.
  * @member {String} platform Only valid when `is_account_info_present` is `true`.
@@ -653,7 +653,7 @@
  * The type of external credential passed to ${function.eos_connect_login} (and to
  * ${function.eos_auth_login} for external-account Epic Account Service logins).
  *
- * @member Epic Epic Account Services token. Using an ID token (${Function.eos_auth_copy_id_token}) is
+ * @member Epic Epic Account Services token. Using an ID token (${function.eos_auth_copy_id_token}) is
  * preferred; an auth token (${function.eos_auth_copy_user_auth_token}) is supported for backwards
  * compatibility.
  * @member SteamAppTicket Steam Encrypted App Ticket, generated with Steamworks SDK's
@@ -670,8 +670,8 @@
  * other external account to preserve progression across devices/platforms.
  * @member UplayAccessToken Uplay Access Token.
  * @member OpenIdAccessToken Generic OpenID Provider Access Token.
- * @member DeviceIdAccessToken Local Device ID token from ${Function.eos_connect_create_device_id},
- * identifying the current OS user profile on this device rather than any real external account — lets a
+ * @member DeviceIdAccessToken Local Device ID token from ${function.eos_connect_create_device_id},
+ * identifying the current OS user profile on this device rather than any real external account - lets a
  * player start playing without logging into anything, with the option to link a real account later onto
  * the same Product User ID.
  * @member AppleIdToken Apple ID Token.
@@ -683,7 +683,7 @@
  * `ITCHIO_API_KEY` environment variable. Valid for 7 days; the game needs restarting after expiry to
  * refresh the EOS Connect session.
  * @member ItchIoKey itch.io Key Access Token, retrieved through itch.io's OAuth 2.0 flow.
- * @member EpicIdToken Epic Games ID Token, acquired with ${Function.eos_auth_copy_id_token}.
+ * @member EpicIdToken Epic Games ID Token, acquired with ${function.eos_auth_copy_id_token}.
  * @member AmazonAccessToken Amazon Access Token.
  * @member SteamSessionTicket Steam Auth Session Ticket, generated with Steamworks SDK's
  * `ISteamUser::GetAuthTicketForWebApi`.

@@ -9,7 +9,7 @@
  * ${function.eos_logging_set_log_level} to control which categories/levels actually reach it.
  *
  * [[Warning: Unlike every other callback in this extension, this one is NOT guaranteed to fire on the
- * main thread during ${function.eos_platform_tick} — the SDK can invoke it from an internal worker
+ * main thread during ${function.eos_platform_tick} - the SDK can invoke it from an internal worker
  * thread. Do not touch instances, rooms, or any other main-thread-only GML state directly from this
  * callback; buffer the message (e.g. into a ds_queue) and drain it from a Step event instead.]]
  *
@@ -119,7 +119,7 @@
  * @member RTC Logs related to the RTC API.
  * @member RTCAdmin Logs related to the RTC Admin API.
  * @member CustomInvites Logs related to the Custom Invites API.
- * @member AllCategories Not a real category — configures every category at once when passed to ${Function.eos_logging_set_log_level}.
+ * @member AllCategories Not a real category - configures every category at once when passed to ${function.eos_logging_set_log_level}.
  * @const_end
  */
 

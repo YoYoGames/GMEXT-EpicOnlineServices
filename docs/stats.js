@@ -174,7 +174,7 @@
  * @title Stats
  * @desc **Epic Online Services Interface:** [Stats Interface](https://dev.epicgames.com/docs/game-services/eos-stats-interface)
  *
- * The [Stats Interface](https://dev.epicgames.com/docs/game-services/eos-stats-interface) provides the ability to manage users' stats for an application — any statistical data you want to track, such as items collected, fastest completion time, or number of victories. Stats are commonly used to drive ${module.achievements} unlock conditions and ${module.leaderboards} rankings.
+ * The [Stats Interface](https://dev.epicgames.com/docs/game-services/eos-stats-interface) provides the ability to manage users' stats for an application - any statistical data you want to track, such as items collected, fastest completion time, or number of victories. Stats are commonly used to drive ${module.achievements} unlock conditions and ${module.leaderboards} rankings.
  *
  * @section_func
  * @desc These functions are provided for handling stats:

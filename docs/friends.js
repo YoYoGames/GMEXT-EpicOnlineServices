@@ -153,7 +153,7 @@
  * @title Friends
  * @desc **Epic Online Services Interface:** [Friends Interface](https://dev.epicgames.com/docs/game-services/eos-friends-interface)
  *
- * The [Friends Interface](https://dev.epicgames.com/docs/game-services/eos-friends-interface) exposes the local user's Epic friends list — its own social graph, independent from any platform-native friends list. This only covers Epic Account friendships; for the platform-native friends UI overlay see ${module.user_interface}.
+ * The [Friends Interface](https://dev.epicgames.com/docs/game-services/eos-friends-interface) exposes the local user's Epic friends list - its own social graph, independent from any platform-native friends list. This only covers Epic Account friendships; for the platform-native friends UI overlay see ${module.user_interface}.
  *
  * [[Note: You must call ${function.eos_friends_query_friends} at least once before the cached accessor functions below return anything useful.]]
  *

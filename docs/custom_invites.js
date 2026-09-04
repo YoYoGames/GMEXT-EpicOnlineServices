@@ -525,9 +525,9 @@
  * @title Custom Invites
  * @desc **Epic Online Services Interface:** [Custom Invites Interface](https://dev.epicgames.com/docs/api-ref/interfaces/custom-invites)
  *
- * The [Custom Invites Interface](https://dev.epicgames.com/docs/api-ref/interfaces/custom-invites) lets players invite each other using a payload defined entirely by your game (a lobby id, a session join string, or anything else you need), instead of relying on a specific EOS lobby/session. It also covers "request to join" — a player asking to join someone without having received an invite first — and surfaces platform-native invite/share UI actions so you can respond to them with your own custom invite.
+ * The [Custom Invites Interface](https://dev.epicgames.com/docs/api-ref/interfaces/custom-invites) lets players invite each other using a payload defined entirely by your game (a lobby id, a session join string, or anything else you need), instead of relying on a specific EOS lobby/session. It also covers "request to join" - a player asking to join someone without having received an invite first - and surfaces platform-native invite/share UI actions so you can respond to them with your own custom invite.
  *
- * [[Note: Only one callback can be registered at a time per notification type in this module — registering a new one replaces the previous registration rather than adding a second listener.]]
+ * [[Note: Only one callback can be registered at a time per notification type in this module - registering a new one replaces the previous registration rather than adding a second listener.]]
  *
  * @section_func
  * @desc Provided functions:

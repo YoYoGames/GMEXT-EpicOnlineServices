@@ -34,7 +34,7 @@ are required and are found on the [Epic Games Dev Portal](https://dev.epicgames.
 | **Product Version** | String | Yes | Version of the running application, same character restrictions as **Product Name**. Defaults to `1.0`. |
 | **Debug Mode** | Dropdown (`Auto`/`Enabled`) | No | `Auto` (default) enables debug mode only when running from the IDE. `Enabled` forces it on for every build. |
 
-[[Warning: `Enabled` should only be used to hand a standalone debug build to someone for testing. Never ship a store build with **Debug Mode** set to `Enabled` — see ${page.getting_started} for what debug mode changes (skips the launcher relaunch check performed by ${function.eos_platform_check_for_launcher_and_restart}).]]
+[[Warning: `Enabled` should only be used to hand a standalone debug build to someone for testing. Never ship a store build with **Debug Mode** set to `Enabled` - see ${page.getting_started} for what debug mode changes (skips the launcher relaunch check performed by ${function.eos_platform_check_for_launcher_and_restart}).]]
 
 ## Extra Options
 
@@ -46,6 +46,6 @@ are required and are found on the [Epic Games Dev Portal](https://dev.epicgames.
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| **Scheme** | String | `eos.<lowercase Client Credentials ID>` | The custom URI scheme Android registers for the Epic account-portal login redirect. Must stay in sync with **Client Credentials ID** above — if you change one, update the other. |
+| **Scheme** | String | `eos.<lowercase Client Credentials ID>` | The custom URI scheme Android registers for the Epic account-portal login redirect. Must stay in sync with **Client Credentials ID** above - if you change one, update the other. |
 
 [[Note: The remaining options under **Extra Options** (SDK version/hash pins) are internal build plumbing used to fetch the correct redistributable SDK version and are not meant to be edited by hand.]]

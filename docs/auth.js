@@ -8,12 +8,12 @@
  *
  * [[Note: The scope flags you pass must correspond exactly to the ones configured for your product on the [Developer Portal](https://dev.epicgames.com/docs/dev-portal). See [Permissions](https://dev.epicgames.com/docs/epic-account-services/getting-started#permissions).]]
  *
- * [[Note: If the credentials match an external account with no Epic Account linked yet, the callback's `result_code` is `EpicResult.InvalidUser` and `has_continuance_token` is `true` — pass `continuance_token_id` into ${function.eos_auth_link_account} to complete the link. See the External Login Flow Guide on the ${page.logging_in} page.]]
+ * [[Note: If the credentials match an external account with no Epic Account linked yet, the callback's `result_code` is `EpicResult.InvalidUser` and `has_continuance_token` is `true` - pass `continuance_token_id` into ${function.eos_auth_link_account} to complete the link. See the External Login Flow Guide on the ${page.logging_in} page.]]
  *
  * @param {String} credentials_id ID for the credentials, meaning depends on `credentials_type` (often empty for exchange-code/portal logins).
  * @param {String} credentials_token Credentials or token for the login, meaning depends on `credentials_type`.
  * @param {Constant.EpicLoginCredentialType} credentials_type The login method to use.
- * @param {Constant.EpicExternalCredentialType} external_credential_type Identity provider to use when `credentials_type` is `EpicLoginCredentialType.ExternalAuth`. Ignored otherwise, but a value must still be passed — see ${module.connect} for the full list.
+ * @param {Constant.EpicExternalCredentialType} external_credential_type Identity provider to use when `credentials_type` is `EpicLoginCredentialType.ExternalAuth`. Ignored otherwise, but a value must still be passed - see ${module.connect} for the full list.
  * @param {Constant.EpicAuthScopeFlags} scope_flags Bitwise-OR (`|`) of the permissions to request from the user during login.
  * @param {Constant.EpicAuthLoginFlags} login_flags Bitwise-OR (`|`) of login behaviour flags.
  * @param {Function} [callback] Called once with the login result.
@@ -179,12 +179,12 @@
  * @function eos_auth_copy_id_token
  * @desc **Epic Online Services Function:** [EOS_Auth_CopyIdToken](https://dev.epicgames.com/docs/api-ref/functions/eos-auth-copy-id-token)
  *
- * Fetches a locally-cached ID token for an Epic Account ID. ID tokens are the recommended way to securely prove a user's identity to your own backend or other online services — prefer this over ${function.eos_auth_copy_user_auth_token}.
+ * Fetches a locally-cached ID token for an Epic Account ID. ID tokens are the recommended way to securely prove a user's identity to your own backend or other online services - prefer this over ${function.eos_auth_copy_user_auth_token}.
  *
  * @param {String} local_user_id Epic Account ID of the local, logged-in user.
- * @param {String} target_account_id Epic Account ID the token should describe — usually `local_user_id`'s own `selected_account_id`, or another account ID merged with it.
+ * @param {String} target_account_id Epic Account ID the token should describe - usually `local_user_id`'s own `selected_account_id`, or another account ID merged with it.
  *
- * @returns {Struct.EpicAuthIdToken} Returns `undefined` if no ID token is cached for `target_account_id` — call ${function.eos_auth_query_id_token} first for any account other than the local user's own selected account ID.
+ * @returns {Struct.EpicAuthIdToken} Returns `undefined` if no ID token is cached for `target_account_id` - call ${function.eos_auth_query_id_token} first for any account other than the local user's own selected account ID.
  *
  * @example
  * ```gml
@@ -216,7 +216,7 @@
  * @function eos_auth_query_id_token
  * @desc **Epic Online Services Function:** [EOS_Auth_QueryIdToken](https://dev.epicgames.com/docs/api-ref/functions/eos-auth-query-id-token)
  *
- * Queries the backend for an ID token describing `target_account_id`, one of the accounts merged with the local user's Epic Account. Once this completes, fetch the token with ${function.eos_auth_copy_id_token}. Not needed for the local user's own selected account ID — that token is always already cached.
+ * Queries the backend for an ID token describing `target_account_id`, one of the accounts merged with the local user's Epic Account. Once this completes, fetch the token with ${function.eos_auth_copy_id_token}. Not needed for the local user's own selected account ID - that token is always already cached.
  *
  * @param {String} local_user_id Epic Account ID of the local, logged-in user.
  * @param {String} target_account_id Epic Account ID to query an ID token for.
@@ -338,12 +338,12 @@
  *
  * @member Password Direct username/password login. Restricted to internal Epic testing.
  * @member ExchangeCode A short-lived, one-time exchange code (e.g. handed to your game by the Epic Games Launcher). Must be consumed promptly, before it expires.
- * @member PersistentAuth Desktop/Mobile only — logs in using a long-lived access token previously stored on the device by a prior login. Returns `EpicResult.InvalidAuth` if no valid stored token exists.
+ * @member PersistentAuth Desktop/Mobile only - logs in using a long-lived access token previously stored on the device by a prior login. Returns `EpicResult.InvalidAuth` if no valid stored token exists.
  * @member DeviceCode Deprecated, no longer used.
  * @member Developer Login using named credentials hosted by the EOS SDK Developer Authentication Tool (local development only).
- * @member RefreshToken A refresh token obtained from a previous ${Function.eos_auth_login} in another local process — used by launcher-to-game-client handoff flows.
- * @member AccountPortal Desktop/Mobile only — opens the Epic Account Portal for the user to log in interactively.
- * @member ExternalAuth Login using an external platform's credentials (Steam, PlayStation Network, Xbox Live, Nintendo, etc. — see `external_credential_type`). The primary login method on Console.
+ * @member RefreshToken A refresh token obtained from a previous ${function.eos_auth_login} in another local process - used by launcher-to-game-client handoff flows.
+ * @member AccountPortal Desktop/Mobile only - opens the Epic Account Portal for the user to log in interactively.
+ * @member ExternalAuth Login using an external platform's credentials (Steam, PlayStation Network, Xbox Live, Nintendo, etc. - see `external_credential_type`). The primary login method on Console.
  * @const_end
  */
 
@@ -425,9 +425,9 @@
  * @struct EpicAuthLoginCallbackInfo
  * @desc Result of ${function.eos_auth_login}.
  *
- * @member {Constant.EpicResult} result_code Result of the login attempt. `EpicResult.InvalidUser` with `has_continuance_token` set means the external credentials aren't linked to an Epic Account yet — see `continuance_token_id`.
+ * @member {Constant.EpicResult} result_code Result of the login attempt. `EpicResult.InvalidUser` with `has_continuance_token` set means the external credentials aren't linked to an Epic Account yet - see `continuance_token_id`.
  * @member {String} local_user_id Epic Account ID that logged in. Empty on failure.
- * @member {String} selected_account_id Account ID selected for this application — use this to key game-scoped data. Only meaningful when `result_code` is `EpicResult.Success`.
+ * @member {String} selected_account_id Account ID selected for this application - use this to key game-scoped data. Only meaningful when `result_code` is `EpicResult.Success`.
  * @member {Bool} has_continuance_token `true` if `continuance_token_id` can be used to complete an account link via ${function.eos_auth_link_account}.
  * @member {Real} continuance_token_id Continuance token handle, valid only when `has_continuance_token` is `true`.
  * @member {Struct.EpicAuthPinGrantInfo} pin_grant_info Out-of-band login details; fields are empty unless a pin-grant flow is in progress.
@@ -478,7 +478,7 @@
  * @member {String} app Name of the app the requesting client ID belongs to.
  * @member {String} client_id Client ID that requested this token.
  * @member {String} account_id Epic Account ID the token belongs to.
- * @member {String} access_token The access token string. Whoever holds this can act on the user's behalf — treat it like a secret.
+ * @member {String} access_token The access token string. Whoever holds this can act on the user's behalf - treat it like a secret.
  * @member {Real} expires_in Seconds until `access_token` expires, relative to the call that returned this struct.
  * @member {String} expires_at Absolute UTC expiry time for `access_token`, in ISO 8601 format.
  * @member {Constant.EpicAuthTokenType} auth_type Whether this token was issued to the client or the user.

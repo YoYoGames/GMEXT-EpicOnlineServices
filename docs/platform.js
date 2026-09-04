@@ -17,14 +17,14 @@
  * @desc **Epic Online Services Function:** [EOS_Platform_Create](https://dev.epicgames.com/docs/api-ref/functions/eos-platform-create)
  *
  * Creates the Epic Online Services platform handle. Every other module in this extension needs this to
- * have succeeded first — call it once, right after ${function.eos_api_initialize}.
+ * have succeeded first - call it once, right after ${function.eos_api_initialize}.
  *
  * The **Product ID**, **Sandbox ID**, **Deployment ID**, **Client Credentials ID**, and **Client
  * Credentials Secret** extension options are all required and read directly from the extension's own
- * options (not passed as parameters) — see ${page.extension_options}.
+ * options (not passed as parameters) - see ${page.extension_options}.
  *
  * [[Note: On Android/iOS the extension resolves a writable per-app cache directory itself and ignores
- * `cache_directory` — call ${function.eos_platform_get_storage_directory} afterwards if you need to know
+ * `cache_directory` - call ${function.eos_platform_get_storage_directory} afterwards if you need to know
  * which directory ended up being used, on any platform.]]
  *
  * @param {String} cache_directory Absolute, writable directory the SDK can use for its own cache files.
@@ -60,7 +60,7 @@
  * @function eos_platform_tick
  * @desc **Epic Online Services Function:** [EOS_Platform_Tick](https://dev.epicgames.com/docs/api-ref/functions/eos-platform-tick)
  *
- * Gives the platform time to do its work — network I/O, and firing every pending completion callback and
+ * Gives the platform time to do its work - network I/O, and firing every pending completion callback and
  * notification across every module in this extension. Nothing else in this extension will report
  * progress or fire a callback unless this is called regularly.
  *
@@ -81,13 +81,13 @@
  * Checks whether the game was launched through the Epic Games Launcher, and if it wasn't, relaunches it
  * through the launcher instead.
  *
- * 1. `EpicResult.Success` — the app is being relaunched through the launcher. Quit your process as soon
+ * 1. `EpicResult.Success` - the app is being relaunched through the launcher. Quit your process as soon
  * as possible afterwards.
- * 2. `EpicResult.NoChange` — the app was already launched through the launcher; no action needed.
- * 3. `EpicResult.UnexpectedError` — the launcher-check module failed to initialize, or failed to restart
+ * 2. `EpicResult.NoChange` - the app was already launched through the launcher; no action needed.
+ * 3. `EpicResult.UnexpectedError` - the launcher-check module failed to initialize, or failed to restart
  * the app.
  *
- * [[Note: This is skipped while the **Debug Mode** extension option forces debug mode on — see
+ * [[Note: This is skipped while the **Debug Mode** extension option forces debug mode on - see
  * ${page.extension_options}.]]
  *
  * @returns {Constant.EpicResult}
@@ -119,7 +119,7 @@
 /**
  * @function eos_platform_get_storage_directory
  * @desc Returns the absolute, writable directory (with a trailing separator) that
- * ${function.eos_platform_create} ended up using — the `cache_directory` you passed in on desktop, or the
+ * ${function.eos_platform_create} ended up using - the `cache_directory` you passed in on desktop, or the
  * extension's own resolved per-app cache directory on Android/iOS. Use this instead of tracking the
  * directory yourself if you need to build a path for `file_exists`/`sprite_add`/etc. against SDK-written
  * files (e.g. from ${module.player_data_storage}).
@@ -136,7 +136,7 @@
  * @desc **Epic Online Services Interface:** [Platform Interface](https://dev.epicgames.com/docs/game-services/eos-platform-interface)
  *
  * The [Platform Interface](https://dev.epicgames.com/docs/game-services/eos-platform-interface) sits at
- * the heart of the Epic Online Services SDK — creating it is what every other module needs before it can
+ * the heart of the Epic Online Services SDK - creating it is what every other module needs before it can
  * do anything, and ${function.eos_platform_tick} is what actually drives the SDK's network I/O and fires
  * every callback/notification this extension exposes.
  *

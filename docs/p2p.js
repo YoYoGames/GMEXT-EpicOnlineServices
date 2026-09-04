@@ -126,7 +126,7 @@
  * @param {Real} bytes The number of bytes from `data` to send. Must not exceed the buffer's length, and must not exceed `EOS_P2P_MAX_PACKET_SIZE`.
  * @param {Bool} allow_delayed_delivery If `false` and there isn't already an established connection to the peer, this packet is dropped instead of being queued while the connection is negotiated.
  * @param {Constant.EpicPacketReliability} reliability The reliability/ordering guarantee for this packet.
- * @param {Bool} disable_auto_accept_connection If `true`, this call won't automatically establish a connection with `remote_user_id` — call ${function.eos_p2p_accept_connection} first, or the packet is dropped with `EpicResult.NoConnection`. If `false` (the default), a connection is opened automatically the first time this is called for a given peer.
+ * @param {Bool} disable_auto_accept_connection If `true`, this call won't automatically establish a connection with `remote_user_id` - call ${function.eos_p2p_accept_connection} first, or the packet is dropped with `EpicResult.NoConnection`. If `false` (the default), a connection is opened automatically the first time this is called for a given peer.
  *
  * @returns {Constant.EpicResult}
  *
@@ -201,7 +201,7 @@
  * @function eos_p2p_close_connection
  * @desc **Epic Online Services Function:** [EOS_P2P_CloseConnection](https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-close-connection)
  *
- * Stops receiving packets on a specific socket ID with a specific peer, drops any locally queued packets for it, and — if no other socket ID is using the underlying connection with that peer — closes it. If you want to migrate an existing connection to a new socket ID, call ${function.eos_p2p_accept_connection} with the new socket ID before closing the old one, so the shared physical connection isn't torn down prematurely.
+ * Stops receiving packets on a specific socket ID with a specific peer, drops any locally queued packets for it, and - if no other socket ID is using the underlying connection with that peer - closes it. If you want to migrate an existing connection to a new socket ID, call ${function.eos_p2p_accept_connection} with the new socket ID before closing the old one, so the shared physical connection isn't torn down prematurely.
  *
  * [[Note: Pass an empty string for `socket_name` to close every socket with `remote_user_id`.]]
  *
@@ -261,7 +261,7 @@
  * @function eos_p2p_set_relay_control
  * @desc **Epic Online Services Function:** [EOS_P2P_SetRelayControl](https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-set-relay-control)
  *
- * Sets how relay servers are used for P2P connections. This only affects new connections, or existing connections that renegotiate (e.g. after a temporary connectivity outage) — it doesn't apply retroactively to already-established connections. Peers with incompatible relay settings won't be able to connect to each other.
+ * Sets how relay servers are used for P2P connections. This only affects new connections, or existing connections that renegotiate (e.g. after a temporary connectivity outage) - it doesn't apply retroactively to already-established connections. Peers with incompatible relay settings won't be able to connect to each other.
  *
  * @param {Constant.EpicRelayControl} relay_control
  *
@@ -287,7 +287,7 @@
  *
  * Sets the preferred port and fallback range for P2P traffic.
  *
- * @param {Real} port The preferred port to use. Default is `7777`. Pass `0` to let the OS choose a port — in that case `max_additional_ports_to_try` must also be `0`.
+ * @param {Real} port The preferred port to use. Default is `7777`. Pass `0` to let the OS choose a port - in that case `max_additional_ports_to_try` must also be `0`.
  * @param {Real} max_additional_ports_to_try The number of additional ports above `port` to try if `port` is unavailable (tried from `port` to `port + max_additional_ports_to_try`). Default is `99`.
  *
  * @returns {Constant.EpicResult}
@@ -383,7 +383,7 @@
  * @function eos_p2p_add_notify_peer_connection_established
  * @desc **Epic Online Services Function:** [EOS_P2P_AddNotifyPeerConnectionEstablished](https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-add-notify-peer-connection-established)
  *
- * Registers to be notified when a connection is established — the first time it connects, after reconnecting from an interruption, and whenever the underlying network path changes (e.g. direct to relayed or vice versa; a path change is always reported with `EpicConnectionEstablishedType.Reconnection`, even if the connection itself was never interrupted). If the network status changes from offline to online, register this again.
+ * Registers to be notified when a connection is established - the first time it connects, after reconnecting from an interruption, and whenever the underlying network path changes (e.g. direct to relayed or vice versa; a path change is always reported with `EpicConnectionEstablishedType.Reconnection`, even if the connection itself was never interrupted). If the network status changes from offline to online, register this again.
  *
  * [[Note: Returns `0` if registration failed.]]
  *
@@ -416,7 +416,7 @@
  * @function eos_p2p_add_notify_peer_connection_interrupted
  * @desc **Epic Online Services Function:** [EOS_P2P_AddNotifyPeerConnectionInterrupted](https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-add-notify-peer-connection-interrupted)
  *
- * Registers to be notified when a previously open or pending connection is interrupted. EOS automatically attempts to reestablish it — a successful reconnect fires ${function.eos_p2p_add_notify_peer_connection_established} with `EpicConnectionEstablishedType.Reconnection`; a failed one fires ${function.eos_p2p_add_notify_peer_connection_closed} instead. Queued packets survive an interruption, but are flushed once the connection actually closes.
+ * Registers to be notified when a previously open or pending connection is interrupted. EOS automatically attempts to reestablish it - a successful reconnect fires ${function.eos_p2p_add_notify_peer_connection_established} with `EpicConnectionEstablishedType.Reconnection`; a failed one fires ${function.eos_p2p_add_notify_peer_connection_closed} instead. Queued packets survive an interruption, but are flushed once the connection actually closes.
  *
  * [[Note: Returns `0` if registration failed.]]
  *
@@ -632,8 +632,8 @@
  * @const EpicConnectionClosedReason
  * @desc **Epic Online Services Enum:** [EOS_EConnectionClosedReason](https://dev.epicgames.com/docs/api-ref/enums/eos-e-connection-closed-reason)
  *
- * @member Unknown The connection closed for unknown reasons — most notably during application shutdown.
- * @member ClosedByLocalUser The local user closed the connection via ${Function.eos_p2p_close_connection}/${function.eos_p2p_close_connections}.
+ * @member Unknown The connection closed for unknown reasons - most notably during application shutdown.
+ * @member ClosedByLocalUser The local user closed the connection via ${function.eos_p2p_close_connection}/${function.eos_p2p_close_connections}.
  * @member ClosedByPeer The remote user gracefully closed the connection.
  * @member TimedOut The connection was locally accepted but never remotely accepted in time.
  * @member TooManyConnections The connection was accepted, but couldn't be created due to too many other existing connections.
@@ -641,7 +641,7 @@
  * @member InvalidData The remote user sent invalid data.
  * @member ConnectionFailed A connection with the remote user could never be established, due to connectivity issues.
  * @member ConnectionClosed The connection was accepted and established, but the peer silently went away.
- * @member NegotiationFailed The connection was locally accepted but negotiation failed — most commonly because the local user went offline or logged out mid-negotiation.
+ * @member NegotiationFailed The connection was locally accepted but negotiation failed - most commonly because the local user went offline or logged out mid-negotiation.
  * @member UnexpectedError An internal error occurred and the connection couldn't be created or continued.
  *
  * @const_end
