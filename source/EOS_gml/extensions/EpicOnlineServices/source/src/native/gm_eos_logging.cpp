@@ -56,13 +56,15 @@ void eos_logging_set_callback(const std::optional<gm::wire::GMFunction>& callbac
 {
     eos_clear_last_error();
 
+    bool has_callback = false;
     {
         std::lock_guard<std::mutex> lock(g_cb_logging_mutex);
         g_cb_logging = callback.value_or(GMFunction{});
+        has_callback = static_cast<bool>(g_cb_logging);
     }
 
     const EOS_EResult result = EOS_Logging_SetCallback(
-        g_cb_logging ? &eos_logging_message_hook : nullptr
+        has_callback ? &eos_logging_message_hook : nullptr
     );
 
     if (result != EOS_EResult::EOS_Success)
