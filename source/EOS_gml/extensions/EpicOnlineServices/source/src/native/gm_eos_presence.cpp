@@ -89,7 +89,7 @@ static gm_structs::EpicPresenceInfo eos_presence_info_from_native(const EOS_Pres
     if (p->Records && p->RecordsCount > 0)
     {
         std::vector<gm_structs::EpicPresenceDataRecord> records;
-        for (uint32_t i = 0; i < p->RecordsCount; ++i)
+        for (int32_t i = 0; i < p->RecordsCount; ++i)
         {
             gm_structs::EpicPresenceDataRecord record{};
             record.key = p->Records[i].Key ? std::string(p->Records[i].Key) : std::string();

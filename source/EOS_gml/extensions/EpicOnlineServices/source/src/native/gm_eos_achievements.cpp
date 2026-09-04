@@ -57,14 +57,6 @@ static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_vi
     return EOS_ProductUserId_FromString(value.c_str());
 }
 
-static EOS_EpicAccountId eos_epic_account_id_from_string_internal(std::string_view account_id)
-{
-    std::string value(account_id);
-    if (value.empty())
-        return nullptr;
-    return EOS_EpicAccountId_FromString(value.c_str());
-}
-
 static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId product_user_id)
 {
     if (!product_user_id)
@@ -301,7 +293,7 @@ static gm_structs::EpicAchievementsDefinition eos_achievements_definition_from_n
     out.stat_thresholds_count = (int64_t)p->StatThresholdsCount;
     if (p->StatThresholds && p->StatThresholdsCount > 0) {
         out.stat_thresholds.resize(p->StatThresholdsCount);
-        for (uint32_t i = 0; i < p->StatThresholdsCount; ++i) {
+        for (int32_t i = 0; i < p->StatThresholdsCount; ++i) {
             out.stat_thresholds[i] = eos_achievements_stat_thresholds_from_native(&p->StatThresholds[i]);
         }
     }
@@ -323,7 +315,7 @@ static gm_structs::EpicPlayerAchievement eos_achievements_player_achievement_fro
 
     if (p->StatInfo && p->StatInfoCount > 0) {
         out.stat_info.resize(p->StatInfoCount);
-        for (uint32_t i = 0; i < p->StatInfoCount; ++i) {
+        for (int32_t i = 0; i < p->StatInfoCount; ++i) {
             out.stat_info[i].name = p->StatInfo[i].Name ? std::string(p->StatInfo[i].Name) : std::string();
             out.stat_info[i].current_value = (int64_t)p->StatInfo[i].CurrentValue;
             out.stat_info[i].threshold_value = (int64_t)p->StatInfo[i].ThresholdValue;

@@ -55,18 +55,6 @@ static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_vi
     return EOS_ProductUserId_FromString(value.c_str());
 }
 
-static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId product_user_id)
-{
-    if (!product_user_id)
-        return std::string();
-
-    return eos_reports_copy_string_with_fixed_retry(
-        [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
-        {
-            return EOS_ProductUserId_ToString(product_user_id, out_buffer, inout_len);
-        });
-}
-
 static gm_structs::EpicReportsSendPlayerBehaviorReportCallbackInfo
 eos_reports_send_player_behavior_report_info_from_native(
     const EOS_Reports_SendPlayerBehaviorReportCompleteCallbackInfo* p)
