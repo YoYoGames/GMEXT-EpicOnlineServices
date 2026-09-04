@@ -2874,19 +2874,19 @@ function eos_lobby_details_get_member_by_index([type_hint=`uint64`] lobby_detail
 function eos_lobby_details_get_lobby_owner([type_hint=`uint64`] lobby_details_id: gmval): string;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_update_received(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
+function eos_lobby_add_notify_lobby_update_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_update_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_member_update_received(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
+function eos_lobby_add_notify_lobby_member_update_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_member_update_received([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_lobby_member_status_received(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
+function eos_lobby_add_notify_lobby_member_status_received([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_lobby_member_status_received([type_hint=`uint64`] notification_id: gmval): unit;
@@ -2898,13 +2898,13 @@ function eos_lobby_add_notify_join_lobby_accepted([type_hint=`func?`] callback: 
 function eos_lobby_remove_notify_join_lobby_accepted([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_leave_lobby_requested(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
+function eos_lobby_add_notify_leave_lobby_requested([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_leave_lobby_requested([type_hint=`uint64`] notification_id: gmval): unit;
 
 [global, bind = typed_gml, type_hint=`uint64`]
-function eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id: string, [type_hint=`func?`] callback: gmval): gmval;
+function eos_lobby_add_notify_send_lobby_native_invite_requested([type_hint=`func?`] callback: gmval): gmval;
 
 [global, bind = typed_gml]
 function eos_lobby_remove_notify_send_lobby_native_invite_requested([type_hint=`uint64`] notification_id: gmval): unit;

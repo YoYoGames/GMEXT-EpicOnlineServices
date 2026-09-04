@@ -632,7 +632,6 @@
  *
  * Registers to be notified whenever the top-level settings of a lobby the local user belongs to change (permission level, max members, attributes, ...). Call ${function.eos_lobby_remove_notify_lobby_update_received} when you no longer want notifications.
  *
- * @param {String} local_user_id
  * @param {Function} [callback]
  *
  * @returns {Real} A notification ID, used to unregister later, or `0` if registration failed.
@@ -660,7 +659,6 @@
  *
  * Registers to be notified whenever a member's attributes change in a lobby the local user belongs to.
  *
- * @param {String} local_user_id
  * @param {Function} [callback]
  *
  * @returns {Real} A notification ID, or `0` if registration failed.
@@ -688,7 +686,6 @@
  *
  * Registers to be notified whenever a member's status changes (joined, left, disconnected, kicked, promoted, or the lobby closed) in a lobby the local user belongs to.
  *
- * @param {String} local_user_id
  * @param {Function} [callback]
  *
  * @returns {Real} A notification ID, or `0` if registration failed.
@@ -745,7 +742,6 @@
  *
  * Registers to be notified when the platform's native UI (e.g. a console's system UI) requests that the local user leave a lobby.
  *
- * @param {String} local_user_id
  * @param {Function} [callback]
  *
  * @returns {Real} A notification ID, or `0` if registration failed.
@@ -775,7 +771,6 @@
  *
  * [[Warning: After handling this callback you MUST call ${function.eos_ui_acknowledge_event_id} with the callback's `ui_event_id`, or the native UI will hang.]]
  *
- * @param {String} local_user_id
  * @param {Function} [callback]
  *
  * @returns {Real} A notification ID, or `0` if registration failed.

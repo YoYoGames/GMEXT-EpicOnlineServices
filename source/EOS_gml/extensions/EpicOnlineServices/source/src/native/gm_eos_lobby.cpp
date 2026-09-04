@@ -1972,7 +1972,6 @@ std::string eos_lobby_details_get_lobby_owner(uint64_t lobby_details_id)
 }
 
 uint64_t eos_lobby_add_notify_lobby_update_received(
-    std::string_view local_user_id,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -2036,7 +2035,6 @@ void eos_lobby_remove_notify_lobby_update_received(uint64_t notification_id)
 }
 
 uint64_t eos_lobby_add_notify_lobby_member_update_received(
-    std::string_view local_user_id,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -2100,7 +2098,6 @@ void eos_lobby_remove_notify_lobby_member_update_received(uint64_t notification_
 }
 
 uint64_t eos_lobby_add_notify_lobby_member_status_received(
-    std::string_view local_user_id,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -2226,7 +2223,6 @@ void eos_lobby_remove_notify_join_lobby_accepted(uint64_t notification_id)
 }
 
 uint64_t eos_lobby_add_notify_leave_lobby_requested(
-    std::string_view local_user_id,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();
@@ -2290,7 +2286,6 @@ void eos_lobby_remove_notify_leave_lobby_requested(uint64_t notification_id)
 }
 
 uint64_t eos_lobby_add_notify_send_lobby_native_invite_requested(
-    std::string_view local_user_id,
     const std::optional<gm::wire::GMFunction>& callback)
 {
     eos_clear_last_error();

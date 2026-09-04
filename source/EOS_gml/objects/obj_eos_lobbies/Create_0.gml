@@ -75,7 +75,7 @@ notifyJoinLobbyAccepted = eos_lobby_add_notify_join_lobby_accepted(function(_inf
 	// (No body in the original example.)
 })
 
-notifyLeaveLobbyRequested = eos_lobby_add_notify_leave_lobby_requested(global.product_user_id, function(_info)
+notifyLeaveLobbyRequested = eos_lobby_add_notify_leave_lobby_requested(function(_info)
 {
 	// EpicLobbyLeaveLobbyRequestedCallbackInfo: .lobby_id, .local_user_id
 	// (No body in the original example.)
@@ -164,7 +164,7 @@ notifyLobbyInviteRejected = eos_lobby_add_notify_lobby_invite_rejected(function(
 	show_debug_message($"lobby invite {_info.invite_id} rejected by local user")
 })
 
-notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_received(global.product_user_id, function(_info)
+notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_received(function(_info)
 {
 	// EpicLobbyLobbyMemberStatusReceivedCallbackInfo:
 	//   .lobby_id, .target_user_id, .local_user_id, .current_status (EpicLobbyMemberStatus)
@@ -216,17 +216,17 @@ notifyLobbyMemberStatusReceived = eos_lobby_add_notify_lobby_member_status_recei
 	}
 })
 
-notifyLobbyMemberUpdateReceived = eos_lobby_add_notify_lobby_member_update_received(global.product_user_id, function(_info)
+notifyLobbyMemberUpdateReceived = eos_lobby_add_notify_lobby_member_update_received(function(_info)
 {
 	// EpicLobbyLobbyMemberUpdateReceivedCallbackInfo: .lobby_id, .target_user_id, .local_user_id
 })
 
-notifyLobbyUpdateReceived = eos_lobby_add_notify_lobby_update_received(global.product_user_id, function(_info)
+notifyLobbyUpdateReceived = eos_lobby_add_notify_lobby_update_received(function(_info)
 {
 	// EpicLobbyLobbyUpdateReceivedCallbackInfo: .lobby_id, .local_user_id
 })
 
-notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_invite_requested(global.product_user_id, function(_info)
+notifySendLobbyNativeInviteRequested = eos_lobby_add_notify_send_lobby_native_invite_requested(function(_info)
 {
 	// EpicLobbySendLobbyNativeInviteRequestedCallbackInfo:
 	//   .ui_event_id, .lobby_id, .local_user_id, .target_native_account_type, .target_user_native_account_id

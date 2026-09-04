@@ -3956,9 +3956,6 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_update_received(char* _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -3966,7 +3963,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_update_received(char* _
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    auto&& __result = eos_lobby_add_notify_lobby_update_received(local_user_id, callback);
+    auto&& __result = eos_lobby_add_notify_lobby_update_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: UInt64
@@ -3989,9 +3986,6 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_member_update_received(
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -3999,7 +3993,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_member_update_received(
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    auto&& __result = eos_lobby_add_notify_lobby_member_update_received(local_user_id, callback);
+    auto&& __result = eos_lobby_add_notify_lobby_member_update_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: UInt64
@@ -4022,9 +4016,6 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_member_status_received(
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -4032,7 +4023,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_lobby_member_status_received(
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    auto&& __result = eos_lobby_add_notify_lobby_member_status_received(local_user_id, callback);
+    auto&& __result = eos_lobby_add_notify_lobby_member_status_received(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: UInt64
@@ -4085,9 +4076,6 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_leave_lobby_requested(char* _
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -4095,7 +4083,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_leave_lobby_requested(char* _
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    auto&& __result = eos_lobby_add_notify_leave_lobby_requested(local_user_id, callback);
+    auto&& __result = eos_lobby_add_notify_leave_lobby_requested(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: UInt64
@@ -4118,9 +4106,6 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_send_lobby_native_invite_requ
 {
     gm::byteio::BufferReader __br{__arg_buffer, static_cast<size_t>(__arg_buffer_length)};
 
-    // field: local_user_id, type: String
-    std::string_view local_user_id = gm::wire::codec::readValue<std::string_view>(__br);
-
     // field: callback, type: optional<Function>
     std::optional<gm::wire::GMFunction> callback = std::nullopt;
     if (gm::wire::codec::readValue<bool>(__br))
@@ -4128,7 +4113,7 @@ GMEXPORT double __EXT_NATIVE__eos_lobby_add_notify_send_lobby_native_invite_requ
         callback = gm::wire::codec::readFunction(__br, &__dispatch_queue);
     }
 
-    auto&& __result = eos_lobby_add_notify_send_lobby_native_invite_requested(local_user_id, callback);
+    auto&& __result = eos_lobby_add_notify_send_lobby_native_invite_requested(callback);
     gm::byteio::BufferWriter __bw{__ret_buffer, static_cast<size_t>(__ret_buffer_length)};
 
     // return: __result, type: UInt64

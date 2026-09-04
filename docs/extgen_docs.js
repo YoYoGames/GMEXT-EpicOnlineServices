@@ -1849,7 +1849,6 @@
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_update_received
- * @param {String} local_user_id
  * @param {Function} [callback]
  * @returns {Real}
  * @function_end
@@ -1863,7 +1862,6 @@
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_member_update_received
- * @param {String} local_user_id
  * @param {Function} [callback]
  * @returns {Real}
  * @function_end
@@ -1877,7 +1875,6 @@
 
 /**
  * @function_partial eos_lobby_add_notify_lobby_member_status_received
- * @param {String} local_user_id
  * @param {Function} [callback]
  * @returns {Real}
  * @function_end
@@ -1904,7 +1901,6 @@
 
 /**
  * @function_partial eos_lobby_add_notify_leave_lobby_requested
- * @param {String} local_user_id
  * @param {Function} [callback]
  * @returns {Real}
  * @function_end
@@ -1918,7 +1914,6 @@
 
 /**
  * @function_partial eos_lobby_add_notify_send_lobby_native_invite_requested
- * @param {String} local_user_id
  * @param {Function} [callback]
  * @returns {Real}
  * @function_end

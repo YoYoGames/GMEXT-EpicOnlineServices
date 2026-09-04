@@ -25185,11 +25185,10 @@ function eos_lobby_details_get_lobby_owner(_lobby_details_id)
 }
 
 /**
- * @param {String} _local_user_id
  * @param {Function} _callback
  * @returns {Real}
  */
-function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
+function eos_lobby_add_notify_lobby_update_received(_callback)
 {
     var __available__ = __EpicOnlineServices_is_available();
     if (!__available__) return;
@@ -25197,11 +25196,6 @@ function eos_lobby_add_notify_lobby_update_received(_local_user_id, _callback)
     var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer__ = __ext_core_get_args_buffer();
-
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer__, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer__, buffer_string, _local_user_id);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -25245,11 +25239,10 @@ function eos_lobby_remove_notify_lobby_update_received(_notification_id)
 }
 
 /**
- * @param {String} _local_user_id
  * @param {Function} _callback
  * @returns {Real}
  */
-function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _callback)
+function eos_lobby_add_notify_lobby_member_update_received(_callback)
 {
     var __available__ = __EpicOnlineServices_is_available();
     if (!__available__) return;
@@ -25257,11 +25250,6 @@ function eos_lobby_add_notify_lobby_member_update_received(_local_user_id, _call
     var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer__ = __ext_core_get_args_buffer();
-
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer__, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer__, buffer_string, _local_user_id);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -25305,11 +25293,10 @@ function eos_lobby_remove_notify_lobby_member_update_received(_notification_id)
 }
 
 /**
- * @param {String} _local_user_id
  * @param {Function} _callback
  * @returns {Real}
  */
-function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _callback)
+function eos_lobby_add_notify_lobby_member_status_received(_callback)
 {
     var __available__ = __EpicOnlineServices_is_available();
     if (!__available__) return;
@@ -25317,11 +25304,6 @@ function eos_lobby_add_notify_lobby_member_status_received(_local_user_id, _call
     var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer__ = __ext_core_get_args_buffer();
-
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer__, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer__, buffer_string, _local_user_id);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -25419,11 +25401,10 @@ function eos_lobby_remove_notify_join_lobby_accepted(_notification_id)
 }
 
 /**
- * @param {String} _local_user_id
  * @param {Function} _callback
  * @returns {Real}
  */
-function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
+function eos_lobby_add_notify_leave_lobby_requested(_callback)
 {
     var __available__ = __EpicOnlineServices_is_available();
     if (!__available__) return;
@@ -25431,11 +25412,6 @@ function eos_lobby_add_notify_leave_lobby_requested(_local_user_id, _callback)
     var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer__ = __ext_core_get_args_buffer();
-
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer__, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer__, buffer_string, _local_user_id);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
@@ -25479,11 +25455,10 @@ function eos_lobby_remove_notify_leave_lobby_requested(_notification_id)
 }
 
 /**
- * @param {String} _local_user_id
  * @param {Function} _callback
  * @returns {Real}
  */
-function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id, _callback)
+function eos_lobby_add_notify_send_lobby_native_invite_requested(_callback)
 {
     var __available__ = __EpicOnlineServices_is_available();
     if (!__available__) return;
@@ -25491,11 +25466,6 @@ function eos_lobby_add_notify_send_lobby_native_invite_requested(_local_user_id,
     var __dispatcher__ = __EpicOnlineServices_get_dispatcher();
 
     var __args_buffer__ = __ext_core_get_args_buffer();
-
-    // param: _local_user_id, type: String
-    if (!is_string(_local_user_id)) show_error($"{_GMFUNCTION_} :: _local_user_id expected string", true);
-    buffer_write(__args_buffer__, buffer_u32, string_byte_length(_local_user_id));
-    buffer_write(__args_buffer__, buffer_string, _local_user_id);
 
     // param: _callback, type: optional<Function>
     if (is_undefined(_callback))
