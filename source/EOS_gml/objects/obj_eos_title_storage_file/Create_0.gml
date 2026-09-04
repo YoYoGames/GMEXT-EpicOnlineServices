@@ -20,7 +20,7 @@ eos_titlestorage_read_file(
     {
 		show_debug_message($"eos_titlestorage_read_file: {_info}")
 		
-        // Completion — fires once. The file is already on disk by this point.
+        // Completion - fires once. The file is already on disk by this point.
         // _info is an EpicTitleStorageReadFileCallbackInfo:
         //   .result_code (EpicResult)
         //   .local_user_id (string)
@@ -40,7 +40,7 @@ eos_titlestorage_read_file(
     {
 		show_debug_message($"eos_titlestorage_read_file: {_info}")
 		
-         //Progress — fires once per chunk while the transfer is running.
+         //Progress - fires once per chunk while the transfer is running.
          //_info is an EpicTitleStorageReadFileProgressCallbackInfo:
            //.local_user_id (string)
            //.filename (string)

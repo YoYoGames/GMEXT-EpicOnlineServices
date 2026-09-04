@@ -10,7 +10,7 @@ draw_text(100,100,"EOS Version: " + string(eos_api_get_version()))
 
 switch(eos_auth_get_login_status(global.epic_account_id))
 {
-	case EpicLoginStatus.NotLoggedIn:
+	case EpicLoginStatus.NotLoggedIn:
 		draw_text(100,190,"LoginStatus: NotLoggedIn");
 	break;
 	

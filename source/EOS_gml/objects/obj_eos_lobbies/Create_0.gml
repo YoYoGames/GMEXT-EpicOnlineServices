@@ -65,7 +65,7 @@ eos_connect_query_product_user_id_mappings(global.product_user_id, [global.produ
 })
 
 // ============================================================
-// Persistent notifications — these stay registered until CleanUp.
+// Persistent notifications - these stay registered until CleanUp.
 // (One-shot results like create/join/leave are wired at the call site.)
 // ============================================================
 
@@ -158,7 +158,7 @@ notifyLobbyInviteReceived = eos_lobby_add_notify_lobby_invite_received(function(
 notifyLobbyInviteRejected = eos_lobby_add_notify_lobby_invite_rejected(function(_info)
 {
 	// EpicLobbyLobbyInviteRejectedCallbackInfo: .invite_id, .local_user_id, .target_user_id
-	// This fires AFTER the local user has already rejected an invite — don't call
+	// This fires AFTER the local user has already rejected an invite - don't call
 	// reject_invite again from here (the rejection already happened, and re-calling
 	// it would fail or re-fire the notification).
 	show_debug_message($"lobby invite {_info.invite_id} rejected by local user")

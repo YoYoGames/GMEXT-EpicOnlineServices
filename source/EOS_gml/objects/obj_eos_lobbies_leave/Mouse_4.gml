@@ -10,7 +10,7 @@ if(!instance_exists(obj_eos_lobbies))
 var _lobbies = obj_eos_lobbies
 if(_lobbies.lobby_id == "")
 {
-	show_debug_message("[leave] lobby_id is empty — nothing to leave")
+	show_debug_message("[leave] lobby_id is empty - nothing to leave")
 	return
 }
 

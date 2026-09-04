@@ -172,10 +172,10 @@ if (result != EpicResult.Success)
 show_debug_message("EOS Platform created");
 show_debug_message($"EOS storage directory: {eos_platform_get_storage_directory()}");
 
-// Persistent notifications — must be registered after the platform exists: each
+// Persistent notifications - must be registered after the platform exists: each
 // add_notify_* call needs a live interface, which eos_platform_get() doesn't have
 // until eos_platform_create succeeds above (registering them any earlier is a silent
-// no-op — every add_notify_* call returns 0 with the interface-unavailable error).
+// no-op - every add_notify_* call returns 0 with the interface-unavailable error).
 notify_auth_login_status_changed = eos_auth_add_notify_login_status_changed(function(data){
 	show_debug_message(data)})
 notify_auth_expiration = eos_connect_add_notify_auth_expiration(function(data){show_debug_message(data)})

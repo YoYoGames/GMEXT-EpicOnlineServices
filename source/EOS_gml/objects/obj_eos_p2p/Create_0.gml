@@ -22,7 +22,7 @@ function disconnect(target)
 }
 
 // ============================================================
-// P2P notifications — every notify takes a callback in the new API.
+// P2P notifications - every notify takes a callback in the new API.
 // IDs are stored so CleanUp can release them.
 // ============================================================
 
@@ -44,7 +44,7 @@ notifyPeerConnectionEstablished = eos_p2p_add_notify_peer_connection_established
 {
 	// EpicP2PConnectionEstablishedCallbackInfo: .local_user_id, .remote_user_id, .socket_name,
 	//                                           .connection_type, .network_type
-	// Guard against duplicates on reconnect — otherwise we'd send twice and
+	// Guard against duplicates on reconnect - otherwise we'd send twice and
 	// disconnect() would only remove one copy.
 	if(array_get_index(EstablishedProductIDs, _info.remote_user_id) < 0)
 		array_push(EstablishedProductIDs, _info.remote_user_id)

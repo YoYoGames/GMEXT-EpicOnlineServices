@@ -59,7 +59,7 @@ eos_lobby_lobby_search_find(global.lobby_search_id, global.product_user_id, func
 		show_debug_message($"[search] result {a}: lobby_id={_struct.lobby_id} attr={_attribute}")
 
 		var _ins = instance_create_depth(x, y + 100 + a * 100, 0, obj_eos_lobbies_lobby, _struct)
-		// Lobby may have been created without the "lobbyname" attribute yet — fall back to id.
+		// Lobby may have been created without the "lobbyname" attribute yet - fall back to id.
 		_ins.text = (is_struct(_attribute) && struct_exists(_attribute, "value") && _attribute.value != "")
 			? _attribute.value
 			: _struct.lobby_id

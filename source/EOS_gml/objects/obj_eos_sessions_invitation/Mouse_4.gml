@@ -1,5 +1,5 @@
 
-// Click an invitation tile → resolve the invite into a session details handle,
+// Click an invitation tile -> resolve the invite into a session details handle,
 // then join the session. Same flow as obj_eos_session for search results, but
 // the handle comes from copy_session_handle_by_invite_id instead.
 
@@ -19,7 +19,7 @@ if(_details_id == 0)
 var _struct = eos_sessions_session_details_copy_info(_details_id)
 show_debug_message(_struct)
 
-// Carry the details handle and the session id through `method(struct, fn)` —
+// Carry the details handle and the session id through `method(struct, fn)` -
 // anonymous functions don't close over `var` locals when bound to a struct.
 var _ctx = {
 	details_id: _details_id,
@@ -34,7 +34,7 @@ obj_eos_sessions.join_session_clean(_details_id, method(_ctx, function(_info)
 	// EpicSessionsJoinSessionCallbackInfo: .result_code
 	show_debug_message($"join_session (invite {invite_id}): {eos_api_result_to_string(_info.result_code)}")
 
-	// Safe to release now — the SDK has consumed the handle during join.
+	// Safe to release now - the SDK has consumed the handle during join.
 	eos_sessions_session_details_release(details_id)
 
 	if(_info.result_code != EpicResult.Success) {return}

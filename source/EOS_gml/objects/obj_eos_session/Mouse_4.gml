@@ -29,7 +29,7 @@ var _struct = eos_sessions_session_details_copy_info(_details_id)
 show_debug_message(_struct)
 
 // Carry both the details handle and an instance back-reference through
-// `method(struct, fn)` — anonymous functions don't close over `var` locals
+// `method(struct, fn)` - anonymous functions don't close over `var` locals
 // when bound to a struct, so the captured fields are read off `self`.
 var _ctx = {
 	owner:      self,
@@ -46,7 +46,7 @@ obj_eos_sessions.join_session_clean(_details_id, method(_ctx, function(_info)
 	// EpicSessionsJoinSessionCallbackInfo: .result_code
 	show_debug_message("join_session: " + eos_api_result_to_string(_info.result_code))
 
-	// Now safe to release the details handle — the SDK has consumed it.
+	// Now safe to release the details handle - the SDK has consumed it.
 	eos_sessions_session_details_release(details_id)
 
 	if(_info.result_code != EpicResult.Success) {return}
@@ -55,7 +55,7 @@ obj_eos_sessions.join_session_clean(_details_id, method(_ctx, function(_info)
 
 	// Add ourselves to the session's official roster. Without this,
 	// eos_sessions_active_session_get_registered_player_count() never sees us
-	// from the host's perspective — joining alone does NOT auto-register.
+	// from the host's perspective - joining alone does NOT auto-register.
 	eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
 	{
 		// EpicSessionsRegisterPlayersCallbackInfo: .result_code, .registered_players, .sanctioned_players

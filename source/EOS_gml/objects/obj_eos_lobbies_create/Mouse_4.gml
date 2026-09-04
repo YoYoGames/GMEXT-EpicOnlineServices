@@ -30,7 +30,7 @@ eos_lobby_create_lobby(_opts, function(_info)
 		if(is_string(RTCRoomName) && RTCRoomName != "")
 			instance_create_depth(0, 0, 0, obj_rtc, {RoomName: RTCRoomName})
 		else
-			show_debug_message("eos_lobby_get_rtc_room_name returned no room — RTC features will not start")
+			show_debug_message("eos_lobby_get_rtc_room_name returned no room - RTC features will not start")
 
 		instance_create_depth(0, 0, 0, obj_eos_lobbies_p2p)
 
