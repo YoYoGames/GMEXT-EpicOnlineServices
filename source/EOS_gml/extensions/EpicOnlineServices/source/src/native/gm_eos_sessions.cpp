@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_sessions.h>
@@ -19,38 +20,6 @@ using namespace gm_enums;
 // Internal helpers / state
 // ============================================================
 
-template <typename Fn>
-static std::string eos_sessions_copy_string_with_fixed_retry(Fn&& call_fn, size_t initial_capacity = 256)
-{
-    std::vector<char> buffer(initial_capacity, '\0');
-    int32_t length = (int32_t)buffer.size();
-
-    EOS_EResult result = call_fn(buffer.data(), &length);
-    if (result == EOS_EResult::EOS_LimitExceeded && length > 0)
-    {
-        buffer.assign((size_t)length, '\0');
-        result = call_fn(buffer.data(), &length);
-    }
-
-    if (result != EOS_EResult::EOS_Success)
-        return std::string();
-
-    return std::string(buffer.data());
-}
-
-static std::string eos_sessions_product_user_id_to_string_internal(EOS_ProductUserId product_user_id)
-{
-    if (!product_user_id)
-        return std::string();
-
-    return eos_sessions_copy_string_with_fixed_retry(
-        [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
-        {
-            return EOS_ProductUserId_ToString(product_user_id, out_buffer, inout_len);
-        });
-}
-
-
 struct EOSAsyncCallbackContext
 {
     std::optional<GMFunction> callback;
@@ -63,14 +32,6 @@ static EOS_HSessions eos_sessions_iface()
 {
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetSessionsInterface(p) : nullptr;
-}
-
-static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view product_user_id)
-{
-    std::string value(product_user_id);
-    if (value.empty())
-        return nullptr;
-    return EOS_ProductUserId_FromString(value.c_str());
 }
 
 static EOS_HSessionModification eos_sessions_modification_get(uint64_t id)
@@ -421,12 +382,12 @@ eos_sessions_register_players_info_from_native(const EOS_Sessions_RegisterPlayer
     
     out.registered_players = std::vector<std::string>{};
     for(uint32_t i = 0 ; i < p->RegisteredPlayersCount ; i++){
-        out.registered_players.push_back(eos_sessions_product_user_id_to_string_internal(p->RegisteredPlayers[i]));
+        out.registered_players.push_back(eos_product_user_id_to_string_internal(p->RegisteredPlayers[i]));
     }
 
     out.sanctioned_players = std::vector<std::string>{};
     for(uint32_t i = 0 ; i < p->SanctionedPlayersCount ; i++){
-        out.sanctioned_players.push_back(eos_sessions_product_user_id_to_string_internal(p->SanctionedPlayers[i]));
+        out.sanctioned_players.push_back(eos_product_user_id_to_string_internal(p->SanctionedPlayers[i]));
     }
 
     return out;
@@ -442,7 +403,7 @@ eos_sessions_unregister_players_info_from_native(const EOS_Sessions_UnregisterPl
 
     out.unregistered_players = std::vector<std::string>{};
     for(uint32_t i = 0 ; i < p->UnregisteredPlayersCount ; i++){
-        out.unregistered_players.push_back(eos_sessions_product_user_id_to_string_internal(p->UnregisteredPlayers[i]));
+        out.unregistered_players.push_back(eos_product_user_id_to_string_internal(p->UnregisteredPlayers[i]));
     }
 
     return out;
@@ -1007,7 +968,7 @@ static gm_structs::EpicSessionDetailsInfo eos_sessions_session_details_info_from
 
     out.session_id = p->SessionId ? std::string(p->SessionId) : std::string();
     out.host_address = p->HostAddress ? std::string(p->HostAddress) : std::string();
-    out.owner_user_id = eos_sessions_product_user_id_to_string_internal(p->OwnerUserId);
+    out.owner_user_id = eos_product_user_id_to_string_internal(p->OwnerUserId);
     out.num_open_public_connections = (int64_t)p->NumOpenPublicConnections;
     out.owner_server_client_id = p->OwnerServerClientId ? std::string(p->OwnerServerClientId) : std::string();
 
@@ -1042,7 +1003,7 @@ static gm_structs::EpicActiveSessionInfo eos_sessions_active_session_info_from_n
         return out;
 
     out.session_name = p->SessionName ? std::string(p->SessionName) : std::string();
-    out.local_user_id = eos_sessions_product_user_id_to_string_internal(p->LocalUserId);
+    out.local_user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
     out.state = (gm_enums::EpicOnlineSessionState)p->State;
     out.session_id = "";
     out.bucket_id = "";
@@ -1053,7 +1014,7 @@ static gm_structs::EpicActiveSessionInfo eos_sessions_active_session_info_from_n
     {
         out.session_id = p->SessionDetails->SessionId ? std::string(p->SessionDetails->SessionId) : std::string();
         out.host_address = p->SessionDetails->HostAddress ? std::string(p->SessionDetails->HostAddress) : std::string();
-        out.owner_user_id = eos_sessions_product_user_id_to_string_internal(p->SessionDetails->OwnerUserId);
+        out.owner_user_id = eos_product_user_id_to_string_internal(p->SessionDetails->OwnerUserId);
 
         if (p->SessionDetails->Settings && p->SessionDetails->Settings->BucketId)
             out.bucket_id = std::string(p->SessionDetails->Settings->BucketId);
@@ -1069,8 +1030,8 @@ static gm_structs::EpicSessionsSessionInviteReceivedCallbackInfo eos_sessions_in
     if (!p)
         return out;
 
-    out.local_user_id = eos_sessions_product_user_id_to_string_internal(p->LocalUserId);
-    out.target_user_id = eos_sessions_product_user_id_to_string_internal(p->TargetUserId);
+    out.local_user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
+    out.target_user_id = eos_product_user_id_to_string_internal(p->TargetUserId);
     out.invite_id = p->InviteId ? std::string(p->InviteId) : std::string();
     return out;
 }
@@ -1082,8 +1043,8 @@ static gm_structs::EpicSessionsSessionInviteAcceptedCallbackInfo eos_sessions_in
     if (!p)
         return out;
 
-    out.local_user_id = eos_sessions_product_user_id_to_string_internal(p->LocalUserId);
-    out.target_user_id = eos_sessions_product_user_id_to_string_internal(p->TargetUserId);
+    out.local_user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
+    out.target_user_id = eos_product_user_id_to_string_internal(p->TargetUserId);
     out.invite_id = p->InviteId ? std::string(p->InviteId) : std::string();
     return out;
 }
@@ -1945,7 +1906,7 @@ std::string eos_sessions_active_session_get_registered_player_by_index(
     opts.PlayerIndex = (uint32_t)index;
 
     EOS_ProductUserId player = EOS_ActiveSession_GetRegisteredPlayerByIndex(active, &opts);
-    return eos_sessions_product_user_id_to_string_internal(player);
+    return eos_product_user_id_to_string_internal(player);
 }
 
 // ============================================================
@@ -1987,7 +1948,7 @@ static void EOS_CALL eos_sessions_query_invites_callback_native(
 
     gm_structs::EpicSessionsQueryInvitesCallbackInfo out{};
     out.result_code = (gm_enums::EpicResult)data->ResultCode;
-    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     if (ctx->callback) ctx->callback.value().call(out);
     delete ctx;
 }
@@ -2275,8 +2236,8 @@ static void EOS_CALL eos_sessions_invite_rejected_callback_native(
 
     gm_structs::EpicSessionsSessionInviteRejectedCallbackInfo out{};
     out.invite_id = data->InviteId ? std::string(data->InviteId) : std::string();
-    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
-    out.target_user_id = eos_sessions_product_user_id_to_string_internal(data->TargetUserId);
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
+    out.target_user_id = eos_product_user_id_to_string_internal(data->TargetUserId);
     out.session_id = data->SessionId ? std::string(data->SessionId) : std::string();
     it->second.call(out);
 }
@@ -2297,7 +2258,7 @@ static void EOS_CALL eos_sessions_leave_requested_callback_native(
         return;
 
     gm_structs::EpicSessionsLeaveSessionRequestedCallbackInfo out{};
-    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.session_name = data->SessionName ? std::string(data->SessionName) : std::string();
     it->second.call(out);
 }
@@ -2319,7 +2280,7 @@ static void EOS_CALL eos_sessions_native_invite_requested_callback_native(
 
     gm_structs::EpicSessionsSendSessionNativeInviteRequestedCallbackInfo out{};
     out.ui_event_id = (uint64_t)data->UiEventId;
-    out.local_user_id = eos_sessions_product_user_id_to_string_internal(data->LocalUserId);
+    out.local_user_id = eos_product_user_id_to_string_internal(data->LocalUserId);
     out.session_id = data->SessionId ? std::string(data->SessionId) : std::string();
     it->second.call(out);
 }

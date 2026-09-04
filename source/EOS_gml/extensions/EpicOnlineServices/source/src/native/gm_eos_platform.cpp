@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 #include "core/GMExtUtils.h"
 
 #include <eos_sdk.h>
@@ -93,16 +94,6 @@ static bool eos_get_ext_option_bool(const char* key)
     std::transform(v.begin(), v.end(), v.begin(),
         [](unsigned char c){ return (char)std::tolower(c); });
     return v == "true" || v == "1" || v == "yes";
-}
-
-// ============================================================
-// Internal helpers
-// ============================================================
-
-static std::string eos_platform_result_string(EOS_EResult result)
-{
-    const char* s = EOS_EResult_ToString(result);
-    return s ? std::string(s) : std::string();
 }
 
 // ============================================================
@@ -226,7 +217,7 @@ gm_enums::EpicResult eos_platform_check_for_launcher_and_restart()
 
     const EOS_EResult result = EOS_Platform_CheckForLauncherAndRestart(platform);
     if (result != EOS_EResult::EOS_Success) {
-        eos_set_last_error(eos_platform_result_string(result));
+        eos_set_last_error(eos_result_string(result));
     }
 
     return (gm_enums::EpicResult)result;
@@ -246,7 +237,7 @@ gm_enums::EpicResult eos_platform_set_network_status(gm_enums::EpicNetworkStatus
         EOS_Platform_SetNetworkStatus(platform, (EOS_ENetworkStatus)status);
 
     if (result != EOS_EResult::EOS_Success) {
-        eos_set_last_error(eos_platform_result_string(result));
+        eos_set_last_error(eos_result_string(result));
     }
 
     return (gm_enums::EpicResult)result;

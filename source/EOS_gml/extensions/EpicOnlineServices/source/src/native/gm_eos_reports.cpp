@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_reports.h>
@@ -26,33 +27,6 @@ static EOS_HReports eos_reports_iface()
 {
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetReportsInterface(p) : nullptr;
-}
-
-template <typename Fn>
-static std::string eos_reports_copy_string_with_fixed_retry(Fn&& call_fn, size_t initial_capacity = 256)
-{
-    std::vector<char> buffer(initial_capacity, '\0');
-    int32_t length = (int32_t)buffer.size();
-
-    EOS_EResult result = call_fn(buffer.data(), &length);
-    if (result == EOS_EResult::EOS_LimitExceeded && length > 0)
-    {
-        buffer.assign((size_t)length, '\0');
-        result = call_fn(buffer.data(), &length);
-    }
-
-    if (result != EOS_EResult::EOS_Success)
-        return std::string();
-
-    return std::string(buffer.data());
-}
-
-static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view product_user_id)
-{
-    std::string value(product_user_id);
-    if (value.empty())
-        return nullptr;
-    return EOS_ProductUserId_FromString(value.c_str());
 }
 
 static gm_structs::EpicReportsSendPlayerBehaviorReportCallbackInfo

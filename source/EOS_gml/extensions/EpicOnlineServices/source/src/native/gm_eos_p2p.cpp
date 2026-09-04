@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_p2p.h>
@@ -34,23 +35,6 @@ static EOS_HP2P eos_p2p_iface()
 {
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetP2PInterface(p) : nullptr;
-}
-
-static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view id)
-{
-    std::string v(id);
-    if (v.empty()) return nullptr;
-    return EOS_ProductUserId_FromString(v.c_str());
-}
-
-static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId id)
-{
-    if (!id) return std::string();
-    char buf[64] = {};
-    int32_t len = (int32_t)sizeof(buf);
-    if (EOS_ProductUserId_ToString(id, buf, &len) != EOS_EResult::EOS_Success)
-        return std::string();
-    return std::string(buf);
 }
 
 // ---- Notify callback storage ----

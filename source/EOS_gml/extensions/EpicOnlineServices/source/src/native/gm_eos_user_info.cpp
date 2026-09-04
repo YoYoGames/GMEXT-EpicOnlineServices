@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_userinfo.h>
@@ -27,45 +28,6 @@ static EOS_HUserInfo eos_user_info_iface()
 {
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetUserInfoInterface(p) : nullptr;
-}
-
-template <typename Fn>
-static std::string eos_user_info_copy_string_with_fixed_retry(Fn&& call_fn, size_t initial_capacity = 256)
-{
-    std::vector<char> buffer(initial_capacity, '\0');
-    int32_t length = (int32_t)buffer.size();
-
-    EOS_EResult result = call_fn(buffer.data(), &length);
-    if (result == EOS_EResult::EOS_LimitExceeded && length > 0)
-    {
-        buffer.assign((size_t)length, '\0');
-        result = call_fn(buffer.data(), &length);
-    }
-
-    if (result != EOS_EResult::EOS_Success)
-        return std::string();
-
-    return std::string(buffer.data());
-}
-
-static EOS_EpicAccountId eos_epic_account_id_from_string_internal(std::string_view account_id)
-{
-    std::string value(account_id);
-    if (value.empty())
-        return nullptr;
-    return EOS_EpicAccountId_FromString(value.c_str());
-}
-
-static std::string eos_epic_account_id_to_string_internal(EOS_EpicAccountId account_id)
-{
-    if (!account_id)
-        return std::string();
-
-    return eos_user_info_copy_string_with_fixed_retry(
-        [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
-        {
-            return EOS_EpicAccountId_ToString(account_id, out_buffer, inout_len);
-        });
 }
 
 static gm_structs::EpicUserInfo eos_user_info_from_native(const EOS_UserInfo* p)

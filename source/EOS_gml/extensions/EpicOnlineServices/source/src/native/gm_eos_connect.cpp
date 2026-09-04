@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_connect.h>
@@ -37,51 +38,6 @@ static EOS_HConnect eos_connect_iface()
 {
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetConnectInterface(p) : nullptr;
-}
-
-static std::string eos_connect_result_string(EOS_EResult result)
-{
-    const char* s = EOS_EResult_ToString(result);
-    return s ? std::string(s) : std::string();
-}
-
-template <typename Fn>
-static std::string eos_connect_copy_string_with_fixed_retry(Fn&& call_fn, size_t initial_capacity = 256)
-{
-    std::vector<char> buffer(initial_capacity, '\0');
-    int32_t length = (int32_t)buffer.size();
-
-    EOS_EResult result = call_fn(buffer.data(), &length);
-    if (result == EOS_EResult::EOS_LimitExceeded && length > 0)
-    {
-        buffer.assign((size_t)length, '\0');
-        result = call_fn(buffer.data(), &length);
-    }
-
-    if (result != EOS_EResult::EOS_Success)
-        return std::string();
-
-    return std::string(buffer.data());
-}
-
-static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view product_user_id)
-{
-    std::string value(product_user_id);
-    if (value.empty())
-        return nullptr;
-    return EOS_ProductUserId_FromString(value.c_str());
-}
-
-static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId product_user_id)
-{
-    if (!product_user_id)
-        return std::string();
-
-    return eos_connect_copy_string_with_fixed_retry(
-        [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
-        {
-            return EOS_ProductUserId_ToString(product_user_id, out_buffer, inout_len);
-        });
 }
 
 // ============================================================
@@ -754,7 +710,7 @@ std::optional<gm_structs::EpicConnectIdToken> eos_connect_copy_id_token(std::str
     EOS_Connect_IdToken* token = nullptr;
     const EOS_EResult result = EOS_Connect_CopyIdToken(connect, &opts, &token);
     if (result != EOS_EResult::EOS_Success || token == nullptr) {
-        eos_set_last_error(eos_connect_result_string(result));
+        eos_set_last_error(eos_result_string(result));
         return std::nullopt;
     }
 
@@ -787,7 +743,7 @@ std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_produ
     EOS_Connect_ExternalAccountInfo* info = nullptr;
     const EOS_EResult result = EOS_Connect_CopyProductUserInfo(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
-        eos_set_last_error(eos_connect_result_string(result));
+        eos_set_last_error(eos_result_string(result));
         return std::nullopt;
     }
 
@@ -845,7 +801,7 @@ std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_produ
     EOS_Connect_ExternalAccountInfo* info = nullptr;
     const EOS_EResult result = EOS_Connect_CopyProductUserExternalAccountByIndex(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
-        eos_set_last_error(eos_connect_result_string(result));
+        eos_set_last_error(eos_result_string(result));
         return std::nullopt;
     }
 
@@ -880,7 +836,7 @@ std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_produ
     EOS_Connect_ExternalAccountInfo* info = nullptr;
     const EOS_EResult result = EOS_Connect_CopyProductUserExternalAccountByAccountType(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
-        eos_set_last_error(eos_connect_result_string(result));
+        eos_set_last_error(eos_result_string(result));
         return std::nullopt;
     }
 
@@ -921,7 +877,7 @@ std::optional<gm_structs::EpicConnectExternalAccountInfo> eos_connect_copy_produ
     EOS_Connect_ExternalAccountInfo* info = nullptr;
     const EOS_EResult result = EOS_Connect_CopyProductUserExternalAccountByAccountId(connect, &opts, &info);
     if (result != EOS_EResult::EOS_Success || info == nullptr) {
-        eos_set_last_error(eos_connect_result_string(result));
+        eos_set_last_error(eos_result_string(result));
         return std::nullopt;
     }
 
@@ -961,7 +917,7 @@ std::string eos_connect_get_product_user_id_mapping(
     opts.AccountIdType = (EOS_EExternalAccountType)account_id_type;
     opts.TargetProductUserId = target_user;
 
-    return eos_connect_copy_string_with_fixed_retry(
+    return eos_copy_string_with_fixed_retry(
         [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
         {
             return EOS_Connect_GetProductUserIdMapping(connect, &opts, out_buffer, inout_len);

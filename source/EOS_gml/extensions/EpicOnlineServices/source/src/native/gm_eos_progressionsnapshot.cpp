@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_progressionsnapshot.h>
@@ -26,13 +27,6 @@ static EOS_HProgressionSnapshot eos_progressionsnapshot_iface()
 {
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetProgressionSnapshotInterface(p) : nullptr;
-}
-
-static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view id)
-{
-    std::string v(id);
-    if (v.empty()) return nullptr;
-    return EOS_ProductUserId_FromString(v.c_str());
 }
 
 // ============================================================

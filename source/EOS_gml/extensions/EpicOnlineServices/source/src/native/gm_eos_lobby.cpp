@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_lobby.h>
@@ -30,46 +31,7 @@ static EOS_HLobby eos_lobby_iface()
     return p ? EOS_Platform_GetLobbyInterface(p) : nullptr;
 }
 
-template <typename Fn>
-static std::string eos_lobby_copy_string_with_fixed_retry(Fn&& call_fn, size_t initial_capacity = 256)
-{
-    std::vector<char> buffer(initial_capacity, '\0');
-    int32_t length = (int32_t)buffer.size();
-
-    EOS_EResult result = call_fn(buffer.data(), &length);
-    if (result == EOS_EResult::EOS_LimitExceeded && length > 0)
-    {
-        buffer.assign((size_t)length, '\0');
-        result = call_fn(buffer.data(), &length);
-    }
-
-    if (result != EOS_EResult::EOS_Success)
-        return std::string();
-
-    return std::string(buffer.data());
-}
-
 static EOS_HLobbyDetails eos_lobby_details_get(uint64_t id);
-
-static EOS_ProductUserId eos_product_user_id_from_string_internal(std::string_view product_user_id)
-{
-    std::string value(product_user_id);
-    if (value.empty())
-        return nullptr;
-    return EOS_ProductUserId_FromString(value.c_str());
-}
-
-static std::string eos_product_user_id_to_string_internal(EOS_ProductUserId product_user_id)
-{
-    if (!product_user_id)
-        return std::string();
-
-    return eos_lobby_copy_string_with_fixed_retry(
-        [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
-        {
-            return EOS_ProductUserId_ToString(product_user_id, out_buffer, inout_len);
-        });
-}
 
 static gm_structs::EpicLobbyCreateLobbyCallbackInfo eos_lobby_create_lobby_info_from_native(
     const EOS_Lobby_CreateLobbyCallbackInfo* p)
@@ -2408,7 +2370,7 @@ std::string eos_lobby_get_rtc_room_name(
     opts.LobbyId = lobby_id_storage.c_str();
     opts.LocalUserId = local_user;
 
-    return eos_lobby_copy_string_with_fixed_retry(
+    return eos_copy_string_with_fixed_retry(
         [&](char* out_buffer, int32_t* inout_len) -> EOS_EResult
         {
             // GetRTCRoomName uses uint32_t* for length; bridge through int32_t* signature.

@@ -1,5 +1,6 @@
 #include "EpicOnlineServices_native.h"
 #include "GMEpicGames.h"
+#include "gm_eos_common.h"
 
 #include <eos_sdk.h>
 #include <eos_ecom.h>
@@ -30,23 +31,6 @@ static EOS_HEcom eos_ecom_iface()
 {
     EOS_HPlatform p = eos_platform_get();
     return p ? EOS_Platform_GetEcomInterface(p) : nullptr;
-}
-
-static EOS_EpicAccountId eos_epic_account_id_from_string_internal(std::string_view id)
-{
-    std::string v(id);
-    if (v.empty()) return nullptr;
-    return EOS_EpicAccountId_FromString(v.c_str());
-}
-
-static std::string eos_epic_account_id_to_string_internal(EOS_EpicAccountId id)
-{
-    if (!id) return std::string();
-    char buf[64] = {};
-    int32_t len = (int32_t)sizeof(buf);
-    if (EOS_EpicAccountId_ToString(id, buf, &len) != EOS_EResult::EOS_Success)
-        return std::string();
-    return std::string(buf);
 }
 
 static std::vector<std::string> to_string_vector(const char* const* arr, uint32_t count)
