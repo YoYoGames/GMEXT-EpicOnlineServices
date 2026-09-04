@@ -1,42 +1,41 @@
 #!/bin/bash
 #
-# Runs on the macOS build host during a Windows-driven (remote) iOS build.
-# Windows' pre_build_step.bat stages the RAW EOSSDK.xcframework into
-# iOSSourceFromMac (it can't run macOS framework tooling); here we do the
-# Mac-only work: strip the vendor code signature and zip with ditto.
-# (Mirrors how the Discord extension processes raw libs in remote_build_step.)
+# Runs on the macOS build host during a Windows-driven (remote) build.
 #
-# On a Mac-host build, pre_build_step.sh already produced EOSSDK.zip and left no
-# raw folder, so this is a no-op in that case.
+# Igor copies THIS SCRIPT ALONE to <output_dir>/<project>FromPC/ and runs it
+# there - nothing else from the extension folder comes with it - so the only
+# things worth touching are what Igor has already put on the Mac. By the time
+# this runs, the extension zips staged in iOSSourceFromMac have been copied over
+# and unzipped into <project>FromPC/Fw/, and the subsequent rsync into the real
+# Xcode project directory has not happened yet.
+#
+# So the job here is the one piece of work Windows could not do: strip the vendor
+# (Epic) code signature from the already-unzipped EOSSDK.xcframework, in place.
+# Xcode 15+ verifies a bundled xcframework's signature and fails with "signature
+# cannot be verified" for a third-party one; the app re-signs embedded frameworks
+# with its own identity during signing, so removing the vendor signature is the
+# standard fix.
+#
+# On a Mac-host build pre_build_step.sh already stripped the framework before
+# zipping it, and for a macOS (rather than iOS) target there is no such framework
+# here at all, so this is a no-op in both those cases.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd -P)"
-IOS_DIR="$SCRIPT_DIR/iOSSourceFromMac"
-XCFW="$IOS_DIR/EOSSDK.xcframework"
+XCFW="$SCRIPT_DIR/Fw/EOSSDK.xcframework"
 
 if [ ! -d "$XCFW" ]; then
-    # Nothing staged (e.g. Mac-host build already zipped it) -> nothing to do.
+    # Nothing unzipped here -> nothing to do.
     exit 0
 fi
 
-echo "remote_build_step: processing EOS iOS xcframework on macOS"
+echo "remote_build_step: stripping vendor signature from EOSSDK.xcframework"
 
-rm -f "$IOS_DIR/EOSSDK.zip"
-
-# Strip the vendor (Epic) signature. Xcode 15+ rejects an unverifiable
-# third-party xcframework signature; the app re-signs embedded frameworks with
-# its own identity on embed, so removing it is the standard fix.
+# Drop every _CodeSignature bundle seal and each framework binary's embedded
+# signature. Stripping an already-stripped framework is harmless.
 find "$XCFW" -type d -name "_CodeSignature" -exec rm -rf {} +
 find "$XCFW" -type d -name "*.framework" | while IFS= read -r fw; do
     bin="$fw/$(basename "$fw" .framework)"
     [ -f "$bin" ] && codesign --remove-signature "$bin" >/dev/null 2>&1 || true
 done
 
-# Zip with ditto: preserves the (flat iOS) framework structure; --norsrc/
-# --noextattr prevent AppleDouble "._" files that break ProcessXCFramework.
-ditto -c -k --norsrc --noextattr --keepParent "$XCFW" "$IOS_DIR/EOSSDK.zip"
-rc=$?
-
-# Remove the raw framework so only the .zip remains.
-rm -rf "$XCFW"
-
-exit $rc
+exit 0

@@ -104,18 +104,10 @@ setupLinux() {
 
 # ----------------------------------------------------------------------------------------------------
 setupAndroid() {
-    # Stage the EOS SDK's Android AAR as a whole into AndroidSource/libs-aar/ so
-    # GameMaker's Gradle build consumes it directly (classes.jar + per-ABI
-    # libEOSSDK.so extracted automatically) via the "implementation files(...)"
-    # dependency declared in EpicOnlineServices.yy. Git-ignored; mirrors
-    # GMEXT-Discord's post_build_step.sh pattern.
-    pathResolveExisting "$YYprojectDir" "$SDK_PATH_ANDROID" SDK_PATH
-
-    EOS_AAR="$SDK_PATH/SDK/Bin/Android/static-stdc++/aar/eossdk-StaticSTDC-release.aar"
-
-    echo "Staging EOS Android dependency (eossdk-StaticSTDC-release.aar)"
-    mkdir -p "$EXTENSION_DIR/AndroidSource/libs-aar"
-    itemCopyTo "$EOS_AAR" "$EXTENSION_DIR/AndroidSource/libs-aar/eossdk-StaticSTDC-release.aar"
+    # Nothing to do here. The AAR is staged in pre_build_step, because the asset
+    # compiler copies AndroidSource/libs-aar into the Gradle project before this
+    # script ever runs.
+    :
 }
 
 setupiOS()         { :; }

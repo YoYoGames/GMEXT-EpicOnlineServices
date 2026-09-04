@@ -91,21 +91,15 @@ exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------
 :setupAndroid
-    :: Stage the EOS SDK's Android AAR as a whole into AndroidSource/libs-aar/ so
-    :: GameMaker's Gradle build consumes it directly (classes.jar + per-ABI
-    :: libEOSSDK.so extracted automatically) via the "implementation files(...)"
-    :: dependency declared in EpicOnlineServices.yy. Git-ignored; mirrors
-    :: GMEXT-Discord's post_build_step.bat pattern.
-    call %Utils% pathResolveExisting "%YYprojectDir%" "%SDK_PATH_ANDROID%" SDK_PATH
-
-    set "EOS_AAR=%SDK_PATH%\SDK\Bin\Android\static-stdc++\aar\eossdk-StaticSTDC-release.aar"
-
-    echo Staging EOS Android dependency (eossdk-StaticSTDC-release.aar)
-    if not exist "%EXTENSION_DIR%AndroidSource\libs-aar" mkdir "%EXTENSION_DIR%AndroidSource\libs-aar"
-    call %Utils% itemCopyTo "%EOS_AAR%" "%EXTENSION_DIR%AndroidSource\libs-aar\eossdk-StaticSTDC-release.aar"
+    :: Nothing to do here. The AAR is staged in pre_build_step, because the asset
+    :: compiler copies AndroidSource\libs-aar into the Gradle project before this
+    :: script ever runs. The label must stay: a missing :setup<platform> label is
+    :: a silent failure that still reports a successful build.
 exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------
 :setupiOS
-    :: TODO (unverified on a Mac): see pre_build_step.bat :setupiOS
+    :: Nothing to do here. pre_build_step.bat stages EOSSDK.zip into
+    :: iOSSourceFromMac before the asset compiler reads it, and remote_build_step.sh
+    :: strips its signature on the Mac afterwards.
 exit /b 0
