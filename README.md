@@ -24,9 +24,9 @@ After compilation the exported dll/dylib file is automatically copied into the e
 
 ---
 
-## News
+## What's in 3.0.0
 
-Version 3.0.0 comes with new previously missing modules:
+Version 3.0.0 adds the modules that were previously missing, bringing the wrapper to 24 EOS interfaces:
 
 - P2P API
 - Sessions API
