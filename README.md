@@ -24,9 +24,11 @@ After compilation the exported dll/dylib file is automatically copied into the e
 
 ---
 
-## What's in 3.0.0
+## What's in 4.0.0
 
-Version 3.0.0 adds the modules that were previously missing, bringing the wrapper to 24 EOS interfaces:
+Version 4.0.0 is a full rewrite. The platform bindings are generated from a single GMIDL spec, the
+extension builds for five platforms rather than two, and it adds the modules the previous release was
+missing, bringing the wrapper to 24 EOS interfaces:
 
 - P2P API
 - Sessions API
@@ -37,6 +39,10 @@ Version 3.0.0 adds the modules that were previously missing, bringing the wrappe
 - Reports API
 - Logging API
 
+The public GML API changed with the rewrite - function names and signatures differ from 3.x - so moving
+an existing project across is a migration rather than a drop-in upgrade. Projects that need the older
+API should stay on the final 3.x release.
+
 ---
 
 ## Requirements
@@ -44,8 +50,9 @@ Version 3.0.0 adds the modules that were previously missing, bringing the wrappe
 In order to compile you are required to download the [Epic Online Services SDK 1.19.1.2](https://dev.epicgames.com/portal/en-US) and place it inside `source/EOS_sdk/`. The multi-platform bundle is expected: `C/` for desktop, plus `Android/` and `iOS/`.
 
 > [!IMPORTANT]
-> Latest version 3.0.0 is a major release:
+> Latest version 4.0.0 is a major release:
 >
+> * The GML API changed - read the upgrade note above before moving a 3.x project across
 > * You will need to make sure the SDK is updated to version 1.19.1.2
 > * Android builds must target arm64-v8a and/or x86_64 only (see the note above)
 
