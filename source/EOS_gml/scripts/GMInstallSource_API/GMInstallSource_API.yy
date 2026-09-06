@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GMInstallSource_API",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GMInstallSource_API",
+  "parent":{
+    "name":"InstallSource",
+    "path":"folders/InstallSource.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

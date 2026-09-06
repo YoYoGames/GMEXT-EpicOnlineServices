@@ -1,1231 +1,1421 @@
+// ============================================================
+// Session lifecycle
+// ============================================================
+
+/**
+ * @function eos_sessions_create_session_modification
+ * @desc **Epic Online Services Function:** [EOS_Sessions_CreateSessionModification](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-create-session-modification)
+ *
+ * Creates a session modification handle. This handle is used to build up the settings for a brand new
+ * session (an empty `session_id` lets the backend assign one) before calling ${function.eos_sessions_update_session}
+ * to publish it. Configure the modification with the `eos_sessions_session_modification_*` functions below.
+ *
+ * [[Note: `session_id`, when provided, must be 16-64 characters. An empty string is invalid; pass an empty string only when you want the backend to assign an id.]]
+ *
+ * @param {String} session_name A local, client-side label for this session. Must be unique among your currently active sessions.
+ * @param {String} session_id Backend session id, or an empty string to let the backend assign one.
+ * @param {String} bucket_id A logical bucket for filtering search results (e.g. region/gamemode).
+ * @param {Real} max_players Maximum number of players allowed in the session.
+ * @param {String} local_user_id The Product User ID creating the session.
+ * @param {Bool} presence_enabled Whether this is the user's presence session (only one presence session may exist per local user).
+ * @param {Bool} sanctions_enabled Whether joining players are checked against ${module.sanctions}.
+ * @param {Array[Real]} allowed_platform_ids Platform ids (`EOS_EOnlineExternalAccountType`-style) allowed to join, or an empty array to allow every platform.
+ *
+ * @returns {Real} A session modification handle (`0` on failure), consumed by ${function.eos_sessions_update_session} or released with ${function.eos_sessions_session_modification_release}.
+ *
+ * @example
+ * ```gml
+ * var _mod = eos_sessions_create_session_modification("MySession", "", "region-eu", 4, local_user_id, true, false, []);
+ * eos_sessions_session_modification_set_permission_level(_mod, EOS_ONLINE_SESSION_PERMISSION_LEVEL.PUBLIC_ADVERTISED);
+ * eos_sessions_update_session(_mod, function(_result) {
+ *     show_debug_message($"Session created: {_result.result_code}");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_release
+ * @desc **Epic Online Services Function:** [EOS_SessionModificationHandle_Release](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-handle-release)
+ *
+ * Releases a session modification handle without publishing it. Call this if you decide not to commit
+ * changes built up with ${function.eos_sessions_create_session_modification}.
+ *
+ * [[Note: You do NOT need to call this after ${function.eos_sessions_update_session} - that function releases the handle internally once it hands the modification off to the SDK.]]
+ *
+ * @param {Real} modification_id A session modification handle.
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_release(_mod);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_update_session
+ * @desc **Epic Online Services Function:** [EOS_Sessions_UpdateSession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-update-session)
+ *
+ * Publishes a session modification, creating the session on the first call or applying changes on later
+ * calls. This function consumes and releases `modification_id` - don't call ${function.eos_sessions_session_modification_release} on it afterward.
+ *
+ * @param {Real} modification_id A session modification handle from ${function.eos_sessions_create_session_modification}.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @desc Fires once with the outcome of the update.
+ * @member {Struct.EpicSessionsUpdateSessionCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_update_session(_mod, function(_result) {
+ *     if (_result.result_code == EPIC_RESULT.SUCCESS)
+ *     {
+ *         show_debug_message($"Session '{_result.session_name}' is live ({_result.session_id}).");
+ *     }
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_destroy_session
+ * @desc **Epic Online Services Function:** [EOS_Sessions_DestroySession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-destroy-session)
+ *
+ * Destroys a session that this client is currently in, unregistering every player from it.
+ *
+ * @param {String} session_name The local session name.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsDestroySessionCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_destroy_session("MySession", function(_result) {
+ *     show_debug_message($"Destroy result: {_result.result_code}");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_start_session
+ * @desc **Epic Online Services Function:** [EOS_Sessions_StartSession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-start-session)
+ *
+ * Marks a session as started (in progress), which prevents any further joins if `join_in_progress_allowed`
+ * is false. Only the owning client should call this once gameplay begins.
+ *
+ * @param {String} session_name The local session name.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsStartSessionCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_start_session("MySession", function(_result) {
+ *     show_debug_message($"Start result: {_result.result_code}");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_end_session
+ * @desc **Epic Online Services Function:** [EOS_Sessions_EndSession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-end-session)
+ *
+ * Marks a session as no longer in progress (e.g. back to a lobby/waiting state), re-opening it to joins.
+ *
+ * @param {String} session_name The local session name.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsEndSessionCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_end_session("MySession", function(_result) {
+ *     show_debug_message($"End result: {_result.result_code}");
+ * });
+ * ```
+ * @function_end
+ */
+
+// ============================================================
+// Joining and player registration
+// ============================================================
+
+/**
+ * @function eos_sessions_join_session
+ * @desc **Epic Online Services Function:** [EOS_Sessions_JoinSession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-join-session)
+ *
+ * Joins a session using a session details handle obtained from a search result (${function.eos_sessions_session_search_copy_search_result_by_index})
+ * or an invite (${function.eos_sessions_copy_session_handle_by_invite_id}/${function.eos_sessions_copy_session_handle_by_ui_event_id}).
+ *
+ * @param {String} session_name A local label for the joined session, unique among your currently active sessions.
+ * @param {Real} session_details_id A session details handle describing the session to join.
+ * @param {String} local_user_id The Product User ID joining the session.
+ * @param {Bool} presence_enabled Whether this becomes the user's presence session.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsJoinSessionCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_join_session("MySession", _session_details_id, local_user_id, true, function(_result) {
+ *     show_debug_message($"Join result: {_result.result_code}");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_register_players
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RegisterPlayers](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-register-players)
+ *
+ * Registers additional players (e.g. local split-screen players, or players who joined outside of the
+ * SDK's own join flow) as members of an existing session, so they count toward `max_players` and can be
+ * enumerated via ${function.eos_sessions_active_session_get_registered_player_by_index}.
+ *
+ * @param {String} session_name The local session name.
+ * @param {Array[String]} target_user_ids Product User IDs to register.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @desc Fires once with the registration outcome. If ${module.sanctions} checking is enabled on the session, sanctioned players are reported separately and are NOT added to `registered_players`.
+ * @member {Struct.EpicSessionsRegisterPlayersCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_register_players("MySession", [target_user_id], function(_result) {
+ *     show_debug_message($"Registered: {_result.registered_players}, sanctioned: {_result.sanctioned_players}");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_unregister_players
+ * @desc **Epic Online Services Function:** [EOS_Sessions_UnregisterPlayers](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-unregister-players)
+ *
+ * Removes previously registered players from a session.
+ *
+ * @param {String} session_name The local session name.
+ * @param {Array[String]} target_user_ids Product User IDs to unregister.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsUnregisterPlayersCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_unregister_players("MySession", [target_user_id], function(_result) {
+ *     show_debug_message($"Unregistered: {_result.unregistered_players}");
+ * });
+ * ```
+ * @function_end
+ */
+
+// ============================================================
+// Session search
+// ============================================================
+
+/**
+ * @function eos_sessions_create_session_search
+ * @desc **Epic Online Services Function:** [EOS_Sessions_CreateSessionSearch](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-create-session-search)
+ *
+ * Creates a session search handle. Configure it with the `eos_sessions_session_search_set_*` functions
+ * below, then call ${function.eos_sessions_session_search_find} to run the search.
+ *
+ * @param {Real} max_search_results Maximum number of results the search should return.
+ *
+ * @returns {Real} A session search handle (`0` on failure), released with ${function.eos_sessions_session_search_release}.
+ *
+ * @example
+ * ```gml
+ * var _search = eos_sessions_create_session_search(10);
+ * eos_sessions_session_search_set_parameter(_search, "region", "eu", EPIC_COMPARISON_OP.EQUAL);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_release
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_Release](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-release)
+ *
+ * Releases a session search handle and every search result it produced. Session details handles copied
+ * out via ${function.eos_sessions_session_search_copy_search_result_by_index} remain valid after this
+ * call - release them separately with ${function.eos_sessions_session_details_release}.
+ *
+ * @param {Real} search_id A session search handle.
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_search_release(_search);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_set_session_id
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_SetSessionId](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-set-session-id)
+ *
+ * Restricts a session search to a single, known session id.
+ *
+ * @param {Real} search_id A session search handle.
+ * @param {String} session_id The session id to search for.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_search_set_session_id(_search, _session_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_set_target_user_id
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_SetTargetUserId](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-set-target-user-id)
+ *
+ * Restricts a session search to a single user's presence session.
+ *
+ * @param {Real} search_id A session search handle.
+ * @param {String} target_user_id The Product User ID whose presence session to search for.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_search_set_target_user_id(_search, _target_user_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_set_parameter
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_SetParameter](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-set-parameter)
+ *
+ * Adds a string-valued attribute filter to a session search (compares against attributes set via
+ * ${function.eos_sessions_session_modification_add_attribute_string} on the target sessions).
+ *
+ * @param {Real} search_id A session search handle.
+ * @param {String} key The attribute key to filter on.
+ * @param {String} value The value to compare against.
+ * @param {Constant.EpicComparisonOp} comparison_op How `value` should be compared against each session's attribute.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_search_set_parameter(_search, "gamemode", "deathmatch", EPIC_COMPARISON_OP.EQUAL);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_remove_parameter
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_RemoveParameter](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-remove-parameter)
+ *
+ * Removes a previously added attribute filter, matched by key and comparison operator.
+ *
+ * @param {Real} search_id A session search handle.
+ * @param {String} key The attribute key to remove.
+ * @param {Constant.EpicComparisonOp} comparison_op The comparison operator the filter was added with.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_search_remove_parameter(_search, "gamemode", EPIC_COMPARISON_OP.EQUAL);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_find
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_Find](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-find)
+ *
+ * Executes a configured session search.
+ *
+ * @param {Real} search_id A session search handle.
+ * @param {String} local_user_id The Product User ID performing the search.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsFindCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_search_find(_search, local_user_id, function(_result) {
+ *     if (_result.result_code == EPIC_RESULT.SUCCESS)
+ *     {
+ *         var _count = eos_sessions_session_search_get_search_result_count(_search);
+ *         show_debug_message($"Found {_count} sessions.");
+ *     }
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_get_search_result_count
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_GetSearchResultCount](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-get-search-result-count)
+ *
+ * Gets the number of results from the last completed ${function.eos_sessions_session_search_find} call.
+ *
+ * @param {Real} search_id A session search handle.
+ *
+ * @returns {Real}
+ *
+ * @example
+ * ```gml
+ * var _count = eos_sessions_session_search_get_search_result_count(_search);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_search_copy_search_result_by_index
+ * @desc **Epic Online Services Function:** [EOS_SessionSearch_CopySearchResultByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-copy-search-result-by-index)
+ *
+ * Copies a session details handle for one of the search results.
+ *
+ * @param {Real} search_id A session search handle.
+ * @param {Real} index Index in `[0, ${function.eos_sessions_session_search_get_search_result_count}())`.
+ *
+ * @returns {Real} A session details handle (`0` on failure), released with ${function.eos_sessions_session_details_release}.
+ *
+ * @example
+ * ```gml
+ * var _details_id = eos_sessions_session_search_copy_search_result_by_index(_search, 0);
+ * ```
+ * @function_end
+ */
+
+// ============================================================
+// Session details / active session accessors
+// ============================================================
+
+/**
+ * @function eos_sessions_session_details_release
+ * @desc **Epic Online Services Function:** [EOS_SessionDetails_Release](https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-release)
+ *
+ * Releases a session details handle obtained from a search result or an invite.
+ *
+ * @param {Real} session_details_id A session details handle.
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_details_release(_details_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_copy_active_session_handle
+ * @desc **Epic Online Services Function:** [EOS_Sessions_CopyActiveSessionHandle](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-copy-active-session-handle)
+ *
+ * Copies a handle to a session this client is currently in, by its local session name.
+ *
+ * @param {String} session_name The local session name.
+ *
+ * @returns {Real} An active session handle (`0` on failure), released with ${function.eos_sessions_active_session_release}.
+ *
+ * @example
+ * ```gml
+ * var _active_id = eos_sessions_copy_active_session_handle("MySession");
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_active_session_release
+ * @desc **Epic Online Services Function:** [EOS_ActiveSession_Release](https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-release)
+ *
+ * Releases an active session handle.
+ *
+ * @param {Real} active_session_id An active session handle.
+ *
+ * @example
+ * ```gml
+ * eos_sessions_active_session_release(_active_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_active_session_copy_info
+ * @desc **Epic Online Services Function:** [EOS_ActiveSession_CopyInfo](https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-copy-info)
+ *
+ * Copies the current info for an active session.
+ *
+ * @param {Real} active_session_id An active session handle.
+ *
+ * @returns {Struct.EpicActiveSessionInfo} `undefined` if the handle is invalid or the info couldn't be copied.
+ *
+ * @example
+ * ```gml
+ * var _info = eos_sessions_active_session_copy_info(_active_id);
+ * if (!is_undefined(_info)) { show_debug_message(_info.session_id); }
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_copy_session_handle_by_invite_id
+ * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByInviteId](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id)
+ *
+ * Copies a session details handle for a pending invite, typically used from an
+ * ${function.eos_sessions_add_notify_session_invite_received} callback.
+ *
+ * @param {String} invite_id The invite id.
+ *
+ * @returns {Real} A session details handle (`0` on failure), released with ${function.eos_sessions_session_details_release}.
+ *
+ * @example
+ * ```gml
+ * var _details_id = eos_sessions_copy_session_handle_by_invite_id(_invite_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_copy_session_handle_by_ui_event_id
+ * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByUiEventId](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-copy-session-handle-by-ui-event-id)
+ *
+ * Copies a session details handle for a join request that originated from the Epic overlay, typically
+ * used from an ${function.eos_sessions_add_notify_join_session_accepted} callback.
+ *
+ * [[Warning: After using `ui_event_id` to look up the session, you must still call ${function.eos_ui_acknowledge_event_id} with the same id once your join attempt resolves, or the overlay is left waiting indefinitely.]]
+ *
+ * @param {Real} ui_event_id The UI event id from ${struct.EpicSessionsJoinSessionAcceptedCallbackInfo}.
+ *
+ * @returns {Real} A session details handle (`0` on failure), released with ${function.eos_sessions_session_details_release}.
+ *
+ * @example
+ * ```gml
+ * var _details_id = eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_details_copy_info
+ * @desc **Epic Online Services Function:** [EOS_SessionDetails_CopyInfo](https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-copy-info)
+ *
+ * Copies the info for a session details handle.
+ *
+ * @param {Real} session_details_id A session details handle.
+ *
+ * @returns {Struct.EpicSessionDetailsInfo} `undefined` if the handle is invalid or the info couldn't be copied.
+ *
+ * @example
+ * ```gml
+ * var _info = eos_sessions_session_details_copy_info(_details_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_details_get_session_attribute_count
+ * @desc **Epic Online Services Function:** [EOS_SessionDetails_GetSessionAttributeCount](https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-get-session-attribute-count)
+ *
+ * @param {Real} session_details_id A session details handle.
+ *
+ * @returns {Real}
+ *
+ * @example
+ * ```gml
+ * var _count = eos_sessions_session_details_get_session_attribute_count(_details_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_details_copy_session_attribute_by_index
+ * @desc **Epic Online Services Function:** [EOS_SessionDetails_CopySessionAttributeByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-copy-session-attribute-by-index)
+ *
+ * @param {Real} session_details_id A session details handle.
+ * @param {Real} index Index in `[0, ${function.eos_sessions_session_details_get_session_attribute_count}())`.
+ *
+ * @returns {Struct.EpicSessionDetailsAttribute} `undefined` on an out-of-range index or copy failure.
+ *
+ * @example
+ * ```gml
+ * var _attr = eos_sessions_session_details_copy_session_attribute_by_index(_details_id, 0);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_details_copy_session_attribute_by_key
+ * @desc **Epic Online Services Function:** [EOS_SessionDetails_CopySessionAttributeByKey](https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-copy-session-attribute-by-key)
+ *
+ * @param {Real} session_details_id A session details handle.
+ * @param {String} key The attribute key to look up.
+ *
+ * @returns {Struct.EpicSessionDetailsAttribute} `undefined` if `key` doesn't exist on this session.
+ *
+ * @example
+ * ```gml
+ * var _attr = eos_sessions_session_details_copy_session_attribute_by_key(_details_id, "gamemode");
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_active_session_get_registered_player_count
+ * @desc **Epic Online Services Function:** [EOS_ActiveSession_GetRegisteredPlayerCount](https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-get-registered-player-count)
+ *
+ * @param {Real} active_session_id An active session handle.
+ *
+ * @returns {Real}
+ *
+ * @example
+ * ```gml
+ * var _count = eos_sessions_active_session_get_registered_player_count(_active_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_active_session_get_registered_player_by_index
+ * @desc **Epic Online Services Function:** [EOS_ActiveSession_GetRegisteredPlayerByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-get-registered-player-by-index)
+ *
+ * @param {Real} active_session_id An active session handle.
+ * @param {Real} index Index in `[0, ${function.eos_sessions_active_session_get_registered_player_count}())`.
+ *
+ * @returns {String} An empty string on an out-of-range index.
+ *
+ * @example
+ * ```gml
+ * var _player_id = eos_sessions_active_session_get_registered_player_by_index(_active_id, 0);
+ * ```
+ * @function_end
+ */
+
+// ============================================================
+// SessionModification setters
+// ============================================================
+
+/**
+ * @function eos_sessions_session_modification_set_bucket_id
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_SetBucketId](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-bucket-id)
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {String} bucket_id A non-empty bucket id.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_set_bucket_id(_mod, "region-eu");
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_set_host_address
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_SetHostAddress](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-host-address)
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {String} host_address Free-form connect address for players to use after joining (your own format - EOS doesn't interpret it). Pass an empty string to clear it.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_set_host_address(_mod, "203.0.113.4:7777");
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_set_permission_level
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_SetPermissionLevel](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-permission-level)
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {Constant.EpicOnlineSessionPermissionLevel} permission_level Who can find/join the session.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_set_permission_level(_mod, EPIC_ONLINE_SESSION_PERMISSION_LEVEL.PUBLIC_ADVERTISED);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_set_join_in_progress_allowed
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_SetJoinInProgressAllowed](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-join-in-progress-allowed)
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {Bool} allow_join_in_progress Whether players can join after ${function.eos_sessions_start_session} has been called.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_set_join_in_progress_allowed(_mod, true);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_set_max_players
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_SetMaxPlayers](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-max-players)
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {Real} max_players New player cap.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_set_max_players(_mod, 8);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_set_invites_allowed
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_SetInvitesAllowed](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-invites-allowed)
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {Bool} invites_allowed Whether ${function.eos_sessions_send_invite} can be used for this session.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_set_invites_allowed(_mod, true);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_add_attribute_string
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_AddAttribute](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-add-attribute)
+ *
+ * Sets a string-valued session attribute, searchable via ${function.eos_sessions_session_search_set_parameter}
+ * when `advertisement_type` is `EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE`.
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {String} key Attribute key.
+ * @param {String} value Attribute value.
+ * @param {Constant.EpicSessionAttributeAdvertisementType} advertisement_type Whether this attribute is visible to searches or private to the session.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_add_attribute_string(_mod, "gamemode", "deathmatch", EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_add_attribute_bool
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_AddAttribute](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-add-attribute)
+ *
+ * Bool-valued equivalent of ${function.eos_sessions_session_modification_add_attribute_string}.
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {String} key Attribute key.
+ * @param {Bool} value Attribute value.
+ * @param {Constant.EpicSessionAttributeAdvertisementType} advertisement_type Whether this attribute is visible to searches or private to the session.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_add_attribute_bool(_mod, "ranked", true, EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_add_attribute_double
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_AddAttribute](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-add-attribute)
+ *
+ * Numeric-valued equivalent of ${function.eos_sessions_session_modification_add_attribute_string}.
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {String} key Attribute key.
+ * @param {Real} value Attribute value.
+ * @param {Constant.EpicSessionAttributeAdvertisementType} advertisement_type Whether this attribute is visible to searches or private to the session.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_add_attribute_double(_mod, "skill_rating", 1500, EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_session_modification_remove_attribute
+ * @desc **Epic Online Services Function:** [EOS_SessionModification_RemoveAttribute](https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-remove-attribute)
+ *
+ * @param {Real} modification_id A session modification handle.
+ * @param {String} key The attribute key to remove.
+ *
+ * @returns {Constant.EpicResult}
+ *
+ * @example
+ * ```gml
+ * eos_sessions_session_modification_remove_attribute(_mod, "gamemode");
+ * ```
+ * @function_end
+ */
+
+// ============================================================
+// Invites
+// ============================================================
+
+/**
+ * @function eos_sessions_send_invite
+ * @desc **Epic Online Services Function:** [EOS_Sessions_SendInvite](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-send-invite)
+ *
+ * Sends a session invite. Requires `invites_allowed` to be set on the session (see
+ * ${function.eos_sessions_session_modification_set_invites_allowed}).
+ *
+ * @param {String} session_name The local session name.
+ * @param {String} local_user_id The inviting Product User ID.
+ * @param {String} target_user_id The invited Product User ID.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsSendInviteCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_send_invite("MySession", local_user_id, target_user_id, function(_result) {
+ *     show_debug_message($"Invite result: {_result.result_code}");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_reject_invite
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RejectInvite](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-reject-invite)
+ *
+ * @param {String} local_user_id The Product User ID rejecting the invite.
+ * @param {String} invite_id The invite id, typically from ${struct.EpicSessionsSessionInviteReceivedCallbackInfo}.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsRejectInviteCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_reject_invite(local_user_id, _invite_id, function(_result) {
+ *     show_debug_message($"Reject result: {_result.result_code}");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_query_invites
+ * @desc **Epic Online Services Function:** [EOS_Sessions_QueryInvites](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-query-invites)
+ *
+ * Refreshes the local cache of pending invites for a user, read afterward via
+ * ${function.eos_sessions_get_invite_count}/${function.eos_sessions_get_invite_id_by_index}.
+ *
+ * @param {String} local_user_id The Product User ID to query invites for.
+ * @param {Function} [callback] Called once with the result.
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsQueryInvitesCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_query_invites(local_user_id, function(_result) {
+ *     var _n = eos_sessions_get_invite_count(_result.local_user_id);
+ *     show_debug_message($"{_n} pending invites");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_get_invite_count
+ * @desc **Epic Online Services Function:** [EOS_Sessions_GetInviteCount](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-get-invite-count)
+ *
+ * @param {String} local_user_id The Product User ID to check.
+ *
+ * @returns {Real}
+ *
+ * @example
+ * ```gml
+ * var _n = eos_sessions_get_invite_count(local_user_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_get_invite_id_by_index
+ * @desc **Epic Online Services Function:** [EOS_Sessions_GetInviteIdByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-get-invite-id-by-index)
+ *
+ * @param {String} local_user_id The Product User ID that owns the invite.
+ * @param {Real} index Index in `[0, ${function.eos_sessions_get_invite_count}())`.
+ *
+ * @returns {String} An empty string on an out-of-range index.
+ *
+ * @example
+ * ```gml
+ * var _invite_id = eos_sessions_get_invite_id_by_index(local_user_id, 0);
+ * ```
+ * @function_end
+ */
+
+// ============================================================
+// Notifications
+// ============================================================
+
+/**
+ * @function eos_sessions_add_notify_session_invite_received
+ * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifySessionInviteReceived](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-received)
+ *
+ * Registers to be notified when a session invite is received. Call ${function.eos_sessions_remove_notify_session_invite_received}
+ * with the returned id when you no longer need it.
+ *
+ * @param {Function} [callback] Called each time an invite is received.
+ *
+ * @returns {Real} A notification id (`0` on failure).
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsSessionInviteReceivedCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * global.notify_id = eos_sessions_add_notify_session_invite_received(function(_result) {
+ *     var _details_id = eos_sessions_copy_session_handle_by_invite_id(_result.invite_id);
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_remove_notify_session_invite_received
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySessionInviteReceived](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-session-invite-received)
+ *
+ * @param {Real} notification_id A notification id from ${function.eos_sessions_add_notify_session_invite_received}.
+ *
+ * @example
+ * ```gml
+ * eos_sessions_remove_notify_session_invite_received(global.notify_id);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_add_notify_session_invite_accepted
+ * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifySessionInviteAccepted](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-accepted)
+ *
+ * Registers to be notified when a session invite this client sent is accepted.
+ *
+ * @param {Function} [callback] Called each time a sent invite is accepted.
+ *
+ * @returns {Real} A notification id (`0` on failure).
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsSessionInviteAcceptedCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_add_notify_session_invite_accepted(function(_result) {
+ *     show_debug_message($"{_result.target_user_id} accepted our invite");
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_remove_notify_session_invite_accepted
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySessionInviteAccepted](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-session-invite-accepted)
+ *
+ * @param {Real} notification_id A notification id from ${function.eos_sessions_add_notify_session_invite_accepted}.
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_add_notify_join_session_accepted
+ * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifyJoinSessionAccepted](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-join-session-accepted)
+ *
+ * Registers to be notified when the local user accepts a session join request from the Epic overlay.
+ * Use ${function.eos_sessions_copy_session_handle_by_ui_event_id} to look up the session, join it, then
+ * call ${function.eos_ui_acknowledge_event_id} with `ui_event_id` once the join resolves.
+ *
+ * [[Warning: Failing to acknowledge `ui_event_id` leaves the social overlay's join UI stuck waiting.]]
+ *
+ * @param {Function} [callback] Called each time a join is accepted from the overlay.
+ *
+ * @returns {Real} A notification id (`0` on failure).
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsJoinSessionAcceptedCallbackInfo} result
+ * @event_end
+ *
+ * @example
+ * ```gml
+ * eos_sessions_add_notify_join_session_accepted(function(_result) {
+ *     var _details_id = eos_sessions_copy_session_handle_by_ui_event_id(_result.ui_event_id);
+ *     eos_sessions_join_session("MySession", _details_id, local_user_id, true, function(_join_result) {
+ *         eos_ui_acknowledge_event_id(_result.ui_event_id, _join_result.result_code);
+ *     });
+ * });
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_remove_notify_join_session_accepted
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifyJoinSessionAccepted](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-join-session-accepted)
+ *
+ * @param {Real} notification_id A notification id from ${function.eos_sessions_add_notify_join_session_accepted}.
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_add_notify_session_invite_rejected
+ * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifySessionInviteRejected](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-rejected)
+ *
+ * Registers to be notified when a session invite this client sent is rejected.
+ *
+ * @param {Function} [callback] Called each time a sent invite is rejected.
+ *
+ * @returns {Real} A notification id (`0` on failure).
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsSessionInviteRejectedCallbackInfo} result
+ * @event_end
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_remove_notify_session_invite_rejected
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySessionInviteRejected](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-session-invite-rejected)
+ *
+ * @param {Real} notification_id A notification id from ${function.eos_sessions_add_notify_session_invite_rejected}.
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_add_notify_leave_session_requested
+ * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifyLeaveSessionRequested](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-leave-session-requested)
+ *
+ * Registers to be notified when the platform (e.g. the Epic overlay, or a console's system UI) requests
+ * that the local user leave a session. Respond by calling ${function.eos_sessions_destroy_session} (if
+ * you own the session) or otherwise removing the user from it.
+ *
+ * @param {Function} [callback] Called each time a leave is requested.
+ *
+ * @returns {Real} A notification id (`0` on failure).
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsLeaveSessionRequestedCallbackInfo} result
+ * @event_end
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_remove_notify_leave_session_requested
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifyLeaveSessionRequested](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-leave-session-requested)
+ *
+ * @param {Real} notification_id A notification id from ${function.eos_sessions_add_notify_leave_session_requested}.
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_add_notify_send_session_native_invite_requested
+ * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifySendSessionNativeInviteRequested](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-send-session-native-invite-requested)
+ *
+ * Registers to be notified when the local platform's own native invite UI (e.g. a console's system
+ * invite flow) is used to invite someone to a session, so you can mirror it into an EOS session invite.
+ *
+ * [[Warning: You must call ${function.eos_ui_acknowledge_event_id} with `ui_event_id` once you've handled the request, or the native invite UI is left waiting.]]
+ *
+ * @param {Function} [callback] Called each time a native invite is requested.
+ *
+ * @returns {Real} A notification id (`0` on failure).
+ *
+ * @event callback
+ * @member {Struct.EpicSessionsSendSessionNativeInviteRequestedCallbackInfo} result
+ * @event_end
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_sessions_remove_notify_send_session_native_invite_requested
+ * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-send-session-native-invite-requested)
+ *
+ * @param {Real} notification_id A notification id from ${function.eos_sessions_add_notify_send_session_native_invite_requested}.
+ *
+ * @function_end
+ */
+
+// ============================================================
+// Structs
+// ============================================================
+
+/**
+ * @struct EpicSessionsUpdateSessionCallbackInfo
+ * @desc Result of ${function.eos_sessions_update_session}.
+ * @member {Constant.EpicResult} result_code
+ * @member {String} session_name
+ * @member {String} session_id
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsDestroySessionCallbackInfo
+ * @desc Result of ${function.eos_sessions_destroy_session}.
+ * @member {Constant.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsStartSessionCallbackInfo
+ * @desc Result of ${function.eos_sessions_start_session}.
+ * @member {Constant.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsEndSessionCallbackInfo
+ * @desc Result of ${function.eos_sessions_end_session}.
+ * @member {Constant.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsJoinSessionCallbackInfo
+ * @desc Result of ${function.eos_sessions_join_session}.
+ * @member {Constant.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsRegisterPlayersCallbackInfo
+ * @desc Result of ${function.eos_sessions_register_players}.
+ * @member {Constant.EpicResult} result_code
+ * @member {Array[String]} registered_players Players successfully registered.
+ * @member {Array[String]} sanctioned_players Players rejected due to an active ${module.sanctions} sanction.
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsUnregisterPlayersCallbackInfo
+ * @desc Result of ${function.eos_sessions_unregister_players}.
+ * @member {Constant.EpicResult} result_code
+ * @member {Array[String]} unregistered_players
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsFindCallbackInfo
+ * @desc Result of ${function.eos_sessions_session_search_find}.
+ * @member {Constant.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionDetailsInfo
+ * @desc Returned by ${function.eos_sessions_session_details_copy_info}.
+ * @member {String} session_id
+ * @member {String} host_address
+ * @member {String} owner_user_id
+ * @member {Real} num_open_public_connections
+ * @member {String} owner_server_client_id
+ * @member {String} bucket_id The main indexed parameter for this session, e.g. `"Region:GameMode"`.
+ * @member {Real} num_public_connections Total number of players allowed in the session.
+ * @member {Bool} allow_join_in_progress Whether players may join while the session is in progress.
+ * @member {Constant.EpicOnlineSessionPermissionLevel} permission_level Who is allowed to find and join the session.
+ * @member {Bool} invites_allowed Whether players are allowed to send invites for the session.
+ * @member {Bool} sanctions_enabled Whether sanctioned players are rejected when they try to join.
+ * @member {Real} allowed_platform_ids_count Number of entries in `allowed_platform_ids`.
+ * @member {Array[Real]} allowed_platform_ids Platform IDs allowed to register with the session. Empty means unrestricted.
+ * @struct_end
+ */
+
+/**
+ * @struct EpicActiveSessionInfo
+ * @desc Returned by ${function.eos_sessions_active_session_copy_info}.
+ * @member {String} session_name
+ * @member {String} local_user_id
+ * @member {String} session_id
+ * @member {String} bucket_id
+ * @member {String} owner_user_id Empty if the session is owned by a dedicated server rather than a user.
+ * @member {String} host_address
+ * @member {Constant.EpicOnlineSessionState} state Current state of the session.
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsSessionInviteReceivedCallbackInfo
+ * @desc Fired by ${function.eos_sessions_add_notify_session_invite_received}.
+ * @member {String} local_user_id
+ * @member {String} target_user_id
+ * @member {String} invite_id
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsSessionInviteAcceptedCallbackInfo
+ * @desc Fired by ${function.eos_sessions_add_notify_session_invite_accepted}.
+ * @member {String} local_user_id
+ * @member {String} target_user_id
+ * @member {String} invite_id
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsJoinSessionAcceptedCallbackInfo
+ * @desc Fired by ${function.eos_sessions_add_notify_join_session_accepted}.
+ * @member {Real} ui_event_id Pass to ${function.eos_sessions_copy_session_handle_by_ui_event_id} and, once the join resolves, to ${function.eos_ui_acknowledge_event_id}.
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionDetailsAttribute
+ * @desc A single session attribute, returned by the `session_details_copy_session_attribute_*` functions.
+ * @member {String} key
+ * @member {String} value String form of the value regardless of `value_type` (numeric/bool values are formatted as strings).
+ * @member {Constant.EpicAttributeType} value_type The attribute's real data type.
+ * @member {Constant.EpicSessionAttributeAdvertisementType} advertisement_type
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsSendInviteCallbackInfo
+ * @desc Result of ${function.eos_sessions_send_invite}.
+ * @member {Constant.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsRejectInviteCallbackInfo
+ * @desc Result of ${function.eos_sessions_reject_invite}.
+ * @member {Constant.EpicResult} result_code
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsQueryInvitesCallbackInfo
+ * @desc Result of ${function.eos_sessions_query_invites}.
+ * @member {Constant.EpicResult} result_code
+ * @member {String} local_user_id
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsSessionInviteRejectedCallbackInfo
+ * @desc Fired by ${function.eos_sessions_add_notify_session_invite_rejected}.
+ * @member {String} invite_id
+ * @member {String} local_user_id
+ * @member {String} target_user_id
+ * @member {String} session_id
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsLeaveSessionRequestedCallbackInfo
+ * @desc Fired by ${function.eos_sessions_add_notify_leave_session_requested}.
+ * @member {String} local_user_id
+ * @member {String} session_name
+ * @struct_end
+ */
+
+/**
+ * @struct EpicSessionsSendSessionNativeInviteRequestedCallbackInfo
+ * @desc Fired by ${function.eos_sessions_add_notify_send_session_native_invite_requested}.
+ * @member {Real} ui_event_id Pass to ${function.eos_ui_acknowledge_event_id} once handled.
+ * @member {String} local_user_id
+ * @member {String} session_id
+ * @struct_end
+ */
+
+// ============================================================
+// Constants
+// ============================================================
+
+/**
+ * @const EpicOnlineSessionState
+ * @desc **Epic Online Services Enum:** [EOS_EOnlineSessionState](https://dev.epicgames.com/docs/api-ref/enums/eos-e-online-session-state)
+ *
+ * The lifecycle state of a session.
+ *
+ * @member NoSession
+ * @member Creating
+ * @member Pending
+ * @member Starting
+ * @member InProgress
+ * @member Ending
+ * @member Ended
+ * @member Destroying
+ * @const_end
+ */
+
+/**
+ * @const EpicSessionAttributeAdvertisementType
+ * @desc **Epic Online Services Enum:** [EOS_ESessionAttributeAdvertisementType](https://dev.epicgames.com/docs/api-ref/enums/eos-e-session-attribute-advertisement-type)
+ *
+ * @member DontAdvertise The attribute is stored on the session but not searchable.
+ * @member Advertise The attribute is included in session search results and can be filtered on.
+ * @const_end
+ */
+
+/**
+ * @const EpicOnlineSessionPermissionLevel
+ * @desc **Epic Online Services Enum:** [EOS_EOnlineSessionPermissionLevel](https://dev.epicgames.com/docs/api-ref/enums/eos-e-online-session-permission-level)
+ *
+ * @member PublicAdvertised Anyone can find and join the session.
+ * @member JoinViaPresence Only friends who can see the owner's presence can join.
+ * @member InviteOnly Only players who receive an explicit invite can join.
+ * @const_end
+ */
+
 /**
  * @module sessions
  * @title Sessions
- * @desc **Epic Online Services Interface**: [Sessions Interface](https://dev.epicgames.com/docs/api-ref/interfaces/sessions)
- * 
- * Epic Online Services (EOS) gives players the ability to host, find, and interact with online gaming sessions through the Sessions Interface. A session can be short, like filling a certain number of player slots before starting a game, then disbanding after the game ends, or it could be longer, like keeping track of a game that cycles through matches on multiple maps or levels. The Sessions Interface also manages game-specific data that supports the back-end service searching and matchmaking functionality. For more information on the considerations you should take for matchmaking, see the documentation: [Security Considerations](https://dev.epicgames.com/docs/en-US/game-services/lobbies-and-sessions/security-considerations) section.
- * 
- * [[Note: See the [Sessions Introduction](https://dev.epicgames.com/docs/game-services/lobbies-and-sessions/sessions/sessions-intro) for a more detailed guide.]]
- * 
- * @section Session Handles
- * @desc Sessions in Epic Online Services make use of session handles. Before you can use certain functions you need to obtain a valid handle for that which you're trying to do. The handles themselves are kept by the extension. However, whenever you request a handle, you should still manually release it afterwards, once you are done using it.
- * 
- * The following is an overview of the different session handles and the functions you can use to obtain and release them and the functions that require them.
- * 
- * ### OutSessionSearchHandle
- * 
- * * Obtain:
- *   * ${function.eos_sessions_create_session_search}
- * * Used by:
- *   * ${function.eos_session_search_copy_search_result_by_index}
- *   * ${function.eos_session_search_find}
- *   * ${function.eos_session_search_get_search_result_count}
- *   * ${function.eos_session_search_remove_parameter}
- *   * ${function.eos_session_search_set_max_results}
- *   * ${function.eos_session_search_set_parameter}
- *   * ${function.eos_session_search_set_session_id}
- *   * ${function.eos_session_search_set_target_user_id}
- * * Release:
- *   * ${function.eos_session_search_release}
- * 
- * ### SessionDetails
- * 
- * * Obtain:
- *   * ${function.eos_sessions_copy_session_handle_by_invite_id}
- *   * ${function.eos_sessions_copy_session_handle_by_ui_event_id}
- *   * ${function.eos_sessions_copy_session_handle_for_presence}
- *   * ${function.eos_session_search_copy_search_result_by_index}
- * * Used by:
- *   * ${function.eos_session_details_copy_info}
- *   * ${function.eos_session_details_copy_session_attribute_by_index}
- *   * ${function.eos_session_details_copy_session_attribute_by_key}
- *   * ${function.eos_session_details_get_session_attribute_count}
- *   * ${function.eos_sessions_join_session}
- * * Release:
- *   * ${function.eos_session_details_release}
- * 
- * ### SessionModification
- * 
- * * Obtain:
- *   * ${function.eos_sessions_create_session_modification}
- *   * ${function.eos_sessions_update_session_modification}
- * * Used by:
- *   * ${function.eos_session_modification_add_attribute}
- *   * ${function.eos_session_modification_remove_attribute}
- *   * ${function.eos_session_modification_set_allowed_platform_ids}
- *   * ${function.eos_session_modification_set_bucket_id}
- *   * ${function.eos_session_modification_set_host_address}
- *   * ${function.eos_session_modification_set_invites_allowed}
- *   * ${function.eos_session_modification_set_join_in_progress_allowed}
- *   * ${function.eos_session_modification_set_max_players}
- *   * ${function.eos_session_modification_set_permission_level}
- *   * ${function.eos_sessions_update_session}
- * * Release:
- *   * ${function.eos_session_modification_release}
- * 
- * @section_end
- * 
+ * @desc **Epic Online Services Interface:** [Sessions Interface](https://dev.epicgames.com/docs/game-services/eos-sessions-interface)
+ *
+ * The [Sessions Interface](https://dev.epicgames.com/docs/game-services/eos-sessions-interface) lets
+ * players create, search for, join, and leave online game sessions - the general-purpose matchmaking
+ * building block for match-based games. If you need a persistent group of players who stick together
+ * across matches, see ${module.lobbies} instead.
+ *
+ * [[Note: A session is built/modified through a "session modification" handle: create one with ${function.eos_sessions_create_session_modification}, configure it with the `eos_sessions_session_modification_*` setters, then publish it with ${function.eos_sessions_update_session}.]]
+ *
  * @section_func
- * @desc 
- * @ref eos_active_session_*
- * @ref eos_session_*
- * @ref eos_sessions_*
+ * @desc Session lifecycle:
+ * @ref eos_sessions_create_session_modification
+ * @ref eos_sessions_session_modification_release
+ * @ref eos_sessions_update_session
+ * @ref eos_sessions_destroy_session
+ * @ref eos_sessions_start_session
+ * @ref eos_sessions_end_session
+ *
+ * @desc Joining and player registration:
+ * @ref eos_sessions_join_session
+ * @ref eos_sessions_register_players
+ * @ref eos_sessions_unregister_players
+ *
+ * @desc Session search:
+ * @ref eos_sessions_create_session_search
+ * @ref eos_sessions_session_search_release
+ * @ref eos_sessions_session_search_set_session_id
+ * @ref eos_sessions_session_search_set_target_user_id
+ * @ref eos_sessions_session_search_set_parameter
+ * @ref eos_sessions_session_search_remove_parameter
+ * @ref eos_sessions_session_search_find
+ * @ref eos_sessions_session_search_get_search_result_count
+ * @ref eos_sessions_session_search_copy_search_result_by_index
+ *
+ * @desc Session details / active session accessors:
+ * @ref eos_sessions_session_details_release
+ * @ref eos_sessions_copy_active_session_handle
+ * @ref eos_sessions_active_session_release
+ * @ref eos_sessions_active_session_copy_info
+ * @ref eos_sessions_copy_session_handle_by_invite_id
+ * @ref eos_sessions_copy_session_handle_by_ui_event_id
+ * @ref eos_sessions_session_details_copy_info
+ * @ref eos_sessions_session_details_get_session_attribute_count
+ * @ref eos_sessions_session_details_copy_session_attribute_by_index
+ * @ref eos_sessions_session_details_copy_session_attribute_by_key
+ * @ref eos_sessions_active_session_get_registered_player_count
+ * @ref eos_sessions_active_session_get_registered_player_by_index
+ *
+ * @desc SessionModification setters:
+ * @ref eos_sessions_session_modification_set_bucket_id
+ * @ref eos_sessions_session_modification_set_host_address
+ * @ref eos_sessions_session_modification_set_permission_level
+ * @ref eos_sessions_session_modification_set_join_in_progress_allowed
+ * @ref eos_sessions_session_modification_set_max_players
+ * @ref eos_sessions_session_modification_set_invites_allowed
+ * @ref eos_sessions_session_modification_add_attribute_string
+ * @ref eos_sessions_session_modification_add_attribute_bool
+ * @ref eos_sessions_session_modification_add_attribute_double
+ * @ref eos_sessions_session_modification_remove_attribute
+ *
+ * @desc Invites:
+ * @ref eos_sessions_send_invite
+ * @ref eos_sessions_reject_invite
+ * @ref eos_sessions_query_invites
+ * @ref eos_sessions_get_invite_count
+ * @ref eos_sessions_get_invite_id_by_index
+ *
+ * @desc Notifications:
+ * @ref eos_sessions_add_notify_session_invite_received
+ * @ref eos_sessions_remove_notify_session_invite_received
+ * @ref eos_sessions_add_notify_session_invite_accepted
+ * @ref eos_sessions_remove_notify_session_invite_accepted
+ * @ref eos_sessions_add_notify_join_session_accepted
+ * @ref eos_sessions_remove_notify_join_session_accepted
+ * @ref eos_sessions_add_notify_session_invite_rejected
+ * @ref eos_sessions_remove_notify_session_invite_rejected
+ * @ref eos_sessions_add_notify_leave_session_requested
+ * @ref eos_sessions_remove_notify_leave_session_requested
+ * @ref eos_sessions_add_notify_send_session_native_invite_requested
+ * @ref eos_sessions_remove_notify_send_session_native_invite_requested
  * @section_end
- * 
+ *
  * @section_struct
- * @desc 
- * @ref ActiveSessionInfo
- * @ref SessionAttribute
- * @ref SessionDetails_Info
- * @ref SessionDetails_Settings
+ * @ref EpicSessionsUpdateSessionCallbackInfo
+ * @ref EpicSessionsDestroySessionCallbackInfo
+ * @ref EpicSessionsStartSessionCallbackInfo
+ * @ref EpicSessionsEndSessionCallbackInfo
+ * @ref EpicSessionsJoinSessionCallbackInfo
+ * @ref EpicSessionsRegisterPlayersCallbackInfo
+ * @ref EpicSessionsUnregisterPlayersCallbackInfo
+ * @ref EpicSessionsFindCallbackInfo
+ * @ref EpicSessionDetailsInfo
+ * @ref EpicActiveSessionInfo
+ * @ref EpicSessionsSessionInviteReceivedCallbackInfo
+ * @ref EpicSessionsSessionInviteAcceptedCallbackInfo
+ * @ref EpicSessionsJoinSessionAcceptedCallbackInfo
+ * @ref EpicSessionDetailsAttribute
+ * @ref EpicSessionsSendInviteCallbackInfo
+ * @ref EpicSessionsRejectInviteCallbackInfo
+ * @ref EpicSessionsQueryInvitesCallbackInfo
+ * @ref EpicSessionsSessionInviteRejectedCallbackInfo
+ * @ref EpicSessionsLeaveSessionRequestedCallbackInfo
+ * @ref EpicSessionsSendSessionNativeInviteRequestedCallbackInfo
  * @section_end
- * 
+ *
  * @section_const
- * @desc 
- * @ref EOS_ATTRIBUTE_TYPE
- * @ref EOS_ONLINE_SESSION_PERMISSION_LEVEL
- * @ref EOS_ONLINE_SESSION_STATE
- * @ref EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE
- * @ref EOS_SESSIONS_MAX_SEARCH_RESULTS
+ * @ref EpicOnlineSessionState
+ * @ref EpicSessionAttributeAdvertisementType
+ * @ref EpicOnlineSessionPermissionLevel
  * @section_end
- * 
+ *
  * @module_end
- */
-
-/**
- * @struct ActiveSessionInfo
- * @desc **Epic Online Services Struct:** [EOS_ActiveSession_Info](https://dev.epicgames.com/docs/api-ref/structs/eos-active-session-info)
- * 
- * This struct holds top level details about an active session.
- * 
- * @member {string} session_name The name of the session
- * @member {constant.EOS_ONLINE_SESSION_STATE} state The current state of the session
- * @member {struct.SessionDetails_Info} details Details about the session
- * @member {struct.SessionDetails_Settings} settings The session's settings
- * 
- * @struct_end
- */
-
-/**
- * @func eos_active_session_copy_info
- * @desc **Epic Online Services Function:** [EOS_ActiveSession_CopyInfo](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-copy-info)
- * 
- * This function is used to immediately retrieve a copy of active session information. The returned struct will be empty if the result is not `EOS_RESULT.SUCCESS`.
- * 
- * @param {string} session_name The name of the session
- * 
- * @returns {struct.ActiveSessionInfo}
- * 
- * @func_end
- */
-
-/**
- * @func eos_active_session_get_registered_player_by_index
- * @desc **Epic Online Services Function:** [EOS_ActiveSession_GetRegisteredPlayerByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-by-index)
- * 
- * This function is used to immediately retrieve individual players registered with the active session.
- *
- * @param {string} session_name The name of the session
- * @param {real} player_index The index of the registered player to retrieve
- *
- * @returns {string}
- * 
- * @func_end
- */
-
-/**
- * @func eos_active_session_get_registered_player_count
- * @desc **Epic Online Services Function:** [EOS_ActiveSession_GetRegisteredPlayerCount](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-active-session-get-registered-player-count)
- * 
- * This function gets the number of registered players associated with this active session. It returns the number of registered players in the active session or 0 if there is an error.
- *
- * @param {string} session_name The name of the session
- *
- * @returns {real}
- * 
- * @func_end
- */
-
-/**
- * @struct SessionDetails_Info
- * @desc **Epic Online Services Struct:** [EOS_SessionDetails_Info](https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-session-details-info)
- * 
- * This struct holds internal details about a session, found on both active sessions and within search results.
- * 
- * @member {string} host_address The IP address of this session as visible by the backend service
- * @member {real} num_open_public_connections The number of remaining open spaces on the session (`num_public_connections` - `registered_players`)
- * @member {string} owner_user_id The Product User ID of the session owner. Pass an empty string `""` if the session is not owned by a user.
- * @member {string} owner_server_client_id The client ID of the session owner. Pass an empty string `""` if the session is not owned by a server. The session is owned by a server if EOS_Platform_Options::bIsServer is `true`.
- * @member {string} session_id The session ID assigned by the backend service
- * @member {struct.SessionDetails_Settings} settings The additional settings associated with this session
- * @struct_end
- */
-
-/**
- * @struct SessionDetails_Settings
- * @desc **Epic Online Services Struct:** [EOS_SessionDetails_Settings](https://dev.epicgames.com/docs/en-US/api-ref/structs/eos-session-details-settings)
- * 
- * This struct holds common settings associated with a single session.
- * 
- * @member {array[constant.EOS_ONLINE_PLATFORM_TYPE]} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass an empty array.
- * @member {bool} allow_join_in_progress Whether players are allowed to join the session while it is in the "in progress" state
- * @member {bool} invites_allowed Whether players are allowed to send invites for the session
- * @member {bool} sanctions_enabled Whether sanctioned players are allowed to join or not - sanctioned players will be rejected if set to `true`
- * @member {string} bucket_id The main indexed parameter for this session, can be any string (i.e. `"Region:GameMode"`)
- * @member {real} num_public_connections The number of total players allowed in the session
- * @member {constant.EOS_ONLINE_SESSION_PERMISSION_LEVEL} permission_level The permission level describing allowed access to the session when joining or searching for the session
- * 
- * @struct_end
- */
-
-/**
- * @func eos_session_details_copy_info
- * @desc **Epic Online Services Function:** [EOS_SessionDetails_CopyInfo](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-info)
- * 
- * This function is used to immediately retrieve a copy of session information from a given source such as a active session or a search result.
- * 
- * @returns {struct.SessionDetails_Info}
- * 
- * @func_end
- */
-
-/**
- * @constant EOS_ATTRIBUTE_TYPE
- * @desc This enumeration holds the supported types of data that can be stored inside an attribute (used by sessions/lobbies/etc.).
- * 
- * @member BOOLEAN A boolean value (`true`/`false`)
- * @member INT64 A 64 bit integer
- * @member DOUBLE A double precision floating point value
- * @member STRING A UTF-8 string
- * 
- * @constant_end
- */
-
-/**
- * @struct SessionAttribute
- * @desc **Epic Online Services Struct:** [EOS_SessionDetails_Attribute](https://dev.epicgames.com/docs/api-ref/structs/eos-session-details-attribute)
- * 
- * This struct holds an attribution value and its advertisement setting stored with a session.
- * 
- * @member {constant.EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE} advertisement_type Whether this attribution is advertised with the backend or simply stored locally
- * @member {string} key The name of the session attribute
- * @member {any} value The value of the session attribute
- * 
- * @struct_end
- */
-
-/**
- * @func eos_session_details_copy_session_attribute_by_index
- * @desc **Epic Online Services Function:** [EOS_SessionDetails_CopySessionAttributeByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-index)
- * 
- * This function is used to immediately retrieve a copy of session attribution from a given source such as a active session or a search result.
- * 
- * @param {real} attr_index The index of the attribute to retrieve
- * 
- * @returns {struct.SessionAttribute}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_details_copy_session_attribute_by_key
- * @desc **Epic Online Services Function:** [EOS_SessionDetails_CopySessionAttributeByKey](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-copy-session-attribute-by-key)
- * 
- * This function is used to immediately retrieve a copy of session attribution from a given source such as a active session or a search result.
- * 
- * @param {string} attr_key The name of the key to get the session attribution for
- * 
- * @returns {struct.SessionAttribute}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_details_get_session_attribute_count
- * @desc **Epic Online Services Function:** [EOS_SessionDetails_GetSessionAttributeCount](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-get-session-attribute-count)
- *
- * This function gets the number of attributes associated with this session. It returns the number of attributes on the session or 0 if there is an error.
- *
- * @returns {real}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_details_release
- * @desc **Epic Online Services Function:** [EOS_SessionDetails_Release](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-details-release)
- *
- * This function releases the memory associated with a single session. This must be called on data retrieved from ${function.eos_session_search_copy_search_result_by_index}.
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_add_attribute
- * @desc **Epic Online Services Function:** [EOS_SessionModification_AddAttribute](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-add-attribute)
- * 
- * This function associates an attribute with this session. An attribute is something that may or may not be advertised with the session. If advertised, it can be queried for in a search, otherwise the data remains local to the client.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the attribution is missing information or otherwise invalid
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {constant.EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE} type Whether this attribute is advertised with the backend or simply stored locally
- * @param {struct} attribute A struct with two variables `key` and `value`, representing the key/value pair that describes the attribute to add to the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_release
- * @desc **Epic Online Services Function:** [EOS_SessionModification_Release](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-release)
- * 
- * This function releases the memory associated with session modification. This must be called on data retrieved from ${function.eos_sessions_create_session_modification} or ${function.eos_sessions_update_session_modification}.
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_remove_attribute
- * @desc **Epic Online Services Function:** [EOS_SessionModification_RemoveAttribute](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-remove-attribute)
- * 
- * This function removes an attribute from this session.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if removing this parameter was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the key is empty
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * 
- * @param {string} key The session attribute to remove from the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_set_allowed_platform_ids
- * @desc **Epic Online Services Function:** [EOS_SessionModification_SetAllowedPlatformIds](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-allowed-platform-ids)
- * 
- * This function sets the Allowed Platform IDs for the session.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * * `EOS_RESULT.INVALID_PARAMETERS` if the attribution is missing information or otherwise invalid
- * 
- * @param {array[constant.EOS_ONLINE_PLATFORM_TYPE]} array_ids An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass `undefined`.
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_set_bucket_id
- * @desc **Epic Online Services Function:** [EOS_SessionModification_SetBucketId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-bucket-id)
- * 
- * This function sets the bucket ID associated with this session. Values such as region, game mode, etc., can be combined here depending on game need. Setting this is strongly recommended to improve search performance.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the bucket ID is invalid
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * 
- * @param {string} bucket_id The new bucket ID associated with the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_set_host_address
- * @desc **Epic Online Services Function:** [EOS_SessionModification_SetHostAddress](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-host-address)
- * 
- * This function sets the host address associated with this session. Setting this is optional, if the value is not set, the SDK will fill the value in from the service. It is useful to set if other addressing mechanisms are desired or if LAN addresses are preferred during development.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the host ID is an empty string
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * 
- * [[Note: No validation of this value occurs to allow for flexibility in addressing methods.]]
- * 
- * @param {string} host_address A string representing the host address for the session, its meaning is up to the application
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_set_invites_allowed
- * @desc **Epic Online Services Function:** [EOS_SessionModification_SetInvitesAllowed](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-invites-allowed)
- * 
- * This function allows enabling or disabling invites for this session. The session will also need to have `presence_enabled` true.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {bool} invites_allowed If `true` then invites can currently be sent for the associated session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_set_join_in_progress_allowed
- * @desc **Epic Online Services Function:** [EOS_SessionModification_SetJoinInProgressAllowed](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-join-in-progress-allowed)
- * 
- * This function sets whether or not join in progress is allowed. Once a session is started, it will no longer be visible to search queries unless this flag is set or the session returns to the pending or ended state.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * 
- * @param {bool} allow_join_in_progress Whether the session allows join in progress
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_set_max_players
- * @desc **Epic Online Services Function:** [EOS_SessionModification_SetMaxPlayers](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-max-players)
- * 
- * This function sets the maximum number of players allowed in this session. When updating the session, it is not possible to reduce this number below the current number of existing players.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * 
- * @param {real} max_players The max number of players to allow in the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_modification_set_permission_level
- * @desc **Epic Online Services Function:** [EOS_SessionModification_SetPermissionLevel](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-modification-set-permission-level)
- * 
- * This function sets the session permissions associated with this session. The permissions range from "public" to "invite only" and are described by ${constant.EOS_ONLINE_SESSION_PERMISSION_LEVEL}.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this parameter was successful
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {constant.EOS_ONLINE_SESSION_PERMISSION_LEVEL} permission_level The permission level to set on the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-
-/**
- * @func eos_sessions_add_notify_join_session_accepted
- * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifyJoinSessionAccepted](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-join-session-accepted)
- * 
- * This function registers to receive notifications when a user accepts a session join game via the social overlay.
- * 
- * [[Note: If the returned notification ID is valid, you must call ${function.eos_sessions_remove_notify_join_session_accepted} when you no longer wish to have the ${event.social} called.]]
- * 
- * @returns {int64}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_add_notify_join_session_accepted"`
- * @member {string} local_user_id The Product User ID for the user who initialized the game
- * @member {int64} ui_event_id The UI Event associated with this Join Game event. This should be used with ${function.eos_sessions_copy_session_handle_by_ui_event_id} to get a handle to be used when calling ${function.eos_sessions_join_session}.
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_add_notify_leave_session_requested
- * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifyLeaveSessionRequested](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-leave-session-requested)
- * 
- * This function registers to receive notifications about leave session requests performed by local user via the overlay. When user requests to leave the session in the social overlay, the SDK does not automatically leave the session, it is up to the game to perform any necessary cleanup and call the ${function.eos_sessions_destroy_session} method using the `session_name` sent in the notification function.
- * 
- * [[Note: If the returned notification ID is valid, you must call ${function.eos_sessions_remove_notify_join_session_accepted} when you no longer wish to have the ${event.social} called.]]
- * 
- * @returns {int64}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_add_notify_leave_session_requested"`
- * @member {string} local_user_id The Product User ID of the local user who received the leave session notification.
- * @member {string} session_name The name of the session associated with the leave session request.
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_add_notify_send_session_native_invite_requested
- * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifySendSessionNativeInviteRequested](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-send-session-native-invite-requested)
- * 
- * This function registers to receive notifications about a session "INVITE" performed by a local user via the overlay. This is only needed when a configured integrated platform has EOS_IPMF_DisableSDKManagedSessions set. The EOS SDK will then use the state of EOS_IPMF_PreferEOSIdentity and EOS_IPMF_PreferIntegratedIdentity to determine when the ${event.social} is triggered.
- * 
- * [[Note: If the returned notification ID is valid, you must call ${function.eos_sessions_remove_notify_join_session_accepted} when you no longer wish to have the ${event.social} called.]]
- * 
- * @returns {int64}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_add_notify_send_session_native_invite_requested"`
- * @member {string} local_user_id The Product User ID of the local user who is inviting
- * @member {string} target_native_account_type The Native Platform Account Type. If only a single integrated platform is configured then this will always reference that platform.
- * @member {string} target_user_native_account_id The Native Platform Account ID of the target user being invited
- * @member {string} session_id The session ID that the user is being invited to
- * @member {int64} ui_event_id Identifies this event which will need to be acknowledged with ${function.eos_ui_acknowledge_event_id}.
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_add_notify_session_invite_accepted
- * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifySessionInviteAccepted](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-accepted)
- * 
- * This function registers to receive notifications when a user accepts a session invite via the social overlay.
- * 
- * [[Note: If the returned notification ID is valid, you must call ${function.eos_sessions_remove_notify_join_session_accepted} when you no longer wish to have the ${event.social} called.]]
- * 
- * @returns {int64}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_add_notify_session_invite_accepted"`
- * @member {string} local_user_id The Product User ID of the user who accepted the invitation
- * @member {string} invite_id The invite ID that was accepted
- * @member {string} session_id The session ID that should be used for joining
- * @member {string} target_user_id The Product User ID of the user who sent the invitation
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_add_notify_session_invite_rejected
- * @desc **Epic Online Services Function:** [EOS_Sessions_AddNotifySessionInviteRejected](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-rejected)
- * 
- * This function registers to receive notifications when a user rejects a session invite.
- * 
- * [[Note: If the returned notification ID is valid, you must call ${function.eos_sessions_remove_notify_join_session_accepted} when you no longer wish to have the ${event.social} called.]]
- * 
- * @returns {int64}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_add_notify_session_invite_rejected"`
- * @member {string} invite_id The invite ID
- * @member {string} target_user_id The Product User ID of the user who sent the invitation
- * @member {string} session_id Session ID
- * @member {string} local_user_id The Product User ID of the local user who rejected the invitation
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_copy_session_handle_by_invite_id
- * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByInviteId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id)
- * 
- * This function is used to immediately retrieve a handle to the session information from after notification of an invite. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if the information is available
- * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * * `EOS_RESULT.NOT_FOUND` if the invite ID cannot be found
- * 
- * @param {string} invite_id The invite ID for which to retrieve a session handle
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_copy_session_handle_by_ui_event_id
- * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleByUiEventId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-by-ui-event-id)
- * 
- * This function is used to immediately retrieve a handle to the session information from after notification of a join game event. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if the information is available
- * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * * `EOS_RESULT.NOT_FOUND` if the invite ID cannot be found
- * 
- * @param {int64} ui_event_id The UI Event associated with the session
- * 
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_copy_session_handle_for_presence
- * @desc **Epic Online Services Function:** [EOS_Sessions_CopySessionHandleForPresence](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-copy-session-handle-for-presence)
- * 
- * This function is used to immediately retrieve a handle to the session information which was marked with `presence_enabled` on create or join. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if the information is available
- * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * * `EOS_RESULT.NOT_FOUND` if there is no session with `presence_enabled`
- *
- * @param {string} local The Product User ID of the local user associated with the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_create_session_modification
- * @desc **Epic Online Services Function:** [EOS_Sessions_CreateSessionModification](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-modification)
- * 
- * This function creates a session modification handle. The session modification handle is used to build a new session and can be applied with ${function.eos_sessions_update_session}. The handle must be released by calling ${function.eos_session_modification_release} once it is no longer needed.
- * 
- * The function returns `EOS_RESULT.SUCCESS` if we successfully created the session modification handle, or an error result if the input data was invalid.
- * 
- * @param {array[constant.EOS_ONLINE_PLATFORM_TYPE]} allowed_platform_ids An array of platform IDs indicating the player platforms allowed to register with the session. The session will be unrestricted if you pass `undefined`.
- * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If `true`, this session will be associated with presence. Only one session at a time can have this flag set to `true`. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}.
- * @param {bool} sanctions_enabled If `true`, sanctioned players can neither join nor register with this session and, in the case of join, will return ${constant.EOS_RESULT} code `EOS_RESULT.SESSIONS_PLAYER_SANCTIONED`.
- * @param {string} bucket_id The bucket ID associated with the session
- * @param {string} local_user_id The Product User ID of the local user associated with the session
- * @param {real} max_players The maximum number of players allowed in the session
- * @param {string} session_id An optional session ID - set to a globally unique value to override the backend assignment. If not specified, the backend service will assign one to the session. Do not mix and match. This value can be of size [EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH, EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH]
- * @param {string} session_name The name of the session to create
- * 
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_create_session_search
- * @desc **Epic Online Services Function:** [EOS_Sessions_CreateSessionSearch](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-create-session-search)
- * 
- * This function creates a session search handle. This handle may be modified to include various search parameters. Searching is possible in three methods, all mutually exclusive:
- * 
- * * set the session ID to find a specific session
- * * set the target user ID to find a specific user
- * * set session parameters to find an array of sessions that match the search criteria
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if the search creation completes successfully
- * * `EOS_RESULT.INVALID_PARAMETERS` if any of the options are incorrect
- * 
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_destroy_session
- * @desc **Epic Online Services Function:** [EOS_Sessions_DestroySession](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-destroy-session)
- * 
- * This function destroys a session given a session name.
- *
- * @param {string} session_name The name of the session to destroy
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_destroy_session"`
- * @member {constant.EOS_RESULT} status The result of the function call
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned in the original call to the function
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_dump_session_state
- * @desc **Epic Online Services Function:** [EOS_Sessions_DumpSessionState](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-dump-session-state)
- * 
- * This function dumps the contents of active sessions that exist locally to the log output, purely for debug purposes.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if the output operation completes successfully
- * * `EOS_RESULT.NOT_FOUND` if the session specified does not exist
- * * `EOS_RESULT.INVALID_PARAMETERS` if any of the options are incorrect
- *
- * @param {string} session_name The name of the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_end_session
- * @desc **Epic Online Services Function:** [EOS_Sessions_EndSession](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-end-session)
- * 
- * This function marks a session as ended, making it available to find if "join in progress" was disabled. The session may be started again if desired.
- * 
- * The function returns an async identifier.
- *
- * @param {string} session_name The name of the session to set as no longer in progress
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_end_session"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned in the original call to the function
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_get_invite_count
- * @desc **Epic Online Services Function:** [EOS_Sessions_GetInviteCount](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-count)
- * 
- * This function gets the number of known invites for a given user. It returns the number of known invites for a given user or 0 if there is an error.
- *
- * @param {string} local The Product User ID of the local user who has one or more invitations in the cache
- *
- * @returns {real}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_get_invite_id_by_index
- * @desc **Epic Online Services Function:** [EOS_Sessions_GetInviteIdByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-get-invite-id-by-index)
- * 
- * This function retrieves an invite ID from a list of active invites for a given user.
- * 
- * @param {string} local_user_id The Product User ID of the local user who has an invitation in the cache
- * @param {real} index The index of the invite ID to retrieve
- *
- * @returns {string}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_is_user_in_session
- * @desc **Epic Online Services Function:** [EOS_Sessions_IsUserInSession](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-is-user-in-session)
- * 
- * This function returns whether or not a given user can be found in a specified session.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if the user is found in the specified session
- * * `EOS_RESULT.NOT_FOUND` if the user is not found in the specified session
- * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid invite ID
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * * `EOS_RESULT.INVALID_PRODUCT_USER_ID` if an invalid target user is specified
- * * `EOS_RESULT.SESSIONS_INVALID_SESSION` if the session specified is invalid
- * 
- * @param {string} session_name The active session name to search within
- * @param {string} target_user_id The product User ID to search for in the session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_join_session
- * @desc **Epic Online Services Function:** [EOS_Sessions_JoinSession](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-join-session)
- * 
- * This function joins a session, creating a local session under a given session name. The backend will validate various conditions to make sure it is possible to join the session.
- * 
- * The function returns the async identifier.
- * 
- * @param {bool} presence_enabled Determines whether or not this session should be the one associated with the local user's presence information. If true, this session will be associated with presence. Only one session at a time can have this flag true. This affects the ability of the Social Overlay to show game related actions to take in the user's social graph. * using the `presence_enabled` flags within the Sessions interface * using the `presence_enabled` flags within the Lobby interface * using ${function.eos_presence_modification_set_join_info}
- * @param {string} local_user_id The Product User ID of the local user who is joining the session
- * @param {string} session_name Name of the session to create after joining session
- * 
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_join_session"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_query_invites
- * @desc **Epic Online Services Function:** [EOS_Sessions_QueryInvites](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-query-invites)
- * 
- * This function retrieves all existing invites for a single user.
- *
- * @param {string} target_user_id The Product User ID to query for invitations
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_query_invites"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @member {string} local_user_id The Product User of the local user who made the request
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_register_players
- * @desc **Epic Online Services Function:** [EOS_Sessions_RegisterPlayers](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-register-players)
- * 
- * This function registers a group of players with the session, allowing them to invite others or otherwise indicate they are part of the session for determining a full session.
- * 
- * The function returns an async identifier.
- *
- * @param {string} session_name The name of the session for which to register players
- * @param {array} array_product_user_ids Array of players to register with the session
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_register_players"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @member {array[string]} registered_players The players that were successfully registered
- * @member {array[string]} sanctioned_players The players that failed to register because they are sanctioned
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_reject_invite
- * @desc **Epic Online Services Function:** [EOS_Sessions_RejectInvite](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-reject-invite)
- * 
- * This function rejects an invite from another player.
- * 
- * The function returns an async identifier.
- * 
- * @param {string} local_user_id The Product User ID of the local user rejecting the invitation
- * @param {string} invite_id The invite ID to reject
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_reject_invite"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_remove_notify_join_session_accepted
- * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifyJoinSessionAccepted](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-join-session-accepted)
- * 
- * This function unregisters from receiving notifications when a user accepts a session join game via the social overlay.
- *
- * @param {real} notification_id A handle representing the registered callback
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_remove_notify_leave_session_requested
- * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifyLeaveSessionRequested](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-leave-session-requested)
- * 
- * This function unregisters from receiving notifications when a user performs a leave lobby action via the overlay.
- * 
- * @param {real} notification_id A handle representing the registered callback
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_remove_notify_send_session_native_invite_requested
- * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-send-session-native-invite-requested)
- * 
- * This function unregisters from receiving notifications when a user requests a send invite via the overlay.
- *
- * @param {real} notification_id A handle representing the registered callback
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_remove_notify_session_invite_accepted
- * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySessionInviteAccepted](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-accepted)
- * 
- * This function unregisters from receiving notifications when a user accepts a session invite via the social overlay.
- *
- * @param {real} notification_id A handle representing the registered callback
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_remove_notify_session_invite_received
- * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySessionInviteReceived](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-received)
- * 
- * This function unregisters from receiving session invites.
- *
- * @param {real} notification_id A handle representing the registered callback
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_remove_notify_session_invite_rejected
- * @desc **Epic Online Services Function:** [EOS_Sessions_RemoveNotifySessionInviteReceived](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-remove-notify-session-invite-rejected)
- * 
- * This function unregisters from receiving notifications when a user rejects a session invite via the social overlay.
- * 
- * @param {real} notification_id A handle representing the registered callback
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_send_invite
- * @desc **Epic Online Services Function:** [EOS_Sessions_SendInvite](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-send-invite)
- * 
- * This function sends an invite to another player. User must have created the session or be registered in the session or else the call will fail.
- * 
- * The function returns an async identifier.
- * 
- * @param {string} local_user_id The Product User ID of the local user sending the invitation
- * @param {string} session_name The name of the session associated with the invite
- * @param {string} target_user_id The Product User of the remote user receiving the invitation
- * 
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_send_invite"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_start_session
- * @desc **Epic Online Services Function:** [EOS_Sessions_StartSession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-start-session)
- * 
- * This function marks a session as started, making it unable to find if session properties indicate "join in progress" is not available.
- * 
- * The function returns an async identifier.
- *
- * @param {string} session_name The name of the session to set in progress
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_start_session"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_unregister_players
- * @desc **Epic Online Services Function:** [EOS_Sessions_UnregisterPlayers](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-unregister-players)
- * 
- * This function unregisters a group of players with the session, freeing up space for others to join.
- * 
- * The function returns an async identifier.
- * 
- * @param {string} session_name The name of the session for which to unregister players
- * @param {array} array_product_user_ids An array of players to unregister from the session
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_unregister_players"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @member {array[string]} unregistered_players The players that successfully unregistered
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_update_session
- * @desc **Epic Online Services Function:** [EOS_Sessions_UpdateSession](https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-update-session)
- *
- * This function updates a session given a session modification handle created by ${function.eos_sessions_create_session_modification} or ${function.eos_sessions_update_session_modification}.
- * 
- * The function returns an async identifier.
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_sessions_update_session"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @member {string} session_id ID of the session that was created/modified
- * @member {string} session_name Name of the session that was created/modified
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_sessions_update_session_modification
- * @desc **Epic Online Services Function:** [EOS_Sessions_UpdateSessionModification](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-sessions-update-session-modification)
- * 
- * This function creates a session modification handle. The session modification handle is used to modify an existing session and can be applied with ${function.eos_sessions_update_session}. The handle must be released by calling ${function.eos_session_modification_release} once it is no longer needed.
- * 
- * The function returns `EOS_RESULT.SUCCESS` if the session modification handle could be successfully created, or an error result if the input data was invalid.
- *
- * @param {string} session_name The name of the session to update
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_copy_search_result_by_index
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_CopySearchResultByIndex](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-copy-search-result-by-index)
- * 
- * This function is used to immediately retrieve a handle to the session information from a given search result. If the call returns an `EOS_RESULT.SUCCESS` result, a handle has been created and you need to manually free it afterwards by calling ${function.eos_session_details_release} to release the memory associated with it.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if the information is available
- * * `EOS_RESULT.INVALID_PARAMETERS` if you pass an invalid index
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- * 
- * @param {real} session_index The index of the session to retrieve within the completed search query
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_find
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_Find](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-find)
- * 
- * This function finds sessions matching the search criteria set up via this session search handle. When the operation completes, this handle will have the search results that can be parsed.
- * 
- * The function returns an async identifier.
- *
- * @param {string} local_user_id The Product User ID of the local user who is searching
- *
- * @returns {real}
- * 
- * @event social
- * @member {string} type the string `"eos_session_search_find"`
- * @member {constant.EOS_RESULT} status The result code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors.
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The identifier returned by the original call to the function
- * @event_end
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_get_search_result_count
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_GetSearchResultCount](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-get-search-result-count)
- *
- * This function gets the number of search results found by the search parameters in this search. It returns the number of search results found by the query or 0 if the search is not complete.
- *
- * @returns {real}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_release
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_Release](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-release)
- *
- * This function releases the memory associated with a session search. This must be called on data retrieved from ${function.eos_sessions_create_session_search}.
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_remove_parameter
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_RemoveParameter](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-remove-parameter)
- * 
- * This function removes a parameter from the array of search criteria.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if removing this search parameter was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the search key is invalid
- * * `EOS_RESULT.NOT_FOUND` if the parameter was not a part of the search criteria
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {string} key The search parameter key to remove from the search
- * @param {constant.EOS_COMPARISON_OP} comparison_op The search comparison operation associated with the key to remove
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_set_max_results
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_SetMaxResults](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-max-results)
- * 
- * This function sets the maximum number of search results to return in the query, can't be more than ${constant.EOS_SESSIONS_MAX_SEARCH_RESULTS}.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting the max results was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the number of results requested is invalid
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {real} max_search_results The maximum number of search results returned with this query, may not exceed ${constant.EOS_SESSIONS_MAX_SEARCH_RESULTS}
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_set_parameter
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_SetParameter](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-parameter)
- * 
- * This function adds a parameter to an array of search criteria combined via an implicit AND operator. Setting SessionId or TargetUserId will result in ${function.eos_session_search_find} failing.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this search parameter was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the search criteria is invalid
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {constant.EOS_COMPARISON_OP} comparison_op The type of comparison to make against the search parameter
- * @param {struct} attribute A struct with two variables `key` and `value`, representing the key/value pair that describes the search parameter
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_set_session_id
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_SetSessionId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-session-id)
- * 
- * This function sets a session ID to find and will return at most one search result. Setting TargetUserId or SearchParameters will result in ${function.eos_session_search_find} failing.
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this session ID was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the session ID is invalid
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {string} session_id Search sessions for a specific session ID, returning at most one session
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @func eos_session_search_set_target_user_id
- * @desc **Epic Online Services Function:** [EOS_SessionSearch_SetTargetUserId](https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-session-search-set-target-user-id)
- * 
- * This function sets a target user ID to find and will return at most one search result. Setting SessionId or SearchParameters will result in ${function.eos_session_search_find} failing.
- * 
- * [[Note: A search result will only be found if this user is in a public session.]]
- * 
- * The function returns one of the following:
- * 
- * * `EOS_RESULT.SUCCESS` if setting this target user ID was successful
- * * `EOS_RESULT.INVALID_PARAMETERS` if the target user ID is invalid
- * * `EOS_RESULT.INCOMPATIBLE_VERSION` if the API version passed in is incorrect
- *
- * @param {string} target_user_id The Product User ID to find; return any sessions where the user matching this ID is currently registered
- *
- * @returns {constant.EOS_RESULT}
- * 
- * @func_end
- */
-
-/**
- * @constant EOS_ONLINE_SESSION_STATE
- * @desc **Epic Online Services Enum:** [EOS_EOnlineSessionState](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-online-session-state)
- * 
- * This enum contains all possible states of an existing named session.
- * 
- * @member NO_SESSION An online session has not been created yet
- * @member CREATING An online session is in the process of being created
- * @member PENDING Session has been created but the session hasn't started (pre match lobby)
- * @member STARTING Session has been asked to start (may take time due to communication with backend)
- * @member IN_PROGRESS The current session has started. Sessions with join in progress disabled are no longer joinable
- * @member ENDING The session is still valid, but the session is no longer being played (post match lobby)
- * @member ENDED The session is closed and any stats committed
- * @member DESTROYING The session is being destroyed
- * 
- * @constant_end
- */
-
-/**
- * @constant EOS_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE
- * @desc **Epic Online Services Enum:** [EOS_ESessionAttributeAdvertisementType](https://dev.epicgames.com/docs/ja/api-ref/enums/eos-e-session-attribute-advertisement-type)
- * 
- * This enum holds the possible advertisement properties for a single attribute associated with a session.
- * 
- * @member DONT_ADVERTISE Don't advertise via the online service
- * @member ADVERTISE Advertise via the online service only
- * 
- * @constant_end
- */
-
-/**
- * @constant EOS_ONLINE_SESSION_PERMISSION_LEVEL
- * @desc **Epic Online Services Enum:** [EOS_EOnlineSessionState](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-online-session-state)
- * 
- * This enum holds the possible permission levels for a session. The permission level gets more restrictive further down.
- * 
- * @member PUBLIC_ADVERTISED Anyone can find this session as long as it isn't full
- * @member JOIN_VIA_PRESENCE Players who have access to presence can see this session
- * @member INVITE_ONLY Only players with invites registered can see this session
- * 
- * @constant_end
- */
-
-/**
- * @constant EOS_SESSIONS_MAX_SEARCH_RESULTS
- * @desc This macro defines the maximum number of session search results.
- * 
- * @constant_end
  */

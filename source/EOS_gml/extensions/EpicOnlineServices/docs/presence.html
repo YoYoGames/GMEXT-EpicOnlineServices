@@ -43,11 +43,15 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
                 </li>
               </ul>
               <ul>
@@ -60,6 +64,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
                 </li>
               </ul>
               <ul>
@@ -79,6 +87,10 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
                 </li>
               </ul>
@@ -90,20 +102,28 @@
                 <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Presence</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
     </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
                 </li>
               </ul>
               <ul>
@@ -164,29 +184,57 @@
               
                 <p><a id="top"></a></p>
 <h1 id="presence"><strong>Presence</strong></h1>
-<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/epic-account-services/eos-presence-interface">Presence Interface</a></p>
-<p>With the Presence Interface, an application can advertise its local player's status, known as presence, and query the presence of other players online. An application may also advertise transient data to others, in order to share more detailed information about the state of the local player. Users can only receive presence information about other users with whom they are friends.</p>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-presence-interface">Presence Interface</a></p>
+<p>With the Presence Interface, an application can advertise its local player's status, known as presence, and query the presence of other players online. An application may also advertise transient key/value data to share more detailed information about the local player's state, plus a "Join Game" string other players can use to join them. Users can only receive presence information about other users with whom they are friends.</p>
 <blockquote>
-<p>Important</p>
-<p>To use the Presence Interface, your product must have <strong>Epic Account Services</strong> (EAS) active, and must obtain <a href="https://dev.epicgames.com/docs/en-US/epic-account-services/eos-data-privacy-visibility">user consent</a> to access <strong>Online Presence</strong> data. You can activate EAS on the <a href="https://dev.epicgames.com/docs/en-US/dev-portal">Developer Portal</a>, or learn more in <a href="https://dev.epicgames.com/docs/en-US/epic-account-services">Epic's documentation</a>. Without EAS and user consent, you will still be able to initialize the EOS SDK and the Presence Interface, but all Presence Interface function calls to the back-end service will fail.</p>
+<p>To use the Presence Interface, your product must have <strong>Epic Account Services</strong> (EAS) active, and must obtain user consent to access <strong>Online Presence</strong> data. You can activate EAS on the <a href="https://dev.epicgames.com/docs/dev-portal">Developer Portal</a>. Without EAS and user consent, you can still initialize the EOS SDK and the Presence Interface, but every Presence Interface call to the back-end service fails.</p>
 </blockquote>
 <h2 id="functions">Functions</h2>
-<p>These are the functions in the Presence module:</p>
+<p>Provided functions:</p>
 <ul>
-<li><a href="presence.html#eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</a></li>
+<li><a href="presence.html#eos_presence_query_presence">eos_presence_query_presence</a></li>
+<li><a href="presence.html#eos_presence_has_presence">eos_presence_has_presence</a></li>
+<li><a href="presence.html#eos_presence_copy_presence">eos_presence_copy_presence</a></li>
+<li><a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a></li>
+<li><a href="presence.html#eos_presence_modification_release">eos_presence_modification_release</a></li>
+<li><a href="presence.html#eos_presence_modification_set_status">eos_presence_modification_set_status</a></li>
+<li><a href="presence.html#eos_presence_modification_set_raw_rich_text">eos_presence_modification_set_raw_rich_text</a></li>
+<li><a href="presence.html#eos_presence_modification_set_data">eos_presence_modification_set_data</a></li>
+<li><a href="presence.html#eos_presence_modification_delete_data">eos_presence_modification_delete_data</a></li>
+<li><a href="presence.html#eos_presence_set_presence">eos_presence_set_presence</a></li>
+<li><a href="presence.html#eos_presence_add_notify_on_presence_changed">eos_presence_add_notify_on_presence_changed</a></li>
+<li><a href="presence.html#eos_presence_remove_notify_on_presence_changed">eos_presence_remove_notify_on_presence_changed</a></li>
+<li><a href="presence.html#eos_presence_add_notify_join_game_accepted">eos_presence_add_notify_join_game_accepted</a></li>
+<li><a href="presence.html#eos_presence_remove_notify_join_game_accepted">eos_presence_remove_notify_join_game_accepted</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this API:</p>
+<ul>
+<li><a href="presence.html#epicpresencedatarecord">EpicPresenceDataRecord</a></li>
+<li><a href="presence.html#epicpresenceinfo">EpicPresenceInfo</a></li>
+<li><a href="presence.html#epicpresencequerypresencecallbackinfo">EpicPresenceQueryPresenceCallbackInfo</a></li>
+<li><a href="presence.html#epicpresencesetpresencecallbackinfo">EpicPresenceSetPresenceCallbackInfo</a></li>
+<li><a href="presence.html#epicpresencechangedcallbackinfo">EpicPresenceChangedCallbackInfo</a></li>
+<li><a href="presence.html#epicpresencejoingameacceptedcallbackinfo">EpicPresenceJoinGameAcceptedCallbackInfo</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used by this API:</p>
+<ul>
+<li><a href="presence.html#epicpresencestatus">EpicPresenceStatus</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/en-US/api-ref/functions/eos-presence-modification-set-join-info">EOS_PresenceModification_SetJoinInfo</a></p>
-<p>This function sets your new join info custom game-data string. This is a helper function for reading the presence data related to how a user can be joined. Its meaning is entirely application dependent.</p>
-<p>The function returns <code>EOS_RESULT.SUCCESS</code> if the modification was added successfully, otherwise an error code related to the problem.</p>
+<h1 id="eos_presence_query_presence">eos_presence_query_presence</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-query-presence">EOS_Presence_QueryPresence</a></p>
+<p>Queries a user's presence and caches it locally. Once the callback reports success, read the result with <a href="presence.html#eos_presence_copy_presence">eos_presence_copy_presence</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">eos_presence_modification_set_join_info(join_info)</code></pre>
+<div class="highlight"><pre><span></span><code>eos_presence_query_presence(local_user_id, target_user_id, callback=undefined)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -198,34 +246,950 @@
 </thead>
 <tbody>
 <tr>
-<td>join_info</td>
+<td>local_user_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string which will be advertised as this player's join info. An application is expected to freely define the meaning of this string to use for connecting to an active game session. The string should not exceed <code>EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH</code> in length. This affects the ability of the Social Overlay to show game related actions to take in the player's social graph. * using the <code>presence_enabled</code> flags within the <a href="sessions.html">Sessions</a> interface * using the <code>presence_enabled</code> flags within the <a href="lobbies.html">Lobbies</a> interface * using <a href="presence.html#eos_presence_modification_set_join_info">eos_presence_modification_set_join_info</a></td>
+<td>The Epic Account ID of the user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID whose presence should be queried.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the query completes.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
 <p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fired once with the query result.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="presence.html#epicpresencequerypresencecallbackinfo">EpicPresenceQueryPresenceCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>eos_presence_query_presence(my_account_id, friend_account_id, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        var _info = eos_presence_copy_presence(my_account_id, friend_account_id);
+        show_debug_message($&quot;Friend status: {_info.status}&quot;);
+    }
+});
+</code></pre></div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_has_presence">eos_presence_has_presence</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-has-presence">EOS_Presence_HasPresence</a></p>
+<p>Checks whether presence info for the target user is already cached locally, without making a network request. Use <a href="presence.html#eos_presence_query_presence">eos_presence_query_presence</a> first if this returns <code>false</code>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_has_presence(local_user_id, target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID to check.</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
 </blockquote>
 <p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_copy_presence">eos_presence_copy_presence</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-copy-presence">EOS_Presence_CopyPresence</a></p>
+<p>Reads the locally cached presence info for a user, previously fetched with <a href="presence.html#eos_presence_query_presence">eos_presence_query_presence</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>undefined</code> if no presence info is cached yet for <code>target_user_id</code> - call <a href="presence.html#eos_presence_query_presence">eos_presence_query_presence</a> first.</p>
+</div>
 <p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_copy_presence(local_user_id, target_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the user making the request.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID whose cached presence should be read.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="presence.html#epicpresenceinfo">EpicPresenceInfo</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_create_presence_modification">eos_presence_create_presence_modification</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-create-presence-modification">EOS_Presence_CreatePresenceModification</a></p>
+<p>Creates a presence modification handle for the local user. Use the <code>eos_presence_modification_*</code> functions to build up the change, then apply it with <a href="presence.html#eos_presence_set_presence">eos_presence_set_presence</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>0</code> on failure.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_create_presence_modification(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID to build a presence modification for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_modification_release">eos_presence_modification_release</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-modification-release">EOS_PresenceModification_Release</a></p>
+<p>Releases a presence modification handle created by <a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a>. Call this if you decide not to apply the modification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You do NOT need to call this after a successful <a href="presence.html#eos_presence_set_presence">eos_presence_set_presence</a> - the handle is released automatically once the presence update has been submitted.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_modification_release(modification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle returned by <a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_modification_set_status">eos_presence_modification_set_status</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-modification-set-status">EOS_PresenceModification_SetStatus</a></p>
+<p>Sets the online status on a presence modification handle.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_modification_set_status(modification_id, status)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle returned by <a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a>.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="presence.html#epicpresencestatus">EpicPresenceStatus</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_modification_set_raw_rich_text">eos_presence_modification_set_raw_rich_text</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-modification-set-raw-rich-text">EOS_PresenceModification_SetRawRichText</a></p>
+<p>Sets the rich-text presence string on a presence modification handle.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_modification_set_raw_rich_text(modification_id, rich_text)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle returned by <a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a>.</td>
+</tr>
+<tr>
+<td>rich_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_modification_set_data">eos_presence_modification_set_data</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-modification-set-data">EOS_PresenceModification_SetData</a></p>
+<p>Sets a single free-form key/value data record on a presence modification handle. Call this once per key you want to set.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_modification_set_data(modification_id, key, value)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle returned by <a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a>.</td>
+</tr>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_modification_delete_data">eos_presence_modification_delete_data</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-modification-delete-data">EOS_PresenceModification_DeleteData</a></p>
+<p>Removes a single key previously set with <a href="presence.html#eos_presence_modification_set_data">eos_presence_modification_set_data</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_modification_delete_data(modification_id, key)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle returned by <a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a>.</td>
+</tr>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_set_presence">eos_presence_set_presence</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-set-presence">EOS_Presence_SetPresence</a></p>
+<p>Submits a presence modification built with <code>eos_presence_modification_*</code> functions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>modification_id</code> is released internally as soon as this call is made, whether or not it eventually succeeds - don't call <a href="presence.html#eos_presence_modification_release">eos_presence_modification_release</a> on it afterward, and don't reuse the handle.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_set_presence(local_user_id, modification_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID whose presence is being updated.</td>
+</tr>
+<tr>
+<td>modification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle returned by <a href="presence.html#eos_presence_create_presence_modification">eos_presence_create_presence_modification</a>, after being built up with <code>eos_presence_modification_*</code> calls.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the update completes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fired once with the result of the update.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="presence.html#epicpresencesetpresencecallbackinfo">EpicPresenceSetPresenceCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_add_notify_on_presence_changed">eos_presence_add_notify_on_presence_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-add-notify-on-presence-changed">EOS_Presence_AddNotifyOnPresenceChanged</a></p>
+<p>Registers to be notified whenever a followed user's presence changes. Call <a href="presence.html#eos_presence_remove_notify_on_presence_changed">eos_presence_remove_notify_on_presence_changed</a> with the returned ID when you no longer need it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>0</code> if registration failed.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_add_notify_on_presence_changed(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called every time a followed user's presence changes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fired every time a followed user's presence changes, for as long as this notification stays registered.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="presence.html#epicpresencechangedcallbackinfo">EpicPresenceChangedCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_remove_notify_on_presence_changed">eos_presence_remove_notify_on_presence_changed</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-remove-notify-on-presence-changed">EOS_Presence_RemoveNotifyOnPresenceChanged</a></p>
+<p>Unregisters a notification previously registered with <a href="presence.html#eos_presence_add_notify_on_presence_changed">eos_presence_add_notify_on_presence_changed</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_remove_notify_on_presence_changed(notification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_add_notify_join_game_accepted">eos_presence_add_notify_join_game_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-add-notify-join-game-accepted">EOS_Presence_AddNotifyJoinGameAccepted</a></p>
+<p>Registers to be notified when the local user accepts a "Join Game" prompt from the social overlay (e.g. from a friend's rich presence). Call <a href="presence.html#eos_presence_remove_notify_join_game_accepted">eos_presence_remove_notify_join_game_accepted</a> with the returned ID when you no longer need it.</p>
+<blockquote>
+<p>Register this as soon as possible after login - a join accepted before this notification is registered is missed entirely.</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Returns <code>0</code> if registration failed.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_add_notify_join_game_accepted(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called every time a "Join Game" prompt is accepted.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fired every time the local user accepts a "Join Game" prompt, for as long as this notification stays registered. You MUST call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a> with the result's <code>ui_event_id</code> once you've handled it.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="presence.html#epicpresencejoingameacceptedcallbackinfo">EpicPresenceJoinGameAcceptedCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_presence_remove_notify_join_game_accepted">eos_presence_remove_notify_join_game_accepted</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-presence-remove-notify-join-game-accepted">EOS_Presence_RemoveNotifyJoinGameAccepted</a></p>
+<p>Unregisters a notification previously registered with <a href="presence.html#eos_presence_add_notify_join_game_accepted">eos_presence_add_notify_join_game_accepted</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_presence_remove_notify_join_game_accepted(notification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicpresencestatus">EpicPresenceStatus</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-presence-status">EOS_Presence_EStatus</a></p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="presence.html#eos_presence_modification_set_status">eos_presence_modification_set_status</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="presence.html#epicpresenceinfo">EpicPresenceInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Offline</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Online</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Away</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ExtendedAway</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>DoNotDisturb</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicpresencedatarecord">EpicPresenceDataRecord</h1>
+<p>A single free-form key/value pair attached to a user's presence.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="presence.html#epicpresenceinfo">EpicPresenceInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicpresencequerypresencecallbackinfo">EpicPresenceQueryPresenceCallbackInfo</h1>
+<p>Passed to the callback of <a href="presence.html#eos_presence_query_presence">eos_presence_query_presence</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="presence.html#eos_presence_query_presence">eos_presence_query_presence</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the query completed.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID that requested the query.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID whose presence was queried.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicpresencesetpresencecallbackinfo">EpicPresenceSetPresenceCallbackInfo</h1>
+<p>Passed to the callback of <a href="presence.html#eos_presence_set_presence">eos_presence_set_presence</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="presence.html#eos_presence_set_presence">eos_presence_set_presence</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td><code>EpicResult.Success</code> if the presence update was applied.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID whose presence was updated.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicpresencechangedcallbackinfo">EpicPresenceChangedCallbackInfo</h1>
+<p>Passed to the callback of <a href="presence.html#eos_presence_add_notify_on_presence_changed">eos_presence_add_notify_on_presence_changed</a> whenever a followed user's presence changes.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="presence.html#eos_presence_add_notify_on_presence_changed">eos_presence_add_notify_on_presence_changed</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The local Epic Account ID that is following <code>presence_user_id</code>.</td>
+</tr>
+<tr>
+<td>presence_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID whose presence changed. Call <a href="presence.html#eos_presence_copy_presence">eos_presence_copy_presence</a> to read the new value.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicpresencejoingameacceptedcallbackinfo">EpicPresenceJoinGameAcceptedCallbackInfo</h1>
+<p>Passed to the callback of <a href="presence.html#eos_presence_add_notify_join_game_accepted">eos_presence_add_notify_join_game_accepted</a>, fired when the local user accepts a "Join Game" prompt from the social overlay.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="presence.html#eos_presence_add_notify_join_game_accepted">eos_presence_add_notify_join_game_accepted</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>join_info</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The join string previously set on the presence (game-defined format, e.g. a lobby/session ID).</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The local Epic Account ID that accepted the join.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID of the friend being joined.</td>
+</tr>
+<tr>
+<td>ui_event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Must be passed to <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a> once the join has been handled, or the social overlay UI hangs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicpresenceinfo">EpicPresenceInfo</h1>
+<p>A snapshot of another user's presence, as returned by <a href="presence.html#eos_presence_copy_presence">eos_presence_copy_presence</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="presence.html#eos_presence_copy_presence">eos_presence_copy_presence</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic Account ID this presence info belongs to.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="presence.html#epicpresencestatus">EpicPresenceStatus</a></td>
+<td></td>
+</tr>
+<tr>
+<td>product_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Epic product ID that owns this presence.</td>
+</tr>
+<tr>
+<td>product_version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>platform</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The platform the user is currently playing on.</td>
+</tr>
+<tr>
+<td>product_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td>integrated_platform</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The integrated platform (if any) the user is playing through.</td>
+</tr>
+<tr>
+<td>rich_text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The rich-text presence string, as set by <a href="presence.html#eos_presence_modification_set_raw_rich_text">eos_presence_modification_set_raw_rich_text</a>.</td>
+</tr>
+<tr>
+<td>records_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of entries in <code>records</code>.</td>
+</tr>
+<tr>
+<td>records</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="presence.html#epicpresencedatarecord">EpicPresenceDataRecord</a></td>
+<td>The free-form key/value data attached to this presence, as set by <a href="presence.html#eos_presence_modification_set_data">eos_presence_modification_set_data</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="platform.html" class="btn btn-neutral float-left" title="Platform"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="player_data_storage.html" class="btn btn-neutral float-right" title="Player Data Storage">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="player_data_storage.html" class="btn btn-neutral float-left" title="Player Data Storage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="progression_snapshot.html" class="btn btn-neutral float-right" title="Progression Snapshot">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2025</p></p>
+      <p><p align="center">GameMaker 2026</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
@@ -246,10 +1210,10 @@
         </span>
     
     
-      <span><a href="platform.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="player_data_storage.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="player_data_storage.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="progression_snapshot.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

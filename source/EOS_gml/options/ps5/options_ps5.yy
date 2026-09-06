@@ -12,7 +12,7 @@
   "option_ps5_nptitledat_file":"${options_dir}\\ps5\\sce_sys\\nptitle.dat",
   "option_ps5_paramsfo":"",
   "option_ps5_paramsfo_file":"${options_dir}\\ps5\\sce_sys\\param.sfo",
-  "option_ps5_passcode":"GvE6xCpZxd96scOUGuLPbuLp8O800B0s",
+  "option_ps5_passcode":"AChi0cwDX2HKunoREaqRCPRyFvVrV4n5",
   "option_ps5_save_data_icon":"${base_options_dir}/ps5/sce_sys/save_data.png",
   "option_ps5_scale":0,
   "option_ps5_sharedbinarysubconfigs":"",

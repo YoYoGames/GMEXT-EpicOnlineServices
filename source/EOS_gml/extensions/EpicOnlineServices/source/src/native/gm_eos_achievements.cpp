@@ -1,0 +1,844 @@
+#include "EpicOnlineServices_native.h"
+#include "GMEpicGames.h"
+#include "gm_eos_common.h"
+
+#include <eos_sdk.h>
+#include <eos_achievements.h>
+
+#include <cstdint>
+#include <map>
+#include <optional>
+#include <string>
+#include <string_view>
+#include <vector>
+
+using namespace gm::wire;
+using namespace gm_structs;
+using namespace gm_enums;
+
+// ============================================================
+// Internal helpers / state
+// ============================================================
+
+struct EOSAsyncCallbackContext
+{
+    std::optional<GMFunction> callback;
+};
+
+static EOS_HAchievements eos_achievements_iface()
+{
+    EOS_HPlatform p = eos_platform_get();
+    return p ? EOS_Platform_GetAchievementsInterface(p) : nullptr;
+}
+
+static gm_structs::EpicAchievementsQueryDefinitionsCallbackInfo
+eos_achievements_query_definitions_info_from_native(
+    const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* p)
+{
+    gm_structs::EpicAchievementsQueryDefinitionsCallbackInfo out{};
+    if (!p)
+        return out;
+
+    out.result_code = (gm_enums::EpicResult)p->ResultCode;
+    return out;
+}
+
+static gm_structs::EpicAchievementsQueryPlayerAchievementsCallbackInfo
+eos_achievements_query_player_achievements_info_from_native(
+    const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* p)
+{
+    gm_structs::EpicAchievementsQueryPlayerAchievementsCallbackInfo out{};
+    if (!p)
+        return out;
+
+    out.result_code = (gm_enums::EpicResult)p->ResultCode;
+    out.user_id = eos_product_user_id_to_string_internal(p->LocalUserId);
+    out.target_user_id = eos_product_user_id_to_string_internal(p->TargetUserId);
+
+    return out;
+}
+
+static void EOS_CALL eos_achievements_query_definitions_callback_native(
+    const EOS_Achievements_OnQueryDefinitionsCompleteCallbackInfo* data)
+{
+    if (!data)
+        return;
+
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx)
+        return;
+
+    if (ctx->callback) ctx->callback.value().call(
+        eos_achievements_query_definitions_info_from_native(data)
+    );
+    delete ctx;
+}
+
+static void EOS_CALL eos_achievements_query_player_achievements_callback_native(
+    const EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo* data)
+{
+    if (!data)
+        return;
+
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx)
+        return;
+
+    if (ctx->callback) ctx->callback.value().call(
+        eos_achievements_query_player_achievements_info_from_native(data)
+    );
+    delete ctx;
+}
+
+// ============================================================
+// EOS Achievements (Part 1)
+// ============================================================
+
+void eos_achievements_query_definitions(std::string_view local_user_id, const std::optional<gm::wire::GMFunction>& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return;
+    }
+
+    // EOS definitions query may accept local epic account identity depending on SDK/API version.
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    if (!local_user) {
+        eos_set_last_error("EOS_Achievements_QueryDefinitions: invalid local_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Achievements_QueryDefinitionsOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_QUERYDEFINITIONS_API_LATEST;
+    opts.LocalUserId = local_user;
+
+    EOS_Achievements_QueryDefinitions(
+        achievements,
+        &opts,
+        ctx,
+        &eos_achievements_query_definitions_callback_native
+    );
+}
+
+void eos_achievements_query_player_achievements(
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_Achievements_QueryPlayerAchievements: invalid local_user_id.");
+        return;
+    }
+
+    if (!target_user) {
+        eos_set_last_error("EOS_Achievements_QueryPlayerAchievements: invalid target_user_id.");
+        return;
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Achievements_QueryPlayerAchievementsOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_QUERYPLAYERACHIEVEMENTS_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+
+    EOS_Achievements_QueryPlayerAchievements(
+        achievements,
+        &opts,
+        ctx,
+        &eos_achievements_query_player_achievements_callback_native
+    );
+}
+
+int64_t eos_achievements_get_achievement_definition_count()
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return 0;
+    }
+
+    EOS_Achievements_GetAchievementDefinitionCountOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_GETACHIEVEMENTDEFINITIONCOUNT_API_LATEST;
+
+    return (int64_t)EOS_Achievements_GetAchievementDefinitionCount(achievements, &opts);
+}
+
+int64_t eos_achievements_get_player_achievement_count(
+    std::string_view local_user_id,
+    std::string_view target_user_id)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return 0;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_Achievements_GetPlayerAchievementCount: invalid local_user_id.");
+        return 0;
+    }
+
+    if (!target_user) {
+        eos_set_last_error("EOS_Achievements_GetPlayerAchievementCount: invalid target_user_id.");
+        return 0;
+    }
+
+    EOS_Achievements_GetPlayerAchievementCountOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_GETPLAYERACHIEVEMENTCOUNT_API_LATEST;
+    opts.UserId = target_user;
+
+    return (int64_t)EOS_Achievements_GetPlayerAchievementCount(achievements, &opts);
+}
+
+// ============================================================
+// EOS Achievements (Part 2)
+// ============================================================
+
+
+static gm_structs::EpicAchievementsStatThresholds eos_achievements_stat_thresholds_from_native(
+    const EOS_Achievements_StatThresholds* p)
+{
+    gm_structs::EpicAchievementsStatThresholds out{};
+    if (!p)
+        return out;
+
+    out.name = p->Name ? std::string(p->Name) : std::string();
+    out.threshold = (int32_t)p->Threshold;
+
+    return out;
+}
+
+static gm_structs::EpicAchievementsDefinition eos_achievements_definition_from_native(
+    const EOS_Achievements_Definition* p)
+{
+    gm_structs::EpicAchievementsDefinition out{};
+    if (!p)
+        return out;
+
+    out.achievement_id = p->AchievementId ? std::string(p->AchievementId) : std::string();
+    out.display_name = p->DisplayName ? std::string(p->DisplayName) : std::string();
+    out.description = p->Description ? std::string(p->Description) : std::string();
+    out.locked_display_name = p->LockedDisplayName ? std::string(p->LockedDisplayName) : std::string();
+    out.locked_description = p->LockedDescription ? std::string(p->LockedDescription) : std::string();
+    out.hidden_description = p->HiddenDescription ? std::string(p->HiddenDescription) : std::string();
+    out.completion_description = p->CompletionDescription ? std::string(p->CompletionDescription) : std::string();
+    out.is_hidden = (p->bIsHidden != 0);
+    out.unlocked_icon_id = p->UnlockedIconId ? std::string(p->UnlockedIconId) : std::string();
+    out.locked_icon_id = p->LockedIconId ? std::string(p->LockedIconId) : std::string();
+
+    out.stat_thresholds_count = (int64_t)p->StatThresholdsCount;
+    if (p->StatThresholds && p->StatThresholdsCount > 0) {
+        out.stat_thresholds.resize(p->StatThresholdsCount);
+        for (int32_t i = 0; i < p->StatThresholdsCount; ++i) {
+            out.stat_thresholds[i] = eos_achievements_stat_thresholds_from_native(&p->StatThresholds[i]);
+        }
+    }
+
+    return out;
+}
+
+static gm_structs::EpicPlayerAchievement eos_achievements_player_achievement_from_native(
+    const EOS_Achievements_PlayerAchievement* p)
+{
+    gm_structs::EpicPlayerAchievement out{};
+    if (!p)
+        return out;
+
+    out.achievement_id = p->AchievementId ? std::string(p->AchievementId) : std::string();
+    out.progress = (double)p->Progress;
+    out.unlock_time = p->UnlockTime;
+    out.stat_info_count = (int64_t)p->StatInfoCount;
+
+    if (p->StatInfo && p->StatInfoCount > 0) {
+        out.stat_info.resize(p->StatInfoCount);
+        for (int32_t i = 0; i < p->StatInfoCount; ++i) {
+            out.stat_info[i].name = p->StatInfo[i].Name ? std::string(p->StatInfo[i].Name) : std::string();
+            out.stat_info[i].current_value = (int64_t)p->StatInfo[i].CurrentValue;
+            out.stat_info[i].threshold_value = (int64_t)p->StatInfo[i].ThresholdValue;
+        }
+    }
+
+    out.display_name = p->DisplayName ? std::string(p->DisplayName) : std::string();
+    out.description = p->Description ? std::string(p->Description) : std::string();
+    out.icon_url = p->IconURL ? std::string(p->IconURL) : std::string();
+    out.flavor_text = p->FlavorText ? std::string(p->FlavorText) : std::string();
+
+    return out;
+}
+
+static gm_structs::EpicAchievementsUnlockAchievementsCallbackInfo
+eos_achievements_unlock_achievements_info_from_native(
+    const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* p)
+{
+    gm_structs::EpicAchievementsUnlockAchievementsCallbackInfo out{};
+    if (!p)
+        return out;
+
+    out.result_code = (gm_enums::EpicResult)p->ResultCode;
+    out.user_id = eos_product_user_id_to_string_internal(p->UserId);
+    out.achievements_count = (int64_t)p->AchievementsCount;
+
+    return out;
+}
+
+static void EOS_CALL eos_achievements_unlock_achievements_callback_native(
+    const EOS_Achievements_OnUnlockAchievementsCompleteCallbackInfo* data)
+{
+    if (!data)
+        return;
+
+    auto* ctx = static_cast<EOSAsyncCallbackContext*>(data->ClientData);
+    if (!ctx)
+        return;
+
+    if (ctx->callback) ctx->callback.value().call(
+        eos_achievements_unlock_achievements_info_from_native(data)
+    );
+    delete ctx;
+}
+
+std::optional<gm_structs::EpicAchievementsDefinition> eos_achievements_copy_achievement_definition_by_index(int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return std::nullopt;
+    }
+
+    EOS_Achievements_CopyAchievementDefinitionByIndexOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYDEFINITIONBYINDEX_API_LATEST;
+    opts.AchievementIndex = (uint32_t)index;
+
+    EOS_Achievements_Definition* def = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyAchievementDefinitionByIndex(
+        achievements, &opts, &def);
+
+    if (result != EOS_EResult::EOS_Success || def == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyAchievementDefinitionByIndex failed.");
+        return std::nullopt;
+    }
+
+    gm_structs::EpicAchievementsDefinition out = eos_achievements_definition_from_native(def);
+    EOS_Achievements_Definition_Release(def);
+    return out;
+}
+
+std::optional<gm_structs::EpicAchievementsDefinition> eos_achievements_copy_achievement_definition_by_id(
+    std::string_view achievement_id)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return std::nullopt;
+    }
+
+    std::string achievement_id_storage(achievement_id);
+    if (achievement_id_storage.empty()) {
+        eos_set_last_error("EOS_Achievements_CopyAchievementDefinitionByAchievementId: achievement_id is required.");
+        return std::nullopt;
+    }
+
+    EOS_Achievements_CopyAchievementDefinitionByAchievementIdOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYDEFINITIONBYACHIEVEMENTID_API_LATEST;
+    opts.AchievementId = achievement_id_storage.c_str();
+
+    EOS_Achievements_Definition* def = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyAchievementDefinitionByAchievementId(
+        achievements, &opts, &def);
+
+    if (result != EOS_EResult::EOS_Success || def == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyAchievementDefinitionByAchievementId failed.");
+        return std::nullopt;
+    }
+
+    gm_structs::EpicAchievementsDefinition out = eos_achievements_definition_from_native(def);
+    EOS_Achievements_Definition_Release(def);
+    return out;
+}
+
+std::optional<gm_structs::EpicPlayerAchievement> eos_achievements_copy_player_achievement_by_index(
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return std::nullopt;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByIndex: invalid local_user_id.");
+        return std::nullopt;
+    }
+
+    if (!target_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByIndex: invalid target_user_id.");
+        return std::nullopt;
+    }
+
+    EOS_Achievements_CopyPlayerAchievementByIndexOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYINDEX_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+    opts.AchievementIndex = (uint32_t)index;
+
+    EOS_Achievements_PlayerAchievement* achievement = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyPlayerAchievementByIndex(
+        achievements, &opts, &achievement);
+
+    if (result != EOS_EResult::EOS_Success || achievement == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyPlayerAchievementByIndex failed.");
+        return std::nullopt;
+    }
+
+    gm_structs::EpicPlayerAchievement out = eos_achievements_player_achievement_from_native(achievement);
+    EOS_Achievements_PlayerAchievement_Release(achievement);
+    return out;
+}
+
+static gm_structs::EpicAchievementsDefinitionV2 eos_achievements_definition_v2_from_native(
+    const EOS_Achievements_DefinitionV2* p)
+{
+    gm_structs::EpicAchievementsDefinitionV2 out{};
+    if (!p)
+        return out;
+
+    out.achievement_id =
+        p->AchievementId ? std::string(p->AchievementId) : std::string();
+
+    out.unlocked_display_name =
+        p->UnlockedDisplayName ? std::string(p->UnlockedDisplayName) : std::string();
+
+    out.unlocked_description =
+        p->UnlockedDescription ? std::string(p->UnlockedDescription) : std::string();
+
+    out.locked_display_name =
+        p->LockedDisplayName ? std::string(p->LockedDisplayName) : std::string();
+
+    out.locked_description =
+        p->LockedDescription ? std::string(p->LockedDescription) : std::string();
+
+    out.flavor_text =
+        p->FlavorText ? std::string(p->FlavorText) : std::string();
+
+    out.unlocked_icon_url =
+        p->UnlockedIconURL ? std::string(p->UnlockedIconURL) : std::string();
+
+    out.locked_icon_url =
+        p->LockedIconURL ? std::string(p->LockedIconURL) : std::string();
+
+    out.is_hidden = (p->bIsHidden != 0);
+    out.stat_thresholds_count = (int64_t)p->StatThresholdsCount;
+
+    return out;
+}
+
+std::optional<gm_structs::EpicAchievementsDefinitionV2> eos_achievements_copy_achievement_definition_v2_by_index(int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return std::nullopt;
+    }
+
+    EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYINDEX_API_LATEST;
+    opts.AchievementIndex = (uint32_t)index;
+
+    EOS_Achievements_DefinitionV2* def = nullptr;
+    const EOS_EResult result =
+        EOS_Achievements_CopyAchievementDefinitionV2ByIndex(
+            achievements,
+            &opts,
+            &def
+        );
+
+    if (result != EOS_EResult::EOS_Success || def == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(
+            err ? err : "EOS_Achievements_CopyAchievementDefinitionV2ByIndex failed."
+        );
+        return std::nullopt;
+    }
+
+    gm_structs::EpicAchievementsDefinitionV2 out = eos_achievements_definition_v2_from_native(def);
+    EOS_Achievements_DefinitionV2_Release(def);
+    return out;
+}
+
+std::optional<gm_structs::EpicPlayerAchievement> eos_achievements_copy_player_achievement_by_id(
+    std::string_view local_user_id,
+    std::string_view target_user_id,
+    std::string_view achievement_id)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return std::nullopt;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    std::string achievement_id_storage(achievement_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByAchievementId: invalid local_user_id.");
+        return std::nullopt;
+    }
+
+    if (!target_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByAchievementId: invalid target_user_id.");
+        return std::nullopt;
+    }
+
+    if (achievement_id_storage.empty()) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerAchievementByAchievementId: achievement_id is required.");
+        return std::nullopt;
+    }
+
+    EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+    opts.AchievementId = achievement_id_storage.c_str();
+
+    EOS_Achievements_PlayerAchievement* achievement = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyPlayerAchievementByAchievementId(
+        achievements, &opts, &achievement);
+
+    if (result != EOS_EResult::EOS_Success || achievement == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyPlayerAchievementByAchievementId failed.");
+        return std::nullopt;
+    }
+
+    gm_structs::EpicPlayerAchievement out = eos_achievements_player_achievement_from_native(achievement);
+    EOS_Achievements_PlayerAchievement_Release(achievement);
+    return out;
+}
+
+void eos_achievements_unlock_achievements(
+    std::string_view user_id,
+    const std::vector<std::string_view>& achievement_ids,
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return;
+    }
+
+    EOS_ProductUserId user = eos_product_user_id_from_string_internal(user_id);
+    if (!user) {
+        eos_set_last_error("EOS_Achievements_UnlockAchievements: invalid user_id.");
+        return;
+    }
+
+    if (achievement_ids.empty()) {
+        eos_set_last_error("EOS_Achievements_UnlockAchievements: achievement_ids is required.");
+        return;
+    }
+
+    // Copy string_view data into stable owned storage
+    std::vector<std::string> achievement_id_storage;
+    achievement_id_storage.reserve(achievement_ids.size());
+
+    for (const auto& id : achievement_ids) {
+        if (id.empty()) {
+            eos_set_last_error("EOS_Achievements_UnlockAchievements: achievement_ids contains an empty achievement id.");
+            return;
+        }
+        achievement_id_storage.emplace_back(id);
+    }
+
+    // Build pointer array referencing the owned strings above
+    std::vector<const char*> achievement_id_ptrs;
+    achievement_id_ptrs.reserve(achievement_id_storage.size());
+
+    for (const auto& id : achievement_id_storage) {
+        achievement_id_ptrs.push_back(id.c_str());
+    }
+
+    auto* ctx = new EOSAsyncCallbackContext{};
+    ctx->callback = callback;
+
+    EOS_Achievements_UnlockAchievementsOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST;
+    opts.UserId = user;
+    opts.AchievementIds = achievement_id_ptrs.data();
+    opts.AchievementsCount = static_cast<uint32_t>(achievement_id_ptrs.size());
+
+    EOS_Achievements_UnlockAchievements(
+        achievements,
+        &opts,
+        ctx,
+        &eos_achievements_unlock_achievements_callback_native
+    );
+}
+
+std::optional<gm_structs::EpicStatThreshold> eos_achievements_copy_stat_threshold_by_index(std::string_view achievement_id, std::int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return std::nullopt;
+    }
+
+    std::string achievement_id_storage(achievement_id);
+    if (achievement_id_storage.empty()) {
+        eos_set_last_error("EOS_Achievements_CopyStatThresholdByIndex: achievement_id is required.");
+        return std::nullopt;
+    }
+
+    // StatThresholds lives on the achievement definition, not a standalone SDK call - fetch the
+    // (non-deprecated V2) definition and index into its embedded array.
+    EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYACHIEVEMENTID_API_LATEST;
+    opts.AchievementId = achievement_id_storage.c_str();
+
+    EOS_Achievements_DefinitionV2* def = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(
+        achievements, &opts, &def);
+
+    if (result != EOS_EResult::EOS_Success || def == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId failed.");
+        return std::nullopt;
+    }
+
+    if (index < 0 || (uint32_t)index >= def->StatThresholdsCount) {
+        eos_set_last_error("EOS_Achievements_CopyStatThresholdByIndex: index out of range.");
+        EOS_Achievements_DefinitionV2_Release(def);
+        return std::nullopt;
+    }
+
+    gm_structs::EpicStatThreshold out{};
+    const EOS_Achievements_StatThresholds& threshold = def->StatThresholds[index];
+    out.name = threshold.Name ? std::string(threshold.Name) : std::string();
+    out.threshold = (int64_t)threshold.Threshold;
+
+    EOS_Achievements_DefinitionV2_Release(def);
+    return out;
+}
+
+std::optional<gm_structs::EpicPlayerStatInfo> eos_achievements_copy_player_stat_info_by_index(std::string_view local_user_id, std::string_view target_user_id, std::string_view achievement_id, std::int64_t index)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements) {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return std::nullopt;
+    }
+
+    EOS_ProductUserId local_user = eos_product_user_id_from_string_internal(local_user_id);
+    EOS_ProductUserId target_user = eos_product_user_id_from_string_internal(target_user_id);
+    std::string achievement_id_storage(achievement_id);
+
+    if (!local_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: invalid local_user_id.");
+        return std::nullopt;
+    }
+
+    if (!target_user) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: invalid target_user_id.");
+        return std::nullopt;
+    }
+
+    if (achievement_id_storage.empty()) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: achievement_id is required.");
+        return std::nullopt;
+    }
+
+    // StatInfo lives on the player achievement, not a standalone SDK call - fetch it and index
+    // into its embedded array.
+    EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST;
+    opts.LocalUserId = local_user;
+    opts.TargetUserId = target_user;
+    opts.AchievementId = achievement_id_storage.c_str();
+
+    EOS_Achievements_PlayerAchievement* achievement = nullptr;
+    const EOS_EResult result = EOS_Achievements_CopyPlayerAchievementByAchievementId(
+        achievements, &opts, &achievement);
+
+    if (result != EOS_EResult::EOS_Success || achievement == nullptr) {
+        const char* err = EOS_EResult_ToString(result);
+        eos_set_last_error(err ? err : "EOS_Achievements_CopyPlayerAchievementByAchievementId failed.");
+        return std::nullopt;
+    }
+
+    if (index < 0 || (uint32_t)index >= (uint32_t)achievement->StatInfoCount) {
+        eos_set_last_error("EOS_Achievements_CopyPlayerStatInfoByIndex: index out of range.");
+        EOS_Achievements_PlayerAchievement_Release(achievement);
+        return std::nullopt;
+    }
+
+    gm_structs::EpicPlayerStatInfo out{};
+    const EOS_Achievements_PlayerStatInfo& stat_info = achievement->StatInfo[index];
+    out.name = stat_info.Name ? std::string(stat_info.Name) : std::string();
+    out.current_value = (int64_t)stat_info.CurrentValue;
+    out.threshold_value = (int64_t)stat_info.ThresholdValue;
+
+    EOS_Achievements_PlayerAchievement_Release(achievement);
+    return out;
+}
+
+// ============================================================
+// EOS Achievements Notify
+// ============================================================
+
+struct AchievementsNotifyContext
+{
+    uint64_t notification_id;
+};
+
+static std::map<uint64_t, GMFunction> g_achievements_unlocked_v2_callbacks;
+static std::map<uint64_t, AchievementsNotifyContext*> g_achievements_unlocked_v2_contexts;
+
+static gm_structs::EpicAchievementsUnlockedV2CallbackInfo
+eos_achievements_unlocked_v2_from_native(
+    const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* p)
+{
+    gm_structs::EpicAchievementsUnlockedV2CallbackInfo out{};
+    if (!p)
+        return out;
+
+    out.user_id = eos_product_user_id_to_string_internal(p->UserId);
+    out.achievement_id = p->AchievementId ? std::string(p->AchievementId) : std::string();
+    out.unlock_time = p->UnlockTime;
+
+    return out;
+}
+
+static void EOS_CALL eos_achievements_unlocked_v2_callback(
+    const EOS_Achievements_OnAchievementsUnlockedCallbackV2Info* data)
+{
+    if (!data)
+        return;
+
+    AchievementsNotifyContext* ctx = (AchievementsNotifyContext*)data->ClientData;
+    if (!ctx)
+        return;
+
+    uint64_t notification_id = ctx->notification_id;
+    auto it = g_achievements_unlocked_v2_callbacks.find(notification_id);
+    if (it == g_achievements_unlocked_v2_callbacks.end())
+        return;
+
+    it->second.call(eos_achievements_unlocked_v2_from_native(data));
+}
+
+uint64_t eos_achievements_add_notify_achievements_unlocked_v2(
+    const std::optional<gm::wire::GMFunction>& callback)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements)
+    {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return 0;
+    }
+
+    auto* ctx = new AchievementsNotifyContext{};
+
+    EOS_Achievements_AddNotifyAchievementsUnlockedV2Options opts{};
+    opts.ApiVersion = EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST;
+
+    EOS_NotificationId notification_id = EOS_Achievements_AddNotifyAchievementsUnlockedV2(
+        achievements,
+        &opts,
+        ctx,
+        &eos_achievements_unlocked_v2_callback
+    );
+
+    uint64_t result = (uint64_t)notification_id;
+    if (result != 0)
+    {
+        ctx->notification_id = result;
+        g_achievements_unlocked_v2_callbacks[result] = callback.value_or(GMFunction{});
+        g_achievements_unlocked_v2_contexts[result] = ctx;
+    }
+    else
+    {
+        delete ctx;
+    }
+
+    return result;
+}
+
+void eos_achievements_remove_notify_achievements_unlocked(
+    uint64_t notification_id)
+{
+    eos_clear_last_error();
+
+    EOS_HAchievements achievements = eos_achievements_iface();
+    if (!achievements)
+    {
+        eos_set_last_error("EOS Achievements interface unavailable.");
+        return;
+    }
+
+    EOS_Achievements_RemoveNotifyAchievementsUnlocked(
+        achievements,
+        (EOS_NotificationId)notification_id
+    );
+
+    auto ctx_it = g_achievements_unlocked_v2_contexts.find(notification_id);
+    if (ctx_it != g_achievements_unlocked_v2_contexts.end())
+    {
+        delete ctx_it->second;
+        g_achievements_unlocked_v2_contexts.erase(ctx_it);
+    }
+
+    g_achievements_unlocked_v2_callbacks.erase(notification_id);
+}
+

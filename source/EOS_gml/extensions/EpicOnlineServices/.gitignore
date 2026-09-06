@@ -1,0 +1,28 @@
+# =============================================================================
+# EOS SDK third-party binaries
+# -----------------------------------------------------------------------------
+# These are staged from the SDK paths (sdkPath / sdkAndroidPath / sdkIosPath)
+# by pre_build_step / post_build_step at build time, so they are NOT committed.
+#
+# The extension's OWN result binaries (EpicOnlineServices.dll, .dylib, and
+# AndroidSource/libs/<abi>/libEpicOnlineServices.so) ARE committed and must stay
+# tracked -- they are deliberately not matched below.
+# =============================================================================
+
+# Android (EOS SDK) -- staged as a whole AAR, consumed directly by Gradle
+/AndroidSource/libs-aar/*.aar
+
+# iOS staging temp (EOS xcframework, signature-stripped before zipping)
+/_eos_xcfw_tmp/
+# iOS raw xcframework staged on Windows for remote_build_step.sh (transient)
+/iOSSourceFromMac/EOSSDK.xcframework/
+
+# Windows / macOS / Linux (EOS C SDK runtime libs)
+/EOSSDK-Win64-Shipping.dll
+/EOSSDK-Win32-Shipping.dll
+/libEOSSDK-Mac-Shipping.dylib
+/libEOSSDK-Linux-Shipping.so
+
+# iOS (EOS framework) - zipped (on macOS via ditto) into iOSSourceFromMac next to
+# the extension's own packaged EpicOnlineServices.zip (which stays committed).
+/iOSSourceFromMac/EOSSDK.zip

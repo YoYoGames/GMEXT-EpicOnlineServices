@@ -43,11 +43,15 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Guide</a>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
                 </li>
               </ul>
               <ul>
@@ -60,6 +64,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
                 </li>
               </ul>
               <ul>
@@ -79,6 +87,10 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
                 </li>
               </ul>
@@ -91,15 +103,19 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
-                </li>
-              </ul>
-              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
                 </li>
               </ul>
               <ul>
@@ -126,6 +142,8 @@
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">User Interface</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
     </li>
@@ -166,36 +184,207 @@
               
                 <p><a id="top"></a></p>
 <h1 id="user-interface"><strong>User Interface</strong></h1>
-<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/epic-account-services/eosui-interface">UI Interface</a></p>
-<p><strong>Epic Online Services</strong> (EOS) supports product-independent overlay windows through its overlay system; these overlays give users product-independent access to various features. The <a href="https://dev.epicgames.com/docs/epic-account-services/eosui-interface">UI Interface</a> manages interactions with the overlays by providing status updates, showing or hiding the overlays, and adjusting display and hotkey preferences.</p>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-ui-interface">UI Interface</a></p>
+<p>The <a href="https://dev.epicgames.com/docs/game-services/eos-ui-interface">UI Interface</a> controls Epic's built-in social overlay: the Friends list, native platform profile cards, block/report player dialogs, and controller-driven overlay navigation.</p>
+<blockquote>
+<p>Any callback/notification elsewhere in this extension that hands you a <code>ui_event_id</code> must be acknowledged via <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a> - see that function's description.</p>
+</blockquote>
 <h2 id="functions">Functions</h2>
-<p>These functions are provided for handling user interface:</p>
+<p>These functions are provided for controlling the social overlay:</p>
 <ul>
-<li><a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a></li>
-<li><a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a></li>
-<li><a href="user_interface.html#eos_ui_get_friends_visible">eos_ui_get_friends_visible</a></li>
-<li><a href="user_interface.html#eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</a></li>
-<li><a href="user_interface.html#eos_ui_hide_friends">eos_ui_hide_friends</a></li>
-<li><a href="user_interface.html#eos_ui_remove_notify_display_settings_updated">eos_ui_remove_notify_display_settings_updated</a></li>
-<li><a href="user_interface.html#eos_ui_set_display_preference">eos_ui_set_display_preference</a></li>
 <li><a href="user_interface.html#eos_ui_show_friends">eos_ui_show_friends</a></li>
+<li><a href="user_interface.html#eos_ui_show_native_profile">eos_ui_show_native_profile</a></li>
+<li><a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a></li>
+<li><a href="user_interface.html#eos_ui_set_display_preference">eos_ui_set_display_preference</a></li>
+<li><a href="user_interface.html#eos_ui_report_input_state">eos_ui_report_input_state</a></li>
+<li><a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a></li>
+<li><a href="user_interface.html#eos_ui_remove_notify_display_settings_updated">eos_ui_remove_notify_display_settings_updated</a></li>
+<li><a href="user_interface.html#eos_ui_hide_friends">eos_ui_hide_friends</a></li>
+<li><a href="user_interface.html#eos_ui_get_friends_visible">eos_ui_get_friends_visible</a></li>
+<li><a href="user_interface.html#eos_ui_get_friends_exclusive_input">eos_ui_get_friends_exclusive_input</a></li>
+<li><a href="user_interface.html#eos_ui_pause_social_overlay">eos_ui_pause_social_overlay</a></li>
+<li><a href="user_interface.html#eos_ui_is_social_overlay_paused">eos_ui_is_social_overlay_paused</a></li>
+<li><a href="user_interface.html#eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</a></li>
+<li><a href="user_interface.html#eos_ui_show_block_player">eos_ui_show_block_player</a></li>
+<li><a href="user_interface.html#eos_ui_show_report_player">eos_ui_show_report_player</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this API:</p>
+<ul>
+<li><a href="user_interface.html#epicuishowfriendscallbackinfo">EpicUIShowFriendsCallbackInfo</a></li>
+<li><a href="user_interface.html#epicuishownativeprofilecallbackinfo">EpicUIShowNativeProfileCallbackInfo</a></li>
+<li><a href="user_interface.html#epicuidisplaysettingsupdatedcallbackinfo">EpicUIDisplaySettingsUpdatedCallbackInfo</a></li>
+<li><a href="user_interface.html#epicuihidefriendscallbackinfo">EpicUIHideFriendsCallbackInfo</a></li>
+<li><a href="user_interface.html#epicuishowblockplayercallbackinfo">EpicUIShowBlockPlayerCallbackInfo</a></li>
+<li><a href="user_interface.html#epicuishowreportplayercallbackinfo">EpicUIShowReportPlayerCallbackInfo</a></li>
 </ul>
 <h2 id="constants">Constants</h2>
 <p>These are the constants used by this API:</p>
 <ul>
-<li><a href="user_interface.html#eos_ui_notification_location">EOS_UI_NOTIFICATION_LOCATION</a></li>
+<li><a href="user_interface.html#epicuinotificationlocation">EpicUINotificationLocation</a></li>
 </ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_show_friends">eos_ui_show_friends</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-friends">EOS_UI_ShowFriends</a></p>
+<p>Shows the Friends overlay for the given local user. On desktop platforms this is a fully featured
+friends list; on mobile it's a slimmed-down view.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On some platforms the user must be logged in to Epic Account Services (see <a href="auth.html">Auth</a>) for this call to have an effect.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_show_friends(local_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player requesting the overlay.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the overlay has been shown (or the request has failed).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once, with the result of the show-friends request.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="user_interface.html#epicuishowfriendscallbackinfo">EpicUIShowFriendsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_ui_show_friends(local_user_id, function(_result)
+{
+    if (_result.result_code == EpicResult.Success)
+    {
+        show_debug_message(&quot;Friends overlay shown.&quot;);
+    }
+});
+</code></pre></div>
+The above code shows the Friends overlay to the given local user and logs once it's up.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_show_native_profile">eos_ui_show_native_profile</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-native-profile">EOS_UI_ShowNativeProfile</a></p>
+<p>Shows the native platform's profile overlay for the given target user, if the current platform has one
+(e.g. a console's own profile card). Does nothing on platforms without a native profile UI.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_show_native_profile(local_user_id, target_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player requesting the overlay.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player whose native profile should be shown.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the overlay has been shown (or the request has failed).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once, with the result of the show-native-profile request.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="user_interface.html#epicuishownativeprofilecallbackinfo">EpicUIShowNativeProfileCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
 <h1 id="eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-acknowledge-event-id">EOS_UI_AcknowledgeEventId</a></p>
-<p>This function lets the SDK know that the given UI event ID has been acknowledged and should be released. <code>EOS_RESULT.SUCCESS</code> is returned if the UI event ID has been acknowledged. <code>EOS_RESULT.NOT_FOUND</code> is returned if the UI event ID does not exist.</p>
+<p>Acknowledges a UI event raised by the social overlay (e.g. a join-game or native-invite request that
+came in with a <code>ui_event_id</code>).</p>
+<blockquote>
+<p>Whenever a callback/notification hands you a <code>ui_event_id</code> (join-game-accepted, native-invite-requested, and similar overlay-driven events across <a href="sessions.html">Sessions</a>/<a href="lobbies.html">Lobbies</a>/<a href="custom_invites.html">Custom Invites</a>), you MUST call this function with that ID once you're done handling it, passing the real outcome as <code>result_code</code>. Skipping this - or acknowledging with a hardcoded <a href="general.html#epicresult">EpicResult</a> instead of the actual outcome - leaves the social overlay UI hanging or reports a false result to Epic's backend.</p>
+</blockquote>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_acknowledge_event_id(ui_event_id)</code></pre>
+<div class="highlight"><pre><span></span><code>eos_ui_acknowledge_event_id(ui_event_id, result_code)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -209,267 +398,115 @@
 <tr>
 <td>ui_event_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The event ID being acknowledged</td>
+<td>The ID of the UI event to acknowledge, taken from the triggering callback/notification struct.</td>
+</tr>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The real outcome of handling the event (e.g. <code>EpicResult.Success</code> once a join has actually completed, or an error code if it failed).</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="general.html#eos_result">EOS_RESULT</a></p>
+<p><a href="general.html#epicresult">EpicResult</a></p>
 </blockquote>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UI/EOS_UI_AddNotifyDisplaySettingsUpdated/index.html">EOS_UI_AddNotifyDisplaySettingsUpdated</a></p>
-<p>This function registers to receive notifications when the overlay display settings are updated. Newly registered handlers will always be called the next tick with the current state.</p>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<h1 id="eos_ui_set_display_preference">eos_ui_set_display_preference</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-set-display-preference">EOS_UI_SetDisplayPreference</a></p>
+<p>Sets the corner of the screen the notification/toast style overlay elements (friend requests, invites,
+etc.) should appear in.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_add_notify_display_settings_updated()</code></pre>
-</blockquote>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Triggers:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+<div class="highlight"><pre><span></span><code>eos_ui_set_display_preference(notification_location)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Argument</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>type</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"eos_ui_add_notify_display_settings_updated"</code></td>
+<td>notification_location</td>
+<td><a href="user_interface.html#epicuinotificationlocation">EpicUINotificationLocation</a></td>
+<td>The screen corner to show notifications in.</td>
 </tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_report_input_state">eos_ui_report_input_state</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-report-input-state">EOS_UI_ReportInputState</a></p>
+<p>Reports the current state of a fixed set of gamepad-style buttons to the SDK so the social overlay can
+be driven with a controller instead of a mouse/keyboard. Call this every frame the overlay is visible
+(e.g. from the Step event) with the current button states.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This only reports the 4 D-Pad directions plus an accept/cancel pair - it is not a full input passthrough. Mouse and analog-stick state are not exposed by this function.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_report_input_state(button_down, button_up, button_left, button_right, button_accept, button_cancel)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
 <tr>
-<td>is_exclusive_input</td>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>button_down</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
-<td><code>true</code> when the overlay has switched to exclusive input mode. While in exclusive input mode, no keyboard or mouse input will be sent to the game.</td>
+<td><code>true</code> while the D-Pad down button is held.</td>
 </tr>
 <tr>
-<td>is_visible</td>
+<td>button_up</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
-<td><code>true</code> when any portion of the overlay is visible.</td>
+<td><code>true</code> while the D-Pad up button is held.</td>
+</tr>
+<tr>
+<td>button_left</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> while the D-Pad left button is held.</td>
+</tr>
+<tr>
+<td>button_right</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> while the D-Pad right button is held.</td>
+</tr>
+<tr>
+<td>button_accept</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> while the accept/confirm face button is held.</td>
+</tr>
+<tr>
+<td>button_cancel</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> while the cancel/back face button is held.</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = eos_ui_add_notify_display_settings_updated();</code></pre>
-The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_ui_add_notify_display_settings_updated")
-{
-    var _is_exclusive_input = async_load[? "is_exclusive_input"];
-    var _is_visible = async_load[? "is_visible"];
-}</code></pre>
-The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="eos_ui_get_friends_visible">eos_ui_get_friends_visible</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UI/EOS_UI_GetFriendsVisible/index.html">EOS_UI_GetFriendsVisible</a></p>
-<p>This function gets the friends overlay visibility.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_get_friends_visible(account_id)</code></pre>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>account_id</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The Epic Account ID of the user whose overlay is being updated.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">if (eos_ui_get_friends_visible(account_id))
-{
-    pause_game(); // add logic to pause the game here
-}</code></pre>
-The above code shows an example of how the function should be used. If the Friends UI is being displayed, the developer must make sure the game is set to pause.</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UI/EOS_UI_GetNotificationLocationPreference/index.html">EOS_UI_GetNotificationLocationPreference</a></p>
-<p>This function returns the current notification location display preference.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_get_notification_location_preference()</code></pre>
-</blockquote>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">show_debug_message("LocationPreference: " + eos_ui_get_notification_location_preference());</code></pre>
-The above code shows an example of how the function should be used.</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="eos_ui_hide_friends">eos_ui_hide_friends</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UI/EOS_UI_HideFriends/index.html">EOS_UI_HideFriends</a></p>
-<p>This function hides the active Social Overlay.</p>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_hide_friends(account_id)</code></pre>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>account_id</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The Epic Account ID of the user whose friend list is being shown</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Triggers:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"eos_ui_hide_friends"</code></td>
-</tr>
-<tr>
-<td>status</td>
-<td><a href="general.html#eos_result">EOS_RESULT</a></td>
-<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
-</tr>
-<tr>
-<td>status_message</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Text representation of the status code</td>
-</tr>
-<tr>
-<td>identifier</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The asynchronous listener ID.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = eos_ui_hide_friends();</code></pre>
-The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_ui_hide_friends")
-if (async_load[? "identifier"] == identifier)
-{
-    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
-    {
-        show_debug_message(async_load[? "type"] + " succeeded!");
-    }
-    else
-    {
-        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
-    }
-}</code></pre>
-The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="eos_ui_remove_notify_display_settings_updated">eos_ui_remove_notify_display_settings_updated</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UI/EOS_UI_RemoveNotifyDisplaySettingsUpdated/index.html">EOS_UI_RemoveNotifyDisplaySettingsUpdated</a></p>
-<p>This function unregisters from receiving notifications when the overlay display settings are updated.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_remove_notify_display_settings_updated(id)</code></pre>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The handle representing the registered callback (return by <a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a>)</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -477,24 +514,29 @@ The code above matches the response against the correct event <strong>type</stro
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">handle = eos_ui_add_notify_display_settings_updated();
-//...
-//...Later
-//...
-eos_ui_remove_notify_display_settings_updated(handle);</code></pre>
-The code sample above enables the display settings update notifications (<a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a>) and later disables them by referring to the previously generated handle.</p>
-<p><br></p>
+<p><div class="highlight"><pre><span></span><code>/// Step Event
+eos_ui_report_input_state(
+    keyboard_check(vk_down), keyboard_check(vk_up),
+    keyboard_check(vk_left), keyboard_check(vk_right),
+    keyboard_check(vk_enter), keyboard_check(vk_escape)
+);
+</code></pre></div>
+The above code drives the overlay's D-Pad/accept/cancel input from the keyboard every step.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_set_display_preference">eos_ui_set_display_preference</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UI/EOS_UI_SetDisplayPreference/index.html">EOS_UI_SetDisplayPreference</a></p>
-<p>This function defines any preferences for any display settings.</p>
+<h1 id="eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-add-notify-display-settings-updated">EOS_UI_AddNotifyDisplaySettingsUpdated</a></p>
+<p>Registers to receive a notification whenever the visibility or input-exclusivity of the overlay
+changes (e.g. the player opens/closes the Friends overlay, or the overlay starts/stops capturing
+exclusive input). If the returned notification ID is valid, call <a href="user_interface.html#eos_ui_remove_notify_display_settings_updated">eos_ui_remove_notify_display_settings_updated</a> when you no longer need it.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_set_display_preference(location)</code></pre>
+<div class="highlight"><pre><span></span><code>eos_ui_add_notify_display_settings_updated(callback=undefined)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -506,65 +548,24 @@ The code sample above enables the display settings update notifications (<a href
 </thead>
 <tbody>
 <tr>
-<td>location</td>
-<td><a href="user_interface.html#eos_ui_notification_location">EOS_UI_NOTIFICATION_LOCATION</a></td>
-<td>The preference for notification pop-up locations</td>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called every time the overlay's display settings change.</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="general.html#epicresult">EpicResult</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">eos_ui_set_display_preference(EOS_UI_NOTIFICATION_LOCATION.TOP_LEFT);</code></pre>
-The above code shows an example of how the function should be used. The position of the notifications will now be the top-left corner of the game screen.</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="eos_ui_show_friends">eos_ui_show_friends</h1>
-<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/UI/EOS_UI_ShowFriends/index.html">EOS_UI_ShowFriends</a></p>
-<p>This function opens the Social Overlay with a request to show the friends list.</p>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">eos_ui_show_friends(arg)</code></pre>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>arg</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The argument to be passed in</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
 </blockquote>
+<p>A notification ID, or <code>0</code> if registration failed.</p>
 <p><br></p>
 <p><strong>Triggers:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
 </blockquote>
+<p>Fires every time the overlay's visibility or input-exclusivity changes.</p>
 <table>
 <thead>
 <tr>
@@ -575,55 +576,397 @@ The above code shows an example of how the function should be used. The position
 </thead>
 <tbody>
 <tr>
-<td>type</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"eos_ui_show_friends"</code></td>
-</tr>
-<tr>
-<td>status</td>
-<td><a href="general.html#eos_result">EOS_RESULT</a></td>
-<td>The status code for the operation. <code>EOS_RESULT.SUCCESS</code> indicates that the operation succeeded; other codes indicate errors</td>
-</tr>
-<tr>
-<td>status_message</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Text representation of the status code</td>
-</tr>
-<tr>
-<td>identifier</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The asynchronous listener ID</td>
+<td>result</td>
+<td><a href="user_interface.html#epicuidisplaysettingsupdatedcallbackinfo">EpicUIDisplaySettingsUpdatedCallbackInfo</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">identifier = eos_ui_show_friends();</code></pre>
-The code sample above saves the identifier that can be used inside a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "eos_ui_show_friends")
-if (async_load[? "identifier"] == identifier)
-{
-    if (async_load[? "status"] == EOS_RESULT.SUCCESS)
-    {
-        show_debug_message(async_load[? "type"] + " succeeded!");
-    }
-    else
-    {
-        show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
-    }
-}</code></pre>
-The code above matches the response against the correct event <strong>type</strong> and logs the success of the task.</p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_remove_notify_display_settings_updated">eos_ui_remove_notify_display_settings_updated</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-remove-notify-display-settings-updated">EOS_UI_RemoveNotifyDisplaySettingsUpdated</a></p>
+<p>Unregisters a notification previously registered with <a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a>.</p>
 <p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_remove_notify_display_settings_updated(notification_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The notification ID returned by <a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_notification_location">EOS_UI_NOTIFICATION_LOCATION</h1>
-<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-ui-e-notification-location">EOS_UI_ENotificationLocation</a></p>
-<p>The UI Notification Location allows to change the positioning of the EOS notifications.</p>
+<h1 id="eos_ui_hide_friends">eos_ui_hide_friends</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-hide-friends">EOS_UI_HideFriends</a></p>
+<p>Hides the Friends overlay for the given local user, if it is currently visible.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_hide_friends(local_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the overlay has been hidden (or the request has failed).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once, with the result of the hide-friends request.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="user_interface.html#epicuihidefriendscallbackinfo">EpicUIHideFriendsCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_get_friends_visible">eos_ui_get_friends_visible</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-get-friends-visible">EOS_UI_GetFriendsVisible</a></p>
+<p>Checks whether the Friends overlay is currently visible for the given local user.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_get_friends_visible(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_get_friends_exclusive_input">eos_ui_get_friends_exclusive_input</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-get-friends-exclusive-input">EOS_UI_GetFriendsExclusiveInput</a></p>
+<p>Checks whether the Friends overlay currently has exclusive input for the given local user (i.e. it is
+consuming input that would otherwise go to your game).</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_get_friends_exclusive_input(local_user_id)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_pause_social_overlay">eos_ui_pause_social_overlay</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-pause-social-overlay">EOS_UI_PauseSocialOverlay</a></p>
+<p>Pauses or resumes rendering/input-handling of the whole social overlay. Useful when you need to show
+your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS overlay competing for input.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_pause_social_overlay(is_paused)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_paused</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> to pause the overlay, <code>false</code> to resume it.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_is_social_overlay_paused">eos_ui_is_social_overlay_paused</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-is-social-overlay-paused">EOS_UI_IsSocialOverlayPaused</a></p>
+<p>Checks whether the social overlay is currently paused (see <a href="user_interface.html#eos_ui_pause_social_overlay">eos_ui_pause_social_overlay</a>).</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_is_social_overlay_paused()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-get-notification-location-preference">EOS_UI_GetNotificationLocationPreference</a></p>
+<p>Gets the screen corner notifications are currently set to appear in (see <a href="user_interface.html#eos_ui_set_display_preference">eos_ui_set_display_preference</a>).</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_get_notification_location_preference()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="user_interface.html#epicuinotificationlocation">EpicUINotificationLocation</a></p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_show_block_player">eos_ui_show_block_player</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-block-player">EOS_UI_ShowBlockPlayer</a></p>
+<p>Shows Epic's overlay UI for blocking the given target player.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_show_block_player(local_user_id, target_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player requesting the overlay.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player to be blocked.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the overlay has been shown (or the request has failed).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once, with the result of the show-block-player request.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="user_interface.html#epicuishowblockplayercallbackinfo">EpicUIShowBlockPlayerCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_ui_show_report_player">eos_ui_show_report_player</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-report-player">EOS_UI_ShowReportPlayer</a></p>
+<p>Shows Epic's overlay UI for reporting the given target player.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This shows Epic's own report-player overlay. To submit a behavior report programmatically instead, see <a href="reports.html">Reports</a>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_ui_show_report_player(local_user_id, target_user_id, callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player requesting the overlay.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player to be reported.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Called once the overlay has been shown (or the request has failed).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Fires once, with the result of the show-report-player request.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="user_interface.html#epicuishowreportplayercallbackinfo">EpicUIShowReportPlayerCallbackInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuinotificationlocation">EpicUINotificationLocation</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-ui-enotification-location">EOS_UI_ENotificationLocation</a></p>
+<p>The screen corner notification/toast style overlay elements should appear in. Used by <a href="user_interface.html#eos_ui_set_display_preference">eos_ui_set_display_preference</a>/<a href="user_interface.html#eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</a>.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
 <li><a href="user_interface.html#eos_ui_set_display_preference">eos_ui_set_display_preference</a></li>
+<li><a href="user_interface.html#eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -635,24 +978,232 @@ The code above matches the response against the correct event <strong>type</stro
 </thead>
 <tbody>
 <tr>
-<td><code>TOP_LEFT</code></td>
-<td>Positions the overlay notification on the top-left corner</td>
+<td><code>TopLeft</code></td>
+<td></td>
 </tr>
 <tr>
-<td><code>TOP_RIGHT</code></td>
-<td>Positions the overlay notification on the top-right corner</td>
+<td><code>TopRight</code></td>
+<td></td>
 </tr>
 <tr>
-<td><code>BOTTOM_LEFT</code></td>
-<td>Positions the overlay notification on the bottom-left corner</td>
+<td><code>BottomLeft</code></td>
+<td></td>
 </tr>
 <tr>
-<td><code>BOTTOM_RIGHT</code></td>
-<td>Positions the overlay notification on the bottom-right corner</td>
+<td><code>BottomRight</code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuishowfriendscallbackinfo">EpicUIShowFriendsCallbackInfo</h1>
+<p>The result of a <a href="user_interface.html#eos_ui_show_friends">eos_ui_show_friends</a> request.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_interface.html#eos_ui_show_friends">eos_ui_show_friends</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the request. <code>EpicResult.Success</code> indicates the overlay was shown.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player who requested the overlay.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuishownativeprofilecallbackinfo">EpicUIShowNativeProfileCallbackInfo</h1>
+<p>The result of a <a href="user_interface.html#eos_ui_show_native_profile">eos_ui_show_native_profile</a> request.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_interface.html#eos_ui_show_native_profile">eos_ui_show_native_profile</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the request. <code>EpicResult.Success</code> indicates the overlay was shown.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player who requested the overlay.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player whose native profile was requested.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuidisplaysettingsupdatedcallbackinfo">EpicUIDisplaySettingsUpdatedCallbackInfo</h1>
+<p>The overlay's current display settings, delivered on every <a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a> notification.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_visible</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> if the overlay is currently visible.</td>
+</tr>
+<tr>
+<td>is_exclusive_input</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td><code>true</code> if the overlay currently has exclusive input.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuihidefriendscallbackinfo">EpicUIHideFriendsCallbackInfo</h1>
+<p>The result of a <a href="user_interface.html#eos_ui_hide_friends">eos_ui_hide_friends</a> request.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_interface.html#eos_ui_hide_friends">eos_ui_hide_friends</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the request. <code>EpicResult.Success</code> indicates the overlay was hidden.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player who requested the overlay be hidden.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuishowblockplayercallbackinfo">EpicUIShowBlockPlayerCallbackInfo</h1>
+<p>The result of a <a href="user_interface.html#eos_ui_show_block_player">eos_ui_show_block_player</a> request.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_interface.html#eos_ui_show_block_player">eos_ui_show_block_player</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the request. <code>EpicResult.Success</code> indicates the overlay was shown.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player who requested the overlay.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player to be blocked.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicuishowreportplayercallbackinfo">EpicUIShowReportPlayerCallbackInfo</h1>
+<p>The result of a <a href="user_interface.html#eos_ui_show_report_player">eos_ui_show_report_player</a> request.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="user_interface.html#eos_ui_show_report_player">eos_ui_show_report_player</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result_code</td>
+<td><a href="general.html#epicresult">EpicResult</a></td>
+<td>The result of the request. <code>EpicResult.Success</code> indicates the overlay was shown.</td>
+</tr>
+<tr>
+<td>local_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the local player who requested the overlay.</td>
+</tr>
+<tr>
+<td>target_user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Product User ID of the player to be reported.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
               
             </div>
           </div><footer>
@@ -665,7 +1216,7 @@ The code above matches the response against the correct event <strong>type</stro
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2025</p></p>
+      <p><p align="center">GameMaker 2026</p></p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

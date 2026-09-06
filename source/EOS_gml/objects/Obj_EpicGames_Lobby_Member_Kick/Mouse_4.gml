@@ -1,2 +1,0 @@
-
-eos_lobby_kick_member(Obj_EpicGames_Lobbies.lobby_id,userID,user_id)

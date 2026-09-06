@@ -1,3 +1,0 @@
-
-eos_sessions_start_session(Obj_EpicGames_Sessions.SessionName)
-

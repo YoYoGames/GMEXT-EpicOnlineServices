@@ -1,0 +1,77 @@
+
+// This tile is used for both search results AND invitation lists.
+// If `invite_id` is set, we treat it as an invitation; otherwise we use the
+// search-result handle by index. Both paths produce a session_details_id
+// (uint64 handle) that join_session needs.
+
+var _details_id = 0
+
+if(variable_instance_exists(id, "invite_id") && invite_id != "")
+{
+	_details_id = eos_sessions_copy_session_handle_by_invite_id(invite_id)
+	if(_details_id == 0)
+	{
+		show_debug_message($"copy_session_handle_by_invite_id failed for {invite_id}")
+		return
+	}
+}
+else
+{
+	_details_id = eos_sessions_session_search_copy_search_result_by_index(global.session_search_id, index)
+	if(_details_id == 0)
+	{
+		show_debug_message($"copy_search_result_by_index({index}) returned 0")
+		return
+	}
+}
+
+var _struct = eos_sessions_session_details_copy_info(_details_id)
+show_debug_message(_struct)
+
+// Carry both the details handle and an instance back-reference through
+// `method(struct, fn)` - anonymous functions don't close over `var` locals
+// when bound to a struct, so the captured fields are read off `self`.
+var _ctx = {
+	owner:      self,
+	details_id: _details_id,
+	session_id: data.session_id,
+}
+
+// Join under our single fixed LOCAL name via the helper, which tears down any
+// stale local session first (so leave -> rejoin works) and owns the precondition
+// guard. The local name is independent of the server session_id; using a fixed
+// one is what lets CleanUp's destroy_session(SessionName) tear this join down.
+obj_eos_sessions.join_session_clean(_details_id, method(_ctx, function(_info)
+{
+	// EpicSessionsJoinSessionCallbackInfo: .result_code
+	show_debug_message("join_session: " + eos_api_result_to_string(_info.result_code))
+
+	// Now safe to release the details handle - the SDK has consumed it.
+	eos_sessions_session_details_release(details_id)
+
+	if(_info.result_code != EpicResult.Success) {return}
+
+	instance_create_depth(0, 0, 0, obj_eos_sessions_p2p, {owner: false})
+
+	// Add ourselves to the session's official roster. Without this,
+	// eos_sessions_active_session_get_registered_player_count() never sees us
+	// from the host's perspective - joining alone does NOT auto-register.
+	eos_sessions_register_players(obj_eos_sessions.SessionName, [global.product_user_id], function(_reg)
+	{
+		// EpicSessionsRegisterPlayersCallbackInfo: .result_code, .registered_players, .sanctioned_players
+		show_debug_message($"register_players (joiner): {eos_api_result_to_string(_reg.result_code)} registered={_reg.registered_players}")
+	})
+
+	// Send a hello packet to the session host so P2P opens both ways.
+	var _handle = eos_sessions_copy_active_session_handle(obj_eos_sessions.SessionName)
+	if(_handle != 0)
+	{
+		var _info_struct = eos_sessions_active_session_copy_info(_handle)
+		eos_sessions_active_session_release(_handle)
+
+		var _buff = buffer_create(256, buffer_fixed, 1)
+		buffer_write(_buff, buffer_u8, 1)
+		eos_p2p_send_packet(global.product_user_id, _info_struct.owner_user_id, obj_eos_sessions_p2p.socketName, 0, _buff, buffer_tell(_buff), true, EpicPacketReliability.ReliableOrdered, false)
+		buffer_delete(_buff)
+	}
+}))

@@ -1,475 +1,381 @@
 // Functions
 
-
 /**
- * @function eos_leaderboards_copy_leaderboard_definition_by_index
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardDefinitionByIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_CopyLeaderboardDefinitionByIndex/index.html)
- * 
- * This function fetches a leaderboard definition from the cache using an index.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_definitions} to store values in cache.]]
- * 
- * @param {real} index Index of the leaderboard definition to retrieve from the cache
- * 
- * @returns {struct.LeaderboardDefinition}
- * 
- * @example
- * ```gml
- * var _count = eos_leaderboards_get_leaderboard_definition_count();
- * for(var i = 0 ; i < _count ; i++)
- * {
- *     var _struct = eos_leaderboards_copy_leaderboard_definition_by_index(i);
- *     var _leaderboard_id = _struct.leaderboard_id;
- * }
- * ```
- * The above code shows an example of how the function should be used. The leaderboard definition data is returned providing an leaderboard index.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId/index.html)
- * 
- * This function fetches a leaderboard definition from the cache using a leaderboard ID.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_definitions} to store values in cache.]]
- * 
- * @param {string} leaderboard_id The ID of the leaderboard whose definition you want to copy from the cache
- * 
- * @returns {struct.LeaderboardDefinition}
- * 
- * @example
- * ```gml
- * var _struct = eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id("MyLeaderboard");
- * if(_struct.status == EOS_RESULT.SUCCESS)
- * {
- *     var _leaderboard_id = _struct.leaderboard_id;
- * }
- * ```
- * The above code shows an example of how the function should be used. The leaderboard definition data is returned providing a leaderboard ID.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_copy_leaderboard_record_by_index
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardRecordByIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_CopyLeaderboardRecordByIndex/index.html)
- * 
- * This function fetches a leaderboard record from a given index.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_ranks} to store values in cache.]]
- * 
- * @param {real} index Index of the leaderboard record to retrieve from the cache
- * 
- * @returns {struct.LeaderboardRecord}
- * 
- * @example
- * ```gml
- * var _count = eos_leaderboards_get_leaderboard_record_count();
- * for(var i = 0 ; i < _count ; i++)
- * {
- *     var _struct = eos_leaderboards_copy_leaderboard_record_by_index(i);
- *     var _rank = _struct.rank;
- * }
- * ```
- * The above code shows an example of how the function should be used. The leaderboard record data is returned providing a leaderboard index.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_copy_leaderboard_record_by_user_id
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardRecordByUserId](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_CopyLeaderboardRecordByUserId/index.html)
- * 
- * This function fetches a leaderboard record from a given user ID.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_ranks} to store values in cache.]]
- * 
- * @param {string} user_id Leaderboard data will be copied from the cache if it relates to the user matching this Product User ID
- * 
- * @returns {struct.LeaderboardRecord}
- * 
- * @example
- * ```gml
- * var _struct = eos_leaderboards_copy_leaderboard_record_by_user_id("MyLeaderboard");
- * if(_struct.status == EOS_RESULT.SUCCESS)
- * {
- *     var _rank = _struct.rank;
- * }
- * ```
- * The above code shows an example of how the function should be used. The leaderboard record data is returned providing an user ID.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_copy_leaderboard_user_score_by_index
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardUserScoreByIndex](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_CopyLeaderboardUserScoreByIndex/index.html)
- * 
- * This function fetches a leaderboard user score from a given index.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_user_scores} to store values in cache.]]
- * 
- * @param {real} index The index of the sorted leaderboard user score to retrieve from the cache.
- * @param {string} stat_name The name of the stat used to rank the leaderboard.
- * 
- * @returns {struct.LeaderboardUserScore}
- * 
- * @example
- * ```gml
- * var _count = eos_leaderboards_get_leaderboard_user_score_count();
- * for(var i = 0 ; i < _count ; i++)
- * {
- *     var _struct = eos_leaderboards_copy_leaderboard_user_score_by_index(i);
- *     var _score = _struct.score;
- * }
- * ```
- * The above code shows an example of how the function should be used. The leaderboard user score is returned providing an index.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_copy_leaderboard_user_score_by_user_id
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardUserScoreByUserId](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_CopyLeaderboardUserScoreByUserId/index.html)
- * 
- * This function fetches a leaderboard user score from a given user ID.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_user_scores} to store values in cache.]]
- * 
- * @param {string} user_id The Product User ID to look for when copying leaderboard score data from the cache
- * @param {string} stat_name The name of the stat that is used to rank this leaderboard
- * 
- * @returns {struct.LeaderboardUserScore}
- * 
- * @example
- * ```gml
- * var _struct = eos_leaderboards_copy_leaderboard_user_score_by_user_id("MyLeaderboard");
- * if(_struct.status == EOS_RESULT.SUCCESS)
- * {
- *     var _score = _struct.score;
- * }
- * ```
- * The above code shows an example of how the function should be used. The leaderboard user score is returned providing an user ID.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_get_leaderboard_definition_count
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardDefinitionCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_GetLeaderboardDefinitionCount/index.html)
- * 
- * This function fetches the number of leaderboard definitions that are cached locally.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_definitions} to store values in cache.]]
- * 
- * @returns {real}
- * 
- * @example
- * ```gml
- * var _count = eos_leaderboards_get_leaderboard_definition_count();
- * for(var i = 0 ; i < _count ; i++)
- * {
- *     var _struct = eos_leaderboards_copy_leaderboard_definition_by_index(i);
- *     var _leaderboard_id = _struct.leaderboard_id;
- * }
- * ```
- * The above code shows an example of how the function should be used. After a successful call to ${function.eos_leaderboards_query_leaderboard_definitions}, the function ${function.eos_leaderboards_get_leaderboard_definition_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_leaderboards_copy_leaderboard_definition_by_index} function.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_get_leaderboard_record_count
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardRecordCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_GetLeaderboardRecordCount/index.html)
- * 
- * This function fetches the number of leaderboard records that are cached locally.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_ranks} to store values in cache.]]
- * 
- * @returns {real}
- * 
- * @example
- * ```gml
- * var _count = eos_leaderboards_get_leaderboard_record_count();
- * for(var i = 0 ; i < _count ; i++)
- * {
- *     var _struct = eos_leaderboards_copy_leaderboard_record_by_index(i);
- *     var _rank = _struct.rank;
- * }
- * ```
- * The above code shows an example of how the function should be used. After a successful call to ${function.eos_leaderboards_query_leaderboard_ranks}, the function ${function.eos_leaderboards_get_leaderboard_record_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_leaderboards_copy_leaderboard_record_by_index} function.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_get_leaderboard_user_score_count
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardUserScoreCount](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_GetLeaderboardUserScoreCount/index.html)
- * 
- * This function fetches the number of leaderboard user scores that are cached locally.
- * 
- * [[Note: Requires a previous call to ${function.eos_leaderboards_query_leaderboard_user_scores} to store values in cache.]]
- * 
- * @returns {real}
- * 
- * @example
- * ```gml
- * var _count = eos_leaderboards_get_leaderboard_user_score_count();
- * for(var i = 0 ; i < _count; i++)
- * {
- *     var _struct = eos_leaderboards_copy_leaderboard_user_score_by_index(i);
- *     var _score = _struct.score;
- * }
- * ```
- * The above code shows an example of how the function should be used. After a successful call to ${function.eos_leaderboards_query_leaderboard_user_scores}, the function ${function.eos_leaderboards_get_leaderboard_user_score_count} will return the number of entries in the query array which can then be accessed using the ${function.eos_leaderboards_copy_leaderboard_user_score_by_index} function.
- * @function_end
- */
-
-/**
- * @function eos_leaderboards_query_leaderboard_definitions
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardDefinitions](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardDefinitions/index.html)
- * 
- * This function queries for a list of existing leaderboards definitions including their attributes.
- * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
- * 
- * * ${function.eos_leaderboards_copy_leaderboard_definition_by_index}
- * * ${function.eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id}
- * * ${function.eos_leaderboards_get_leaderboard_definition_count}
- * 
- * @param {string} user_id Product User ID for user who is querying definitions. Must be set when using a client policy that requires a valid logged in user. Not used for Dedicated Server where no user is available.
- * @param {int64} start_time An optional POSIX timestamp for the leaderboard's start time, or `undefined`.
- * @param {int64} end_time An optional POSIX timestamp for the leaderboard's end time, or `undefined`.
- * 
- * @returns {real}
- * 
- * @event social
- * @member {string} type `"eos_leaderboards_query_leaderboard_definitions"`
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID
+ * @function eos_leaderboards_query_definitions
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardDefinitions](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-definitions)
+ *
+ * Queries the list of leaderboard definitions for the running application. Call this before using
+ * ${function.eos_leaderboards_get_definition_count}, ${function.eos_leaderboards_copy_definition_by_index}
+ * or ${function.eos_leaderboards_copy_definition_by_id}.
+ *
+ * @param {String} local_user_id The Product User ID of the user querying the definitions.
+ * @param {Real} start_time Unix timestamp to restrict the query to, or ${constant.macros}'s `EOS_LEADERBOARDS_TIME_UNDEFINED` for no lower bound.
+ * @param {Real} end_time Unix timestamp to restrict the query to, or ${constant.macros}'s `EOS_LEADERBOARDS_TIME_UNDEFINED` for no upper bound.
+ * @param {Function} [callback] Function invoked when the query completes.
+ *
+ * @event callback
+ * @desc Called once when the definitions query completes.
+ * @member {Struct.EpicLeaderboardsQueryDefinitionsCallbackInfo} result The result of the query.
  * @event_end
- * 
+ *
  * @example
  * ```gml
- * identifier = eos_leaderboards_query_leaderboard_definitions();
- * ```
- * The code sample above saves the identifier that can be used inside a ${event.social}.
- * 
- * ```gml
- * if (async_load[? "type"] == "eos_leaderboards_query_leaderboard_definitions")
- * if(async_load[? "identifier"] == identifier)
+ * eos_leaderboards_query_definitions(local_user_id, EOS_LEADERBOARDS_TIME_UNDEFINED, EOS_LEADERBOARDS_TIME_UNDEFINED, function(_result)
  * {
- *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
+ *     if (_result.result_code == EpicResult.Success)
  *     {
- *         show_debug_message(async_load[? "type"] + " succeeded!");
+ *         show_debug_message($"Loaded {eos_leaderboards_get_definition_count()} leaderboard definitions");
  *     }
- *     else
- *     {
- *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
- *     }
- * }
+ * });
  * ```
- * The code above matches the response against the correct event **type** and logs the success of the task.
+ * The above code queries every leaderboard definition, with no time restriction.
  * @function_end
  */
 
 /**
- * @function eos_leaderboards_query_leaderboard_ranks
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardRanks](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardRanks/index.html)
- * 
- * This function retrieves top leaderboard records by rank in the leaderboard matching the given leaderboard ID. 
- * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
- * 
- * * ${function.eos_leaderboards_copy_leaderboard_record_by_index}
- * * ${function.eos_leaderboards_copy_leaderboard_record_by_user_id}
- * * ${function.eos_leaderboards_get_leaderboard_record_count}
- * 
- * @param {string} user_id The ID of the leaderboard whose information you want to retrieve
- * @param {string} leaderboard_id Product User ID for user who is querying ranks. Must be set when using a client policy that requires a valid logged in user. Not used for Dedicated Server where no user is available
- * 
- * @returns {real}
- * 
- * @event social
- * @member {string} type `"eos_leaderboards_query_leaderboard_ranks"`
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID
+ * @function eos_leaderboards_query_ranks
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardRanks](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-ranks)
+ *
+ * Queries the top-ranked entries (records) for a single leaderboard. Call this before using
+ * ${function.eos_leaderboards_get_record_count}, ${function.eos_leaderboards_copy_record_by_index} or
+ * ${function.eos_leaderboards_copy_record_by_user_id}.
+ *
+ * @param {String} local_user_id The Product User ID of the user querying the ranks.
+ * @param {String} leaderboard_id ID of the leaderboard to query, as returned by ${struct.EpicLeaderboardDefinition}'s `leaderboard_id`.
+ * @param {Function} [callback] Function invoked when the query completes.
+ *
+ * @event callback
+ * @desc Called once when the ranks query completes.
+ * @member {Struct.EpicLeaderboardsQueryRanksCallbackInfo} result The result of the query.
  * @event_end
- * 
+ *
  * @example
  * ```gml
- * identifier = eos_leaderboards_query_leaderboard_ranks(user_id, leaderboard_id);
- * ```
- * The code sample above saves the identifier that can be used inside a ${event.social}.
- * 
- * ```gml
- * if (async_load[? "type"] == "eos_leaderboards_query_leaderboard_ranks")
- * if (async_load[? "identifier"] == identifier)
+ * eos_leaderboards_query_ranks(local_user_id, "high_score", function(_result)
  * {
- *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
+ *     if (_result.result_code == EpicResult.Success)
  *     {
- *         show_debug_message(async_load[? "type"] + " succeeded!");
+ *         show_debug_message($"Loaded {eos_leaderboards_get_record_count()} records for {_result.leaderboard_id}");
  *     }
- *     else
- *     {
- *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
- *     }
- * }
+ * });
  * ```
- * The code above matches the response against the correct event **type** and logs the success of the task.
+ * The above code queries the top records for the `"high_score"` leaderboard.
  * @function_end
  */
 
 /**
- * @function eos_leaderboards_query_leaderboard_user_scores
- * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardUserScores](https://dev.epicgames.com/docs/services/en-US/API/Members/Functions/Leaderboards/EOS_Leaderboards_QueryLeaderboardUserScores/index.html)
- * 
- * This function queries for a list of scores for a given list of users.
- * Once the callback has been fired with a successful ${constant.EOS_RESULT}, it is possible to call one of the following functions:
- * 
- * * ${function.eos_leaderboards_copy_leaderboard_user_score_by_index}
- * * ${function.eos_leaderboards_copy_leaderboard_user_score_by_user_id}
- * * ${function.eos_leaderboards_get_leaderboard_user_score_count}
- * 
- * @param {string} user_id The argument to be passed in
- * @param {string} leaderboard_id Product User ID indicating the users whose scores you want to retrieve
- * @param {string} name The name of the stat to query.
- * @param {constant.EOS_LEADERBOARD_AGGREGATION} aggregation Aggregation used to sort the cached user scores.
- * @param {real} start_time An optional POSIX timestamp, or `undefined`; results will only include scores made after this time
- * @param {real} end_time An optional POSIX timestamp, or `undefined`; results will only include scores made before this time
- * 
- * @returns {real}
- * 
- * @event social
- * @member {string} type `"eos_leaderboards_query_leaderboard_user_scores"`
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {real} identifier The asynchronous listener ID
+ * @function eos_leaderboards_query_user_scores
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_QueryLeaderboardUserScores](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-user-scores)
+ *
+ * Queries scores for a specific set of users across one or more stats, regardless of where those users rank.
+ * Use this instead of ${function.eos_leaderboards_query_ranks} when you want specific players' scores (e.g.
+ * a friends list) rather than the overall top ranks. Call this before using
+ * ${function.eos_leaderboards_get_user_score_count} and ${function.eos_leaderboards_copy_user_score_by_index}.
+ *
+ * @param {String} local_user_id The Product User ID of the user querying the scores.
+ * @param {Array[String]} target_user_ids The Product User IDs to fetch scores for.
+ * @param {Array[Struct.EpicLeaderboardStatQuery]} stat_queries The stats to query scores for, and how to aggregate them.
+ * @param {Real} start_time Unix timestamp to restrict the query to, or ${constant.macros}'s `EOS_LEADERBOARDS_TIME_UNDEFINED` for no lower bound.
+ * @param {Real} end_time Unix timestamp to restrict the query to, or ${constant.macros}'s `EOS_LEADERBOARDS_TIME_UNDEFINED` for no upper bound.
+ * @param {Function} [callback] Function invoked when the query completes.
+ *
+ * @event callback
+ * @desc Called once when the user-scores query completes.
+ * @member {Struct.EpicLeaderboardsQueryUserScoresCallbackInfo} result The result of the query.
  * @event_end
- * 
+ *
+ * [[Note: Results for every queried stat are read back together with ${function.eos_leaderboards_get_user_score_count}/${function.eos_leaderboards_copy_user_score_by_index}, keyed by `stat_name` - call the accessor once per stat you queried.]]
+ *
  * @example
  * ```gml
- * identifier = eos_leaderboards_query_leaderboard_user_scores(user_id, leaderboard_id, name, aggregation, start_time, end_time);
- * ```
- * The code sample above saves the identifier that can be used inside a ${event.social}.
- * 
- * ```gml
- * if (async_load[? "type"] == "eos_leaderboards_query_leaderboard_user_scores")
- * if (async_load[? "identifier"] == identifier)
+ * var _stat_queries = [{ stat_name: "high_score", aggregation: EpicLeaderboardAggregation.Max }];
+ *
+ * eos_leaderboards_query_user_scores(local_user_id, [friend_a_id, friend_b_id], _stat_queries, EOS_LEADERBOARDS_TIME_UNDEFINED, EOS_LEADERBOARDS_TIME_UNDEFINED, function(_result)
  * {
- *     if (async_load[? "status"] == EOS_RESULT.SUCCESS)
+ *     if (_result.result_code == EpicResult.Success)
  *     {
- *         show_debug_message(async_load[? "type"] + " succeeded!");
+ *         var _count = eos_leaderboards_get_user_score_count("high_score");
+ *         for (var i = 0; i < _count; i++)
+ *         {
+ *             var _score = eos_leaderboards_copy_user_score_by_index("high_score", i);
+ *             show_debug_message($"{_score.user_id}: {_score.score}");
+ *         }
  *     }
- *     else
- *     {
- *         show_debug_message(async_load[? "type"] + " failed: " + async_load[? "status_message"]);
- *     }
- * }
+ * });
  * ```
- * The code above matches the response against the correct event **type** and logs the success of the task.
+ * The above code queries two friends' high scores.
  * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_get_definition_count
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardDefinitionCount](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-definition-count)
+ *
+ * Returns the number of leaderboard definitions available, from the last successful call to
+ * ${function.eos_leaderboards_query_definitions}.
+ *
+ * @returns {Real}
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_get_record_count
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardRecordCount](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-record-count)
+ *
+ * Returns the number of records available, from the last successful call to ${function.eos_leaderboards_query_ranks}.
+ *
+ * @returns {Real}
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_get_user_score_count
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_GetLeaderboardUserScoreCount](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-user-score-count)
+ *
+ * Returns the number of user scores available for `stat_name`, from the last successful call to
+ * ${function.eos_leaderboards_query_user_scores}.
+ *
+ * @param {String} stat_name Name of the stat to count scores for, matching one of the `stat_name`s passed to ${function.eos_leaderboards_query_user_scores}.
+ *
+ * @returns {Real}
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_copy_definition_by_index
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardDefinitionByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-definition-by-index)
+ *
+ * Fetches a leaderboard definition by index, from the cached data populated by ${function.eos_leaderboards_query_definitions}.
+ *
+ * @param {Real} index Index of the definition, between 0 and ${function.eos_leaderboards_get_definition_count} - 1.
+ *
+ * @returns {Struct.EpicLeaderboardDefinition}
+ *
+ * [[Warning: Returns `undefined` if `index` is out of range or no definitions have been queried yet - check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_copy_definition_by_id
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-definition-by-leaderboard-id)
+ *
+ * Fetches a leaderboard definition by its leaderboard ID, from the cached data populated by
+ * ${function.eos_leaderboards_query_definitions}.
+ *
+ * @param {String} leaderboard_id ID of the leaderboard definition to fetch.
+ *
+ * @returns {Struct.EpicLeaderboardDefinition}
+ *
+ * [[Warning: Returns `undefined` if `leaderboard_id` doesn't match any queried definition - check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_copy_record_by_index
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardRecordByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-record-by-index)
+ *
+ * Fetches a leaderboard record (rank entry) by index, from the cached data populated by
+ * ${function.eos_leaderboards_query_ranks}.
+ *
+ * @param {Real} index Index of the record, between 0 and ${function.eos_leaderboards_get_record_count} - 1.
+ *
+ * @returns {Struct.EpicLeaderboardRecord}
+ *
+ * [[Warning: Returns `undefined` if `index` is out of range or no ranks have been queried yet - check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_copy_record_by_user_id
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardRecordByUserId](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-record-by-user-id)
+ *
+ * Fetches a specific user's leaderboard record (rank entry), from the cached data populated by
+ * ${function.eos_leaderboards_query_ranks}.
+ *
+ * @param {String} user_id The Product User ID whose record to fetch.
+ *
+ * @returns {Struct.EpicLeaderboardRecord}
+ *
+ * [[Warning: Returns `undefined` if `user_id` isn't part of the queried ranks - check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+/**
+ * @function eos_leaderboards_copy_user_score_by_index
+ * @desc **Epic Online Services Function:** [EOS_Leaderboards_CopyLeaderboardUserScoreByIndex](https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-user-score-by-index)
+ *
+ * Fetches one user score by index for `stat_name`, from the cached data populated by
+ * ${function.eos_leaderboards_query_user_scores}.
+ *
+ * @param {String} stat_name Name of the stat to read a score for, matching one of the `stat_name`s passed to ${function.eos_leaderboards_query_user_scores}.
+ * @param {Real} index Index of the score, between 0 and ${function.eos_leaderboards_get_user_score_count} - 1.
+ *
+ * @returns {Struct.EpicLeaderboardUserScore}
+ *
+ * [[Warning: Returns `undefined` if `stat_name` wasn't queried or `index` is out of range - check ${function.eos_api_last_error} for the reason.]]
+ *
+ * @function_end
+ */
+
+// Structs
+
+/**
+ * @struct EpicLeaderboardStatQuery
+ * @desc One stat to query in ${function.eos_leaderboards_query_user_scores}, and how to aggregate multiple
+ * entries for that stat into a single score.
+ *
+ * @member {String} stat_name Name of the stat to query.
+ * @member {Constant.EpicLeaderboardAggregation} aggregation How to aggregate the stat's values into a score.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicLeaderboardsQueryDefinitionsCallbackInfo
+ * @desc The result of ${function.eos_leaderboards_query_definitions}.
+ *
+ * @member {Constant.EpicResult} result_code `EpicResult.Success` if the definitions were queried successfully.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicLeaderboardsQueryRanksCallbackInfo
+ * @desc The result of ${function.eos_leaderboards_query_ranks}.
+ *
+ * @member {Constant.EpicResult} result_code `EpicResult.Success` if the ranks were queried successfully.
+ * @member {String} leaderboard_id ID of the leaderboard that was queried.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicLeaderboardsQueryUserScoresCallbackInfo
+ * @desc The result of ${function.eos_leaderboards_query_user_scores}.
+ *
+ * @member {Constant.EpicResult} result_code `EpicResult.Success` if the user scores were queried successfully.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicLeaderboardDefinition
+ * @desc A leaderboard definition, as returned by ${function.eos_leaderboards_copy_definition_by_index}/
+ * ${function.eos_leaderboards_copy_definition_by_id}.
+ *
+ * @member {String} leaderboard_id ID of the leaderboard.
+ * @member {String} stat_name The stat this leaderboard ranks.
+ * @member {Real} start_time Unix timestamp the leaderboard's tracked period starts at.
+ * @member {Real} end_time Unix timestamp the leaderboard's tracked period ends at.
+ * @member {String} aggregation How scores are aggregated for this leaderboard, as one of ${constant.EpicLeaderboardAggregation}'s member names (`"Min"`/`"Max"`/`"Sum"`/`"Latest"`).
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicLeaderboardRecord
+ * @desc A single ranked entry on a leaderboard, as returned by ${function.eos_leaderboards_copy_record_by_index}/
+ * ${function.eos_leaderboards_copy_record_by_user_id}.
+ *
+ * @member {String} user_id The Product User ID that holds this record.
+ * @member {Real} rank The record's rank on the leaderboard (1-based).
+ * @member {Real} score The record's score.
+ * @member {String} user_display_name Display name of the user, when available.
+ *
+ * @struct_end
+ */
+
+/**
+ * @struct EpicLeaderboardUserScore
+ * @desc A single user's score for a queried stat, as returned by ${function.eos_leaderboards_copy_user_score_by_index}.
+ *
+ * @member {String} user_id The Product User ID the score belongs to.
+ * @member {Real} score The user's aggregated score.
+ *
+ * @struct_end
  */
 
 // Constants
 
 /**
- * @constant EOS_LEADERBOARD_AGGREGATION
- * @desc **Epic Online Services Enum:** [EOS_ELeaderboardAggregation](https://dev.epicgames.com/docs/en-US/api-ref/enums/eos-e-leaderboard-aggregation)
- * 
- * These constants represent the different leaderboard aggregation types.
- * 
- * @member MIN Scores are aggregated by minimum.
- * @member MAX Scores are aggregated by maximum.
- * @member SUM Scores are aggregated by the sum of the values.
- * @member LATEST Scores are aggregated by the last value.
- * @constant_end
+ * @const EpicLeaderboardAggregation
+ * @desc **Epic Online Services Enum:** [EOS_ELeaderboardAggregation](https://dev.epicgames.com/docs/api-ref/enums/eos-e-leaderboard-aggregation)
+ *
+ * How a leaderboard or a user-scores query combines multiple stat ingests into a single score.
+ *
+ * @member Min The lowest ingested value.
+ * @member Max The highest ingested value.
+ * @member Sum The sum of all ingested values.
+ * @member Latest The most recently ingested value.
+ *
+ * @const_end
  */
 
 /**
- * @constant EOS_LEADERBOARDS_TIME_UNDEFINED
- * @desc This macro holds a timestamp value representing an undefined time for Epic Online Services leaderboards.
- * 
- * @constant_end
+ * @const macros
+ * @desc Standalone constants used by this module.
+ *
+ * @member EOS_LEADERBOARDS_TIME_UNDEFINED Pass this for `start_time`/`end_time` in ${function.eos_leaderboards_query_definitions}/${function.eos_leaderboards_query_user_scores} to leave that bound unrestricted. Value: `-1`.
+ *
+ * @const_end
  */
-
-
-// Structs
-
-/**
- * @struct LeaderboardUserScore
- * @desc A leaderboard definition is represented by a struct and contains information about a single leaderboard user score.
- * 
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {string} user_id The Product User ID of the user who got this score
- * @member {real} score Leaderboard score
- * @struct_end
- */
-
-/**
- * @struct LeaderboardRecord
- * @desc A leaderboard record is represented by a struct and contains information about a single leaderboard record.
- * 
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {string} user_id The Product User ID associated with this record
- * @member {real} rank Sorted position on leaderboard
- * @member {real} score Leaderboard score
- * @member {string} user_display_name The latest display name seen for the user since they last time logged in. This is empty if the user does not have a display name set
- * @struct_end
- */
-
-/**
- * @struct LeaderboardDefinition
- * @desc An leaderboard definition is represented by a struct and contains information about a single leaderboard definition.
- * 
- * @member {constant.EOS_RESULT} status The status code for the operation. `EOS_RESULT.SUCCESS` indicates that the operation succeeded; other codes indicate errors
- * @member {string} status_message Text representation of the status code
- * @member {string} leaderboard_id Unique ID to identify leaderboard.
- * @member {string} stat_name Name of stat used to rank leaderboard.
- * @member {real} start_time The POSIX timestamp for the start time, or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
- * @member {real} end_time The POSIX timestamp for the end time, or or ${constant.EOS_LEADERBOARDS_TIME_UNDEFINED}.
- * @member {constant.EOS_LEADERBOARD_AGGREGATION} aggregation Aggregation used to sort the leaderboard.
- * @struct_end
- */
-
 
 /**
  * @module leaderboards
  * @title Leaderboards
- * @desc **Epic Online Services Interface:** [Leaderboards Interface](https://dev.epicgames.com/docs/game-services/leaderboards)
- * 
- * The [Leaderboards Interface](https://dev.epicgames.com/docs/game-services/leaderboards) gives developers using **Epic Online Services** (EOS) the ability to rank scores from their entire player base, so that players can compete with their friends or other players worldwide for the top score. Each game can support multiple leaderboards, collecting scores from different sources, and ranking them with different scoring modes.
- * 
+ * @desc **Epic Online Services Interface:** [Leaderboards Interface](https://dev.epicgames.com/docs/game-services/eos-leaderboards-interface)
+ *
+ * The Leaderboards Interface lets you query leaderboard definitions, top ranks, and specific users' scores.
+ * Leaderboards are driven by stats - see ${module.stats} for ingesting the values leaderboards rank.
+ *
+ * [[Note: Query before you read: ${function.eos_leaderboards_query_definitions} populates the definition
+ * accessors, ${function.eos_leaderboards_query_ranks} populates the record accessors, and
+ * ${function.eos_leaderboards_query_user_scores} populates the user-score accessors.]]
+ *
  * @section_func
- * @desc These functions are provided for handling leaderboards:
- * 
- * @ref eos_leaderboards_copy_leaderboard_definition_by_index
- * @ref eos_leaderboards_copy_leaderboard_definition_by_leaderboard_id
- * @ref eos_leaderboards_copy_leaderboard_record_by_index
- * @ref eos_leaderboards_copy_leaderboard_record_by_user_id
- * @ref eos_leaderboards_copy_leaderboard_user_score_by_index
- * @ref eos_leaderboards_copy_leaderboard_user_score_by_user_id
- * @ref eos_leaderboards_get_leaderboard_definition_count
- * @ref eos_leaderboards_get_leaderboard_record_count
- * @ref eos_leaderboards_get_leaderboard_user_score_count
- * @ref eos_leaderboards_query_leaderboard_definitions
- * @ref eos_leaderboards_query_leaderboard_ranks
- * @ref eos_leaderboards_query_leaderboard_user_scores
- * 
+ * @desc Provided functions:
+ *
+ * @ref eos_leaderboards_query_definitions
+ * @ref eos_leaderboards_query_ranks
+ * @ref eos_leaderboards_query_user_scores
+ * @ref eos_leaderboards_get_definition_count
+ * @ref eos_leaderboards_get_record_count
+ * @ref eos_leaderboards_get_user_score_count
+ * @ref eos_leaderboards_copy_definition_by_index
+ * @ref eos_leaderboards_copy_definition_by_id
+ * @ref eos_leaderboards_copy_record_by_index
+ * @ref eos_leaderboards_copy_record_by_user_id
+ * @ref eos_leaderboards_copy_user_score_by_index
+ *
  * @section_end
- * 
- * @section_const
- * @desc These are the constants used for leaderboards:
- * 
- * @ref EOS_LEADERBOARD_AGGREGATION
- * @ref EOS_LEADERBOARDS_TIME_UNDEFINED
- * 
- * @section_end
- * 
+ *
  * @section_struct
- * @desc These are the structures used by this API:
- * 
- * @ref LeaderboardDefinition
- * @ref LeaderboardRecord
- * @ref LeaderboardUserScore
- * 
+ * @desc These are the structs used by this module:
+ *
+ * @ref EpicLeaderboardStatQuery
+ * @ref EpicLeaderboardsQueryDefinitionsCallbackInfo
+ * @ref EpicLeaderboardsQueryRanksCallbackInfo
+ * @ref EpicLeaderboardsQueryUserScoresCallbackInfo
+ * @ref EpicLeaderboardDefinition
+ * @ref EpicLeaderboardRecord
+ * @ref EpicLeaderboardUserScore
+ *
  * @section_end
- * 
+ *
+ * @section_const
+ * @desc These are the constants used by this module:
+ *
+ * @ref EpicLeaderboardAggregation
+ * @ref macros
+ *
+ * @section_end
+ *
  * @module_end
  */

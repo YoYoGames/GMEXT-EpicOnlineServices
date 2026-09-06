@@ -1,20 +1,11 @@
-## FINAL RELEASE OF THE 3.x EXTENSION
-
-This is the last release of the 3.x extension. It is a revision bump over 3.0.0, published so that
-projects already using this version have a final, stable release to stay on.
-
-The extension has been rewritten for version 4.0.0, which covers 24 EOS interfaces across **Windows**,
-**macOS**, **Linux**, **Android** and **iOS**. The rewrite changes the public GML API - function names
-and signatures differ - so moving to it is a migration rather than a drop-in upgrade. Projects that need
-the older API should stay on this release.
-
 ## IMPORTANT
 
-- This extension version will be compatible with the GM 2022.0.1 LTSr1 (upon release)
-- This extension is to be used with GM 2023.1 and future releases.
-- Requires EOS SDK version 1.16.3 (or recent)
-- Works with **Windows** and **macOS** (YYC only).
-- Linux (VM and YYC) is still experimental (there is no official launcher)
+- This extension is compatible with GameMaker **2026.0.x.x** and future releases.
+- Requires EOS SDK version 1.19.1.2
+- Works with **Windows**, **macOS**, **Linux**, **Android** and **iOS**.
+- Android supports **arm64-v8a** and **x86_64** only - Epic ships no 32-bit ARM EOS SDK, so
+  **armeabi-v7a is not available** and must be removed from the project's Android target ABIs.
+- Linux is still experimental (there is no official Epic launcher for it)
 
 ## CHANGES SINCE ${releaseOldVersion}
 
@@ -29,13 +20,23 @@ Epic Online Services is a set of tools and services that help game developers an
 - Achievements API
 - Auth API
 - Connect API
+- Custom Invites API
+- Ecom API
 - Friends API
 - Leaderboards API
+- Lobbies API
+- Logging API
 - Metrics API
+- P2P API
 - Platform API
 - Player Data Storage API
+- Presence API
 - Progression Snapshot API
+- Reports API
+- RTC API
+- RTC Data API
 - Sanctions API
+- Sessions API
 - Stats API
 - Title Storage API
 - UI API

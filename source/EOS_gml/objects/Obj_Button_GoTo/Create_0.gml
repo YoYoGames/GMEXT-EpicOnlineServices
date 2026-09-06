@@ -1,4 +1,5 @@
 
 event_inherited();
 
-goto = noone
+text = "Back"
+goto = rm_eos_menu

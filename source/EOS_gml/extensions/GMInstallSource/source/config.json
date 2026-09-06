@@ -1,0 +1,23 @@
+{
+  "$schema": "./extgen.schema.json",
+  "input": "spec.gmidl",
+  "root": "./",
+  "gamemaker": {
+    "wrappers": {
+      "outputFile": "../../../scripts/GMInstallSource_API/GMInstallSource_API.gml"
+    },
+    "extension": {
+      "mode": "patch",
+      "outputFile": "../../../extensions/GMInstallSource/GMInstallSource.yy"
+    },
+    "injectors": { }
+  },
+  "targets": {
+    "android":{
+      "mode": "java"
+    },
+    "ios":{
+      "mode": "swift"
+    }
+  }
+}

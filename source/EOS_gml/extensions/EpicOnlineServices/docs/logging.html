@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Logging - GMEXT-EpicOnlineServices</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Logging";
+        var mkdocs_page_input_path = "logging.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Logging</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-EpicOnlineServices</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Logging</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/logging.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="logging"><strong>Logging</strong></h1>
+<p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-log-category">Logging Interface</a></p>
+<p>Routes the SDK's own diagnostic log output to a GML callback, and controls how verbose each category
+is. This is independent of the extension's own <strong>Log Level</strong> build option (see
+<a href="extension_options.html">Extension Options</a>), which only affects the extension's own startup diagnostics.</p>
+<h2 id="functions">Functions</h2>
+<p>Provided functions:</p>
+<ul>
+<li><a href="logging.html#eos_logging_set_callback">eos_logging_set_callback</a></li>
+<li><a href="logging.html#eos_logging_clear_callback">eos_logging_clear_callback</a></li>
+<li><a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>These are the structs used by this API:</p>
+<ul>
+<li><a href="logging.html#epicloggingmessage">EpicLoggingMessage</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants used by this API:</p>
+<ul>
+<li><a href="logging.html#epicloglevel">EpicLogLevel</a></li>
+<li><a href="logging.html#epiclogcategory">EpicLogCategory</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_logging_set_callback">eos_logging_set_callback</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-logging-set-callback">EOS_Logging_SetCallback</a></p>
+<p>Registers a callback to receive every log message the SDK produces, across all categories. Call
+<a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a> to control which categories/levels actually reach it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unlike every other callback in this extension, this one is NOT guaranteed to fire on the
+main thread during <a href="platform.html#eos_platform_tick">eos_platform_tick</a> - the SDK can invoke it from an internal worker
+thread. Do not touch instances, rooms, or any other main-thread-only GML state directly from this
+callback; buffer the message (e.g. into a ds_queue) and drain it from a Step event instead.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_logging_set_callback(callback=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call for every log message.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>Called once per log message.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><a href="logging.html#epicloggingmessage">EpicLoggingMessage</a></td>
+<td>The log message.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>eos_logging_set_callback(function(_message)
+{
+    show_debug_message($&quot;[{_message.category}] {_message.message}&quot;);
+});
+</code></pre></div>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_logging_clear_callback">eos_logging_clear_callback</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-logging-set-callback">EOS_Logging_SetCallback</a></p>
+<p>Unregisters the callback set by <a href="logging.html#eos_logging_set_callback">eos_logging_set_callback</a>. Safe to call even if no callback
+is currently registered.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_logging_clear_callback()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="eos_logging_set_log_level">eos_logging_set_log_level</h1>
+<p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-logging-set-log-level">EOS_Logging_SetLogLevel</a></p>
+<p>Sets the logging level for a specific logging category (or every category at once).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default all log categories are set to callback for Warning, Error, and Fatal.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>eos_logging_set_log_level(log_category, log_level)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>log_category</td>
+<td><a href="logging.html#epiclogcategory">EpicLogCategory</a></td>
+<td>The category to configure. Use <code>EpicLogCategory.AllCategories</code> to configure every category at once.</td>
+</tr>
+<tr>
+<td>log_level</td>
+<td><a href="logging.html#epicloglevel">EpicLogLevel</a></td>
+<td>The verbosity level to use for that category.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="general.html#epicresult">EpicResult</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>eos_logging_set_log_level(EpicLogCategory.AllCategories, EpicLogLevel.Off);
+</code></pre></div>
+The above turns off logging for every category.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicloglevel">EpicLogLevel</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-log-level">EOS_ELogLevel</a></p>
+<p>The verbosity levels usable with <a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a>. A log message is only sent to
+the <a href="logging.html#eos_logging_set_callback">eos_logging_set_callback</a> callback if its own level is less than or equal to the
+configured level for its category.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="logging.html#epicloggingmessage">EpicLoggingMessage</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Off</code></td>
+<td>No log messages.</td>
+</tr>
+<tr>
+<td><code>Fatal</code></td>
+<td>Fatal errors only.</td>
+</tr>
+<tr>
+<td><code>Error</code></td>
+<td>Errors and above.</td>
+</tr>
+<tr>
+<td><code>Warning</code></td>
+<td>Warnings and above.</td>
+</tr>
+<tr>
+<td><code>Info</code></td>
+<td>Informational messages and above.</td>
+</tr>
+<tr>
+<td><code>Verbose</code></td>
+<td>Verbose messages and above.</td>
+</tr>
+<tr>
+<td><code>VeryVerbose</code></td>
+<td>Every log message.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epiclogcategory">EpicLogCategory</h1>
+<p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-log-category">EOS_ELogCategory</a></p>
+<p>The logging categories usable with <a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a>.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Core</code></td>
+<td>Low-level logs unrelated to a specific service.</td>
+</tr>
+<tr>
+<td><code>Auth</code></td>
+<td>Logs related to the Auth service.</td>
+</tr>
+<tr>
+<td><code>Friends</code></td>
+<td>Logs related to the Friends service.</td>
+</tr>
+<tr>
+<td><code>Presence</code></td>
+<td>Logs related to the Presence service.</td>
+</tr>
+<tr>
+<td><code>UserInfo</code></td>
+<td>Logs related to the UserInfo service.</td>
+</tr>
+<tr>
+<td><code>HttpSerialization</code></td>
+<td>Logs related to HTTP serialization.</td>
+</tr>
+<tr>
+<td><code>Ecom</code></td>
+<td>Logs related to the Ecommerce service.</td>
+</tr>
+<tr>
+<td><code>P2P</code></td>
+<td>Logs related to the P2P service.</td>
+</tr>
+<tr>
+<td><code>Sessions</code></td>
+<td>Logs related to the Sessions service.</td>
+</tr>
+<tr>
+<td><code>RateLimiter</code></td>
+<td>Logs related to rate limiting.</td>
+</tr>
+<tr>
+<td><code>PlayerDataStorage</code></td>
+<td>Logs related to the PlayerDataStorage service.</td>
+</tr>
+<tr>
+<td><code>Analytics</code></td>
+<td>Logs related to SDK analytics.</td>
+</tr>
+<tr>
+<td><code>Messaging</code></td>
+<td>Logs related to the messaging service.</td>
+</tr>
+<tr>
+<td><code>Connect</code></td>
+<td>Logs related to the Connect service.</td>
+</tr>
+<tr>
+<td><code>Overlay</code></td>
+<td>Logs related to the overlay.</td>
+</tr>
+<tr>
+<td><code>Achievements</code></td>
+<td>Logs related to the Achievements service.</td>
+</tr>
+<tr>
+<td><code>Stats</code></td>
+<td>Logs related to the Stats service.</td>
+</tr>
+<tr>
+<td><code>UI</code></td>
+<td>Logs related to the UI service.</td>
+</tr>
+<tr>
+<td><code>Lobby</code></td>
+<td>Logs related to the Lobby service.</td>
+</tr>
+<tr>
+<td><code>Leaderboards</code></td>
+<td>Logs related to the Leaderboards service.</td>
+</tr>
+<tr>
+<td><code>Keychain</code></td>
+<td>Logs related to an internal Keychain feature the auth interfaces use.</td>
+</tr>
+<tr>
+<td><code>IntegratedPlatform</code></td>
+<td>Logs related to the Integrated Platform service.</td>
+</tr>
+<tr>
+<td><code>TitleStorage</code></td>
+<td>Logs related to the Title Storage service.</td>
+</tr>
+<tr>
+<td><code>Mods</code></td>
+<td>Logs related to the Mods service.</td>
+</tr>
+<tr>
+<td><code>AntiCheat</code></td>
+<td>Logs related to the Anti-Cheat service.</td>
+</tr>
+<tr>
+<td><code>Reports</code></td>
+<td>Logs related to the Reports client.</td>
+</tr>
+<tr>
+<td><code>Sanctions</code></td>
+<td>Logs related to the Sanctions service.</td>
+</tr>
+<tr>
+<td><code>ProgressionSnapshots</code></td>
+<td>Logs related to the Progression Snapshot service.</td>
+</tr>
+<tr>
+<td><code>KWS</code></td>
+<td>Logs related to the Kids Web Services integration.</td>
+</tr>
+<tr>
+<td><code>RTC</code></td>
+<td>Logs related to the RTC API.</td>
+</tr>
+<tr>
+<td><code>RTCAdmin</code></td>
+<td>Logs related to the RTC Admin API.</td>
+</tr>
+<tr>
+<td><code>CustomInvites</code></td>
+<td>Logs related to the Custom Invites API.</td>
+</tr>
+<tr>
+<td><code>AllCategories</code></td>
+<td>Not a real category - configures every category at once when passed to <a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="epicloggingmessage">EpicLoggingMessage</h1>
+<p>A single log message, passed to the <a href="logging.html#eos_logging_set_callback">eos_logging_set_callback</a> callback.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="logging.html#eos_logging_set_callback">eos_logging_set_callback</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The category this message belongs to (matches a name in <a href="logging.html#epiclogcategory">EpicLogCategory</a>, as text).</td>
+</tr>
+<tr>
+<td>level</td>
+<td><a href="logging.html#epicloglevel">EpicLogLevel</a></td>
+<td>The severity level of this message.</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The log message text.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="lobbies.html" class="btn btn-neutral float-left" title="Lobbies"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="metrics.html" class="btn btn-neutral float-right" title="Metrics">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="lobbies.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="metrics.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
