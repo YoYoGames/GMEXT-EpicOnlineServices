@@ -1,3 +1,13 @@
+## FINAL RELEASE OF THE 3.x EXTENSION
+
+This is the last release of the 3.x extension. It is a revision bump over 3.0.0, published so that
+projects already using this version have a final, stable release to stay on.
+
+The extension has been rewritten for version 4.0.0, which covers 24 EOS interfaces across **Windows**,
+**macOS**, **Linux**, **Android** and **iOS**. The rewrite changes the public GML API - function names
+and signatures differ - so moving to it is a migration rather than a drop-in upgrade. Projects that need
+the older API should stay on this release.
+
 ## IMPORTANT
 
 - This extension version will be compatible with the GM 2022.0.1 LTSr1 (upon release)
