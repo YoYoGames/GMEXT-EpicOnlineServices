@@ -98,11 +98,17 @@ endif()
 # =============================================================================
 # Shared native implementation on mobile (Android / iOS)
 # =============================================================================
-# The generator-owned src/CMakeLists.txt compiles src/native for desktop, but its
-# per-platform globs don't cover Android (it globs a non-existent src/android) or
-# the iOS NATIVE flavour. EOS uses the same portable C++ core on those platforms,
-# so we add src/native here instead of editing src/CMakeLists.txt (which would be
-# overwritten the next time the extension generator runs).
+# The generator-owned src/CMakeLists.txt compiles src/native for desktop, but on
+# Android and iOS its per-platform globs pick up only that target's own folder
+# (src/android, src/ios) -- which holds the gm_eos_platform_hooks.h implementation
+# and nothing else. EOS uses the same portable C++ core on those platforms, so the
+# shared src/native has to be added somewhere, and it is added here rather than by
+# editing src/CMakeLists.txt (which would be overwritten the next time the
+# extension generator runs).
+#
+# On iOS this is deliberately gated on EXT_APPLE_NATIVE_FRAMEWORK: the STANDARD
+# Apple flavour excludes the C++ core by design, so a STANDARD iOS build links no
+# EOS implementation at all. EOS must be built with the -native- presets.
 if(ANDROID OR (_EOS_IS_IOS AND EXT_APPLE_NATIVE_FRAMEWORK))
   file(GLOB _EOS_SRC_NATIVE CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/../src/native/*.cpp")

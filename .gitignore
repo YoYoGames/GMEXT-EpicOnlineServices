@@ -14,6 +14,15 @@
 # SDKs
 source/EOS_sdk/
 
+# Runtime dependencies staged into the extension by the build steps
+source/EOS_gml/extensions/EpicOnlineServices/EOSSDK-Win64-Shipping.dll
+source/EOS_gml/extensions/EpicOnlineServices/xaudio2_9redist.dll
+
+# Build-step script backups and sed in-place artefacts
+source/EOS_gml/extensions/EpicOnlineServices/scriptUtils.bat.bak
+source/EOS_gml/extensions/EpicOnlineServices/scriptUtils.sh.bak
+source/EOS_gml/extensions/EpicOnlineServices/scriptUtils.sh-e
+
 # DEMO options
 source/EOS_gml/options/
 
@@ -30,11 +39,3 @@ xcuserdata/
 
 # Release packages
 output/
-source/EOS_gml/extensions/EpicOnlineServices/scriptUtils.bat.bak
-
-source/EOS_gml/extensions/EpicOnlineServices/scriptUtils.sh.bak
-source/EOS_gml/extensions/EpicOnlineServices/xaudio2_9redist.dll
-
-source/EOS_gml/extensions/EpicOnlineServices/EOSSDK-Win64-Shipping.dll
-
-source/EOS_gml/extensions/EpicOnlineServices/scriptUtils.sh-e
