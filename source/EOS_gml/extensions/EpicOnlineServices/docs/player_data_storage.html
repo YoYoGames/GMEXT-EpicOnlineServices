@@ -648,7 +648,7 @@ The above code queries a single file's metadata, then reads it back out of the l
 <p class="admonition-title">Warning</p>
 <p>If the transfer fails or is cancelled part-way through, the extension removes the partially-written file at <code>output_path</code> rather than leaving a corrupt fragment behind - it will never silently replace a previously-good file at that path with a broken one.</p>
 </div>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>, or ${event.callback_progress}.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
@@ -687,7 +687,7 @@ The above code queries a single file's metadata, then reads it back out of the l
 <tr>
 <td>progress_callback</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
-<td>A function to call repeatedly while the download is in progress. See the <code>callback_progress</code> event below.</td>
+<td>A function to call repeatedly while the download is in progress. See the <code>Callback - progress</code> event below.</td>
 </tr>
 </tbody>
 </table>
@@ -720,7 +720,7 @@ The above code queries a single file's metadata, then reads it back out of the l
 </table>
 <p><br></p>
 <blockquote>
-<p>${event.callback_progress}</p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a> - progress</p>
 </blockquote>
 <p>Called zero or more times while the download is in progress, before the <code>callback</code> event fires.</p>
 <table>
@@ -766,7 +766,7 @@ The above code downloads <code>save1.dat</code> to the game's working directory,
 <p class="admonition-title">Note</p>
 <p><code>input_path</code> is a real filesystem path, not a GML buffer - the extension reads the file itself before uploading. An empty or unreadable <code>input_path</code> fails immediately (<a href="general.html#eos_api_last_error">eos_api_last_error</a> is set) without starting a transfer or firing <code>callback</code>.</p>
 </div>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>, or ${event.callback_progress}.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
@@ -805,7 +805,7 @@ The above code downloads <code>save1.dat</code> to the game's working directory,
 <tr>
 <td>progress_callback</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
-<td>A function to call repeatedly while the upload is in progress. See the <code>callback_progress</code> event below.</td>
+<td>A function to call repeatedly while the upload is in progress. See the <code>Callback - progress</code> event below.</td>
 </tr>
 </tbody>
 </table>
@@ -838,7 +838,7 @@ The above code downloads <code>save1.dat</code> to the game's working directory,
 </table>
 <p><br></p>
 <blockquote>
-<p>${event.callback_progress}</p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a> - progress</p>
 </blockquote>
 <p>Called zero or more times while the upload is in progress, before the <code>callback</code> event fires.</p>
 <table>

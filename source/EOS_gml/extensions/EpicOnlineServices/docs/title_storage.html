@@ -509,7 +509,7 @@ The above code queries every title storage file tagged <code>"patch-notes"</code
 <p class="admonition-title">Warning</p>
 <p>If the transfer fails or is cancelled part-way through, the extension removes the partially-written file at <code>output_path</code> rather than leaving a corrupt fragment behind - it will never silently replace a previously-good file at that path with a broken one.</p>
 </div>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>, or ${event.callback_progress}.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
@@ -548,7 +548,7 @@ The above code queries every title storage file tagged <code>"patch-notes"</code
 <tr>
 <td>progress_callback</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
-<td>A function to call repeatedly while the download is in progress. See the <code>callback_progress</code> event below.</td>
+<td>A function to call repeatedly while the download is in progress. See the <code>Callback - progress</code> event below.</td>
 </tr>
 </tbody>
 </table>
@@ -581,7 +581,7 @@ The above code queries every title storage file tagged <code>"patch-notes"</code
 </table>
 <p><br></p>
 <blockquote>
-<p>${event.callback_progress}</p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a> - progress</p>
 </blockquote>
 <p>Called zero or more times while the download is in progress, before the <code>callback</code> event fires.</p>
 <table>
