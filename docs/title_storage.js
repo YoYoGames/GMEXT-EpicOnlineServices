@@ -111,14 +111,14 @@
  * @param {String} filename The name of the file to read.
  * @param {String} output_path Local filesystem path the downloaded file is written to.
  * @param {Function} [callback] A function to call once the download completes (success or failure). See the `callback` event below.
- * @param {Function} [progress_callback] A function to call repeatedly while the download is in progress. See the `callback_progress` event below.
+ * @param {Function} [progress_callback] A function to call repeatedly while the download is in progress. See the `Callback - progress` event below.
  *
  * @event callback
  * @desc Called once, when the download finishes or fails.
  * @member {Struct.EpicTitleStorageReadFileCallbackInfo} result
  * @event_end
  *
- * @event callback_progress
+ * @event callback:progress
  * @desc Called zero or more times while the download is in progress, before the `callback` event fires.
  * @member {Struct.EpicTitleStorageReadFileProgressCallbackInfo} result
  * @event_end

@@ -148,14 +148,14 @@
  * @param {String} filename The name of the file to read.
  * @param {String} output_path Local filesystem path the downloaded file is written to.
  * @param {Function} [callback] A function to call once the download completes (success or failure). See the `callback` event below.
- * @param {Function} [progress_callback] A function to call repeatedly while the download is in progress. See the `callback_progress` event below.
+ * @param {Function} [progress_callback] A function to call repeatedly while the download is in progress. See the `Callback - progress` event below.
  *
  * @event callback
  * @desc Called once, when the download finishes or fails.
  * @member {Struct.EpicPlayerDataStorageReadFileCallbackInfo} result
  * @event_end
  *
- * @event callback_progress
+ * @event callback:progress
  * @desc Called zero or more times while the download is in progress, before the `callback` event fires.
  * @member {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo} result
  * @event_end
@@ -191,14 +191,14 @@
  * @param {String} filename The name to give the file in player data storage.
  * @param {String} input_path Local filesystem path of the file to upload.
  * @param {Function} [callback] A function to call once the upload completes (success or failure). See the `callback` event below.
- * @param {Function} [progress_callback] A function to call repeatedly while the upload is in progress. See the `callback_progress` event below.
+ * @param {Function} [progress_callback] A function to call repeatedly while the upload is in progress. See the `Callback - progress` event below.
  *
  * @event callback
  * @desc Called once, when the upload finishes or fails.
  * @member {Struct.EpicPlayerDataStorageWriteFileCallbackInfo} result
  * @event_end
  *
- * @event callback_progress
+ * @event callback:progress
  * @desc Called zero or more times while the upload is in progress, before the `callback` event fires.
  * @member {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo} result
  * @event_end
