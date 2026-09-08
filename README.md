@@ -10,6 +10,14 @@ This extension works on Windows, macOS, Linux, Android and iOS.
 > ARM build of the EOS SDK, so **armeabi-v7a is not available** - remove it from your project's
 > Android target ABIs, or the game will build and then fail to load the native library at runtime.
 
+> [!IMPORTANT]
+> **Version 4.0.0 is a breaking change.** The extension has been fully rewritten, with the platform
+> bindings generated from a single GMIDL spec and every asynchronous call now taking a GML callback
+> function directly, replacing the `async_load`-based Social Async Events. Function signatures
+> differ from 3.x, so moving an existing project across is a migration rather than a drop-in
+> upgrade. Projects that need the old API should stay on the final 3.0.1 release. Check
+> [the documentation](../../wiki) for the current API.
+
 The API surface is declared in a single GMIDL spec and the platform bindings are generated from it,
 so the layout is by role rather than by IDE project:
 
