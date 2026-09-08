@@ -28,7 +28,8 @@
                 "**/source/out/",
                 ".DS_Store",
                 "*.user",
-                "xcuserdata/"
+                "xcuserdata/",
+                "/Build/"
             ]
         }
     ],
