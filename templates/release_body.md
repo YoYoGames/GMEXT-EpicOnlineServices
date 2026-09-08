@@ -6,6 +6,12 @@
 - Android supports **arm64-v8a** and **x86_64** only - Epic ships no 32-bit ARM EOS SDK, so
   **armeabi-v7a is not available** and must be removed from the project's Android target ABIs.
 - Linux is still experimental (there is no official Epic launcher for it)
+- **Version 4.0.0 is a breaking change**: the extension has been fully rewritten, with the platform
+  bindings generated from a single GMIDL spec and every asynchronous call now taking a GML callback
+  function directly, replacing the `async_load`-based Social Async Events. Function signatures differ
+  from 3.x, so moving an existing project across is a migration rather than a drop-in upgrade.
+  Projects that need the old API should stay on the final 3.0.1 release. Check the documentation for
+  the current API.
 
 ## CHANGES SINCE ${releaseOldVersion}
 
