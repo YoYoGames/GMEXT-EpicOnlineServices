@@ -14,7 +14,7 @@
   "copyToTargets":3035426181059969262,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"4.0.0",
+  "extensionVersion":"4.0.1",
   "files":[
     {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":729583171846275310,"filename":"EpicOnlineServices.ext","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"eos_test","argCount":0,"args":[],"documentation":"@returns {Real}","externalName":"__EXT_NATIVE__eos_test","help":"","hidden":false,"kind":4,"name":"eos_test","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
