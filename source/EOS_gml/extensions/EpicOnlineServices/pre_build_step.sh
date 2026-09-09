@@ -39,7 +39,9 @@ setupAndroid() {
 setupiOS() {
     # Stage the EOS SDK's xcframework into iOSSourceFromMac as a .zip (alongside
     # the extension's own packaged EpicOnlineServices.zip) so the GameMaker iOS
-    # build links it. It is git-ignored and re-zipped each build.
+    # build links it. A zero-byte EOSSDK.zip is committed as a placeholder so
+    # the entry exists in a clean checkout and in the packaged asset; this
+    # overwrites it each build, so restore it rather than committing the SDK.
     pathResolveExisting "$YYprojectDir" "$SDK_PATH_IOS" SDK_PATH
 
     # Locate the xcframework anywhere under the SDK (the folder layout differs

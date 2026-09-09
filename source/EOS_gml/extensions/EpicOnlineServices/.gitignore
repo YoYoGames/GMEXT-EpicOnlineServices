@@ -7,6 +7,22 @@
 # The extension's OWN result binaries (EpicOnlineServices.dll, .dylib, and
 # AndroidSource/libs/<abi>/libEpicOnlineServices.so) ARE committed and must stay
 # tracked -- they are deliberately not matched below.
+#
+# Two zero-byte PLACEHOLDERS are also deliberately committed and must NOT be
+# ignored here, or the reference they exist to create never reaches a clean
+# checkout or the packaged asset:
+#   libEOSSDK-Mac-Shipping.dylib        - declared as a Source File in the .yy so
+#                                         the generated macOS Xcode project gets a
+#                                         reference to it at compile time;
+#                                         post_build_step overwrites the real one
+#                                         into the OUTPUT folder, never here.
+#   iOSSourceFromMac/EOSSDK.zip         - the asset compiler only picks up *.zip
+#                                         from iOSSourceFromMac, so the entry has
+#                                         to exist before pre_build_step fills it.
+# pre_build_step DOES rewrite the iOS zip in place at build time, so expect it to
+# show as modified after an iOS build - restore it rather than committing the SDK.
+# Same arrangement as GMEXT-Discord's libdiscord_partner_sdk.dylib /
+# discord_partner_sdk.zip placeholders.
 # =============================================================================
 
 # Android (EOS SDK) -- staged as a whole AAR, consumed directly by Gradle
@@ -17,12 +33,8 @@
 # iOS raw xcframework staged on Windows for remote_build_step.sh (transient)
 /iOSSourceFromMac/EOSSDK.xcframework/
 
-# Windows / macOS / Linux (EOS C SDK runtime libs)
+# Windows / Linux (EOS C SDK runtime libs). macOS's libEOSSDK-Mac-Shipping.dylib
+# at this same level is the committed placeholder described above - not ignored.
 /EOSSDK-Win64-Shipping.dll
 /EOSSDK-Win32-Shipping.dll
-/libEOSSDK-Mac-Shipping.dylib
 /libEOSSDK-Linux-Shipping.so
-
-# iOS (EOS framework) - zipped (on macOS via ditto) into iOSSourceFromMac next to
-# the extension's own packaged EpicOnlineServices.zip (which stays committed).
-/iOSSourceFromMac/EOSSDK.zip
