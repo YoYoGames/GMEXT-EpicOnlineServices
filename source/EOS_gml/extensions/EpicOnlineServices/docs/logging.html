@@ -214,6 +214,13 @@ is. This is independent of the extension's own <strong>Log Level</strong> build 
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-logging-set-callback">EOS_Logging_SetCallback</a></p>
 <p>Registers a callback to receive every log message the SDK produces, across all categories. Call
 <a href="logging.html#eos_logging_set_log_level">eos_logging_set_log_level</a> to control which categories/levels actually reach it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Call this <strong>after</strong> <a href="general.html#eos_api_initialize">eos_api_initialize</a>. The SDK rejects it before initialisation
+(and after <a href="general.html#eos_api_shutdown">eos_api_shutdown</a>) with <code>EpicResult.NotConfigured</code>; because this function returns
+nothing, that rejection is only visible through <a href="general.html#eos_api_last_error">eos_api_last_error</a> and the symptom is simply
+that no messages ever arrive.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Unlike every other callback in this extension, this one is NOT guaranteed to fire on the
@@ -273,11 +280,17 @@ callback; buffer the message (e.g. into a ds_queue) and drain it from a Step eve
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_logging_set_callback(function(_message)
+<p><div class="highlight"><pre><span></span><code>eos_api_initialize(&quot;MyGame&quot;, &quot;1.0&quot;);
+
+eos_logging_set_callback(function(_message)
 {
     show_debug_message($&quot;[{_message.category}] {_message.message}&quot;);
 });
+eos_logging_set_log_level(EpicLogCategory.AllCategories, EpicLogLevel.Verbose);
 </code></pre></div>
+The above registers the callback once the SDK is initialised and raises every category to <code>Verbose</code>, which
+is the level that shows each backend request and its result - the first thing to capture when a call never
+seems to complete.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -307,6 +320,11 @@ is currently registered.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>By default all log categories are set to callback for Warning, Error, and Fatal.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Call this <strong>after</strong> <a href="general.html#eos_api_initialize">eos_api_initialize</a>; before it (and after
+<a href="general.html#eos_api_shutdown">eos_api_shutdown</a>) the SDK returns <code>EpicResult.NotConfigured</code> and the level is not changed.</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>

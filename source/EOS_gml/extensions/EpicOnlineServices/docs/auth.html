@@ -251,6 +251,10 @@
 <p class="admonition-title">Note</p>
 <p>If the credentials match an external account with no Epic Account linked yet, the callback's <code>result_code</code> is <code>EpicResult.InvalidUser</code> and <code>has_continuance_token</code> is <code>true</code> - pass <code>continuance_token_id</code> into <a href="auth.html#eos_auth_link_account">eos_auth_link_account</a> to complete the link. See the External Login Flow Guide on the <a href="logging_in.html">Logging In</a> page.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The callback can wait on the user. Whenever Epic's backend needs the user to do something before it issues a token - consent to the requested permissions, a corrective action on the account, or access to an Epic Account Services application that has not been released - the SDK opens the Epic Account Portal (inside the game window when the EOS overlay is installed, otherwise in the system browser) and the callback does not fire until that page is completed or closed (<code>EpicResult.Canceled</code> when closed). This applies to every <code>credentials_type</code>, including <code>EpicLoginCredentialType.Developer</code>. If the game shows no Account Portal page and the callback never arrives, pass <code>EpicAuthLoginFlags.NoUserInterface</code>: the SDK then fails immediately with <code>EpicResult.Auth_UserInterfaceRequired</code> instead of waiting, and the SDK log (<a href="logging.html#eos_logging_set_callback">eos_logging_set_callback</a>) names the reason.</p>
+</div>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
@@ -1231,7 +1235,7 @@ if (!is_undefined(_token)) global.access_token = _token.access_token;
 </tr>
 <tr>
 <td><code>NoUserInterface</code></td>
-<td>Suppress any UI the login flow would otherwise show, failing instead if UI would be required.</td>
+<td>Suppress any UI the login flow would otherwise show. If the login would need the user to act on the Epic Account Portal (consent, a corrective action, restricted application access), the callback fires immediately with <code>EpicResult.Auth_UserInterfaceRequired</code> instead of waiting for that page.</td>
 </tr>
 </tbody>
 </table>
