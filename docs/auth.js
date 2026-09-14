@@ -10,6 +10,8 @@
  *
  * [[Note: If the credentials match an external account with no Epic Account linked yet, the callback's `result_code` is `EpicResult.InvalidUser` and `has_continuance_token` is `true` - pass `continuance_token_id` into ${function.eos_auth_link_account} to complete the link. See the External Login Flow Guide on the ${page.logging_in} page.]]
  *
+ * [[Warning: The callback can wait on the user. Whenever Epic's backend needs the user to do something before it issues a token - consent to the requested permissions, a corrective action on the account, or access to an Epic Account Services application that has not been released - the SDK opens the Epic Account Portal (inside the game window when the EOS overlay is installed, otherwise in the system browser) and the callback does not fire until that page is completed or closed (`EpicResult.Canceled` when closed). This applies to every `credentials_type`, including `EpicLoginCredentialType.Developer`. If the game shows no Account Portal page and the callback never arrives, pass `EpicAuthLoginFlags.NoUserInterface`: the SDK then fails immediately with `EpicResult.Auth_UserInterfaceRequired` instead of waiting, and the SDK log (${function.eos_logging_set_callback}) names the reason.]]
+ *
  * @param {String} credentials_id ID for the credentials, meaning depends on `credentials_type` (often empty for exchange-code/portal logins).
  * @param {String} credentials_token Credentials or token for the login, meaning depends on `credentials_type`.
  * @param {Constant.EpicLoginCredentialType} credentials_type The login method to use.
@@ -381,7 +383,7 @@
  * Login behaviour flags for ${function.eos_auth_login}. Combine with bitwise-OR (`|`).
  *
  * @member NoFlags Default login behaviour.
- * @member NoUserInterface Suppress any UI the login flow would otherwise show, failing instead if UI would be required.
+ * @member NoUserInterface Suppress any UI the login flow would otherwise show. If the login would need the user to act on the Epic Account Portal (consent, a corrective action, restricted application access), the callback fires immediately with `EpicResult.Auth_UserInterfaceRequired` instead of waiting for that page.
  * @const_end
  */
 

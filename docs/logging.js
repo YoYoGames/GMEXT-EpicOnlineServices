@@ -8,6 +8,11 @@
  * Registers a callback to receive every log message the SDK produces, across all categories. Call
  * ${function.eos_logging_set_log_level} to control which categories/levels actually reach it.
  *
+ * [[Note: Call this **after** ${function.eos_api_initialize}. The SDK rejects it before initialisation
+ * (and after ${function.eos_api_shutdown}) with `EpicResult.NotConfigured`; because this function returns
+ * nothing, that rejection is only visible through ${function.eos_api_last_error} and the symptom is simply
+ * that no messages ever arrive.]]
+ *
  * [[Warning: Unlike every other callback in this extension, this one is NOT guaranteed to fire on the
  * main thread during ${function.eos_platform_tick} - the SDK can invoke it from an internal worker
  * thread. Do not touch instances, rooms, or any other main-thread-only GML state directly from this
@@ -22,11 +27,17 @@
  *
  * @example
  * ```gml
+ * eos_api_initialize("MyGame", "1.0");
+ *
  * eos_logging_set_callback(function(_message)
  * {
  *     show_debug_message($"[{_message.category}] {_message.message}");
  * });
+ * eos_logging_set_log_level(EpicLogCategory.AllCategories, EpicLogLevel.Verbose);
  * ```
+ * The above registers the callback once the SDK is initialised and raises every category to `Verbose`, which
+ * is the level that shows each backend request and its result - the first thing to capture when a call never
+ * seems to complete.
  * @function_end
  */
 
@@ -47,6 +58,9 @@
  * Sets the logging level for a specific logging category (or every category at once).
  *
  * [[Note: By default all log categories are set to callback for Warning, Error, and Fatal.]]
+ *
+ * [[Note: Call this **after** ${function.eos_api_initialize}; before it (and after
+ * ${function.eos_api_shutdown}) the SDK returns `EpicResult.NotConfigured` and the level is not changed.]]
  *
  * @param {Constant.EpicLogCategory} log_category The category to configure. Use `EpicLogCategory.AllCategories` to configure every category at once.
  * @param {Constant.EpicLogLevel} log_level The verbosity level to use for that category.
