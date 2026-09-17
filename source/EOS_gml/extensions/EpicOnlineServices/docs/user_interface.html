@@ -1,195 +1,1788 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>User Interface - GMEXT-EpicOnlineServices</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "User Interface";
-        var mkdocs_page_input_path = "user_interface.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="title_storage.html">
+      
+      
+        <link rel="next" href="user_info.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>User Interface - GMEXT-EpicOnlineServices</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#user-interface" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">User Interface</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-header__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-EpicOnlineServices
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              User Interface
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-EpicOnlineServices</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">User Interface</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/user_interface.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="user-interface"><strong>User Interface</strong></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-nav__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-EpicOnlineServices
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Epic Online Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging_in.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extension_options.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="general.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="achievements.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Achievements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auth.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="connect.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="custom_invites.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Invites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ecom.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ecom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="friends.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Friends
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="leaderboards.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leaderboards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lobbies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lobbies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p2p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P2P
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="player_data_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Data Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="presence.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="progression_snapshot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progression Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reports.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rtc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sanctions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sanctions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sessions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stats.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="title_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Title Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Interface
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="user_interface.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_friends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_friends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_native_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_native_profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_acknowledge_event_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_acknowledge_event_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_set_display_preference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_set_display_preference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_report_input_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_report_input_state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_add_notify_display_settings_updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_add_notify_display_settings_updated
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_remove_notify_display_settings_updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_remove_notify_display_settings_updated
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_hide_friends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_hide_friends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_get_friends_visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_get_friends_visible
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_get_friends_exclusive_input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_get_friends_exclusive_input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_pause_social_overlay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_pause_social_overlay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_is_social_overlay_paused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_is_social_overlay_paused
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_get_notification_location_preference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_get_notification_location_preference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_block_player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_block_player
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_report_player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_report_player
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuinotificationlocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUINotificationLocation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishowfriendscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowFriendsCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishownativeprofilecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowNativeProfileCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuidisplaysettingsupdatedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIDisplaySettingsUpdatedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuihidefriendscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIHideFriendsCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishowblockplayercallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowBlockPlayerCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishowreportplayercallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowReportPlayerCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_friends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_friends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_native_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_native_profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_acknowledge_event_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_acknowledge_event_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_set_display_preference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_set_display_preference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_report_input_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_report_input_state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_add_notify_display_settings_updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_add_notify_display_settings_updated
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_remove_notify_display_settings_updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_remove_notify_display_settings_updated
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_hide_friends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_hide_friends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_get_friends_visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_get_friends_visible
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_get_friends_exclusive_input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_get_friends_exclusive_input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_pause_social_overlay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_pause_social_overlay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_is_social_overlay_paused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_is_social_overlay_paused
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_get_notification_location_preference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_get_notification_location_preference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_block_player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_block_player
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_ui_show_report_player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_ui_show_report_player
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuinotificationlocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUINotificationLocation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishowfriendscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowFriendsCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishownativeprofilecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowNativeProfileCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuidisplaysettingsupdatedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIDisplaySettingsUpdatedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuihidefriendscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIHideFriendsCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishowblockplayercallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowBlockPlayerCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicuishowreportplayercallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicUIShowReportPlayerCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="user-interface"><strong>User Interface</strong><a class="headerlink" href="#user-interface" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-ui-interface">UI Interface</a></p>
 <p>The <a href="https://dev.epicgames.com/docs/game-services/eos-ui-interface">UI Interface</a> controls Epic's built-in social overlay: the Friends list, native platform profile cards, block/report player dialogs, and controller-driven overlay navigation.</p>
 <blockquote>
 <p>Any callback/notification elsewhere in this extension that hands you a <code>ui_event_id</code> must be acknowledged via <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</a> - see that function's description.</p>
 </blockquote>
-<h2 id="functions">Functions</h2>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
 <p>These functions are provided for controlling the social overlay:</p>
 <ul>
 <li><a href="user_interface.html#eos_ui_show_friends">eos_ui_show_friends</a></li>
@@ -208,7 +1801,7 @@
 <li><a href="user_interface.html#eos_ui_show_block_player">eos_ui_show_block_player</a></li>
 <li><a href="user_interface.html#eos_ui_show_report_player">eos_ui_show_report_player</a></li>
 </ul>
-<h2 id="structs">Structs</h2>
+<h2 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h2>
 <p>These are the structs used by this API:</p>
 <ul>
 <li><a href="user_interface.html#epicuishowfriendscallbackinfo">EpicUIShowFriendsCallbackInfo</a></li>
@@ -218,7 +1811,7 @@
 <li><a href="user_interface.html#epicuishowblockplayercallbackinfo">EpicUIShowBlockPlayerCallbackInfo</a></li>
 <li><a href="user_interface.html#epicuishowreportplayercallbackinfo">EpicUIShowReportPlayerCallbackInfo</a></li>
 </ul>
-<h2 id="constants">Constants</h2>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <p>These are the constants used by this API:</p>
 <ul>
 <li><a href="user_interface.html#epicuinotificationlocation">EpicUINotificationLocation</a></li>
@@ -227,7 +1820,7 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_show_friends">eos_ui_show_friends</h1>
+<h1 id="eos_ui_show_friends">eos_ui_show_friends<a class="headerlink" href="#eos_ui_show_friends" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-friends">EOS_UI_ShowFriends</a></p>
 <p>Shows the Friends overlay for the given local user. On desktop platforms this is a fully featured
 friends list; on mobile it's a slimmed-down view.</p>
@@ -239,8 +1832,7 @@ friends list; on mobile it's a slimmed-down view.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_show_friends(local_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_show_friends(local_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -292,20 +1884,19 @@ friends list; on mobile it's a slimmed-down view.</p>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>eos_ui_show_friends(local_user_id, function(_result)
+<p><pre class="highlight"><code class="language-gml">eos_ui_show_friends(local_user_id, function(_result)
 {
     if (_result.result_code == EpicResult.Success)
     {
-        show_debug_message(&quot;Friends overlay shown.&quot;);
+        show_debug_message("Friends overlay shown.");
     }
-});
-</code></pre></div>
+});</code></pre>
 The above code shows the Friends overlay to the given local user and logs once it's up.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_show_native_profile">eos_ui_show_native_profile</h1>
+<h1 id="eos_ui_show_native_profile">eos_ui_show_native_profile<a class="headerlink" href="#eos_ui_show_native_profile" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-native-profile">EOS_UI_ShowNativeProfile</a></p>
 <p>Shows the native platform's profile overlay for the given target user, if the current platform has one
 (e.g. a console's own profile card). Does nothing on platforms without a native profile UI.</p>
@@ -313,8 +1904,7 @@ The above code shows the Friends overlay to the given local user and logs once i
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_show_native_profile(local_user_id, target_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_show_native_profile(local_user_id, target_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -373,7 +1963,7 @@ The above code shows the Friends overlay to the given local user and logs once i
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id</h1>
+<h1 id="eos_ui_acknowledge_event_id">eos_ui_acknowledge_event_id<a class="headerlink" href="#eos_ui_acknowledge_event_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-acknowledge-event-id">EOS_UI_AcknowledgeEventId</a></p>
 <p>Acknowledges a UI event raised by the social overlay (e.g. a join-game or native-invite request that
 came in with a <code>ui_event_id</code>).</p>
@@ -383,8 +1973,7 @@ came in with a <code>ui_event_id</code>).</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_acknowledge_event_id(ui_event_id, result_code)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_acknowledge_event_id(ui_event_id, result_code)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -416,15 +2005,14 @@ came in with a <code>ui_event_id</code>).</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_set_display_preference">eos_ui_set_display_preference</h1>
+<h1 id="eos_ui_set_display_preference">eos_ui_set_display_preference<a class="headerlink" href="#eos_ui_set_display_preference" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-set-display-preference">EOS_UI_SetDisplayPreference</a></p>
 <p>Sets the corner of the screen the notification/toast style overlay elements (friend requests, invites,
 etc.) should appear in.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_set_display_preference(notification_location)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_set_display_preference(notification_location)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -451,7 +2039,7 @@ etc.) should appear in.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_report_input_state">eos_ui_report_input_state</h1>
+<h1 id="eos_ui_report_input_state">eos_ui_report_input_state<a class="headerlink" href="#eos_ui_report_input_state" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-report-input-state">EOS_UI_ReportInputState</a></p>
 <p>Reports the current state of a fixed set of gamepad-style buttons to the SDK so the social overlay can
 be driven with a controller instead of a mouse/keyboard. Call this every frame the overlay is visible
@@ -463,8 +2051,7 @@ be driven with a controller instead of a mouse/keyboard. Call this every frame t
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_report_input_state(button_down, button_up, button_left, button_right, button_accept, button_cancel)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_report_input_state(button_down, button_up, button_left, button_right, button_accept, button_cancel)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -514,19 +2101,18 @@ be driven with a controller instead of a mouse/keyboard. Call this every frame t
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>/// Step Event
+<p><pre class="highlight"><code class="language-gml">/// Step Event
 eos_ui_report_input_state(
     keyboard_check(vk_down), keyboard_check(vk_up),
     keyboard_check(vk_left), keyboard_check(vk_right),
     keyboard_check(vk_enter), keyboard_check(vk_escape)
-);
-</code></pre></div>
+);</code></pre>
 The above code drives the overlay's D-Pad/accept/cancel input from the keyboard every step.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</h1>
+<h1 id="eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated<a class="headerlink" href="#eos_ui_add_notify_display_settings_updated" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-add-notify-display-settings-updated">EOS_UI_AddNotifyDisplaySettingsUpdated</a></p>
 <p>Registers to receive a notification whenever the visibility or input-exclusivity of the overlay
 changes (e.g. the player opens/closes the Friends overlay, or the overlay starts/stops capturing
@@ -535,8 +2121,7 @@ exclusive input). If the returned notification ID is valid, call <a href="user_i
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_add_notify_display_settings_updated(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_add_notify_display_settings_updated(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -586,14 +2171,13 @@ exclusive input). If the returned notification ID is valid, call <a href="user_i
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_remove_notify_display_settings_updated">eos_ui_remove_notify_display_settings_updated</h1>
+<h1 id="eos_ui_remove_notify_display_settings_updated">eos_ui_remove_notify_display_settings_updated<a class="headerlink" href="#eos_ui_remove_notify_display_settings_updated" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-remove-notify-display-settings-updated">EOS_UI_RemoveNotifyDisplaySettingsUpdated</a></p>
 <p>Unregisters a notification previously registered with <a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_remove_notify_display_settings_updated(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_remove_notify_display_settings_updated(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -620,15 +2204,14 @@ exclusive input). If the returned notification ID is valid, call <a href="user_i
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_hide_friends">eos_ui_hide_friends</h1>
+<h1 id="eos_ui_hide_friends">eos_ui_hide_friends<a class="headerlink" href="#eos_ui_hide_friends" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-hide-friends">EOS_UI_HideFriends</a></p>
 <p>Hides the Friends overlay for the given local user, if it is currently visible.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_hide_friends(local_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_hide_friends(local_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -682,14 +2265,13 @@ exclusive input). If the returned notification ID is valid, call <a href="user_i
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_get_friends_visible">eos_ui_get_friends_visible</h1>
+<h1 id="eos_ui_get_friends_visible">eos_ui_get_friends_visible<a class="headerlink" href="#eos_ui_get_friends_visible" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-get-friends-visible">EOS_UI_GetFriendsVisible</a></p>
 <p>Checks whether the Friends overlay is currently visible for the given local user.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_get_friends_visible(local_user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_get_friends_visible(local_user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -716,15 +2298,14 @@ exclusive input). If the returned notification ID is valid, call <a href="user_i
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_get_friends_exclusive_input">eos_ui_get_friends_exclusive_input</h1>
+<h1 id="eos_ui_get_friends_exclusive_input">eos_ui_get_friends_exclusive_input<a class="headerlink" href="#eos_ui_get_friends_exclusive_input" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-get-friends-exclusive-input">EOS_UI_GetFriendsExclusiveInput</a></p>
 <p>Checks whether the Friends overlay currently has exclusive input for the given local user (i.e. it is
 consuming input that would otherwise go to your game).</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_get_friends_exclusive_input(local_user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_get_friends_exclusive_input(local_user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -751,15 +2332,14 @@ consuming input that would otherwise go to your game).</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_pause_social_overlay">eos_ui_pause_social_overlay</h1>
+<h1 id="eos_ui_pause_social_overlay">eos_ui_pause_social_overlay<a class="headerlink" href="#eos_ui_pause_social_overlay" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-pause-social-overlay">EOS_UI_PauseSocialOverlay</a></p>
 <p>Pauses or resumes rendering/input-handling of the whole social overlay. Useful when you need to show
 your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS overlay competing for input.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_pause_social_overlay(is_paused)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_pause_social_overlay(is_paused)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -786,14 +2366,13 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_is_social_overlay_paused">eos_ui_is_social_overlay_paused</h1>
+<h1 id="eos_ui_is_social_overlay_paused">eos_ui_is_social_overlay_paused<a class="headerlink" href="#eos_ui_is_social_overlay_paused" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-is-social-overlay-paused">EOS_UI_IsSocialOverlayPaused</a></p>
 <p>Checks whether the social overlay is currently paused (see <a href="user_interface.html#eos_ui_pause_social_overlay">eos_ui_pause_social_overlay</a>).</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_is_social_overlay_paused()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_is_social_overlay_paused()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -804,14 +2383,13 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</h1>
+<h1 id="eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference<a class="headerlink" href="#eos_ui_get_notification_location_preference" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-get-notification-location-preference">EOS_UI_GetNotificationLocationPreference</a></p>
 <p>Gets the screen corner notifications are currently set to appear in (see <a href="user_interface.html#eos_ui_set_display_preference">eos_ui_set_display_preference</a>).</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_get_notification_location_preference()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_get_notification_location_preference()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -822,15 +2400,14 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_show_block_player">eos_ui_show_block_player</h1>
+<h1 id="eos_ui_show_block_player">eos_ui_show_block_player<a class="headerlink" href="#eos_ui_show_block_player" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-block-player">EOS_UI_ShowBlockPlayer</a></p>
 <p>Shows Epic's overlay UI for blocking the given target player.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_show_block_player(local_user_id, target_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_show_block_player(local_user_id, target_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -889,7 +2466,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_ui_show_report_player">eos_ui_show_report_player</h1>
+<h1 id="eos_ui_show_report_player">eos_ui_show_report_player<a class="headerlink" href="#eos_ui_show_report_player" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-ui-show-report-player">EOS_UI_ShowReportPlayer</a></p>
 <p>Shows Epic's overlay UI for reporting the given target player.</p>
 <div class="admonition note">
@@ -900,8 +2477,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_ui_show_report_player(local_user_id, target_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_ui_show_report_player(local_user_id, target_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -960,7 +2536,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicuinotificationlocation">EpicUINotificationLocation</h1>
+<h1 id="epicuinotificationlocation">EpicUINotificationLocation<a class="headerlink" href="#epicuinotificationlocation" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-ui-enotification-location">EOS_UI_ENotificationLocation</a></p>
 <p>The screen corner notification/toast style overlay elements should appear in. Used by <a href="user_interface.html#eos_ui_set_display_preference">eos_ui_set_display_preference</a>/<a href="user_interface.html#eos_ui_get_notification_location_preference">eos_ui_get_notification_location_preference</a>.</p>
 <p>These constants are referenced by the following functions:</p>
@@ -999,7 +2575,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicuishowfriendscallbackinfo">EpicUIShowFriendsCallbackInfo</h1>
+<h1 id="epicuishowfriendscallbackinfo">EpicUIShowFriendsCallbackInfo<a class="headerlink" href="#epicuishowfriendscallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of a <a href="user_interface.html#eos_ui_show_friends">eos_ui_show_friends</a> request.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1031,7 +2607,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicuishownativeprofilecallbackinfo">EpicUIShowNativeProfileCallbackInfo</h1>
+<h1 id="epicuishownativeprofilecallbackinfo">EpicUIShowNativeProfileCallbackInfo<a class="headerlink" href="#epicuishownativeprofilecallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of a <a href="user_interface.html#eos_ui_show_native_profile">eos_ui_show_native_profile</a> request.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1068,7 +2644,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicuidisplaysettingsupdatedcallbackinfo">EpicUIDisplaySettingsUpdatedCallbackInfo</h1>
+<h1 id="epicuidisplaysettingsupdatedcallbackinfo">EpicUIDisplaySettingsUpdatedCallbackInfo<a class="headerlink" href="#epicuidisplaysettingsupdatedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The overlay's current display settings, delivered on every <a href="user_interface.html#eos_ui_add_notify_display_settings_updated">eos_ui_add_notify_display_settings_updated</a> notification.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1100,7 +2676,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicuihidefriendscallbackinfo">EpicUIHideFriendsCallbackInfo</h1>
+<h1 id="epicuihidefriendscallbackinfo">EpicUIHideFriendsCallbackInfo<a class="headerlink" href="#epicuihidefriendscallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of a <a href="user_interface.html#eos_ui_hide_friends">eos_ui_hide_friends</a> request.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1132,7 +2708,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicuishowblockplayercallbackinfo">EpicUIShowBlockPlayerCallbackInfo</h1>
+<h1 id="epicuishowblockplayercallbackinfo">EpicUIShowBlockPlayerCallbackInfo<a class="headerlink" href="#epicuishowblockplayercallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of a <a href="user_interface.html#eos_ui_show_block_player">eos_ui_show_block_player</a> request.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1169,7 +2745,7 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicuishowreportplayercallbackinfo">EpicUIShowReportPlayerCallbackInfo</h1>
+<h1 id="epicuishowreportplayercallbackinfo">EpicUIShowReportPlayerCallbackInfo<a class="headerlink" href="#epicuishowreportplayercallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of a <a href="user_interface.html#eos_ui_show_report_player">eos_ui_show_report_player</a> request.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1204,57 +2780,73 @@ your own fullscreen UI (e.g. a cutscene or your own overlay) without the EOS ove
 </table>
 <p><br></p>
 <hr />
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="title_storage.html" class="btn btn-neutral float-left" title="Title Storage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="user_info.html" class="btn btn-neutral float-right" title="User Info">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2026</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="title_storage.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="user_info.html" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

@@ -118,7 +118,7 @@
  * @member {Struct.EpicTitleStorageReadFileCallbackInfo} result
  * @event_end
  *
- * @event callback_progress
+ * @event callback:Progress
  * @desc Called zero or more times while the download is in progress, before the `callback` event fires.
  * @member {Struct.EpicTitleStorageReadFileProgressCallbackInfo} result
  * @event_end

@@ -14,13 +14,18 @@ Epic Online Services offers several ways to log in and authenticate. When you us
 
 ## Using the Epic Games Launcher
 
-When you log into Epic Online Services using the extension, a straightforward way is to [use the Epic Games Launcher](https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface#epic-games-launcher). The launcher opens the game by running the executable, along with a few command-line parameters:
+When trying to log into Epic Online Services using the extension, a straightforward way is to [use the Epic Games Launcher](https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface#epic-games-launcher). The launcher opens your game by running the executable with the following command-line parameters:
 
 ```
 -AUTH_LOGIN=unused -AUTH_PASSWORD=<password> -AUTH_TYPE=exchangecode -epicapp=<appid> -epicenv=Prod -EpicPortal  -epicusername=<username> -epicuserid=<userid> -epiclocale=en-US -epicsandboxid=<sandboxid> -epicdeploymentid=<deploymentid>
 ```
 
-The `AUTH_PASSWORD` parameter value contains the token that you should pass into ${function.eos_auth_login} as `credentials_token`. This function should then be called with a `credentials_type` of `EpicLoginCredentialType.ExchangeCode`. The `credentials_id` parameter can be left blank (an empty string `""`), as this login method does not require an ID. `external_credential_type` is ignored for this login type, but a value must still be passed - `EpicExternalCredentialType.Epic` is a safe default.
+You can read these parameters in your game and call the login function (${func.eos_auth_login}).
+
+* The `AUTH_PASSWORD` parameter value contains the token that you should pass into ${function.eos_auth_login} as `credentials_token`.
+* This function should then be called with a `credentials_type` of `EpicLoginCredentialType.ExchangeCode`.
+* The `credentials_id` parameter can be left blank (an empty string `""`), as this login method does not require an ID.
+* `external_credential_type` is ignored for this login type, but a value must still be passed - `EpicExternalCredentialType.Epic` is a safe default.
 
 ```gml
 // Retrieve the AUTH_PASSWORD command-line parameter

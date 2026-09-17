@@ -148,7 +148,7 @@
  * @event callback
  * @desc Fires each time the local user is disconnected from the room.
  * @member {Constant.EpicResult} result_code Why the connection ended, e.g. `EpicResult.Success` (left
- * cleanly), `EpicResult.NoConnection`, `EpicResult.RTC_USER_KICKED`, `EpicResult.ServiceFailure`.
+ * cleanly), `EpicResult.NoConnection`, `EpicResult.RTC_UserKicked`, `EpicResult.ServiceFailure`.
  * @member {String} local_user_id The Product User ID that was disconnected.
  * @member {String} room_name The room that was disconnected from.
  * @event_end
@@ -742,7 +742,7 @@
 
 /**
  * @function eos_rtc_audio_add_notify_audio_before_render
- * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyAudioBeforeRender](https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-audio-before-render)
+ * @desc **Epic Online Services Function:** [EOS_RTCAudio_AddNotifyAudioBeforeRender](https://dev.epicgames.com/docs/api-ref/functions/eos-rtc-audio-add-notify-audio-before-render)
  *
  * Registers to observe a participant's incoming audio right before it's rendered (played back), e.g.
  * for a per-participant activity meter or your own custom playback. As with

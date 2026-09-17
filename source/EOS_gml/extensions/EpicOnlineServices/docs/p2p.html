@@ -1,192 +1,2181 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>P2P - GMEXT-EpicOnlineServices</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "P2P";
-        var mkdocs_page_input_path = "p2p.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="metrics.html">
+      
+      
+        <link rel="next" href="platform.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>P2P - GMEXT-EpicOnlineServices</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#p2p" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">P2P</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-header__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-EpicOnlineServices
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              P2P
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-EpicOnlineServices</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">P2P</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/p2p.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="p2p"><strong>P2P</strong></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-nav__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-EpicOnlineServices
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Epic Online Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging_in.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extension_options.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="general.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="achievements.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Achievements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auth.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="connect.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="custom_invites.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Invites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ecom.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ecom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="friends.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Friends
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="leaderboards.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leaderboards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lobbies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lobbies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P2P
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p2p.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P2P
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2P
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="P2P">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_send_packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_send_packet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_next_received_packet_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_next_received_packet_size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_receive_packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_receive_packet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_accept_connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_accept_connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_close_connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_close_connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_close_connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_close_connections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_query_nat_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_query_nat_type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_nat_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_nat_type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_set_relay_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_set_relay_control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_relay_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_relay_control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_set_port_range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_set_port_range
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_port_range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_port_range
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_set_packet_queue_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_set_packet_queue_size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_packet_queue_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_packet_queue_info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_clear_packet_queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_clear_packet_queue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_established" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_established
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_established" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_established
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_interrupted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_interrupted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_interrupted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_interrupted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_closed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_closed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_incoming_packet_queue_full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_incoming_packet_queue_full
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_incoming_packet_queue_full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_incoming_packet_queue_full
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicnattype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicNATType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicpacketreliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicPacketReliability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicconnectionestablishedtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicConnectionEstablishedType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicnetworkconnectiontype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicNetworkConnectionType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicconnectionclosedreason" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicConnectionClosedReason
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicrelaycontrol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicRelayControl
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2preceivedpacket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PReceivedPacket
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pquerynattypecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PQueryNATTypeCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectionrequestcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionRequestCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectionestablishedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionEstablishedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectioninterruptedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionInterruptedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectionclosedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionClosedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2ppacketqueueinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PPacketQueueInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pportrange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PPortRange
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pincomingpacketqueuefullcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PIncomingPacketQueueFullCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="player_data_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Data Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="presence.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="progression_snapshot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progression Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reports.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rtc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sanctions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sanctions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sessions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stats.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="title_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Title Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2P
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="P2P">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_send_packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_send_packet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_next_received_packet_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_next_received_packet_size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_receive_packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_receive_packet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_accept_connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_accept_connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_close_connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_close_connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_close_connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_close_connections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_query_nat_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_query_nat_type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_nat_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_nat_type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_set_relay_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_set_relay_control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_relay_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_relay_control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_set_port_range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_set_port_range
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_port_range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_port_range
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_set_packet_queue_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_set_packet_queue_size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_get_packet_queue_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_get_packet_queue_info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_clear_packet_queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_clear_packet_queue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_established" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_established
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_established" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_established
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_interrupted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_interrupted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_interrupted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_interrupted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_peer_connection_closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_peer_connection_closed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_peer_connection_closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_peer_connection_closed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_add_notify_incoming_packet_queue_full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_add_notify_incoming_packet_queue_full
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_p2p_remove_notify_incoming_packet_queue_full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_p2p_remove_notify_incoming_packet_queue_full
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicnattype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicNATType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicpacketreliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicPacketReliability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicconnectionestablishedtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicConnectionEstablishedType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicnetworkconnectiontype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicNetworkConnectionType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicconnectionclosedreason" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicConnectionClosedReason
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicrelaycontrol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicRelayControl
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2preceivedpacket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PReceivedPacket
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pquerynattypecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PQueryNATTypeCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectionrequestcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionRequestCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectionestablishedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionEstablishedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectioninterruptedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionInterruptedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pconnectionclosedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PConnectionClosedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2ppacketqueueinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PPacketQueueInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pportrange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PPortRange
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicp2pincomingpacketqueuefullcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicP2PIncomingPacketQueueFullCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="p2p"><strong>P2P</strong><a class="headerlink" href="#p2p" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/p-2-p">P2P Interface</a></p>
 <p>Send and receive data directly between authenticated users, typically for a multiplayer game's own transport layer. P2P connections are secure by default, using Datagram Transport Layer Security (<a href="https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security">DTLS</a>).</p>
-<h2 id="functions">Functions</h2>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
 <p>Provided functions:</p>
 <ul>
 <li><a href="p2p.html#eos_p2p_send_packet">eos_p2p_send_packet</a></li>
@@ -215,7 +2204,7 @@
 <li><a href="p2p.html#eos_p2p_add_notify_incoming_packet_queue_full">eos_p2p_add_notify_incoming_packet_queue_full</a></li>
 <li><a href="p2p.html#eos_p2p_remove_notify_incoming_packet_queue_full">eos_p2p_remove_notify_incoming_packet_queue_full</a></li>
 </ul>
-<h2 id="structs">Structs</h2>
+<h2 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h2>
 <p>These are the structs used by this API:</p>
 <ul>
 <li><a href="p2p.html#epicp2preceivedpacket">EpicP2PReceivedPacket</a></li>
@@ -228,7 +2217,7 @@
 <li><a href="p2p.html#epicp2pportrange">EpicP2PPortRange</a></li>
 <li><a href="p2p.html#epicp2pincomingpacketqueuefullcallbackinfo">EpicP2PIncomingPacketQueueFullCallbackInfo</a></li>
 </ul>
-<h2 id="constants">Constants</h2>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <p>These are the constants used by this API:</p>
 <ul>
 <li><a href="p2p.html#epicnattype">EpicNATType</a></li>
@@ -242,14 +2231,13 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_send_packet">eos_p2p_send_packet</h1>
+<h1 id="eos_p2p_send_packet">eos_p2p_send_packet<a class="headerlink" href="#eos_p2p_send_packet" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-send-packet">EOS_P2P_SendPacket</a></p>
 <p>Sends a packet to a peer at the specified socket. If there is already an open connection to this peer, the packet is sent immediately; otherwise a connection attempt is made. A <code>EpicResult.Success</code> result only means the data was accepted to be queued for sending, not that it has been delivered.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_send_packet(local_user_id, remote_user_id, socket_name, channel, data, bytes, allow_delayed_delivery, reliability, disable_auto_accept_connection)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_send_packet(local_user_id, remote_user_id, socket_name, channel, data, bytes, allow_delayed_delivery, reliability, disable_auto_accept_connection)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -316,7 +2304,7 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_get_next_received_packet_size">eos_p2p_get_next_received_packet_size</h1>
+<h1 id="eos_p2p_get_next_received_packet_size">eos_p2p_get_next_received_packet_size<a class="headerlink" href="#eos_p2p_get_next_received_packet_size" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-get-next-received-packet-size">EOS_P2P_GetNextReceivedPacketSize</a></p>
 <p>Gets the size of the next packet <a href="p2p.html#eos_p2p_receive_packet">eos_p2p_receive_packet</a> would return for a particular user, if one is available.</p>
 <div class="admonition note">
@@ -326,8 +2314,7 @@
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_get_next_received_packet_size(local_user_id, channel)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_next_received_packet_size(local_user_id, channel)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -359,7 +2346,7 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_receive_packet">eos_p2p_receive_packet</h1>
+<h1 id="eos_p2p_receive_packet">eos_p2p_receive_packet<a class="headerlink" href="#eos_p2p_receive_packet" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-receive-packet">EOS_P2P_ReceivePacket</a></p>
 <p>Reads the next queued packet for the local user into <code>out_data</code>, if one exists.</p>
 <div class="admonition note">
@@ -369,8 +2356,7 @@
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_receive_packet(local_user_id, out_data, max_bytes, offset, channel)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_receive_packet(local_user_id, out_data, max_bytes, offset, channel)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -415,30 +2401,28 @@
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _size = eos_p2p_get_next_received_packet_size(my_id, -1);
+<pre class="highlight"><code class="language-gml">var _size = eos_p2p_get_next_received_packet_size(my_id, -1);
 if (_size &gt; 0)
 {
     var _buf = buffer_create(_size, buffer_fixed, 1);
     var _packet = eos_p2p_receive_packet(my_id, _buf, _size, 0, -1);
     if (!is_undefined(_packet))
     {
-        show_debug_message($&quot;Got {_packet.bytes_written} bytes from {_packet.peer_id}&quot;);
+        show_debug_message($"Got {_packet.bytes_written} bytes from {_packet.peer_id}");
     }
     buffer_delete(_buf);
-}
-</code></pre></div>
+}</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_accept_connection">eos_p2p_accept_connection</h1>
+<h1 id="eos_p2p_accept_connection">eos_p2p_accept_connection<a class="headerlink" href="#eos_p2p_accept_connection" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-accept-connection">EOS_P2P_AcceptConnection</a></p>
 <p>Accepts or requests a connection with a specific peer on a specific socket ID. If the connection wasn't already locally accepted, EOS securely messages the peer and triggers a <a href="p2p.html#eos_p2p_add_notify_peer_connection_request">eos_p2p_add_notify_peer_connection_request</a> notification for them. If the remote peer accepts, <a href="p2p.html#eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</a> fires once the connection is ready to send packets. Multiple socket IDs accepted with the same peer share one physical connection.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_accept_connection(local_user_id, remote_user_id, socket_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_accept_connection(local_user_id, remote_user_id, socket_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -475,7 +2459,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_close_connection">eos_p2p_close_connection</h1>
+<h1 id="eos_p2p_close_connection">eos_p2p_close_connection<a class="headerlink" href="#eos_p2p_close_connection" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-close-connection">EOS_P2P_CloseConnection</a></p>
 <p>Stops receiving packets on a specific socket ID with a specific peer, drops any locally queued packets for it, and - if no other socket ID is using the underlying connection with that peer - closes it. If you want to migrate an existing connection to a new socket ID, call <a href="p2p.html#eos_p2p_accept_connection">eos_p2p_accept_connection</a> with the new socket ID before closing the old one, so the shared physical connection isn't torn down prematurely.</p>
 <div class="admonition note">
@@ -485,8 +2469,7 @@ if (_size &gt; 0)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_close_connection(local_user_id, remote_user_id, socket_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_close_connection(local_user_id, remote_user_id, socket_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -523,14 +2506,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_close_connections">eos_p2p_close_connections</h1>
+<h1 id="eos_p2p_close_connections">eos_p2p_close_connections<a class="headerlink" href="#eos_p2p_close_connections" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-close-connections">EOS_P2P_CloseConnections</a></p>
 <p>Closes every open connection using a specific socket ID, across all remote peers.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_close_connections(local_user_id, socket_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_close_connections(local_user_id, socket_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -562,15 +2544,14 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_query_nat_type">eos_p2p_query_nat_type</h1>
+<h1 id="eos_p2p_query_nat_type">eos_p2p_query_nat_type<a class="headerlink" href="#eos_p2p_query_nat_type" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-query-nat-type">EOS_P2P_QueryNATType</a></p>
 <p>Queries the current NAT strictness of the local connection. Once complete, read the result with <a href="p2p.html#eos_p2p_get_nat_type">eos_p2p_get_nat_type</a>.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_query_nat_type(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_query_nat_type(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -619,7 +2600,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_get_nat_type">eos_p2p_get_nat_type</h1>
+<h1 id="eos_p2p_get_nat_type">eos_p2p_get_nat_type<a class="headerlink" href="#eos_p2p_get_nat_type" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-get-nat-type">EOS_P2P_GetNATType</a></p>
 <p>Gets the last NAT type successfully queried with <a href="p2p.html#eos_p2p_query_nat_type">eos_p2p_query_nat_type</a>.</p>
 <div class="admonition note">
@@ -629,8 +2610,7 @@ if (_size &gt; 0)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_get_nat_type()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_nat_type()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -641,14 +2621,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_set_relay_control">eos_p2p_set_relay_control</h1>
+<h1 id="eos_p2p_set_relay_control">eos_p2p_set_relay_control<a class="headerlink" href="#eos_p2p_set_relay_control" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-set-relay-control">EOS_P2P_SetRelayControl</a></p>
 <p>Sets how relay servers are used for P2P connections. This only affects new connections, or existing connections that renegotiate (e.g. after a temporary connectivity outage) - it doesn't apply retroactively to already-established connections. Peers with incompatible relay settings won't be able to connect to each other.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_set_relay_control(relay_control)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_set_relay_control(relay_control)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -675,14 +2654,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_get_relay_control">eos_p2p_get_relay_control</h1>
+<h1 id="eos_p2p_get_relay_control">eos_p2p_get_relay_control<a class="headerlink" href="#eos_p2p_get_relay_control" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-get-relay-control">EOS_P2P_GetRelayControl</a></p>
 <p>Gets the currently configured relay control setting.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_get_relay_control()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_relay_control()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -693,14 +2671,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_set_port_range">eos_p2p_set_port_range</h1>
+<h1 id="eos_p2p_set_port_range">eos_p2p_set_port_range<a class="headerlink" href="#eos_p2p_set_port_range" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-set-port-range">EOS_P2P_SetPortRange</a></p>
 <p>Sets the preferred port and fallback range for P2P traffic.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_set_port_range(port, max_additional_ports_to_try)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_set_port_range(port, max_additional_ports_to_try)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -732,14 +2709,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_get_port_range">eos_p2p_get_port_range</h1>
+<h1 id="eos_p2p_get_port_range">eos_p2p_get_port_range<a class="headerlink" href="#eos_p2p_get_port_range" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-get-port-range">EOS_P2P_GetPortRange</a></p>
 <p>Gets the currently configured port and additional-ports-to-try count.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_get_port_range()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_port_range()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -750,14 +2726,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_set_packet_queue_size">eos_p2p_set_packet_queue_size</h1>
+<h1 id="eos_p2p_set_packet_queue_size">eos_p2p_set_packet_queue_size<a class="headerlink" href="#eos_p2p_set_packet_queue_size" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-set-packet-queue-size">EOS_P2P_SetPacketQueueSize</a></p>
 <p>Sets the maximum size, in bytes, of the incoming and outgoing packet queues. If a queue is shrunk below its current size, already-queued packets are kept, but no new packets can be added until enough are sent or received to make room.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_set_packet_queue_size(incoming_max_bytes, outgoing_max_bytes)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_set_packet_queue_size(incoming_max_bytes, outgoing_max_bytes)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -789,14 +2764,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_get_packet_queue_info">eos_p2p_get_packet_queue_info</h1>
+<h1 id="eos_p2p_get_packet_queue_info">eos_p2p_get_packet_queue_info<a class="headerlink" href="#eos_p2p_get_packet_queue_info" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-get-packet-queue-info">EOS_P2P_GetPacketQueueInfo</a></p>
 <p>Gets the current state of the incoming and outgoing packet queues.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_get_packet_queue_info()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_get_packet_queue_info()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -807,14 +2781,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_clear_packet_queue">eos_p2p_clear_packet_queue</h1>
+<h1 id="eos_p2p_clear_packet_queue">eos_p2p_clear_packet_queue<a class="headerlink" href="#eos_p2p_clear_packet_queue" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-clear-packet-queue">EOS_P2P_ClearPacketQueue</a></p>
 <p>Clears queued incoming and outgoing packets between the local user and a specific peer on a specific socket.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_clear_packet_queue(local_user_id, remote_user_id, socket_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_clear_packet_queue(local_user_id, remote_user_id, socket_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -851,7 +2824,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_add_notify_peer_connection_request">eos_p2p_add_notify_peer_connection_request</h1>
+<h1 id="eos_p2p_add_notify_peer_connection_request">eos_p2p_add_notify_peer_connection_request<a class="headerlink" href="#eos_p2p_add_notify_peer_connection_request" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-add-notify-peer-connection-request">EOS_P2P_AddNotifyPeerConnectionRequest</a></p>
 <p>Registers to be notified of incoming connection requests on a socket ID (or all socket IDs). The callback only fires for connections that haven't already been accepted. If the network status changes from offline to online, register this again.</p>
 <div class="admonition note">
@@ -862,8 +2835,7 @@ if (_size &gt; 0)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_add_notify_peer_connection_request(local_user_id, socket_name, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_request(local_user_id, socket_name, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -922,14 +2894,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_remove_notify_peer_connection_request">eos_p2p_remove_notify_peer_connection_request</h1>
+<h1 id="eos_p2p_remove_notify_peer_connection_request">eos_p2p_remove_notify_peer_connection_request<a class="headerlink" href="#eos_p2p_remove_notify_peer_connection_request" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-request">EOS_P2P_RemoveNotifyPeerConnectionRequest</a></p>
 <p>Unregisters a notification previously registered with <a href="p2p.html#eos_p2p_add_notify_peer_connection_request">eos_p2p_add_notify_peer_connection_request</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_remove_notify_peer_connection_request(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_request(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -956,7 +2927,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</h1>
+<h1 id="eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established<a class="headerlink" href="#eos_p2p_add_notify_peer_connection_established" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-add-notify-peer-connection-established">EOS_P2P_AddNotifyPeerConnectionEstablished</a></p>
 <p>Registers to be notified when a connection is established - the first time it connects, after reconnecting from an interruption, and whenever the underlying network path changes (e.g. direct to relayed or vice versa; a path change is always reported with <code>EpicConnectionEstablishedType.Reconnection</code>, even if the connection itself was never interrupted). If the network status changes from offline to online, register this again.</p>
 <div class="admonition note">
@@ -967,8 +2938,7 @@ if (_size &gt; 0)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_add_notify_peer_connection_established(local_user_id, socket_name, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_established(local_user_id, socket_name, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1027,14 +2997,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_remove_notify_peer_connection_established">eos_p2p_remove_notify_peer_connection_established</h1>
+<h1 id="eos_p2p_remove_notify_peer_connection_established">eos_p2p_remove_notify_peer_connection_established<a class="headerlink" href="#eos_p2p_remove_notify_peer_connection_established" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-established">EOS_P2P_RemoveNotifyPeerConnectionEstablished</a></p>
 <p>Unregisters a notification previously registered with <a href="p2p.html#eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_remove_notify_peer_connection_established(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_established(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1061,7 +3030,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_add_notify_peer_connection_interrupted">eos_p2p_add_notify_peer_connection_interrupted</h1>
+<h1 id="eos_p2p_add_notify_peer_connection_interrupted">eos_p2p_add_notify_peer_connection_interrupted<a class="headerlink" href="#eos_p2p_add_notify_peer_connection_interrupted" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-add-notify-peer-connection-interrupted">EOS_P2P_AddNotifyPeerConnectionInterrupted</a></p>
 <p>Registers to be notified when a previously open or pending connection is interrupted. EOS automatically attempts to reestablish it - a successful reconnect fires <a href="p2p.html#eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</a> with <code>EpicConnectionEstablishedType.Reconnection</code>; a failed one fires <a href="p2p.html#eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed</a> instead. Queued packets survive an interruption, but are flushed once the connection actually closes.</p>
 <div class="admonition note">
@@ -1072,8 +3041,7 @@ if (_size &gt; 0)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_add_notify_peer_connection_interrupted(local_user_id, socket_name, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_interrupted(local_user_id, socket_name, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1132,14 +3100,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_remove_notify_peer_connection_interrupted">eos_p2p_remove_notify_peer_connection_interrupted</h1>
+<h1 id="eos_p2p_remove_notify_peer_connection_interrupted">eos_p2p_remove_notify_peer_connection_interrupted<a class="headerlink" href="#eos_p2p_remove_notify_peer_connection_interrupted" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-interrupted">EOS_P2P_RemoveNotifyPeerConnectionInterrupted</a></p>
 <p>Unregisters a notification previously registered with <a href="p2p.html#eos_p2p_add_notify_peer_connection_interrupted">eos_p2p_add_notify_peer_connection_interrupted</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_remove_notify_peer_connection_interrupted(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_interrupted(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1166,7 +3133,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed</h1>
+<h1 id="eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed<a class="headerlink" href="#eos_p2p_add_notify_peer_connection_closed" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-add-notify-peer-connection-closed">EOS_P2P_AddNotifyPeerConnectionClosed</a></p>
 <p>Registers to be notified when a previously open or pending connection closes. Closing a connection flushes its packets, including reliable ones still in flight.</p>
 <div class="admonition note">
@@ -1177,8 +3144,7 @@ if (_size &gt; 0)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_add_notify_peer_connection_closed(local_user_id, socket_name, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_peer_connection_closed(local_user_id, socket_name, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1237,14 +3203,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_remove_notify_peer_connection_closed">eos_p2p_remove_notify_peer_connection_closed</h1>
+<h1 id="eos_p2p_remove_notify_peer_connection_closed">eos_p2p_remove_notify_peer_connection_closed<a class="headerlink" href="#eos_p2p_remove_notify_peer_connection_closed" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-remove-notify-peer-connection-closed">EOS_P2P_RemoveNotifyPeerConnectionClosed</a></p>
 <p>Unregisters a notification previously registered with <a href="p2p.html#eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_remove_notify_peer_connection_closed(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_peer_connection_closed(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1271,7 +3236,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_add_notify_incoming_packet_queue_full">eos_p2p_add_notify_incoming_packet_queue_full</h1>
+<h1 id="eos_p2p_add_notify_incoming_packet_queue_full">eos_p2p_add_notify_incoming_packet_queue_full<a class="headerlink" href="#eos_p2p_add_notify_incoming_packet_queue_full" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-add-notify-incoming-packet-queue-full">EOS_P2P_AddNotifyIncomingPacketQueueFull</a></p>
 <p>Registers to be notified when the incoming packet queue becomes full, giving you a chance to drain it with <a href="p2p.html#eos_p2p_receive_packet">eos_p2p_receive_packet</a> before new packets start being silently discarded. If nothing is read and the queue isn't grown via <a href="p2p.html#eos_p2p_set_packet_queue_size">eos_p2p_set_packet_queue_size</a>, packets received after this fires are dropped until room frees up.</p>
 <div class="admonition note">
@@ -1282,8 +3247,7 @@ if (_size &gt; 0)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_add_notify_incoming_packet_queue_full(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_add_notify_incoming_packet_queue_full(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1332,14 +3296,13 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_p2p_remove_notify_incoming_packet_queue_full">eos_p2p_remove_notify_incoming_packet_queue_full</h1>
+<h1 id="eos_p2p_remove_notify_incoming_packet_queue_full">eos_p2p_remove_notify_incoming_packet_queue_full<a class="headerlink" href="#eos_p2p_remove_notify_incoming_packet_queue_full" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-p-2-p-remove-notify-incoming-packet-queue-full">EOS_P2P_RemoveNotifyIncomingPacketQueueFull</a></p>
 <p>Unregisters a notification previously registered with <a href="p2p.html#eos_p2p_add_notify_incoming_packet_queue_full">eos_p2p_add_notify_incoming_packet_queue_full</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_p2p_remove_notify_incoming_packet_queue_full(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_p2p_remove_notify_incoming_packet_queue_full(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1366,7 +3329,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicnattype">EpicNATType</h1>
+<h1 id="epicnattype">EpicNATType<a class="headerlink" href="#epicnattype" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-enat-type">EOS_ENATType</a></p>
 <p>The possible categories of NAT strictness, as reported by <a href="p2p.html#eos_p2p_get_nat_type">eos_p2p_get_nat_type</a>.</p>
 <p>These constants are referenced by the following functions:</p>
@@ -1408,7 +3371,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicpacketreliability">EpicPacketReliability</h1>
+<h1 id="epicpacketreliability">EpicPacketReliability<a class="headerlink" href="#epicpacketreliability" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-packet-reliability">EOS_EPacketReliability</a></p>
 <p>Ordered packets are only ordered relative to other ordered packets. Reliable/unreliable and ordered/unordered traffic can share the same socket ID and channel.</p>
 <p>These constants are referenced by the following functions:</p>
@@ -1442,7 +3405,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicconnectionestablishedtype">EpicConnectionEstablishedType</h1>
+<h1 id="epicconnectionestablishedtype">EpicConnectionEstablishedType<a class="headerlink" href="#epicconnectionestablishedtype" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-connection-established-type">EOS_EConnectionEstablishedType</a></p>
 <p>These constants are referenced by the following structs:</p>
 <ul>
@@ -1471,7 +3434,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicnetworkconnectiontype">EpicNetworkConnectionType</h1>
+<h1 id="epicnetworkconnectiontype">EpicNetworkConnectionType<a class="headerlink" href="#epicnetworkconnectiontype" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-network-connection-type">EOS_ENetworkConnectionType</a></p>
 <p>These constants are referenced by the following structs:</p>
 <ul>
@@ -1504,7 +3467,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicconnectionclosedreason">EpicConnectionClosedReason</h1>
+<h1 id="epicconnectionclosedreason">EpicConnectionClosedReason<a class="headerlink" href="#epicconnectionclosedreason" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-connection-closed-reason">EOS_EConnectionClosedReason</a></p>
 <p>These constants are referenced by the following structs:</p>
 <ul>
@@ -1565,7 +3528,7 @@ if (_size &gt; 0)
 </tr>
 <tr>
 <td><code>ConnectionIgnored</code></td>
-<td></td>
+<td>The connection was ignored</td>
 </tr>
 </tbody>
 </table>
@@ -1573,7 +3536,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicrelaycontrol">EpicRelayControl</h1>
+<h1 id="epicrelaycontrol">EpicRelayControl<a class="headerlink" href="#epicrelaycontrol" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-relay-control">EOS_ERelayControl</a></p>
 <p>Connections between peers with incompatible relay-control settings may succeed in limited scenarios, but should be treated as unreliable.</p>
 <p>These constants are referenced by the following functions:</p>
@@ -1608,7 +3571,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2preceivedpacket">EpicP2PReceivedPacket</h1>
+<h1 id="epicp2preceivedpacket">EpicP2PReceivedPacket<a class="headerlink" href="#epicp2preceivedpacket" title="Permanent link">&para;</a></h1>
 <p>Returned by <a href="p2p.html#eos_p2p_receive_packet">eos_p2p_receive_packet</a> when a packet was available and successfully copied into the caller's buffer.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1655,7 +3618,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2pquerynattypecallbackinfo">EpicP2PQueryNATTypeCallbackInfo</h1>
+<h1 id="epicp2pquerynattypecallbackinfo">EpicP2PQueryNATTypeCallbackInfo<a class="headerlink" href="#epicp2pquerynattypecallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Passed to the callback of <a href="p2p.html#eos_p2p_query_nat_type">eos_p2p_query_nat_type</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1687,7 +3650,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2pconnectionrequestcallbackinfo">EpicP2PConnectionRequestCallbackInfo</h1>
+<h1 id="epicp2pconnectionrequestcallbackinfo">EpicP2PConnectionRequestCallbackInfo<a class="headerlink" href="#epicp2pconnectionrequestcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Passed to the callback of <a href="p2p.html#eos_p2p_add_notify_peer_connection_request">eos_p2p_add_notify_peer_connection_request</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1724,7 +3687,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2pconnectionestablishedcallbackinfo">EpicP2PConnectionEstablishedCallbackInfo</h1>
+<h1 id="epicp2pconnectionestablishedcallbackinfo">EpicP2PConnectionEstablishedCallbackInfo<a class="headerlink" href="#epicp2pconnectionestablishedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Passed to the callback of <a href="p2p.html#eos_p2p_add_notify_peer_connection_established">eos_p2p_add_notify_peer_connection_established</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1771,7 +3734,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2pconnectioninterruptedcallbackinfo">EpicP2PConnectionInterruptedCallbackInfo</h1>
+<h1 id="epicp2pconnectioninterruptedcallbackinfo">EpicP2PConnectionInterruptedCallbackInfo<a class="headerlink" href="#epicp2pconnectioninterruptedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Passed to the callback of <a href="p2p.html#eos_p2p_add_notify_peer_connection_interrupted">eos_p2p_add_notify_peer_connection_interrupted</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1808,7 +3771,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2pconnectionclosedcallbackinfo">EpicP2PConnectionClosedCallbackInfo</h1>
+<h1 id="epicp2pconnectionclosedcallbackinfo">EpicP2PConnectionClosedCallbackInfo<a class="headerlink" href="#epicp2pconnectionclosedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Passed to the callback of <a href="p2p.html#eos_p2p_add_notify_peer_connection_closed">eos_p2p_add_notify_peer_connection_closed</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1850,7 +3813,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2ppacketqueueinfo">EpicP2PPacketQueueInfo</h1>
+<h1 id="epicp2ppacketqueueinfo">EpicP2PPacketQueueInfo<a class="headerlink" href="#epicp2ppacketqueueinfo" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Struct:</strong> <a href="https://dev.epicgames.com/docs/api-ref/structs/eos-p-2-p-packet-queue-info">EOS_P2P_PacketQueueInfo</a></p>
 <p>Returned by <a href="p2p.html#eos_p2p_get_packet_queue_info">eos_p2p_get_packet_queue_info</a>. It's possible for a <code>current_size_bytes</code> value to be larger than its matching <code>max_size_bytes</code> if the maximum size changes, or if it was set to unlimited.</p>
 <p>This struct is referenced by the following functions:</p>
@@ -1903,7 +3866,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2pportrange">EpicP2PPortRange</h1>
+<h1 id="epicp2pportrange">EpicP2PPortRange<a class="headerlink" href="#epicp2pportrange" title="Permanent link">&para;</a></h1>
 <p>Returned by <a href="p2p.html#eos_p2p_get_port_range">eos_p2p_get_port_range</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1935,7 +3898,7 @@ if (_size &gt; 0)
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicp2pincomingpacketqueuefullcallbackinfo">EpicP2PIncomingPacketQueueFullCallbackInfo</h1>
+<h1 id="epicp2pincomingpacketqueuefullcallbackinfo">EpicP2PIncomingPacketQueueFullCallbackInfo<a class="headerlink" href="#epicp2pincomingpacketqueuefullcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Passed to the callback of <a href="p2p.html#eos_p2p_add_notify_incoming_packet_queue_full">eos_p2p_add_notify_incoming_packet_queue_full</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1980,57 +3943,73 @@ if (_size &gt; 0)
 </table>
 <p><br></p>
 <hr />
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="metrics.html" class="btn btn-neutral float-left" title="Metrics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="platform.html" class="btn btn-neutral float-right" title="Platform">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2026</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="metrics.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="platform.html" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

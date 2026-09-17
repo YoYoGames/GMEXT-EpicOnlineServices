@@ -42,10 +42,4 @@ are required and are found on the [Epic Games Dev Portal](https://dev.epicgames.
 |---|---|---|---|
 | **Log Level** | Dropdown (`0`/`1`/`2`) | `1` | Verbosity of the extension's own startup/diagnostic logging, separate from ${function.eos_logging_set_callback}'s per-category SDK logging (see ${module.logging}). |
 
-## Android
-
-| Option | Type | Default | Description |
-|---|---|---|---|
-| **Scheme** | String | `eos.<lowercase Client Credentials ID>` | The custom URI scheme Android registers for the Epic account-portal login redirect. Must stay in sync with **Client Credentials ID** above - if you change one, update the other. |
-
 [[Note: The remaining options under **Extra Options** (SDK version/hash pins) are internal build plumbing used to fetch the correct redistributable SDK version and are not meant to be edited by hand.]]

@@ -1,189 +1,3058 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Sessions - GMEXT-EpicOnlineServices</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Sessions";
-        var mkdocs_page_input_path = "sessions.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="sanctions.html">
+      
+      
+        <link rel="next" href="stats.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Sessions - GMEXT-EpicOnlineServices</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sessions" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Sessions</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-header__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-EpicOnlineServices
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sessions
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-EpicOnlineServices</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Sessions</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/sessions.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="sessions"><strong>Sessions</strong></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-nav__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-EpicOnlineServices
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Epic Online Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging_in.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extension_options.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="general.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="achievements.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Achievements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auth.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="connect.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="custom_invites.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Invites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ecom.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ecom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="friends.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Friends
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="leaderboards.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leaderboards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lobbies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lobbies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p2p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P2P
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="player_data_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Data Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="presence.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="progression_snapshot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progression Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reports.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rtc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sanctions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sanctions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sessions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="sessions.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sessions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_create_session_modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_create_session_modification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_update_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_update_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_destroy_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_destroy_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_start_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_start_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_end_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_end_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_join_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_join_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_register_players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_register_players
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_unregister_players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_unregister_players
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_create_session_search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_create_session_search
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_set_session_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_set_session_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_set_target_user_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_set_target_user_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_find" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_find
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_copy_search_result_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_copy_search_result_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_copy_active_session_handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_copy_active_session_handle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_copy_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_copy_info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_copy_session_handle_by_invite_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_copy_session_handle_by_invite_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_copy_session_handle_by_ui_event_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_copy_session_handle_by_ui_event_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_copy_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_copy_info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_session_invite_received" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_session_invite_received
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_session_invite_received" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_session_invite_received
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_session_invite_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_session_invite_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_session_invite_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_session_invite_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_join_session_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_join_session_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_join_session_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_join_session_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_bucket_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_bucket_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_host_address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_host_address
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_permission_level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_permission_level
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_join_in_progress_allowed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_join_in_progress_allowed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_max_players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_max_players
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_invites_allowed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_invites_allowed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_add_attribute_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_add_attribute_string
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_add_attribute_bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_add_attribute_bool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_add_attribute_double" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_add_attribute_double
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_remove_attribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_remove_attribute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_get_session_attribute_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_get_session_attribute_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_copy_session_attribute_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_copy_session_attribute_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_copy_session_attribute_by_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_copy_session_attribute_by_key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_get_registered_player_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_get_registered_player_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_get_registered_player_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_get_registered_player_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_send_invite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_send_invite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_reject_invite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_reject_invite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_query_invites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_query_invites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_get_invite_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_get_invite_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_get_invite_id_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_get_invite_id_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_set_parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_set_parameter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_remove_parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_remove_parameter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_get_search_result_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_get_search_result_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_session_invite_rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_session_invite_rejected
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_session_invite_rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_session_invite_rejected
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_leave_session_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_leave_session_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_leave_session_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_leave_session_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_send_session_native_invite_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_send_session_native_invite_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_send_session_native_invite_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_send_session_native_invite_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epiconlinesessionstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicOnlineSessionState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionattributeadvertisementtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionAttributeAdvertisementType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epiconlinesessionpermissionlevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicOnlineSessionPermissionLevel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsupdatesessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsUpdateSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsdestroysessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsDestroySessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsstartsessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsStartSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsendsessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsEndSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsjoinsessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsJoinSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsregisterplayerscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsRegisterPlayersCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsunregisterplayerscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsUnregisterPlayersCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsfindcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsFindCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessiondetailsinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionDetailsInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicactivesessioninfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicActiveSessionInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssessioninvitereceivedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSessionInviteReceivedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssessioninviteacceptedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSessionInviteAcceptedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsjoinsessionacceptedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsJoinSessionAcceptedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessiondetailsattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionDetailsAttribute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssendinvitecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSendInviteCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsrejectinvitecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsRejectInviteCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsqueryinvitescallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsQueryInvitesCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssessioninviterejectedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSessionInviteRejectedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsleavesessionrequestedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsLeaveSessionRequestedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssendsessionnativeinviterequestedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSendSessionNativeInviteRequestedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stats.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="title_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Title Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sessions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_create_session_modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_create_session_modification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_update_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_update_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_destroy_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_destroy_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_start_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_start_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_end_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_end_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_join_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_join_session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_register_players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_register_players
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_unregister_players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_unregister_players
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_create_session_search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_create_session_search
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_set_session_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_set_session_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_set_target_user_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_set_target_user_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_find" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_find
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_copy_search_result_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_copy_search_result_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_copy_active_session_handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_copy_active_session_handle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_release
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_copy_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_copy_info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_copy_session_handle_by_invite_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_copy_session_handle_by_invite_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_copy_session_handle_by_ui_event_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_copy_session_handle_by_ui_event_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_copy_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_copy_info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_session_invite_received" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_session_invite_received
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_session_invite_received" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_session_invite_received
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_session_invite_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_session_invite_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_session_invite_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_session_invite_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_join_session_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_join_session_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_join_session_accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_join_session_accepted
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_bucket_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_bucket_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_host_address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_host_address
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_permission_level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_permission_level
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_join_in_progress_allowed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_join_in_progress_allowed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_max_players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_max_players
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_set_invites_allowed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_set_invites_allowed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_add_attribute_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_add_attribute_string
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_add_attribute_bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_add_attribute_bool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_add_attribute_double" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_add_attribute_double
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_modification_remove_attribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_modification_remove_attribute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_get_session_attribute_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_get_session_attribute_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_copy_session_attribute_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_copy_session_attribute_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_details_copy_session_attribute_by_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_details_copy_session_attribute_by_key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_get_registered_player_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_get_registered_player_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_active_session_get_registered_player_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_active_session_get_registered_player_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_send_invite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_send_invite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_reject_invite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_reject_invite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_query_invites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_query_invites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_get_invite_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_get_invite_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_get_invite_id_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_get_invite_id_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_set_parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_set_parameter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_remove_parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_remove_parameter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_session_search_get_search_result_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_session_search_get_search_result_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_session_invite_rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_session_invite_rejected
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_session_invite_rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_session_invite_rejected
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_leave_session_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_leave_session_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_leave_session_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_leave_session_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_add_notify_send_session_native_invite_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_add_notify_send_session_native_invite_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_sessions_remove_notify_send_session_native_invite_requested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_sessions_remove_notify_send_session_native_invite_requested
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epiconlinesessionstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicOnlineSessionState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionattributeadvertisementtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionAttributeAdvertisementType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epiconlinesessionpermissionlevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicOnlineSessionPermissionLevel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsupdatesessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsUpdateSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsdestroysessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsDestroySessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsstartsessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsStartSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsendsessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsEndSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsjoinsessioncallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsJoinSessionCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsregisterplayerscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsRegisterPlayersCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsunregisterplayerscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsUnregisterPlayersCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsfindcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsFindCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessiondetailsinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionDetailsInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicactivesessioninfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicActiveSessionInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssessioninvitereceivedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSessionInviteReceivedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssessioninviteacceptedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSessionInviteAcceptedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsjoinsessionacceptedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsJoinSessionAcceptedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessiondetailsattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionDetailsAttribute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssendinvitecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSendInviteCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsrejectinvitecallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsRejectInviteCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsqueryinvitescallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsQueryInvitesCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssessioninviterejectedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSessionInviteRejectedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionsleavesessionrequestedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsLeaveSessionRequestedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicsessionssendsessionnativeinviterequestedcallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicSessionsSendSessionNativeInviteRequestedCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="sessions"><strong>Sessions</strong><a class="headerlink" href="#sessions" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-sessions-interface">Sessions Interface</a></p>
 <p>The <a href="https://dev.epicgames.com/docs/game-services/eos-sessions-interface">Sessions Interface</a> lets
 players create, search for, join, and leave online game sessions - the general-purpose matchmaking
@@ -193,7 +3062,7 @@ across matches, see <a href="lobbies.html">Lobbies</a> instead.</p>
 <p class="admonition-title">Note</p>
 <p>A session is built/modified through a "session modification" handle: create one with <a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a>, configure it with the <code>eos_sessions_session_modification_*</code> setters, then publish it with <a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a>.</p>
 </div>
-<h2 id="functions">Functions</h2>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
 <p>Notifications:</p>
 <ul>
 <li><a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a></li>
@@ -254,7 +3123,7 @@ across matches, see <a href="lobbies.html">Lobbies</a> instead.</p>
 <li><a href="sessions.html#eos_sessions_add_notify_send_session_native_invite_requested">eos_sessions_add_notify_send_session_native_invite_requested</a></li>
 <li><a href="sessions.html#eos_sessions_remove_notify_send_session_native_invite_requested">eos_sessions_remove_notify_send_session_native_invite_requested</a></li>
 </ul>
-<h2 id="structs">Structs</h2>
+<h2 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h2>
 <p>This module offers a collection of structs, which serve as custom data models for organizing and structuring data. Explore the provided structs to better understand the relationships between data elements and simplify your data manipulation tasks.</p>
 <ul>
 <li><a href="sessions.html#epicsessionsupdatesessioncallbackinfo">EpicSessionsUpdateSessionCallbackInfo</a></li>
@@ -278,7 +3147,7 @@ across matches, see <a href="lobbies.html">Lobbies</a> instead.</p>
 <li><a href="sessions.html#epicsessionsleavesessionrequestedcallbackinfo">EpicSessionsLeaveSessionRequestedCallbackInfo</a></li>
 <li><a href="sessions.html#epicsessionssendsessionnativeinviterequestedcallbackinfo">EpicSessionsSendSessionNativeInviteRequestedCallbackInfo</a></li>
 </ul>
-<h2 id="constants">Constants</h2>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <p>This module includes a set of predefined constants that can be utilized for various purposes. Browse through the available constants to find values relevant to your needs and enhance the efficiency of your code.</p>
 <ul>
 <li><a href="sessions.html#epiconlinesessionstate">EpicOnlineSessionState</a></li>
@@ -289,7 +3158,7 @@ across matches, see <a href="lobbies.html">Lobbies</a> instead.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_create_session_modification">eos_sessions_create_session_modification</h1>
+<h1 id="eos_sessions_create_session_modification">eos_sessions_create_session_modification<a class="headerlink" href="#eos_sessions_create_session_modification" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-create-session-modification">EOS_Sessions_CreateSessionModification</a></p>
 <p>Creates a session modification handle. This handle is used to build up the settings for a brand new
 session (an empty <code>session_id</code> lets the backend assign one) before calling <a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a>
@@ -301,8 +3170,7 @@ to publish it. Configure the modification with the <code>eos_sessions_session_mo
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_create_session_modification(session_name, session_id, bucket_id, max_players, local_user_id, presence_enabled, sanctions_enabled, allowed_platform_ids)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_create_session_modification(session_name, session_id, bucket_id, max_players, local_user_id, presence_enabled, sanctions_enabled, allowed_platform_ids)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -363,17 +3231,16 @@ to publish it. Configure the modification with the <code>eos_sessions_session_mo
 <p>A session modification handle (<code>0</code> on failure), consumed by <a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a> or released with <a href="sessions.html#eos_sessions_session_modification_release">eos_sessions_session_modification_release</a>.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _mod = eos_sessions_create_session_modification(&quot;MySession&quot;, &quot;&quot;, &quot;region-eu&quot;, 4, local_user_id, true, false, []);
+<pre class="highlight"><code class="language-gml">var _mod = eos_sessions_create_session_modification("MySession", "", "region-eu", 4, local_user_id, true, false, []);
 eos_sessions_session_modification_set_permission_level(_mod, EOS_ONLINE_SESSION_PERMISSION_LEVEL.PUBLIC_ADVERTISED);
 eos_sessions_update_session(_mod, function(_result) {
-    show_debug_message($&quot;Session created: {_result.result_code}&quot;);
-});
-</code></pre></div>
+    show_debug_message($"Session created: {_result.result_code}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_release">eos_sessions_session_modification_release</h1>
+<h1 id="eos_sessions_session_modification_release">eos_sessions_session_modification_release<a class="headerlink" href="#eos_sessions_session_modification_release" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-handle-release">EOS_SessionModificationHandle_Release</a></p>
 <p>Releases a session modification handle without publishing it. Call this if you decide not to commit
 changes built up with <a href="sessions.html#eos_sessions_create_session_modification">eos_sessions_create_session_modification</a>.</p>
@@ -384,8 +3251,7 @@ changes built up with <a href="sessions.html#eos_sessions_create_session_modific
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_release(modification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_release(modification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -410,13 +3276,12 @@ changes built up with <a href="sessions.html#eos_sessions_create_session_modific
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_release(_mod);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_release(_mod);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_update_session">eos_sessions_update_session</h1>
+<h1 id="eos_sessions_update_session">eos_sessions_update_session<a class="headerlink" href="#eos_sessions_update_session" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-update-session">EOS_Sessions_UpdateSession</a></p>
 <p>Publishes a session modification, creating the session on the first call or applying changes on later
 calls. This function consumes and releases <code>modification_id</code> - don't call <a href="sessions.html#eos_sessions_session_modification_release">eos_sessions_session_modification_release</a> on it afterward.</p>
@@ -424,8 +3289,7 @@ calls. This function consumes and releases <code>modification_id</code> - don't 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_update_session(modification_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_update_session(modification_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -477,26 +3341,24 @@ calls. This function consumes and releases <code>modification_id</code> - don't 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_update_session(_mod, function(_result) {
+<pre class="highlight"><code class="language-gml">eos_sessions_update_session(_mod, function(_result) {
     if (_result.result_code == EPIC_RESULT.SUCCESS)
     {
-        show_debug_message($&quot;Session &#39;{_result.session_name}&#39; is live ({_result.session_id}).&quot;);
+        show_debug_message($"Session '{_result.session_name}' is live ({_result.session_id}).");
     }
-});
-</code></pre></div>
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_destroy_session">eos_sessions_destroy_session</h1>
+<h1 id="eos_sessions_destroy_session">eos_sessions_destroy_session<a class="headerlink" href="#eos_sessions_destroy_session" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-destroy-session">EOS_Sessions_DestroySession</a></p>
 <p>Destroys a session that this client is currently in, unregistering every player from it.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_destroy_session(session_name, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_destroy_session(session_name, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -547,15 +3409,14 @@ calls. This function consumes and releases <code>modification_id</code> - don't 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_destroy_session(&quot;MySession&quot;, function(_result) {
-    show_debug_message($&quot;Destroy result: {_result.result_code}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_destroy_session("MySession", function(_result) {
+    show_debug_message($"Destroy result: {_result.result_code}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_start_session">eos_sessions_start_session</h1>
+<h1 id="eos_sessions_start_session">eos_sessions_start_session<a class="headerlink" href="#eos_sessions_start_session" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-start-session">EOS_Sessions_StartSession</a></p>
 <p>Marks a session as started (in progress), which prevents any further joins if <code>join_in_progress_allowed</code>
 is false. Only the owning client should call this once gameplay begins.</p>
@@ -563,8 +3424,7 @@ is false. Only the owning client should call this once gameplay begins.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_start_session(session_name, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_start_session(session_name, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -615,23 +3475,21 @@ is false. Only the owning client should call this once gameplay begins.</p>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_start_session(&quot;MySession&quot;, function(_result) {
-    show_debug_message($&quot;Start result: {_result.result_code}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_start_session("MySession", function(_result) {
+    show_debug_message($"Start result: {_result.result_code}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_end_session">eos_sessions_end_session</h1>
+<h1 id="eos_sessions_end_session">eos_sessions_end_session<a class="headerlink" href="#eos_sessions_end_session" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-end-session">EOS_Sessions_EndSession</a></p>
 <p>Marks a session as no longer in progress (e.g. back to a lobby/waiting state), re-opening it to joins.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_end_session(session_name, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_end_session(session_name, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -682,15 +3540,14 @@ is false. Only the owning client should call this once gameplay begins.</p>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_end_session(&quot;MySession&quot;, function(_result) {
-    show_debug_message($&quot;End result: {_result.result_code}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_end_session("MySession", function(_result) {
+    show_debug_message($"End result: {_result.result_code}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_join_session">eos_sessions_join_session</h1>
+<h1 id="eos_sessions_join_session">eos_sessions_join_session<a class="headerlink" href="#eos_sessions_join_session" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-join-session">EOS_Sessions_JoinSession</a></p>
 <p>Joins a session using a session details handle obtained from a search result (<a href="sessions.html#eos_sessions_session_search_copy_search_result_by_index">eos_sessions_session_search_copy_search_result_by_index</a>)
 or an invite (<a href="sessions.html#eos_sessions_copy_session_handle_by_invite_id">eos_sessions_copy_session_handle_by_invite_id</a>/<a href="sessions.html#eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id</a>).</p>
@@ -698,8 +3555,7 @@ or an invite (<a href="sessions.html#eos_sessions_copy_session_handle_by_invite_
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_join_session(session_name, session_details_id, local_user_id, presence_enabled, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_join_session(session_name, session_details_id, local_user_id, presence_enabled, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -765,15 +3621,14 @@ or an invite (<a href="sessions.html#eos_sessions_copy_session_handle_by_invite_
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_join_session(&quot;MySession&quot;, _session_details_id, local_user_id, true, function(_result) {
-    show_debug_message($&quot;Join result: {_result.result_code}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_join_session("MySession", _session_details_id, local_user_id, true, function(_result) {
+    show_debug_message($"Join result: {_result.result_code}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_register_players">eos_sessions_register_players</h1>
+<h1 id="eos_sessions_register_players">eos_sessions_register_players<a class="headerlink" href="#eos_sessions_register_players" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-register-players">EOS_Sessions_RegisterPlayers</a></p>
 <p>Registers additional players (e.g. local split-screen players, or players who joined outside of the
 SDK's own join flow) as members of an existing session, so they count toward <code>max_players</code> and can be
@@ -782,8 +3637,7 @@ enumerated via <a href="sessions.html#eos_sessions_active_session_get_registered
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_register_players(session_name, target_user_ids, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_register_players(session_name, target_user_ids, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -840,23 +3694,21 @@ enumerated via <a href="sessions.html#eos_sessions_active_session_get_registered
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_register_players(&quot;MySession&quot;, [target_user_id], function(_result) {
-    show_debug_message($&quot;Registered: {_result.registered_players}, sanctioned: {_result.sanctioned_players}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_register_players("MySession", [target_user_id], function(_result) {
+    show_debug_message($"Registered: {_result.registered_players}, sanctioned: {_result.sanctioned_players}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_unregister_players">eos_sessions_unregister_players</h1>
+<h1 id="eos_sessions_unregister_players">eos_sessions_unregister_players<a class="headerlink" href="#eos_sessions_unregister_players" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-unregister-players">EOS_Sessions_UnregisterPlayers</a></p>
 <p>Removes previously registered players from a session.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_unregister_players(session_name, target_user_ids, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_unregister_players(session_name, target_user_ids, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -912,23 +3764,21 @@ enumerated via <a href="sessions.html#eos_sessions_active_session_get_registered
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_unregister_players(&quot;MySession&quot;, [target_user_id], function(_result) {
-    show_debug_message($&quot;Unregistered: {_result.unregistered_players}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_unregister_players("MySession", [target_user_id], function(_result) {
+    show_debug_message($"Unregistered: {_result.unregistered_players}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_create_session_search">eos_sessions_create_session_search</h1>
+<h1 id="eos_sessions_create_session_search">eos_sessions_create_session_search<a class="headerlink" href="#eos_sessions_create_session_search" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-create-session-search">EOS_Sessions_CreateSessionSearch</a></p>
 <p>Creates a session search handle. Configure it with the <code>eos_sessions_session_search_set_*</code> functions
 below, then call <a href="sessions.html#eos_sessions_session_search_find">eos_sessions_session_search_find</a> to run the search.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_create_session_search(max_search_results)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_create_session_search(max_search_results)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -954,14 +3804,13 @@ below, then call <a href="sessions.html#eos_sessions_session_search_find">eos_se
 <p>A session search handle (<code>0</code> on failure), released with <a href="sessions.html#eos_sessions_session_search_release">eos_sessions_session_search_release</a>.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _search = eos_sessions_create_session_search(10);
-eos_sessions_session_search_set_parameter(_search, &quot;region&quot;, &quot;eu&quot;, EPIC_COMPARISON_OP.EQUAL);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _search = eos_sessions_create_session_search(10);
+eos_sessions_session_search_set_parameter(_search, "region", "eu", EPIC_COMPARISON_OP.EQUAL);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_release">eos_sessions_session_search_release</h1>
+<h1 id="eos_sessions_session_search_release">eos_sessions_session_search_release<a class="headerlink" href="#eos_sessions_session_search_release" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-release">EOS_SessionSearch_Release</a></p>
 <p>Releases a session search handle and every search result it produced. Session details handles copied
 out via <a href="sessions.html#eos_sessions_session_search_copy_search_result_by_index">eos_sessions_session_search_copy_search_result_by_index</a> remain valid after this
@@ -969,8 +3818,7 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_release(search_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_release(search_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -995,20 +3843,18 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_release(_search);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_release(_search);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_set_session_id">eos_sessions_session_search_set_session_id</h1>
+<h1 id="eos_sessions_session_search_set_session_id">eos_sessions_session_search_set_session_id<a class="headerlink" href="#eos_sessions_session_search_set_session_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-set-session-id">EOS_SessionSearch_SetSessionId</a></p>
 <p>Restricts a session search to a single, known session id.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_set_session_id(search_id, session_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_set_session_id(search_id, session_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1038,20 +3884,18 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_set_session_id(_search, _session_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_set_session_id(_search, _session_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_set_target_user_id">eos_sessions_session_search_set_target_user_id</h1>
+<h1 id="eos_sessions_session_search_set_target_user_id">eos_sessions_session_search_set_target_user_id<a class="headerlink" href="#eos_sessions_session_search_set_target_user_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-set-target-user-id">EOS_SessionSearch_SetTargetUserId</a></p>
 <p>Restricts a session search to a single user's presence session.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_set_target_user_id(search_id, target_user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_set_target_user_id(search_id, target_user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1081,21 +3925,19 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_set_target_user_id(_search, _target_user_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_set_target_user_id(_search, _target_user_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_find">eos_sessions_session_search_find</h1>
+<h1 id="eos_sessions_session_search_find">eos_sessions_session_search_find<a class="headerlink" href="#eos_sessions_session_search_find" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-find">EOS_SessionSearch_Find</a></p>
 <p>Executes a configured session search.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_find(search_id, local_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_find(search_id, local_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1151,26 +3993,24 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_find(_search, local_user_id, function(_result) {
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_find(_search, local_user_id, function(_result) {
     if (_result.result_code == EPIC_RESULT.SUCCESS)
     {
         var _count = eos_sessions_session_search_get_search_result_count(_search);
-        show_debug_message($&quot;Found {_count} sessions.&quot;);
+        show_debug_message($"Found {_count} sessions.");
     }
-});
-</code></pre></div>
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_copy_search_result_by_index">eos_sessions_session_search_copy_search_result_by_index</h1>
+<h1 id="eos_sessions_session_search_copy_search_result_by_index">eos_sessions_session_search_copy_search_result_by_index<a class="headerlink" href="#eos_sessions_session_search_copy_search_result_by_index" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-copy-search-result-by-index">EOS_SessionSearch_CopySearchResultByIndex</a></p>
 <p>Copies a session details handle for one of the search results.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_copy_search_result_by_index(search_id, index)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_copy_search_result_by_index(search_id, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1201,20 +4041,18 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 <p>A session details handle (<code>0</code> on failure), released with <a href="sessions.html#eos_sessions_session_details_release">eos_sessions_session_details_release</a>.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _details_id = eos_sessions_session_search_copy_search_result_by_index(_search, 0);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _details_id = eos_sessions_session_search_copy_search_result_by_index(_search, 0);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_details_release">eos_sessions_session_details_release</h1>
+<h1 id="eos_sessions_session_details_release">eos_sessions_session_details_release<a class="headerlink" href="#eos_sessions_session_details_release" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-release">EOS_SessionDetails_Release</a></p>
 <p>Releases a session details handle obtained from a search result or an invite.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_details_release(session_details_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_details_release(session_details_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1239,20 +4077,18 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_details_release(_details_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_details_release(_details_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_copy_active_session_handle">eos_sessions_copy_active_session_handle</h1>
+<h1 id="eos_sessions_copy_active_session_handle">eos_sessions_copy_active_session_handle<a class="headerlink" href="#eos_sessions_copy_active_session_handle" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-copy-active-session-handle">EOS_Sessions_CopyActiveSessionHandle</a></p>
 <p>Copies a handle to a session this client is currently in, by its local session name.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_copy_active_session_handle(session_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_copy_active_session_handle(session_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1278,20 +4114,18 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 <p>An active session handle (<code>0</code> on failure), released with <a href="sessions.html#eos_sessions_active_session_release">eos_sessions_active_session_release</a>.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _active_id = eos_sessions_copy_active_session_handle(&quot;MySession&quot;);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _active_id = eos_sessions_copy_active_session_handle("MySession");</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_active_session_release">eos_sessions_active_session_release</h1>
+<h1 id="eos_sessions_active_session_release">eos_sessions_active_session_release<a class="headerlink" href="#eos_sessions_active_session_release" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-release">EOS_ActiveSession_Release</a></p>
 <p>Releases an active session handle.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_active_session_release(active_session_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_active_session_release(active_session_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1316,20 +4150,18 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_active_session_release(_active_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_active_session_release(_active_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_active_session_copy_info">eos_sessions_active_session_copy_info</h1>
+<h1 id="eos_sessions_active_session_copy_info">eos_sessions_active_session_copy_info<a class="headerlink" href="#eos_sessions_active_session_copy_info" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-copy-info">EOS_ActiveSession_CopyInfo</a></p>
 <p>Copies the current info for an active session.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_active_session_copy_info(active_session_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_active_session_copy_info(active_session_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1355,22 +4187,20 @@ call - release them separately with <a href="sessions.html#eos_sessions_session_
 <p><code>undefined</code> if the handle is invalid or the info couldn't be copied.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _info = eos_sessions_active_session_copy_info(_active_id);
-if (!is_undefined(_info)) { show_debug_message(_info.session_id); }
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _info = eos_sessions_active_session_copy_info(_active_id);
+if (!is_undefined(_info)) { show_debug_message(_info.session_id); }</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_copy_session_handle_by_invite_id">eos_sessions_copy_session_handle_by_invite_id</h1>
+<h1 id="eos_sessions_copy_session_handle_by_invite_id">eos_sessions_copy_session_handle_by_invite_id<a class="headerlink" href="#eos_sessions_copy_session_handle_by_invite_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-copy-session-handle-by-invite-id">EOS_Sessions_CopySessionHandleByInviteId</a></p>
 <p>Copies a session details handle for a pending invite, typically used from an
 <a href="sessions.html#eos_sessions_add_notify_session_invite_received">eos_sessions_add_notify_session_invite_received</a> callback.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_copy_session_handle_by_invite_id(invite_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_copy_session_handle_by_invite_id(invite_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1396,13 +4226,12 @@ if (!is_undefined(_info)) { show_debug_message(_info.session_id); }
 <p>A session details handle (<code>0</code> on failure), released with <a href="sessions.html#eos_sessions_session_details_release">eos_sessions_session_details_release</a>.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _details_id = eos_sessions_copy_session_handle_by_invite_id(_invite_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _details_id = eos_sessions_copy_session_handle_by_invite_id(_invite_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id</h1>
+<h1 id="eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id<a class="headerlink" href="#eos_sessions_copy_session_handle_by_ui_event_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-copy-session-handle-by-ui-event-id">EOS_Sessions_CopySessionHandleByUiEventId</a></p>
 <p>Copies a session details handle for a join request that originated from the Epic overlay, typically
 used from an <a href="sessions.html#eos_sessions_add_notify_join_session_accepted">eos_sessions_add_notify_join_session_accepted</a> callback.</p>
@@ -1413,8 +4242,7 @@ used from an <a href="sessions.html#eos_sessions_add_notify_join_session_accepte
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_copy_session_handle_by_ui_event_id(ui_event_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_copy_session_handle_by_ui_event_id(ui_event_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1440,20 +4268,18 @@ used from an <a href="sessions.html#eos_sessions_add_notify_join_session_accepte
 <p>A session details handle (<code>0</code> on failure), released with <a href="sessions.html#eos_sessions_session_details_release">eos_sessions_session_details_release</a>.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _details_id = eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _details_id = eos_sessions_copy_session_handle_by_ui_event_id(_ui_event_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_details_copy_info">eos_sessions_session_details_copy_info</h1>
+<h1 id="eos_sessions_session_details_copy_info">eos_sessions_session_details_copy_info<a class="headerlink" href="#eos_sessions_session_details_copy_info" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-copy-info">EOS_SessionDetails_CopyInfo</a></p>
 <p>Copies the info for a session details handle.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_details_copy_info(session_details_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_details_copy_info(session_details_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1479,13 +4305,12 @@ used from an <a href="sessions.html#eos_sessions_add_notify_join_session_accepte
 <p><code>undefined</code> if the handle is invalid or the info couldn't be copied.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _info = eos_sessions_session_details_copy_info(_details_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _info = eos_sessions_session_details_copy_info(_details_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_add_notify_session_invite_received">eos_sessions_add_notify_session_invite_received</h1>
+<h1 id="eos_sessions_add_notify_session_invite_received">eos_sessions_add_notify_session_invite_received<a class="headerlink" href="#eos_sessions_add_notify_session_invite_received" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-received">EOS_Sessions_AddNotifySessionInviteReceived</a></p>
 <p>Registers to be notified when a session invite is received. Call <a href="sessions.html#eos_sessions_remove_notify_session_invite_received">eos_sessions_remove_notify_session_invite_received</a>
 with the returned id when you no longer need it.</p>
@@ -1493,8 +4318,7 @@ with the returned id when you no longer need it.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_session_invite_received(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_session_invite_received(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1541,21 +4365,19 @@ with the returned id when you no longer need it.</p>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>global.notify_id = eos_sessions_add_notify_session_invite_received(function(_result) {
+<pre class="highlight"><code class="language-gml">global.notify_id = eos_sessions_add_notify_session_invite_received(function(_result) {
     var _details_id = eos_sessions_copy_session_handle_by_invite_id(_result.invite_id);
-});
-</code></pre></div>
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_remove_notify_session_invite_received">eos_sessions_remove_notify_session_invite_received</h1>
+<h1 id="eos_sessions_remove_notify_session_invite_received">eos_sessions_remove_notify_session_invite_received<a class="headerlink" href="#eos_sessions_remove_notify_session_invite_received" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-session-invite-received">EOS_Sessions_RemoveNotifySessionInviteReceived</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_remove_notify_session_invite_received(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_session_invite_received(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1580,21 +4402,19 @@ with the returned id when you no longer need it.</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_remove_notify_session_invite_received(global.notify_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_session_invite_received(global.notify_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_add_notify_session_invite_accepted">eos_sessions_add_notify_session_invite_accepted</h1>
+<h1 id="eos_sessions_add_notify_session_invite_accepted">eos_sessions_add_notify_session_invite_accepted<a class="headerlink" href="#eos_sessions_add_notify_session_invite_accepted" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-accepted">EOS_Sessions_AddNotifySessionInviteAccepted</a></p>
 <p>Registers to be notified when a session invite this client sent is accepted.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_session_invite_accepted(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_session_invite_accepted(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1641,21 +4461,19 @@ with the returned id when you no longer need it.</p>
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_session_invite_accepted(function(_result) {
-    show_debug_message($&quot;{_result.target_user_id} accepted our invite&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_session_invite_accepted(function(_result) {
+    show_debug_message($"{_result.target_user_id} accepted our invite");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_remove_notify_session_invite_accepted">eos_sessions_remove_notify_session_invite_accepted</h1>
+<h1 id="eos_sessions_remove_notify_session_invite_accepted">eos_sessions_remove_notify_session_invite_accepted<a class="headerlink" href="#eos_sessions_remove_notify_session_invite_accepted" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-session-invite-accepted">EOS_Sessions_RemoveNotifySessionInviteAccepted</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_remove_notify_session_invite_accepted(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_session_invite_accepted(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1682,7 +4500,7 @@ with the returned id when you no longer need it.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_add_notify_join_session_accepted">eos_sessions_add_notify_join_session_accepted</h1>
+<h1 id="eos_sessions_add_notify_join_session_accepted">eos_sessions_add_notify_join_session_accepted<a class="headerlink" href="#eos_sessions_add_notify_join_session_accepted" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-join-session-accepted">EOS_Sessions_AddNotifyJoinSessionAccepted</a></p>
 <p>Registers to be notified when the local user accepts a session join request from the Epic overlay.
 Use <a href="sessions.html#eos_sessions_copy_session_handle_by_ui_event_id">eos_sessions_copy_session_handle_by_ui_event_id</a> to look up the session, join it, then
@@ -1695,8 +4513,7 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_join_session_accepted(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_join_session_accepted(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1743,24 +4560,22 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_join_session_accepted(function(_result) {
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_join_session_accepted(function(_result) {
     var _details_id = eos_sessions_copy_session_handle_by_ui_event_id(_result.ui_event_id);
-    eos_sessions_join_session(&quot;MySession&quot;, _details_id, local_user_id, true, function(_join_result) {
+    eos_sessions_join_session("MySession", _details_id, local_user_id, true, function(_join_result) {
         eos_ui_acknowledge_event_id(_result.ui_event_id, _join_result.result_code);
     });
-});
-</code></pre></div>
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted</h1>
+<h1 id="eos_sessions_remove_notify_join_session_accepted">eos_sessions_remove_notify_join_session_accepted<a class="headerlink" href="#eos_sessions_remove_notify_join_session_accepted" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-join-session-accepted">EOS_Sessions_RemoveNotifyJoinSessionAccepted</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_remove_notify_join_session_accepted(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_join_session_accepted(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1787,13 +4602,12 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_set_bucket_id">eos_sessions_session_modification_set_bucket_id</h1>
+<h1 id="eos_sessions_session_modification_set_bucket_id">eos_sessions_session_modification_set_bucket_id<a class="headerlink" href="#eos_sessions_session_modification_set_bucket_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-bucket-id">EOS_SessionModification_SetBucketId</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_bucket_id(modification_id, bucket_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_bucket_id(modification_id, bucket_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1823,19 +4637,17 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_bucket_id(_mod, &quot;region-eu&quot;);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_bucket_id(_mod, "region-eu");</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_set_host_address">eos_sessions_session_modification_set_host_address</h1>
+<h1 id="eos_sessions_session_modification_set_host_address">eos_sessions_session_modification_set_host_address<a class="headerlink" href="#eos_sessions_session_modification_set_host_address" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-host-address">EOS_SessionModification_SetHostAddress</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_host_address(modification_id, host_address)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_host_address(modification_id, host_address)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1865,19 +4677,17 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_host_address(_mod, &quot;203.0.113.4:7777&quot;);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_host_address(_mod, "203.0.113.4:7777");</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_set_permission_level">eos_sessions_session_modification_set_permission_level</h1>
+<h1 id="eos_sessions_session_modification_set_permission_level">eos_sessions_session_modification_set_permission_level<a class="headerlink" href="#eos_sessions_session_modification_set_permission_level" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-permission-level">EOS_SessionModification_SetPermissionLevel</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_permission_level(modification_id, permission_level)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_permission_level(modification_id, permission_level)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1907,19 +4717,17 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_permission_level(_mod, EPIC_ONLINE_SESSION_PERMISSION_LEVEL.PUBLIC_ADVERTISED);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_permission_level(_mod, EPIC_ONLINE_SESSION_PERMISSION_LEVEL.PUBLIC_ADVERTISED);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_set_join_in_progress_allowed">eos_sessions_session_modification_set_join_in_progress_allowed</h1>
+<h1 id="eos_sessions_session_modification_set_join_in_progress_allowed">eos_sessions_session_modification_set_join_in_progress_allowed<a class="headerlink" href="#eos_sessions_session_modification_set_join_in_progress_allowed" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-join-in-progress-allowed">EOS_SessionModification_SetJoinInProgressAllowed</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_join_in_progress_allowed(modification_id, allow_join_in_progress)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_join_in_progress_allowed(modification_id, allow_join_in_progress)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1949,19 +4757,17 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_join_in_progress_allowed(_mod, true);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_join_in_progress_allowed(_mod, true);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_set_max_players">eos_sessions_session_modification_set_max_players</h1>
+<h1 id="eos_sessions_session_modification_set_max_players">eos_sessions_session_modification_set_max_players<a class="headerlink" href="#eos_sessions_session_modification_set_max_players" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-max-players">EOS_SessionModification_SetMaxPlayers</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_max_players(modification_id, max_players)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_max_players(modification_id, max_players)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1991,19 +4797,17 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_max_players(_mod, 8);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_max_players(_mod, 8);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_set_invites_allowed">eos_sessions_session_modification_set_invites_allowed</h1>
+<h1 id="eos_sessions_session_modification_set_invites_allowed">eos_sessions_session_modification_set_invites_allowed<a class="headerlink" href="#eos_sessions_session_modification_set_invites_allowed" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-set-invites-allowed">EOS_SessionModification_SetInvitesAllowed</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_invites_allowed(modification_id, invites_allowed)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_invites_allowed(modification_id, invites_allowed)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2033,21 +4837,19 @@ call <a href="user_interface.html#eos_ui_acknowledge_event_id">eos_ui_acknowledg
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_set_invites_allowed(_mod, true);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_set_invites_allowed(_mod, true);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_add_attribute_string">eos_sessions_session_modification_add_attribute_string</h1>
+<h1 id="eos_sessions_session_modification_add_attribute_string">eos_sessions_session_modification_add_attribute_string<a class="headerlink" href="#eos_sessions_session_modification_add_attribute_string" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-add-attribute">EOS_SessionModification_AddAttribute</a></p>
 <p>Sets a string-valued session attribute, searchable via <a href="sessions.html#eos_sessions_session_search_set_parameter">eos_sessions_session_search_set_parameter</a>
 when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE</code>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_add_attribute_string(modification_id, key, value, advertisement_type)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_add_attribute_string(modification_id, key, value, advertisement_type)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2087,20 +4889,18 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_add_attribute_string(_mod, &quot;gamemode&quot;, &quot;deathmatch&quot;, EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_add_attribute_string(_mod, "gamemode", "deathmatch", EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_add_attribute_bool">eos_sessions_session_modification_add_attribute_bool</h1>
+<h1 id="eos_sessions_session_modification_add_attribute_bool">eos_sessions_session_modification_add_attribute_bool<a class="headerlink" href="#eos_sessions_session_modification_add_attribute_bool" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-add-attribute">EOS_SessionModification_AddAttribute</a></p>
 <p>Bool-valued equivalent of <a href="sessions.html#eos_sessions_session_modification_add_attribute_string">eos_sessions_session_modification_add_attribute_string</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_add_attribute_bool(modification_id, key, value, advertisement_type)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_add_attribute_bool(modification_id, key, value, advertisement_type)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2140,20 +4940,18 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_add_attribute_bool(_mod, &quot;ranked&quot;, true, EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_add_attribute_bool(_mod, "ranked", true, EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_add_attribute_double">eos_sessions_session_modification_add_attribute_double</h1>
+<h1 id="eos_sessions_session_modification_add_attribute_double">eos_sessions_session_modification_add_attribute_double<a class="headerlink" href="#eos_sessions_session_modification_add_attribute_double" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-add-attribute">EOS_SessionModification_AddAttribute</a></p>
 <p>Numeric-valued equivalent of <a href="sessions.html#eos_sessions_session_modification_add_attribute_string">eos_sessions_session_modification_add_attribute_string</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_add_attribute_double(modification_id, key, value, advertisement_type)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_add_attribute_double(modification_id, key, value, advertisement_type)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2193,19 +4991,17 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_add_attribute_double(_mod, &quot;skill_rating&quot;, 1500, EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_add_attribute_double(_mod, "skill_rating", 1500, EPIC_SESSION_ATTRIBUTE_ADVERTISEMENT_TYPE.ADVERTISE);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_modification_remove_attribute">eos_sessions_session_modification_remove_attribute</h1>
+<h1 id="eos_sessions_session_modification_remove_attribute">eos_sessions_session_modification_remove_attribute<a class="headerlink" href="#eos_sessions_session_modification_remove_attribute" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-modification-remove-attribute">EOS_SessionModification_RemoveAttribute</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_remove_attribute(modification_id, key)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_remove_attribute(modification_id, key)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2235,19 +5031,17 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_modification_remove_attribute(_mod, &quot;gamemode&quot;);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_modification_remove_attribute(_mod, "gamemode");</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_details_get_session_attribute_count">eos_sessions_session_details_get_session_attribute_count</h1>
+<h1 id="eos_sessions_session_details_get_session_attribute_count">eos_sessions_session_details_get_session_attribute_count<a class="headerlink" href="#eos_sessions_session_details_get_session_attribute_count" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-get-session-attribute-count">EOS_SessionDetails_GetSessionAttributeCount</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_details_get_session_attribute_count(session_details_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_details_get_session_attribute_count(session_details_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2272,19 +5066,17 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _count = eos_sessions_session_details_get_session_attribute_count(_details_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _count = eos_sessions_session_details_get_session_attribute_count(_details_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_details_copy_session_attribute_by_index">eos_sessions_session_details_copy_session_attribute_by_index</h1>
+<h1 id="eos_sessions_session_details_copy_session_attribute_by_index">eos_sessions_session_details_copy_session_attribute_by_index<a class="headerlink" href="#eos_sessions_session_details_copy_session_attribute_by_index" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-copy-session-attribute-by-index">EOS_SessionDetails_CopySessionAttributeByIndex</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_details_copy_session_attribute_by_index(session_details_id, index)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_details_copy_session_attribute_by_index(session_details_id, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2315,19 +5107,17 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <p><code>undefined</code> on an out-of-range index or copy failure.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _attr = eos_sessions_session_details_copy_session_attribute_by_index(_details_id, 0);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _attr = eos_sessions_session_details_copy_session_attribute_by_index(_details_id, 0);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_details_copy_session_attribute_by_key">eos_sessions_session_details_copy_session_attribute_by_key</h1>
+<h1 id="eos_sessions_session_details_copy_session_attribute_by_key">eos_sessions_session_details_copy_session_attribute_by_key<a class="headerlink" href="#eos_sessions_session_details_copy_session_attribute_by_key" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-details-copy-session-attribute-by-key">EOS_SessionDetails_CopySessionAttributeByKey</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_details_copy_session_attribute_by_key(session_details_id, key)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_details_copy_session_attribute_by_key(session_details_id, key)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2358,19 +5148,17 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <p><code>undefined</code> if <code>key</code> doesn't exist on this session.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _attr = eos_sessions_session_details_copy_session_attribute_by_key(_details_id, &quot;gamemode&quot;);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _attr = eos_sessions_session_details_copy_session_attribute_by_key(_details_id, "gamemode");</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_active_session_get_registered_player_count">eos_sessions_active_session_get_registered_player_count</h1>
+<h1 id="eos_sessions_active_session_get_registered_player_count">eos_sessions_active_session_get_registered_player_count<a class="headerlink" href="#eos_sessions_active_session_get_registered_player_count" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-get-registered-player-count">EOS_ActiveSession_GetRegisteredPlayerCount</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_active_session_get_registered_player_count(active_session_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_active_session_get_registered_player_count(active_session_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2395,19 +5183,17 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _count = eos_sessions_active_session_get_registered_player_count(_active_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _count = eos_sessions_active_session_get_registered_player_count(_active_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_active_session_get_registered_player_by_index">eos_sessions_active_session_get_registered_player_by_index</h1>
+<h1 id="eos_sessions_active_session_get_registered_player_by_index">eos_sessions_active_session_get_registered_player_by_index<a class="headerlink" href="#eos_sessions_active_session_get_registered_player_by_index" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-active-session-get-registered-player-by-index">EOS_ActiveSession_GetRegisteredPlayerByIndex</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_active_session_get_registered_player_by_index(active_session_id, index)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_active_session_get_registered_player_by_index(active_session_id, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2438,13 +5224,12 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <p>An empty string on an out-of-range index.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _player_id = eos_sessions_active_session_get_registered_player_by_index(_active_id, 0);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _player_id = eos_sessions_active_session_get_registered_player_by_index(_active_id, 0);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_send_invite">eos_sessions_send_invite</h1>
+<h1 id="eos_sessions_send_invite">eos_sessions_send_invite<a class="headerlink" href="#eos_sessions_send_invite" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-send-invite">EOS_Sessions_SendInvite</a></p>
 <p>Sends a session invite. Requires <code>invites_allowed</code> to be set on the session (see
 <a href="sessions.html#eos_sessions_session_modification_set_invites_allowed">eos_sessions_session_modification_set_invites_allowed</a>).</p>
@@ -2452,8 +5237,7 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_send_invite(session_name, local_user_id, target_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_send_invite(session_name, local_user_id, target_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2514,22 +5298,20 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_send_invite(&quot;MySession&quot;, local_user_id, target_user_id, function(_result) {
-    show_debug_message($&quot;Invite result: {_result.result_code}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_send_invite("MySession", local_user_id, target_user_id, function(_result) {
+    show_debug_message($"Invite result: {_result.result_code}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_reject_invite">eos_sessions_reject_invite</h1>
+<h1 id="eos_sessions_reject_invite">eos_sessions_reject_invite<a class="headerlink" href="#eos_sessions_reject_invite" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-reject-invite">EOS_Sessions_RejectInvite</a></p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_reject_invite(local_user_id, invite_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_reject_invite(local_user_id, invite_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2585,15 +5367,14 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_reject_invite(local_user_id, _invite_id, function(_result) {
-    show_debug_message($&quot;Reject result: {_result.result_code}&quot;);
-});
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_reject_invite(local_user_id, _invite_id, function(_result) {
+    show_debug_message($"Reject result: {_result.result_code}");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_query_invites">eos_sessions_query_invites</h1>
+<h1 id="eos_sessions_query_invites">eos_sessions_query_invites<a class="headerlink" href="#eos_sessions_query_invites" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-query-invites">EOS_Sessions_QueryInvites</a></p>
 <p>Refreshes the local cache of pending invites for a user, read afterward via
 <a href="sessions.html#eos_sessions_get_invite_count">eos_sessions_get_invite_count</a>/<a href="sessions.html#eos_sessions_get_invite_id_by_index">eos_sessions_get_invite_id_by_index</a>.</p>
@@ -2601,8 +5382,7 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_query_invites(local_user_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_query_invites(local_user_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2653,22 +5433,20 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_query_invites(local_user_id, function(_result) {
+<pre class="highlight"><code class="language-gml">eos_sessions_query_invites(local_user_id, function(_result) {
     var _n = eos_sessions_get_invite_count(_result.local_user_id);
-    show_debug_message($&quot;{_n} pending invites&quot;);
-});
-</code></pre></div>
+    show_debug_message($"{_n} pending invites");
+});</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_get_invite_count">eos_sessions_get_invite_count</h1>
+<h1 id="eos_sessions_get_invite_count">eos_sessions_get_invite_count<a class="headerlink" href="#eos_sessions_get_invite_count" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-get-invite-count">EOS_Sessions_GetInviteCount</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_get_invite_count(local_user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_get_invite_count(local_user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2693,19 +5471,17 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _n = eos_sessions_get_invite_count(local_user_id);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _n = eos_sessions_get_invite_count(local_user_id);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_get_invite_id_by_index">eos_sessions_get_invite_id_by_index</h1>
+<h1 id="eos_sessions_get_invite_id_by_index">eos_sessions_get_invite_id_by_index<a class="headerlink" href="#eos_sessions_get_invite_id_by_index" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-get-invite-id-by-index">EOS_Sessions_GetInviteIdByIndex</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_get_invite_id_by_index(local_user_id, index)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_get_invite_id_by_index(local_user_id, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2736,21 +5512,19 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <p>An empty string on an out-of-range index.</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _invite_id = eos_sessions_get_invite_id_by_index(local_user_id, 0);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _invite_id = eos_sessions_get_invite_id_by_index(local_user_id, 0);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_set_parameter">eos_sessions_session_search_set_parameter</h1>
+<h1 id="eos_sessions_session_search_set_parameter">eos_sessions_session_search_set_parameter<a class="headerlink" href="#eos_sessions_session_search_set_parameter" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-set-parameter">EOS_SessionSearch_SetParameter</a></p>
 <p>Adds a string-valued attribute filter to a session search (compares against attributes set via
 <a href="sessions.html#eos_sessions_session_modification_add_attribute_string">eos_sessions_session_modification_add_attribute_string</a> on the target sessions).</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_set_parameter(search_id, key, value, comparison_op)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_set_parameter(search_id, key, value, comparison_op)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2790,20 +5564,18 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_set_parameter(_search, &quot;gamemode&quot;, &quot;deathmatch&quot;, EPIC_COMPARISON_OP.EQUAL);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_set_parameter(_search, "gamemode", "deathmatch", EPIC_COMPARISON_OP.EQUAL);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_remove_parameter">eos_sessions_session_search_remove_parameter</h1>
+<h1 id="eos_sessions_session_search_remove_parameter">eos_sessions_session_search_remove_parameter<a class="headerlink" href="#eos_sessions_session_search_remove_parameter" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-remove-parameter">EOS_SessionSearch_RemoveParameter</a></p>
 <p>Removes a previously added attribute filter, matched by key and comparison operator.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_remove_parameter(search_id, key, comparison_op)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_remove_parameter(search_id, key, comparison_op)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2838,20 +5610,18 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_remove_parameter(_search, &quot;gamemode&quot;, EPIC_COMPARISON_OP.EQUAL);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_remove_parameter(_search, "gamemode", EPIC_COMPARISON_OP.EQUAL);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_session_search_get_search_result_count">eos_sessions_session_search_get_search_result_count</h1>
+<h1 id="eos_sessions_session_search_get_search_result_count">eos_sessions_session_search_get_search_result_count<a class="headerlink" href="#eos_sessions_session_search_get_search_result_count" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-session-search-get-search-result-count">EOS_SessionSearch_GetSearchResultCount</a></p>
 <p>Gets the number of results from the last completed <a href="sessions.html#eos_sessions_session_search_find">eos_sessions_session_search_find</a> call.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_session_search_get_search_result_count(search_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_session_search_get_search_result_count(search_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2876,21 +5646,19 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _count = eos_sessions_session_search_get_search_result_count(_search);
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _count = eos_sessions_session_search_get_search_result_count(_search);</code></pre>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_add_notify_session_invite_rejected">eos_sessions_add_notify_session_invite_rejected</h1>
+<h1 id="eos_sessions_add_notify_session_invite_rejected">eos_sessions_add_notify_session_invite_rejected<a class="headerlink" href="#eos_sessions_add_notify_session_invite_rejected" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-session-invite-rejected">EOS_Sessions_AddNotifySessionInviteRejected</a></p>
 <p>Registers to be notified when a session invite this client sent is rejected.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_session_invite_rejected(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_session_invite_rejected(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2939,13 +5707,12 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_remove_notify_session_invite_rejected">eos_sessions_remove_notify_session_invite_rejected</h1>
+<h1 id="eos_sessions_remove_notify_session_invite_rejected">eos_sessions_remove_notify_session_invite_rejected<a class="headerlink" href="#eos_sessions_remove_notify_session_invite_rejected" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-session-invite-rejected">EOS_Sessions_RemoveNotifySessionInviteRejected</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_remove_notify_session_invite_rejected(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_session_invite_rejected(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2972,7 +5739,7 @@ when <code>advertisement_type</code> is <code>EPIC_SESSION_ATTRIBUTE_ADVERTISEME
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_add_notify_leave_session_requested">eos_sessions_add_notify_leave_session_requested</h1>
+<h1 id="eos_sessions_add_notify_leave_session_requested">eos_sessions_add_notify_leave_session_requested<a class="headerlink" href="#eos_sessions_add_notify_leave_session_requested" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-leave-session-requested">EOS_Sessions_AddNotifyLeaveSessionRequested</a></p>
 <p>Registers to be notified when the platform (e.g. the Epic overlay, or a console's system UI) requests
 that the local user leave a session. Respond by calling <a href="sessions.html#eos_sessions_destroy_session">eos_sessions_destroy_session</a> (if
@@ -2981,8 +5748,7 @@ you own the session) or otherwise removing the user from it.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_leave_session_requested(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_leave_session_requested(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -3031,13 +5797,12 @@ you own the session) or otherwise removing the user from it.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_remove_notify_leave_session_requested">eos_sessions_remove_notify_leave_session_requested</h1>
+<h1 id="eos_sessions_remove_notify_leave_session_requested">eos_sessions_remove_notify_leave_session_requested<a class="headerlink" href="#eos_sessions_remove_notify_leave_session_requested" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-leave-session-requested">EOS_Sessions_RemoveNotifyLeaveSessionRequested</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_remove_notify_leave_session_requested(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_leave_session_requested(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -3064,7 +5829,7 @@ you own the session) or otherwise removing the user from it.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_add_notify_send_session_native_invite_requested">eos_sessions_add_notify_send_session_native_invite_requested</h1>
+<h1 id="eos_sessions_add_notify_send_session_native_invite_requested">eos_sessions_add_notify_send_session_native_invite_requested<a class="headerlink" href="#eos_sessions_add_notify_send_session_native_invite_requested" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-add-notify-send-session-native-invite-requested">EOS_Sessions_AddNotifySendSessionNativeInviteRequested</a></p>
 <p>Registers to be notified when the local platform's own native invite UI (e.g. a console's system
 invite flow) is used to invite someone to a session, so you can mirror it into an EOS session invite.</p>
@@ -3076,8 +5841,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_add_notify_send_session_native_invite_requested(callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_add_notify_send_session_native_invite_requested(callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -3126,13 +5890,12 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_sessions_remove_notify_send_session_native_invite_requested">eos_sessions_remove_notify_send_session_native_invite_requested</h1>
+<h1 id="eos_sessions_remove_notify_send_session_native_invite_requested">eos_sessions_remove_notify_send_session_native_invite_requested<a class="headerlink" href="#eos_sessions_remove_notify_send_session_native_invite_requested" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-sessions-remove-notify-send-session-native-invite-requested">EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested</a></p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_sessions_remove_notify_send_session_native_invite_requested(notification_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_sessions_remove_notify_send_session_native_invite_requested(notification_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -3159,7 +5922,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epiconlinesessionstate">EpicOnlineSessionState</h1>
+<h1 id="epiconlinesessionstate">EpicOnlineSessionState<a class="headerlink" href="#epiconlinesessionstate" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-online-session-state">EOS_EOnlineSessionState</a></p>
 <p>The lifecycle state of a session.</p>
 <p>These constants are referenced by the following structs:</p>
@@ -3213,7 +5976,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionattributeadvertisementtype">EpicSessionAttributeAdvertisementType</h1>
+<h1 id="epicsessionattributeadvertisementtype">EpicSessionAttributeAdvertisementType<a class="headerlink" href="#epicsessionattributeadvertisementtype" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-session-attribute-advertisement-type">EOS_ESessionAttributeAdvertisementType</a></p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
@@ -3248,7 +6011,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epiconlinesessionpermissionlevel">EpicOnlineSessionPermissionLevel</h1>
+<h1 id="epiconlinesessionpermissionlevel">EpicOnlineSessionPermissionLevel<a class="headerlink" href="#epiconlinesessionpermissionlevel" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-online-session-permission-level">EOS_EOnlineSessionPermissionLevel</a></p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
@@ -3285,7 +6048,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsupdatesessioncallbackinfo">EpicSessionsUpdateSessionCallbackInfo</h1>
+<h1 id="epicsessionsupdatesessioncallbackinfo">EpicSessionsUpdateSessionCallbackInfo<a class="headerlink" href="#epicsessionsupdatesessioncallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_update_session">eos_sessions_update_session</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3322,7 +6085,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsdestroysessioncallbackinfo">EpicSessionsDestroySessionCallbackInfo</h1>
+<h1 id="epicsessionsdestroysessioncallbackinfo">EpicSessionsDestroySessionCallbackInfo<a class="headerlink" href="#epicsessionsdestroysessioncallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_destroy_session">eos_sessions_destroy_session</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3349,7 +6112,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsstartsessioncallbackinfo">EpicSessionsStartSessionCallbackInfo</h1>
+<h1 id="epicsessionsstartsessioncallbackinfo">EpicSessionsStartSessionCallbackInfo<a class="headerlink" href="#epicsessionsstartsessioncallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_start_session">eos_sessions_start_session</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3376,7 +6139,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsendsessioncallbackinfo">EpicSessionsEndSessionCallbackInfo</h1>
+<h1 id="epicsessionsendsessioncallbackinfo">EpicSessionsEndSessionCallbackInfo<a class="headerlink" href="#epicsessionsendsessioncallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_end_session">eos_sessions_end_session</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3403,7 +6166,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsjoinsessioncallbackinfo">EpicSessionsJoinSessionCallbackInfo</h1>
+<h1 id="epicsessionsjoinsessioncallbackinfo">EpicSessionsJoinSessionCallbackInfo<a class="headerlink" href="#epicsessionsjoinsessioncallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_join_session">eos_sessions_join_session</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3430,7 +6193,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsregisterplayerscallbackinfo">EpicSessionsRegisterPlayersCallbackInfo</h1>
+<h1 id="epicsessionsregisterplayerscallbackinfo">EpicSessionsRegisterPlayersCallbackInfo<a class="headerlink" href="#epicsessionsregisterplayerscallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_register_players">eos_sessions_register_players</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3467,7 +6230,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsunregisterplayerscallbackinfo">EpicSessionsUnregisterPlayersCallbackInfo</h1>
+<h1 id="epicsessionsunregisterplayerscallbackinfo">EpicSessionsUnregisterPlayersCallbackInfo<a class="headerlink" href="#epicsessionsunregisterplayerscallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_unregister_players">eos_sessions_unregister_players</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3499,7 +6262,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsfindcallbackinfo">EpicSessionsFindCallbackInfo</h1>
+<h1 id="epicsessionsfindcallbackinfo">EpicSessionsFindCallbackInfo<a class="headerlink" href="#epicsessionsfindcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_session_search_find">eos_sessions_session_search_find</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3526,7 +6289,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessiondetailsinfo">EpicSessionDetailsInfo</h1>
+<h1 id="epicsessiondetailsinfo">EpicSessionDetailsInfo<a class="headerlink" href="#epicsessiondetailsinfo" title="Permanent link">&para;</a></h1>
 <p>Returned by <a href="sessions.html#eos_sessions_session_details_copy_info">eos_sessions_session_details_copy_info</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3613,7 +6376,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicactivesessioninfo">EpicActiveSessionInfo</h1>
+<h1 id="epicactivesessioninfo">EpicActiveSessionInfo<a class="headerlink" href="#epicactivesessioninfo" title="Permanent link">&para;</a></h1>
 <p>Returned by <a href="sessions.html#eos_sessions_active_session_copy_info">eos_sessions_active_session_copy_info</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3670,7 +6433,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionssessioninvitereceivedcallbackinfo">EpicSessionsSessionInviteReceivedCallbackInfo</h1>
+<h1 id="epicsessionssessioninvitereceivedcallbackinfo">EpicSessionsSessionInviteReceivedCallbackInfo<a class="headerlink" href="#epicsessionssessioninvitereceivedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Fired by <a href="sessions.html#eos_sessions_add_notify_session_invite_received">eos_sessions_add_notify_session_invite_received</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3707,7 +6470,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionssessioninviteacceptedcallbackinfo">EpicSessionsSessionInviteAcceptedCallbackInfo</h1>
+<h1 id="epicsessionssessioninviteacceptedcallbackinfo">EpicSessionsSessionInviteAcceptedCallbackInfo<a class="headerlink" href="#epicsessionssessioninviteacceptedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Fired by <a href="sessions.html#eos_sessions_add_notify_session_invite_accepted">eos_sessions_add_notify_session_invite_accepted</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3744,7 +6507,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsjoinsessionacceptedcallbackinfo">EpicSessionsJoinSessionAcceptedCallbackInfo</h1>
+<h1 id="epicsessionsjoinsessionacceptedcallbackinfo">EpicSessionsJoinSessionAcceptedCallbackInfo<a class="headerlink" href="#epicsessionsjoinsessionacceptedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Fired by <a href="sessions.html#eos_sessions_add_notify_join_session_accepted">eos_sessions_add_notify_join_session_accepted</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3771,7 +6534,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessiondetailsattribute">EpicSessionDetailsAttribute</h1>
+<h1 id="epicsessiondetailsattribute">EpicSessionDetailsAttribute<a class="headerlink" href="#epicsessiondetailsattribute" title="Permanent link">&para;</a></h1>
 <p>A single session attribute, returned by the <code>session_details_copy_session_attribute_*</code> functions.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3814,7 +6577,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionssendinvitecallbackinfo">EpicSessionsSendInviteCallbackInfo</h1>
+<h1 id="epicsessionssendinvitecallbackinfo">EpicSessionsSendInviteCallbackInfo<a class="headerlink" href="#epicsessionssendinvitecallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_send_invite">eos_sessions_send_invite</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3841,7 +6604,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsrejectinvitecallbackinfo">EpicSessionsRejectInviteCallbackInfo</h1>
+<h1 id="epicsessionsrejectinvitecallbackinfo">EpicSessionsRejectInviteCallbackInfo<a class="headerlink" href="#epicsessionsrejectinvitecallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_reject_invite">eos_sessions_reject_invite</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3868,7 +6631,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsqueryinvitescallbackinfo">EpicSessionsQueryInvitesCallbackInfo</h1>
+<h1 id="epicsessionsqueryinvitescallbackinfo">EpicSessionsQueryInvitesCallbackInfo<a class="headerlink" href="#epicsessionsqueryinvitescallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Result of <a href="sessions.html#eos_sessions_query_invites">eos_sessions_query_invites</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3900,7 +6663,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionssessioninviterejectedcallbackinfo">EpicSessionsSessionInviteRejectedCallbackInfo</h1>
+<h1 id="epicsessionssessioninviterejectedcallbackinfo">EpicSessionsSessionInviteRejectedCallbackInfo<a class="headerlink" href="#epicsessionssessioninviterejectedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Fired by <a href="sessions.html#eos_sessions_add_notify_session_invite_rejected">eos_sessions_add_notify_session_invite_rejected</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3942,7 +6705,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionsleavesessionrequestedcallbackinfo">EpicSessionsLeaveSessionRequestedCallbackInfo</h1>
+<h1 id="epicsessionsleavesessionrequestedcallbackinfo">EpicSessionsLeaveSessionRequestedCallbackInfo<a class="headerlink" href="#epicsessionsleavesessionrequestedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Fired by <a href="sessions.html#eos_sessions_add_notify_leave_session_requested">eos_sessions_add_notify_leave_session_requested</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -3974,7 +6737,7 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicsessionssendsessionnativeinviterequestedcallbackinfo">EpicSessionsSendSessionNativeInviteRequestedCallbackInfo</h1>
+<h1 id="epicsessionssendsessionnativeinviterequestedcallbackinfo">EpicSessionsSendSessionNativeInviteRequestedCallbackInfo<a class="headerlink" href="#epicsessionssendsessionnativeinviterequestedcallbackinfo" title="Permanent link">&para;</a></h1>
 <p>Fired by <a href="sessions.html#eos_sessions_add_notify_send_session_native_invite_requested">eos_sessions_add_notify_send_session_native_invite_requested</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -4009,57 +6772,73 @@ invite flow) is used to invite someone to a session, so you can mirror it into a
 </table>
 <p><br></p>
 <hr />
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="sanctions.html" class="btn btn-neutral float-left" title="Sanctions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="stats.html" class="btn btn-neutral float-right" title="Stats">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2026</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="sanctions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="stats.html" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

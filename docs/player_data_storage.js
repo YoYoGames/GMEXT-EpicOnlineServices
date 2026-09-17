@@ -155,7 +155,7 @@
  * @member {Struct.EpicPlayerDataStorageReadFileCallbackInfo} result
  * @event_end
  *
- * @event callback_progress
+ * @event callback:Progress
  * @desc Called zero or more times while the download is in progress, before the `callback` event fires.
  * @member {Struct.EpicPlayerDataStorageReadFileProgressCallbackInfo} result
  * @event_end
@@ -198,7 +198,7 @@
  * @member {Struct.EpicPlayerDataStorageWriteFileCallbackInfo} result
  * @event_end
  *
- * @event callback_progress
+ * @event callback:Progress
  * @desc Called zero or more times while the upload is in progress, before the `callback` event fires.
  * @member {Struct.EpicPlayerDataStorageWriteFileProgressCallbackInfo} result
  * @event_end
