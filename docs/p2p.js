@@ -643,6 +643,7 @@
  * @member ConnectionClosed The connection was accepted and established, but the peer silently went away.
  * @member NegotiationFailed The connection was locally accepted but negotiation failed - most commonly because the local user went offline or logged out mid-negotiation.
  * @member UnexpectedError An internal error occurred and the connection couldn't be created or continued.
+ * @member ConnectionIgnored The connection was ignored
  *
  * @const_end
  */

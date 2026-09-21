@@ -4,7 +4,7 @@
 
 To use the Epic Online Services extension, follow these steps:
 
-1. Import this Epic Online Services extension into your project, if you haven't done that already.
+1. Import this Epic Online Services extension into your project, if you haven't done that already. Download the **.yymps** file from the Releases section. Drag it into your GameMaker window or use the **Tools -> Import Local Package** option. Import all assets.
 2. The Epic Games Launcher needs to be **installed**, **running**, and with an account **logged in**
    ([official site](https://store.epicgames.com/en-US/download)) while testing from the IDE.
 3. Download the Epic Online Services SDK (C version) from Epic's

@@ -157,7 +157,7 @@
  * Starts a checkout for one or more offers. This opens the Epic Overlay's purchase flow; the callback
  * fires once the player finishes, cancels, or the purchase flow otherwise closes.
  *
- * [[Note: `EpicResult.EcomPurchaseProcessing` can be returned in the callback if the player closed the
+ * [[Note: `EpicResult.Ecom_PurchaseProcessing` can be returned in the callback if the player closed the
  * purchase flow overlay after clicking the purchase button - the purchase may still be processing, so
  * re-query entitlements shortly afterward rather than treating this as a hard failure.]]
  *
