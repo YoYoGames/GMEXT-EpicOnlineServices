@@ -1,189 +1,1738 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Leaderboards - GMEXT-EpicOnlineServices</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Leaderboards";
-        var mkdocs_page_input_path = "leaderboards.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="friends.html">
+      
+      
+        <link rel="next" href="lobbies.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Leaderboards - GMEXT-EpicOnlineServices</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-EpicOnlineServices
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#leaderboards" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">Epic Online Services</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging_in.html">Logging In</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="extension_options.html">Extension Options</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Achievements</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="connect.html">Connect</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="custom_invites.html">Custom Invites</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="ecom.html">Ecom</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Leaderboards</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="p2p.html">P2P</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="player_data_storage.html">Player Data Storage</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="presence.html">Presence</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="progression_snapshot.html">Progression Snapshot</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="rtc.html">RTC</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="sanctions.html">Sanctions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="sessions.html">Sessions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="stats.html">Stats</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="title_storage.html">Title Storage</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="user_interface.html">User Interface</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="user_info.html">User Info</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-header__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-EpicOnlineServices
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Leaderboards
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-EpicOnlineServices</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Leaderboards</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices/edit/master/docs/leaderboards.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="leaderboards"><strong>Leaderboards</strong></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-EpicOnlineServices" class="md-nav__button md-logo" aria-label="GMEXT-EpicOnlineServices" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-EpicOnlineServices
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Epic Online Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging_in.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extension_options.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="general.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="achievements.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Achievements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auth.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="connect.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="custom_invites.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Invites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ecom.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ecom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="friends.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Friends
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leaderboards
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="leaderboards.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leaderboards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#leaderboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaderboards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaderboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_query_definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_query_definitions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_query_ranks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_query_ranks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_query_user_scores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_query_user_scores
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_get_definition_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_get_definition_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_get_record_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_get_record_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_get_user_score_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_get_user_score_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_definition_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_definition_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_definition_by_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_definition_by_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_record_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_record_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_record_by_user_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_record_by_user_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_user_score_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_user_score_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardAggregation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardstatquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardStatQuery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardsquerydefinitionscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardsQueryDefinitionsCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardsqueryrankscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardsQueryRanksCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardsqueryuserscorescallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardsQueryUserScoresCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboarddefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardDefinition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardrecord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardRecord
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboarduserscore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardUserScore
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lobbies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lobbies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p2p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P2P
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="player_data_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Data Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="presence.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="progression_snapshot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progression Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reports.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rtc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sanctions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sanctions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sessions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stats.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="title_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Title Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#leaderboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaderboards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaderboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_query_definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_query_definitions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_query_ranks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_query_ranks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_query_user_scores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_query_user_scores
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_get_definition_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_get_definition_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_get_record_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_get_record_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_get_user_score_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_get_user_score_count
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_definition_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_definition_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_definition_by_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_definition_by_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_record_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_record_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_record_by_user_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_record_by_user_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eos_leaderboards_copy_user_score_by_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eos_leaderboards_copy_user_score_by_index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardAggregation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardstatquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardStatQuery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardsquerydefinitionscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardsQueryDefinitionsCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardsqueryrankscallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardsQueryRanksCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardsqueryuserscorescallbackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardsQueryUserScoresCallbackInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboarddefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardDefinition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboardrecord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardRecord
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epicleaderboarduserscore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpicLeaderboardUserScore
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="leaderboards"><strong>Leaderboards</strong><a class="headerlink" href="#leaderboards" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Interface:</strong> <a href="https://dev.epicgames.com/docs/game-services/eos-leaderboards-interface">Leaderboards Interface</a></p>
 <p>The Leaderboards Interface lets you query leaderboard definitions, top ranks, and specific users' scores.
 Leaderboards are driven by stats - see <a href="stats.html">Stats</a> for ingesting the values leaderboards rank.</p>
@@ -193,7 +1742,7 @@ Leaderboards are driven by stats - see <a href="stats.html">Stats</a> for ingest
 accessors, <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a> populates the record accessors, and
 <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a> populates the user-score accessors.</p>
 </div>
-<h2 id="functions">Functions</h2>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
 <p>Provided functions:</p>
 <ul>
 <li><a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a></li>
@@ -208,7 +1757,7 @@ accessors, <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderbo
 <li><a href="leaderboards.html#eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</a></li>
 <li><a href="leaderboards.html#eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</a></li>
 </ul>
-<h2 id="structs">Structs</h2>
+<h2 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h2>
 <p>These are the structs used by this module:</p>
 <ul>
 <li><a href="leaderboards.html#epicleaderboardstatquery">EpicLeaderboardStatQuery</a></li>
@@ -219,7 +1768,7 @@ accessors, <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderbo
 <li><a href="leaderboards.html#epicleaderboardrecord">EpicLeaderboardRecord</a></li>
 <li><a href="leaderboards.html#epicleaderboarduserscore">EpicLeaderboardUserScore</a></li>
 </ul>
-<h2 id="constants">Constants</h2>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <p>These are the constants used by this module:</p>
 <ul>
 <li><a href="leaderboards.html#epicleaderboardaggregation">EpicLeaderboardAggregation</a></li>
@@ -229,7 +1778,7 @@ accessors, <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderbo
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</h1>
+<h1 id="eos_leaderboards_query_definitions">eos_leaderboards_query_definitions<a class="headerlink" href="#eos_leaderboards_query_definitions" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-definitions">EOS_Leaderboards_QueryLeaderboardDefinitions</a></p>
 <p>Queries the list of leaderboard definitions for the running application. Call this before using
 <a href="leaderboards.html#eos_leaderboards_get_definition_count">eos_leaderboards_get_definition_count</a>, <a href="leaderboards.html#eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</a>
@@ -238,8 +1787,7 @@ or <a href="leaderboards.html#eos_leaderboards_copy_definition_by_id">eos_leader
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_query_definitions(local_user_id, start_time, end_time, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_query_definitions(local_user_id, start_time, end_time, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -301,20 +1849,19 @@ or <a href="leaderboards.html#eos_leaderboards_copy_definition_by_id">eos_leader
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>eos_leaderboards_query_definitions(local_user_id, EOS_LEADERBOARDS_TIME_UNDEFINED, EOS_LEADERBOARDS_TIME_UNDEFINED, function(_result)
+<p><pre class="highlight"><code class="language-gml">eos_leaderboards_query_definitions(local_user_id, EOS_LEADERBOARDS_TIME_UNDEFINED, EOS_LEADERBOARDS_TIME_UNDEFINED, function(_result)
 {
     if (_result.result_code == EpicResult.Success)
     {
-        show_debug_message($&quot;Loaded {eos_leaderboards_get_definition_count()} leaderboard definitions&quot;);
+        show_debug_message($"Loaded {eos_leaderboards_get_definition_count()} leaderboard definitions");
     }
-});
-</code></pre></div>
+});</code></pre>
 The above code queries every leaderboard definition, with no time restriction.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</h1>
+<h1 id="eos_leaderboards_query_ranks">eos_leaderboards_query_ranks<a class="headerlink" href="#eos_leaderboards_query_ranks" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-ranks">EOS_Leaderboards_QueryLeaderboardRanks</a></p>
 <p>Queries the top-ranked entries (records) for a single leaderboard. Call this before using
 <a href="leaderboards.html#eos_leaderboards_get_record_count">eos_leaderboards_get_record_count</a>, <a href="leaderboards.html#eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</a> or
@@ -323,8 +1870,7 @@ The above code queries every leaderboard definition, with no time restriction.</
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_query_ranks(local_user_id, leaderboard_id, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_query_ranks(local_user_id, leaderboard_id, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -381,20 +1927,19 @@ The above code queries every leaderboard definition, with no time restriction.</
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>eos_leaderboards_query_ranks(local_user_id, &quot;high_score&quot;, function(_result)
+<p><pre class="highlight"><code class="language-gml">eos_leaderboards_query_ranks(local_user_id, "high_score", function(_result)
 {
     if (_result.result_code == EpicResult.Success)
     {
-        show_debug_message($&quot;Loaded {eos_leaderboards_get_record_count()} records for {_result.leaderboard_id}&quot;);
+        show_debug_message($"Loaded {eos_leaderboards_get_record_count()} records for {_result.leaderboard_id}");
     }
-});
-</code></pre></div>
+});</code></pre>
 The above code queries the top records for the <code>"high_score"</code> leaderboard.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</h1>
+<h1 id="eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores<a class="headerlink" href="#eos_leaderboards_query_user_scores" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-query-leaderboard-user-scores">EOS_Leaderboards_QueryLeaderboardUserScores</a></p>
 <p>Queries scores for a specific set of users across one or more stats, regardless of where those users rank.
 Use this instead of <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a> when you want specific players' scores (e.g.
@@ -404,8 +1949,7 @@ a friends list) rather than the overall top ranks. Call this before using
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_query_user_scores(local_user_id, target_user_ids, stat_queries, start_time, end_time, callback=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_query_user_scores(local_user_id, target_user_ids, stat_queries, start_time, end_time, callback=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -481,35 +2025,33 @@ a friends list) rather than the overall top ranks. Call this before using
 </div>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _stat_queries = [{ stat_name: &quot;high_score&quot;, aggregation: EpicLeaderboardAggregation.Max }];
+<p><pre class="highlight"><code class="language-gml">var _stat_queries = [{ stat_name: "high_score", aggregation: EpicLeaderboardAggregation.Max }];
 
 eos_leaderboards_query_user_scores(local_user_id, [friend_a_id, friend_b_id], _stat_queries, EOS_LEADERBOARDS_TIME_UNDEFINED, EOS_LEADERBOARDS_TIME_UNDEFINED, function(_result)
 {
     if (_result.result_code == EpicResult.Success)
     {
-        var _count = eos_leaderboards_get_user_score_count(&quot;high_score&quot;);
+        var _count = eos_leaderboards_get_user_score_count("high_score");
         for (var i = 0; i &lt; _count; i++)
         {
-            var _score = eos_leaderboards_copy_user_score_by_index(&quot;high_score&quot;, i);
-            show_debug_message($&quot;{_score.user_id}: {_score.score}&quot;);
+            var _score = eos_leaderboards_copy_user_score_by_index("high_score", i);
+            show_debug_message($"{_score.user_id}: {_score.score}");
         }
     }
-});
-</code></pre></div>
+});</code></pre>
 The above code queries two friends' high scores.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_get_definition_count">eos_leaderboards_get_definition_count</h1>
+<h1 id="eos_leaderboards_get_definition_count">eos_leaderboards_get_definition_count<a class="headerlink" href="#eos_leaderboards_get_definition_count" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-definition-count">EOS_Leaderboards_GetLeaderboardDefinitionCount</a></p>
 <p>Returns the number of leaderboard definitions available, from the last successful call to
 <a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_get_definition_count()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_get_definition_count()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -520,14 +2062,13 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_get_record_count">eos_leaderboards_get_record_count</h1>
+<h1 id="eos_leaderboards_get_record_count">eos_leaderboards_get_record_count<a class="headerlink" href="#eos_leaderboards_get_record_count" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-record-count">EOS_Leaderboards_GetLeaderboardRecordCount</a></p>
 <p>Returns the number of records available, from the last successful call to <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_get_record_count()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_get_record_count()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -538,15 +2079,14 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_get_user_score_count">eos_leaderboards_get_user_score_count</h1>
+<h1 id="eos_leaderboards_get_user_score_count">eos_leaderboards_get_user_score_count<a class="headerlink" href="#eos_leaderboards_get_user_score_count" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-get-leaderboard-user-score-count">EOS_Leaderboards_GetLeaderboardUserScoreCount</a></p>
 <p>Returns the number of user scores available for <code>stat_name</code>, from the last successful call to
 <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_get_user_score_count(stat_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_get_user_score_count(stat_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -573,14 +2113,13 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</h1>
+<h1 id="eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index<a class="headerlink" href="#eos_leaderboards_copy_definition_by_index" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-definition-by-index">EOS_Leaderboards_CopyLeaderboardDefinitionByIndex</a></p>
 <p>Fetches a leaderboard definition by index, from the cached data populated by <a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_definition_by_index(index)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_copy_definition_by_index(index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -611,15 +2150,14 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id</h1>
+<h1 id="eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id<a class="headerlink" href="#eos_leaderboards_copy_definition_by_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-definition-by-leaderboard-id">EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId</a></p>
 <p>Fetches a leaderboard definition by its leaderboard ID, from the cached data populated by
 <a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_definition_by_id(leaderboard_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_copy_definition_by_id(leaderboard_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -650,15 +2188,14 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</h1>
+<h1 id="eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index<a class="headerlink" href="#eos_leaderboards_copy_record_by_index" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-record-by-index">EOS_Leaderboards_CopyLeaderboardRecordByIndex</a></p>
 <p>Fetches a leaderboard record (rank entry) by index, from the cached data populated by
 <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_record_by_index(index)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_copy_record_by_index(index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -689,15 +2226,14 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</h1>
+<h1 id="eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id<a class="headerlink" href="#eos_leaderboards_copy_record_by_user_id" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-record-by-user-id">EOS_Leaderboards_CopyLeaderboardRecordByUserId</a></p>
 <p>Fetches a specific user's leaderboard record (rank entry), from the cached data populated by
 <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_record_by_user_id(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_copy_record_by_user_id(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -728,15 +2264,14 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</h1>
+<h1 id="eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index<a class="headerlink" href="#eos_leaderboards_copy_user_score_by_index" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Function:</strong> <a href="https://dev.epicgames.com/docs/api-ref/functions/eos-leaderboards-copy-leaderboard-user-score-by-index">EOS_Leaderboards_CopyLeaderboardUserScoreByIndex</a></p>
 <p>Fetches one user score by index for <code>stat_name</code>, from the cached data populated by
 <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>eos_leaderboards_copy_user_score_by_index(stat_name, index)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">eos_leaderboards_copy_user_score_by_index(stat_name, index)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -772,7 +2307,7 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboardaggregation">EpicLeaderboardAggregation</h1>
+<h1 id="epicleaderboardaggregation">EpicLeaderboardAggregation<a class="headerlink" href="#epicleaderboardaggregation" title="Permanent link">&para;</a></h1>
 <p><strong>Epic Online Services Enum:</strong> <a href="https://dev.epicgames.com/docs/api-ref/enums/eos-e-leaderboard-aggregation">EOS_ELeaderboardAggregation</a></p>
 <p>How a leaderboard or a user-scores query combines multiple stat ingests into a single score.</p>
 <p>These constants are referenced by the following structs:</p>
@@ -810,7 +2345,7 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="macros">macros</h1>
+<h1 id="macros">macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h1>
 <p>Standalone constants used by this module.</p>
 <p><br></p>
 <table>
@@ -831,7 +2366,7 @@ The above code queries two friends' high scores.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboardstatquery">EpicLeaderboardStatQuery</h1>
+<h1 id="epicleaderboardstatquery">EpicLeaderboardStatQuery<a class="headerlink" href="#epicleaderboardstatquery" title="Permanent link">&para;</a></h1>
 <p>One stat to query in <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>, and how to aggregate multiple
 entries for that stat into a single score.</p>
 <p>This struct is referenced by the following functions:</p>
@@ -864,7 +2399,7 @@ entries for that stat into a single score.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboardsquerydefinitionscallbackinfo">EpicLeaderboardsQueryDefinitionsCallbackInfo</h1>
+<h1 id="epicleaderboardsquerydefinitionscallbackinfo">EpicLeaderboardsQueryDefinitionsCallbackInfo<a class="headerlink" href="#epicleaderboardsquerydefinitionscallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of <a href="leaderboards.html#eos_leaderboards_query_definitions">eos_leaderboards_query_definitions</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -891,7 +2426,7 @@ entries for that stat into a single score.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboardsqueryrankscallbackinfo">EpicLeaderboardsQueryRanksCallbackInfo</h1>
+<h1 id="epicleaderboardsqueryrankscallbackinfo">EpicLeaderboardsQueryRanksCallbackInfo<a class="headerlink" href="#epicleaderboardsqueryrankscallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of <a href="leaderboards.html#eos_leaderboards_query_ranks">eos_leaderboards_query_ranks</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -923,7 +2458,7 @@ entries for that stat into a single score.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboardsqueryuserscorescallbackinfo">EpicLeaderboardsQueryUserScoresCallbackInfo</h1>
+<h1 id="epicleaderboardsqueryuserscorescallbackinfo">EpicLeaderboardsQueryUserScoresCallbackInfo<a class="headerlink" href="#epicleaderboardsqueryuserscorescallbackinfo" title="Permanent link">&para;</a></h1>
 <p>The result of <a href="leaderboards.html#eos_leaderboards_query_user_scores">eos_leaderboards_query_user_scores</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -950,7 +2485,7 @@ entries for that stat into a single score.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboarddefinition">EpicLeaderboardDefinition</h1>
+<h1 id="epicleaderboarddefinition">EpicLeaderboardDefinition<a class="headerlink" href="#epicleaderboarddefinition" title="Permanent link">&para;</a></h1>
 <p>A leaderboard definition, as returned by <a href="leaderboards.html#eos_leaderboards_copy_definition_by_index">eos_leaderboards_copy_definition_by_index</a>/
 <a href="leaderboards.html#eos_leaderboards_copy_definition_by_id">eos_leaderboards_copy_definition_by_id</a>.</p>
 <p>This struct is referenced by the following functions:</p>
@@ -999,7 +2534,7 @@ entries for that stat into a single score.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboardrecord">EpicLeaderboardRecord</h1>
+<h1 id="epicleaderboardrecord">EpicLeaderboardRecord<a class="headerlink" href="#epicleaderboardrecord" title="Permanent link">&para;</a></h1>
 <p>A single ranked entry on a leaderboard, as returned by <a href="leaderboards.html#eos_leaderboards_copy_record_by_index">eos_leaderboards_copy_record_by_index</a>/
 <a href="leaderboards.html#eos_leaderboards_copy_record_by_user_id">eos_leaderboards_copy_record_by_user_id</a>.</p>
 <p>This struct is referenced by the following functions:</p>
@@ -1043,7 +2578,7 @@ entries for that stat into a single score.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="epicleaderboarduserscore">EpicLeaderboardUserScore</h1>
+<h1 id="epicleaderboarduserscore">EpicLeaderboardUserScore<a class="headerlink" href="#epicleaderboarduserscore" title="Permanent link">&para;</a></h1>
 <p>A single user's score for a queried stat, as returned by <a href="leaderboards.html#eos_leaderboards_copy_user_score_by_index">eos_leaderboards_copy_user_score_by_index</a>.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -1073,57 +2608,73 @@ entries for that stat into a single score.</p>
 </table>
 <p><br></p>
 <hr />
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="friends.html" class="btn btn-neutral float-left" title="Friends"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="lobbies.html" class="btn btn-neutral float-right" title="Lobbies">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2026</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-EpicOnlineServices" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="friends.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="lobbies.html" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

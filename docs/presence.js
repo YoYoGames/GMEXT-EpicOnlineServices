@@ -358,7 +358,7 @@
 
 /**
  * @const EpicPresenceStatus
- * @desc **Epic Online Services Enum:** [EOS_Presence_EStatus](https://dev.epicgames.com/docs/api-ref/enums/eos-e-presence-status)
+ * @desc **Epic Online Services Enum:** [EOS_Presence_EStatus](https://dev.epicgames.com/docs/api-ref/enums/eos-presence-e-status)
  *
  * @member Offline
  * @member Online

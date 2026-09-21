@@ -428,7 +428,7 @@
 /**
  * @module achievements
  * @title Achievements
- * @desc **Epic Online Services Interface:** [Achievements Interface](https://dev.epicgames.com/docs/game-services/eos-achievements-interface)
+ * @desc **Epic Online Services Interface:** [Achievements Interface](https://dev.epicgames.com/docs/epic-online-services/player-and-game-data/achievements-interface/achievements-reference)
  *
  * The Achievements Interface lets you query achievement definitions and player progress, unlock achievements
  * directly, and listen for unlocks that happen automatically as stats cross their thresholds.
