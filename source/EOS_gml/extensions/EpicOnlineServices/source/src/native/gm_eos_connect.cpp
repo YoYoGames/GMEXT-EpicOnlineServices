@@ -287,8 +287,17 @@ void eos_connect_login(
     std::string token_storage(token);
     std::string display_name_storage(display_name);
 
-    if (token_storage.empty()) {
+    const bool is_device_id =
+        external_credential_type ==
+        gm_enums::EpicExternalCredentialType::DeviceIdAccessToken;
+
+    if (token_storage.empty() && !is_device_id) {
         eos_set_last_error("EOS_Connect_Login: token is required.");
+        return;
+    }
+
+    if (is_device_id && display_name_storage.empty()) {
+        eos_set_last_error("EOS_Connect_Login: display_name is required for Device ID login.");
         return;
     }
 
@@ -297,7 +306,7 @@ void eos_connect_login(
 
     EOS_Connect_Credentials creds{};
     creds.ApiVersion = EOS_CONNECT_CREDENTIALS_API_LATEST;
-    creds.Token = token_storage.c_str();
+    creds.Token = is_device_id ? nullptr : token_storage.c_str();
     creds.Type = (EOS_EExternalCredentialType)external_credential_type;
 
     EOS_Connect_UserLoginInfo user_login_info{};
